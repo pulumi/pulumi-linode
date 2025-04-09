@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *         var foo = new Rdns("foo", RdnsArgs.builder()
  *             .address(fooInstance.ipAddress())
- *             .rdns(fooInstance.ipAddress().applyValue(ipAddress -> String.format("%s.nip.io", ipAddress)))
+ *             .rdns(fooInstance.ipAddress().applyValue(_ipAddress -> String.format("%s.nip.io", _ipAddress)))
  *             .build());
  * 
  *     }
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *         for (var i = 0; i < myInstance.length(); i++) {
  *             new Rdns("myRdns-" + i, RdnsArgs.builder()
  *                 .address(myInstance[range.value()].ipAddress())
- *                 .rdns(myInstance[range.value()].ipAddress().applyValue(ipAddress -> String.format("%s.nip.io", ipAddress)))
+ *                 .rdns(myInstance[range.value()].ipAddress().applyValue(_ipAddress -> String.format("%s.nip.io", _ipAddress)))
  *                 .build());
  * 
  *         

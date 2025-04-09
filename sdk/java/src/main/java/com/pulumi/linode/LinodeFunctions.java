@@ -249,7 +249,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var account = LinodeFunctions.getAccount();
+     *         final var account = LinodeFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -293,7 +293,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var account = LinodeFunctions.getAccount();
+     *         final var account = LinodeFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -337,7 +337,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var account = LinodeFunctions.getAccount();
+     *         final var account = LinodeFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -381,7 +381,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var account = LinodeFunctions.getAccount();
+     *         final var account = LinodeFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -425,7 +425,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var account = LinodeFunctions.getAccount();
+     *         final var account = LinodeFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -469,7 +469,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var account = LinodeFunctions.getAccount();
+     *         final var account = LinodeFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -513,7 +513,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var account = LinodeFunctions.getAccount();
+     *         final var account = LinodeFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1838,7 +1838,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getAccountSettings();
+     *         final var example = LinodeFunctions.getAccountSettings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1880,7 +1880,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getAccountSettings();
+     *         final var example = LinodeFunctions.getAccountSettings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1922,7 +1922,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getAccountSettings();
+     *         final var example = LinodeFunctions.getAccountSettings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -1964,7 +1964,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getAccountSettings();
+     *         final var example = LinodeFunctions.getAccountSettings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2006,7 +2006,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getAccountSettings();
+     *         final var example = LinodeFunctions.getAccountSettings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2048,7 +2048,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getAccountSettings();
+     *         final var example = LinodeFunctions.getAccountSettings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2090,7 +2090,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getAccountSettings();
+     *         final var example = LinodeFunctions.getAccountSettings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -2380,7 +2380,8 @@ public final class LinodeFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var all = LinodeFunctions.getChildAccounts();
+     *         final var all = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
@@ -2398,8 +2399,8 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("allAccounts", all.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
      *     }}{@code
      * }}{@code
      * }
@@ -2473,7 +2474,8 @@ public final class LinodeFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var all = LinodeFunctions.getChildAccounts();
+     *         final var all = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
@@ -2491,8 +2493,8 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("allAccounts", all.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
      *     }}{@code
      * }}{@code
      * }
@@ -2566,7 +2568,8 @@ public final class LinodeFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var all = LinodeFunctions.getChildAccounts();
+     *         final var all = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
@@ -2584,8 +2587,8 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("allAccounts", all.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
      *     }}{@code
      * }}{@code
      * }
@@ -2659,7 +2662,8 @@ public final class LinodeFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var all = LinodeFunctions.getChildAccounts();
+     *         final var all = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
@@ -2677,8 +2681,8 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("allAccounts", all.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
      *     }}{@code
      * }}{@code
      * }
@@ -2752,7 +2756,8 @@ public final class LinodeFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var all = LinodeFunctions.getChildAccounts();
+     *         final var all = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
@@ -2770,8 +2775,8 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("allAccounts", all.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
      *     }}{@code
      * }}{@code
      * }
@@ -2845,7 +2850,8 @@ public final class LinodeFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var all = LinodeFunctions.getChildAccounts();
+     *         final var all = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
@@ -2863,8 +2869,8 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("allAccounts", all.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
      *     }}{@code
      * }}{@code
      * }
@@ -2938,7 +2944,8 @@ public final class LinodeFunctions {
      *     }}{@code
      * 
      *     public static void stack(Context ctx) }{{@code
-     *         final var all = LinodeFunctions.getChildAccounts();
+     *         final var all = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getChildAccounts(GetChildAccountsArgs.builder()
      *             .filters(            
@@ -2956,8 +2963,8 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("allAccounts", all.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
-     *         ctx.export("filteredAccounts", filtered.applyValue(getChildAccountsResult -> getChildAccountsResult.childAccounts()).stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("allAccounts", all.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
+     *         ctx.export("filteredAccounts", filtered.childAccounts().stream().map(element -> element.euuid()).collect(toList()));
      *     }}{@code
      * }}{@code
      * }
@@ -3469,9 +3476,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabaseEngines();
+     *         final var all = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3510,7 +3518,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3554,7 +3562,7 @@ public final class LinodeFunctions {
      * 
      *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
      *             .type("g6-nanode-1")
      *             .build());
@@ -3600,9 +3608,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabaseEngines();
+     *         final var all = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3641,7 +3650,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3685,7 +3694,7 @@ public final class LinodeFunctions {
      * 
      *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
      *             .type("g6-nanode-1")
      *             .build());
@@ -3731,9 +3740,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabaseEngines();
+     *         final var all = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3772,7 +3782,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3816,7 +3826,7 @@ public final class LinodeFunctions {
      * 
      *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
      *             .type("g6-nanode-1")
      *             .build());
@@ -3862,9 +3872,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabaseEngines();
+     *         final var all = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3903,7 +3914,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -3947,7 +3958,7 @@ public final class LinodeFunctions {
      * 
      *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
      *             .type("g6-nanode-1")
      *             .build());
@@ -3993,9 +4004,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabaseEngines();
+     *         final var all = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -4034,7 +4046,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -4078,7 +4090,7 @@ public final class LinodeFunctions {
      * 
      *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
      *             .type("g6-nanode-1")
      *             .build());
@@ -4124,9 +4136,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabaseEngines();
+     *         final var all = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -4165,7 +4178,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -4209,7 +4222,7 @@ public final class LinodeFunctions {
      * 
      *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
      *             .type("g6-nanode-1")
      *             .build());
@@ -4255,9 +4268,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabaseEngines();
+     *         final var all = LinodeFunctions.getDatabaseEngines(GetDatabaseEnginesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("engineIds", all.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", all.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -4296,7 +4310,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("engineIds", mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("engineIds", mysql.engines().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -4340,7 +4354,7 @@ public final class LinodeFunctions {
      * 
      *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
      *             .label("mydb")
-     *             .engineId(mysql.applyValue(getDatabaseEnginesResult -> getDatabaseEnginesResult.engines()[0].id()))
+     *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
      *             .type("g6-nanode-1")
      *             .build());
@@ -5244,7 +5258,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabaseMysqlV2(GetDatabaseMysqlV2Args.builder()
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
      *     }
@@ -5311,7 +5325,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabaseMysqlV2(GetDatabaseMysqlV2Args.builder()
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
      *     }
@@ -5378,7 +5392,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabaseMysqlV2(GetDatabaseMysqlV2Args.builder()
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
      *     }
@@ -5445,7 +5459,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabaseMysqlV2(GetDatabaseMysqlV2Args.builder()
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
      *     }
@@ -5512,7 +5526,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabaseMysqlV2(GetDatabaseMysqlV2Args.builder()
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
      *     }
@@ -6006,7 +6020,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args.builder()
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
      *     }
@@ -6073,7 +6087,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args.builder()
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
      *     }
@@ -6140,7 +6154,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args.builder()
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
      *     }
@@ -6207,7 +6221,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args.builder()
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
      *     }
@@ -6274,7 +6288,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-db = LinodeFunctions.getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args.builder()
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
      *     }
@@ -6340,9 +6354,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabases();
+     *         final var all = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6381,7 +6396,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6423,9 +6438,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabases();
+     *         final var all = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6464,7 +6480,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6506,9 +6522,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabases();
+     *         final var all = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6547,7 +6564,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6589,9 +6606,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabases();
+     *         final var all = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6630,7 +6648,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6672,9 +6690,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabases();
+     *         final var all = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6713,7 +6732,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6755,9 +6774,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabases();
+     *         final var all = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6796,7 +6816,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6838,9 +6858,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getDatabases();
+     *         final var all = LinodeFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("databaseIds", all.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", all.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6879,7 +6900,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("databaseIds", mysql.applyValue(getDatabasesResult -> getDatabasesResult.databases()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("databaseIds", mysql.databases().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -6922,7 +6943,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
@@ -6971,7 +6992,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
@@ -7020,7 +7041,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
@@ -7069,7 +7090,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
@@ -7118,7 +7139,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
@@ -7167,7 +7188,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
@@ -7216,7 +7237,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getDomain(GetDomainArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *         final var bar = LinodeFunctions.getDomain(GetDomainArgs.builder()
@@ -7265,13 +7286,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id("14950401")
-     *             .domainId("3150401")
+     *             .id(14950401)
+     *             .domainId(3150401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
      *             .name("www")
-     *             .domainId("3150401")
+     *             .domainId(3150401)
      *             .build());
      * 
      *     }
@@ -7316,13 +7337,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id("14950401")
-     *             .domainId("3150401")
+     *             .id(14950401)
+     *             .domainId(3150401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
      *             .name("www")
-     *             .domainId("3150401")
+     *             .domainId(3150401)
      *             .build());
      * 
      *     }
@@ -7367,13 +7388,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id("14950401")
-     *             .domainId("3150401")
+     *             .id(14950401)
+     *             .domainId(3150401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
      *             .name("www")
-     *             .domainId("3150401")
+     *             .domainId(3150401)
      *             .build());
      * 
      *     }
@@ -7418,13 +7439,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id("14950401")
-     *             .domainId("3150401")
+     *             .id(14950401)
+     *             .domainId(3150401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
      *             .name("www")
-     *             .domainId("3150401")
+     *             .domainId(3150401)
      *             .build());
      * 
      *     }
@@ -7469,13 +7490,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id("14950401")
-     *             .domainId("3150401")
+     *             .id(14950401)
+     *             .domainId(3150401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
      *             .name("www")
-     *             .domainId("3150401")
+     *             .domainId(3150401)
      *             .build());
      * 
      *     }
@@ -7751,7 +7772,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.domains()[0].domain());
      *     }
      * }
      * }
@@ -7828,7 +7849,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.domains()[0].domain());
      *     }
      * }
      * }
@@ -7905,7 +7926,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.domains()[0].domain());
      *     }
      * }
      * }
@@ -7982,7 +8003,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.domains()[0].domain());
      *     }
      * }
      * }
@@ -8059,7 +8080,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.domains()[0].domain());
      *     }
      * }
      * }
@@ -8136,7 +8157,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.domains()[0].domain());
      *     }
      * }
      * }
@@ -8213,7 +8234,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("domain", specific.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domain()));
+     *         ctx.export("domain", specific.domains()[0].domain());
      *     }
      * }
      * }
@@ -8510,7 +8531,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.firewalls()[0].id());
      *     }
      * }
      * }
@@ -8542,9 +8563,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getFirewalls();
+     *         final var all = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.firewalls().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -8634,7 +8656,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.firewalls()[0].id());
      *     }
      * }
      * }
@@ -8666,9 +8688,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getFirewalls();
+     *         final var all = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.firewalls().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -8758,7 +8781,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.firewalls()[0].id());
      *     }
      * }
      * }
@@ -8790,9 +8813,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getFirewalls();
+     *         final var all = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.firewalls().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -8882,7 +8906,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.firewalls()[0].id());
      *     }
      * }
      * }
@@ -8914,9 +8938,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getFirewalls();
+     *         final var all = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.firewalls().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -9006,7 +9031,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.firewalls()[0].id());
      *     }
      * }
      * }
@@ -9038,9 +9063,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getFirewalls();
+     *         final var all = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.firewalls().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -9130,7 +9156,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.firewalls()[0].id());
      *     }
      * }
      * }
@@ -9162,9 +9188,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getFirewalls();
+     *         final var all = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.firewalls().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -9254,7 +9281,7 @@ public final class LinodeFunctions {
      *                     .build())
      *             .build());
      * 
-     *         ctx.export("firewallId", specific.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()[0].id()));
+     *         ctx.export("firewallId", specific.firewalls()[0].id());
      *     }
      * }
      * }
@@ -9286,9 +9313,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getFirewalls();
+     *         final var all = LinodeFunctions.getFirewalls(GetFirewallsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("firewallIds", all.applyValue(getFirewallsResult -> getFirewallsResult.firewalls()).stream().map(element -> element.id()).collect(toList()));
+     *         ctx.export("firewallIds", all.firewalls().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
      * }
@@ -9635,7 +9663,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-images = LinodeFunctions.getImages();
+     *         final var all-images = LinodeFunctions.getImages(GetImagesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -9745,7 +9774,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-images = LinodeFunctions.getImages();
+     *         final var all-images = LinodeFunctions.getImages(GetImagesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -9855,7 +9885,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-images = LinodeFunctions.getImages();
+     *         final var all-images = LinodeFunctions.getImages(GetImagesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -9965,7 +9996,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-images = LinodeFunctions.getImages();
+     *         final var all-images = LinodeFunctions.getImages(GetImagesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -10075,7 +10107,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-images = LinodeFunctions.getImages();
+     *         final var all-images = LinodeFunctions.getImages(GetImagesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -10185,7 +10218,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-images = LinodeFunctions.getImages();
+     *         final var all-images = LinodeFunctions.getImages(GetImagesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -10295,7 +10329,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-images = LinodeFunctions.getImages();
+     *         final var all-images = LinodeFunctions.getImages(GetImagesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("imageIds", all_images.images().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -11019,7 +11054,7 @@ public final class LinodeFunctions {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
      *                 .name("vcpus")
-     *                 .values(2)
+     *                 .values("2")
      *                 .build())
      *             .build());
      * 
@@ -11055,7 +11090,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-types = LinodeFunctions.getInstanceTypes();
+     *         final var all-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -11120,7 +11156,7 @@ public final class LinodeFunctions {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
      *                 .name("vcpus")
-     *                 .values(2)
+     *                 .values("2")
      *                 .build())
      *             .build());
      * 
@@ -11156,7 +11192,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-types = LinodeFunctions.getInstanceTypes();
+     *         final var all-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -11221,7 +11258,7 @@ public final class LinodeFunctions {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
      *                 .name("vcpus")
-     *                 .values(2)
+     *                 .values("2")
      *                 .build())
      *             .build());
      * 
@@ -11257,7 +11294,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-types = LinodeFunctions.getInstanceTypes();
+     *         final var all-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -11322,7 +11360,7 @@ public final class LinodeFunctions {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
      *                 .name("vcpus")
-     *                 .values(2)
+     *                 .values("2")
      *                 .build())
      *             .build());
      * 
@@ -11358,7 +11396,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-types = LinodeFunctions.getInstanceTypes();
+     *         final var all-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -11423,7 +11462,7 @@ public final class LinodeFunctions {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
      *                 .name("vcpus")
-     *                 .values(2)
+     *                 .values("2")
      *                 .build())
      *             .build());
      * 
@@ -11459,7 +11498,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-types = LinodeFunctions.getInstanceTypes();
+     *         final var all-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -11524,7 +11564,7 @@ public final class LinodeFunctions {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
      *                 .name("vcpus")
-     *                 .values(2)
+     *                 .values("2")
      *                 .build())
      *             .build());
      * 
@@ -11560,7 +11600,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-types = LinodeFunctions.getInstanceTypes();
+     *         final var all-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -11625,7 +11666,7 @@ public final class LinodeFunctions {
      *         final var specific-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .filters(GetInstanceTypesFilterArgs.builder()
      *                 .name("vcpus")
-     *                 .values(2)
+     *                 .values("2")
      *                 .build())
      *             .build());
      * 
@@ -11661,7 +11702,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-types = LinodeFunctions.getInstanceTypes();
+     *         final var all-types = LinodeFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("typeIds", all_types.types().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -11769,7 +11811,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-instances = LinodeFunctions.getInstances();
+     *         final var all-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -11879,7 +11922,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-instances = LinodeFunctions.getInstances();
+     *         final var all-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -11989,7 +12033,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-instances = LinodeFunctions.getInstances();
+     *         final var all-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -12099,7 +12144,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-instances = LinodeFunctions.getInstances();
+     *         final var all-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -12209,7 +12255,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-instances = LinodeFunctions.getInstances();
+     *         final var all-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -12319,7 +12366,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-instances = LinodeFunctions.getInstances();
+     *         final var all-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -12429,7 +12477,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all-instances = LinodeFunctions.getInstances();
+     *         final var all-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()
+     *             .build());
      * 
      *         ctx.export("instanceIds", all_instances.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
@@ -14305,7 +14354,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.lkeClusters()[0].id());
      *     }
      * }
      * }
@@ -14370,7 +14419,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.lkeClusters()[0].id());
      *     }
      * }
      * }
@@ -14435,7 +14484,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.lkeClusters()[0].id());
      *     }
      * }
      * }
@@ -14500,7 +14549,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.lkeClusters()[0].id());
      *     }
      * }
      * }
@@ -14565,7 +14614,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.lkeClusters()[0].id());
      *     }
      * }
      * }
@@ -14630,7 +14679,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.lkeClusters()[0].id());
      *     }
      * }
      * }
@@ -14695,7 +14744,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("lkeCluster", specific.applyValue(getLkeClustersResult -> getLkeClustersResult.lkeClusters()[0].id()));
+     *         ctx.export("lkeCluster", specific.lkeClusters()[0].id());
      *     }
      * }
      * }
@@ -15229,10 +15278,11 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions();
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleOutput", example);
+     *         ctx.export("exampleOutputFirstVersion", example.versions()[0]);
      *     }
      * }
      * }
@@ -15271,8 +15321,8 @@ public final class LinodeFunctions {
      *             .tier("enterprise")
      *             .build());
      * 
-     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise);
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.versions()[0]);
      *     }
      * }
      * }
@@ -15314,10 +15364,11 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions();
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleOutput", example);
+     *         ctx.export("exampleOutputFirstVersion", example.versions()[0]);
      *     }
      * }
      * }
@@ -15356,8 +15407,8 @@ public final class LinodeFunctions {
      *             .tier("enterprise")
      *             .build());
      * 
-     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise);
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.versions()[0]);
      *     }
      * }
      * }
@@ -15399,10 +15450,11 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions();
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleOutput", example);
+     *         ctx.export("exampleOutputFirstVersion", example.versions()[0]);
      *     }
      * }
      * }
@@ -15441,8 +15493,8 @@ public final class LinodeFunctions {
      *             .tier("enterprise")
      *             .build());
      * 
-     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise);
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.versions()[0]);
      *     }
      * }
      * }
@@ -15484,10 +15536,11 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions();
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleOutput", example);
+     *         ctx.export("exampleOutputFirstVersion", example.versions()[0]);
      *     }
      * }
      * }
@@ -15526,8 +15579,8 @@ public final class LinodeFunctions {
      *             .tier("enterprise")
      *             .build());
      * 
-     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise);
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.versions()[0]);
      *     }
      * }
      * }
@@ -15569,10 +15622,11 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions();
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleOutput", example);
+     *         ctx.export("exampleOutputFirstVersion", example.versions()[0]);
      *     }
      * }
      * }
@@ -15611,8 +15665,8 @@ public final class LinodeFunctions {
      *             .tier("enterprise")
      *             .build());
      * 
-     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise);
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.versions()[0]);
      *     }
      * }
      * }
@@ -15654,10 +15708,11 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions();
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleOutput", example);
+     *         ctx.export("exampleOutputFirstVersion", example.versions()[0]);
      *     }
      * }
      * }
@@ -15696,8 +15751,8 @@ public final class LinodeFunctions {
      *             .tier("enterprise")
      *             .build());
      * 
-     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise);
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.versions()[0]);
      *     }
      * }
      * }
@@ -15739,10 +15794,11 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = LinodeFunctions.getLkeVersions();
+     *         final var example = LinodeFunctions.getLkeVersions(GetLkeVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("exampleOutput", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleOutputFirstVersion", example.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleOutput", example);
+     *         ctx.export("exampleOutputFirstVersion", example.versions()[0]);
      *     }
      * }
      * }
@@ -15781,8 +15837,8 @@ public final class LinodeFunctions {
      *             .tier("enterprise")
      *             .build());
      * 
-     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult));
-     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.applyValue(getLkeVersionsResult -> getLkeVersionsResult.versions()[0]));
+     *         ctx.export("exampleEnterpriseOutput", exampleEnterprise);
+     *         ctx.export("exampleEnterpriseOutputFirstVersion", exampleEnterprise.versions()[0]);
      *     }
      * }
      * }
@@ -16125,7 +16181,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getNetworkingIps();
+     *         final var all = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -16227,7 +16284,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getNetworkingIps();
+     *         final var all = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -16329,7 +16387,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getNetworkingIps();
+     *         final var all = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -16431,7 +16490,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getNetworkingIps();
+     *         final var all = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -16533,7 +16593,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getNetworkingIps();
+     *         final var all = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -16635,7 +16696,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getNetworkingIps();
+     *         final var all = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -16737,7 +16799,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getNetworkingIps();
+     *         final var all = LinodeFunctions.getNetworkingIps(GetNetworkingIpsArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -17508,7 +17571,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("nodebalancerConfigId", filterNbConfigs.applyValue(getNodebalancerConfigsResult -> getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *         ctx.export("nodebalancerConfigId", filterNbConfigs.nodebalancerConfigs()[0].id());
      *     }
      * }
      * }
@@ -17584,7 +17647,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("nodebalancerConfigId", filterNbConfigs.applyValue(getNodebalancerConfigsResult -> getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *         ctx.export("nodebalancerConfigId", filterNbConfigs.nodebalancerConfigs()[0].id());
      *     }
      * }
      * }
@@ -17660,7 +17723,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("nodebalancerConfigId", filterNbConfigs.applyValue(getNodebalancerConfigsResult -> getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *         ctx.export("nodebalancerConfigId", filterNbConfigs.nodebalancerConfigs()[0].id());
      *     }
      * }
      * }
@@ -17736,7 +17799,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("nodebalancerConfigId", filterNbConfigs.applyValue(getNodebalancerConfigsResult -> getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *         ctx.export("nodebalancerConfigId", filterNbConfigs.nodebalancerConfigs()[0].id());
      *     }
      * }
      * }
@@ -17812,7 +17875,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("nodebalancerConfigId", filterNbConfigs.applyValue(getNodebalancerConfigsResult -> getNodebalancerConfigsResult.nodebalancerConfigs()[0].id()));
+     *         ctx.export("nodebalancerConfigId", filterNbConfigs.nodebalancerConfigs()[0].id());
      *     }
      * }
      * }
@@ -18602,7 +18665,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *         ctx.export("high-performance-obj-endpoint", test.endpoints()[0].s3Endpoint());
      *     }
      * }
      * }
@@ -18634,9 +18697,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *         ctx.export("available-endpoints", test.endpoints());
      *     }
      * }
      * }
@@ -18693,7 +18757,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *         ctx.export("high-performance-obj-endpoint", test.endpoints()[0].s3Endpoint());
      *     }
      * }
      * }
@@ -18725,9 +18789,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *         ctx.export("available-endpoints", test.endpoints());
      *     }
      * }
      * }
@@ -18784,7 +18849,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *         ctx.export("high-performance-obj-endpoint", test.endpoints()[0].s3Endpoint());
      *     }
      * }
      * }
@@ -18816,9 +18881,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *         ctx.export("available-endpoints", test.endpoints());
      *     }
      * }
      * }
@@ -18875,7 +18941,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *         ctx.export("high-performance-obj-endpoint", test.endpoints()[0].s3Endpoint());
      *     }
      * }
      * }
@@ -18907,9 +18973,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *         ctx.export("available-endpoints", test.endpoints());
      *     }
      * }
      * }
@@ -18966,7 +19033,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *         ctx.export("high-performance-obj-endpoint", test.endpoints()[0].s3Endpoint());
      *     }
      * }
      * }
@@ -18998,9 +19065,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *         ctx.export("available-endpoints", test.endpoints());
      *     }
      * }
      * }
@@ -19057,7 +19125,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *         ctx.export("high-performance-obj-endpoint", test.endpoints()[0].s3Endpoint());
      *     }
      * }
      * }
@@ -19089,9 +19157,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *         ctx.export("available-endpoints", test.endpoints());
      *     }
      * }
      * }
@@ -19148,7 +19217,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("high-performance-obj-endpoint", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()[0].s3Endpoint()));
+     *         ctx.export("high-performance-obj-endpoint", test.endpoints()[0].s3Endpoint());
      *     }
      * }
      * }
@@ -19180,9 +19249,10 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = LinodeFunctions.getObjectStorageEndpoints();
+     *         final var test = LinodeFunctions.getObjectStorageEndpoints(GetObjectStorageEndpointsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("available-endpoints", test.applyValue(getObjectStorageEndpointsResult -> getObjectStorageEndpointsResult.endpoints()));
+     *         ctx.export("available-endpoints", test.endpoints());
      *     }
      * }
      * }
@@ -19457,7 +19527,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getPlacementGroups();
+     *         final var all = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
      *             .filters(GetPlacementGroupsFilterArgs.builder()
@@ -19466,8 +19537,8 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
-     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("all-pgs", all.placementGroups());
+     *         ctx.export("filtered-pgs", filtered.placementGroups());
      *     }
      * }
      * }
@@ -19523,7 +19594,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getPlacementGroups();
+     *         final var all = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
      *             .filters(GetPlacementGroupsFilterArgs.builder()
@@ -19532,8 +19604,8 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
-     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("all-pgs", all.placementGroups());
+     *         ctx.export("filtered-pgs", filtered.placementGroups());
      *     }
      * }
      * }
@@ -19589,7 +19661,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getPlacementGroups();
+     *         final var all = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
      *             .filters(GetPlacementGroupsFilterArgs.builder()
@@ -19598,8 +19671,8 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
-     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("all-pgs", all.placementGroups());
+     *         ctx.export("filtered-pgs", filtered.placementGroups());
      *     }
      * }
      * }
@@ -19655,7 +19728,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getPlacementGroups();
+     *         final var all = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
      *             .filters(GetPlacementGroupsFilterArgs.builder()
@@ -19664,8 +19738,8 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
-     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("all-pgs", all.placementGroups());
+     *         ctx.export("filtered-pgs", filtered.placementGroups());
      *     }
      * }
      * }
@@ -19721,7 +19795,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getPlacementGroups();
+     *         final var all = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
      *             .filters(GetPlacementGroupsFilterArgs.builder()
@@ -19730,8 +19805,8 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
-     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("all-pgs", all.placementGroups());
+     *         ctx.export("filtered-pgs", filtered.placementGroups());
      *     }
      * }
      * }
@@ -19787,7 +19862,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getPlacementGroups();
+     *         final var all = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
      *             .filters(GetPlacementGroupsFilterArgs.builder()
@@ -19796,8 +19872,8 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
-     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("all-pgs", all.placementGroups());
+     *         ctx.export("filtered-pgs", filtered.placementGroups());
      *     }
      * }
      * }
@@ -19853,7 +19929,8 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = LinodeFunctions.getPlacementGroups();
+     *         final var all = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
+     *             .build());
      * 
      *         final var filtered = LinodeFunctions.getPlacementGroups(GetPlacementGroupsArgs.builder()
      *             .filters(GetPlacementGroupsFilterArgs.builder()
@@ -19862,8 +19939,8 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("all-pgs", all.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
-     *         ctx.export("filtered-pgs", filtered.applyValue(getPlacementGroupsResult -> getPlacementGroupsResult.placementGroups()));
+     *         ctx.export("all-pgs", all.placementGroups());
+     *         ctx.export("filtered-pgs", filtered.placementGroups());
      *     }
      * }
      * }
@@ -19918,7 +19995,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var profile = LinodeFunctions.getProfile();
+     *         final var profile = LinodeFunctions.getProfile(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -19960,7 +20037,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var profile = LinodeFunctions.getProfile();
+     *         final var profile = LinodeFunctions.getProfile(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -20002,7 +20079,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var profile = LinodeFunctions.getProfile();
+     *         final var profile = LinodeFunctions.getProfile(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -20044,7 +20121,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var profile = LinodeFunctions.getProfile();
+     *         final var profile = LinodeFunctions.getProfile(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -20086,7 +20163,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var profile = LinodeFunctions.getProfile();
+     *         final var profile = LinodeFunctions.getProfile(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -20128,7 +20205,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var profile = LinodeFunctions.getProfile();
+     *         final var profile = LinodeFunctions.getProfile(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -20170,7 +20247,7 @@ public final class LinodeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var profile = LinodeFunctions.getProfile();
+     *         final var profile = LinodeFunctions.getProfile(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -21525,7 +21602,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myStackscript = LinodeFunctions.getStackScript(GetStackScriptArgs.builder()
-     *             .id(355872)
+     *             .id("355872")
      *             .build());
      * 
      *     }
@@ -21570,7 +21647,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myStackscript = LinodeFunctions.getStackScript(GetStackScriptArgs.builder()
-     *             .id(355872)
+     *             .id("355872")
      *             .build());
      * 
      *     }
@@ -21615,7 +21692,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myStackscript = LinodeFunctions.getStackScript(GetStackScriptArgs.builder()
-     *             .id(355872)
+     *             .id("355872")
      *             .build());
      * 
      *     }
@@ -21660,7 +21737,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myStackscript = LinodeFunctions.getStackScript(GetStackScriptArgs.builder()
-     *             .id(355872)
+     *             .id("355872")
      *             .build());
      * 
      *     }
@@ -21705,7 +21782,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myStackscript = LinodeFunctions.getStackScript(GetStackScriptArgs.builder()
-     *             .id(355872)
+     *             .id("355872")
      *             .build());
      * 
      *     }
@@ -21759,7 +21836,7 @@ public final class LinodeFunctions {
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
      *                     .name("is_public")
-     *                     .values(false)
+     *                     .values("false")
      *                     .build())
      *             .build());
      * 
@@ -21835,7 +21912,7 @@ public final class LinodeFunctions {
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
      *                     .name("is_public")
-     *                     .values(false)
+     *                     .values("false")
      *                     .build())
      *             .build());
      * 
@@ -21911,7 +21988,7 @@ public final class LinodeFunctions {
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
      *                     .name("is_public")
-     *                     .values(false)
+     *                     .values("false")
      *                     .build())
      *             .build());
      * 
@@ -21987,7 +22064,7 @@ public final class LinodeFunctions {
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
      *                     .name("is_public")
-     *                     .values(false)
+     *                     .values("false")
      *                     .build())
      *             .build());
      * 
@@ -22063,7 +22140,7 @@ public final class LinodeFunctions {
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
      *                     .name("is_public")
-     *                     .values(false)
+     *                     .values("false")
      *                     .build())
      *             .build());
      * 
@@ -22139,7 +22216,7 @@ public final class LinodeFunctions {
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
      *                     .name("is_public")
-     *                     .values(false)
+     *                     .values("false")
      *                     .build())
      *             .build());
      * 
@@ -22215,7 +22292,7 @@ public final class LinodeFunctions {
      *                     .build(),
      *                 GetStackScriptsFilterArgs.builder()
      *                     .name("is_public")
-     *                     .values(false)
+     *                     .values("false")
      *                     .build())
      *             .build());
      * 
@@ -23448,7 +23525,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVolume(GetVolumeArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *     }
@@ -23493,7 +23570,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVolume(GetVolumeArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *     }
@@ -23538,7 +23615,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVolume(GetVolumeArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *     }
@@ -23583,7 +23660,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVolume(GetVolumeArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *     }
@@ -23628,7 +23705,7 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVolume(GetVolumeArgs.builder()
-     *             .id("1234567")
+     *             .id(1234567)
      *             .build());
      * 
      *     }
@@ -24086,10 +24163,10 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVpc(GetVpcArgs.builder()
-     *             .id(123)
+     *             .id("123")
      *             .build());
      * 
-     *         ctx.export("vpc", foo.applyValue(getVpcResult -> getVpcResult));
+     *         ctx.export("vpc", foo);
      *     }
      * }
      * }
@@ -24132,10 +24209,10 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVpc(GetVpcArgs.builder()
-     *             .id(123)
+     *             .id("123")
      *             .build());
      * 
-     *         ctx.export("vpc", foo.applyValue(getVpcResult -> getVpcResult));
+     *         ctx.export("vpc", foo);
      *     }
      * }
      * }
@@ -24178,10 +24255,10 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVpc(GetVpcArgs.builder()
-     *             .id(123)
+     *             .id("123")
      *             .build());
      * 
-     *         ctx.export("vpc", foo.applyValue(getVpcResult -> getVpcResult));
+     *         ctx.export("vpc", foo);
      *     }
      * }
      * }
@@ -24224,10 +24301,10 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVpc(GetVpcArgs.builder()
-     *             .id(123)
+     *             .id("123")
      *             .build());
      * 
-     *         ctx.export("vpc", foo.applyValue(getVpcResult -> getVpcResult));
+     *         ctx.export("vpc", foo);
      *     }
      * }
      * }
@@ -24270,10 +24347,10 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVpc(GetVpcArgs.builder()
-     *             .id(123)
+     *             .id("123")
      *             .build());
      * 
-     *         ctx.export("vpc", foo.applyValue(getVpcResult -> getVpcResult));
+     *         ctx.export("vpc", foo);
      *     }
      * }
      * }
@@ -25017,10 +25094,10 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVpcSubnet(GetVpcSubnetArgs.builder()
      *             .vpcId(123)
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
-     *         ctx.export("vpcSubnet", foo.applyValue(getVpcSubnetResult -> getVpcSubnetResult));
+     *         ctx.export("vpcSubnet", foo);
      *     }
      * }
      * }
@@ -25064,10 +25141,10 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVpcSubnet(GetVpcSubnetArgs.builder()
      *             .vpcId(123)
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
-     *         ctx.export("vpcSubnet", foo.applyValue(getVpcSubnetResult -> getVpcSubnetResult));
+     *         ctx.export("vpcSubnet", foo);
      *     }
      * }
      * }
@@ -25111,10 +25188,10 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVpcSubnet(GetVpcSubnetArgs.builder()
      *             .vpcId(123)
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
-     *         ctx.export("vpcSubnet", foo.applyValue(getVpcSubnetResult -> getVpcSubnetResult));
+     *         ctx.export("vpcSubnet", foo);
      *     }
      * }
      * }
@@ -25158,10 +25235,10 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVpcSubnet(GetVpcSubnetArgs.builder()
      *             .vpcId(123)
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
-     *         ctx.export("vpcSubnet", foo.applyValue(getVpcSubnetResult -> getVpcSubnetResult));
+     *         ctx.export("vpcSubnet", foo);
      *     }
      * }
      * }
@@ -25205,10 +25282,10 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getVpcSubnet(GetVpcSubnetArgs.builder()
      *             .vpcId(123)
-     *             .id(12345)
+     *             .id("12345")
      *             .build());
      * 
-     *         ctx.export("vpcSubnet", foo.applyValue(getVpcSubnetResult -> getVpcSubnetResult));
+     *         ctx.export("vpcSubnet", foo);
      *     }
      * }
      * }
