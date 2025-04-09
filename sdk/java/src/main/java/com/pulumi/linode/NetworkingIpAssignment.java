@@ -24,46 +24,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.linode.NetworkingIpAssignment;
- * import com.pulumi.linode.NetworkingIpAssignmentArgs;
- * import com.pulumi.linode.inputs.NetworkingIpAssignmentAssignmentArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foobar = new NetworkingIpAssignment("foobar", NetworkingIpAssignmentArgs.builder()
- *             .region("us-mia")
- *             .assignments(            
- *                 NetworkingIpAssignmentAssignmentArgs.builder()
- *                     .address(reservedIp1.address())
- *                     .linode_id(terraform_web1.id())
- *                     .build(),
- *                 NetworkingIpAssignmentAssignmentArgs.builder()
- *                     .address(reservedIp2.address())
- *                     .linode_id(terraform_web2.id())
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

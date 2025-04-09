@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myaccount = new AccountSettings("myaccount", AccountSettingsArgs.builder()
  *             .longviewSubscription("longview-40")
- *             .backupsEnabled("true")
+ *             .backupsEnabled(true)
  *             .build());
  * 
  *     }

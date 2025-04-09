@@ -109,48 +109,6 @@ import javax.annotation.Nullable;
  * Creating a complex PostgreSQL database:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.linode.DatabasePostgresqlV2;
- * import com.pulumi.linode.DatabasePostgresqlV2Args;
- * import com.pulumi.linode.inputs.DatabasePostgresqlV2UpdatesArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
- *             .label("mydatabase")
- *             .engineId("postgresql/16")
- *             .region("us-mia")
- *             .type("g6-nanode-1")
- *             .allowLists("10.0.0.3/32")
- *             .clusterSize(3)
- *             .updates(DatabasePostgresqlV2UpdatesArgs.builder()
- *                 .duration(4)
- *                 .frequency("weekly")
- *                 .hour_of_day(22)
- *                 .day_of_week(2)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating a forked PostgreSQL database:

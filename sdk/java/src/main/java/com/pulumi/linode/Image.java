@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *         var bar = new Image("bar", ImageArgs.builder()
  *             .label("foo-sda-image")
  *             .description("Image taken from foo")
- *             .diskId(foo.disks().applyValue(disks -> disks[0].id()))
+ *             .diskId(foo.disks().applyValue(_disks -> _disks[0].id()))
  *             .linodeId(foo.id())
  *             .tags(            
  *                 "image-tag",
@@ -94,6 +94,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.linode.Image;
  * import com.pulumi.linode.ImageArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filemd5Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -138,6 +140,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.linode.Image;
  * import com.pulumi.linode.ImageArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filemd5Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
