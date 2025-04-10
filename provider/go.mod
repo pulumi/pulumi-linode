@@ -6,8 +6,8 @@ toolchain go1.23.5
 
 require (
 	github.com/linode/terraform-provider-linode/v2 v2.37.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.106.0
-	github.com/pulumi/pulumi/sdk/v3 v3.160.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.106.1-0.20250410194141-23958975949c
+	github.com/pulumi/pulumi/sdk/v3 v3.161.0
 )
 
 replace (
@@ -173,11 +173,11 @@ require (
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
-	github.com/pulumi/esc v0.10.0 // indirect
+	github.com/pulumi/esc v0.13.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v1.8.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.15.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.160.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.161.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
