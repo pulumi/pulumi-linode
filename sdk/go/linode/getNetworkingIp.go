@@ -59,7 +59,7 @@ type LookupNetworkingIpArgs struct {
 
 // A collection of values returned by getNetworkingIp.
 type LookupNetworkingIpResult struct {
-	// The IP address.
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
@@ -80,6 +80,8 @@ type LookupNetworkingIpResult struct {
 	SubnetMask string `pulumi:"subnetMask"`
 	// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
 	Type string `pulumi:"type"`
+	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	VpcNat11 GetNetworkingIpVpcNat11 `pulumi:"vpcNat11"`
 }
 
 func LookupNetworkingIpOutput(ctx *pulumi.Context, args LookupNetworkingIpOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkingIpResultOutput {
@@ -116,7 +118,7 @@ func (o LookupNetworkingIpResultOutput) ToLookupNetworkingIpResultOutputWithCont
 	return o
 }
 
-// The IP address.
+// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
 func (o LookupNetworkingIpResultOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Address }).(pulumi.StringOutput)
 }
@@ -168,6 +170,11 @@ func (o LookupNetworkingIpResultOutput) SubnetMask() pulumi.StringOutput {
 // The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
 func (o LookupNetworkingIpResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+func (o LookupNetworkingIpResultOutput) VpcNat11() GetNetworkingIpVpcNat11Output {
+	return o.ApplyT(func(v LookupNetworkingIpResult) GetNetworkingIpVpcNat11 { return v.VpcNat11 }).(GetNetworkingIpVpcNat11Output)
 }
 
 func init() {

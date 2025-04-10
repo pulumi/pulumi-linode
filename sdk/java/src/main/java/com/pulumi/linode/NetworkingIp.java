@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.NetworkingIpArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.NetworkingIpState;
+import com.pulumi.linode.outputs.NetworkingIpVpcNat11;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -69,32 +70,60 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/networkingIp:NetworkingIp")
 public class NetworkingIp extends com.pulumi.resources.CustomResource {
     /**
-     * The IP address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
-     * @return The IP address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     public Output<String> address() {
         return this.address;
     }
     /**
-     * The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+     * The default gateway for this address.
+     * 
+     */
+    @Export(name="gateway", refs={String.class}, tree="[0]")
+    private Output<String> gateway;
+
+    /**
+     * @return The default gateway for this address.
+     * 
+     */
+    public Output<String> gateway() {
+        return this.gateway;
+    }
+    /**
+     * The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      * 
      */
     @Export(name="linodeId", refs={Integer.class}, tree="[0]")
     private Output<Integer> linodeId;
 
     /**
-     * @return The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+     * @return The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      * 
      */
     public Output<Integer> linodeId() {
         return this.linodeId;
+    }
+    /**
+     * The number of bits set in the subnet mask.
+     * 
+     */
+    @Export(name="prefix", refs={Integer.class}, tree="[0]")
+    private Output<Integer> prefix;
+
+    /**
+     * @return The number of bits set in the subnet mask.
+     * 
+     */
+    public Output<Integer> prefix() {
+        return this.prefix;
     }
     /**
      * Whether the IP address is public. Defaults to true.
@@ -109,6 +138,20 @@ public class NetworkingIp extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> public_() {
         return this.public_;
+    }
+    /**
+     * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     * 
+     */
+    @Export(name="rdns", refs={String.class}, tree="[0]")
+    private Output<String> rdns;
+
+    /**
+     * @return The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     * 
+     */
+    public Output<String> rdns() {
+        return this.rdns;
     }
     /**
      * The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
@@ -139,6 +182,20 @@ public class NetworkingIp extends com.pulumi.resources.CustomResource {
         return this.reserved;
     }
     /**
+     * The mask that separates host bits from network bits for this address.
+     * 
+     */
+    @Export(name="subnetMask", refs={String.class}, tree="[0]")
+    private Output<String> subnetMask;
+
+    /**
+     * @return The mask that separates host bits from network bits for this address.
+     * 
+     */
+    public Output<String> subnetMask() {
+        return this.subnetMask;
+    }
+    /**
      * The type of IP address. (ipv4, ipv6, etc.)
      * 
      */
@@ -151,6 +208,20 @@ public class NetworkingIp extends com.pulumi.resources.CustomResource {
      */
     public Output<String> type() {
         return this.type;
+    }
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    @Export(name="vpcNat11", refs={NetworkingIpVpcNat11.class}, tree="[0]")
+    private Output<NetworkingIpVpcNat11> vpcNat11;
+
+    /**
+     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    public Output<NetworkingIpVpcNat11> vpcNat11() {
+        return this.vpcNat11;
     }
 
     /**

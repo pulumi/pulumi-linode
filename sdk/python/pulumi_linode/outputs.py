@@ -67,6 +67,7 @@ __all__ = [
     'LkeNodePoolNode',
     'LkeNodePoolTaint',
     'NetworkingIpAssignmentAssignment',
+    'NetworkingIpVpcNat11',
     'NodeBalancerConfigNodeStatus',
     'NodeBalancerFirewall',
     'NodeBalancerFirewallInbound',
@@ -215,8 +216,10 @@ __all__ = [
     'GetNetworkTransferPricesTypeResult',
     'GetNetworkTransferPricesTypePriceResult',
     'GetNetworkTransferPricesTypeRegionPriceResult',
+    'GetNetworkingIpVpcNat11Result',
     'GetNetworkingIpsFilterResult',
     'GetNetworkingIpsIpAddressResult',
+    'GetNetworkingIpsIpAddressVpcNat11Result',
     'GetNodeBalancerConfigNodeStatusResult',
     'GetNodeBalancerFirewallResult',
     'GetNodeBalancerFirewallInboundResult',
@@ -3345,18 +3348,20 @@ class LkeClusterPoolTaint(dict):
 @pulumi.output_type
 class LkeNodePoolAutoscaler(dict):
     def __init__(__self__, *,
-                 max: builtins.int,
-                 min: builtins.int):
+                 max: Optional[builtins.int] = None,
+                 min: Optional[builtins.int] = None):
         """
         :param builtins.int max: The maximum number of nodes to autoscale to.
         :param builtins.int min: The minimum number of nodes to autoscale to.
         """
-        pulumi.set(__self__, "max", max)
-        pulumi.set(__self__, "min", min)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
 
     @property
     @pulumi.getter
-    def max(self) -> builtins.int:
+    def max(self) -> Optional[builtins.int]:
         """
         The maximum number of nodes to autoscale to.
         """
@@ -3364,7 +3369,7 @@ class LkeNodePoolAutoscaler(dict):
 
     @property
     @pulumi.getter
-    def min(self) -> builtins.int:
+    def min(self) -> Optional[builtins.int]:
         """
         The minimum number of nodes to autoscale to.
         """
@@ -3512,6 +3517,65 @@ class NetworkingIpAssignmentAssignment(dict):
         The ID of the Linode to which the IP address will be assigned.
         """
         return pulumi.get(self, "linode_id")
+
+
+@pulumi.output_type
+class NetworkingIpVpcNat11(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkingIpVpcNat11. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkingIpVpcNat11.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkingIpVpcNat11.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: builtins.str,
+                 subnet_id: builtins.int,
+                 vpc_id: builtins.int):
+        """
+        :param builtins.str address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        :param builtins.int subnet_id: The `id` of the VPC Subnet for this Interface.
+        :param builtins.int vpc_id: The `id` of the VPC configured for this Interface.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> builtins.str:
+        """
+        The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> builtins.int:
+        """
+        The `id` of the VPC Subnet for this Interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> builtins.int:
+        """
+        The `id` of the VPC configured for this Interface.
+        """
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type
@@ -12127,6 +12191,46 @@ class GetNetworkTransferPricesTypeRegionPriceResult(dict):
 
 
 @pulumi.output_type
+class GetNetworkingIpVpcNat11Result(dict):
+    def __init__(__self__, *,
+                 address: builtins.str,
+                 subnet_id: builtins.int,
+                 vpc_id: builtins.int):
+        """
+        :param builtins.str address: The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
+        :param builtins.int subnet_id: The `id` of the VPC Subnet for this Interface.
+        :param builtins.int vpc_id: The `id` of the VPC configured for this Interface.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> builtins.str:
+        """
+        The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> builtins.int:
+        """
+        The `id` of the VPC Subnet for this Interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> builtins.int:
+        """
+        The `id` of the VPC configured for this Interface.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
 class GetNetworkingIpsFilterResult(dict):
     def __init__(__self__, *,
                  name: builtins.str,
@@ -12179,9 +12283,10 @@ class GetNetworkingIpsIpAddressResult(dict):
                  region: builtins.str,
                  reserved: builtins.bool,
                  subnet_mask: builtins.str,
-                 type: builtins.str):
+                 type: builtins.str,
+                 vpc_nat11: 'outputs.GetNetworkingIpsIpAddressVpcNat11Result'):
         """
-        :param builtins.str address: The IP address.
+        :param builtins.str address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         :param builtins.str gateway: The default gateway for this address.
         :param builtins.int linode_id: The ID of the Linode this address currently belongs to.
         :param builtins.int prefix: The number of bits set in the subnet mask.
@@ -12191,6 +12296,7 @@ class GetNetworkingIpsIpAddressResult(dict):
         :param builtins.bool reserved: Whether this IP address is a reserved IP.
         :param builtins.str subnet_mask: The mask that separates host bits from network bits for this address.
         :param builtins.str type: The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+        :param 'GetNetworkingIpsIpAddressVpcNat11Args' vpc_nat11: Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
@@ -12202,12 +12308,13 @@ class GetNetworkingIpsIpAddressResult(dict):
         pulumi.set(__self__, "reserved", reserved)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_nat11", vpc_nat11)
 
     @property
     @pulumi.getter
     def address(self) -> builtins.str:
         """
-        The IP address.
+        The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         """
         return pulumi.get(self, "address")
 
@@ -12282,6 +12389,54 @@ class GetNetworkingIpsIpAddressResult(dict):
         The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vpcNat11")
+    def vpc_nat11(self) -> 'outputs.GetNetworkingIpsIpAddressVpcNat11Result':
+        """
+        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        """
+        return pulumi.get(self, "vpc_nat11")
+
+
+@pulumi.output_type
+class GetNetworkingIpsIpAddressVpcNat11Result(dict):
+    def __init__(__self__, *,
+                 address: builtins.str,
+                 subnet_id: builtins.int,
+                 vpc_id: builtins.int):
+        """
+        :param builtins.str address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        :param builtins.int subnet_id: The `id` of the VPC Subnet for this Interface.
+        :param builtins.int vpc_id: The `id` of the VPC configured for this Interface.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> builtins.str:
+        """
+        The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> builtins.int:
+        """
+        The `id` of the VPC Subnet for this Interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> builtins.int:
+        """
+        The `id` of the VPC configured for this Interface.
+        """
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type

@@ -46,22 +46,40 @@ namespace Pulumi.Linode
     public partial class NetworkingIp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The IP address.
+        /// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+        /// The default gateway for this address.
+        /// </summary>
+        [Output("gateway")]
+        public Output<string> Gateway { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         /// </summary>
         [Output("linodeId")]
         public Output<int> LinodeId { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of bits set in the subnet mask.
+        /// </summary>
+        [Output("prefix")]
+        public Output<int> Prefix { get; private set; } = null!;
 
         /// <summary>
         /// Whether the IP address is public. Defaults to true.
         /// </summary>
         [Output("public")]
         public Output<bool> Public { get; private set; } = null!;
+
+        /// <summary>
+        /// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+        /// </summary>
+        [Output("rdns")]
+        public Output<string> Rdns { get; private set; } = null!;
 
         /// <summary>
         /// The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
@@ -76,10 +94,22 @@ namespace Pulumi.Linode
         public Output<bool> Reserved { get; private set; } = null!;
 
         /// <summary>
+        /// The mask that separates host bits from network bits for this address.
+        /// </summary>
+        [Output("subnetMask")]
+        public Output<string> SubnetMask { get; private set; } = null!;
+
+        /// <summary>
         /// The type of IP address. (ipv4, ipv6, etc.)
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// </summary>
+        [Output("vpcNat11")]
+        public Output<Outputs.NetworkingIpVpcNat11> VpcNat11 { get; private set; } = null!;
 
 
         /// <summary>
@@ -128,7 +158,7 @@ namespace Pulumi.Linode
     public sealed class NetworkingIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+        /// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
@@ -166,22 +196,40 @@ namespace Pulumi.Linode
     public sealed class NetworkingIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP address.
+        /// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+        /// The default gateway for this address.
+        /// </summary>
+        [Input("gateway")]
+        public Input<string>? Gateway { get; set; }
+
+        /// <summary>
+        /// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
+
+        /// <summary>
+        /// The number of bits set in the subnet mask.
+        /// </summary>
+        [Input("prefix")]
+        public Input<int>? Prefix { get; set; }
 
         /// <summary>
         /// Whether the IP address is public. Defaults to true.
         /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
+
+        /// <summary>
+        /// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+        /// </summary>
+        [Input("rdns")]
+        public Input<string>? Rdns { get; set; }
 
         /// <summary>
         /// The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
@@ -196,10 +244,22 @@ namespace Pulumi.Linode
         public Input<bool>? Reserved { get; set; }
 
         /// <summary>
+        /// The mask that separates host bits from network bits for this address.
+        /// </summary>
+        [Input("subnetMask")]
+        public Input<string>? SubnetMask { get; set; }
+
+        /// <summary>
         /// The type of IP address. (ipv4, ipv6, etc.)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// </summary>
+        [Input("vpcNat11")]
+        public Input<Inputs.NetworkingIpVpcNat11GetArgs>? VpcNat11 { get; set; }
 
         public NetworkingIpState()
         {

@@ -7445,9 +7445,9 @@ func (o LkeClusterPoolTaintArrayOutput) Index(i pulumi.IntInput) LkeClusterPoolT
 
 type LkeNodePoolAutoscaler struct {
 	// The maximum number of nodes to autoscale to.
-	Max int `pulumi:"max"`
+	Max *int `pulumi:"max"`
 	// The minimum number of nodes to autoscale to.
-	Min int `pulumi:"min"`
+	Min *int `pulumi:"min"`
 }
 
 // LkeNodePoolAutoscalerInput is an input type that accepts LkeNodePoolAutoscalerArgs and LkeNodePoolAutoscalerOutput values.
@@ -7463,9 +7463,9 @@ type LkeNodePoolAutoscalerInput interface {
 
 type LkeNodePoolAutoscalerArgs struct {
 	// The maximum number of nodes to autoscale to.
-	Max pulumi.IntInput `pulumi:"max"`
+	Max pulumi.IntPtrInput `pulumi:"max"`
 	// The minimum number of nodes to autoscale to.
-	Min pulumi.IntInput `pulumi:"min"`
+	Min pulumi.IntPtrInput `pulumi:"min"`
 }
 
 func (LkeNodePoolAutoscalerArgs) ElementType() reflect.Type {
@@ -7546,13 +7546,13 @@ func (o LkeNodePoolAutoscalerOutput) ToLkeNodePoolAutoscalerPtrOutputWithContext
 }
 
 // The maximum number of nodes to autoscale to.
-func (o LkeNodePoolAutoscalerOutput) Max() pulumi.IntOutput {
-	return o.ApplyT(func(v LkeNodePoolAutoscaler) int { return v.Max }).(pulumi.IntOutput)
+func (o LkeNodePoolAutoscalerOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LkeNodePoolAutoscaler) *int { return v.Max }).(pulumi.IntPtrOutput)
 }
 
 // The minimum number of nodes to autoscale to.
-func (o LkeNodePoolAutoscalerOutput) Min() pulumi.IntOutput {
-	return o.ApplyT(func(v LkeNodePoolAutoscaler) int { return v.Min }).(pulumi.IntOutput)
+func (o LkeNodePoolAutoscalerOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LkeNodePoolAutoscaler) *int { return v.Min }).(pulumi.IntPtrOutput)
 }
 
 type LkeNodePoolAutoscalerPtrOutput struct{ *pulumi.OutputState }
@@ -7585,7 +7585,7 @@ func (o LkeNodePoolAutoscalerPtrOutput) Max() pulumi.IntPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Max
+		return v.Max
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -7595,7 +7595,7 @@ func (o LkeNodePoolAutoscalerPtrOutput) Min() pulumi.IntPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Min
+		return v.Min
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -7933,6 +7933,181 @@ func (o NetworkingIpAssignmentAssignmentArrayOutput) Index(i pulumi.IntInput) Ne
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkingIpAssignmentAssignment {
 		return vs[0].([]NetworkingIpAssignmentAssignment)[vs[1].(int)]
 	}).(NetworkingIpAssignmentAssignmentOutput)
+}
+
+type NetworkingIpVpcNat11 struct {
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+	Address string `pulumi:"address"`
+	// The `id` of the VPC Subnet for this Interface.
+	SubnetId int `pulumi:"subnetId"`
+	// The `id` of the VPC configured for this Interface.
+	VpcId int `pulumi:"vpcId"`
+}
+
+// NetworkingIpVpcNat11Input is an input type that accepts NetworkingIpVpcNat11Args and NetworkingIpVpcNat11Output values.
+// You can construct a concrete instance of `NetworkingIpVpcNat11Input` via:
+//
+//	NetworkingIpVpcNat11Args{...}
+type NetworkingIpVpcNat11Input interface {
+	pulumi.Input
+
+	ToNetworkingIpVpcNat11Output() NetworkingIpVpcNat11Output
+	ToNetworkingIpVpcNat11OutputWithContext(context.Context) NetworkingIpVpcNat11Output
+}
+
+type NetworkingIpVpcNat11Args struct {
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The `id` of the VPC Subnet for this Interface.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+	// The `id` of the VPC configured for this Interface.
+	VpcId pulumi.IntInput `pulumi:"vpcId"`
+}
+
+func (NetworkingIpVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkingIpVpcNat11)(nil)).Elem()
+}
+
+func (i NetworkingIpVpcNat11Args) ToNetworkingIpVpcNat11Output() NetworkingIpVpcNat11Output {
+	return i.ToNetworkingIpVpcNat11OutputWithContext(context.Background())
+}
+
+func (i NetworkingIpVpcNat11Args) ToNetworkingIpVpcNat11OutputWithContext(ctx context.Context) NetworkingIpVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkingIpVpcNat11Output)
+}
+
+func (i NetworkingIpVpcNat11Args) ToNetworkingIpVpcNat11PtrOutput() NetworkingIpVpcNat11PtrOutput {
+	return i.ToNetworkingIpVpcNat11PtrOutputWithContext(context.Background())
+}
+
+func (i NetworkingIpVpcNat11Args) ToNetworkingIpVpcNat11PtrOutputWithContext(ctx context.Context) NetworkingIpVpcNat11PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkingIpVpcNat11Output).ToNetworkingIpVpcNat11PtrOutputWithContext(ctx)
+}
+
+// NetworkingIpVpcNat11PtrInput is an input type that accepts NetworkingIpVpcNat11Args, NetworkingIpVpcNat11Ptr and NetworkingIpVpcNat11PtrOutput values.
+// You can construct a concrete instance of `NetworkingIpVpcNat11PtrInput` via:
+//
+//	        NetworkingIpVpcNat11Args{...}
+//
+//	or:
+//
+//	        nil
+type NetworkingIpVpcNat11PtrInput interface {
+	pulumi.Input
+
+	ToNetworkingIpVpcNat11PtrOutput() NetworkingIpVpcNat11PtrOutput
+	ToNetworkingIpVpcNat11PtrOutputWithContext(context.Context) NetworkingIpVpcNat11PtrOutput
+}
+
+type networkingIpVpcNat11PtrType NetworkingIpVpcNat11Args
+
+func NetworkingIpVpcNat11Ptr(v *NetworkingIpVpcNat11Args) NetworkingIpVpcNat11PtrInput {
+	return (*networkingIpVpcNat11PtrType)(v)
+}
+
+func (*networkingIpVpcNat11PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkingIpVpcNat11)(nil)).Elem()
+}
+
+func (i *networkingIpVpcNat11PtrType) ToNetworkingIpVpcNat11PtrOutput() NetworkingIpVpcNat11PtrOutput {
+	return i.ToNetworkingIpVpcNat11PtrOutputWithContext(context.Background())
+}
+
+func (i *networkingIpVpcNat11PtrType) ToNetworkingIpVpcNat11PtrOutputWithContext(ctx context.Context) NetworkingIpVpcNat11PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkingIpVpcNat11PtrOutput)
+}
+
+type NetworkingIpVpcNat11Output struct{ *pulumi.OutputState }
+
+func (NetworkingIpVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkingIpVpcNat11)(nil)).Elem()
+}
+
+func (o NetworkingIpVpcNat11Output) ToNetworkingIpVpcNat11Output() NetworkingIpVpcNat11Output {
+	return o
+}
+
+func (o NetworkingIpVpcNat11Output) ToNetworkingIpVpcNat11OutputWithContext(ctx context.Context) NetworkingIpVpcNat11Output {
+	return o
+}
+
+func (o NetworkingIpVpcNat11Output) ToNetworkingIpVpcNat11PtrOutput() NetworkingIpVpcNat11PtrOutput {
+	return o.ToNetworkingIpVpcNat11PtrOutputWithContext(context.Background())
+}
+
+func (o NetworkingIpVpcNat11Output) ToNetworkingIpVpcNat11PtrOutputWithContext(ctx context.Context) NetworkingIpVpcNat11PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkingIpVpcNat11) *NetworkingIpVpcNat11 {
+		return &v
+	}).(NetworkingIpVpcNat11PtrOutput)
+}
+
+// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+func (o NetworkingIpVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkingIpVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The `id` of the VPC Subnet for this Interface.
+func (o NetworkingIpVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkingIpVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+// The `id` of the VPC configured for this Interface.
+func (o NetworkingIpVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkingIpVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
+type NetworkingIpVpcNat11PtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkingIpVpcNat11PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkingIpVpcNat11)(nil)).Elem()
+}
+
+func (o NetworkingIpVpcNat11PtrOutput) ToNetworkingIpVpcNat11PtrOutput() NetworkingIpVpcNat11PtrOutput {
+	return o
+}
+
+func (o NetworkingIpVpcNat11PtrOutput) ToNetworkingIpVpcNat11PtrOutputWithContext(ctx context.Context) NetworkingIpVpcNat11PtrOutput {
+	return o
+}
+
+func (o NetworkingIpVpcNat11PtrOutput) Elem() NetworkingIpVpcNat11Output {
+	return o.ApplyT(func(v *NetworkingIpVpcNat11) NetworkingIpVpcNat11 {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkingIpVpcNat11
+		return ret
+	}).(NetworkingIpVpcNat11Output)
+}
+
+// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+func (o NetworkingIpVpcNat11PtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkingIpVpcNat11) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// The `id` of the VPC Subnet for this Interface.
+func (o NetworkingIpVpcNat11PtrOutput) SubnetId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkingIpVpcNat11) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.IntPtrOutput)
+}
+
+// The `id` of the VPC configured for this Interface.
+func (o NetworkingIpVpcNat11PtrOutput) VpcId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkingIpVpcNat11) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VpcId
+	}).(pulumi.IntPtrOutput)
 }
 
 type NodeBalancerConfigNodeStatus struct {
@@ -26810,6 +26985,76 @@ func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) Index(i pulumi.IntIn
 	}).(GetNetworkTransferPricesTypeRegionPriceOutput)
 }
 
+type GetNetworkingIpVpcNat11 struct {
+	// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
+	Address string `pulumi:"address"`
+	// The `id` of the VPC Subnet for this Interface.
+	SubnetId int `pulumi:"subnetId"`
+	// The `id` of the VPC configured for this Interface.
+	VpcId int `pulumi:"vpcId"`
+}
+
+// GetNetworkingIpVpcNat11Input is an input type that accepts GetNetworkingIpVpcNat11Args and GetNetworkingIpVpcNat11Output values.
+// You can construct a concrete instance of `GetNetworkingIpVpcNat11Input` via:
+//
+//	GetNetworkingIpVpcNat11Args{...}
+type GetNetworkingIpVpcNat11Input interface {
+	pulumi.Input
+
+	ToGetNetworkingIpVpcNat11Output() GetNetworkingIpVpcNat11Output
+	ToGetNetworkingIpVpcNat11OutputWithContext(context.Context) GetNetworkingIpVpcNat11Output
+}
+
+type GetNetworkingIpVpcNat11Args struct {
+	// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The `id` of the VPC Subnet for this Interface.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+	// The `id` of the VPC configured for this Interface.
+	VpcId pulumi.IntInput `pulumi:"vpcId"`
+}
+
+func (GetNetworkingIpVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpVpcNat11)(nil)).Elem()
+}
+
+func (i GetNetworkingIpVpcNat11Args) ToGetNetworkingIpVpcNat11Output() GetNetworkingIpVpcNat11Output {
+	return i.ToGetNetworkingIpVpcNat11OutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpVpcNat11Args) ToGetNetworkingIpVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpVpcNat11Output)
+}
+
+type GetNetworkingIpVpcNat11Output struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpVpcNat11)(nil)).Elem()
+}
+
+func (o GetNetworkingIpVpcNat11Output) ToGetNetworkingIpVpcNat11Output() GetNetworkingIpVpcNat11Output {
+	return o
+}
+
+func (o GetNetworkingIpVpcNat11Output) ToGetNetworkingIpVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpVpcNat11Output {
+	return o
+}
+
+// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
+func (o GetNetworkingIpVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The `id` of the VPC Subnet for this Interface.
+func (o GetNetworkingIpVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+// The `id` of the VPC configured for this Interface.
+func (o GetNetworkingIpVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
 type GetNetworkingIpsFilter struct {
 	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
@@ -26926,7 +27171,7 @@ func (o GetNetworkingIpsFilterArrayOutput) Index(i pulumi.IntInput) GetNetworkin
 }
 
 type GetNetworkingIpsIpAddress struct {
-	// The IP address.
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
@@ -26946,6 +27191,8 @@ type GetNetworkingIpsIpAddress struct {
 	SubnetMask string `pulumi:"subnetMask"`
 	// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
 	Type string `pulumi:"type"`
+	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	VpcNat11 GetNetworkingIpsIpAddressVpcNat11 `pulumi:"vpcNat11"`
 }
 
 // GetNetworkingIpsIpAddressInput is an input type that accepts GetNetworkingIpsIpAddressArgs and GetNetworkingIpsIpAddressOutput values.
@@ -26960,7 +27207,7 @@ type GetNetworkingIpsIpAddressInput interface {
 }
 
 type GetNetworkingIpsIpAddressArgs struct {
-	// The IP address.
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
@@ -26980,6 +27227,8 @@ type GetNetworkingIpsIpAddressArgs struct {
 	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
 	// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
 	Type pulumi.StringInput `pulumi:"type"`
+	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	VpcNat11 GetNetworkingIpsIpAddressVpcNat11Input `pulumi:"vpcNat11"`
 }
 
 func (GetNetworkingIpsIpAddressArgs) ElementType() reflect.Type {
@@ -27033,7 +27282,7 @@ func (o GetNetworkingIpsIpAddressOutput) ToGetNetworkingIpsIpAddressOutputWithCo
 	return o
 }
 
-// The IP address.
+// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
 func (o GetNetworkingIpsIpAddressOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Address }).(pulumi.StringOutput)
 }
@@ -27083,6 +27332,11 @@ func (o GetNetworkingIpsIpAddressOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+func (o GetNetworkingIpsIpAddressOutput) VpcNat11() GetNetworkingIpsIpAddressVpcNat11Output {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) GetNetworkingIpsIpAddressVpcNat11 { return v.VpcNat11 }).(GetNetworkingIpsIpAddressVpcNat11Output)
+}
+
 type GetNetworkingIpsIpAddressArrayOutput struct{ *pulumi.OutputState }
 
 func (GetNetworkingIpsIpAddressArrayOutput) ElementType() reflect.Type {
@@ -27101,6 +27355,76 @@ func (o GetNetworkingIpsIpAddressArrayOutput) Index(i pulumi.IntInput) GetNetwor
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkingIpsIpAddress {
 		return vs[0].([]GetNetworkingIpsIpAddress)[vs[1].(int)]
 	}).(GetNetworkingIpsIpAddressOutput)
+}
+
+type GetNetworkingIpsIpAddressVpcNat11 struct {
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+	Address string `pulumi:"address"`
+	// The `id` of the VPC Subnet for this Interface.
+	SubnetId int `pulumi:"subnetId"`
+	// The `id` of the VPC configured for this Interface.
+	VpcId int `pulumi:"vpcId"`
+}
+
+// GetNetworkingIpsIpAddressVpcNat11Input is an input type that accepts GetNetworkingIpsIpAddressVpcNat11Args and GetNetworkingIpsIpAddressVpcNat11Output values.
+// You can construct a concrete instance of `GetNetworkingIpsIpAddressVpcNat11Input` via:
+//
+//	GetNetworkingIpsIpAddressVpcNat11Args{...}
+type GetNetworkingIpsIpAddressVpcNat11Input interface {
+	pulumi.Input
+
+	ToGetNetworkingIpsIpAddressVpcNat11Output() GetNetworkingIpsIpAddressVpcNat11Output
+	ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(context.Context) GetNetworkingIpsIpAddressVpcNat11Output
+}
+
+type GetNetworkingIpsIpAddressVpcNat11Args struct {
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The `id` of the VPC Subnet for this Interface.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+	// The `id` of the VPC configured for this Interface.
+	VpcId pulumi.IntInput `pulumi:"vpcId"`
+}
+
+func (GetNetworkingIpsIpAddressVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsIpAddressVpcNat11)(nil)).Elem()
+}
+
+func (i GetNetworkingIpsIpAddressVpcNat11Args) ToGetNetworkingIpsIpAddressVpcNat11Output() GetNetworkingIpsIpAddressVpcNat11Output {
+	return i.ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpsIpAddressVpcNat11Args) ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsIpAddressVpcNat11Output)
+}
+
+type GetNetworkingIpsIpAddressVpcNat11Output struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpsIpAddressVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsIpAddressVpcNat11)(nil)).Elem()
+}
+
+func (o GetNetworkingIpsIpAddressVpcNat11Output) ToGetNetworkingIpsIpAddressVpcNat11Output() GetNetworkingIpsIpAddressVpcNat11Output {
+	return o
+}
+
+func (o GetNetworkingIpsIpAddressVpcNat11Output) ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressVpcNat11Output {
+	return o
+}
+
+// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+func (o GetNetworkingIpsIpAddressVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddressVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The `id` of the VPC Subnet for this Interface.
+func (o GetNetworkingIpsIpAddressVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddressVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+// The `id` of the VPC configured for this Interface.
+func (o GetNetworkingIpsIpAddressVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddressVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
 }
 
 type GetNodeBalancerConfigNodeStatus struct {
@@ -37453,6 +37777,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeNodePoolTaintArrayInput)(nil)).Elem(), LkeNodePoolTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingIpAssignmentAssignmentInput)(nil)).Elem(), NetworkingIpAssignmentAssignmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingIpAssignmentAssignmentArrayInput)(nil)).Elem(), NetworkingIpAssignmentAssignmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingIpVpcNat11Input)(nil)).Elem(), NetworkingIpVpcNat11Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkingIpVpcNat11PtrInput)(nil)).Elem(), NetworkingIpVpcNat11Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerConfigNodeStatusInput)(nil)).Elem(), NodeBalancerConfigNodeStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), NodeBalancerConfigNodeStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeBalancerFirewallInput)(nil)).Elem(), NodeBalancerFirewallArgs{})
@@ -37735,10 +38061,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypePriceArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypePriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPriceInput)(nil)).Elem(), GetNetworkTransferPricesTypeRegionPriceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPriceArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypeRegionPriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpVpcNat11Input)(nil)).Elem(), GetNetworkingIpVpcNat11Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsFilterInput)(nil)).Elem(), GetNetworkingIpsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsFilterArrayInput)(nil)).Elem(), GetNetworkingIpsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressInput)(nil)).Elem(), GetNetworkingIpsIpAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressArrayInput)(nil)).Elem(), GetNetworkingIpsIpAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressVpcNat11Input)(nil)).Elem(), GetNetworkingIpsIpAddressVpcNat11Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInput)(nil)).Elem(), GetNodeBalancerFirewallArgs{})
@@ -37998,6 +38326,8 @@ func init() {
 	pulumi.RegisterOutputType(LkeNodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(NetworkingIpAssignmentAssignmentOutput{})
 	pulumi.RegisterOutputType(NetworkingIpAssignmentAssignmentArrayOutput{})
+	pulumi.RegisterOutputType(NetworkingIpVpcNat11Output{})
+	pulumi.RegisterOutputType(NetworkingIpVpcNat11PtrOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusOutput{})
 	pulumi.RegisterOutputType(NodeBalancerConfigNodeStatusArrayOutput{})
 	pulumi.RegisterOutputType(NodeBalancerFirewallOutput{})
@@ -38280,10 +38610,12 @@ func init() {
 	pulumi.RegisterOutputType(GetNetworkTransferPricesTypePriceArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeRegionPriceOutput{})
 	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeRegionPriceArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpVpcNat11Output{})
 	pulumi.RegisterOutputType(GetNetworkingIpsFilterOutput{})
 	pulumi.RegisterOutputType(GetNetworkingIpsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressOutput{})
 	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressVpcNat11Output{})
 	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutput{})

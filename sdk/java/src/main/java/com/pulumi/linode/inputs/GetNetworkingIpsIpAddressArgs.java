@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetNetworkingIpsIpAddressVpcNat11Args;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -17,14 +18,14 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
     public static final GetNetworkingIpsIpAddressArgs Empty = new GetNetworkingIpsIpAddressArgs();
 
     /**
-     * The IP address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     @Import(name="address", required=true)
     private Output<String> address;
 
     /**
-     * @return The IP address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     public Output<String> address() {
@@ -166,6 +167,21 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
         return this.type;
     }
 
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    @Import(name="vpcNat11", required=true)
+    private Output<GetNetworkingIpsIpAddressVpcNat11Args> vpcNat11;
+
+    /**
+     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    public Output<GetNetworkingIpsIpAddressVpcNat11Args> vpcNat11() {
+        return this.vpcNat11;
+    }
+
     private GetNetworkingIpsIpAddressArgs() {}
 
     private GetNetworkingIpsIpAddressArgs(GetNetworkingIpsIpAddressArgs $) {
@@ -179,6 +195,7 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
         this.reserved = $.reserved;
         this.subnetMask = $.subnetMask;
         this.type = $.type;
+        this.vpcNat11 = $.vpcNat11;
     }
 
     public static Builder builder() {
@@ -200,7 +217,7 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param address The IP address.
+         * @param address The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
          * 
          * @return builder
          * 
@@ -211,7 +228,7 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param address The IP address.
+         * @param address The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
          * 
          * @return builder
          * 
@@ -409,6 +426,27 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
             return type(Output.of(type));
         }
 
+        /**
+         * @param vpcNat11 Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNat11(Output<GetNetworkingIpsIpAddressVpcNat11Args> vpcNat11) {
+            $.vpcNat11 = vpcNat11;
+            return this;
+        }
+
+        /**
+         * @param vpcNat11 Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNat11(GetNetworkingIpsIpAddressVpcNat11Args vpcNat11) {
+            return vpcNat11(Output.of(vpcNat11));
+        }
+
         public GetNetworkingIpsIpAddressArgs build() {
             if ($.address == null) {
                 throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddressArgs", "address");
@@ -439,6 +477,9 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddressArgs", "type");
+            }
+            if ($.vpcNat11 == null) {
+                throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddressArgs", "vpcNat11");
             }
             return $;
         }

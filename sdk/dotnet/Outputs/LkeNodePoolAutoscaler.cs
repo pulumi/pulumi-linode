@@ -16,17 +16,17 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The maximum number of nodes to autoscale to.
         /// </summary>
-        public readonly int Max;
+        public readonly int? Max;
         /// <summary>
         /// The minimum number of nodes to autoscale to.
         /// </summary>
-        public readonly int Min;
+        public readonly int? Min;
 
         [OutputConstructor]
         private LkeNodePoolAutoscaler(
-            int max,
+            int? max,
 
-            int min)
+            int? min)
         {
             Max = max;
             Min = min;

@@ -127,7 +127,7 @@ namespace Pulumi.Linode
     public sealed class GetNetworkingIpResult
     {
         /// <summary>
-        /// The IP address.
+        /// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         /// </summary>
         public readonly string Address;
         /// <summary>
@@ -167,6 +167,10 @@ namespace Pulumi.Linode
         /// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// </summary>
+        public readonly Outputs.GetNetworkingIpVpcNat11Result VpcNat11;
 
         [OutputConstructor]
         private GetNetworkingIpResult(
@@ -190,7 +194,9 @@ namespace Pulumi.Linode
 
             string subnetMask,
 
-            string type)
+            string type,
+
+            Outputs.GetNetworkingIpVpcNat11Result vpcNat11)
         {
             Address = address;
             Gateway = gateway;
@@ -203,6 +209,7 @@ namespace Pulumi.Linode
             Reserved = reserved;
             SubnetMask = subnetMask;
             Type = type;
+            VpcNat11 = vpcNat11;
         }
     }
 }

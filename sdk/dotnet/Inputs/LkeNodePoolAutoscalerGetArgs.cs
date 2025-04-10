@@ -15,14 +15,14 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The maximum number of nodes to autoscale to.
         /// </summary>
-        [Input("max", required: true)]
-        public Input<int> Max { get; set; } = null!;
+        [Input("max")]
+        public Input<int>? Max { get; set; }
 
         /// <summary>
         /// The minimum number of nodes to autoscale to.
         /// </summary>
-        [Input("min", required: true)]
-        public Input<int> Min { get; set; } = null!;
+        [Input("min")]
+        public Input<int>? Min { get; set; }
 
         public LkeNodePoolAutoscalerGetArgs()
         {

@@ -14,6 +14,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetNetworkingIpResult',
@@ -27,7 +28,7 @@ class GetNetworkingIpResult:
     """
     A collection of values returned by getNetworkingIp.
     """
-    def __init__(__self__, address=None, gateway=None, id=None, linode_id=None, prefix=None, public=None, rdns=None, region=None, reserved=None, subnet_mask=None, type=None):
+    def __init__(__self__, address=None, gateway=None, id=None, linode_id=None, prefix=None, public=None, rdns=None, region=None, reserved=None, subnet_mask=None, type=None, vpc_nat11=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -61,12 +62,15 @@ class GetNetworkingIpResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if vpc_nat11 and not isinstance(vpc_nat11, dict):
+            raise TypeError("Expected argument 'vpc_nat11' to be a dict")
+        pulumi.set(__self__, "vpc_nat11", vpc_nat11)
 
     @property
     @pulumi.getter
     def address(self) -> builtins.str:
         """
-        The IP address.
+        The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         """
         return pulumi.get(self, "address")
 
@@ -147,6 +151,14 @@ class GetNetworkingIpResult:
         """
         return pulumi.get(self, "type")
 
+    @property
+    @pulumi.getter(name="vpcNat11")
+    def vpc_nat11(self) -> 'outputs.GetNetworkingIpVpcNat11Result':
+        """
+        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        """
+        return pulumi.get(self, "vpc_nat11")
+
 
 class AwaitableGetNetworkingIpResult(GetNetworkingIpResult):
     # pylint: disable=using-constant-test
@@ -164,7 +176,8 @@ class AwaitableGetNetworkingIpResult(GetNetworkingIpResult):
             region=self.region,
             reserved=self.reserved,
             subnet_mask=self.subnet_mask,
-            type=self.type)
+            type=self.type,
+            vpc_nat11=self.vpc_nat11)
 
 
 def get_networking_ip(address: Optional[builtins.str] = None,
@@ -203,7 +216,8 @@ def get_networking_ip(address: Optional[builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         reserved=pulumi.get(__ret__, 'reserved'),
         subnet_mask=pulumi.get(__ret__, 'subnet_mask'),
-        type=pulumi.get(__ret__, 'type'))
+        type=pulumi.get(__ret__, 'type'),
+        vpc_nat11=pulumi.get(__ret__, 'vpc_nat11'))
 def get_networking_ip_output(address: Optional[pulumi.Input[builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkingIpResult]:
     """
@@ -239,4 +253,5 @@ def get_networking_ip_output(address: Optional[pulumi.Input[builtins.str]] = Non
         region=pulumi.get(__response__, 'region'),
         reserved=pulumi.get(__response__, 'reserved'),
         subnet_mask=pulumi.get(__response__, 'subnet_mask'),
-        type=pulumi.get(__response__, 'type')))
+        type=pulumi.get(__response__, 'type'),
+        vpc_nat11=pulumi.get(__response__, 'vpc_nat11')))

@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetNetworkingIpsIpAddressArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The IP address.
+        /// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         /// </summary>
         [Input("address", required: true)]
         public string Address { get; set; } = null!;
@@ -71,6 +71,12 @@ namespace Pulumi.Linode.Inputs
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
+
+        /// <summary>
+        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// </summary>
+        [Input("vpcNat11", required: true)]
+        public Inputs.GetNetworkingIpsIpAddressVpcNat11Args VpcNat11 { get; set; } = null!;
 
         public GetNetworkingIpsIpAddressArgs()
         {

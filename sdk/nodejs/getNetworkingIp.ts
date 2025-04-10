@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -43,7 +45,7 @@ export interface GetNetworkingIpArgs {
  */
 export interface GetNetworkingIpResult {
     /**
-     * The IP address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     readonly address: string;
     /**
@@ -83,6 +85,10 @@ export interface GetNetworkingIpResult {
      * The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
      */
     readonly type: string;
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     */
+    readonly vpcNat11: outputs.GetNetworkingIpVpcNat11;
 }
 /**
  * Provides information about a Linode Networking IP Address

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -59,17 +61,29 @@ export class NetworkingIp extends pulumi.CustomResource {
     }
 
     /**
-     * The IP address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     public /*out*/ readonly address!: pulumi.Output<string>;
     /**
-     * The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+     * The default gateway for this address.
+     */
+    public /*out*/ readonly gateway!: pulumi.Output<string>;
+    /**
+     * The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      */
     public readonly linodeId!: pulumi.Output<number>;
+    /**
+     * The number of bits set in the subnet mask.
+     */
+    public /*out*/ readonly prefix!: pulumi.Output<number>;
     /**
      * Whether the IP address is public. Defaults to true.
      */
     public readonly public!: pulumi.Output<boolean>;
+    /**
+     * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     */
+    public /*out*/ readonly rdns!: pulumi.Output<string>;
     /**
      * The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
      */
@@ -79,9 +93,17 @@ export class NetworkingIp extends pulumi.CustomResource {
      */
     public readonly reserved!: pulumi.Output<boolean>;
     /**
+     * The mask that separates host bits from network bits for this address.
+     */
+    public /*out*/ readonly subnetMask!: pulumi.Output<string>;
+    /**
      * The type of IP address. (ipv4, ipv6, etc.)
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     */
+    public /*out*/ readonly vpcNat11!: pulumi.Output<outputs.NetworkingIpVpcNat11>;
 
     /**
      * Create a NetworkingIp resource with the given unique name, arguments, and options.
@@ -97,11 +119,16 @@ export class NetworkingIp extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NetworkingIpState | undefined;
             resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["gateway"] = state ? state.gateway : undefined;
             resourceInputs["linodeId"] = state ? state.linodeId : undefined;
+            resourceInputs["prefix"] = state ? state.prefix : undefined;
             resourceInputs["public"] = state ? state.public : undefined;
+            resourceInputs["rdns"] = state ? state.rdns : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["reserved"] = state ? state.reserved : undefined;
+            resourceInputs["subnetMask"] = state ? state.subnetMask : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["vpcNat11"] = state ? state.vpcNat11 : undefined;
         } else {
             const args = argsOrState as NetworkingIpArgs | undefined;
             resourceInputs["linodeId"] = args ? args.linodeId : undefined;
@@ -110,6 +137,11 @@ export class NetworkingIp extends pulumi.CustomResource {
             resourceInputs["reserved"] = args ? args.reserved : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["address"] = undefined /*out*/;
+            resourceInputs["gateway"] = undefined /*out*/;
+            resourceInputs["prefix"] = undefined /*out*/;
+            resourceInputs["rdns"] = undefined /*out*/;
+            resourceInputs["subnetMask"] = undefined /*out*/;
+            resourceInputs["vpcNat11"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkingIp.__pulumiType, name, resourceInputs, opts);
@@ -121,17 +153,29 @@ export class NetworkingIp extends pulumi.CustomResource {
  */
 export interface NetworkingIpState {
     /**
-     * The IP address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address?: pulumi.Input<string>;
     /**
-     * The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+     * The default gateway for this address.
+     */
+    gateway?: pulumi.Input<string>;
+    /**
+     * The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      */
     linodeId?: pulumi.Input<number>;
+    /**
+     * The number of bits set in the subnet mask.
+     */
+    prefix?: pulumi.Input<number>;
     /**
      * Whether the IP address is public. Defaults to true.
      */
     public?: pulumi.Input<boolean>;
+    /**
+     * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     */
+    rdns?: pulumi.Input<string>;
     /**
      * The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
      */
@@ -141,9 +185,17 @@ export interface NetworkingIpState {
      */
     reserved?: pulumi.Input<boolean>;
     /**
+     * The mask that separates host bits from network bits for this address.
+     */
+    subnetMask?: pulumi.Input<string>;
+    /**
      * The type of IP address. (ipv4, ipv6, etc.)
      */
     type?: pulumi.Input<string>;
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     */
+    vpcNat11?: pulumi.Input<inputs.NetworkingIpVpcNat11>;
 }
 
 /**
@@ -151,7 +203,7 @@ export interface NetworkingIpState {
  */
 export interface NetworkingIpArgs {
     /**
-     * The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+     * The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      */
     linodeId?: pulumi.Input<number>;
     /**

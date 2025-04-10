@@ -116,6 +116,8 @@ __all__ = [
     'LkeNodePoolTaintArgsDict',
     'NetworkingIpAssignmentAssignmentArgs',
     'NetworkingIpAssignmentAssignmentArgsDict',
+    'NetworkingIpVpcNat11Args',
+    'NetworkingIpVpcNat11ArgsDict',
     'NodeBalancerConfigNodeStatusArgs',
     'NodeBalancerConfigNodeStatusArgsDict',
     'NodeBalancerFirewallArgs',
@@ -300,6 +302,8 @@ __all__ = [
     'GetNetworkingIpsFilterArgsDict',
     'GetNetworkingIpsIpAddressArgs',
     'GetNetworkingIpsIpAddressArgsDict',
+    'GetNetworkingIpsIpAddressVpcNat11Args',
+    'GetNetworkingIpsIpAddressVpcNat11ArgsDict',
     'GetNodeBalancerFirewallArgs',
     'GetNodeBalancerFirewallArgsDict',
     'GetNodeBalancerFirewallInboundArgs',
@@ -4585,11 +4589,11 @@ class LkeClusterPoolTaintArgs:
 
 if not MYPY:
     class LkeNodePoolAutoscalerArgsDict(TypedDict):
-        max: pulumi.Input[builtins.int]
+        max: NotRequired[pulumi.Input[builtins.int]]
         """
         The maximum number of nodes to autoscale to.
         """
-        min: pulumi.Input[builtins.int]
+        min: NotRequired[pulumi.Input[builtins.int]]
         """
         The minimum number of nodes to autoscale to.
         """
@@ -4599,37 +4603,39 @@ elif False:
 @pulumi.input_type
 class LkeNodePoolAutoscalerArgs:
     def __init__(__self__, *,
-                 max: pulumi.Input[builtins.int],
-                 min: pulumi.Input[builtins.int]):
+                 max: Optional[pulumi.Input[builtins.int]] = None,
+                 min: Optional[pulumi.Input[builtins.int]] = None):
         """
         :param pulumi.Input[builtins.int] max: The maximum number of nodes to autoscale to.
         :param pulumi.Input[builtins.int] min: The minimum number of nodes to autoscale to.
         """
-        pulumi.set(__self__, "max", max)
-        pulumi.set(__self__, "min", min)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
 
     @property
     @pulumi.getter
-    def max(self) -> pulumi.Input[builtins.int]:
+    def max(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         The maximum number of nodes to autoscale to.
         """
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: pulumi.Input[builtins.int]):
+    def max(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "max", value)
 
     @property
     @pulumi.getter
-    def min(self) -> pulumi.Input[builtins.int]:
+    def min(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         The minimum number of nodes to autoscale to.
         """
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: pulumi.Input[builtins.int]):
+    def min(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "min", value)
 
 
@@ -4819,6 +4825,75 @@ class NetworkingIpAssignmentAssignmentArgs:
     @linode_id.setter
     def linode_id(self, value: pulumi.Input[builtins.int]):
         pulumi.set(self, "linode_id", value)
+
+
+if not MYPY:
+    class NetworkingIpVpcNat11ArgsDict(TypedDict):
+        address: pulumi.Input[builtins.str]
+        """
+        The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        """
+        subnet_id: pulumi.Input[builtins.int]
+        """
+        The `id` of the VPC Subnet for this Interface.
+        """
+        vpc_id: pulumi.Input[builtins.int]
+        """
+        The `id` of the VPC configured for this Interface.
+        """
+elif False:
+    NetworkingIpVpcNat11ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkingIpVpcNat11Args:
+    def __init__(__self__, *,
+                 address: pulumi.Input[builtins.str],
+                 subnet_id: pulumi.Input[builtins.int],
+                 vpc_id: pulumi.Input[builtins.int]):
+        """
+        :param pulumi.Input[builtins.str] address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        :param pulumi.Input[builtins.int] subnet_id: The `id` of the VPC Subnet for this Interface.
+        :param pulumi.Input[builtins.int] vpc_id: The `id` of the VPC configured for this Interface.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[builtins.str]:
+        """
+        The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[builtins.int]:
+        """
+        The `id` of the VPC Subnet for this Interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "subnet_id", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[builtins.int]:
+        """
+        The `id` of the VPC configured for this Interface.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "vpc_id", value)
 
 
 if not MYPY:
@@ -13047,7 +13122,7 @@ if not MYPY:
     class GetNetworkingIpsIpAddressArgsDict(TypedDict):
         address: builtins.str
         """
-        The IP address.
+        The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         """
         gateway: builtins.str
         """
@@ -13085,6 +13160,10 @@ if not MYPY:
         """
         The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
         """
+        vpc_nat11: 'GetNetworkingIpsIpAddressVpcNat11ArgsDict'
+        """
+        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        """
 elif False:
     GetNetworkingIpsIpAddressArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -13100,9 +13179,10 @@ class GetNetworkingIpsIpAddressArgs:
                  region: builtins.str,
                  reserved: builtins.bool,
                  subnet_mask: builtins.str,
-                 type: builtins.str):
+                 type: builtins.str,
+                 vpc_nat11: 'GetNetworkingIpsIpAddressVpcNat11Args'):
         """
-        :param builtins.str address: The IP address.
+        :param builtins.str address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         :param builtins.str gateway: The default gateway for this address.
         :param builtins.int linode_id: The ID of the Linode this address currently belongs to.
         :param builtins.int prefix: The number of bits set in the subnet mask.
@@ -13112,6 +13192,7 @@ class GetNetworkingIpsIpAddressArgs:
         :param builtins.bool reserved: Whether this IP address is a reserved IP.
         :param builtins.str subnet_mask: The mask that separates host bits from network bits for this address.
         :param builtins.str type: The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+        :param 'GetNetworkingIpsIpAddressVpcNat11Args' vpc_nat11: Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
@@ -13123,12 +13204,13 @@ class GetNetworkingIpsIpAddressArgs:
         pulumi.set(__self__, "reserved", reserved)
         pulumi.set(__self__, "subnet_mask", subnet_mask)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_nat11", vpc_nat11)
 
     @property
     @pulumi.getter
     def address(self) -> builtins.str:
         """
-        The IP address.
+        The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         """
         return pulumi.get(self, "address")
 
@@ -13243,6 +13325,87 @@ class GetNetworkingIpsIpAddressArgs:
     @type.setter
     def type(self, value: builtins.str):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="vpcNat11")
+    def vpc_nat11(self) -> 'GetNetworkingIpsIpAddressVpcNat11Args':
+        """
+        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        """
+        return pulumi.get(self, "vpc_nat11")
+
+    @vpc_nat11.setter
+    def vpc_nat11(self, value: 'GetNetworkingIpsIpAddressVpcNat11Args'):
+        pulumi.set(self, "vpc_nat11", value)
+
+
+if not MYPY:
+    class GetNetworkingIpsIpAddressVpcNat11ArgsDict(TypedDict):
+        address: builtins.str
+        """
+        The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        """
+        subnet_id: builtins.int
+        """
+        The `id` of the VPC Subnet for this Interface.
+        """
+        vpc_id: builtins.int
+        """
+        The `id` of the VPC configured for this Interface.
+        """
+elif False:
+    GetNetworkingIpsIpAddressVpcNat11ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetNetworkingIpsIpAddressVpcNat11Args:
+    def __init__(__self__, *,
+                 address: builtins.str,
+                 subnet_id: builtins.int,
+                 vpc_id: builtins.int):
+        """
+        :param builtins.str address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        :param builtins.int subnet_id: The `id` of the VPC Subnet for this Interface.
+        :param builtins.int vpc_id: The `id` of the VPC configured for this Interface.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> builtins.str:
+        """
+        The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: builtins.str):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> builtins.int:
+        """
+        The `id` of the VPC Subnet for this Interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: builtins.int):
+        pulumi.set(self, "subnet_id", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> builtins.int:
+        """
+        The `id` of the VPC configured for this Interface.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: builtins.int):
+        pulumi.set(self, "vpc_id", value)
 
 
 if not MYPY:
