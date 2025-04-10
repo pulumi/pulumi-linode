@@ -5,9 +5,10 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class LkeNodePoolAutoscalerArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,30 +19,30 @@ public final class LkeNodePoolAutoscalerArgs extends com.pulumi.resources.Resour
      * The maximum number of nodes to autoscale to.
      * 
      */
-    @Import(name="max", required=true)
-    private Output<Integer> max;
+    @Import(name="max")
+    private @Nullable Output<Integer> max;
 
     /**
      * @return The maximum number of nodes to autoscale to.
      * 
      */
-    public Output<Integer> max() {
-        return this.max;
+    public Optional<Output<Integer>> max() {
+        return Optional.ofNullable(this.max);
     }
 
     /**
      * The minimum number of nodes to autoscale to.
      * 
      */
-    @Import(name="min", required=true)
-    private Output<Integer> min;
+    @Import(name="min")
+    private @Nullable Output<Integer> min;
 
     /**
      * @return The minimum number of nodes to autoscale to.
      * 
      */
-    public Output<Integer> min() {
-        return this.min;
+    public Optional<Output<Integer>> min() {
+        return Optional.ofNullable(this.min);
     }
 
     private LkeNodePoolAutoscalerArgs() {}
@@ -75,7 +76,7 @@ public final class LkeNodePoolAutoscalerArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder max(Output<Integer> max) {
+        public Builder max(@Nullable Output<Integer> max) {
             $.max = max;
             return this;
         }
@@ -96,7 +97,7 @@ public final class LkeNodePoolAutoscalerArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder min(Output<Integer> min) {
+        public Builder min(@Nullable Output<Integer> min) {
             $.min = min;
             return this;
         }
@@ -112,12 +113,6 @@ public final class LkeNodePoolAutoscalerArgs extends com.pulumi.resources.Resour
         }
 
         public LkeNodePoolAutoscalerArgs build() {
-            if ($.max == null) {
-                throw new MissingRequiredPropertyException("LkeNodePoolAutoscalerArgs", "max");
-            }
-            if ($.min == null) {
-                throw new MissingRequiredPropertyException("LkeNodePoolAutoscalerArgs", "min");
-            }
             return $;
         }
     }

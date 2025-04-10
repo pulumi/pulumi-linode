@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.NetworkingIpVpcNat11Args;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,14 +19,14 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
     public static final NetworkingIpState Empty = new NetworkingIpState();
 
     /**
-     * The IP address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The IP address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     public Optional<Output<String>> address() {
@@ -33,18 +34,48 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+     * The default gateway for this address.
+     * 
+     */
+    @Import(name="gateway")
+    private @Nullable Output<String> gateway;
+
+    /**
+     * @return The default gateway for this address.
+     * 
+     */
+    public Optional<Output<String>> gateway() {
+        return Optional.ofNullable(this.gateway);
+    }
+
+    /**
+     * The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      * 
      */
     @Import(name="linodeId")
     private @Nullable Output<Integer> linodeId;
 
     /**
-     * @return The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+     * @return The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      * 
      */
     public Optional<Output<Integer>> linodeId() {
         return Optional.ofNullable(this.linodeId);
+    }
+
+    /**
+     * The number of bits set in the subnet mask.
+     * 
+     */
+    @Import(name="prefix")
+    private @Nullable Output<Integer> prefix;
+
+    /**
+     * @return The number of bits set in the subnet mask.
+     * 
+     */
+    public Optional<Output<Integer>> prefix() {
+        return Optional.ofNullable(this.prefix);
     }
 
     /**
@@ -60,6 +91,21 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> public_() {
         return Optional.ofNullable(this.public_);
+    }
+
+    /**
+     * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     * 
+     */
+    @Import(name="rdns")
+    private @Nullable Output<String> rdns;
+
+    /**
+     * @return The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+     * 
+     */
+    public Optional<Output<String>> rdns() {
+        return Optional.ofNullable(this.rdns);
     }
 
     /**
@@ -93,6 +139,21 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The mask that separates host bits from network bits for this address.
+     * 
+     */
+    @Import(name="subnetMask")
+    private @Nullable Output<String> subnetMask;
+
+    /**
+     * @return The mask that separates host bits from network bits for this address.
+     * 
+     */
+    public Optional<Output<String>> subnetMask() {
+        return Optional.ofNullable(this.subnetMask);
+    }
+
+    /**
      * The type of IP address. (ipv4, ipv6, etc.)
      * 
      */
@@ -107,15 +168,35 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    @Import(name="vpcNat11")
+    private @Nullable Output<NetworkingIpVpcNat11Args> vpcNat11;
+
+    /**
+     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    public Optional<Output<NetworkingIpVpcNat11Args>> vpcNat11() {
+        return Optional.ofNullable(this.vpcNat11);
+    }
+
     private NetworkingIpState() {}
 
     private NetworkingIpState(NetworkingIpState $) {
         this.address = $.address;
+        this.gateway = $.gateway;
         this.linodeId = $.linodeId;
+        this.prefix = $.prefix;
         this.public_ = $.public_;
+        this.rdns = $.rdns;
         this.region = $.region;
         this.reserved = $.reserved;
+        this.subnetMask = $.subnetMask;
         this.type = $.type;
+        this.vpcNat11 = $.vpcNat11;
     }
 
     public static Builder builder() {
@@ -137,7 +218,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address The IP address.
+         * @param address The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
          * 
          * @return builder
          * 
@@ -148,7 +229,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address The IP address.
+         * @param address The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
          * 
          * @return builder
          * 
@@ -158,7 +239,28 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodeId The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+         * @param gateway The default gateway for this address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gateway(@Nullable Output<String> gateway) {
+            $.gateway = gateway;
+            return this;
+        }
+
+        /**
+         * @param gateway The default gateway for this address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gateway(String gateway) {
+            return gateway(Output.of(gateway));
+        }
+
+        /**
+         * @param linodeId The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
          * 
          * @return builder
          * 
@@ -169,13 +271,34 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodeId The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+         * @param linodeId The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
          * 
          * @return builder
          * 
          */
         public Builder linodeId(Integer linodeId) {
             return linodeId(Output.of(linodeId));
+        }
+
+        /**
+         * @param prefix The number of bits set in the subnet mask.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefix(@Nullable Output<Integer> prefix) {
+            $.prefix = prefix;
+            return this;
+        }
+
+        /**
+         * @param prefix The number of bits set in the subnet mask.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefix(Integer prefix) {
+            return prefix(Output.of(prefix));
         }
 
         /**
@@ -197,6 +320,27 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder public_(Boolean public_) {
             return public_(Output.of(public_));
+        }
+
+        /**
+         * @param rdns The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rdns(@Nullable Output<String> rdns) {
+            $.rdns = rdns;
+            return this;
+        }
+
+        /**
+         * @param rdns The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rdns(String rdns) {
+            return rdns(Output.of(rdns));
         }
 
         /**
@@ -242,6 +386,27 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param subnetMask The mask that separates host bits from network bits for this address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetMask(@Nullable Output<String> subnetMask) {
+            $.subnetMask = subnetMask;
+            return this;
+        }
+
+        /**
+         * @param subnetMask The mask that separates host bits from network bits for this address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetMask(String subnetMask) {
+            return subnetMask(Output.of(subnetMask));
+        }
+
+        /**
          * @param type The type of IP address. (ipv4, ipv6, etc.)
          * 
          * @return builder
@@ -260,6 +425,27 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param vpcNat11 Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNat11(@Nullable Output<NetworkingIpVpcNat11Args> vpcNat11) {
+            $.vpcNat11 = vpcNat11;
+            return this;
+        }
+
+        /**
+         * @param vpcNat11 Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNat11(NetworkingIpVpcNat11Args vpcNat11) {
+            return vpcNat11(Output.of(vpcNat11));
         }
 
         public NetworkingIpState build() {

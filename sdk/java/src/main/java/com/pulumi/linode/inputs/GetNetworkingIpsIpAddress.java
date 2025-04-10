@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetNetworkingIpsIpAddressVpcNat11;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,14 +17,14 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
     public static final GetNetworkingIpsIpAddress Empty = new GetNetworkingIpsIpAddress();
 
     /**
-     * The IP address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     @Import(name="address", required=true)
     private String address;
 
     /**
-     * @return The IP address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     public String address() {
@@ -165,6 +166,21 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
         return this.type;
     }
 
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    @Import(name="vpcNat11", required=true)
+    private GetNetworkingIpsIpAddressVpcNat11 vpcNat11;
+
+    /**
+     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    public GetNetworkingIpsIpAddressVpcNat11 vpcNat11() {
+        return this.vpcNat11;
+    }
+
     private GetNetworkingIpsIpAddress() {}
 
     private GetNetworkingIpsIpAddress(GetNetworkingIpsIpAddress $) {
@@ -178,6 +194,7 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
         this.reserved = $.reserved;
         this.subnetMask = $.subnetMask;
         this.type = $.type;
+        this.vpcNat11 = $.vpcNat11;
     }
 
     public static Builder builder() {
@@ -199,7 +216,7 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param address The IP address.
+         * @param address The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
          * 
          * @return builder
          * 
@@ -308,6 +325,17 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
             return this;
         }
 
+        /**
+         * @param vpcNat11 Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcNat11(GetNetworkingIpsIpAddressVpcNat11 vpcNat11) {
+            $.vpcNat11 = vpcNat11;
+            return this;
+        }
+
         public GetNetworkingIpsIpAddress build() {
             if ($.address == null) {
                 throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddress", "address");
@@ -338,6 +366,9 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddress", "type");
+            }
+            if ($.vpcNat11 == null) {
+                throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddress", "vpcNat11");
             }
             return $;
         }

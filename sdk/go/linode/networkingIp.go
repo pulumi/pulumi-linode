@@ -53,18 +53,28 @@ import (
 type NetworkingIp struct {
 	pulumi.CustomResourceState
 
-	// The IP address.
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+	// The default gateway for this address.
+	Gateway pulumi.StringOutput `pulumi:"gateway"`
+	// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 	LinodeId pulumi.IntOutput `pulumi:"linodeId"`
+	// The number of bits set in the subnet mask.
+	Prefix pulumi.IntOutput `pulumi:"prefix"`
 	// Whether the IP address is public. Defaults to true.
 	Public pulumi.BoolOutput `pulumi:"public"`
+	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+	Rdns pulumi.StringOutput `pulumi:"rdns"`
 	// The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Whether the IPv4 address should be reserved.
 	Reserved pulumi.BoolOutput `pulumi:"reserved"`
+	// The mask that separates host bits from network bits for this address.
+	SubnetMask pulumi.StringOutput `pulumi:"subnetMask"`
 	// The type of IP address. (ipv4, ipv6, etc.)
 	Type pulumi.StringOutput `pulumi:"type"`
+	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	VpcNat11 NetworkingIpVpcNat11Output `pulumi:"vpcNat11"`
 }
 
 // NewNetworkingIp registers a new resource with the given unique name, arguments, and options.
@@ -97,33 +107,53 @@ func GetNetworkingIp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkingIp resources.
 type networkingIpState struct {
-	// The IP address.
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
 	Address *string `pulumi:"address"`
-	// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+	// The default gateway for this address.
+	Gateway *string `pulumi:"gateway"`
+	// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 	LinodeId *int `pulumi:"linodeId"`
+	// The number of bits set in the subnet mask.
+	Prefix *int `pulumi:"prefix"`
 	// Whether the IP address is public. Defaults to true.
 	Public *bool `pulumi:"public"`
+	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+	Rdns *string `pulumi:"rdns"`
 	// The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
 	Region *string `pulumi:"region"`
 	// Whether the IPv4 address should be reserved.
 	Reserved *bool `pulumi:"reserved"`
+	// The mask that separates host bits from network bits for this address.
+	SubnetMask *string `pulumi:"subnetMask"`
 	// The type of IP address. (ipv4, ipv6, etc.)
 	Type *string `pulumi:"type"`
+	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	VpcNat11 *NetworkingIpVpcNat11 `pulumi:"vpcNat11"`
 }
 
 type NetworkingIpState struct {
-	// The IP address.
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
 	Address pulumi.StringPtrInput
-	// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+	// The default gateway for this address.
+	Gateway pulumi.StringPtrInput
+	// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 	LinodeId pulumi.IntPtrInput
+	// The number of bits set in the subnet mask.
+	Prefix pulumi.IntPtrInput
 	// Whether the IP address is public. Defaults to true.
 	Public pulumi.BoolPtrInput
+	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+	Rdns pulumi.StringPtrInput
 	// The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
 	Region pulumi.StringPtrInput
 	// Whether the IPv4 address should be reserved.
 	Reserved pulumi.BoolPtrInput
+	// The mask that separates host bits from network bits for this address.
+	SubnetMask pulumi.StringPtrInput
 	// The type of IP address. (ipv4, ipv6, etc.)
 	Type pulumi.StringPtrInput
+	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	VpcNat11 NetworkingIpVpcNat11PtrInput
 }
 
 func (NetworkingIpState) ElementType() reflect.Type {
@@ -131,7 +161,7 @@ func (NetworkingIpState) ElementType() reflect.Type {
 }
 
 type networkingIpArgs struct {
-	// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+	// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 	LinodeId *int `pulumi:"linodeId"`
 	// Whether the IP address is public. Defaults to true.
 	Public *bool `pulumi:"public"`
@@ -145,7 +175,7 @@ type networkingIpArgs struct {
 
 // The set of arguments for constructing a NetworkingIp resource.
 type NetworkingIpArgs struct {
-	// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+	// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 	LinodeId pulumi.IntPtrInput
 	// Whether the IP address is public. Defaults to true.
 	Public pulumi.BoolPtrInput
@@ -244,19 +274,34 @@ func (o NetworkingIpOutput) ToNetworkingIpOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The IP address.
+// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
 func (o NetworkingIpOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
-// The ID of the Linode to which the IP address will be assigned. Conflicts with `region`.
+// The default gateway for this address.
+func (o NetworkingIpOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkingIp) pulumi.StringOutput { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 func (o NetworkingIpOutput) LinodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.IntOutput { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+// The number of bits set in the subnet mask.
+func (o NetworkingIpOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v *NetworkingIp) pulumi.IntOutput { return v.Prefix }).(pulumi.IntOutput)
 }
 
 // Whether the IP address is public. Defaults to true.
 func (o NetworkingIpOutput) Public() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.BoolOutput { return v.Public }).(pulumi.BoolOutput)
+}
+
+// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+func (o NetworkingIpOutput) Rdns() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkingIp) pulumi.StringOutput { return v.Rdns }).(pulumi.StringOutput)
 }
 
 // The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
@@ -269,9 +314,19 @@ func (o NetworkingIpOutput) Reserved() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.BoolOutput { return v.Reserved }).(pulumi.BoolOutput)
 }
 
+// The mask that separates host bits from network bits for this address.
+func (o NetworkingIpOutput) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkingIp) pulumi.StringOutput { return v.SubnetMask }).(pulumi.StringOutput)
+}
+
 // The type of IP address. (ipv4, ipv6, etc.)
 func (o NetworkingIpOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+func (o NetworkingIpOutput) VpcNat11() NetworkingIpVpcNat11Output {
+	return o.ApplyT(func(v *NetworkingIp) NetworkingIpVpcNat11Output { return v.VpcNat11 }).(NetworkingIpVpcNat11Output)
 }
 
 type NetworkingIpArrayOutput struct{ *pulumi.OutputState }

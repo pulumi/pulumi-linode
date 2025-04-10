@@ -2702,7 +2702,7 @@ export interface GetNetworkingIpsFilterArgs {
 
 export interface GetNetworkingIpsIpAddress {
     /**
-     * The IP address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address?: string;
     /**
@@ -2741,11 +2741,15 @@ export interface GetNetworkingIpsIpAddress {
      * The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
      */
     type?: string;
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     */
+    vpcNat11?: inputs.GetNetworkingIpsIpAddressVpcNat11;
 }
 
 export interface GetNetworkingIpsIpAddressArgs {
     /**
-     * The IP address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address?: pulumi.Input<string>;
     /**
@@ -2784,6 +2788,40 @@ export interface GetNetworkingIpsIpAddressArgs {
      * The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
      */
     type?: pulumi.Input<string>;
+    /**
+     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     */
+    vpcNat11?: pulumi.Input<inputs.GetNetworkingIpsIpAddressVpcNat11Args>;
+}
+
+export interface GetNetworkingIpsIpAddressVpcNat11 {
+    /**
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+     */
+    address: string;
+    /**
+     * The `id` of the VPC Subnet for this Interface.
+     */
+    subnetId: number;
+    /**
+     * The `id` of the VPC configured for this Interface.
+     */
+    vpcId: number;
+}
+
+export interface GetNetworkingIpsIpAddressVpcNat11Args {
+    /**
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * The `id` of the VPC Subnet for this Interface.
+     */
+    subnetId: pulumi.Input<number>;
+    /**
+     * The `id` of the VPC configured for this Interface.
+     */
+    vpcId: pulumi.Input<number>;
 }
 
 export interface GetNodeBalancerFirewall {
@@ -6363,11 +6401,11 @@ export interface LkeNodePoolAutoscaler {
     /**
      * The maximum number of nodes to autoscale to.
      */
-    max: pulumi.Input<number>;
+    max?: pulumi.Input<number>;
     /**
      * The minimum number of nodes to autoscale to.
      */
-    min: pulumi.Input<number>;
+    min?: pulumi.Input<number>;
 }
 
 export interface LkeNodePoolNode {
@@ -6409,6 +6447,21 @@ export interface NetworkingIpAssignmentAssignment {
      * The ID of the Linode to which the IP address will be assigned.
      */
     linodeId: pulumi.Input<number>;
+}
+
+export interface NetworkingIpVpcNat11 {
+    /**
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * The `id` of the VPC Subnet for this Interface.
+     */
+    subnetId: pulumi.Input<number>;
+    /**
+     * The `id` of the VPC configured for this Interface.
+     */
+    vpcId: pulumi.Input<number>;
 }
 
 export interface NodeBalancerConfigNodeStatus {

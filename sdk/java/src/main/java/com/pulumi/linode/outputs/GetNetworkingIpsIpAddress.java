@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetNetworkingIpsIpAddressVpcNat11;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -13,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetNetworkingIpsIpAddress {
     /**
-     * @return The IP address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     private String address;
@@ -62,10 +63,15 @@ public final class GetNetworkingIpsIpAddress {
      * 
      */
     private String type;
+    /**
+     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    private GetNetworkingIpsIpAddressVpcNat11 vpcNat11;
 
     private GetNetworkingIpsIpAddress() {}
     /**
-     * @return The IP address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     public String address() {
@@ -134,6 +140,13 @@ public final class GetNetworkingIpsIpAddress {
     public String type() {
         return this.type;
     }
+    /**
+     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * 
+     */
+    public GetNetworkingIpsIpAddressVpcNat11 vpcNat11() {
+        return this.vpcNat11;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -154,6 +167,7 @@ public final class GetNetworkingIpsIpAddress {
         private Boolean reserved;
         private String subnetMask;
         private String type;
+        private GetNetworkingIpsIpAddressVpcNat11 vpcNat11;
         public Builder() {}
         public Builder(GetNetworkingIpsIpAddress defaults) {
     	      Objects.requireNonNull(defaults);
@@ -167,6 +181,7 @@ public final class GetNetworkingIpsIpAddress {
     	      this.reserved = defaults.reserved;
     	      this.subnetMask = defaults.subnetMask;
     	      this.type = defaults.type;
+    	      this.vpcNat11 = defaults.vpcNat11;
         }
 
         @CustomType.Setter
@@ -249,6 +264,14 @@ public final class GetNetworkingIpsIpAddress {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpcNat11(GetNetworkingIpsIpAddressVpcNat11 vpcNat11) {
+            if (vpcNat11 == null) {
+              throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddress", "vpcNat11");
+            }
+            this.vpcNat11 = vpcNat11;
+            return this;
+        }
         public GetNetworkingIpsIpAddress build() {
             final var _resultValue = new GetNetworkingIpsIpAddress();
             _resultValue.address = address;
@@ -261,6 +284,7 @@ public final class GetNetworkingIpsIpAddress {
             _resultValue.reserved = reserved;
             _resultValue.subnetMask = subnetMask;
             _resultValue.type = type;
+            _resultValue.vpcNat11 = vpcNat11;
             return _resultValue;
         }
     }

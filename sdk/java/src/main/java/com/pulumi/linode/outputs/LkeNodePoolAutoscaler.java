@@ -4,9 +4,10 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class LkeNodePoolAutoscaler {
@@ -14,27 +15,27 @@ public final class LkeNodePoolAutoscaler {
      * @return The maximum number of nodes to autoscale to.
      * 
      */
-    private Integer max;
+    private @Nullable Integer max;
     /**
      * @return The minimum number of nodes to autoscale to.
      * 
      */
-    private Integer min;
+    private @Nullable Integer min;
 
     private LkeNodePoolAutoscaler() {}
     /**
      * @return The maximum number of nodes to autoscale to.
      * 
      */
-    public Integer max() {
-        return this.max;
+    public Optional<Integer> max() {
+        return Optional.ofNullable(this.max);
     }
     /**
      * @return The minimum number of nodes to autoscale to.
      * 
      */
-    public Integer min() {
-        return this.min;
+    public Optional<Integer> min() {
+        return Optional.ofNullable(this.min);
     }
 
     public static Builder builder() {
@@ -46,8 +47,8 @@ public final class LkeNodePoolAutoscaler {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer max;
-        private Integer min;
+        private @Nullable Integer max;
+        private @Nullable Integer min;
         public Builder() {}
         public Builder(LkeNodePoolAutoscaler defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,18 +57,14 @@ public final class LkeNodePoolAutoscaler {
         }
 
         @CustomType.Setter
-        public Builder max(Integer max) {
-            if (max == null) {
-              throw new MissingRequiredPropertyException("LkeNodePoolAutoscaler", "max");
-            }
+        public Builder max(@Nullable Integer max) {
+
             this.max = max;
             return this;
         }
         @CustomType.Setter
-        public Builder min(Integer min) {
-            if (min == null) {
-              throw new MissingRequiredPropertyException("LkeNodePoolAutoscaler", "min");
-            }
+        public Builder min(@Nullable Integer min) {
+
             this.min = min;
             return this;
         }

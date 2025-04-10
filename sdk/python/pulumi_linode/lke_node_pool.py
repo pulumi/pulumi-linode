@@ -25,28 +25,34 @@ class LkeNodePoolArgs:
                  cluster_id: pulumi.Input[builtins.int],
                  type: pulumi.Input[builtins.str],
                  autoscaler: Optional[pulumi.Input['LkeNodePoolAutoscalerArgs']] = None,
+                 k8s_version: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  node_count: Optional[pulumi.Input[builtins.int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]] = None):
+                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]] = None,
+                 update_strategy: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a LkeNodePool resource.
         :param pulumi.Input[builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[builtins.str] type: A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        :param pulumi.Input[builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-               
-               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-               
-               * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         :param pulumi.Input[builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
         :param pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
                allowing them to repel certain pods.
+        :param pulumi.Input[builtins.str] update_strategy: The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+               
+               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+               
+               * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "type", type)
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
+        if k8s_version is not None:
+            pulumi.set(__self__, "k8s_version", k8s_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if node_count is not None:
@@ -55,6 +61,8 @@ class LkeNodePoolArgs:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -90,14 +98,22 @@ class LkeNodePoolArgs:
         pulumi.set(self, "autoscaler", value)
 
     @property
+    @pulumi.getter(name="k8sVersion")
+    def k8s_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        """
+        return pulumi.get(self, "k8s_version")
+
+    @k8s_version.setter
+    def k8s_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "k8s_version", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
         A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-
-        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-
-        * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         return pulumi.get(self, "labels")
 
@@ -142,6 +158,22 @@ class LkeNodePoolArgs:
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+
+        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+
+        * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        """
+        return pulumi.get(self, "update_strategy")
+
+    @update_strategy.setter
+    def update_strategy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "update_strategy", value)
+
 
 @pulumi.input_type
 class _LkeNodePoolState:
@@ -149,27 +181,31 @@ class _LkeNodePoolState:
                  autoscaler: Optional[pulumi.Input['LkeNodePoolAutoscalerArgs']] = None,
                  cluster_id: Optional[pulumi.Input[builtins.int]] = None,
                  disk_encryption: Optional[pulumi.Input[builtins.str]] = None,
+                 k8s_version: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  node_count: Optional[pulumi.Input[builtins.int]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]] = None,
-                 type: Optional[pulumi.Input[builtins.str]] = None):
+                 type: Optional[pulumi.Input[builtins.str]] = None,
+                 update_strategy: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering LkeNodePool resources.
         :param pulumi.Input[builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
+        :param pulumi.Input[builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-               
-               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-               
-               * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         :param pulumi.Input[builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]] nodes: A list of nodes in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
         :param pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
                allowing them to repel certain pods.
         :param pulumi.Input[builtins.str] type: A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        :param pulumi.Input[builtins.str] update_strategy: The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+               
+               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+               
+               * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         if autoscaler is not None:
             pulumi.set(__self__, "autoscaler", autoscaler)
@@ -177,6 +213,8 @@ class _LkeNodePoolState:
             pulumi.set(__self__, "cluster_id", cluster_id)
         if disk_encryption is not None:
             pulumi.set(__self__, "disk_encryption", disk_encryption)
+        if k8s_version is not None:
+            pulumi.set(__self__, "k8s_version", k8s_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if node_count is not None:
@@ -189,6 +227,8 @@ class _LkeNodePoolState:
             pulumi.set(__self__, "taints", taints)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
 
     @property
     @pulumi.getter
@@ -224,14 +264,22 @@ class _LkeNodePoolState:
         pulumi.set(self, "disk_encryption", value)
 
     @property
+    @pulumi.getter(name="k8sVersion")
+    def k8s_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        """
+        return pulumi.get(self, "k8s_version")
+
+    @k8s_version.setter
+    def k8s_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "k8s_version", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
         A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-
-        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-
-        * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         return pulumi.get(self, "labels")
 
@@ -300,6 +348,22 @@ class _LkeNodePoolState:
     def type(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+
+        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+
+        * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        """
+        return pulumi.get(self, "update_strategy")
+
+    @update_strategy.setter
+    def update_strategy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "update_strategy", value)
+
 
 class LkeNodePool(pulumi.CustomResource):
     @overload
@@ -308,11 +372,13 @@ class LkeNodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[builtins.int]] = None,
+                 k8s_version: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  node_count: Optional[pulumi.Input[builtins.int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
+                 update_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         ## Import
@@ -326,16 +392,18 @@ class LkeNodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
+        :param pulumi.Input[builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-               
-               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-               
-               * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         :param pulumi.Input[builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict']]]] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
                allowing them to repel certain pods.
         :param pulumi.Input[builtins.str] type: A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        :param pulumi.Input[builtins.str] update_strategy: The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+               
+               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+               
+               * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         ...
     @overload
@@ -369,11 +437,13 @@ class LkeNodePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[builtins.int]] = None,
+                 k8s_version: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  node_count: Optional[pulumi.Input[builtins.int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
+                 update_strategy: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -387,6 +457,7 @@ class LkeNodePool(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["k8s_version"] = k8s_version
             __props__.__dict__["labels"] = labels
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["tags"] = tags
@@ -394,6 +465,7 @@ class LkeNodePool(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["update_strategy"] = update_strategy
             __props__.__dict__["disk_encryption"] = None
             __props__.__dict__["nodes"] = None
         super(LkeNodePool, __self__).__init__(
@@ -409,12 +481,14 @@ class LkeNodePool(pulumi.CustomResource):
             autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
             cluster_id: Optional[pulumi.Input[builtins.int]] = None,
             disk_encryption: Optional[pulumi.Input[builtins.str]] = None,
+            k8s_version: Optional[pulumi.Input[builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             node_count: Optional[pulumi.Input[builtins.int]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict']]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict']]]]] = None,
-            type: Optional[pulumi.Input[builtins.str]] = None) -> 'LkeNodePool':
+            type: Optional[pulumi.Input[builtins.str]] = None,
+            update_strategy: Optional[pulumi.Input[builtins.str]] = None) -> 'LkeNodePool':
         """
         Get an existing LkeNodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -424,17 +498,19 @@ class LkeNodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
+        :param pulumi.Input[builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-               
-               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-               
-               * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         :param pulumi.Input[builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict']]]] nodes: A list of nodes in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict']]]] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
                allowing them to repel certain pods.
         :param pulumi.Input[builtins.str] type: A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        :param pulumi.Input[builtins.str] update_strategy: The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+               
+               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+               
+               * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -443,12 +519,14 @@ class LkeNodePool(pulumi.CustomResource):
         __props__.__dict__["autoscaler"] = autoscaler
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["disk_encryption"] = disk_encryption
+        __props__.__dict__["k8s_version"] = k8s_version
         __props__.__dict__["labels"] = labels
         __props__.__dict__["node_count"] = node_count
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["tags"] = tags
         __props__.__dict__["taints"] = taints
         __props__.__dict__["type"] = type
+        __props__.__dict__["update_strategy"] = update_strategy
         return LkeNodePool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -473,14 +551,18 @@ class LkeNodePool(pulumi.CustomResource):
         return pulumi.get(self, "disk_encryption")
 
     @property
+    @pulumi.getter(name="k8sVersion")
+    def k8s_version(self) -> pulumi.Output[builtins.str]:
+        """
+        The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        """
+        return pulumi.get(self, "k8s_version")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, builtins.str]]:
         """
         A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-
-        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-
-        * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         return pulumi.get(self, "labels")
 
@@ -524,4 +606,16 @@ class LkeNodePool(pulumi.CustomResource):
         A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> pulumi.Output[builtins.str]:
+        """
+        The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+
+        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+
+        * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        """
+        return pulumi.get(self, "update_strategy")
 

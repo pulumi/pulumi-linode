@@ -44,11 +44,22 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    @Import(name="k8sVersion")
+    private @Nullable Output<String> k8sVersion;
+
+    /**
+     * @return The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    public Optional<Output<String>> k8sVersion() {
+        return Optional.ofNullable(this.k8sVersion);
+    }
+
+    /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-     * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-     * 
-     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      * 
      */
     @Import(name="labels")
@@ -56,10 +67,6 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-     * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-     * 
-     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -128,16 +135,41 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         return this.type;
     }
 
+    /**
+     * The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
+     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * 
+     */
+    @Import(name="updateStrategy")
+    private @Nullable Output<String> updateStrategy;
+
+    /**
+     * @return The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
+     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * 
+     */
+    public Optional<Output<String>> updateStrategy() {
+        return Optional.ofNullable(this.updateStrategy);
+    }
+
     private LkeNodePoolArgs() {}
 
     private LkeNodePoolArgs(LkeNodePoolArgs $) {
         this.autoscaler = $.autoscaler;
         this.clusterId = $.clusterId;
+        this.k8sVersion = $.k8sVersion;
         this.labels = $.labels;
         this.nodeCount = $.nodeCount;
         this.tags = $.tags;
         this.taints = $.taints;
         this.type = $.type;
+        this.updateStrategy = $.updateStrategy;
     }
 
     public static Builder builder() {
@@ -189,11 +221,28 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param k8sVersion The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder k8sVersion(@Nullable Output<String> k8sVersion) {
+            $.k8sVersion = k8sVersion;
+            return this;
+        }
+
+        /**
+         * @param k8sVersion The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder k8sVersion(String k8sVersion) {
+            return k8sVersion(Output.of(k8sVersion));
+        }
+
+        /**
          * @param labels A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-         * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-         * 
-         * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
          * 
          * @return builder
          * 
@@ -205,10 +254,6 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-         * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-         * 
-         * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
          * 
          * @return builder
          * 
@@ -322,6 +367,35 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param updateStrategy The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * 
+         * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateStrategy(@Nullable Output<String> updateStrategy) {
+            $.updateStrategy = updateStrategy;
+            return this;
+        }
+
+        /**
+         * @param updateStrategy The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * 
+         * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateStrategy(String updateStrategy) {
+            return updateStrategy(Output.of(updateStrategy));
         }
 
         public LkeNodePoolArgs build() {
