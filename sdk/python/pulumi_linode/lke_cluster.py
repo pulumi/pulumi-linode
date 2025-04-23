@@ -368,6 +368,9 @@ class _LkeClusterState:
 
 
 class LkeCluster(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/lkeCluster:LkeCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

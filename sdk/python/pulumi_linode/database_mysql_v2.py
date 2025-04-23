@@ -664,6 +664,9 @@ class _DatabaseMysqlV2State:
 
 
 class DatabaseMysqlV2(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/databaseMysqlV2:DatabaseMysqlV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -96,6 +96,9 @@ class _InstanceSharedIpsState:
 
 
 class InstanceSharedIps(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/instanceSharedIps:InstanceSharedIps"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

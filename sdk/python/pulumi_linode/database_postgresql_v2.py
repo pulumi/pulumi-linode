@@ -664,6 +664,9 @@ class _DatabasePostgresqlV2State:
 
 
 class DatabasePostgresqlV2(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/databasePostgresqlV2:DatabasePostgresqlV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
