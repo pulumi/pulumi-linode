@@ -6243,6 +6243,10 @@
         },
         "linode:index/getLkeClustersLkeCluster:getLkeClustersLkeCluster": {
             "properties": {
+                "aplEnabled": {
+                    "type": "boolean",
+                    "description": "Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.\n"
+                },
                 "controlPlane": {
                     "$ref": "#/types/linode:index/getLkeClustersLkeClusterControlPlane:getLkeClustersLkeClusterControlPlane",
                     "description": "Defines settings for the Kubernetes Control Plane.\n"
@@ -6289,6 +6293,7 @@
             },
             "type": "object",
             "required": [
+                "aplEnabled",
                 "created",
                 "id",
                 "k8sVersion",
@@ -13328,6 +13333,10 @@
                     },
                     "description": "The endpoints for the Kubernetes API server.\n"
                 },
+                "aplEnabled": {
+                    "type": "boolean",
+                    "description": "Enables the App Platform Layer\n"
+                },
                 "controlPlane": {
                     "$ref": "#/types/linode:index/LkeClusterControlPlane:LkeClusterControlPlane",
                     "description": "Defines settings for the Kubernetes Control Plane.\n"
@@ -13385,6 +13394,7 @@
             },
             "required": [
                 "apiEndpoints",
+                "aplEnabled",
                 "controlPlane",
                 "dashboardUrl",
                 "k8sVersion",
@@ -13397,6 +13407,11 @@
                 "tier"
             ],
             "inputProperties": {
+                "aplEnabled": {
+                    "type": "boolean",
+                    "description": "Enables the App Platform Layer\n",
+                    "willReplaceOnChanges": true
+                },
                 "controlPlane": {
                     "$ref": "#/types/linode:index/LkeClusterControlPlane:LkeClusterControlPlane",
                     "description": "Defines settings for the Kubernetes Control Plane.\n"
@@ -13456,6 +13471,11 @@
                             "type": "string"
                         },
                         "description": "The endpoints for the Kubernetes API server.\n"
+                    },
+                    "aplEnabled": {
+                        "type": "boolean",
+                        "description": "Enables the App Platform Layer\n",
+                        "willReplaceOnChanges": true
                     },
                     "controlPlane": {
                         "$ref": "#/types/linode:index/LkeClusterControlPlane:LkeClusterControlPlane",
@@ -19080,6 +19100,10 @@
                         },
                         "type": "array"
                     },
+                    "aplEnabled": {
+                        "description": "Enables the App Platform Layer\n",
+                        "type": "boolean"
+                    },
                     "controlPlanes": {
                         "description": "The settings for the Kubernetes Control Plane.\n",
                         "items": {
@@ -19145,6 +19169,7 @@
                 },
                 "required": [
                     "apiEndpoints",
+                    "aplEnabled",
                     "created",
                     "dashboardUrl",
                     "id",

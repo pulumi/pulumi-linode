@@ -11945,6 +11945,10 @@ class GetLkeClustersFilterArgs:
 
 if not MYPY:
     class GetLkeClustersLkeClusterArgsDict(TypedDict):
+        apl_enabled: builtins.bool
+        """
+        Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+        """
         created: builtins.str
         """
         When this Kubernetes cluster was created.
@@ -11991,6 +11995,7 @@ elif False:
 @pulumi.input_type
 class GetLkeClustersLkeClusterArgs:
     def __init__(__self__, *,
+                 apl_enabled: builtins.bool,
                  created: builtins.str,
                  id: builtins.int,
                  k8s_version: builtins.str,
@@ -12002,6 +12007,7 @@ class GetLkeClustersLkeClusterArgs:
                  updated: builtins.str,
                  control_plane: Optional['GetLkeClustersLkeClusterControlPlaneArgs'] = None):
         """
+        :param builtins.bool apl_enabled: Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
         :param builtins.str created: When this Kubernetes cluster was created.
         :param builtins.int id: The LKE Cluster's ID.
         :param builtins.str k8s_version: The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
@@ -12013,6 +12019,7 @@ class GetLkeClustersLkeClusterArgs:
         :param builtins.str updated: When this Kubernetes cluster was updated.
         :param 'GetLkeClustersLkeClusterControlPlaneArgs' control_plane: Defines settings for the Kubernetes Control Plane.
         """
+        pulumi.set(__self__, "apl_enabled", apl_enabled)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "k8s_version", k8s_version)
@@ -12024,6 +12031,18 @@ class GetLkeClustersLkeClusterArgs:
         pulumi.set(__self__, "updated", updated)
         if control_plane is not None:
             pulumi.set(__self__, "control_plane", control_plane)
+
+    @property
+    @pulumi.getter(name="aplEnabled")
+    def apl_enabled(self) -> builtins.bool:
+        """
+        Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+        """
+        return pulumi.get(self, "apl_enabled")
+
+    @apl_enabled.setter
+    def apl_enabled(self, value: builtins.bool):
+        pulumi.set(self, "apl_enabled", value)
 
     @property
     @pulumi.getter

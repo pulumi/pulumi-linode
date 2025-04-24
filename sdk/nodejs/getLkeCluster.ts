@@ -57,6 +57,10 @@ export interface GetLkeClusterResult {
      */
     readonly apiEndpoints: string[];
     /**
+     * Enables the App Platform Layer
+     */
+    readonly aplEnabled: boolean;
+    /**
      * The settings for the Kubernetes Control Plane.
      */
     readonly controlPlanes?: outputs.GetLkeClusterControlPlane[];

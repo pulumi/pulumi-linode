@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.LkeClusterControlPlaneArgs;
 import com.pulumi.linode.inputs.LkeClusterPoolArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -31,6 +32,21 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> apiEndpoints() {
         return Optional.ofNullable(this.apiEndpoints);
+    }
+
+    /**
+     * Enables the App Platform Layer
+     * 
+     */
+    @Import(name="aplEnabled")
+    private @Nullable Output<Boolean> aplEnabled;
+
+    /**
+     * @return Enables the App Platform Layer
+     * 
+     */
+    public Optional<Output<Boolean>> aplEnabled() {
+        return Optional.ofNullable(this.aplEnabled);
     }
 
     /**
@@ -210,6 +226,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
 
     private LkeClusterState(LkeClusterState $) {
         this.apiEndpoints = $.apiEndpoints;
+        this.aplEnabled = $.aplEnabled;
         this.controlPlane = $.controlPlane;
         this.dashboardUrl = $.dashboardUrl;
         this.externalPoolTags = $.externalPoolTags;
@@ -270,6 +287,27 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder apiEndpoints(String... apiEndpoints) {
             return apiEndpoints(List.of(apiEndpoints));
+        }
+
+        /**
+         * @param aplEnabled Enables the App Platform Layer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aplEnabled(@Nullable Output<Boolean> aplEnabled) {
+            $.aplEnabled = aplEnabled;
+            return this;
+        }
+
+        /**
+         * @param aplEnabled Enables the App Platform Layer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aplEnabled(Boolean aplEnabled) {
+            return aplEnabled(Output.of(aplEnabled));
         }
 
         /**

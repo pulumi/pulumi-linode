@@ -173,6 +173,10 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly ImmutableArray<string> ApiEndpoints;
         /// <summary>
+        /// Enables the App Platform Layer
+        /// </summary>
+        public readonly bool AplEnabled;
+        /// <summary>
         /// The settings for the Kubernetes Control Plane.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterControlPlaneResult> ControlPlanes;
@@ -229,6 +233,8 @@ namespace Pulumi.Linode
         private GetLkeClusterResult(
             ImmutableArray<string> apiEndpoints,
 
+            bool aplEnabled,
+
             ImmutableArray<Outputs.GetLkeClusterControlPlaneResult> controlPlanes,
 
             string created,
@@ -256,6 +262,7 @@ namespace Pulumi.Linode
             string updated)
         {
             ApiEndpoints = apiEndpoints;
+            AplEnabled = aplEnabled;
             ControlPlanes = controlPlanes;
             Created = created;
             DashboardUrl = dashboardUrl;

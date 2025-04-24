@@ -29,10 +29,13 @@ class GetLkeClusterResult:
     """
     A collection of values returned by getLkeCluster.
     """
-    def __init__(__self__, api_endpoints=None, control_planes=None, created=None, dashboard_url=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, status=None, tags=None, tier=None, updated=None):
+    def __init__(__self__, api_endpoints=None, apl_enabled=None, control_planes=None, created=None, dashboard_url=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, status=None, tags=None, tier=None, updated=None):
         if api_endpoints and not isinstance(api_endpoints, list):
             raise TypeError("Expected argument 'api_endpoints' to be a list")
         pulumi.set(__self__, "api_endpoints", api_endpoints)
+        if apl_enabled and not isinstance(apl_enabled, bool):
+            raise TypeError("Expected argument 'apl_enabled' to be a bool")
+        pulumi.set(__self__, "apl_enabled", apl_enabled)
         if control_planes and not isinstance(control_planes, list):
             raise TypeError("Expected argument 'control_planes' to be a list")
         pulumi.set(__self__, "control_planes", control_planes)
@@ -80,6 +83,14 @@ class GetLkeClusterResult:
         The endpoints for the Kubernetes API server.
         """
         return pulumi.get(self, "api_endpoints")
+
+    @property
+    @pulumi.getter(name="aplEnabled")
+    def apl_enabled(self) -> builtins.bool:
+        """
+        Enables the App Platform Layer
+        """
+        return pulumi.get(self, "apl_enabled")
 
     @property
     @pulumi.getter(name="controlPlanes")
@@ -193,6 +204,7 @@ class AwaitableGetLkeClusterResult(GetLkeClusterResult):
             yield self
         return GetLkeClusterResult(
             api_endpoints=self.api_endpoints,
+            apl_enabled=self.apl_enabled,
             control_planes=self.control_planes,
             created=self.created,
             dashboard_url=self.dashboard_url,
@@ -239,6 +251,7 @@ def get_lke_cluster(control_planes: Optional[Sequence[Union['GetLkeClusterContro
 
     return AwaitableGetLkeClusterResult(
         api_endpoints=pulumi.get(__ret__, 'api_endpoints'),
+        apl_enabled=pulumi.get(__ret__, 'apl_enabled'),
         control_planes=pulumi.get(__ret__, 'control_planes'),
         created=pulumi.get(__ret__, 'created'),
         dashboard_url=pulumi.get(__ret__, 'dashboard_url'),
@@ -282,6 +295,7 @@ def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequen
     __ret__ = pulumi.runtime.invoke_output('linode:index/getLkeCluster:getLkeCluster', __args__, opts=opts, typ=GetLkeClusterResult)
     return __ret__.apply(lambda __response__: GetLkeClusterResult(
         api_endpoints=pulumi.get(__response__, 'api_endpoints'),
+        apl_enabled=pulumi.get(__response__, 'apl_enabled'),
         control_planes=pulumi.get(__response__, 'control_planes'),
         created=pulumi.get(__response__, 'created'),
         dashboard_url=pulumi.get(__response__, 'dashboard_url'),

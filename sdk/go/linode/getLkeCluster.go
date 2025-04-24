@@ -63,6 +63,8 @@ type LookupLkeClusterArgs struct {
 type LookupLkeClusterResult struct {
 	// The endpoints for the Kubernetes API server.
 	ApiEndpoints []string `pulumi:"apiEndpoints"`
+	// Enables the App Platform Layer
+	AplEnabled bool `pulumi:"aplEnabled"`
 	// The settings for the Kubernetes Control Plane.
 	ControlPlanes []GetLkeClusterControlPlane `pulumi:"controlPlanes"`
 	// When this Kubernetes cluster was created.
@@ -132,6 +134,11 @@ func (o LookupLkeClusterResultOutput) ToLookupLkeClusterResultOutputWithContext(
 // The endpoints for the Kubernetes API server.
 func (o LookupLkeClusterResultOutput) ApiEndpoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) []string { return v.ApiEndpoints }).(pulumi.StringArrayOutput)
+}
+
+// Enables the App Platform Layer
+func (o LookupLkeClusterResultOutput) AplEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) bool { return v.AplEnabled }).(pulumi.BoolOutput)
 }
 
 // The settings for the Kubernetes Control Plane.

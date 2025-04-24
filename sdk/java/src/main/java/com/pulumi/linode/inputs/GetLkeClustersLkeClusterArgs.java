@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetLkeClustersLkeClusterControlPlaneArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetLkeClustersLkeClusterArgs Empty = new GetLkeClustersLkeClusterArgs();
+
+    /**
+     * Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+     * 
+     */
+    @Import(name="aplEnabled", required=true)
+    private Output<Boolean> aplEnabled;
+
+    /**
+     * @return Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+     * 
+     */
+    public Output<Boolean> aplEnabled() {
+        return this.aplEnabled;
+    }
 
     /**
      * Defines settings for the Kubernetes Control Plane.
@@ -172,6 +188,7 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
     private GetLkeClustersLkeClusterArgs() {}
 
     private GetLkeClustersLkeClusterArgs(GetLkeClustersLkeClusterArgs $) {
+        this.aplEnabled = $.aplEnabled;
         this.controlPlane = $.controlPlane;
         this.created = $.created;
         this.id = $.id;
@@ -200,6 +217,27 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
 
         public Builder(GetLkeClustersLkeClusterArgs defaults) {
             $ = new GetLkeClustersLkeClusterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aplEnabled Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aplEnabled(Output<Boolean> aplEnabled) {
+            $.aplEnabled = aplEnabled;
+            return this;
+        }
+
+        /**
+         * @param aplEnabled Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aplEnabled(Boolean aplEnabled) {
+            return aplEnabled(Output.of(aplEnabled));
         }
 
         /**
@@ -423,6 +461,9 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
         }
 
         public GetLkeClustersLkeClusterArgs build() {
+            if ($.aplEnabled == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "aplEnabled");
+            }
             if ($.created == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "created");
             }

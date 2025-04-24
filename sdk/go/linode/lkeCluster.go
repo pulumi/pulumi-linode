@@ -24,6 +24,8 @@ type LkeCluster struct {
 
 	// The endpoints for the Kubernetes API server.
 	ApiEndpoints pulumi.StringArrayOutput `pulumi:"apiEndpoints"`
+	// Enables the App Platform Layer
+	AplEnabled pulumi.BoolOutput `pulumi:"aplEnabled"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlaneOutput `pulumi:"controlPlane"`
 	// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
@@ -100,6 +102,8 @@ func GetLkeCluster(ctx *pulumi.Context,
 type lkeClusterState struct {
 	// The endpoints for the Kubernetes API server.
 	ApiEndpoints []string `pulumi:"apiEndpoints"`
+	// Enables the App Platform Layer
+	AplEnabled *bool `pulumi:"aplEnabled"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
 	// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
@@ -131,6 +135,8 @@ type lkeClusterState struct {
 type LkeClusterState struct {
 	// The endpoints for the Kubernetes API server.
 	ApiEndpoints pulumi.StringArrayInput
+	// Enables the App Platform Layer
+	AplEnabled pulumi.BoolPtrInput
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
 	// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
@@ -164,6 +170,8 @@ func (LkeClusterState) ElementType() reflect.Type {
 }
 
 type lkeClusterArgs struct {
+	// Enables the App Platform Layer
+	AplEnabled *bool `pulumi:"aplEnabled"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
 	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
@@ -188,6 +196,8 @@ type lkeClusterArgs struct {
 
 // The set of arguments for constructing a LkeCluster resource.
 type LkeClusterArgs struct {
+	// Enables the App Platform Layer
+	AplEnabled pulumi.BoolPtrInput
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
 	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
@@ -300,6 +310,11 @@ func (o LkeClusterOutput) ToLkeClusterOutputWithContext(ctx context.Context) Lke
 // The endpoints for the Kubernetes API server.
 func (o LkeClusterOutput) ApiEndpoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringArrayOutput { return v.ApiEndpoints }).(pulumi.StringArrayOutput)
+}
+
+// Enables the App Platform Layer
+func (o LkeClusterOutput) AplEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LkeCluster) pulumi.BoolOutput { return v.AplEnabled }).(pulumi.BoolOutput)
 }
 
 // Defines settings for the Kubernetes Control Plane.
