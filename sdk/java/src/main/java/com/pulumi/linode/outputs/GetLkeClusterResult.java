@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetLkeClusterControlPlane;
 import com.pulumi.linode.outputs.GetLkeClusterPool;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -20,6 +21,11 @@ public final class GetLkeClusterResult {
      * 
      */
     private List<String> apiEndpoints;
+    /**
+     * @return Enables the App Platform Layer
+     * 
+     */
+    private Boolean aplEnabled;
     /**
      * @return The settings for the Kubernetes Control Plane.
      * 
@@ -93,6 +99,13 @@ public final class GetLkeClusterResult {
      */
     public List<String> apiEndpoints() {
         return this.apiEndpoints;
+    }
+    /**
+     * @return Enables the App Platform Layer
+     * 
+     */
+    public Boolean aplEnabled() {
+        return this.aplEnabled;
     }
     /**
      * @return The settings for the Kubernetes Control Plane.
@@ -196,6 +209,7 @@ public final class GetLkeClusterResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> apiEndpoints;
+        private Boolean aplEnabled;
         private @Nullable List<GetLkeClusterControlPlane> controlPlanes;
         private String created;
         private String dashboardUrl;
@@ -213,6 +227,7 @@ public final class GetLkeClusterResult {
         public Builder(GetLkeClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiEndpoints = defaults.apiEndpoints;
+    	      this.aplEnabled = defaults.aplEnabled;
     	      this.controlPlanes = defaults.controlPlanes;
     	      this.created = defaults.created;
     	      this.dashboardUrl = defaults.dashboardUrl;
@@ -238,6 +253,14 @@ public final class GetLkeClusterResult {
         }
         public Builder apiEndpoints(String... apiEndpoints) {
             return apiEndpoints(List.of(apiEndpoints));
+        }
+        @CustomType.Setter
+        public Builder aplEnabled(Boolean aplEnabled) {
+            if (aplEnabled == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "aplEnabled");
+            }
+            this.aplEnabled = aplEnabled;
+            return this;
         }
         @CustomType.Setter
         public Builder controlPlanes(@Nullable List<GetLkeClusterControlPlane> controlPlanes) {
@@ -351,6 +374,7 @@ public final class GetLkeClusterResult {
         public GetLkeClusterResult build() {
             final var _resultValue = new GetLkeClusterResult();
             _resultValue.apiEndpoints = apiEndpoints;
+            _resultValue.aplEnabled = aplEnabled;
             _resultValue.controlPlanes = controlPlanes;
             _resultValue.created = created;
             _resultValue.dashboardUrl = dashboardUrl;

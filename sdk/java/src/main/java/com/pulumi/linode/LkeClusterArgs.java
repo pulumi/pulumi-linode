@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.LkeClusterControlPlaneArgs;
 import com.pulumi.linode.inputs.LkeClusterPoolArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final LkeClusterArgs Empty = new LkeClusterArgs();
+
+    /**
+     * Enables the App Platform Layer
+     * 
+     */
+    @Import(name="aplEnabled")
+    private @Nullable Output<Boolean> aplEnabled;
+
+    /**
+     * @return Enables the App Platform Layer
+     * 
+     */
+    public Optional<Output<Boolean>> aplEnabled() {
+        return Optional.ofNullable(this.aplEnabled);
+    }
 
     /**
      * Defines settings for the Kubernetes Control Plane.
@@ -150,6 +166,7 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
     private LkeClusterArgs() {}
 
     private LkeClusterArgs(LkeClusterArgs $) {
+        this.aplEnabled = $.aplEnabled;
         this.controlPlane = $.controlPlane;
         this.externalPoolTags = $.externalPoolTags;
         this.k8sVersion = $.k8sVersion;
@@ -176,6 +193,27 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(LkeClusterArgs defaults) {
             $ = new LkeClusterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aplEnabled Enables the App Platform Layer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aplEnabled(@Nullable Output<Boolean> aplEnabled) {
+            $.aplEnabled = aplEnabled;
+            return this;
+        }
+
+        /**
+         * @param aplEnabled Enables the App Platform Layer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aplEnabled(Boolean aplEnabled) {
+            return aplEnabled(Output.of(aplEnabled));
         }
 
         /**

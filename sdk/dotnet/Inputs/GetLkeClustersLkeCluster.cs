@@ -13,6 +13,12 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetLkeClustersLkeClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+        /// </summary>
+        [Input("aplEnabled", required: true)]
+        public bool AplEnabled { get; set; }
+
+        /// <summary>
         /// Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Input("controlPlane")]

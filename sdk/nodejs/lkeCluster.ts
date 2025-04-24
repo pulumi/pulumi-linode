@@ -48,6 +48,10 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly apiEndpoints!: pulumi.Output<string[]>;
     /**
+     * Enables the App Platform Layer
+     */
+    public readonly aplEnabled!: pulumi.Output<boolean>;
+    /**
      * Defines settings for the Kubernetes Control Plane.
      */
     public readonly controlPlane!: pulumi.Output<outputs.LkeClusterControlPlane>;
@@ -110,6 +114,7 @@ export class LkeCluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as LkeClusterState | undefined;
             resourceInputs["apiEndpoints"] = state ? state.apiEndpoints : undefined;
+            resourceInputs["aplEnabled"] = state ? state.aplEnabled : undefined;
             resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
             resourceInputs["dashboardUrl"] = state ? state.dashboardUrl : undefined;
             resourceInputs["externalPoolTags"] = state ? state.externalPoolTags : undefined;
@@ -135,6 +140,7 @@ export class LkeCluster extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            resourceInputs["aplEnabled"] = args ? args.aplEnabled : undefined;
             resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
             resourceInputs["externalPoolTags"] = args ? args.externalPoolTags : undefined;
             resourceInputs["k8sVersion"] = args ? args.k8sVersion : undefined;
@@ -163,6 +169,10 @@ export interface LkeClusterState {
      * The endpoints for the Kubernetes API server.
      */
     apiEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enables the App Platform Layer
+     */
+    aplEnabled?: pulumi.Input<boolean>;
     /**
      * Defines settings for the Kubernetes Control Plane.
      */
@@ -217,6 +227,10 @@ export interface LkeClusterState {
  * The set of arguments for constructing a LkeCluster resource.
  */
 export interface LkeClusterArgs {
+    /**
+     * Enables the App Platform Layer
+     */
+    aplEnabled?: pulumi.Input<boolean>;
     /**
      * Defines settings for the Kubernetes Control Plane.
      */

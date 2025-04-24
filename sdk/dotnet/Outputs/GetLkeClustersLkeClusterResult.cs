@@ -14,6 +14,10 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetLkeClustersLkeClusterResult
     {
         /// <summary>
+        /// Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+        /// </summary>
+        public readonly bool AplEnabled;
+        /// <summary>
         /// Defines settings for the Kubernetes Control Plane.
         /// </summary>
         public readonly Outputs.GetLkeClustersLkeClusterControlPlaneResult? ControlPlane;
@@ -56,6 +60,8 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private GetLkeClustersLkeClusterResult(
+            bool aplEnabled,
+
             Outputs.GetLkeClustersLkeClusterControlPlaneResult? controlPlane,
 
             string created,
@@ -76,6 +82,7 @@ namespace Pulumi.Linode.Outputs
 
             string updated)
         {
+            AplEnabled = aplEnabled;
             ControlPlane = controlPlane;
             Created = created;
             Id = id;

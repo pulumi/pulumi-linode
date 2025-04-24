@@ -2220,6 +2220,10 @@ export interface GetLkeClustersFilterArgs {
 
 export interface GetLkeClustersLkeCluster {
     /**
+     * Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+     */
+    aplEnabled?: boolean;
+    /**
      * Defines settings for the Kubernetes Control Plane.
      */
     controlPlane?: inputs.GetLkeClustersLkeClusterControlPlane;
@@ -2262,6 +2266,10 @@ export interface GetLkeClustersLkeCluster {
 }
 
 export interface GetLkeClustersLkeClusterArgs {
+    /**
+     * Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+     */
+    aplEnabled?: pulumi.Input<boolean>;
     /**
      * Defines settings for the Kubernetes Control Plane.
      */

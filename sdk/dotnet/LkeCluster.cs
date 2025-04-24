@@ -28,6 +28,12 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> ApiEndpoints { get; private set; } = null!;
 
         /// <summary>
+        /// Enables the App Platform Layer
+        /// </summary>
+        [Output("aplEnabled")]
+        public Output<bool> AplEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Output("controlPlane")]
@@ -148,6 +154,12 @@ namespace Pulumi.Linode
     public sealed class LkeClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enables the App Platform Layer
+        /// </summary>
+        [Input("aplEnabled")]
+        public Input<bool>? AplEnabled { get; set; }
+
+        /// <summary>
         /// Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Input("controlPlane")]
@@ -236,6 +248,12 @@ namespace Pulumi.Linode
             get => _apiEndpoints ?? (_apiEndpoints = new InputList<string>());
             set => _apiEndpoints = value;
         }
+
+        /// <summary>
+        /// Enables the App Platform Layer
+        /// </summary>
+        [Input("aplEnabled")]
+        public Input<bool>? AplEnabled { get; set; }
 
         /// <summary>
         /// Defines settings for the Kubernetes Control Plane.

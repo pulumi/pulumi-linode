@@ -26,6 +26,7 @@ class LkeClusterArgs:
                  label: pulumi.Input[builtins.str],
                  pools: pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]],
                  region: pulumi.Input[builtins.str],
+                 apl_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
                  external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -40,6 +41,7 @@ class LkeClusterArgs:
                * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
                
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+        :param pulumi.Input[builtins.bool] apl_enabled: Enables the App Platform Layer
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
@@ -49,6 +51,8 @@ class LkeClusterArgs:
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "pools", pools)
         pulumi.set(__self__, "region", region)
+        if apl_enabled is not None:
+            pulumi.set(__self__, "apl_enabled", apl_enabled)
         if control_plane is not None:
             pulumi.set(__self__, "control_plane", control_plane)
         if external_pool_tags is not None:
@@ -111,6 +115,18 @@ class LkeClusterArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="aplEnabled")
+    def apl_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enables the App Platform Layer
+        """
+        return pulumi.get(self, "apl_enabled")
+
+    @apl_enabled.setter
+    def apl_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "apl_enabled", value)
+
+    @property
     @pulumi.getter(name="controlPlane")
     def control_plane(self) -> Optional[pulumi.Input['LkeClusterControlPlaneArgs']]:
         """
@@ -163,6 +179,7 @@ class LkeClusterArgs:
 class _LkeClusterState:
     def __init__(__self__, *,
                  api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 apl_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
                  dashboard_url: Optional[pulumi.Input[builtins.str]] = None,
                  external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -177,6 +194,7 @@ class _LkeClusterState:
         """
         Input properties used for looking up and filtering LkeCluster resources.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] api_endpoints: The endpoints for the Kubernetes API server.
+        :param pulumi.Input[builtins.bool] apl_enabled: Enables the App Platform Layer
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[builtins.str] dashboard_url: The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
@@ -195,6 +213,8 @@ class _LkeClusterState:
         """
         if api_endpoints is not None:
             pulumi.set(__self__, "api_endpoints", api_endpoints)
+        if apl_enabled is not None:
+            pulumi.set(__self__, "apl_enabled", apl_enabled)
         if control_plane is not None:
             pulumi.set(__self__, "control_plane", control_plane)
         if dashboard_url is not None:
@@ -229,6 +249,18 @@ class _LkeClusterState:
     @api_endpoints.setter
     def api_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "api_endpoints", value)
+
+    @property
+    @pulumi.getter(name="aplEnabled")
+    def apl_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enables the App Platform Layer
+        """
+        return pulumi.get(self, "apl_enabled")
+
+    @apl_enabled.setter
+    def apl_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "apl_enabled", value)
 
     @property
     @pulumi.getter(name="controlPlane")
@@ -372,6 +404,7 @@ class LkeCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 apl_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  control_plane: Optional[pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
                  external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  k8s_version: Optional[pulumi.Input[builtins.str]] = None,
@@ -392,6 +425,7 @@ class LkeCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.bool] apl_enabled: Enables the App Platform Layer
         :param pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[builtins.str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
@@ -435,6 +469,7 @@ class LkeCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 apl_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  control_plane: Optional[pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
                  external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  k8s_version: Optional[pulumi.Input[builtins.str]] = None,
@@ -452,6 +487,7 @@ class LkeCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LkeClusterArgs.__new__(LkeClusterArgs)
 
+            __props__.__dict__["apl_enabled"] = apl_enabled
             __props__.__dict__["control_plane"] = control_plane
             __props__.__dict__["external_pool_tags"] = external_pool_tags
             if k8s_version is None and not opts.urn:
@@ -485,6 +521,7 @@ class LkeCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            apl_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             control_plane: Optional[pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
             dashboard_url: Optional[pulumi.Input[builtins.str]] = None,
             external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
@@ -504,6 +541,7 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] api_endpoints: The endpoints for the Kubernetes API server.
+        :param pulumi.Input[builtins.bool] apl_enabled: Enables the App Platform Layer
         :param pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[builtins.str] dashboard_url: The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
@@ -525,6 +563,7 @@ class LkeCluster(pulumi.CustomResource):
         __props__ = _LkeClusterState.__new__(_LkeClusterState)
 
         __props__.__dict__["api_endpoints"] = api_endpoints
+        __props__.__dict__["apl_enabled"] = apl_enabled
         __props__.__dict__["control_plane"] = control_plane
         __props__.__dict__["dashboard_url"] = dashboard_url
         __props__.__dict__["external_pool_tags"] = external_pool_tags
@@ -545,6 +584,14 @@ class LkeCluster(pulumi.CustomResource):
         The endpoints for the Kubernetes API server.
         """
         return pulumi.get(self, "api_endpoints")
+
+    @property
+    @pulumi.getter(name="aplEnabled")
+    def apl_enabled(self) -> pulumi.Output[builtins.bool]:
+        """
+        Enables the App Platform Layer
+        """
+        return pulumi.get(self, "apl_enabled")
 
     @property
     @pulumi.getter(name="controlPlane")

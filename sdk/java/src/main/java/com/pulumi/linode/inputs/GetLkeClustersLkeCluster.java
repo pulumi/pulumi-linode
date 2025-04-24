@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetLkeClustersLkeClusterControlPlane;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeArgs {
 
     public static final GetLkeClustersLkeCluster Empty = new GetLkeClustersLkeCluster();
+
+    /**
+     * Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+     * 
+     */
+    @Import(name="aplEnabled", required=true)
+    private Boolean aplEnabled;
+
+    /**
+     * @return Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+     * 
+     */
+    public Boolean aplEnabled() {
+        return this.aplEnabled;
+    }
 
     /**
      * Defines settings for the Kubernetes Control Plane.
@@ -171,6 +187,7 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
     private GetLkeClustersLkeCluster() {}
 
     private GetLkeClustersLkeCluster(GetLkeClustersLkeCluster $) {
+        this.aplEnabled = $.aplEnabled;
         this.controlPlane = $.controlPlane;
         this.created = $.created;
         this.id = $.id;
@@ -199,6 +216,17 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
 
         public Builder(GetLkeClustersLkeCluster defaults) {
             $ = new GetLkeClustersLkeCluster(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aplEnabled Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aplEnabled(Boolean aplEnabled) {
+            $.aplEnabled = aplEnabled;
+            return this;
         }
 
         /**
@@ -322,6 +350,9 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
         }
 
         public GetLkeClustersLkeCluster build() {
+            if ($.aplEnabled == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "aplEnabled");
+            }
             if ($.created == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "created");
             }

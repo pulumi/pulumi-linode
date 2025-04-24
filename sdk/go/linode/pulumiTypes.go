@@ -25185,6 +25185,8 @@ func (o GetLkeClustersFilterArrayOutput) Index(i pulumi.IntInput) GetLkeClusters
 }
 
 type GetLkeClustersLkeCluster struct {
+	// Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+	AplEnabled bool `pulumi:"aplEnabled"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane *GetLkeClustersLkeClusterControlPlane `pulumi:"controlPlane"`
 	// When this Kubernetes cluster was created.
@@ -25219,6 +25221,8 @@ type GetLkeClustersLkeClusterInput interface {
 }
 
 type GetLkeClustersLkeClusterArgs struct {
+	// Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+	AplEnabled pulumi.BoolInput `pulumi:"aplEnabled"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane GetLkeClustersLkeClusterControlPlanePtrInput `pulumi:"controlPlane"`
 	// When this Kubernetes cluster was created.
@@ -25290,6 +25294,11 @@ func (o GetLkeClustersLkeClusterOutput) ToGetLkeClustersLkeClusterOutput() GetLk
 
 func (o GetLkeClustersLkeClusterOutput) ToGetLkeClustersLkeClusterOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterOutput {
 	return o
+}
+
+// Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+func (o GetLkeClustersLkeClusterOutput) AplEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) bool { return v.AplEnabled }).(pulumi.BoolOutput)
 }
 
 // Defines settings for the Kubernetes Control Plane.

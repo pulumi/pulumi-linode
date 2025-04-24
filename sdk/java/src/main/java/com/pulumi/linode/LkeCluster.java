@@ -12,6 +12,7 @@ import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.LkeClusterState;
 import com.pulumi.linode.outputs.LkeClusterControlPlane;
 import com.pulumi.linode.outputs.LkeClusterPool;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -42,6 +43,20 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> apiEndpoints() {
         return this.apiEndpoints;
+    }
+    /**
+     * Enables the App Platform Layer
+     * 
+     */
+    @Export(name="aplEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> aplEnabled;
+
+    /**
+     * @return Enables the App Platform Layer
+     * 
+     */
+    public Output<Boolean> aplEnabled() {
+        return this.aplEnabled;
     }
     /**
      * Defines settings for the Kubernetes Control Plane.
