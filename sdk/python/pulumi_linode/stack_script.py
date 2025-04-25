@@ -344,6 +344,9 @@ class _StackScriptState:
 
 
 class StackScript(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/stackScript:StackScript"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

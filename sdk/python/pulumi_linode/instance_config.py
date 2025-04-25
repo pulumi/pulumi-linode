@@ -490,6 +490,9 @@ class _InstanceConfigState:
 
 
 class InstanceConfig(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/instanceConfig:InstanceConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

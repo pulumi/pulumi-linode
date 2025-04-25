@@ -162,6 +162,9 @@ class _AccountSettingsState:
 
 
 class AccountSettings(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/accountSettings:AccountSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -292,6 +292,9 @@ class _NetworkingIpState:
 
 
 class NetworkingIp(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/networkingIp:NetworkingIp"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
