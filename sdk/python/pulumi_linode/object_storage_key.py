@@ -203,6 +203,9 @@ class _ObjectStorageKeyState:
 
 
 class ObjectStorageKey(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/objectStorageKey:ObjectStorageKey"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

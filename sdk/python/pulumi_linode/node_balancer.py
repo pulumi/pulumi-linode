@@ -316,6 +316,9 @@ class _NodeBalancerState:
 
 
 class NodeBalancer(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/nodeBalancer:NodeBalancer"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
