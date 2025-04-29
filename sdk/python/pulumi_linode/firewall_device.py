@@ -160,6 +160,9 @@ class _FirewallDeviceState:
 
 
 class FirewallDevice(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/firewallDevice:FirewallDevice"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

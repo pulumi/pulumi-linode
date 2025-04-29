@@ -99,6 +99,9 @@ class _NetworkingIpAssignmentState:
 
 
 class NetworkingIpAssignment(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/networkingIpAssignment:NetworkingIpAssignment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

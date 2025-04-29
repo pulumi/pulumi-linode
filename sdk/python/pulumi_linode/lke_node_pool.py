@@ -366,6 +366,9 @@ class _LkeNodePoolState:
 
 
 class LkeNodePool(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/lkeNodePool:LkeNodePool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

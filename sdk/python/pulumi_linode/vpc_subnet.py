@@ -177,6 +177,9 @@ class _VpcSubnetState:
 
 
 class VpcSubnet(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/vpcSubnet:VpcSubnet"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

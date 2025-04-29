@@ -275,6 +275,9 @@ class _InstanceIpState:
 
 
 class InstanceIp(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/instanceIp:InstanceIp"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -501,6 +501,9 @@ class _ObjectStorageBucketState:
 
 
 class ObjectStorageBucket(pulumi.CustomResource):
+
+    pulumi_type = "linode:index/objectStorageBucket:ObjectStorageBucket"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
