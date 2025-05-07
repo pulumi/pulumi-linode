@@ -322,10 +322,8 @@ class _VolumeState:
         pulumi.set(self, "timeouts", value)
 
 
+@pulumi.type_token("linode:index/volume:Volume")
 class Volume(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/volume:Volume"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

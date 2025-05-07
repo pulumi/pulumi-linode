@@ -1326,10 +1326,8 @@ class _InstanceState:
         pulumi.set(self, "watchdog_enabled", value)
 
 
+@pulumi.type_token("linode:index/instance:Instance")
 class Instance(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/instance:Instance"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -161,10 +161,8 @@ class _AccountSettingsState:
         pulumi.set(self, "object_storage", value)
 
 
+@pulumi.type_token("linode:index/accountSettings:AccountSettings")
 class AccountSettings(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/accountSettings:AccountSettings"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

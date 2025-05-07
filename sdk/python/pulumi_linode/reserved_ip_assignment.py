@@ -309,10 +309,8 @@ class _ReservedIpAssignmentState:
         pulumi.set(self, "vpc_nat11s", value)
 
 
+@pulumi.type_token("linode:index/reservedIpAssignment:ReservedIpAssignment")
 class ReservedIpAssignment(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/reservedIpAssignment:ReservedIpAssignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

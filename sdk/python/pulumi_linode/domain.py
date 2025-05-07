@@ -455,10 +455,8 @@ class _DomainState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("linode:index/domain:Domain")
 class Domain(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/domain:Domain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -489,10 +489,8 @@ class _InstanceConfigState:
         pulumi.set(self, "virt_mode", value)
 
 
+@pulumi.type_token("linode:index/instanceConfig:InstanceConfig")
 class InstanceConfig(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/instanceConfig:InstanceConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

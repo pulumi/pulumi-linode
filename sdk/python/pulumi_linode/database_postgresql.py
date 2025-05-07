@@ -607,10 +607,8 @@ class _DatabasePostgresqlState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("linode:index/databasePostgresql:DatabasePostgresql")
 class DatabasePostgresql(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/databasePostgresql:DatabasePostgresql"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
