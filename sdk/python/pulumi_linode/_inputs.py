@@ -326,6 +326,10 @@ __all__ = [
     'GetObjectStorageEndpointsEndpointArgsDict',
     'GetObjectStorageEndpointsFilterArgs',
     'GetObjectStorageEndpointsFilterArgsDict',
+    'GetObjectStorageQuotasFilterArgs',
+    'GetObjectStorageQuotasFilterArgsDict',
+    'GetObjectStorageQuotasQuotaArgs',
+    'GetObjectStorageQuotasQuotaArgsDict',
     'GetPlacementGroupMemberArgs',
     'GetPlacementGroupMemberArgsDict',
     'GetPlacementGroupMigrationsArgs',
@@ -4212,8 +4216,6 @@ if not MYPY:
         count: NotRequired[pulumi.Input[builtins.int]]
         """
         The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-
-        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         disk_encryption: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -4225,7 +4227,7 @@ if not MYPY:
         """
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]
         """
-        Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+        A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
         """
         nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgsDict']]]]
         """
@@ -4233,11 +4235,11 @@ if not MYPY:
         """
         tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
-        An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
         """
         taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolTaintArgsDict']]]]
         """
-        Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+        Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
 elif False:
     LkeClusterPoolArgsDict: TypeAlias = Mapping[str, Any]
@@ -4258,14 +4260,12 @@ class LkeClusterPoolArgs:
         :param pulumi.Input[builtins.str] type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param pulumi.Input['LkeClusterPoolAutoscalerArgs'] autoscaler: When specified, the number of nodes autoscales within the defined minimum and maximum values.
         :param pulumi.Input[builtins.int] count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-               
-               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         :param pulumi.Input[builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[builtins.int] id: The ID of the node.
-        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+        :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] labels: A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]] nodes: The nodes in the node pool.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
-        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolTaintArgs']]] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
+        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolTaintArgs']]] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         pulumi.set(__self__, "type", type)
         if autoscaler is not None:
@@ -4314,8 +4314,6 @@ class LkeClusterPoolArgs:
     def count(self) -> Optional[pulumi.Input[builtins.int]]:
         """
         The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-
-        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         return pulumi.get(self, "count")
 
@@ -4351,7 +4349,7 @@ class LkeClusterPoolArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]]:
         """
-        Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+        A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
         """
         return pulumi.get(self, "labels")
 
@@ -4375,7 +4373,7 @@ class LkeClusterPoolArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
         """
         return pulumi.get(self, "tags")
 
@@ -4387,7 +4385,7 @@ class LkeClusterPoolArgs:
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolTaintArgs']]]]:
         """
-        Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+        Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         return pulumi.get(self, "taints")
 
@@ -4522,7 +4520,7 @@ if not MYPY:
     class LkeClusterPoolTaintArgsDict(TypedDict):
         effect: pulumi.Input[builtins.str]
         """
-        The Kubernetes taint effect.
+        The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         """
         key: pulumi.Input[builtins.str]
         """
@@ -4531,6 +4529,8 @@ if not MYPY:
         value: pulumi.Input[builtins.str]
         """
         The Kubernetes taint value.
+
+        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
 elif False:
     LkeClusterPoolTaintArgsDict: TypeAlias = Mapping[str, Any]
@@ -4542,9 +4542,11 @@ class LkeClusterPoolTaintArgs:
                  key: pulumi.Input[builtins.str],
                  value: pulumi.Input[builtins.str]):
         """
-        :param pulumi.Input[builtins.str] effect: The Kubernetes taint effect.
+        :param pulumi.Input[builtins.str] effect: The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         :param pulumi.Input[builtins.str] key: The Kubernetes taint key.
         :param pulumi.Input[builtins.str] value: The Kubernetes taint value.
+               
+               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
@@ -4554,7 +4556,7 @@ class LkeClusterPoolTaintArgs:
     @pulumi.getter
     def effect(self) -> pulumi.Input[builtins.str]:
         """
-        The Kubernetes taint effect.
+        The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         """
         return pulumi.get(self, "effect")
 
@@ -4579,6 +4581,8 @@ class LkeClusterPoolTaintArgs:
     def value(self) -> pulumi.Input[builtins.str]:
         """
         The Kubernetes taint value.
+
+        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         """
         return pulumi.get(self, "value")
 
@@ -14860,6 +14864,221 @@ class GetObjectStorageEndpointsFilterArgs:
     @match_by.setter
     def match_by(self, value: Optional[builtins.str]):
         pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetObjectStorageQuotasFilterArgsDict(TypedDict):
+        name: builtins.str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[builtins.str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[builtins.str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetObjectStorageQuotasFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetObjectStorageQuotasFilterArgs:
+    def __init__(__self__, *,
+                 name: builtins.str,
+                 values: Sequence[builtins.str],
+                 match_by: Optional[builtins.str] = None):
+        """
+        :param builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: builtins.str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetObjectStorageQuotasQuotaArgsDict(TypedDict):
+        description: builtins.str
+        """
+        The description of the Object Storage quota.
+        """
+        endpoint_type: builtins.str
+        """
+        The type of the S3 endpoint of the Object Storage.
+        """
+        quota_id: builtins.str
+        """
+        The ID of the Object Storage quota.
+        """
+        quota_limit: builtins.int
+        """
+        The maximum quantity of the `resource_metric` allowed by the quota.
+        """
+        quota_name: builtins.str
+        """
+        The name of the Object Storage quota.
+        """
+        resource_metric: builtins.str
+        """
+        The specific Object Storage resource for the quota.
+        """
+        s3_endpoint: builtins.str
+        """
+        The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+        """
+elif False:
+    GetObjectStorageQuotasQuotaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetObjectStorageQuotasQuotaArgs:
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 endpoint_type: builtins.str,
+                 quota_id: builtins.str,
+                 quota_limit: builtins.int,
+                 quota_name: builtins.str,
+                 resource_metric: builtins.str,
+                 s3_endpoint: builtins.str):
+        """
+        :param builtins.str description: The description of the Object Storage quota.
+        :param builtins.str endpoint_type: The type of the S3 endpoint of the Object Storage.
+        :param builtins.str quota_id: The ID of the Object Storage quota.
+        :param builtins.int quota_limit: The maximum quantity of the `resource_metric` allowed by the quota.
+        :param builtins.str quota_name: The name of the Object Storage quota.
+        :param builtins.str resource_metric: The specific Object Storage resource for the quota.
+        :param builtins.str s3_endpoint: The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "endpoint_type", endpoint_type)
+        pulumi.set(__self__, "quota_id", quota_id)
+        pulumi.set(__self__, "quota_limit", quota_limit)
+        pulumi.set(__self__, "quota_name", quota_name)
+        pulumi.set(__self__, "resource_metric", resource_metric)
+        pulumi.set(__self__, "s3_endpoint", s3_endpoint)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        """
+        The description of the Object Storage quota.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: builtins.str):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> builtins.str:
+        """
+        The type of the S3 endpoint of the Object Storage.
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: builtins.str):
+        pulumi.set(self, "endpoint_type", value)
+
+    @property
+    @pulumi.getter(name="quotaId")
+    def quota_id(self) -> builtins.str:
+        """
+        The ID of the Object Storage quota.
+        """
+        return pulumi.get(self, "quota_id")
+
+    @quota_id.setter
+    def quota_id(self, value: builtins.str):
+        pulumi.set(self, "quota_id", value)
+
+    @property
+    @pulumi.getter(name="quotaLimit")
+    def quota_limit(self) -> builtins.int:
+        """
+        The maximum quantity of the `resource_metric` allowed by the quota.
+        """
+        return pulumi.get(self, "quota_limit")
+
+    @quota_limit.setter
+    def quota_limit(self, value: builtins.int):
+        pulumi.set(self, "quota_limit", value)
+
+    @property
+    @pulumi.getter(name="quotaName")
+    def quota_name(self) -> builtins.str:
+        """
+        The name of the Object Storage quota.
+        """
+        return pulumi.get(self, "quota_name")
+
+    @quota_name.setter
+    def quota_name(self, value: builtins.str):
+        pulumi.set(self, "quota_name", value)
+
+    @property
+    @pulumi.getter(name="resourceMetric")
+    def resource_metric(self) -> builtins.str:
+        """
+        The specific Object Storage resource for the quota.
+        """
+        return pulumi.get(self, "resource_metric")
+
+    @resource_metric.setter
+    def resource_metric(self, value: builtins.str):
+        pulumi.set(self, "resource_metric", value)
+
+    @property
+    @pulumi.getter(name="s3Endpoint")
+    def s3_endpoint(self) -> builtins.str:
+        """
+        The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+        """
+        return pulumi.get(self, "s3_endpoint")
+
+    @s3_endpoint.setter
+    def s3_endpoint(self, value: builtins.str):
+        pulumi.set(self, "s3_endpoint", value)
 
 
 if not MYPY:

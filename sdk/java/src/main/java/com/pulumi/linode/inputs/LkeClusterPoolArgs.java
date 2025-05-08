@@ -40,16 +40,12 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-     * 
      */
     @Import(name="count")
     private @Nullable Output<Integer> count;
 
     /**
      * @return The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-     * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     public Optional<Output<Integer>> count() {
@@ -87,14 +83,14 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     * A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     * @return A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -117,14 +113,14 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+     * A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+     * @return A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -132,14 +128,14 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<LkeClusterPoolTaintArgs>> taints;
 
     /**
-     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      * 
      */
     public Optional<Output<List<LkeClusterPoolTaintArgs>>> taints() {
@@ -217,8 +213,6 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param count The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
          * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-         * 
          * @return builder
          * 
          */
@@ -229,8 +223,6 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param count The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-         * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
          * 
          * @return builder
          * 
@@ -282,7 +274,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labels Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+         * @param labels A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
          * 
          * @return builder
          * 
@@ -293,7 +285,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labels Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+         * @param labels A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
          * 
          * @return builder
          * 
@@ -334,7 +326,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+         * @param tags A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
          * 
          * @return builder
          * 
@@ -345,7 +337,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+         * @param tags A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
          * 
          * @return builder
          * 
@@ -355,7 +347,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tags An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+         * @param tags A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
          * 
          * @return builder
          * 
@@ -365,7 +357,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
          * 
          * @return builder
          * 
@@ -376,7 +368,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
          * 
          * @return builder
          * 
@@ -386,7 +378,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
          * 
          * @return builder
          * 

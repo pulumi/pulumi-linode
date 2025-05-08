@@ -213,6 +213,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly interfaces!: pulumi.Output<outputs.InstanceInterface[] | undefined>;
     /**
      * A string containing the Linode's public IP address.
+     *
+     * @deprecated The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
      */
     public /*out*/ readonly ipAddress!: pulumi.Output<string>;
     /**
@@ -222,7 +224,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly ipv4s!: pulumi.Output<string[]>;
     /**
-     * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+     * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
      */
     public /*out*/ readonly ipv6!: pulumi.Output<string>;
     /**
@@ -525,6 +527,8 @@ export interface InstanceState {
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
     /**
      * A string containing the Linode's public IP address.
+     *
+     * @deprecated The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
      */
     ipAddress?: pulumi.Input<string>;
     /**
@@ -534,7 +538,7 @@ export interface InstanceState {
      */
     ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+     * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
      */
     ipv6?: pulumi.Input<string>;
     /**

@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class LkeClusterPoolTaintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Kubernetes taint effect.
+        /// The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         /// </summary>
         [Input("effect", required: true)]
         public Input<string> Effect { get; set; } = null!;
@@ -26,6 +26,8 @@ namespace Pulumi.Linode.Inputs
 
         /// <summary>
         /// The Kubernetes taint value.
+        /// 
+        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

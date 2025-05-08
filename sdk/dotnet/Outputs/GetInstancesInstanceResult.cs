@@ -59,7 +59,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Image;
         /// <summary>
-        /// A string containing the Linode's public IP address.
+        /// (Deprecated) A string containing the Linode's public IP address.
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
@@ -67,7 +67,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Ipv4s;
         /// <summary>
-        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         /// </summary>
         public readonly string Ipv6;
         /// <summary>

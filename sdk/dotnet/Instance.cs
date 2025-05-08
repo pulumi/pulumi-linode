@@ -271,7 +271,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> Ipv4s { get; private set; } = null!;
 
         /// <summary>
-        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         /// </summary>
         [Output("ipv6")]
         public Output<string> Ipv6 { get; private set; } = null!;
@@ -936,7 +936,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         /// </summary>
         [Input("ipv6")]
         public Input<string>? Ipv6 { get; set; }

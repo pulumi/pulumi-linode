@@ -667,7 +667,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
                
                * **NOTE: IP reservation is not currently available to all users.**
-        :param pulumi.Input[builtins.str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+        :param pulumi.Input[builtins.str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param pulumi.Input[builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[builtins.int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]] metadatas: Various fields related to the Linode Metadata service.
@@ -755,6 +755,9 @@ class _InstanceState:
             pulumi.set(__self__, "image", image)
         if interfaces is not None:
             pulumi.set(__self__, "interfaces", interfaces)
+        if ip_address is not None:
+            warnings.warn("""The `ip_address` attribute in Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `get_instance_networking` data source instead.""", DeprecationWarning)
+            pulumi.log.warn("""ip_address is deprecated: The `ip_address` attribute in Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `get_instance_networking` data source instead.""")
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if ipv4s is not None:
@@ -1028,6 +1031,7 @@ class _InstanceState:
 
     @property
     @pulumi.getter(name="ipAddress")
+    @_utilities.deprecated("""The `ip_address` attribute in Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `get_instance_networking` data source instead.""")
     def ip_address(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A string containing the Linode's public IP address.
@@ -1056,7 +1060,7 @@ class _InstanceState:
     @pulumi.getter
     def ipv6(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+        This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         """
         return pulumi.get(self, "ipv6")
 
@@ -1803,7 +1807,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
                
                * **NOTE: IP reservation is not currently available to all users.**
-        :param pulumi.Input[builtins.str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+        :param pulumi.Input[builtins.str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param pulumi.Input[builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[builtins.int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]] metadatas: Various fields related to the Linode Metadata service.
@@ -2047,6 +2051,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAddress")
+    @_utilities.deprecated("""The `ip_address` attribute in Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `get_instance_networking` data source instead.""")
     def ip_address(self) -> pulumi.Output[builtins.str]:
         """
         A string containing the Linode's public IP address.
@@ -2067,7 +2072,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def ipv6(self) -> pulumi.Output[builtins.str]:
         """
-        This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+        This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         """
         return pulumi.get(self, "ipv6")
 

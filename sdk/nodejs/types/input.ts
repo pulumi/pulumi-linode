@@ -3446,6 +3446,98 @@ export interface GetObjectStorageEndpointsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetObjectStorageQuotasFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetObjectStorageQuotasFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetObjectStorageQuotasQuota {
+    /**
+     * The description of the Object Storage quota.
+     */
+    description?: string;
+    /**
+     * The type of the S3 endpoint of the Object Storage.
+     */
+    endpointType?: string;
+    /**
+     * The ID of the Object Storage quota.
+     */
+    quotaId: string;
+    /**
+     * The maximum quantity of the `resourceMetric` allowed by the quota.
+     */
+    quotaLimit?: number;
+    /**
+     * The name of the Object Storage quota.
+     */
+    quotaName?: string;
+    /**
+     * The specific Object Storage resource for the quota.
+     */
+    resourceMetric?: string;
+    /**
+     * The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
+     */
+    s3Endpoint?: string;
+}
+
+export interface GetObjectStorageQuotasQuotaArgs {
+    /**
+     * The description of the Object Storage quota.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The type of the S3 endpoint of the Object Storage.
+     */
+    endpointType?: pulumi.Input<string>;
+    /**
+     * The ID of the Object Storage quota.
+     */
+    quotaId: pulumi.Input<string>;
+    /**
+     * The maximum quantity of the `resourceMetric` allowed by the quota.
+     */
+    quotaLimit?: pulumi.Input<number>;
+    /**
+     * The name of the Object Storage quota.
+     */
+    quotaName?: pulumi.Input<string>;
+    /**
+     * The specific Object Storage resource for the quota.
+     */
+    resourceMetric?: pulumi.Input<string>;
+    /**
+     * The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
+     */
+    s3Endpoint?: pulumi.Input<string>;
+}
+
 export interface GetPlacementGroupMember {
     /**
      * Whether this Linode is currently compliant with the group's placement group type.
@@ -6330,8 +6422,6 @@ export interface LkeClusterPool {
     autoscaler?: pulumi.Input<inputs.LkeClusterPoolAutoscaler>;
     /**
      * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-     *
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      */
     count?: pulumi.Input<number>;
     /**
@@ -6343,7 +6433,7 @@ export interface LkeClusterPool {
      */
     id?: pulumi.Input<number>;
     /**
-     * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     * A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -6351,11 +6441,11 @@ export interface LkeClusterPool {
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolNode>[]>;
     /**
-     * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+     * A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
     taints?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolTaint>[]>;
     /**
@@ -6392,7 +6482,7 @@ export interface LkeClusterPoolNode {
 
 export interface LkeClusterPoolTaint {
     /**
-     * The Kubernetes taint effect.
+     * The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      */
     effect: pulumi.Input<string>;
     /**
@@ -6401,6 +6491,8 @@ export interface LkeClusterPoolTaint {
     key: pulumi.Input<string>;
     /**
      * The Kubernetes taint value.
+     *
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      */
     value: pulumi.Input<string>;
 }

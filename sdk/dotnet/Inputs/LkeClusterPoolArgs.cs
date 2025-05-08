@@ -20,8 +20,6 @@ namespace Pulumi.Linode.Inputs
 
         /// <summary>
         /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-        /// 
-        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }
@@ -42,7 +40,7 @@ namespace Pulumi.Linode.Inputs
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+        /// A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -66,7 +64,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+        /// A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
         /// </summary>
         public InputList<string> Tags
         {
@@ -78,7 +76,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<Inputs.LkeClusterPoolTaintArgs>? _taints;
 
         /// <summary>
-        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         /// </summary>
         public InputList<Inputs.LkeClusterPoolTaintArgs> Taints
         {

@@ -76,7 +76,7 @@ public final class GetInstancesInstance {
      */
     private String image;
     /**
-     * @return A string containing the Linode&#39;s public IP address.
+     * @return (Deprecated) A string containing the Linode&#39;s public IP address.
      * 
      */
     private String ipAddress;
@@ -86,7 +86,7 @@ public final class GetInstancesInstance {
      */
     private List<String> ipv4s;
     /**
-     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
      * 
      */
     private String ipv6;
@@ -220,7 +220,7 @@ public final class GetInstancesInstance {
         return this.image;
     }
     /**
-     * @return A string containing the Linode&#39;s public IP address.
+     * @return (Deprecated) A string containing the Linode&#39;s public IP address.
      * 
      */
     public String ipAddress() {
@@ -234,7 +234,7 @@ public final class GetInstancesInstance {
         return this.ipv4s;
     }
     /**
-     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
      * 
      */
     public String ipv6() {

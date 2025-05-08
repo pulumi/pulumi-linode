@@ -1812,6 +1812,29 @@
                     }
                 }
             },
+            "linode_object_storage_quota": {
+                "current": "linode:index/getObjectStorageQuota:getObjectStorageQuota",
+                "majorVersion": 4
+            },
+            "linode_object_storage_quotas": {
+                "current": "linode:index/getObjectStorageQuotas:getObjectStorageQuotas",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "quotas": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_placement_group": {
                 "current": "linode:index/getPlacementGroup:getPlacementGroup",
                 "majorVersion": 4,
@@ -2396,6 +2419,8 @@
             "linode:index/getNodebalancers:getNodebalancers": 1,
             "linode:index/getObjectStorageCluster:getObjectStorageCluster": 1,
             "linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints": 1,
+            "linode:index/getObjectStorageQuota:getObjectStorageQuota": 1,
+            "linode:index/getObjectStorageQuotas:getObjectStorageQuotas": 1,
             "linode:index/getPlacementGroup:getPlacementGroup": 1,
             "linode:index/getPlacementGroups:getPlacementGroups": 1,
             "linode:index/getProfile:getProfile": 1,
