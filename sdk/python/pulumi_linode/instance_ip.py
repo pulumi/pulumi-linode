@@ -274,10 +274,8 @@ class _InstanceIpState:
         pulumi.set(self, "vpc_nat11s", value)
 
 
+@pulumi.type_token("linode:index/instanceIp:InstanceIp")
 class InstanceIp(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/instanceIp:InstanceIp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

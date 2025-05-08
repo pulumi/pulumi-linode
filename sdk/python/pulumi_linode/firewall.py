@@ -400,10 +400,8 @@ class _FirewallState:
         pulumi.set(self, "updated", value)
 
 
+@pulumi.type_token("linode:index/firewall:Firewall")
 class Firewall(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/firewall:Firewall"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

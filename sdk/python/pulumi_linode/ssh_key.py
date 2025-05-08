@@ -111,10 +111,8 @@ class _SshKeyState:
         pulumi.set(self, "ssh_key", value)
 
 
+@pulumi.type_token("linode:index/sshKey:SshKey")
 class SshKey(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/sshKey:SshKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

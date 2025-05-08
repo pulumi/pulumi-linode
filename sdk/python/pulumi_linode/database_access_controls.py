@@ -126,10 +126,8 @@ class _DatabaseAccessControlsState:
         pulumi.set(self, "database_type", value)
 
 
+@pulumi.type_token("linode:index/databaseAccessControls:DatabaseAccessControls")
 class DatabaseAccessControls(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/databaseAccessControls:DatabaseAccessControls"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

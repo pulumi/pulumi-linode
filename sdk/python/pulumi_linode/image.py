@@ -642,10 +642,8 @@ class _ImageState:
         pulumi.set(self, "wait_for_replications", value)
 
 
+@pulumi.type_token("linode:index/image:Image")
 class Image(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/image:Image"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

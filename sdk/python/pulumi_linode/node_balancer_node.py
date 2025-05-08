@@ -245,10 +245,8 @@ class _NodeBalancerNodeState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("linode:index/nodeBalancerNode:NodeBalancerNode")
 class NodeBalancerNode(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/nodeBalancerNode:NodeBalancerNode"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
