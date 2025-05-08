@@ -192,10 +192,8 @@ class _Ipv6RangeState:
         pulumi.set(self, "route_target", value)
 
 
+@pulumi.type_token("linode:index/ipv6Range:Ipv6Range")
 class Ipv6Range(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/ipv6Range:Ipv6Range"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

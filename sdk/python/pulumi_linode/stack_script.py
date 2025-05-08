@@ -343,10 +343,8 @@ class _StackScriptState:
         pulumi.set(self, "username", value)
 
 
+@pulumi.type_token("linode:index/stackScript:StackScript")
 class StackScript(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/stackScript:StackScript"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

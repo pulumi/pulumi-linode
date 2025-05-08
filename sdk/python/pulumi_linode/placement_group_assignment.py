@@ -119,10 +119,8 @@ class _PlacementGroupAssignmentState:
         pulumi.set(self, "placement_group_id", value)
 
 
+@pulumi.type_token("linode:index/placementGroupAssignment:PlacementGroupAssignment")
 class PlacementGroupAssignment(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/placementGroupAssignment:PlacementGroupAssignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

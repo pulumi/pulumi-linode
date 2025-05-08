@@ -291,10 +291,8 @@ class _NetworkingIpState:
         pulumi.set(self, "vpc_nat11", value)
 
 
+@pulumi.type_token("linode:index/networkingIp:NetworkingIp")
 class NetworkingIp(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/networkingIp:NetworkingIp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

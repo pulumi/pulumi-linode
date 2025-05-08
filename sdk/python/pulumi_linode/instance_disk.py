@@ -448,10 +448,8 @@ class _InstanceDiskState:
         pulumi.set(self, "updated", value)
 
 
+@pulumi.type_token("linode:index/instanceDisk:InstanceDisk")
 class InstanceDisk(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/instanceDisk:InstanceDisk"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

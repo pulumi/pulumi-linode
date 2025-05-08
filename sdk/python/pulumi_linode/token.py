@@ -160,10 +160,8 @@ class _TokenState:
         pulumi.set(self, "token", value)
 
 
+@pulumi.type_token("linode:index/token:Token")
 class Token(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/token:Token"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

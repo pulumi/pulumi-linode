@@ -663,10 +663,8 @@ class _DatabaseMysqlV2State:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("linode:index/databaseMysqlV2:DatabaseMysqlV2")
 class DatabaseMysqlV2(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/databaseMysqlV2:DatabaseMysqlV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

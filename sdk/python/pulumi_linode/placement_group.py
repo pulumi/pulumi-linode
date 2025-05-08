@@ -192,10 +192,8 @@ class _PlacementGroupState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("linode:index/placementGroup:PlacementGroup")
 class PlacementGroup(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/placementGroup:PlacementGroup"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

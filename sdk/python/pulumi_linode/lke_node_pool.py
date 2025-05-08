@@ -365,10 +365,8 @@ class _LkeNodePoolState:
         pulumi.set(self, "update_strategy", value)
 
 
+@pulumi.type_token("linode:index/lkeNodePool:LkeNodePool")
 class LkeNodePool(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/lkeNodePool:LkeNodePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

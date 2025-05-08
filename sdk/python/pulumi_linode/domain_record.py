@@ -390,10 +390,8 @@ class _DomainRecordState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("linode:index/domainRecord:DomainRecord")
 class DomainRecord(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/domainRecord:DomainRecord"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

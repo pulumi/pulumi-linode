@@ -153,10 +153,8 @@ class _RdnsState:
         pulumi.set(self, "wait_for_available", value)
 
 
+@pulumi.type_token("linode:index/rdns:Rdns")
 class Rdns(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/rdns:Rdns"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

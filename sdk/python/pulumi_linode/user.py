@@ -545,10 +545,8 @@ class _UserState:
         pulumi.set(self, "vpc_grants", value)
 
 
+@pulumi.type_token("linode:index/user:User")
 class User(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/user:User"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

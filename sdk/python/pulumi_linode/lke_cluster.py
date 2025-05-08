@@ -399,10 +399,8 @@ class _LkeClusterState:
         pulumi.set(self, "tier", value)
 
 
+@pulumi.type_token("linode:index/lkeCluster:LkeCluster")
 class LkeCluster(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/lkeCluster:LkeCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

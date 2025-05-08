@@ -608,10 +608,8 @@ class _NodeBalancerConfigState:
         pulumi.set(self, "stickiness", value)
 
 
+@pulumi.type_token("linode:index/nodeBalancerConfig:NodeBalancerConfig")
 class NodeBalancerConfig(pulumi.CustomResource):
-
-    pulumi_type = "linode:index/nodeBalancerConfig:NodeBalancerConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
