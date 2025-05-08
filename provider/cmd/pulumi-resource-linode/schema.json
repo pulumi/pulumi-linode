@@ -1312,7 +1312,7 @@
                 },
                 "count": {
                     "type": "integer",
-                    "description": "The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n"
+                    "description": "The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.\n"
                 },
                 "diskEncryption": {
                     "type": "string",
@@ -1327,7 +1327,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.\n"
+                    "description": "A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.\n"
                 },
                 "nodes": {
                     "type": "array",
@@ -1341,14 +1341,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.\n"
+                    "description": "A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.\n"
                 },
                 "taints": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/LkeClusterPoolTaint:LkeClusterPoolTaint"
                     },
-                    "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.\n"
+                    "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).\n"
                 },
                 "type": {
                     "type": "string",
@@ -1418,7 +1418,7 @@
             "properties": {
                 "effect": {
                     "type": "string",
-                    "description": "The Kubernetes taint effect.\n"
+                    "description": "The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).\n"
                 },
                 "key": {
                     "type": "string",
@@ -1426,7 +1426,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The Kubernetes taint value.\n"
+                    "description": "The Kubernetes taint value.\n\n* `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.\n"
                 }
             },
             "type": "object",
@@ -5062,7 +5062,7 @@
                 },
                 "ipAddress": {
                     "type": "string",
-                    "description": "A string containing the Linode's public IP address.\n"
+                    "description": "(Deprecated) A string containing the Linode's public IP address.\n"
                 },
                 "ipv4s": {
                     "type": "array",
@@ -5073,7 +5073,7 @@
                 },
                 "ipv6": {
                     "type": "string",
-                    "description": "This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.\n"
+                    "description": "This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.\n"
                 },
                 "label": {
                     "type": "string",
@@ -7340,6 +7340,101 @@
                 "name",
                 "values"
             ]
+        },
+        "linode:index/getObjectStorageQuotaQuotaUsage:getObjectStorageQuotaQuotaUsage": {
+            "properties": {
+                "quotaLimit": {
+                    "type": "integer",
+                    "description": "The maximum quantity allowed by the quota.\n"
+                },
+                "usage": {
+                    "type": "integer",
+                    "description": "The quantity of the Object Storage resource currently in use.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "quotaLimit",
+                "usage"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getObjectStorageQuotasFilter:getObjectStorageQuotasFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getObjectStorageQuotasQuota:getObjectStorageQuotasQuota": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the Object Storage quota.\n"
+                },
+                "endpointType": {
+                    "type": "string",
+                    "description": "The type of the S3 endpoint of the Object Storage.\n"
+                },
+                "quotaId": {
+                    "type": "string",
+                    "description": "The ID of the Object Storage quota.\n"
+                },
+                "quotaLimit": {
+                    "type": "integer",
+                    "description": "The maximum quantity of the `resource_metric` allowed by the quota.\n"
+                },
+                "quotaName": {
+                    "type": "string",
+                    "description": "The name of the Object Storage quota.\n"
+                },
+                "resourceMetric": {
+                    "type": "string",
+                    "description": "The specific Object Storage resource for the quota.\n"
+                },
+                "s3Endpoint": {
+                    "type": "string",
+                    "description": "The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "endpointType",
+                "quotaId",
+                "quotaLimit",
+                "quotaName",
+                "resourceMetric",
+                "s3Endpoint"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": [
+                        "quotaId"
+                    ]
+                }
+            }
         },
         "linode:index/getPlacementGroupMember:getPlacementGroupMember": {
             "properties": {
@@ -12072,7 +12167,8 @@
                 },
                 "ipAddress": {
                     "type": "string",
-                    "description": "A string containing the Linode's public IP address.\n"
+                    "description": "A string containing the Linode's public IP address.\n",
+                    "deprecationMessage": "The `ip_address` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead."
                 },
                 "ipv4s": {
                     "type": "array",
@@ -12083,7 +12179,7 @@
                 },
                 "ipv6": {
                     "type": "string",
-                    "description": "This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.\n"
+                    "description": "This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.\n"
                 },
                 "label": {
                     "type": "string",
@@ -12481,7 +12577,8 @@
                     },
                     "ipAddress": {
                         "type": "string",
-                        "description": "A string containing the Linode's public IP address.\n"
+                        "description": "A string containing the Linode's public IP address.\n",
+                        "deprecationMessage": "The `ip_address` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead."
                     },
                     "ipv4s": {
                         "type": "array",
@@ -12493,7 +12590,7 @@
                     },
                     "ipv6": {
                         "type": "string",
-                        "description": "This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.\n"
+                        "description": "This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.\n"
                     },
                     "label": {
                         "type": "string",
@@ -20159,6 +20256,119 @@
                     },
                     "orderBy": {
                         "type": "string"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getObjectStorageQuota:getObjectStorageQuota": {
+            "description": "Provides details about Object Storage quota information on your account.\nFor more information, see the Linode APIv4 docs.\n\n## Example Usage\n\nThe following example shows how one might use this data source to access information about an Object Storage quota.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst myQuota = linode.getObjectStorageQuota({\n    quotaId: \"obj-buckets-br-gru-1.linodeobjects.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_quota = linode.get_object_storage_quota(quota_id=\"obj-buckets-br-gru-1.linodeobjects.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myQuota = Linode.GetObjectStorageQuota.Invoke(new()\n    {\n        QuotaId = \"obj-buckets-br-gru-1.linodeobjects.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetObjectStorageQuota(ctx, \u0026linode.GetObjectStorageQuotaArgs{\n\t\t\tQuotaId: \"obj-buckets-br-gru-1.linodeobjects.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myQuota = LinodeFunctions.getObjectStorageQuota(GetObjectStorageQuotaArgs.builder()\n            .quotaId(\"obj-buckets-br-gru-1.linodeobjects.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  myQuota:\n    fn::invoke:\n      function: linode:getObjectStorageQuota\n      arguments:\n        quotaId: obj-buckets-br-gru-1.linodeobjects.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getObjectStorageQuota.\n",
+                "properties": {
+                    "quotaId": {
+                        "type": "string",
+                        "description": "The Object Storage quota ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "quotaId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getObjectStorageQuota.\n",
+                "properties": {
+                    "description": {
+                        "description": "The description of the Object Storage quota.\n",
+                        "type": "string"
+                    },
+                    "endpointType": {
+                        "description": "The type of the S3 endpoint of the Object Storage.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The unique ID of the Object Storage quota data source.\n",
+                        "type": "string"
+                    },
+                    "quotaId": {
+                        "type": "string"
+                    },
+                    "quotaLimit": {
+                        "description": "The maximum quantity allowed by the quota.\n",
+                        "type": "integer"
+                    },
+                    "quotaName": {
+                        "description": "The name of the Object Storage quota.\n",
+                        "type": "string"
+                    },
+                    "quotaUsage": {
+                        "$ref": "#/types/linode:index/getObjectStorageQuotaQuotaUsage:getObjectStorageQuotaQuotaUsage",
+                        "description": "The usage data for a specific Object Storage related quota on your account.\n"
+                    },
+                    "resourceMetric": {
+                        "description": "The specific Object Storage resource for the quota.\n",
+                        "type": "string"
+                    },
+                    "s3Endpoint": {
+                        "description": "The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "description",
+                    "endpointType",
+                    "id",
+                    "quotaId",
+                    "quotaLimit",
+                    "quotaName",
+                    "quotaUsage",
+                    "resourceMetric",
+                    "s3Endpoint"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getObjectStorageQuotas:getObjectStorageQuotas": {
+            "description": "Provides details about a list of Object Storage quotas information on your account.\nFor more information, see the Linode APIv4 docs.\n\n## Example Usage\n\nThe following example shows how one might use this data source to list and filter information about Object Storage quotas.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst maxBucketsQuotas = linode.getObjectStorageQuotas({\n    filters: [{\n        name: \"endpoint_type\",\n        values: [\"E0\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmax_buckets_quotas = linode.get_object_storage_quotas(filters=[{\n    \"name\": \"endpoint_type\",\n    \"values\": [\"E0\"],\n}])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var maxBucketsQuotas = Linode.GetObjectStorageQuotas.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetObjectStorageQuotasFilterInputArgs\n            {\n                Name = \"endpoint_type\",\n                Values = new[]\n                {\n                    \"E0\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v4/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetObjectStorageQuotas(ctx, \u0026linode.GetObjectStorageQuotasArgs{\n\t\t\tFilters: []linode.GetObjectStorageQuotasFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"endpoint_type\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"E0\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var maxBucketsQuotas = LinodeFunctions.getObjectStorageQuotas(GetObjectStorageQuotasArgs.builder()\n            .filters(GetObjectStorageQuotasFilterArgs.builder()\n                .name(\"endpoint_type\")\n                .values(\"E0\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  maxBucketsQuotas:\n    fn::invoke:\n      function: linode:getObjectStorageQuotas\n      arguments:\n        filters:\n          - name: endpoint_type\n            values:\n              - E0\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* `quota_id`\n\n* `quota_name`\n\n* `endpoint_type`\n\n* `s3_endpoint`\n\n* `description`\n\n* `quota_limit`\n\n* `resource_metric`\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getObjectStorageQuotas.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getObjectStorageQuotasFilter:getObjectStorageQuotasFilter"
+                        }
+                    },
+                    "quotas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getObjectStorageQuotasQuota:getObjectStorageQuotasQuota"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getObjectStorageQuotas.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getObjectStorageQuotasFilter:getObjectStorageQuotasFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "quotas": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getObjectStorageQuotasQuota:getObjectStorageQuotasQuota"
+                        },
+                        "type": "array"
                     }
                 },
                 "required": [
