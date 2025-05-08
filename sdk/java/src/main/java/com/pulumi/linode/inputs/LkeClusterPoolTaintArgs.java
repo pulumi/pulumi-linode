@@ -15,14 +15,14 @@ public final class LkeClusterPoolTaintArgs extends com.pulumi.resources.Resource
     public static final LkeClusterPoolTaintArgs Empty = new LkeClusterPoolTaintArgs();
 
     /**
-     * The Kubernetes taint effect.
+     * The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      * 
      */
     @Import(name="effect", required=true)
     private Output<String> effect;
 
     /**
-     * @return The Kubernetes taint effect.
+     * @return The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      * 
      */
     public Output<String> effect() {
@@ -47,12 +47,16 @@ public final class LkeClusterPoolTaintArgs extends com.pulumi.resources.Resource
     /**
      * The Kubernetes taint value.
      * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
      * @return The Kubernetes taint value.
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     public Output<String> value() {
@@ -86,7 +90,7 @@ public final class LkeClusterPoolTaintArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param effect The Kubernetes taint effect.
+         * @param effect The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
          * 
          * @return builder
          * 
@@ -97,7 +101,7 @@ public final class LkeClusterPoolTaintArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param effect The Kubernetes taint effect.
+         * @param effect The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
          * 
          * @return builder
          * 
@@ -130,6 +134,8 @@ public final class LkeClusterPoolTaintArgs extends com.pulumi.resources.Resource
         /**
          * @param value The Kubernetes taint value.
          * 
+         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * 
          * @return builder
          * 
          */
@@ -140,6 +146,8 @@ public final class LkeClusterPoolTaintArgs extends com.pulumi.resources.Resource
 
         /**
          * @param value The Kubernetes taint value.
+         * 
+         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
          * 
          * @return builder
          * 

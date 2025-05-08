@@ -26,8 +26,6 @@ public final class LkeClusterPool {
     /**
      * @return The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-     * 
      */
     private @Nullable Integer count;
     /**
@@ -41,7 +39,7 @@ public final class LkeClusterPool {
      */
     private @Nullable Integer id;
     /**
-     * @return Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     * @return A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      * 
      */
     private @Nullable Map<String,String> labels;
@@ -51,12 +49,12 @@ public final class LkeClusterPool {
      */
     private @Nullable List<LkeClusterPoolNode> nodes;
     /**
-     * @return An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+     * @return A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
      * 
      */
     private @Nullable List<String> tags;
     /**
-     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      * 
      */
     private @Nullable List<LkeClusterPoolTaint> taints;
@@ -77,8 +75,6 @@ public final class LkeClusterPool {
     /**
      * @return The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-     * 
      */
     public Optional<Integer> count() {
         return Optional.ofNullable(this.count);
@@ -98,7 +94,7 @@ public final class LkeClusterPool {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+     * @return A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      * 
      */
     public Map<String,String> labels() {
@@ -112,14 +108,14 @@ public final class LkeClusterPool {
         return this.nodes == null ? List.of() : this.nodes;
     }
     /**
-     * @return An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+     * @return A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
      * 
      */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      * 
      */
     public List<LkeClusterPoolTaint> taints() {

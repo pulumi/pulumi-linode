@@ -480,7 +480,11 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * A string containing the Linode&#39;s public IP address.
      * 
+     * @deprecated
+     * The `ip_address` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
+     * 
      */
+    @Deprecated /* The `ip_address` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead. */
     @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
@@ -510,14 +514,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.ipv4s;
     }
     /**
-     * This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+     * This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
      * 
      */
     @Export(name="ipv6", refs={String.class}, tree="[0]")
     private Output<String> ipv6;
 
     /**
-     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
      * 
      */
     public Output<String> ipv6() {

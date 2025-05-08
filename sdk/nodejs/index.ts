@@ -305,6 +305,16 @@ export const getObjectStorageEndpoints: typeof import("./getObjectStorageEndpoin
 export const getObjectStorageEndpointsOutput: typeof import("./getObjectStorageEndpoints").getObjectStorageEndpointsOutput = null as any;
 utilities.lazyLoad(exports, ["getObjectStorageEndpoints","getObjectStorageEndpointsOutput"], () => require("./getObjectStorageEndpoints"));
 
+export { GetObjectStorageQuotaArgs, GetObjectStorageQuotaResult, GetObjectStorageQuotaOutputArgs } from "./getObjectStorageQuota";
+export const getObjectStorageQuota: typeof import("./getObjectStorageQuota").getObjectStorageQuota = null as any;
+export const getObjectStorageQuotaOutput: typeof import("./getObjectStorageQuota").getObjectStorageQuotaOutput = null as any;
+utilities.lazyLoad(exports, ["getObjectStorageQuota","getObjectStorageQuotaOutput"], () => require("./getObjectStorageQuota"));
+
+export { GetObjectStorageQuotasArgs, GetObjectStorageQuotasResult, GetObjectStorageQuotasOutputArgs } from "./getObjectStorageQuotas";
+export const getObjectStorageQuotas: typeof import("./getObjectStorageQuotas").getObjectStorageQuotas = null as any;
+export const getObjectStorageQuotasOutput: typeof import("./getObjectStorageQuotas").getObjectStorageQuotasOutput = null as any;
+utilities.lazyLoad(exports, ["getObjectStorageQuotas","getObjectStorageQuotasOutput"], () => require("./getObjectStorageQuotas"));
+
 export { GetPlacementGroupArgs, GetPlacementGroupResult, GetPlacementGroupOutputArgs } from "./getPlacementGroup";
 export const getPlacementGroup: typeof import("./getPlacementGroup").getPlacementGroup = null as any;
 export const getPlacementGroupOutput: typeof import("./getPlacementGroup").getPlacementGroupOutput = null as any;

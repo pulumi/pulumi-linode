@@ -75,6 +75,8 @@
         "getNodebalancers.ts",
         "getObjectStorageCluster.ts",
         "getObjectStorageEndpoints.ts",
+        "getObjectStorageQuota.ts",
+        "getObjectStorageQuotas.ts",
         "getPlacementGroup.ts",
         "getPlacementGroups.ts",
         "getProfile.ts",

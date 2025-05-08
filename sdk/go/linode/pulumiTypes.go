@@ -6886,20 +6886,18 @@ type LkeClusterPool struct {
 	// When specified, the number of nodes autoscales within the defined minimum and maximum values.
 	Autoscaler *LkeClusterPoolAutoscaler `pulumi:"autoscaler"`
 	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-	//
-	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Count *int `pulumi:"count"`
 	// The disk encryption policy for nodes in this pool.
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// The ID of the node.
 	Id *int `pulumi:"id"`
-	// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+	// A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The nodes in the node pool.
 	Nodes []LkeClusterPoolNode `pulumi:"nodes"`
-	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+	// A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
 	Tags []string `pulumi:"tags"`
-	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
 	Taints []LkeClusterPoolTaint `pulumi:"taints"`
 	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
@@ -6920,20 +6918,18 @@ type LkeClusterPoolArgs struct {
 	// When specified, the number of nodes autoscales within the defined minimum and maximum values.
 	Autoscaler LkeClusterPoolAutoscalerPtrInput `pulumi:"autoscaler"`
 	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-	//
-	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Count pulumi.IntPtrInput `pulumi:"count"`
 	// The disk encryption policy for nodes in this pool.
 	DiskEncryption pulumi.StringPtrInput `pulumi:"diskEncryption"`
 	// The ID of the node.
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+	// A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The nodes in the node pool.
 	Nodes LkeClusterPoolNodeArrayInput `pulumi:"nodes"`
-	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+	// A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
 	Taints LkeClusterPoolTaintArrayInput `pulumi:"taints"`
 	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput `pulumi:"type"`
@@ -6996,8 +6992,6 @@ func (o LkeClusterPoolOutput) Autoscaler() LkeClusterPoolAutoscalerPtrOutput {
 }
 
 // The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-//
-// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 func (o LkeClusterPoolOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LkeClusterPool) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
@@ -7012,7 +7006,7 @@ func (o LkeClusterPoolOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LkeClusterPool) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+// A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
 func (o LkeClusterPoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LkeClusterPool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -7022,12 +7016,12 @@ func (o LkeClusterPoolOutput) Nodes() LkeClusterPoolNodeArrayOutput {
 	return o.ApplyT(func(v LkeClusterPool) []LkeClusterPoolNode { return v.Nodes }).(LkeClusterPoolNodeArrayOutput)
 }
 
-// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
+// A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
 func (o LkeClusterPoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LkeClusterPool) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
 func (o LkeClusterPoolOutput) Taints() LkeClusterPoolTaintArrayOutput {
 	return o.ApplyT(func(v LkeClusterPool) []LkeClusterPoolTaint { return v.Taints }).(LkeClusterPoolTaintArrayOutput)
 }
@@ -7329,11 +7323,13 @@ func (o LkeClusterPoolNodeArrayOutput) Index(i pulumi.IntInput) LkeClusterPoolNo
 }
 
 type LkeClusterPoolTaint struct {
-	// The Kubernetes taint effect.
+	// The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Effect string `pulumi:"effect"`
 	// The Kubernetes taint key.
 	Key string `pulumi:"key"`
 	// The Kubernetes taint value.
+	//
+	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Value string `pulumi:"value"`
 }
 
@@ -7349,11 +7345,13 @@ type LkeClusterPoolTaintInput interface {
 }
 
 type LkeClusterPoolTaintArgs struct {
-	// The Kubernetes taint effect.
+	// The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Effect pulumi.StringInput `pulumi:"effect"`
 	// The Kubernetes taint key.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The Kubernetes taint value.
+	//
+	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -7408,7 +7406,7 @@ func (o LkeClusterPoolTaintOutput) ToLkeClusterPoolTaintOutputWithContext(ctx co
 	return o
 }
 
-// The Kubernetes taint effect.
+// The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 func (o LkeClusterPoolTaintOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v LkeClusterPoolTaint) string { return v.Effect }).(pulumi.StringOutput)
 }
@@ -7419,6 +7417,8 @@ func (o LkeClusterPoolTaintOutput) Key() pulumi.StringOutput {
 }
 
 // The Kubernetes taint value.
+//
+// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
 func (o LkeClusterPoolTaintOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LkeClusterPoolTaint) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -20975,11 +20975,11 @@ type GetInstancesInstance struct {
 	Id int `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 	Image string `pulumi:"image"`
-	// A string containing the Linode's public IP address.
+	// (Deprecated) A string containing the Linode's public IP address.
 	IpAddress string `pulumi:"ipAddress"`
 	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
 	Ipv4s []string `pulumi:"ipv4s"`
-	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
 	Ipv6 string `pulumi:"ipv6"`
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label string `pulumi:"label"`
@@ -21038,11 +21038,11 @@ type GetInstancesInstanceArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringInput `pulumi:"image"`
-	// A string containing the Linode's public IP address.
+	// (Deprecated) A string containing the Linode's public IP address.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
 	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
-	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
 	Ipv6 pulumi.StringInput `pulumi:"ipv6"`
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringInput `pulumi:"label"`
@@ -21176,7 +21176,7 @@ func (o GetInstancesInstanceOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// A string containing the Linode's public IP address.
+// (Deprecated) A string containing the Linode's public IP address.
 func (o GetInstancesInstanceOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.IpAddress }).(pulumi.StringOutput)
 }
@@ -21186,7 +21186,7 @@ func (o GetInstancesInstanceOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
 }
 
-// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
 func (o GetInstancesInstanceOutput) Ipv6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Ipv6 }).(pulumi.StringOutput)
 }
@@ -29243,6 +29243,333 @@ func (o GetObjectStorageEndpointsFilterArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetObjectStorageEndpointsFilter {
 		return vs[0].([]GetObjectStorageEndpointsFilter)[vs[1].(int)]
 	}).(GetObjectStorageEndpointsFilterOutput)
+}
+
+type GetObjectStorageQuotaQuotaUsage struct {
+	// The maximum quantity allowed by the quota.
+	QuotaLimit int `pulumi:"quotaLimit"`
+	// The quantity of the Object Storage resource currently in use.
+	Usage int `pulumi:"usage"`
+}
+
+// GetObjectStorageQuotaQuotaUsageInput is an input type that accepts GetObjectStorageQuotaQuotaUsageArgs and GetObjectStorageQuotaQuotaUsageOutput values.
+// You can construct a concrete instance of `GetObjectStorageQuotaQuotaUsageInput` via:
+//
+//	GetObjectStorageQuotaQuotaUsageArgs{...}
+type GetObjectStorageQuotaQuotaUsageInput interface {
+	pulumi.Input
+
+	ToGetObjectStorageQuotaQuotaUsageOutput() GetObjectStorageQuotaQuotaUsageOutput
+	ToGetObjectStorageQuotaQuotaUsageOutputWithContext(context.Context) GetObjectStorageQuotaQuotaUsageOutput
+}
+
+type GetObjectStorageQuotaQuotaUsageArgs struct {
+	// The maximum quantity allowed by the quota.
+	QuotaLimit pulumi.IntInput `pulumi:"quotaLimit"`
+	// The quantity of the Object Storage resource currently in use.
+	Usage pulumi.IntInput `pulumi:"usage"`
+}
+
+func (GetObjectStorageQuotaQuotaUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageQuotaQuotaUsage)(nil)).Elem()
+}
+
+func (i GetObjectStorageQuotaQuotaUsageArgs) ToGetObjectStorageQuotaQuotaUsageOutput() GetObjectStorageQuotaQuotaUsageOutput {
+	return i.ToGetObjectStorageQuotaQuotaUsageOutputWithContext(context.Background())
+}
+
+func (i GetObjectStorageQuotaQuotaUsageArgs) ToGetObjectStorageQuotaQuotaUsageOutputWithContext(ctx context.Context) GetObjectStorageQuotaQuotaUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectStorageQuotaQuotaUsageOutput)
+}
+
+type GetObjectStorageQuotaQuotaUsageOutput struct{ *pulumi.OutputState }
+
+func (GetObjectStorageQuotaQuotaUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageQuotaQuotaUsage)(nil)).Elem()
+}
+
+func (o GetObjectStorageQuotaQuotaUsageOutput) ToGetObjectStorageQuotaQuotaUsageOutput() GetObjectStorageQuotaQuotaUsageOutput {
+	return o
+}
+
+func (o GetObjectStorageQuotaQuotaUsageOutput) ToGetObjectStorageQuotaQuotaUsageOutputWithContext(ctx context.Context) GetObjectStorageQuotaQuotaUsageOutput {
+	return o
+}
+
+// The maximum quantity allowed by the quota.
+func (o GetObjectStorageQuotaQuotaUsageOutput) QuotaLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotaQuotaUsage) int { return v.QuotaLimit }).(pulumi.IntOutput)
+}
+
+// The quantity of the Object Storage resource currently in use.
+func (o GetObjectStorageQuotaQuotaUsageOutput) Usage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotaQuotaUsage) int { return v.Usage }).(pulumi.IntOutput)
+}
+
+type GetObjectStorageQuotasFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetObjectStorageQuotasFilterInput is an input type that accepts GetObjectStorageQuotasFilterArgs and GetObjectStorageQuotasFilterOutput values.
+// You can construct a concrete instance of `GetObjectStorageQuotasFilterInput` via:
+//
+//	GetObjectStorageQuotasFilterArgs{...}
+type GetObjectStorageQuotasFilterInput interface {
+	pulumi.Input
+
+	ToGetObjectStorageQuotasFilterOutput() GetObjectStorageQuotasFilterOutput
+	ToGetObjectStorageQuotasFilterOutputWithContext(context.Context) GetObjectStorageQuotasFilterOutput
+}
+
+type GetObjectStorageQuotasFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetObjectStorageQuotasFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageQuotasFilter)(nil)).Elem()
+}
+
+func (i GetObjectStorageQuotasFilterArgs) ToGetObjectStorageQuotasFilterOutput() GetObjectStorageQuotasFilterOutput {
+	return i.ToGetObjectStorageQuotasFilterOutputWithContext(context.Background())
+}
+
+func (i GetObjectStorageQuotasFilterArgs) ToGetObjectStorageQuotasFilterOutputWithContext(ctx context.Context) GetObjectStorageQuotasFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectStorageQuotasFilterOutput)
+}
+
+// GetObjectStorageQuotasFilterArrayInput is an input type that accepts GetObjectStorageQuotasFilterArray and GetObjectStorageQuotasFilterArrayOutput values.
+// You can construct a concrete instance of `GetObjectStorageQuotasFilterArrayInput` via:
+//
+//	GetObjectStorageQuotasFilterArray{ GetObjectStorageQuotasFilterArgs{...} }
+type GetObjectStorageQuotasFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetObjectStorageQuotasFilterArrayOutput() GetObjectStorageQuotasFilterArrayOutput
+	ToGetObjectStorageQuotasFilterArrayOutputWithContext(context.Context) GetObjectStorageQuotasFilterArrayOutput
+}
+
+type GetObjectStorageQuotasFilterArray []GetObjectStorageQuotasFilterInput
+
+func (GetObjectStorageQuotasFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetObjectStorageQuotasFilter)(nil)).Elem()
+}
+
+func (i GetObjectStorageQuotasFilterArray) ToGetObjectStorageQuotasFilterArrayOutput() GetObjectStorageQuotasFilterArrayOutput {
+	return i.ToGetObjectStorageQuotasFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetObjectStorageQuotasFilterArray) ToGetObjectStorageQuotasFilterArrayOutputWithContext(ctx context.Context) GetObjectStorageQuotasFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectStorageQuotasFilterArrayOutput)
+}
+
+type GetObjectStorageQuotasFilterOutput struct{ *pulumi.OutputState }
+
+func (GetObjectStorageQuotasFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageQuotasFilter)(nil)).Elem()
+}
+
+func (o GetObjectStorageQuotasFilterOutput) ToGetObjectStorageQuotasFilterOutput() GetObjectStorageQuotasFilterOutput {
+	return o
+}
+
+func (o GetObjectStorageQuotasFilterOutput) ToGetObjectStorageQuotasFilterOutputWithContext(ctx context.Context) GetObjectStorageQuotasFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetObjectStorageQuotasFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotasFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetObjectStorageQuotasFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotasFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetObjectStorageQuotasFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotasFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetObjectStorageQuotasFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetObjectStorageQuotasFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetObjectStorageQuotasFilter)(nil)).Elem()
+}
+
+func (o GetObjectStorageQuotasFilterArrayOutput) ToGetObjectStorageQuotasFilterArrayOutput() GetObjectStorageQuotasFilterArrayOutput {
+	return o
+}
+
+func (o GetObjectStorageQuotasFilterArrayOutput) ToGetObjectStorageQuotasFilterArrayOutputWithContext(ctx context.Context) GetObjectStorageQuotasFilterArrayOutput {
+	return o
+}
+
+func (o GetObjectStorageQuotasFilterArrayOutput) Index(i pulumi.IntInput) GetObjectStorageQuotasFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetObjectStorageQuotasFilter {
+		return vs[0].([]GetObjectStorageQuotasFilter)[vs[1].(int)]
+	}).(GetObjectStorageQuotasFilterOutput)
+}
+
+type GetObjectStorageQuotasQuota struct {
+	// The description of the Object Storage quota.
+	Description string `pulumi:"description"`
+	// The type of the S3 endpoint of the Object Storage.
+	EndpointType string `pulumi:"endpointType"`
+	// The ID of the Object Storage quota.
+	QuotaId string `pulumi:"quotaId"`
+	// The maximum quantity of the `resourceMetric` allowed by the quota.
+	QuotaLimit int `pulumi:"quotaLimit"`
+	// The name of the Object Storage quota.
+	QuotaName string `pulumi:"quotaName"`
+	// The specific Object Storage resource for the quota.
+	ResourceMetric string `pulumi:"resourceMetric"`
+	// The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
+	S3Endpoint string `pulumi:"s3Endpoint"`
+}
+
+// GetObjectStorageQuotasQuotaInput is an input type that accepts GetObjectStorageQuotasQuotaArgs and GetObjectStorageQuotasQuotaOutput values.
+// You can construct a concrete instance of `GetObjectStorageQuotasQuotaInput` via:
+//
+//	GetObjectStorageQuotasQuotaArgs{...}
+type GetObjectStorageQuotasQuotaInput interface {
+	pulumi.Input
+
+	ToGetObjectStorageQuotasQuotaOutput() GetObjectStorageQuotasQuotaOutput
+	ToGetObjectStorageQuotasQuotaOutputWithContext(context.Context) GetObjectStorageQuotasQuotaOutput
+}
+
+type GetObjectStorageQuotasQuotaArgs struct {
+	// The description of the Object Storage quota.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The type of the S3 endpoint of the Object Storage.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The ID of the Object Storage quota.
+	QuotaId pulumi.StringInput `pulumi:"quotaId"`
+	// The maximum quantity of the `resourceMetric` allowed by the quota.
+	QuotaLimit pulumi.IntInput `pulumi:"quotaLimit"`
+	// The name of the Object Storage quota.
+	QuotaName pulumi.StringInput `pulumi:"quotaName"`
+	// The specific Object Storage resource for the quota.
+	ResourceMetric pulumi.StringInput `pulumi:"resourceMetric"`
+	// The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
+	S3Endpoint pulumi.StringInput `pulumi:"s3Endpoint"`
+}
+
+func (GetObjectStorageQuotasQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageQuotasQuota)(nil)).Elem()
+}
+
+func (i GetObjectStorageQuotasQuotaArgs) ToGetObjectStorageQuotasQuotaOutput() GetObjectStorageQuotasQuotaOutput {
+	return i.ToGetObjectStorageQuotasQuotaOutputWithContext(context.Background())
+}
+
+func (i GetObjectStorageQuotasQuotaArgs) ToGetObjectStorageQuotasQuotaOutputWithContext(ctx context.Context) GetObjectStorageQuotasQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectStorageQuotasQuotaOutput)
+}
+
+// GetObjectStorageQuotasQuotaArrayInput is an input type that accepts GetObjectStorageQuotasQuotaArray and GetObjectStorageQuotasQuotaArrayOutput values.
+// You can construct a concrete instance of `GetObjectStorageQuotasQuotaArrayInput` via:
+//
+//	GetObjectStorageQuotasQuotaArray{ GetObjectStorageQuotasQuotaArgs{...} }
+type GetObjectStorageQuotasQuotaArrayInput interface {
+	pulumi.Input
+
+	ToGetObjectStorageQuotasQuotaArrayOutput() GetObjectStorageQuotasQuotaArrayOutput
+	ToGetObjectStorageQuotasQuotaArrayOutputWithContext(context.Context) GetObjectStorageQuotasQuotaArrayOutput
+}
+
+type GetObjectStorageQuotasQuotaArray []GetObjectStorageQuotasQuotaInput
+
+func (GetObjectStorageQuotasQuotaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetObjectStorageQuotasQuota)(nil)).Elem()
+}
+
+func (i GetObjectStorageQuotasQuotaArray) ToGetObjectStorageQuotasQuotaArrayOutput() GetObjectStorageQuotasQuotaArrayOutput {
+	return i.ToGetObjectStorageQuotasQuotaArrayOutputWithContext(context.Background())
+}
+
+func (i GetObjectStorageQuotasQuotaArray) ToGetObjectStorageQuotasQuotaArrayOutputWithContext(ctx context.Context) GetObjectStorageQuotasQuotaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetObjectStorageQuotasQuotaArrayOutput)
+}
+
+type GetObjectStorageQuotasQuotaOutput struct{ *pulumi.OutputState }
+
+func (GetObjectStorageQuotasQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetObjectStorageQuotasQuota)(nil)).Elem()
+}
+
+func (o GetObjectStorageQuotasQuotaOutput) ToGetObjectStorageQuotasQuotaOutput() GetObjectStorageQuotasQuotaOutput {
+	return o
+}
+
+func (o GetObjectStorageQuotasQuotaOutput) ToGetObjectStorageQuotasQuotaOutputWithContext(ctx context.Context) GetObjectStorageQuotasQuotaOutput {
+	return o
+}
+
+// The description of the Object Storage quota.
+func (o GetObjectStorageQuotasQuotaOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotasQuota) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The type of the S3 endpoint of the Object Storage.
+func (o GetObjectStorageQuotasQuotaOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotasQuota) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The ID of the Object Storage quota.
+func (o GetObjectStorageQuotasQuotaOutput) QuotaId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotasQuota) string { return v.QuotaId }).(pulumi.StringOutput)
+}
+
+// The maximum quantity of the `resourceMetric` allowed by the quota.
+func (o GetObjectStorageQuotasQuotaOutput) QuotaLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotasQuota) int { return v.QuotaLimit }).(pulumi.IntOutput)
+}
+
+// The name of the Object Storage quota.
+func (o GetObjectStorageQuotasQuotaOutput) QuotaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotasQuota) string { return v.QuotaName }).(pulumi.StringOutput)
+}
+
+// The specific Object Storage resource for the quota.
+func (o GetObjectStorageQuotasQuotaOutput) ResourceMetric() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotasQuota) string { return v.ResourceMetric }).(pulumi.StringOutput)
+}
+
+// The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
+func (o GetObjectStorageQuotasQuotaOutput) S3Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotasQuota) string { return v.S3Endpoint }).(pulumi.StringOutput)
+}
+
+type GetObjectStorageQuotasQuotaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetObjectStorageQuotasQuotaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetObjectStorageQuotasQuota)(nil)).Elem()
+}
+
+func (o GetObjectStorageQuotasQuotaArrayOutput) ToGetObjectStorageQuotasQuotaArrayOutput() GetObjectStorageQuotasQuotaArrayOutput {
+	return o
+}
+
+func (o GetObjectStorageQuotasQuotaArrayOutput) ToGetObjectStorageQuotasQuotaArrayOutputWithContext(ctx context.Context) GetObjectStorageQuotasQuotaArrayOutput {
+	return o
+}
+
+func (o GetObjectStorageQuotasQuotaArrayOutput) Index(i pulumi.IntInput) GetObjectStorageQuotasQuotaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetObjectStorageQuotasQuota {
+		return vs[0].([]GetObjectStorageQuotasQuota)[vs[1].(int)]
+	}).(GetObjectStorageQuotasQuotaOutput)
 }
 
 type GetPlacementGroupMember struct {
@@ -38102,6 +38429,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageEndpointsEndpointArrayInput)(nil)).Elem(), GetObjectStorageEndpointsEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageEndpointsFilterInput)(nil)).Elem(), GetObjectStorageEndpointsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageEndpointsFilterArrayInput)(nil)).Elem(), GetObjectStorageEndpointsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageQuotaQuotaUsageInput)(nil)).Elem(), GetObjectStorageQuotaQuotaUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageQuotasFilterInput)(nil)).Elem(), GetObjectStorageQuotasFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageQuotasFilterArrayInput)(nil)).Elem(), GetObjectStorageQuotasFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageQuotasQuotaInput)(nil)).Elem(), GetObjectStorageQuotasQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetObjectStorageQuotasQuotaArrayInput)(nil)).Elem(), GetObjectStorageQuotasQuotaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMemberInput)(nil)).Elem(), GetPlacementGroupMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMemberArrayInput)(nil)).Elem(), GetPlacementGroupMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsInput)(nil)).Elem(), GetPlacementGroupMigrationsArgs{})
@@ -38651,6 +38983,11 @@ func init() {
 	pulumi.RegisterOutputType(GetObjectStorageEndpointsEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetObjectStorageEndpointsFilterOutput{})
 	pulumi.RegisterOutputType(GetObjectStorageEndpointsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetObjectStorageQuotaQuotaUsageOutput{})
+	pulumi.RegisterOutputType(GetObjectStorageQuotasFilterOutput{})
+	pulumi.RegisterOutputType(GetObjectStorageQuotasFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetObjectStorageQuotasQuotaOutput{})
+	pulumi.RegisterOutputType(GetObjectStorageQuotasQuotaArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMemberOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMigrationsOutput{})

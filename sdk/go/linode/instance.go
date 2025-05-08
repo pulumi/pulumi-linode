@@ -208,12 +208,14 @@ type Instance struct {
 	// must be declared in the config block.
 	Interfaces InstanceInterfaceArrayOutput `pulumi:"interfaces"`
 	// A string containing the Linode's public IP address.
+	//
+	// Deprecated: The `ipAddress` attribute in Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `getInstanceNetworking` data source instead.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// A set of reserved IPv4 addresses to assign to this Linode on creation.
 	//
 	// * **NOTE: IP reservation is not currently available to all users.**
 	Ipv4s pulumi.StringArrayOutput `pulumi:"ipv4s"`
-	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
 	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringOutput `pulumi:"label"`
@@ -371,12 +373,14 @@ type instanceState struct {
 	// must be declared in the config block.
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
 	// A string containing the Linode's public IP address.
+	//
+	// Deprecated: The `ipAddress` attribute in Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `getInstanceNetworking` data source instead.
 	IpAddress *string `pulumi:"ipAddress"`
 	// A set of reserved IPv4 addresses to assign to this Linode on creation.
 	//
 	// * **NOTE: IP reservation is not currently available to all users.**
 	Ipv4s []string `pulumi:"ipv4s"`
-	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
 	Ipv6 *string `pulumi:"ipv6"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label *string `pulumi:"label"`
@@ -491,12 +495,14 @@ type InstanceState struct {
 	// must be declared in the config block.
 	Interfaces InstanceInterfaceArrayInput
 	// A string containing the Linode's public IP address.
+	//
+	// Deprecated: The `ipAddress` attribute in Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `getInstanceNetworking` data source instead.
 	IpAddress pulumi.StringPtrInput
 	// A set of reserved IPv4 addresses to assign to this Linode on creation.
 	//
 	// * **NOTE: IP reservation is not currently available to all users.**
 	Ipv4s pulumi.StringArrayInput
-	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
 	Ipv6 pulumi.StringPtrInput
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringPtrInput
@@ -956,6 +962,8 @@ func (o InstanceOutput) Interfaces() InstanceInterfaceArrayOutput {
 }
 
 // A string containing the Linode's public IP address.
+//
+// Deprecated: The `ipAddress` attribute in Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `getInstanceNetworking` data source instead.
 func (o InstanceOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
@@ -967,7 +975,7 @@ func (o InstanceOutput) Ipv4s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Ipv4s }).(pulumi.StringArrayOutput)
 }
 
-// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/64`) is included in this attribute.
+// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
 func (o InstanceOutput) Ipv6() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Ipv6 }).(pulumi.StringOutput)
 }

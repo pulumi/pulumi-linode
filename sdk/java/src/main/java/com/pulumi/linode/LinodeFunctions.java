@@ -105,6 +105,10 @@ import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
 import com.pulumi.linode.inputs.GetObjectStorageClusterPlainArgs;
 import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
 import com.pulumi.linode.inputs.GetObjectStorageEndpointsPlainArgs;
+import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
+import com.pulumi.linode.inputs.GetObjectStorageQuotaPlainArgs;
+import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
+import com.pulumi.linode.inputs.GetObjectStorageQuotasPlainArgs;
 import com.pulumi.linode.inputs.GetPlacementGroupArgs;
 import com.pulumi.linode.inputs.GetPlacementGroupPlainArgs;
 import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
@@ -193,6 +197,8 @@ import com.pulumi.linode.outputs.GetNodebalancerConfigsResult;
 import com.pulumi.linode.outputs.GetNodebalancersResult;
 import com.pulumi.linode.outputs.GetObjectStorageClusterResult;
 import com.pulumi.linode.outputs.GetObjectStorageEndpointsResult;
+import com.pulumi.linode.outputs.GetObjectStorageQuotaResult;
+import com.pulumi.linode.outputs.GetObjectStorageQuotasResult;
 import com.pulumi.linode.outputs.GetPlacementGroupResult;
 import com.pulumi.linode.outputs.GetPlacementGroupsResult;
 import com.pulumi.linode.outputs.GetProfileResult;
@@ -19270,6 +19276,679 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetObjectStorageEndpointsResult> getObjectStorageEndpointsPlain(GetObjectStorageEndpointsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", TypeShape.of(GetObjectStorageEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about Object Storage quota information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an Object Storage quota.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuota = LinodeFunctions.getObjectStorageQuota(GetObjectStorageQuotaArgs.builder()
+     *             .quotaId("obj-buckets-br-gru-1.linodeobjects.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetObjectStorageQuotaResult> getObjectStorageQuota(GetObjectStorageQuotaArgs args) {
+        return getObjectStorageQuota(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about Object Storage quota information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an Object Storage quota.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuota = LinodeFunctions.getObjectStorageQuota(GetObjectStorageQuotaArgs.builder()
+     *             .quotaId("obj-buckets-br-gru-1.linodeobjects.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageQuotaResult> getObjectStorageQuotaPlain(GetObjectStorageQuotaPlainArgs args) {
+        return getObjectStorageQuotaPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about Object Storage quota information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an Object Storage quota.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuota = LinodeFunctions.getObjectStorageQuota(GetObjectStorageQuotaArgs.builder()
+     *             .quotaId("obj-buckets-br-gru-1.linodeobjects.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetObjectStorageQuotaResult> getObjectStorageQuota(GetObjectStorageQuotaArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getObjectStorageQuota:getObjectStorageQuota", TypeShape.of(GetObjectStorageQuotaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about Object Storage quota information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an Object Storage quota.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuota = LinodeFunctions.getObjectStorageQuota(GetObjectStorageQuotaArgs.builder()
+     *             .quotaId("obj-buckets-br-gru-1.linodeobjects.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetObjectStorageQuotaResult> getObjectStorageQuota(GetObjectStorageQuotaArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getObjectStorageQuota:getObjectStorageQuota", TypeShape.of(GetObjectStorageQuotaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about Object Storage quota information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an Object Storage quota.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuota = LinodeFunctions.getObjectStorageQuota(GetObjectStorageQuotaArgs.builder()
+     *             .quotaId("obj-buckets-br-gru-1.linodeobjects.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageQuotaResult> getObjectStorageQuotaPlain(GetObjectStorageQuotaPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageQuota:getObjectStorageQuota", TypeShape.of(GetObjectStorageQuotaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a list of Object Storage quotas information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter information about Object Storage quotas.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var maxBucketsQuotas = LinodeFunctions.getObjectStorageQuotas(GetObjectStorageQuotasArgs.builder()
+     *             .filters(GetObjectStorageQuotasFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quota_id`
+     * 
+     * * `quota_name`
+     * 
+     * * `endpoint_type`
+     * 
+     * * `s3_endpoint`
+     * 
+     * * `description`
+     * 
+     * * `quota_limit`
+     * 
+     * * `resource_metric`
+     * 
+     */
+    public static Output<GetObjectStorageQuotasResult> getObjectStorageQuotas() {
+        return getObjectStorageQuotas(GetObjectStorageQuotasArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a list of Object Storage quotas information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter information about Object Storage quotas.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var maxBucketsQuotas = LinodeFunctions.getObjectStorageQuotas(GetObjectStorageQuotasArgs.builder()
+     *             .filters(GetObjectStorageQuotasFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quota_id`
+     * 
+     * * `quota_name`
+     * 
+     * * `endpoint_type`
+     * 
+     * * `s3_endpoint`
+     * 
+     * * `description`
+     * 
+     * * `quota_limit`
+     * 
+     * * `resource_metric`
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageQuotasResult> getObjectStorageQuotasPlain() {
+        return getObjectStorageQuotasPlain(GetObjectStorageQuotasPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a list of Object Storage quotas information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter information about Object Storage quotas.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var maxBucketsQuotas = LinodeFunctions.getObjectStorageQuotas(GetObjectStorageQuotasArgs.builder()
+     *             .filters(GetObjectStorageQuotasFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quota_id`
+     * 
+     * * `quota_name`
+     * 
+     * * `endpoint_type`
+     * 
+     * * `s3_endpoint`
+     * 
+     * * `description`
+     * 
+     * * `quota_limit`
+     * 
+     * * `resource_metric`
+     * 
+     */
+    public static Output<GetObjectStorageQuotasResult> getObjectStorageQuotas(GetObjectStorageQuotasArgs args) {
+        return getObjectStorageQuotas(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a list of Object Storage quotas information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter information about Object Storage quotas.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var maxBucketsQuotas = LinodeFunctions.getObjectStorageQuotas(GetObjectStorageQuotasArgs.builder()
+     *             .filters(GetObjectStorageQuotasFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quota_id`
+     * 
+     * * `quota_name`
+     * 
+     * * `endpoint_type`
+     * 
+     * * `s3_endpoint`
+     * 
+     * * `description`
+     * 
+     * * `quota_limit`
+     * 
+     * * `resource_metric`
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageQuotasResult> getObjectStorageQuotasPlain(GetObjectStorageQuotasPlainArgs args) {
+        return getObjectStorageQuotasPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a list of Object Storage quotas information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter information about Object Storage quotas.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var maxBucketsQuotas = LinodeFunctions.getObjectStorageQuotas(GetObjectStorageQuotasArgs.builder()
+     *             .filters(GetObjectStorageQuotasFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quota_id`
+     * 
+     * * `quota_name`
+     * 
+     * * `endpoint_type`
+     * 
+     * * `s3_endpoint`
+     * 
+     * * `description`
+     * 
+     * * `quota_limit`
+     * 
+     * * `resource_metric`
+     * 
+     */
+    public static Output<GetObjectStorageQuotasResult> getObjectStorageQuotas(GetObjectStorageQuotasArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", TypeShape.of(GetObjectStorageQuotasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a list of Object Storage quotas information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter information about Object Storage quotas.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var maxBucketsQuotas = LinodeFunctions.getObjectStorageQuotas(GetObjectStorageQuotasArgs.builder()
+     *             .filters(GetObjectStorageQuotasFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quota_id`
+     * 
+     * * `quota_name`
+     * 
+     * * `endpoint_type`
+     * 
+     * * `s3_endpoint`
+     * 
+     * * `description`
+     * 
+     * * `quota_limit`
+     * 
+     * * `resource_metric`
+     * 
+     */
+    public static Output<GetObjectStorageQuotasResult> getObjectStorageQuotas(GetObjectStorageQuotasArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", TypeShape.of(GetObjectStorageQuotasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a list of Object Storage quotas information on your account.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter information about Object Storage quotas.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var maxBucketsQuotas = LinodeFunctions.getObjectStorageQuotas(GetObjectStorageQuotasArgs.builder()
+     *             .filters(GetObjectStorageQuotasFilterArgs.builder()
+     *                 .name("endpoint_type")
+     *                 .values("E0")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quota_id`
+     * 
+     * * `quota_name`
+     * 
+     * * `endpoint_type`
+     * 
+     * * `s3_endpoint`
+     * 
+     * * `description`
+     * 
+     * * `quota_limit`
+     * 
+     * * `resource_metric`
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageQuotasResult> getObjectStorageQuotasPlain(GetObjectStorageQuotasPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", TypeShape.of(GetObjectStorageQuotasResult.class), args, Utilities.withVersion(options));
     }
     /**
      * `linode.PlacementGroup` provides details about a Linode placement group.

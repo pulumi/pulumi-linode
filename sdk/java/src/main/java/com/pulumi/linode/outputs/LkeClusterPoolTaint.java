@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class LkeClusterPoolTaint {
     /**
-     * @return The Kubernetes taint effect.
+     * @return The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      * 
      */
     private String effect;
@@ -23,12 +23,14 @@ public final class LkeClusterPoolTaint {
     /**
      * @return The Kubernetes taint value.
      * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * 
      */
     private String value;
 
     private LkeClusterPoolTaint() {}
     /**
-     * @return The Kubernetes taint effect.
+     * @return The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
      * 
      */
     public String effect() {
@@ -43,6 +45,8 @@ public final class LkeClusterPoolTaint {
     }
     /**
      * @return The Kubernetes taint value.
+     * 
+     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
      * 
      */
     public String value() {
