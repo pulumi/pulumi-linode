@@ -106,6 +106,194 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
      */
     public /*out*/ readonly engine!: pulumi.Output<string>;
     /**
+     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     */
+    public readonly engineConfigPgAutovacuumAnalyzeScaleFactor!: pulumi.Output<number>;
+    /**
+     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     */
+    public readonly engineConfigPgAutovacuumAnalyzeThreshold!: pulumi.Output<number>;
+    /**
+     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     */
+    public readonly engineConfigPgAutovacuumMaxWorkers!: pulumi.Output<number>;
+    /**
+     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     */
+    public readonly engineConfigPgAutovacuumNaptime!: pulumi.Output<number>;
+    /**
+     * Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+     */
+    public readonly engineConfigPgAutovacuumVacuumCostDelay!: pulumi.Output<number>;
+    /**
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+     */
+    public readonly engineConfigPgAutovacuumVacuumCostLimit!: pulumi.Output<number>;
+    /**
+     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     */
+    public readonly engineConfigPgAutovacuumVacuumScaleFactor!: pulumi.Output<number>;
+    /**
+     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     */
+    public readonly engineConfigPgAutovacuumVacuumThreshold!: pulumi.Output<number>;
+    /**
+     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     */
+    public readonly engineConfigPgBgwriterDelay!: pulumi.Output<number>;
+    /**
+     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     */
+    public readonly engineConfigPgBgwriterFlushAfter!: pulumi.Output<number>;
+    /**
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     */
+    public readonly engineConfigPgBgwriterLruMaxpages!: pulumi.Output<number>;
+    /**
+     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     */
+    public readonly engineConfigPgBgwriterLruMultiplier!: pulumi.Output<number>;
+    /**
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     */
+    public readonly engineConfigPgDeadlockTimeout!: pulumi.Output<number>;
+    /**
+     * Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     */
+    public readonly engineConfigPgDefaultToastCompression!: pulumi.Output<string>;
+    /**
+     * Time out sessions with open transactions after this number of milliseconds.
+     */
+    public readonly engineConfigPgIdleInTransactionSessionTimeout!: pulumi.Output<number>;
+    /**
+     * Controls system-wide use of Just-in-Time Compilation (JIT).
+     */
+    public readonly engineConfigPgJit!: pulumi.Output<boolean>;
+    /**
+     * PostgreSQL maximum number of files that can be open per process.
+     */
+    public readonly engineConfigPgMaxFilesPerProcess!: pulumi.Output<number>;
+    /**
+     * PostgreSQL maximum locks per transaction.
+     */
+    public readonly engineConfigPgMaxLocksPerTransaction!: pulumi.Output<number>;
+    /**
+     * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     */
+    public readonly engineConfigPgMaxLogicalReplicationWorkers!: pulumi.Output<number>;
+    /**
+     * Sets the maximum number of workers that the system can support for parallel queries.
+     */
+    public readonly engineConfigPgMaxParallelWorkers!: pulumi.Output<number>;
+    /**
+     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     */
+    public readonly engineConfigPgMaxParallelWorkersPerGather!: pulumi.Output<number>;
+    /**
+     * PostgreSQL maximum predicate locks per transaction.
+     */
+    public readonly engineConfigPgMaxPredLocksPerTransaction!: pulumi.Output<number>;
+    /**
+     * PostgreSQL maximum replication slots.
+     */
+    public readonly engineConfigPgMaxReplicationSlots!: pulumi.Output<number>;
+    /**
+     * PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+     */
+    public readonly engineConfigPgMaxSlotWalKeepSize!: pulumi.Output<number>;
+    /**
+     * Maximum depth of the stack in bytes.
+     */
+    public readonly engineConfigPgMaxStackDepth!: pulumi.Output<number>;
+    /**
+     * Max standby archive delay in milliseconds.
+     */
+    public readonly engineConfigPgMaxStandbyArchiveDelay!: pulumi.Output<number>;
+    /**
+     * Max standby streaming delay in milliseconds.
+     */
+    public readonly engineConfigPgMaxStandbyStreamingDelay!: pulumi.Output<number>;
+    /**
+     * PostgreSQL maximum WAL senders.
+     */
+    public readonly engineConfigPgMaxWalSenders!: pulumi.Output<number>;
+    /**
+     * Sets the maximum number of background processes that the system can support.
+     */
+    public readonly engineConfigPgMaxWorkerProcesses!: pulumi.Output<number>;
+    /**
+     * Chooses the algorithm for encrypting passwords. (default `md5`)
+     */
+    public readonly engineConfigPgPasswordEncryption!: pulumi.Output<string>;
+    /**
+     * Sets the time interval to run pg_partman's scheduled tasks.
+     */
+    public readonly engineConfigPgPgPartmanBgwInterval!: pulumi.Output<number>;
+    /**
+     * Controls which role to use for pg_partman's scheduled background tasks.
+     */
+    public readonly engineConfigPgPgPartmanBgwRole!: pulumi.Output<string>;
+    /**
+     * Enables or disables query plan monitoring.
+     */
+    public readonly engineConfigPgPgStatMonitorPgsmEnableQueryPlan!: pulumi.Output<boolean>;
+    /**
+     * Sets the maximum number of buckets.
+     */
+    public readonly engineConfigPgPgStatMonitorPgsmMaxBuckets!: pulumi.Output<number>;
+    /**
+     * Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     */
+    public readonly engineConfigPgPgStatStatementsTrack!: pulumi.Output<string>;
+    /**
+     * Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pgStatStatements results for utility commands are unreliable. (default `false`)
+     */
+    public readonly engineConfigPgStatMonitorEnable!: pulumi.Output<boolean>;
+    /**
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     */
+    public readonly engineConfigPgTempFileLimit!: pulumi.Output<number>;
+    /**
+     * PostgreSQL service timezone.
+     */
+    public readonly engineConfigPgTimezone!: pulumi.Output<string>;
+    /**
+     * Specifies the number of bytes reserved to track the currently executing command for each active session.
+     */
+    public readonly engineConfigPgTrackActivityQuerySize!: pulumi.Output<number>;
+    /**
+     * Record commit time of transactions.
+     */
+    public readonly engineConfigPgTrackCommitTimestamp!: pulumi.Output<string>;
+    /**
+     * Enables tracking of function call counts and time used.
+     */
+    public readonly engineConfigPgTrackFunctions!: pulumi.Output<string>;
+    /**
+     * Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     */
+    public readonly engineConfigPgTrackIoTiming!: pulumi.Output<string>;
+    /**
+     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     */
+    public readonly engineConfigPgWalSenderTimeout!: pulumi.Output<number>;
+    /**
+     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     */
+    public readonly engineConfigPgWalWriterDelay!: pulumi.Output<number>;
+    /**
+     * Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+     */
+    public readonly engineConfigPglookoutMaxFailoverReplicationTimeLag!: pulumi.Output<number>;
+    /**
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
+     */
+    public readonly engineConfigSharedBuffersPercentage!: pulumi.Output<number>;
+    /**
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     */
+    public readonly engineConfigWorkMem!: pulumi.Output<number>;
+    /**
      * The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
      */
     public readonly engineId!: pulumi.Output<string>;
@@ -214,6 +402,53 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["encrypted"] = state ? state.encrypted : undefined;
             resourceInputs["engine"] = state ? state.engine : undefined;
+            resourceInputs["engineConfigPgAutovacuumAnalyzeScaleFactor"] = state ? state.engineConfigPgAutovacuumAnalyzeScaleFactor : undefined;
+            resourceInputs["engineConfigPgAutovacuumAnalyzeThreshold"] = state ? state.engineConfigPgAutovacuumAnalyzeThreshold : undefined;
+            resourceInputs["engineConfigPgAutovacuumMaxWorkers"] = state ? state.engineConfigPgAutovacuumMaxWorkers : undefined;
+            resourceInputs["engineConfigPgAutovacuumNaptime"] = state ? state.engineConfigPgAutovacuumNaptime : undefined;
+            resourceInputs["engineConfigPgAutovacuumVacuumCostDelay"] = state ? state.engineConfigPgAutovacuumVacuumCostDelay : undefined;
+            resourceInputs["engineConfigPgAutovacuumVacuumCostLimit"] = state ? state.engineConfigPgAutovacuumVacuumCostLimit : undefined;
+            resourceInputs["engineConfigPgAutovacuumVacuumScaleFactor"] = state ? state.engineConfigPgAutovacuumVacuumScaleFactor : undefined;
+            resourceInputs["engineConfigPgAutovacuumVacuumThreshold"] = state ? state.engineConfigPgAutovacuumVacuumThreshold : undefined;
+            resourceInputs["engineConfigPgBgwriterDelay"] = state ? state.engineConfigPgBgwriterDelay : undefined;
+            resourceInputs["engineConfigPgBgwriterFlushAfter"] = state ? state.engineConfigPgBgwriterFlushAfter : undefined;
+            resourceInputs["engineConfigPgBgwriterLruMaxpages"] = state ? state.engineConfigPgBgwriterLruMaxpages : undefined;
+            resourceInputs["engineConfigPgBgwriterLruMultiplier"] = state ? state.engineConfigPgBgwriterLruMultiplier : undefined;
+            resourceInputs["engineConfigPgDeadlockTimeout"] = state ? state.engineConfigPgDeadlockTimeout : undefined;
+            resourceInputs["engineConfigPgDefaultToastCompression"] = state ? state.engineConfigPgDefaultToastCompression : undefined;
+            resourceInputs["engineConfigPgIdleInTransactionSessionTimeout"] = state ? state.engineConfigPgIdleInTransactionSessionTimeout : undefined;
+            resourceInputs["engineConfigPgJit"] = state ? state.engineConfigPgJit : undefined;
+            resourceInputs["engineConfigPgMaxFilesPerProcess"] = state ? state.engineConfigPgMaxFilesPerProcess : undefined;
+            resourceInputs["engineConfigPgMaxLocksPerTransaction"] = state ? state.engineConfigPgMaxLocksPerTransaction : undefined;
+            resourceInputs["engineConfigPgMaxLogicalReplicationWorkers"] = state ? state.engineConfigPgMaxLogicalReplicationWorkers : undefined;
+            resourceInputs["engineConfigPgMaxParallelWorkers"] = state ? state.engineConfigPgMaxParallelWorkers : undefined;
+            resourceInputs["engineConfigPgMaxParallelWorkersPerGather"] = state ? state.engineConfigPgMaxParallelWorkersPerGather : undefined;
+            resourceInputs["engineConfigPgMaxPredLocksPerTransaction"] = state ? state.engineConfigPgMaxPredLocksPerTransaction : undefined;
+            resourceInputs["engineConfigPgMaxReplicationSlots"] = state ? state.engineConfigPgMaxReplicationSlots : undefined;
+            resourceInputs["engineConfigPgMaxSlotWalKeepSize"] = state ? state.engineConfigPgMaxSlotWalKeepSize : undefined;
+            resourceInputs["engineConfigPgMaxStackDepth"] = state ? state.engineConfigPgMaxStackDepth : undefined;
+            resourceInputs["engineConfigPgMaxStandbyArchiveDelay"] = state ? state.engineConfigPgMaxStandbyArchiveDelay : undefined;
+            resourceInputs["engineConfigPgMaxStandbyStreamingDelay"] = state ? state.engineConfigPgMaxStandbyStreamingDelay : undefined;
+            resourceInputs["engineConfigPgMaxWalSenders"] = state ? state.engineConfigPgMaxWalSenders : undefined;
+            resourceInputs["engineConfigPgMaxWorkerProcesses"] = state ? state.engineConfigPgMaxWorkerProcesses : undefined;
+            resourceInputs["engineConfigPgPasswordEncryption"] = state ? state.engineConfigPgPasswordEncryption : undefined;
+            resourceInputs["engineConfigPgPgPartmanBgwInterval"] = state ? state.engineConfigPgPgPartmanBgwInterval : undefined;
+            resourceInputs["engineConfigPgPgPartmanBgwRole"] = state ? state.engineConfigPgPgPartmanBgwRole : undefined;
+            resourceInputs["engineConfigPgPgStatMonitorPgsmEnableQueryPlan"] = state ? state.engineConfigPgPgStatMonitorPgsmEnableQueryPlan : undefined;
+            resourceInputs["engineConfigPgPgStatMonitorPgsmMaxBuckets"] = state ? state.engineConfigPgPgStatMonitorPgsmMaxBuckets : undefined;
+            resourceInputs["engineConfigPgPgStatStatementsTrack"] = state ? state.engineConfigPgPgStatStatementsTrack : undefined;
+            resourceInputs["engineConfigPgStatMonitorEnable"] = state ? state.engineConfigPgStatMonitorEnable : undefined;
+            resourceInputs["engineConfigPgTempFileLimit"] = state ? state.engineConfigPgTempFileLimit : undefined;
+            resourceInputs["engineConfigPgTimezone"] = state ? state.engineConfigPgTimezone : undefined;
+            resourceInputs["engineConfigPgTrackActivityQuerySize"] = state ? state.engineConfigPgTrackActivityQuerySize : undefined;
+            resourceInputs["engineConfigPgTrackCommitTimestamp"] = state ? state.engineConfigPgTrackCommitTimestamp : undefined;
+            resourceInputs["engineConfigPgTrackFunctions"] = state ? state.engineConfigPgTrackFunctions : undefined;
+            resourceInputs["engineConfigPgTrackIoTiming"] = state ? state.engineConfigPgTrackIoTiming : undefined;
+            resourceInputs["engineConfigPgWalSenderTimeout"] = state ? state.engineConfigPgWalSenderTimeout : undefined;
+            resourceInputs["engineConfigPgWalWriterDelay"] = state ? state.engineConfigPgWalWriterDelay : undefined;
+            resourceInputs["engineConfigPglookoutMaxFailoverReplicationTimeLag"] = state ? state.engineConfigPglookoutMaxFailoverReplicationTimeLag : undefined;
+            resourceInputs["engineConfigSharedBuffersPercentage"] = state ? state.engineConfigSharedBuffersPercentage : undefined;
+            resourceInputs["engineConfigWorkMem"] = state ? state.engineConfigWorkMem : undefined;
             resourceInputs["engineId"] = state ? state.engineId : undefined;
             resourceInputs["forkRestoreTime"] = state ? state.forkRestoreTime : undefined;
             resourceInputs["forkSource"] = state ? state.forkSource : undefined;
@@ -252,6 +487,53 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
             }
             resourceInputs["allowLists"] = args ? args.allowLists : undefined;
             resourceInputs["clusterSize"] = args ? args.clusterSize : undefined;
+            resourceInputs["engineConfigPgAutovacuumAnalyzeScaleFactor"] = args ? args.engineConfigPgAutovacuumAnalyzeScaleFactor : undefined;
+            resourceInputs["engineConfigPgAutovacuumAnalyzeThreshold"] = args ? args.engineConfigPgAutovacuumAnalyzeThreshold : undefined;
+            resourceInputs["engineConfigPgAutovacuumMaxWorkers"] = args ? args.engineConfigPgAutovacuumMaxWorkers : undefined;
+            resourceInputs["engineConfigPgAutovacuumNaptime"] = args ? args.engineConfigPgAutovacuumNaptime : undefined;
+            resourceInputs["engineConfigPgAutovacuumVacuumCostDelay"] = args ? args.engineConfigPgAutovacuumVacuumCostDelay : undefined;
+            resourceInputs["engineConfigPgAutovacuumVacuumCostLimit"] = args ? args.engineConfigPgAutovacuumVacuumCostLimit : undefined;
+            resourceInputs["engineConfigPgAutovacuumVacuumScaleFactor"] = args ? args.engineConfigPgAutovacuumVacuumScaleFactor : undefined;
+            resourceInputs["engineConfigPgAutovacuumVacuumThreshold"] = args ? args.engineConfigPgAutovacuumVacuumThreshold : undefined;
+            resourceInputs["engineConfigPgBgwriterDelay"] = args ? args.engineConfigPgBgwriterDelay : undefined;
+            resourceInputs["engineConfigPgBgwriterFlushAfter"] = args ? args.engineConfigPgBgwriterFlushAfter : undefined;
+            resourceInputs["engineConfigPgBgwriterLruMaxpages"] = args ? args.engineConfigPgBgwriterLruMaxpages : undefined;
+            resourceInputs["engineConfigPgBgwriterLruMultiplier"] = args ? args.engineConfigPgBgwriterLruMultiplier : undefined;
+            resourceInputs["engineConfigPgDeadlockTimeout"] = args ? args.engineConfigPgDeadlockTimeout : undefined;
+            resourceInputs["engineConfigPgDefaultToastCompression"] = args ? args.engineConfigPgDefaultToastCompression : undefined;
+            resourceInputs["engineConfigPgIdleInTransactionSessionTimeout"] = args ? args.engineConfigPgIdleInTransactionSessionTimeout : undefined;
+            resourceInputs["engineConfigPgJit"] = args ? args.engineConfigPgJit : undefined;
+            resourceInputs["engineConfigPgMaxFilesPerProcess"] = args ? args.engineConfigPgMaxFilesPerProcess : undefined;
+            resourceInputs["engineConfigPgMaxLocksPerTransaction"] = args ? args.engineConfigPgMaxLocksPerTransaction : undefined;
+            resourceInputs["engineConfigPgMaxLogicalReplicationWorkers"] = args ? args.engineConfigPgMaxLogicalReplicationWorkers : undefined;
+            resourceInputs["engineConfigPgMaxParallelWorkers"] = args ? args.engineConfigPgMaxParallelWorkers : undefined;
+            resourceInputs["engineConfigPgMaxParallelWorkersPerGather"] = args ? args.engineConfigPgMaxParallelWorkersPerGather : undefined;
+            resourceInputs["engineConfigPgMaxPredLocksPerTransaction"] = args ? args.engineConfigPgMaxPredLocksPerTransaction : undefined;
+            resourceInputs["engineConfigPgMaxReplicationSlots"] = args ? args.engineConfigPgMaxReplicationSlots : undefined;
+            resourceInputs["engineConfigPgMaxSlotWalKeepSize"] = args ? args.engineConfigPgMaxSlotWalKeepSize : undefined;
+            resourceInputs["engineConfigPgMaxStackDepth"] = args ? args.engineConfigPgMaxStackDepth : undefined;
+            resourceInputs["engineConfigPgMaxStandbyArchiveDelay"] = args ? args.engineConfigPgMaxStandbyArchiveDelay : undefined;
+            resourceInputs["engineConfigPgMaxStandbyStreamingDelay"] = args ? args.engineConfigPgMaxStandbyStreamingDelay : undefined;
+            resourceInputs["engineConfigPgMaxWalSenders"] = args ? args.engineConfigPgMaxWalSenders : undefined;
+            resourceInputs["engineConfigPgMaxWorkerProcesses"] = args ? args.engineConfigPgMaxWorkerProcesses : undefined;
+            resourceInputs["engineConfigPgPasswordEncryption"] = args ? args.engineConfigPgPasswordEncryption : undefined;
+            resourceInputs["engineConfigPgPgPartmanBgwInterval"] = args ? args.engineConfigPgPgPartmanBgwInterval : undefined;
+            resourceInputs["engineConfigPgPgPartmanBgwRole"] = args ? args.engineConfigPgPgPartmanBgwRole : undefined;
+            resourceInputs["engineConfigPgPgStatMonitorPgsmEnableQueryPlan"] = args ? args.engineConfigPgPgStatMonitorPgsmEnableQueryPlan : undefined;
+            resourceInputs["engineConfigPgPgStatMonitorPgsmMaxBuckets"] = args ? args.engineConfigPgPgStatMonitorPgsmMaxBuckets : undefined;
+            resourceInputs["engineConfigPgPgStatStatementsTrack"] = args ? args.engineConfigPgPgStatStatementsTrack : undefined;
+            resourceInputs["engineConfigPgStatMonitorEnable"] = args ? args.engineConfigPgStatMonitorEnable : undefined;
+            resourceInputs["engineConfigPgTempFileLimit"] = args ? args.engineConfigPgTempFileLimit : undefined;
+            resourceInputs["engineConfigPgTimezone"] = args ? args.engineConfigPgTimezone : undefined;
+            resourceInputs["engineConfigPgTrackActivityQuerySize"] = args ? args.engineConfigPgTrackActivityQuerySize : undefined;
+            resourceInputs["engineConfigPgTrackCommitTimestamp"] = args ? args.engineConfigPgTrackCommitTimestamp : undefined;
+            resourceInputs["engineConfigPgTrackFunctions"] = args ? args.engineConfigPgTrackFunctions : undefined;
+            resourceInputs["engineConfigPgTrackIoTiming"] = args ? args.engineConfigPgTrackIoTiming : undefined;
+            resourceInputs["engineConfigPgWalSenderTimeout"] = args ? args.engineConfigPgWalSenderTimeout : undefined;
+            resourceInputs["engineConfigPgWalWriterDelay"] = args ? args.engineConfigPgWalWriterDelay : undefined;
+            resourceInputs["engineConfigPglookoutMaxFailoverReplicationTimeLag"] = args ? args.engineConfigPglookoutMaxFailoverReplicationTimeLag : undefined;
+            resourceInputs["engineConfigSharedBuffersPercentage"] = args ? args.engineConfigSharedBuffersPercentage : undefined;
+            resourceInputs["engineConfigWorkMem"] = args ? args.engineConfigWorkMem : undefined;
             resourceInputs["engineId"] = args ? args.engineId : undefined;
             resourceInputs["forkRestoreTime"] = args ? args.forkRestoreTime : undefined;
             resourceInputs["forkSource"] = args ? args.forkSource : undefined;
@@ -314,6 +596,194 @@ export interface DatabasePostgresqlV2State {
      * The Managed Database engine. (e.g. `postgresql`)
      */
     engine?: pulumi.Input<string>;
+    /**
+     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     */
+    engineConfigPgAutovacuumAnalyzeScaleFactor?: pulumi.Input<number>;
+    /**
+     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     */
+    engineConfigPgAutovacuumAnalyzeThreshold?: pulumi.Input<number>;
+    /**
+     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     */
+    engineConfigPgAutovacuumMaxWorkers?: pulumi.Input<number>;
+    /**
+     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     */
+    engineConfigPgAutovacuumNaptime?: pulumi.Input<number>;
+    /**
+     * Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+     */
+    engineConfigPgAutovacuumVacuumCostDelay?: pulumi.Input<number>;
+    /**
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+     */
+    engineConfigPgAutovacuumVacuumCostLimit?: pulumi.Input<number>;
+    /**
+     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     */
+    engineConfigPgAutovacuumVacuumScaleFactor?: pulumi.Input<number>;
+    /**
+     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     */
+    engineConfigPgAutovacuumVacuumThreshold?: pulumi.Input<number>;
+    /**
+     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     */
+    engineConfigPgBgwriterDelay?: pulumi.Input<number>;
+    /**
+     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     */
+    engineConfigPgBgwriterFlushAfter?: pulumi.Input<number>;
+    /**
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     */
+    engineConfigPgBgwriterLruMaxpages?: pulumi.Input<number>;
+    /**
+     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     */
+    engineConfigPgBgwriterLruMultiplier?: pulumi.Input<number>;
+    /**
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     */
+    engineConfigPgDeadlockTimeout?: pulumi.Input<number>;
+    /**
+     * Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     */
+    engineConfigPgDefaultToastCompression?: pulumi.Input<string>;
+    /**
+     * Time out sessions with open transactions after this number of milliseconds.
+     */
+    engineConfigPgIdleInTransactionSessionTimeout?: pulumi.Input<number>;
+    /**
+     * Controls system-wide use of Just-in-Time Compilation (JIT).
+     */
+    engineConfigPgJit?: pulumi.Input<boolean>;
+    /**
+     * PostgreSQL maximum number of files that can be open per process.
+     */
+    engineConfigPgMaxFilesPerProcess?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum locks per transaction.
+     */
+    engineConfigPgMaxLocksPerTransaction?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     */
+    engineConfigPgMaxLogicalReplicationWorkers?: pulumi.Input<number>;
+    /**
+     * Sets the maximum number of workers that the system can support for parallel queries.
+     */
+    engineConfigPgMaxParallelWorkers?: pulumi.Input<number>;
+    /**
+     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     */
+    engineConfigPgMaxParallelWorkersPerGather?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum predicate locks per transaction.
+     */
+    engineConfigPgMaxPredLocksPerTransaction?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum replication slots.
+     */
+    engineConfigPgMaxReplicationSlots?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+     */
+    engineConfigPgMaxSlotWalKeepSize?: pulumi.Input<number>;
+    /**
+     * Maximum depth of the stack in bytes.
+     */
+    engineConfigPgMaxStackDepth?: pulumi.Input<number>;
+    /**
+     * Max standby archive delay in milliseconds.
+     */
+    engineConfigPgMaxStandbyArchiveDelay?: pulumi.Input<number>;
+    /**
+     * Max standby streaming delay in milliseconds.
+     */
+    engineConfigPgMaxStandbyStreamingDelay?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum WAL senders.
+     */
+    engineConfigPgMaxWalSenders?: pulumi.Input<number>;
+    /**
+     * Sets the maximum number of background processes that the system can support.
+     */
+    engineConfigPgMaxWorkerProcesses?: pulumi.Input<number>;
+    /**
+     * Chooses the algorithm for encrypting passwords. (default `md5`)
+     */
+    engineConfigPgPasswordEncryption?: pulumi.Input<string>;
+    /**
+     * Sets the time interval to run pg_partman's scheduled tasks.
+     */
+    engineConfigPgPgPartmanBgwInterval?: pulumi.Input<number>;
+    /**
+     * Controls which role to use for pg_partman's scheduled background tasks.
+     */
+    engineConfigPgPgPartmanBgwRole?: pulumi.Input<string>;
+    /**
+     * Enables or disables query plan monitoring.
+     */
+    engineConfigPgPgStatMonitorPgsmEnableQueryPlan?: pulumi.Input<boolean>;
+    /**
+     * Sets the maximum number of buckets.
+     */
+    engineConfigPgPgStatMonitorPgsmMaxBuckets?: pulumi.Input<number>;
+    /**
+     * Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     */
+    engineConfigPgPgStatStatementsTrack?: pulumi.Input<string>;
+    /**
+     * Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pgStatStatements results for utility commands are unreliable. (default `false`)
+     */
+    engineConfigPgStatMonitorEnable?: pulumi.Input<boolean>;
+    /**
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     */
+    engineConfigPgTempFileLimit?: pulumi.Input<number>;
+    /**
+     * PostgreSQL service timezone.
+     */
+    engineConfigPgTimezone?: pulumi.Input<string>;
+    /**
+     * Specifies the number of bytes reserved to track the currently executing command for each active session.
+     */
+    engineConfigPgTrackActivityQuerySize?: pulumi.Input<number>;
+    /**
+     * Record commit time of transactions.
+     */
+    engineConfigPgTrackCommitTimestamp?: pulumi.Input<string>;
+    /**
+     * Enables tracking of function call counts and time used.
+     */
+    engineConfigPgTrackFunctions?: pulumi.Input<string>;
+    /**
+     * Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     */
+    engineConfigPgTrackIoTiming?: pulumi.Input<string>;
+    /**
+     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     */
+    engineConfigPgWalSenderTimeout?: pulumi.Input<number>;
+    /**
+     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     */
+    engineConfigPgWalWriterDelay?: pulumi.Input<number>;
+    /**
+     * Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+     */
+    engineConfigPglookoutMaxFailoverReplicationTimeLag?: pulumi.Input<number>;
+    /**
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
+     */
+    engineConfigSharedBuffersPercentage?: pulumi.Input<number>;
+    /**
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     */
+    engineConfigWorkMem?: pulumi.Input<number>;
     /**
      * The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
      */
@@ -417,6 +887,194 @@ export interface DatabasePostgresqlV2Args {
      * The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
      */
     clusterSize?: pulumi.Input<number>;
+    /**
+     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     */
+    engineConfigPgAutovacuumAnalyzeScaleFactor?: pulumi.Input<number>;
+    /**
+     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     */
+    engineConfigPgAutovacuumAnalyzeThreshold?: pulumi.Input<number>;
+    /**
+     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     */
+    engineConfigPgAutovacuumMaxWorkers?: pulumi.Input<number>;
+    /**
+     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     */
+    engineConfigPgAutovacuumNaptime?: pulumi.Input<number>;
+    /**
+     * Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+     */
+    engineConfigPgAutovacuumVacuumCostDelay?: pulumi.Input<number>;
+    /**
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+     */
+    engineConfigPgAutovacuumVacuumCostLimit?: pulumi.Input<number>;
+    /**
+     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     */
+    engineConfigPgAutovacuumVacuumScaleFactor?: pulumi.Input<number>;
+    /**
+     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     */
+    engineConfigPgAutovacuumVacuumThreshold?: pulumi.Input<number>;
+    /**
+     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     */
+    engineConfigPgBgwriterDelay?: pulumi.Input<number>;
+    /**
+     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     */
+    engineConfigPgBgwriterFlushAfter?: pulumi.Input<number>;
+    /**
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     */
+    engineConfigPgBgwriterLruMaxpages?: pulumi.Input<number>;
+    /**
+     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     */
+    engineConfigPgBgwriterLruMultiplier?: pulumi.Input<number>;
+    /**
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     */
+    engineConfigPgDeadlockTimeout?: pulumi.Input<number>;
+    /**
+     * Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     */
+    engineConfigPgDefaultToastCompression?: pulumi.Input<string>;
+    /**
+     * Time out sessions with open transactions after this number of milliseconds.
+     */
+    engineConfigPgIdleInTransactionSessionTimeout?: pulumi.Input<number>;
+    /**
+     * Controls system-wide use of Just-in-Time Compilation (JIT).
+     */
+    engineConfigPgJit?: pulumi.Input<boolean>;
+    /**
+     * PostgreSQL maximum number of files that can be open per process.
+     */
+    engineConfigPgMaxFilesPerProcess?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum locks per transaction.
+     */
+    engineConfigPgMaxLocksPerTransaction?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     */
+    engineConfigPgMaxLogicalReplicationWorkers?: pulumi.Input<number>;
+    /**
+     * Sets the maximum number of workers that the system can support for parallel queries.
+     */
+    engineConfigPgMaxParallelWorkers?: pulumi.Input<number>;
+    /**
+     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     */
+    engineConfigPgMaxParallelWorkersPerGather?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum predicate locks per transaction.
+     */
+    engineConfigPgMaxPredLocksPerTransaction?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum replication slots.
+     */
+    engineConfigPgMaxReplicationSlots?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+     */
+    engineConfigPgMaxSlotWalKeepSize?: pulumi.Input<number>;
+    /**
+     * Maximum depth of the stack in bytes.
+     */
+    engineConfigPgMaxStackDepth?: pulumi.Input<number>;
+    /**
+     * Max standby archive delay in milliseconds.
+     */
+    engineConfigPgMaxStandbyArchiveDelay?: pulumi.Input<number>;
+    /**
+     * Max standby streaming delay in milliseconds.
+     */
+    engineConfigPgMaxStandbyStreamingDelay?: pulumi.Input<number>;
+    /**
+     * PostgreSQL maximum WAL senders.
+     */
+    engineConfigPgMaxWalSenders?: pulumi.Input<number>;
+    /**
+     * Sets the maximum number of background processes that the system can support.
+     */
+    engineConfigPgMaxWorkerProcesses?: pulumi.Input<number>;
+    /**
+     * Chooses the algorithm for encrypting passwords. (default `md5`)
+     */
+    engineConfigPgPasswordEncryption?: pulumi.Input<string>;
+    /**
+     * Sets the time interval to run pg_partman's scheduled tasks.
+     */
+    engineConfigPgPgPartmanBgwInterval?: pulumi.Input<number>;
+    /**
+     * Controls which role to use for pg_partman's scheduled background tasks.
+     */
+    engineConfigPgPgPartmanBgwRole?: pulumi.Input<string>;
+    /**
+     * Enables or disables query plan monitoring.
+     */
+    engineConfigPgPgStatMonitorPgsmEnableQueryPlan?: pulumi.Input<boolean>;
+    /**
+     * Sets the maximum number of buckets.
+     */
+    engineConfigPgPgStatMonitorPgsmMaxBuckets?: pulumi.Input<number>;
+    /**
+     * Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     */
+    engineConfigPgPgStatStatementsTrack?: pulumi.Input<string>;
+    /**
+     * Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pgStatStatements results for utility commands are unreliable. (default `false`)
+     */
+    engineConfigPgStatMonitorEnable?: pulumi.Input<boolean>;
+    /**
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     */
+    engineConfigPgTempFileLimit?: pulumi.Input<number>;
+    /**
+     * PostgreSQL service timezone.
+     */
+    engineConfigPgTimezone?: pulumi.Input<string>;
+    /**
+     * Specifies the number of bytes reserved to track the currently executing command for each active session.
+     */
+    engineConfigPgTrackActivityQuerySize?: pulumi.Input<number>;
+    /**
+     * Record commit time of transactions.
+     */
+    engineConfigPgTrackCommitTimestamp?: pulumi.Input<string>;
+    /**
+     * Enables tracking of function call counts and time used.
+     */
+    engineConfigPgTrackFunctions?: pulumi.Input<string>;
+    /**
+     * Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     */
+    engineConfigPgTrackIoTiming?: pulumi.Input<string>;
+    /**
+     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     */
+    engineConfigPgWalSenderTimeout?: pulumi.Input<number>;
+    /**
+     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     */
+    engineConfigPgWalWriterDelay?: pulumi.Input<number>;
+    /**
+     * Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+     */
+    engineConfigPglookoutMaxFailoverReplicationTimeLag?: pulumi.Input<number>;
+    /**
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
+     */
+    engineConfigSharedBuffersPercentage?: pulumi.Input<number>;
+    /**
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     */
+    engineConfigWorkMem?: pulumi.Input<number>;
     /**
      * The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
      */

@@ -32,7 +32,7 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
-	"github.com/pulumi/pulumi-linode/provider/v4/pkg/version"
+	"github.com/pulumi/pulumi-linode/provider/v5/pkg/version"
 )
 
 // all of the token components used below.
@@ -108,7 +108,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:                "https://pulumi.io",
 		Repository:              "https://github.com/pulumi/pulumi-linode",
 		GitHubOrg:               "linode",
-		TFProviderModuleVersion: "v2",
+		TFProviderModuleVersion: "v3",
 		Version:                 version.Version,
 		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
 		DocRules: &tfbridge.DocRuleInfo{

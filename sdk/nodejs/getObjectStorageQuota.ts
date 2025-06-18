@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about Object Storage quota information on your account.
- * For more information, see the Linode APIv4 docs.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
  *
  * ## Example Usage
  *
@@ -66,7 +66,7 @@ export interface GetObjectStorageQuotaResult {
      */
     readonly quotaName: string;
     /**
-     * The usage data for a specific Object Storage related quota on your account.
+     * The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
      */
     readonly quotaUsage: outputs.GetObjectStorageQuotaQuotaUsage;
     /**
@@ -80,7 +80,7 @@ export interface GetObjectStorageQuotaResult {
 }
 /**
  * Provides details about Object Storage quota information on your account.
- * For more information, see the Linode APIv4 docs.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
  *
  * ## Example Usage
  *

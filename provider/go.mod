@@ -6,7 +6,6 @@ toolchain go1.23.5
 
 require (
 	github.com/linode/terraform-provider-linode/v3 v3.0.0
-	github.com/pulumi/pulumi-linode/provider/v4 v4.0.0-20250618062429-21d7f4439125
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.110.0
 	github.com/pulumi/pulumi/sdk/v3 v3.175.0
 )

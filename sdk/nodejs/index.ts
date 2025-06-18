@@ -115,6 +115,11 @@ export const getDatabaseMysqlBackups: typeof import("./getDatabaseMysqlBackups")
 export const getDatabaseMysqlBackupsOutput: typeof import("./getDatabaseMysqlBackups").getDatabaseMysqlBackupsOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseMysqlBackups","getDatabaseMysqlBackupsOutput"], () => require("./getDatabaseMysqlBackups"));
 
+export { GetDatabaseMysqlConfigResult } from "./getDatabaseMysqlConfig";
+export const getDatabaseMysqlConfig: typeof import("./getDatabaseMysqlConfig").getDatabaseMysqlConfig = null as any;
+export const getDatabaseMysqlConfigOutput: typeof import("./getDatabaseMysqlConfig").getDatabaseMysqlConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseMysqlConfig","getDatabaseMysqlConfigOutput"], () => require("./getDatabaseMysqlConfig"));
+
 export { GetDatabaseMysqlV2Args, GetDatabaseMysqlV2Result, GetDatabaseMysqlV2OutputArgs } from "./getDatabaseMysqlV2";
 export const getDatabaseMysqlV2: typeof import("./getDatabaseMysqlV2").getDatabaseMysqlV2 = null as any;
 export const getDatabaseMysqlV2Output: typeof import("./getDatabaseMysqlV2").getDatabaseMysqlV2Output = null as any;
@@ -124,6 +129,11 @@ export { GetDatabasePostgresqlArgs, GetDatabasePostgresqlResult, GetDatabasePost
 export const getDatabasePostgresql: typeof import("./getDatabasePostgresql").getDatabasePostgresql = null as any;
 export const getDatabasePostgresqlOutput: typeof import("./getDatabasePostgresql").getDatabasePostgresqlOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabasePostgresql","getDatabasePostgresqlOutput"], () => require("./getDatabasePostgresql"));
+
+export { GetDatabasePostgresqlConfigResult } from "./getDatabasePostgresqlConfig";
+export const getDatabasePostgresqlConfig: typeof import("./getDatabasePostgresqlConfig").getDatabasePostgresqlConfig = null as any;
+export const getDatabasePostgresqlConfigOutput: typeof import("./getDatabasePostgresqlConfig").getDatabasePostgresqlConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabasePostgresqlConfig","getDatabasePostgresqlConfigOutput"], () => require("./getDatabasePostgresqlConfig"));
 
 export { GetDatabasePostgresqlV2Args, GetDatabasePostgresqlV2Result, GetDatabasePostgresqlV2OutputArgs } from "./getDatabasePostgresqlV2";
 export const getDatabasePostgresqlV2: typeof import("./getDatabasePostgresqlV2").getDatabasePostgresqlV2 = null as any;

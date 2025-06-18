@@ -150,7 +150,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Information about this Linode's backups status.
      */
-    public /*out*/ readonly backups!: pulumi.Output<outputs.InstanceBackups>;
+    public /*out*/ readonly backups!: pulumi.Output<outputs.InstanceBackup[]>;
     /**
      * If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
      */
@@ -294,7 +294,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Information about the resources available to this Linode.
      */
-    public /*out*/ readonly specs!: pulumi.Output<outputs.InstanceSpecs>;
+    public /*out*/ readonly specs!: pulumi.Output<outputs.InstanceSpec[]>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
      * accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
@@ -464,7 +464,7 @@ export interface InstanceState {
     /**
      * Information about this Linode's backups status.
      */
-    backups?: pulumi.Input<inputs.InstanceBackups>;
+    backups?: pulumi.Input<pulumi.Input<inputs.InstanceBackup>[]>;
     /**
      * If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
      */
@@ -608,7 +608,7 @@ export interface InstanceState {
     /**
      * Information about the resources available to this Linode.
      */
-    specs?: pulumi.Input<inputs.InstanceSpecs>;
+    specs?: pulumi.Input<pulumi.Input<inputs.InstanceSpec>[]>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
      * accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.

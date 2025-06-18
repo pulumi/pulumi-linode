@@ -55,7 +55,7 @@ export interface GetProfileResult {
     /**
      * Credit Card information associated with this Account.
      */
-    readonly referrals: outputs.GetProfileReferrals;
+    readonly referrals: outputs.GetProfileReferral[];
     /**
      * If true, the user has restrictions on what can be accessed on the Account.
      */
