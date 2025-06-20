@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
+	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -60,6 +60,8 @@ type LookupNodeBalancerArgs struct {
 type LookupNodeBalancerResult struct {
 	// Throttle connections per second (0-20).
 	ClientConnThrottle int `pulumi:"clientConnThrottle"`
+	// Throttle UDP sessions per second (0-20).
+	ClientUdpSessThrottle int `pulumi:"clientUdpSessThrottle"`
 	// When this firewall was created.
 	Created   string                    `pulumi:"created"`
 	Firewalls []GetNodeBalancerFirewall `pulumi:"firewalls"`
@@ -120,6 +122,11 @@ func (o LookupNodeBalancerResultOutput) ToLookupNodeBalancerResultOutputWithCont
 // Throttle connections per second (0-20).
 func (o LookupNodeBalancerResultOutput) ClientConnThrottle() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) int { return v.ClientConnThrottle }).(pulumi.IntOutput)
+}
+
+// Throttle UDP sessions per second (0-20).
+func (o LookupNodeBalancerResultOutput) ClientUdpSessThrottle() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) int { return v.ClientUdpSessThrottle }).(pulumi.IntOutput)
 }
 
 // When this firewall was created.

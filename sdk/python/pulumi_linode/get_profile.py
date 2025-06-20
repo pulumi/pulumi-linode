@@ -47,8 +47,8 @@ class GetProfileResult:
         if lish_auth_method and not isinstance(lish_auth_method, str):
             raise TypeError("Expected argument 'lish_auth_method' to be a str")
         pulumi.set(__self__, "lish_auth_method", lish_auth_method)
-        if referrals and not isinstance(referrals, dict):
-            raise TypeError("Expected argument 'referrals' to be a dict")
+        if referrals and not isinstance(referrals, list):
+            raise TypeError("Expected argument 'referrals' to be a list")
         pulumi.set(__self__, "referrals", referrals)
         if restricted and not isinstance(restricted, bool):
             raise TypeError("Expected argument 'restricted' to be a bool")
@@ -110,7 +110,7 @@ class GetProfileResult:
 
     @property
     @pulumi.getter
-    def referrals(self) -> 'outputs.GetProfileReferralsResult':
+    def referrals(self) -> Sequence['outputs.GetProfileReferralResult']:
         """
         Credit Card information associated with this Account.
         """

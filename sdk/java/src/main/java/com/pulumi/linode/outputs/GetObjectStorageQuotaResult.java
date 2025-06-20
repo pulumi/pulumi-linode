@@ -39,7 +39,7 @@ public final class GetObjectStorageQuotaResult {
      */
     private String quotaName;
     /**
-     * @return The usage data for a specific Object Storage related quota on your account.
+     * @return The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
      * 
      */
     private GetObjectStorageQuotaQuotaUsage quotaUsage;
@@ -94,7 +94,7 @@ public final class GetObjectStorageQuotaResult {
         return this.quotaName;
     }
     /**
-     * @return The usage data for a specific Object Storage related quota on your account.
+     * @return The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
      * 
      */
     public GetObjectStorageQuotaQuotaUsage quotaUsage() {

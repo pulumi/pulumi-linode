@@ -599,7 +599,7 @@ class _InstanceState:
                  authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  backup_id: Optional[pulumi.Input[builtins.int]] = None,
-                 backups: Optional[pulumi.Input['InstanceBackupsArgs']] = None,
+                 backups: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBackupArgs']]]] = None,
                  backups_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  boot_config_label: Optional[pulumi.Input[builtins.str]] = None,
                  booted: Optional[pulumi.Input[builtins.bool]] = None,
@@ -628,7 +628,7 @@ class _InstanceState:
                  resize_disk: Optional[pulumi.Input[builtins.bool]] = None,
                  root_pass: Optional[pulumi.Input[builtins.str]] = None,
                  shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-                 specs: Optional[pulumi.Input['InstanceSpecsArgs']] = None,
+                 specs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSpecArgs']]]] = None,
                  stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
                  stackscript_id: Optional[pulumi.Input[builtins.int]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
@@ -646,7 +646,7 @@ class _InstanceState:
                must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
                /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
                exclusive.
-        :param pulumi.Input['InstanceBackupsArgs'] backups: Information about this Linode's backups status.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceBackupArgs']]] backups: Information about this Linode's backups status.
         :param pulumi.Input[builtins.bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[builtins.str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[builtins.bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
@@ -696,7 +696,7 @@ class _InstanceState:
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-        :param pulumi.Input['InstanceSpecsArgs'] specs: Information about the resources available to this Linode.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceSpecArgs']]] specs: Information about the resources available to this Linode.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
                accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         :param pulumi.Input[builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
@@ -859,14 +859,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['InstanceBackupsArgs']]:
+    def backups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBackupArgs']]]]:
         """
         Information about this Linode's backups status.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['InstanceBackupsArgs']]):
+    def backups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBackupArgs']]]]):
         pulumi.set(self, "backups", value)
 
     @property
@@ -1230,14 +1230,14 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    def specs(self) -> Optional[pulumi.Input['InstanceSpecsArgs']]:
+    def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSpecArgs']]]]:
         """
         Information about the resources available to this Linode.
         """
         return pulumi.get(self, "specs")
 
     @specs.setter
-    def specs(self, value: Optional[pulumi.Input['InstanceSpecsArgs']]):
+    def specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSpecArgs']]]]):
         pulumi.set(self, "specs", value)
 
     @property
@@ -1732,7 +1732,7 @@ class Instance(pulumi.CustomResource):
             authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             backup_id: Optional[pulumi.Input[builtins.int]] = None,
-            backups: Optional[pulumi.Input[Union['InstanceBackupsArgs', 'InstanceBackupsArgsDict']]] = None,
+            backups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBackupArgs', 'InstanceBackupArgsDict']]]]] = None,
             backups_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             boot_config_label: Optional[pulumi.Input[builtins.str]] = None,
             booted: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1761,7 +1761,7 @@ class Instance(pulumi.CustomResource):
             resize_disk: Optional[pulumi.Input[builtins.bool]] = None,
             root_pass: Optional[pulumi.Input[builtins.str]] = None,
             shared_ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
-            specs: Optional[pulumi.Input[Union['InstanceSpecsArgs', 'InstanceSpecsArgsDict']]] = None,
+            specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceSpecArgs', 'InstanceSpecArgsDict']]]]] = None,
             stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]]] = None,
             stackscript_id: Optional[pulumi.Input[builtins.int]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
@@ -1784,7 +1784,7 @@ class Instance(pulumi.CustomResource):
                must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
                /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
                exclusive.
-        :param pulumi.Input[Union['InstanceBackupsArgs', 'InstanceBackupsArgsDict']] backups: Information about this Linode's backups status.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBackupArgs', 'InstanceBackupArgsDict']]]] backups: Information about this Linode's backups status.
         :param pulumi.Input[builtins.bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[builtins.str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[builtins.bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
@@ -1834,7 +1834,7 @@ class Instance(pulumi.CustomResource):
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-        :param pulumi.Input[Union['InstanceSpecsArgs', 'InstanceSpecsArgsDict']] specs: Information about the resources available to this Linode.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSpecArgs', 'InstanceSpecArgsDict']]]] specs: Information about the resources available to this Linode.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
                accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         :param pulumi.Input[builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
@@ -1933,7 +1933,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def backups(self) -> pulumi.Output['outputs.InstanceBackups']:
+    def backups(self) -> pulumi.Output[Sequence['outputs.InstanceBackup']]:
         """
         Information about this Linode's backups status.
         """
@@ -2188,7 +2188,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def specs(self) -> pulumi.Output['outputs.InstanceSpecs']:
+    def specs(self) -> pulumi.Output[Sequence['outputs.InstanceSpec']]:
         """
         Information about the resources available to this Linode.
         """

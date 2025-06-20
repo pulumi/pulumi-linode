@@ -19,6 +19,12 @@ namespace Pulumi.Linode.Inputs
         public Input<int> ClientConnThrottle { get; set; } = null!;
 
         /// <summary>
+        /// Throttle UDP sessions per second (0-20).
+        /// </summary>
+        [Input("clientUdpSessThrottle", required: true)]
+        public Input<int> ClientUdpSessThrottle { get; set; } = null!;
+
+        /// <summary>
         /// When this Linode NodeBalancer was created
         /// </summary>
         [Input("created", required: true)]

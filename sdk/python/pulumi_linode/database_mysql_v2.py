@@ -28,6 +28,34 @@ class DatabaseMysqlV2Args:
                  type: pulumi.Input[builtins.str],
                  allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  cluster_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_binlog_retention_period: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_connect_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_default_time_zone: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_group_concat_max_len: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_mysql_information_schema_stats_expiry: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_change_buffer_max_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_flush_neighbors: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_ft_min_token_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_ft_server_stopword_table: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_innodb_lock_wait_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_log_buffer_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_online_alter_log_max_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_read_io_threads: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_rollback_on_timeout: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_mysql_innodb_thread_concurrency: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_write_io_threads: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_interactive_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_internal_tmp_mem_storage_engine: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_max_allowed_packet: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_max_heap_table_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_buffer_length: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_read_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_write_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_sort_buffer_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_sql_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_sql_require_primary_key: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_mysql_tmp_table_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_wait_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  fork_restore_time: Optional[pulumi.Input[builtins.str]] = None,
                  fork_source: Optional[pulumi.Input[builtins.int]] = None,
                  suspended: Optional[pulumi.Input[builtins.bool]] = None,
@@ -43,6 +71,34 @@ class DatabaseMysqlV2Args:
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[builtins.int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
+        :param pulumi.Input[builtins.int] engine_config_binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+        :param pulumi.Input[builtins.int] engine_config_mysql_connect_timeout: The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        :param pulumi.Input[builtins.str] engine_config_mysql_default_time_zone: Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        :param pulumi.Input[builtins.float] engine_config_mysql_group_concat_max_len: The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        :param pulumi.Input[builtins.int] engine_config_mysql_information_schema_stats_expiry: The time, in seconds, before cached statistics expire.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_change_buffer_max_size: Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.str] engine_config_mysql_innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_read_io_threads: The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.bool] engine_config_mysql_innodb_rollback_on_timeout: When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_thread_concurrency: Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_write_io_threads: The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_interactive_timeout: The number of seconds the server waits for activity on an interactive connection before closing it.
+        :param pulumi.Input[builtins.str] engine_config_mysql_internal_tmp_mem_storage_engine: The storage engine for in-memory internal temporary tables.
+        :param pulumi.Input[builtins.int] engine_config_mysql_max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_buffer_length: Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read.
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write.
+        :param pulumi.Input[builtins.int] engine_config_mysql_sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        :param pulumi.Input[builtins.str] engine_config_mysql_sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+        :param pulumi.Input[builtins.bool] engine_config_mysql_sql_require_primary_key: Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        :param pulumi.Input[builtins.int] engine_config_mysql_tmp_table_size: Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it.
         :param pulumi.Input[builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[builtins.int] fork_source: The ID of the database that was forked from.
                
@@ -58,6 +114,62 @@ class DatabaseMysqlV2Args:
             pulumi.set(__self__, "allow_lists", allow_lists)
         if cluster_size is not None:
             pulumi.set(__self__, "cluster_size", cluster_size)
+        if engine_config_binlog_retention_period is not None:
+            pulumi.set(__self__, "engine_config_binlog_retention_period", engine_config_binlog_retention_period)
+        if engine_config_mysql_connect_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_connect_timeout", engine_config_mysql_connect_timeout)
+        if engine_config_mysql_default_time_zone is not None:
+            pulumi.set(__self__, "engine_config_mysql_default_time_zone", engine_config_mysql_default_time_zone)
+        if engine_config_mysql_group_concat_max_len is not None:
+            pulumi.set(__self__, "engine_config_mysql_group_concat_max_len", engine_config_mysql_group_concat_max_len)
+        if engine_config_mysql_information_schema_stats_expiry is not None:
+            pulumi.set(__self__, "engine_config_mysql_information_schema_stats_expiry", engine_config_mysql_information_schema_stats_expiry)
+        if engine_config_mysql_innodb_change_buffer_max_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_change_buffer_max_size", engine_config_mysql_innodb_change_buffer_max_size)
+        if engine_config_mysql_innodb_flush_neighbors is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_flush_neighbors", engine_config_mysql_innodb_flush_neighbors)
+        if engine_config_mysql_innodb_ft_min_token_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_ft_min_token_size", engine_config_mysql_innodb_ft_min_token_size)
+        if engine_config_mysql_innodb_ft_server_stopword_table is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_ft_server_stopword_table", engine_config_mysql_innodb_ft_server_stopword_table)
+        if engine_config_mysql_innodb_lock_wait_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_lock_wait_timeout", engine_config_mysql_innodb_lock_wait_timeout)
+        if engine_config_mysql_innodb_log_buffer_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_log_buffer_size", engine_config_mysql_innodb_log_buffer_size)
+        if engine_config_mysql_innodb_online_alter_log_max_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_online_alter_log_max_size", engine_config_mysql_innodb_online_alter_log_max_size)
+        if engine_config_mysql_innodb_read_io_threads is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_read_io_threads", engine_config_mysql_innodb_read_io_threads)
+        if engine_config_mysql_innodb_rollback_on_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_rollback_on_timeout", engine_config_mysql_innodb_rollback_on_timeout)
+        if engine_config_mysql_innodb_thread_concurrency is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_thread_concurrency", engine_config_mysql_innodb_thread_concurrency)
+        if engine_config_mysql_innodb_write_io_threads is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_write_io_threads", engine_config_mysql_innodb_write_io_threads)
+        if engine_config_mysql_interactive_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_interactive_timeout", engine_config_mysql_interactive_timeout)
+        if engine_config_mysql_internal_tmp_mem_storage_engine is not None:
+            pulumi.set(__self__, "engine_config_mysql_internal_tmp_mem_storage_engine", engine_config_mysql_internal_tmp_mem_storage_engine)
+        if engine_config_mysql_max_allowed_packet is not None:
+            pulumi.set(__self__, "engine_config_mysql_max_allowed_packet", engine_config_mysql_max_allowed_packet)
+        if engine_config_mysql_max_heap_table_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_max_heap_table_size", engine_config_mysql_max_heap_table_size)
+        if engine_config_mysql_net_buffer_length is not None:
+            pulumi.set(__self__, "engine_config_mysql_net_buffer_length", engine_config_mysql_net_buffer_length)
+        if engine_config_mysql_net_read_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_net_read_timeout", engine_config_mysql_net_read_timeout)
+        if engine_config_mysql_net_write_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_net_write_timeout", engine_config_mysql_net_write_timeout)
+        if engine_config_mysql_sort_buffer_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_sort_buffer_size", engine_config_mysql_sort_buffer_size)
+        if engine_config_mysql_sql_mode is not None:
+            pulumi.set(__self__, "engine_config_mysql_sql_mode", engine_config_mysql_sql_mode)
+        if engine_config_mysql_sql_require_primary_key is not None:
+            pulumi.set(__self__, "engine_config_mysql_sql_require_primary_key", engine_config_mysql_sql_require_primary_key)
+        if engine_config_mysql_tmp_table_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_tmp_table_size", engine_config_mysql_tmp_table_size)
+        if engine_config_mysql_wait_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_wait_timeout", engine_config_mysql_wait_timeout)
         if fork_restore_time is not None:
             pulumi.set(__self__, "fork_restore_time", fork_restore_time)
         if fork_source is not None:
@@ -144,6 +256,342 @@ class DatabaseMysqlV2Args:
         pulumi.set(self, "cluster_size", value)
 
     @property
+    @pulumi.getter(name="engineConfigBinlogRetentionPeriod")
+    def engine_config_binlog_retention_period(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+        """
+        return pulumi.get(self, "engine_config_binlog_retention_period")
+
+    @engine_config_binlog_retention_period.setter
+    def engine_config_binlog_retention_period(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_binlog_retention_period", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlConnectTimeout")
+    def engine_config_mysql_connect_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        """
+        return pulumi.get(self, "engine_config_mysql_connect_timeout")
+
+    @engine_config_mysql_connect_timeout.setter
+    def engine_config_mysql_connect_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_connect_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlDefaultTimeZone")
+    def engine_config_mysql_default_time_zone(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        """
+        return pulumi.get(self, "engine_config_mysql_default_time_zone")
+
+    @engine_config_mysql_default_time_zone.setter
+    def engine_config_mysql_default_time_zone(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_mysql_default_time_zone", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlGroupConcatMaxLen")
+    def engine_config_mysql_group_concat_max_len(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        """
+        return pulumi.get(self, "engine_config_mysql_group_concat_max_len")
+
+    @engine_config_mysql_group_concat_max_len.setter
+    def engine_config_mysql_group_concat_max_len(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "engine_config_mysql_group_concat_max_len", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInformationSchemaStatsExpiry")
+    def engine_config_mysql_information_schema_stats_expiry(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The time, in seconds, before cached statistics expire.
+        """
+        return pulumi.get(self, "engine_config_mysql_information_schema_stats_expiry")
+
+    @engine_config_mysql_information_schema_stats_expiry.setter
+    def engine_config_mysql_information_schema_stats_expiry(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_information_schema_stats_expiry", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbChangeBufferMaxSize")
+    def engine_config_mysql_innodb_change_buffer_max_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_change_buffer_max_size")
+
+    @engine_config_mysql_innodb_change_buffer_max_size.setter
+    def engine_config_mysql_innodb_change_buffer_max_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_change_buffer_max_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbFlushNeighbors")
+    def engine_config_mysql_innodb_flush_neighbors(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_flush_neighbors")
+
+    @engine_config_mysql_innodb_flush_neighbors.setter
+    def engine_config_mysql_innodb_flush_neighbors(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_flush_neighbors", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbFtMinTokenSize")
+    def engine_config_mysql_innodb_ft_min_token_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_ft_min_token_size")
+
+    @engine_config_mysql_innodb_ft_min_token_size.setter
+    def engine_config_mysql_innodb_ft_min_token_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_ft_min_token_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbFtServerStopwordTable")
+    def engine_config_mysql_innodb_ft_server_stopword_table(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_ft_server_stopword_table")
+
+    @engine_config_mysql_innodb_ft_server_stopword_table.setter
+    def engine_config_mysql_innodb_ft_server_stopword_table(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_mysql_innodb_ft_server_stopword_table", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbLockWaitTimeout")
+    def engine_config_mysql_innodb_lock_wait_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_lock_wait_timeout")
+
+    @engine_config_mysql_innodb_lock_wait_timeout.setter
+    def engine_config_mysql_innodb_lock_wait_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_lock_wait_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbLogBufferSize")
+    def engine_config_mysql_innodb_log_buffer_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_log_buffer_size")
+
+    @engine_config_mysql_innodb_log_buffer_size.setter
+    def engine_config_mysql_innodb_log_buffer_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_log_buffer_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbOnlineAlterLogMaxSize")
+    def engine_config_mysql_innodb_online_alter_log_max_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_online_alter_log_max_size")
+
+    @engine_config_mysql_innodb_online_alter_log_max_size.setter
+    def engine_config_mysql_innodb_online_alter_log_max_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_online_alter_log_max_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbReadIoThreads")
+    def engine_config_mysql_innodb_read_io_threads(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_read_io_threads")
+
+    @engine_config_mysql_innodb_read_io_threads.setter
+    def engine_config_mysql_innodb_read_io_threads(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_read_io_threads", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbRollbackOnTimeout")
+    def engine_config_mysql_innodb_rollback_on_timeout(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_rollback_on_timeout")
+
+    @engine_config_mysql_innodb_rollback_on_timeout.setter
+    def engine_config_mysql_innodb_rollback_on_timeout(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "engine_config_mysql_innodb_rollback_on_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbThreadConcurrency")
+    def engine_config_mysql_innodb_thread_concurrency(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_thread_concurrency")
+
+    @engine_config_mysql_innodb_thread_concurrency.setter
+    def engine_config_mysql_innodb_thread_concurrency(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_thread_concurrency", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbWriteIoThreads")
+    def engine_config_mysql_innodb_write_io_threads(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_write_io_threads")
+
+    @engine_config_mysql_innodb_write_io_threads.setter
+    def engine_config_mysql_innodb_write_io_threads(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_write_io_threads", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInteractiveTimeout")
+    def engine_config_mysql_interactive_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of seconds the server waits for activity on an interactive connection before closing it.
+        """
+        return pulumi.get(self, "engine_config_mysql_interactive_timeout")
+
+    @engine_config_mysql_interactive_timeout.setter
+    def engine_config_mysql_interactive_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_interactive_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInternalTmpMemStorageEngine")
+    def engine_config_mysql_internal_tmp_mem_storage_engine(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The storage engine for in-memory internal temporary tables.
+        """
+        return pulumi.get(self, "engine_config_mysql_internal_tmp_mem_storage_engine")
+
+    @engine_config_mysql_internal_tmp_mem_storage_engine.setter
+    def engine_config_mysql_internal_tmp_mem_storage_engine(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_mysql_internal_tmp_mem_storage_engine", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlMaxAllowedPacket")
+    def engine_config_mysql_max_allowed_packet(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        """
+        return pulumi.get(self, "engine_config_mysql_max_allowed_packet")
+
+    @engine_config_mysql_max_allowed_packet.setter
+    def engine_config_mysql_max_allowed_packet(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_max_allowed_packet", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlMaxHeapTableSize")
+    def engine_config_mysql_max_heap_table_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        """
+        return pulumi.get(self, "engine_config_mysql_max_heap_table_size")
+
+    @engine_config_mysql_max_heap_table_size.setter
+    def engine_config_mysql_max_heap_table_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_max_heap_table_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlNetBufferLength")
+    def engine_config_mysql_net_buffer_length(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_net_buffer_length")
+
+    @engine_config_mysql_net_buffer_length.setter
+    def engine_config_mysql_net_buffer_length(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_net_buffer_length", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlNetReadTimeout")
+    def engine_config_mysql_net_read_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of seconds to wait for more data from a connection before aborting the read.
+        """
+        return pulumi.get(self, "engine_config_mysql_net_read_timeout")
+
+    @engine_config_mysql_net_read_timeout.setter
+    def engine_config_mysql_net_read_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_net_read_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlNetWriteTimeout")
+    def engine_config_mysql_net_write_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of seconds to wait for a block to be written to a connection before aborting the write.
+        """
+        return pulumi.get(self, "engine_config_mysql_net_write_timeout")
+
+    @engine_config_mysql_net_write_timeout.setter
+    def engine_config_mysql_net_write_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_net_write_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlSortBufferSize")
+    def engine_config_mysql_sort_buffer_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        """
+        return pulumi.get(self, "engine_config_mysql_sort_buffer_size")
+
+    @engine_config_mysql_sort_buffer_size.setter
+    def engine_config_mysql_sort_buffer_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_sort_buffer_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlSqlMode")
+    def engine_config_mysql_sql_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+        """
+        return pulumi.get(self, "engine_config_mysql_sql_mode")
+
+    @engine_config_mysql_sql_mode.setter
+    def engine_config_mysql_sql_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_mysql_sql_mode", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlSqlRequirePrimaryKey")
+    def engine_config_mysql_sql_require_primary_key(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        """
+        return pulumi.get(self, "engine_config_mysql_sql_require_primary_key")
+
+    @engine_config_mysql_sql_require_primary_key.setter
+    def engine_config_mysql_sql_require_primary_key(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "engine_config_mysql_sql_require_primary_key", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlTmpTableSize")
+    def engine_config_mysql_tmp_table_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        """
+        return pulumi.get(self, "engine_config_mysql_tmp_table_size")
+
+    @engine_config_mysql_tmp_table_size.setter
+    def engine_config_mysql_tmp_table_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_tmp_table_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlWaitTimeout")
+    def engine_config_mysql_wait_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of seconds the server waits for activity on a noninteractive connection before closing it.
+        """
+        return pulumi.get(self, "engine_config_mysql_wait_timeout")
+
+    @engine_config_mysql_wait_timeout.setter
+    def engine_config_mysql_wait_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_wait_timeout", value)
+
+    @property
     @pulumi.getter(name="forkRestoreTime")
     def fork_restore_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -212,6 +660,34 @@ class _DatabaseMysqlV2State:
                  created: Optional[pulumi.Input[builtins.str]] = None,
                  encrypted: Optional[pulumi.Input[builtins.bool]] = None,
                  engine: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_binlog_retention_period: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_connect_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_default_time_zone: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_group_concat_max_len: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_mysql_information_schema_stats_expiry: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_change_buffer_max_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_flush_neighbors: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_ft_min_token_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_ft_server_stopword_table: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_innodb_lock_wait_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_log_buffer_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_online_alter_log_max_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_read_io_threads: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_rollback_on_timeout: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_mysql_innodb_thread_concurrency: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_write_io_threads: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_interactive_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_internal_tmp_mem_storage_engine: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_max_allowed_packet: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_max_heap_table_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_buffer_length: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_read_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_write_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_sort_buffer_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_sql_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_sql_require_primary_key: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_mysql_tmp_table_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_wait_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  engine_id: Optional[pulumi.Input[builtins.str]] = None,
                  fork_restore_time: Optional[pulumi.Input[builtins.str]] = None,
                  fork_source: Optional[pulumi.Input[builtins.int]] = None,
@@ -242,6 +718,34 @@ class _DatabaseMysqlV2State:
         :param pulumi.Input[builtins.str] created: When this Managed Database was created.
         :param pulumi.Input[builtins.bool] encrypted: Whether the Managed Databases is encrypted.
         :param pulumi.Input[builtins.str] engine: The Managed Database engine. (e.g. `mysql`)
+        :param pulumi.Input[builtins.int] engine_config_binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+        :param pulumi.Input[builtins.int] engine_config_mysql_connect_timeout: The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        :param pulumi.Input[builtins.str] engine_config_mysql_default_time_zone: Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        :param pulumi.Input[builtins.float] engine_config_mysql_group_concat_max_len: The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        :param pulumi.Input[builtins.int] engine_config_mysql_information_schema_stats_expiry: The time, in seconds, before cached statistics expire.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_change_buffer_max_size: Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.str] engine_config_mysql_innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_read_io_threads: The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.bool] engine_config_mysql_innodb_rollback_on_timeout: When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_thread_concurrency: Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_write_io_threads: The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_interactive_timeout: The number of seconds the server waits for activity on an interactive connection before closing it.
+        :param pulumi.Input[builtins.str] engine_config_mysql_internal_tmp_mem_storage_engine: The storage engine for in-memory internal temporary tables.
+        :param pulumi.Input[builtins.int] engine_config_mysql_max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_buffer_length: Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read.
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write.
+        :param pulumi.Input[builtins.int] engine_config_mysql_sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        :param pulumi.Input[builtins.str] engine_config_mysql_sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+        :param pulumi.Input[builtins.bool] engine_config_mysql_sql_require_primary_key: Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        :param pulumi.Input[builtins.int] engine_config_mysql_tmp_table_size: Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it.
         :param pulumi.Input[builtins.str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql`)
         :param pulumi.Input[builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[builtins.int] fork_source: The ID of the database that was forked from.
@@ -280,6 +784,62 @@ class _DatabaseMysqlV2State:
             pulumi.set(__self__, "encrypted", encrypted)
         if engine is not None:
             pulumi.set(__self__, "engine", engine)
+        if engine_config_binlog_retention_period is not None:
+            pulumi.set(__self__, "engine_config_binlog_retention_period", engine_config_binlog_retention_period)
+        if engine_config_mysql_connect_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_connect_timeout", engine_config_mysql_connect_timeout)
+        if engine_config_mysql_default_time_zone is not None:
+            pulumi.set(__self__, "engine_config_mysql_default_time_zone", engine_config_mysql_default_time_zone)
+        if engine_config_mysql_group_concat_max_len is not None:
+            pulumi.set(__self__, "engine_config_mysql_group_concat_max_len", engine_config_mysql_group_concat_max_len)
+        if engine_config_mysql_information_schema_stats_expiry is not None:
+            pulumi.set(__self__, "engine_config_mysql_information_schema_stats_expiry", engine_config_mysql_information_schema_stats_expiry)
+        if engine_config_mysql_innodb_change_buffer_max_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_change_buffer_max_size", engine_config_mysql_innodb_change_buffer_max_size)
+        if engine_config_mysql_innodb_flush_neighbors is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_flush_neighbors", engine_config_mysql_innodb_flush_neighbors)
+        if engine_config_mysql_innodb_ft_min_token_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_ft_min_token_size", engine_config_mysql_innodb_ft_min_token_size)
+        if engine_config_mysql_innodb_ft_server_stopword_table is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_ft_server_stopword_table", engine_config_mysql_innodb_ft_server_stopword_table)
+        if engine_config_mysql_innodb_lock_wait_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_lock_wait_timeout", engine_config_mysql_innodb_lock_wait_timeout)
+        if engine_config_mysql_innodb_log_buffer_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_log_buffer_size", engine_config_mysql_innodb_log_buffer_size)
+        if engine_config_mysql_innodb_online_alter_log_max_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_online_alter_log_max_size", engine_config_mysql_innodb_online_alter_log_max_size)
+        if engine_config_mysql_innodb_read_io_threads is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_read_io_threads", engine_config_mysql_innodb_read_io_threads)
+        if engine_config_mysql_innodb_rollback_on_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_rollback_on_timeout", engine_config_mysql_innodb_rollback_on_timeout)
+        if engine_config_mysql_innodb_thread_concurrency is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_thread_concurrency", engine_config_mysql_innodb_thread_concurrency)
+        if engine_config_mysql_innodb_write_io_threads is not None:
+            pulumi.set(__self__, "engine_config_mysql_innodb_write_io_threads", engine_config_mysql_innodb_write_io_threads)
+        if engine_config_mysql_interactive_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_interactive_timeout", engine_config_mysql_interactive_timeout)
+        if engine_config_mysql_internal_tmp_mem_storage_engine is not None:
+            pulumi.set(__self__, "engine_config_mysql_internal_tmp_mem_storage_engine", engine_config_mysql_internal_tmp_mem_storage_engine)
+        if engine_config_mysql_max_allowed_packet is not None:
+            pulumi.set(__self__, "engine_config_mysql_max_allowed_packet", engine_config_mysql_max_allowed_packet)
+        if engine_config_mysql_max_heap_table_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_max_heap_table_size", engine_config_mysql_max_heap_table_size)
+        if engine_config_mysql_net_buffer_length is not None:
+            pulumi.set(__self__, "engine_config_mysql_net_buffer_length", engine_config_mysql_net_buffer_length)
+        if engine_config_mysql_net_read_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_net_read_timeout", engine_config_mysql_net_read_timeout)
+        if engine_config_mysql_net_write_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_net_write_timeout", engine_config_mysql_net_write_timeout)
+        if engine_config_mysql_sort_buffer_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_sort_buffer_size", engine_config_mysql_sort_buffer_size)
+        if engine_config_mysql_sql_mode is not None:
+            pulumi.set(__self__, "engine_config_mysql_sql_mode", engine_config_mysql_sql_mode)
+        if engine_config_mysql_sql_require_primary_key is not None:
+            pulumi.set(__self__, "engine_config_mysql_sql_require_primary_key", engine_config_mysql_sql_require_primary_key)
+        if engine_config_mysql_tmp_table_size is not None:
+            pulumi.set(__self__, "engine_config_mysql_tmp_table_size", engine_config_mysql_tmp_table_size)
+        if engine_config_mysql_wait_timeout is not None:
+            pulumi.set(__self__, "engine_config_mysql_wait_timeout", engine_config_mysql_wait_timeout)
         if engine_id is not None:
             pulumi.set(__self__, "engine_id", engine_id)
         if fork_restore_time is not None:
@@ -396,6 +956,342 @@ class _DatabaseMysqlV2State:
     @engine.setter
     def engine(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter(name="engineConfigBinlogRetentionPeriod")
+    def engine_config_binlog_retention_period(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+        """
+        return pulumi.get(self, "engine_config_binlog_retention_period")
+
+    @engine_config_binlog_retention_period.setter
+    def engine_config_binlog_retention_period(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_binlog_retention_period", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlConnectTimeout")
+    def engine_config_mysql_connect_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        """
+        return pulumi.get(self, "engine_config_mysql_connect_timeout")
+
+    @engine_config_mysql_connect_timeout.setter
+    def engine_config_mysql_connect_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_connect_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlDefaultTimeZone")
+    def engine_config_mysql_default_time_zone(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        """
+        return pulumi.get(self, "engine_config_mysql_default_time_zone")
+
+    @engine_config_mysql_default_time_zone.setter
+    def engine_config_mysql_default_time_zone(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_mysql_default_time_zone", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlGroupConcatMaxLen")
+    def engine_config_mysql_group_concat_max_len(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        """
+        return pulumi.get(self, "engine_config_mysql_group_concat_max_len")
+
+    @engine_config_mysql_group_concat_max_len.setter
+    def engine_config_mysql_group_concat_max_len(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "engine_config_mysql_group_concat_max_len", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInformationSchemaStatsExpiry")
+    def engine_config_mysql_information_schema_stats_expiry(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The time, in seconds, before cached statistics expire.
+        """
+        return pulumi.get(self, "engine_config_mysql_information_schema_stats_expiry")
+
+    @engine_config_mysql_information_schema_stats_expiry.setter
+    def engine_config_mysql_information_schema_stats_expiry(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_information_schema_stats_expiry", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbChangeBufferMaxSize")
+    def engine_config_mysql_innodb_change_buffer_max_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_change_buffer_max_size")
+
+    @engine_config_mysql_innodb_change_buffer_max_size.setter
+    def engine_config_mysql_innodb_change_buffer_max_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_change_buffer_max_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbFlushNeighbors")
+    def engine_config_mysql_innodb_flush_neighbors(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_flush_neighbors")
+
+    @engine_config_mysql_innodb_flush_neighbors.setter
+    def engine_config_mysql_innodb_flush_neighbors(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_flush_neighbors", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbFtMinTokenSize")
+    def engine_config_mysql_innodb_ft_min_token_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_ft_min_token_size")
+
+    @engine_config_mysql_innodb_ft_min_token_size.setter
+    def engine_config_mysql_innodb_ft_min_token_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_ft_min_token_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbFtServerStopwordTable")
+    def engine_config_mysql_innodb_ft_server_stopword_table(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_ft_server_stopword_table")
+
+    @engine_config_mysql_innodb_ft_server_stopword_table.setter
+    def engine_config_mysql_innodb_ft_server_stopword_table(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_mysql_innodb_ft_server_stopword_table", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbLockWaitTimeout")
+    def engine_config_mysql_innodb_lock_wait_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_lock_wait_timeout")
+
+    @engine_config_mysql_innodb_lock_wait_timeout.setter
+    def engine_config_mysql_innodb_lock_wait_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_lock_wait_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbLogBufferSize")
+    def engine_config_mysql_innodb_log_buffer_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_log_buffer_size")
+
+    @engine_config_mysql_innodb_log_buffer_size.setter
+    def engine_config_mysql_innodb_log_buffer_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_log_buffer_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbOnlineAlterLogMaxSize")
+    def engine_config_mysql_innodb_online_alter_log_max_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_online_alter_log_max_size")
+
+    @engine_config_mysql_innodb_online_alter_log_max_size.setter
+    def engine_config_mysql_innodb_online_alter_log_max_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_online_alter_log_max_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbReadIoThreads")
+    def engine_config_mysql_innodb_read_io_threads(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_read_io_threads")
+
+    @engine_config_mysql_innodb_read_io_threads.setter
+    def engine_config_mysql_innodb_read_io_threads(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_read_io_threads", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbRollbackOnTimeout")
+    def engine_config_mysql_innodb_rollback_on_timeout(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_rollback_on_timeout")
+
+    @engine_config_mysql_innodb_rollback_on_timeout.setter
+    def engine_config_mysql_innodb_rollback_on_timeout(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "engine_config_mysql_innodb_rollback_on_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbThreadConcurrency")
+    def engine_config_mysql_innodb_thread_concurrency(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_thread_concurrency")
+
+    @engine_config_mysql_innodb_thread_concurrency.setter
+    def engine_config_mysql_innodb_thread_concurrency(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_thread_concurrency", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbWriteIoThreads")
+    def engine_config_mysql_innodb_write_io_threads(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_write_io_threads")
+
+    @engine_config_mysql_innodb_write_io_threads.setter
+    def engine_config_mysql_innodb_write_io_threads(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_innodb_write_io_threads", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInteractiveTimeout")
+    def engine_config_mysql_interactive_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of seconds the server waits for activity on an interactive connection before closing it.
+        """
+        return pulumi.get(self, "engine_config_mysql_interactive_timeout")
+
+    @engine_config_mysql_interactive_timeout.setter
+    def engine_config_mysql_interactive_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_interactive_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInternalTmpMemStorageEngine")
+    def engine_config_mysql_internal_tmp_mem_storage_engine(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The storage engine for in-memory internal temporary tables.
+        """
+        return pulumi.get(self, "engine_config_mysql_internal_tmp_mem_storage_engine")
+
+    @engine_config_mysql_internal_tmp_mem_storage_engine.setter
+    def engine_config_mysql_internal_tmp_mem_storage_engine(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_mysql_internal_tmp_mem_storage_engine", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlMaxAllowedPacket")
+    def engine_config_mysql_max_allowed_packet(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        """
+        return pulumi.get(self, "engine_config_mysql_max_allowed_packet")
+
+    @engine_config_mysql_max_allowed_packet.setter
+    def engine_config_mysql_max_allowed_packet(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_max_allowed_packet", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlMaxHeapTableSize")
+    def engine_config_mysql_max_heap_table_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        """
+        return pulumi.get(self, "engine_config_mysql_max_heap_table_size")
+
+    @engine_config_mysql_max_heap_table_size.setter
+    def engine_config_mysql_max_heap_table_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_max_heap_table_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlNetBufferLength")
+    def engine_config_mysql_net_buffer_length(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_net_buffer_length")
+
+    @engine_config_mysql_net_buffer_length.setter
+    def engine_config_mysql_net_buffer_length(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_net_buffer_length", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlNetReadTimeout")
+    def engine_config_mysql_net_read_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of seconds to wait for more data from a connection before aborting the read.
+        """
+        return pulumi.get(self, "engine_config_mysql_net_read_timeout")
+
+    @engine_config_mysql_net_read_timeout.setter
+    def engine_config_mysql_net_read_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_net_read_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlNetWriteTimeout")
+    def engine_config_mysql_net_write_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of seconds to wait for a block to be written to a connection before aborting the write.
+        """
+        return pulumi.get(self, "engine_config_mysql_net_write_timeout")
+
+    @engine_config_mysql_net_write_timeout.setter
+    def engine_config_mysql_net_write_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_net_write_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlSortBufferSize")
+    def engine_config_mysql_sort_buffer_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        """
+        return pulumi.get(self, "engine_config_mysql_sort_buffer_size")
+
+    @engine_config_mysql_sort_buffer_size.setter
+    def engine_config_mysql_sort_buffer_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_sort_buffer_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlSqlMode")
+    def engine_config_mysql_sql_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+        """
+        return pulumi.get(self, "engine_config_mysql_sql_mode")
+
+    @engine_config_mysql_sql_mode.setter
+    def engine_config_mysql_sql_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_mysql_sql_mode", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlSqlRequirePrimaryKey")
+    def engine_config_mysql_sql_require_primary_key(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        """
+        return pulumi.get(self, "engine_config_mysql_sql_require_primary_key")
+
+    @engine_config_mysql_sql_require_primary_key.setter
+    def engine_config_mysql_sql_require_primary_key(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "engine_config_mysql_sql_require_primary_key", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlTmpTableSize")
+    def engine_config_mysql_tmp_table_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        """
+        return pulumi.get(self, "engine_config_mysql_tmp_table_size")
+
+    @engine_config_mysql_tmp_table_size.setter
+    def engine_config_mysql_tmp_table_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_tmp_table_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlWaitTimeout")
+    def engine_config_mysql_wait_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The number of seconds the server waits for activity on a noninteractive connection before closing it.
+        """
+        return pulumi.get(self, "engine_config_mysql_wait_timeout")
+
+    @engine_config_mysql_wait_timeout.setter
+    def engine_config_mysql_wait_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_mysql_wait_timeout", value)
 
     @property
     @pulumi.getter(name="engineId")
@@ -671,6 +1567,34 @@ class DatabaseMysqlV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  cluster_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_binlog_retention_period: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_connect_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_default_time_zone: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_group_concat_max_len: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_mysql_information_schema_stats_expiry: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_change_buffer_max_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_flush_neighbors: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_ft_min_token_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_ft_server_stopword_table: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_innodb_lock_wait_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_log_buffer_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_online_alter_log_max_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_read_io_threads: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_rollback_on_timeout: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_mysql_innodb_thread_concurrency: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_write_io_threads: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_interactive_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_internal_tmp_mem_storage_engine: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_max_allowed_packet: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_max_heap_table_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_buffer_length: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_read_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_write_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_sort_buffer_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_sql_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_sql_require_primary_key: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_mysql_tmp_table_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_wait_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  engine_id: Optional[pulumi.Input[builtins.str]] = None,
                  fork_restore_time: Optional[pulumi.Input[builtins.str]] = None,
                  fork_source: Optional[pulumi.Input[builtins.int]] = None,
@@ -730,6 +1654,34 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[builtins.int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
+        :param pulumi.Input[builtins.int] engine_config_binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+        :param pulumi.Input[builtins.int] engine_config_mysql_connect_timeout: The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        :param pulumi.Input[builtins.str] engine_config_mysql_default_time_zone: Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        :param pulumi.Input[builtins.float] engine_config_mysql_group_concat_max_len: The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        :param pulumi.Input[builtins.int] engine_config_mysql_information_schema_stats_expiry: The time, in seconds, before cached statistics expire.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_change_buffer_max_size: Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.str] engine_config_mysql_innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_read_io_threads: The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.bool] engine_config_mysql_innodb_rollback_on_timeout: When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_thread_concurrency: Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_write_io_threads: The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_interactive_timeout: The number of seconds the server waits for activity on an interactive connection before closing it.
+        :param pulumi.Input[builtins.str] engine_config_mysql_internal_tmp_mem_storage_engine: The storage engine for in-memory internal temporary tables.
+        :param pulumi.Input[builtins.int] engine_config_mysql_max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_buffer_length: Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read.
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write.
+        :param pulumi.Input[builtins.int] engine_config_mysql_sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        :param pulumi.Input[builtins.str] engine_config_mysql_sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+        :param pulumi.Input[builtins.bool] engine_config_mysql_sql_require_primary_key: Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        :param pulumi.Input[builtins.int] engine_config_mysql_tmp_table_size: Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it.
         :param pulumi.Input[builtins.str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql`)
         :param pulumi.Input[builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[builtins.int] fork_source: The ID of the database that was forked from.
@@ -811,6 +1763,34 @@ class DatabaseMysqlV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  cluster_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_binlog_retention_period: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_connect_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_default_time_zone: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_group_concat_max_len: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_mysql_information_schema_stats_expiry: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_change_buffer_max_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_flush_neighbors: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_ft_min_token_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_ft_server_stopword_table: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_innodb_lock_wait_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_log_buffer_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_online_alter_log_max_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_read_io_threads: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_rollback_on_timeout: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_mysql_innodb_thread_concurrency: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_innodb_write_io_threads: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_interactive_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_internal_tmp_mem_storage_engine: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_max_allowed_packet: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_max_heap_table_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_buffer_length: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_read_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_net_write_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_sort_buffer_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_sql_mode: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_mysql_sql_require_primary_key: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_mysql_tmp_table_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_mysql_wait_timeout: Optional[pulumi.Input[builtins.int]] = None,
                  engine_id: Optional[pulumi.Input[builtins.str]] = None,
                  fork_restore_time: Optional[pulumi.Input[builtins.str]] = None,
                  fork_source: Optional[pulumi.Input[builtins.int]] = None,
@@ -831,6 +1811,34 @@ class DatabaseMysqlV2(pulumi.CustomResource):
 
             __props__.__dict__["allow_lists"] = allow_lists
             __props__.__dict__["cluster_size"] = cluster_size
+            __props__.__dict__["engine_config_binlog_retention_period"] = engine_config_binlog_retention_period
+            __props__.__dict__["engine_config_mysql_connect_timeout"] = engine_config_mysql_connect_timeout
+            __props__.__dict__["engine_config_mysql_default_time_zone"] = engine_config_mysql_default_time_zone
+            __props__.__dict__["engine_config_mysql_group_concat_max_len"] = engine_config_mysql_group_concat_max_len
+            __props__.__dict__["engine_config_mysql_information_schema_stats_expiry"] = engine_config_mysql_information_schema_stats_expiry
+            __props__.__dict__["engine_config_mysql_innodb_change_buffer_max_size"] = engine_config_mysql_innodb_change_buffer_max_size
+            __props__.__dict__["engine_config_mysql_innodb_flush_neighbors"] = engine_config_mysql_innodb_flush_neighbors
+            __props__.__dict__["engine_config_mysql_innodb_ft_min_token_size"] = engine_config_mysql_innodb_ft_min_token_size
+            __props__.__dict__["engine_config_mysql_innodb_ft_server_stopword_table"] = engine_config_mysql_innodb_ft_server_stopword_table
+            __props__.__dict__["engine_config_mysql_innodb_lock_wait_timeout"] = engine_config_mysql_innodb_lock_wait_timeout
+            __props__.__dict__["engine_config_mysql_innodb_log_buffer_size"] = engine_config_mysql_innodb_log_buffer_size
+            __props__.__dict__["engine_config_mysql_innodb_online_alter_log_max_size"] = engine_config_mysql_innodb_online_alter_log_max_size
+            __props__.__dict__["engine_config_mysql_innodb_read_io_threads"] = engine_config_mysql_innodb_read_io_threads
+            __props__.__dict__["engine_config_mysql_innodb_rollback_on_timeout"] = engine_config_mysql_innodb_rollback_on_timeout
+            __props__.__dict__["engine_config_mysql_innodb_thread_concurrency"] = engine_config_mysql_innodb_thread_concurrency
+            __props__.__dict__["engine_config_mysql_innodb_write_io_threads"] = engine_config_mysql_innodb_write_io_threads
+            __props__.__dict__["engine_config_mysql_interactive_timeout"] = engine_config_mysql_interactive_timeout
+            __props__.__dict__["engine_config_mysql_internal_tmp_mem_storage_engine"] = engine_config_mysql_internal_tmp_mem_storage_engine
+            __props__.__dict__["engine_config_mysql_max_allowed_packet"] = engine_config_mysql_max_allowed_packet
+            __props__.__dict__["engine_config_mysql_max_heap_table_size"] = engine_config_mysql_max_heap_table_size
+            __props__.__dict__["engine_config_mysql_net_buffer_length"] = engine_config_mysql_net_buffer_length
+            __props__.__dict__["engine_config_mysql_net_read_timeout"] = engine_config_mysql_net_read_timeout
+            __props__.__dict__["engine_config_mysql_net_write_timeout"] = engine_config_mysql_net_write_timeout
+            __props__.__dict__["engine_config_mysql_sort_buffer_size"] = engine_config_mysql_sort_buffer_size
+            __props__.__dict__["engine_config_mysql_sql_mode"] = engine_config_mysql_sql_mode
+            __props__.__dict__["engine_config_mysql_sql_require_primary_key"] = engine_config_mysql_sql_require_primary_key
+            __props__.__dict__["engine_config_mysql_tmp_table_size"] = engine_config_mysql_tmp_table_size
+            __props__.__dict__["engine_config_mysql_wait_timeout"] = engine_config_mysql_wait_timeout
             if engine_id is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_id'")
             __props__.__dict__["engine_id"] = engine_id
@@ -883,6 +1891,34 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             created: Optional[pulumi.Input[builtins.str]] = None,
             encrypted: Optional[pulumi.Input[builtins.bool]] = None,
             engine: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_binlog_retention_period: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_connect_timeout: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_default_time_zone: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_mysql_group_concat_max_len: Optional[pulumi.Input[builtins.float]] = None,
+            engine_config_mysql_information_schema_stats_expiry: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_innodb_change_buffer_max_size: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_innodb_flush_neighbors: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_innodb_ft_min_token_size: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_innodb_ft_server_stopword_table: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_mysql_innodb_lock_wait_timeout: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_innodb_log_buffer_size: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_innodb_online_alter_log_max_size: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_innodb_read_io_threads: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_innodb_rollback_on_timeout: Optional[pulumi.Input[builtins.bool]] = None,
+            engine_config_mysql_innodb_thread_concurrency: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_innodb_write_io_threads: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_interactive_timeout: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_internal_tmp_mem_storage_engine: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_mysql_max_allowed_packet: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_max_heap_table_size: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_net_buffer_length: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_net_read_timeout: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_net_write_timeout: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_sort_buffer_size: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_sql_mode: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_mysql_sql_require_primary_key: Optional[pulumi.Input[builtins.bool]] = None,
+            engine_config_mysql_tmp_table_size: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_mysql_wait_timeout: Optional[pulumi.Input[builtins.int]] = None,
             engine_id: Optional[pulumi.Input[builtins.str]] = None,
             fork_restore_time: Optional[pulumi.Input[builtins.str]] = None,
             fork_source: Optional[pulumi.Input[builtins.int]] = None,
@@ -918,6 +1954,34 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] created: When this Managed Database was created.
         :param pulumi.Input[builtins.bool] encrypted: Whether the Managed Databases is encrypted.
         :param pulumi.Input[builtins.str] engine: The Managed Database engine. (e.g. `mysql`)
+        :param pulumi.Input[builtins.int] engine_config_binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+        :param pulumi.Input[builtins.int] engine_config_mysql_connect_timeout: The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        :param pulumi.Input[builtins.str] engine_config_mysql_default_time_zone: Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        :param pulumi.Input[builtins.float] engine_config_mysql_group_concat_max_len: The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        :param pulumi.Input[builtins.int] engine_config_mysql_information_schema_stats_expiry: The time, in seconds, before cached statistics expire.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_change_buffer_max_size: Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.str] engine_config_mysql_innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_read_io_threads: The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.bool] engine_config_mysql_innodb_rollback_on_timeout: When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_thread_concurrency: Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        :param pulumi.Input[builtins.int] engine_config_mysql_innodb_write_io_threads: The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_interactive_timeout: The number of seconds the server waits for activity on an interactive connection before closing it.
+        :param pulumi.Input[builtins.str] engine_config_mysql_internal_tmp_mem_storage_engine: The storage engine for in-memory internal temporary tables.
+        :param pulumi.Input[builtins.int] engine_config_mysql_max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_buffer_length: Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read.
+        :param pulumi.Input[builtins.int] engine_config_mysql_net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write.
+        :param pulumi.Input[builtins.int] engine_config_mysql_sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        :param pulumi.Input[builtins.str] engine_config_mysql_sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+        :param pulumi.Input[builtins.bool] engine_config_mysql_sql_require_primary_key: Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        :param pulumi.Input[builtins.int] engine_config_mysql_tmp_table_size: Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        :param pulumi.Input[builtins.int] engine_config_mysql_wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it.
         :param pulumi.Input[builtins.str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql`)
         :param pulumi.Input[builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[builtins.int] fork_source: The ID of the database that was forked from.
@@ -954,6 +2018,34 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         __props__.__dict__["created"] = created
         __props__.__dict__["encrypted"] = encrypted
         __props__.__dict__["engine"] = engine
+        __props__.__dict__["engine_config_binlog_retention_period"] = engine_config_binlog_retention_period
+        __props__.__dict__["engine_config_mysql_connect_timeout"] = engine_config_mysql_connect_timeout
+        __props__.__dict__["engine_config_mysql_default_time_zone"] = engine_config_mysql_default_time_zone
+        __props__.__dict__["engine_config_mysql_group_concat_max_len"] = engine_config_mysql_group_concat_max_len
+        __props__.__dict__["engine_config_mysql_information_schema_stats_expiry"] = engine_config_mysql_information_schema_stats_expiry
+        __props__.__dict__["engine_config_mysql_innodb_change_buffer_max_size"] = engine_config_mysql_innodb_change_buffer_max_size
+        __props__.__dict__["engine_config_mysql_innodb_flush_neighbors"] = engine_config_mysql_innodb_flush_neighbors
+        __props__.__dict__["engine_config_mysql_innodb_ft_min_token_size"] = engine_config_mysql_innodb_ft_min_token_size
+        __props__.__dict__["engine_config_mysql_innodb_ft_server_stopword_table"] = engine_config_mysql_innodb_ft_server_stopword_table
+        __props__.__dict__["engine_config_mysql_innodb_lock_wait_timeout"] = engine_config_mysql_innodb_lock_wait_timeout
+        __props__.__dict__["engine_config_mysql_innodb_log_buffer_size"] = engine_config_mysql_innodb_log_buffer_size
+        __props__.__dict__["engine_config_mysql_innodb_online_alter_log_max_size"] = engine_config_mysql_innodb_online_alter_log_max_size
+        __props__.__dict__["engine_config_mysql_innodb_read_io_threads"] = engine_config_mysql_innodb_read_io_threads
+        __props__.__dict__["engine_config_mysql_innodb_rollback_on_timeout"] = engine_config_mysql_innodb_rollback_on_timeout
+        __props__.__dict__["engine_config_mysql_innodb_thread_concurrency"] = engine_config_mysql_innodb_thread_concurrency
+        __props__.__dict__["engine_config_mysql_innodb_write_io_threads"] = engine_config_mysql_innodb_write_io_threads
+        __props__.__dict__["engine_config_mysql_interactive_timeout"] = engine_config_mysql_interactive_timeout
+        __props__.__dict__["engine_config_mysql_internal_tmp_mem_storage_engine"] = engine_config_mysql_internal_tmp_mem_storage_engine
+        __props__.__dict__["engine_config_mysql_max_allowed_packet"] = engine_config_mysql_max_allowed_packet
+        __props__.__dict__["engine_config_mysql_max_heap_table_size"] = engine_config_mysql_max_heap_table_size
+        __props__.__dict__["engine_config_mysql_net_buffer_length"] = engine_config_mysql_net_buffer_length
+        __props__.__dict__["engine_config_mysql_net_read_timeout"] = engine_config_mysql_net_read_timeout
+        __props__.__dict__["engine_config_mysql_net_write_timeout"] = engine_config_mysql_net_write_timeout
+        __props__.__dict__["engine_config_mysql_sort_buffer_size"] = engine_config_mysql_sort_buffer_size
+        __props__.__dict__["engine_config_mysql_sql_mode"] = engine_config_mysql_sql_mode
+        __props__.__dict__["engine_config_mysql_sql_require_primary_key"] = engine_config_mysql_sql_require_primary_key
+        __props__.__dict__["engine_config_mysql_tmp_table_size"] = engine_config_mysql_tmp_table_size
+        __props__.__dict__["engine_config_mysql_wait_timeout"] = engine_config_mysql_wait_timeout
         __props__.__dict__["engine_id"] = engine_id
         __props__.__dict__["fork_restore_time"] = fork_restore_time
         __props__.__dict__["fork_source"] = fork_source
@@ -1025,6 +2117,230 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         The Managed Database engine. (e.g. `mysql`)
         """
         return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="engineConfigBinlogRetentionPeriod")
+    def engine_config_binlog_retention_period(self) -> pulumi.Output[builtins.int]:
+        """
+        The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+        """
+        return pulumi.get(self, "engine_config_binlog_retention_period")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlConnectTimeout")
+    def engine_config_mysql_connect_timeout(self) -> pulumi.Output[builtins.int]:
+        """
+        The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        """
+        return pulumi.get(self, "engine_config_mysql_connect_timeout")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlDefaultTimeZone")
+    def engine_config_mysql_default_time_zone(self) -> pulumi.Output[builtins.str]:
+        """
+        Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        """
+        return pulumi.get(self, "engine_config_mysql_default_time_zone")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlGroupConcatMaxLen")
+    def engine_config_mysql_group_concat_max_len(self) -> pulumi.Output[builtins.float]:
+        """
+        The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        """
+        return pulumi.get(self, "engine_config_mysql_group_concat_max_len")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInformationSchemaStatsExpiry")
+    def engine_config_mysql_information_schema_stats_expiry(self) -> pulumi.Output[builtins.int]:
+        """
+        The time, in seconds, before cached statistics expire.
+        """
+        return pulumi.get(self, "engine_config_mysql_information_schema_stats_expiry")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbChangeBufferMaxSize")
+    def engine_config_mysql_innodb_change_buffer_max_size(self) -> pulumi.Output[builtins.int]:
+        """
+        Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_change_buffer_max_size")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbFlushNeighbors")
+    def engine_config_mysql_innodb_flush_neighbors(self) -> pulumi.Output[builtins.int]:
+        """
+        Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_flush_neighbors")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbFtMinTokenSize")
+    def engine_config_mysql_innodb_ft_min_token_size(self) -> pulumi.Output[builtins.int]:
+        """
+        Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_ft_min_token_size")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbFtServerStopwordTable")
+    def engine_config_mysql_innodb_ft_server_stopword_table(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_ft_server_stopword_table")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbLockWaitTimeout")
+    def engine_config_mysql_innodb_lock_wait_timeout(self) -> pulumi.Output[builtins.int]:
+        """
+        The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_lock_wait_timeout")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbLogBufferSize")
+    def engine_config_mysql_innodb_log_buffer_size(self) -> pulumi.Output[builtins.int]:
+        """
+        The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_log_buffer_size")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbOnlineAlterLogMaxSize")
+    def engine_config_mysql_innodb_online_alter_log_max_size(self) -> pulumi.Output[builtins.int]:
+        """
+        The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_online_alter_log_max_size")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbReadIoThreads")
+    def engine_config_mysql_innodb_read_io_threads(self) -> pulumi.Output[builtins.int]:
+        """
+        The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_read_io_threads")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbRollbackOnTimeout")
+    def engine_config_mysql_innodb_rollback_on_timeout(self) -> pulumi.Output[builtins.bool]:
+        """
+        When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_rollback_on_timeout")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbThreadConcurrency")
+    def engine_config_mysql_innodb_thread_concurrency(self) -> pulumi.Output[builtins.int]:
+        """
+        Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_thread_concurrency")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInnodbWriteIoThreads")
+    def engine_config_mysql_innodb_write_io_threads(self) -> pulumi.Output[builtins.int]:
+        """
+        The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_innodb_write_io_threads")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInteractiveTimeout")
+    def engine_config_mysql_interactive_timeout(self) -> pulumi.Output[builtins.int]:
+        """
+        The number of seconds the server waits for activity on an interactive connection before closing it.
+        """
+        return pulumi.get(self, "engine_config_mysql_interactive_timeout")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlInternalTmpMemStorageEngine")
+    def engine_config_mysql_internal_tmp_mem_storage_engine(self) -> pulumi.Output[builtins.str]:
+        """
+        The storage engine for in-memory internal temporary tables.
+        """
+        return pulumi.get(self, "engine_config_mysql_internal_tmp_mem_storage_engine")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlMaxAllowedPacket")
+    def engine_config_mysql_max_allowed_packet(self) -> pulumi.Output[builtins.int]:
+        """
+        Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        """
+        return pulumi.get(self, "engine_config_mysql_max_allowed_packet")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlMaxHeapTableSize")
+    def engine_config_mysql_max_heap_table_size(self) -> pulumi.Output[builtins.int]:
+        """
+        Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        """
+        return pulumi.get(self, "engine_config_mysql_max_heap_table_size")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlNetBufferLength")
+    def engine_config_mysql_net_buffer_length(self) -> pulumi.Output[builtins.int]:
+        """
+        Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "engine_config_mysql_net_buffer_length")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlNetReadTimeout")
+    def engine_config_mysql_net_read_timeout(self) -> pulumi.Output[builtins.int]:
+        """
+        The number of seconds to wait for more data from a connection before aborting the read.
+        """
+        return pulumi.get(self, "engine_config_mysql_net_read_timeout")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlNetWriteTimeout")
+    def engine_config_mysql_net_write_timeout(self) -> pulumi.Output[builtins.int]:
+        """
+        The number of seconds to wait for a block to be written to a connection before aborting the write.
+        """
+        return pulumi.get(self, "engine_config_mysql_net_write_timeout")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlSortBufferSize")
+    def engine_config_mysql_sort_buffer_size(self) -> pulumi.Output[builtins.int]:
+        """
+        Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        """
+        return pulumi.get(self, "engine_config_mysql_sort_buffer_size")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlSqlMode")
+    def engine_config_mysql_sql_mode(self) -> pulumi.Output[builtins.str]:
+        """
+        Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+        """
+        return pulumi.get(self, "engine_config_mysql_sql_mode")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlSqlRequirePrimaryKey")
+    def engine_config_mysql_sql_require_primary_key(self) -> pulumi.Output[builtins.bool]:
+        """
+        Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        """
+        return pulumi.get(self, "engine_config_mysql_sql_require_primary_key")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlTmpTableSize")
+    def engine_config_mysql_tmp_table_size(self) -> pulumi.Output[builtins.int]:
+        """
+        Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        """
+        return pulumi.get(self, "engine_config_mysql_tmp_table_size")
+
+    @property
+    @pulumi.getter(name="engineConfigMysqlWaitTimeout")
+    def engine_config_mysql_wait_timeout(self) -> pulumi.Output[builtins.int]:
+        """
+        The number of seconds the server waits for activity on a noninteractive connection before closing it.
+        """
+        return pulumi.get(self, "engine_config_mysql_wait_timeout")
 
     @property
     @pulumi.getter(name="engineId")

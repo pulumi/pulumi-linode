@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
+	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -2248,331 +2248,222 @@ func (o InstanceAlertsPtrOutput) TransferQuota() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-type InstanceBackups struct {
+type InstanceBackup struct {
 	// Whether this Backup is available for restoration.
 	Available *bool `pulumi:"available"`
 	// If this Linode has the Backup service enabled.
-	Enabled  *bool                    `pulumi:"enabled"`
-	Schedule *InstanceBackupsSchedule `pulumi:"schedule"`
+	Enabled   *bool                    `pulumi:"enabled"`
+	Schedules []InstanceBackupSchedule `pulumi:"schedules"`
 }
 
-// InstanceBackupsInput is an input type that accepts InstanceBackupsArgs and InstanceBackupsOutput values.
-// You can construct a concrete instance of `InstanceBackupsInput` via:
+// InstanceBackupInput is an input type that accepts InstanceBackupArgs and InstanceBackupOutput values.
+// You can construct a concrete instance of `InstanceBackupInput` via:
 //
-//	InstanceBackupsArgs{...}
-type InstanceBackupsInput interface {
+//	InstanceBackupArgs{...}
+type InstanceBackupInput interface {
 	pulumi.Input
 
-	ToInstanceBackupsOutput() InstanceBackupsOutput
-	ToInstanceBackupsOutputWithContext(context.Context) InstanceBackupsOutput
+	ToInstanceBackupOutput() InstanceBackupOutput
+	ToInstanceBackupOutputWithContext(context.Context) InstanceBackupOutput
 }
 
-type InstanceBackupsArgs struct {
+type InstanceBackupArgs struct {
 	// Whether this Backup is available for restoration.
 	Available pulumi.BoolPtrInput `pulumi:"available"`
 	// If this Linode has the Backup service enabled.
-	Enabled  pulumi.BoolPtrInput             `pulumi:"enabled"`
-	Schedule InstanceBackupsSchedulePtrInput `pulumi:"schedule"`
+	Enabled   pulumi.BoolPtrInput              `pulumi:"enabled"`
+	Schedules InstanceBackupScheduleArrayInput `pulumi:"schedules"`
 }
 
-func (InstanceBackupsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceBackups)(nil)).Elem()
+func (InstanceBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBackup)(nil)).Elem()
 }
 
-func (i InstanceBackupsArgs) ToInstanceBackupsOutput() InstanceBackupsOutput {
-	return i.ToInstanceBackupsOutputWithContext(context.Background())
+func (i InstanceBackupArgs) ToInstanceBackupOutput() InstanceBackupOutput {
+	return i.ToInstanceBackupOutputWithContext(context.Background())
 }
 
-func (i InstanceBackupsArgs) ToInstanceBackupsOutputWithContext(ctx context.Context) InstanceBackupsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsOutput)
+func (i InstanceBackupArgs) ToInstanceBackupOutputWithContext(ctx context.Context) InstanceBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupOutput)
 }
 
-func (i InstanceBackupsArgs) ToInstanceBackupsPtrOutput() InstanceBackupsPtrOutput {
-	return i.ToInstanceBackupsPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceBackupsArgs) ToInstanceBackupsPtrOutputWithContext(ctx context.Context) InstanceBackupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsOutput).ToInstanceBackupsPtrOutputWithContext(ctx)
-}
-
-// InstanceBackupsPtrInput is an input type that accepts InstanceBackupsArgs, InstanceBackupsPtr and InstanceBackupsPtrOutput values.
-// You can construct a concrete instance of `InstanceBackupsPtrInput` via:
+// InstanceBackupArrayInput is an input type that accepts InstanceBackupArray and InstanceBackupArrayOutput values.
+// You can construct a concrete instance of `InstanceBackupArrayInput` via:
 //
-//	        InstanceBackupsArgs{...}
-//
-//	or:
-//
-//	        nil
-type InstanceBackupsPtrInput interface {
+//	InstanceBackupArray{ InstanceBackupArgs{...} }
+type InstanceBackupArrayInput interface {
 	pulumi.Input
 
-	ToInstanceBackupsPtrOutput() InstanceBackupsPtrOutput
-	ToInstanceBackupsPtrOutputWithContext(context.Context) InstanceBackupsPtrOutput
+	ToInstanceBackupArrayOutput() InstanceBackupArrayOutput
+	ToInstanceBackupArrayOutputWithContext(context.Context) InstanceBackupArrayOutput
 }
 
-type instanceBackupsPtrType InstanceBackupsArgs
+type InstanceBackupArray []InstanceBackupInput
 
-func InstanceBackupsPtr(v *InstanceBackupsArgs) InstanceBackupsPtrInput {
-	return (*instanceBackupsPtrType)(v)
+func (InstanceBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBackup)(nil)).Elem()
 }
 
-func (*instanceBackupsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceBackups)(nil)).Elem()
+func (i InstanceBackupArray) ToInstanceBackupArrayOutput() InstanceBackupArrayOutput {
+	return i.ToInstanceBackupArrayOutputWithContext(context.Background())
 }
 
-func (i *instanceBackupsPtrType) ToInstanceBackupsPtrOutput() InstanceBackupsPtrOutput {
-	return i.ToInstanceBackupsPtrOutputWithContext(context.Background())
+func (i InstanceBackupArray) ToInstanceBackupArrayOutputWithContext(ctx context.Context) InstanceBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupArrayOutput)
 }
 
-func (i *instanceBackupsPtrType) ToInstanceBackupsPtrOutputWithContext(ctx context.Context) InstanceBackupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsPtrOutput)
+type InstanceBackupOutput struct{ *pulumi.OutputState }
+
+func (InstanceBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBackup)(nil)).Elem()
 }
 
-type InstanceBackupsOutput struct{ *pulumi.OutputState }
-
-func (InstanceBackupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceBackups)(nil)).Elem()
-}
-
-func (o InstanceBackupsOutput) ToInstanceBackupsOutput() InstanceBackupsOutput {
+func (o InstanceBackupOutput) ToInstanceBackupOutput() InstanceBackupOutput {
 	return o
 }
 
-func (o InstanceBackupsOutput) ToInstanceBackupsOutputWithContext(ctx context.Context) InstanceBackupsOutput {
+func (o InstanceBackupOutput) ToInstanceBackupOutputWithContext(ctx context.Context) InstanceBackupOutput {
 	return o
-}
-
-func (o InstanceBackupsOutput) ToInstanceBackupsPtrOutput() InstanceBackupsPtrOutput {
-	return o.ToInstanceBackupsPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceBackupsOutput) ToInstanceBackupsPtrOutputWithContext(ctx context.Context) InstanceBackupsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceBackups) *InstanceBackups {
-		return &v
-	}).(InstanceBackupsPtrOutput)
 }
 
 // Whether this Backup is available for restoration.
-func (o InstanceBackupsOutput) Available() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceBackups) *bool { return v.Available }).(pulumi.BoolPtrOutput)
+func (o InstanceBackupOutput) Available() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceBackup) *bool { return v.Available }).(pulumi.BoolPtrOutput)
 }
 
 // If this Linode has the Backup service enabled.
-func (o InstanceBackupsOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v InstanceBackups) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o InstanceBackupOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceBackup) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o InstanceBackupsOutput) Schedule() InstanceBackupsSchedulePtrOutput {
-	return o.ApplyT(func(v InstanceBackups) *InstanceBackupsSchedule { return v.Schedule }).(InstanceBackupsSchedulePtrOutput)
+func (o InstanceBackupOutput) Schedules() InstanceBackupScheduleArrayOutput {
+	return o.ApplyT(func(v InstanceBackup) []InstanceBackupSchedule { return v.Schedules }).(InstanceBackupScheduleArrayOutput)
 }
 
-type InstanceBackupsPtrOutput struct{ *pulumi.OutputState }
+type InstanceBackupArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceBackupsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceBackups)(nil)).Elem()
+func (InstanceBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBackup)(nil)).Elem()
 }
 
-func (o InstanceBackupsPtrOutput) ToInstanceBackupsPtrOutput() InstanceBackupsPtrOutput {
+func (o InstanceBackupArrayOutput) ToInstanceBackupArrayOutput() InstanceBackupArrayOutput {
 	return o
 }
 
-func (o InstanceBackupsPtrOutput) ToInstanceBackupsPtrOutputWithContext(ctx context.Context) InstanceBackupsPtrOutput {
+func (o InstanceBackupArrayOutput) ToInstanceBackupArrayOutputWithContext(ctx context.Context) InstanceBackupArrayOutput {
 	return o
 }
 
-func (o InstanceBackupsPtrOutput) Elem() InstanceBackupsOutput {
-	return o.ApplyT(func(v *InstanceBackups) InstanceBackups {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceBackups
-		return ret
-	}).(InstanceBackupsOutput)
+func (o InstanceBackupArrayOutput) Index(i pulumi.IntInput) InstanceBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceBackup {
+		return vs[0].([]InstanceBackup)[vs[1].(int)]
+	}).(InstanceBackupOutput)
 }
 
-// Whether this Backup is available for restoration.
-func (o InstanceBackupsPtrOutput) Available() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceBackups) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Available
-	}).(pulumi.BoolPtrOutput)
-}
-
-// If this Linode has the Backup service enabled.
-func (o InstanceBackupsPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *InstanceBackups) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o InstanceBackupsPtrOutput) Schedule() InstanceBackupsSchedulePtrOutput {
-	return o.ApplyT(func(v *InstanceBackups) *InstanceBackupsSchedule {
-		if v == nil {
-			return nil
-		}
-		return v.Schedule
-	}).(InstanceBackupsSchedulePtrOutput)
-}
-
-type InstanceBackupsSchedule struct {
+type InstanceBackupSchedule struct {
 	// The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
 	Day *string `pulumi:"day"`
 	// The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 	Window *string `pulumi:"window"`
 }
 
-// InstanceBackupsScheduleInput is an input type that accepts InstanceBackupsScheduleArgs and InstanceBackupsScheduleOutput values.
-// You can construct a concrete instance of `InstanceBackupsScheduleInput` via:
+// InstanceBackupScheduleInput is an input type that accepts InstanceBackupScheduleArgs and InstanceBackupScheduleOutput values.
+// You can construct a concrete instance of `InstanceBackupScheduleInput` via:
 //
-//	InstanceBackupsScheduleArgs{...}
-type InstanceBackupsScheduleInput interface {
+//	InstanceBackupScheduleArgs{...}
+type InstanceBackupScheduleInput interface {
 	pulumi.Input
 
-	ToInstanceBackupsScheduleOutput() InstanceBackupsScheduleOutput
-	ToInstanceBackupsScheduleOutputWithContext(context.Context) InstanceBackupsScheduleOutput
+	ToInstanceBackupScheduleOutput() InstanceBackupScheduleOutput
+	ToInstanceBackupScheduleOutputWithContext(context.Context) InstanceBackupScheduleOutput
 }
 
-type InstanceBackupsScheduleArgs struct {
+type InstanceBackupScheduleArgs struct {
 	// The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
 	Day pulumi.StringPtrInput `pulumi:"day"`
 	// The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
 	Window pulumi.StringPtrInput `pulumi:"window"`
 }
 
-func (InstanceBackupsScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceBackupsSchedule)(nil)).Elem()
+func (InstanceBackupScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBackupSchedule)(nil)).Elem()
 }
 
-func (i InstanceBackupsScheduleArgs) ToInstanceBackupsScheduleOutput() InstanceBackupsScheduleOutput {
-	return i.ToInstanceBackupsScheduleOutputWithContext(context.Background())
+func (i InstanceBackupScheduleArgs) ToInstanceBackupScheduleOutput() InstanceBackupScheduleOutput {
+	return i.ToInstanceBackupScheduleOutputWithContext(context.Background())
 }
 
-func (i InstanceBackupsScheduleArgs) ToInstanceBackupsScheduleOutputWithContext(ctx context.Context) InstanceBackupsScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsScheduleOutput)
+func (i InstanceBackupScheduleArgs) ToInstanceBackupScheduleOutputWithContext(ctx context.Context) InstanceBackupScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupScheduleOutput)
 }
 
-func (i InstanceBackupsScheduleArgs) ToInstanceBackupsSchedulePtrOutput() InstanceBackupsSchedulePtrOutput {
-	return i.ToInstanceBackupsSchedulePtrOutputWithContext(context.Background())
-}
-
-func (i InstanceBackupsScheduleArgs) ToInstanceBackupsSchedulePtrOutputWithContext(ctx context.Context) InstanceBackupsSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsScheduleOutput).ToInstanceBackupsSchedulePtrOutputWithContext(ctx)
-}
-
-// InstanceBackupsSchedulePtrInput is an input type that accepts InstanceBackupsScheduleArgs, InstanceBackupsSchedulePtr and InstanceBackupsSchedulePtrOutput values.
-// You can construct a concrete instance of `InstanceBackupsSchedulePtrInput` via:
+// InstanceBackupScheduleArrayInput is an input type that accepts InstanceBackupScheduleArray and InstanceBackupScheduleArrayOutput values.
+// You can construct a concrete instance of `InstanceBackupScheduleArrayInput` via:
 //
-//	        InstanceBackupsScheduleArgs{...}
-//
-//	or:
-//
-//	        nil
-type InstanceBackupsSchedulePtrInput interface {
+//	InstanceBackupScheduleArray{ InstanceBackupScheduleArgs{...} }
+type InstanceBackupScheduleArrayInput interface {
 	pulumi.Input
 
-	ToInstanceBackupsSchedulePtrOutput() InstanceBackupsSchedulePtrOutput
-	ToInstanceBackupsSchedulePtrOutputWithContext(context.Context) InstanceBackupsSchedulePtrOutput
+	ToInstanceBackupScheduleArrayOutput() InstanceBackupScheduleArrayOutput
+	ToInstanceBackupScheduleArrayOutputWithContext(context.Context) InstanceBackupScheduleArrayOutput
 }
 
-type instanceBackupsSchedulePtrType InstanceBackupsScheduleArgs
+type InstanceBackupScheduleArray []InstanceBackupScheduleInput
 
-func InstanceBackupsSchedulePtr(v *InstanceBackupsScheduleArgs) InstanceBackupsSchedulePtrInput {
-	return (*instanceBackupsSchedulePtrType)(v)
+func (InstanceBackupScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBackupSchedule)(nil)).Elem()
 }
 
-func (*instanceBackupsSchedulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceBackupsSchedule)(nil)).Elem()
+func (i InstanceBackupScheduleArray) ToInstanceBackupScheduleArrayOutput() InstanceBackupScheduleArrayOutput {
+	return i.ToInstanceBackupScheduleArrayOutputWithContext(context.Background())
 }
 
-func (i *instanceBackupsSchedulePtrType) ToInstanceBackupsSchedulePtrOutput() InstanceBackupsSchedulePtrOutput {
-	return i.ToInstanceBackupsSchedulePtrOutputWithContext(context.Background())
+func (i InstanceBackupScheduleArray) ToInstanceBackupScheduleArrayOutputWithContext(ctx context.Context) InstanceBackupScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupScheduleArrayOutput)
 }
 
-func (i *instanceBackupsSchedulePtrType) ToInstanceBackupsSchedulePtrOutputWithContext(ctx context.Context) InstanceBackupsSchedulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceBackupsSchedulePtrOutput)
+type InstanceBackupScheduleOutput struct{ *pulumi.OutputState }
+
+func (InstanceBackupScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceBackupSchedule)(nil)).Elem()
 }
 
-type InstanceBackupsScheduleOutput struct{ *pulumi.OutputState }
-
-func (InstanceBackupsScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceBackupsSchedule)(nil)).Elem()
-}
-
-func (o InstanceBackupsScheduleOutput) ToInstanceBackupsScheduleOutput() InstanceBackupsScheduleOutput {
+func (o InstanceBackupScheduleOutput) ToInstanceBackupScheduleOutput() InstanceBackupScheduleOutput {
 	return o
 }
 
-func (o InstanceBackupsScheduleOutput) ToInstanceBackupsScheduleOutputWithContext(ctx context.Context) InstanceBackupsScheduleOutput {
+func (o InstanceBackupScheduleOutput) ToInstanceBackupScheduleOutputWithContext(ctx context.Context) InstanceBackupScheduleOutput {
 	return o
-}
-
-func (o InstanceBackupsScheduleOutput) ToInstanceBackupsSchedulePtrOutput() InstanceBackupsSchedulePtrOutput {
-	return o.ToInstanceBackupsSchedulePtrOutputWithContext(context.Background())
-}
-
-func (o InstanceBackupsScheduleOutput) ToInstanceBackupsSchedulePtrOutputWithContext(ctx context.Context) InstanceBackupsSchedulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceBackupsSchedule) *InstanceBackupsSchedule {
-		return &v
-	}).(InstanceBackupsSchedulePtrOutput)
 }
 
 // The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
-func (o InstanceBackupsScheduleOutput) Day() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
+func (o InstanceBackupScheduleOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceBackupSchedule) *string { return v.Day }).(pulumi.StringPtrOutput)
 }
 
 // The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
-func (o InstanceBackupsScheduleOutput) Window() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceBackupsSchedule) *string { return v.Window }).(pulumi.StringPtrOutput)
+func (o InstanceBackupScheduleOutput) Window() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceBackupSchedule) *string { return v.Window }).(pulumi.StringPtrOutput)
 }
 
-type InstanceBackupsSchedulePtrOutput struct{ *pulumi.OutputState }
+type InstanceBackupScheduleArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceBackupsSchedulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceBackupsSchedule)(nil)).Elem()
+func (InstanceBackupScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceBackupSchedule)(nil)).Elem()
 }
 
-func (o InstanceBackupsSchedulePtrOutput) ToInstanceBackupsSchedulePtrOutput() InstanceBackupsSchedulePtrOutput {
+func (o InstanceBackupScheduleArrayOutput) ToInstanceBackupScheduleArrayOutput() InstanceBackupScheduleArrayOutput {
 	return o
 }
 
-func (o InstanceBackupsSchedulePtrOutput) ToInstanceBackupsSchedulePtrOutputWithContext(ctx context.Context) InstanceBackupsSchedulePtrOutput {
+func (o InstanceBackupScheduleArrayOutput) ToInstanceBackupScheduleArrayOutputWithContext(ctx context.Context) InstanceBackupScheduleArrayOutput {
 	return o
 }
 
-func (o InstanceBackupsSchedulePtrOutput) Elem() InstanceBackupsScheduleOutput {
-	return o.ApplyT(func(v *InstanceBackupsSchedule) InstanceBackupsSchedule {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceBackupsSchedule
-		return ret
-	}).(InstanceBackupsScheduleOutput)
-}
-
-// The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
-func (o InstanceBackupsSchedulePtrOutput) Day() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceBackupsSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Day
-	}).(pulumi.StringPtrOutput)
-}
-
-// The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
-func (o InstanceBackupsSchedulePtrOutput) Window() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceBackupsSchedule) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Window
-	}).(pulumi.StringPtrOutput)
+func (o InstanceBackupScheduleArrayOutput) Index(i pulumi.IntInput) InstanceBackupScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceBackupSchedule {
+		return vs[0].([]InstanceBackupSchedule)[vs[1].(int)]
+	}).(InstanceBackupScheduleOutput)
 }
 
 type InstanceConfigType struct {
@@ -6216,7 +6107,7 @@ func (o InstancePlacementGroupPtrOutput) PlacementGroupType() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-type InstanceSpecs struct {
+type InstanceSpec struct {
 	// The number of VPUs this Linode has access to.
 	AcceleratedDevices *int `pulumi:"acceleratedDevices"`
 	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
@@ -6231,18 +6122,18 @@ type InstanceSpecs struct {
 	Vcpus *int `pulumi:"vcpus"`
 }
 
-// InstanceSpecsInput is an input type that accepts InstanceSpecsArgs and InstanceSpecsOutput values.
-// You can construct a concrete instance of `InstanceSpecsInput` via:
+// InstanceSpecInput is an input type that accepts InstanceSpecArgs and InstanceSpecOutput values.
+// You can construct a concrete instance of `InstanceSpecInput` via:
 //
-//	InstanceSpecsArgs{...}
-type InstanceSpecsInput interface {
+//	InstanceSpecArgs{...}
+type InstanceSpecInput interface {
 	pulumi.Input
 
-	ToInstanceSpecsOutput() InstanceSpecsOutput
-	ToInstanceSpecsOutputWithContext(context.Context) InstanceSpecsOutput
+	ToInstanceSpecOutput() InstanceSpecOutput
+	ToInstanceSpecOutputWithContext(context.Context) InstanceSpecOutput
 }
 
-type InstanceSpecsArgs struct {
+type InstanceSpecArgs struct {
 	// The number of VPUs this Linode has access to.
 	AcceleratedDevices pulumi.IntPtrInput `pulumi:"acceleratedDevices"`
 	// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
@@ -6257,195 +6148,105 @@ type InstanceSpecsArgs struct {
 	Vcpus pulumi.IntPtrInput `pulumi:"vcpus"`
 }
 
-func (InstanceSpecsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceSpecs)(nil)).Elem()
+func (InstanceSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSpec)(nil)).Elem()
 }
 
-func (i InstanceSpecsArgs) ToInstanceSpecsOutput() InstanceSpecsOutput {
-	return i.ToInstanceSpecsOutputWithContext(context.Background())
+func (i InstanceSpecArgs) ToInstanceSpecOutput() InstanceSpecOutput {
+	return i.ToInstanceSpecOutputWithContext(context.Background())
 }
 
-func (i InstanceSpecsArgs) ToInstanceSpecsOutputWithContext(ctx context.Context) InstanceSpecsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecsOutput)
+func (i InstanceSpecArgs) ToInstanceSpecOutputWithContext(ctx context.Context) InstanceSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecOutput)
 }
 
-func (i InstanceSpecsArgs) ToInstanceSpecsPtrOutput() InstanceSpecsPtrOutput {
-	return i.ToInstanceSpecsPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceSpecsArgs) ToInstanceSpecsPtrOutputWithContext(ctx context.Context) InstanceSpecsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecsOutput).ToInstanceSpecsPtrOutputWithContext(ctx)
-}
-
-// InstanceSpecsPtrInput is an input type that accepts InstanceSpecsArgs, InstanceSpecsPtr and InstanceSpecsPtrOutput values.
-// You can construct a concrete instance of `InstanceSpecsPtrInput` via:
+// InstanceSpecArrayInput is an input type that accepts InstanceSpecArray and InstanceSpecArrayOutput values.
+// You can construct a concrete instance of `InstanceSpecArrayInput` via:
 //
-//	        InstanceSpecsArgs{...}
-//
-//	or:
-//
-//	        nil
-type InstanceSpecsPtrInput interface {
+//	InstanceSpecArray{ InstanceSpecArgs{...} }
+type InstanceSpecArrayInput interface {
 	pulumi.Input
 
-	ToInstanceSpecsPtrOutput() InstanceSpecsPtrOutput
-	ToInstanceSpecsPtrOutputWithContext(context.Context) InstanceSpecsPtrOutput
+	ToInstanceSpecArrayOutput() InstanceSpecArrayOutput
+	ToInstanceSpecArrayOutputWithContext(context.Context) InstanceSpecArrayOutput
 }
 
-type instanceSpecsPtrType InstanceSpecsArgs
+type InstanceSpecArray []InstanceSpecInput
 
-func InstanceSpecsPtr(v *InstanceSpecsArgs) InstanceSpecsPtrInput {
-	return (*instanceSpecsPtrType)(v)
+func (InstanceSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSpec)(nil)).Elem()
 }
 
-func (*instanceSpecsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceSpecs)(nil)).Elem()
+func (i InstanceSpecArray) ToInstanceSpecArrayOutput() InstanceSpecArrayOutput {
+	return i.ToInstanceSpecArrayOutputWithContext(context.Background())
 }
 
-func (i *instanceSpecsPtrType) ToInstanceSpecsPtrOutput() InstanceSpecsPtrOutput {
-	return i.ToInstanceSpecsPtrOutputWithContext(context.Background())
+func (i InstanceSpecArray) ToInstanceSpecArrayOutputWithContext(ctx context.Context) InstanceSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecArrayOutput)
 }
 
-func (i *instanceSpecsPtrType) ToInstanceSpecsPtrOutputWithContext(ctx context.Context) InstanceSpecsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceSpecsPtrOutput)
+type InstanceSpecOutput struct{ *pulumi.OutputState }
+
+func (InstanceSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceSpec)(nil)).Elem()
 }
 
-type InstanceSpecsOutput struct{ *pulumi.OutputState }
-
-func (InstanceSpecsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceSpecs)(nil)).Elem()
-}
-
-func (o InstanceSpecsOutput) ToInstanceSpecsOutput() InstanceSpecsOutput {
+func (o InstanceSpecOutput) ToInstanceSpecOutput() InstanceSpecOutput {
 	return o
 }
 
-func (o InstanceSpecsOutput) ToInstanceSpecsOutputWithContext(ctx context.Context) InstanceSpecsOutput {
+func (o InstanceSpecOutput) ToInstanceSpecOutputWithContext(ctx context.Context) InstanceSpecOutput {
 	return o
-}
-
-func (o InstanceSpecsOutput) ToInstanceSpecsPtrOutput() InstanceSpecsPtrOutput {
-	return o.ToInstanceSpecsPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceSpecsOutput) ToInstanceSpecsPtrOutputWithContext(ctx context.Context) InstanceSpecsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceSpecs) *InstanceSpecs {
-		return &v
-	}).(InstanceSpecsPtrOutput)
 }
 
 // The number of VPUs this Linode has access to.
-func (o InstanceSpecsOutput) AcceleratedDevices() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.AcceleratedDevices }).(pulumi.IntPtrOutput)
+func (o InstanceSpecOutput) AcceleratedDevices() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *int { return v.AcceleratedDevices }).(pulumi.IntPtrOutput)
 }
 
 // The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
-func (o InstanceSpecsOutput) Disk() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Disk }).(pulumi.IntPtrOutput)
+func (o InstanceSpecOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *int { return v.Disk }).(pulumi.IntPtrOutput)
 }
 
 // The number of GPUs this Linode has access to.
-func (o InstanceSpecsOutput) Gpus() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Gpus }).(pulumi.IntPtrOutput)
+func (o InstanceSpecOutput) Gpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *int { return v.Gpus }).(pulumi.IntPtrOutput)
 }
 
 // The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
-func (o InstanceSpecsOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Memory }).(pulumi.IntPtrOutput)
+func (o InstanceSpecOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *int { return v.Memory }).(pulumi.IntPtrOutput)
 }
 
 // The amount of network transfer this Linode is allotted each month.
-func (o InstanceSpecsOutput) Transfer() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Transfer }).(pulumi.IntPtrOutput)
+func (o InstanceSpecOutput) Transfer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *int { return v.Transfer }).(pulumi.IntPtrOutput)
 }
 
 // The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
-func (o InstanceSpecsOutput) Vcpus() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceSpecs) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
+func (o InstanceSpecOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceSpec) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
 }
 
-type InstanceSpecsPtrOutput struct{ *pulumi.OutputState }
+type InstanceSpecArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceSpecsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceSpecs)(nil)).Elem()
+func (InstanceSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceSpec)(nil)).Elem()
 }
 
-func (o InstanceSpecsPtrOutput) ToInstanceSpecsPtrOutput() InstanceSpecsPtrOutput {
+func (o InstanceSpecArrayOutput) ToInstanceSpecArrayOutput() InstanceSpecArrayOutput {
 	return o
 }
 
-func (o InstanceSpecsPtrOutput) ToInstanceSpecsPtrOutputWithContext(ctx context.Context) InstanceSpecsPtrOutput {
+func (o InstanceSpecArrayOutput) ToInstanceSpecArrayOutputWithContext(ctx context.Context) InstanceSpecArrayOutput {
 	return o
 }
 
-func (o InstanceSpecsPtrOutput) Elem() InstanceSpecsOutput {
-	return o.ApplyT(func(v *InstanceSpecs) InstanceSpecs {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceSpecs
-		return ret
-	}).(InstanceSpecsOutput)
-}
-
-// The number of VPUs this Linode has access to.
-func (o InstanceSpecsPtrOutput) AcceleratedDevices() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceSpecs) *int {
-		if v == nil {
-			return nil
-		}
-		return v.AcceleratedDevices
-	}).(pulumi.IntPtrOutput)
-}
-
-// The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
-func (o InstanceSpecsPtrOutput) Disk() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceSpecs) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Disk
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of GPUs this Linode has access to.
-func (o InstanceSpecsPtrOutput) Gpus() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceSpecs) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Gpus
-	}).(pulumi.IntPtrOutput)
-}
-
-// The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
-func (o InstanceSpecsPtrOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceSpecs) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Memory
-	}).(pulumi.IntPtrOutput)
-}
-
-// The amount of network transfer this Linode is allotted each month.
-func (o InstanceSpecsPtrOutput) Transfer() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceSpecs) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Transfer
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
-func (o InstanceSpecsPtrOutput) Vcpus() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *InstanceSpecs) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Vcpus
-	}).(pulumi.IntPtrOutput)
+func (o InstanceSpecArrayOutput) Index(i pulumi.IntInput) InstanceSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSpec {
+		return vs[0].([]InstanceSpec)[vs[1].(int)]
+	}).(InstanceSpecOutput)
 }
 
 type LkeClusterControlPlane struct {
@@ -13547,6 +13348,2531 @@ func (o GetDatabaseMysqlBackupsFilterArrayOutput) Index(i pulumi.IntInput) GetDa
 	}).(GetDatabaseMysqlBackupsFilterOutput)
 }
 
+type GetDatabaseMysqlConfigBinlogRetentionPeriod struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigBinlogRetentionPeriodInput is an input type that accepts GetDatabaseMysqlConfigBinlogRetentionPeriodArgs and GetDatabaseMysqlConfigBinlogRetentionPeriodOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigBinlogRetentionPeriodInput` via:
+//
+//	GetDatabaseMysqlConfigBinlogRetentionPeriodArgs{...}
+type GetDatabaseMysqlConfigBinlogRetentionPeriodInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigBinlogRetentionPeriodOutput() GetDatabaseMysqlConfigBinlogRetentionPeriodOutput
+	ToGetDatabaseMysqlConfigBinlogRetentionPeriodOutputWithContext(context.Context) GetDatabaseMysqlConfigBinlogRetentionPeriodOutput
+}
+
+type GetDatabaseMysqlConfigBinlogRetentionPeriodArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigBinlogRetentionPeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigBinlogRetentionPeriod)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigBinlogRetentionPeriodArgs) ToGetDatabaseMysqlConfigBinlogRetentionPeriodOutput() GetDatabaseMysqlConfigBinlogRetentionPeriodOutput {
+	return i.ToGetDatabaseMysqlConfigBinlogRetentionPeriodOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigBinlogRetentionPeriodArgs) ToGetDatabaseMysqlConfigBinlogRetentionPeriodOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigBinlogRetentionPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigBinlogRetentionPeriodOutput)
+}
+
+// GetDatabaseMysqlConfigBinlogRetentionPeriodArrayInput is an input type that accepts GetDatabaseMysqlConfigBinlogRetentionPeriodArray and GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigBinlogRetentionPeriodArrayInput` via:
+//
+//	GetDatabaseMysqlConfigBinlogRetentionPeriodArray{ GetDatabaseMysqlConfigBinlogRetentionPeriodArgs{...} }
+type GetDatabaseMysqlConfigBinlogRetentionPeriodArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput() GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput
+	ToGetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutputWithContext(context.Context) GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput
+}
+
+type GetDatabaseMysqlConfigBinlogRetentionPeriodArray []GetDatabaseMysqlConfigBinlogRetentionPeriodInput
+
+func (GetDatabaseMysqlConfigBinlogRetentionPeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlConfigBinlogRetentionPeriod)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigBinlogRetentionPeriodArray) ToGetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput() GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput {
+	return i.ToGetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigBinlogRetentionPeriodArray) ToGetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput)
+}
+
+type GetDatabaseMysqlConfigBinlogRetentionPeriodOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigBinlogRetentionPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigBinlogRetentionPeriod)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigBinlogRetentionPeriodOutput) ToGetDatabaseMysqlConfigBinlogRetentionPeriodOutput() GetDatabaseMysqlConfigBinlogRetentionPeriodOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigBinlogRetentionPeriodOutput) ToGetDatabaseMysqlConfigBinlogRetentionPeriodOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigBinlogRetentionPeriodOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigBinlogRetentionPeriodOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigBinlogRetentionPeriod) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigBinlogRetentionPeriodOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigBinlogRetentionPeriod) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigBinlogRetentionPeriodOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigBinlogRetentionPeriod) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigBinlogRetentionPeriodOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigBinlogRetentionPeriod) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigBinlogRetentionPeriodOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigBinlogRetentionPeriod) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigBinlogRetentionPeriodOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigBinlogRetentionPeriod) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlConfigBinlogRetentionPeriod)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput) ToGetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput() GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput) ToGetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput) Index(i pulumi.IntInput) GetDatabaseMysqlConfigBinlogRetentionPeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMysqlConfigBinlogRetentionPeriod {
+		return vs[0].([]GetDatabaseMysqlConfigBinlogRetentionPeriod)[vs[1].(int)]
+	}).(GetDatabaseMysqlConfigBinlogRetentionPeriodOutput)
+}
+
+type GetDatabaseMysqlConfigMysql struct {
+	ConnectTimeout               GetDatabaseMysqlConfigMysqlConnectTimeout               `pulumi:"connectTimeout"`
+	DefaultTimeZone              GetDatabaseMysqlConfigMysqlDefaultTimeZone              `pulumi:"defaultTimeZone"`
+	GroupConcatMaxLen            GetDatabaseMysqlConfigMysqlGroupConcatMaxLen            `pulumi:"groupConcatMaxLen"`
+	InformationSchemaStatsExpiry GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry `pulumi:"informationSchemaStatsExpiry"`
+	InnodbChangeBufferMaxSize    GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize    `pulumi:"innodbChangeBufferMaxSize"`
+	InnodbFlushNeighbors         GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors         `pulumi:"innodbFlushNeighbors"`
+	InnodbFtMinTokenSize         GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize         `pulumi:"innodbFtMinTokenSize"`
+	InnodbFtServerStopwordTable  GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable  `pulumi:"innodbFtServerStopwordTable"`
+	InnodbLockWaitTimeout        GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout        `pulumi:"innodbLockWaitTimeout"`
+	InnodbLogBufferSize          GetDatabaseMysqlConfigMysqlInnodbLogBufferSize          `pulumi:"innodbLogBufferSize"`
+	InnodbOnlineAlterLogMaxSize  GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize  `pulumi:"innodbOnlineAlterLogMaxSize"`
+	InnodbReadIoThreads          GetDatabaseMysqlConfigMysqlInnodbReadIoThreads          `pulumi:"innodbReadIoThreads"`
+	InnodbRollbackOnTimeout      GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout      `pulumi:"innodbRollbackOnTimeout"`
+	InnodbThreadConcurrency      GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency      `pulumi:"innodbThreadConcurrency"`
+	InnodbWriteIoThreads         GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads         `pulumi:"innodbWriteIoThreads"`
+	InteractiveTimeout           GetDatabaseMysqlConfigMysqlInteractiveTimeout           `pulumi:"interactiveTimeout"`
+	InternalTmpMemStorageEngine  GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine  `pulumi:"internalTmpMemStorageEngine"`
+	MaxAllowedPacket             GetDatabaseMysqlConfigMysqlMaxAllowedPacket             `pulumi:"maxAllowedPacket"`
+	MaxHeapTableSize             GetDatabaseMysqlConfigMysqlMaxHeapTableSize             `pulumi:"maxHeapTableSize"`
+	NetBufferLength              GetDatabaseMysqlConfigMysqlNetBufferLength              `pulumi:"netBufferLength"`
+	NetReadTimeout               GetDatabaseMysqlConfigMysqlNetReadTimeout               `pulumi:"netReadTimeout"`
+	NetWriteTimeout              GetDatabaseMysqlConfigMysqlNetWriteTimeout              `pulumi:"netWriteTimeout"`
+	SortBufferSize               GetDatabaseMysqlConfigMysqlSortBufferSize               `pulumi:"sortBufferSize"`
+	SqlMode                      GetDatabaseMysqlConfigMysqlSqlMode                      `pulumi:"sqlMode"`
+	SqlRequirePrimaryKey         GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey         `pulumi:"sqlRequirePrimaryKey"`
+	TmpTableSize                 GetDatabaseMysqlConfigMysqlTmpTableSize                 `pulumi:"tmpTableSize"`
+	WaitTimeout                  GetDatabaseMysqlConfigMysqlWaitTimeout                  `pulumi:"waitTimeout"`
+}
+
+// GetDatabaseMysqlConfigMysqlInput is an input type that accepts GetDatabaseMysqlConfigMysqlArgs and GetDatabaseMysqlConfigMysqlOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlArgs{...}
+type GetDatabaseMysqlConfigMysqlInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlOutput() GetDatabaseMysqlConfigMysqlOutput
+	ToGetDatabaseMysqlConfigMysqlOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlOutput
+}
+
+type GetDatabaseMysqlConfigMysqlArgs struct {
+	ConnectTimeout               GetDatabaseMysqlConfigMysqlConnectTimeoutInput               `pulumi:"connectTimeout"`
+	DefaultTimeZone              GetDatabaseMysqlConfigMysqlDefaultTimeZoneInput              `pulumi:"defaultTimeZone"`
+	GroupConcatMaxLen            GetDatabaseMysqlConfigMysqlGroupConcatMaxLenInput            `pulumi:"groupConcatMaxLen"`
+	InformationSchemaStatsExpiry GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryInput `pulumi:"informationSchemaStatsExpiry"`
+	InnodbChangeBufferMaxSize    GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeInput    `pulumi:"innodbChangeBufferMaxSize"`
+	InnodbFlushNeighbors         GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsInput         `pulumi:"innodbFlushNeighbors"`
+	InnodbFtMinTokenSize         GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeInput         `pulumi:"innodbFtMinTokenSize"`
+	InnodbFtServerStopwordTable  GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableInput  `pulumi:"innodbFtServerStopwordTable"`
+	InnodbLockWaitTimeout        GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutInput        `pulumi:"innodbLockWaitTimeout"`
+	InnodbLogBufferSize          GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeInput          `pulumi:"innodbLogBufferSize"`
+	InnodbOnlineAlterLogMaxSize  GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeInput  `pulumi:"innodbOnlineAlterLogMaxSize"`
+	InnodbReadIoThreads          GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsInput          `pulumi:"innodbReadIoThreads"`
+	InnodbRollbackOnTimeout      GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutInput      `pulumi:"innodbRollbackOnTimeout"`
+	InnodbThreadConcurrency      GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyInput      `pulumi:"innodbThreadConcurrency"`
+	InnodbWriteIoThreads         GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsInput         `pulumi:"innodbWriteIoThreads"`
+	InteractiveTimeout           GetDatabaseMysqlConfigMysqlInteractiveTimeoutInput           `pulumi:"interactiveTimeout"`
+	InternalTmpMemStorageEngine  GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineInput  `pulumi:"internalTmpMemStorageEngine"`
+	MaxAllowedPacket             GetDatabaseMysqlConfigMysqlMaxAllowedPacketInput             `pulumi:"maxAllowedPacket"`
+	MaxHeapTableSize             GetDatabaseMysqlConfigMysqlMaxHeapTableSizeInput             `pulumi:"maxHeapTableSize"`
+	NetBufferLength              GetDatabaseMysqlConfigMysqlNetBufferLengthInput              `pulumi:"netBufferLength"`
+	NetReadTimeout               GetDatabaseMysqlConfigMysqlNetReadTimeoutInput               `pulumi:"netReadTimeout"`
+	NetWriteTimeout              GetDatabaseMysqlConfigMysqlNetWriteTimeoutInput              `pulumi:"netWriteTimeout"`
+	SortBufferSize               GetDatabaseMysqlConfigMysqlSortBufferSizeInput               `pulumi:"sortBufferSize"`
+	SqlMode                      GetDatabaseMysqlConfigMysqlSqlModeInput                      `pulumi:"sqlMode"`
+	SqlRequirePrimaryKey         GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyInput         `pulumi:"sqlRequirePrimaryKey"`
+	TmpTableSize                 GetDatabaseMysqlConfigMysqlTmpTableSizeInput                 `pulumi:"tmpTableSize"`
+	WaitTimeout                  GetDatabaseMysqlConfigMysqlWaitTimeoutInput                  `pulumi:"waitTimeout"`
+}
+
+func (GetDatabaseMysqlConfigMysqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysql)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlArgs) ToGetDatabaseMysqlConfigMysqlOutput() GetDatabaseMysqlConfigMysqlOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlArgs) ToGetDatabaseMysqlConfigMysqlOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlOutput)
+}
+
+// GetDatabaseMysqlConfigMysqlArrayInput is an input type that accepts GetDatabaseMysqlConfigMysqlArray and GetDatabaseMysqlConfigMysqlArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlArrayInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlArray{ GetDatabaseMysqlConfigMysqlArgs{...} }
+type GetDatabaseMysqlConfigMysqlArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlArrayOutput() GetDatabaseMysqlConfigMysqlArrayOutput
+	ToGetDatabaseMysqlConfigMysqlArrayOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlArrayOutput
+}
+
+type GetDatabaseMysqlConfigMysqlArray []GetDatabaseMysqlConfigMysqlInput
+
+func (GetDatabaseMysqlConfigMysqlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlConfigMysql)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlArray) ToGetDatabaseMysqlConfigMysqlArrayOutput() GetDatabaseMysqlConfigMysqlArrayOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlArray) ToGetDatabaseMysqlConfigMysqlArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlArrayOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysql)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) ToGetDatabaseMysqlConfigMysqlOutput() GetDatabaseMysqlConfigMysqlOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) ToGetDatabaseMysqlConfigMysqlOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) ConnectTimeout() GetDatabaseMysqlConfigMysqlConnectTimeoutOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlConnectTimeout { return v.ConnectTimeout }).(GetDatabaseMysqlConfigMysqlConnectTimeoutOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) DefaultTimeZone() GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlDefaultTimeZone {
+		return v.DefaultTimeZone
+	}).(GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) GroupConcatMaxLen() GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlGroupConcatMaxLen {
+		return v.GroupConcatMaxLen
+	}).(GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InformationSchemaStatsExpiry() GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry {
+		return v.InformationSchemaStatsExpiry
+	}).(GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InnodbChangeBufferMaxSize() GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize {
+		return v.InnodbChangeBufferMaxSize
+	}).(GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InnodbFlushNeighbors() GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors {
+		return v.InnodbFlushNeighbors
+	}).(GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InnodbFtMinTokenSize() GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize {
+		return v.InnodbFtMinTokenSize
+	}).(GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InnodbFtServerStopwordTable() GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable {
+		return v.InnodbFtServerStopwordTable
+	}).(GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InnodbLockWaitTimeout() GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout {
+		return v.InnodbLockWaitTimeout
+	}).(GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InnodbLogBufferSize() GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInnodbLogBufferSize {
+		return v.InnodbLogBufferSize
+	}).(GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InnodbOnlineAlterLogMaxSize() GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize {
+		return v.InnodbOnlineAlterLogMaxSize
+	}).(GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InnodbReadIoThreads() GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInnodbReadIoThreads {
+		return v.InnodbReadIoThreads
+	}).(GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InnodbRollbackOnTimeout() GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout {
+		return v.InnodbRollbackOnTimeout
+	}).(GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InnodbThreadConcurrency() GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency {
+		return v.InnodbThreadConcurrency
+	}).(GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InnodbWriteIoThreads() GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads {
+		return v.InnodbWriteIoThreads
+	}).(GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InteractiveTimeout() GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInteractiveTimeout {
+		return v.InteractiveTimeout
+	}).(GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) InternalTmpMemStorageEngine() GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine {
+		return v.InternalTmpMemStorageEngine
+	}).(GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) MaxAllowedPacket() GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlMaxAllowedPacket {
+		return v.MaxAllowedPacket
+	}).(GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) MaxHeapTableSize() GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlMaxHeapTableSize {
+		return v.MaxHeapTableSize
+	}).(GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) NetBufferLength() GetDatabaseMysqlConfigMysqlNetBufferLengthOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlNetBufferLength {
+		return v.NetBufferLength
+	}).(GetDatabaseMysqlConfigMysqlNetBufferLengthOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) NetReadTimeout() GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlNetReadTimeout { return v.NetReadTimeout }).(GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) NetWriteTimeout() GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlNetWriteTimeout {
+		return v.NetWriteTimeout
+	}).(GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) SortBufferSize() GetDatabaseMysqlConfigMysqlSortBufferSizeOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlSortBufferSize { return v.SortBufferSize }).(GetDatabaseMysqlConfigMysqlSortBufferSizeOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) SqlMode() GetDatabaseMysqlConfigMysqlSqlModeOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlSqlMode { return v.SqlMode }).(GetDatabaseMysqlConfigMysqlSqlModeOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) SqlRequirePrimaryKey() GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey {
+		return v.SqlRequirePrimaryKey
+	}).(GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) TmpTableSize() GetDatabaseMysqlConfigMysqlTmpTableSizeOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlTmpTableSize { return v.TmpTableSize }).(GetDatabaseMysqlConfigMysqlTmpTableSizeOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlOutput) WaitTimeout() GetDatabaseMysqlConfigMysqlWaitTimeoutOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysql) GetDatabaseMysqlConfigMysqlWaitTimeout { return v.WaitTimeout }).(GetDatabaseMysqlConfigMysqlWaitTimeoutOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseMysqlConfigMysql)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlArrayOutput) ToGetDatabaseMysqlConfigMysqlArrayOutput() GetDatabaseMysqlConfigMysqlArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlArrayOutput) ToGetDatabaseMysqlConfigMysqlArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlArrayOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlArrayOutput) Index(i pulumi.IntInput) GetDatabaseMysqlConfigMysqlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMysqlConfigMysql {
+		return vs[0].([]GetDatabaseMysqlConfigMysql)[vs[1].(int)]
+	}).(GetDatabaseMysqlConfigMysqlOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlConnectTimeout struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlConnectTimeoutInput is an input type that accepts GetDatabaseMysqlConfigMysqlConnectTimeoutArgs and GetDatabaseMysqlConfigMysqlConnectTimeoutOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlConnectTimeoutInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlConnectTimeoutArgs{...}
+type GetDatabaseMysqlConfigMysqlConnectTimeoutInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlConnectTimeoutOutput() GetDatabaseMysqlConfigMysqlConnectTimeoutOutput
+	ToGetDatabaseMysqlConfigMysqlConnectTimeoutOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlConnectTimeoutOutput
+}
+
+type GetDatabaseMysqlConfigMysqlConnectTimeoutArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlConnectTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlConnectTimeout)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlConnectTimeoutArgs) ToGetDatabaseMysqlConfigMysqlConnectTimeoutOutput() GetDatabaseMysqlConfigMysqlConnectTimeoutOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlConnectTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlConnectTimeoutArgs) ToGetDatabaseMysqlConfigMysqlConnectTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlConnectTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlConnectTimeoutOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlConnectTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlConnectTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlConnectTimeout)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlConnectTimeoutOutput) ToGetDatabaseMysqlConfigMysqlConnectTimeoutOutput() GetDatabaseMysqlConfigMysqlConnectTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlConnectTimeoutOutput) ToGetDatabaseMysqlConfigMysqlConnectTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlConnectTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlConnectTimeoutOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlConnectTimeout) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlConnectTimeoutOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlConnectTimeout) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlConnectTimeoutOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlConnectTimeout) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlConnectTimeoutOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlConnectTimeout) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlConnectTimeoutOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlConnectTimeout) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlConnectTimeoutOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlConnectTimeout) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlDefaultTimeZone struct {
+	Description     string `pulumi:"description"`
+	Example         string `pulumi:"example"`
+	MaxLength       int    `pulumi:"maxLength"`
+	MinLength       int    `pulumi:"minLength"`
+	Pattern         string `pulumi:"pattern"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlDefaultTimeZoneInput is an input type that accepts GetDatabaseMysqlConfigMysqlDefaultTimeZoneArgs and GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlDefaultTimeZoneInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlDefaultTimeZoneArgs{...}
+type GetDatabaseMysqlConfigMysqlDefaultTimeZoneInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput() GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput
+	ToGetDatabaseMysqlConfigMysqlDefaultTimeZoneOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput
+}
+
+type GetDatabaseMysqlConfigMysqlDefaultTimeZoneArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.StringInput `pulumi:"example"`
+	MaxLength       pulumi.IntInput    `pulumi:"maxLength"`
+	MinLength       pulumi.IntInput    `pulumi:"minLength"`
+	Pattern         pulumi.StringInput `pulumi:"pattern"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlDefaultTimeZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlDefaultTimeZone)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlDefaultTimeZoneArgs) ToGetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput() GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlDefaultTimeZoneOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlDefaultTimeZoneArgs) ToGetDatabaseMysqlConfigMysqlDefaultTimeZoneOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlDefaultTimeZone)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput) ToGetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput() GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput) ToGetDatabaseMysqlConfigMysqlDefaultTimeZoneOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlDefaultTimeZone) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput) Example() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlDefaultTimeZone) string { return v.Example }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput) MaxLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlDefaultTimeZone) int { return v.MaxLength }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput) MinLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlDefaultTimeZone) int { return v.MinLength }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlDefaultTimeZone) string { return v.Pattern }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlDefaultTimeZone) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlDefaultTimeZone) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlGroupConcatMaxLen struct {
+	Description     string  `pulumi:"description"`
+	Example         float64 `pulumi:"example"`
+	Maximum         float64 `pulumi:"maximum"`
+	Minimum         float64 `pulumi:"minimum"`
+	RequiresRestart bool    `pulumi:"requiresRestart"`
+	Type            string  `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlGroupConcatMaxLenInput is an input type that accepts GetDatabaseMysqlConfigMysqlGroupConcatMaxLenArgs and GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlGroupConcatMaxLenInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlGroupConcatMaxLenArgs{...}
+type GetDatabaseMysqlConfigMysqlGroupConcatMaxLenInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput() GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput
+	ToGetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput
+}
+
+type GetDatabaseMysqlConfigMysqlGroupConcatMaxLenArgs struct {
+	Description     pulumi.StringInput  `pulumi:"description"`
+	Example         pulumi.Float64Input `pulumi:"example"`
+	Maximum         pulumi.Float64Input `pulumi:"maximum"`
+	Minimum         pulumi.Float64Input `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput    `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput  `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlGroupConcatMaxLenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlGroupConcatMaxLen)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlGroupConcatMaxLenArgs) ToGetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput() GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlGroupConcatMaxLenArgs) ToGetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlGroupConcatMaxLen)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput) ToGetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput() GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput) ToGetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlGroupConcatMaxLen) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput) Example() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlGroupConcatMaxLen) float64 { return v.Example }).(pulumi.Float64Output)
+}
+
+func (o GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput) Maximum() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlGroupConcatMaxLen) float64 { return v.Maximum }).(pulumi.Float64Output)
+}
+
+func (o GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput) Minimum() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlGroupConcatMaxLen) float64 { return v.Minimum }).(pulumi.Float64Output)
+}
+
+func (o GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlGroupConcatMaxLen) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlGroupConcatMaxLen) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryInput is an input type that accepts GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryArgs and GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryArgs{...}
+type GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput() GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput
+	ToGetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryArgs) ToGetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput() GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryArgs) ToGetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput) ToGetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput() GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput) ToGetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeInput is an input type that accepts GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeArgs and GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeArgs{...}
+type GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput() GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput
+	ToGetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeArgs) ToGetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput() GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeArgs) ToGetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput) ToGetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput() GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput) ToGetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsInput is an input type that accepts GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsArgs and GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsArgs{...}
+type GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput() GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput
+	ToGetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsArgs) ToGetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput() GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsArgs) ToGetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput) ToGetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput() GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput) ToGetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeInput is an input type that accepts GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeArgs and GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeArgs{...}
+type GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput() GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput
+	ToGetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeArgs) ToGetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput() GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeArgs) ToGetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput) ToGetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput() GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput) ToGetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable struct {
+	Description     string   `pulumi:"description"`
+	Example         string   `pulumi:"example"`
+	MaxLength       int      `pulumi:"maxLength"`
+	Pattern         string   `pulumi:"pattern"`
+	RequiresRestart bool     `pulumi:"requiresRestart"`
+	Types           []string `pulumi:"types"`
+}
+
+// GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableInput is an input type that accepts GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableArgs and GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableArgs{...}
+type GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput() GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput
+	ToGetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableArgs struct {
+	Description     pulumi.StringInput      `pulumi:"description"`
+	Example         pulumi.StringInput      `pulumi:"example"`
+	MaxLength       pulumi.IntInput         `pulumi:"maxLength"`
+	Pattern         pulumi.StringInput      `pulumi:"pattern"`
+	RequiresRestart pulumi.BoolInput        `pulumi:"requiresRestart"`
+	Types           pulumi.StringArrayInput `pulumi:"types"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableArgs) ToGetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput() GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableArgs) ToGetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput) ToGetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput() GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput) ToGetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput) Example() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable) string { return v.Example }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput) MaxLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable) int { return v.MaxLength }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable) string { return v.Pattern }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable) []string { return v.Types }).(pulumi.StringArrayOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutInput is an input type that accepts GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutArgs and GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutArgs{...}
+type GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput() GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput
+	ToGetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutArgs) ToGetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput() GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutArgs) ToGetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput) ToGetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput() GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput) ToGetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbLogBufferSize struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeInput is an input type that accepts GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeArgs and GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeArgs{...}
+type GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput() GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput
+	ToGetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbLogBufferSize)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeArgs) ToGetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput() GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeArgs) ToGetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbLogBufferSize)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput) ToGetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput() GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput) ToGetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLogBufferSize) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLogBufferSize) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLogBufferSize) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLogBufferSize) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLogBufferSize) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbLogBufferSize) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeInput is an input type that accepts GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeArgs and GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeArgs{...}
+type GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput() GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput
+	ToGetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeArgs) ToGetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput() GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeArgs) ToGetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput) ToGetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput() GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput) ToGetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbReadIoThreads struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsInput is an input type that accepts GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsArgs and GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsArgs{...}
+type GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput() GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput
+	ToGetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbReadIoThreads)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsArgs) ToGetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput() GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsArgs) ToGetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbReadIoThreads)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput) ToGetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput() GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput) ToGetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbReadIoThreads) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbReadIoThreads) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbReadIoThreads) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbReadIoThreads) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbReadIoThreads) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbReadIoThreads) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout struct {
+	Description     string `pulumi:"description"`
+	Example         bool   `pulumi:"example"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutInput is an input type that accepts GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutArgs and GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutArgs{...}
+type GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput() GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput
+	ToGetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.BoolInput   `pulumi:"example"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutArgs) ToGetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput() GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutArgs) ToGetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput) ToGetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput() GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput) ToGetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput) Example() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout) bool { return v.Example }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyInput is an input type that accepts GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyArgs and GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyArgs{...}
+type GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput() GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput
+	ToGetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyArgs) ToGetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput() GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyArgs) ToGetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput) ToGetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput() GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput) ToGetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsInput is an input type that accepts GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsArgs and GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsArgs{...}
+type GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput() GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput
+	ToGetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsArgs) ToGetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput() GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsArgs) ToGetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput) ToGetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput() GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput) ToGetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInteractiveTimeout struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInteractiveTimeoutInput is an input type that accepts GetDatabaseMysqlConfigMysqlInteractiveTimeoutArgs and GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInteractiveTimeoutInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInteractiveTimeoutArgs{...}
+type GetDatabaseMysqlConfigMysqlInteractiveTimeoutInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput() GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput
+	ToGetDatabaseMysqlConfigMysqlInteractiveTimeoutOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInteractiveTimeoutArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInteractiveTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInteractiveTimeout)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInteractiveTimeoutArgs) ToGetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput() GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInteractiveTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInteractiveTimeoutArgs) ToGetDatabaseMysqlConfigMysqlInteractiveTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInteractiveTimeout)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput) ToGetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput() GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput) ToGetDatabaseMysqlConfigMysqlInteractiveTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInteractiveTimeout) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInteractiveTimeout) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInteractiveTimeout) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInteractiveTimeout) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInteractiveTimeout) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInteractiveTimeout) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine struct {
+	Description     string   `pulumi:"description"`
+	Enums           []string `pulumi:"enums"`
+	Example         string   `pulumi:"example"`
+	RequiresRestart bool     `pulumi:"requiresRestart"`
+	Type            string   `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineInput is an input type that accepts GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineArgs and GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineArgs{...}
+type GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput() GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput
+	ToGetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput
+}
+
+type GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineArgs struct {
+	Description     pulumi.StringInput      `pulumi:"description"`
+	Enums           pulumi.StringArrayInput `pulumi:"enums"`
+	Example         pulumi.StringInput      `pulumi:"example"`
+	RequiresRestart pulumi.BoolInput        `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput      `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineArgs) ToGetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput() GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineArgs) ToGetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput) ToGetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput() GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput) ToGetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput) Example() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine) string { return v.Example }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlMaxAllowedPacket struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlMaxAllowedPacketInput is an input type that accepts GetDatabaseMysqlConfigMysqlMaxAllowedPacketArgs and GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlMaxAllowedPacketInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlMaxAllowedPacketArgs{...}
+type GetDatabaseMysqlConfigMysqlMaxAllowedPacketInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput() GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput
+	ToGetDatabaseMysqlConfigMysqlMaxAllowedPacketOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput
+}
+
+type GetDatabaseMysqlConfigMysqlMaxAllowedPacketArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlMaxAllowedPacketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlMaxAllowedPacket)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlMaxAllowedPacketArgs) ToGetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput() GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlMaxAllowedPacketOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlMaxAllowedPacketArgs) ToGetDatabaseMysqlConfigMysqlMaxAllowedPacketOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlMaxAllowedPacket)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput) ToGetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput() GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput) ToGetDatabaseMysqlConfigMysqlMaxAllowedPacketOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxAllowedPacket) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxAllowedPacket) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxAllowedPacket) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxAllowedPacket) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxAllowedPacket) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxAllowedPacket) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlMaxHeapTableSize struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlMaxHeapTableSizeInput is an input type that accepts GetDatabaseMysqlConfigMysqlMaxHeapTableSizeArgs and GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlMaxHeapTableSizeInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlMaxHeapTableSizeArgs{...}
+type GetDatabaseMysqlConfigMysqlMaxHeapTableSizeInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput() GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput
+	ToGetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput
+}
+
+type GetDatabaseMysqlConfigMysqlMaxHeapTableSizeArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlMaxHeapTableSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlMaxHeapTableSize)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlMaxHeapTableSizeArgs) ToGetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput() GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlMaxHeapTableSizeArgs) ToGetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlMaxHeapTableSize)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput) ToGetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput() GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput) ToGetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxHeapTableSize) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxHeapTableSize) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxHeapTableSize) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxHeapTableSize) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxHeapTableSize) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlMaxHeapTableSize) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlNetBufferLength struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlNetBufferLengthInput is an input type that accepts GetDatabaseMysqlConfigMysqlNetBufferLengthArgs and GetDatabaseMysqlConfigMysqlNetBufferLengthOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlNetBufferLengthInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlNetBufferLengthArgs{...}
+type GetDatabaseMysqlConfigMysqlNetBufferLengthInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlNetBufferLengthOutput() GetDatabaseMysqlConfigMysqlNetBufferLengthOutput
+	ToGetDatabaseMysqlConfigMysqlNetBufferLengthOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlNetBufferLengthOutput
+}
+
+type GetDatabaseMysqlConfigMysqlNetBufferLengthArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlNetBufferLengthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlNetBufferLength)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlNetBufferLengthArgs) ToGetDatabaseMysqlConfigMysqlNetBufferLengthOutput() GetDatabaseMysqlConfigMysqlNetBufferLengthOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlNetBufferLengthOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlNetBufferLengthArgs) ToGetDatabaseMysqlConfigMysqlNetBufferLengthOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlNetBufferLengthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlNetBufferLengthOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlNetBufferLengthOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlNetBufferLengthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlNetBufferLength)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetBufferLengthOutput) ToGetDatabaseMysqlConfigMysqlNetBufferLengthOutput() GetDatabaseMysqlConfigMysqlNetBufferLengthOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetBufferLengthOutput) ToGetDatabaseMysqlConfigMysqlNetBufferLengthOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlNetBufferLengthOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetBufferLengthOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetBufferLength) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetBufferLengthOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetBufferLength) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetBufferLengthOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetBufferLength) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetBufferLengthOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetBufferLength) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetBufferLengthOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetBufferLength) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetBufferLengthOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetBufferLength) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlNetReadTimeout struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlNetReadTimeoutInput is an input type that accepts GetDatabaseMysqlConfigMysqlNetReadTimeoutArgs and GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlNetReadTimeoutInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlNetReadTimeoutArgs{...}
+type GetDatabaseMysqlConfigMysqlNetReadTimeoutInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlNetReadTimeoutOutput() GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput
+	ToGetDatabaseMysqlConfigMysqlNetReadTimeoutOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput
+}
+
+type GetDatabaseMysqlConfigMysqlNetReadTimeoutArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlNetReadTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlNetReadTimeout)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlNetReadTimeoutArgs) ToGetDatabaseMysqlConfigMysqlNetReadTimeoutOutput() GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlNetReadTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlNetReadTimeoutArgs) ToGetDatabaseMysqlConfigMysqlNetReadTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlNetReadTimeout)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput) ToGetDatabaseMysqlConfigMysqlNetReadTimeoutOutput() GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput) ToGetDatabaseMysqlConfigMysqlNetReadTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetReadTimeout) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetReadTimeout) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetReadTimeout) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetReadTimeout) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetReadTimeout) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetReadTimeout) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlNetWriteTimeout struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlNetWriteTimeoutInput is an input type that accepts GetDatabaseMysqlConfigMysqlNetWriteTimeoutArgs and GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlNetWriteTimeoutInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlNetWriteTimeoutArgs{...}
+type GetDatabaseMysqlConfigMysqlNetWriteTimeoutInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput() GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput
+	ToGetDatabaseMysqlConfigMysqlNetWriteTimeoutOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput
+}
+
+type GetDatabaseMysqlConfigMysqlNetWriteTimeoutArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlNetWriteTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlNetWriteTimeout)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlNetWriteTimeoutArgs) ToGetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput() GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlNetWriteTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlNetWriteTimeoutArgs) ToGetDatabaseMysqlConfigMysqlNetWriteTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlNetWriteTimeout)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput) ToGetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput() GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput) ToGetDatabaseMysqlConfigMysqlNetWriteTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetWriteTimeout) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetWriteTimeout) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetWriteTimeout) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetWriteTimeout) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetWriteTimeout) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlNetWriteTimeout) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlSortBufferSize struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlSortBufferSizeInput is an input type that accepts GetDatabaseMysqlConfigMysqlSortBufferSizeArgs and GetDatabaseMysqlConfigMysqlSortBufferSizeOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlSortBufferSizeInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlSortBufferSizeArgs{...}
+type GetDatabaseMysqlConfigMysqlSortBufferSizeInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlSortBufferSizeOutput() GetDatabaseMysqlConfigMysqlSortBufferSizeOutput
+	ToGetDatabaseMysqlConfigMysqlSortBufferSizeOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlSortBufferSizeOutput
+}
+
+type GetDatabaseMysqlConfigMysqlSortBufferSizeArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlSortBufferSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlSortBufferSize)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlSortBufferSizeArgs) ToGetDatabaseMysqlConfigMysqlSortBufferSizeOutput() GetDatabaseMysqlConfigMysqlSortBufferSizeOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlSortBufferSizeOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlSortBufferSizeArgs) ToGetDatabaseMysqlConfigMysqlSortBufferSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlSortBufferSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlSortBufferSizeOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlSortBufferSizeOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlSortBufferSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlSortBufferSize)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlSortBufferSizeOutput) ToGetDatabaseMysqlConfigMysqlSortBufferSizeOutput() GetDatabaseMysqlConfigMysqlSortBufferSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlSortBufferSizeOutput) ToGetDatabaseMysqlConfigMysqlSortBufferSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlSortBufferSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlSortBufferSizeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSortBufferSize) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSortBufferSizeOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSortBufferSize) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSortBufferSizeOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSortBufferSize) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSortBufferSizeOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSortBufferSize) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSortBufferSizeOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSortBufferSize) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSortBufferSizeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSortBufferSize) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlSqlMode struct {
+	Description     string `pulumi:"description"`
+	Example         string `pulumi:"example"`
+	MaxLength       int    `pulumi:"maxLength"`
+	Pattern         string `pulumi:"pattern"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlSqlModeInput is an input type that accepts GetDatabaseMysqlConfigMysqlSqlModeArgs and GetDatabaseMysqlConfigMysqlSqlModeOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlSqlModeInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlSqlModeArgs{...}
+type GetDatabaseMysqlConfigMysqlSqlModeInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlSqlModeOutput() GetDatabaseMysqlConfigMysqlSqlModeOutput
+	ToGetDatabaseMysqlConfigMysqlSqlModeOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlSqlModeOutput
+}
+
+type GetDatabaseMysqlConfigMysqlSqlModeArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.StringInput `pulumi:"example"`
+	MaxLength       pulumi.IntInput    `pulumi:"maxLength"`
+	Pattern         pulumi.StringInput `pulumi:"pattern"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlSqlModeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlSqlMode)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlSqlModeArgs) ToGetDatabaseMysqlConfigMysqlSqlModeOutput() GetDatabaseMysqlConfigMysqlSqlModeOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlSqlModeOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlSqlModeArgs) ToGetDatabaseMysqlConfigMysqlSqlModeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlSqlModeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlSqlModeOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlSqlModeOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlSqlModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlSqlMode)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlModeOutput) ToGetDatabaseMysqlConfigMysqlSqlModeOutput() GetDatabaseMysqlConfigMysqlSqlModeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlModeOutput) ToGetDatabaseMysqlConfigMysqlSqlModeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlSqlModeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlModeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSqlMode) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlModeOutput) Example() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSqlMode) string { return v.Example }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlModeOutput) MaxLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSqlMode) int { return v.MaxLength }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlModeOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSqlMode) string { return v.Pattern }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlModeOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSqlMode) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlModeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSqlMode) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey struct {
+	Description     string `pulumi:"description"`
+	Example         bool   `pulumi:"example"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyInput is an input type that accepts GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyArgs and GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyArgs{...}
+type GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput() GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput
+	ToGetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput
+}
+
+type GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.BoolInput   `pulumi:"example"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyArgs) ToGetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput() GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyArgs) ToGetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput) ToGetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput() GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput) ToGetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput) Example() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey) bool { return v.Example }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlTmpTableSize struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlTmpTableSizeInput is an input type that accepts GetDatabaseMysqlConfigMysqlTmpTableSizeArgs and GetDatabaseMysqlConfigMysqlTmpTableSizeOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlTmpTableSizeInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlTmpTableSizeArgs{...}
+type GetDatabaseMysqlConfigMysqlTmpTableSizeInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlTmpTableSizeOutput() GetDatabaseMysqlConfigMysqlTmpTableSizeOutput
+	ToGetDatabaseMysqlConfigMysqlTmpTableSizeOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlTmpTableSizeOutput
+}
+
+type GetDatabaseMysqlConfigMysqlTmpTableSizeArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlTmpTableSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlTmpTableSize)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlTmpTableSizeArgs) ToGetDatabaseMysqlConfigMysqlTmpTableSizeOutput() GetDatabaseMysqlConfigMysqlTmpTableSizeOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlTmpTableSizeOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlTmpTableSizeArgs) ToGetDatabaseMysqlConfigMysqlTmpTableSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlTmpTableSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlTmpTableSizeOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlTmpTableSizeOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlTmpTableSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlTmpTableSize)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlTmpTableSizeOutput) ToGetDatabaseMysqlConfigMysqlTmpTableSizeOutput() GetDatabaseMysqlConfigMysqlTmpTableSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlTmpTableSizeOutput) ToGetDatabaseMysqlConfigMysqlTmpTableSizeOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlTmpTableSizeOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlTmpTableSizeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlTmpTableSize) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlTmpTableSizeOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlTmpTableSize) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlTmpTableSizeOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlTmpTableSize) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlTmpTableSizeOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlTmpTableSize) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlTmpTableSizeOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlTmpTableSize) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlTmpTableSizeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlTmpTableSize) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlWaitTimeout struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabaseMysqlConfigMysqlWaitTimeoutInput is an input type that accepts GetDatabaseMysqlConfigMysqlWaitTimeoutArgs and GetDatabaseMysqlConfigMysqlWaitTimeoutOutput values.
+// You can construct a concrete instance of `GetDatabaseMysqlConfigMysqlWaitTimeoutInput` via:
+//
+//	GetDatabaseMysqlConfigMysqlWaitTimeoutArgs{...}
+type GetDatabaseMysqlConfigMysqlWaitTimeoutInput interface {
+	pulumi.Input
+
+	ToGetDatabaseMysqlConfigMysqlWaitTimeoutOutput() GetDatabaseMysqlConfigMysqlWaitTimeoutOutput
+	ToGetDatabaseMysqlConfigMysqlWaitTimeoutOutputWithContext(context.Context) GetDatabaseMysqlConfigMysqlWaitTimeoutOutput
+}
+
+type GetDatabaseMysqlConfigMysqlWaitTimeoutArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabaseMysqlConfigMysqlWaitTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlWaitTimeout)(nil)).Elem()
+}
+
+func (i GetDatabaseMysqlConfigMysqlWaitTimeoutArgs) ToGetDatabaseMysqlConfigMysqlWaitTimeoutOutput() GetDatabaseMysqlConfigMysqlWaitTimeoutOutput {
+	return i.ToGetDatabaseMysqlConfigMysqlWaitTimeoutOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseMysqlConfigMysqlWaitTimeoutArgs) ToGetDatabaseMysqlConfigMysqlWaitTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlWaitTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlConfigMysqlWaitTimeoutOutput)
+}
+
+type GetDatabaseMysqlConfigMysqlWaitTimeoutOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseMysqlConfigMysqlWaitTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseMysqlConfigMysqlWaitTimeout)(nil)).Elem()
+}
+
+func (o GetDatabaseMysqlConfigMysqlWaitTimeoutOutput) ToGetDatabaseMysqlConfigMysqlWaitTimeoutOutput() GetDatabaseMysqlConfigMysqlWaitTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlWaitTimeoutOutput) ToGetDatabaseMysqlConfigMysqlWaitTimeoutOutputWithContext(ctx context.Context) GetDatabaseMysqlConfigMysqlWaitTimeoutOutput {
+	return o
+}
+
+func (o GetDatabaseMysqlConfigMysqlWaitTimeoutOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlWaitTimeout) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlWaitTimeoutOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlWaitTimeout) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlWaitTimeoutOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlWaitTimeout) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlWaitTimeoutOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlWaitTimeout) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlWaitTimeoutOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlWaitTimeout) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabaseMysqlConfigMysqlWaitTimeoutOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlWaitTimeout) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type GetDatabaseMysqlUpdate struct {
 	DayOfWeek   string `pulumi:"dayOfWeek"`
 	Duration    int    `pulumi:"duration"`
@@ -13836,6 +16162,531 @@ func (o GetDatabaseMysqlV2UpdatesOutput) Frequency() pulumi.StringOutput {
 
 func (o GetDatabaseMysqlV2UpdatesOutput) HourOfDay() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlV2Updates) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+type GetDatabasePostgresqlConfigPgStatMonitorEnable struct {
+	Description     string `pulumi:"description"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabasePostgresqlConfigPgStatMonitorEnableInput is an input type that accepts GetDatabasePostgresqlConfigPgStatMonitorEnableArgs and GetDatabasePostgresqlConfigPgStatMonitorEnableOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlConfigPgStatMonitorEnableInput` via:
+//
+//	GetDatabasePostgresqlConfigPgStatMonitorEnableArgs{...}
+type GetDatabasePostgresqlConfigPgStatMonitorEnableInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlConfigPgStatMonitorEnableOutput() GetDatabasePostgresqlConfigPgStatMonitorEnableOutput
+	ToGetDatabasePostgresqlConfigPgStatMonitorEnableOutputWithContext(context.Context) GetDatabasePostgresqlConfigPgStatMonitorEnableOutput
+}
+
+type GetDatabasePostgresqlConfigPgStatMonitorEnableArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabasePostgresqlConfigPgStatMonitorEnableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlConfigPgStatMonitorEnable)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlConfigPgStatMonitorEnableArgs) ToGetDatabasePostgresqlConfigPgStatMonitorEnableOutput() GetDatabasePostgresqlConfigPgStatMonitorEnableOutput {
+	return i.ToGetDatabasePostgresqlConfigPgStatMonitorEnableOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlConfigPgStatMonitorEnableArgs) ToGetDatabasePostgresqlConfigPgStatMonitorEnableOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigPgStatMonitorEnableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlConfigPgStatMonitorEnableOutput)
+}
+
+// GetDatabasePostgresqlConfigPgStatMonitorEnableArrayInput is an input type that accepts GetDatabasePostgresqlConfigPgStatMonitorEnableArray and GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlConfigPgStatMonitorEnableArrayInput` via:
+//
+//	GetDatabasePostgresqlConfigPgStatMonitorEnableArray{ GetDatabasePostgresqlConfigPgStatMonitorEnableArgs{...} }
+type GetDatabasePostgresqlConfigPgStatMonitorEnableArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput() GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput
+	ToGetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutputWithContext(context.Context) GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput
+}
+
+type GetDatabasePostgresqlConfigPgStatMonitorEnableArray []GetDatabasePostgresqlConfigPgStatMonitorEnableInput
+
+func (GetDatabasePostgresqlConfigPgStatMonitorEnableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlConfigPgStatMonitorEnable)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlConfigPgStatMonitorEnableArray) ToGetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput() GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput {
+	return i.ToGetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlConfigPgStatMonitorEnableArray) ToGetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput)
+}
+
+type GetDatabasePostgresqlConfigPgStatMonitorEnableOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlConfigPgStatMonitorEnableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlConfigPgStatMonitorEnable)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlConfigPgStatMonitorEnableOutput) ToGetDatabasePostgresqlConfigPgStatMonitorEnableOutput() GetDatabasePostgresqlConfigPgStatMonitorEnableOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigPgStatMonitorEnableOutput) ToGetDatabasePostgresqlConfigPgStatMonitorEnableOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigPgStatMonitorEnableOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigPgStatMonitorEnableOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigPgStatMonitorEnable) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasePostgresqlConfigPgStatMonitorEnableOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigPgStatMonitorEnable) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabasePostgresqlConfigPgStatMonitorEnableOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigPgStatMonitorEnable) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlConfigPgStatMonitorEnable)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput) ToGetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput() GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput) ToGetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput) Index(i pulumi.IntInput) GetDatabasePostgresqlConfigPgStatMonitorEnableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasePostgresqlConfigPgStatMonitorEnable {
+		return vs[0].([]GetDatabasePostgresqlConfigPgStatMonitorEnable)[vs[1].(int)]
+	}).(GetDatabasePostgresqlConfigPgStatMonitorEnableOutput)
+}
+
+type GetDatabasePostgresqlConfigPglookout struct {
+	MaxFailoverReplicationTimeLag GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag `pulumi:"maxFailoverReplicationTimeLag"`
+}
+
+// GetDatabasePostgresqlConfigPglookoutInput is an input type that accepts GetDatabasePostgresqlConfigPglookoutArgs and GetDatabasePostgresqlConfigPglookoutOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlConfigPglookoutInput` via:
+//
+//	GetDatabasePostgresqlConfigPglookoutArgs{...}
+type GetDatabasePostgresqlConfigPglookoutInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlConfigPglookoutOutput() GetDatabasePostgresqlConfigPglookoutOutput
+	ToGetDatabasePostgresqlConfigPglookoutOutputWithContext(context.Context) GetDatabasePostgresqlConfigPglookoutOutput
+}
+
+type GetDatabasePostgresqlConfigPglookoutArgs struct {
+	MaxFailoverReplicationTimeLag GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagInput `pulumi:"maxFailoverReplicationTimeLag"`
+}
+
+func (GetDatabasePostgresqlConfigPglookoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlConfigPglookout)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlConfigPglookoutArgs) ToGetDatabasePostgresqlConfigPglookoutOutput() GetDatabasePostgresqlConfigPglookoutOutput {
+	return i.ToGetDatabasePostgresqlConfigPglookoutOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlConfigPglookoutArgs) ToGetDatabasePostgresqlConfigPglookoutOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigPglookoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlConfigPglookoutOutput)
+}
+
+// GetDatabasePostgresqlConfigPglookoutArrayInput is an input type that accepts GetDatabasePostgresqlConfigPglookoutArray and GetDatabasePostgresqlConfigPglookoutArrayOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlConfigPglookoutArrayInput` via:
+//
+//	GetDatabasePostgresqlConfigPglookoutArray{ GetDatabasePostgresqlConfigPglookoutArgs{...} }
+type GetDatabasePostgresqlConfigPglookoutArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlConfigPglookoutArrayOutput() GetDatabasePostgresqlConfigPglookoutArrayOutput
+	ToGetDatabasePostgresqlConfigPglookoutArrayOutputWithContext(context.Context) GetDatabasePostgresqlConfigPglookoutArrayOutput
+}
+
+type GetDatabasePostgresqlConfigPglookoutArray []GetDatabasePostgresqlConfigPglookoutInput
+
+func (GetDatabasePostgresqlConfigPglookoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlConfigPglookout)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlConfigPglookoutArray) ToGetDatabasePostgresqlConfigPglookoutArrayOutput() GetDatabasePostgresqlConfigPglookoutArrayOutput {
+	return i.ToGetDatabasePostgresqlConfigPglookoutArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlConfigPglookoutArray) ToGetDatabasePostgresqlConfigPglookoutArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigPglookoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlConfigPglookoutArrayOutput)
+}
+
+type GetDatabasePostgresqlConfigPglookoutOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlConfigPglookoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlConfigPglookout)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutOutput) ToGetDatabasePostgresqlConfigPglookoutOutput() GetDatabasePostgresqlConfigPglookoutOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutOutput) ToGetDatabasePostgresqlConfigPglookoutOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigPglookoutOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutOutput) MaxFailoverReplicationTimeLag() GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigPglookout) GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag {
+		return v.MaxFailoverReplicationTimeLag
+	}).(GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput)
+}
+
+type GetDatabasePostgresqlConfigPglookoutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlConfigPglookoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlConfigPglookout)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutArrayOutput) ToGetDatabasePostgresqlConfigPglookoutArrayOutput() GetDatabasePostgresqlConfigPglookoutArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutArrayOutput) ToGetDatabasePostgresqlConfigPglookoutArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigPglookoutArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutArrayOutput) Index(i pulumi.IntInput) GetDatabasePostgresqlConfigPglookoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasePostgresqlConfigPglookout {
+		return vs[0].([]GetDatabasePostgresqlConfigPglookout)[vs[1].(int)]
+	}).(GetDatabasePostgresqlConfigPglookoutOutput)
+}
+
+type GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag struct {
+	Description     string `pulumi:"description"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagInput is an input type that accepts GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagArgs and GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagInput` via:
+//
+//	GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagArgs{...}
+type GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput() GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput
+	ToGetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutputWithContext(context.Context) GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput
+}
+
+type GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagArgs) ToGetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput() GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput {
+	return i.ToGetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagArgs) ToGetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput)
+}
+
+type GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput) ToGetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput() GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput) ToGetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag) bool {
+		return v.RequiresRestart
+	}).(pulumi.BoolOutput)
+}
+
+func (o GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabasePostgresqlConfigSharedBuffersPercentage struct {
+	Description     string  `pulumi:"description"`
+	Example         float64 `pulumi:"example"`
+	Maximum         float64 `pulumi:"maximum"`
+	Minimum         float64 `pulumi:"minimum"`
+	RequiresRestart bool    `pulumi:"requiresRestart"`
+	Type            string  `pulumi:"type"`
+}
+
+// GetDatabasePostgresqlConfigSharedBuffersPercentageInput is an input type that accepts GetDatabasePostgresqlConfigSharedBuffersPercentageArgs and GetDatabasePostgresqlConfigSharedBuffersPercentageOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlConfigSharedBuffersPercentageInput` via:
+//
+//	GetDatabasePostgresqlConfigSharedBuffersPercentageArgs{...}
+type GetDatabasePostgresqlConfigSharedBuffersPercentageInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlConfigSharedBuffersPercentageOutput() GetDatabasePostgresqlConfigSharedBuffersPercentageOutput
+	ToGetDatabasePostgresqlConfigSharedBuffersPercentageOutputWithContext(context.Context) GetDatabasePostgresqlConfigSharedBuffersPercentageOutput
+}
+
+type GetDatabasePostgresqlConfigSharedBuffersPercentageArgs struct {
+	Description     pulumi.StringInput  `pulumi:"description"`
+	Example         pulumi.Float64Input `pulumi:"example"`
+	Maximum         pulumi.Float64Input `pulumi:"maximum"`
+	Minimum         pulumi.Float64Input `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput    `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput  `pulumi:"type"`
+}
+
+func (GetDatabasePostgresqlConfigSharedBuffersPercentageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlConfigSharedBuffersPercentage)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlConfigSharedBuffersPercentageArgs) ToGetDatabasePostgresqlConfigSharedBuffersPercentageOutput() GetDatabasePostgresqlConfigSharedBuffersPercentageOutput {
+	return i.ToGetDatabasePostgresqlConfigSharedBuffersPercentageOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlConfigSharedBuffersPercentageArgs) ToGetDatabasePostgresqlConfigSharedBuffersPercentageOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigSharedBuffersPercentageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlConfigSharedBuffersPercentageOutput)
+}
+
+// GetDatabasePostgresqlConfigSharedBuffersPercentageArrayInput is an input type that accepts GetDatabasePostgresqlConfigSharedBuffersPercentageArray and GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlConfigSharedBuffersPercentageArrayInput` via:
+//
+//	GetDatabasePostgresqlConfigSharedBuffersPercentageArray{ GetDatabasePostgresqlConfigSharedBuffersPercentageArgs{...} }
+type GetDatabasePostgresqlConfigSharedBuffersPercentageArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput() GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput
+	ToGetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutputWithContext(context.Context) GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput
+}
+
+type GetDatabasePostgresqlConfigSharedBuffersPercentageArray []GetDatabasePostgresqlConfigSharedBuffersPercentageInput
+
+func (GetDatabasePostgresqlConfigSharedBuffersPercentageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlConfigSharedBuffersPercentage)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlConfigSharedBuffersPercentageArray) ToGetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput() GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput {
+	return i.ToGetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlConfigSharedBuffersPercentageArray) ToGetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput)
+}
+
+type GetDatabasePostgresqlConfigSharedBuffersPercentageOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlConfigSharedBuffersPercentageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlConfigSharedBuffersPercentage)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlConfigSharedBuffersPercentageOutput) ToGetDatabasePostgresqlConfigSharedBuffersPercentageOutput() GetDatabasePostgresqlConfigSharedBuffersPercentageOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigSharedBuffersPercentageOutput) ToGetDatabasePostgresqlConfigSharedBuffersPercentageOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigSharedBuffersPercentageOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigSharedBuffersPercentageOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigSharedBuffersPercentage) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasePostgresqlConfigSharedBuffersPercentageOutput) Example() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigSharedBuffersPercentage) float64 { return v.Example }).(pulumi.Float64Output)
+}
+
+func (o GetDatabasePostgresqlConfigSharedBuffersPercentageOutput) Maximum() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigSharedBuffersPercentage) float64 { return v.Maximum }).(pulumi.Float64Output)
+}
+
+func (o GetDatabasePostgresqlConfigSharedBuffersPercentageOutput) Minimum() pulumi.Float64Output {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigSharedBuffersPercentage) float64 { return v.Minimum }).(pulumi.Float64Output)
+}
+
+func (o GetDatabasePostgresqlConfigSharedBuffersPercentageOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigSharedBuffersPercentage) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabasePostgresqlConfigSharedBuffersPercentageOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigSharedBuffersPercentage) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlConfigSharedBuffersPercentage)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput) ToGetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput() GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput) ToGetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput) Index(i pulumi.IntInput) GetDatabasePostgresqlConfigSharedBuffersPercentageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasePostgresqlConfigSharedBuffersPercentage {
+		return vs[0].([]GetDatabasePostgresqlConfigSharedBuffersPercentage)[vs[1].(int)]
+	}).(GetDatabasePostgresqlConfigSharedBuffersPercentageOutput)
+}
+
+type GetDatabasePostgresqlConfigWorkMem struct {
+	Description     string `pulumi:"description"`
+	Example         int    `pulumi:"example"`
+	Maximum         int    `pulumi:"maximum"`
+	Minimum         int    `pulumi:"minimum"`
+	RequiresRestart bool   `pulumi:"requiresRestart"`
+	Type            string `pulumi:"type"`
+}
+
+// GetDatabasePostgresqlConfigWorkMemInput is an input type that accepts GetDatabasePostgresqlConfigWorkMemArgs and GetDatabasePostgresqlConfigWorkMemOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlConfigWorkMemInput` via:
+//
+//	GetDatabasePostgresqlConfigWorkMemArgs{...}
+type GetDatabasePostgresqlConfigWorkMemInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlConfigWorkMemOutput() GetDatabasePostgresqlConfigWorkMemOutput
+	ToGetDatabasePostgresqlConfigWorkMemOutputWithContext(context.Context) GetDatabasePostgresqlConfigWorkMemOutput
+}
+
+type GetDatabasePostgresqlConfigWorkMemArgs struct {
+	Description     pulumi.StringInput `pulumi:"description"`
+	Example         pulumi.IntInput    `pulumi:"example"`
+	Maximum         pulumi.IntInput    `pulumi:"maximum"`
+	Minimum         pulumi.IntInput    `pulumi:"minimum"`
+	RequiresRestart pulumi.BoolInput   `pulumi:"requiresRestart"`
+	Type            pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatabasePostgresqlConfigWorkMemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlConfigWorkMem)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlConfigWorkMemArgs) ToGetDatabasePostgresqlConfigWorkMemOutput() GetDatabasePostgresqlConfigWorkMemOutput {
+	return i.ToGetDatabasePostgresqlConfigWorkMemOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlConfigWorkMemArgs) ToGetDatabasePostgresqlConfigWorkMemOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigWorkMemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlConfigWorkMemOutput)
+}
+
+// GetDatabasePostgresqlConfigWorkMemArrayInput is an input type that accepts GetDatabasePostgresqlConfigWorkMemArray and GetDatabasePostgresqlConfigWorkMemArrayOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlConfigWorkMemArrayInput` via:
+//
+//	GetDatabasePostgresqlConfigWorkMemArray{ GetDatabasePostgresqlConfigWorkMemArgs{...} }
+type GetDatabasePostgresqlConfigWorkMemArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlConfigWorkMemArrayOutput() GetDatabasePostgresqlConfigWorkMemArrayOutput
+	ToGetDatabasePostgresqlConfigWorkMemArrayOutputWithContext(context.Context) GetDatabasePostgresqlConfigWorkMemArrayOutput
+}
+
+type GetDatabasePostgresqlConfigWorkMemArray []GetDatabasePostgresqlConfigWorkMemInput
+
+func (GetDatabasePostgresqlConfigWorkMemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlConfigWorkMem)(nil)).Elem()
+}
+
+func (i GetDatabasePostgresqlConfigWorkMemArray) ToGetDatabasePostgresqlConfigWorkMemArrayOutput() GetDatabasePostgresqlConfigWorkMemArrayOutput {
+	return i.ToGetDatabasePostgresqlConfigWorkMemArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlConfigWorkMemArray) ToGetDatabasePostgresqlConfigWorkMemArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigWorkMemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlConfigWorkMemArrayOutput)
+}
+
+type GetDatabasePostgresqlConfigWorkMemOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlConfigWorkMemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabasePostgresqlConfigWorkMem)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlConfigWorkMemOutput) ToGetDatabasePostgresqlConfigWorkMemOutput() GetDatabasePostgresqlConfigWorkMemOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigWorkMemOutput) ToGetDatabasePostgresqlConfigWorkMemOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigWorkMemOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigWorkMemOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigWorkMem) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDatabasePostgresqlConfigWorkMemOutput) Example() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigWorkMem) int { return v.Example }).(pulumi.IntOutput)
+}
+
+func (o GetDatabasePostgresqlConfigWorkMemOutput) Maximum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigWorkMem) int { return v.Maximum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabasePostgresqlConfigWorkMemOutput) Minimum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigWorkMem) int { return v.Minimum }).(pulumi.IntOutput)
+}
+
+func (o GetDatabasePostgresqlConfigWorkMemOutput) RequiresRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigWorkMem) bool { return v.RequiresRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetDatabasePostgresqlConfigWorkMemOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasePostgresqlConfigWorkMem) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatabasePostgresqlConfigWorkMemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlConfigWorkMemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabasePostgresqlConfigWorkMem)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlConfigWorkMemArrayOutput) ToGetDatabasePostgresqlConfigWorkMemArrayOutput() GetDatabasePostgresqlConfigWorkMemArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigWorkMemArrayOutput) ToGetDatabasePostgresqlConfigWorkMemArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlConfigWorkMemArrayOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlConfigWorkMemArrayOutput) Index(i pulumi.IntInput) GetDatabasePostgresqlConfigWorkMemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasePostgresqlConfigWorkMem {
+		return vs[0].([]GetDatabasePostgresqlConfigWorkMem)[vs[1].(int)]
+	}).(GetDatabasePostgresqlConfigWorkMemOutput)
 }
 
 type GetDatabasePostgresqlUpdate struct {
@@ -19365,368 +22216,413 @@ func (o GetInstanceNetworkingIpv6SlaacVpcNat11Output) VpcId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6SlaacVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
 }
 
-type GetInstanceTypeAddons struct {
-	Backups []GetInstanceTypeAddonsBackup `pulumi:"backups"`
+type GetInstanceTypeAddon struct {
+	Backups []GetInstanceTypeAddonBackup `pulumi:"backups"`
 }
 
-// GetInstanceTypeAddonsInput is an input type that accepts GetInstanceTypeAddonsArgs and GetInstanceTypeAddonsOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsInput` via:
+// GetInstanceTypeAddonInput is an input type that accepts GetInstanceTypeAddonArgs and GetInstanceTypeAddonOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonInput` via:
 //
-//	GetInstanceTypeAddonsArgs{...}
-type GetInstanceTypeAddonsInput interface {
+//	GetInstanceTypeAddonArgs{...}
+type GetInstanceTypeAddonInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsOutput() GetInstanceTypeAddonsOutput
-	ToGetInstanceTypeAddonsOutputWithContext(context.Context) GetInstanceTypeAddonsOutput
+	ToGetInstanceTypeAddonOutput() GetInstanceTypeAddonOutput
+	ToGetInstanceTypeAddonOutputWithContext(context.Context) GetInstanceTypeAddonOutput
 }
 
-type GetInstanceTypeAddonsArgs struct {
-	Backups GetInstanceTypeAddonsBackupArrayInput `pulumi:"backups"`
+type GetInstanceTypeAddonArgs struct {
+	Backups GetInstanceTypeAddonBackupArrayInput `pulumi:"backups"`
 }
 
-func (GetInstanceTypeAddonsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddons)(nil)).Elem()
+func (GetInstanceTypeAddonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddon)(nil)).Elem()
 }
 
-func (i GetInstanceTypeAddonsArgs) ToGetInstanceTypeAddonsOutput() GetInstanceTypeAddonsOutput {
-	return i.ToGetInstanceTypeAddonsOutputWithContext(context.Background())
+func (i GetInstanceTypeAddonArgs) ToGetInstanceTypeAddonOutput() GetInstanceTypeAddonOutput {
+	return i.ToGetInstanceTypeAddonOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypeAddonsArgs) ToGetInstanceTypeAddonsOutputWithContext(ctx context.Context) GetInstanceTypeAddonsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsOutput)
+func (i GetInstanceTypeAddonArgs) ToGetInstanceTypeAddonOutputWithContext(ctx context.Context) GetInstanceTypeAddonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonOutput)
 }
 
-type GetInstanceTypeAddonsOutput struct{ *pulumi.OutputState }
-
-func (GetInstanceTypeAddonsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddons)(nil)).Elem()
-}
-
-func (o GetInstanceTypeAddonsOutput) ToGetInstanceTypeAddonsOutput() GetInstanceTypeAddonsOutput {
-	return o
-}
-
-func (o GetInstanceTypeAddonsOutput) ToGetInstanceTypeAddonsOutputWithContext(ctx context.Context) GetInstanceTypeAddonsOutput {
-	return o
-}
-
-func (o GetInstanceTypeAddonsOutput) Backups() GetInstanceTypeAddonsBackupArrayOutput {
-	return o.ApplyT(func(v GetInstanceTypeAddons) []GetInstanceTypeAddonsBackup { return v.Backups }).(GetInstanceTypeAddonsBackupArrayOutput)
-}
-
-type GetInstanceTypeAddonsBackup struct {
-	Prices       []GetInstanceTypeAddonsBackupPrice       `pulumi:"prices"`
-	RegionPrices []GetInstanceTypeAddonsBackupRegionPrice `pulumi:"regionPrices"`
-}
-
-// GetInstanceTypeAddonsBackupInput is an input type that accepts GetInstanceTypeAddonsBackupArgs and GetInstanceTypeAddonsBackupOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsBackupInput` via:
+// GetInstanceTypeAddonArrayInput is an input type that accepts GetInstanceTypeAddonArray and GetInstanceTypeAddonArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonArrayInput` via:
 //
-//	GetInstanceTypeAddonsBackupArgs{...}
-type GetInstanceTypeAddonsBackupInput interface {
+//	GetInstanceTypeAddonArray{ GetInstanceTypeAddonArgs{...} }
+type GetInstanceTypeAddonArrayInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsBackupOutput() GetInstanceTypeAddonsBackupOutput
-	ToGetInstanceTypeAddonsBackupOutputWithContext(context.Context) GetInstanceTypeAddonsBackupOutput
+	ToGetInstanceTypeAddonArrayOutput() GetInstanceTypeAddonArrayOutput
+	ToGetInstanceTypeAddonArrayOutputWithContext(context.Context) GetInstanceTypeAddonArrayOutput
 }
 
-type GetInstanceTypeAddonsBackupArgs struct {
-	Prices       GetInstanceTypeAddonsBackupPriceArrayInput       `pulumi:"prices"`
-	RegionPrices GetInstanceTypeAddonsBackupRegionPriceArrayInput `pulumi:"regionPrices"`
+type GetInstanceTypeAddonArray []GetInstanceTypeAddonInput
+
+func (GetInstanceTypeAddonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddon)(nil)).Elem()
 }
 
-func (GetInstanceTypeAddonsBackupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackup)(nil)).Elem()
+func (i GetInstanceTypeAddonArray) ToGetInstanceTypeAddonArrayOutput() GetInstanceTypeAddonArrayOutput {
+	return i.ToGetInstanceTypeAddonArrayOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypeAddonsBackupArgs) ToGetInstanceTypeAddonsBackupOutput() GetInstanceTypeAddonsBackupOutput {
-	return i.ToGetInstanceTypeAddonsBackupOutputWithContext(context.Background())
+func (i GetInstanceTypeAddonArray) ToGetInstanceTypeAddonArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonArrayOutput)
 }
 
-func (i GetInstanceTypeAddonsBackupArgs) ToGetInstanceTypeAddonsBackupOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupOutput)
+type GetInstanceTypeAddonOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddon)(nil)).Elem()
 }
 
-// GetInstanceTypeAddonsBackupArrayInput is an input type that accepts GetInstanceTypeAddonsBackupArray and GetInstanceTypeAddonsBackupArrayOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsBackupArrayInput` via:
+func (o GetInstanceTypeAddonOutput) ToGetInstanceTypeAddonOutput() GetInstanceTypeAddonOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonOutput) ToGetInstanceTypeAddonOutputWithContext(ctx context.Context) GetInstanceTypeAddonOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonOutput) Backups() GetInstanceTypeAddonBackupArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeAddon) []GetInstanceTypeAddonBackup { return v.Backups }).(GetInstanceTypeAddonBackupArrayOutput)
+}
+
+type GetInstanceTypeAddonArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddon)(nil)).Elem()
+}
+
+func (o GetInstanceTypeAddonArrayOutput) ToGetInstanceTypeAddonArrayOutput() GetInstanceTypeAddonArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonArrayOutput) ToGetInstanceTypeAddonArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypeAddonArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddon {
+		return vs[0].([]GetInstanceTypeAddon)[vs[1].(int)]
+	}).(GetInstanceTypeAddonOutput)
+}
+
+type GetInstanceTypeAddonBackup struct {
+	Prices       []GetInstanceTypeAddonBackupPrice       `pulumi:"prices"`
+	RegionPrices []GetInstanceTypeAddonBackupRegionPrice `pulumi:"regionPrices"`
+}
+
+// GetInstanceTypeAddonBackupInput is an input type that accepts GetInstanceTypeAddonBackupArgs and GetInstanceTypeAddonBackupOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonBackupInput` via:
 //
-//	GetInstanceTypeAddonsBackupArray{ GetInstanceTypeAddonsBackupArgs{...} }
-type GetInstanceTypeAddonsBackupArrayInput interface {
+//	GetInstanceTypeAddonBackupArgs{...}
+type GetInstanceTypeAddonBackupInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsBackupArrayOutput() GetInstanceTypeAddonsBackupArrayOutput
-	ToGetInstanceTypeAddonsBackupArrayOutputWithContext(context.Context) GetInstanceTypeAddonsBackupArrayOutput
+	ToGetInstanceTypeAddonBackupOutput() GetInstanceTypeAddonBackupOutput
+	ToGetInstanceTypeAddonBackupOutputWithContext(context.Context) GetInstanceTypeAddonBackupOutput
 }
 
-type GetInstanceTypeAddonsBackupArray []GetInstanceTypeAddonsBackupInput
-
-func (GetInstanceTypeAddonsBackupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceTypeAddonsBackup)(nil)).Elem()
+type GetInstanceTypeAddonBackupArgs struct {
+	Prices       GetInstanceTypeAddonBackupPriceArrayInput       `pulumi:"prices"`
+	RegionPrices GetInstanceTypeAddonBackupRegionPriceArrayInput `pulumi:"regionPrices"`
 }
 
-func (i GetInstanceTypeAddonsBackupArray) ToGetInstanceTypeAddonsBackupArrayOutput() GetInstanceTypeAddonsBackupArrayOutput {
-	return i.ToGetInstanceTypeAddonsBackupArrayOutputWithContext(context.Background())
+func (GetInstanceTypeAddonBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonBackup)(nil)).Elem()
 }
 
-func (i GetInstanceTypeAddonsBackupArray) ToGetInstanceTypeAddonsBackupArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupArrayOutput)
+func (i GetInstanceTypeAddonBackupArgs) ToGetInstanceTypeAddonBackupOutput() GetInstanceTypeAddonBackupOutput {
+	return i.ToGetInstanceTypeAddonBackupOutputWithContext(context.Background())
 }
 
-type GetInstanceTypeAddonsBackupOutput struct{ *pulumi.OutputState }
-
-func (GetInstanceTypeAddonsBackupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackup)(nil)).Elem()
+func (i GetInstanceTypeAddonBackupArgs) ToGetInstanceTypeAddonBackupOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonBackupOutput)
 }
 
-func (o GetInstanceTypeAddonsBackupOutput) ToGetInstanceTypeAddonsBackupOutput() GetInstanceTypeAddonsBackupOutput {
+// GetInstanceTypeAddonBackupArrayInput is an input type that accepts GetInstanceTypeAddonBackupArray and GetInstanceTypeAddonBackupArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonBackupArrayInput` via:
+//
+//	GetInstanceTypeAddonBackupArray{ GetInstanceTypeAddonBackupArgs{...} }
+type GetInstanceTypeAddonBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypeAddonBackupArrayOutput() GetInstanceTypeAddonBackupArrayOutput
+	ToGetInstanceTypeAddonBackupArrayOutputWithContext(context.Context) GetInstanceTypeAddonBackupArrayOutput
+}
+
+type GetInstanceTypeAddonBackupArray []GetInstanceTypeAddonBackupInput
+
+func (GetInstanceTypeAddonBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonBackup)(nil)).Elem()
+}
+
+func (i GetInstanceTypeAddonBackupArray) ToGetInstanceTypeAddonBackupArrayOutput() GetInstanceTypeAddonBackupArrayOutput {
+	return i.ToGetInstanceTypeAddonBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypeAddonBackupArray) ToGetInstanceTypeAddonBackupArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonBackupArrayOutput)
+}
+
+type GetInstanceTypeAddonBackupOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypeAddonBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonBackup)(nil)).Elem()
+}
+
+func (o GetInstanceTypeAddonBackupOutput) ToGetInstanceTypeAddonBackupOutput() GetInstanceTypeAddonBackupOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupOutput) ToGetInstanceTypeAddonsBackupOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupOutput {
+func (o GetInstanceTypeAddonBackupOutput) ToGetInstanceTypeAddonBackupOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupOutput) Prices() GetInstanceTypeAddonsBackupPriceArrayOutput {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackup) []GetInstanceTypeAddonsBackupPrice { return v.Prices }).(GetInstanceTypeAddonsBackupPriceArrayOutput)
+func (o GetInstanceTypeAddonBackupOutput) Prices() GetInstanceTypeAddonBackupPriceArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeAddonBackup) []GetInstanceTypeAddonBackupPrice { return v.Prices }).(GetInstanceTypeAddonBackupPriceArrayOutput)
 }
 
-func (o GetInstanceTypeAddonsBackupOutput) RegionPrices() GetInstanceTypeAddonsBackupRegionPriceArrayOutput {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackup) []GetInstanceTypeAddonsBackupRegionPrice { return v.RegionPrices }).(GetInstanceTypeAddonsBackupRegionPriceArrayOutput)
+func (o GetInstanceTypeAddonBackupOutput) RegionPrices() GetInstanceTypeAddonBackupRegionPriceArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeAddonBackup) []GetInstanceTypeAddonBackupRegionPrice { return v.RegionPrices }).(GetInstanceTypeAddonBackupRegionPriceArrayOutput)
 }
 
-type GetInstanceTypeAddonsBackupArrayOutput struct{ *pulumi.OutputState }
+type GetInstanceTypeAddonBackupArrayOutput struct{ *pulumi.OutputState }
 
-func (GetInstanceTypeAddonsBackupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceTypeAddonsBackup)(nil)).Elem()
+func (GetInstanceTypeAddonBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonBackup)(nil)).Elem()
 }
 
-func (o GetInstanceTypeAddonsBackupArrayOutput) ToGetInstanceTypeAddonsBackupArrayOutput() GetInstanceTypeAddonsBackupArrayOutput {
+func (o GetInstanceTypeAddonBackupArrayOutput) ToGetInstanceTypeAddonBackupArrayOutput() GetInstanceTypeAddonBackupArrayOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupArrayOutput) ToGetInstanceTypeAddonsBackupArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupArrayOutput {
+func (o GetInstanceTypeAddonBackupArrayOutput) ToGetInstanceTypeAddonBackupArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupArrayOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonsBackupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddonsBackup {
-		return vs[0].([]GetInstanceTypeAddonsBackup)[vs[1].(int)]
-	}).(GetInstanceTypeAddonsBackupOutput)
+func (o GetInstanceTypeAddonBackupArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddonBackup {
+		return vs[0].([]GetInstanceTypeAddonBackup)[vs[1].(int)]
+	}).(GetInstanceTypeAddonBackupOutput)
 }
 
-type GetInstanceTypeAddonsBackupPrice struct {
+type GetInstanceTypeAddonBackupPrice struct {
 	// The cost (in US dollars) per hour to add Backups service.
 	Hourly float64 `pulumi:"hourly"`
 	// The cost (in US dollars) per month to add Backups service.
 	Monthly float64 `pulumi:"monthly"`
 }
 
-// GetInstanceTypeAddonsBackupPriceInput is an input type that accepts GetInstanceTypeAddonsBackupPriceArgs and GetInstanceTypeAddonsBackupPriceOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsBackupPriceInput` via:
+// GetInstanceTypeAddonBackupPriceInput is an input type that accepts GetInstanceTypeAddonBackupPriceArgs and GetInstanceTypeAddonBackupPriceOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonBackupPriceInput` via:
 //
-//	GetInstanceTypeAddonsBackupPriceArgs{...}
-type GetInstanceTypeAddonsBackupPriceInput interface {
+//	GetInstanceTypeAddonBackupPriceArgs{...}
+type GetInstanceTypeAddonBackupPriceInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsBackupPriceOutput() GetInstanceTypeAddonsBackupPriceOutput
-	ToGetInstanceTypeAddonsBackupPriceOutputWithContext(context.Context) GetInstanceTypeAddonsBackupPriceOutput
+	ToGetInstanceTypeAddonBackupPriceOutput() GetInstanceTypeAddonBackupPriceOutput
+	ToGetInstanceTypeAddonBackupPriceOutputWithContext(context.Context) GetInstanceTypeAddonBackupPriceOutput
 }
 
-type GetInstanceTypeAddonsBackupPriceArgs struct {
+type GetInstanceTypeAddonBackupPriceArgs struct {
 	// The cost (in US dollars) per hour to add Backups service.
 	Hourly pulumi.Float64Input `pulumi:"hourly"`
 	// The cost (in US dollars) per month to add Backups service.
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
-func (GetInstanceTypeAddonsBackupPriceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackupPrice)(nil)).Elem()
+func (GetInstanceTypeAddonBackupPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonBackupPrice)(nil)).Elem()
 }
 
-func (i GetInstanceTypeAddonsBackupPriceArgs) ToGetInstanceTypeAddonsBackupPriceOutput() GetInstanceTypeAddonsBackupPriceOutput {
-	return i.ToGetInstanceTypeAddonsBackupPriceOutputWithContext(context.Background())
+func (i GetInstanceTypeAddonBackupPriceArgs) ToGetInstanceTypeAddonBackupPriceOutput() GetInstanceTypeAddonBackupPriceOutput {
+	return i.ToGetInstanceTypeAddonBackupPriceOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypeAddonsBackupPriceArgs) ToGetInstanceTypeAddonsBackupPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupPriceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupPriceOutput)
+func (i GetInstanceTypeAddonBackupPriceArgs) ToGetInstanceTypeAddonBackupPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonBackupPriceOutput)
 }
 
-// GetInstanceTypeAddonsBackupPriceArrayInput is an input type that accepts GetInstanceTypeAddonsBackupPriceArray and GetInstanceTypeAddonsBackupPriceArrayOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsBackupPriceArrayInput` via:
+// GetInstanceTypeAddonBackupPriceArrayInput is an input type that accepts GetInstanceTypeAddonBackupPriceArray and GetInstanceTypeAddonBackupPriceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonBackupPriceArrayInput` via:
 //
-//	GetInstanceTypeAddonsBackupPriceArray{ GetInstanceTypeAddonsBackupPriceArgs{...} }
-type GetInstanceTypeAddonsBackupPriceArrayInput interface {
+//	GetInstanceTypeAddonBackupPriceArray{ GetInstanceTypeAddonBackupPriceArgs{...} }
+type GetInstanceTypeAddonBackupPriceArrayInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsBackupPriceArrayOutput() GetInstanceTypeAddonsBackupPriceArrayOutput
-	ToGetInstanceTypeAddonsBackupPriceArrayOutputWithContext(context.Context) GetInstanceTypeAddonsBackupPriceArrayOutput
+	ToGetInstanceTypeAddonBackupPriceArrayOutput() GetInstanceTypeAddonBackupPriceArrayOutput
+	ToGetInstanceTypeAddonBackupPriceArrayOutputWithContext(context.Context) GetInstanceTypeAddonBackupPriceArrayOutput
 }
 
-type GetInstanceTypeAddonsBackupPriceArray []GetInstanceTypeAddonsBackupPriceInput
+type GetInstanceTypeAddonBackupPriceArray []GetInstanceTypeAddonBackupPriceInput
 
-func (GetInstanceTypeAddonsBackupPriceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceTypeAddonsBackupPrice)(nil)).Elem()
+func (GetInstanceTypeAddonBackupPriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonBackupPrice)(nil)).Elem()
 }
 
-func (i GetInstanceTypeAddonsBackupPriceArray) ToGetInstanceTypeAddonsBackupPriceArrayOutput() GetInstanceTypeAddonsBackupPriceArrayOutput {
-	return i.ToGetInstanceTypeAddonsBackupPriceArrayOutputWithContext(context.Background())
+func (i GetInstanceTypeAddonBackupPriceArray) ToGetInstanceTypeAddonBackupPriceArrayOutput() GetInstanceTypeAddonBackupPriceArrayOutput {
+	return i.ToGetInstanceTypeAddonBackupPriceArrayOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypeAddonsBackupPriceArray) ToGetInstanceTypeAddonsBackupPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupPriceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupPriceArrayOutput)
+func (i GetInstanceTypeAddonBackupPriceArray) ToGetInstanceTypeAddonBackupPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupPriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonBackupPriceArrayOutput)
 }
 
-type GetInstanceTypeAddonsBackupPriceOutput struct{ *pulumi.OutputState }
+type GetInstanceTypeAddonBackupPriceOutput struct{ *pulumi.OutputState }
 
-func (GetInstanceTypeAddonsBackupPriceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackupPrice)(nil)).Elem()
+func (GetInstanceTypeAddonBackupPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonBackupPrice)(nil)).Elem()
 }
 
-func (o GetInstanceTypeAddonsBackupPriceOutput) ToGetInstanceTypeAddonsBackupPriceOutput() GetInstanceTypeAddonsBackupPriceOutput {
+func (o GetInstanceTypeAddonBackupPriceOutput) ToGetInstanceTypeAddonBackupPriceOutput() GetInstanceTypeAddonBackupPriceOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupPriceOutput) ToGetInstanceTypeAddonsBackupPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupPriceOutput {
+func (o GetInstanceTypeAddonBackupPriceOutput) ToGetInstanceTypeAddonBackupPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupPriceOutput {
 	return o
 }
 
 // The cost (in US dollars) per hour to add Backups service.
-func (o GetInstanceTypeAddonsBackupPriceOutput) Hourly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackupPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+func (o GetInstanceTypeAddonBackupPriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypeAddonBackupPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
 // The cost (in US dollars) per month to add Backups service.
-func (o GetInstanceTypeAddonsBackupPriceOutput) Monthly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackupPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+func (o GetInstanceTypeAddonBackupPriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypeAddonBackupPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
 
-type GetInstanceTypeAddonsBackupPriceArrayOutput struct{ *pulumi.OutputState }
+type GetInstanceTypeAddonBackupPriceArrayOutput struct{ *pulumi.OutputState }
 
-func (GetInstanceTypeAddonsBackupPriceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceTypeAddonsBackupPrice)(nil)).Elem()
+func (GetInstanceTypeAddonBackupPriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonBackupPrice)(nil)).Elem()
 }
 
-func (o GetInstanceTypeAddonsBackupPriceArrayOutput) ToGetInstanceTypeAddonsBackupPriceArrayOutput() GetInstanceTypeAddonsBackupPriceArrayOutput {
+func (o GetInstanceTypeAddonBackupPriceArrayOutput) ToGetInstanceTypeAddonBackupPriceArrayOutput() GetInstanceTypeAddonBackupPriceArrayOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupPriceArrayOutput) ToGetInstanceTypeAddonsBackupPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupPriceArrayOutput {
+func (o GetInstanceTypeAddonBackupPriceArrayOutput) ToGetInstanceTypeAddonBackupPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupPriceArrayOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupPriceArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonsBackupPriceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddonsBackupPrice {
-		return vs[0].([]GetInstanceTypeAddonsBackupPrice)[vs[1].(int)]
-	}).(GetInstanceTypeAddonsBackupPriceOutput)
+func (o GetInstanceTypeAddonBackupPriceArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonBackupPriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddonBackupPrice {
+		return vs[0].([]GetInstanceTypeAddonBackupPrice)[vs[1].(int)]
+	}).(GetInstanceTypeAddonBackupPriceOutput)
 }
 
-type GetInstanceTypeAddonsBackupRegionPrice struct {
+type GetInstanceTypeAddonBackupRegionPrice struct {
 	Hourly float64 `pulumi:"hourly"`
 	// Label used to identify instance type
 	Id      string  `pulumi:"id"`
 	Monthly float64 `pulumi:"monthly"`
 }
 
-// GetInstanceTypeAddonsBackupRegionPriceInput is an input type that accepts GetInstanceTypeAddonsBackupRegionPriceArgs and GetInstanceTypeAddonsBackupRegionPriceOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsBackupRegionPriceInput` via:
+// GetInstanceTypeAddonBackupRegionPriceInput is an input type that accepts GetInstanceTypeAddonBackupRegionPriceArgs and GetInstanceTypeAddonBackupRegionPriceOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonBackupRegionPriceInput` via:
 //
-//	GetInstanceTypeAddonsBackupRegionPriceArgs{...}
-type GetInstanceTypeAddonsBackupRegionPriceInput interface {
+//	GetInstanceTypeAddonBackupRegionPriceArgs{...}
+type GetInstanceTypeAddonBackupRegionPriceInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsBackupRegionPriceOutput() GetInstanceTypeAddonsBackupRegionPriceOutput
-	ToGetInstanceTypeAddonsBackupRegionPriceOutputWithContext(context.Context) GetInstanceTypeAddonsBackupRegionPriceOutput
+	ToGetInstanceTypeAddonBackupRegionPriceOutput() GetInstanceTypeAddonBackupRegionPriceOutput
+	ToGetInstanceTypeAddonBackupRegionPriceOutputWithContext(context.Context) GetInstanceTypeAddonBackupRegionPriceOutput
 }
 
-type GetInstanceTypeAddonsBackupRegionPriceArgs struct {
+type GetInstanceTypeAddonBackupRegionPriceArgs struct {
 	Hourly pulumi.Float64Input `pulumi:"hourly"`
 	// Label used to identify instance type
 	Id      pulumi.StringInput  `pulumi:"id"`
 	Monthly pulumi.Float64Input `pulumi:"monthly"`
 }
 
-func (GetInstanceTypeAddonsBackupRegionPriceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackupRegionPrice)(nil)).Elem()
+func (GetInstanceTypeAddonBackupRegionPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonBackupRegionPrice)(nil)).Elem()
 }
 
-func (i GetInstanceTypeAddonsBackupRegionPriceArgs) ToGetInstanceTypeAddonsBackupRegionPriceOutput() GetInstanceTypeAddonsBackupRegionPriceOutput {
-	return i.ToGetInstanceTypeAddonsBackupRegionPriceOutputWithContext(context.Background())
+func (i GetInstanceTypeAddonBackupRegionPriceArgs) ToGetInstanceTypeAddonBackupRegionPriceOutput() GetInstanceTypeAddonBackupRegionPriceOutput {
+	return i.ToGetInstanceTypeAddonBackupRegionPriceOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypeAddonsBackupRegionPriceArgs) ToGetInstanceTypeAddonsBackupRegionPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupRegionPriceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupRegionPriceOutput)
+func (i GetInstanceTypeAddonBackupRegionPriceArgs) ToGetInstanceTypeAddonBackupRegionPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupRegionPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonBackupRegionPriceOutput)
 }
 
-// GetInstanceTypeAddonsBackupRegionPriceArrayInput is an input type that accepts GetInstanceTypeAddonsBackupRegionPriceArray and GetInstanceTypeAddonsBackupRegionPriceArrayOutput values.
-// You can construct a concrete instance of `GetInstanceTypeAddonsBackupRegionPriceArrayInput` via:
+// GetInstanceTypeAddonBackupRegionPriceArrayInput is an input type that accepts GetInstanceTypeAddonBackupRegionPriceArray and GetInstanceTypeAddonBackupRegionPriceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypeAddonBackupRegionPriceArrayInput` via:
 //
-//	GetInstanceTypeAddonsBackupRegionPriceArray{ GetInstanceTypeAddonsBackupRegionPriceArgs{...} }
-type GetInstanceTypeAddonsBackupRegionPriceArrayInput interface {
+//	GetInstanceTypeAddonBackupRegionPriceArray{ GetInstanceTypeAddonBackupRegionPriceArgs{...} }
+type GetInstanceTypeAddonBackupRegionPriceArrayInput interface {
 	pulumi.Input
 
-	ToGetInstanceTypeAddonsBackupRegionPriceArrayOutput() GetInstanceTypeAddonsBackupRegionPriceArrayOutput
-	ToGetInstanceTypeAddonsBackupRegionPriceArrayOutputWithContext(context.Context) GetInstanceTypeAddonsBackupRegionPriceArrayOutput
+	ToGetInstanceTypeAddonBackupRegionPriceArrayOutput() GetInstanceTypeAddonBackupRegionPriceArrayOutput
+	ToGetInstanceTypeAddonBackupRegionPriceArrayOutputWithContext(context.Context) GetInstanceTypeAddonBackupRegionPriceArrayOutput
 }
 
-type GetInstanceTypeAddonsBackupRegionPriceArray []GetInstanceTypeAddonsBackupRegionPriceInput
+type GetInstanceTypeAddonBackupRegionPriceArray []GetInstanceTypeAddonBackupRegionPriceInput
 
-func (GetInstanceTypeAddonsBackupRegionPriceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceTypeAddonsBackupRegionPrice)(nil)).Elem()
+func (GetInstanceTypeAddonBackupRegionPriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonBackupRegionPrice)(nil)).Elem()
 }
 
-func (i GetInstanceTypeAddonsBackupRegionPriceArray) ToGetInstanceTypeAddonsBackupRegionPriceArrayOutput() GetInstanceTypeAddonsBackupRegionPriceArrayOutput {
-	return i.ToGetInstanceTypeAddonsBackupRegionPriceArrayOutputWithContext(context.Background())
+func (i GetInstanceTypeAddonBackupRegionPriceArray) ToGetInstanceTypeAddonBackupRegionPriceArrayOutput() GetInstanceTypeAddonBackupRegionPriceArrayOutput {
+	return i.ToGetInstanceTypeAddonBackupRegionPriceArrayOutputWithContext(context.Background())
 }
 
-func (i GetInstanceTypeAddonsBackupRegionPriceArray) ToGetInstanceTypeAddonsBackupRegionPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupRegionPriceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonsBackupRegionPriceArrayOutput)
+func (i GetInstanceTypeAddonBackupRegionPriceArray) ToGetInstanceTypeAddonBackupRegionPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupRegionPriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypeAddonBackupRegionPriceArrayOutput)
 }
 
-type GetInstanceTypeAddonsBackupRegionPriceOutput struct{ *pulumi.OutputState }
+type GetInstanceTypeAddonBackupRegionPriceOutput struct{ *pulumi.OutputState }
 
-func (GetInstanceTypeAddonsBackupRegionPriceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceTypeAddonsBackupRegionPrice)(nil)).Elem()
+func (GetInstanceTypeAddonBackupRegionPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTypeAddonBackupRegionPrice)(nil)).Elem()
 }
 
-func (o GetInstanceTypeAddonsBackupRegionPriceOutput) ToGetInstanceTypeAddonsBackupRegionPriceOutput() GetInstanceTypeAddonsBackupRegionPriceOutput {
+func (o GetInstanceTypeAddonBackupRegionPriceOutput) ToGetInstanceTypeAddonBackupRegionPriceOutput() GetInstanceTypeAddonBackupRegionPriceOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupRegionPriceOutput) ToGetInstanceTypeAddonsBackupRegionPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupRegionPriceOutput {
+func (o GetInstanceTypeAddonBackupRegionPriceOutput) ToGetInstanceTypeAddonBackupRegionPriceOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupRegionPriceOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupRegionPriceOutput) Hourly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackupRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+func (o GetInstanceTypeAddonBackupRegionPriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypeAddonBackupRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
 }
 
 // Label used to identify instance type
-func (o GetInstanceTypeAddonsBackupRegionPriceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackupRegionPrice) string { return v.Id }).(pulumi.StringOutput)
+func (o GetInstanceTypeAddonBackupRegionPriceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTypeAddonBackupRegionPrice) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetInstanceTypeAddonsBackupRegionPriceOutput) Monthly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetInstanceTypeAddonsBackupRegionPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+func (o GetInstanceTypeAddonBackupRegionPriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInstanceTypeAddonBackupRegionPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
 }
 
-type GetInstanceTypeAddonsBackupRegionPriceArrayOutput struct{ *pulumi.OutputState }
+type GetInstanceTypeAddonBackupRegionPriceArrayOutput struct{ *pulumi.OutputState }
 
-func (GetInstanceTypeAddonsBackupRegionPriceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstanceTypeAddonsBackupRegionPrice)(nil)).Elem()
+func (GetInstanceTypeAddonBackupRegionPriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypeAddonBackupRegionPrice)(nil)).Elem()
 }
 
-func (o GetInstanceTypeAddonsBackupRegionPriceArrayOutput) ToGetInstanceTypeAddonsBackupRegionPriceArrayOutput() GetInstanceTypeAddonsBackupRegionPriceArrayOutput {
+func (o GetInstanceTypeAddonBackupRegionPriceArrayOutput) ToGetInstanceTypeAddonBackupRegionPriceArrayOutput() GetInstanceTypeAddonBackupRegionPriceArrayOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupRegionPriceArrayOutput) ToGetInstanceTypeAddonsBackupRegionPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonsBackupRegionPriceArrayOutput {
+func (o GetInstanceTypeAddonBackupRegionPriceArrayOutput) ToGetInstanceTypeAddonBackupRegionPriceArrayOutputWithContext(ctx context.Context) GetInstanceTypeAddonBackupRegionPriceArrayOutput {
 	return o
 }
 
-func (o GetInstanceTypeAddonsBackupRegionPriceArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonsBackupRegionPriceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddonsBackupRegionPrice {
-		return vs[0].([]GetInstanceTypeAddonsBackupRegionPrice)[vs[1].(int)]
-	}).(GetInstanceTypeAddonsBackupRegionPriceOutput)
+func (o GetInstanceTypeAddonBackupRegionPriceArrayOutput) Index(i pulumi.IntInput) GetInstanceTypeAddonBackupRegionPriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypeAddonBackupRegionPrice {
+		return vs[0].([]GetInstanceTypeAddonBackupRegionPrice)[vs[1].(int)]
+	}).(GetInstanceTypeAddonBackupRegionPriceOutput)
 }
 
 type GetInstanceTypePrice struct {
@@ -19766,6 +22662,31 @@ func (i GetInstanceTypePriceArgs) ToGetInstanceTypePriceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypePriceOutput)
 }
 
+// GetInstanceTypePriceArrayInput is an input type that accepts GetInstanceTypePriceArray and GetInstanceTypePriceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTypePriceArrayInput` via:
+//
+//	GetInstanceTypePriceArray{ GetInstanceTypePriceArgs{...} }
+type GetInstanceTypePriceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTypePriceArrayOutput() GetInstanceTypePriceArrayOutput
+	ToGetInstanceTypePriceArrayOutputWithContext(context.Context) GetInstanceTypePriceArrayOutput
+}
+
+type GetInstanceTypePriceArray []GetInstanceTypePriceInput
+
+func (GetInstanceTypePriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypePrice)(nil)).Elem()
+}
+
+func (i GetInstanceTypePriceArray) ToGetInstanceTypePriceArrayOutput() GetInstanceTypePriceArrayOutput {
+	return i.ToGetInstanceTypePriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTypePriceArray) ToGetInstanceTypePriceArrayOutputWithContext(ctx context.Context) GetInstanceTypePriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTypePriceArrayOutput)
+}
+
 type GetInstanceTypePriceOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceTypePriceOutput) ElementType() reflect.Type {
@@ -19788,6 +22709,26 @@ func (o GetInstanceTypePriceOutput) Hourly() pulumi.Float64Output {
 // Cost (in US dollars) per month.
 func (o GetInstanceTypePriceOutput) Monthly() pulumi.Float64Output {
 	return o.ApplyT(func(v GetInstanceTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetInstanceTypePriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTypePriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTypePrice)(nil)).Elem()
+}
+
+func (o GetInstanceTypePriceArrayOutput) ToGetInstanceTypePriceArrayOutput() GetInstanceTypePriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypePriceArrayOutput) ToGetInstanceTypePriceArrayOutputWithContext(ctx context.Context) GetInstanceTypePriceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTypePriceArrayOutput) Index(i pulumi.IntInput) GetInstanceTypePriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTypePrice {
+		return vs[0].([]GetInstanceTypePrice)[vs[1].(int)]
+	}).(GetInstanceTypePriceOutput)
 }
 
 type GetInstanceTypeRegionPrice struct {
@@ -28273,6 +31214,10 @@ type GetNodebalancerConfigsNodebalancerConfig struct {
 	SslFingerprint string `pulumi:"sslFingerprint"`
 	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness string `pulumi:"stickiness"`
+	// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+	UdpCheckPort int `pulumi:"udpCheckPort"`
+	// The idle time in seconds after which a session that hasn’t received packets is destroyed.
+	UdpSessionTimeout int `pulumi:"udpSessionTimeout"`
 }
 
 // GetNodebalancerConfigsNodebalancerConfigInput is an input type that accepts GetNodebalancerConfigsNodebalancerConfigArgs and GetNodebalancerConfigsNodebalancerConfigOutput values.
@@ -28325,6 +31270,10 @@ type GetNodebalancerConfigsNodebalancerConfigArgs struct {
 	SslFingerprint pulumi.StringInput `pulumi:"sslFingerprint"`
 	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness pulumi.StringInput `pulumi:"stickiness"`
+	// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+	UdpCheckPort pulumi.IntInput `pulumi:"udpCheckPort"`
+	// The idle time in seconds after which a session that hasn’t received packets is destroyed.
+	UdpSessionTimeout pulumi.IntInput `pulumi:"udpSessionTimeout"`
 }
 
 func (GetNodebalancerConfigsNodebalancerConfigArgs) ElementType() reflect.Type {
@@ -28470,6 +31419,16 @@ func (o GetNodebalancerConfigsNodebalancerConfigOutput) SslFingerprint() pulumi.
 // Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 func (o GetNodebalancerConfigsNodebalancerConfigOutput) Stickiness() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) string { return v.Stickiness }).(pulumi.StringOutput)
+}
+
+// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) UdpCheckPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) int { return v.UdpCheckPort }).(pulumi.IntOutput)
+}
+
+// The idle time in seconds after which a session that hasn’t received packets is destroyed.
+func (o GetNodebalancerConfigsNodebalancerConfigOutput) UdpSessionTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancerConfigsNodebalancerConfig) int { return v.UdpSessionTimeout }).(pulumi.IntOutput)
 }
 
 type GetNodebalancerConfigsNodebalancerConfigArrayOutput struct{ *pulumi.OutputState }
@@ -28716,6 +31675,8 @@ func (o GetNodebalancersFilterArrayOutput) Index(i pulumi.IntInput) GetNodebalan
 type GetNodebalancersNodebalancer struct {
 	// Throttle connections per second (0-20)
 	ClientConnThrottle int `pulumi:"clientConnThrottle"`
+	// Throttle UDP sessions per second (0-20).
+	ClientUdpSessThrottle int `pulumi:"clientUdpSessThrottle"`
 	// When this Linode NodeBalancer was created
 	Created string `pulumi:"created"`
 	// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
@@ -28752,6 +31713,8 @@ type GetNodebalancersNodebalancerInput interface {
 type GetNodebalancersNodebalancerArgs struct {
 	// Throttle connections per second (0-20)
 	ClientConnThrottle pulumi.IntInput `pulumi:"clientConnThrottle"`
+	// Throttle UDP sessions per second (0-20).
+	ClientUdpSessThrottle pulumi.IntInput `pulumi:"clientUdpSessThrottle"`
 	// When this Linode NodeBalancer was created
 	Created pulumi.StringInput `pulumi:"created"`
 	// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
@@ -28828,6 +31791,11 @@ func (o GetNodebalancersNodebalancerOutput) ToGetNodebalancersNodebalancerOutput
 // Throttle connections per second (0-20)
 func (o GetNodebalancersNodebalancerOutput) ClientConnThrottle() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodebalancersNodebalancer) int { return v.ClientConnThrottle }).(pulumi.IntOutput)
+}
+
+// Throttle UDP sessions per second (0-20).
+func (o GetNodebalancersNodebalancerOutput) ClientUdpSessThrottle() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) int { return v.ClientUdpSessThrottle }).(pulumi.IntOutput)
 }
 
 // When this Linode NodeBalancer was created
@@ -30765,7 +33733,7 @@ func (o GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput) Index(i p
 	}).(GetPlacementGroupsPlacementGroupMigrationsOutboundOutput)
 }
 
-type GetProfileReferrals struct {
+type GetProfileReferral struct {
 	// The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
 	Code string `pulumi:"code"`
 	// The number of completed signups with the referral code.
@@ -30780,18 +33748,18 @@ type GetProfileReferrals struct {
 	Url string `pulumi:"url"`
 }
 
-// GetProfileReferralsInput is an input type that accepts GetProfileReferralsArgs and GetProfileReferralsOutput values.
-// You can construct a concrete instance of `GetProfileReferralsInput` via:
+// GetProfileReferralInput is an input type that accepts GetProfileReferralArgs and GetProfileReferralOutput values.
+// You can construct a concrete instance of `GetProfileReferralInput` via:
 //
-//	GetProfileReferralsArgs{...}
-type GetProfileReferralsInput interface {
+//	GetProfileReferralArgs{...}
+type GetProfileReferralInput interface {
 	pulumi.Input
 
-	ToGetProfileReferralsOutput() GetProfileReferralsOutput
-	ToGetProfileReferralsOutputWithContext(context.Context) GetProfileReferralsOutput
+	ToGetProfileReferralOutput() GetProfileReferralOutput
+	ToGetProfileReferralOutputWithContext(context.Context) GetProfileReferralOutput
 }
 
-type GetProfileReferralsArgs struct {
+type GetProfileReferralArgs struct {
 	// The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
 	Code pulumi.StringInput `pulumi:"code"`
 	// The number of completed signups with the referral code.
@@ -30806,60 +33774,105 @@ type GetProfileReferralsArgs struct {
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
-func (GetProfileReferralsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProfileReferrals)(nil)).Elem()
+func (GetProfileReferralArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProfileReferral)(nil)).Elem()
 }
 
-func (i GetProfileReferralsArgs) ToGetProfileReferralsOutput() GetProfileReferralsOutput {
-	return i.ToGetProfileReferralsOutputWithContext(context.Background())
+func (i GetProfileReferralArgs) ToGetProfileReferralOutput() GetProfileReferralOutput {
+	return i.ToGetProfileReferralOutputWithContext(context.Background())
 }
 
-func (i GetProfileReferralsArgs) ToGetProfileReferralsOutputWithContext(ctx context.Context) GetProfileReferralsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProfileReferralsOutput)
+func (i GetProfileReferralArgs) ToGetProfileReferralOutputWithContext(ctx context.Context) GetProfileReferralOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProfileReferralOutput)
 }
 
-type GetProfileReferralsOutput struct{ *pulumi.OutputState }
+// GetProfileReferralArrayInput is an input type that accepts GetProfileReferralArray and GetProfileReferralArrayOutput values.
+// You can construct a concrete instance of `GetProfileReferralArrayInput` via:
+//
+//	GetProfileReferralArray{ GetProfileReferralArgs{...} }
+type GetProfileReferralArrayInput interface {
+	pulumi.Input
 
-func (GetProfileReferralsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProfileReferrals)(nil)).Elem()
+	ToGetProfileReferralArrayOutput() GetProfileReferralArrayOutput
+	ToGetProfileReferralArrayOutputWithContext(context.Context) GetProfileReferralArrayOutput
 }
 
-func (o GetProfileReferralsOutput) ToGetProfileReferralsOutput() GetProfileReferralsOutput {
+type GetProfileReferralArray []GetProfileReferralInput
+
+func (GetProfileReferralArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProfileReferral)(nil)).Elem()
+}
+
+func (i GetProfileReferralArray) ToGetProfileReferralArrayOutput() GetProfileReferralArrayOutput {
+	return i.ToGetProfileReferralArrayOutputWithContext(context.Background())
+}
+
+func (i GetProfileReferralArray) ToGetProfileReferralArrayOutputWithContext(ctx context.Context) GetProfileReferralArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProfileReferralArrayOutput)
+}
+
+type GetProfileReferralOutput struct{ *pulumi.OutputState }
+
+func (GetProfileReferralOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProfileReferral)(nil)).Elem()
+}
+
+func (o GetProfileReferralOutput) ToGetProfileReferralOutput() GetProfileReferralOutput {
 	return o
 }
 
-func (o GetProfileReferralsOutput) ToGetProfileReferralsOutputWithContext(ctx context.Context) GetProfileReferralsOutput {
+func (o GetProfileReferralOutput) ToGetProfileReferralOutputWithContext(ctx context.Context) GetProfileReferralOutput {
 	return o
 }
 
 // The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
-func (o GetProfileReferralsOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProfileReferrals) string { return v.Code }).(pulumi.StringOutput)
+func (o GetProfileReferralOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProfileReferral) string { return v.Code }).(pulumi.StringOutput)
 }
 
 // The number of completed signups with the referral code.
-func (o GetProfileReferralsOutput) Completed() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProfileReferrals) int { return v.Completed }).(pulumi.IntOutput)
+func (o GetProfileReferralOutput) Completed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProfileReferral) int { return v.Completed }).(pulumi.IntOutput)
 }
 
 // The amount of account credit in US Dollars issued to the account through the referral program.
-func (o GetProfileReferralsOutput) Credit() pulumi.Float64Output {
-	return o.ApplyT(func(v GetProfileReferrals) float64 { return v.Credit }).(pulumi.Float64Output)
+func (o GetProfileReferralOutput) Credit() pulumi.Float64Output {
+	return o.ApplyT(func(v GetProfileReferral) float64 { return v.Credit }).(pulumi.Float64Output)
 }
 
 // The number of pending signups for the referral code. To receive credit the signups must be completed.
-func (o GetProfileReferralsOutput) Pending() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProfileReferrals) int { return v.Pending }).(pulumi.IntOutput)
+func (o GetProfileReferralOutput) Pending() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProfileReferral) int { return v.Pending }).(pulumi.IntOutput)
 }
 
 // The number of users who have signed up with the referral code.
-func (o GetProfileReferralsOutput) Total() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProfileReferrals) int { return v.Total }).(pulumi.IntOutput)
+func (o GetProfileReferralOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProfileReferral) int { return v.Total }).(pulumi.IntOutput)
 }
 
 // The referral URL.
-func (o GetProfileReferralsOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProfileReferrals) string { return v.Url }).(pulumi.StringOutput)
+func (o GetProfileReferralOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProfileReferral) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetProfileReferralArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProfileReferralArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProfileReferral)(nil)).Elem()
+}
+
+func (o GetProfileReferralArrayOutput) ToGetProfileReferralArrayOutput() GetProfileReferralArrayOutput {
+	return o
+}
+
+func (o GetProfileReferralArrayOutput) ToGetProfileReferralArrayOutputWithContext(ctx context.Context) GetProfileReferralArrayOutput {
+	return o
+}
+
+func (o GetProfileReferralArrayOutput) Index(i pulumi.IntInput) GetProfileReferralOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProfileReferral {
+		return vs[0].([]GetProfileReferral)[vs[1].(int)]
+	}).(GetProfileReferralOutput)
 }
 
 type GetRegionPlacementGroupLimit struct {
@@ -38041,10 +41054,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageTimeoutsPtrInput)(nil)).Elem(), ImageTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAlertsInput)(nil)).Elem(), InstanceAlertsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAlertsPtrInput)(nil)).Elem(), InstanceAlertsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupsInput)(nil)).Elem(), InstanceBackupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupsPtrInput)(nil)).Elem(), InstanceBackupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupsScheduleInput)(nil)).Elem(), InstanceBackupsScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupsSchedulePtrInput)(nil)).Elem(), InstanceBackupsScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupInput)(nil)).Elem(), InstanceBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupArrayInput)(nil)).Elem(), InstanceBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupScheduleInput)(nil)).Elem(), InstanceBackupScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackupScheduleArrayInput)(nil)).Elem(), InstanceBackupScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigTypeInput)(nil)).Elem(), InstanceConfigTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigTypeArrayInput)(nil)).Elem(), InstanceConfigTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigDeviceInput)(nil)).Elem(), InstanceConfigDeviceArgs{})
@@ -38089,8 +41102,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMetadataArrayInput)(nil)).Elem(), InstanceMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePlacementGroupInput)(nil)).Elem(), InstancePlacementGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePlacementGroupPtrInput)(nil)).Elem(), InstancePlacementGroupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecsInput)(nil)).Elem(), InstanceSpecsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecsPtrInput)(nil)).Elem(), InstanceSpecsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecInput)(nil)).Elem(), InstanceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecArrayInput)(nil)).Elem(), InstanceSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneInput)(nil)).Elem(), LkeClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlanePtrInput)(nil)).Elem(), LkeClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneAclInput)(nil)).Elem(), LkeClusterControlPlaneAclArgs{})
@@ -38197,11 +41210,51 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsBackupArrayInput)(nil)).Elem(), GetDatabaseMysqlBackupsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsFilterInput)(nil)).Elem(), GetDatabaseMysqlBackupsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsFilterArrayInput)(nil)).Elem(), GetDatabaseMysqlBackupsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigBinlogRetentionPeriodInput)(nil)).Elem(), GetDatabaseMysqlConfigBinlogRetentionPeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigBinlogRetentionPeriodArrayInput)(nil)).Elem(), GetDatabaseMysqlConfigBinlogRetentionPeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlArrayInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlConnectTimeoutInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlConnectTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlDefaultTimeZoneInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlDefaultTimeZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlGroupConcatMaxLenInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlGroupConcatMaxLenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInteractiveTimeoutInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInteractiveTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlMaxAllowedPacketInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlMaxAllowedPacketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlMaxHeapTableSizeInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlMaxHeapTableSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlNetBufferLengthInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlNetBufferLengthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlNetReadTimeoutInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlNetReadTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlNetWriteTimeoutInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlNetWriteTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlSortBufferSizeInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlSortBufferSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlSqlModeInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlSqlModeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlTmpTableSizeInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlTmpTableSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlWaitTimeoutInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlWaitTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlUpdateInput)(nil)).Elem(), GetDatabaseMysqlUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlUpdateArrayInput)(nil)).Elem(), GetDatabaseMysqlUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlV2PendingUpdateInput)(nil)).Elem(), GetDatabaseMysqlV2PendingUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlV2PendingUpdateArrayInput)(nil)).Elem(), GetDatabaseMysqlV2PendingUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlV2UpdatesInput)(nil)).Elem(), GetDatabaseMysqlV2UpdatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigPgStatMonitorEnableInput)(nil)).Elem(), GetDatabasePostgresqlConfigPgStatMonitorEnableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigPgStatMonitorEnableArrayInput)(nil)).Elem(), GetDatabasePostgresqlConfigPgStatMonitorEnableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigPglookoutInput)(nil)).Elem(), GetDatabasePostgresqlConfigPglookoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigPglookoutArrayInput)(nil)).Elem(), GetDatabasePostgresqlConfigPglookoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagInput)(nil)).Elem(), GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigSharedBuffersPercentageInput)(nil)).Elem(), GetDatabasePostgresqlConfigSharedBuffersPercentageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigSharedBuffersPercentageArrayInput)(nil)).Elem(), GetDatabasePostgresqlConfigSharedBuffersPercentageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigWorkMemInput)(nil)).Elem(), GetDatabasePostgresqlConfigWorkMemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigWorkMemArrayInput)(nil)).Elem(), GetDatabasePostgresqlConfigWorkMemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlUpdateInput)(nil)).Elem(), GetDatabasePostgresqlUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlUpdateArrayInput)(nil)).Elem(), GetDatabasePostgresqlUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlV2PendingUpdateInput)(nil)).Elem(), GetDatabasePostgresqlV2PendingUpdateArgs{})
@@ -38275,14 +41328,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6LinkLocalVpcNat11Input)(nil)).Elem(), GetInstanceNetworkingIpv6LinkLocalVpcNat11Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6SlaacInput)(nil)).Elem(), GetInstanceNetworkingIpv6SlaacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkingIpv6SlaacVpcNat11Input)(nil)).Elem(), GetInstanceNetworkingIpv6SlaacVpcNat11Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsInput)(nil)).Elem(), GetInstanceTypeAddonsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupInput)(nil)).Elem(), GetInstanceTypeAddonsBackupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupArrayInput)(nil)).Elem(), GetInstanceTypeAddonsBackupArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupPriceInput)(nil)).Elem(), GetInstanceTypeAddonsBackupPriceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupPriceArrayInput)(nil)).Elem(), GetInstanceTypeAddonsBackupPriceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupRegionPriceInput)(nil)).Elem(), GetInstanceTypeAddonsBackupRegionPriceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonsBackupRegionPriceArrayInput)(nil)).Elem(), GetInstanceTypeAddonsBackupRegionPriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonInput)(nil)).Elem(), GetInstanceTypeAddonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonArrayInput)(nil)).Elem(), GetInstanceTypeAddonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonBackupInput)(nil)).Elem(), GetInstanceTypeAddonBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonBackupArrayInput)(nil)).Elem(), GetInstanceTypeAddonBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonBackupPriceInput)(nil)).Elem(), GetInstanceTypeAddonBackupPriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonBackupPriceArrayInput)(nil)).Elem(), GetInstanceTypeAddonBackupPriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonBackupRegionPriceInput)(nil)).Elem(), GetInstanceTypeAddonBackupRegionPriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeAddonBackupRegionPriceArrayInput)(nil)).Elem(), GetInstanceTypeAddonBackupRegionPriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypePriceInput)(nil)).Elem(), GetInstanceTypePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypePriceArrayInput)(nil)).Elem(), GetInstanceTypePriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeRegionPriceInput)(nil)).Elem(), GetInstanceTypeRegionPriceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypeRegionPriceArrayInput)(nil)).Elem(), GetInstanceTypeRegionPriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTypesFilterInput)(nil)).Elem(), GetInstanceTypesFilterArgs{})
@@ -38454,7 +41509,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsInboundArrayInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsInboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsOutboundInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsOutboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsOutboundArrayInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsOutboundArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetProfileReferralsInput)(nil)).Elem(), GetProfileReferralsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProfileReferralInput)(nil)).Elem(), GetProfileReferralArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProfileReferralArrayInput)(nil)).Elem(), GetProfileReferralArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionPlacementGroupLimitInput)(nil)).Elem(), GetRegionPlacementGroupLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionPlacementGroupLimitArrayInput)(nil)).Elem(), GetRegionPlacementGroupLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionResolverInput)(nil)).Elem(), GetRegionResolverArgs{})
@@ -38595,10 +41651,10 @@ func init() {
 	pulumi.RegisterOutputType(ImageTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceAlertsOutput{})
 	pulumi.RegisterOutputType(InstanceAlertsPtrOutput{})
-	pulumi.RegisterOutputType(InstanceBackupsOutput{})
-	pulumi.RegisterOutputType(InstanceBackupsPtrOutput{})
-	pulumi.RegisterOutputType(InstanceBackupsScheduleOutput{})
-	pulumi.RegisterOutputType(InstanceBackupsSchedulePtrOutput{})
+	pulumi.RegisterOutputType(InstanceBackupOutput{})
+	pulumi.RegisterOutputType(InstanceBackupArrayOutput{})
+	pulumi.RegisterOutputType(InstanceBackupScheduleOutput{})
+	pulumi.RegisterOutputType(InstanceBackupScheduleArrayOutput{})
 	pulumi.RegisterOutputType(InstanceConfigTypeOutput{})
 	pulumi.RegisterOutputType(InstanceConfigTypeArrayOutput{})
 	pulumi.RegisterOutputType(InstanceConfigDeviceOutput{})
@@ -38643,8 +41699,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceMetadataArrayOutput{})
 	pulumi.RegisterOutputType(InstancePlacementGroupOutput{})
 	pulumi.RegisterOutputType(InstancePlacementGroupPtrOutput{})
-	pulumi.RegisterOutputType(InstanceSpecsOutput{})
-	pulumi.RegisterOutputType(InstanceSpecsPtrOutput{})
+	pulumi.RegisterOutputType(InstanceSpecOutput{})
+	pulumi.RegisterOutputType(InstanceSpecArrayOutput{})
 	pulumi.RegisterOutputType(LkeClusterControlPlaneOutput{})
 	pulumi.RegisterOutputType(LkeClusterControlPlanePtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterControlPlaneAclOutput{})
@@ -38751,11 +41807,51 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsFilterOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigBinlogRetentionPeriodOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlConnectTimeoutOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlDefaultTimeZoneOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlGroupConcatMaxLenOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInteractiveTimeoutOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlMaxAllowedPacketOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlMaxHeapTableSizeOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlNetBufferLengthOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlNetReadTimeoutOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlNetWriteTimeoutOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlSortBufferSizeOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlSqlModeOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlTmpTableSizeOutput{})
+	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlWaitTimeoutOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlUpdateOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlUpdateArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlV2PendingUpdateOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlV2PendingUpdateArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlV2UpdatesOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigPgStatMonitorEnableOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigPgStatMonitorEnableArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigPglookoutOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigPglookoutArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigSharedBuffersPercentageOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigWorkMemOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigWorkMemArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlUpdateOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlUpdateArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlV2PendingUpdateOutput{})
@@ -38829,14 +41925,16 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6LinkLocalVpcNat11Output{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6SlaacOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkingIpv6SlaacVpcNat11Output{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupArrayOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupPriceOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupPriceArrayOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupRegionPriceOutput{})
-	pulumi.RegisterOutputType(GetInstanceTypeAddonsBackupRegionPriceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonBackupOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonBackupArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonBackupPriceOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonBackupPriceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonBackupRegionPriceOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypeAddonBackupRegionPriceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypePriceOutput{})
+	pulumi.RegisterOutputType(GetInstanceTypePriceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeRegionPriceOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypeRegionPriceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTypesFilterOutput{})
@@ -39008,7 +42106,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsOutboundOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput{})
-	pulumi.RegisterOutputType(GetProfileReferralsOutput{})
+	pulumi.RegisterOutputType(GetProfileReferralOutput{})
+	pulumi.RegisterOutputType(GetProfileReferralArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionPlacementGroupLimitOutput{})
 	pulumi.RegisterOutputType(GetRegionPlacementGroupLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionResolverOutput{})

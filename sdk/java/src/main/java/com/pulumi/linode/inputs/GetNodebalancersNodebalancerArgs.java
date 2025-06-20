@@ -33,6 +33,21 @@ public final class GetNodebalancersNodebalancerArgs extends com.pulumi.resources
     }
 
     /**
+     * Throttle UDP sessions per second (0-20).
+     * 
+     */
+    @Import(name="clientUdpSessThrottle", required=true)
+    private Output<Integer> clientUdpSessThrottle;
+
+    /**
+     * @return Throttle UDP sessions per second (0-20).
+     * 
+     */
+    public Output<Integer> clientUdpSessThrottle() {
+        return this.clientUdpSessThrottle;
+    }
+
+    /**
      * When this Linode NodeBalancer was created
      * 
      */
@@ -186,6 +201,7 @@ public final class GetNodebalancersNodebalancerArgs extends com.pulumi.resources
 
     private GetNodebalancersNodebalancerArgs(GetNodebalancersNodebalancerArgs $) {
         this.clientConnThrottle = $.clientConnThrottle;
+        this.clientUdpSessThrottle = $.clientUdpSessThrottle;
         this.created = $.created;
         this.hostname = $.hostname;
         this.id = $.id;
@@ -235,6 +251,27 @@ public final class GetNodebalancersNodebalancerArgs extends com.pulumi.resources
          */
         public Builder clientConnThrottle(Integer clientConnThrottle) {
             return clientConnThrottle(Output.of(clientConnThrottle));
+        }
+
+        /**
+         * @param clientUdpSessThrottle Throttle UDP sessions per second (0-20).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientUdpSessThrottle(Output<Integer> clientUdpSessThrottle) {
+            $.clientUdpSessThrottle = clientUdpSessThrottle;
+            return this;
+        }
+
+        /**
+         * @param clientUdpSessThrottle Throttle UDP sessions per second (0-20).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientUdpSessThrottle(Integer clientUdpSessThrottle) {
+            return clientUdpSessThrottle(Output.of(clientUdpSessThrottle));
         }
 
         /**
@@ -470,6 +507,9 @@ public final class GetNodebalancersNodebalancerArgs extends com.pulumi.resources
         public GetNodebalancersNodebalancerArgs build() {
             if ($.clientConnThrottle == null) {
                 throw new MissingRequiredPropertyException("GetNodebalancersNodebalancerArgs", "clientConnThrottle");
+            }
+            if ($.clientUdpSessThrottle == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancerArgs", "clientUdpSessThrottle");
             }
             if ($.created == null) {
                 throw new MissingRequiredPropertyException("GetNodebalancersNodebalancerArgs", "created");

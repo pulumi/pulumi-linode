@@ -802,7 +802,6 @@ export interface GetDatabasePostgresqlConfigResult {
     readonly id: string;
     readonly pgStatMonitorEnables: outputs.GetDatabasePostgresqlConfigPgStatMonitorEnable[];
     readonly pglookouts: outputs.GetDatabasePostgresqlConfigPglookout[];
-    readonly pgs: outputs.GetDatabasePostgresqlConfigPg[];
     readonly sharedBuffersPercentages: outputs.GetDatabasePostgresqlConfigSharedBuffersPercentage[];
     readonly workMems: outputs.GetDatabasePostgresqlConfigWorkMem[];
 }

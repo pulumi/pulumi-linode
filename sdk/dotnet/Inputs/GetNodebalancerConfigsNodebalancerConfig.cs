@@ -128,6 +128,18 @@ namespace Pulumi.Linode.Inputs
         [Input("stickiness", required: true)]
         public string Stickiness { get; set; } = null!;
 
+        /// <summary>
+        /// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+        /// </summary>
+        [Input("udpCheckPort", required: true)]
+        public int UdpCheckPort { get; set; }
+
+        /// <summary>
+        /// The idle time in seconds after which a session that hasn’t received packets is destroyed.
+        /// </summary>
+        [Input("udpSessionTimeout", required: true)]
+        public int UdpSessionTimeout { get; set; }
+
         public GetNodebalancerConfigsNodebalancerConfigArgs()
         {
         }

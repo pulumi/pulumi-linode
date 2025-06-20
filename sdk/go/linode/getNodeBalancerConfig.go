@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
+	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -92,6 +92,10 @@ type LookupNodeBalancerConfigResult struct {
 	SslFingerprint string `pulumi:"sslFingerprint"`
 	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness string `pulumi:"stickiness"`
+	// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+	UdpCheckPort int `pulumi:"udpCheckPort"`
+	// The idle time in seconds after which a session that hasn’t received packets is destroyed.
+	UdpSessionTimeout int `pulumi:"udpSessionTimeout"`
 }
 
 func LookupNodeBalancerConfigOutput(ctx *pulumi.Context, args LookupNodeBalancerConfigOutputArgs, opts ...pulumi.InvokeOption) LookupNodeBalancerConfigResultOutput {
@@ -214,6 +218,16 @@ func (o LookupNodeBalancerConfigResultOutput) SslFingerprint() pulumi.StringOutp
 // Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 func (o LookupNodeBalancerConfigResultOutput) Stickiness() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerConfigResult) string { return v.Stickiness }).(pulumi.StringOutput)
+}
+
+// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+func (o LookupNodeBalancerConfigResultOutput) UdpCheckPort() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) int { return v.UdpCheckPort }).(pulumi.IntOutput)
+}
+
+// The idle time in seconds after which a session that hasn’t received packets is destroyed.
+func (o LookupNodeBalancerConfigResultOutput) UdpSessionTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerConfigResult) int { return v.UdpSessionTimeout }).(pulumi.IntOutput)
 }
 
 func init() {

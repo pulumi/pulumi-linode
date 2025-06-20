@@ -37,7 +37,8 @@ class NodeBalancerConfigArgs:
                  proxy_protocol: Optional[pulumi.Input[builtins.str]] = None,
                  ssl_cert: Optional[pulumi.Input[builtins.str]] = None,
                  ssl_key: Optional[pulumi.Input[builtins.str]] = None,
-                 stickiness: Optional[pulumi.Input[builtins.str]] = None):
+                 stickiness: Optional[pulumi.Input[builtins.str]] = None,
+                 udp_check_port: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a NodeBalancerConfig resource.
         :param pulumi.Input[builtins.int] nodebalancer_id: The ID of the NodeBalancer to access.
@@ -59,6 +60,9 @@ class NodeBalancerConfigArgs:
         :param pulumi.Input[builtins.str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[builtins.str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[builtins.str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        :param pulumi.Input[builtins.int] udp_check_port: Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+               
+               * **NOTE: This argument may not be generally available.**
         """
         pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
         if algorithm is not None:
@@ -91,6 +95,8 @@ class NodeBalancerConfigArgs:
             pulumi.set(__self__, "ssl_key", ssl_key)
         if stickiness is not None:
             pulumi.set(__self__, "stickiness", stickiness)
+        if udp_check_port is not None:
+            pulumi.set(__self__, "udp_check_port", udp_check_port)
 
     @property
     @pulumi.getter(name="nodebalancerId")
@@ -287,6 +293,20 @@ class NodeBalancerConfigArgs:
     def stickiness(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "stickiness", value)
 
+    @property
+    @pulumi.getter(name="udpCheckPort")
+    def udp_check_port(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+
+        * **NOTE: This argument may not be generally available.**
+        """
+        return pulumi.get(self, "udp_check_port")
+
+    @udp_check_port.setter
+    def udp_check_port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "udp_check_port", value)
+
 
 @pulumi.input_type
 class _NodeBalancerConfigState:
@@ -309,7 +329,9 @@ class _NodeBalancerConfigState:
                  ssl_commonname: Optional[pulumi.Input[builtins.str]] = None,
                  ssl_fingerprint: Optional[pulumi.Input[builtins.str]] = None,
                  ssl_key: Optional[pulumi.Input[builtins.str]] = None,
-                 stickiness: Optional[pulumi.Input[builtins.str]] = None):
+                 stickiness: Optional[pulumi.Input[builtins.str]] = None,
+                 udp_check_port: Optional[pulumi.Input[builtins.int]] = None,
+                 udp_session_timeout: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering NodeBalancerConfig resources.
         :param pulumi.Input[builtins.str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
@@ -335,6 +357,10 @@ class _NodeBalancerConfigState:
         :param pulumi.Input[builtins.str] ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param pulumi.Input[builtins.str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[builtins.str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        :param pulumi.Input[builtins.int] udp_check_port: Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+               
+               * **NOTE: This argument may not be generally available.**
+        :param pulumi.Input[builtins.int] udp_session_timeout: The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -374,6 +400,10 @@ class _NodeBalancerConfigState:
             pulumi.set(__self__, "ssl_key", ssl_key)
         if stickiness is not None:
             pulumi.set(__self__, "stickiness", stickiness)
+        if udp_check_port is not None:
+            pulumi.set(__self__, "udp_check_port", udp_check_port)
+        if udp_session_timeout is not None:
+            pulumi.set(__self__, "udp_session_timeout", udp_session_timeout)
 
     @property
     @pulumi.getter
@@ -607,6 +637,32 @@ class _NodeBalancerConfigState:
     def stickiness(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "stickiness", value)
 
+    @property
+    @pulumi.getter(name="udpCheckPort")
+    def udp_check_port(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+
+        * **NOTE: This argument may not be generally available.**
+        """
+        return pulumi.get(self, "udp_check_port")
+
+    @udp_check_port.setter
+    def udp_check_port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "udp_check_port", value)
+
+    @property
+    @pulumi.getter(name="udpSessionTimeout")
+    def udp_session_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+        """
+        return pulumi.get(self, "udp_session_timeout")
+
+    @udp_session_timeout.setter
+    def udp_session_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "udp_session_timeout", value)
+
 
 @pulumi.type_token("linode:index/nodeBalancerConfig:NodeBalancerConfig")
 class NodeBalancerConfig(pulumi.CustomResource):
@@ -630,6 +686,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
                  ssl_cert: Optional[pulumi.Input[builtins.str]] = None,
                  ssl_key: Optional[pulumi.Input[builtins.str]] = None,
                  stickiness: Optional[pulumi.Input[builtins.str]] = None,
+                 udp_check_port: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
         Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
@@ -655,6 +712,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             check_path="/foo",
             check_attempts=3,
             check_timeout=30,
+            udp_check_port=12345,
             stickiness="http_cookie",
             algorithm="source")
         ```
@@ -688,6 +746,9 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] ssl_cert: The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[builtins.str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[builtins.str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        :param pulumi.Input[builtins.int] udp_check_port: Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+               
+               * **NOTE: This argument may not be generally available.**
         """
         ...
     @overload
@@ -719,6 +780,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             check_path="/foo",
             check_attempts=3,
             check_timeout=30,
+            udp_check_port=12345,
             stickiness="http_cookie",
             algorithm="source")
         ```
@@ -762,6 +824,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
                  ssl_cert: Optional[pulumi.Input[builtins.str]] = None,
                  ssl_key: Optional[pulumi.Input[builtins.str]] = None,
                  stickiness: Optional[pulumi.Input[builtins.str]] = None,
+                 udp_check_port: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -789,9 +852,11 @@ class NodeBalancerConfig(pulumi.CustomResource):
             __props__.__dict__["ssl_cert"] = None if ssl_cert is None else pulumi.Output.secret(ssl_cert)
             __props__.__dict__["ssl_key"] = None if ssl_key is None else pulumi.Output.secret(ssl_key)
             __props__.__dict__["stickiness"] = stickiness
+            __props__.__dict__["udp_check_port"] = udp_check_port
             __props__.__dict__["node_statuses"] = None
             __props__.__dict__["ssl_commonname"] = None
             __props__.__dict__["ssl_fingerprint"] = None
+            __props__.__dict__["udp_session_timeout"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["sslCert", "sslKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(NodeBalancerConfig, __self__).__init__(
@@ -822,7 +887,9 @@ class NodeBalancerConfig(pulumi.CustomResource):
             ssl_commonname: Optional[pulumi.Input[builtins.str]] = None,
             ssl_fingerprint: Optional[pulumi.Input[builtins.str]] = None,
             ssl_key: Optional[pulumi.Input[builtins.str]] = None,
-            stickiness: Optional[pulumi.Input[builtins.str]] = None) -> 'NodeBalancerConfig':
+            stickiness: Optional[pulumi.Input[builtins.str]] = None,
+            udp_check_port: Optional[pulumi.Input[builtins.int]] = None,
+            udp_session_timeout: Optional[pulumi.Input[builtins.int]] = None) -> 'NodeBalancerConfig':
         """
         Get an existing NodeBalancerConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -853,6 +920,10 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param pulumi.Input[builtins.str] ssl_key: The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         :param pulumi.Input[builtins.str] stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        :param pulumi.Input[builtins.int] udp_check_port: Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+               
+               * **NOTE: This argument may not be generally available.**
+        :param pulumi.Input[builtins.int] udp_session_timeout: The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -877,6 +948,8 @@ class NodeBalancerConfig(pulumi.CustomResource):
         __props__.__dict__["ssl_fingerprint"] = ssl_fingerprint
         __props__.__dict__["ssl_key"] = ssl_key
         __props__.__dict__["stickiness"] = stickiness
+        __props__.__dict__["udp_check_port"] = udp_check_port
+        __props__.__dict__["udp_session_timeout"] = udp_session_timeout
         return NodeBalancerConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1034,4 +1107,22 @@ class NodeBalancerConfig(pulumi.CustomResource):
         Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
         return pulumi.get(self, "stickiness")
+
+    @property
+    @pulumi.getter(name="udpCheckPort")
+    def udp_check_port(self) -> pulumi.Output[builtins.int]:
+        """
+        Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+
+        * **NOTE: This argument may not be generally available.**
+        """
+        return pulumi.get(self, "udp_check_port")
+
+    @property
+    @pulumi.getter(name="udpSessionTimeout")
+    def udp_session_timeout(self) -> pulumi.Output[builtins.int]:
+        """
+        The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+        """
+        return pulumi.get(self, "udp_session_timeout")
 

@@ -292,6 +292,36 @@ public final class GetNodebalancerConfigsNodebalancerConfigArgs extends com.pulu
         return this.stickiness;
     }
 
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     * 
+     */
+    @Import(name="udpCheckPort", required=true)
+    private Output<Integer> udpCheckPort;
+
+    /**
+     * @return Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     * 
+     */
+    public Output<Integer> udpCheckPort() {
+        return this.udpCheckPort;
+    }
+
+    /**
+     * The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    @Import(name="udpSessionTimeout", required=true)
+    private Output<Integer> udpSessionTimeout;
+
+    /**
+     * @return The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    public Output<Integer> udpSessionTimeout() {
+        return this.udpSessionTimeout;
+    }
+
     private GetNodebalancerConfigsNodebalancerConfigArgs() {}
 
     private GetNodebalancerConfigsNodebalancerConfigArgs(GetNodebalancerConfigsNodebalancerConfigArgs $) {
@@ -313,6 +343,8 @@ public final class GetNodebalancerConfigsNodebalancerConfigArgs extends com.pulu
         this.sslCommonname = $.sslCommonname;
         this.sslFingerprint = $.sslFingerprint;
         this.stickiness = $.stickiness;
+        this.udpCheckPort = $.udpCheckPort;
+        this.udpSessionTimeout = $.udpSessionTimeout;
     }
 
     public static Builder builder() {
@@ -725,6 +757,48 @@ public final class GetNodebalancerConfigsNodebalancerConfigArgs extends com.pulu
             return stickiness(Output.of(stickiness));
         }
 
+        /**
+         * @param udpCheckPort Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpCheckPort(Output<Integer> udpCheckPort) {
+            $.udpCheckPort = udpCheckPort;
+            return this;
+        }
+
+        /**
+         * @param udpCheckPort Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpCheckPort(Integer udpCheckPort) {
+            return udpCheckPort(Output.of(udpCheckPort));
+        }
+
+        /**
+         * @param udpSessionTimeout The idle time in seconds after which a session that hasn’t received packets is destroyed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpSessionTimeout(Output<Integer> udpSessionTimeout) {
+            $.udpSessionTimeout = udpSessionTimeout;
+            return this;
+        }
+
+        /**
+         * @param udpSessionTimeout The idle time in seconds after which a session that hasn’t received packets is destroyed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpSessionTimeout(Integer udpSessionTimeout) {
+            return udpSessionTimeout(Output.of(udpSessionTimeout));
+        }
+
         public GetNodebalancerConfigsNodebalancerConfigArgs build() {
             if ($.algorithm == null) {
                 throw new MissingRequiredPropertyException("GetNodebalancerConfigsNodebalancerConfigArgs", "algorithm");
@@ -779,6 +853,12 @@ public final class GetNodebalancerConfigsNodebalancerConfigArgs extends com.pulu
             }
             if ($.stickiness == null) {
                 throw new MissingRequiredPropertyException("GetNodebalancerConfigsNodebalancerConfigArgs", "stickiness");
+            }
+            if ($.udpCheckPort == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancerConfigsNodebalancerConfigArgs", "udpCheckPort");
+            }
+            if ($.udpSessionTimeout == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancerConfigsNodebalancerConfigArgs", "udpSessionTimeout");
             }
             return $;
         }

@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
+	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,7 +26,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -66,7 +66,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -119,7 +119,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -172,7 +172,7 @@ type Instance struct {
 	// exclusive.
 	BackupId pulumi.IntPtrOutput `pulumi:"backupId"`
 	// Information about this Linode's backups status.
-	Backups InstanceBackupsOutput `pulumi:"backups"`
+	Backups InstanceBackupArrayOutput `pulumi:"backups"`
 	// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
 	BackupsEnabled pulumi.BoolOutput `pulumi:"backupsEnabled"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.
@@ -258,7 +258,7 @@ type Instance struct {
 	// * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
 	SharedIpv4s pulumi.StringArrayOutput `pulumi:"sharedIpv4s"`
 	// Information about the resources available to this Linode.
-	Specs InstanceSpecsOutput `pulumi:"specs"`
+	Specs InstanceSpecArrayOutput `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
 	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	StackscriptData pulumi.StringMapOutput `pulumi:"stackscriptData"`
@@ -337,7 +337,7 @@ type instanceState struct {
 	// exclusive.
 	BackupId *int `pulumi:"backupId"`
 	// Information about this Linode's backups status.
-	Backups *InstanceBackups `pulumi:"backups"`
+	Backups []InstanceBackup `pulumi:"backups"`
 	// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`
 	// The Label of the Instance Config that should be used to boot the Linode instance.
@@ -423,7 +423,7 @@ type instanceState struct {
 	// * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
 	SharedIpv4s []string `pulumi:"sharedIpv4s"`
 	// Information about the resources available to this Linode.
-	Specs *InstanceSpecs `pulumi:"specs"`
+	Specs []InstanceSpec `pulumi:"specs"`
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
 	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	StackscriptData map[string]string `pulumi:"stackscriptData"`
@@ -459,7 +459,7 @@ type InstanceState struct {
 	// exclusive.
 	BackupId pulumi.IntPtrInput
 	// Information about this Linode's backups status.
-	Backups InstanceBackupsPtrInput
+	Backups InstanceBackupArrayInput
 	// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
 	BackupsEnabled pulumi.BoolPtrInput
 	// The Label of the Instance Config that should be used to boot the Linode instance.
@@ -545,7 +545,7 @@ type InstanceState struct {
 	// * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
 	SharedIpv4s pulumi.StringArrayInput
 	// Information about the resources available to this Linode.
-	Specs InstanceSpecsPtrInput
+	Specs InstanceSpecArrayInput
 	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
 	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	StackscriptData pulumi.StringMapInput
@@ -884,8 +884,8 @@ func (o InstanceOutput) BackupId() pulumi.IntPtrOutput {
 }
 
 // Information about this Linode's backups status.
-func (o InstanceOutput) Backups() InstanceBackupsOutput {
-	return o.ApplyT(func(v *Instance) InstanceBackupsOutput { return v.Backups }).(InstanceBackupsOutput)
+func (o InstanceOutput) Backups() InstanceBackupArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceBackupArrayOutput { return v.Backups }).(InstanceBackupArrayOutput)
 }
 
 // If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
@@ -1057,8 +1057,8 @@ func (o InstanceOutput) SharedIpv4s() pulumi.StringArrayOutput {
 }
 
 // Information about the resources available to this Linode.
-func (o InstanceOutput) Specs() InstanceSpecsOutput {
-	return o.ApplyT(func(v *Instance) InstanceSpecsOutput { return v.Specs }).(InstanceSpecsOutput)
+func (o InstanceOutput) Specs() InstanceSpecArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceSpecArrayOutput { return v.Specs }).(InstanceSpecArrayOutput)
 }
 
 // An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only

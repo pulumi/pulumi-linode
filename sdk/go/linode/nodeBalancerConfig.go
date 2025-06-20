@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
+	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +24,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -47,6 +47,7 @@ import (
 //				CheckPath:      pulumi.String("/foo"),
 //				CheckAttempts:  pulumi.Int(3),
 //				CheckTimeout:   pulumi.Int(30),
+//				UdpCheckPort:   pulumi.Int(12345),
 //				Stickiness:     pulumi.String("http_cookie"),
 //				Algorithm:      pulumi.String("source"),
 //			})
@@ -111,6 +112,12 @@ type NodeBalancerConfig struct {
 	SslKey pulumi.StringPtrOutput `pulumi:"sslKey"`
 	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness pulumi.StringOutput `pulumi:"stickiness"`
+	// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+	//
+	// * **NOTE: This argument may not be generally available.**
+	UdpCheckPort pulumi.IntOutput `pulumi:"udpCheckPort"`
+	// The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+	UdpSessionTimeout pulumi.IntOutput `pulumi:"udpSessionTimeout"`
 }
 
 // NewNodeBalancerConfig registers a new resource with the given unique name, arguments, and options.
@@ -199,6 +206,12 @@ type nodeBalancerConfigState struct {
 	SslKey *string `pulumi:"sslKey"`
 	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness *string `pulumi:"stickiness"`
+	// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+	//
+	// * **NOTE: This argument may not be generally available.**
+	UdpCheckPort *int `pulumi:"udpCheckPort"`
+	// The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+	UdpSessionTimeout *int `pulumi:"udpSessionTimeout"`
 }
 
 type NodeBalancerConfigState struct {
@@ -244,6 +257,12 @@ type NodeBalancerConfigState struct {
 	SslKey pulumi.StringPtrInput
 	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness pulumi.StringPtrInput
+	// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+	//
+	// * **NOTE: This argument may not be generally available.**
+	UdpCheckPort pulumi.IntPtrInput
+	// The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+	UdpSessionTimeout pulumi.IntPtrInput
 }
 
 func (NodeBalancerConfigState) ElementType() reflect.Type {
@@ -286,6 +305,10 @@ type nodeBalancerConfigArgs struct {
 	SslKey *string `pulumi:"sslKey"`
 	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness *string `pulumi:"stickiness"`
+	// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+	//
+	// * **NOTE: This argument may not be generally available.**
+	UdpCheckPort *int `pulumi:"udpCheckPort"`
 }
 
 // The set of arguments for constructing a NodeBalancerConfig resource.
@@ -325,6 +348,10 @@ type NodeBalancerConfigArgs struct {
 	SslKey pulumi.StringPtrInput
 	// Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 	Stickiness pulumi.StringPtrInput
+	// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+	//
+	// * **NOTE: This argument may not be generally available.**
+	UdpCheckPort pulumi.IntPtrInput
 }
 
 func (NodeBalancerConfigArgs) ElementType() reflect.Type {
@@ -511,6 +538,18 @@ func (o NodeBalancerConfigOutput) SslKey() pulumi.StringPtrOutput {
 // Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
 func (o NodeBalancerConfigOutput) Stickiness() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.StringOutput { return v.Stickiness }).(pulumi.StringOutput)
+}
+
+// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+//
+// * **NOTE: This argument may not be generally available.**
+func (o NodeBalancerConfigOutput) UdpCheckPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.IntOutput { return v.UdpCheckPort }).(pulumi.IntOutput)
+}
+
+// The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+func (o NodeBalancerConfigOutput) UdpSessionTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.IntOutput { return v.UdpSessionTimeout }).(pulumi.IntOutput)
 }
 
 type NodeBalancerConfigArrayOutput struct{ *pulumi.OutputState }

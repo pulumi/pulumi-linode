@@ -264,6 +264,25 @@ public final class NodeBalancerConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.stickiness);
     }
 
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+     * 
+     * * **NOTE: This argument may not be generally available.**
+     * 
+     */
+    @Import(name="udpCheckPort")
+    private @Nullable Output<Integer> udpCheckPort;
+
+    /**
+     * @return Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+     * 
+     * * **NOTE: This argument may not be generally available.**
+     * 
+     */
+    public Optional<Output<Integer>> udpCheckPort() {
+        return Optional.ofNullable(this.udpCheckPort);
+    }
+
     private NodeBalancerConfigArgs() {}
 
     private NodeBalancerConfigArgs(NodeBalancerConfigArgs $) {
@@ -283,6 +302,7 @@ public final class NodeBalancerConfigArgs extends com.pulumi.resources.ResourceA
         this.sslCert = $.sslCert;
         this.sslKey = $.sslKey;
         this.stickiness = $.stickiness;
+        this.udpCheckPort = $.udpCheckPort;
     }
 
     public static Builder builder() {
@@ -643,6 +663,31 @@ public final class NodeBalancerConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder stickiness(String stickiness) {
             return stickiness(Output.of(stickiness));
+        }
+
+        /**
+         * @param udpCheckPort Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+         * 
+         * * **NOTE: This argument may not be generally available.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpCheckPort(@Nullable Output<Integer> udpCheckPort) {
+            $.udpCheckPort = udpCheckPort;
+            return this;
+        }
+
+        /**
+         * @param udpCheckPort Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+         * 
+         * * **NOTE: This argument may not be generally available.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpCheckPort(Integer udpCheckPort) {
+            return udpCheckPort(Output.of(udpCheckPort));
         }
 
         public NodeBalancerConfigArgs build() {

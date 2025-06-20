@@ -106,6 +106,16 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
      * 
      */
     private String stickiness;
+    /**
+     * @return Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     * 
+     */
+    private Integer udpCheckPort;
+    /**
+     * @return The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    private Integer udpSessionTimeout;
 
     private GetNodebalancerConfigsNodebalancerConfig() {}
     /**
@@ -236,6 +246,20 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
     public String stickiness() {
         return this.stickiness;
     }
+    /**
+     * @return Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     * 
+     */
+    public Integer udpCheckPort() {
+        return this.udpCheckPort;
+    }
+    /**
+     * @return The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    public Integer udpSessionTimeout() {
+        return this.udpSessionTimeout;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -264,6 +288,8 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
         private String sslCommonname;
         private String sslFingerprint;
         private String stickiness;
+        private Integer udpCheckPort;
+        private Integer udpSessionTimeout;
         public Builder() {}
         public Builder(GetNodebalancerConfigsNodebalancerConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -285,6 +311,8 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
     	      this.sslCommonname = defaults.sslCommonname;
     	      this.sslFingerprint = defaults.sslFingerprint;
     	      this.stickiness = defaults.stickiness;
+    	      this.udpCheckPort = defaults.udpCheckPort;
+    	      this.udpSessionTimeout = defaults.udpSessionTimeout;
         }
 
         @CustomType.Setter
@@ -434,6 +462,22 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
             this.stickiness = stickiness;
             return this;
         }
+        @CustomType.Setter
+        public Builder udpCheckPort(Integer udpCheckPort) {
+            if (udpCheckPort == null) {
+              throw new MissingRequiredPropertyException("GetNodebalancerConfigsNodebalancerConfig", "udpCheckPort");
+            }
+            this.udpCheckPort = udpCheckPort;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder udpSessionTimeout(Integer udpSessionTimeout) {
+            if (udpSessionTimeout == null) {
+              throw new MissingRequiredPropertyException("GetNodebalancerConfigsNodebalancerConfig", "udpSessionTimeout");
+            }
+            this.udpSessionTimeout = udpSessionTimeout;
+            return this;
+        }
         public GetNodebalancerConfigsNodebalancerConfig build() {
             final var _resultValue = new GetNodebalancerConfigsNodebalancerConfig();
             _resultValue.algorithm = algorithm;
@@ -454,6 +498,8 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
             _resultValue.sslCommonname = sslCommonname;
             _resultValue.sslFingerprint = sslFingerprint;
             _resultValue.stickiness = stickiness;
+            _resultValue.udpCheckPort = udpCheckPort;
+            _resultValue.udpSessionTimeout = udpSessionTimeout;
             return _resultValue;
         }
     }

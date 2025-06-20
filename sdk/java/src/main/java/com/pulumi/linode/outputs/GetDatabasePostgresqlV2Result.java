@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetDatabasePostgresqlV2PendingUpdate;
 import com.pulumi.linode.outputs.GetDatabasePostgresqlV2Updates;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -46,6 +47,241 @@ public final class GetDatabasePostgresqlV2Result {
      * 
      */
     private String engine;
+    /**
+     * @return Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * 
+     */
+    private Double engineConfigPgAutovacuumAnalyzeScaleFactor;
+    /**
+     * @return Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * 
+     */
+    private Integer engineConfigPgAutovacuumAnalyzeThreshold;
+    /**
+     * @return Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     */
+    private Integer engineConfigPgAutovacuumMaxWorkers;
+    /**
+     * @return Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * 
+     */
+    private Integer engineConfigPgAutovacuumNaptime;
+    /**
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * 
+     */
+    private Integer engineConfigPgAutovacuumVacuumCostDelay;
+    /**
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * 
+     */
+    private Integer engineConfigPgAutovacuumVacuumCostLimit;
+    /**
+     * @return Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * 
+     */
+    private Double engineConfigPgAutovacuumVacuumScaleFactor;
+    /**
+     * @return Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     */
+    private Integer engineConfigPgAutovacuumVacuumThreshold;
+    /**
+     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     */
+    private Integer engineConfigPgBgwriterDelay;
+    /**
+     * @return Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     */
+    private Integer engineConfigPgBgwriterFlushAfter;
+    /**
+     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     */
+    private Integer engineConfigPgBgwriterLruMaxpages;
+    /**
+     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     */
+    private Double engineConfigPgBgwriterLruMultiplier;
+    /**
+     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     */
+    private Integer engineConfigPgDeadlockTimeout;
+    /**
+     * @return Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     */
+    private String engineConfigPgDefaultToastCompression;
+    /**
+     * @return Time out sessions with open transactions after this number of milliseconds.
+     * 
+     */
+    private Integer engineConfigPgIdleInTransactionSessionTimeout;
+    /**
+     * @return Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     */
+    private Boolean engineConfigPgJit;
+    /**
+     * @return PostgreSQL maximum number of files that can be open per process.
+     * 
+     */
+    private Integer engineConfigPgMaxFilesPerProcess;
+    /**
+     * @return PostgreSQL maximum locks per transaction.
+     * 
+     */
+    private Integer engineConfigPgMaxLocksPerTransaction;
+    /**
+     * @return PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * 
+     */
+    private Integer engineConfigPgMaxLogicalReplicationWorkers;
+    /**
+     * @return Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     */
+    private Integer engineConfigPgMaxParallelWorkers;
+    /**
+     * @return Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     */
+    private Integer engineConfigPgMaxParallelWorkersPerGather;
+    /**
+     * @return PostgreSQL maximum predicate locks per transaction.
+     * 
+     */
+    private Integer engineConfigPgMaxPredLocksPerTransaction;
+    /**
+     * @return PostgreSQL maximum replication slots.
+     * 
+     */
+    private Integer engineConfigPgMaxReplicationSlots;
+    /**
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * 
+     */
+    private Integer engineConfigPgMaxSlotWalKeepSize;
+    /**
+     * @return Maximum depth of the stack in bytes.
+     * 
+     */
+    private Integer engineConfigPgMaxStackDepth;
+    /**
+     * @return Max standby archive delay in milliseconds.
+     * 
+     */
+    private Integer engineConfigPgMaxStandbyArchiveDelay;
+    /**
+     * @return Max standby streaming delay in milliseconds.
+     * 
+     */
+    private Integer engineConfigPgMaxStandbyStreamingDelay;
+    /**
+     * @return PostgreSQL maximum WAL senders.
+     * 
+     */
+    private Integer engineConfigPgMaxWalSenders;
+    /**
+     * @return Sets the maximum number of background processes that the system can support.
+     * 
+     */
+    private Integer engineConfigPgMaxWorkerProcesses;
+    /**
+     * @return Chooses the algorithm for encrypting passwords.
+     * 
+     */
+    private String engineConfigPgPasswordEncryption;
+    /**
+     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     */
+    private Integer engineConfigPgPgPartmanBgwInterval;
+    /**
+     * @return Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     */
+    private String engineConfigPgPgPartmanBgwRole;
+    /**
+     * @return Enables or disables query plan monitoring.
+     * 
+     */
+    private Boolean engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+    /**
+     * @return Sets the maximum number of buckets.
+     * 
+     */
+    private Integer engineConfigPgPgStatMonitorPgsmMaxBuckets;
+    /**
+     * @return Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     */
+    private String engineConfigPgPgStatStatementsTrack;
+    /**
+     * @return Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable.
+     * 
+     */
+    private Boolean engineConfigPgStatMonitorEnable;
+    /**
+     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     */
+    private Integer engineConfigPgTempFileLimit;
+    /**
+     * @return PostgreSQL service timezone.
+     * 
+     */
+    private String engineConfigPgTimezone;
+    /**
+     * @return Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     */
+    private Integer engineConfigPgTrackActivityQuerySize;
+    /**
+     * @return Record commit time of transactions.
+     * 
+     */
+    private String engineConfigPgTrackCommitTimestamp;
+    /**
+     * @return Enables tracking of function call counts and time used.
+     * 
+     */
+    private String engineConfigPgTrackFunctions;
+    /**
+     * @return Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     */
+    private String engineConfigPgTrackIoTiming;
+    /**
+     * @return Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     */
+    private Integer engineConfigPgWalSenderTimeout;
+    /**
+     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     */
+    private Integer engineConfigPgWalWriterDelay;
+    /**
+     * @return Number of seconds of master unavailability before triggering database failover to standby.
+     * 
+     */
+    private Integer engineConfigPglookoutMaxFailoverReplicationTimeLag;
+    /**
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * 
+     */
+    private Double engineConfigSharedBuffersPercentage;
+    /**
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * 
+     */
+    private Integer engineConfigWorkMem;
     /**
      * @return The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
      * 
@@ -179,6 +415,335 @@ public final class GetDatabasePostgresqlV2Result {
      */
     public String engine() {
         return this.engine;
+    }
+    /**
+     * @return Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * 
+     */
+    public Double engineConfigPgAutovacuumAnalyzeScaleFactor() {
+        return this.engineConfigPgAutovacuumAnalyzeScaleFactor;
+    }
+    /**
+     * @return Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * 
+     */
+    public Integer engineConfigPgAutovacuumAnalyzeThreshold() {
+        return this.engineConfigPgAutovacuumAnalyzeThreshold;
+    }
+    /**
+     * @return Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     */
+    public Integer engineConfigPgAutovacuumMaxWorkers() {
+        return this.engineConfigPgAutovacuumMaxWorkers;
+    }
+    /**
+     * @return Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * 
+     */
+    public Integer engineConfigPgAutovacuumNaptime() {
+        return this.engineConfigPgAutovacuumNaptime;
+    }
+    /**
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * 
+     */
+    public Integer engineConfigPgAutovacuumVacuumCostDelay() {
+        return this.engineConfigPgAutovacuumVacuumCostDelay;
+    }
+    /**
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * 
+     */
+    public Integer engineConfigPgAutovacuumVacuumCostLimit() {
+        return this.engineConfigPgAutovacuumVacuumCostLimit;
+    }
+    /**
+     * @return Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * 
+     */
+    public Double engineConfigPgAutovacuumVacuumScaleFactor() {
+        return this.engineConfigPgAutovacuumVacuumScaleFactor;
+    }
+    /**
+     * @return Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     */
+    public Integer engineConfigPgAutovacuumVacuumThreshold() {
+        return this.engineConfigPgAutovacuumVacuumThreshold;
+    }
+    /**
+     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     */
+    public Integer engineConfigPgBgwriterDelay() {
+        return this.engineConfigPgBgwriterDelay;
+    }
+    /**
+     * @return Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     */
+    public Integer engineConfigPgBgwriterFlushAfter() {
+        return this.engineConfigPgBgwriterFlushAfter;
+    }
+    /**
+     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     */
+    public Integer engineConfigPgBgwriterLruMaxpages() {
+        return this.engineConfigPgBgwriterLruMaxpages;
+    }
+    /**
+     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     */
+    public Double engineConfigPgBgwriterLruMultiplier() {
+        return this.engineConfigPgBgwriterLruMultiplier;
+    }
+    /**
+     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     */
+    public Integer engineConfigPgDeadlockTimeout() {
+        return this.engineConfigPgDeadlockTimeout;
+    }
+    /**
+     * @return Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     */
+    public String engineConfigPgDefaultToastCompression() {
+        return this.engineConfigPgDefaultToastCompression;
+    }
+    /**
+     * @return Time out sessions with open transactions after this number of milliseconds.
+     * 
+     */
+    public Integer engineConfigPgIdleInTransactionSessionTimeout() {
+        return this.engineConfigPgIdleInTransactionSessionTimeout;
+    }
+    /**
+     * @return Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     */
+    public Boolean engineConfigPgJit() {
+        return this.engineConfigPgJit;
+    }
+    /**
+     * @return PostgreSQL maximum number of files that can be open per process.
+     * 
+     */
+    public Integer engineConfigPgMaxFilesPerProcess() {
+        return this.engineConfigPgMaxFilesPerProcess;
+    }
+    /**
+     * @return PostgreSQL maximum locks per transaction.
+     * 
+     */
+    public Integer engineConfigPgMaxLocksPerTransaction() {
+        return this.engineConfigPgMaxLocksPerTransaction;
+    }
+    /**
+     * @return PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * 
+     */
+    public Integer engineConfigPgMaxLogicalReplicationWorkers() {
+        return this.engineConfigPgMaxLogicalReplicationWorkers;
+    }
+    /**
+     * @return Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     */
+    public Integer engineConfigPgMaxParallelWorkers() {
+        return this.engineConfigPgMaxParallelWorkers;
+    }
+    /**
+     * @return Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     */
+    public Integer engineConfigPgMaxParallelWorkersPerGather() {
+        return this.engineConfigPgMaxParallelWorkersPerGather;
+    }
+    /**
+     * @return PostgreSQL maximum predicate locks per transaction.
+     * 
+     */
+    public Integer engineConfigPgMaxPredLocksPerTransaction() {
+        return this.engineConfigPgMaxPredLocksPerTransaction;
+    }
+    /**
+     * @return PostgreSQL maximum replication slots.
+     * 
+     */
+    public Integer engineConfigPgMaxReplicationSlots() {
+        return this.engineConfigPgMaxReplicationSlots;
+    }
+    /**
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * 
+     */
+    public Integer engineConfigPgMaxSlotWalKeepSize() {
+        return this.engineConfigPgMaxSlotWalKeepSize;
+    }
+    /**
+     * @return Maximum depth of the stack in bytes.
+     * 
+     */
+    public Integer engineConfigPgMaxStackDepth() {
+        return this.engineConfigPgMaxStackDepth;
+    }
+    /**
+     * @return Max standby archive delay in milliseconds.
+     * 
+     */
+    public Integer engineConfigPgMaxStandbyArchiveDelay() {
+        return this.engineConfigPgMaxStandbyArchiveDelay;
+    }
+    /**
+     * @return Max standby streaming delay in milliseconds.
+     * 
+     */
+    public Integer engineConfigPgMaxStandbyStreamingDelay() {
+        return this.engineConfigPgMaxStandbyStreamingDelay;
+    }
+    /**
+     * @return PostgreSQL maximum WAL senders.
+     * 
+     */
+    public Integer engineConfigPgMaxWalSenders() {
+        return this.engineConfigPgMaxWalSenders;
+    }
+    /**
+     * @return Sets the maximum number of background processes that the system can support.
+     * 
+     */
+    public Integer engineConfigPgMaxWorkerProcesses() {
+        return this.engineConfigPgMaxWorkerProcesses;
+    }
+    /**
+     * @return Chooses the algorithm for encrypting passwords.
+     * 
+     */
+    public String engineConfigPgPasswordEncryption() {
+        return this.engineConfigPgPasswordEncryption;
+    }
+    /**
+     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     */
+    public Integer engineConfigPgPgPartmanBgwInterval() {
+        return this.engineConfigPgPgPartmanBgwInterval;
+    }
+    /**
+     * @return Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     */
+    public String engineConfigPgPgPartmanBgwRole() {
+        return this.engineConfigPgPgPartmanBgwRole;
+    }
+    /**
+     * @return Enables or disables query plan monitoring.
+     * 
+     */
+    public Boolean engineConfigPgPgStatMonitorPgsmEnableQueryPlan() {
+        return this.engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+    }
+    /**
+     * @return Sets the maximum number of buckets.
+     * 
+     */
+    public Integer engineConfigPgPgStatMonitorPgsmMaxBuckets() {
+        return this.engineConfigPgPgStatMonitorPgsmMaxBuckets;
+    }
+    /**
+     * @return Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     */
+    public String engineConfigPgPgStatStatementsTrack() {
+        return this.engineConfigPgPgStatStatementsTrack;
+    }
+    /**
+     * @return Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable.
+     * 
+     */
+    public Boolean engineConfigPgStatMonitorEnable() {
+        return this.engineConfigPgStatMonitorEnable;
+    }
+    /**
+     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     */
+    public Integer engineConfigPgTempFileLimit() {
+        return this.engineConfigPgTempFileLimit;
+    }
+    /**
+     * @return PostgreSQL service timezone.
+     * 
+     */
+    public String engineConfigPgTimezone() {
+        return this.engineConfigPgTimezone;
+    }
+    /**
+     * @return Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     */
+    public Integer engineConfigPgTrackActivityQuerySize() {
+        return this.engineConfigPgTrackActivityQuerySize;
+    }
+    /**
+     * @return Record commit time of transactions.
+     * 
+     */
+    public String engineConfigPgTrackCommitTimestamp() {
+        return this.engineConfigPgTrackCommitTimestamp;
+    }
+    /**
+     * @return Enables tracking of function call counts and time used.
+     * 
+     */
+    public String engineConfigPgTrackFunctions() {
+        return this.engineConfigPgTrackFunctions;
+    }
+    /**
+     * @return Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     */
+    public String engineConfigPgTrackIoTiming() {
+        return this.engineConfigPgTrackIoTiming;
+    }
+    /**
+     * @return Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     */
+    public Integer engineConfigPgWalSenderTimeout() {
+        return this.engineConfigPgWalSenderTimeout;
+    }
+    /**
+     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     */
+    public Integer engineConfigPgWalWriterDelay() {
+        return this.engineConfigPgWalWriterDelay;
+    }
+    /**
+     * @return Number of seconds of master unavailability before triggering database failover to standby.
+     * 
+     */
+    public Integer engineConfigPglookoutMaxFailoverReplicationTimeLag() {
+        return this.engineConfigPglookoutMaxFailoverReplicationTimeLag;
+    }
+    /**
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * 
+     */
+    public Double engineConfigSharedBuffersPercentage() {
+        return this.engineConfigSharedBuffersPercentage;
+    }
+    /**
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * 
+     */
+    public Integer engineConfigWorkMem() {
+        return this.engineConfigWorkMem;
     }
     /**
      * @return The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
@@ -330,6 +895,53 @@ public final class GetDatabasePostgresqlV2Result {
         private String created;
         private Boolean encrypted;
         private String engine;
+        private Double engineConfigPgAutovacuumAnalyzeScaleFactor;
+        private Integer engineConfigPgAutovacuumAnalyzeThreshold;
+        private Integer engineConfigPgAutovacuumMaxWorkers;
+        private Integer engineConfigPgAutovacuumNaptime;
+        private Integer engineConfigPgAutovacuumVacuumCostDelay;
+        private Integer engineConfigPgAutovacuumVacuumCostLimit;
+        private Double engineConfigPgAutovacuumVacuumScaleFactor;
+        private Integer engineConfigPgAutovacuumVacuumThreshold;
+        private Integer engineConfigPgBgwriterDelay;
+        private Integer engineConfigPgBgwriterFlushAfter;
+        private Integer engineConfigPgBgwriterLruMaxpages;
+        private Double engineConfigPgBgwriterLruMultiplier;
+        private Integer engineConfigPgDeadlockTimeout;
+        private String engineConfigPgDefaultToastCompression;
+        private Integer engineConfigPgIdleInTransactionSessionTimeout;
+        private Boolean engineConfigPgJit;
+        private Integer engineConfigPgMaxFilesPerProcess;
+        private Integer engineConfigPgMaxLocksPerTransaction;
+        private Integer engineConfigPgMaxLogicalReplicationWorkers;
+        private Integer engineConfigPgMaxParallelWorkers;
+        private Integer engineConfigPgMaxParallelWorkersPerGather;
+        private Integer engineConfigPgMaxPredLocksPerTransaction;
+        private Integer engineConfigPgMaxReplicationSlots;
+        private Integer engineConfigPgMaxSlotWalKeepSize;
+        private Integer engineConfigPgMaxStackDepth;
+        private Integer engineConfigPgMaxStandbyArchiveDelay;
+        private Integer engineConfigPgMaxStandbyStreamingDelay;
+        private Integer engineConfigPgMaxWalSenders;
+        private Integer engineConfigPgMaxWorkerProcesses;
+        private String engineConfigPgPasswordEncryption;
+        private Integer engineConfigPgPgPartmanBgwInterval;
+        private String engineConfigPgPgPartmanBgwRole;
+        private Boolean engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+        private Integer engineConfigPgPgStatMonitorPgsmMaxBuckets;
+        private String engineConfigPgPgStatStatementsTrack;
+        private Boolean engineConfigPgStatMonitorEnable;
+        private Integer engineConfigPgTempFileLimit;
+        private String engineConfigPgTimezone;
+        private Integer engineConfigPgTrackActivityQuerySize;
+        private String engineConfigPgTrackCommitTimestamp;
+        private String engineConfigPgTrackFunctions;
+        private String engineConfigPgTrackIoTiming;
+        private Integer engineConfigPgWalSenderTimeout;
+        private Integer engineConfigPgWalWriterDelay;
+        private Integer engineConfigPglookoutMaxFailoverReplicationTimeLag;
+        private Double engineConfigSharedBuffersPercentage;
+        private Integer engineConfigWorkMem;
         private String engineId;
         private String forkRestoreTime;
         private Integer forkSource;
@@ -361,6 +973,53 @@ public final class GetDatabasePostgresqlV2Result {
     	      this.created = defaults.created;
     	      this.encrypted = defaults.encrypted;
     	      this.engine = defaults.engine;
+    	      this.engineConfigPgAutovacuumAnalyzeScaleFactor = defaults.engineConfigPgAutovacuumAnalyzeScaleFactor;
+    	      this.engineConfigPgAutovacuumAnalyzeThreshold = defaults.engineConfigPgAutovacuumAnalyzeThreshold;
+    	      this.engineConfigPgAutovacuumMaxWorkers = defaults.engineConfigPgAutovacuumMaxWorkers;
+    	      this.engineConfigPgAutovacuumNaptime = defaults.engineConfigPgAutovacuumNaptime;
+    	      this.engineConfigPgAutovacuumVacuumCostDelay = defaults.engineConfigPgAutovacuumVacuumCostDelay;
+    	      this.engineConfigPgAutovacuumVacuumCostLimit = defaults.engineConfigPgAutovacuumVacuumCostLimit;
+    	      this.engineConfigPgAutovacuumVacuumScaleFactor = defaults.engineConfigPgAutovacuumVacuumScaleFactor;
+    	      this.engineConfigPgAutovacuumVacuumThreshold = defaults.engineConfigPgAutovacuumVacuumThreshold;
+    	      this.engineConfigPgBgwriterDelay = defaults.engineConfigPgBgwriterDelay;
+    	      this.engineConfigPgBgwriterFlushAfter = defaults.engineConfigPgBgwriterFlushAfter;
+    	      this.engineConfigPgBgwriterLruMaxpages = defaults.engineConfigPgBgwriterLruMaxpages;
+    	      this.engineConfigPgBgwriterLruMultiplier = defaults.engineConfigPgBgwriterLruMultiplier;
+    	      this.engineConfigPgDeadlockTimeout = defaults.engineConfigPgDeadlockTimeout;
+    	      this.engineConfigPgDefaultToastCompression = defaults.engineConfigPgDefaultToastCompression;
+    	      this.engineConfigPgIdleInTransactionSessionTimeout = defaults.engineConfigPgIdleInTransactionSessionTimeout;
+    	      this.engineConfigPgJit = defaults.engineConfigPgJit;
+    	      this.engineConfigPgMaxFilesPerProcess = defaults.engineConfigPgMaxFilesPerProcess;
+    	      this.engineConfigPgMaxLocksPerTransaction = defaults.engineConfigPgMaxLocksPerTransaction;
+    	      this.engineConfigPgMaxLogicalReplicationWorkers = defaults.engineConfigPgMaxLogicalReplicationWorkers;
+    	      this.engineConfigPgMaxParallelWorkers = defaults.engineConfigPgMaxParallelWorkers;
+    	      this.engineConfigPgMaxParallelWorkersPerGather = defaults.engineConfigPgMaxParallelWorkersPerGather;
+    	      this.engineConfigPgMaxPredLocksPerTransaction = defaults.engineConfigPgMaxPredLocksPerTransaction;
+    	      this.engineConfigPgMaxReplicationSlots = defaults.engineConfigPgMaxReplicationSlots;
+    	      this.engineConfigPgMaxSlotWalKeepSize = defaults.engineConfigPgMaxSlotWalKeepSize;
+    	      this.engineConfigPgMaxStackDepth = defaults.engineConfigPgMaxStackDepth;
+    	      this.engineConfigPgMaxStandbyArchiveDelay = defaults.engineConfigPgMaxStandbyArchiveDelay;
+    	      this.engineConfigPgMaxStandbyStreamingDelay = defaults.engineConfigPgMaxStandbyStreamingDelay;
+    	      this.engineConfigPgMaxWalSenders = defaults.engineConfigPgMaxWalSenders;
+    	      this.engineConfigPgMaxWorkerProcesses = defaults.engineConfigPgMaxWorkerProcesses;
+    	      this.engineConfigPgPasswordEncryption = defaults.engineConfigPgPasswordEncryption;
+    	      this.engineConfigPgPgPartmanBgwInterval = defaults.engineConfigPgPgPartmanBgwInterval;
+    	      this.engineConfigPgPgPartmanBgwRole = defaults.engineConfigPgPgPartmanBgwRole;
+    	      this.engineConfigPgPgStatMonitorPgsmEnableQueryPlan = defaults.engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+    	      this.engineConfigPgPgStatMonitorPgsmMaxBuckets = defaults.engineConfigPgPgStatMonitorPgsmMaxBuckets;
+    	      this.engineConfigPgPgStatStatementsTrack = defaults.engineConfigPgPgStatStatementsTrack;
+    	      this.engineConfigPgStatMonitorEnable = defaults.engineConfigPgStatMonitorEnable;
+    	      this.engineConfigPgTempFileLimit = defaults.engineConfigPgTempFileLimit;
+    	      this.engineConfigPgTimezone = defaults.engineConfigPgTimezone;
+    	      this.engineConfigPgTrackActivityQuerySize = defaults.engineConfigPgTrackActivityQuerySize;
+    	      this.engineConfigPgTrackCommitTimestamp = defaults.engineConfigPgTrackCommitTimestamp;
+    	      this.engineConfigPgTrackFunctions = defaults.engineConfigPgTrackFunctions;
+    	      this.engineConfigPgTrackIoTiming = defaults.engineConfigPgTrackIoTiming;
+    	      this.engineConfigPgWalSenderTimeout = defaults.engineConfigPgWalSenderTimeout;
+    	      this.engineConfigPgWalWriterDelay = defaults.engineConfigPgWalWriterDelay;
+    	      this.engineConfigPglookoutMaxFailoverReplicationTimeLag = defaults.engineConfigPglookoutMaxFailoverReplicationTimeLag;
+    	      this.engineConfigSharedBuffersPercentage = defaults.engineConfigSharedBuffersPercentage;
+    	      this.engineConfigWorkMem = defaults.engineConfigWorkMem;
     	      this.engineId = defaults.engineId;
     	      this.forkRestoreTime = defaults.forkRestoreTime;
     	      this.forkSource = defaults.forkSource;
@@ -434,6 +1093,382 @@ public final class GetDatabasePostgresqlV2Result {
               throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engine");
             }
             this.engine = engine;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgAutovacuumAnalyzeScaleFactor(Double engineConfigPgAutovacuumAnalyzeScaleFactor) {
+            if (engineConfigPgAutovacuumAnalyzeScaleFactor == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgAutovacuumAnalyzeScaleFactor");
+            }
+            this.engineConfigPgAutovacuumAnalyzeScaleFactor = engineConfigPgAutovacuumAnalyzeScaleFactor;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgAutovacuumAnalyzeThreshold(Integer engineConfigPgAutovacuumAnalyzeThreshold) {
+            if (engineConfigPgAutovacuumAnalyzeThreshold == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgAutovacuumAnalyzeThreshold");
+            }
+            this.engineConfigPgAutovacuumAnalyzeThreshold = engineConfigPgAutovacuumAnalyzeThreshold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgAutovacuumMaxWorkers(Integer engineConfigPgAutovacuumMaxWorkers) {
+            if (engineConfigPgAutovacuumMaxWorkers == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgAutovacuumMaxWorkers");
+            }
+            this.engineConfigPgAutovacuumMaxWorkers = engineConfigPgAutovacuumMaxWorkers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgAutovacuumNaptime(Integer engineConfigPgAutovacuumNaptime) {
+            if (engineConfigPgAutovacuumNaptime == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgAutovacuumNaptime");
+            }
+            this.engineConfigPgAutovacuumNaptime = engineConfigPgAutovacuumNaptime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgAutovacuumVacuumCostDelay(Integer engineConfigPgAutovacuumVacuumCostDelay) {
+            if (engineConfigPgAutovacuumVacuumCostDelay == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgAutovacuumVacuumCostDelay");
+            }
+            this.engineConfigPgAutovacuumVacuumCostDelay = engineConfigPgAutovacuumVacuumCostDelay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgAutovacuumVacuumCostLimit(Integer engineConfigPgAutovacuumVacuumCostLimit) {
+            if (engineConfigPgAutovacuumVacuumCostLimit == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgAutovacuumVacuumCostLimit");
+            }
+            this.engineConfigPgAutovacuumVacuumCostLimit = engineConfigPgAutovacuumVacuumCostLimit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgAutovacuumVacuumScaleFactor(Double engineConfigPgAutovacuumVacuumScaleFactor) {
+            if (engineConfigPgAutovacuumVacuumScaleFactor == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgAutovacuumVacuumScaleFactor");
+            }
+            this.engineConfigPgAutovacuumVacuumScaleFactor = engineConfigPgAutovacuumVacuumScaleFactor;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgAutovacuumVacuumThreshold(Integer engineConfigPgAutovacuumVacuumThreshold) {
+            if (engineConfigPgAutovacuumVacuumThreshold == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgAutovacuumVacuumThreshold");
+            }
+            this.engineConfigPgAutovacuumVacuumThreshold = engineConfigPgAutovacuumVacuumThreshold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgBgwriterDelay(Integer engineConfigPgBgwriterDelay) {
+            if (engineConfigPgBgwriterDelay == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgBgwriterDelay");
+            }
+            this.engineConfigPgBgwriterDelay = engineConfigPgBgwriterDelay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgBgwriterFlushAfter(Integer engineConfigPgBgwriterFlushAfter) {
+            if (engineConfigPgBgwriterFlushAfter == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgBgwriterFlushAfter");
+            }
+            this.engineConfigPgBgwriterFlushAfter = engineConfigPgBgwriterFlushAfter;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgBgwriterLruMaxpages(Integer engineConfigPgBgwriterLruMaxpages) {
+            if (engineConfigPgBgwriterLruMaxpages == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgBgwriterLruMaxpages");
+            }
+            this.engineConfigPgBgwriterLruMaxpages = engineConfigPgBgwriterLruMaxpages;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgBgwriterLruMultiplier(Double engineConfigPgBgwriterLruMultiplier) {
+            if (engineConfigPgBgwriterLruMultiplier == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgBgwriterLruMultiplier");
+            }
+            this.engineConfigPgBgwriterLruMultiplier = engineConfigPgBgwriterLruMultiplier;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgDeadlockTimeout(Integer engineConfigPgDeadlockTimeout) {
+            if (engineConfigPgDeadlockTimeout == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgDeadlockTimeout");
+            }
+            this.engineConfigPgDeadlockTimeout = engineConfigPgDeadlockTimeout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgDefaultToastCompression(String engineConfigPgDefaultToastCompression) {
+            if (engineConfigPgDefaultToastCompression == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgDefaultToastCompression");
+            }
+            this.engineConfigPgDefaultToastCompression = engineConfigPgDefaultToastCompression;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgIdleInTransactionSessionTimeout(Integer engineConfigPgIdleInTransactionSessionTimeout) {
+            if (engineConfigPgIdleInTransactionSessionTimeout == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgIdleInTransactionSessionTimeout");
+            }
+            this.engineConfigPgIdleInTransactionSessionTimeout = engineConfigPgIdleInTransactionSessionTimeout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgJit(Boolean engineConfigPgJit) {
+            if (engineConfigPgJit == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgJit");
+            }
+            this.engineConfigPgJit = engineConfigPgJit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxFilesPerProcess(Integer engineConfigPgMaxFilesPerProcess) {
+            if (engineConfigPgMaxFilesPerProcess == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxFilesPerProcess");
+            }
+            this.engineConfigPgMaxFilesPerProcess = engineConfigPgMaxFilesPerProcess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxLocksPerTransaction(Integer engineConfigPgMaxLocksPerTransaction) {
+            if (engineConfigPgMaxLocksPerTransaction == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxLocksPerTransaction");
+            }
+            this.engineConfigPgMaxLocksPerTransaction = engineConfigPgMaxLocksPerTransaction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxLogicalReplicationWorkers(Integer engineConfigPgMaxLogicalReplicationWorkers) {
+            if (engineConfigPgMaxLogicalReplicationWorkers == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxLogicalReplicationWorkers");
+            }
+            this.engineConfigPgMaxLogicalReplicationWorkers = engineConfigPgMaxLogicalReplicationWorkers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxParallelWorkers(Integer engineConfigPgMaxParallelWorkers) {
+            if (engineConfigPgMaxParallelWorkers == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxParallelWorkers");
+            }
+            this.engineConfigPgMaxParallelWorkers = engineConfigPgMaxParallelWorkers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxParallelWorkersPerGather(Integer engineConfigPgMaxParallelWorkersPerGather) {
+            if (engineConfigPgMaxParallelWorkersPerGather == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxParallelWorkersPerGather");
+            }
+            this.engineConfigPgMaxParallelWorkersPerGather = engineConfigPgMaxParallelWorkersPerGather;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxPredLocksPerTransaction(Integer engineConfigPgMaxPredLocksPerTransaction) {
+            if (engineConfigPgMaxPredLocksPerTransaction == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxPredLocksPerTransaction");
+            }
+            this.engineConfigPgMaxPredLocksPerTransaction = engineConfigPgMaxPredLocksPerTransaction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxReplicationSlots(Integer engineConfigPgMaxReplicationSlots) {
+            if (engineConfigPgMaxReplicationSlots == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxReplicationSlots");
+            }
+            this.engineConfigPgMaxReplicationSlots = engineConfigPgMaxReplicationSlots;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxSlotWalKeepSize(Integer engineConfigPgMaxSlotWalKeepSize) {
+            if (engineConfigPgMaxSlotWalKeepSize == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxSlotWalKeepSize");
+            }
+            this.engineConfigPgMaxSlotWalKeepSize = engineConfigPgMaxSlotWalKeepSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxStackDepth(Integer engineConfigPgMaxStackDepth) {
+            if (engineConfigPgMaxStackDepth == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxStackDepth");
+            }
+            this.engineConfigPgMaxStackDepth = engineConfigPgMaxStackDepth;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxStandbyArchiveDelay(Integer engineConfigPgMaxStandbyArchiveDelay) {
+            if (engineConfigPgMaxStandbyArchiveDelay == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxStandbyArchiveDelay");
+            }
+            this.engineConfigPgMaxStandbyArchiveDelay = engineConfigPgMaxStandbyArchiveDelay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxStandbyStreamingDelay(Integer engineConfigPgMaxStandbyStreamingDelay) {
+            if (engineConfigPgMaxStandbyStreamingDelay == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxStandbyStreamingDelay");
+            }
+            this.engineConfigPgMaxStandbyStreamingDelay = engineConfigPgMaxStandbyStreamingDelay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxWalSenders(Integer engineConfigPgMaxWalSenders) {
+            if (engineConfigPgMaxWalSenders == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxWalSenders");
+            }
+            this.engineConfigPgMaxWalSenders = engineConfigPgMaxWalSenders;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgMaxWorkerProcesses(Integer engineConfigPgMaxWorkerProcesses) {
+            if (engineConfigPgMaxWorkerProcesses == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgMaxWorkerProcesses");
+            }
+            this.engineConfigPgMaxWorkerProcesses = engineConfigPgMaxWorkerProcesses;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgPasswordEncryption(String engineConfigPgPasswordEncryption) {
+            if (engineConfigPgPasswordEncryption == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgPasswordEncryption");
+            }
+            this.engineConfigPgPasswordEncryption = engineConfigPgPasswordEncryption;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgPgPartmanBgwInterval(Integer engineConfigPgPgPartmanBgwInterval) {
+            if (engineConfigPgPgPartmanBgwInterval == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgPgPartmanBgwInterval");
+            }
+            this.engineConfigPgPgPartmanBgwInterval = engineConfigPgPgPartmanBgwInterval;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgPgPartmanBgwRole(String engineConfigPgPgPartmanBgwRole) {
+            if (engineConfigPgPgPartmanBgwRole == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgPgPartmanBgwRole");
+            }
+            this.engineConfigPgPgPartmanBgwRole = engineConfigPgPgPartmanBgwRole;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgPgStatMonitorPgsmEnableQueryPlan(Boolean engineConfigPgPgStatMonitorPgsmEnableQueryPlan) {
+            if (engineConfigPgPgStatMonitorPgsmEnableQueryPlan == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgPgStatMonitorPgsmEnableQueryPlan");
+            }
+            this.engineConfigPgPgStatMonitorPgsmEnableQueryPlan = engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgPgStatMonitorPgsmMaxBuckets(Integer engineConfigPgPgStatMonitorPgsmMaxBuckets) {
+            if (engineConfigPgPgStatMonitorPgsmMaxBuckets == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgPgStatMonitorPgsmMaxBuckets");
+            }
+            this.engineConfigPgPgStatMonitorPgsmMaxBuckets = engineConfigPgPgStatMonitorPgsmMaxBuckets;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgPgStatStatementsTrack(String engineConfigPgPgStatStatementsTrack) {
+            if (engineConfigPgPgStatStatementsTrack == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgPgStatStatementsTrack");
+            }
+            this.engineConfigPgPgStatStatementsTrack = engineConfigPgPgStatStatementsTrack;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgStatMonitorEnable(Boolean engineConfigPgStatMonitorEnable) {
+            if (engineConfigPgStatMonitorEnable == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgStatMonitorEnable");
+            }
+            this.engineConfigPgStatMonitorEnable = engineConfigPgStatMonitorEnable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgTempFileLimit(Integer engineConfigPgTempFileLimit) {
+            if (engineConfigPgTempFileLimit == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgTempFileLimit");
+            }
+            this.engineConfigPgTempFileLimit = engineConfigPgTempFileLimit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgTimezone(String engineConfigPgTimezone) {
+            if (engineConfigPgTimezone == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgTimezone");
+            }
+            this.engineConfigPgTimezone = engineConfigPgTimezone;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgTrackActivityQuerySize(Integer engineConfigPgTrackActivityQuerySize) {
+            if (engineConfigPgTrackActivityQuerySize == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgTrackActivityQuerySize");
+            }
+            this.engineConfigPgTrackActivityQuerySize = engineConfigPgTrackActivityQuerySize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgTrackCommitTimestamp(String engineConfigPgTrackCommitTimestamp) {
+            if (engineConfigPgTrackCommitTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgTrackCommitTimestamp");
+            }
+            this.engineConfigPgTrackCommitTimestamp = engineConfigPgTrackCommitTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgTrackFunctions(String engineConfigPgTrackFunctions) {
+            if (engineConfigPgTrackFunctions == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgTrackFunctions");
+            }
+            this.engineConfigPgTrackFunctions = engineConfigPgTrackFunctions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgTrackIoTiming(String engineConfigPgTrackIoTiming) {
+            if (engineConfigPgTrackIoTiming == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgTrackIoTiming");
+            }
+            this.engineConfigPgTrackIoTiming = engineConfigPgTrackIoTiming;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgWalSenderTimeout(Integer engineConfigPgWalSenderTimeout) {
+            if (engineConfigPgWalSenderTimeout == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgWalSenderTimeout");
+            }
+            this.engineConfigPgWalSenderTimeout = engineConfigPgWalSenderTimeout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPgWalWriterDelay(Integer engineConfigPgWalWriterDelay) {
+            if (engineConfigPgWalWriterDelay == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPgWalWriterDelay");
+            }
+            this.engineConfigPgWalWriterDelay = engineConfigPgWalWriterDelay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigPglookoutMaxFailoverReplicationTimeLag(Integer engineConfigPglookoutMaxFailoverReplicationTimeLag) {
+            if (engineConfigPglookoutMaxFailoverReplicationTimeLag == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigPglookoutMaxFailoverReplicationTimeLag");
+            }
+            this.engineConfigPglookoutMaxFailoverReplicationTimeLag = engineConfigPglookoutMaxFailoverReplicationTimeLag;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigSharedBuffersPercentage(Double engineConfigSharedBuffersPercentage) {
+            if (engineConfigSharedBuffersPercentage == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigSharedBuffersPercentage");
+            }
+            this.engineConfigSharedBuffersPercentage = engineConfigSharedBuffersPercentage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder engineConfigWorkMem(Integer engineConfigWorkMem) {
+            if (engineConfigWorkMem == null) {
+              throw new MissingRequiredPropertyException("GetDatabasePostgresqlV2Result", "engineConfigWorkMem");
+            }
+            this.engineConfigWorkMem = engineConfigWorkMem;
             return this;
         }
         @CustomType.Setter
@@ -623,6 +1658,53 @@ public final class GetDatabasePostgresqlV2Result {
             _resultValue.created = created;
             _resultValue.encrypted = encrypted;
             _resultValue.engine = engine;
+            _resultValue.engineConfigPgAutovacuumAnalyzeScaleFactor = engineConfigPgAutovacuumAnalyzeScaleFactor;
+            _resultValue.engineConfigPgAutovacuumAnalyzeThreshold = engineConfigPgAutovacuumAnalyzeThreshold;
+            _resultValue.engineConfigPgAutovacuumMaxWorkers = engineConfigPgAutovacuumMaxWorkers;
+            _resultValue.engineConfigPgAutovacuumNaptime = engineConfigPgAutovacuumNaptime;
+            _resultValue.engineConfigPgAutovacuumVacuumCostDelay = engineConfigPgAutovacuumVacuumCostDelay;
+            _resultValue.engineConfigPgAutovacuumVacuumCostLimit = engineConfigPgAutovacuumVacuumCostLimit;
+            _resultValue.engineConfigPgAutovacuumVacuumScaleFactor = engineConfigPgAutovacuumVacuumScaleFactor;
+            _resultValue.engineConfigPgAutovacuumVacuumThreshold = engineConfigPgAutovacuumVacuumThreshold;
+            _resultValue.engineConfigPgBgwriterDelay = engineConfigPgBgwriterDelay;
+            _resultValue.engineConfigPgBgwriterFlushAfter = engineConfigPgBgwriterFlushAfter;
+            _resultValue.engineConfigPgBgwriterLruMaxpages = engineConfigPgBgwriterLruMaxpages;
+            _resultValue.engineConfigPgBgwriterLruMultiplier = engineConfigPgBgwriterLruMultiplier;
+            _resultValue.engineConfigPgDeadlockTimeout = engineConfigPgDeadlockTimeout;
+            _resultValue.engineConfigPgDefaultToastCompression = engineConfigPgDefaultToastCompression;
+            _resultValue.engineConfigPgIdleInTransactionSessionTimeout = engineConfigPgIdleInTransactionSessionTimeout;
+            _resultValue.engineConfigPgJit = engineConfigPgJit;
+            _resultValue.engineConfigPgMaxFilesPerProcess = engineConfigPgMaxFilesPerProcess;
+            _resultValue.engineConfigPgMaxLocksPerTransaction = engineConfigPgMaxLocksPerTransaction;
+            _resultValue.engineConfigPgMaxLogicalReplicationWorkers = engineConfigPgMaxLogicalReplicationWorkers;
+            _resultValue.engineConfigPgMaxParallelWorkers = engineConfigPgMaxParallelWorkers;
+            _resultValue.engineConfigPgMaxParallelWorkersPerGather = engineConfigPgMaxParallelWorkersPerGather;
+            _resultValue.engineConfigPgMaxPredLocksPerTransaction = engineConfigPgMaxPredLocksPerTransaction;
+            _resultValue.engineConfigPgMaxReplicationSlots = engineConfigPgMaxReplicationSlots;
+            _resultValue.engineConfigPgMaxSlotWalKeepSize = engineConfigPgMaxSlotWalKeepSize;
+            _resultValue.engineConfigPgMaxStackDepth = engineConfigPgMaxStackDepth;
+            _resultValue.engineConfigPgMaxStandbyArchiveDelay = engineConfigPgMaxStandbyArchiveDelay;
+            _resultValue.engineConfigPgMaxStandbyStreamingDelay = engineConfigPgMaxStandbyStreamingDelay;
+            _resultValue.engineConfigPgMaxWalSenders = engineConfigPgMaxWalSenders;
+            _resultValue.engineConfigPgMaxWorkerProcesses = engineConfigPgMaxWorkerProcesses;
+            _resultValue.engineConfigPgPasswordEncryption = engineConfigPgPasswordEncryption;
+            _resultValue.engineConfigPgPgPartmanBgwInterval = engineConfigPgPgPartmanBgwInterval;
+            _resultValue.engineConfigPgPgPartmanBgwRole = engineConfigPgPgPartmanBgwRole;
+            _resultValue.engineConfigPgPgStatMonitorPgsmEnableQueryPlan = engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+            _resultValue.engineConfigPgPgStatMonitorPgsmMaxBuckets = engineConfigPgPgStatMonitorPgsmMaxBuckets;
+            _resultValue.engineConfigPgPgStatStatementsTrack = engineConfigPgPgStatStatementsTrack;
+            _resultValue.engineConfigPgStatMonitorEnable = engineConfigPgStatMonitorEnable;
+            _resultValue.engineConfigPgTempFileLimit = engineConfigPgTempFileLimit;
+            _resultValue.engineConfigPgTimezone = engineConfigPgTimezone;
+            _resultValue.engineConfigPgTrackActivityQuerySize = engineConfigPgTrackActivityQuerySize;
+            _resultValue.engineConfigPgTrackCommitTimestamp = engineConfigPgTrackCommitTimestamp;
+            _resultValue.engineConfigPgTrackFunctions = engineConfigPgTrackFunctions;
+            _resultValue.engineConfigPgTrackIoTiming = engineConfigPgTrackIoTiming;
+            _resultValue.engineConfigPgWalSenderTimeout = engineConfigPgWalSenderTimeout;
+            _resultValue.engineConfigPgWalWriterDelay = engineConfigPgWalWriterDelay;
+            _resultValue.engineConfigPglookoutMaxFailoverReplicationTimeLag = engineConfigPglookoutMaxFailoverReplicationTimeLag;
+            _resultValue.engineConfigSharedBuffersPercentage = engineConfigSharedBuffersPercentage;
+            _resultValue.engineConfigWorkMem = engineConfigWorkMem;
             _resultValue.engineId = engineId;
             _resultValue.forkRestoreTime = forkRestoreTime;
             _resultValue.forkSource = forkSource;

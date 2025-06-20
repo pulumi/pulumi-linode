@@ -66,7 +66,7 @@ namespace Pulumi.Linode
     ///     {
     ///         Label = "boot",
     ///         LinodeId = my_instance.Id,
-    ///         Size = my_instance.Specs.Apply(specs =&gt; specs.Disk),
+    ///         Size = my_instance.Specs.Apply(specs =&gt; specs[0].Disk),
     ///         Image = "linode/ubuntu22.04",
     ///         RootPass = "myc00lpass!",
     ///         AuthorizedKeys = new[]

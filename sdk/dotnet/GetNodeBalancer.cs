@@ -141,6 +141,10 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int ClientConnThrottle;
         /// <summary>
+        /// Throttle UDP sessions per second (0-20).
+        /// </summary>
+        public readonly int ClientUdpSessThrottle;
+        /// <summary>
         /// When this firewall was created.
         /// </summary>
         public readonly string Created;
@@ -183,6 +187,8 @@ namespace Pulumi.Linode
         private GetNodeBalancerResult(
             int clientConnThrottle,
 
+            int clientUdpSessThrottle,
+
             string created,
 
             ImmutableArray<Outputs.GetNodeBalancerFirewallResult> firewalls,
@@ -206,6 +212,7 @@ namespace Pulumi.Linode
             string updated)
         {
             ClientConnThrottle = clientConnThrottle;
+            ClientUdpSessThrottle = clientUdpSessThrottle;
             Created = created;
             Firewalls = firewalls;
             Hostname = hostname;

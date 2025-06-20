@@ -113,6 +113,174 @@ namespace Pulumi.Linode
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
+        /// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+        /// </summary>
+        [Output("engineConfigBinlogRetentionPeriod")]
+        public Output<int> EngineConfigBinlogRetentionPeriod { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        /// </summary>
+        [Output("engineConfigMysqlConnectTimeout")]
+        public Output<int> EngineConfigMysqlConnectTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        /// </summary>
+        [Output("engineConfigMysqlDefaultTimeZone")]
+        public Output<string> EngineConfigMysqlDefaultTimeZone { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        /// </summary>
+        [Output("engineConfigMysqlGroupConcatMaxLen")]
+        public Output<double> EngineConfigMysqlGroupConcatMaxLen { get; private set; } = null!;
+
+        /// <summary>
+        /// The time, in seconds, before cached statistics expire.
+        /// </summary>
+        [Output("engineConfigMysqlInformationSchemaStatsExpiry")]
+        public Output<int> EngineConfigMysqlInformationSchemaStatsExpiry { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        /// </summary>
+        [Output("engineConfigMysqlInnodbChangeBufferMaxSize")]
+        public Output<int> EngineConfigMysqlInnodbChangeBufferMaxSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        /// </summary>
+        [Output("engineConfigMysqlInnodbFlushNeighbors")]
+        public Output<int> EngineConfigMysqlInnodbFlushNeighbors { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Output("engineConfigMysqlInnodbFtMinTokenSize")]
+        public Output<int> EngineConfigMysqlInnodbFtMinTokenSize { get; private set; } = null!;
+
+        /// <summary>
+        /// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+        /// </summary>
+        [Output("engineConfigMysqlInnodbFtServerStopwordTable")]
+        public Output<string?> EngineConfigMysqlInnodbFtServerStopwordTable { get; private set; } = null!;
+
+        /// <summary>
+        /// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        /// </summary>
+        [Output("engineConfigMysqlInnodbLockWaitTimeout")]
+        public Output<int> EngineConfigMysqlInnodbLockWaitTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        /// </summary>
+        [Output("engineConfigMysqlInnodbLogBufferSize")]
+        public Output<int> EngineConfigMysqlInnodbLogBufferSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        /// </summary>
+        [Output("engineConfigMysqlInnodbOnlineAlterLogMaxSize")]
+        public Output<int> EngineConfigMysqlInnodbOnlineAlterLogMaxSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Output("engineConfigMysqlInnodbReadIoThreads")]
+        public Output<int> EngineConfigMysqlInnodbReadIoThreads { get; private set; } = null!;
+
+        /// <summary>
+        /// When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Output("engineConfigMysqlInnodbRollbackOnTimeout")]
+        public Output<bool> EngineConfigMysqlInnodbRollbackOnTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        /// </summary>
+        [Output("engineConfigMysqlInnodbThreadConcurrency")]
+        public Output<int> EngineConfigMysqlInnodbThreadConcurrency { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Output("engineConfigMysqlInnodbWriteIoThreads")]
+        public Output<int> EngineConfigMysqlInnodbWriteIoThreads { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of seconds the server waits for activity on an interactive connection before closing it.
+        /// </summary>
+        [Output("engineConfigMysqlInteractiveTimeout")]
+        public Output<int> EngineConfigMysqlInteractiveTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage engine for in-memory internal temporary tables.
+        /// </summary>
+        [Output("engineConfigMysqlInternalTmpMemStorageEngine")]
+        public Output<string> EngineConfigMysqlInternalTmpMemStorageEngine { get; private set; } = null!;
+
+        /// <summary>
+        /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        /// </summary>
+        [Output("engineConfigMysqlMaxAllowedPacket")]
+        public Output<int> EngineConfigMysqlMaxAllowedPacket { get; private set; } = null!;
+
+        /// <summary>
+        /// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        /// </summary>
+        [Output("engineConfigMysqlMaxHeapTableSize")]
+        public Output<int> EngineConfigMysqlMaxHeapTableSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Output("engineConfigMysqlNetBufferLength")]
+        public Output<int> EngineConfigMysqlNetBufferLength { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of seconds to wait for more data from a connection before aborting the read.
+        /// </summary>
+        [Output("engineConfigMysqlNetReadTimeout")]
+        public Output<int> EngineConfigMysqlNetReadTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of seconds to wait for a block to be written to a connection before aborting the write.
+        /// </summary>
+        [Output("engineConfigMysqlNetWriteTimeout")]
+        public Output<int> EngineConfigMysqlNetWriteTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        /// </summary>
+        [Output("engineConfigMysqlSortBufferSize")]
+        public Output<int> EngineConfigMysqlSortBufferSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+        /// </summary>
+        [Output("engineConfigMysqlSqlMode")]
+        public Output<string> EngineConfigMysqlSqlMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        /// </summary>
+        [Output("engineConfigMysqlSqlRequirePrimaryKey")]
+        public Output<bool> EngineConfigMysqlSqlRequirePrimaryKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        /// </summary>
+        [Output("engineConfigMysqlTmpTableSize")]
+        public Output<int> EngineConfigMysqlTmpTableSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of seconds the server waits for activity on a noninteractive connection before closing it.
+        /// </summary>
+        [Output("engineConfigMysqlWaitTimeout")]
+        public Output<int> EngineConfigMysqlWaitTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// The Managed Database engine in engine/version format. (e.g. `mysql`)
         /// </summary>
         [Output("engineId")]
@@ -316,6 +484,174 @@ namespace Pulumi.Linode
         public Input<int>? ClusterSize { get; set; }
 
         /// <summary>
+        /// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+        /// </summary>
+        [Input("engineConfigBinlogRetentionPeriod")]
+        public Input<int>? EngineConfigBinlogRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        /// </summary>
+        [Input("engineConfigMysqlConnectTimeout")]
+        public Input<int>? EngineConfigMysqlConnectTimeout { get; set; }
+
+        /// <summary>
+        /// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        /// </summary>
+        [Input("engineConfigMysqlDefaultTimeZone")]
+        public Input<string>? EngineConfigMysqlDefaultTimeZone { get; set; }
+
+        /// <summary>
+        /// The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        /// </summary>
+        [Input("engineConfigMysqlGroupConcatMaxLen")]
+        public Input<double>? EngineConfigMysqlGroupConcatMaxLen { get; set; }
+
+        /// <summary>
+        /// The time, in seconds, before cached statistics expire.
+        /// </summary>
+        [Input("engineConfigMysqlInformationSchemaStatsExpiry")]
+        public Input<int>? EngineConfigMysqlInformationSchemaStatsExpiry { get; set; }
+
+        /// <summary>
+        /// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbChangeBufferMaxSize")]
+        public Input<int>? EngineConfigMysqlInnodbChangeBufferMaxSize { get; set; }
+
+        /// <summary>
+        /// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbFlushNeighbors")]
+        public Input<int>? EngineConfigMysqlInnodbFlushNeighbors { get; set; }
+
+        /// <summary>
+        /// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbFtMinTokenSize")]
+        public Input<int>? EngineConfigMysqlInnodbFtMinTokenSize { get; set; }
+
+        /// <summary>
+        /// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbFtServerStopwordTable")]
+        public Input<string>? EngineConfigMysqlInnodbFtServerStopwordTable { get; set; }
+
+        /// <summary>
+        /// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbLockWaitTimeout")]
+        public Input<int>? EngineConfigMysqlInnodbLockWaitTimeout { get; set; }
+
+        /// <summary>
+        /// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbLogBufferSize")]
+        public Input<int>? EngineConfigMysqlInnodbLogBufferSize { get; set; }
+
+        /// <summary>
+        /// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbOnlineAlterLogMaxSize")]
+        public Input<int>? EngineConfigMysqlInnodbOnlineAlterLogMaxSize { get; set; }
+
+        /// <summary>
+        /// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbReadIoThreads")]
+        public Input<int>? EngineConfigMysqlInnodbReadIoThreads { get; set; }
+
+        /// <summary>
+        /// When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbRollbackOnTimeout")]
+        public Input<bool>? EngineConfigMysqlInnodbRollbackOnTimeout { get; set; }
+
+        /// <summary>
+        /// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        /// </summary>
+        [Input("engineConfigMysqlInnodbThreadConcurrency")]
+        public Input<int>? EngineConfigMysqlInnodbThreadConcurrency { get; set; }
+
+        /// <summary>
+        /// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbWriteIoThreads")]
+        public Input<int>? EngineConfigMysqlInnodbWriteIoThreads { get; set; }
+
+        /// <summary>
+        /// The number of seconds the server waits for activity on an interactive connection before closing it.
+        /// </summary>
+        [Input("engineConfigMysqlInteractiveTimeout")]
+        public Input<int>? EngineConfigMysqlInteractiveTimeout { get; set; }
+
+        /// <summary>
+        /// The storage engine for in-memory internal temporary tables.
+        /// </summary>
+        [Input("engineConfigMysqlInternalTmpMemStorageEngine")]
+        public Input<string>? EngineConfigMysqlInternalTmpMemStorageEngine { get; set; }
+
+        /// <summary>
+        /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        /// </summary>
+        [Input("engineConfigMysqlMaxAllowedPacket")]
+        public Input<int>? EngineConfigMysqlMaxAllowedPacket { get; set; }
+
+        /// <summary>
+        /// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        /// </summary>
+        [Input("engineConfigMysqlMaxHeapTableSize")]
+        public Input<int>? EngineConfigMysqlMaxHeapTableSize { get; set; }
+
+        /// <summary>
+        /// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Input("engineConfigMysqlNetBufferLength")]
+        public Input<int>? EngineConfigMysqlNetBufferLength { get; set; }
+
+        /// <summary>
+        /// The number of seconds to wait for more data from a connection before aborting the read.
+        /// </summary>
+        [Input("engineConfigMysqlNetReadTimeout")]
+        public Input<int>? EngineConfigMysqlNetReadTimeout { get; set; }
+
+        /// <summary>
+        /// The number of seconds to wait for a block to be written to a connection before aborting the write.
+        /// </summary>
+        [Input("engineConfigMysqlNetWriteTimeout")]
+        public Input<int>? EngineConfigMysqlNetWriteTimeout { get; set; }
+
+        /// <summary>
+        /// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        /// </summary>
+        [Input("engineConfigMysqlSortBufferSize")]
+        public Input<int>? EngineConfigMysqlSortBufferSize { get; set; }
+
+        /// <summary>
+        /// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+        /// </summary>
+        [Input("engineConfigMysqlSqlMode")]
+        public Input<string>? EngineConfigMysqlSqlMode { get; set; }
+
+        /// <summary>
+        /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        /// </summary>
+        [Input("engineConfigMysqlSqlRequirePrimaryKey")]
+        public Input<bool>? EngineConfigMysqlSqlRequirePrimaryKey { get; set; }
+
+        /// <summary>
+        /// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        /// </summary>
+        [Input("engineConfigMysqlTmpTableSize")]
+        public Input<int>? EngineConfigMysqlTmpTableSize { get; set; }
+
+        /// <summary>
+        /// The number of seconds the server waits for activity on a noninteractive connection before closing it.
+        /// </summary>
+        [Input("engineConfigMysqlWaitTimeout")]
+        public Input<int>? EngineConfigMysqlWaitTimeout { get; set; }
+
+        /// <summary>
         /// The Managed Database engine in engine/version format. (e.g. `mysql`)
         /// </summary>
         [Input("engineId", required: true)]
@@ -429,6 +765,174 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
+
+        /// <summary>
+        /// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+        /// </summary>
+        [Input("engineConfigBinlogRetentionPeriod")]
+        public Input<int>? EngineConfigBinlogRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        /// </summary>
+        [Input("engineConfigMysqlConnectTimeout")]
+        public Input<int>? EngineConfigMysqlConnectTimeout { get; set; }
+
+        /// <summary>
+        /// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        /// </summary>
+        [Input("engineConfigMysqlDefaultTimeZone")]
+        public Input<string>? EngineConfigMysqlDefaultTimeZone { get; set; }
+
+        /// <summary>
+        /// The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        /// </summary>
+        [Input("engineConfigMysqlGroupConcatMaxLen")]
+        public Input<double>? EngineConfigMysqlGroupConcatMaxLen { get; set; }
+
+        /// <summary>
+        /// The time, in seconds, before cached statistics expire.
+        /// </summary>
+        [Input("engineConfigMysqlInformationSchemaStatsExpiry")]
+        public Input<int>? EngineConfigMysqlInformationSchemaStatsExpiry { get; set; }
+
+        /// <summary>
+        /// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbChangeBufferMaxSize")]
+        public Input<int>? EngineConfigMysqlInnodbChangeBufferMaxSize { get; set; }
+
+        /// <summary>
+        /// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbFlushNeighbors")]
+        public Input<int>? EngineConfigMysqlInnodbFlushNeighbors { get; set; }
+
+        /// <summary>
+        /// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbFtMinTokenSize")]
+        public Input<int>? EngineConfigMysqlInnodbFtMinTokenSize { get; set; }
+
+        /// <summary>
+        /// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbFtServerStopwordTable")]
+        public Input<string>? EngineConfigMysqlInnodbFtServerStopwordTable { get; set; }
+
+        /// <summary>
+        /// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbLockWaitTimeout")]
+        public Input<int>? EngineConfigMysqlInnodbLockWaitTimeout { get; set; }
+
+        /// <summary>
+        /// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbLogBufferSize")]
+        public Input<int>? EngineConfigMysqlInnodbLogBufferSize { get; set; }
+
+        /// <summary>
+        /// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbOnlineAlterLogMaxSize")]
+        public Input<int>? EngineConfigMysqlInnodbOnlineAlterLogMaxSize { get; set; }
+
+        /// <summary>
+        /// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbReadIoThreads")]
+        public Input<int>? EngineConfigMysqlInnodbReadIoThreads { get; set; }
+
+        /// <summary>
+        /// When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbRollbackOnTimeout")]
+        public Input<bool>? EngineConfigMysqlInnodbRollbackOnTimeout { get; set; }
+
+        /// <summary>
+        /// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        /// </summary>
+        [Input("engineConfigMysqlInnodbThreadConcurrency")]
+        public Input<int>? EngineConfigMysqlInnodbThreadConcurrency { get; set; }
+
+        /// <summary>
+        /// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Input("engineConfigMysqlInnodbWriteIoThreads")]
+        public Input<int>? EngineConfigMysqlInnodbWriteIoThreads { get; set; }
+
+        /// <summary>
+        /// The number of seconds the server waits for activity on an interactive connection before closing it.
+        /// </summary>
+        [Input("engineConfigMysqlInteractiveTimeout")]
+        public Input<int>? EngineConfigMysqlInteractiveTimeout { get; set; }
+
+        /// <summary>
+        /// The storage engine for in-memory internal temporary tables.
+        /// </summary>
+        [Input("engineConfigMysqlInternalTmpMemStorageEngine")]
+        public Input<string>? EngineConfigMysqlInternalTmpMemStorageEngine { get; set; }
+
+        /// <summary>
+        /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        /// </summary>
+        [Input("engineConfigMysqlMaxAllowedPacket")]
+        public Input<int>? EngineConfigMysqlMaxAllowedPacket { get; set; }
+
+        /// <summary>
+        /// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        /// </summary>
+        [Input("engineConfigMysqlMaxHeapTableSize")]
+        public Input<int>? EngineConfigMysqlMaxHeapTableSize { get; set; }
+
+        /// <summary>
+        /// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Input("engineConfigMysqlNetBufferLength")]
+        public Input<int>? EngineConfigMysqlNetBufferLength { get; set; }
+
+        /// <summary>
+        /// The number of seconds to wait for more data from a connection before aborting the read.
+        /// </summary>
+        [Input("engineConfigMysqlNetReadTimeout")]
+        public Input<int>? EngineConfigMysqlNetReadTimeout { get; set; }
+
+        /// <summary>
+        /// The number of seconds to wait for a block to be written to a connection before aborting the write.
+        /// </summary>
+        [Input("engineConfigMysqlNetWriteTimeout")]
+        public Input<int>? EngineConfigMysqlNetWriteTimeout { get; set; }
+
+        /// <summary>
+        /// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        /// </summary>
+        [Input("engineConfigMysqlSortBufferSize")]
+        public Input<int>? EngineConfigMysqlSortBufferSize { get; set; }
+
+        /// <summary>
+        /// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+        /// </summary>
+        [Input("engineConfigMysqlSqlMode")]
+        public Input<string>? EngineConfigMysqlSqlMode { get; set; }
+
+        /// <summary>
+        /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        /// </summary>
+        [Input("engineConfigMysqlSqlRequirePrimaryKey")]
+        public Input<bool>? EngineConfigMysqlSqlRequirePrimaryKey { get; set; }
+
+        /// <summary>
+        /// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        /// </summary>
+        [Input("engineConfigMysqlTmpTableSize")]
+        public Input<int>? EngineConfigMysqlTmpTableSize { get; set; }
+
+        /// <summary>
+        /// The number of seconds the server waits for activity on a noninteractive connection before closing it.
+        /// </summary>
+        [Input("engineConfigMysqlWaitTimeout")]
+        public Input<int>? EngineConfigMysqlWaitTimeout { get; set; }
 
         /// <summary>
         /// The Managed Database engine in engine/version format. (e.g. `mysql`)

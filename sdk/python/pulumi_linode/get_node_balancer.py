@@ -29,10 +29,13 @@ class GetNodeBalancerResult:
     """
     A collection of values returned by getNodeBalancer.
     """
-    def __init__(__self__, client_conn_throttle=None, created=None, firewalls=None, hostname=None, id=None, ipv4=None, ipv6=None, label=None, region=None, tags=None, transfers=None, updated=None):
+    def __init__(__self__, client_conn_throttle=None, client_udp_sess_throttle=None, created=None, firewalls=None, hostname=None, id=None, ipv4=None, ipv6=None, label=None, region=None, tags=None, transfers=None, updated=None):
         if client_conn_throttle and not isinstance(client_conn_throttle, int):
             raise TypeError("Expected argument 'client_conn_throttle' to be a int")
         pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
+        if client_udp_sess_throttle and not isinstance(client_udp_sess_throttle, int):
+            raise TypeError("Expected argument 'client_udp_sess_throttle' to be a int")
+        pulumi.set(__self__, "client_udp_sess_throttle", client_udp_sess_throttle)
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -74,6 +77,14 @@ class GetNodeBalancerResult:
         Throttle connections per second (0-20).
         """
         return pulumi.get(self, "client_conn_throttle")
+
+    @property
+    @pulumi.getter(name="clientUdpSessThrottle")
+    def client_udp_sess_throttle(self) -> builtins.int:
+        """
+        Throttle UDP sessions per second (0-20).
+        """
+        return pulumi.get(self, "client_udp_sess_throttle")
 
     @property
     @pulumi.getter
@@ -165,6 +176,7 @@ class AwaitableGetNodeBalancerResult(GetNodeBalancerResult):
             yield self
         return GetNodeBalancerResult(
             client_conn_throttle=self.client_conn_throttle,
+            client_udp_sess_throttle=self.client_udp_sess_throttle,
             created=self.created,
             firewalls=self.firewalls,
             hostname=self.hostname,
@@ -205,6 +217,7 @@ def get_node_balancer(firewalls: Optional[Sequence[Union['GetNodeBalancerFirewal
 
     return AwaitableGetNodeBalancerResult(
         client_conn_throttle=pulumi.get(__ret__, 'client_conn_throttle'),
+        client_udp_sess_throttle=pulumi.get(__ret__, 'client_udp_sess_throttle'),
         created=pulumi.get(__ret__, 'created'),
         firewalls=pulumi.get(__ret__, 'firewalls'),
         hostname=pulumi.get(__ret__, 'hostname'),
@@ -242,6 +255,7 @@ def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[
     __ret__ = pulumi.runtime.invoke_output('linode:index/getNodeBalancer:getNodeBalancer', __args__, opts=opts, typ=GetNodeBalancerResult)
     return __ret__.apply(lambda __response__: GetNodeBalancerResult(
         client_conn_throttle=pulumi.get(__response__, 'client_conn_throttle'),
+        client_udp_sess_throttle=pulumi.get(__response__, 'client_udp_sess_throttle'),
         created=pulumi.get(__response__, 'created'),
         firewalls=pulumi.get(__response__, 'firewalls'),
         hostname=pulumi.get(__response__, 'hostname'),

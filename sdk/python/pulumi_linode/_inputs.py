@@ -44,10 +44,10 @@ __all__ = [
     'ImageTimeoutsArgsDict',
     'InstanceAlertsArgs',
     'InstanceAlertsArgsDict',
-    'InstanceBackupsArgs',
-    'InstanceBackupsArgsDict',
-    'InstanceBackupsScheduleArgs',
-    'InstanceBackupsScheduleArgsDict',
+    'InstanceBackupArgs',
+    'InstanceBackupArgsDict',
+    'InstanceBackupScheduleArgs',
+    'InstanceBackupScheduleArgsDict',
     'InstanceConfigArgs',
     'InstanceConfigArgsDict',
     'InstanceConfigDeviceArgs',
@@ -92,8 +92,8 @@ __all__ = [
     'InstanceMetadataArgsDict',
     'InstancePlacementGroupArgs',
     'InstancePlacementGroupArgsDict',
-    'InstanceSpecsArgs',
-    'InstanceSpecsArgsDict',
+    'InstanceSpecArgs',
+    'InstanceSpecArgsDict',
     'LkeClusterControlPlaneArgs',
     'LkeClusterControlPlaneArgsDict',
     'LkeClusterControlPlaneAclArgs',
@@ -1624,7 +1624,7 @@ class InstanceAlertsArgs:
 
 
 if not MYPY:
-    class InstanceBackupsArgsDict(TypedDict):
+    class InstanceBackupArgsDict(TypedDict):
         available: NotRequired[pulumi.Input[builtins.bool]]
         """
         Whether this Backup is available for restoration.
@@ -1633,16 +1633,16 @@ if not MYPY:
         """
         If this Linode has the Backup service enabled.
         """
-        schedule: NotRequired[pulumi.Input['InstanceBackupsScheduleArgsDict']]
+        schedules: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceBackupScheduleArgsDict']]]]
 elif False:
-    InstanceBackupsArgsDict: TypeAlias = Mapping[str, Any]
+    InstanceBackupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class InstanceBackupsArgs:
+class InstanceBackupArgs:
     def __init__(__self__, *,
                  available: Optional[pulumi.Input[builtins.bool]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 schedule: Optional[pulumi.Input['InstanceBackupsScheduleArgs']] = None):
+                 schedules: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBackupScheduleArgs']]]] = None):
         """
         :param pulumi.Input[builtins.bool] available: Whether this Backup is available for restoration.
         :param pulumi.Input[builtins.bool] enabled: If this Linode has the Backup service enabled.
@@ -1651,8 +1651,8 @@ class InstanceBackupsArgs:
             pulumi.set(__self__, "available", available)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+        if schedules is not None:
+            pulumi.set(__self__, "schedules", schedules)
 
     @property
     @pulumi.getter
@@ -1680,16 +1680,16 @@ class InstanceBackupsArgs:
 
     @property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['InstanceBackupsScheduleArgs']]:
-        return pulumi.get(self, "schedule")
+    def schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBackupScheduleArgs']]]]:
+        return pulumi.get(self, "schedules")
 
-    @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['InstanceBackupsScheduleArgs']]):
-        pulumi.set(self, "schedule", value)
+    @schedules.setter
+    def schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBackupScheduleArgs']]]]):
+        pulumi.set(self, "schedules", value)
 
 
 if not MYPY:
-    class InstanceBackupsScheduleArgsDict(TypedDict):
+    class InstanceBackupScheduleArgsDict(TypedDict):
         day: NotRequired[pulumi.Input[builtins.str]]
         """
         The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
@@ -1699,10 +1699,10 @@ if not MYPY:
         The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
         """
 elif False:
-    InstanceBackupsScheduleArgsDict: TypeAlias = Mapping[str, Any]
+    InstanceBackupScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class InstanceBackupsScheduleArgs:
+class InstanceBackupScheduleArgs:
     def __init__(__self__, *,
                  day: Optional[pulumi.Input[builtins.str]] = None,
                  window: Optional[pulumi.Input[builtins.str]] = None):
@@ -3904,7 +3904,7 @@ class InstancePlacementGroupArgs:
 
 
 if not MYPY:
-    class InstanceSpecsArgsDict(TypedDict):
+    class InstanceSpecArgsDict(TypedDict):
         accelerated_devices: NotRequired[pulumi.Input[builtins.int]]
         """
         The number of VPUs this Linode has access to.
@@ -3930,10 +3930,10 @@ if not MYPY:
         The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
         """
 elif False:
-    InstanceSpecsArgsDict: TypeAlias = Mapping[str, Any]
+    InstanceSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class InstanceSpecsArgs:
+class InstanceSpecArgs:
     def __init__(__self__, *,
                  accelerated_devices: Optional[pulumi.Input[builtins.int]] = None,
                  disk: Optional[pulumi.Input[builtins.int]] = None,
@@ -14033,6 +14033,14 @@ if not MYPY:
         """
         Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
+        udp_check_port: builtins.int
+        """
+        Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+        """
+        udp_session_timeout: builtins.int
+        """
+        The idle time in seconds after which a session that hasn’t received packets is destroyed.
+        """
 elif False:
     GetNodebalancerConfigsNodebalancerConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -14056,7 +14064,9 @@ class GetNodebalancerConfigsNodebalancerConfigArgs:
                  proxy_protocol: builtins.str,
                  ssl_commonname: builtins.str,
                  ssl_fingerprint: builtins.str,
-                 stickiness: builtins.str):
+                 stickiness: builtins.str,
+                 udp_check_port: builtins.int,
+                 udp_session_timeout: builtins.int):
         """
         :param builtins.str algorithm: What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
         :param builtins.str check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
@@ -14078,6 +14088,8 @@ class GetNodebalancerConfigsNodebalancerConfigArgs:
         :param builtins.str ssl_commonname: The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param builtins.str ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param builtins.str stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        :param builtins.int udp_check_port: Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+        :param builtins.int udp_session_timeout: The idle time in seconds after which a session that hasn’t received packets is destroyed.
         """
         pulumi.set(__self__, "algorithm", algorithm)
         pulumi.set(__self__, "check", check)
@@ -14097,6 +14109,8 @@ class GetNodebalancerConfigsNodebalancerConfigArgs:
         pulumi.set(__self__, "ssl_commonname", ssl_commonname)
         pulumi.set(__self__, "ssl_fingerprint", ssl_fingerprint)
         pulumi.set(__self__, "stickiness", stickiness)
+        pulumi.set(__self__, "udp_check_port", udp_check_port)
+        pulumi.set(__self__, "udp_session_timeout", udp_session_timeout)
 
     @property
     @pulumi.getter
@@ -14316,6 +14330,30 @@ class GetNodebalancerConfigsNodebalancerConfigArgs:
     def stickiness(self, value: builtins.str):
         pulumi.set(self, "stickiness", value)
 
+    @property
+    @pulumi.getter(name="udpCheckPort")
+    def udp_check_port(self) -> builtins.int:
+        """
+        Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+        """
+        return pulumi.get(self, "udp_check_port")
+
+    @udp_check_port.setter
+    def udp_check_port(self, value: builtins.int):
+        pulumi.set(self, "udp_check_port", value)
+
+    @property
+    @pulumi.getter(name="udpSessionTimeout")
+    def udp_session_timeout(self) -> builtins.int:
+        """
+        The idle time in seconds after which a session that hasn’t received packets is destroyed.
+        """
+        return pulumi.get(self, "udp_session_timeout")
+
+    @udp_session_timeout.setter
+    def udp_session_timeout(self, value: builtins.int):
+        pulumi.set(self, "udp_session_timeout", value)
+
 
 if not MYPY:
     class GetNodebalancerConfigsNodebalancerConfigNodeStatusArgsDict(TypedDict):
@@ -14443,6 +14481,10 @@ if not MYPY:
         """
         Throttle connections per second (0-20)
         """
+        client_udp_sess_throttle: builtins.int
+        """
+        Throttle UDP sessions per second (0-20).
+        """
         created: builtins.str
         """
         When this Linode NodeBalancer was created
@@ -14490,6 +14532,7 @@ elif False:
 class GetNodebalancersNodebalancerArgs:
     def __init__(__self__, *,
                  client_conn_throttle: builtins.int,
+                 client_udp_sess_throttle: builtins.int,
                  created: builtins.str,
                  hostname: builtins.str,
                  id: builtins.int,
@@ -14502,6 +14545,7 @@ class GetNodebalancersNodebalancerArgs:
                  updated: builtins.str):
         """
         :param builtins.int client_conn_throttle: Throttle connections per second (0-20)
+        :param builtins.int client_udp_sess_throttle: Throttle UDP sessions per second (0-20).
         :param builtins.str created: When this Linode NodeBalancer was created
         :param builtins.str hostname: This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
         :param builtins.int id: The Linode NodeBalancer's unique ID
@@ -14514,6 +14558,7 @@ class GetNodebalancersNodebalancerArgs:
         :param builtins.str updated: When this Linode NodeBalancer was last updated
         """
         pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
+        pulumi.set(__self__, "client_udp_sess_throttle", client_udp_sess_throttle)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "id", id)
@@ -14536,6 +14581,18 @@ class GetNodebalancersNodebalancerArgs:
     @client_conn_throttle.setter
     def client_conn_throttle(self, value: builtins.int):
         pulumi.set(self, "client_conn_throttle", value)
+
+    @property
+    @pulumi.getter(name="clientUdpSessThrottle")
+    def client_udp_sess_throttle(self) -> builtins.int:
+        """
+        Throttle UDP sessions per second (0-20).
+        """
+        return pulumi.get(self, "client_udp_sess_throttle")
+
+    @client_udp_sess_throttle.setter
+    def client_udp_sess_throttle(self, value: builtins.int):
+        pulumi.set(self, "client_udp_sess_throttle", value)
 
     @property
     @pulumi.getter

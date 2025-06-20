@@ -190,6 +190,13 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"linode_networking_ips": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"linode_database_postgresql_config": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"pg": {
+						Omit: true,
+					},
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
