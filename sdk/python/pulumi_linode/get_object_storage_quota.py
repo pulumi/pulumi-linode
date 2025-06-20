@@ -106,7 +106,7 @@ class GetObjectStorageQuotaResult:
     @pulumi.getter(name="quotaUsage")
     def quota_usage(self) -> 'outputs.GetObjectStorageQuotaQuotaUsageResult':
         """
-        The usage data for a specific Object Storage related quota on your account.
+        The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
         """
         return pulumi.get(self, "quota_usage")
 
@@ -148,7 +148,7 @@ def get_object_storage_quota(quota_id: Optional[builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectStorageQuotaResult:
     """
     Provides details about Object Storage quota information on your account.
-    For more information, see the Linode APIv4 docs.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
 
     ## Example Usage
 
@@ -183,7 +183,7 @@ def get_object_storage_quota_output(quota_id: Optional[pulumi.Input[builtins.str
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageQuotaResult]:
     """
     Provides details about Object Storage quota information on your account.
-    For more information, see the Linode APIv4 docs.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
 
     ## Example Usage
 

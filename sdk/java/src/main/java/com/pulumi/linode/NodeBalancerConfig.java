@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  *             .checkPath("/foo")
  *             .checkAttempts(3)
  *             .checkTimeout(30)
+ *             .udpCheckPort(12345)
  *             .stickiness("http_cookie")
  *             .algorithm("source")
  *             .build());
@@ -359,6 +360,38 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> stickiness() {
         return this.stickiness;
+    }
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+     * 
+     * * **NOTE: This argument may not be generally available.**
+     * 
+     */
+    @Export(name="udpCheckPort", refs={Integer.class}, tree="[0]")
+    private Output<Integer> udpCheckPort;
+
+    /**
+     * @return Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+     * 
+     * * **NOTE: This argument may not be generally available.**
+     * 
+     */
+    public Output<Integer> udpCheckPort() {
+        return this.udpCheckPort;
+    }
+    /**
+     * The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    @Export(name="udpSessionTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> udpSessionTimeout;
+
+    /**
+     * @return The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    public Output<Integer> udpSessionTimeout() {
+        return this.udpSessionTimeout;
     }
 
     /**

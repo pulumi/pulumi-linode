@@ -28,8 +28,10 @@ from .get_database_backups import *
 from .get_database_engines import *
 from .get_database_mysql import *
 from .get_database_mysql_backups import *
+from .get_database_mysql_config import *
 from .get_database_mysql_v2 import *
 from .get_database_postgresql import *
+from .get_database_postgresql_config import *
 from .get_database_postgresql_v2 import *
 from .get_databases import *
 from .get_domain import *

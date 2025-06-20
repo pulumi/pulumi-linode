@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
+	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -93,6 +93,62 @@ type LookupDatabaseMysqlV2Result struct {
 	Encrypted bool `pulumi:"encrypted"`
 	// The Managed Database engine. (e.g. `mysql`)
 	Engine string `pulumi:"engine"`
+	// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+	EngineConfigBinlogRetentionPeriod int `pulumi:"engineConfigBinlogRetentionPeriod"`
+	// The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+	EngineConfigMysqlConnectTimeout int `pulumi:"engineConfigMysqlConnectTimeout"`
+	// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+	EngineConfigMysqlDefaultTimeZone string `pulumi:"engineConfigMysqlDefaultTimeZone"`
+	// The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+	EngineConfigMysqlGroupConcatMaxLen float64 `pulumi:"engineConfigMysqlGroupConcatMaxLen"`
+	// The time, in seconds, before cached statistics expire.
+	EngineConfigMysqlInformationSchemaStatsExpiry int `pulumi:"engineConfigMysqlInformationSchemaStatsExpiry"`
+	// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+	EngineConfigMysqlInnodbChangeBufferMaxSize int `pulumi:"engineConfigMysqlInnodbChangeBufferMaxSize"`
+	// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+	EngineConfigMysqlInnodbFlushNeighbors int `pulumi:"engineConfigMysqlInnodbFlushNeighbors"`
+	// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+	EngineConfigMysqlInnodbFtMinTokenSize int `pulumi:"engineConfigMysqlInnodbFtMinTokenSize"`
+	// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+	EngineConfigMysqlInnodbFtServerStopwordTable string `pulumi:"engineConfigMysqlInnodbFtServerStopwordTable"`
+	// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+	EngineConfigMysqlInnodbLockWaitTimeout int `pulumi:"engineConfigMysqlInnodbLockWaitTimeout"`
+	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+	EngineConfigMysqlInnodbLogBufferSize int `pulumi:"engineConfigMysqlInnodbLogBufferSize"`
+	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+	EngineConfigMysqlInnodbOnlineAlterLogMaxSize int `pulumi:"engineConfigMysqlInnodbOnlineAlterLogMaxSize"`
+	// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+	EngineConfigMysqlInnodbReadIoThreads int `pulumi:"engineConfigMysqlInnodbReadIoThreads"`
+	// When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+	EngineConfigMysqlInnodbRollbackOnTimeout bool `pulumi:"engineConfigMysqlInnodbRollbackOnTimeout"`
+	// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+	EngineConfigMysqlInnodbThreadConcurrency int `pulumi:"engineConfigMysqlInnodbThreadConcurrency"`
+	// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+	EngineConfigMysqlInnodbWriteIoThreads int `pulumi:"engineConfigMysqlInnodbWriteIoThreads"`
+	// The number of seconds the server waits for activity on an interactive connection before closing it.
+	EngineConfigMysqlInteractiveTimeout int `pulumi:"engineConfigMysqlInteractiveTimeout"`
+	// The storage engine for in-memory internal temporary tables.
+	EngineConfigMysqlInternalTmpMemStorageEngine string `pulumi:"engineConfigMysqlInternalTmpMemStorageEngine"`
+	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+	EngineConfigMysqlMaxAllowedPacket int `pulumi:"engineConfigMysqlMaxAllowedPacket"`
+	// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+	EngineConfigMysqlMaxHeapTableSize int `pulumi:"engineConfigMysqlMaxHeapTableSize"`
+	// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+	EngineConfigMysqlNetBufferLength int `pulumi:"engineConfigMysqlNetBufferLength"`
+	// The number of seconds to wait for more data from a connection before aborting the read.
+	EngineConfigMysqlNetReadTimeout int `pulumi:"engineConfigMysqlNetReadTimeout"`
+	// The number of seconds to wait for a block to be written to a connection before aborting the write.
+	EngineConfigMysqlNetWriteTimeout int `pulumi:"engineConfigMysqlNetWriteTimeout"`
+	// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+	EngineConfigMysqlSortBufferSize int `pulumi:"engineConfigMysqlSortBufferSize"`
+	// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+	EngineConfigMysqlSqlMode string `pulumi:"engineConfigMysqlSqlMode"`
+	// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+	EngineConfigMysqlSqlRequirePrimaryKey bool `pulumi:"engineConfigMysqlSqlRequirePrimaryKey"`
+	// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+	EngineConfigMysqlTmpTableSize int `pulumi:"engineConfigMysqlTmpTableSize"`
+	// The number of seconds the server waits for activity on a noninteractive connection before closing it.
+	EngineConfigMysqlWaitTimeout int `pulumi:"engineConfigMysqlWaitTimeout"`
 	// The Managed Database engine in engine/version format. (e.g. `mysql`)
 	EngineId string `pulumi:"engineId"`
 	// The database timestamp from which it was restored.
@@ -196,6 +252,146 @@ func (o LookupDatabaseMysqlV2ResultOutput) Encrypted() pulumi.BoolOutput {
 // The Managed Database engine. (e.g. `mysql`)
 func (o LookupDatabaseMysqlV2ResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigBinlogRetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigBinlogRetentionPeriod }).(pulumi.IntOutput)
+}
+
+// The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlConnectTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlConnectTimeout }).(pulumi.IntOutput)
+}
+
+// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlDefaultTimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) string { return v.EngineConfigMysqlDefaultTimeZone }).(pulumi.StringOutput)
+}
+
+// The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlGroupConcatMaxLen() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) float64 { return v.EngineConfigMysqlGroupConcatMaxLen }).(pulumi.Float64Output)
+}
+
+// The time, in seconds, before cached statistics expire.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInformationSchemaStatsExpiry() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlInformationSchemaStatsExpiry }).(pulumi.IntOutput)
+}
+
+// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInnodbChangeBufferMaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlInnodbChangeBufferMaxSize }).(pulumi.IntOutput)
+}
+
+// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInnodbFlushNeighbors() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlInnodbFlushNeighbors }).(pulumi.IntOutput)
+}
+
+// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInnodbFtMinTokenSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlInnodbFtMinTokenSize }).(pulumi.IntOutput)
+}
+
+// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInnodbFtServerStopwordTable() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) string { return v.EngineConfigMysqlInnodbFtServerStopwordTable }).(pulumi.StringOutput)
+}
+
+// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInnodbLockWaitTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlInnodbLockWaitTimeout }).(pulumi.IntOutput)
+}
+
+// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInnodbLogBufferSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlInnodbLogBufferSize }).(pulumi.IntOutput)
+}
+
+// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInnodbOnlineAlterLogMaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlInnodbOnlineAlterLogMaxSize }).(pulumi.IntOutput)
+}
+
+// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInnodbReadIoThreads() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlInnodbReadIoThreads }).(pulumi.IntOutput)
+}
+
+// When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInnodbRollbackOnTimeout() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) bool { return v.EngineConfigMysqlInnodbRollbackOnTimeout }).(pulumi.BoolOutput)
+}
+
+// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInnodbThreadConcurrency() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlInnodbThreadConcurrency }).(pulumi.IntOutput)
+}
+
+// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInnodbWriteIoThreads() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlInnodbWriteIoThreads }).(pulumi.IntOutput)
+}
+
+// The number of seconds the server waits for activity on an interactive connection before closing it.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInteractiveTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlInteractiveTimeout }).(pulumi.IntOutput)
+}
+
+// The storage engine for in-memory internal temporary tables.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlInternalTmpMemStorageEngine() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) string { return v.EngineConfigMysqlInternalTmpMemStorageEngine }).(pulumi.StringOutput)
+}
+
+// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlMaxAllowedPacket() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlMaxAllowedPacket }).(pulumi.IntOutput)
+}
+
+// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlMaxHeapTableSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlMaxHeapTableSize }).(pulumi.IntOutput)
+}
+
+// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlNetBufferLength() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlNetBufferLength }).(pulumi.IntOutput)
+}
+
+// The number of seconds to wait for more data from a connection before aborting the read.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlNetReadTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlNetReadTimeout }).(pulumi.IntOutput)
+}
+
+// The number of seconds to wait for a block to be written to a connection before aborting the write.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlNetWriteTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlNetWriteTimeout }).(pulumi.IntOutput)
+}
+
+// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlSortBufferSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlSortBufferSize }).(pulumi.IntOutput)
+}
+
+// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlSqlMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) string { return v.EngineConfigMysqlSqlMode }).(pulumi.StringOutput)
+}
+
+// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlSqlRequirePrimaryKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) bool { return v.EngineConfigMysqlSqlRequirePrimaryKey }).(pulumi.BoolOutput)
+}
+
+// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlTmpTableSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlTmpTableSize }).(pulumi.IntOutput)
+}
+
+// The number of seconds the server waits for activity on a noninteractive connection before closing it.
+func (o LookupDatabaseMysqlV2ResultOutput) EngineConfigMysqlWaitTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.EngineConfigMysqlWaitTimeout }).(pulumi.IntOutput)
 }
 
 // The Managed Database engine in engine/version format. (e.g. `mysql`)

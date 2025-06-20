@@ -217,6 +217,194 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Engine;
         /// <summary>
+        /// Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        /// </summary>
+        public readonly double EngineConfigPgAutovacuumAnalyzeScaleFactor;
+        /// <summary>
+        /// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        /// </summary>
+        public readonly int EngineConfigPgAutovacuumAnalyzeThreshold;
+        /// <summary>
+        /// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        /// </summary>
+        public readonly int EngineConfigPgAutovacuumMaxWorkers;
+        /// <summary>
+        /// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+        /// </summary>
+        public readonly int EngineConfigPgAutovacuumNaptime;
+        /// <summary>
+        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        /// </summary>
+        public readonly int EngineConfigPgAutovacuumVacuumCostDelay;
+        /// <summary>
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        /// </summary>
+        public readonly int EngineConfigPgAutovacuumVacuumCostLimit;
+        /// <summary>
+        /// Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        /// </summary>
+        public readonly double EngineConfigPgAutovacuumVacuumScaleFactor;
+        /// <summary>
+        /// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        /// </summary>
+        public readonly int EngineConfigPgAutovacuumVacuumThreshold;
+        /// <summary>
+        /// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        /// </summary>
+        public readonly int EngineConfigPgBgwriterDelay;
+        /// <summary>
+        /// Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        /// </summary>
+        public readonly int EngineConfigPgBgwriterFlushAfter;
+        /// <summary>
+        /// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        /// </summary>
+        public readonly int EngineConfigPgBgwriterLruMaxpages;
+        /// <summary>
+        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// </summary>
+        public readonly double EngineConfigPgBgwriterLruMultiplier;
+        /// <summary>
+        /// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        /// </summary>
+        public readonly int EngineConfigPgDeadlockTimeout;
+        /// <summary>
+        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        /// </summary>
+        public readonly string EngineConfigPgDefaultToastCompression;
+        /// <summary>
+        /// Time out sessions with open transactions after this number of milliseconds.
+        /// </summary>
+        public readonly int EngineConfigPgIdleInTransactionSessionTimeout;
+        /// <summary>
+        /// Controls system-wide use of Just-in-Time Compilation (JIT).
+        /// </summary>
+        public readonly bool EngineConfigPgJit;
+        /// <summary>
+        /// PostgreSQL maximum number of files that can be open per process.
+        /// </summary>
+        public readonly int EngineConfigPgMaxFilesPerProcess;
+        /// <summary>
+        /// PostgreSQL maximum locks per transaction.
+        /// </summary>
+        public readonly int EngineConfigPgMaxLocksPerTransaction;
+        /// <summary>
+        /// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+        /// </summary>
+        public readonly int EngineConfigPgMaxLogicalReplicationWorkers;
+        /// <summary>
+        /// Sets the maximum number of workers that the system can support for parallel queries.
+        /// </summary>
+        public readonly int EngineConfigPgMaxParallelWorkers;
+        /// <summary>
+        /// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        /// </summary>
+        public readonly int EngineConfigPgMaxParallelWorkersPerGather;
+        /// <summary>
+        /// PostgreSQL maximum predicate locks per transaction.
+        /// </summary>
+        public readonly int EngineConfigPgMaxPredLocksPerTransaction;
+        /// <summary>
+        /// PostgreSQL maximum replication slots.
+        /// </summary>
+        public readonly int EngineConfigPgMaxReplicationSlots;
+        /// <summary>
+        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        /// </summary>
+        public readonly int EngineConfigPgMaxSlotWalKeepSize;
+        /// <summary>
+        /// Maximum depth of the stack in bytes.
+        /// </summary>
+        public readonly int EngineConfigPgMaxStackDepth;
+        /// <summary>
+        /// Max standby archive delay in milliseconds.
+        /// </summary>
+        public readonly int EngineConfigPgMaxStandbyArchiveDelay;
+        /// <summary>
+        /// Max standby streaming delay in milliseconds.
+        /// </summary>
+        public readonly int EngineConfigPgMaxStandbyStreamingDelay;
+        /// <summary>
+        /// PostgreSQL maximum WAL senders.
+        /// </summary>
+        public readonly int EngineConfigPgMaxWalSenders;
+        /// <summary>
+        /// Sets the maximum number of background processes that the system can support.
+        /// </summary>
+        public readonly int EngineConfigPgMaxWorkerProcesses;
+        /// <summary>
+        /// Chooses the algorithm for encrypting passwords.
+        /// </summary>
+        public readonly string EngineConfigPgPasswordEncryption;
+        /// <summary>
+        /// Sets the time interval to run pg_partman's scheduled tasks.
+        /// </summary>
+        public readonly int EngineConfigPgPgPartmanBgwInterval;
+        /// <summary>
+        /// Controls which role to use for pg_partman's scheduled background tasks.
+        /// </summary>
+        public readonly string EngineConfigPgPgPartmanBgwRole;
+        /// <summary>
+        /// Enables or disables query plan monitoring.
+        /// </summary>
+        public readonly bool EngineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+        /// <summary>
+        /// Sets the maximum number of buckets.
+        /// </summary>
+        public readonly int EngineConfigPgPgStatMonitorPgsmMaxBuckets;
+        /// <summary>
+        /// Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        /// </summary>
+        public readonly string EngineConfigPgPgStatStatementsTrack;
+        /// <summary>
+        /// Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable.
+        /// </summary>
+        public readonly bool EngineConfigPgStatMonitorEnable;
+        /// <summary>
+        /// PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        /// </summary>
+        public readonly int EngineConfigPgTempFileLimit;
+        /// <summary>
+        /// PostgreSQL service timezone.
+        /// </summary>
+        public readonly string EngineConfigPgTimezone;
+        /// <summary>
+        /// Specifies the number of bytes reserved to track the currently executing command for each active session.
+        /// </summary>
+        public readonly int EngineConfigPgTrackActivityQuerySize;
+        /// <summary>
+        /// Record commit time of transactions.
+        /// </summary>
+        public readonly string EngineConfigPgTrackCommitTimestamp;
+        /// <summary>
+        /// Enables tracking of function call counts and time used.
+        /// </summary>
+        public readonly string EngineConfigPgTrackFunctions;
+        /// <summary>
+        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        /// </summary>
+        public readonly string EngineConfigPgTrackIoTiming;
+        /// <summary>
+        /// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        /// </summary>
+        public readonly int EngineConfigPgWalSenderTimeout;
+        /// <summary>
+        /// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        /// </summary>
+        public readonly int EngineConfigPgWalWriterDelay;
+        /// <summary>
+        /// Number of seconds of master unavailability before triggering database failover to standby.
+        /// </summary>
+        public readonly int EngineConfigPglookoutMaxFailoverReplicationTimeLag;
+        /// <summary>
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// </summary>
+        public readonly double EngineConfigSharedBuffersPercentage;
+        /// <summary>
+        /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+        /// </summary>
+        public readonly int EngineConfigWorkMem;
+        /// <summary>
         /// The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
         /// </summary>
         public readonly string EngineId;
@@ -304,6 +492,100 @@ namespace Pulumi.Linode
 
             string engine,
 
+            double engineConfigPgAutovacuumAnalyzeScaleFactor,
+
+            int engineConfigPgAutovacuumAnalyzeThreshold,
+
+            int engineConfigPgAutovacuumMaxWorkers,
+
+            int engineConfigPgAutovacuumNaptime,
+
+            int engineConfigPgAutovacuumVacuumCostDelay,
+
+            int engineConfigPgAutovacuumVacuumCostLimit,
+
+            double engineConfigPgAutovacuumVacuumScaleFactor,
+
+            int engineConfigPgAutovacuumVacuumThreshold,
+
+            int engineConfigPgBgwriterDelay,
+
+            int engineConfigPgBgwriterFlushAfter,
+
+            int engineConfigPgBgwriterLruMaxpages,
+
+            double engineConfigPgBgwriterLruMultiplier,
+
+            int engineConfigPgDeadlockTimeout,
+
+            string engineConfigPgDefaultToastCompression,
+
+            int engineConfigPgIdleInTransactionSessionTimeout,
+
+            bool engineConfigPgJit,
+
+            int engineConfigPgMaxFilesPerProcess,
+
+            int engineConfigPgMaxLocksPerTransaction,
+
+            int engineConfigPgMaxLogicalReplicationWorkers,
+
+            int engineConfigPgMaxParallelWorkers,
+
+            int engineConfigPgMaxParallelWorkersPerGather,
+
+            int engineConfigPgMaxPredLocksPerTransaction,
+
+            int engineConfigPgMaxReplicationSlots,
+
+            int engineConfigPgMaxSlotWalKeepSize,
+
+            int engineConfigPgMaxStackDepth,
+
+            int engineConfigPgMaxStandbyArchiveDelay,
+
+            int engineConfigPgMaxStandbyStreamingDelay,
+
+            int engineConfigPgMaxWalSenders,
+
+            int engineConfigPgMaxWorkerProcesses,
+
+            string engineConfigPgPasswordEncryption,
+
+            int engineConfigPgPgPartmanBgwInterval,
+
+            string engineConfigPgPgPartmanBgwRole,
+
+            bool engineConfigPgPgStatMonitorPgsmEnableQueryPlan,
+
+            int engineConfigPgPgStatMonitorPgsmMaxBuckets,
+
+            string engineConfigPgPgStatStatementsTrack,
+
+            bool engineConfigPgStatMonitorEnable,
+
+            int engineConfigPgTempFileLimit,
+
+            string engineConfigPgTimezone,
+
+            int engineConfigPgTrackActivityQuerySize,
+
+            string engineConfigPgTrackCommitTimestamp,
+
+            string engineConfigPgTrackFunctions,
+
+            string engineConfigPgTrackIoTiming,
+
+            int engineConfigPgWalSenderTimeout,
+
+            int engineConfigPgWalWriterDelay,
+
+            int engineConfigPglookoutMaxFailoverReplicationTimeLag,
+
+            double engineConfigSharedBuffersPercentage,
+
+            int engineConfigWorkMem,
+
             string engineId,
 
             string forkRestoreTime,
@@ -354,6 +636,53 @@ namespace Pulumi.Linode
             Created = created;
             Encrypted = encrypted;
             Engine = engine;
+            EngineConfigPgAutovacuumAnalyzeScaleFactor = engineConfigPgAutovacuumAnalyzeScaleFactor;
+            EngineConfigPgAutovacuumAnalyzeThreshold = engineConfigPgAutovacuumAnalyzeThreshold;
+            EngineConfigPgAutovacuumMaxWorkers = engineConfigPgAutovacuumMaxWorkers;
+            EngineConfigPgAutovacuumNaptime = engineConfigPgAutovacuumNaptime;
+            EngineConfigPgAutovacuumVacuumCostDelay = engineConfigPgAutovacuumVacuumCostDelay;
+            EngineConfigPgAutovacuumVacuumCostLimit = engineConfigPgAutovacuumVacuumCostLimit;
+            EngineConfigPgAutovacuumVacuumScaleFactor = engineConfigPgAutovacuumVacuumScaleFactor;
+            EngineConfigPgAutovacuumVacuumThreshold = engineConfigPgAutovacuumVacuumThreshold;
+            EngineConfigPgBgwriterDelay = engineConfigPgBgwriterDelay;
+            EngineConfigPgBgwriterFlushAfter = engineConfigPgBgwriterFlushAfter;
+            EngineConfigPgBgwriterLruMaxpages = engineConfigPgBgwriterLruMaxpages;
+            EngineConfigPgBgwriterLruMultiplier = engineConfigPgBgwriterLruMultiplier;
+            EngineConfigPgDeadlockTimeout = engineConfigPgDeadlockTimeout;
+            EngineConfigPgDefaultToastCompression = engineConfigPgDefaultToastCompression;
+            EngineConfigPgIdleInTransactionSessionTimeout = engineConfigPgIdleInTransactionSessionTimeout;
+            EngineConfigPgJit = engineConfigPgJit;
+            EngineConfigPgMaxFilesPerProcess = engineConfigPgMaxFilesPerProcess;
+            EngineConfigPgMaxLocksPerTransaction = engineConfigPgMaxLocksPerTransaction;
+            EngineConfigPgMaxLogicalReplicationWorkers = engineConfigPgMaxLogicalReplicationWorkers;
+            EngineConfigPgMaxParallelWorkers = engineConfigPgMaxParallelWorkers;
+            EngineConfigPgMaxParallelWorkersPerGather = engineConfigPgMaxParallelWorkersPerGather;
+            EngineConfigPgMaxPredLocksPerTransaction = engineConfigPgMaxPredLocksPerTransaction;
+            EngineConfigPgMaxReplicationSlots = engineConfigPgMaxReplicationSlots;
+            EngineConfigPgMaxSlotWalKeepSize = engineConfigPgMaxSlotWalKeepSize;
+            EngineConfigPgMaxStackDepth = engineConfigPgMaxStackDepth;
+            EngineConfigPgMaxStandbyArchiveDelay = engineConfigPgMaxStandbyArchiveDelay;
+            EngineConfigPgMaxStandbyStreamingDelay = engineConfigPgMaxStandbyStreamingDelay;
+            EngineConfigPgMaxWalSenders = engineConfigPgMaxWalSenders;
+            EngineConfigPgMaxWorkerProcesses = engineConfigPgMaxWorkerProcesses;
+            EngineConfigPgPasswordEncryption = engineConfigPgPasswordEncryption;
+            EngineConfigPgPgPartmanBgwInterval = engineConfigPgPgPartmanBgwInterval;
+            EngineConfigPgPgPartmanBgwRole = engineConfigPgPgPartmanBgwRole;
+            EngineConfigPgPgStatMonitorPgsmEnableQueryPlan = engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+            EngineConfigPgPgStatMonitorPgsmMaxBuckets = engineConfigPgPgStatMonitorPgsmMaxBuckets;
+            EngineConfigPgPgStatStatementsTrack = engineConfigPgPgStatStatementsTrack;
+            EngineConfigPgStatMonitorEnable = engineConfigPgStatMonitorEnable;
+            EngineConfigPgTempFileLimit = engineConfigPgTempFileLimit;
+            EngineConfigPgTimezone = engineConfigPgTimezone;
+            EngineConfigPgTrackActivityQuerySize = engineConfigPgTrackActivityQuerySize;
+            EngineConfigPgTrackCommitTimestamp = engineConfigPgTrackCommitTimestamp;
+            EngineConfigPgTrackFunctions = engineConfigPgTrackFunctions;
+            EngineConfigPgTrackIoTiming = engineConfigPgTrackIoTiming;
+            EngineConfigPgWalSenderTimeout = engineConfigPgWalSenderTimeout;
+            EngineConfigPgWalWriterDelay = engineConfigPgWalWriterDelay;
+            EngineConfigPglookoutMaxFailoverReplicationTimeLag = engineConfigPglookoutMaxFailoverReplicationTimeLag;
+            EngineConfigSharedBuffersPercentage = engineConfigSharedBuffersPercentage;
+            EngineConfigWorkMem = engineConfigWorkMem;
             EngineId = engineId;
             ForkRestoreTime = forkRestoreTime;
             ForkSource = forkSource;

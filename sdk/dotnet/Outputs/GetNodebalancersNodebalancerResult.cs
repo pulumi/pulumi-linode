@@ -18,6 +18,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int ClientConnThrottle;
         /// <summary>
+        /// Throttle UDP sessions per second (0-20).
+        /// </summary>
+        public readonly int ClientUdpSessThrottle;
+        /// <summary>
         /// When this Linode NodeBalancer was created
         /// </summary>
         public readonly string Created;
@@ -62,6 +66,8 @@ namespace Pulumi.Linode.Outputs
         private GetNodebalancersNodebalancerResult(
             int clientConnThrottle,
 
+            int clientUdpSessThrottle,
+
             string created,
 
             string hostname,
@@ -83,6 +89,7 @@ namespace Pulumi.Linode.Outputs
             string updated)
         {
             ClientConnThrottle = clientConnThrottle;
+            ClientUdpSessThrottle = clientUdpSessThrottle;
             Created = created;
             Hostname = hostname;
             Id = id;

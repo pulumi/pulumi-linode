@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
+	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -63,7 +63,7 @@ type GetProfileResult struct {
 	// The methods of authentication allowed when connecting via Lish. 'keys_only' is the most secure with the intent to use Lish, and 'disabled' is recommended for users that will not use Lish at all.
 	LishAuthMethod string `pulumi:"lishAuthMethod"`
 	// Credit Card information associated with this Account.
-	Referrals GetProfileReferrals `pulumi:"referrals"`
+	Referrals []GetProfileReferral `pulumi:"referrals"`
 	// If true, the user has restrictions on what can be accessed on the Account.
 	Restricted bool `pulumi:"restricted"`
 	// The profile's preferred timezone. This is not used by the API, and is for the benefit of clients only. All times the API returns are in UTC.
@@ -126,8 +126,8 @@ func (o GetProfileResultOutput) LishAuthMethod() pulumi.StringOutput {
 }
 
 // Credit Card information associated with this Account.
-func (o GetProfileResultOutput) Referrals() GetProfileReferralsOutput {
-	return o.ApplyT(func(v GetProfileResult) GetProfileReferrals { return v.Referrals }).(GetProfileReferralsOutput)
+func (o GetProfileResultOutput) Referrals() GetProfileReferralArrayOutput {
+	return o.ApplyT(func(v GetProfileResult) []GetProfileReferral { return v.Referrals }).(GetProfileReferralArrayOutput)
 }
 
 // If true, the user has restrictions on what can be accessed on the Account.

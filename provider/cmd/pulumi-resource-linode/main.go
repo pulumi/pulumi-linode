@@ -23,7 +23,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
-	linode "github.com/pulumi/pulumi-linode/provider/v4"
+	linode "github.com/pulumi/pulumi-linode/provider/v5"
 )
 
 //go:embed schema-embed.json

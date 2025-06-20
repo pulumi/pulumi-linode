@@ -142,7 +142,7 @@ namespace Pulumi.Linode
         /// The number of VPUs this Linode Type offers.
         /// </summary>
         public readonly int AcceleratedDevices;
-        public readonly Outputs.GetInstanceTypeAddonsResult Addons;
+        public readonly ImmutableArray<Outputs.GetInstanceTypeAddonResult> Addons;
         /// <summary>
         /// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
         /// </summary>
@@ -167,7 +167,7 @@ namespace Pulumi.Linode
         /// The Mbits outbound bandwidth allocation.
         /// </summary>
         public readonly int NetworkOut;
-        public readonly Outputs.GetInstanceTypePriceResult Price;
+        public readonly ImmutableArray<Outputs.GetInstanceTypePriceResult> Prices;
         public readonly ImmutableArray<Outputs.GetInstanceTypeRegionPriceResult> RegionPrices;
         /// <summary>
         /// The monthly outbound transfer amount, in MB.
@@ -182,7 +182,7 @@ namespace Pulumi.Linode
         private GetInstanceTypeResult(
             int acceleratedDevices,
 
-            Outputs.GetInstanceTypeAddonsResult addons,
+            ImmutableArray<Outputs.GetInstanceTypeAddonResult> addons,
 
             string @class,
 
@@ -196,7 +196,7 @@ namespace Pulumi.Linode
 
             int networkOut,
 
-            Outputs.GetInstanceTypePriceResult price,
+            ImmutableArray<Outputs.GetInstanceTypePriceResult> prices,
 
             ImmutableArray<Outputs.GetInstanceTypeRegionPriceResult> regionPrices,
 
@@ -212,7 +212,7 @@ namespace Pulumi.Linode
             Label = label;
             Memory = memory;
             NetworkOut = networkOut;
-            Price = price;
+            Prices = prices;
             RegionPrices = regionPrices;
             Transfer = transfer;
             Vcpus = vcpus;

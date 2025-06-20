@@ -14,6 +14,7 @@ import com.pulumi.linode.outputs.DatabaseMysqlV2PendingUpdate;
 import com.pulumi.linode.outputs.DatabaseMysqlV2Timeouts;
 import com.pulumi.linode.outputs.DatabaseMysqlV2Updates;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -109,6 +110,72 @@ import javax.annotation.Nullable;
  * Creating a complex MySQL database:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Creating a MySQL database with engine config fields specified:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.DatabaseMysqlV2;
+ * import com.pulumi.linode.DatabaseMysqlV2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
+ *             .label("mydatabase")
+ *             .engineId("mysql/8")
+ *             .region("us-mia")
+ *             .type("g6-nanode-1")
+ *             .engineConfigBinlogRetentionPeriod(3600)
+ *             .engineConfigMysqlConnectTimeout(10)
+ *             .engineConfigMysqlDefaultTimeZone("+00:00")
+ *             .engineConfigMysqlGroupConcatMaxLen(4096.0)
+ *             .engineConfigMysqlInformationSchemaStatsExpiry(3600)
+ *             .engineConfigMysqlInnodbChangeBufferMaxSize(25)
+ *             .engineConfigMysqlInnodbFlushNeighbors(0)
+ *             .engineConfigMysqlInnodbFtMinTokenSize(7)
+ *             .engineConfigMysqlInnodbFtServerStopwordTable("mysql/innodb_ft_default_stopword")
+ *             .engineConfigMysqlInnodbLockWaitTimeout(300)
+ *             .engineConfigMysqlInnodbLogBufferSize(16777216)
+ *             .engineConfigMysqlInnodbOnlineAlterLogMaxSize(268435456)
+ *             .engineConfigMysqlInnodbReadIoThreads(4)
+ *             .engineConfigMysqlInnodbRollbackOnTimeout(true)
+ *             .engineConfigMysqlInnodbThreadConcurrency(8)
+ *             .engineConfigMysqlInnodbWriteIoThreads(4)
+ *             .engineConfigMysqlInteractiveTimeout(300)
+ *             .engineConfigMysqlInternalTmpMemStorageEngine("TempTable")
+ *             .engineConfigMysqlMaxAllowedPacket(67108864)
+ *             .engineConfigMysqlMaxHeapTableSize(16777216)
+ *             .engineConfigMysqlNetBufferLength(16384)
+ *             .engineConfigMysqlNetReadTimeout(30)
+ *             .engineConfigMysqlNetWriteTimeout(30)
+ *             .engineConfigMysqlSortBufferSize(262144)
+ *             .engineConfigMysqlSqlMode("TRADITIONAL,ANSI")
+ *             .engineConfigMysqlSqlRequirePrimaryKey(false)
+ *             .engineConfigMysqlTmpTableSize(16777216)
+ *             .engineConfigMysqlWaitTimeout(28800)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating a forked MySQL database:
@@ -268,6 +335,398 @@ public class DatabaseMysqlV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> engine() {
         return this.engine;
+    }
+    /**
+     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+     * 
+     */
+    @Export(name="engineConfigBinlogRetentionPeriod", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigBinlogRetentionPeriod;
+
+    /**
+     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+     * 
+     */
+    public Output<Integer> engineConfigBinlogRetentionPeriod() {
+        return this.engineConfigBinlogRetentionPeriod;
+    }
+    /**
+     * The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * 
+     */
+    @Export(name="engineConfigMysqlConnectTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlConnectTimeout;
+
+    /**
+     * @return The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlConnectTimeout() {
+        return this.engineConfigMysqlConnectTimeout;
+    }
+    /**
+     * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * 
+     */
+    @Export(name="engineConfigMysqlDefaultTimeZone", refs={String.class}, tree="[0]")
+    private Output<String> engineConfigMysqlDefaultTimeZone;
+
+    /**
+     * @return Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * 
+     */
+    public Output<String> engineConfigMysqlDefaultTimeZone() {
+        return this.engineConfigMysqlDefaultTimeZone;
+    }
+    /**
+     * The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * 
+     */
+    @Export(name="engineConfigMysqlGroupConcatMaxLen", refs={Double.class}, tree="[0]")
+    private Output<Double> engineConfigMysqlGroupConcatMaxLen;
+
+    /**
+     * @return The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * 
+     */
+    public Output<Double> engineConfigMysqlGroupConcatMaxLen() {
+        return this.engineConfigMysqlGroupConcatMaxLen;
+    }
+    /**
+     * The time, in seconds, before cached statistics expire.
+     * 
+     */
+    @Export(name="engineConfigMysqlInformationSchemaStatsExpiry", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlInformationSchemaStatsExpiry;
+
+    /**
+     * @return The time, in seconds, before cached statistics expire.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlInformationSchemaStatsExpiry() {
+        return this.engineConfigMysqlInformationSchemaStatsExpiry;
+    }
+    /**
+     * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     */
+    @Export(name="engineConfigMysqlInnodbChangeBufferMaxSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlInnodbChangeBufferMaxSize;
+
+    /**
+     * @return Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlInnodbChangeBufferMaxSize() {
+        return this.engineConfigMysqlInnodbChangeBufferMaxSize;
+    }
+    /**
+     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * 
+     */
+    @Export(name="engineConfigMysqlInnodbFlushNeighbors", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlInnodbFlushNeighbors;
+
+    /**
+     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlInnodbFlushNeighbors() {
+        return this.engineConfigMysqlInnodbFlushNeighbors;
+    }
+    /**
+     * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    @Export(name="engineConfigMysqlInnodbFtMinTokenSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlInnodbFtMinTokenSize;
+
+    /**
+     * @return Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlInnodbFtMinTokenSize() {
+        return this.engineConfigMysqlInnodbFtMinTokenSize;
+    }
+    /**
+     * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+     * 
+     */
+    @Export(name="engineConfigMysqlInnodbFtServerStopwordTable", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> engineConfigMysqlInnodbFtServerStopwordTable;
+
+    /**
+     * @return This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+     * 
+     */
+    public Output<Optional<String>> engineConfigMysqlInnodbFtServerStopwordTable() {
+        return Codegen.optional(this.engineConfigMysqlInnodbFtServerStopwordTable);
+    }
+    /**
+     * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     */
+    @Export(name="engineConfigMysqlInnodbLockWaitTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlInnodbLockWaitTimeout;
+
+    /**
+     * @return The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlInnodbLockWaitTimeout() {
+        return this.engineConfigMysqlInnodbLockWaitTimeout;
+    }
+    /**
+     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     */
+    @Export(name="engineConfigMysqlInnodbLogBufferSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlInnodbLogBufferSize;
+
+    /**
+     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlInnodbLogBufferSize() {
+        return this.engineConfigMysqlInnodbLogBufferSize;
+    }
+    /**
+     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     */
+    @Export(name="engineConfigMysqlInnodbOnlineAlterLogMaxSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlInnodbOnlineAlterLogMaxSize;
+
+    /**
+     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlInnodbOnlineAlterLogMaxSize() {
+        return this.engineConfigMysqlInnodbOnlineAlterLogMaxSize;
+    }
+    /**
+     * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    @Export(name="engineConfigMysqlInnodbReadIoThreads", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlInnodbReadIoThreads;
+
+    /**
+     * @return The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlInnodbReadIoThreads() {
+        return this.engineConfigMysqlInnodbReadIoThreads;
+    }
+    /**
+     * When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    @Export(name="engineConfigMysqlInnodbRollbackOnTimeout", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> engineConfigMysqlInnodbRollbackOnTimeout;
+
+    /**
+     * @return When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Output<Boolean> engineConfigMysqlInnodbRollbackOnTimeout() {
+        return this.engineConfigMysqlInnodbRollbackOnTimeout;
+    }
+    /**
+     * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     */
+    @Export(name="engineConfigMysqlInnodbThreadConcurrency", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlInnodbThreadConcurrency;
+
+    /**
+     * @return Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     */
+    public Output<Integer> engineConfigMysqlInnodbThreadConcurrency() {
+        return this.engineConfigMysqlInnodbThreadConcurrency;
+    }
+    /**
+     * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    @Export(name="engineConfigMysqlInnodbWriteIoThreads", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlInnodbWriteIoThreads;
+
+    /**
+     * @return The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlInnodbWriteIoThreads() {
+        return this.engineConfigMysqlInnodbWriteIoThreads;
+    }
+    /**
+     * The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     */
+    @Export(name="engineConfigMysqlInteractiveTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlInteractiveTimeout;
+
+    /**
+     * @return The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlInteractiveTimeout() {
+        return this.engineConfigMysqlInteractiveTimeout;
+    }
+    /**
+     * The storage engine for in-memory internal temporary tables.
+     * 
+     */
+    @Export(name="engineConfigMysqlInternalTmpMemStorageEngine", refs={String.class}, tree="[0]")
+    private Output<String> engineConfigMysqlInternalTmpMemStorageEngine;
+
+    /**
+     * @return The storage engine for in-memory internal temporary tables.
+     * 
+     */
+    public Output<String> engineConfigMysqlInternalTmpMemStorageEngine() {
+        return this.engineConfigMysqlInternalTmpMemStorageEngine;
+    }
+    /**
+     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     */
+    @Export(name="engineConfigMysqlMaxAllowedPacket", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlMaxAllowedPacket;
+
+    /**
+     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     */
+    public Output<Integer> engineConfigMysqlMaxAllowedPacket() {
+        return this.engineConfigMysqlMaxAllowedPacket;
+    }
+    /**
+     * Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     */
+    @Export(name="engineConfigMysqlMaxHeapTableSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlMaxHeapTableSize;
+
+    /**
+     * @return Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     */
+    public Output<Integer> engineConfigMysqlMaxHeapTableSize() {
+        return this.engineConfigMysqlMaxHeapTableSize;
+    }
+    /**
+     * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    @Export(name="engineConfigMysqlNetBufferLength", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlNetBufferLength;
+
+    /**
+     * @return Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlNetBufferLength() {
+        return this.engineConfigMysqlNetBufferLength;
+    }
+    /**
+     * The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     */
+    @Export(name="engineConfigMysqlNetReadTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlNetReadTimeout;
+
+    /**
+     * @return The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlNetReadTimeout() {
+        return this.engineConfigMysqlNetReadTimeout;
+    }
+    /**
+     * The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     */
+    @Export(name="engineConfigMysqlNetWriteTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlNetWriteTimeout;
+
+    /**
+     * @return The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlNetWriteTimeout() {
+        return this.engineConfigMysqlNetWriteTimeout;
+    }
+    /**
+     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     */
+    @Export(name="engineConfigMysqlSortBufferSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlSortBufferSize;
+
+    /**
+     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     */
+    public Output<Integer> engineConfigMysqlSortBufferSize() {
+        return this.engineConfigMysqlSortBufferSize;
+    }
+    /**
+     * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+     * 
+     */
+    @Export(name="engineConfigMysqlSqlMode", refs={String.class}, tree="[0]")
+    private Output<String> engineConfigMysqlSqlMode;
+
+    /**
+     * @return Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+     * 
+     */
+    public Output<String> engineConfigMysqlSqlMode() {
+        return this.engineConfigMysqlSqlMode;
+    }
+    /**
+     * Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+     * 
+     */
+    @Export(name="engineConfigMysqlSqlRequirePrimaryKey", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> engineConfigMysqlSqlRequirePrimaryKey;
+
+    /**
+     * @return Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+     * 
+     */
+    public Output<Boolean> engineConfigMysqlSqlRequirePrimaryKey() {
+        return this.engineConfigMysqlSqlRequirePrimaryKey;
+    }
+    /**
+     * Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     */
+    @Export(name="engineConfigMysqlTmpTableSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlTmpTableSize;
+
+    /**
+     * @return Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     */
+    public Output<Integer> engineConfigMysqlTmpTableSize() {
+        return this.engineConfigMysqlTmpTableSize;
+    }
+    /**
+     * The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     */
+    @Export(name="engineConfigMysqlWaitTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigMysqlWaitTimeout;
+
+    /**
+     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     */
+    public Output<Integer> engineConfigMysqlWaitTimeout() {
+        return this.engineConfigMysqlWaitTimeout;
     }
     /**
      * The Managed Database engine in engine/version format. (e.g. `mysql`)

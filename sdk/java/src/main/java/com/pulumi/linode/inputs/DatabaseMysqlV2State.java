@@ -9,6 +9,7 @@ import com.pulumi.linode.inputs.DatabaseMysqlV2PendingUpdateArgs;
 import com.pulumi.linode.inputs.DatabaseMysqlV2TimeoutsArgs;
 import com.pulumi.linode.inputs.DatabaseMysqlV2UpdatesArgs;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -110,6 +111,426 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> engine() {
         return Optional.ofNullable(this.engine);
+    }
+
+    /**
+     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+     * 
+     */
+    @Import(name="engineConfigBinlogRetentionPeriod")
+    private @Nullable Output<Integer> engineConfigBinlogRetentionPeriod;
+
+    /**
+     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigBinlogRetentionPeriod() {
+        return Optional.ofNullable(this.engineConfigBinlogRetentionPeriod);
+    }
+
+    /**
+     * The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * 
+     */
+    @Import(name="engineConfigMysqlConnectTimeout")
+    private @Nullable Output<Integer> engineConfigMysqlConnectTimeout;
+
+    /**
+     * @return The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlConnectTimeout() {
+        return Optional.ofNullable(this.engineConfigMysqlConnectTimeout);
+    }
+
+    /**
+     * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * 
+     */
+    @Import(name="engineConfigMysqlDefaultTimeZone")
+    private @Nullable Output<String> engineConfigMysqlDefaultTimeZone;
+
+    /**
+     * @return Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * 
+     */
+    public Optional<Output<String>> engineConfigMysqlDefaultTimeZone() {
+        return Optional.ofNullable(this.engineConfigMysqlDefaultTimeZone);
+    }
+
+    /**
+     * The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * 
+     */
+    @Import(name="engineConfigMysqlGroupConcatMaxLen")
+    private @Nullable Output<Double> engineConfigMysqlGroupConcatMaxLen;
+
+    /**
+     * @return The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * 
+     */
+    public Optional<Output<Double>> engineConfigMysqlGroupConcatMaxLen() {
+        return Optional.ofNullable(this.engineConfigMysqlGroupConcatMaxLen);
+    }
+
+    /**
+     * The time, in seconds, before cached statistics expire.
+     * 
+     */
+    @Import(name="engineConfigMysqlInformationSchemaStatsExpiry")
+    private @Nullable Output<Integer> engineConfigMysqlInformationSchemaStatsExpiry;
+
+    /**
+     * @return The time, in seconds, before cached statistics expire.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlInformationSchemaStatsExpiry() {
+        return Optional.ofNullable(this.engineConfigMysqlInformationSchemaStatsExpiry);
+    }
+
+    /**
+     * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     */
+    @Import(name="engineConfigMysqlInnodbChangeBufferMaxSize")
+    private @Nullable Output<Integer> engineConfigMysqlInnodbChangeBufferMaxSize;
+
+    /**
+     * @return Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlInnodbChangeBufferMaxSize() {
+        return Optional.ofNullable(this.engineConfigMysqlInnodbChangeBufferMaxSize);
+    }
+
+    /**
+     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * 
+     */
+    @Import(name="engineConfigMysqlInnodbFlushNeighbors")
+    private @Nullable Output<Integer> engineConfigMysqlInnodbFlushNeighbors;
+
+    /**
+     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlInnodbFlushNeighbors() {
+        return Optional.ofNullable(this.engineConfigMysqlInnodbFlushNeighbors);
+    }
+
+    /**
+     * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    @Import(name="engineConfigMysqlInnodbFtMinTokenSize")
+    private @Nullable Output<Integer> engineConfigMysqlInnodbFtMinTokenSize;
+
+    /**
+     * @return Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlInnodbFtMinTokenSize() {
+        return Optional.ofNullable(this.engineConfigMysqlInnodbFtMinTokenSize);
+    }
+
+    /**
+     * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+     * 
+     */
+    @Import(name="engineConfigMysqlInnodbFtServerStopwordTable")
+    private @Nullable Output<String> engineConfigMysqlInnodbFtServerStopwordTable;
+
+    /**
+     * @return This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+     * 
+     */
+    public Optional<Output<String>> engineConfigMysqlInnodbFtServerStopwordTable() {
+        return Optional.ofNullable(this.engineConfigMysqlInnodbFtServerStopwordTable);
+    }
+
+    /**
+     * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     */
+    @Import(name="engineConfigMysqlInnodbLockWaitTimeout")
+    private @Nullable Output<Integer> engineConfigMysqlInnodbLockWaitTimeout;
+
+    /**
+     * @return The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlInnodbLockWaitTimeout() {
+        return Optional.ofNullable(this.engineConfigMysqlInnodbLockWaitTimeout);
+    }
+
+    /**
+     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     */
+    @Import(name="engineConfigMysqlInnodbLogBufferSize")
+    private @Nullable Output<Integer> engineConfigMysqlInnodbLogBufferSize;
+
+    /**
+     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlInnodbLogBufferSize() {
+        return Optional.ofNullable(this.engineConfigMysqlInnodbLogBufferSize);
+    }
+
+    /**
+     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     */
+    @Import(name="engineConfigMysqlInnodbOnlineAlterLogMaxSize")
+    private @Nullable Output<Integer> engineConfigMysqlInnodbOnlineAlterLogMaxSize;
+
+    /**
+     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlInnodbOnlineAlterLogMaxSize() {
+        return Optional.ofNullable(this.engineConfigMysqlInnodbOnlineAlterLogMaxSize);
+    }
+
+    /**
+     * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    @Import(name="engineConfigMysqlInnodbReadIoThreads")
+    private @Nullable Output<Integer> engineConfigMysqlInnodbReadIoThreads;
+
+    /**
+     * @return The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlInnodbReadIoThreads() {
+        return Optional.ofNullable(this.engineConfigMysqlInnodbReadIoThreads);
+    }
+
+    /**
+     * When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    @Import(name="engineConfigMysqlInnodbRollbackOnTimeout")
+    private @Nullable Output<Boolean> engineConfigMysqlInnodbRollbackOnTimeout;
+
+    /**
+     * @return When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Optional<Output<Boolean>> engineConfigMysqlInnodbRollbackOnTimeout() {
+        return Optional.ofNullable(this.engineConfigMysqlInnodbRollbackOnTimeout);
+    }
+
+    /**
+     * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     */
+    @Import(name="engineConfigMysqlInnodbThreadConcurrency")
+    private @Nullable Output<Integer> engineConfigMysqlInnodbThreadConcurrency;
+
+    /**
+     * @return Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlInnodbThreadConcurrency() {
+        return Optional.ofNullable(this.engineConfigMysqlInnodbThreadConcurrency);
+    }
+
+    /**
+     * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    @Import(name="engineConfigMysqlInnodbWriteIoThreads")
+    private @Nullable Output<Integer> engineConfigMysqlInnodbWriteIoThreads;
+
+    /**
+     * @return The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlInnodbWriteIoThreads() {
+        return Optional.ofNullable(this.engineConfigMysqlInnodbWriteIoThreads);
+    }
+
+    /**
+     * The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     */
+    @Import(name="engineConfigMysqlInteractiveTimeout")
+    private @Nullable Output<Integer> engineConfigMysqlInteractiveTimeout;
+
+    /**
+     * @return The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlInteractiveTimeout() {
+        return Optional.ofNullable(this.engineConfigMysqlInteractiveTimeout);
+    }
+
+    /**
+     * The storage engine for in-memory internal temporary tables.
+     * 
+     */
+    @Import(name="engineConfigMysqlInternalTmpMemStorageEngine")
+    private @Nullable Output<String> engineConfigMysqlInternalTmpMemStorageEngine;
+
+    /**
+     * @return The storage engine for in-memory internal temporary tables.
+     * 
+     */
+    public Optional<Output<String>> engineConfigMysqlInternalTmpMemStorageEngine() {
+        return Optional.ofNullable(this.engineConfigMysqlInternalTmpMemStorageEngine);
+    }
+
+    /**
+     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     */
+    @Import(name="engineConfigMysqlMaxAllowedPacket")
+    private @Nullable Output<Integer> engineConfigMysqlMaxAllowedPacket;
+
+    /**
+     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlMaxAllowedPacket() {
+        return Optional.ofNullable(this.engineConfigMysqlMaxAllowedPacket);
+    }
+
+    /**
+     * Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     */
+    @Import(name="engineConfigMysqlMaxHeapTableSize")
+    private @Nullable Output<Integer> engineConfigMysqlMaxHeapTableSize;
+
+    /**
+     * @return Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlMaxHeapTableSize() {
+        return Optional.ofNullable(this.engineConfigMysqlMaxHeapTableSize);
+    }
+
+    /**
+     * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    @Import(name="engineConfigMysqlNetBufferLength")
+    private @Nullable Output<Integer> engineConfigMysqlNetBufferLength;
+
+    /**
+     * @return Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlNetBufferLength() {
+        return Optional.ofNullable(this.engineConfigMysqlNetBufferLength);
+    }
+
+    /**
+     * The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     */
+    @Import(name="engineConfigMysqlNetReadTimeout")
+    private @Nullable Output<Integer> engineConfigMysqlNetReadTimeout;
+
+    /**
+     * @return The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlNetReadTimeout() {
+        return Optional.ofNullable(this.engineConfigMysqlNetReadTimeout);
+    }
+
+    /**
+     * The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     */
+    @Import(name="engineConfigMysqlNetWriteTimeout")
+    private @Nullable Output<Integer> engineConfigMysqlNetWriteTimeout;
+
+    /**
+     * @return The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlNetWriteTimeout() {
+        return Optional.ofNullable(this.engineConfigMysqlNetWriteTimeout);
+    }
+
+    /**
+     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     */
+    @Import(name="engineConfigMysqlSortBufferSize")
+    private @Nullable Output<Integer> engineConfigMysqlSortBufferSize;
+
+    /**
+     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlSortBufferSize() {
+        return Optional.ofNullable(this.engineConfigMysqlSortBufferSize);
+    }
+
+    /**
+     * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+     * 
+     */
+    @Import(name="engineConfigMysqlSqlMode")
+    private @Nullable Output<String> engineConfigMysqlSqlMode;
+
+    /**
+     * @return Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+     * 
+     */
+    public Optional<Output<String>> engineConfigMysqlSqlMode() {
+        return Optional.ofNullable(this.engineConfigMysqlSqlMode);
+    }
+
+    /**
+     * Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+     * 
+     */
+    @Import(name="engineConfigMysqlSqlRequirePrimaryKey")
+    private @Nullable Output<Boolean> engineConfigMysqlSqlRequirePrimaryKey;
+
+    /**
+     * @return Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+     * 
+     */
+    public Optional<Output<Boolean>> engineConfigMysqlSqlRequirePrimaryKey() {
+        return Optional.ofNullable(this.engineConfigMysqlSqlRequirePrimaryKey);
+    }
+
+    /**
+     * Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     */
+    @Import(name="engineConfigMysqlTmpTableSize")
+    private @Nullable Output<Integer> engineConfigMysqlTmpTableSize;
+
+    /**
+     * @return Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlTmpTableSize() {
+        return Optional.ofNullable(this.engineConfigMysqlTmpTableSize);
+    }
+
+    /**
+     * The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     */
+    @Import(name="engineConfigMysqlWaitTimeout")
+    private @Nullable Output<Integer> engineConfigMysqlWaitTimeout;
+
+    /**
+     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     */
+    public Optional<Output<Integer>> engineConfigMysqlWaitTimeout() {
+        return Optional.ofNullable(this.engineConfigMysqlWaitTimeout);
     }
 
     /**
@@ -451,6 +872,34 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
         this.created = $.created;
         this.encrypted = $.encrypted;
         this.engine = $.engine;
+        this.engineConfigBinlogRetentionPeriod = $.engineConfigBinlogRetentionPeriod;
+        this.engineConfigMysqlConnectTimeout = $.engineConfigMysqlConnectTimeout;
+        this.engineConfigMysqlDefaultTimeZone = $.engineConfigMysqlDefaultTimeZone;
+        this.engineConfigMysqlGroupConcatMaxLen = $.engineConfigMysqlGroupConcatMaxLen;
+        this.engineConfigMysqlInformationSchemaStatsExpiry = $.engineConfigMysqlInformationSchemaStatsExpiry;
+        this.engineConfigMysqlInnodbChangeBufferMaxSize = $.engineConfigMysqlInnodbChangeBufferMaxSize;
+        this.engineConfigMysqlInnodbFlushNeighbors = $.engineConfigMysqlInnodbFlushNeighbors;
+        this.engineConfigMysqlInnodbFtMinTokenSize = $.engineConfigMysqlInnodbFtMinTokenSize;
+        this.engineConfigMysqlInnodbFtServerStopwordTable = $.engineConfigMysqlInnodbFtServerStopwordTable;
+        this.engineConfigMysqlInnodbLockWaitTimeout = $.engineConfigMysqlInnodbLockWaitTimeout;
+        this.engineConfigMysqlInnodbLogBufferSize = $.engineConfigMysqlInnodbLogBufferSize;
+        this.engineConfigMysqlInnodbOnlineAlterLogMaxSize = $.engineConfigMysqlInnodbOnlineAlterLogMaxSize;
+        this.engineConfigMysqlInnodbReadIoThreads = $.engineConfigMysqlInnodbReadIoThreads;
+        this.engineConfigMysqlInnodbRollbackOnTimeout = $.engineConfigMysqlInnodbRollbackOnTimeout;
+        this.engineConfigMysqlInnodbThreadConcurrency = $.engineConfigMysqlInnodbThreadConcurrency;
+        this.engineConfigMysqlInnodbWriteIoThreads = $.engineConfigMysqlInnodbWriteIoThreads;
+        this.engineConfigMysqlInteractiveTimeout = $.engineConfigMysqlInteractiveTimeout;
+        this.engineConfigMysqlInternalTmpMemStorageEngine = $.engineConfigMysqlInternalTmpMemStorageEngine;
+        this.engineConfigMysqlMaxAllowedPacket = $.engineConfigMysqlMaxAllowedPacket;
+        this.engineConfigMysqlMaxHeapTableSize = $.engineConfigMysqlMaxHeapTableSize;
+        this.engineConfigMysqlNetBufferLength = $.engineConfigMysqlNetBufferLength;
+        this.engineConfigMysqlNetReadTimeout = $.engineConfigMysqlNetReadTimeout;
+        this.engineConfigMysqlNetWriteTimeout = $.engineConfigMysqlNetWriteTimeout;
+        this.engineConfigMysqlSortBufferSize = $.engineConfigMysqlSortBufferSize;
+        this.engineConfigMysqlSqlMode = $.engineConfigMysqlSqlMode;
+        this.engineConfigMysqlSqlRequirePrimaryKey = $.engineConfigMysqlSqlRequirePrimaryKey;
+        this.engineConfigMysqlTmpTableSize = $.engineConfigMysqlTmpTableSize;
+        this.engineConfigMysqlWaitTimeout = $.engineConfigMysqlWaitTimeout;
         this.engineId = $.engineId;
         this.forkRestoreTime = $.forkRestoreTime;
         this.forkSource = $.forkSource;
@@ -627,6 +1076,594 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
          */
         public Builder engine(String engine) {
             return engine(Output.of(engine));
+        }
+
+        /**
+         * @param engineConfigBinlogRetentionPeriod The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigBinlogRetentionPeriod(@Nullable Output<Integer> engineConfigBinlogRetentionPeriod) {
+            $.engineConfigBinlogRetentionPeriod = engineConfigBinlogRetentionPeriod;
+            return this;
+        }
+
+        /**
+         * @param engineConfigBinlogRetentionPeriod The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigBinlogRetentionPeriod(Integer engineConfigBinlogRetentionPeriod) {
+            return engineConfigBinlogRetentionPeriod(Output.of(engineConfigBinlogRetentionPeriod));
+        }
+
+        /**
+         * @param engineConfigMysqlConnectTimeout The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlConnectTimeout(@Nullable Output<Integer> engineConfigMysqlConnectTimeout) {
+            $.engineConfigMysqlConnectTimeout = engineConfigMysqlConnectTimeout;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlConnectTimeout The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlConnectTimeout(Integer engineConfigMysqlConnectTimeout) {
+            return engineConfigMysqlConnectTimeout(Output.of(engineConfigMysqlConnectTimeout));
+        }
+
+        /**
+         * @param engineConfigMysqlDefaultTimeZone Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlDefaultTimeZone(@Nullable Output<String> engineConfigMysqlDefaultTimeZone) {
+            $.engineConfigMysqlDefaultTimeZone = engineConfigMysqlDefaultTimeZone;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlDefaultTimeZone Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlDefaultTimeZone(String engineConfigMysqlDefaultTimeZone) {
+            return engineConfigMysqlDefaultTimeZone(Output.of(engineConfigMysqlDefaultTimeZone));
+        }
+
+        /**
+         * @param engineConfigMysqlGroupConcatMaxLen The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlGroupConcatMaxLen(@Nullable Output<Double> engineConfigMysqlGroupConcatMaxLen) {
+            $.engineConfigMysqlGroupConcatMaxLen = engineConfigMysqlGroupConcatMaxLen;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlGroupConcatMaxLen The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlGroupConcatMaxLen(Double engineConfigMysqlGroupConcatMaxLen) {
+            return engineConfigMysqlGroupConcatMaxLen(Output.of(engineConfigMysqlGroupConcatMaxLen));
+        }
+
+        /**
+         * @param engineConfigMysqlInformationSchemaStatsExpiry The time, in seconds, before cached statistics expire.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInformationSchemaStatsExpiry(@Nullable Output<Integer> engineConfigMysqlInformationSchemaStatsExpiry) {
+            $.engineConfigMysqlInformationSchemaStatsExpiry = engineConfigMysqlInformationSchemaStatsExpiry;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInformationSchemaStatsExpiry The time, in seconds, before cached statistics expire.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInformationSchemaStatsExpiry(Integer engineConfigMysqlInformationSchemaStatsExpiry) {
+            return engineConfigMysqlInformationSchemaStatsExpiry(Output.of(engineConfigMysqlInformationSchemaStatsExpiry));
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbChangeBufferMaxSize Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbChangeBufferMaxSize(@Nullable Output<Integer> engineConfigMysqlInnodbChangeBufferMaxSize) {
+            $.engineConfigMysqlInnodbChangeBufferMaxSize = engineConfigMysqlInnodbChangeBufferMaxSize;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbChangeBufferMaxSize Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbChangeBufferMaxSize(Integer engineConfigMysqlInnodbChangeBufferMaxSize) {
+            return engineConfigMysqlInnodbChangeBufferMaxSize(Output.of(engineConfigMysqlInnodbChangeBufferMaxSize));
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbFlushNeighbors Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbFlushNeighbors(@Nullable Output<Integer> engineConfigMysqlInnodbFlushNeighbors) {
+            $.engineConfigMysqlInnodbFlushNeighbors = engineConfigMysqlInnodbFlushNeighbors;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbFlushNeighbors Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbFlushNeighbors(Integer engineConfigMysqlInnodbFlushNeighbors) {
+            return engineConfigMysqlInnodbFlushNeighbors(Output.of(engineConfigMysqlInnodbFlushNeighbors));
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbFtMinTokenSize Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbFtMinTokenSize(@Nullable Output<Integer> engineConfigMysqlInnodbFtMinTokenSize) {
+            $.engineConfigMysqlInnodbFtMinTokenSize = engineConfigMysqlInnodbFtMinTokenSize;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbFtMinTokenSize Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbFtMinTokenSize(Integer engineConfigMysqlInnodbFtMinTokenSize) {
+            return engineConfigMysqlInnodbFtMinTokenSize(Output.of(engineConfigMysqlInnodbFtMinTokenSize));
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbFtServerStopwordTable This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbFtServerStopwordTable(@Nullable Output<String> engineConfigMysqlInnodbFtServerStopwordTable) {
+            $.engineConfigMysqlInnodbFtServerStopwordTable = engineConfigMysqlInnodbFtServerStopwordTable;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbFtServerStopwordTable This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbFtServerStopwordTable(String engineConfigMysqlInnodbFtServerStopwordTable) {
+            return engineConfigMysqlInnodbFtServerStopwordTable(Output.of(engineConfigMysqlInnodbFtServerStopwordTable));
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbLockWaitTimeout The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbLockWaitTimeout(@Nullable Output<Integer> engineConfigMysqlInnodbLockWaitTimeout) {
+            $.engineConfigMysqlInnodbLockWaitTimeout = engineConfigMysqlInnodbLockWaitTimeout;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbLockWaitTimeout The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbLockWaitTimeout(Integer engineConfigMysqlInnodbLockWaitTimeout) {
+            return engineConfigMysqlInnodbLockWaitTimeout(Output.of(engineConfigMysqlInnodbLockWaitTimeout));
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbLogBufferSize(@Nullable Output<Integer> engineConfigMysqlInnodbLogBufferSize) {
+            $.engineConfigMysqlInnodbLogBufferSize = engineConfigMysqlInnodbLogBufferSize;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbLogBufferSize(Integer engineConfigMysqlInnodbLogBufferSize) {
+            return engineConfigMysqlInnodbLogBufferSize(Output.of(engineConfigMysqlInnodbLogBufferSize));
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbOnlineAlterLogMaxSize The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbOnlineAlterLogMaxSize(@Nullable Output<Integer> engineConfigMysqlInnodbOnlineAlterLogMaxSize) {
+            $.engineConfigMysqlInnodbOnlineAlterLogMaxSize = engineConfigMysqlInnodbOnlineAlterLogMaxSize;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbOnlineAlterLogMaxSize The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbOnlineAlterLogMaxSize(Integer engineConfigMysqlInnodbOnlineAlterLogMaxSize) {
+            return engineConfigMysqlInnodbOnlineAlterLogMaxSize(Output.of(engineConfigMysqlInnodbOnlineAlterLogMaxSize));
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbReadIoThreads The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbReadIoThreads(@Nullable Output<Integer> engineConfigMysqlInnodbReadIoThreads) {
+            $.engineConfigMysqlInnodbReadIoThreads = engineConfigMysqlInnodbReadIoThreads;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbReadIoThreads The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbReadIoThreads(Integer engineConfigMysqlInnodbReadIoThreads) {
+            return engineConfigMysqlInnodbReadIoThreads(Output.of(engineConfigMysqlInnodbReadIoThreads));
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbRollbackOnTimeout When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbRollbackOnTimeout(@Nullable Output<Boolean> engineConfigMysqlInnodbRollbackOnTimeout) {
+            $.engineConfigMysqlInnodbRollbackOnTimeout = engineConfigMysqlInnodbRollbackOnTimeout;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbRollbackOnTimeout When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbRollbackOnTimeout(Boolean engineConfigMysqlInnodbRollbackOnTimeout) {
+            return engineConfigMysqlInnodbRollbackOnTimeout(Output.of(engineConfigMysqlInnodbRollbackOnTimeout));
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbThreadConcurrency Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbThreadConcurrency(@Nullable Output<Integer> engineConfigMysqlInnodbThreadConcurrency) {
+            $.engineConfigMysqlInnodbThreadConcurrency = engineConfigMysqlInnodbThreadConcurrency;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbThreadConcurrency Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbThreadConcurrency(Integer engineConfigMysqlInnodbThreadConcurrency) {
+            return engineConfigMysqlInnodbThreadConcurrency(Output.of(engineConfigMysqlInnodbThreadConcurrency));
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbWriteIoThreads The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbWriteIoThreads(@Nullable Output<Integer> engineConfigMysqlInnodbWriteIoThreads) {
+            $.engineConfigMysqlInnodbWriteIoThreads = engineConfigMysqlInnodbWriteIoThreads;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInnodbWriteIoThreads The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInnodbWriteIoThreads(Integer engineConfigMysqlInnodbWriteIoThreads) {
+            return engineConfigMysqlInnodbWriteIoThreads(Output.of(engineConfigMysqlInnodbWriteIoThreads));
+        }
+
+        /**
+         * @param engineConfigMysqlInteractiveTimeout The number of seconds the server waits for activity on an interactive connection before closing it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInteractiveTimeout(@Nullable Output<Integer> engineConfigMysqlInteractiveTimeout) {
+            $.engineConfigMysqlInteractiveTimeout = engineConfigMysqlInteractiveTimeout;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInteractiveTimeout The number of seconds the server waits for activity on an interactive connection before closing it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInteractiveTimeout(Integer engineConfigMysqlInteractiveTimeout) {
+            return engineConfigMysqlInteractiveTimeout(Output.of(engineConfigMysqlInteractiveTimeout));
+        }
+
+        /**
+         * @param engineConfigMysqlInternalTmpMemStorageEngine The storage engine for in-memory internal temporary tables.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInternalTmpMemStorageEngine(@Nullable Output<String> engineConfigMysqlInternalTmpMemStorageEngine) {
+            $.engineConfigMysqlInternalTmpMemStorageEngine = engineConfigMysqlInternalTmpMemStorageEngine;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlInternalTmpMemStorageEngine The storage engine for in-memory internal temporary tables.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlInternalTmpMemStorageEngine(String engineConfigMysqlInternalTmpMemStorageEngine) {
+            return engineConfigMysqlInternalTmpMemStorageEngine(Output.of(engineConfigMysqlInternalTmpMemStorageEngine));
+        }
+
+        /**
+         * @param engineConfigMysqlMaxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlMaxAllowedPacket(@Nullable Output<Integer> engineConfigMysqlMaxAllowedPacket) {
+            $.engineConfigMysqlMaxAllowedPacket = engineConfigMysqlMaxAllowedPacket;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlMaxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlMaxAllowedPacket(Integer engineConfigMysqlMaxAllowedPacket) {
+            return engineConfigMysqlMaxAllowedPacket(Output.of(engineConfigMysqlMaxAllowedPacket));
+        }
+
+        /**
+         * @param engineConfigMysqlMaxHeapTableSize Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlMaxHeapTableSize(@Nullable Output<Integer> engineConfigMysqlMaxHeapTableSize) {
+            $.engineConfigMysqlMaxHeapTableSize = engineConfigMysqlMaxHeapTableSize;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlMaxHeapTableSize Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlMaxHeapTableSize(Integer engineConfigMysqlMaxHeapTableSize) {
+            return engineConfigMysqlMaxHeapTableSize(Output.of(engineConfigMysqlMaxHeapTableSize));
+        }
+
+        /**
+         * @param engineConfigMysqlNetBufferLength Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlNetBufferLength(@Nullable Output<Integer> engineConfigMysqlNetBufferLength) {
+            $.engineConfigMysqlNetBufferLength = engineConfigMysqlNetBufferLength;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlNetBufferLength Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlNetBufferLength(Integer engineConfigMysqlNetBufferLength) {
+            return engineConfigMysqlNetBufferLength(Output.of(engineConfigMysqlNetBufferLength));
+        }
+
+        /**
+         * @param engineConfigMysqlNetReadTimeout The number of seconds to wait for more data from a connection before aborting the read.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlNetReadTimeout(@Nullable Output<Integer> engineConfigMysqlNetReadTimeout) {
+            $.engineConfigMysqlNetReadTimeout = engineConfigMysqlNetReadTimeout;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlNetReadTimeout The number of seconds to wait for more data from a connection before aborting the read.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlNetReadTimeout(Integer engineConfigMysqlNetReadTimeout) {
+            return engineConfigMysqlNetReadTimeout(Output.of(engineConfigMysqlNetReadTimeout));
+        }
+
+        /**
+         * @param engineConfigMysqlNetWriteTimeout The number of seconds to wait for a block to be written to a connection before aborting the write.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlNetWriteTimeout(@Nullable Output<Integer> engineConfigMysqlNetWriteTimeout) {
+            $.engineConfigMysqlNetWriteTimeout = engineConfigMysqlNetWriteTimeout;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlNetWriteTimeout The number of seconds to wait for a block to be written to a connection before aborting the write.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlNetWriteTimeout(Integer engineConfigMysqlNetWriteTimeout) {
+            return engineConfigMysqlNetWriteTimeout(Output.of(engineConfigMysqlNetWriteTimeout));
+        }
+
+        /**
+         * @param engineConfigMysqlSortBufferSize Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlSortBufferSize(@Nullable Output<Integer> engineConfigMysqlSortBufferSize) {
+            $.engineConfigMysqlSortBufferSize = engineConfigMysqlSortBufferSize;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlSortBufferSize Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlSortBufferSize(Integer engineConfigMysqlSortBufferSize) {
+            return engineConfigMysqlSortBufferSize(Output.of(engineConfigMysqlSortBufferSize));
+        }
+
+        /**
+         * @param engineConfigMysqlSqlMode Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlSqlMode(@Nullable Output<String> engineConfigMysqlSqlMode) {
+            $.engineConfigMysqlSqlMode = engineConfigMysqlSqlMode;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlSqlMode Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlSqlMode(String engineConfigMysqlSqlMode) {
+            return engineConfigMysqlSqlMode(Output.of(engineConfigMysqlSqlMode));
+        }
+
+        /**
+         * @param engineConfigMysqlSqlRequirePrimaryKey Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlSqlRequirePrimaryKey(@Nullable Output<Boolean> engineConfigMysqlSqlRequirePrimaryKey) {
+            $.engineConfigMysqlSqlRequirePrimaryKey = engineConfigMysqlSqlRequirePrimaryKey;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlSqlRequirePrimaryKey Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlSqlRequirePrimaryKey(Boolean engineConfigMysqlSqlRequirePrimaryKey) {
+            return engineConfigMysqlSqlRequirePrimaryKey(Output.of(engineConfigMysqlSqlRequirePrimaryKey));
+        }
+
+        /**
+         * @param engineConfigMysqlTmpTableSize Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlTmpTableSize(@Nullable Output<Integer> engineConfigMysqlTmpTableSize) {
+            $.engineConfigMysqlTmpTableSize = engineConfigMysqlTmpTableSize;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlTmpTableSize Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlTmpTableSize(Integer engineConfigMysqlTmpTableSize) {
+            return engineConfigMysqlTmpTableSize(Output.of(engineConfigMysqlTmpTableSize));
+        }
+
+        /**
+         * @param engineConfigMysqlWaitTimeout The number of seconds the server waits for activity on a noninteractive connection before closing it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlWaitTimeout(@Nullable Output<Integer> engineConfigMysqlWaitTimeout) {
+            $.engineConfigMysqlWaitTimeout = engineConfigMysqlWaitTimeout;
+            return this;
+        }
+
+        /**
+         * @param engineConfigMysqlWaitTimeout The number of seconds the server waits for activity on a noninteractive connection before closing it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder engineConfigMysqlWaitTimeout(Integer engineConfigMysqlWaitTimeout) {
+            return engineConfigMysqlWaitTimeout(Output.of(engineConfigMysqlWaitTimeout));
         }
 
         /**

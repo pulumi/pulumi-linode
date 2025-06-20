@@ -31,8 +31,8 @@ __all__ = [
     'ImageReplication',
     'ImageTimeouts',
     'InstanceAlerts',
-    'InstanceBackups',
-    'InstanceBackupsSchedule',
+    'InstanceBackup',
+    'InstanceBackupSchedule',
     'InstanceConfig',
     'InstanceConfigDevice',
     'InstanceConfigDevices',
@@ -55,7 +55,7 @@ __all__ = [
     'InstanceIpVpcNat11',
     'InstanceMetadata',
     'InstancePlacementGroup',
-    'InstanceSpecs',
+    'InstanceSpec',
     'LkeClusterControlPlane',
     'LkeClusterControlPlaneAcl',
     'LkeClusterControlPlaneAclAddress',
@@ -109,9 +109,43 @@ __all__ = [
     'GetDatabaseEnginesFilterResult',
     'GetDatabaseMysqlBackupsBackupResult',
     'GetDatabaseMysqlBackupsFilterResult',
+    'GetDatabaseMysqlConfigBinlogRetentionPeriodResult',
+    'GetDatabaseMysqlConfigMysqlResult',
+    'GetDatabaseMysqlConfigMysqlConnectTimeoutResult',
+    'GetDatabaseMysqlConfigMysqlDefaultTimeZoneResult',
+    'GetDatabaseMysqlConfigMysqlGroupConcatMaxLenResult',
+    'GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryResult',
+    'GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeResult',
+    'GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsResult',
+    'GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeResult',
+    'GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableResult',
+    'GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutResult',
+    'GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeResult',
+    'GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeResult',
+    'GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsResult',
+    'GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutResult',
+    'GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyResult',
+    'GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsResult',
+    'GetDatabaseMysqlConfigMysqlInteractiveTimeoutResult',
+    'GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineResult',
+    'GetDatabaseMysqlConfigMysqlMaxAllowedPacketResult',
+    'GetDatabaseMysqlConfigMysqlMaxHeapTableSizeResult',
+    'GetDatabaseMysqlConfigMysqlNetBufferLengthResult',
+    'GetDatabaseMysqlConfigMysqlNetReadTimeoutResult',
+    'GetDatabaseMysqlConfigMysqlNetWriteTimeoutResult',
+    'GetDatabaseMysqlConfigMysqlSortBufferSizeResult',
+    'GetDatabaseMysqlConfigMysqlSqlModeResult',
+    'GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyResult',
+    'GetDatabaseMysqlConfigMysqlTmpTableSizeResult',
+    'GetDatabaseMysqlConfigMysqlWaitTimeoutResult',
     'GetDatabaseMysqlUpdateResult',
     'GetDatabaseMysqlV2PendingUpdateResult',
     'GetDatabaseMysqlV2UpdatesResult',
+    'GetDatabasePostgresqlConfigPgStatMonitorEnableResult',
+    'GetDatabasePostgresqlConfigPglookoutResult',
+    'GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagResult',
+    'GetDatabasePostgresqlConfigSharedBuffersPercentageResult',
+    'GetDatabasePostgresqlConfigWorkMemResult',
     'GetDatabasePostgresqlUpdateResult',
     'GetDatabasePostgresqlV2PendingUpdateResult',
     'GetDatabasePostgresqlV2UpdatesResult',
@@ -153,10 +187,10 @@ __all__ = [
     'GetInstanceNetworkingIpv6LinkLocalVpcNat11Result',
     'GetInstanceNetworkingIpv6SlaacResult',
     'GetInstanceNetworkingIpv6SlaacVpcNat11Result',
-    'GetInstanceTypeAddonsResult',
-    'GetInstanceTypeAddonsBackupResult',
-    'GetInstanceTypeAddonsBackupPriceResult',
-    'GetInstanceTypeAddonsBackupRegionPriceResult',
+    'GetInstanceTypeAddonResult',
+    'GetInstanceTypeAddonBackupResult',
+    'GetInstanceTypeAddonBackupPriceResult',
+    'GetInstanceTypeAddonBackupRegionPriceResult',
     'GetInstanceTypePriceResult',
     'GetInstanceTypeRegionPriceResult',
     'GetInstanceTypesFilterResult',
@@ -246,7 +280,7 @@ __all__ = [
     'GetPlacementGroupsPlacementGroupMigrationsResult',
     'GetPlacementGroupsPlacementGroupMigrationsInboundResult',
     'GetPlacementGroupsPlacementGroupMigrationsOutboundResult',
-    'GetProfileReferralsResult',
+    'GetProfileReferralResult',
     'GetRegionPlacementGroupLimitResult',
     'GetRegionResolverResult',
     'GetRegionsFilterResult',
@@ -1141,11 +1175,11 @@ class InstanceAlerts(dict):
 
 
 @pulumi.output_type
-class InstanceBackups(dict):
+class InstanceBackup(dict):
     def __init__(__self__, *,
                  available: Optional[builtins.bool] = None,
                  enabled: Optional[builtins.bool] = None,
-                 schedule: Optional['outputs.InstanceBackupsSchedule'] = None):
+                 schedules: Optional[Sequence['outputs.InstanceBackupSchedule']] = None):
         """
         :param builtins.bool available: Whether this Backup is available for restoration.
         :param builtins.bool enabled: If this Linode has the Backup service enabled.
@@ -1154,8 +1188,8 @@ class InstanceBackups(dict):
             pulumi.set(__self__, "available", available)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+        if schedules is not None:
+            pulumi.set(__self__, "schedules", schedules)
 
     @property
     @pulumi.getter
@@ -1175,12 +1209,12 @@ class InstanceBackups(dict):
 
     @property
     @pulumi.getter
-    def schedule(self) -> Optional['outputs.InstanceBackupsSchedule']:
-        return pulumi.get(self, "schedule")
+    def schedules(self) -> Optional[Sequence['outputs.InstanceBackupSchedule']]:
+        return pulumi.get(self, "schedules")
 
 
 @pulumi.output_type
-class InstanceBackupsSchedule(dict):
+class InstanceBackupSchedule(dict):
     def __init__(__self__, *,
                  day: Optional[builtins.str] = None,
                  window: Optional[builtins.str] = None):
@@ -2871,7 +2905,7 @@ class InstancePlacementGroup(dict):
 
 
 @pulumi.output_type
-class InstanceSpecs(dict):
+class InstanceSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -2879,14 +2913,14 @@ class InstanceSpecs(dict):
             suggest = "accelerated_devices"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InstanceSpecs. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in InstanceSpec. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        InstanceSpecs.__key_warning(key)
+        InstanceSpec.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        InstanceSpecs.__key_warning(key)
+        InstanceSpec.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -5816,6 +5850,1488 @@ class GetDatabaseMysqlBackupsFilterResult(dict):
 
 
 @pulumi.output_type
+class GetDatabaseMysqlConfigBinlogRetentionPeriodResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlResult(dict):
+    def __init__(__self__, *,
+                 connect_timeout: 'outputs.GetDatabaseMysqlConfigMysqlConnectTimeoutResult',
+                 default_time_zone: 'outputs.GetDatabaseMysqlConfigMysqlDefaultTimeZoneResult',
+                 group_concat_max_len: 'outputs.GetDatabaseMysqlConfigMysqlGroupConcatMaxLenResult',
+                 information_schema_stats_expiry: 'outputs.GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryResult',
+                 innodb_change_buffer_max_size: 'outputs.GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeResult',
+                 innodb_flush_neighbors: 'outputs.GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsResult',
+                 innodb_ft_min_token_size: 'outputs.GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeResult',
+                 innodb_ft_server_stopword_table: 'outputs.GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableResult',
+                 innodb_lock_wait_timeout: 'outputs.GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutResult',
+                 innodb_log_buffer_size: 'outputs.GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeResult',
+                 innodb_online_alter_log_max_size: 'outputs.GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeResult',
+                 innodb_read_io_threads: 'outputs.GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsResult',
+                 innodb_rollback_on_timeout: 'outputs.GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutResult',
+                 innodb_thread_concurrency: 'outputs.GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyResult',
+                 innodb_write_io_threads: 'outputs.GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsResult',
+                 interactive_timeout: 'outputs.GetDatabaseMysqlConfigMysqlInteractiveTimeoutResult',
+                 internal_tmp_mem_storage_engine: 'outputs.GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineResult',
+                 max_allowed_packet: 'outputs.GetDatabaseMysqlConfigMysqlMaxAllowedPacketResult',
+                 max_heap_table_size: 'outputs.GetDatabaseMysqlConfigMysqlMaxHeapTableSizeResult',
+                 net_buffer_length: 'outputs.GetDatabaseMysqlConfigMysqlNetBufferLengthResult',
+                 net_read_timeout: 'outputs.GetDatabaseMysqlConfigMysqlNetReadTimeoutResult',
+                 net_write_timeout: 'outputs.GetDatabaseMysqlConfigMysqlNetWriteTimeoutResult',
+                 sort_buffer_size: 'outputs.GetDatabaseMysqlConfigMysqlSortBufferSizeResult',
+                 sql_mode: 'outputs.GetDatabaseMysqlConfigMysqlSqlModeResult',
+                 sql_require_primary_key: 'outputs.GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyResult',
+                 tmp_table_size: 'outputs.GetDatabaseMysqlConfigMysqlTmpTableSizeResult',
+                 wait_timeout: 'outputs.GetDatabaseMysqlConfigMysqlWaitTimeoutResult'):
+        pulumi.set(__self__, "connect_timeout", connect_timeout)
+        pulumi.set(__self__, "default_time_zone", default_time_zone)
+        pulumi.set(__self__, "group_concat_max_len", group_concat_max_len)
+        pulumi.set(__self__, "information_schema_stats_expiry", information_schema_stats_expiry)
+        pulumi.set(__self__, "innodb_change_buffer_max_size", innodb_change_buffer_max_size)
+        pulumi.set(__self__, "innodb_flush_neighbors", innodb_flush_neighbors)
+        pulumi.set(__self__, "innodb_ft_min_token_size", innodb_ft_min_token_size)
+        pulumi.set(__self__, "innodb_ft_server_stopword_table", innodb_ft_server_stopword_table)
+        pulumi.set(__self__, "innodb_lock_wait_timeout", innodb_lock_wait_timeout)
+        pulumi.set(__self__, "innodb_log_buffer_size", innodb_log_buffer_size)
+        pulumi.set(__self__, "innodb_online_alter_log_max_size", innodb_online_alter_log_max_size)
+        pulumi.set(__self__, "innodb_read_io_threads", innodb_read_io_threads)
+        pulumi.set(__self__, "innodb_rollback_on_timeout", innodb_rollback_on_timeout)
+        pulumi.set(__self__, "innodb_thread_concurrency", innodb_thread_concurrency)
+        pulumi.set(__self__, "innodb_write_io_threads", innodb_write_io_threads)
+        pulumi.set(__self__, "interactive_timeout", interactive_timeout)
+        pulumi.set(__self__, "internal_tmp_mem_storage_engine", internal_tmp_mem_storage_engine)
+        pulumi.set(__self__, "max_allowed_packet", max_allowed_packet)
+        pulumi.set(__self__, "max_heap_table_size", max_heap_table_size)
+        pulumi.set(__self__, "net_buffer_length", net_buffer_length)
+        pulumi.set(__self__, "net_read_timeout", net_read_timeout)
+        pulumi.set(__self__, "net_write_timeout", net_write_timeout)
+        pulumi.set(__self__, "sort_buffer_size", sort_buffer_size)
+        pulumi.set(__self__, "sql_mode", sql_mode)
+        pulumi.set(__self__, "sql_require_primary_key", sql_require_primary_key)
+        pulumi.set(__self__, "tmp_table_size", tmp_table_size)
+        pulumi.set(__self__, "wait_timeout", wait_timeout)
+
+    @property
+    @pulumi.getter(name="connectTimeout")
+    def connect_timeout(self) -> 'outputs.GetDatabaseMysqlConfigMysqlConnectTimeoutResult':
+        return pulumi.get(self, "connect_timeout")
+
+    @property
+    @pulumi.getter(name="defaultTimeZone")
+    def default_time_zone(self) -> 'outputs.GetDatabaseMysqlConfigMysqlDefaultTimeZoneResult':
+        return pulumi.get(self, "default_time_zone")
+
+    @property
+    @pulumi.getter(name="groupConcatMaxLen")
+    def group_concat_max_len(self) -> 'outputs.GetDatabaseMysqlConfigMysqlGroupConcatMaxLenResult':
+        return pulumi.get(self, "group_concat_max_len")
+
+    @property
+    @pulumi.getter(name="informationSchemaStatsExpiry")
+    def information_schema_stats_expiry(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryResult':
+        return pulumi.get(self, "information_schema_stats_expiry")
+
+    @property
+    @pulumi.getter(name="innodbChangeBufferMaxSize")
+    def innodb_change_buffer_max_size(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeResult':
+        return pulumi.get(self, "innodb_change_buffer_max_size")
+
+    @property
+    @pulumi.getter(name="innodbFlushNeighbors")
+    def innodb_flush_neighbors(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsResult':
+        return pulumi.get(self, "innodb_flush_neighbors")
+
+    @property
+    @pulumi.getter(name="innodbFtMinTokenSize")
+    def innodb_ft_min_token_size(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeResult':
+        return pulumi.get(self, "innodb_ft_min_token_size")
+
+    @property
+    @pulumi.getter(name="innodbFtServerStopwordTable")
+    def innodb_ft_server_stopword_table(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableResult':
+        return pulumi.get(self, "innodb_ft_server_stopword_table")
+
+    @property
+    @pulumi.getter(name="innodbLockWaitTimeout")
+    def innodb_lock_wait_timeout(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutResult':
+        return pulumi.get(self, "innodb_lock_wait_timeout")
+
+    @property
+    @pulumi.getter(name="innodbLogBufferSize")
+    def innodb_log_buffer_size(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeResult':
+        return pulumi.get(self, "innodb_log_buffer_size")
+
+    @property
+    @pulumi.getter(name="innodbOnlineAlterLogMaxSize")
+    def innodb_online_alter_log_max_size(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeResult':
+        return pulumi.get(self, "innodb_online_alter_log_max_size")
+
+    @property
+    @pulumi.getter(name="innodbReadIoThreads")
+    def innodb_read_io_threads(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsResult':
+        return pulumi.get(self, "innodb_read_io_threads")
+
+    @property
+    @pulumi.getter(name="innodbRollbackOnTimeout")
+    def innodb_rollback_on_timeout(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutResult':
+        return pulumi.get(self, "innodb_rollback_on_timeout")
+
+    @property
+    @pulumi.getter(name="innodbThreadConcurrency")
+    def innodb_thread_concurrency(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyResult':
+        return pulumi.get(self, "innodb_thread_concurrency")
+
+    @property
+    @pulumi.getter(name="innodbWriteIoThreads")
+    def innodb_write_io_threads(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsResult':
+        return pulumi.get(self, "innodb_write_io_threads")
+
+    @property
+    @pulumi.getter(name="interactiveTimeout")
+    def interactive_timeout(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInteractiveTimeoutResult':
+        return pulumi.get(self, "interactive_timeout")
+
+    @property
+    @pulumi.getter(name="internalTmpMemStorageEngine")
+    def internal_tmp_mem_storage_engine(self) -> 'outputs.GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineResult':
+        return pulumi.get(self, "internal_tmp_mem_storage_engine")
+
+    @property
+    @pulumi.getter(name="maxAllowedPacket")
+    def max_allowed_packet(self) -> 'outputs.GetDatabaseMysqlConfigMysqlMaxAllowedPacketResult':
+        return pulumi.get(self, "max_allowed_packet")
+
+    @property
+    @pulumi.getter(name="maxHeapTableSize")
+    def max_heap_table_size(self) -> 'outputs.GetDatabaseMysqlConfigMysqlMaxHeapTableSizeResult':
+        return pulumi.get(self, "max_heap_table_size")
+
+    @property
+    @pulumi.getter(name="netBufferLength")
+    def net_buffer_length(self) -> 'outputs.GetDatabaseMysqlConfigMysqlNetBufferLengthResult':
+        return pulumi.get(self, "net_buffer_length")
+
+    @property
+    @pulumi.getter(name="netReadTimeout")
+    def net_read_timeout(self) -> 'outputs.GetDatabaseMysqlConfigMysqlNetReadTimeoutResult':
+        return pulumi.get(self, "net_read_timeout")
+
+    @property
+    @pulumi.getter(name="netWriteTimeout")
+    def net_write_timeout(self) -> 'outputs.GetDatabaseMysqlConfigMysqlNetWriteTimeoutResult':
+        return pulumi.get(self, "net_write_timeout")
+
+    @property
+    @pulumi.getter(name="sortBufferSize")
+    def sort_buffer_size(self) -> 'outputs.GetDatabaseMysqlConfigMysqlSortBufferSizeResult':
+        return pulumi.get(self, "sort_buffer_size")
+
+    @property
+    @pulumi.getter(name="sqlMode")
+    def sql_mode(self) -> 'outputs.GetDatabaseMysqlConfigMysqlSqlModeResult':
+        return pulumi.get(self, "sql_mode")
+
+    @property
+    @pulumi.getter(name="sqlRequirePrimaryKey")
+    def sql_require_primary_key(self) -> 'outputs.GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyResult':
+        return pulumi.get(self, "sql_require_primary_key")
+
+    @property
+    @pulumi.getter(name="tmpTableSize")
+    def tmp_table_size(self) -> 'outputs.GetDatabaseMysqlConfigMysqlTmpTableSizeResult':
+        return pulumi.get(self, "tmp_table_size")
+
+    @property
+    @pulumi.getter(name="waitTimeout")
+    def wait_timeout(self) -> 'outputs.GetDatabaseMysqlConfigMysqlWaitTimeoutResult':
+        return pulumi.get(self, "wait_timeout")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlConnectTimeoutResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlDefaultTimeZoneResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.str,
+                 max_length: builtins.int,
+                 min_length: builtins.int,
+                 pattern: builtins.str,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "max_length", max_length)
+        pulumi.set(__self__, "min_length", min_length)
+        pulumi.set(__self__, "pattern", pattern)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.str:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> builtins.int:
+        return pulumi.get(self, "max_length")
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> builtins.int:
+        return pulumi.get(self, "min_length")
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> builtins.str:
+        return pulumi.get(self, "pattern")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlGroupConcatMaxLenResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.float,
+                 maximum: builtins.float,
+                 minimum: builtins.float,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.float:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.float:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.float:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiryResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSizeResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInnodbFlushNeighborsResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSizeResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTableResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.str,
+                 max_length: builtins.int,
+                 pattern: builtins.str,
+                 requires_restart: builtins.bool,
+                 types: Sequence[builtins.str]):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "max_length", max_length)
+        pulumi.set(__self__, "pattern", pattern)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "types", types)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.str:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> builtins.int:
+        return pulumi.get(self, "max_length")
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> builtins.str:
+        return pulumi.get(self, "pattern")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def types(self) -> Sequence[builtins.str]:
+        return pulumi.get(self, "types")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeoutResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInnodbLogBufferSizeResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSizeResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInnodbReadIoThreadsResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeoutResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.bool,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.bool:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInnodbThreadConcurrencyResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInnodbWriteIoThreadsResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInteractiveTimeoutResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngineResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 enums: Sequence[builtins.str],
+                 example: builtins.str,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enums", enums)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enums(self) -> Sequence[builtins.str]:
+        return pulumi.get(self, "enums")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.str:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlMaxAllowedPacketResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlMaxHeapTableSizeResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlNetBufferLengthResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlNetReadTimeoutResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlNetWriteTimeoutResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlSortBufferSizeResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlSqlModeResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.str,
+                 max_length: builtins.int,
+                 pattern: builtins.str,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "max_length", max_length)
+        pulumi.set(__self__, "pattern", pattern)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.str:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> builtins.int:
+        return pulumi.get(self, "max_length")
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> builtins.str:
+        return pulumi.get(self, "pattern")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.bool,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.bool:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlTmpTableSizeResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabaseMysqlConfigMysqlWaitTimeoutResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetDatabaseMysqlUpdateResult(dict):
     def __init__(__self__, *,
                  day_of_week: builtins.str,
@@ -5912,6 +7428,178 @@ class GetDatabaseMysqlV2UpdatesResult(dict):
     @pulumi.getter(name="hourOfDay")
     def hour_of_day(self) -> builtins.int:
         return pulumi.get(self, "hour_of_day")
+
+
+@pulumi.output_type
+class GetDatabasePostgresqlConfigPgStatMonitorEnableResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabasePostgresqlConfigPglookoutResult(dict):
+    def __init__(__self__, *,
+                 max_failover_replication_time_lag: 'outputs.GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagResult'):
+        pulumi.set(__self__, "max_failover_replication_time_lag", max_failover_replication_time_lag)
+
+    @property
+    @pulumi.getter(name="maxFailoverReplicationTimeLag")
+    def max_failover_replication_time_lag(self) -> 'outputs.GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagResult':
+        return pulumi.get(self, "max_failover_replication_time_lag")
+
+
+@pulumi.output_type
+class GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabasePostgresqlConfigSharedBuffersPercentageResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.float,
+                 maximum: builtins.float,
+                 minimum: builtins.float,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.float:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.float:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.float:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatabasePostgresqlConfigWorkMemResult(dict):
+    def __init__(__self__, *,
+                 description: builtins.str,
+                 example: builtins.int,
+                 maximum: builtins.int,
+                 minimum: builtins.int,
+                 requires_restart: builtins.bool,
+                 type: builtins.str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "example", example)
+        pulumi.set(__self__, "maximum", maximum)
+        pulumi.set(__self__, "minimum", minimum)
+        pulumi.set(__self__, "requires_restart", requires_restart)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def example(self) -> builtins.int:
+        return pulumi.get(self, "example")
+
+    @property
+    @pulumi.getter
+    def maximum(self) -> builtins.int:
+        return pulumi.get(self, "maximum")
+
+    @property
+    @pulumi.getter
+    def minimum(self) -> builtins.int:
+        return pulumi.get(self, "minimum")
+
+    @property
+    @pulumi.getter(name="requiresRestart")
+    def requires_restart(self) -> builtins.bool:
+        return pulumi.get(self, "requires_restart")
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -9033,38 +10721,38 @@ class GetInstanceNetworkingIpv6SlaacVpcNat11Result(dict):
 
 
 @pulumi.output_type
-class GetInstanceTypeAddonsResult(dict):
+class GetInstanceTypeAddonResult(dict):
     def __init__(__self__, *,
-                 backups: Sequence['outputs.GetInstanceTypeAddonsBackupResult']):
+                 backups: Sequence['outputs.GetInstanceTypeAddonBackupResult']):
         pulumi.set(__self__, "backups", backups)
 
     @property
     @pulumi.getter
-    def backups(self) -> Sequence['outputs.GetInstanceTypeAddonsBackupResult']:
+    def backups(self) -> Sequence['outputs.GetInstanceTypeAddonBackupResult']:
         return pulumi.get(self, "backups")
 
 
 @pulumi.output_type
-class GetInstanceTypeAddonsBackupResult(dict):
+class GetInstanceTypeAddonBackupResult(dict):
     def __init__(__self__, *,
-                 prices: Sequence['outputs.GetInstanceTypeAddonsBackupPriceResult'],
-                 region_prices: Sequence['outputs.GetInstanceTypeAddonsBackupRegionPriceResult']):
+                 prices: Sequence['outputs.GetInstanceTypeAddonBackupPriceResult'],
+                 region_prices: Sequence['outputs.GetInstanceTypeAddonBackupRegionPriceResult']):
         pulumi.set(__self__, "prices", prices)
         pulumi.set(__self__, "region_prices", region_prices)
 
     @property
     @pulumi.getter
-    def prices(self) -> Sequence['outputs.GetInstanceTypeAddonsBackupPriceResult']:
+    def prices(self) -> Sequence['outputs.GetInstanceTypeAddonBackupPriceResult']:
         return pulumi.get(self, "prices")
 
     @property
     @pulumi.getter(name="regionPrices")
-    def region_prices(self) -> Sequence['outputs.GetInstanceTypeAddonsBackupRegionPriceResult']:
+    def region_prices(self) -> Sequence['outputs.GetInstanceTypeAddonBackupRegionPriceResult']:
         return pulumi.get(self, "region_prices")
 
 
 @pulumi.output_type
-class GetInstanceTypeAddonsBackupPriceResult(dict):
+class GetInstanceTypeAddonBackupPriceResult(dict):
     def __init__(__self__, *,
                  hourly: builtins.float,
                  monthly: builtins.float):
@@ -9093,7 +10781,7 @@ class GetInstanceTypeAddonsBackupPriceResult(dict):
 
 
 @pulumi.output_type
-class GetInstanceTypeAddonsBackupRegionPriceResult(dict):
+class GetInstanceTypeAddonBackupRegionPriceResult(dict):
     def __init__(__self__, *,
                  hourly: builtins.float,
                  id: builtins.str,
@@ -12848,7 +14536,9 @@ class GetNodebalancerConfigsNodebalancerConfigResult(dict):
                  proxy_protocol: builtins.str,
                  ssl_commonname: builtins.str,
                  ssl_fingerprint: builtins.str,
-                 stickiness: builtins.str):
+                 stickiness: builtins.str,
+                 udp_check_port: builtins.int,
+                 udp_session_timeout: builtins.int):
         """
         :param builtins.str algorithm: What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
         :param builtins.str check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
@@ -12870,6 +14560,8 @@ class GetNodebalancerConfigsNodebalancerConfigResult(dict):
         :param builtins.str ssl_commonname: The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param builtins.str ssl_fingerprint: The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         :param builtins.str stickiness: Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        :param builtins.int udp_check_port: Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+        :param builtins.int udp_session_timeout: The idle time in seconds after which a session that hasn’t received packets is destroyed.
         """
         pulumi.set(__self__, "algorithm", algorithm)
         pulumi.set(__self__, "check", check)
@@ -12889,6 +14581,8 @@ class GetNodebalancerConfigsNodebalancerConfigResult(dict):
         pulumi.set(__self__, "ssl_commonname", ssl_commonname)
         pulumi.set(__self__, "ssl_fingerprint", ssl_fingerprint)
         pulumi.set(__self__, "stickiness", stickiness)
+        pulumi.set(__self__, "udp_check_port", udp_check_port)
+        pulumi.set(__self__, "udp_session_timeout", udp_session_timeout)
 
     @property
     @pulumi.getter
@@ -13036,6 +14730,22 @@ class GetNodebalancerConfigsNodebalancerConfigResult(dict):
         """
         return pulumi.get(self, "stickiness")
 
+    @property
+    @pulumi.getter(name="udpCheckPort")
+    def udp_check_port(self) -> builtins.int:
+        """
+        Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+        """
+        return pulumi.get(self, "udp_check_port")
+
+    @property
+    @pulumi.getter(name="udpSessionTimeout")
+    def udp_session_timeout(self) -> builtins.int:
+        """
+        The idle time in seconds after which a session that hasn’t received packets is destroyed.
+        """
+        return pulumi.get(self, "udp_session_timeout")
+
 
 @pulumi.output_type
 class GetNodebalancerConfigsNodebalancerConfigNodeStatusResult(dict):
@@ -13111,6 +14821,7 @@ class GetNodebalancersFilterResult(dict):
 class GetNodebalancersNodebalancerResult(dict):
     def __init__(__self__, *,
                  client_conn_throttle: builtins.int,
+                 client_udp_sess_throttle: builtins.int,
                  created: builtins.str,
                  hostname: builtins.str,
                  id: builtins.int,
@@ -13123,6 +14834,7 @@ class GetNodebalancersNodebalancerResult(dict):
                  updated: builtins.str):
         """
         :param builtins.int client_conn_throttle: Throttle connections per second (0-20)
+        :param builtins.int client_udp_sess_throttle: Throttle UDP sessions per second (0-20).
         :param builtins.str created: When this Linode NodeBalancer was created
         :param builtins.str hostname: This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
         :param builtins.int id: The Linode NodeBalancer's unique ID
@@ -13135,6 +14847,7 @@ class GetNodebalancersNodebalancerResult(dict):
         :param builtins.str updated: When this Linode NodeBalancer was last updated
         """
         pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
+        pulumi.set(__self__, "client_udp_sess_throttle", client_udp_sess_throttle)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "id", id)
@@ -13153,6 +14866,14 @@ class GetNodebalancersNodebalancerResult(dict):
         Throttle connections per second (0-20)
         """
         return pulumi.get(self, "client_conn_throttle")
+
+    @property
+    @pulumi.getter(name="clientUdpSessThrottle")
+    def client_udp_sess_throttle(self) -> builtins.int:
+        """
+        Throttle UDP sessions per second (0-20).
+        """
+        return pulumi.get(self, "client_udp_sess_throttle")
 
     @property
     @pulumi.getter
@@ -13837,7 +15558,7 @@ class GetPlacementGroupsPlacementGroupMigrationsOutboundResult(dict):
 
 
 @pulumi.output_type
-class GetProfileReferralsResult(dict):
+class GetProfileReferralResult(dict):
     def __init__(__self__, *,
                  code: builtins.str,
                  completed: builtins.int,

@@ -14,6 +14,7 @@ import com.pulumi.linode.outputs.DatabasePostgresqlV2PendingUpdate;
 import com.pulumi.linode.outputs.DatabasePostgresqlV2Timeouts;
 import com.pulumi.linode.outputs.DatabasePostgresqlV2Updates;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -109,6 +110,91 @@ import javax.annotation.Nullable;
  * Creating a complex PostgreSQL database:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Creating a PostgreSQL database with engine config fields specified:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.DatabasePostgresqlV2;
+ * import com.pulumi.linode.DatabasePostgresqlV2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
+ *             .label("mydatabase")
+ *             .engineId("postgresql/16")
+ *             .region("us-mia")
+ *             .type("g6-nanode-1")
+ *             .engineConfigPgAutovacuumAnalyzeScaleFactor(0.1)
+ *             .engineConfigPgAutovacuumAnalyzeThreshold(50)
+ *             .engineConfigPgAutovacuumMaxWorkers(3)
+ *             .engineConfigPgAutovacuumNaptime(100)
+ *             .engineConfigPgAutovacuumVacuumCostDelay(20)
+ *             .engineConfigPgAutovacuumVacuumCostLimit(200)
+ *             .engineConfigPgAutovacuumVacuumScaleFactor(0.2)
+ *             .engineConfigPgAutovacuumVacuumThreshold(100)
+ *             .engineConfigPgBgwriterDelay(1000)
+ *             .engineConfigPgBgwriterFlushAfter(512)
+ *             .engineConfigPgBgwriterLruMaxpages(100)
+ *             .engineConfigPgBgwriterLruMultiplier(2.0)
+ *             .engineConfigPgDeadlockTimeout(1000)
+ *             .engineConfigPgDefaultToastCompression("pglz")
+ *             .engineConfigPgIdleInTransactionSessionTimeout(60000)
+ *             .engineConfigPgJit(true)
+ *             .engineConfigPgMaxFilesPerProcess(1000)
+ *             .engineConfigPgMaxLocksPerTransaction(64)
+ *             .engineConfigPgMaxLogicalReplicationWorkers(4)
+ *             .engineConfigPgMaxParallelWorkers(8)
+ *             .engineConfigPgMaxParallelWorkersPerGather(2)
+ *             .engineConfigPgMaxPredLocksPerTransaction(128)
+ *             .engineConfigPgMaxReplicationSlots(8)
+ *             .engineConfigPgMaxSlotWalKeepSize(128)
+ *             .engineConfigPgMaxStackDepth(2097152)
+ *             .engineConfigPgMaxStandbyArchiveDelay(60000)
+ *             .engineConfigPgMaxStandbyStreamingDelay(60000)
+ *             .engineConfigPgMaxWalSenders(20)
+ *             .engineConfigPgMaxWorkerProcesses(8)
+ *             .engineConfigPgPasswordEncryption("scram-sha-256")
+ *             .engineConfigPgPgPartmanBgwInterval(3600)
+ *             .engineConfigPgPgPartmanBgwRole("myrolename")
+ *             .engineConfigPgPgStatMonitorPgsmEnableQueryPlan(true)
+ *             .engineConfigPgPgStatMonitorPgsmMaxBuckets(5)
+ *             .engineConfigPgPgStatStatementsTrack("all")
+ *             .engineConfigPgTempFileLimit(100)
+ *             .engineConfigPgTimezone("Europe/Helsinki")
+ *             .engineConfigPgTrackActivityQuerySize(2048)
+ *             .engineConfigPgTrackCommitTimestamp("on")
+ *             .engineConfigPgTrackFunctions("all")
+ *             .engineConfigPgTrackIoTiming("on")
+ *             .engineConfigPgWalSenderTimeout(60000)
+ *             .engineConfigPgWalWriterDelay(200)
+ *             .engineConfigPgStatMonitorEnable(true)
+ *             .engineConfigPglookoutMaxFailoverReplicationTimeLag(10000)
+ *             .engineConfigSharedBuffersPercentage(25.0)
+ *             .engineConfigWorkMem(400)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Creating a forked PostgreSQL database:
@@ -268,6 +354,664 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> engine() {
         return this.engine;
+    }
+    /**
+     * Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * 
+     */
+    @Export(name="engineConfigPgAutovacuumAnalyzeScaleFactor", refs={Double.class}, tree="[0]")
+    private Output<Double> engineConfigPgAutovacuumAnalyzeScaleFactor;
+
+    /**
+     * @return Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * 
+     */
+    public Output<Double> engineConfigPgAutovacuumAnalyzeScaleFactor() {
+        return this.engineConfigPgAutovacuumAnalyzeScaleFactor;
+    }
+    /**
+     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * 
+     */
+    @Export(name="engineConfigPgAutovacuumAnalyzeThreshold", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgAutovacuumAnalyzeThreshold;
+
+    /**
+     * @return Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * 
+     */
+    public Output<Integer> engineConfigPgAutovacuumAnalyzeThreshold() {
+        return this.engineConfigPgAutovacuumAnalyzeThreshold;
+    }
+    /**
+     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     */
+    @Export(name="engineConfigPgAutovacuumMaxWorkers", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgAutovacuumMaxWorkers;
+
+    /**
+     * @return Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     */
+    public Output<Integer> engineConfigPgAutovacuumMaxWorkers() {
+        return this.engineConfigPgAutovacuumMaxWorkers;
+    }
+    /**
+     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * 
+     */
+    @Export(name="engineConfigPgAutovacuumNaptime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgAutovacuumNaptime;
+
+    /**
+     * @return Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * 
+     */
+    public Output<Integer> engineConfigPgAutovacuumNaptime() {
+        return this.engineConfigPgAutovacuumNaptime;
+    }
+    /**
+     * Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * 
+     */
+    @Export(name="engineConfigPgAutovacuumVacuumCostDelay", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgAutovacuumVacuumCostDelay;
+
+    /**
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * 
+     */
+    public Output<Integer> engineConfigPgAutovacuumVacuumCostDelay() {
+        return this.engineConfigPgAutovacuumVacuumCostDelay;
+    }
+    /**
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * 
+     */
+    @Export(name="engineConfigPgAutovacuumVacuumCostLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgAutovacuumVacuumCostLimit;
+
+    /**
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * 
+     */
+    public Output<Integer> engineConfigPgAutovacuumVacuumCostLimit() {
+        return this.engineConfigPgAutovacuumVacuumCostLimit;
+    }
+    /**
+     * Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * 
+     */
+    @Export(name="engineConfigPgAutovacuumVacuumScaleFactor", refs={Double.class}, tree="[0]")
+    private Output<Double> engineConfigPgAutovacuumVacuumScaleFactor;
+
+    /**
+     * @return Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * 
+     */
+    public Output<Double> engineConfigPgAutovacuumVacuumScaleFactor() {
+        return this.engineConfigPgAutovacuumVacuumScaleFactor;
+    }
+    /**
+     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     */
+    @Export(name="engineConfigPgAutovacuumVacuumThreshold", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgAutovacuumVacuumThreshold;
+
+    /**
+     * @return Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     */
+    public Output<Integer> engineConfigPgAutovacuumVacuumThreshold() {
+        return this.engineConfigPgAutovacuumVacuumThreshold;
+    }
+    /**
+     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     */
+    @Export(name="engineConfigPgBgwriterDelay", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgBgwriterDelay;
+
+    /**
+     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     */
+    public Output<Integer> engineConfigPgBgwriterDelay() {
+        return this.engineConfigPgBgwriterDelay;
+    }
+    /**
+     * Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     */
+    @Export(name="engineConfigPgBgwriterFlushAfter", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgBgwriterFlushAfter;
+
+    /**
+     * @return Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     */
+    public Output<Integer> engineConfigPgBgwriterFlushAfter() {
+        return this.engineConfigPgBgwriterFlushAfter;
+    }
+    /**
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     */
+    @Export(name="engineConfigPgBgwriterLruMaxpages", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgBgwriterLruMaxpages;
+
+    /**
+     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     */
+    public Output<Integer> engineConfigPgBgwriterLruMaxpages() {
+        return this.engineConfigPgBgwriterLruMaxpages;
+    }
+    /**
+     * The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     */
+    @Export(name="engineConfigPgBgwriterLruMultiplier", refs={Double.class}, tree="[0]")
+    private Output<Double> engineConfigPgBgwriterLruMultiplier;
+
+    /**
+     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     */
+    public Output<Double> engineConfigPgBgwriterLruMultiplier() {
+        return this.engineConfigPgBgwriterLruMultiplier;
+    }
+    /**
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     */
+    @Export(name="engineConfigPgDeadlockTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgDeadlockTimeout;
+
+    /**
+     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     */
+    public Output<Integer> engineConfigPgDeadlockTimeout() {
+        return this.engineConfigPgDeadlockTimeout;
+    }
+    /**
+     * Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     */
+    @Export(name="engineConfigPgDefaultToastCompression", refs={String.class}, tree="[0]")
+    private Output<String> engineConfigPgDefaultToastCompression;
+
+    /**
+     * @return Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     */
+    public Output<String> engineConfigPgDefaultToastCompression() {
+        return this.engineConfigPgDefaultToastCompression;
+    }
+    /**
+     * Time out sessions with open transactions after this number of milliseconds.
+     * 
+     */
+    @Export(name="engineConfigPgIdleInTransactionSessionTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgIdleInTransactionSessionTimeout;
+
+    /**
+     * @return Time out sessions with open transactions after this number of milliseconds.
+     * 
+     */
+    public Output<Integer> engineConfigPgIdleInTransactionSessionTimeout() {
+        return this.engineConfigPgIdleInTransactionSessionTimeout;
+    }
+    /**
+     * Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     */
+    @Export(name="engineConfigPgJit", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> engineConfigPgJit;
+
+    /**
+     * @return Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     */
+    public Output<Boolean> engineConfigPgJit() {
+        return this.engineConfigPgJit;
+    }
+    /**
+     * PostgreSQL maximum number of files that can be open per process.
+     * 
+     */
+    @Export(name="engineConfigPgMaxFilesPerProcess", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxFilesPerProcess;
+
+    /**
+     * @return PostgreSQL maximum number of files that can be open per process.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxFilesPerProcess() {
+        return this.engineConfigPgMaxFilesPerProcess;
+    }
+    /**
+     * PostgreSQL maximum locks per transaction.
+     * 
+     */
+    @Export(name="engineConfigPgMaxLocksPerTransaction", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxLocksPerTransaction;
+
+    /**
+     * @return PostgreSQL maximum locks per transaction.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxLocksPerTransaction() {
+        return this.engineConfigPgMaxLocksPerTransaction;
+    }
+    /**
+     * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * 
+     */
+    @Export(name="engineConfigPgMaxLogicalReplicationWorkers", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxLogicalReplicationWorkers;
+
+    /**
+     * @return PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxLogicalReplicationWorkers() {
+        return this.engineConfigPgMaxLogicalReplicationWorkers;
+    }
+    /**
+     * Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     */
+    @Export(name="engineConfigPgMaxParallelWorkers", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxParallelWorkers;
+
+    /**
+     * @return Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxParallelWorkers() {
+        return this.engineConfigPgMaxParallelWorkers;
+    }
+    /**
+     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     */
+    @Export(name="engineConfigPgMaxParallelWorkersPerGather", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxParallelWorkersPerGather;
+
+    /**
+     * @return Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxParallelWorkersPerGather() {
+        return this.engineConfigPgMaxParallelWorkersPerGather;
+    }
+    /**
+     * PostgreSQL maximum predicate locks per transaction.
+     * 
+     */
+    @Export(name="engineConfigPgMaxPredLocksPerTransaction", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxPredLocksPerTransaction;
+
+    /**
+     * @return PostgreSQL maximum predicate locks per transaction.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxPredLocksPerTransaction() {
+        return this.engineConfigPgMaxPredLocksPerTransaction;
+    }
+    /**
+     * PostgreSQL maximum replication slots.
+     * 
+     */
+    @Export(name="engineConfigPgMaxReplicationSlots", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxReplicationSlots;
+
+    /**
+     * @return PostgreSQL maximum replication slots.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxReplicationSlots() {
+        return this.engineConfigPgMaxReplicationSlots;
+    }
+    /**
+     * PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * 
+     */
+    @Export(name="engineConfigPgMaxSlotWalKeepSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxSlotWalKeepSize;
+
+    /**
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxSlotWalKeepSize() {
+        return this.engineConfigPgMaxSlotWalKeepSize;
+    }
+    /**
+     * Maximum depth of the stack in bytes.
+     * 
+     */
+    @Export(name="engineConfigPgMaxStackDepth", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxStackDepth;
+
+    /**
+     * @return Maximum depth of the stack in bytes.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxStackDepth() {
+        return this.engineConfigPgMaxStackDepth;
+    }
+    /**
+     * Max standby archive delay in milliseconds.
+     * 
+     */
+    @Export(name="engineConfigPgMaxStandbyArchiveDelay", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxStandbyArchiveDelay;
+
+    /**
+     * @return Max standby archive delay in milliseconds.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxStandbyArchiveDelay() {
+        return this.engineConfigPgMaxStandbyArchiveDelay;
+    }
+    /**
+     * Max standby streaming delay in milliseconds.
+     * 
+     */
+    @Export(name="engineConfigPgMaxStandbyStreamingDelay", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxStandbyStreamingDelay;
+
+    /**
+     * @return Max standby streaming delay in milliseconds.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxStandbyStreamingDelay() {
+        return this.engineConfigPgMaxStandbyStreamingDelay;
+    }
+    /**
+     * PostgreSQL maximum WAL senders.
+     * 
+     */
+    @Export(name="engineConfigPgMaxWalSenders", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxWalSenders;
+
+    /**
+     * @return PostgreSQL maximum WAL senders.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxWalSenders() {
+        return this.engineConfigPgMaxWalSenders;
+    }
+    /**
+     * Sets the maximum number of background processes that the system can support.
+     * 
+     */
+    @Export(name="engineConfigPgMaxWorkerProcesses", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgMaxWorkerProcesses;
+
+    /**
+     * @return Sets the maximum number of background processes that the system can support.
+     * 
+     */
+    public Output<Integer> engineConfigPgMaxWorkerProcesses() {
+        return this.engineConfigPgMaxWorkerProcesses;
+    }
+    /**
+     * Chooses the algorithm for encrypting passwords. (default `md5`)
+     * 
+     */
+    @Export(name="engineConfigPgPasswordEncryption", refs={String.class}, tree="[0]")
+    private Output<String> engineConfigPgPasswordEncryption;
+
+    /**
+     * @return Chooses the algorithm for encrypting passwords. (default `md5`)
+     * 
+     */
+    public Output<String> engineConfigPgPasswordEncryption() {
+        return this.engineConfigPgPasswordEncryption;
+    }
+    /**
+     * Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     */
+    @Export(name="engineConfigPgPgPartmanBgwInterval", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgPgPartmanBgwInterval;
+
+    /**
+     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     */
+    public Output<Integer> engineConfigPgPgPartmanBgwInterval() {
+        return this.engineConfigPgPgPartmanBgwInterval;
+    }
+    /**
+     * Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     */
+    @Export(name="engineConfigPgPgPartmanBgwRole", refs={String.class}, tree="[0]")
+    private Output<String> engineConfigPgPgPartmanBgwRole;
+
+    /**
+     * @return Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     */
+    public Output<String> engineConfigPgPgPartmanBgwRole() {
+        return this.engineConfigPgPgPartmanBgwRole;
+    }
+    /**
+     * Enables or disables query plan monitoring.
+     * 
+     */
+    @Export(name="engineConfigPgPgStatMonitorPgsmEnableQueryPlan", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+
+    /**
+     * @return Enables or disables query plan monitoring.
+     * 
+     */
+    public Output<Boolean> engineConfigPgPgStatMonitorPgsmEnableQueryPlan() {
+        return this.engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+    }
+    /**
+     * Sets the maximum number of buckets.
+     * 
+     */
+    @Export(name="engineConfigPgPgStatMonitorPgsmMaxBuckets", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgPgStatMonitorPgsmMaxBuckets;
+
+    /**
+     * @return Sets the maximum number of buckets.
+     * 
+     */
+    public Output<Integer> engineConfigPgPgStatMonitorPgsmMaxBuckets() {
+        return this.engineConfigPgPgStatMonitorPgsmMaxBuckets;
+    }
+    /**
+     * Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     */
+    @Export(name="engineConfigPgPgStatStatementsTrack", refs={String.class}, tree="[0]")
+    private Output<String> engineConfigPgPgStatStatementsTrack;
+
+    /**
+     * @return Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     */
+    public Output<String> engineConfigPgPgStatStatementsTrack() {
+        return this.engineConfigPgPgStatStatementsTrack;
+    }
+    /**
+     * Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+     * 
+     */
+    @Export(name="engineConfigPgStatMonitorEnable", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> engineConfigPgStatMonitorEnable;
+
+    /**
+     * @return Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+     * 
+     */
+    public Output<Boolean> engineConfigPgStatMonitorEnable() {
+        return this.engineConfigPgStatMonitorEnable;
+    }
+    /**
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     */
+    @Export(name="engineConfigPgTempFileLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgTempFileLimit;
+
+    /**
+     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     */
+    public Output<Integer> engineConfigPgTempFileLimit() {
+        return this.engineConfigPgTempFileLimit;
+    }
+    /**
+     * PostgreSQL service timezone.
+     * 
+     */
+    @Export(name="engineConfigPgTimezone", refs={String.class}, tree="[0]")
+    private Output<String> engineConfigPgTimezone;
+
+    /**
+     * @return PostgreSQL service timezone.
+     * 
+     */
+    public Output<String> engineConfigPgTimezone() {
+        return this.engineConfigPgTimezone;
+    }
+    /**
+     * Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     */
+    @Export(name="engineConfigPgTrackActivityQuerySize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgTrackActivityQuerySize;
+
+    /**
+     * @return Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     */
+    public Output<Integer> engineConfigPgTrackActivityQuerySize() {
+        return this.engineConfigPgTrackActivityQuerySize;
+    }
+    /**
+     * Record commit time of transactions.
+     * 
+     */
+    @Export(name="engineConfigPgTrackCommitTimestamp", refs={String.class}, tree="[0]")
+    private Output<String> engineConfigPgTrackCommitTimestamp;
+
+    /**
+     * @return Record commit time of transactions.
+     * 
+     */
+    public Output<String> engineConfigPgTrackCommitTimestamp() {
+        return this.engineConfigPgTrackCommitTimestamp;
+    }
+    /**
+     * Enables tracking of function call counts and time used.
+     * 
+     */
+    @Export(name="engineConfigPgTrackFunctions", refs={String.class}, tree="[0]")
+    private Output<String> engineConfigPgTrackFunctions;
+
+    /**
+     * @return Enables tracking of function call counts and time used.
+     * 
+     */
+    public Output<String> engineConfigPgTrackFunctions() {
+        return this.engineConfigPgTrackFunctions;
+    }
+    /**
+     * Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     */
+    @Export(name="engineConfigPgTrackIoTiming", refs={String.class}, tree="[0]")
+    private Output<String> engineConfigPgTrackIoTiming;
+
+    /**
+     * @return Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     */
+    public Output<String> engineConfigPgTrackIoTiming() {
+        return this.engineConfigPgTrackIoTiming;
+    }
+    /**
+     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     */
+    @Export(name="engineConfigPgWalSenderTimeout", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgWalSenderTimeout;
+
+    /**
+     * @return Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     */
+    public Output<Integer> engineConfigPgWalSenderTimeout() {
+        return this.engineConfigPgWalSenderTimeout;
+    }
+    /**
+     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     */
+    @Export(name="engineConfigPgWalWriterDelay", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPgWalWriterDelay;
+
+    /**
+     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     */
+    public Output<Integer> engineConfigPgWalWriterDelay() {
+        return this.engineConfigPgWalWriterDelay;
+    }
+    /**
+     * Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+     * 
+     */
+    @Export(name="engineConfigPglookoutMaxFailoverReplicationTimeLag", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigPglookoutMaxFailoverReplicationTimeLag;
+
+    /**
+     * @return Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+     * 
+     */
+    public Output<Integer> engineConfigPglookoutMaxFailoverReplicationTimeLag() {
+        return this.engineConfigPglookoutMaxFailoverReplicationTimeLag;
+    }
+    /**
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * 
+     */
+    @Export(name="engineConfigSharedBuffersPercentage", refs={Double.class}, tree="[0]")
+    private Output<Double> engineConfigSharedBuffersPercentage;
+
+    /**
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * 
+     */
+    public Output<Double> engineConfigSharedBuffersPercentage() {
+        return this.engineConfigSharedBuffersPercentage;
+    }
+    /**
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * 
+     */
+    @Export(name="engineConfigWorkMem", refs={Integer.class}, tree="[0]")
+    private Output<Integer> engineConfigWorkMem;
+
+    /**
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * 
+     */
+    public Output<Integer> engineConfigWorkMem() {
+        return this.engineConfigWorkMem;
     }
     /**
      * The Managed Database engine in engine/version format. (e.g. `postgresql/16`)

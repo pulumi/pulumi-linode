@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  *             .label("mynodebalancer")
  *             .region("us-east")
  *             .clientConnThrottle(20)
+ *             .clientUdpSessThrottle(10)
  *             .tags("foobar")
  *             .build());
  * 
@@ -86,6 +87,24 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> clientConnThrottle() {
         return this.clientConnThrottle;
+    }
+    /**
+     * Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+     * 
+     * * **NOTE: This argument may not be generally available.**
+     * 
+     */
+    @Export(name="clientUdpSessThrottle", refs={Integer.class}, tree="[0]")
+    private Output<Integer> clientUdpSessThrottle;
+
+    /**
+     * @return Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+     * 
+     * * **NOTE: This argument may not be generally available.**
+     * 
+     */
+    public Output<Integer> clientUdpSessThrottle() {
+        return this.clientUdpSessThrottle;
     }
     /**
      * When this firewall was created.

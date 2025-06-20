@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
+	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -93,6 +93,100 @@ type LookupDatabasePostgresqlV2Result struct {
 	Encrypted bool `pulumi:"encrypted"`
 	// The Managed Database engine. (e.g. `postgresql`)
 	Engine string `pulumi:"engine"`
+	// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+	EngineConfigPgAutovacuumAnalyzeScaleFactor float64 `pulumi:"engineConfigPgAutovacuumAnalyzeScaleFactor"`
+	// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+	EngineConfigPgAutovacuumAnalyzeThreshold int `pulumi:"engineConfigPgAutovacuumAnalyzeThreshold"`
+	// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+	EngineConfigPgAutovacuumMaxWorkers int `pulumi:"engineConfigPgAutovacuumMaxWorkers"`
+	// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+	EngineConfigPgAutovacuumNaptime int `pulumi:"engineConfigPgAutovacuumNaptime"`
+	// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+	EngineConfigPgAutovacuumVacuumCostDelay int `pulumi:"engineConfigPgAutovacuumVacuumCostDelay"`
+	// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+	EngineConfigPgAutovacuumVacuumCostLimit int `pulumi:"engineConfigPgAutovacuumVacuumCostLimit"`
+	// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+	EngineConfigPgAutovacuumVacuumScaleFactor float64 `pulumi:"engineConfigPgAutovacuumVacuumScaleFactor"`
+	// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+	EngineConfigPgAutovacuumVacuumThreshold int `pulumi:"engineConfigPgAutovacuumVacuumThreshold"`
+	// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+	EngineConfigPgBgwriterDelay int `pulumi:"engineConfigPgBgwriterDelay"`
+	// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+	EngineConfigPgBgwriterFlushAfter int `pulumi:"engineConfigPgBgwriterFlushAfter"`
+	// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+	EngineConfigPgBgwriterLruMaxpages int `pulumi:"engineConfigPgBgwriterLruMaxpages"`
+	// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+	EngineConfigPgBgwriterLruMultiplier float64 `pulumi:"engineConfigPgBgwriterLruMultiplier"`
+	// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+	EngineConfigPgDeadlockTimeout int `pulumi:"engineConfigPgDeadlockTimeout"`
+	// Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+	EngineConfigPgDefaultToastCompression string `pulumi:"engineConfigPgDefaultToastCompression"`
+	// Time out sessions with open transactions after this number of milliseconds.
+	EngineConfigPgIdleInTransactionSessionTimeout int `pulumi:"engineConfigPgIdleInTransactionSessionTimeout"`
+	// Controls system-wide use of Just-in-Time Compilation (JIT).
+	EngineConfigPgJit bool `pulumi:"engineConfigPgJit"`
+	// PostgreSQL maximum number of files that can be open per process.
+	EngineConfigPgMaxFilesPerProcess int `pulumi:"engineConfigPgMaxFilesPerProcess"`
+	// PostgreSQL maximum locks per transaction.
+	EngineConfigPgMaxLocksPerTransaction int `pulumi:"engineConfigPgMaxLocksPerTransaction"`
+	// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+	EngineConfigPgMaxLogicalReplicationWorkers int `pulumi:"engineConfigPgMaxLogicalReplicationWorkers"`
+	// Sets the maximum number of workers that the system can support for parallel queries.
+	EngineConfigPgMaxParallelWorkers int `pulumi:"engineConfigPgMaxParallelWorkers"`
+	// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+	EngineConfigPgMaxParallelWorkersPerGather int `pulumi:"engineConfigPgMaxParallelWorkersPerGather"`
+	// PostgreSQL maximum predicate locks per transaction.
+	EngineConfigPgMaxPredLocksPerTransaction int `pulumi:"engineConfigPgMaxPredLocksPerTransaction"`
+	// PostgreSQL maximum replication slots.
+	EngineConfigPgMaxReplicationSlots int `pulumi:"engineConfigPgMaxReplicationSlots"`
+	// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+	EngineConfigPgMaxSlotWalKeepSize int `pulumi:"engineConfigPgMaxSlotWalKeepSize"`
+	// Maximum depth of the stack in bytes.
+	EngineConfigPgMaxStackDepth int `pulumi:"engineConfigPgMaxStackDepth"`
+	// Max standby archive delay in milliseconds.
+	EngineConfigPgMaxStandbyArchiveDelay int `pulumi:"engineConfigPgMaxStandbyArchiveDelay"`
+	// Max standby streaming delay in milliseconds.
+	EngineConfigPgMaxStandbyStreamingDelay int `pulumi:"engineConfigPgMaxStandbyStreamingDelay"`
+	// PostgreSQL maximum WAL senders.
+	EngineConfigPgMaxWalSenders int `pulumi:"engineConfigPgMaxWalSenders"`
+	// Sets the maximum number of background processes that the system can support.
+	EngineConfigPgMaxWorkerProcesses int `pulumi:"engineConfigPgMaxWorkerProcesses"`
+	// Chooses the algorithm for encrypting passwords.
+	EngineConfigPgPasswordEncryption string `pulumi:"engineConfigPgPasswordEncryption"`
+	// Sets the time interval to run pg_partman's scheduled tasks.
+	EngineConfigPgPgPartmanBgwInterval int `pulumi:"engineConfigPgPgPartmanBgwInterval"`
+	// Controls which role to use for pg_partman's scheduled background tasks.
+	EngineConfigPgPgPartmanBgwRole string `pulumi:"engineConfigPgPgPartmanBgwRole"`
+	// Enables or disables query plan monitoring.
+	EngineConfigPgPgStatMonitorPgsmEnableQueryPlan bool `pulumi:"engineConfigPgPgStatMonitorPgsmEnableQueryPlan"`
+	// Sets the maximum number of buckets.
+	EngineConfigPgPgStatMonitorPgsmMaxBuckets int `pulumi:"engineConfigPgPgStatMonitorPgsmMaxBuckets"`
+	// Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+	EngineConfigPgPgStatStatementsTrack string `pulumi:"engineConfigPgPgStatStatementsTrack"`
+	// Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pgStatStatements results for utility commands are unreliable.
+	EngineConfigPgStatMonitorEnable bool `pulumi:"engineConfigPgStatMonitorEnable"`
+	// PostgreSQL temporary file limit in KiB, -1 for unlimited.
+	EngineConfigPgTempFileLimit int `pulumi:"engineConfigPgTempFileLimit"`
+	// PostgreSQL service timezone.
+	EngineConfigPgTimezone string `pulumi:"engineConfigPgTimezone"`
+	// Specifies the number of bytes reserved to track the currently executing command for each active session.
+	EngineConfigPgTrackActivityQuerySize int `pulumi:"engineConfigPgTrackActivityQuerySize"`
+	// Record commit time of transactions.
+	EngineConfigPgTrackCommitTimestamp string `pulumi:"engineConfigPgTrackCommitTimestamp"`
+	// Enables tracking of function call counts and time used.
+	EngineConfigPgTrackFunctions string `pulumi:"engineConfigPgTrackFunctions"`
+	// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+	EngineConfigPgTrackIoTiming string `pulumi:"engineConfigPgTrackIoTiming"`
+	// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+	EngineConfigPgWalSenderTimeout int `pulumi:"engineConfigPgWalSenderTimeout"`
+	// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+	EngineConfigPgWalWriterDelay int `pulumi:"engineConfigPgWalWriterDelay"`
+	// Number of seconds of master unavailability before triggering database failover to standby.
+	EngineConfigPglookoutMaxFailoverReplicationTimeLag int `pulumi:"engineConfigPglookoutMaxFailoverReplicationTimeLag"`
+	// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
+	EngineConfigSharedBuffersPercentage float64 `pulumi:"engineConfigSharedBuffersPercentage"`
+	// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+	EngineConfigWorkMem int `pulumi:"engineConfigWorkMem"`
 	// The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
 	EngineId string `pulumi:"engineId"`
 	// The database timestamp from which it was restored.
@@ -196,6 +290,243 @@ func (o LookupDatabasePostgresqlV2ResultOutput) Encrypted() pulumi.BoolOutput {
 // The Managed Database engine. (e.g. `postgresql`)
 func (o LookupDatabasePostgresqlV2ResultOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgAutovacuumAnalyzeScaleFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) float64 { return v.EngineConfigPgAutovacuumAnalyzeScaleFactor }).(pulumi.Float64Output)
+}
+
+// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgAutovacuumAnalyzeThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgAutovacuumAnalyzeThreshold }).(pulumi.IntOutput)
+}
+
+// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgAutovacuumMaxWorkers() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgAutovacuumMaxWorkers }).(pulumi.IntOutput)
+}
+
+// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgAutovacuumNaptime() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgAutovacuumNaptime }).(pulumi.IntOutput)
+}
+
+// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgAutovacuumVacuumCostDelay() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgAutovacuumVacuumCostDelay }).(pulumi.IntOutput)
+}
+
+// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgAutovacuumVacuumCostLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgAutovacuumVacuumCostLimit }).(pulumi.IntOutput)
+}
+
+// Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgAutovacuumVacuumScaleFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) float64 { return v.EngineConfigPgAutovacuumVacuumScaleFactor }).(pulumi.Float64Output)
+}
+
+// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgAutovacuumVacuumThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgAutovacuumVacuumThreshold }).(pulumi.IntOutput)
+}
+
+// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgBgwriterDelay() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgBgwriterDelay }).(pulumi.IntOutput)
+}
+
+// Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgBgwriterFlushAfter() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgBgwriterFlushAfter }).(pulumi.IntOutput)
+}
+
+// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgBgwriterLruMaxpages() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgBgwriterLruMaxpages }).(pulumi.IntOutput)
+}
+
+// The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgBgwriterLruMultiplier() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) float64 { return v.EngineConfigPgBgwriterLruMultiplier }).(pulumi.Float64Output)
+}
+
+// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgDeadlockTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgDeadlockTimeout }).(pulumi.IntOutput)
+}
+
+// Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgDefaultToastCompression() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) string { return v.EngineConfigPgDefaultToastCompression }).(pulumi.StringOutput)
+}
+
+// Time out sessions with open transactions after this number of milliseconds.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgIdleInTransactionSessionTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgIdleInTransactionSessionTimeout }).(pulumi.IntOutput)
+}
+
+// Controls system-wide use of Just-in-Time Compilation (JIT).
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgJit() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) bool { return v.EngineConfigPgJit }).(pulumi.BoolOutput)
+}
+
+// PostgreSQL maximum number of files that can be open per process.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxFilesPerProcess() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxFilesPerProcess }).(pulumi.IntOutput)
+}
+
+// PostgreSQL maximum locks per transaction.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxLocksPerTransaction() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxLocksPerTransaction }).(pulumi.IntOutput)
+}
+
+// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxLogicalReplicationWorkers() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxLogicalReplicationWorkers }).(pulumi.IntOutput)
+}
+
+// Sets the maximum number of workers that the system can support for parallel queries.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxParallelWorkers() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxParallelWorkers }).(pulumi.IntOutput)
+}
+
+// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxParallelWorkersPerGather() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxParallelWorkersPerGather }).(pulumi.IntOutput)
+}
+
+// PostgreSQL maximum predicate locks per transaction.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxPredLocksPerTransaction() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxPredLocksPerTransaction }).(pulumi.IntOutput)
+}
+
+// PostgreSQL maximum replication slots.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxReplicationSlots() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxReplicationSlots }).(pulumi.IntOutput)
+}
+
+// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxSlotWalKeepSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxSlotWalKeepSize }).(pulumi.IntOutput)
+}
+
+// Maximum depth of the stack in bytes.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxStackDepth() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxStackDepth }).(pulumi.IntOutput)
+}
+
+// Max standby archive delay in milliseconds.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxStandbyArchiveDelay() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxStandbyArchiveDelay }).(pulumi.IntOutput)
+}
+
+// Max standby streaming delay in milliseconds.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxStandbyStreamingDelay() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxStandbyStreamingDelay }).(pulumi.IntOutput)
+}
+
+// PostgreSQL maximum WAL senders.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxWalSenders() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxWalSenders }).(pulumi.IntOutput)
+}
+
+// Sets the maximum number of background processes that the system can support.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgMaxWorkerProcesses() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgMaxWorkerProcesses }).(pulumi.IntOutput)
+}
+
+// Chooses the algorithm for encrypting passwords.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgPasswordEncryption() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) string { return v.EngineConfigPgPasswordEncryption }).(pulumi.StringOutput)
+}
+
+// Sets the time interval to run pg_partman's scheduled tasks.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgPgPartmanBgwInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgPgPartmanBgwInterval }).(pulumi.IntOutput)
+}
+
+// Controls which role to use for pg_partman's scheduled background tasks.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgPgPartmanBgwRole() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) string { return v.EngineConfigPgPgPartmanBgwRole }).(pulumi.StringOutput)
+}
+
+// Enables or disables query plan monitoring.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgPgStatMonitorPgsmEnableQueryPlan() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) bool { return v.EngineConfigPgPgStatMonitorPgsmEnableQueryPlan }).(pulumi.BoolOutput)
+}
+
+// Sets the maximum number of buckets.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgPgStatMonitorPgsmMaxBuckets() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgPgStatMonitorPgsmMaxBuckets }).(pulumi.IntOutput)
+}
+
+// Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgPgStatStatementsTrack() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) string { return v.EngineConfigPgPgStatStatementsTrack }).(pulumi.StringOutput)
+}
+
+// Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pgStatStatements results for utility commands are unreliable.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgStatMonitorEnable() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) bool { return v.EngineConfigPgStatMonitorEnable }).(pulumi.BoolOutput)
+}
+
+// PostgreSQL temporary file limit in KiB, -1 for unlimited.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgTempFileLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgTempFileLimit }).(pulumi.IntOutput)
+}
+
+// PostgreSQL service timezone.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgTimezone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) string { return v.EngineConfigPgTimezone }).(pulumi.StringOutput)
+}
+
+// Specifies the number of bytes reserved to track the currently executing command for each active session.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgTrackActivityQuerySize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgTrackActivityQuerySize }).(pulumi.IntOutput)
+}
+
+// Record commit time of transactions.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgTrackCommitTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) string { return v.EngineConfigPgTrackCommitTimestamp }).(pulumi.StringOutput)
+}
+
+// Enables tracking of function call counts and time used.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgTrackFunctions() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) string { return v.EngineConfigPgTrackFunctions }).(pulumi.StringOutput)
+}
+
+// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgTrackIoTiming() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) string { return v.EngineConfigPgTrackIoTiming }).(pulumi.StringOutput)
+}
+
+// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgWalSenderTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgWalSenderTimeout }).(pulumi.IntOutput)
+}
+
+// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPgWalWriterDelay() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigPgWalWriterDelay }).(pulumi.IntOutput)
+}
+
+// Number of seconds of master unavailability before triggering database failover to standby.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigPglookoutMaxFailoverReplicationTimeLag() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int {
+		return v.EngineConfigPglookoutMaxFailoverReplicationTimeLag
+	}).(pulumi.IntOutput)
+}
+
+// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigSharedBuffersPercentage() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) float64 { return v.EngineConfigSharedBuffersPercentage }).(pulumi.Float64Output)
+}
+
+// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+func (o LookupDatabasePostgresqlV2ResultOutput) EngineConfigWorkMem() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDatabasePostgresqlV2Result) int { return v.EngineConfigWorkMem }).(pulumi.IntOutput)
 }
 
 // The Managed Database engine in engine/version format. (e.g. `postgresql/16`)

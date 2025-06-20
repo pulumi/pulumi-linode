@@ -11,13 +11,13 @@ import com.pulumi.linode.InstanceArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.InstanceState;
 import com.pulumi.linode.outputs.InstanceAlerts;
-import com.pulumi.linode.outputs.InstanceBackups;
+import com.pulumi.linode.outputs.InstanceBackup;
 import com.pulumi.linode.outputs.InstanceConfig;
 import com.pulumi.linode.outputs.InstanceDisk;
 import com.pulumi.linode.outputs.InstanceInterface;
 import com.pulumi.linode.outputs.InstanceMetadata;
 import com.pulumi.linode.outputs.InstancePlacementGroup;
-import com.pulumi.linode.outputs.InstanceSpecs;
+import com.pulumi.linode.outputs.InstanceSpec;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -271,14 +271,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Information about this Linode&#39;s backups status.
      * 
      */
-    @Export(name="backups", refs={InstanceBackups.class}, tree="[0]")
-    private Output<InstanceBackups> backups;
+    @Export(name="backups", refs={List.class,InstanceBackup.class}, tree="[0,1]")
+    private Output<List<InstanceBackup>> backups;
 
     /**
      * @return Information about this Linode&#39;s backups status.
      * 
      */
-    public Output<InstanceBackups> backups() {
+    public Output<List<InstanceBackup>> backups() {
         return this.backups;
     }
     /**
@@ -731,14 +731,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Information about the resources available to this Linode.
      * 
      */
-    @Export(name="specs", refs={InstanceSpecs.class}, tree="[0]")
-    private Output<InstanceSpecs> specs;
+    @Export(name="specs", refs={List.class,InstanceSpec.class}, tree="[0,1]")
+    private Output<List<InstanceSpec>> specs;
 
     /**
      * @return Information about the resources available to this Linode.
      * 
      */
-    public Output<InstanceSpecs> specs() {
+    public Output<List<InstanceSpec>> specs() {
         return this.specs;
     }
     /**

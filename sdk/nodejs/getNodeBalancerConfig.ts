@@ -108,6 +108,14 @@ export interface GetNodeBalancerConfigResult {
      * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
     readonly stickiness: string;
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     */
+    readonly udpCheckPort: number;
+    /**
+     * The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     */
+    readonly udpSessionTimeout: number;
 }
 /**
  * Provides details about a Linode NodeBalancer Config.

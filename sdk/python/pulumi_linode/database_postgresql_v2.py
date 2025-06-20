@@ -28,6 +28,53 @@ class DatabasePostgresqlV2Args:
                  type: pulumi.Input[builtins.str],
                  allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  cluster_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_analyze_scale_factor: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_autovacuum_analyze_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_max_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_naptime: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_cost_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_cost_limit: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_scale_factor: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_autovacuum_vacuum_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_flush_after: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_lru_maxpages: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_lru_multiplier: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_deadlock_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_default_toast_compression: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_idle_in_transaction_session_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_jit: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_max_files_per_process: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_locks_per_transaction: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_logical_replication_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_parallel_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_parallel_workers_per_gather: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_pred_locks_per_transaction: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_replication_slots: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_slot_wal_keep_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_stack_depth: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_standby_archive_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_standby_streaming_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_wal_senders: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_worker_processes: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_password_encryption: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_pg_partman_bgw_interval: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_pg_partman_bgw_role: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_pg_stat_monitor_pgsm_max_buckets: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_pg_stat_statements_track: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_stat_monitor_enable: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_temp_file_limit: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_timezone: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_activity_query_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_track_commit_timestamp: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_functions: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_io_timing: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_wal_sender_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_wal_writer_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pglookout_max_failover_replication_time_lag: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_shared_buffers_percentage: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_work_mem: Optional[pulumi.Input[builtins.int]] = None,
                  fork_restore_time: Optional[pulumi.Input[builtins.str]] = None,
                  fork_source: Optional[pulumi.Input[builtins.int]] = None,
                  suspended: Optional[pulumi.Input[builtins.bool]] = None,
@@ -43,6 +90,53 @@ class DatabasePostgresqlV2Args:
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[builtins.int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
+        :param pulumi.Input[builtins.float] engine_config_pg_autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_cost_delay: Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_cost_limit: Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        :param pulumi.Input[builtins.float] engine_config_pg_autovacuum_vacuum_scale_factor: Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_threshold: Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_delay: Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_flush_after: Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        :param pulumi.Input[builtins.float] engine_config_pg_bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        :param pulumi.Input[builtins.int] engine_config_pg_deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        :param pulumi.Input[builtins.str] engine_config_pg_default_toast_compression: Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        :param pulumi.Input[builtins.int] engine_config_pg_idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
+        :param pulumi.Input[builtins.bool] engine_config_pg_jit: Controls system-wide use of Just-in-Time Compilation (JIT).
+        :param pulumi.Input[builtins.int] engine_config_pg_max_files_per_process: PostgreSQL maximum number of files that can be open per process.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_locks_per_transaction: PostgreSQL maximum locks per transaction.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_logical_replication_workers: PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+        :param pulumi.Input[builtins.int] engine_config_pg_max_parallel_workers: Sets the maximum number of workers that the system can support for parallel queries.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_parallel_workers_per_gather: Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_pred_locks_per_transaction: PostgreSQL maximum predicate locks per transaction.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_replication_slots: PostgreSQL maximum replication slots.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_slot_wal_keep_size: PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_stack_depth: Maximum depth of the stack in bytes.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_standby_archive_delay: Max standby archive delay in milliseconds.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_standby_streaming_delay: Max standby streaming delay in milliseconds.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_wal_senders: PostgreSQL maximum WAL senders.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_worker_processes: Sets the maximum number of background processes that the system can support.
+        :param pulumi.Input[builtins.str] engine_config_pg_password_encryption: Chooses the algorithm for encrypting passwords. (default `md5`)
+        :param pulumi.Input[builtins.int] engine_config_pg_pg_partman_bgw_interval: Sets the time interval to run pg_partman's scheduled tasks.
+        :param pulumi.Input[builtins.str] engine_config_pg_pg_partman_bgw_role: Controls which role to use for pg_partman's scheduled background tasks.
+        :param pulumi.Input[builtins.bool] engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan: Enables or disables query plan monitoring.
+        :param pulumi.Input[builtins.int] engine_config_pg_pg_stat_monitor_pgsm_max_buckets: Sets the maximum number of buckets.
+        :param pulumi.Input[builtins.str] engine_config_pg_pg_stat_statements_track: Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        :param pulumi.Input[builtins.bool] engine_config_pg_stat_monitor_enable: Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        :param pulumi.Input[builtins.int] engine_config_pg_temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        :param pulumi.Input[builtins.str] engine_config_pg_timezone: PostgreSQL service timezone.
+        :param pulumi.Input[builtins.int] engine_config_pg_track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_commit_timestamp: Record commit time of transactions.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_functions: Enables tracking of function call counts and time used.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_io_timing: Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        :param pulumi.Input[builtins.int] engine_config_pg_wal_sender_timeout: Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        :param pulumi.Input[builtins.int] engine_config_pg_wal_writer_delay: WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        :param pulumi.Input[builtins.int] engine_config_pglookout_max_failover_replication_time_lag: Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+        :param pulumi.Input[builtins.float] engine_config_shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        :param pulumi.Input[builtins.int] engine_config_work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         :param pulumi.Input[builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[builtins.int] fork_source: The ID of the database that was forked from.
                
@@ -58,6 +152,100 @@ class DatabasePostgresqlV2Args:
             pulumi.set(__self__, "allow_lists", allow_lists)
         if cluster_size is not None:
             pulumi.set(__self__, "cluster_size", cluster_size)
+        if engine_config_pg_autovacuum_analyze_scale_factor is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_analyze_scale_factor", engine_config_pg_autovacuum_analyze_scale_factor)
+        if engine_config_pg_autovacuum_analyze_threshold is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_analyze_threshold", engine_config_pg_autovacuum_analyze_threshold)
+        if engine_config_pg_autovacuum_max_workers is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_max_workers", engine_config_pg_autovacuum_max_workers)
+        if engine_config_pg_autovacuum_naptime is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_naptime", engine_config_pg_autovacuum_naptime)
+        if engine_config_pg_autovacuum_vacuum_cost_delay is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_vacuum_cost_delay", engine_config_pg_autovacuum_vacuum_cost_delay)
+        if engine_config_pg_autovacuum_vacuum_cost_limit is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_vacuum_cost_limit", engine_config_pg_autovacuum_vacuum_cost_limit)
+        if engine_config_pg_autovacuum_vacuum_scale_factor is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_vacuum_scale_factor", engine_config_pg_autovacuum_vacuum_scale_factor)
+        if engine_config_pg_autovacuum_vacuum_threshold is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_vacuum_threshold", engine_config_pg_autovacuum_vacuum_threshold)
+        if engine_config_pg_bgwriter_delay is not None:
+            pulumi.set(__self__, "engine_config_pg_bgwriter_delay", engine_config_pg_bgwriter_delay)
+        if engine_config_pg_bgwriter_flush_after is not None:
+            pulumi.set(__self__, "engine_config_pg_bgwriter_flush_after", engine_config_pg_bgwriter_flush_after)
+        if engine_config_pg_bgwriter_lru_maxpages is not None:
+            pulumi.set(__self__, "engine_config_pg_bgwriter_lru_maxpages", engine_config_pg_bgwriter_lru_maxpages)
+        if engine_config_pg_bgwriter_lru_multiplier is not None:
+            pulumi.set(__self__, "engine_config_pg_bgwriter_lru_multiplier", engine_config_pg_bgwriter_lru_multiplier)
+        if engine_config_pg_deadlock_timeout is not None:
+            pulumi.set(__self__, "engine_config_pg_deadlock_timeout", engine_config_pg_deadlock_timeout)
+        if engine_config_pg_default_toast_compression is not None:
+            pulumi.set(__self__, "engine_config_pg_default_toast_compression", engine_config_pg_default_toast_compression)
+        if engine_config_pg_idle_in_transaction_session_timeout is not None:
+            pulumi.set(__self__, "engine_config_pg_idle_in_transaction_session_timeout", engine_config_pg_idle_in_transaction_session_timeout)
+        if engine_config_pg_jit is not None:
+            pulumi.set(__self__, "engine_config_pg_jit", engine_config_pg_jit)
+        if engine_config_pg_max_files_per_process is not None:
+            pulumi.set(__self__, "engine_config_pg_max_files_per_process", engine_config_pg_max_files_per_process)
+        if engine_config_pg_max_locks_per_transaction is not None:
+            pulumi.set(__self__, "engine_config_pg_max_locks_per_transaction", engine_config_pg_max_locks_per_transaction)
+        if engine_config_pg_max_logical_replication_workers is not None:
+            pulumi.set(__self__, "engine_config_pg_max_logical_replication_workers", engine_config_pg_max_logical_replication_workers)
+        if engine_config_pg_max_parallel_workers is not None:
+            pulumi.set(__self__, "engine_config_pg_max_parallel_workers", engine_config_pg_max_parallel_workers)
+        if engine_config_pg_max_parallel_workers_per_gather is not None:
+            pulumi.set(__self__, "engine_config_pg_max_parallel_workers_per_gather", engine_config_pg_max_parallel_workers_per_gather)
+        if engine_config_pg_max_pred_locks_per_transaction is not None:
+            pulumi.set(__self__, "engine_config_pg_max_pred_locks_per_transaction", engine_config_pg_max_pred_locks_per_transaction)
+        if engine_config_pg_max_replication_slots is not None:
+            pulumi.set(__self__, "engine_config_pg_max_replication_slots", engine_config_pg_max_replication_slots)
+        if engine_config_pg_max_slot_wal_keep_size is not None:
+            pulumi.set(__self__, "engine_config_pg_max_slot_wal_keep_size", engine_config_pg_max_slot_wal_keep_size)
+        if engine_config_pg_max_stack_depth is not None:
+            pulumi.set(__self__, "engine_config_pg_max_stack_depth", engine_config_pg_max_stack_depth)
+        if engine_config_pg_max_standby_archive_delay is not None:
+            pulumi.set(__self__, "engine_config_pg_max_standby_archive_delay", engine_config_pg_max_standby_archive_delay)
+        if engine_config_pg_max_standby_streaming_delay is not None:
+            pulumi.set(__self__, "engine_config_pg_max_standby_streaming_delay", engine_config_pg_max_standby_streaming_delay)
+        if engine_config_pg_max_wal_senders is not None:
+            pulumi.set(__self__, "engine_config_pg_max_wal_senders", engine_config_pg_max_wal_senders)
+        if engine_config_pg_max_worker_processes is not None:
+            pulumi.set(__self__, "engine_config_pg_max_worker_processes", engine_config_pg_max_worker_processes)
+        if engine_config_pg_password_encryption is not None:
+            pulumi.set(__self__, "engine_config_pg_password_encryption", engine_config_pg_password_encryption)
+        if engine_config_pg_pg_partman_bgw_interval is not None:
+            pulumi.set(__self__, "engine_config_pg_pg_partman_bgw_interval", engine_config_pg_pg_partman_bgw_interval)
+        if engine_config_pg_pg_partman_bgw_role is not None:
+            pulumi.set(__self__, "engine_config_pg_pg_partman_bgw_role", engine_config_pg_pg_partman_bgw_role)
+        if engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan is not None:
+            pulumi.set(__self__, "engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan", engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan)
+        if engine_config_pg_pg_stat_monitor_pgsm_max_buckets is not None:
+            pulumi.set(__self__, "engine_config_pg_pg_stat_monitor_pgsm_max_buckets", engine_config_pg_pg_stat_monitor_pgsm_max_buckets)
+        if engine_config_pg_pg_stat_statements_track is not None:
+            pulumi.set(__self__, "engine_config_pg_pg_stat_statements_track", engine_config_pg_pg_stat_statements_track)
+        if engine_config_pg_stat_monitor_enable is not None:
+            pulumi.set(__self__, "engine_config_pg_stat_monitor_enable", engine_config_pg_stat_monitor_enable)
+        if engine_config_pg_temp_file_limit is not None:
+            pulumi.set(__self__, "engine_config_pg_temp_file_limit", engine_config_pg_temp_file_limit)
+        if engine_config_pg_timezone is not None:
+            pulumi.set(__self__, "engine_config_pg_timezone", engine_config_pg_timezone)
+        if engine_config_pg_track_activity_query_size is not None:
+            pulumi.set(__self__, "engine_config_pg_track_activity_query_size", engine_config_pg_track_activity_query_size)
+        if engine_config_pg_track_commit_timestamp is not None:
+            pulumi.set(__self__, "engine_config_pg_track_commit_timestamp", engine_config_pg_track_commit_timestamp)
+        if engine_config_pg_track_functions is not None:
+            pulumi.set(__self__, "engine_config_pg_track_functions", engine_config_pg_track_functions)
+        if engine_config_pg_track_io_timing is not None:
+            pulumi.set(__self__, "engine_config_pg_track_io_timing", engine_config_pg_track_io_timing)
+        if engine_config_pg_wal_sender_timeout is not None:
+            pulumi.set(__self__, "engine_config_pg_wal_sender_timeout", engine_config_pg_wal_sender_timeout)
+        if engine_config_pg_wal_writer_delay is not None:
+            pulumi.set(__self__, "engine_config_pg_wal_writer_delay", engine_config_pg_wal_writer_delay)
+        if engine_config_pglookout_max_failover_replication_time_lag is not None:
+            pulumi.set(__self__, "engine_config_pglookout_max_failover_replication_time_lag", engine_config_pglookout_max_failover_replication_time_lag)
+        if engine_config_shared_buffers_percentage is not None:
+            pulumi.set(__self__, "engine_config_shared_buffers_percentage", engine_config_shared_buffers_percentage)
+        if engine_config_work_mem is not None:
+            pulumi.set(__self__, "engine_config_work_mem", engine_config_work_mem)
         if fork_restore_time is not None:
             pulumi.set(__self__, "fork_restore_time", fork_restore_time)
         if fork_source is not None:
@@ -144,6 +332,570 @@ class DatabasePostgresqlV2Args:
         pulumi.set(self, "cluster_size", value)
 
     @property
+    @pulumi.getter(name="engineConfigPgAutovacuumAnalyzeScaleFactor")
+    def engine_config_pg_autovacuum_analyze_scale_factor(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_analyze_scale_factor")
+
+    @engine_config_pg_autovacuum_analyze_scale_factor.setter
+    def engine_config_pg_autovacuum_analyze_scale_factor(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_analyze_scale_factor", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumAnalyzeThreshold")
+    def engine_config_pg_autovacuum_analyze_threshold(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_analyze_threshold")
+
+    @engine_config_pg_autovacuum_analyze_threshold.setter
+    def engine_config_pg_autovacuum_analyze_threshold(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_analyze_threshold", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumMaxWorkers")
+    def engine_config_pg_autovacuum_max_workers(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_max_workers")
+
+    @engine_config_pg_autovacuum_max_workers.setter
+    def engine_config_pg_autovacuum_max_workers(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_max_workers", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumNaptime")
+    def engine_config_pg_autovacuum_naptime(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_naptime")
+
+    @engine_config_pg_autovacuum_naptime.setter
+    def engine_config_pg_autovacuum_naptime(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_naptime", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumCostDelay")
+    def engine_config_pg_autovacuum_vacuum_cost_delay(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_cost_delay")
+
+    @engine_config_pg_autovacuum_vacuum_cost_delay.setter
+    def engine_config_pg_autovacuum_vacuum_cost_delay(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_vacuum_cost_delay", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumCostLimit")
+    def engine_config_pg_autovacuum_vacuum_cost_limit(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_cost_limit")
+
+    @engine_config_pg_autovacuum_vacuum_cost_limit.setter
+    def engine_config_pg_autovacuum_vacuum_cost_limit(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_vacuum_cost_limit", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumScaleFactor")
+    def engine_config_pg_autovacuum_vacuum_scale_factor(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_scale_factor")
+
+    @engine_config_pg_autovacuum_vacuum_scale_factor.setter
+    def engine_config_pg_autovacuum_vacuum_scale_factor(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_vacuum_scale_factor", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumThreshold")
+    def engine_config_pg_autovacuum_vacuum_threshold(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_threshold")
+
+    @engine_config_pg_autovacuum_vacuum_threshold.setter
+    def engine_config_pg_autovacuum_vacuum_threshold(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_vacuum_threshold", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterDelay")
+    def engine_config_pg_bgwriter_delay(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_delay")
+
+    @engine_config_pg_bgwriter_delay.setter
+    def engine_config_pg_bgwriter_delay(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_bgwriter_delay", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterFlushAfter")
+    def engine_config_pg_bgwriter_flush_after(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_flush_after")
+
+    @engine_config_pg_bgwriter_flush_after.setter
+    def engine_config_pg_bgwriter_flush_after(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_bgwriter_flush_after", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterLruMaxpages")
+    def engine_config_pg_bgwriter_lru_maxpages(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_lru_maxpages")
+
+    @engine_config_pg_bgwriter_lru_maxpages.setter
+    def engine_config_pg_bgwriter_lru_maxpages(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_bgwriter_lru_maxpages", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterLruMultiplier")
+    def engine_config_pg_bgwriter_lru_multiplier(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_lru_multiplier")
+
+    @engine_config_pg_bgwriter_lru_multiplier.setter
+    def engine_config_pg_bgwriter_lru_multiplier(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "engine_config_pg_bgwriter_lru_multiplier", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgDeadlockTimeout")
+    def engine_config_pg_deadlock_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        """
+        return pulumi.get(self, "engine_config_pg_deadlock_timeout")
+
+    @engine_config_pg_deadlock_timeout.setter
+    def engine_config_pg_deadlock_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_deadlock_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgDefaultToastCompression")
+    def engine_config_pg_default_toast_compression(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        """
+        return pulumi.get(self, "engine_config_pg_default_toast_compression")
+
+    @engine_config_pg_default_toast_compression.setter
+    def engine_config_pg_default_toast_compression(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_default_toast_compression", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgIdleInTransactionSessionTimeout")
+    def engine_config_pg_idle_in_transaction_session_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Time out sessions with open transactions after this number of milliseconds.
+        """
+        return pulumi.get(self, "engine_config_pg_idle_in_transaction_session_timeout")
+
+    @engine_config_pg_idle_in_transaction_session_timeout.setter
+    def engine_config_pg_idle_in_transaction_session_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_idle_in_transaction_session_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgJit")
+    def engine_config_pg_jit(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Controls system-wide use of Just-in-Time Compilation (JIT).
+        """
+        return pulumi.get(self, "engine_config_pg_jit")
+
+    @engine_config_pg_jit.setter
+    def engine_config_pg_jit(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "engine_config_pg_jit", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxFilesPerProcess")
+    def engine_config_pg_max_files_per_process(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum number of files that can be open per process.
+        """
+        return pulumi.get(self, "engine_config_pg_max_files_per_process")
+
+    @engine_config_pg_max_files_per_process.setter
+    def engine_config_pg_max_files_per_process(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_files_per_process", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxLocksPerTransaction")
+    def engine_config_pg_max_locks_per_transaction(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum locks per transaction.
+        """
+        return pulumi.get(self, "engine_config_pg_max_locks_per_transaction")
+
+    @engine_config_pg_max_locks_per_transaction.setter
+    def engine_config_pg_max_locks_per_transaction(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_locks_per_transaction", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxLogicalReplicationWorkers")
+    def engine_config_pg_max_logical_replication_workers(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+        """
+        return pulumi.get(self, "engine_config_pg_max_logical_replication_workers")
+
+    @engine_config_pg_max_logical_replication_workers.setter
+    def engine_config_pg_max_logical_replication_workers(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_logical_replication_workers", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxParallelWorkers")
+    def engine_config_pg_max_parallel_workers(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the maximum number of workers that the system can support for parallel queries.
+        """
+        return pulumi.get(self, "engine_config_pg_max_parallel_workers")
+
+    @engine_config_pg_max_parallel_workers.setter
+    def engine_config_pg_max_parallel_workers(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_parallel_workers", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxParallelWorkersPerGather")
+    def engine_config_pg_max_parallel_workers_per_gather(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        """
+        return pulumi.get(self, "engine_config_pg_max_parallel_workers_per_gather")
+
+    @engine_config_pg_max_parallel_workers_per_gather.setter
+    def engine_config_pg_max_parallel_workers_per_gather(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_parallel_workers_per_gather", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxPredLocksPerTransaction")
+    def engine_config_pg_max_pred_locks_per_transaction(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum predicate locks per transaction.
+        """
+        return pulumi.get(self, "engine_config_pg_max_pred_locks_per_transaction")
+
+    @engine_config_pg_max_pred_locks_per_transaction.setter
+    def engine_config_pg_max_pred_locks_per_transaction(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_pred_locks_per_transaction", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxReplicationSlots")
+    def engine_config_pg_max_replication_slots(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum replication slots.
+        """
+        return pulumi.get(self, "engine_config_pg_max_replication_slots")
+
+    @engine_config_pg_max_replication_slots.setter
+    def engine_config_pg_max_replication_slots(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_replication_slots", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxSlotWalKeepSize")
+    def engine_config_pg_max_slot_wal_keep_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        """
+        return pulumi.get(self, "engine_config_pg_max_slot_wal_keep_size")
+
+    @engine_config_pg_max_slot_wal_keep_size.setter
+    def engine_config_pg_max_slot_wal_keep_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_slot_wal_keep_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxStackDepth")
+    def engine_config_pg_max_stack_depth(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum depth of the stack in bytes.
+        """
+        return pulumi.get(self, "engine_config_pg_max_stack_depth")
+
+    @engine_config_pg_max_stack_depth.setter
+    def engine_config_pg_max_stack_depth(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_stack_depth", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxStandbyArchiveDelay")
+    def engine_config_pg_max_standby_archive_delay(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Max standby archive delay in milliseconds.
+        """
+        return pulumi.get(self, "engine_config_pg_max_standby_archive_delay")
+
+    @engine_config_pg_max_standby_archive_delay.setter
+    def engine_config_pg_max_standby_archive_delay(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_standby_archive_delay", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxStandbyStreamingDelay")
+    def engine_config_pg_max_standby_streaming_delay(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Max standby streaming delay in milliseconds.
+        """
+        return pulumi.get(self, "engine_config_pg_max_standby_streaming_delay")
+
+    @engine_config_pg_max_standby_streaming_delay.setter
+    def engine_config_pg_max_standby_streaming_delay(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_standby_streaming_delay", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxWalSenders")
+    def engine_config_pg_max_wal_senders(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum WAL senders.
+        """
+        return pulumi.get(self, "engine_config_pg_max_wal_senders")
+
+    @engine_config_pg_max_wal_senders.setter
+    def engine_config_pg_max_wal_senders(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_wal_senders", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxWorkerProcesses")
+    def engine_config_pg_max_worker_processes(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the maximum number of background processes that the system can support.
+        """
+        return pulumi.get(self, "engine_config_pg_max_worker_processes")
+
+    @engine_config_pg_max_worker_processes.setter
+    def engine_config_pg_max_worker_processes(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_worker_processes", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPasswordEncryption")
+    def engine_config_pg_password_encryption(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Chooses the algorithm for encrypting passwords. (default `md5`)
+        """
+        return pulumi.get(self, "engine_config_pg_password_encryption")
+
+    @engine_config_pg_password_encryption.setter
+    def engine_config_pg_password_encryption(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_password_encryption", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgPartmanBgwInterval")
+    def engine_config_pg_pg_partman_bgw_interval(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the time interval to run pg_partman's scheduled tasks.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_partman_bgw_interval")
+
+    @engine_config_pg_pg_partman_bgw_interval.setter
+    def engine_config_pg_pg_partman_bgw_interval(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_pg_partman_bgw_interval", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgPartmanBgwRole")
+    def engine_config_pg_pg_partman_bgw_role(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Controls which role to use for pg_partman's scheduled background tasks.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_partman_bgw_role")
+
+    @engine_config_pg_pg_partman_bgw_role.setter
+    def engine_config_pg_pg_partman_bgw_role(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_pg_partman_bgw_role", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgStatMonitorPgsmEnableQueryPlan")
+    def engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enables or disables query plan monitoring.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan")
+
+    @engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan.setter
+    def engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgStatMonitorPgsmMaxBuckets")
+    def engine_config_pg_pg_stat_monitor_pgsm_max_buckets(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the maximum number of buckets.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_stat_monitor_pgsm_max_buckets")
+
+    @engine_config_pg_pg_stat_monitor_pgsm_max_buckets.setter
+    def engine_config_pg_pg_stat_monitor_pgsm_max_buckets(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_pg_stat_monitor_pgsm_max_buckets", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgStatStatementsTrack")
+    def engine_config_pg_pg_stat_statements_track(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_stat_statements_track")
+
+    @engine_config_pg_pg_stat_statements_track.setter
+    def engine_config_pg_pg_stat_statements_track(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_pg_stat_statements_track", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgStatMonitorEnable")
+    def engine_config_pg_stat_monitor_enable(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        """
+        return pulumi.get(self, "engine_config_pg_stat_monitor_enable")
+
+    @engine_config_pg_stat_monitor_enable.setter
+    def engine_config_pg_stat_monitor_enable(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "engine_config_pg_stat_monitor_enable", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTempFileLimit")
+    def engine_config_pg_temp_file_limit(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        """
+        return pulumi.get(self, "engine_config_pg_temp_file_limit")
+
+    @engine_config_pg_temp_file_limit.setter
+    def engine_config_pg_temp_file_limit(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_temp_file_limit", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTimezone")
+    def engine_config_pg_timezone(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        PostgreSQL service timezone.
+        """
+        return pulumi.get(self, "engine_config_pg_timezone")
+
+    @engine_config_pg_timezone.setter
+    def engine_config_pg_timezone(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_timezone", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackActivityQuerySize")
+    def engine_config_pg_track_activity_query_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the number of bytes reserved to track the currently executing command for each active session.
+        """
+        return pulumi.get(self, "engine_config_pg_track_activity_query_size")
+
+    @engine_config_pg_track_activity_query_size.setter
+    def engine_config_pg_track_activity_query_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_track_activity_query_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackCommitTimestamp")
+    def engine_config_pg_track_commit_timestamp(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Record commit time of transactions.
+        """
+        return pulumi.get(self, "engine_config_pg_track_commit_timestamp")
+
+    @engine_config_pg_track_commit_timestamp.setter
+    def engine_config_pg_track_commit_timestamp(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_track_commit_timestamp", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackFunctions")
+    def engine_config_pg_track_functions(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Enables tracking of function call counts and time used.
+        """
+        return pulumi.get(self, "engine_config_pg_track_functions")
+
+    @engine_config_pg_track_functions.setter
+    def engine_config_pg_track_functions(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_track_functions", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackIoTiming")
+    def engine_config_pg_track_io_timing(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        """
+        return pulumi.get(self, "engine_config_pg_track_io_timing")
+
+    @engine_config_pg_track_io_timing.setter
+    def engine_config_pg_track_io_timing(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_track_io_timing", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgWalSenderTimeout")
+    def engine_config_pg_wal_sender_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        """
+        return pulumi.get(self, "engine_config_pg_wal_sender_timeout")
+
+    @engine_config_pg_wal_sender_timeout.setter
+    def engine_config_pg_wal_sender_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_wal_sender_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgWalWriterDelay")
+    def engine_config_pg_wal_writer_delay(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        """
+        return pulumi.get(self, "engine_config_pg_wal_writer_delay")
+
+    @engine_config_pg_wal_writer_delay.setter
+    def engine_config_pg_wal_writer_delay(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_wal_writer_delay", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPglookoutMaxFailoverReplicationTimeLag")
+    def engine_config_pglookout_max_failover_replication_time_lag(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+        """
+        return pulumi.get(self, "engine_config_pglookout_max_failover_replication_time_lag")
+
+    @engine_config_pglookout_max_failover_replication_time_lag.setter
+    def engine_config_pglookout_max_failover_replication_time_lag(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pglookout_max_failover_replication_time_lag", value)
+
+    @property
+    @pulumi.getter(name="engineConfigSharedBuffersPercentage")
+    def engine_config_shared_buffers_percentage(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        """
+        return pulumi.get(self, "engine_config_shared_buffers_percentage")
+
+    @engine_config_shared_buffers_percentage.setter
+    def engine_config_shared_buffers_percentage(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "engine_config_shared_buffers_percentage", value)
+
+    @property
+    @pulumi.getter(name="engineConfigWorkMem")
+    def engine_config_work_mem(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+        """
+        return pulumi.get(self, "engine_config_work_mem")
+
+    @engine_config_work_mem.setter
+    def engine_config_work_mem(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_work_mem", value)
+
+    @property
     @pulumi.getter(name="forkRestoreTime")
     def fork_restore_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -212,6 +964,53 @@ class _DatabasePostgresqlV2State:
                  created: Optional[pulumi.Input[builtins.str]] = None,
                  encrypted: Optional[pulumi.Input[builtins.bool]] = None,
                  engine: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_autovacuum_analyze_scale_factor: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_autovacuum_analyze_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_max_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_naptime: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_cost_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_cost_limit: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_scale_factor: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_autovacuum_vacuum_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_flush_after: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_lru_maxpages: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_lru_multiplier: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_deadlock_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_default_toast_compression: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_idle_in_transaction_session_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_jit: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_max_files_per_process: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_locks_per_transaction: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_logical_replication_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_parallel_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_parallel_workers_per_gather: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_pred_locks_per_transaction: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_replication_slots: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_slot_wal_keep_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_stack_depth: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_standby_archive_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_standby_streaming_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_wal_senders: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_worker_processes: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_password_encryption: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_pg_partman_bgw_interval: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_pg_partman_bgw_role: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_pg_stat_monitor_pgsm_max_buckets: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_pg_stat_statements_track: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_stat_monitor_enable: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_temp_file_limit: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_timezone: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_activity_query_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_track_commit_timestamp: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_functions: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_io_timing: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_wal_sender_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_wal_writer_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pglookout_max_failover_replication_time_lag: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_shared_buffers_percentage: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_work_mem: Optional[pulumi.Input[builtins.int]] = None,
                  engine_id: Optional[pulumi.Input[builtins.str]] = None,
                  fork_restore_time: Optional[pulumi.Input[builtins.str]] = None,
                  fork_source: Optional[pulumi.Input[builtins.int]] = None,
@@ -242,6 +1041,53 @@ class _DatabasePostgresqlV2State:
         :param pulumi.Input[builtins.str] created: When this Managed Database was created.
         :param pulumi.Input[builtins.bool] encrypted: Whether the Managed Databases is encrypted.
         :param pulumi.Input[builtins.str] engine: The Managed Database engine. (e.g. `postgresql`)
+        :param pulumi.Input[builtins.float] engine_config_pg_autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_cost_delay: Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_cost_limit: Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        :param pulumi.Input[builtins.float] engine_config_pg_autovacuum_vacuum_scale_factor: Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_threshold: Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_delay: Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_flush_after: Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        :param pulumi.Input[builtins.float] engine_config_pg_bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        :param pulumi.Input[builtins.int] engine_config_pg_deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        :param pulumi.Input[builtins.str] engine_config_pg_default_toast_compression: Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        :param pulumi.Input[builtins.int] engine_config_pg_idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
+        :param pulumi.Input[builtins.bool] engine_config_pg_jit: Controls system-wide use of Just-in-Time Compilation (JIT).
+        :param pulumi.Input[builtins.int] engine_config_pg_max_files_per_process: PostgreSQL maximum number of files that can be open per process.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_locks_per_transaction: PostgreSQL maximum locks per transaction.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_logical_replication_workers: PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+        :param pulumi.Input[builtins.int] engine_config_pg_max_parallel_workers: Sets the maximum number of workers that the system can support for parallel queries.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_parallel_workers_per_gather: Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_pred_locks_per_transaction: PostgreSQL maximum predicate locks per transaction.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_replication_slots: PostgreSQL maximum replication slots.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_slot_wal_keep_size: PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_stack_depth: Maximum depth of the stack in bytes.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_standby_archive_delay: Max standby archive delay in milliseconds.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_standby_streaming_delay: Max standby streaming delay in milliseconds.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_wal_senders: PostgreSQL maximum WAL senders.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_worker_processes: Sets the maximum number of background processes that the system can support.
+        :param pulumi.Input[builtins.str] engine_config_pg_password_encryption: Chooses the algorithm for encrypting passwords. (default `md5`)
+        :param pulumi.Input[builtins.int] engine_config_pg_pg_partman_bgw_interval: Sets the time interval to run pg_partman's scheduled tasks.
+        :param pulumi.Input[builtins.str] engine_config_pg_pg_partman_bgw_role: Controls which role to use for pg_partman's scheduled background tasks.
+        :param pulumi.Input[builtins.bool] engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan: Enables or disables query plan monitoring.
+        :param pulumi.Input[builtins.int] engine_config_pg_pg_stat_monitor_pgsm_max_buckets: Sets the maximum number of buckets.
+        :param pulumi.Input[builtins.str] engine_config_pg_pg_stat_statements_track: Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        :param pulumi.Input[builtins.bool] engine_config_pg_stat_monitor_enable: Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        :param pulumi.Input[builtins.int] engine_config_pg_temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        :param pulumi.Input[builtins.str] engine_config_pg_timezone: PostgreSQL service timezone.
+        :param pulumi.Input[builtins.int] engine_config_pg_track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_commit_timestamp: Record commit time of transactions.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_functions: Enables tracking of function call counts and time used.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_io_timing: Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        :param pulumi.Input[builtins.int] engine_config_pg_wal_sender_timeout: Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        :param pulumi.Input[builtins.int] engine_config_pg_wal_writer_delay: WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        :param pulumi.Input[builtins.int] engine_config_pglookout_max_failover_replication_time_lag: Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+        :param pulumi.Input[builtins.float] engine_config_shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        :param pulumi.Input[builtins.int] engine_config_work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         :param pulumi.Input[builtins.str] engine_id: The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
         :param pulumi.Input[builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[builtins.int] fork_source: The ID of the database that was forked from.
@@ -280,6 +1126,100 @@ class _DatabasePostgresqlV2State:
             pulumi.set(__self__, "encrypted", encrypted)
         if engine is not None:
             pulumi.set(__self__, "engine", engine)
+        if engine_config_pg_autovacuum_analyze_scale_factor is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_analyze_scale_factor", engine_config_pg_autovacuum_analyze_scale_factor)
+        if engine_config_pg_autovacuum_analyze_threshold is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_analyze_threshold", engine_config_pg_autovacuum_analyze_threshold)
+        if engine_config_pg_autovacuum_max_workers is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_max_workers", engine_config_pg_autovacuum_max_workers)
+        if engine_config_pg_autovacuum_naptime is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_naptime", engine_config_pg_autovacuum_naptime)
+        if engine_config_pg_autovacuum_vacuum_cost_delay is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_vacuum_cost_delay", engine_config_pg_autovacuum_vacuum_cost_delay)
+        if engine_config_pg_autovacuum_vacuum_cost_limit is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_vacuum_cost_limit", engine_config_pg_autovacuum_vacuum_cost_limit)
+        if engine_config_pg_autovacuum_vacuum_scale_factor is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_vacuum_scale_factor", engine_config_pg_autovacuum_vacuum_scale_factor)
+        if engine_config_pg_autovacuum_vacuum_threshold is not None:
+            pulumi.set(__self__, "engine_config_pg_autovacuum_vacuum_threshold", engine_config_pg_autovacuum_vacuum_threshold)
+        if engine_config_pg_bgwriter_delay is not None:
+            pulumi.set(__self__, "engine_config_pg_bgwriter_delay", engine_config_pg_bgwriter_delay)
+        if engine_config_pg_bgwriter_flush_after is not None:
+            pulumi.set(__self__, "engine_config_pg_bgwriter_flush_after", engine_config_pg_bgwriter_flush_after)
+        if engine_config_pg_bgwriter_lru_maxpages is not None:
+            pulumi.set(__self__, "engine_config_pg_bgwriter_lru_maxpages", engine_config_pg_bgwriter_lru_maxpages)
+        if engine_config_pg_bgwriter_lru_multiplier is not None:
+            pulumi.set(__self__, "engine_config_pg_bgwriter_lru_multiplier", engine_config_pg_bgwriter_lru_multiplier)
+        if engine_config_pg_deadlock_timeout is not None:
+            pulumi.set(__self__, "engine_config_pg_deadlock_timeout", engine_config_pg_deadlock_timeout)
+        if engine_config_pg_default_toast_compression is not None:
+            pulumi.set(__self__, "engine_config_pg_default_toast_compression", engine_config_pg_default_toast_compression)
+        if engine_config_pg_idle_in_transaction_session_timeout is not None:
+            pulumi.set(__self__, "engine_config_pg_idle_in_transaction_session_timeout", engine_config_pg_idle_in_transaction_session_timeout)
+        if engine_config_pg_jit is not None:
+            pulumi.set(__self__, "engine_config_pg_jit", engine_config_pg_jit)
+        if engine_config_pg_max_files_per_process is not None:
+            pulumi.set(__self__, "engine_config_pg_max_files_per_process", engine_config_pg_max_files_per_process)
+        if engine_config_pg_max_locks_per_transaction is not None:
+            pulumi.set(__self__, "engine_config_pg_max_locks_per_transaction", engine_config_pg_max_locks_per_transaction)
+        if engine_config_pg_max_logical_replication_workers is not None:
+            pulumi.set(__self__, "engine_config_pg_max_logical_replication_workers", engine_config_pg_max_logical_replication_workers)
+        if engine_config_pg_max_parallel_workers is not None:
+            pulumi.set(__self__, "engine_config_pg_max_parallel_workers", engine_config_pg_max_parallel_workers)
+        if engine_config_pg_max_parallel_workers_per_gather is not None:
+            pulumi.set(__self__, "engine_config_pg_max_parallel_workers_per_gather", engine_config_pg_max_parallel_workers_per_gather)
+        if engine_config_pg_max_pred_locks_per_transaction is not None:
+            pulumi.set(__self__, "engine_config_pg_max_pred_locks_per_transaction", engine_config_pg_max_pred_locks_per_transaction)
+        if engine_config_pg_max_replication_slots is not None:
+            pulumi.set(__self__, "engine_config_pg_max_replication_slots", engine_config_pg_max_replication_slots)
+        if engine_config_pg_max_slot_wal_keep_size is not None:
+            pulumi.set(__self__, "engine_config_pg_max_slot_wal_keep_size", engine_config_pg_max_slot_wal_keep_size)
+        if engine_config_pg_max_stack_depth is not None:
+            pulumi.set(__self__, "engine_config_pg_max_stack_depth", engine_config_pg_max_stack_depth)
+        if engine_config_pg_max_standby_archive_delay is not None:
+            pulumi.set(__self__, "engine_config_pg_max_standby_archive_delay", engine_config_pg_max_standby_archive_delay)
+        if engine_config_pg_max_standby_streaming_delay is not None:
+            pulumi.set(__self__, "engine_config_pg_max_standby_streaming_delay", engine_config_pg_max_standby_streaming_delay)
+        if engine_config_pg_max_wal_senders is not None:
+            pulumi.set(__self__, "engine_config_pg_max_wal_senders", engine_config_pg_max_wal_senders)
+        if engine_config_pg_max_worker_processes is not None:
+            pulumi.set(__self__, "engine_config_pg_max_worker_processes", engine_config_pg_max_worker_processes)
+        if engine_config_pg_password_encryption is not None:
+            pulumi.set(__self__, "engine_config_pg_password_encryption", engine_config_pg_password_encryption)
+        if engine_config_pg_pg_partman_bgw_interval is not None:
+            pulumi.set(__self__, "engine_config_pg_pg_partman_bgw_interval", engine_config_pg_pg_partman_bgw_interval)
+        if engine_config_pg_pg_partman_bgw_role is not None:
+            pulumi.set(__self__, "engine_config_pg_pg_partman_bgw_role", engine_config_pg_pg_partman_bgw_role)
+        if engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan is not None:
+            pulumi.set(__self__, "engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan", engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan)
+        if engine_config_pg_pg_stat_monitor_pgsm_max_buckets is not None:
+            pulumi.set(__self__, "engine_config_pg_pg_stat_monitor_pgsm_max_buckets", engine_config_pg_pg_stat_monitor_pgsm_max_buckets)
+        if engine_config_pg_pg_stat_statements_track is not None:
+            pulumi.set(__self__, "engine_config_pg_pg_stat_statements_track", engine_config_pg_pg_stat_statements_track)
+        if engine_config_pg_stat_monitor_enable is not None:
+            pulumi.set(__self__, "engine_config_pg_stat_monitor_enable", engine_config_pg_stat_monitor_enable)
+        if engine_config_pg_temp_file_limit is not None:
+            pulumi.set(__self__, "engine_config_pg_temp_file_limit", engine_config_pg_temp_file_limit)
+        if engine_config_pg_timezone is not None:
+            pulumi.set(__self__, "engine_config_pg_timezone", engine_config_pg_timezone)
+        if engine_config_pg_track_activity_query_size is not None:
+            pulumi.set(__self__, "engine_config_pg_track_activity_query_size", engine_config_pg_track_activity_query_size)
+        if engine_config_pg_track_commit_timestamp is not None:
+            pulumi.set(__self__, "engine_config_pg_track_commit_timestamp", engine_config_pg_track_commit_timestamp)
+        if engine_config_pg_track_functions is not None:
+            pulumi.set(__self__, "engine_config_pg_track_functions", engine_config_pg_track_functions)
+        if engine_config_pg_track_io_timing is not None:
+            pulumi.set(__self__, "engine_config_pg_track_io_timing", engine_config_pg_track_io_timing)
+        if engine_config_pg_wal_sender_timeout is not None:
+            pulumi.set(__self__, "engine_config_pg_wal_sender_timeout", engine_config_pg_wal_sender_timeout)
+        if engine_config_pg_wal_writer_delay is not None:
+            pulumi.set(__self__, "engine_config_pg_wal_writer_delay", engine_config_pg_wal_writer_delay)
+        if engine_config_pglookout_max_failover_replication_time_lag is not None:
+            pulumi.set(__self__, "engine_config_pglookout_max_failover_replication_time_lag", engine_config_pglookout_max_failover_replication_time_lag)
+        if engine_config_shared_buffers_percentage is not None:
+            pulumi.set(__self__, "engine_config_shared_buffers_percentage", engine_config_shared_buffers_percentage)
+        if engine_config_work_mem is not None:
+            pulumi.set(__self__, "engine_config_work_mem", engine_config_work_mem)
         if engine_id is not None:
             pulumi.set(__self__, "engine_id", engine_id)
         if fork_restore_time is not None:
@@ -396,6 +1336,570 @@ class _DatabasePostgresqlV2State:
     @engine.setter
     def engine(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumAnalyzeScaleFactor")
+    def engine_config_pg_autovacuum_analyze_scale_factor(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_analyze_scale_factor")
+
+    @engine_config_pg_autovacuum_analyze_scale_factor.setter
+    def engine_config_pg_autovacuum_analyze_scale_factor(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_analyze_scale_factor", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumAnalyzeThreshold")
+    def engine_config_pg_autovacuum_analyze_threshold(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_analyze_threshold")
+
+    @engine_config_pg_autovacuum_analyze_threshold.setter
+    def engine_config_pg_autovacuum_analyze_threshold(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_analyze_threshold", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumMaxWorkers")
+    def engine_config_pg_autovacuum_max_workers(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_max_workers")
+
+    @engine_config_pg_autovacuum_max_workers.setter
+    def engine_config_pg_autovacuum_max_workers(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_max_workers", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumNaptime")
+    def engine_config_pg_autovacuum_naptime(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_naptime")
+
+    @engine_config_pg_autovacuum_naptime.setter
+    def engine_config_pg_autovacuum_naptime(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_naptime", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumCostDelay")
+    def engine_config_pg_autovacuum_vacuum_cost_delay(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_cost_delay")
+
+    @engine_config_pg_autovacuum_vacuum_cost_delay.setter
+    def engine_config_pg_autovacuum_vacuum_cost_delay(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_vacuum_cost_delay", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumCostLimit")
+    def engine_config_pg_autovacuum_vacuum_cost_limit(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_cost_limit")
+
+    @engine_config_pg_autovacuum_vacuum_cost_limit.setter
+    def engine_config_pg_autovacuum_vacuum_cost_limit(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_vacuum_cost_limit", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumScaleFactor")
+    def engine_config_pg_autovacuum_vacuum_scale_factor(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_scale_factor")
+
+    @engine_config_pg_autovacuum_vacuum_scale_factor.setter
+    def engine_config_pg_autovacuum_vacuum_scale_factor(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_vacuum_scale_factor", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumThreshold")
+    def engine_config_pg_autovacuum_vacuum_threshold(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_threshold")
+
+    @engine_config_pg_autovacuum_vacuum_threshold.setter
+    def engine_config_pg_autovacuum_vacuum_threshold(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_autovacuum_vacuum_threshold", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterDelay")
+    def engine_config_pg_bgwriter_delay(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_delay")
+
+    @engine_config_pg_bgwriter_delay.setter
+    def engine_config_pg_bgwriter_delay(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_bgwriter_delay", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterFlushAfter")
+    def engine_config_pg_bgwriter_flush_after(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_flush_after")
+
+    @engine_config_pg_bgwriter_flush_after.setter
+    def engine_config_pg_bgwriter_flush_after(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_bgwriter_flush_after", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterLruMaxpages")
+    def engine_config_pg_bgwriter_lru_maxpages(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_lru_maxpages")
+
+    @engine_config_pg_bgwriter_lru_maxpages.setter
+    def engine_config_pg_bgwriter_lru_maxpages(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_bgwriter_lru_maxpages", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterLruMultiplier")
+    def engine_config_pg_bgwriter_lru_multiplier(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_lru_multiplier")
+
+    @engine_config_pg_bgwriter_lru_multiplier.setter
+    def engine_config_pg_bgwriter_lru_multiplier(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "engine_config_pg_bgwriter_lru_multiplier", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgDeadlockTimeout")
+    def engine_config_pg_deadlock_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        """
+        return pulumi.get(self, "engine_config_pg_deadlock_timeout")
+
+    @engine_config_pg_deadlock_timeout.setter
+    def engine_config_pg_deadlock_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_deadlock_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgDefaultToastCompression")
+    def engine_config_pg_default_toast_compression(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        """
+        return pulumi.get(self, "engine_config_pg_default_toast_compression")
+
+    @engine_config_pg_default_toast_compression.setter
+    def engine_config_pg_default_toast_compression(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_default_toast_compression", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgIdleInTransactionSessionTimeout")
+    def engine_config_pg_idle_in_transaction_session_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Time out sessions with open transactions after this number of milliseconds.
+        """
+        return pulumi.get(self, "engine_config_pg_idle_in_transaction_session_timeout")
+
+    @engine_config_pg_idle_in_transaction_session_timeout.setter
+    def engine_config_pg_idle_in_transaction_session_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_idle_in_transaction_session_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgJit")
+    def engine_config_pg_jit(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Controls system-wide use of Just-in-Time Compilation (JIT).
+        """
+        return pulumi.get(self, "engine_config_pg_jit")
+
+    @engine_config_pg_jit.setter
+    def engine_config_pg_jit(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "engine_config_pg_jit", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxFilesPerProcess")
+    def engine_config_pg_max_files_per_process(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum number of files that can be open per process.
+        """
+        return pulumi.get(self, "engine_config_pg_max_files_per_process")
+
+    @engine_config_pg_max_files_per_process.setter
+    def engine_config_pg_max_files_per_process(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_files_per_process", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxLocksPerTransaction")
+    def engine_config_pg_max_locks_per_transaction(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum locks per transaction.
+        """
+        return pulumi.get(self, "engine_config_pg_max_locks_per_transaction")
+
+    @engine_config_pg_max_locks_per_transaction.setter
+    def engine_config_pg_max_locks_per_transaction(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_locks_per_transaction", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxLogicalReplicationWorkers")
+    def engine_config_pg_max_logical_replication_workers(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+        """
+        return pulumi.get(self, "engine_config_pg_max_logical_replication_workers")
+
+    @engine_config_pg_max_logical_replication_workers.setter
+    def engine_config_pg_max_logical_replication_workers(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_logical_replication_workers", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxParallelWorkers")
+    def engine_config_pg_max_parallel_workers(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the maximum number of workers that the system can support for parallel queries.
+        """
+        return pulumi.get(self, "engine_config_pg_max_parallel_workers")
+
+    @engine_config_pg_max_parallel_workers.setter
+    def engine_config_pg_max_parallel_workers(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_parallel_workers", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxParallelWorkersPerGather")
+    def engine_config_pg_max_parallel_workers_per_gather(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        """
+        return pulumi.get(self, "engine_config_pg_max_parallel_workers_per_gather")
+
+    @engine_config_pg_max_parallel_workers_per_gather.setter
+    def engine_config_pg_max_parallel_workers_per_gather(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_parallel_workers_per_gather", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxPredLocksPerTransaction")
+    def engine_config_pg_max_pred_locks_per_transaction(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum predicate locks per transaction.
+        """
+        return pulumi.get(self, "engine_config_pg_max_pred_locks_per_transaction")
+
+    @engine_config_pg_max_pred_locks_per_transaction.setter
+    def engine_config_pg_max_pred_locks_per_transaction(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_pred_locks_per_transaction", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxReplicationSlots")
+    def engine_config_pg_max_replication_slots(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum replication slots.
+        """
+        return pulumi.get(self, "engine_config_pg_max_replication_slots")
+
+    @engine_config_pg_max_replication_slots.setter
+    def engine_config_pg_max_replication_slots(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_replication_slots", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxSlotWalKeepSize")
+    def engine_config_pg_max_slot_wal_keep_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        """
+        return pulumi.get(self, "engine_config_pg_max_slot_wal_keep_size")
+
+    @engine_config_pg_max_slot_wal_keep_size.setter
+    def engine_config_pg_max_slot_wal_keep_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_slot_wal_keep_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxStackDepth")
+    def engine_config_pg_max_stack_depth(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Maximum depth of the stack in bytes.
+        """
+        return pulumi.get(self, "engine_config_pg_max_stack_depth")
+
+    @engine_config_pg_max_stack_depth.setter
+    def engine_config_pg_max_stack_depth(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_stack_depth", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxStandbyArchiveDelay")
+    def engine_config_pg_max_standby_archive_delay(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Max standby archive delay in milliseconds.
+        """
+        return pulumi.get(self, "engine_config_pg_max_standby_archive_delay")
+
+    @engine_config_pg_max_standby_archive_delay.setter
+    def engine_config_pg_max_standby_archive_delay(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_standby_archive_delay", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxStandbyStreamingDelay")
+    def engine_config_pg_max_standby_streaming_delay(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Max standby streaming delay in milliseconds.
+        """
+        return pulumi.get(self, "engine_config_pg_max_standby_streaming_delay")
+
+    @engine_config_pg_max_standby_streaming_delay.setter
+    def engine_config_pg_max_standby_streaming_delay(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_standby_streaming_delay", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxWalSenders")
+    def engine_config_pg_max_wal_senders(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL maximum WAL senders.
+        """
+        return pulumi.get(self, "engine_config_pg_max_wal_senders")
+
+    @engine_config_pg_max_wal_senders.setter
+    def engine_config_pg_max_wal_senders(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_wal_senders", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxWorkerProcesses")
+    def engine_config_pg_max_worker_processes(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the maximum number of background processes that the system can support.
+        """
+        return pulumi.get(self, "engine_config_pg_max_worker_processes")
+
+    @engine_config_pg_max_worker_processes.setter
+    def engine_config_pg_max_worker_processes(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_max_worker_processes", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPasswordEncryption")
+    def engine_config_pg_password_encryption(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Chooses the algorithm for encrypting passwords. (default `md5`)
+        """
+        return pulumi.get(self, "engine_config_pg_password_encryption")
+
+    @engine_config_pg_password_encryption.setter
+    def engine_config_pg_password_encryption(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_password_encryption", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgPartmanBgwInterval")
+    def engine_config_pg_pg_partman_bgw_interval(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the time interval to run pg_partman's scheduled tasks.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_partman_bgw_interval")
+
+    @engine_config_pg_pg_partman_bgw_interval.setter
+    def engine_config_pg_pg_partman_bgw_interval(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_pg_partman_bgw_interval", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgPartmanBgwRole")
+    def engine_config_pg_pg_partman_bgw_role(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Controls which role to use for pg_partman's scheduled background tasks.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_partman_bgw_role")
+
+    @engine_config_pg_pg_partman_bgw_role.setter
+    def engine_config_pg_pg_partman_bgw_role(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_pg_partman_bgw_role", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgStatMonitorPgsmEnableQueryPlan")
+    def engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enables or disables query plan monitoring.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan")
+
+    @engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan.setter
+    def engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgStatMonitorPgsmMaxBuckets")
+    def engine_config_pg_pg_stat_monitor_pgsm_max_buckets(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the maximum number of buckets.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_stat_monitor_pgsm_max_buckets")
+
+    @engine_config_pg_pg_stat_monitor_pgsm_max_buckets.setter
+    def engine_config_pg_pg_stat_monitor_pgsm_max_buckets(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_pg_stat_monitor_pgsm_max_buckets", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgStatStatementsTrack")
+    def engine_config_pg_pg_stat_statements_track(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_stat_statements_track")
+
+    @engine_config_pg_pg_stat_statements_track.setter
+    def engine_config_pg_pg_stat_statements_track(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_pg_stat_statements_track", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgStatMonitorEnable")
+    def engine_config_pg_stat_monitor_enable(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        """
+        return pulumi.get(self, "engine_config_pg_stat_monitor_enable")
+
+    @engine_config_pg_stat_monitor_enable.setter
+    def engine_config_pg_stat_monitor_enable(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "engine_config_pg_stat_monitor_enable", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTempFileLimit")
+    def engine_config_pg_temp_file_limit(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        """
+        return pulumi.get(self, "engine_config_pg_temp_file_limit")
+
+    @engine_config_pg_temp_file_limit.setter
+    def engine_config_pg_temp_file_limit(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_temp_file_limit", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTimezone")
+    def engine_config_pg_timezone(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        PostgreSQL service timezone.
+        """
+        return pulumi.get(self, "engine_config_pg_timezone")
+
+    @engine_config_pg_timezone.setter
+    def engine_config_pg_timezone(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_timezone", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackActivityQuerySize")
+    def engine_config_pg_track_activity_query_size(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Specifies the number of bytes reserved to track the currently executing command for each active session.
+        """
+        return pulumi.get(self, "engine_config_pg_track_activity_query_size")
+
+    @engine_config_pg_track_activity_query_size.setter
+    def engine_config_pg_track_activity_query_size(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_track_activity_query_size", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackCommitTimestamp")
+    def engine_config_pg_track_commit_timestamp(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Record commit time of transactions.
+        """
+        return pulumi.get(self, "engine_config_pg_track_commit_timestamp")
+
+    @engine_config_pg_track_commit_timestamp.setter
+    def engine_config_pg_track_commit_timestamp(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_track_commit_timestamp", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackFunctions")
+    def engine_config_pg_track_functions(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Enables tracking of function call counts and time used.
+        """
+        return pulumi.get(self, "engine_config_pg_track_functions")
+
+    @engine_config_pg_track_functions.setter
+    def engine_config_pg_track_functions(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_track_functions", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackIoTiming")
+    def engine_config_pg_track_io_timing(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        """
+        return pulumi.get(self, "engine_config_pg_track_io_timing")
+
+    @engine_config_pg_track_io_timing.setter
+    def engine_config_pg_track_io_timing(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "engine_config_pg_track_io_timing", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgWalSenderTimeout")
+    def engine_config_pg_wal_sender_timeout(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        """
+        return pulumi.get(self, "engine_config_pg_wal_sender_timeout")
+
+    @engine_config_pg_wal_sender_timeout.setter
+    def engine_config_pg_wal_sender_timeout(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_wal_sender_timeout", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPgWalWriterDelay")
+    def engine_config_pg_wal_writer_delay(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        """
+        return pulumi.get(self, "engine_config_pg_wal_writer_delay")
+
+    @engine_config_pg_wal_writer_delay.setter
+    def engine_config_pg_wal_writer_delay(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pg_wal_writer_delay", value)
+
+    @property
+    @pulumi.getter(name="engineConfigPglookoutMaxFailoverReplicationTimeLag")
+    def engine_config_pglookout_max_failover_replication_time_lag(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+        """
+        return pulumi.get(self, "engine_config_pglookout_max_failover_replication_time_lag")
+
+    @engine_config_pglookout_max_failover_replication_time_lag.setter
+    def engine_config_pglookout_max_failover_replication_time_lag(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_pglookout_max_failover_replication_time_lag", value)
+
+    @property
+    @pulumi.getter(name="engineConfigSharedBuffersPercentage")
+    def engine_config_shared_buffers_percentage(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        """
+        return pulumi.get(self, "engine_config_shared_buffers_percentage")
+
+    @engine_config_shared_buffers_percentage.setter
+    def engine_config_shared_buffers_percentage(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "engine_config_shared_buffers_percentage", value)
+
+    @property
+    @pulumi.getter(name="engineConfigWorkMem")
+    def engine_config_work_mem(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+        """
+        return pulumi.get(self, "engine_config_work_mem")
+
+    @engine_config_work_mem.setter
+    def engine_config_work_mem(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "engine_config_work_mem", value)
 
     @property
     @pulumi.getter(name="engineId")
@@ -671,6 +2175,53 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  cluster_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_analyze_scale_factor: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_autovacuum_analyze_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_max_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_naptime: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_cost_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_cost_limit: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_scale_factor: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_autovacuum_vacuum_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_flush_after: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_lru_maxpages: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_lru_multiplier: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_deadlock_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_default_toast_compression: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_idle_in_transaction_session_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_jit: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_max_files_per_process: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_locks_per_transaction: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_logical_replication_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_parallel_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_parallel_workers_per_gather: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_pred_locks_per_transaction: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_replication_slots: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_slot_wal_keep_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_stack_depth: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_standby_archive_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_standby_streaming_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_wal_senders: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_worker_processes: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_password_encryption: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_pg_partman_bgw_interval: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_pg_partman_bgw_role: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_pg_stat_monitor_pgsm_max_buckets: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_pg_stat_statements_track: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_stat_monitor_enable: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_temp_file_limit: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_timezone: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_activity_query_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_track_commit_timestamp: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_functions: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_io_timing: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_wal_sender_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_wal_writer_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pglookout_max_failover_replication_time_lag: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_shared_buffers_percentage: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_work_mem: Optional[pulumi.Input[builtins.int]] = None,
                  engine_id: Optional[pulumi.Input[builtins.str]] = None,
                  fork_restore_time: Optional[pulumi.Input[builtins.str]] = None,
                  fork_source: Optional[pulumi.Input[builtins.int]] = None,
@@ -730,6 +2281,53 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[builtins.int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
+        :param pulumi.Input[builtins.float] engine_config_pg_autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_cost_delay: Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_cost_limit: Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        :param pulumi.Input[builtins.float] engine_config_pg_autovacuum_vacuum_scale_factor: Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_threshold: Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_delay: Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_flush_after: Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        :param pulumi.Input[builtins.float] engine_config_pg_bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        :param pulumi.Input[builtins.int] engine_config_pg_deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        :param pulumi.Input[builtins.str] engine_config_pg_default_toast_compression: Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        :param pulumi.Input[builtins.int] engine_config_pg_idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
+        :param pulumi.Input[builtins.bool] engine_config_pg_jit: Controls system-wide use of Just-in-Time Compilation (JIT).
+        :param pulumi.Input[builtins.int] engine_config_pg_max_files_per_process: PostgreSQL maximum number of files that can be open per process.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_locks_per_transaction: PostgreSQL maximum locks per transaction.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_logical_replication_workers: PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+        :param pulumi.Input[builtins.int] engine_config_pg_max_parallel_workers: Sets the maximum number of workers that the system can support for parallel queries.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_parallel_workers_per_gather: Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_pred_locks_per_transaction: PostgreSQL maximum predicate locks per transaction.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_replication_slots: PostgreSQL maximum replication slots.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_slot_wal_keep_size: PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_stack_depth: Maximum depth of the stack in bytes.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_standby_archive_delay: Max standby archive delay in milliseconds.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_standby_streaming_delay: Max standby streaming delay in milliseconds.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_wal_senders: PostgreSQL maximum WAL senders.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_worker_processes: Sets the maximum number of background processes that the system can support.
+        :param pulumi.Input[builtins.str] engine_config_pg_password_encryption: Chooses the algorithm for encrypting passwords. (default `md5`)
+        :param pulumi.Input[builtins.int] engine_config_pg_pg_partman_bgw_interval: Sets the time interval to run pg_partman's scheduled tasks.
+        :param pulumi.Input[builtins.str] engine_config_pg_pg_partman_bgw_role: Controls which role to use for pg_partman's scheduled background tasks.
+        :param pulumi.Input[builtins.bool] engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan: Enables or disables query plan monitoring.
+        :param pulumi.Input[builtins.int] engine_config_pg_pg_stat_monitor_pgsm_max_buckets: Sets the maximum number of buckets.
+        :param pulumi.Input[builtins.str] engine_config_pg_pg_stat_statements_track: Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        :param pulumi.Input[builtins.bool] engine_config_pg_stat_monitor_enable: Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        :param pulumi.Input[builtins.int] engine_config_pg_temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        :param pulumi.Input[builtins.str] engine_config_pg_timezone: PostgreSQL service timezone.
+        :param pulumi.Input[builtins.int] engine_config_pg_track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_commit_timestamp: Record commit time of transactions.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_functions: Enables tracking of function call counts and time used.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_io_timing: Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        :param pulumi.Input[builtins.int] engine_config_pg_wal_sender_timeout: Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        :param pulumi.Input[builtins.int] engine_config_pg_wal_writer_delay: WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        :param pulumi.Input[builtins.int] engine_config_pglookout_max_failover_replication_time_lag: Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+        :param pulumi.Input[builtins.float] engine_config_shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        :param pulumi.Input[builtins.int] engine_config_work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         :param pulumi.Input[builtins.str] engine_id: The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
         :param pulumi.Input[builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[builtins.int] fork_source: The ID of the database that was forked from.
@@ -811,6 +2409,53 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  cluster_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_analyze_scale_factor: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_autovacuum_analyze_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_max_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_naptime: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_cost_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_cost_limit: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_autovacuum_vacuum_scale_factor: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_autovacuum_vacuum_threshold: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_flush_after: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_lru_maxpages: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_bgwriter_lru_multiplier: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_pg_deadlock_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_default_toast_compression: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_idle_in_transaction_session_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_jit: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_max_files_per_process: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_locks_per_transaction: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_logical_replication_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_parallel_workers: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_parallel_workers_per_gather: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_pred_locks_per_transaction: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_replication_slots: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_slot_wal_keep_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_stack_depth: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_standby_archive_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_standby_streaming_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_wal_senders: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_max_worker_processes: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_password_encryption: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_pg_partman_bgw_interval: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_pg_partman_bgw_role: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_pg_stat_monitor_pgsm_max_buckets: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_pg_stat_statements_track: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_stat_monitor_enable: Optional[pulumi.Input[builtins.bool]] = None,
+                 engine_config_pg_temp_file_limit: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_timezone: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_activity_query_size: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_track_commit_timestamp: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_functions: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_track_io_timing: Optional[pulumi.Input[builtins.str]] = None,
+                 engine_config_pg_wal_sender_timeout: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pg_wal_writer_delay: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_pglookout_max_failover_replication_time_lag: Optional[pulumi.Input[builtins.int]] = None,
+                 engine_config_shared_buffers_percentage: Optional[pulumi.Input[builtins.float]] = None,
+                 engine_config_work_mem: Optional[pulumi.Input[builtins.int]] = None,
                  engine_id: Optional[pulumi.Input[builtins.str]] = None,
                  fork_restore_time: Optional[pulumi.Input[builtins.str]] = None,
                  fork_source: Optional[pulumi.Input[builtins.int]] = None,
@@ -831,6 +2476,53 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
 
             __props__.__dict__["allow_lists"] = allow_lists
             __props__.__dict__["cluster_size"] = cluster_size
+            __props__.__dict__["engine_config_pg_autovacuum_analyze_scale_factor"] = engine_config_pg_autovacuum_analyze_scale_factor
+            __props__.__dict__["engine_config_pg_autovacuum_analyze_threshold"] = engine_config_pg_autovacuum_analyze_threshold
+            __props__.__dict__["engine_config_pg_autovacuum_max_workers"] = engine_config_pg_autovacuum_max_workers
+            __props__.__dict__["engine_config_pg_autovacuum_naptime"] = engine_config_pg_autovacuum_naptime
+            __props__.__dict__["engine_config_pg_autovacuum_vacuum_cost_delay"] = engine_config_pg_autovacuum_vacuum_cost_delay
+            __props__.__dict__["engine_config_pg_autovacuum_vacuum_cost_limit"] = engine_config_pg_autovacuum_vacuum_cost_limit
+            __props__.__dict__["engine_config_pg_autovacuum_vacuum_scale_factor"] = engine_config_pg_autovacuum_vacuum_scale_factor
+            __props__.__dict__["engine_config_pg_autovacuum_vacuum_threshold"] = engine_config_pg_autovacuum_vacuum_threshold
+            __props__.__dict__["engine_config_pg_bgwriter_delay"] = engine_config_pg_bgwriter_delay
+            __props__.__dict__["engine_config_pg_bgwriter_flush_after"] = engine_config_pg_bgwriter_flush_after
+            __props__.__dict__["engine_config_pg_bgwriter_lru_maxpages"] = engine_config_pg_bgwriter_lru_maxpages
+            __props__.__dict__["engine_config_pg_bgwriter_lru_multiplier"] = engine_config_pg_bgwriter_lru_multiplier
+            __props__.__dict__["engine_config_pg_deadlock_timeout"] = engine_config_pg_deadlock_timeout
+            __props__.__dict__["engine_config_pg_default_toast_compression"] = engine_config_pg_default_toast_compression
+            __props__.__dict__["engine_config_pg_idle_in_transaction_session_timeout"] = engine_config_pg_idle_in_transaction_session_timeout
+            __props__.__dict__["engine_config_pg_jit"] = engine_config_pg_jit
+            __props__.__dict__["engine_config_pg_max_files_per_process"] = engine_config_pg_max_files_per_process
+            __props__.__dict__["engine_config_pg_max_locks_per_transaction"] = engine_config_pg_max_locks_per_transaction
+            __props__.__dict__["engine_config_pg_max_logical_replication_workers"] = engine_config_pg_max_logical_replication_workers
+            __props__.__dict__["engine_config_pg_max_parallel_workers"] = engine_config_pg_max_parallel_workers
+            __props__.__dict__["engine_config_pg_max_parallel_workers_per_gather"] = engine_config_pg_max_parallel_workers_per_gather
+            __props__.__dict__["engine_config_pg_max_pred_locks_per_transaction"] = engine_config_pg_max_pred_locks_per_transaction
+            __props__.__dict__["engine_config_pg_max_replication_slots"] = engine_config_pg_max_replication_slots
+            __props__.__dict__["engine_config_pg_max_slot_wal_keep_size"] = engine_config_pg_max_slot_wal_keep_size
+            __props__.__dict__["engine_config_pg_max_stack_depth"] = engine_config_pg_max_stack_depth
+            __props__.__dict__["engine_config_pg_max_standby_archive_delay"] = engine_config_pg_max_standby_archive_delay
+            __props__.__dict__["engine_config_pg_max_standby_streaming_delay"] = engine_config_pg_max_standby_streaming_delay
+            __props__.__dict__["engine_config_pg_max_wal_senders"] = engine_config_pg_max_wal_senders
+            __props__.__dict__["engine_config_pg_max_worker_processes"] = engine_config_pg_max_worker_processes
+            __props__.__dict__["engine_config_pg_password_encryption"] = engine_config_pg_password_encryption
+            __props__.__dict__["engine_config_pg_pg_partman_bgw_interval"] = engine_config_pg_pg_partman_bgw_interval
+            __props__.__dict__["engine_config_pg_pg_partman_bgw_role"] = engine_config_pg_pg_partman_bgw_role
+            __props__.__dict__["engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan"] = engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan
+            __props__.__dict__["engine_config_pg_pg_stat_monitor_pgsm_max_buckets"] = engine_config_pg_pg_stat_monitor_pgsm_max_buckets
+            __props__.__dict__["engine_config_pg_pg_stat_statements_track"] = engine_config_pg_pg_stat_statements_track
+            __props__.__dict__["engine_config_pg_stat_monitor_enable"] = engine_config_pg_stat_monitor_enable
+            __props__.__dict__["engine_config_pg_temp_file_limit"] = engine_config_pg_temp_file_limit
+            __props__.__dict__["engine_config_pg_timezone"] = engine_config_pg_timezone
+            __props__.__dict__["engine_config_pg_track_activity_query_size"] = engine_config_pg_track_activity_query_size
+            __props__.__dict__["engine_config_pg_track_commit_timestamp"] = engine_config_pg_track_commit_timestamp
+            __props__.__dict__["engine_config_pg_track_functions"] = engine_config_pg_track_functions
+            __props__.__dict__["engine_config_pg_track_io_timing"] = engine_config_pg_track_io_timing
+            __props__.__dict__["engine_config_pg_wal_sender_timeout"] = engine_config_pg_wal_sender_timeout
+            __props__.__dict__["engine_config_pg_wal_writer_delay"] = engine_config_pg_wal_writer_delay
+            __props__.__dict__["engine_config_pglookout_max_failover_replication_time_lag"] = engine_config_pglookout_max_failover_replication_time_lag
+            __props__.__dict__["engine_config_shared_buffers_percentage"] = engine_config_shared_buffers_percentage
+            __props__.__dict__["engine_config_work_mem"] = engine_config_work_mem
             if engine_id is None and not opts.urn:
                 raise TypeError("Missing required property 'engine_id'")
             __props__.__dict__["engine_id"] = engine_id
@@ -883,6 +2575,53 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             created: Optional[pulumi.Input[builtins.str]] = None,
             encrypted: Optional[pulumi.Input[builtins.bool]] = None,
             engine: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_pg_autovacuum_analyze_scale_factor: Optional[pulumi.Input[builtins.float]] = None,
+            engine_config_pg_autovacuum_analyze_threshold: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_autovacuum_max_workers: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_autovacuum_naptime: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_autovacuum_vacuum_cost_delay: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_autovacuum_vacuum_cost_limit: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_autovacuum_vacuum_scale_factor: Optional[pulumi.Input[builtins.float]] = None,
+            engine_config_pg_autovacuum_vacuum_threshold: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_bgwriter_delay: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_bgwriter_flush_after: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_bgwriter_lru_maxpages: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_bgwriter_lru_multiplier: Optional[pulumi.Input[builtins.float]] = None,
+            engine_config_pg_deadlock_timeout: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_default_toast_compression: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_pg_idle_in_transaction_session_timeout: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_jit: Optional[pulumi.Input[builtins.bool]] = None,
+            engine_config_pg_max_files_per_process: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_locks_per_transaction: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_logical_replication_workers: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_parallel_workers: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_parallel_workers_per_gather: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_pred_locks_per_transaction: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_replication_slots: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_slot_wal_keep_size: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_stack_depth: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_standby_archive_delay: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_standby_streaming_delay: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_wal_senders: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_max_worker_processes: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_password_encryption: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_pg_pg_partman_bgw_interval: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_pg_partman_bgw_role: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan: Optional[pulumi.Input[builtins.bool]] = None,
+            engine_config_pg_pg_stat_monitor_pgsm_max_buckets: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_pg_stat_statements_track: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_pg_stat_monitor_enable: Optional[pulumi.Input[builtins.bool]] = None,
+            engine_config_pg_temp_file_limit: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_timezone: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_pg_track_activity_query_size: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_track_commit_timestamp: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_pg_track_functions: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_pg_track_io_timing: Optional[pulumi.Input[builtins.str]] = None,
+            engine_config_pg_wal_sender_timeout: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pg_wal_writer_delay: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_pglookout_max_failover_replication_time_lag: Optional[pulumi.Input[builtins.int]] = None,
+            engine_config_shared_buffers_percentage: Optional[pulumi.Input[builtins.float]] = None,
+            engine_config_work_mem: Optional[pulumi.Input[builtins.int]] = None,
             engine_id: Optional[pulumi.Input[builtins.str]] = None,
             fork_restore_time: Optional[pulumi.Input[builtins.str]] = None,
             fork_source: Optional[pulumi.Input[builtins.int]] = None,
@@ -918,6 +2657,53 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] created: When this Managed Database was created.
         :param pulumi.Input[builtins.bool] encrypted: Whether the Managed Databases is encrypted.
         :param pulumi.Input[builtins.str] engine: The Managed Database engine. (e.g. `postgresql`)
+        :param pulumi.Input[builtins.float] engine_config_pg_autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_cost_delay: Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_cost_limit: Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        :param pulumi.Input[builtins.float] engine_config_pg_autovacuum_vacuum_scale_factor: Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        :param pulumi.Input[builtins.int] engine_config_pg_autovacuum_vacuum_threshold: Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_delay: Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_flush_after: Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        :param pulumi.Input[builtins.int] engine_config_pg_bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        :param pulumi.Input[builtins.float] engine_config_pg_bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        :param pulumi.Input[builtins.int] engine_config_pg_deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        :param pulumi.Input[builtins.str] engine_config_pg_default_toast_compression: Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        :param pulumi.Input[builtins.int] engine_config_pg_idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
+        :param pulumi.Input[builtins.bool] engine_config_pg_jit: Controls system-wide use of Just-in-Time Compilation (JIT).
+        :param pulumi.Input[builtins.int] engine_config_pg_max_files_per_process: PostgreSQL maximum number of files that can be open per process.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_locks_per_transaction: PostgreSQL maximum locks per transaction.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_logical_replication_workers: PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+        :param pulumi.Input[builtins.int] engine_config_pg_max_parallel_workers: Sets the maximum number of workers that the system can support for parallel queries.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_parallel_workers_per_gather: Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_pred_locks_per_transaction: PostgreSQL maximum predicate locks per transaction.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_replication_slots: PostgreSQL maximum replication slots.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_slot_wal_keep_size: PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_stack_depth: Maximum depth of the stack in bytes.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_standby_archive_delay: Max standby archive delay in milliseconds.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_standby_streaming_delay: Max standby streaming delay in milliseconds.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_wal_senders: PostgreSQL maximum WAL senders.
+        :param pulumi.Input[builtins.int] engine_config_pg_max_worker_processes: Sets the maximum number of background processes that the system can support.
+        :param pulumi.Input[builtins.str] engine_config_pg_password_encryption: Chooses the algorithm for encrypting passwords. (default `md5`)
+        :param pulumi.Input[builtins.int] engine_config_pg_pg_partman_bgw_interval: Sets the time interval to run pg_partman's scheduled tasks.
+        :param pulumi.Input[builtins.str] engine_config_pg_pg_partman_bgw_role: Controls which role to use for pg_partman's scheduled background tasks.
+        :param pulumi.Input[builtins.bool] engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan: Enables or disables query plan monitoring.
+        :param pulumi.Input[builtins.int] engine_config_pg_pg_stat_monitor_pgsm_max_buckets: Sets the maximum number of buckets.
+        :param pulumi.Input[builtins.str] engine_config_pg_pg_stat_statements_track: Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        :param pulumi.Input[builtins.bool] engine_config_pg_stat_monitor_enable: Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        :param pulumi.Input[builtins.int] engine_config_pg_temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        :param pulumi.Input[builtins.str] engine_config_pg_timezone: PostgreSQL service timezone.
+        :param pulumi.Input[builtins.int] engine_config_pg_track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_commit_timestamp: Record commit time of transactions.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_functions: Enables tracking of function call counts and time used.
+        :param pulumi.Input[builtins.str] engine_config_pg_track_io_timing: Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        :param pulumi.Input[builtins.int] engine_config_pg_wal_sender_timeout: Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        :param pulumi.Input[builtins.int] engine_config_pg_wal_writer_delay: WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        :param pulumi.Input[builtins.int] engine_config_pglookout_max_failover_replication_time_lag: Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+        :param pulumi.Input[builtins.float] engine_config_shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        :param pulumi.Input[builtins.int] engine_config_work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         :param pulumi.Input[builtins.str] engine_id: The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
         :param pulumi.Input[builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[builtins.int] fork_source: The ID of the database that was forked from.
@@ -954,6 +2740,53 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         __props__.__dict__["created"] = created
         __props__.__dict__["encrypted"] = encrypted
         __props__.__dict__["engine"] = engine
+        __props__.__dict__["engine_config_pg_autovacuum_analyze_scale_factor"] = engine_config_pg_autovacuum_analyze_scale_factor
+        __props__.__dict__["engine_config_pg_autovacuum_analyze_threshold"] = engine_config_pg_autovacuum_analyze_threshold
+        __props__.__dict__["engine_config_pg_autovacuum_max_workers"] = engine_config_pg_autovacuum_max_workers
+        __props__.__dict__["engine_config_pg_autovacuum_naptime"] = engine_config_pg_autovacuum_naptime
+        __props__.__dict__["engine_config_pg_autovacuum_vacuum_cost_delay"] = engine_config_pg_autovacuum_vacuum_cost_delay
+        __props__.__dict__["engine_config_pg_autovacuum_vacuum_cost_limit"] = engine_config_pg_autovacuum_vacuum_cost_limit
+        __props__.__dict__["engine_config_pg_autovacuum_vacuum_scale_factor"] = engine_config_pg_autovacuum_vacuum_scale_factor
+        __props__.__dict__["engine_config_pg_autovacuum_vacuum_threshold"] = engine_config_pg_autovacuum_vacuum_threshold
+        __props__.__dict__["engine_config_pg_bgwriter_delay"] = engine_config_pg_bgwriter_delay
+        __props__.__dict__["engine_config_pg_bgwriter_flush_after"] = engine_config_pg_bgwriter_flush_after
+        __props__.__dict__["engine_config_pg_bgwriter_lru_maxpages"] = engine_config_pg_bgwriter_lru_maxpages
+        __props__.__dict__["engine_config_pg_bgwriter_lru_multiplier"] = engine_config_pg_bgwriter_lru_multiplier
+        __props__.__dict__["engine_config_pg_deadlock_timeout"] = engine_config_pg_deadlock_timeout
+        __props__.__dict__["engine_config_pg_default_toast_compression"] = engine_config_pg_default_toast_compression
+        __props__.__dict__["engine_config_pg_idle_in_transaction_session_timeout"] = engine_config_pg_idle_in_transaction_session_timeout
+        __props__.__dict__["engine_config_pg_jit"] = engine_config_pg_jit
+        __props__.__dict__["engine_config_pg_max_files_per_process"] = engine_config_pg_max_files_per_process
+        __props__.__dict__["engine_config_pg_max_locks_per_transaction"] = engine_config_pg_max_locks_per_transaction
+        __props__.__dict__["engine_config_pg_max_logical_replication_workers"] = engine_config_pg_max_logical_replication_workers
+        __props__.__dict__["engine_config_pg_max_parallel_workers"] = engine_config_pg_max_parallel_workers
+        __props__.__dict__["engine_config_pg_max_parallel_workers_per_gather"] = engine_config_pg_max_parallel_workers_per_gather
+        __props__.__dict__["engine_config_pg_max_pred_locks_per_transaction"] = engine_config_pg_max_pred_locks_per_transaction
+        __props__.__dict__["engine_config_pg_max_replication_slots"] = engine_config_pg_max_replication_slots
+        __props__.__dict__["engine_config_pg_max_slot_wal_keep_size"] = engine_config_pg_max_slot_wal_keep_size
+        __props__.__dict__["engine_config_pg_max_stack_depth"] = engine_config_pg_max_stack_depth
+        __props__.__dict__["engine_config_pg_max_standby_archive_delay"] = engine_config_pg_max_standby_archive_delay
+        __props__.__dict__["engine_config_pg_max_standby_streaming_delay"] = engine_config_pg_max_standby_streaming_delay
+        __props__.__dict__["engine_config_pg_max_wal_senders"] = engine_config_pg_max_wal_senders
+        __props__.__dict__["engine_config_pg_max_worker_processes"] = engine_config_pg_max_worker_processes
+        __props__.__dict__["engine_config_pg_password_encryption"] = engine_config_pg_password_encryption
+        __props__.__dict__["engine_config_pg_pg_partman_bgw_interval"] = engine_config_pg_pg_partman_bgw_interval
+        __props__.__dict__["engine_config_pg_pg_partman_bgw_role"] = engine_config_pg_pg_partman_bgw_role
+        __props__.__dict__["engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan"] = engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan
+        __props__.__dict__["engine_config_pg_pg_stat_monitor_pgsm_max_buckets"] = engine_config_pg_pg_stat_monitor_pgsm_max_buckets
+        __props__.__dict__["engine_config_pg_pg_stat_statements_track"] = engine_config_pg_pg_stat_statements_track
+        __props__.__dict__["engine_config_pg_stat_monitor_enable"] = engine_config_pg_stat_monitor_enable
+        __props__.__dict__["engine_config_pg_temp_file_limit"] = engine_config_pg_temp_file_limit
+        __props__.__dict__["engine_config_pg_timezone"] = engine_config_pg_timezone
+        __props__.__dict__["engine_config_pg_track_activity_query_size"] = engine_config_pg_track_activity_query_size
+        __props__.__dict__["engine_config_pg_track_commit_timestamp"] = engine_config_pg_track_commit_timestamp
+        __props__.__dict__["engine_config_pg_track_functions"] = engine_config_pg_track_functions
+        __props__.__dict__["engine_config_pg_track_io_timing"] = engine_config_pg_track_io_timing
+        __props__.__dict__["engine_config_pg_wal_sender_timeout"] = engine_config_pg_wal_sender_timeout
+        __props__.__dict__["engine_config_pg_wal_writer_delay"] = engine_config_pg_wal_writer_delay
+        __props__.__dict__["engine_config_pglookout_max_failover_replication_time_lag"] = engine_config_pglookout_max_failover_replication_time_lag
+        __props__.__dict__["engine_config_shared_buffers_percentage"] = engine_config_shared_buffers_percentage
+        __props__.__dict__["engine_config_work_mem"] = engine_config_work_mem
         __props__.__dict__["engine_id"] = engine_id
         __props__.__dict__["fork_restore_time"] = fork_restore_time
         __props__.__dict__["fork_source"] = fork_source
@@ -1025,6 +2858,382 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         The Managed Database engine. (e.g. `postgresql`)
         """
         return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumAnalyzeScaleFactor")
+    def engine_config_pg_autovacuum_analyze_scale_factor(self) -> pulumi.Output[builtins.float]:
+        """
+        Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_analyze_scale_factor")
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumAnalyzeThreshold")
+    def engine_config_pg_autovacuum_analyze_threshold(self) -> pulumi.Output[builtins.int]:
+        """
+        Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_analyze_threshold")
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumMaxWorkers")
+    def engine_config_pg_autovacuum_max_workers(self) -> pulumi.Output[builtins.int]:
+        """
+        Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_max_workers")
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumNaptime")
+    def engine_config_pg_autovacuum_naptime(self) -> pulumi.Output[builtins.int]:
+        """
+        Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_naptime")
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumCostDelay")
+    def engine_config_pg_autovacuum_vacuum_cost_delay(self) -> pulumi.Output[builtins.int]:
+        """
+        Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_cost_delay")
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumCostLimit")
+    def engine_config_pg_autovacuum_vacuum_cost_limit(self) -> pulumi.Output[builtins.int]:
+        """
+        Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_cost_limit")
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumScaleFactor")
+    def engine_config_pg_autovacuum_vacuum_scale_factor(self) -> pulumi.Output[builtins.float]:
+        """
+        Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_scale_factor")
+
+    @property
+    @pulumi.getter(name="engineConfigPgAutovacuumVacuumThreshold")
+    def engine_config_pg_autovacuum_vacuum_threshold(self) -> pulumi.Output[builtins.int]:
+        """
+        Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        """
+        return pulumi.get(self, "engine_config_pg_autovacuum_vacuum_threshold")
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterDelay")
+    def engine_config_pg_bgwriter_delay(self) -> pulumi.Output[builtins.int]:
+        """
+        Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_delay")
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterFlushAfter")
+    def engine_config_pg_bgwriter_flush_after(self) -> pulumi.Output[builtins.int]:
+        """
+        Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_flush_after")
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterLruMaxpages")
+    def engine_config_pg_bgwriter_lru_maxpages(self) -> pulumi.Output[builtins.int]:
+        """
+        In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_lru_maxpages")
+
+    @property
+    @pulumi.getter(name="engineConfigPgBgwriterLruMultiplier")
+    def engine_config_pg_bgwriter_lru_multiplier(self) -> pulumi.Output[builtins.float]:
+        """
+        The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        """
+        return pulumi.get(self, "engine_config_pg_bgwriter_lru_multiplier")
+
+    @property
+    @pulumi.getter(name="engineConfigPgDeadlockTimeout")
+    def engine_config_pg_deadlock_timeout(self) -> pulumi.Output[builtins.int]:
+        """
+        This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        """
+        return pulumi.get(self, "engine_config_pg_deadlock_timeout")
+
+    @property
+    @pulumi.getter(name="engineConfigPgDefaultToastCompression")
+    def engine_config_pg_default_toast_compression(self) -> pulumi.Output[builtins.str]:
+        """
+        Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        """
+        return pulumi.get(self, "engine_config_pg_default_toast_compression")
+
+    @property
+    @pulumi.getter(name="engineConfigPgIdleInTransactionSessionTimeout")
+    def engine_config_pg_idle_in_transaction_session_timeout(self) -> pulumi.Output[builtins.int]:
+        """
+        Time out sessions with open transactions after this number of milliseconds.
+        """
+        return pulumi.get(self, "engine_config_pg_idle_in_transaction_session_timeout")
+
+    @property
+    @pulumi.getter(name="engineConfigPgJit")
+    def engine_config_pg_jit(self) -> pulumi.Output[builtins.bool]:
+        """
+        Controls system-wide use of Just-in-Time Compilation (JIT).
+        """
+        return pulumi.get(self, "engine_config_pg_jit")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxFilesPerProcess")
+    def engine_config_pg_max_files_per_process(self) -> pulumi.Output[builtins.int]:
+        """
+        PostgreSQL maximum number of files that can be open per process.
+        """
+        return pulumi.get(self, "engine_config_pg_max_files_per_process")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxLocksPerTransaction")
+    def engine_config_pg_max_locks_per_transaction(self) -> pulumi.Output[builtins.int]:
+        """
+        PostgreSQL maximum locks per transaction.
+        """
+        return pulumi.get(self, "engine_config_pg_max_locks_per_transaction")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxLogicalReplicationWorkers")
+    def engine_config_pg_max_logical_replication_workers(self) -> pulumi.Output[builtins.int]:
+        """
+        PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+        """
+        return pulumi.get(self, "engine_config_pg_max_logical_replication_workers")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxParallelWorkers")
+    def engine_config_pg_max_parallel_workers(self) -> pulumi.Output[builtins.int]:
+        """
+        Sets the maximum number of workers that the system can support for parallel queries.
+        """
+        return pulumi.get(self, "engine_config_pg_max_parallel_workers")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxParallelWorkersPerGather")
+    def engine_config_pg_max_parallel_workers_per_gather(self) -> pulumi.Output[builtins.int]:
+        """
+        Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        """
+        return pulumi.get(self, "engine_config_pg_max_parallel_workers_per_gather")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxPredLocksPerTransaction")
+    def engine_config_pg_max_pred_locks_per_transaction(self) -> pulumi.Output[builtins.int]:
+        """
+        PostgreSQL maximum predicate locks per transaction.
+        """
+        return pulumi.get(self, "engine_config_pg_max_pred_locks_per_transaction")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxReplicationSlots")
+    def engine_config_pg_max_replication_slots(self) -> pulumi.Output[builtins.int]:
+        """
+        PostgreSQL maximum replication slots.
+        """
+        return pulumi.get(self, "engine_config_pg_max_replication_slots")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxSlotWalKeepSize")
+    def engine_config_pg_max_slot_wal_keep_size(self) -> pulumi.Output[builtins.int]:
+        """
+        PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        """
+        return pulumi.get(self, "engine_config_pg_max_slot_wal_keep_size")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxStackDepth")
+    def engine_config_pg_max_stack_depth(self) -> pulumi.Output[builtins.int]:
+        """
+        Maximum depth of the stack in bytes.
+        """
+        return pulumi.get(self, "engine_config_pg_max_stack_depth")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxStandbyArchiveDelay")
+    def engine_config_pg_max_standby_archive_delay(self) -> pulumi.Output[builtins.int]:
+        """
+        Max standby archive delay in milliseconds.
+        """
+        return pulumi.get(self, "engine_config_pg_max_standby_archive_delay")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxStandbyStreamingDelay")
+    def engine_config_pg_max_standby_streaming_delay(self) -> pulumi.Output[builtins.int]:
+        """
+        Max standby streaming delay in milliseconds.
+        """
+        return pulumi.get(self, "engine_config_pg_max_standby_streaming_delay")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxWalSenders")
+    def engine_config_pg_max_wal_senders(self) -> pulumi.Output[builtins.int]:
+        """
+        PostgreSQL maximum WAL senders.
+        """
+        return pulumi.get(self, "engine_config_pg_max_wal_senders")
+
+    @property
+    @pulumi.getter(name="engineConfigPgMaxWorkerProcesses")
+    def engine_config_pg_max_worker_processes(self) -> pulumi.Output[builtins.int]:
+        """
+        Sets the maximum number of background processes that the system can support.
+        """
+        return pulumi.get(self, "engine_config_pg_max_worker_processes")
+
+    @property
+    @pulumi.getter(name="engineConfigPgPasswordEncryption")
+    def engine_config_pg_password_encryption(self) -> pulumi.Output[builtins.str]:
+        """
+        Chooses the algorithm for encrypting passwords. (default `md5`)
+        """
+        return pulumi.get(self, "engine_config_pg_password_encryption")
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgPartmanBgwInterval")
+    def engine_config_pg_pg_partman_bgw_interval(self) -> pulumi.Output[builtins.int]:
+        """
+        Sets the time interval to run pg_partman's scheduled tasks.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_partman_bgw_interval")
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgPartmanBgwRole")
+    def engine_config_pg_pg_partman_bgw_role(self) -> pulumi.Output[builtins.str]:
+        """
+        Controls which role to use for pg_partman's scheduled background tasks.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_partman_bgw_role")
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgStatMonitorPgsmEnableQueryPlan")
+    def engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan(self) -> pulumi.Output[builtins.bool]:
+        """
+        Enables or disables query plan monitoring.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan")
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgStatMonitorPgsmMaxBuckets")
+    def engine_config_pg_pg_stat_monitor_pgsm_max_buckets(self) -> pulumi.Output[builtins.int]:
+        """
+        Sets the maximum number of buckets.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_stat_monitor_pgsm_max_buckets")
+
+    @property
+    @pulumi.getter(name="engineConfigPgPgStatStatementsTrack")
+    def engine_config_pg_pg_stat_statements_track(self) -> pulumi.Output[builtins.str]:
+        """
+        Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        """
+        return pulumi.get(self, "engine_config_pg_pg_stat_statements_track")
+
+    @property
+    @pulumi.getter(name="engineConfigPgStatMonitorEnable")
+    def engine_config_pg_stat_monitor_enable(self) -> pulumi.Output[builtins.bool]:
+        """
+        Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        """
+        return pulumi.get(self, "engine_config_pg_stat_monitor_enable")
+
+    @property
+    @pulumi.getter(name="engineConfigPgTempFileLimit")
+    def engine_config_pg_temp_file_limit(self) -> pulumi.Output[builtins.int]:
+        """
+        PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        """
+        return pulumi.get(self, "engine_config_pg_temp_file_limit")
+
+    @property
+    @pulumi.getter(name="engineConfigPgTimezone")
+    def engine_config_pg_timezone(self) -> pulumi.Output[builtins.str]:
+        """
+        PostgreSQL service timezone.
+        """
+        return pulumi.get(self, "engine_config_pg_timezone")
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackActivityQuerySize")
+    def engine_config_pg_track_activity_query_size(self) -> pulumi.Output[builtins.int]:
+        """
+        Specifies the number of bytes reserved to track the currently executing command for each active session.
+        """
+        return pulumi.get(self, "engine_config_pg_track_activity_query_size")
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackCommitTimestamp")
+    def engine_config_pg_track_commit_timestamp(self) -> pulumi.Output[builtins.str]:
+        """
+        Record commit time of transactions.
+        """
+        return pulumi.get(self, "engine_config_pg_track_commit_timestamp")
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackFunctions")
+    def engine_config_pg_track_functions(self) -> pulumi.Output[builtins.str]:
+        """
+        Enables tracking of function call counts and time used.
+        """
+        return pulumi.get(self, "engine_config_pg_track_functions")
+
+    @property
+    @pulumi.getter(name="engineConfigPgTrackIoTiming")
+    def engine_config_pg_track_io_timing(self) -> pulumi.Output[builtins.str]:
+        """
+        Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        """
+        return pulumi.get(self, "engine_config_pg_track_io_timing")
+
+    @property
+    @pulumi.getter(name="engineConfigPgWalSenderTimeout")
+    def engine_config_pg_wal_sender_timeout(self) -> pulumi.Output[builtins.int]:
+        """
+        Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        """
+        return pulumi.get(self, "engine_config_pg_wal_sender_timeout")
+
+    @property
+    @pulumi.getter(name="engineConfigPgWalWriterDelay")
+    def engine_config_pg_wal_writer_delay(self) -> pulumi.Output[builtins.int]:
+        """
+        WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        """
+        return pulumi.get(self, "engine_config_pg_wal_writer_delay")
+
+    @property
+    @pulumi.getter(name="engineConfigPglookoutMaxFailoverReplicationTimeLag")
+    def engine_config_pglookout_max_failover_replication_time_lag(self) -> pulumi.Output[builtins.int]:
+        """
+        Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+        """
+        return pulumi.get(self, "engine_config_pglookout_max_failover_replication_time_lag")
+
+    @property
+    @pulumi.getter(name="engineConfigSharedBuffersPercentage")
+    def engine_config_shared_buffers_percentage(self) -> pulumi.Output[builtins.float]:
+        """
+        Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        """
+        return pulumi.get(self, "engine_config_shared_buffers_percentage")
+
+    @property
+    @pulumi.getter(name="engineConfigWorkMem")
+    def engine_config_work_mem(self) -> pulumi.Output[builtins.int]:
+        """
+        Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+        """
+        return pulumi.get(self, "engine_config_work_mem")
 
     @property
     @pulumi.getter(name="engineId")

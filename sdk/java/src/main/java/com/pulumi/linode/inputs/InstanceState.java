@@ -6,13 +6,13 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.InstanceAlertsArgs;
-import com.pulumi.linode.inputs.InstanceBackupsArgs;
+import com.pulumi.linode.inputs.InstanceBackupArgs;
 import com.pulumi.linode.inputs.InstanceConfigArgs;
 import com.pulumi.linode.inputs.InstanceDiskArgs;
 import com.pulumi.linode.inputs.InstanceInterfaceArgs;
 import com.pulumi.linode.inputs.InstanceMetadataArgs;
 import com.pulumi.linode.inputs.InstancePlacementGroupArgs;
-import com.pulumi.linode.inputs.InstanceSpecsArgs;
+import com.pulumi.linode.inputs.InstanceSpecArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -100,13 +100,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="backups")
-    private @Nullable Output<InstanceBackupsArgs> backups;
+    private @Nullable Output<List<InstanceBackupArgs>> backups;
 
     /**
      * @return Information about this Linode&#39;s backups status.
      * 
      */
-    public Optional<Output<InstanceBackupsArgs>> backups() {
+    public Optional<Output<List<InstanceBackupArgs>>> backups() {
         return Optional.ofNullable(this.backups);
     }
 
@@ -607,13 +607,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="specs")
-    private @Nullable Output<InstanceSpecsArgs> specs;
+    private @Nullable Output<List<InstanceSpecArgs>> specs;
 
     /**
      * @return Information about the resources available to this Linode.
      * 
      */
-    public Optional<Output<InstanceSpecsArgs>> specs() {
+    public Optional<Output<List<InstanceSpecArgs>>> specs() {
         return Optional.ofNullable(this.specs);
     }
 
@@ -915,7 +915,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder backups(@Nullable Output<InstanceBackupsArgs> backups) {
+        public Builder backups(@Nullable Output<List<InstanceBackupArgs>> backups) {
             $.backups = backups;
             return this;
         }
@@ -926,8 +926,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder backups(InstanceBackupsArgs backups) {
+        public Builder backups(List<InstanceBackupArgs> backups) {
             return backups(Output.of(backups));
+        }
+
+        /**
+         * @param backups Information about this Linode&#39;s backups status.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backups(InstanceBackupArgs... backups) {
+            return backups(List.of(backups));
         }
 
         /**
@@ -1679,7 +1689,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder specs(@Nullable Output<InstanceSpecsArgs> specs) {
+        public Builder specs(@Nullable Output<List<InstanceSpecArgs>> specs) {
             $.specs = specs;
             return this;
         }
@@ -1690,8 +1700,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder specs(InstanceSpecsArgs specs) {
+        public Builder specs(List<InstanceSpecArgs> specs) {
             return specs(Output.of(specs));
+        }
+
+        /**
+         * @param specs Information about the resources available to this Linode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder specs(InstanceSpecArgs... specs) {
+            return specs(List.of(specs));
         }
 
         /**

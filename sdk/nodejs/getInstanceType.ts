@@ -53,7 +53,7 @@ export interface GetInstanceTypeResult {
      * The number of VPUs this Linode Type offers.
      */
     readonly acceleratedDevices: number;
-    readonly addons: outputs.GetInstanceTypeAddons;
+    readonly addons: outputs.GetInstanceTypeAddon[];
     /**
      * The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
      */
@@ -78,7 +78,7 @@ export interface GetInstanceTypeResult {
      * The Mbits outbound bandwidth allocation.
      */
     readonly networkOut: number;
-    readonly price: outputs.GetInstanceTypePrice;
+    readonly prices: outputs.GetInstanceTypePrice[];
     readonly regionPrices: outputs.GetInstanceTypeRegionPrice[];
     /**
      * The monthly outbound transfer amount, in MB.

@@ -23,6 +23,7 @@ __all__ = ['NodeBalancerArgs', 'NodeBalancer']
 class NodeBalancerArgs:
     def __init__(__self__, *,
                  client_conn_throttle: Optional[pulumi.Input[builtins.int]] = None,
+                 client_udp_sess_throttle: Optional[pulumi.Input[builtins.int]] = None,
                  firewall_id: Optional[pulumi.Input[builtins.int]] = None,
                  label: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
@@ -30,6 +31,9 @@ class NodeBalancerArgs:
         """
         The set of arguments for constructing a NodeBalancer resource.
         :param pulumi.Input[builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[builtins.int] client_udp_sess_throttle: Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+               
+               * **NOTE: This argument may not be generally available.**
         :param pulumi.Input[builtins.int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[builtins.str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[builtins.str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
@@ -39,6 +43,8 @@ class NodeBalancerArgs:
         """
         if client_conn_throttle is not None:
             pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
+        if client_udp_sess_throttle is not None:
+            pulumi.set(__self__, "client_udp_sess_throttle", client_udp_sess_throttle)
         if firewall_id is not None:
             pulumi.set(__self__, "firewall_id", firewall_id)
         if label is not None:
@@ -59,6 +65,20 @@ class NodeBalancerArgs:
     @client_conn_throttle.setter
     def client_conn_throttle(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "client_conn_throttle", value)
+
+    @property
+    @pulumi.getter(name="clientUdpSessThrottle")
+    def client_udp_sess_throttle(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+
+        * **NOTE: This argument may not be generally available.**
+        """
+        return pulumi.get(self, "client_udp_sess_throttle")
+
+    @client_udp_sess_throttle.setter
+    def client_udp_sess_throttle(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "client_udp_sess_throttle", value)
 
     @property
     @pulumi.getter(name="firewallId")
@@ -115,6 +135,7 @@ class NodeBalancerArgs:
 class _NodeBalancerState:
     def __init__(__self__, *,
                  client_conn_throttle: Optional[pulumi.Input[builtins.int]] = None,
+                 client_udp_sess_throttle: Optional[pulumi.Input[builtins.int]] = None,
                  created: Optional[pulumi.Input[builtins.str]] = None,
                  firewall_id: Optional[pulumi.Input[builtins.int]] = None,
                  firewalls: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallArgs']]]] = None,
@@ -129,6 +150,9 @@ class _NodeBalancerState:
         """
         Input properties used for looking up and filtering NodeBalancer resources.
         :param pulumi.Input[builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[builtins.int] client_udp_sess_throttle: Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+               
+               * **NOTE: This argument may not be generally available.**
         :param pulumi.Input[builtins.str] created: When this firewall was created.
         :param pulumi.Input[builtins.int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallArgs']]] firewalls: A list of Firewalls assigned to this NodeBalancer.
@@ -145,6 +169,8 @@ class _NodeBalancerState:
         """
         if client_conn_throttle is not None:
             pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
+        if client_udp_sess_throttle is not None:
+            pulumi.set(__self__, "client_udp_sess_throttle", client_udp_sess_throttle)
         if created is not None:
             pulumi.set(__self__, "created", created)
         if firewall_id is not None:
@@ -179,6 +205,20 @@ class _NodeBalancerState:
     @client_conn_throttle.setter
     def client_conn_throttle(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "client_conn_throttle", value)
+
+    @property
+    @pulumi.getter(name="clientUdpSessThrottle")
+    def client_udp_sess_throttle(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+
+        * **NOTE: This argument may not be generally available.**
+        """
+        return pulumi.get(self, "client_udp_sess_throttle")
+
+    @client_udp_sess_throttle.setter
+    def client_udp_sess_throttle(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "client_udp_sess_throttle", value)
 
     @property
     @pulumi.getter
@@ -322,6 +362,7 @@ class NodeBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_conn_throttle: Optional[pulumi.Input[builtins.int]] = None,
+                 client_udp_sess_throttle: Optional[pulumi.Input[builtins.int]] = None,
                  firewall_id: Optional[pulumi.Input[builtins.int]] = None,
                  label: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
@@ -343,6 +384,7 @@ class NodeBalancer(pulumi.CustomResource):
             label="mynodebalancer",
             region="us-east",
             client_conn_throttle=20,
+            client_udp_sess_throttle=10,
             tags=["foobar"])
         ```
 
@@ -357,6 +399,9 @@ class NodeBalancer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[builtins.int] client_udp_sess_throttle: Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+               
+               * **NOTE: This argument may not be generally available.**
         :param pulumi.Input[builtins.int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[builtins.str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[builtins.str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
@@ -386,6 +431,7 @@ class NodeBalancer(pulumi.CustomResource):
             label="mynodebalancer",
             region="us-east",
             client_conn_throttle=20,
+            client_udp_sess_throttle=10,
             tags=["foobar"])
         ```
 
@@ -413,6 +459,7 @@ class NodeBalancer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  client_conn_throttle: Optional[pulumi.Input[builtins.int]] = None,
+                 client_udp_sess_throttle: Optional[pulumi.Input[builtins.int]] = None,
                  firewall_id: Optional[pulumi.Input[builtins.int]] = None,
                  label: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
@@ -427,6 +474,7 @@ class NodeBalancer(pulumi.CustomResource):
             __props__ = NodeBalancerArgs.__new__(NodeBalancerArgs)
 
             __props__.__dict__["client_conn_throttle"] = client_conn_throttle
+            __props__.__dict__["client_udp_sess_throttle"] = client_udp_sess_throttle
             __props__.__dict__["firewall_id"] = firewall_id
             __props__.__dict__["label"] = label
             __props__.__dict__["region"] = region
@@ -449,6 +497,7 @@ class NodeBalancer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             client_conn_throttle: Optional[pulumi.Input[builtins.int]] = None,
+            client_udp_sess_throttle: Optional[pulumi.Input[builtins.int]] = None,
             created: Optional[pulumi.Input[builtins.str]] = None,
             firewall_id: Optional[pulumi.Input[builtins.int]] = None,
             firewalls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerFirewallArgs', 'NodeBalancerFirewallArgsDict']]]]] = None,
@@ -468,6 +517,9 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
+        :param pulumi.Input[builtins.int] client_udp_sess_throttle: Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+               
+               * **NOTE: This argument may not be generally available.**
         :param pulumi.Input[builtins.str] created: When this firewall was created.
         :param pulumi.Input[builtins.int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerFirewallArgs', 'NodeBalancerFirewallArgsDict']]]] firewalls: A list of Firewalls assigned to this NodeBalancer.
@@ -487,6 +539,7 @@ class NodeBalancer(pulumi.CustomResource):
         __props__ = _NodeBalancerState.__new__(_NodeBalancerState)
 
         __props__.__dict__["client_conn_throttle"] = client_conn_throttle
+        __props__.__dict__["client_udp_sess_throttle"] = client_udp_sess_throttle
         __props__.__dict__["created"] = created
         __props__.__dict__["firewall_id"] = firewall_id
         __props__.__dict__["firewalls"] = firewalls
@@ -507,6 +560,16 @@ class NodeBalancer(pulumi.CustomResource):
         Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         """
         return pulumi.get(self, "client_conn_throttle")
+
+    @property
+    @pulumi.getter(name="clientUdpSessThrottle")
+    def client_udp_sess_throttle(self) -> pulumi.Output[builtins.int]:
+        """
+        Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+
+        * **NOTE: This argument may not be generally available.**
+        """
+        return pulumi.get(self, "client_udp_sess_throttle")
 
     @property
     @pulumi.getter

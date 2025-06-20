@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *     label: "mynodebalancer",
  *     region: "us-east",
  *     clientConnThrottle: 20,
+ *     clientUdpSessThrottle: 10,
  *     tags: ["foobar"],
  * });
  * ```
@@ -66,6 +67,12 @@ export class NodeBalancer extends pulumi.CustomResource {
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
     public readonly clientConnThrottle!: pulumi.Output<number>;
+    /**
+     * Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+     *
+     * * **NOTE: This argument may not be generally available.**
+     */
+    public readonly clientUdpSessThrottle!: pulumi.Output<number>;
     /**
      * When this firewall was created.
      */
@@ -127,6 +134,7 @@ export class NodeBalancer extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NodeBalancerState | undefined;
             resourceInputs["clientConnThrottle"] = state ? state.clientConnThrottle : undefined;
+            resourceInputs["clientUdpSessThrottle"] = state ? state.clientUdpSessThrottle : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["firewallId"] = state ? state.firewallId : undefined;
             resourceInputs["firewalls"] = state ? state.firewalls : undefined;
@@ -141,6 +149,7 @@ export class NodeBalancer extends pulumi.CustomResource {
         } else {
             const args = argsOrState as NodeBalancerArgs | undefined;
             resourceInputs["clientConnThrottle"] = args ? args.clientConnThrottle : undefined;
+            resourceInputs["clientUdpSessThrottle"] = args ? args.clientUdpSessThrottle : undefined;
             resourceInputs["firewallId"] = args ? args.firewallId : undefined;
             resourceInputs["label"] = args ? args.label : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -166,6 +175,12 @@ export interface NodeBalancerState {
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
     clientConnThrottle?: pulumi.Input<number>;
+    /**
+     * Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+     *
+     * * **NOTE: This argument may not be generally available.**
+     */
+    clientUdpSessThrottle?: pulumi.Input<number>;
     /**
      * When this firewall was created.
      */
@@ -222,6 +237,12 @@ export interface NodeBalancerArgs {
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
     clientConnThrottle?: pulumi.Input<number>;
+    /**
+     * Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+     *
+     * * **NOTE: This argument may not be generally available.**
+     */
+    clientUdpSessThrottle?: pulumi.Input<number>;
     /**
      * ID for the firewall you'd like to use with this NodeBalancer.
      */

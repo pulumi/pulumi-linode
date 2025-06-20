@@ -30,6 +30,7 @@ namespace Pulumi.Linode
     ///         Label = "mynodebalancer",
     ///         Region = "us-east",
     ///         ClientConnThrottle = 20,
+    ///         ClientUdpSessThrottle = 10,
     ///         Tags = new[]
     ///         {
     ///             "foobar",
@@ -55,6 +56,14 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("clientConnThrottle")]
         public Output<int> ClientConnThrottle { get; private set; } = null!;
+
+        /// <summary>
+        /// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+        /// 
+        /// * **NOTE: This argument may not be generally available.**
+        /// </summary>
+        [Output("clientUdpSessThrottle")]
+        public Output<int> ClientUdpSessThrottle { get; private set; } = null!;
 
         /// <summary>
         /// When this firewall was created.
@@ -177,6 +186,14 @@ namespace Pulumi.Linode
         public Input<int>? ClientConnThrottle { get; set; }
 
         /// <summary>
+        /// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+        /// 
+        /// * **NOTE: This argument may not be generally available.**
+        /// </summary>
+        [Input("clientUdpSessThrottle")]
+        public Input<int>? ClientUdpSessThrottle { get; set; }
+
+        /// <summary>
         /// ID for the firewall you'd like to use with this NodeBalancer.
         /// </summary>
         [Input("firewallId")]
@@ -221,6 +238,14 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("clientConnThrottle")]
         public Input<int>? ClientConnThrottle { get; set; }
+
+        /// <summary>
+        /// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+        /// 
+        /// * **NOTE: This argument may not be generally available.**
+        /// </summary>
+        [Input("clientUdpSessThrottle")]
+        public Input<int>? ClientUdpSessThrottle { get; set; }
 
         /// <summary>
         /// When this firewall was created.

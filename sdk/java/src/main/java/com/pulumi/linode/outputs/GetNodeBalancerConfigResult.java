@@ -88,6 +88,16 @@ public final class GetNodeBalancerConfigResult {
      * 
      */
     private String stickiness;
+    /**
+     * @return Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     * 
+     */
+    private Integer udpCheckPort;
+    /**
+     * @return The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    private Integer udpSessionTimeout;
 
     private GetNodeBalancerConfigResult() {}
     /**
@@ -200,6 +210,20 @@ public final class GetNodeBalancerConfigResult {
     public String stickiness() {
         return this.stickiness;
     }
+    /**
+     * @return Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     * 
+     */
+    public Integer udpCheckPort() {
+        return this.udpCheckPort;
+    }
+    /**
+     * @return The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    public Integer udpSessionTimeout() {
+        return this.udpSessionTimeout;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -228,6 +252,8 @@ public final class GetNodeBalancerConfigResult {
         private String sslCommonname;
         private String sslFingerprint;
         private String stickiness;
+        private Integer udpCheckPort;
+        private Integer udpSessionTimeout;
         public Builder() {}
         public Builder(GetNodeBalancerConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -249,6 +275,8 @@ public final class GetNodeBalancerConfigResult {
     	      this.sslCommonname = defaults.sslCommonname;
     	      this.sslFingerprint = defaults.sslFingerprint;
     	      this.stickiness = defaults.stickiness;
+    	      this.udpCheckPort = defaults.udpCheckPort;
+    	      this.udpSessionTimeout = defaults.udpSessionTimeout;
         }
 
         @CustomType.Setter
@@ -398,6 +426,22 @@ public final class GetNodeBalancerConfigResult {
             this.stickiness = stickiness;
             return this;
         }
+        @CustomType.Setter
+        public Builder udpCheckPort(Integer udpCheckPort) {
+            if (udpCheckPort == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "udpCheckPort");
+            }
+            this.udpCheckPort = udpCheckPort;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder udpSessionTimeout(Integer udpSessionTimeout) {
+            if (udpSessionTimeout == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerConfigResult", "udpSessionTimeout");
+            }
+            this.udpSessionTimeout = udpSessionTimeout;
+            return this;
+        }
         public GetNodeBalancerConfigResult build() {
             final var _resultValue = new GetNodeBalancerConfigResult();
             _resultValue.algorithm = algorithm;
@@ -418,6 +462,8 @@ public final class GetNodeBalancerConfigResult {
             _resultValue.sslCommonname = sslCommonname;
             _resultValue.sslFingerprint = sslFingerprint;
             _resultValue.stickiness = stickiness;
+            _resultValue.udpCheckPort = udpCheckPort;
+            _resultValue.udpSessionTimeout = udpSessionTimeout;
             return _resultValue;
         }
     }

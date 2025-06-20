@@ -21,6 +21,11 @@ public final class GetNodeBalancerResult {
      */
     private Integer clientConnThrottle;
     /**
+     * @return Throttle UDP sessions per second (0-20).
+     * 
+     */
+    private Integer clientUdpSessThrottle;
+    /**
      * @return When this firewall was created.
      * 
      */
@@ -75,6 +80,13 @@ public final class GetNodeBalancerResult {
      */
     public Integer clientConnThrottle() {
         return this.clientConnThrottle;
+    }
+    /**
+     * @return Throttle UDP sessions per second (0-20).
+     * 
+     */
+    public Integer clientUdpSessThrottle() {
+        return this.clientUdpSessThrottle;
     }
     /**
      * @return When this firewall was created.
@@ -156,6 +168,7 @@ public final class GetNodeBalancerResult {
     @CustomType.Builder
     public static final class Builder {
         private Integer clientConnThrottle;
+        private Integer clientUdpSessThrottle;
         private String created;
         private @Nullable List<GetNodeBalancerFirewall> firewalls;
         private String hostname;
@@ -171,6 +184,7 @@ public final class GetNodeBalancerResult {
         public Builder(GetNodeBalancerResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientConnThrottle = defaults.clientConnThrottle;
+    	      this.clientUdpSessThrottle = defaults.clientUdpSessThrottle;
     	      this.created = defaults.created;
     	      this.firewalls = defaults.firewalls;
     	      this.hostname = defaults.hostname;
@@ -190,6 +204,14 @@ public final class GetNodeBalancerResult {
               throw new MissingRequiredPropertyException("GetNodeBalancerResult", "clientConnThrottle");
             }
             this.clientConnThrottle = clientConnThrottle;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientUdpSessThrottle(Integer clientUdpSessThrottle) {
+            if (clientUdpSessThrottle == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "clientUdpSessThrottle");
+            }
+            this.clientUdpSessThrottle = clientUdpSessThrottle;
             return this;
         }
         @CustomType.Setter
@@ -290,6 +312,7 @@ public final class GetNodeBalancerResult {
         public GetNodeBalancerResult build() {
             final var _resultValue = new GetNodeBalancerResult();
             _resultValue.clientConnThrottle = clientConnThrottle;
+            _resultValue.clientUdpSessThrottle = clientUdpSessThrottle;
             _resultValue.created = created;
             _resultValue.firewalls = firewalls;
             _resultValue.hostname = hostname;

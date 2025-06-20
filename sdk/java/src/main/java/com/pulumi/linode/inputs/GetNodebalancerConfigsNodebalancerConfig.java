@@ -291,6 +291,36 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
         return this.stickiness;
     }
 
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     * 
+     */
+    @Import(name="udpCheckPort", required=true)
+    private Integer udpCheckPort;
+
+    /**
+     * @return Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     * 
+     */
+    public Integer udpCheckPort() {
+        return this.udpCheckPort;
+    }
+
+    /**
+     * The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    @Import(name="udpSessionTimeout", required=true)
+    private Integer udpSessionTimeout;
+
+    /**
+     * @return The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    public Integer udpSessionTimeout() {
+        return this.udpSessionTimeout;
+    }
+
     private GetNodebalancerConfigsNodebalancerConfig() {}
 
     private GetNodebalancerConfigsNodebalancerConfig(GetNodebalancerConfigsNodebalancerConfig $) {
@@ -312,6 +342,8 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
         this.sslCommonname = $.sslCommonname;
         this.sslFingerprint = $.sslFingerprint;
         this.stickiness = $.stickiness;
+        this.udpCheckPort = $.udpCheckPort;
+        this.udpSessionTimeout = $.udpSessionTimeout;
     }
 
     public static Builder builder() {
@@ -542,6 +574,28 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
             return this;
         }
 
+        /**
+         * @param udpCheckPort Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpCheckPort(Integer udpCheckPort) {
+            $.udpCheckPort = udpCheckPort;
+            return this;
+        }
+
+        /**
+         * @param udpSessionTimeout The idle time in seconds after which a session that hasn’t received packets is destroyed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpSessionTimeout(Integer udpSessionTimeout) {
+            $.udpSessionTimeout = udpSessionTimeout;
+            return this;
+        }
+
         public GetNodebalancerConfigsNodebalancerConfig build() {
             if ($.algorithm == null) {
                 throw new MissingRequiredPropertyException("GetNodebalancerConfigsNodebalancerConfig", "algorithm");
@@ -596,6 +650,12 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
             }
             if ($.stickiness == null) {
                 throw new MissingRequiredPropertyException("GetNodebalancerConfigsNodebalancerConfig", "stickiness");
+            }
+            if ($.udpCheckPort == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancerConfigsNodebalancerConfig", "udpCheckPort");
+            }
+            if ($.udpSessionTimeout == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancerConfigsNodebalancerConfig", "udpSessionTimeout");
             }
             return $;
         }

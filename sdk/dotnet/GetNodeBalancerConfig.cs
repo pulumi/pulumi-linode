@@ -195,6 +195,14 @@ namespace Pulumi.Linode
         /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         /// </summary>
         public readonly string Stickiness;
+        /// <summary>
+        /// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+        /// </summary>
+        public readonly int UdpCheckPort;
+        /// <summary>
+        /// The idle time in seconds after which a session that hasn’t received packets is destroyed.
+        /// </summary>
+        public readonly int UdpSessionTimeout;
 
         [OutputConstructor]
         private GetNodeBalancerConfigResult(
@@ -232,7 +240,11 @@ namespace Pulumi.Linode
 
             string sslFingerprint,
 
-            string stickiness)
+            string stickiness,
+
+            int udpCheckPort,
+
+            int udpSessionTimeout)
         {
             Algorithm = algorithm;
             Check = check;
@@ -252,6 +264,8 @@ namespace Pulumi.Linode
             SslCommonname = sslCommonname;
             SslFingerprint = sslFingerprint;
             Stickiness = stickiness;
+            UdpCheckPort = udpCheckPort;
+            UdpSessionTimeout = udpSessionTimeout;
         }
     }
 }

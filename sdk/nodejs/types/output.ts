@@ -444,6 +444,284 @@ export interface GetDatabaseMysqlBackupsFilter {
     values: string[];
 }
 
+export interface GetDatabaseMysqlConfigBinlogRetentionPeriod {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysql {
+    connectTimeout: outputs.GetDatabaseMysqlConfigMysqlConnectTimeout;
+    defaultTimeZone: outputs.GetDatabaseMysqlConfigMysqlDefaultTimeZone;
+    groupConcatMaxLen: outputs.GetDatabaseMysqlConfigMysqlGroupConcatMaxLen;
+    informationSchemaStatsExpiry: outputs.GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry;
+    innodbChangeBufferMaxSize: outputs.GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize;
+    innodbFlushNeighbors: outputs.GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors;
+    innodbFtMinTokenSize: outputs.GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize;
+    innodbFtServerStopwordTable: outputs.GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable;
+    innodbLockWaitTimeout: outputs.GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout;
+    innodbLogBufferSize: outputs.GetDatabaseMysqlConfigMysqlInnodbLogBufferSize;
+    innodbOnlineAlterLogMaxSize: outputs.GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize;
+    innodbReadIoThreads: outputs.GetDatabaseMysqlConfigMysqlInnodbReadIoThreads;
+    innodbRollbackOnTimeout: outputs.GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout;
+    innodbThreadConcurrency: outputs.GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency;
+    innodbWriteIoThreads: outputs.GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads;
+    interactiveTimeout: outputs.GetDatabaseMysqlConfigMysqlInteractiveTimeout;
+    internalTmpMemStorageEngine: outputs.GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine;
+    maxAllowedPacket: outputs.GetDatabaseMysqlConfigMysqlMaxAllowedPacket;
+    maxHeapTableSize: outputs.GetDatabaseMysqlConfigMysqlMaxHeapTableSize;
+    netBufferLength: outputs.GetDatabaseMysqlConfigMysqlNetBufferLength;
+    netReadTimeout: outputs.GetDatabaseMysqlConfigMysqlNetReadTimeout;
+    netWriteTimeout: outputs.GetDatabaseMysqlConfigMysqlNetWriteTimeout;
+    sortBufferSize: outputs.GetDatabaseMysqlConfigMysqlSortBufferSize;
+    sqlMode: outputs.GetDatabaseMysqlConfigMysqlSqlMode;
+    sqlRequirePrimaryKey: outputs.GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey;
+    tmpTableSize: outputs.GetDatabaseMysqlConfigMysqlTmpTableSize;
+    waitTimeout: outputs.GetDatabaseMysqlConfigMysqlWaitTimeout;
+}
+
+export interface GetDatabaseMysqlConfigMysqlConnectTimeout {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlDefaultTimeZone {
+    description: string;
+    example: string;
+    maxLength: number;
+    minLength: number;
+    pattern: string;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlGroupConcatMaxLen {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInnodbChangeBufferMaxSize {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInnodbFtServerStopwordTable {
+    description: string;
+    example: string;
+    maxLength: number;
+    pattern: string;
+    requiresRestart: boolean;
+    types: string[];
+}
+
+export interface GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInnodbLogBufferSize {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInnodbOnlineAlterLogMaxSize {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInnodbReadIoThreads {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInnodbRollbackOnTimeout {
+    description: string;
+    example: boolean;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInnodbWriteIoThreads {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInteractiveTimeout {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine {
+    description: string;
+    enums: string[];
+    example: string;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlMaxAllowedPacket {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlMaxHeapTableSize {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlNetBufferLength {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlNetReadTimeout {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlNetWriteTimeout {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlSortBufferSize {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlSqlMode {
+    description: string;
+    example: string;
+    maxLength: number;
+    pattern: string;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey {
+    description: string;
+    example: boolean;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlTmpTableSize {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabaseMysqlConfigMysqlWaitTimeout {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
 export interface GetDatabaseMysqlUpdate {
     dayOfWeek: string;
     duration: number;
@@ -463,6 +741,42 @@ export interface GetDatabaseMysqlV2Updates {
     duration: number;
     frequency: string;
     hourOfDay: number;
+}
+
+export interface GetDatabasePostgresqlConfigPgStatMonitorEnable {
+    description: string;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabasePostgresqlConfigPglookout {
+    maxFailoverReplicationTimeLag: outputs.GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag;
+}
+
+export interface GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag {
+    description: string;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabasePostgresqlConfigSharedBuffersPercentage {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
+}
+
+export interface GetDatabasePostgresqlConfigWorkMem {
+    description: string;
+    example: number;
+    maximum: number;
+    minimum: number;
+    requiresRestart: boolean;
+    type: string;
 }
 
 export interface GetDatabasePostgresqlUpdate {
@@ -1575,16 +1889,16 @@ export interface GetInstanceNetworkingIpv6SlaacVpcNat11 {
     vpcId: number;
 }
 
-export interface GetInstanceTypeAddons {
-    backups: outputs.GetInstanceTypeAddonsBackup[];
+export interface GetInstanceTypeAddon {
+    backups: outputs.GetInstanceTypeAddonBackup[];
 }
 
-export interface GetInstanceTypeAddonsBackup {
-    prices: outputs.GetInstanceTypeAddonsBackupPrice[];
-    regionPrices: outputs.GetInstanceTypeAddonsBackupRegionPrice[];
+export interface GetInstanceTypeAddonBackup {
+    prices: outputs.GetInstanceTypeAddonBackupPrice[];
+    regionPrices: outputs.GetInstanceTypeAddonBackupRegionPrice[];
 }
 
-export interface GetInstanceTypeAddonsBackupPrice {
+export interface GetInstanceTypeAddonBackupPrice {
     /**
      * The cost (in US dollars) per hour to add Backups service.
      */
@@ -1595,7 +1909,7 @@ export interface GetInstanceTypeAddonsBackupPrice {
     monthly: number;
 }
 
-export interface GetInstanceTypeAddonsBackupRegionPrice {
+export interface GetInstanceTypeAddonBackupRegionPrice {
     hourly: number;
     /**
      * Label used to identify instance type
@@ -3012,6 +3326,14 @@ export interface GetNodebalancerConfigsNodebalancerConfig {
      * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
     stickiness: string;
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     */
+    udpCheckPort: number;
+    /**
+     * The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     */
+    udpSessionTimeout: number;
 }
 
 export interface GetNodebalancerConfigsNodebalancerConfigNodeStatus {
@@ -3045,6 +3367,10 @@ export interface GetNodebalancersNodebalancer {
      * Throttle connections per second (0-20)
      */
     clientConnThrottle: number;
+    /**
+     * Throttle UDP sessions per second (0-20).
+     */
+    clientUdpSessThrottle: number;
     /**
      * When this Linode NodeBalancer was created
      */
@@ -3311,7 +3637,7 @@ export interface GetPlacementGroupsPlacementGroupMigrationsOutbound {
     linodeId: number;
 }
 
-export interface GetProfileReferrals {
+export interface GetProfileReferral {
     /**
      * The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
      */
@@ -4518,7 +4844,7 @@ export interface InstanceAlerts {
     transferQuota: number;
 }
 
-export interface InstanceBackups {
+export interface InstanceBackup {
     /**
      * Whether this Backup is available for restoration.
      */
@@ -4527,10 +4853,10 @@ export interface InstanceBackups {
      * If this Linode has the Backup service enabled.
      */
     enabled: boolean;
-    schedule: outputs.InstanceBackupsSchedule;
+    schedules: outputs.InstanceBackupSchedule[];
 }
 
-export interface InstanceBackupsSchedule {
+export interface InstanceBackupSchedule {
     /**
      * The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
      */
@@ -4988,7 +5314,7 @@ export interface InstancePlacementGroup {
     placementGroupType: string;
 }
 
-export interface InstanceSpecs {
+export interface InstanceSpec {
     /**
      * The number of VPUs this Linode has access to.
      */

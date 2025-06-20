@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
+	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -31,9 +31,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
-//				Label:              pulumi.String("mynodebalancer"),
-//				Region:             pulumi.String("us-east"),
-//				ClientConnThrottle: pulumi.Int(20),
+//				Label:                 pulumi.String("mynodebalancer"),
+//				Region:                pulumi.String("us-east"),
+//				ClientConnThrottle:    pulumi.Int(20),
+//				ClientUdpSessThrottle: pulumi.Int(10),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foobar"),
 //				},
@@ -59,6 +60,10 @@ type NodeBalancer struct {
 
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntOutput `pulumi:"clientConnThrottle"`
+	// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+	//
+	// * **NOTE: This argument may not be generally available.**
+	ClientUdpSessThrottle pulumi.IntOutput `pulumi:"clientUdpSessThrottle"`
 	// When this firewall was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// ID for the firewall you'd like to use with this NodeBalancer.
@@ -117,6 +122,10 @@ func GetNodeBalancer(ctx *pulumi.Context,
 type nodeBalancerState struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle *int `pulumi:"clientConnThrottle"`
+	// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+	//
+	// * **NOTE: This argument may not be generally available.**
+	ClientUdpSessThrottle *int `pulumi:"clientUdpSessThrottle"`
 	// When this firewall was created.
 	Created *string `pulumi:"created"`
 	// ID for the firewall you'd like to use with this NodeBalancer.
@@ -146,6 +155,10 @@ type nodeBalancerState struct {
 type NodeBalancerState struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntPtrInput
+	// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+	//
+	// * **NOTE: This argument may not be generally available.**
+	ClientUdpSessThrottle pulumi.IntPtrInput
 	// When this firewall was created.
 	Created pulumi.StringPtrInput
 	// ID for the firewall you'd like to use with this NodeBalancer.
@@ -179,6 +192,10 @@ func (NodeBalancerState) ElementType() reflect.Type {
 type nodeBalancerArgs struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle *int `pulumi:"clientConnThrottle"`
+	// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+	//
+	// * **NOTE: This argument may not be generally available.**
+	ClientUdpSessThrottle *int `pulumi:"clientUdpSessThrottle"`
 	// ID for the firewall you'd like to use with this NodeBalancer.
 	FirewallId *int `pulumi:"firewallId"`
 	// The label of the Linode NodeBalancer
@@ -195,6 +212,10 @@ type nodeBalancerArgs struct {
 type NodeBalancerArgs struct {
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntPtrInput
+	// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+	//
+	// * **NOTE: This argument may not be generally available.**
+	ClientUdpSessThrottle pulumi.IntPtrInput
 	// ID for the firewall you'd like to use with this NodeBalancer.
 	FirewallId pulumi.IntPtrInput
 	// The label of the Linode NodeBalancer
@@ -297,6 +318,13 @@ func (o NodeBalancerOutput) ToNodeBalancerOutputWithContext(ctx context.Context)
 // Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 func (o NodeBalancerOutput) ClientConnThrottle() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.IntOutput { return v.ClientConnThrottle }).(pulumi.IntOutput)
+}
+
+// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+//
+// * **NOTE: This argument may not be generally available.**
+func (o NodeBalancerOutput) ClientUdpSessThrottle() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.IntOutput { return v.ClientUdpSessThrottle }).(pulumi.IntOutput)
 }
 
 // When this firewall was created.

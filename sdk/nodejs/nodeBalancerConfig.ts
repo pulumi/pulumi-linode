@@ -31,6 +31,7 @@ import * as utilities from "./utilities";
  *     checkPath: "/foo",
  *     checkAttempts: 3,
  *     checkTimeout: 30,
+ *     udpCheckPort: 12345,
  *     stickiness: "http_cookie",
  *     algorithm: "source",
  * });
@@ -152,6 +153,16 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
      * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
     public readonly stickiness!: pulumi.Output<string>;
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+     *
+     * * **NOTE: This argument may not be generally available.**
+     */
+    public readonly udpCheckPort!: pulumi.Output<number>;
+    /**
+     * The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+     */
+    public /*out*/ readonly udpSessionTimeout!: pulumi.Output<number>;
 
     /**
      * Create a NodeBalancerConfig resource with the given unique name, arguments, and options.
@@ -185,6 +196,8 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             resourceInputs["sslFingerprint"] = state ? state.sslFingerprint : undefined;
             resourceInputs["sslKey"] = state ? state.sslKey : undefined;
             resourceInputs["stickiness"] = state ? state.stickiness : undefined;
+            resourceInputs["udpCheckPort"] = state ? state.udpCheckPort : undefined;
+            resourceInputs["udpSessionTimeout"] = state ? state.udpSessionTimeout : undefined;
         } else {
             const args = argsOrState as NodeBalancerConfigArgs | undefined;
             if ((!args || args.nodebalancerId === undefined) && !opts.urn) {
@@ -206,9 +219,11 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
             resourceInputs["sslCert"] = args?.sslCert ? pulumi.secret(args.sslCert) : undefined;
             resourceInputs["sslKey"] = args?.sslKey ? pulumi.secret(args.sslKey) : undefined;
             resourceInputs["stickiness"] = args ? args.stickiness : undefined;
+            resourceInputs["udpCheckPort"] = args ? args.udpCheckPort : undefined;
             resourceInputs["nodeStatuses"] = undefined /*out*/;
             resourceInputs["sslCommonname"] = undefined /*out*/;
             resourceInputs["sslFingerprint"] = undefined /*out*/;
+            resourceInputs["udpSessionTimeout"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["sslCert", "sslKey"] };
@@ -301,6 +316,16 @@ export interface NodeBalancerConfigState {
      * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
     stickiness?: pulumi.Input<string>;
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+     *
+     * * **NOTE: This argument may not be generally available.**
+     */
+    udpCheckPort?: pulumi.Input<number>;
+    /**
+     * The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+     */
+    udpSessionTimeout?: pulumi.Input<number>;
 }
 
 /**
@@ -374,4 +399,10 @@ export interface NodeBalancerConfigArgs {
      * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
     stickiness?: pulumi.Input<string>;
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+     *
+     * * **NOTE: This argument may not be generally available.**
+     */
+    udpCheckPort?: pulumi.Input<number>;
 }

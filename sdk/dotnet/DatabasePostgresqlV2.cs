@@ -113,6 +113,288 @@ namespace Pulumi.Linode
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        /// </summary>
+        [Output("engineConfigPgAutovacuumAnalyzeScaleFactor")]
+        public Output<double> EngineConfigPgAutovacuumAnalyzeScaleFactor { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        /// </summary>
+        [Output("engineConfigPgAutovacuumAnalyzeThreshold")]
+        public Output<int> EngineConfigPgAutovacuumAnalyzeThreshold { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        /// </summary>
+        [Output("engineConfigPgAutovacuumMaxWorkers")]
+        public Output<int> EngineConfigPgAutovacuumMaxWorkers { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+        /// </summary>
+        [Output("engineConfigPgAutovacuumNaptime")]
+        public Output<int> EngineConfigPgAutovacuumNaptime { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        /// </summary>
+        [Output("engineConfigPgAutovacuumVacuumCostDelay")]
+        public Output<int> EngineConfigPgAutovacuumVacuumCostDelay { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        /// </summary>
+        [Output("engineConfigPgAutovacuumVacuumCostLimit")]
+        public Output<int> EngineConfigPgAutovacuumVacuumCostLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        /// </summary>
+        [Output("engineConfigPgAutovacuumVacuumScaleFactor")]
+        public Output<double> EngineConfigPgAutovacuumVacuumScaleFactor { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        /// </summary>
+        [Output("engineConfigPgAutovacuumVacuumThreshold")]
+        public Output<int> EngineConfigPgAutovacuumVacuumThreshold { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        /// </summary>
+        [Output("engineConfigPgBgwriterDelay")]
+        public Output<int> EngineConfigPgBgwriterDelay { get; private set; } = null!;
+
+        /// <summary>
+        /// Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        /// </summary>
+        [Output("engineConfigPgBgwriterFlushAfter")]
+        public Output<int> EngineConfigPgBgwriterFlushAfter { get; private set; } = null!;
+
+        /// <summary>
+        /// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        /// </summary>
+        [Output("engineConfigPgBgwriterLruMaxpages")]
+        public Output<int> EngineConfigPgBgwriterLruMaxpages { get; private set; } = null!;
+
+        /// <summary>
+        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// </summary>
+        [Output("engineConfigPgBgwriterLruMultiplier")]
+        public Output<double> EngineConfigPgBgwriterLruMultiplier { get; private set; } = null!;
+
+        /// <summary>
+        /// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        /// </summary>
+        [Output("engineConfigPgDeadlockTimeout")]
+        public Output<int> EngineConfigPgDeadlockTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        /// </summary>
+        [Output("engineConfigPgDefaultToastCompression")]
+        public Output<string> EngineConfigPgDefaultToastCompression { get; private set; } = null!;
+
+        /// <summary>
+        /// Time out sessions with open transactions after this number of milliseconds.
+        /// </summary>
+        [Output("engineConfigPgIdleInTransactionSessionTimeout")]
+        public Output<int> EngineConfigPgIdleInTransactionSessionTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// Controls system-wide use of Just-in-Time Compilation (JIT).
+        /// </summary>
+        [Output("engineConfigPgJit")]
+        public Output<bool> EngineConfigPgJit { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL maximum number of files that can be open per process.
+        /// </summary>
+        [Output("engineConfigPgMaxFilesPerProcess")]
+        public Output<int> EngineConfigPgMaxFilesPerProcess { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL maximum locks per transaction.
+        /// </summary>
+        [Output("engineConfigPgMaxLocksPerTransaction")]
+        public Output<int> EngineConfigPgMaxLocksPerTransaction { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+        /// </summary>
+        [Output("engineConfigPgMaxLogicalReplicationWorkers")]
+        public Output<int> EngineConfigPgMaxLogicalReplicationWorkers { get; private set; } = null!;
+
+        /// <summary>
+        /// Sets the maximum number of workers that the system can support for parallel queries.
+        /// </summary>
+        [Output("engineConfigPgMaxParallelWorkers")]
+        public Output<int> EngineConfigPgMaxParallelWorkers { get; private set; } = null!;
+
+        /// <summary>
+        /// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        /// </summary>
+        [Output("engineConfigPgMaxParallelWorkersPerGather")]
+        public Output<int> EngineConfigPgMaxParallelWorkersPerGather { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL maximum predicate locks per transaction.
+        /// </summary>
+        [Output("engineConfigPgMaxPredLocksPerTransaction")]
+        public Output<int> EngineConfigPgMaxPredLocksPerTransaction { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL maximum replication slots.
+        /// </summary>
+        [Output("engineConfigPgMaxReplicationSlots")]
+        public Output<int> EngineConfigPgMaxReplicationSlots { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        /// </summary>
+        [Output("engineConfigPgMaxSlotWalKeepSize")]
+        public Output<int> EngineConfigPgMaxSlotWalKeepSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum depth of the stack in bytes.
+        /// </summary>
+        [Output("engineConfigPgMaxStackDepth")]
+        public Output<int> EngineConfigPgMaxStackDepth { get; private set; } = null!;
+
+        /// <summary>
+        /// Max standby archive delay in milliseconds.
+        /// </summary>
+        [Output("engineConfigPgMaxStandbyArchiveDelay")]
+        public Output<int> EngineConfigPgMaxStandbyArchiveDelay { get; private set; } = null!;
+
+        /// <summary>
+        /// Max standby streaming delay in milliseconds.
+        /// </summary>
+        [Output("engineConfigPgMaxStandbyStreamingDelay")]
+        public Output<int> EngineConfigPgMaxStandbyStreamingDelay { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL maximum WAL senders.
+        /// </summary>
+        [Output("engineConfigPgMaxWalSenders")]
+        public Output<int> EngineConfigPgMaxWalSenders { get; private set; } = null!;
+
+        /// <summary>
+        /// Sets the maximum number of background processes that the system can support.
+        /// </summary>
+        [Output("engineConfigPgMaxWorkerProcesses")]
+        public Output<int> EngineConfigPgMaxWorkerProcesses { get; private set; } = null!;
+
+        /// <summary>
+        /// Chooses the algorithm for encrypting passwords. (default `md5`)
+        /// </summary>
+        [Output("engineConfigPgPasswordEncryption")]
+        public Output<string> EngineConfigPgPasswordEncryption { get; private set; } = null!;
+
+        /// <summary>
+        /// Sets the time interval to run pg_partman's scheduled tasks.
+        /// </summary>
+        [Output("engineConfigPgPgPartmanBgwInterval")]
+        public Output<int> EngineConfigPgPgPartmanBgwInterval { get; private set; } = null!;
+
+        /// <summary>
+        /// Controls which role to use for pg_partman's scheduled background tasks.
+        /// </summary>
+        [Output("engineConfigPgPgPartmanBgwRole")]
+        public Output<string> EngineConfigPgPgPartmanBgwRole { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables or disables query plan monitoring.
+        /// </summary>
+        [Output("engineConfigPgPgStatMonitorPgsmEnableQueryPlan")]
+        public Output<bool> EngineConfigPgPgStatMonitorPgsmEnableQueryPlan { get; private set; } = null!;
+
+        /// <summary>
+        /// Sets the maximum number of buckets.
+        /// </summary>
+        [Output("engineConfigPgPgStatMonitorPgsmMaxBuckets")]
+        public Output<int> EngineConfigPgPgStatMonitorPgsmMaxBuckets { get; private set; } = null!;
+
+        /// <summary>
+        /// Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        /// </summary>
+        [Output("engineConfigPgPgStatStatementsTrack")]
+        public Output<string> EngineConfigPgPgStatStatementsTrack { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        /// </summary>
+        [Output("engineConfigPgStatMonitorEnable")]
+        public Output<bool> EngineConfigPgStatMonitorEnable { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        /// </summary>
+        [Output("engineConfigPgTempFileLimit")]
+        public Output<int> EngineConfigPgTempFileLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL service timezone.
+        /// </summary>
+        [Output("engineConfigPgTimezone")]
+        public Output<string> EngineConfigPgTimezone { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the number of bytes reserved to track the currently executing command for each active session.
+        /// </summary>
+        [Output("engineConfigPgTrackActivityQuerySize")]
+        public Output<int> EngineConfigPgTrackActivityQuerySize { get; private set; } = null!;
+
+        /// <summary>
+        /// Record commit time of transactions.
+        /// </summary>
+        [Output("engineConfigPgTrackCommitTimestamp")]
+        public Output<string> EngineConfigPgTrackCommitTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables tracking of function call counts and time used.
+        /// </summary>
+        [Output("engineConfigPgTrackFunctions")]
+        public Output<string> EngineConfigPgTrackFunctions { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        /// </summary>
+        [Output("engineConfigPgTrackIoTiming")]
+        public Output<string> EngineConfigPgTrackIoTiming { get; private set; } = null!;
+
+        /// <summary>
+        /// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        /// </summary>
+        [Output("engineConfigPgWalSenderTimeout")]
+        public Output<int> EngineConfigPgWalSenderTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        /// </summary>
+        [Output("engineConfigPgWalWriterDelay")]
+        public Output<int> EngineConfigPgWalWriterDelay { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+        /// </summary>
+        [Output("engineConfigPglookoutMaxFailoverReplicationTimeLag")]
+        public Output<int> EngineConfigPglookoutMaxFailoverReplicationTimeLag { get; private set; } = null!;
+
+        /// <summary>
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// </summary>
+        [Output("engineConfigSharedBuffersPercentage")]
+        public Output<double> EngineConfigSharedBuffersPercentage { get; private set; } = null!;
+
+        /// <summary>
+        /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+        /// </summary>
+        [Output("engineConfigWorkMem")]
+        public Output<int> EngineConfigWorkMem { get; private set; } = null!;
+
+        /// <summary>
         /// The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
         /// </summary>
         [Output("engineId")]
@@ -316,6 +598,288 @@ namespace Pulumi.Linode
         public Input<int>? ClusterSize { get; set; }
 
         /// <summary>
+        /// Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        /// </summary>
+        [Input("engineConfigPgAutovacuumAnalyzeScaleFactor")]
+        public Input<double>? EngineConfigPgAutovacuumAnalyzeScaleFactor { get; set; }
+
+        /// <summary>
+        /// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        /// </summary>
+        [Input("engineConfigPgAutovacuumAnalyzeThreshold")]
+        public Input<int>? EngineConfigPgAutovacuumAnalyzeThreshold { get; set; }
+
+        /// <summary>
+        /// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        /// </summary>
+        [Input("engineConfigPgAutovacuumMaxWorkers")]
+        public Input<int>? EngineConfigPgAutovacuumMaxWorkers { get; set; }
+
+        /// <summary>
+        /// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+        /// </summary>
+        [Input("engineConfigPgAutovacuumNaptime")]
+        public Input<int>? EngineConfigPgAutovacuumNaptime { get; set; }
+
+        /// <summary>
+        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        /// </summary>
+        [Input("engineConfigPgAutovacuumVacuumCostDelay")]
+        public Input<int>? EngineConfigPgAutovacuumVacuumCostDelay { get; set; }
+
+        /// <summary>
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        /// </summary>
+        [Input("engineConfigPgAutovacuumVacuumCostLimit")]
+        public Input<int>? EngineConfigPgAutovacuumVacuumCostLimit { get; set; }
+
+        /// <summary>
+        /// Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        /// </summary>
+        [Input("engineConfigPgAutovacuumVacuumScaleFactor")]
+        public Input<double>? EngineConfigPgAutovacuumVacuumScaleFactor { get; set; }
+
+        /// <summary>
+        /// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        /// </summary>
+        [Input("engineConfigPgAutovacuumVacuumThreshold")]
+        public Input<int>? EngineConfigPgAutovacuumVacuumThreshold { get; set; }
+
+        /// <summary>
+        /// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        /// </summary>
+        [Input("engineConfigPgBgwriterDelay")]
+        public Input<int>? EngineConfigPgBgwriterDelay { get; set; }
+
+        /// <summary>
+        /// Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        /// </summary>
+        [Input("engineConfigPgBgwriterFlushAfter")]
+        public Input<int>? EngineConfigPgBgwriterFlushAfter { get; set; }
+
+        /// <summary>
+        /// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        /// </summary>
+        [Input("engineConfigPgBgwriterLruMaxpages")]
+        public Input<int>? EngineConfigPgBgwriterLruMaxpages { get; set; }
+
+        /// <summary>
+        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// </summary>
+        [Input("engineConfigPgBgwriterLruMultiplier")]
+        public Input<double>? EngineConfigPgBgwriterLruMultiplier { get; set; }
+
+        /// <summary>
+        /// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        /// </summary>
+        [Input("engineConfigPgDeadlockTimeout")]
+        public Input<int>? EngineConfigPgDeadlockTimeout { get; set; }
+
+        /// <summary>
+        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        /// </summary>
+        [Input("engineConfigPgDefaultToastCompression")]
+        public Input<string>? EngineConfigPgDefaultToastCompression { get; set; }
+
+        /// <summary>
+        /// Time out sessions with open transactions after this number of milliseconds.
+        /// </summary>
+        [Input("engineConfigPgIdleInTransactionSessionTimeout")]
+        public Input<int>? EngineConfigPgIdleInTransactionSessionTimeout { get; set; }
+
+        /// <summary>
+        /// Controls system-wide use of Just-in-Time Compilation (JIT).
+        /// </summary>
+        [Input("engineConfigPgJit")]
+        public Input<bool>? EngineConfigPgJit { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum number of files that can be open per process.
+        /// </summary>
+        [Input("engineConfigPgMaxFilesPerProcess")]
+        public Input<int>? EngineConfigPgMaxFilesPerProcess { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum locks per transaction.
+        /// </summary>
+        [Input("engineConfigPgMaxLocksPerTransaction")]
+        public Input<int>? EngineConfigPgMaxLocksPerTransaction { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+        /// </summary>
+        [Input("engineConfigPgMaxLogicalReplicationWorkers")]
+        public Input<int>? EngineConfigPgMaxLogicalReplicationWorkers { get; set; }
+
+        /// <summary>
+        /// Sets the maximum number of workers that the system can support for parallel queries.
+        /// </summary>
+        [Input("engineConfigPgMaxParallelWorkers")]
+        public Input<int>? EngineConfigPgMaxParallelWorkers { get; set; }
+
+        /// <summary>
+        /// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        /// </summary>
+        [Input("engineConfigPgMaxParallelWorkersPerGather")]
+        public Input<int>? EngineConfigPgMaxParallelWorkersPerGather { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum predicate locks per transaction.
+        /// </summary>
+        [Input("engineConfigPgMaxPredLocksPerTransaction")]
+        public Input<int>? EngineConfigPgMaxPredLocksPerTransaction { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum replication slots.
+        /// </summary>
+        [Input("engineConfigPgMaxReplicationSlots")]
+        public Input<int>? EngineConfigPgMaxReplicationSlots { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        /// </summary>
+        [Input("engineConfigPgMaxSlotWalKeepSize")]
+        public Input<int>? EngineConfigPgMaxSlotWalKeepSize { get; set; }
+
+        /// <summary>
+        /// Maximum depth of the stack in bytes.
+        /// </summary>
+        [Input("engineConfigPgMaxStackDepth")]
+        public Input<int>? EngineConfigPgMaxStackDepth { get; set; }
+
+        /// <summary>
+        /// Max standby archive delay in milliseconds.
+        /// </summary>
+        [Input("engineConfigPgMaxStandbyArchiveDelay")]
+        public Input<int>? EngineConfigPgMaxStandbyArchiveDelay { get; set; }
+
+        /// <summary>
+        /// Max standby streaming delay in milliseconds.
+        /// </summary>
+        [Input("engineConfigPgMaxStandbyStreamingDelay")]
+        public Input<int>? EngineConfigPgMaxStandbyStreamingDelay { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum WAL senders.
+        /// </summary>
+        [Input("engineConfigPgMaxWalSenders")]
+        public Input<int>? EngineConfigPgMaxWalSenders { get; set; }
+
+        /// <summary>
+        /// Sets the maximum number of background processes that the system can support.
+        /// </summary>
+        [Input("engineConfigPgMaxWorkerProcesses")]
+        public Input<int>? EngineConfigPgMaxWorkerProcesses { get; set; }
+
+        /// <summary>
+        /// Chooses the algorithm for encrypting passwords. (default `md5`)
+        /// </summary>
+        [Input("engineConfigPgPasswordEncryption")]
+        public Input<string>? EngineConfigPgPasswordEncryption { get; set; }
+
+        /// <summary>
+        /// Sets the time interval to run pg_partman's scheduled tasks.
+        /// </summary>
+        [Input("engineConfigPgPgPartmanBgwInterval")]
+        public Input<int>? EngineConfigPgPgPartmanBgwInterval { get; set; }
+
+        /// <summary>
+        /// Controls which role to use for pg_partman's scheduled background tasks.
+        /// </summary>
+        [Input("engineConfigPgPgPartmanBgwRole")]
+        public Input<string>? EngineConfigPgPgPartmanBgwRole { get; set; }
+
+        /// <summary>
+        /// Enables or disables query plan monitoring.
+        /// </summary>
+        [Input("engineConfigPgPgStatMonitorPgsmEnableQueryPlan")]
+        public Input<bool>? EngineConfigPgPgStatMonitorPgsmEnableQueryPlan { get; set; }
+
+        /// <summary>
+        /// Sets the maximum number of buckets.
+        /// </summary>
+        [Input("engineConfigPgPgStatMonitorPgsmMaxBuckets")]
+        public Input<int>? EngineConfigPgPgStatMonitorPgsmMaxBuckets { get; set; }
+
+        /// <summary>
+        /// Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        /// </summary>
+        [Input("engineConfigPgPgStatStatementsTrack")]
+        public Input<string>? EngineConfigPgPgStatStatementsTrack { get; set; }
+
+        /// <summary>
+        /// Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        /// </summary>
+        [Input("engineConfigPgStatMonitorEnable")]
+        public Input<bool>? EngineConfigPgStatMonitorEnable { get; set; }
+
+        /// <summary>
+        /// PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        /// </summary>
+        [Input("engineConfigPgTempFileLimit")]
+        public Input<int>? EngineConfigPgTempFileLimit { get; set; }
+
+        /// <summary>
+        /// PostgreSQL service timezone.
+        /// </summary>
+        [Input("engineConfigPgTimezone")]
+        public Input<string>? EngineConfigPgTimezone { get; set; }
+
+        /// <summary>
+        /// Specifies the number of bytes reserved to track the currently executing command for each active session.
+        /// </summary>
+        [Input("engineConfigPgTrackActivityQuerySize")]
+        public Input<int>? EngineConfigPgTrackActivityQuerySize { get; set; }
+
+        /// <summary>
+        /// Record commit time of transactions.
+        /// </summary>
+        [Input("engineConfigPgTrackCommitTimestamp")]
+        public Input<string>? EngineConfigPgTrackCommitTimestamp { get; set; }
+
+        /// <summary>
+        /// Enables tracking of function call counts and time used.
+        /// </summary>
+        [Input("engineConfigPgTrackFunctions")]
+        public Input<string>? EngineConfigPgTrackFunctions { get; set; }
+
+        /// <summary>
+        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        /// </summary>
+        [Input("engineConfigPgTrackIoTiming")]
+        public Input<string>? EngineConfigPgTrackIoTiming { get; set; }
+
+        /// <summary>
+        /// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        /// </summary>
+        [Input("engineConfigPgWalSenderTimeout")]
+        public Input<int>? EngineConfigPgWalSenderTimeout { get; set; }
+
+        /// <summary>
+        /// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        /// </summary>
+        [Input("engineConfigPgWalWriterDelay")]
+        public Input<int>? EngineConfigPgWalWriterDelay { get; set; }
+
+        /// <summary>
+        /// Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+        /// </summary>
+        [Input("engineConfigPglookoutMaxFailoverReplicationTimeLag")]
+        public Input<int>? EngineConfigPglookoutMaxFailoverReplicationTimeLag { get; set; }
+
+        /// <summary>
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// </summary>
+        [Input("engineConfigSharedBuffersPercentage")]
+        public Input<double>? EngineConfigSharedBuffersPercentage { get; set; }
+
+        /// <summary>
+        /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+        /// </summary>
+        [Input("engineConfigWorkMem")]
+        public Input<int>? EngineConfigWorkMem { get; set; }
+
+        /// <summary>
         /// The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
         /// </summary>
         [Input("engineId", required: true)]
@@ -429,6 +993,288 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
+
+        /// <summary>
+        /// Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        /// </summary>
+        [Input("engineConfigPgAutovacuumAnalyzeScaleFactor")]
+        public Input<double>? EngineConfigPgAutovacuumAnalyzeScaleFactor { get; set; }
+
+        /// <summary>
+        /// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+        /// </summary>
+        [Input("engineConfigPgAutovacuumAnalyzeThreshold")]
+        public Input<int>? EngineConfigPgAutovacuumAnalyzeThreshold { get; set; }
+
+        /// <summary>
+        /// Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+        /// </summary>
+        [Input("engineConfigPgAutovacuumMaxWorkers")]
+        public Input<int>? EngineConfigPgAutovacuumMaxWorkers { get; set; }
+
+        /// <summary>
+        /// Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+        /// </summary>
+        [Input("engineConfigPgAutovacuumNaptime")]
+        public Input<int>? EngineConfigPgAutovacuumNaptime { get; set; }
+
+        /// <summary>
+        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        /// </summary>
+        [Input("engineConfigPgAutovacuumVacuumCostDelay")]
+        public Input<int>? EngineConfigPgAutovacuumVacuumCostDelay { get; set; }
+
+        /// <summary>
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        /// </summary>
+        [Input("engineConfigPgAutovacuumVacuumCostLimit")]
+        public Input<int>? EngineConfigPgAutovacuumVacuumCostLimit { get; set; }
+
+        /// <summary>
+        /// Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        /// </summary>
+        [Input("engineConfigPgAutovacuumVacuumScaleFactor")]
+        public Input<double>? EngineConfigPgAutovacuumVacuumScaleFactor { get; set; }
+
+        /// <summary>
+        /// Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+        /// </summary>
+        [Input("engineConfigPgAutovacuumVacuumThreshold")]
+        public Input<int>? EngineConfigPgAutovacuumVacuumThreshold { get; set; }
+
+        /// <summary>
+        /// Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+        /// </summary>
+        [Input("engineConfigPgBgwriterDelay")]
+        public Input<int>? EngineConfigPgBgwriterDelay { get; set; }
+
+        /// <summary>
+        /// Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        /// </summary>
+        [Input("engineConfigPgBgwriterFlushAfter")]
+        public Input<int>? EngineConfigPgBgwriterFlushAfter { get; set; }
+
+        /// <summary>
+        /// In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+        /// </summary>
+        [Input("engineConfigPgBgwriterLruMaxpages")]
+        public Input<int>? EngineConfigPgBgwriterLruMaxpages { get; set; }
+
+        /// <summary>
+        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// </summary>
+        [Input("engineConfigPgBgwriterLruMultiplier")]
+        public Input<double>? EngineConfigPgBgwriterLruMultiplier { get; set; }
+
+        /// <summary>
+        /// This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+        /// </summary>
+        [Input("engineConfigPgDeadlockTimeout")]
+        public Input<int>? EngineConfigPgDeadlockTimeout { get; set; }
+
+        /// <summary>
+        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        /// </summary>
+        [Input("engineConfigPgDefaultToastCompression")]
+        public Input<string>? EngineConfigPgDefaultToastCompression { get; set; }
+
+        /// <summary>
+        /// Time out sessions with open transactions after this number of milliseconds.
+        /// </summary>
+        [Input("engineConfigPgIdleInTransactionSessionTimeout")]
+        public Input<int>? EngineConfigPgIdleInTransactionSessionTimeout { get; set; }
+
+        /// <summary>
+        /// Controls system-wide use of Just-in-Time Compilation (JIT).
+        /// </summary>
+        [Input("engineConfigPgJit")]
+        public Input<bool>? EngineConfigPgJit { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum number of files that can be open per process.
+        /// </summary>
+        [Input("engineConfigPgMaxFilesPerProcess")]
+        public Input<int>? EngineConfigPgMaxFilesPerProcess { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum locks per transaction.
+        /// </summary>
+        [Input("engineConfigPgMaxLocksPerTransaction")]
+        public Input<int>? EngineConfigPgMaxLocksPerTransaction { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+        /// </summary>
+        [Input("engineConfigPgMaxLogicalReplicationWorkers")]
+        public Input<int>? EngineConfigPgMaxLogicalReplicationWorkers { get; set; }
+
+        /// <summary>
+        /// Sets the maximum number of workers that the system can support for parallel queries.
+        /// </summary>
+        [Input("engineConfigPgMaxParallelWorkers")]
+        public Input<int>? EngineConfigPgMaxParallelWorkers { get; set; }
+
+        /// <summary>
+        /// Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+        /// </summary>
+        [Input("engineConfigPgMaxParallelWorkersPerGather")]
+        public Input<int>? EngineConfigPgMaxParallelWorkersPerGather { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum predicate locks per transaction.
+        /// </summary>
+        [Input("engineConfigPgMaxPredLocksPerTransaction")]
+        public Input<int>? EngineConfigPgMaxPredLocksPerTransaction { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum replication slots.
+        /// </summary>
+        [Input("engineConfigPgMaxReplicationSlots")]
+        public Input<int>? EngineConfigPgMaxReplicationSlots { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        /// </summary>
+        [Input("engineConfigPgMaxSlotWalKeepSize")]
+        public Input<int>? EngineConfigPgMaxSlotWalKeepSize { get; set; }
+
+        /// <summary>
+        /// Maximum depth of the stack in bytes.
+        /// </summary>
+        [Input("engineConfigPgMaxStackDepth")]
+        public Input<int>? EngineConfigPgMaxStackDepth { get; set; }
+
+        /// <summary>
+        /// Max standby archive delay in milliseconds.
+        /// </summary>
+        [Input("engineConfigPgMaxStandbyArchiveDelay")]
+        public Input<int>? EngineConfigPgMaxStandbyArchiveDelay { get; set; }
+
+        /// <summary>
+        /// Max standby streaming delay in milliseconds.
+        /// </summary>
+        [Input("engineConfigPgMaxStandbyStreamingDelay")]
+        public Input<int>? EngineConfigPgMaxStandbyStreamingDelay { get; set; }
+
+        /// <summary>
+        /// PostgreSQL maximum WAL senders.
+        /// </summary>
+        [Input("engineConfigPgMaxWalSenders")]
+        public Input<int>? EngineConfigPgMaxWalSenders { get; set; }
+
+        /// <summary>
+        /// Sets the maximum number of background processes that the system can support.
+        /// </summary>
+        [Input("engineConfigPgMaxWorkerProcesses")]
+        public Input<int>? EngineConfigPgMaxWorkerProcesses { get; set; }
+
+        /// <summary>
+        /// Chooses the algorithm for encrypting passwords. (default `md5`)
+        /// </summary>
+        [Input("engineConfigPgPasswordEncryption")]
+        public Input<string>? EngineConfigPgPasswordEncryption { get; set; }
+
+        /// <summary>
+        /// Sets the time interval to run pg_partman's scheduled tasks.
+        /// </summary>
+        [Input("engineConfigPgPgPartmanBgwInterval")]
+        public Input<int>? EngineConfigPgPgPartmanBgwInterval { get; set; }
+
+        /// <summary>
+        /// Controls which role to use for pg_partman's scheduled background tasks.
+        /// </summary>
+        [Input("engineConfigPgPgPartmanBgwRole")]
+        public Input<string>? EngineConfigPgPgPartmanBgwRole { get; set; }
+
+        /// <summary>
+        /// Enables or disables query plan monitoring.
+        /// </summary>
+        [Input("engineConfigPgPgStatMonitorPgsmEnableQueryPlan")]
+        public Input<bool>? EngineConfigPgPgStatMonitorPgsmEnableQueryPlan { get; set; }
+
+        /// <summary>
+        /// Sets the maximum number of buckets.
+        /// </summary>
+        [Input("engineConfigPgPgStatMonitorPgsmMaxBuckets")]
+        public Input<int>? EngineConfigPgPgStatMonitorPgsmMaxBuckets { get; set; }
+
+        /// <summary>
+        /// Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        /// </summary>
+        [Input("engineConfigPgPgStatStatementsTrack")]
+        public Input<string>? EngineConfigPgPgStatStatementsTrack { get; set; }
+
+        /// <summary>
+        /// Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        /// </summary>
+        [Input("engineConfigPgStatMonitorEnable")]
+        public Input<bool>? EngineConfigPgStatMonitorEnable { get; set; }
+
+        /// <summary>
+        /// PostgreSQL temporary file limit in KiB, -1 for unlimited.
+        /// </summary>
+        [Input("engineConfigPgTempFileLimit")]
+        public Input<int>? EngineConfigPgTempFileLimit { get; set; }
+
+        /// <summary>
+        /// PostgreSQL service timezone.
+        /// </summary>
+        [Input("engineConfigPgTimezone")]
+        public Input<string>? EngineConfigPgTimezone { get; set; }
+
+        /// <summary>
+        /// Specifies the number of bytes reserved to track the currently executing command for each active session.
+        /// </summary>
+        [Input("engineConfigPgTrackActivityQuerySize")]
+        public Input<int>? EngineConfigPgTrackActivityQuerySize { get; set; }
+
+        /// <summary>
+        /// Record commit time of transactions.
+        /// </summary>
+        [Input("engineConfigPgTrackCommitTimestamp")]
+        public Input<string>? EngineConfigPgTrackCommitTimestamp { get; set; }
+
+        /// <summary>
+        /// Enables tracking of function call counts and time used.
+        /// </summary>
+        [Input("engineConfigPgTrackFunctions")]
+        public Input<string>? EngineConfigPgTrackFunctions { get; set; }
+
+        /// <summary>
+        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        /// </summary>
+        [Input("engineConfigPgTrackIoTiming")]
+        public Input<string>? EngineConfigPgTrackIoTiming { get; set; }
+
+        /// <summary>
+        /// Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+        /// </summary>
+        [Input("engineConfigPgWalSenderTimeout")]
+        public Input<int>? EngineConfigPgWalSenderTimeout { get; set; }
+
+        /// <summary>
+        /// WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+        /// </summary>
+        [Input("engineConfigPgWalWriterDelay")]
+        public Input<int>? EngineConfigPgWalWriterDelay { get; set; }
+
+        /// <summary>
+        /// Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
+        /// </summary>
+        [Input("engineConfigPglookoutMaxFailoverReplicationTimeLag")]
+        public Input<int>? EngineConfigPglookoutMaxFailoverReplicationTimeLag { get; set; }
+
+        /// <summary>
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// </summary>
+        [Input("engineConfigSharedBuffersPercentage")]
+        public Input<double>? EngineConfigSharedBuffersPercentage { get; set; }
+
+        /// <summary>
+        /// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+        /// </summary>
+        [Input("engineConfigWorkMem")]
+        public Input<int>? EngineConfigWorkMem { get; set; }
 
         /// <summary>
         /// The Managed Database engine in engine/version format. (e.g. `postgresql/16`)

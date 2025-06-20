@@ -5,7 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.linode.outputs.GetInstanceTypeAddons;
+import com.pulumi.linode.outputs.GetInstanceTypeAddon;
 import com.pulumi.linode.outputs.GetInstanceTypePrice;
 import com.pulumi.linode.outputs.GetInstanceTypeRegionPrice;
 import java.lang.Integer;
@@ -20,7 +20,7 @@ public final class GetInstanceTypeResult {
      * 
      */
     private Integer acceleratedDevices;
-    private GetInstanceTypeAddons addons;
+    private List<GetInstanceTypeAddon> addons;
     /**
      * @return The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
      * 
@@ -51,7 +51,7 @@ public final class GetInstanceTypeResult {
      * 
      */
     private Integer networkOut;
-    private GetInstanceTypePrice price;
+    private List<GetInstanceTypePrice> prices;
     private List<GetInstanceTypeRegionPrice> regionPrices;
     /**
      * @return The monthly outbound transfer amount, in MB.
@@ -72,7 +72,7 @@ public final class GetInstanceTypeResult {
     public Integer acceleratedDevices() {
         return this.acceleratedDevices;
     }
-    public GetInstanceTypeAddons addons() {
+    public List<GetInstanceTypeAddon> addons() {
         return this.addons;
     }
     /**
@@ -117,8 +117,8 @@ public final class GetInstanceTypeResult {
     public Integer networkOut() {
         return this.networkOut;
     }
-    public GetInstanceTypePrice price() {
-        return this.price;
+    public List<GetInstanceTypePrice> prices() {
+        return this.prices;
     }
     public List<GetInstanceTypeRegionPrice> regionPrices() {
         return this.regionPrices;
@@ -148,14 +148,14 @@ public final class GetInstanceTypeResult {
     @CustomType.Builder
     public static final class Builder {
         private Integer acceleratedDevices;
-        private GetInstanceTypeAddons addons;
+        private List<GetInstanceTypeAddon> addons;
         private String class_;
         private Integer disk;
         private String id;
         private String label;
         private Integer memory;
         private Integer networkOut;
-        private GetInstanceTypePrice price;
+        private List<GetInstanceTypePrice> prices;
         private List<GetInstanceTypeRegionPrice> regionPrices;
         private Integer transfer;
         private Integer vcpus;
@@ -170,7 +170,7 @@ public final class GetInstanceTypeResult {
     	      this.label = defaults.label;
     	      this.memory = defaults.memory;
     	      this.networkOut = defaults.networkOut;
-    	      this.price = defaults.price;
+    	      this.prices = defaults.prices;
     	      this.regionPrices = defaults.regionPrices;
     	      this.transfer = defaults.transfer;
     	      this.vcpus = defaults.vcpus;
@@ -185,12 +185,15 @@ public final class GetInstanceTypeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder addons(GetInstanceTypeAddons addons) {
+        public Builder addons(List<GetInstanceTypeAddon> addons) {
             if (addons == null) {
               throw new MissingRequiredPropertyException("GetInstanceTypeResult", "addons");
             }
             this.addons = addons;
             return this;
+        }
+        public Builder addons(GetInstanceTypeAddon... addons) {
+            return addons(List.of(addons));
         }
         @CustomType.Setter("class")
         public Builder class_(String class_) {
@@ -241,12 +244,15 @@ public final class GetInstanceTypeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder price(GetInstanceTypePrice price) {
-            if (price == null) {
-              throw new MissingRequiredPropertyException("GetInstanceTypeResult", "price");
+        public Builder prices(List<GetInstanceTypePrice> prices) {
+            if (prices == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypeResult", "prices");
             }
-            this.price = price;
+            this.prices = prices;
             return this;
+        }
+        public Builder prices(GetInstanceTypePrice... prices) {
+            return prices(List.of(prices));
         }
         @CustomType.Setter
         public Builder regionPrices(List<GetInstanceTypeRegionPrice> regionPrices) {
@@ -285,7 +291,7 @@ public final class GetInstanceTypeResult {
             _resultValue.label = label;
             _resultValue.memory = memory;
             _resultValue.networkOut = networkOut;
-            _resultValue.price = price;
+            _resultValue.prices = prices;
             _resultValue.regionPrices = regionPrices;
             _resultValue.transfer = transfer;
             _resultValue.vcpus = vcpus;

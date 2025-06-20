@@ -3131,6 +3131,14 @@ export interface GetNodebalancerConfigsNodebalancerConfig {
      * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
     stickiness?: string;
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     */
+    udpCheckPort?: number;
+    /**
+     * The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     */
+    udpSessionTimeout?: number;
 }
 
 export interface GetNodebalancerConfigsNodebalancerConfigArgs {
@@ -3208,6 +3216,14 @@ export interface GetNodebalancerConfigsNodebalancerConfigArgs {
      * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
     stickiness?: pulumi.Input<string>;
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+     */
+    udpCheckPort?: pulumi.Input<number>;
+    /**
+     * The idle time in seconds after which a session that hasn’t received packets is destroyed.
+     */
+    udpSessionTimeout?: pulumi.Input<number>;
 }
 
 export interface GetNodebalancerConfigsNodebalancerConfigNodeStatus {
@@ -3268,6 +3284,10 @@ export interface GetNodebalancersNodebalancer {
      */
     clientConnThrottle?: number;
     /**
+     * Throttle UDP sessions per second (0-20).
+     */
+    clientUdpSessThrottle?: number;
+    /**
      * When this Linode NodeBalancer was created
      */
     created?: string;
@@ -3314,6 +3334,10 @@ export interface GetNodebalancersNodebalancerArgs {
      * Throttle connections per second (0-20)
      */
     clientConnThrottle?: pulumi.Input<number>;
+    /**
+     * Throttle UDP sessions per second (0-20).
+     */
+    clientUdpSessThrottle?: pulumi.Input<number>;
     /**
      * When this Linode NodeBalancer was created
      */
@@ -5881,7 +5905,7 @@ export interface InstanceAlerts {
     transferQuota?: pulumi.Input<number>;
 }
 
-export interface InstanceBackups {
+export interface InstanceBackup {
     /**
      * Whether this Backup is available for restoration.
      */
@@ -5890,10 +5914,10 @@ export interface InstanceBackups {
      * If this Linode has the Backup service enabled.
      */
     enabled?: pulumi.Input<boolean>;
-    schedule?: pulumi.Input<inputs.InstanceBackupsSchedule>;
+    schedules?: pulumi.Input<pulumi.Input<inputs.InstanceBackupSchedule>[]>;
 }
 
-export interface InstanceBackupsSchedule {
+export interface InstanceBackupSchedule {
     /**
      * The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
      */
@@ -6351,7 +6375,7 @@ export interface InstancePlacementGroup {
     placementGroupType?: pulumi.Input<string>;
 }
 
-export interface InstanceSpecs {
+export interface InstanceSpec {
     /**
      * The number of VPUs this Linode has access to.
      */

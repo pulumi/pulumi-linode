@@ -312,6 +312,40 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.stickiness);
     }
 
+    /**
+     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+     * 
+     * * **NOTE: This argument may not be generally available.**
+     * 
+     */
+    @Import(name="udpCheckPort")
+    private @Nullable Output<Integer> udpCheckPort;
+
+    /**
+     * @return Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+     * 
+     * * **NOTE: This argument may not be generally available.**
+     * 
+     */
+    public Optional<Output<Integer>> udpCheckPort() {
+        return Optional.ofNullable(this.udpCheckPort);
+    }
+
+    /**
+     * The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    @Import(name="udpSessionTimeout")
+    private @Nullable Output<Integer> udpSessionTimeout;
+
+    /**
+     * @return The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+     * 
+     */
+    public Optional<Output<Integer>> udpSessionTimeout() {
+        return Optional.ofNullable(this.udpSessionTimeout);
+    }
+
     private NodeBalancerConfigState() {}
 
     private NodeBalancerConfigState(NodeBalancerConfigState $) {
@@ -334,6 +368,8 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         this.sslFingerprint = $.sslFingerprint;
         this.sslKey = $.sslKey;
         this.stickiness = $.stickiness;
+        this.udpCheckPort = $.udpCheckPort;
+        this.udpSessionTimeout = $.udpSessionTimeout;
     }
 
     public static Builder builder() {
@@ -770,6 +806,52 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
          */
         public Builder stickiness(String stickiness) {
             return stickiness(Output.of(stickiness));
+        }
+
+        /**
+         * @param udpCheckPort Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+         * 
+         * * **NOTE: This argument may not be generally available.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpCheckPort(@Nullable Output<Integer> udpCheckPort) {
+            $.udpCheckPort = udpCheckPort;
+            return this;
+        }
+
+        /**
+         * @param udpCheckPort Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+         * 
+         * * **NOTE: This argument may not be generally available.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpCheckPort(Integer udpCheckPort) {
+            return udpCheckPort(Output.of(udpCheckPort));
+        }
+
+        /**
+         * @param udpSessionTimeout The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpSessionTimeout(@Nullable Output<Integer> udpSessionTimeout) {
+            $.udpSessionTimeout = udpSessionTimeout;
+            return this;
+        }
+
+        /**
+         * @param udpSessionTimeout The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder udpSessionTimeout(Integer udpSessionTimeout) {
+            return udpSessionTimeout(Output.of(udpSessionTimeout));
         }
 
         public NodeBalancerConfigState build() {
