@@ -28,7 +28,7 @@ class GetNodeBalancerConfigResult:
     """
     A collection of values returned by getNodeBalancerConfig.
     """
-    def __init__(__self__, algorithm=None, check=None, check_attempts=None, check_body=None, check_interval=None, check_passive=None, check_path=None, check_timeout=None, cipher_suite=None, id=None, node_statuses=None, nodebalancer_id=None, port=None, protocol=None, proxy_protocol=None, ssl_commonname=None, ssl_fingerprint=None, stickiness=None):
+    def __init__(__self__, algorithm=None, check=None, check_attempts=None, check_body=None, check_interval=None, check_passive=None, check_path=None, check_timeout=None, cipher_suite=None, id=None, node_statuses=None, nodebalancer_id=None, port=None, protocol=None, proxy_protocol=None, ssl_commonname=None, ssl_fingerprint=None, stickiness=None, udp_check_port=None, udp_session_timeout=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -83,6 +83,12 @@ class GetNodeBalancerConfigResult:
         if stickiness and not isinstance(stickiness, str):
             raise TypeError("Expected argument 'stickiness' to be a str")
         pulumi.set(__self__, "stickiness", stickiness)
+        if udp_check_port and not isinstance(udp_check_port, int):
+            raise TypeError("Expected argument 'udp_check_port' to be a int")
+        pulumi.set(__self__, "udp_check_port", udp_check_port)
+        if udp_session_timeout and not isinstance(udp_session_timeout, int):
+            raise TypeError("Expected argument 'udp_session_timeout' to be a int")
+        pulumi.set(__self__, "udp_session_timeout", udp_session_timeout)
 
     @property
     @pulumi.getter
@@ -216,6 +222,22 @@ class GetNodeBalancerConfigResult:
         """
         return pulumi.get(self, "stickiness")
 
+    @property
+    @pulumi.getter(name="udpCheckPort")
+    def udp_check_port(self) -> builtins.int:
+        """
+        Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
+        """
+        return pulumi.get(self, "udp_check_port")
+
+    @property
+    @pulumi.getter(name="udpSessionTimeout")
+    def udp_session_timeout(self) -> builtins.int:
+        """
+        The idle time in seconds after which a session that hasn’t received packets is destroyed.
+        """
+        return pulumi.get(self, "udp_session_timeout")
+
 
 class AwaitableGetNodeBalancerConfigResult(GetNodeBalancerConfigResult):
     # pylint: disable=using-constant-test
@@ -240,7 +262,9 @@ class AwaitableGetNodeBalancerConfigResult(GetNodeBalancerConfigResult):
             proxy_protocol=self.proxy_protocol,
             ssl_commonname=self.ssl_commonname,
             ssl_fingerprint=self.ssl_fingerprint,
-            stickiness=self.stickiness)
+            stickiness=self.stickiness,
+            udp_check_port=self.udp_check_port,
+            udp_session_timeout=self.udp_session_timeout)
 
 
 def get_node_balancer_config(id: Optional[builtins.int] = None,
@@ -288,7 +312,9 @@ def get_node_balancer_config(id: Optional[builtins.int] = None,
         proxy_protocol=pulumi.get(__ret__, 'proxy_protocol'),
         ssl_commonname=pulumi.get(__ret__, 'ssl_commonname'),
         ssl_fingerprint=pulumi.get(__ret__, 'ssl_fingerprint'),
-        stickiness=pulumi.get(__ret__, 'stickiness'))
+        stickiness=pulumi.get(__ret__, 'stickiness'),
+        udp_check_port=pulumi.get(__ret__, 'udp_check_port'),
+        udp_session_timeout=pulumi.get(__ret__, 'udp_session_timeout'))
 def get_node_balancer_config_output(id: Optional[pulumi.Input[builtins.int]] = None,
                                     nodebalancer_id: Optional[pulumi.Input[builtins.int]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeBalancerConfigResult]:
@@ -333,4 +359,6 @@ def get_node_balancer_config_output(id: Optional[pulumi.Input[builtins.int]] = N
         proxy_protocol=pulumi.get(__response__, 'proxy_protocol'),
         ssl_commonname=pulumi.get(__response__, 'ssl_commonname'),
         ssl_fingerprint=pulumi.get(__response__, 'ssl_fingerprint'),
-        stickiness=pulumi.get(__response__, 'stickiness')))
+        stickiness=pulumi.get(__response__, 'stickiness'),
+        udp_check_port=pulumi.get(__response__, 'udp_check_port'),
+        udp_session_timeout=pulumi.get(__response__, 'udp_session_timeout')))

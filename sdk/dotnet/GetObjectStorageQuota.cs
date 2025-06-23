@@ -13,7 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides details about Object Storage quota information on your account.
-        /// For more information, see the Linode APIv4 docs.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
         /// 
         /// ## Example Usage
         /// 
@@ -40,7 +40,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides details about Object Storage quota information on your account.
-        /// For more information, see the Linode APIv4 docs.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
         /// 
         /// ## Example Usage
         /// 
@@ -67,7 +67,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides details about Object Storage quota information on your account.
-        /// For more information, see the Linode APIv4 docs.
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
         /// 
         /// ## Example Usage
         /// 
@@ -148,7 +148,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string QuotaName;
         /// <summary>
-        /// The usage data for a specific Object Storage related quota on your account.
+        /// The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
         /// </summary>
         public readonly Outputs.GetObjectStorageQuotaQuotaUsageResult QuotaUsage;
         /// <summary>

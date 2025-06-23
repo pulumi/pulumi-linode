@@ -5,7 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.linode.outputs.GetProfileReferrals;
+import com.pulumi.linode.outputs.GetProfileReferral;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -43,7 +43,7 @@ public final class GetProfileResult {
      * @return Credit Card information associated with this Account.
      * 
      */
-    private GetProfileReferrals referrals;
+    private List<GetProfileReferral> referrals;
     /**
      * @return If true, the user has restrictions on what can be accessed on the Account.
      * 
@@ -108,7 +108,7 @@ public final class GetProfileResult {
      * @return Credit Card information associated with this Account.
      * 
      */
-    public GetProfileReferrals referrals() {
+    public List<GetProfileReferral> referrals() {
         return this.referrals;
     }
     /**
@@ -155,7 +155,7 @@ public final class GetProfileResult {
         private String id;
         private Boolean ipWhitelistEnabled;
         private String lishAuthMethod;
-        private GetProfileReferrals referrals;
+        private List<GetProfileReferral> referrals;
         private Boolean restricted;
         private String timezone;
         private Boolean twoFactorAuth;
@@ -228,12 +228,15 @@ public final class GetProfileResult {
             return this;
         }
         @CustomType.Setter
-        public Builder referrals(GetProfileReferrals referrals) {
+        public Builder referrals(List<GetProfileReferral> referrals) {
             if (referrals == null) {
               throw new MissingRequiredPropertyException("GetProfileResult", "referrals");
             }
             this.referrals = referrals;
             return this;
+        }
+        public Builder referrals(GetProfileReferral... referrals) {
+            return referrals(List.of(referrals));
         }
         @CustomType.Setter
         public Builder restricted(Boolean restricted) {

@@ -35,6 +35,25 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+     * 
+     * * **NOTE: This argument may not be generally available.**
+     * 
+     */
+    @Import(name="clientUdpSessThrottle")
+    private @Nullable Output<Integer> clientUdpSessThrottle;
+
+    /**
+     * @return Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+     * 
+     * * **NOTE: This argument may not be generally available.**
+     * 
+     */
+    public Optional<Output<Integer>> clientUdpSessThrottle() {
+        return Optional.ofNullable(this.clientUdpSessThrottle);
+    }
+
+    /**
      * When this firewall was created.
      * 
      */
@@ -207,6 +226,7 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
 
     private NodeBalancerState(NodeBalancerState $) {
         this.clientConnThrottle = $.clientConnThrottle;
+        this.clientUdpSessThrottle = $.clientUdpSessThrottle;
         this.created = $.created;
         this.firewallId = $.firewallId;
         this.firewalls = $.firewalls;
@@ -257,6 +277,31 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientConnThrottle(Integer clientConnThrottle) {
             return clientConnThrottle(Output.of(clientConnThrottle));
+        }
+
+        /**
+         * @param clientUdpSessThrottle Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+         * 
+         * * **NOTE: This argument may not be generally available.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientUdpSessThrottle(@Nullable Output<Integer> clientUdpSessThrottle) {
+            $.clientUdpSessThrottle = clientUdpSessThrottle;
+            return this;
+        }
+
+        /**
+         * @param clientUdpSessThrottle Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
+         * 
+         * * **NOTE: This argument may not be generally available.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientUdpSessThrottle(Integer clientUdpSessThrottle) {
+            return clientUdpSessThrottle(Output.of(clientUdpSessThrottle));
         }
 
         /**

@@ -28,12 +28,12 @@ class GetInstanceTypeResult:
     """
     A collection of values returned by getInstanceType.
     """
-    def __init__(__self__, accelerated_devices=None, addons=None, class_=None, disk=None, id=None, label=None, memory=None, network_out=None, price=None, region_prices=None, transfer=None, vcpus=None):
+    def __init__(__self__, accelerated_devices=None, addons=None, class_=None, disk=None, id=None, label=None, memory=None, network_out=None, prices=None, region_prices=None, transfer=None, vcpus=None):
         if accelerated_devices and not isinstance(accelerated_devices, int):
             raise TypeError("Expected argument 'accelerated_devices' to be a int")
         pulumi.set(__self__, "accelerated_devices", accelerated_devices)
-        if addons and not isinstance(addons, dict):
-            raise TypeError("Expected argument 'addons' to be a dict")
+        if addons and not isinstance(addons, list):
+            raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
         if class_ and not isinstance(class_, str):
             raise TypeError("Expected argument 'class_' to be a str")
@@ -53,9 +53,9 @@ class GetInstanceTypeResult:
         if network_out and not isinstance(network_out, int):
             raise TypeError("Expected argument 'network_out' to be a int")
         pulumi.set(__self__, "network_out", network_out)
-        if price and not isinstance(price, dict):
-            raise TypeError("Expected argument 'price' to be a dict")
-        pulumi.set(__self__, "price", price)
+        if prices and not isinstance(prices, list):
+            raise TypeError("Expected argument 'prices' to be a list")
+        pulumi.set(__self__, "prices", prices)
         if region_prices and not isinstance(region_prices, list):
             raise TypeError("Expected argument 'region_prices' to be a list")
         pulumi.set(__self__, "region_prices", region_prices)
@@ -76,7 +76,7 @@ class GetInstanceTypeResult:
 
     @property
     @pulumi.getter
-    def addons(self) -> 'outputs.GetInstanceTypeAddonsResult':
+    def addons(self) -> Sequence['outputs.GetInstanceTypeAddonResult']:
         return pulumi.get(self, "addons")
 
     @property
@@ -129,8 +129,8 @@ class GetInstanceTypeResult:
 
     @property
     @pulumi.getter
-    def price(self) -> 'outputs.GetInstanceTypePriceResult':
-        return pulumi.get(self, "price")
+    def prices(self) -> Sequence['outputs.GetInstanceTypePriceResult']:
+        return pulumi.get(self, "prices")
 
     @property
     @pulumi.getter(name="regionPrices")
@@ -168,7 +168,7 @@ class AwaitableGetInstanceTypeResult(GetInstanceTypeResult):
             label=self.label,
             memory=self.memory,
             network_out=self.network_out,
-            price=self.price,
+            prices=self.prices,
             region_prices=self.region_prices,
             transfer=self.transfer,
             vcpus=self.vcpus)
@@ -211,7 +211,7 @@ def get_instance_type(id: Optional[builtins.str] = None,
         label=pulumi.get(__ret__, 'label'),
         memory=pulumi.get(__ret__, 'memory'),
         network_out=pulumi.get(__ret__, 'network_out'),
-        price=pulumi.get(__ret__, 'price'),
+        prices=pulumi.get(__ret__, 'prices'),
         region_prices=pulumi.get(__ret__, 'region_prices'),
         transfer=pulumi.get(__ret__, 'transfer'),
         vcpus=pulumi.get(__ret__, 'vcpus'))
@@ -251,7 +251,7 @@ def get_instance_type_output(id: Optional[pulumi.Input[builtins.str]] = None,
         label=pulumi.get(__response__, 'label'),
         memory=pulumi.get(__response__, 'memory'),
         network_out=pulumi.get(__response__, 'network_out'),
-        price=pulumi.get(__response__, 'price'),
+        prices=pulumi.get(__response__, 'prices'),
         region_prices=pulumi.get(__response__, 'region_prices'),
         transfer=pulumi.get(__response__, 'transfer'),
         vcpus=pulumi.get(__response__, 'vcpus')))

@@ -47,7 +47,7 @@ import * as utilities from "./utilities";
  * const boot = new linode.InstanceDisk("boot", {
  *     label: "boot",
  *     linodeId: my_instance.id,
- *     size: my_instance.specs.apply(specs => specs.disk),
+ *     size: my_instance.specs.apply(specs => specs[0].disk),
  *     image: "linode/ubuntu22.04",
  *     rootPass: "myc00lpass!",
  *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode/internal"
+	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-linode/sdk/v4/go/linode"
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -62,8 +62,8 @@ type GetInstanceTypeArgs struct {
 // A collection of values returned by getInstanceType.
 type GetInstanceTypeResult struct {
 	// The number of VPUs this Linode Type offers.
-	AcceleratedDevices int                   `pulumi:"acceleratedDevices"`
-	Addons             GetInstanceTypeAddons `pulumi:"addons"`
+	AcceleratedDevices int                    `pulumi:"acceleratedDevices"`
+	Addons             []GetInstanceTypeAddon `pulumi:"addons"`
 	// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
 	Class string `pulumi:"class"`
 	// The Disk size, in MB, of the Linode Type
@@ -76,7 +76,7 @@ type GetInstanceTypeResult struct {
 	Memory int `pulumi:"memory"`
 	// The Mbits outbound bandwidth allocation.
 	NetworkOut   int                          `pulumi:"networkOut"`
-	Price        GetInstanceTypePrice         `pulumi:"price"`
+	Prices       []GetInstanceTypePrice       `pulumi:"prices"`
 	RegionPrices []GetInstanceTypeRegionPrice `pulumi:"regionPrices"`
 	// The monthly outbound transfer amount, in MB.
 	Transfer int `pulumi:"transfer"`
@@ -125,8 +125,8 @@ func (o GetInstanceTypeResultOutput) AcceleratedDevices() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.AcceleratedDevices }).(pulumi.IntOutput)
 }
 
-func (o GetInstanceTypeResultOutput) Addons() GetInstanceTypeAddonsOutput {
-	return o.ApplyT(func(v GetInstanceTypeResult) GetInstanceTypeAddons { return v.Addons }).(GetInstanceTypeAddonsOutput)
+func (o GetInstanceTypeResultOutput) Addons() GetInstanceTypeAddonArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) []GetInstanceTypeAddon { return v.Addons }).(GetInstanceTypeAddonArrayOutput)
 }
 
 // The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
@@ -159,8 +159,8 @@ func (o GetInstanceTypeResultOutput) NetworkOut() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.NetworkOut }).(pulumi.IntOutput)
 }
 
-func (o GetInstanceTypeResultOutput) Price() GetInstanceTypePriceOutput {
-	return o.ApplyT(func(v GetInstanceTypeResult) GetInstanceTypePrice { return v.Price }).(GetInstanceTypePriceOutput)
+func (o GetInstanceTypeResultOutput) Prices() GetInstanceTypePriceArrayOutput {
+	return o.ApplyT(func(v GetInstanceTypeResult) []GetInstanceTypePrice { return v.Prices }).(GetInstanceTypePriceArrayOutput)
 }
 
 func (o GetInstanceTypeResultOutput) RegionPrices() GetInstanceTypeRegionPriceArrayOutput {

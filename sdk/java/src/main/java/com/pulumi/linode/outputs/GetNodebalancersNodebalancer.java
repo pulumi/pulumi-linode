@@ -19,6 +19,11 @@ public final class GetNodebalancersNodebalancer {
      */
     private Integer clientConnThrottle;
     /**
+     * @return Throttle UDP sessions per second (0-20).
+     * 
+     */
+    private Integer clientUdpSessThrottle;
+    /**
      * @return When this Linode NodeBalancer was created
      * 
      */
@@ -76,6 +81,13 @@ public final class GetNodebalancersNodebalancer {
      */
     public Integer clientConnThrottle() {
         return this.clientConnThrottle;
+    }
+    /**
+     * @return Throttle UDP sessions per second (0-20).
+     * 
+     */
+    public Integer clientUdpSessThrottle() {
+        return this.clientUdpSessThrottle;
     }
     /**
      * @return When this Linode NodeBalancer was created
@@ -158,6 +170,7 @@ public final class GetNodebalancersNodebalancer {
     @CustomType.Builder
     public static final class Builder {
         private Integer clientConnThrottle;
+        private Integer clientUdpSessThrottle;
         private String created;
         private String hostname;
         private Integer id;
@@ -172,6 +185,7 @@ public final class GetNodebalancersNodebalancer {
         public Builder(GetNodebalancersNodebalancer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientConnThrottle = defaults.clientConnThrottle;
+    	      this.clientUdpSessThrottle = defaults.clientUdpSessThrottle;
     	      this.created = defaults.created;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
@@ -190,6 +204,14 @@ public final class GetNodebalancersNodebalancer {
               throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "clientConnThrottle");
             }
             this.clientConnThrottle = clientConnThrottle;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientUdpSessThrottle(Integer clientUdpSessThrottle) {
+            if (clientUdpSessThrottle == null) {
+              throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "clientUdpSessThrottle");
+            }
+            this.clientUdpSessThrottle = clientUdpSessThrottle;
             return this;
         }
         @CustomType.Setter
@@ -281,6 +303,7 @@ public final class GetNodebalancersNodebalancer {
         public GetNodebalancersNodebalancer build() {
             final var _resultValue = new GetNodebalancersNodebalancer();
             _resultValue.clientConnThrottle = clientConnThrottle;
+            _resultValue.clientUdpSessThrottle = clientUdpSessThrottle;
             _resultValue.created = created;
             _resultValue.hostname = hostname;
             _resultValue.id = id;

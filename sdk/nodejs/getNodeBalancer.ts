@@ -49,6 +49,10 @@ export interface GetNodeBalancerResult {
      */
     readonly clientConnThrottle: number;
     /**
+     * Throttle UDP sessions per second (0-20).
+     */
+    readonly clientUdpSessThrottle: number;
+    /**
      * When this firewall was created.
      */
     readonly created: string;

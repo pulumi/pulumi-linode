@@ -112,7 +112,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Credit Card information associated with this Account.
         /// </summary>
-        public readonly Outputs.GetProfileReferralsResult Referrals;
+        public readonly ImmutableArray<Outputs.GetProfileReferralResult> Referrals;
         /// <summary>
         /// If true, the user has restrictions on what can be accessed on the Account.
         /// </summary>
@@ -144,7 +144,7 @@ namespace Pulumi.Linode
 
             string lishAuthMethod,
 
-            Outputs.GetProfileReferralsResult referrals,
+            ImmutableArray<Outputs.GetProfileReferralResult> referrals,
 
             bool restricted,
 

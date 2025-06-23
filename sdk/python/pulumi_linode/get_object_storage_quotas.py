@@ -72,7 +72,7 @@ def get_object_storage_quotas(filters: Optional[Sequence[Union['GetObjectStorage
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectStorageQuotasResult:
     """
     Provides details about a list of Object Storage quotas information on your account.
-    For more information, see the Linode APIv4 docs.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
 
     ## Example Usage
 
@@ -119,7 +119,7 @@ def get_object_storage_quotas_output(filters: Optional[pulumi.Input[Optional[Seq
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageQuotasResult]:
     """
     Provides details about a list of Object Storage quotas information on your account.
-    For more information, see the Linode APIv4 docs.
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
 
     ## Example Usage
 

@@ -158,8 +158,10 @@ import com.pulumi.linode.outputs.GetChildAccountsResult;
 import com.pulumi.linode.outputs.GetDatabaseBackupsResult;
 import com.pulumi.linode.outputs.GetDatabaseEnginesResult;
 import com.pulumi.linode.outputs.GetDatabaseMysqlBackupsResult;
+import com.pulumi.linode.outputs.GetDatabaseMysqlConfigResult;
 import com.pulumi.linode.outputs.GetDatabaseMysqlResult;
 import com.pulumi.linode.outputs.GetDatabaseMysqlV2Result;
+import com.pulumi.linode.outputs.GetDatabasePostgresqlConfigResult;
 import com.pulumi.linode.outputs.GetDatabasePostgresqlResult;
 import com.pulumi.linode.outputs.GetDatabasePostgresqlV2Result;
 import com.pulumi.linode.outputs.GetDatabasesResult;
@@ -5233,6 +5235,3786 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", TypeShape.of(GetDatabaseMysqlBackupsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides information about a Linode MySQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabaseMysqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## binlog_retention_period
+     * 
+     * The following arguments are supported in the `binlog_retention_period` specification block:
+     * 
+     * * `description` - The description of `binlog_retention_period`.
+     * 
+     * * `example` - An example of a valid value for `binlog_retention_period`.
+     * 
+     * * `maximum` - The maximum valid value of `binlog_retention_period`.
+     * 
+     * * `minimum` - The minimum valid value of `binlog_retention_period`.
+     * 
+     * * `requires_restart` - Whether changing the value `binlog_retention_period` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `binlog_retention_period`.
+     * 
+     * ## mysql
+     * 
+     * The following arguments are supported in the `mysql` specification block:
+     * 
+     * * `connect_timeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * 
+     * * `default_time_zone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * 
+     * * `group_concat_max_len` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * 
+     * * `information_schema_stats_expiry` - The time, in seconds, before cached statistics expire.
+     * 
+     * * `innodb_change_buffer_max_size` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     * * `innodb_flush_neighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * 
+     * * `innodb_ft_min_token_size` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_ft_server_stopword_table` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * 
+     * * `innodb_lock_wait_timeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     * * `innodb_log_buffer_size` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     * * `innodb_online_alter_log_max_size` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     * * `innodb_read_io_threads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_rollback_on_timeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_thread_concurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     * * `innodb_write_io_threads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `interactive_timeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     * * `internal_tmp_mem_storage_engine` - The storage engine for in-memory internal temporary tables.
+     * 
+     * * `max_allowed_packet` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     * * `max_heap_table_size` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     * * `net_buffer_length` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `net_read_timeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     * * `net_write_timeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     * * `sort_buffer_size` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     * * `sql_mode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * 
+     * * `sql_require_primary_key` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * 
+     * * `tmp_table_size` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     * * `wait_timeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     * ## connect_timeout
+     * 
+     * The following arguments are supported in the `connect_timeout` specification block:
+     * 
+     * * `description` - The description of `connect_timeout`.
+     * 
+     * * `example` - An example of a valid value for `connect_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of  `connect_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of  `connect_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `connect_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `connect_timeout`.
+     * 
+     * ## default_time_zone
+     * 
+     * The following arguments are supported in the `default_time_zone` specification block:
+     * 
+     * * `description` - The description of `default_time_zone`.
+     * 
+     * * `example` - An example of a valid value for `default_time_zone`.
+     * 
+     * * `maxLength` - The maximum length of the `default_time_zone` value.
+     * 
+     * * `minLength` - The minimum length of the `default_time_zone` value.
+     * 
+     * * `pattern` - A regular expression that the `default_time_zone` value must match.
+     * 
+     * * `requires_restart` - Whether changing the value `default_time_zone` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_time_zone`.
+     * 
+     * ## group_concat_max_len
+     * 
+     * The following arguments are supported in the `group_concat_max_len` specification block:
+     * 
+     * * `description` - The description of `group_concat_max_len`.
+     * 
+     * * `example` - An example of a valid value for `group_concat_max_len`.
+     * 
+     * * `maximum` - The maximum valid value of `group_concat_max_len`.
+     * 
+     * * `minimum` - The minimum valid value of `group_concat_max_len`.
+     * 
+     * * `requires_restart` - Whether changing the value `group_concat_max_len` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `group_concat_max_len`.
+     * 
+     * ## information_schema_stats_expiry
+     * 
+     * The following arguments are supported in the `information_schema_stats_expiry` specification block:
+     * 
+     * * `description` - The description of `information_schema_stats_expiry`.
+     * 
+     * * `example` - An example of a valid value for `information_schema_stats_expiry`.
+     * 
+     * * `maximum` - The maximum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `minimum` - The minimum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `requires_restart` - Whether changing the value `information_schema_stats_expiry` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `information_schema_stats_expiry`.
+     * 
+     * ## innodb_change_buffer_max_size
+     * 
+     * The following arguments are supported in the `innodb_change_buffer_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_change_buffer_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_change_buffer_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_change_buffer_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_change_buffer_max_size`.
+     * 
+     * ## innodb_flush_neighbors
+     * 
+     * The following arguments are supported in the `innodb_flush_neighbors` specification block:
+     * 
+     * * `description` - The description of `innodb_flush_neighbors`.
+     * 
+     * * `example` - An example of a valid value for `innodb_flush_neighbors`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_flush_neighbors` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_flush_neighbors`.
+     * 
+     * ## innodb_ft_min_token_size
+     * 
+     * The following arguments are supported in the `innodb_ft_min_token_size` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_min_token_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_min_token_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_min_token_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_min_token_size`.
+     * 
+     * ## innodb_ft_server_stopword_table
+     * 
+     * The following arguments are supported in the `innodb_ft_server_stopword_table` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_server_stopword_table`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `maxLength` - The maximum length of the value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `pattern` - A regex pattern that a value of `innodb_ft_server_stopword_table` must match.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_server_stopword_table` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_server_stopword_table`.
+     * 
+     * ## innodb_lock_wait_timeout
+     * 
+     * The following arguments are supported in the `innodb_lock_wait_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_lock_wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_lock_wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_lock_wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_lock_wait_timeout`.
+     * 
+     * ## innodb_log_buffer_size
+     * 
+     * The following arguments are supported in the `innodb_log_buffer_size` specification block:
+     * 
+     * * `description` - The description of `innodb_log_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_log_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_log_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_log_buffer_size`.
+     * 
+     * ## innodb_online_alter_log_max_size
+     * 
+     * The following arguments are supported in the `innodb_online_alter_log_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_online_alter_log_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_online_alter_log_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_online_alter_log_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_online_alter_log_max_size`.
+     * 
+     * ## innodb_read_io_threads
+     * 
+     * The following arguments are supported in the `innodb_read_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_read_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_read_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_read_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_read_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_read_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_read_io_threads`.
+     * 
+     * ## innodb_rollback_on_timeout
+     * 
+     * The following arguments are supported in the `innodb_rollback_on_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_rollback_on_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_rollback_on_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_rollback_on_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_rollback_on_timeout`.
+     * 
+     * ## innodb_thread_concurrency
+     * 
+     * The following arguments are supported in the `innodb_thread_concurrency` specification block:
+     * 
+     * * `description` - The description of `innodb_thread_concurrency`.
+     * 
+     * * `example` - An example of a valid value for `innodb_thread_concurrency`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_thread_concurrency` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_thread_concurrency`.
+     * 
+     * ## innodb_write_io_threads
+     * 
+     * The following arguments are supported in the `innodb_write_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_write_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_write_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_write_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_write_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_write_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_write_io_threads`.
+     * 
+     * ## interactive_timeout
+     * 
+     * The following arguments are supported in the `interactive_timeout` specification block:
+     * 
+     * * `description` - The description of `interactive_timeout`.
+     * 
+     * * `example` - An example of a valid value for `interactive_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `interactive_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `interactive_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `interactive_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `interactive_timeout`.
+     * 
+     * ## internal_tmp_mem_storage_engine
+     * 
+     * The following arguments are supported in the `internal_tmp_mem_storage_engine` specification block:
+     * 
+     * * `description` - The description of `internal_tmp_mem_storage_engine`.
+     * 
+     * * `enum` - A list of valid enum values for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `example` - An example of a valid value for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `requires_restart` - Whether changing the value `internal_tmp_mem_storage_engine` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `internal_tmp_mem_storage_engine`.
+     * 
+     * ## max_allowed_packet
+     * 
+     * The following arguments are supported in the `max_allowed_packet` specification block:
+     * 
+     * * `description` - The description of `max_allowed_packet`.
+     * 
+     * * `example` - An example of a valid value for `max_allowed_packet`.
+     * 
+     * * `maximum` - The maximum valid value of `max_allowed_packet`.
+     * 
+     * * `minimum` - The minimum valid value of `max_allowed_packet`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_allowed_packet` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_allowed_packet`.
+     * 
+     * ## max_heap_table_size
+     * 
+     * The following arguments are supported in the `max_heap_table_size` specification block:
+     * 
+     * * `description` - The description of `max_heap_table_size`.
+     * 
+     * * `example` - An example of a valid value for `max_heap_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `max_heap_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `max_heap_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_heap_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_heap_table_size`.
+     * 
+     * ## net_buffer_length
+     * 
+     * The following arguments are supported in the `net_buffer_length` specification block:
+     * 
+     * * `description` - The description of `net_buffer_length`.
+     * 
+     * * `example` - An example of a valid value for `net_buffer_length`.
+     * 
+     * * `maximum` - The maximum valid value of `net_buffer_length`.
+     * 
+     * * `minimum` - The minimum valid value of `net_buffer_length`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_buffer_length` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_buffer_length`.
+     * 
+     * ## net_read_timeout
+     * 
+     * The following arguments are supported in the `net_read_timeout` specification block:
+     * 
+     * * `description` - The description of `net_read_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_read_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_read_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_read_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_read_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_read_timeout`.
+     * 
+     * ## net_write_timeout
+     * 
+     * The following arguments are supported in the `net_write_timeout` specification block:
+     * 
+     * * `description` - The description of `net_write_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_write_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_write_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_write_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_write_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_write_timeout`.
+     * 
+     * ## sort_buffer_size
+     * 
+     * The following arguments are supported in the `sort_buffer_size` specification block:
+     * 
+     * * `description` - The description of `sort_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `sort_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `sort_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `sort_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `sort_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sort_buffer_size`.
+     * 
+     * ## sql_mode
+     * 
+     * The following arguments are supported in the `sql_mode` specification block:
+     * 
+     * * `description` - The description of `sql_mode`.
+     * 
+     * * `example` - An example of a valid value for `sql_mode`.
+     * 
+     * * `maxLength` - The maximum valid length of `sql_mode`.
+     * 
+     * * `pattern` - The pattern to match for `sql_mode`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_mode` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_mode`.
+     * 
+     * ## sql_require_primary_key
+     * 
+     * The following arguments are supported in the `sql_require_primary_key` specification block:
+     * 
+     * * `description` - The description of `sql_require_primary_key`.
+     * 
+     * * `example` - An example of a valid value for `sql_require_primary_key`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_require_primary_key` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_require_primary_key`.
+     * 
+     * ## tmp_table_size
+     * 
+     * The following arguments are supported in the `tmp_table_size` specification block:
+     * 
+     * * `description` - The description of `tmp_table_size`.
+     * 
+     * * `example` - An example of a valid value for `tmp_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `tmp_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `tmp_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `tmp_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `tmp_table_size`.
+     * 
+     * ## wait_timeout
+     * 
+     * The following arguments are supported in the `wait_timeout` specification block:
+     * 
+     * * `description` - The description of `wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `wait_timeout`.
+     * 
+     */
+    public static Output<GetDatabaseMysqlConfigResult> getDatabaseMysqlConfig() {
+        return getDatabaseMysqlConfig(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode MySQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabaseMysqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## binlog_retention_period
+     * 
+     * The following arguments are supported in the `binlog_retention_period` specification block:
+     * 
+     * * `description` - The description of `binlog_retention_period`.
+     * 
+     * * `example` - An example of a valid value for `binlog_retention_period`.
+     * 
+     * * `maximum` - The maximum valid value of `binlog_retention_period`.
+     * 
+     * * `minimum` - The minimum valid value of `binlog_retention_period`.
+     * 
+     * * `requires_restart` - Whether changing the value `binlog_retention_period` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `binlog_retention_period`.
+     * 
+     * ## mysql
+     * 
+     * The following arguments are supported in the `mysql` specification block:
+     * 
+     * * `connect_timeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * 
+     * * `default_time_zone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * 
+     * * `group_concat_max_len` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * 
+     * * `information_schema_stats_expiry` - The time, in seconds, before cached statistics expire.
+     * 
+     * * `innodb_change_buffer_max_size` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     * * `innodb_flush_neighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * 
+     * * `innodb_ft_min_token_size` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_ft_server_stopword_table` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * 
+     * * `innodb_lock_wait_timeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     * * `innodb_log_buffer_size` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     * * `innodb_online_alter_log_max_size` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     * * `innodb_read_io_threads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_rollback_on_timeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_thread_concurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     * * `innodb_write_io_threads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `interactive_timeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     * * `internal_tmp_mem_storage_engine` - The storage engine for in-memory internal temporary tables.
+     * 
+     * * `max_allowed_packet` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     * * `max_heap_table_size` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     * * `net_buffer_length` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `net_read_timeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     * * `net_write_timeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     * * `sort_buffer_size` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     * * `sql_mode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * 
+     * * `sql_require_primary_key` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * 
+     * * `tmp_table_size` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     * * `wait_timeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     * ## connect_timeout
+     * 
+     * The following arguments are supported in the `connect_timeout` specification block:
+     * 
+     * * `description` - The description of `connect_timeout`.
+     * 
+     * * `example` - An example of a valid value for `connect_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of  `connect_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of  `connect_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `connect_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `connect_timeout`.
+     * 
+     * ## default_time_zone
+     * 
+     * The following arguments are supported in the `default_time_zone` specification block:
+     * 
+     * * `description` - The description of `default_time_zone`.
+     * 
+     * * `example` - An example of a valid value for `default_time_zone`.
+     * 
+     * * `maxLength` - The maximum length of the `default_time_zone` value.
+     * 
+     * * `minLength` - The minimum length of the `default_time_zone` value.
+     * 
+     * * `pattern` - A regular expression that the `default_time_zone` value must match.
+     * 
+     * * `requires_restart` - Whether changing the value `default_time_zone` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_time_zone`.
+     * 
+     * ## group_concat_max_len
+     * 
+     * The following arguments are supported in the `group_concat_max_len` specification block:
+     * 
+     * * `description` - The description of `group_concat_max_len`.
+     * 
+     * * `example` - An example of a valid value for `group_concat_max_len`.
+     * 
+     * * `maximum` - The maximum valid value of `group_concat_max_len`.
+     * 
+     * * `minimum` - The minimum valid value of `group_concat_max_len`.
+     * 
+     * * `requires_restart` - Whether changing the value `group_concat_max_len` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `group_concat_max_len`.
+     * 
+     * ## information_schema_stats_expiry
+     * 
+     * The following arguments are supported in the `information_schema_stats_expiry` specification block:
+     * 
+     * * `description` - The description of `information_schema_stats_expiry`.
+     * 
+     * * `example` - An example of a valid value for `information_schema_stats_expiry`.
+     * 
+     * * `maximum` - The maximum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `minimum` - The minimum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `requires_restart` - Whether changing the value `information_schema_stats_expiry` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `information_schema_stats_expiry`.
+     * 
+     * ## innodb_change_buffer_max_size
+     * 
+     * The following arguments are supported in the `innodb_change_buffer_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_change_buffer_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_change_buffer_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_change_buffer_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_change_buffer_max_size`.
+     * 
+     * ## innodb_flush_neighbors
+     * 
+     * The following arguments are supported in the `innodb_flush_neighbors` specification block:
+     * 
+     * * `description` - The description of `innodb_flush_neighbors`.
+     * 
+     * * `example` - An example of a valid value for `innodb_flush_neighbors`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_flush_neighbors` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_flush_neighbors`.
+     * 
+     * ## innodb_ft_min_token_size
+     * 
+     * The following arguments are supported in the `innodb_ft_min_token_size` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_min_token_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_min_token_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_min_token_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_min_token_size`.
+     * 
+     * ## innodb_ft_server_stopword_table
+     * 
+     * The following arguments are supported in the `innodb_ft_server_stopword_table` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_server_stopword_table`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `maxLength` - The maximum length of the value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `pattern` - A regex pattern that a value of `innodb_ft_server_stopword_table` must match.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_server_stopword_table` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_server_stopword_table`.
+     * 
+     * ## innodb_lock_wait_timeout
+     * 
+     * The following arguments are supported in the `innodb_lock_wait_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_lock_wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_lock_wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_lock_wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_lock_wait_timeout`.
+     * 
+     * ## innodb_log_buffer_size
+     * 
+     * The following arguments are supported in the `innodb_log_buffer_size` specification block:
+     * 
+     * * `description` - The description of `innodb_log_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_log_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_log_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_log_buffer_size`.
+     * 
+     * ## innodb_online_alter_log_max_size
+     * 
+     * The following arguments are supported in the `innodb_online_alter_log_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_online_alter_log_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_online_alter_log_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_online_alter_log_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_online_alter_log_max_size`.
+     * 
+     * ## innodb_read_io_threads
+     * 
+     * The following arguments are supported in the `innodb_read_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_read_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_read_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_read_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_read_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_read_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_read_io_threads`.
+     * 
+     * ## innodb_rollback_on_timeout
+     * 
+     * The following arguments are supported in the `innodb_rollback_on_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_rollback_on_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_rollback_on_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_rollback_on_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_rollback_on_timeout`.
+     * 
+     * ## innodb_thread_concurrency
+     * 
+     * The following arguments are supported in the `innodb_thread_concurrency` specification block:
+     * 
+     * * `description` - The description of `innodb_thread_concurrency`.
+     * 
+     * * `example` - An example of a valid value for `innodb_thread_concurrency`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_thread_concurrency` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_thread_concurrency`.
+     * 
+     * ## innodb_write_io_threads
+     * 
+     * The following arguments are supported in the `innodb_write_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_write_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_write_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_write_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_write_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_write_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_write_io_threads`.
+     * 
+     * ## interactive_timeout
+     * 
+     * The following arguments are supported in the `interactive_timeout` specification block:
+     * 
+     * * `description` - The description of `interactive_timeout`.
+     * 
+     * * `example` - An example of a valid value for `interactive_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `interactive_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `interactive_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `interactive_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `interactive_timeout`.
+     * 
+     * ## internal_tmp_mem_storage_engine
+     * 
+     * The following arguments are supported in the `internal_tmp_mem_storage_engine` specification block:
+     * 
+     * * `description` - The description of `internal_tmp_mem_storage_engine`.
+     * 
+     * * `enum` - A list of valid enum values for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `example` - An example of a valid value for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `requires_restart` - Whether changing the value `internal_tmp_mem_storage_engine` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `internal_tmp_mem_storage_engine`.
+     * 
+     * ## max_allowed_packet
+     * 
+     * The following arguments are supported in the `max_allowed_packet` specification block:
+     * 
+     * * `description` - The description of `max_allowed_packet`.
+     * 
+     * * `example` - An example of a valid value for `max_allowed_packet`.
+     * 
+     * * `maximum` - The maximum valid value of `max_allowed_packet`.
+     * 
+     * * `minimum` - The minimum valid value of `max_allowed_packet`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_allowed_packet` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_allowed_packet`.
+     * 
+     * ## max_heap_table_size
+     * 
+     * The following arguments are supported in the `max_heap_table_size` specification block:
+     * 
+     * * `description` - The description of `max_heap_table_size`.
+     * 
+     * * `example` - An example of a valid value for `max_heap_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `max_heap_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `max_heap_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_heap_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_heap_table_size`.
+     * 
+     * ## net_buffer_length
+     * 
+     * The following arguments are supported in the `net_buffer_length` specification block:
+     * 
+     * * `description` - The description of `net_buffer_length`.
+     * 
+     * * `example` - An example of a valid value for `net_buffer_length`.
+     * 
+     * * `maximum` - The maximum valid value of `net_buffer_length`.
+     * 
+     * * `minimum` - The minimum valid value of `net_buffer_length`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_buffer_length` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_buffer_length`.
+     * 
+     * ## net_read_timeout
+     * 
+     * The following arguments are supported in the `net_read_timeout` specification block:
+     * 
+     * * `description` - The description of `net_read_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_read_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_read_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_read_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_read_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_read_timeout`.
+     * 
+     * ## net_write_timeout
+     * 
+     * The following arguments are supported in the `net_write_timeout` specification block:
+     * 
+     * * `description` - The description of `net_write_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_write_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_write_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_write_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_write_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_write_timeout`.
+     * 
+     * ## sort_buffer_size
+     * 
+     * The following arguments are supported in the `sort_buffer_size` specification block:
+     * 
+     * * `description` - The description of `sort_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `sort_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `sort_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `sort_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `sort_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sort_buffer_size`.
+     * 
+     * ## sql_mode
+     * 
+     * The following arguments are supported in the `sql_mode` specification block:
+     * 
+     * * `description` - The description of `sql_mode`.
+     * 
+     * * `example` - An example of a valid value for `sql_mode`.
+     * 
+     * * `maxLength` - The maximum valid length of `sql_mode`.
+     * 
+     * * `pattern` - The pattern to match for `sql_mode`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_mode` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_mode`.
+     * 
+     * ## sql_require_primary_key
+     * 
+     * The following arguments are supported in the `sql_require_primary_key` specification block:
+     * 
+     * * `description` - The description of `sql_require_primary_key`.
+     * 
+     * * `example` - An example of a valid value for `sql_require_primary_key`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_require_primary_key` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_require_primary_key`.
+     * 
+     * ## tmp_table_size
+     * 
+     * The following arguments are supported in the `tmp_table_size` specification block:
+     * 
+     * * `description` - The description of `tmp_table_size`.
+     * 
+     * * `example` - An example of a valid value for `tmp_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `tmp_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `tmp_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `tmp_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `tmp_table_size`.
+     * 
+     * ## wait_timeout
+     * 
+     * The following arguments are supported in the `wait_timeout` specification block:
+     * 
+     * * `description` - The description of `wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `wait_timeout`.
+     * 
+     */
+    public static CompletableFuture<GetDatabaseMysqlConfigResult> getDatabaseMysqlConfigPlain() {
+        return getDatabaseMysqlConfigPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode MySQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabaseMysqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## binlog_retention_period
+     * 
+     * The following arguments are supported in the `binlog_retention_period` specification block:
+     * 
+     * * `description` - The description of `binlog_retention_period`.
+     * 
+     * * `example` - An example of a valid value for `binlog_retention_period`.
+     * 
+     * * `maximum` - The maximum valid value of `binlog_retention_period`.
+     * 
+     * * `minimum` - The minimum valid value of `binlog_retention_period`.
+     * 
+     * * `requires_restart` - Whether changing the value `binlog_retention_period` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `binlog_retention_period`.
+     * 
+     * ## mysql
+     * 
+     * The following arguments are supported in the `mysql` specification block:
+     * 
+     * * `connect_timeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * 
+     * * `default_time_zone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * 
+     * * `group_concat_max_len` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * 
+     * * `information_schema_stats_expiry` - The time, in seconds, before cached statistics expire.
+     * 
+     * * `innodb_change_buffer_max_size` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     * * `innodb_flush_neighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * 
+     * * `innodb_ft_min_token_size` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_ft_server_stopword_table` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * 
+     * * `innodb_lock_wait_timeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     * * `innodb_log_buffer_size` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     * * `innodb_online_alter_log_max_size` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     * * `innodb_read_io_threads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_rollback_on_timeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_thread_concurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     * * `innodb_write_io_threads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `interactive_timeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     * * `internal_tmp_mem_storage_engine` - The storage engine for in-memory internal temporary tables.
+     * 
+     * * `max_allowed_packet` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     * * `max_heap_table_size` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     * * `net_buffer_length` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `net_read_timeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     * * `net_write_timeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     * * `sort_buffer_size` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     * * `sql_mode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * 
+     * * `sql_require_primary_key` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * 
+     * * `tmp_table_size` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     * * `wait_timeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     * ## connect_timeout
+     * 
+     * The following arguments are supported in the `connect_timeout` specification block:
+     * 
+     * * `description` - The description of `connect_timeout`.
+     * 
+     * * `example` - An example of a valid value for `connect_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of  `connect_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of  `connect_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `connect_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `connect_timeout`.
+     * 
+     * ## default_time_zone
+     * 
+     * The following arguments are supported in the `default_time_zone` specification block:
+     * 
+     * * `description` - The description of `default_time_zone`.
+     * 
+     * * `example` - An example of a valid value for `default_time_zone`.
+     * 
+     * * `maxLength` - The maximum length of the `default_time_zone` value.
+     * 
+     * * `minLength` - The minimum length of the `default_time_zone` value.
+     * 
+     * * `pattern` - A regular expression that the `default_time_zone` value must match.
+     * 
+     * * `requires_restart` - Whether changing the value `default_time_zone` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_time_zone`.
+     * 
+     * ## group_concat_max_len
+     * 
+     * The following arguments are supported in the `group_concat_max_len` specification block:
+     * 
+     * * `description` - The description of `group_concat_max_len`.
+     * 
+     * * `example` - An example of a valid value for `group_concat_max_len`.
+     * 
+     * * `maximum` - The maximum valid value of `group_concat_max_len`.
+     * 
+     * * `minimum` - The minimum valid value of `group_concat_max_len`.
+     * 
+     * * `requires_restart` - Whether changing the value `group_concat_max_len` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `group_concat_max_len`.
+     * 
+     * ## information_schema_stats_expiry
+     * 
+     * The following arguments are supported in the `information_schema_stats_expiry` specification block:
+     * 
+     * * `description` - The description of `information_schema_stats_expiry`.
+     * 
+     * * `example` - An example of a valid value for `information_schema_stats_expiry`.
+     * 
+     * * `maximum` - The maximum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `minimum` - The minimum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `requires_restart` - Whether changing the value `information_schema_stats_expiry` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `information_schema_stats_expiry`.
+     * 
+     * ## innodb_change_buffer_max_size
+     * 
+     * The following arguments are supported in the `innodb_change_buffer_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_change_buffer_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_change_buffer_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_change_buffer_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_change_buffer_max_size`.
+     * 
+     * ## innodb_flush_neighbors
+     * 
+     * The following arguments are supported in the `innodb_flush_neighbors` specification block:
+     * 
+     * * `description` - The description of `innodb_flush_neighbors`.
+     * 
+     * * `example` - An example of a valid value for `innodb_flush_neighbors`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_flush_neighbors` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_flush_neighbors`.
+     * 
+     * ## innodb_ft_min_token_size
+     * 
+     * The following arguments are supported in the `innodb_ft_min_token_size` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_min_token_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_min_token_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_min_token_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_min_token_size`.
+     * 
+     * ## innodb_ft_server_stopword_table
+     * 
+     * The following arguments are supported in the `innodb_ft_server_stopword_table` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_server_stopword_table`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `maxLength` - The maximum length of the value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `pattern` - A regex pattern that a value of `innodb_ft_server_stopword_table` must match.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_server_stopword_table` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_server_stopword_table`.
+     * 
+     * ## innodb_lock_wait_timeout
+     * 
+     * The following arguments are supported in the `innodb_lock_wait_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_lock_wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_lock_wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_lock_wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_lock_wait_timeout`.
+     * 
+     * ## innodb_log_buffer_size
+     * 
+     * The following arguments are supported in the `innodb_log_buffer_size` specification block:
+     * 
+     * * `description` - The description of `innodb_log_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_log_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_log_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_log_buffer_size`.
+     * 
+     * ## innodb_online_alter_log_max_size
+     * 
+     * The following arguments are supported in the `innodb_online_alter_log_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_online_alter_log_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_online_alter_log_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_online_alter_log_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_online_alter_log_max_size`.
+     * 
+     * ## innodb_read_io_threads
+     * 
+     * The following arguments are supported in the `innodb_read_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_read_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_read_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_read_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_read_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_read_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_read_io_threads`.
+     * 
+     * ## innodb_rollback_on_timeout
+     * 
+     * The following arguments are supported in the `innodb_rollback_on_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_rollback_on_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_rollback_on_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_rollback_on_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_rollback_on_timeout`.
+     * 
+     * ## innodb_thread_concurrency
+     * 
+     * The following arguments are supported in the `innodb_thread_concurrency` specification block:
+     * 
+     * * `description` - The description of `innodb_thread_concurrency`.
+     * 
+     * * `example` - An example of a valid value for `innodb_thread_concurrency`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_thread_concurrency` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_thread_concurrency`.
+     * 
+     * ## innodb_write_io_threads
+     * 
+     * The following arguments are supported in the `innodb_write_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_write_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_write_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_write_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_write_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_write_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_write_io_threads`.
+     * 
+     * ## interactive_timeout
+     * 
+     * The following arguments are supported in the `interactive_timeout` specification block:
+     * 
+     * * `description` - The description of `interactive_timeout`.
+     * 
+     * * `example` - An example of a valid value for `interactive_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `interactive_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `interactive_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `interactive_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `interactive_timeout`.
+     * 
+     * ## internal_tmp_mem_storage_engine
+     * 
+     * The following arguments are supported in the `internal_tmp_mem_storage_engine` specification block:
+     * 
+     * * `description` - The description of `internal_tmp_mem_storage_engine`.
+     * 
+     * * `enum` - A list of valid enum values for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `example` - An example of a valid value for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `requires_restart` - Whether changing the value `internal_tmp_mem_storage_engine` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `internal_tmp_mem_storage_engine`.
+     * 
+     * ## max_allowed_packet
+     * 
+     * The following arguments are supported in the `max_allowed_packet` specification block:
+     * 
+     * * `description` - The description of `max_allowed_packet`.
+     * 
+     * * `example` - An example of a valid value for `max_allowed_packet`.
+     * 
+     * * `maximum` - The maximum valid value of `max_allowed_packet`.
+     * 
+     * * `minimum` - The minimum valid value of `max_allowed_packet`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_allowed_packet` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_allowed_packet`.
+     * 
+     * ## max_heap_table_size
+     * 
+     * The following arguments are supported in the `max_heap_table_size` specification block:
+     * 
+     * * `description` - The description of `max_heap_table_size`.
+     * 
+     * * `example` - An example of a valid value for `max_heap_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `max_heap_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `max_heap_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_heap_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_heap_table_size`.
+     * 
+     * ## net_buffer_length
+     * 
+     * The following arguments are supported in the `net_buffer_length` specification block:
+     * 
+     * * `description` - The description of `net_buffer_length`.
+     * 
+     * * `example` - An example of a valid value for `net_buffer_length`.
+     * 
+     * * `maximum` - The maximum valid value of `net_buffer_length`.
+     * 
+     * * `minimum` - The minimum valid value of `net_buffer_length`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_buffer_length` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_buffer_length`.
+     * 
+     * ## net_read_timeout
+     * 
+     * The following arguments are supported in the `net_read_timeout` specification block:
+     * 
+     * * `description` - The description of `net_read_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_read_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_read_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_read_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_read_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_read_timeout`.
+     * 
+     * ## net_write_timeout
+     * 
+     * The following arguments are supported in the `net_write_timeout` specification block:
+     * 
+     * * `description` - The description of `net_write_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_write_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_write_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_write_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_write_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_write_timeout`.
+     * 
+     * ## sort_buffer_size
+     * 
+     * The following arguments are supported in the `sort_buffer_size` specification block:
+     * 
+     * * `description` - The description of `sort_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `sort_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `sort_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `sort_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `sort_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sort_buffer_size`.
+     * 
+     * ## sql_mode
+     * 
+     * The following arguments are supported in the `sql_mode` specification block:
+     * 
+     * * `description` - The description of `sql_mode`.
+     * 
+     * * `example` - An example of a valid value for `sql_mode`.
+     * 
+     * * `maxLength` - The maximum valid length of `sql_mode`.
+     * 
+     * * `pattern` - The pattern to match for `sql_mode`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_mode` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_mode`.
+     * 
+     * ## sql_require_primary_key
+     * 
+     * The following arguments are supported in the `sql_require_primary_key` specification block:
+     * 
+     * * `description` - The description of `sql_require_primary_key`.
+     * 
+     * * `example` - An example of a valid value for `sql_require_primary_key`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_require_primary_key` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_require_primary_key`.
+     * 
+     * ## tmp_table_size
+     * 
+     * The following arguments are supported in the `tmp_table_size` specification block:
+     * 
+     * * `description` - The description of `tmp_table_size`.
+     * 
+     * * `example` - An example of a valid value for `tmp_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `tmp_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `tmp_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `tmp_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `tmp_table_size`.
+     * 
+     * ## wait_timeout
+     * 
+     * The following arguments are supported in the `wait_timeout` specification block:
+     * 
+     * * `description` - The description of `wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `wait_timeout`.
+     * 
+     */
+    public static Output<GetDatabaseMysqlConfigResult> getDatabaseMysqlConfig(InvokeArgs args) {
+        return getDatabaseMysqlConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode MySQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabaseMysqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## binlog_retention_period
+     * 
+     * The following arguments are supported in the `binlog_retention_period` specification block:
+     * 
+     * * `description` - The description of `binlog_retention_period`.
+     * 
+     * * `example` - An example of a valid value for `binlog_retention_period`.
+     * 
+     * * `maximum` - The maximum valid value of `binlog_retention_period`.
+     * 
+     * * `minimum` - The minimum valid value of `binlog_retention_period`.
+     * 
+     * * `requires_restart` - Whether changing the value `binlog_retention_period` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `binlog_retention_period`.
+     * 
+     * ## mysql
+     * 
+     * The following arguments are supported in the `mysql` specification block:
+     * 
+     * * `connect_timeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * 
+     * * `default_time_zone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * 
+     * * `group_concat_max_len` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * 
+     * * `information_schema_stats_expiry` - The time, in seconds, before cached statistics expire.
+     * 
+     * * `innodb_change_buffer_max_size` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     * * `innodb_flush_neighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * 
+     * * `innodb_ft_min_token_size` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_ft_server_stopword_table` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * 
+     * * `innodb_lock_wait_timeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     * * `innodb_log_buffer_size` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     * * `innodb_online_alter_log_max_size` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     * * `innodb_read_io_threads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_rollback_on_timeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_thread_concurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     * * `innodb_write_io_threads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `interactive_timeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     * * `internal_tmp_mem_storage_engine` - The storage engine for in-memory internal temporary tables.
+     * 
+     * * `max_allowed_packet` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     * * `max_heap_table_size` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     * * `net_buffer_length` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `net_read_timeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     * * `net_write_timeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     * * `sort_buffer_size` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     * * `sql_mode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * 
+     * * `sql_require_primary_key` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * 
+     * * `tmp_table_size` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     * * `wait_timeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     * ## connect_timeout
+     * 
+     * The following arguments are supported in the `connect_timeout` specification block:
+     * 
+     * * `description` - The description of `connect_timeout`.
+     * 
+     * * `example` - An example of a valid value for `connect_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of  `connect_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of  `connect_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `connect_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `connect_timeout`.
+     * 
+     * ## default_time_zone
+     * 
+     * The following arguments are supported in the `default_time_zone` specification block:
+     * 
+     * * `description` - The description of `default_time_zone`.
+     * 
+     * * `example` - An example of a valid value for `default_time_zone`.
+     * 
+     * * `maxLength` - The maximum length of the `default_time_zone` value.
+     * 
+     * * `minLength` - The minimum length of the `default_time_zone` value.
+     * 
+     * * `pattern` - A regular expression that the `default_time_zone` value must match.
+     * 
+     * * `requires_restart` - Whether changing the value `default_time_zone` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_time_zone`.
+     * 
+     * ## group_concat_max_len
+     * 
+     * The following arguments are supported in the `group_concat_max_len` specification block:
+     * 
+     * * `description` - The description of `group_concat_max_len`.
+     * 
+     * * `example` - An example of a valid value for `group_concat_max_len`.
+     * 
+     * * `maximum` - The maximum valid value of `group_concat_max_len`.
+     * 
+     * * `minimum` - The minimum valid value of `group_concat_max_len`.
+     * 
+     * * `requires_restart` - Whether changing the value `group_concat_max_len` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `group_concat_max_len`.
+     * 
+     * ## information_schema_stats_expiry
+     * 
+     * The following arguments are supported in the `information_schema_stats_expiry` specification block:
+     * 
+     * * `description` - The description of `information_schema_stats_expiry`.
+     * 
+     * * `example` - An example of a valid value for `information_schema_stats_expiry`.
+     * 
+     * * `maximum` - The maximum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `minimum` - The minimum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `requires_restart` - Whether changing the value `information_schema_stats_expiry` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `information_schema_stats_expiry`.
+     * 
+     * ## innodb_change_buffer_max_size
+     * 
+     * The following arguments are supported in the `innodb_change_buffer_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_change_buffer_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_change_buffer_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_change_buffer_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_change_buffer_max_size`.
+     * 
+     * ## innodb_flush_neighbors
+     * 
+     * The following arguments are supported in the `innodb_flush_neighbors` specification block:
+     * 
+     * * `description` - The description of `innodb_flush_neighbors`.
+     * 
+     * * `example` - An example of a valid value for `innodb_flush_neighbors`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_flush_neighbors` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_flush_neighbors`.
+     * 
+     * ## innodb_ft_min_token_size
+     * 
+     * The following arguments are supported in the `innodb_ft_min_token_size` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_min_token_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_min_token_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_min_token_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_min_token_size`.
+     * 
+     * ## innodb_ft_server_stopword_table
+     * 
+     * The following arguments are supported in the `innodb_ft_server_stopword_table` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_server_stopword_table`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `maxLength` - The maximum length of the value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `pattern` - A regex pattern that a value of `innodb_ft_server_stopword_table` must match.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_server_stopword_table` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_server_stopword_table`.
+     * 
+     * ## innodb_lock_wait_timeout
+     * 
+     * The following arguments are supported in the `innodb_lock_wait_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_lock_wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_lock_wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_lock_wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_lock_wait_timeout`.
+     * 
+     * ## innodb_log_buffer_size
+     * 
+     * The following arguments are supported in the `innodb_log_buffer_size` specification block:
+     * 
+     * * `description` - The description of `innodb_log_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_log_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_log_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_log_buffer_size`.
+     * 
+     * ## innodb_online_alter_log_max_size
+     * 
+     * The following arguments are supported in the `innodb_online_alter_log_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_online_alter_log_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_online_alter_log_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_online_alter_log_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_online_alter_log_max_size`.
+     * 
+     * ## innodb_read_io_threads
+     * 
+     * The following arguments are supported in the `innodb_read_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_read_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_read_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_read_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_read_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_read_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_read_io_threads`.
+     * 
+     * ## innodb_rollback_on_timeout
+     * 
+     * The following arguments are supported in the `innodb_rollback_on_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_rollback_on_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_rollback_on_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_rollback_on_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_rollback_on_timeout`.
+     * 
+     * ## innodb_thread_concurrency
+     * 
+     * The following arguments are supported in the `innodb_thread_concurrency` specification block:
+     * 
+     * * `description` - The description of `innodb_thread_concurrency`.
+     * 
+     * * `example` - An example of a valid value for `innodb_thread_concurrency`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_thread_concurrency` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_thread_concurrency`.
+     * 
+     * ## innodb_write_io_threads
+     * 
+     * The following arguments are supported in the `innodb_write_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_write_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_write_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_write_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_write_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_write_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_write_io_threads`.
+     * 
+     * ## interactive_timeout
+     * 
+     * The following arguments are supported in the `interactive_timeout` specification block:
+     * 
+     * * `description` - The description of `interactive_timeout`.
+     * 
+     * * `example` - An example of a valid value for `interactive_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `interactive_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `interactive_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `interactive_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `interactive_timeout`.
+     * 
+     * ## internal_tmp_mem_storage_engine
+     * 
+     * The following arguments are supported in the `internal_tmp_mem_storage_engine` specification block:
+     * 
+     * * `description` - The description of `internal_tmp_mem_storage_engine`.
+     * 
+     * * `enum` - A list of valid enum values for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `example` - An example of a valid value for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `requires_restart` - Whether changing the value `internal_tmp_mem_storage_engine` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `internal_tmp_mem_storage_engine`.
+     * 
+     * ## max_allowed_packet
+     * 
+     * The following arguments are supported in the `max_allowed_packet` specification block:
+     * 
+     * * `description` - The description of `max_allowed_packet`.
+     * 
+     * * `example` - An example of a valid value for `max_allowed_packet`.
+     * 
+     * * `maximum` - The maximum valid value of `max_allowed_packet`.
+     * 
+     * * `minimum` - The minimum valid value of `max_allowed_packet`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_allowed_packet` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_allowed_packet`.
+     * 
+     * ## max_heap_table_size
+     * 
+     * The following arguments are supported in the `max_heap_table_size` specification block:
+     * 
+     * * `description` - The description of `max_heap_table_size`.
+     * 
+     * * `example` - An example of a valid value for `max_heap_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `max_heap_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `max_heap_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_heap_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_heap_table_size`.
+     * 
+     * ## net_buffer_length
+     * 
+     * The following arguments are supported in the `net_buffer_length` specification block:
+     * 
+     * * `description` - The description of `net_buffer_length`.
+     * 
+     * * `example` - An example of a valid value for `net_buffer_length`.
+     * 
+     * * `maximum` - The maximum valid value of `net_buffer_length`.
+     * 
+     * * `minimum` - The minimum valid value of `net_buffer_length`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_buffer_length` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_buffer_length`.
+     * 
+     * ## net_read_timeout
+     * 
+     * The following arguments are supported in the `net_read_timeout` specification block:
+     * 
+     * * `description` - The description of `net_read_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_read_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_read_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_read_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_read_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_read_timeout`.
+     * 
+     * ## net_write_timeout
+     * 
+     * The following arguments are supported in the `net_write_timeout` specification block:
+     * 
+     * * `description` - The description of `net_write_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_write_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_write_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_write_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_write_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_write_timeout`.
+     * 
+     * ## sort_buffer_size
+     * 
+     * The following arguments are supported in the `sort_buffer_size` specification block:
+     * 
+     * * `description` - The description of `sort_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `sort_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `sort_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `sort_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `sort_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sort_buffer_size`.
+     * 
+     * ## sql_mode
+     * 
+     * The following arguments are supported in the `sql_mode` specification block:
+     * 
+     * * `description` - The description of `sql_mode`.
+     * 
+     * * `example` - An example of a valid value for `sql_mode`.
+     * 
+     * * `maxLength` - The maximum valid length of `sql_mode`.
+     * 
+     * * `pattern` - The pattern to match for `sql_mode`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_mode` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_mode`.
+     * 
+     * ## sql_require_primary_key
+     * 
+     * The following arguments are supported in the `sql_require_primary_key` specification block:
+     * 
+     * * `description` - The description of `sql_require_primary_key`.
+     * 
+     * * `example` - An example of a valid value for `sql_require_primary_key`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_require_primary_key` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_require_primary_key`.
+     * 
+     * ## tmp_table_size
+     * 
+     * The following arguments are supported in the `tmp_table_size` specification block:
+     * 
+     * * `description` - The description of `tmp_table_size`.
+     * 
+     * * `example` - An example of a valid value for `tmp_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `tmp_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `tmp_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `tmp_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `tmp_table_size`.
+     * 
+     * ## wait_timeout
+     * 
+     * The following arguments are supported in the `wait_timeout` specification block:
+     * 
+     * * `description` - The description of `wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `wait_timeout`.
+     * 
+     */
+    public static CompletableFuture<GetDatabaseMysqlConfigResult> getDatabaseMysqlConfigPlain(InvokeArgs args) {
+        return getDatabaseMysqlConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode MySQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabaseMysqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## binlog_retention_period
+     * 
+     * The following arguments are supported in the `binlog_retention_period` specification block:
+     * 
+     * * `description` - The description of `binlog_retention_period`.
+     * 
+     * * `example` - An example of a valid value for `binlog_retention_period`.
+     * 
+     * * `maximum` - The maximum valid value of `binlog_retention_period`.
+     * 
+     * * `minimum` - The minimum valid value of `binlog_retention_period`.
+     * 
+     * * `requires_restart` - Whether changing the value `binlog_retention_period` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `binlog_retention_period`.
+     * 
+     * ## mysql
+     * 
+     * The following arguments are supported in the `mysql` specification block:
+     * 
+     * * `connect_timeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * 
+     * * `default_time_zone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * 
+     * * `group_concat_max_len` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * 
+     * * `information_schema_stats_expiry` - The time, in seconds, before cached statistics expire.
+     * 
+     * * `innodb_change_buffer_max_size` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     * * `innodb_flush_neighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * 
+     * * `innodb_ft_min_token_size` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_ft_server_stopword_table` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * 
+     * * `innodb_lock_wait_timeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     * * `innodb_log_buffer_size` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     * * `innodb_online_alter_log_max_size` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     * * `innodb_read_io_threads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_rollback_on_timeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_thread_concurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     * * `innodb_write_io_threads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `interactive_timeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     * * `internal_tmp_mem_storage_engine` - The storage engine for in-memory internal temporary tables.
+     * 
+     * * `max_allowed_packet` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     * * `max_heap_table_size` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     * * `net_buffer_length` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `net_read_timeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     * * `net_write_timeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     * * `sort_buffer_size` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     * * `sql_mode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * 
+     * * `sql_require_primary_key` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * 
+     * * `tmp_table_size` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     * * `wait_timeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     * ## connect_timeout
+     * 
+     * The following arguments are supported in the `connect_timeout` specification block:
+     * 
+     * * `description` - The description of `connect_timeout`.
+     * 
+     * * `example` - An example of a valid value for `connect_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of  `connect_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of  `connect_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `connect_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `connect_timeout`.
+     * 
+     * ## default_time_zone
+     * 
+     * The following arguments are supported in the `default_time_zone` specification block:
+     * 
+     * * `description` - The description of `default_time_zone`.
+     * 
+     * * `example` - An example of a valid value for `default_time_zone`.
+     * 
+     * * `maxLength` - The maximum length of the `default_time_zone` value.
+     * 
+     * * `minLength` - The minimum length of the `default_time_zone` value.
+     * 
+     * * `pattern` - A regular expression that the `default_time_zone` value must match.
+     * 
+     * * `requires_restart` - Whether changing the value `default_time_zone` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_time_zone`.
+     * 
+     * ## group_concat_max_len
+     * 
+     * The following arguments are supported in the `group_concat_max_len` specification block:
+     * 
+     * * `description` - The description of `group_concat_max_len`.
+     * 
+     * * `example` - An example of a valid value for `group_concat_max_len`.
+     * 
+     * * `maximum` - The maximum valid value of `group_concat_max_len`.
+     * 
+     * * `minimum` - The minimum valid value of `group_concat_max_len`.
+     * 
+     * * `requires_restart` - Whether changing the value `group_concat_max_len` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `group_concat_max_len`.
+     * 
+     * ## information_schema_stats_expiry
+     * 
+     * The following arguments are supported in the `information_schema_stats_expiry` specification block:
+     * 
+     * * `description` - The description of `information_schema_stats_expiry`.
+     * 
+     * * `example` - An example of a valid value for `information_schema_stats_expiry`.
+     * 
+     * * `maximum` - The maximum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `minimum` - The minimum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `requires_restart` - Whether changing the value `information_schema_stats_expiry` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `information_schema_stats_expiry`.
+     * 
+     * ## innodb_change_buffer_max_size
+     * 
+     * The following arguments are supported in the `innodb_change_buffer_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_change_buffer_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_change_buffer_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_change_buffer_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_change_buffer_max_size`.
+     * 
+     * ## innodb_flush_neighbors
+     * 
+     * The following arguments are supported in the `innodb_flush_neighbors` specification block:
+     * 
+     * * `description` - The description of `innodb_flush_neighbors`.
+     * 
+     * * `example` - An example of a valid value for `innodb_flush_neighbors`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_flush_neighbors` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_flush_neighbors`.
+     * 
+     * ## innodb_ft_min_token_size
+     * 
+     * The following arguments are supported in the `innodb_ft_min_token_size` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_min_token_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_min_token_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_min_token_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_min_token_size`.
+     * 
+     * ## innodb_ft_server_stopword_table
+     * 
+     * The following arguments are supported in the `innodb_ft_server_stopword_table` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_server_stopword_table`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `maxLength` - The maximum length of the value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `pattern` - A regex pattern that a value of `innodb_ft_server_stopword_table` must match.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_server_stopword_table` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_server_stopword_table`.
+     * 
+     * ## innodb_lock_wait_timeout
+     * 
+     * The following arguments are supported in the `innodb_lock_wait_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_lock_wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_lock_wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_lock_wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_lock_wait_timeout`.
+     * 
+     * ## innodb_log_buffer_size
+     * 
+     * The following arguments are supported in the `innodb_log_buffer_size` specification block:
+     * 
+     * * `description` - The description of `innodb_log_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_log_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_log_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_log_buffer_size`.
+     * 
+     * ## innodb_online_alter_log_max_size
+     * 
+     * The following arguments are supported in the `innodb_online_alter_log_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_online_alter_log_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_online_alter_log_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_online_alter_log_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_online_alter_log_max_size`.
+     * 
+     * ## innodb_read_io_threads
+     * 
+     * The following arguments are supported in the `innodb_read_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_read_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_read_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_read_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_read_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_read_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_read_io_threads`.
+     * 
+     * ## innodb_rollback_on_timeout
+     * 
+     * The following arguments are supported in the `innodb_rollback_on_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_rollback_on_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_rollback_on_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_rollback_on_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_rollback_on_timeout`.
+     * 
+     * ## innodb_thread_concurrency
+     * 
+     * The following arguments are supported in the `innodb_thread_concurrency` specification block:
+     * 
+     * * `description` - The description of `innodb_thread_concurrency`.
+     * 
+     * * `example` - An example of a valid value for `innodb_thread_concurrency`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_thread_concurrency` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_thread_concurrency`.
+     * 
+     * ## innodb_write_io_threads
+     * 
+     * The following arguments are supported in the `innodb_write_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_write_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_write_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_write_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_write_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_write_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_write_io_threads`.
+     * 
+     * ## interactive_timeout
+     * 
+     * The following arguments are supported in the `interactive_timeout` specification block:
+     * 
+     * * `description` - The description of `interactive_timeout`.
+     * 
+     * * `example` - An example of a valid value for `interactive_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `interactive_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `interactive_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `interactive_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `interactive_timeout`.
+     * 
+     * ## internal_tmp_mem_storage_engine
+     * 
+     * The following arguments are supported in the `internal_tmp_mem_storage_engine` specification block:
+     * 
+     * * `description` - The description of `internal_tmp_mem_storage_engine`.
+     * 
+     * * `enum` - A list of valid enum values for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `example` - An example of a valid value for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `requires_restart` - Whether changing the value `internal_tmp_mem_storage_engine` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `internal_tmp_mem_storage_engine`.
+     * 
+     * ## max_allowed_packet
+     * 
+     * The following arguments are supported in the `max_allowed_packet` specification block:
+     * 
+     * * `description` - The description of `max_allowed_packet`.
+     * 
+     * * `example` - An example of a valid value for `max_allowed_packet`.
+     * 
+     * * `maximum` - The maximum valid value of `max_allowed_packet`.
+     * 
+     * * `minimum` - The minimum valid value of `max_allowed_packet`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_allowed_packet` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_allowed_packet`.
+     * 
+     * ## max_heap_table_size
+     * 
+     * The following arguments are supported in the `max_heap_table_size` specification block:
+     * 
+     * * `description` - The description of `max_heap_table_size`.
+     * 
+     * * `example` - An example of a valid value for `max_heap_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `max_heap_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `max_heap_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_heap_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_heap_table_size`.
+     * 
+     * ## net_buffer_length
+     * 
+     * The following arguments are supported in the `net_buffer_length` specification block:
+     * 
+     * * `description` - The description of `net_buffer_length`.
+     * 
+     * * `example` - An example of a valid value for `net_buffer_length`.
+     * 
+     * * `maximum` - The maximum valid value of `net_buffer_length`.
+     * 
+     * * `minimum` - The minimum valid value of `net_buffer_length`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_buffer_length` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_buffer_length`.
+     * 
+     * ## net_read_timeout
+     * 
+     * The following arguments are supported in the `net_read_timeout` specification block:
+     * 
+     * * `description` - The description of `net_read_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_read_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_read_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_read_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_read_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_read_timeout`.
+     * 
+     * ## net_write_timeout
+     * 
+     * The following arguments are supported in the `net_write_timeout` specification block:
+     * 
+     * * `description` - The description of `net_write_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_write_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_write_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_write_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_write_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_write_timeout`.
+     * 
+     * ## sort_buffer_size
+     * 
+     * The following arguments are supported in the `sort_buffer_size` specification block:
+     * 
+     * * `description` - The description of `sort_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `sort_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `sort_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `sort_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `sort_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sort_buffer_size`.
+     * 
+     * ## sql_mode
+     * 
+     * The following arguments are supported in the `sql_mode` specification block:
+     * 
+     * * `description` - The description of `sql_mode`.
+     * 
+     * * `example` - An example of a valid value for `sql_mode`.
+     * 
+     * * `maxLength` - The maximum valid length of `sql_mode`.
+     * 
+     * * `pattern` - The pattern to match for `sql_mode`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_mode` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_mode`.
+     * 
+     * ## sql_require_primary_key
+     * 
+     * The following arguments are supported in the `sql_require_primary_key` specification block:
+     * 
+     * * `description` - The description of `sql_require_primary_key`.
+     * 
+     * * `example` - An example of a valid value for `sql_require_primary_key`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_require_primary_key` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_require_primary_key`.
+     * 
+     * ## tmp_table_size
+     * 
+     * The following arguments are supported in the `tmp_table_size` specification block:
+     * 
+     * * `description` - The description of `tmp_table_size`.
+     * 
+     * * `example` - An example of a valid value for `tmp_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `tmp_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `tmp_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `tmp_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `tmp_table_size`.
+     * 
+     * ## wait_timeout
+     * 
+     * The following arguments are supported in the `wait_timeout` specification block:
+     * 
+     * * `description` - The description of `wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `wait_timeout`.
+     * 
+     */
+    public static Output<GetDatabaseMysqlConfigResult> getDatabaseMysqlConfig(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getDatabaseMysqlConfig:getDatabaseMysqlConfig", TypeShape.of(GetDatabaseMysqlConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode MySQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabaseMysqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## binlog_retention_period
+     * 
+     * The following arguments are supported in the `binlog_retention_period` specification block:
+     * 
+     * * `description` - The description of `binlog_retention_period`.
+     * 
+     * * `example` - An example of a valid value for `binlog_retention_period`.
+     * 
+     * * `maximum` - The maximum valid value of `binlog_retention_period`.
+     * 
+     * * `minimum` - The minimum valid value of `binlog_retention_period`.
+     * 
+     * * `requires_restart` - Whether changing the value `binlog_retention_period` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `binlog_retention_period`.
+     * 
+     * ## mysql
+     * 
+     * The following arguments are supported in the `mysql` specification block:
+     * 
+     * * `connect_timeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * 
+     * * `default_time_zone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * 
+     * * `group_concat_max_len` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * 
+     * * `information_schema_stats_expiry` - The time, in seconds, before cached statistics expire.
+     * 
+     * * `innodb_change_buffer_max_size` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     * * `innodb_flush_neighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * 
+     * * `innodb_ft_min_token_size` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_ft_server_stopword_table` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * 
+     * * `innodb_lock_wait_timeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     * * `innodb_log_buffer_size` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     * * `innodb_online_alter_log_max_size` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     * * `innodb_read_io_threads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_rollback_on_timeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_thread_concurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     * * `innodb_write_io_threads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `interactive_timeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     * * `internal_tmp_mem_storage_engine` - The storage engine for in-memory internal temporary tables.
+     * 
+     * * `max_allowed_packet` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     * * `max_heap_table_size` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     * * `net_buffer_length` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `net_read_timeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     * * `net_write_timeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     * * `sort_buffer_size` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     * * `sql_mode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * 
+     * * `sql_require_primary_key` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * 
+     * * `tmp_table_size` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     * * `wait_timeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     * ## connect_timeout
+     * 
+     * The following arguments are supported in the `connect_timeout` specification block:
+     * 
+     * * `description` - The description of `connect_timeout`.
+     * 
+     * * `example` - An example of a valid value for `connect_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of  `connect_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of  `connect_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `connect_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `connect_timeout`.
+     * 
+     * ## default_time_zone
+     * 
+     * The following arguments are supported in the `default_time_zone` specification block:
+     * 
+     * * `description` - The description of `default_time_zone`.
+     * 
+     * * `example` - An example of a valid value for `default_time_zone`.
+     * 
+     * * `maxLength` - The maximum length of the `default_time_zone` value.
+     * 
+     * * `minLength` - The minimum length of the `default_time_zone` value.
+     * 
+     * * `pattern` - A regular expression that the `default_time_zone` value must match.
+     * 
+     * * `requires_restart` - Whether changing the value `default_time_zone` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_time_zone`.
+     * 
+     * ## group_concat_max_len
+     * 
+     * The following arguments are supported in the `group_concat_max_len` specification block:
+     * 
+     * * `description` - The description of `group_concat_max_len`.
+     * 
+     * * `example` - An example of a valid value for `group_concat_max_len`.
+     * 
+     * * `maximum` - The maximum valid value of `group_concat_max_len`.
+     * 
+     * * `minimum` - The minimum valid value of `group_concat_max_len`.
+     * 
+     * * `requires_restart` - Whether changing the value `group_concat_max_len` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `group_concat_max_len`.
+     * 
+     * ## information_schema_stats_expiry
+     * 
+     * The following arguments are supported in the `information_schema_stats_expiry` specification block:
+     * 
+     * * `description` - The description of `information_schema_stats_expiry`.
+     * 
+     * * `example` - An example of a valid value for `information_schema_stats_expiry`.
+     * 
+     * * `maximum` - The maximum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `minimum` - The minimum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `requires_restart` - Whether changing the value `information_schema_stats_expiry` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `information_schema_stats_expiry`.
+     * 
+     * ## innodb_change_buffer_max_size
+     * 
+     * The following arguments are supported in the `innodb_change_buffer_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_change_buffer_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_change_buffer_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_change_buffer_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_change_buffer_max_size`.
+     * 
+     * ## innodb_flush_neighbors
+     * 
+     * The following arguments are supported in the `innodb_flush_neighbors` specification block:
+     * 
+     * * `description` - The description of `innodb_flush_neighbors`.
+     * 
+     * * `example` - An example of a valid value for `innodb_flush_neighbors`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_flush_neighbors` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_flush_neighbors`.
+     * 
+     * ## innodb_ft_min_token_size
+     * 
+     * The following arguments are supported in the `innodb_ft_min_token_size` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_min_token_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_min_token_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_min_token_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_min_token_size`.
+     * 
+     * ## innodb_ft_server_stopword_table
+     * 
+     * The following arguments are supported in the `innodb_ft_server_stopword_table` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_server_stopword_table`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `maxLength` - The maximum length of the value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `pattern` - A regex pattern that a value of `innodb_ft_server_stopword_table` must match.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_server_stopword_table` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_server_stopword_table`.
+     * 
+     * ## innodb_lock_wait_timeout
+     * 
+     * The following arguments are supported in the `innodb_lock_wait_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_lock_wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_lock_wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_lock_wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_lock_wait_timeout`.
+     * 
+     * ## innodb_log_buffer_size
+     * 
+     * The following arguments are supported in the `innodb_log_buffer_size` specification block:
+     * 
+     * * `description` - The description of `innodb_log_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_log_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_log_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_log_buffer_size`.
+     * 
+     * ## innodb_online_alter_log_max_size
+     * 
+     * The following arguments are supported in the `innodb_online_alter_log_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_online_alter_log_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_online_alter_log_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_online_alter_log_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_online_alter_log_max_size`.
+     * 
+     * ## innodb_read_io_threads
+     * 
+     * The following arguments are supported in the `innodb_read_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_read_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_read_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_read_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_read_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_read_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_read_io_threads`.
+     * 
+     * ## innodb_rollback_on_timeout
+     * 
+     * The following arguments are supported in the `innodb_rollback_on_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_rollback_on_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_rollback_on_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_rollback_on_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_rollback_on_timeout`.
+     * 
+     * ## innodb_thread_concurrency
+     * 
+     * The following arguments are supported in the `innodb_thread_concurrency` specification block:
+     * 
+     * * `description` - The description of `innodb_thread_concurrency`.
+     * 
+     * * `example` - An example of a valid value for `innodb_thread_concurrency`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_thread_concurrency` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_thread_concurrency`.
+     * 
+     * ## innodb_write_io_threads
+     * 
+     * The following arguments are supported in the `innodb_write_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_write_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_write_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_write_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_write_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_write_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_write_io_threads`.
+     * 
+     * ## interactive_timeout
+     * 
+     * The following arguments are supported in the `interactive_timeout` specification block:
+     * 
+     * * `description` - The description of `interactive_timeout`.
+     * 
+     * * `example` - An example of a valid value for `interactive_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `interactive_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `interactive_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `interactive_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `interactive_timeout`.
+     * 
+     * ## internal_tmp_mem_storage_engine
+     * 
+     * The following arguments are supported in the `internal_tmp_mem_storage_engine` specification block:
+     * 
+     * * `description` - The description of `internal_tmp_mem_storage_engine`.
+     * 
+     * * `enum` - A list of valid enum values for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `example` - An example of a valid value for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `requires_restart` - Whether changing the value `internal_tmp_mem_storage_engine` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `internal_tmp_mem_storage_engine`.
+     * 
+     * ## max_allowed_packet
+     * 
+     * The following arguments are supported in the `max_allowed_packet` specification block:
+     * 
+     * * `description` - The description of `max_allowed_packet`.
+     * 
+     * * `example` - An example of a valid value for `max_allowed_packet`.
+     * 
+     * * `maximum` - The maximum valid value of `max_allowed_packet`.
+     * 
+     * * `minimum` - The minimum valid value of `max_allowed_packet`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_allowed_packet` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_allowed_packet`.
+     * 
+     * ## max_heap_table_size
+     * 
+     * The following arguments are supported in the `max_heap_table_size` specification block:
+     * 
+     * * `description` - The description of `max_heap_table_size`.
+     * 
+     * * `example` - An example of a valid value for `max_heap_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `max_heap_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `max_heap_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_heap_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_heap_table_size`.
+     * 
+     * ## net_buffer_length
+     * 
+     * The following arguments are supported in the `net_buffer_length` specification block:
+     * 
+     * * `description` - The description of `net_buffer_length`.
+     * 
+     * * `example` - An example of a valid value for `net_buffer_length`.
+     * 
+     * * `maximum` - The maximum valid value of `net_buffer_length`.
+     * 
+     * * `minimum` - The minimum valid value of `net_buffer_length`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_buffer_length` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_buffer_length`.
+     * 
+     * ## net_read_timeout
+     * 
+     * The following arguments are supported in the `net_read_timeout` specification block:
+     * 
+     * * `description` - The description of `net_read_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_read_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_read_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_read_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_read_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_read_timeout`.
+     * 
+     * ## net_write_timeout
+     * 
+     * The following arguments are supported in the `net_write_timeout` specification block:
+     * 
+     * * `description` - The description of `net_write_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_write_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_write_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_write_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_write_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_write_timeout`.
+     * 
+     * ## sort_buffer_size
+     * 
+     * The following arguments are supported in the `sort_buffer_size` specification block:
+     * 
+     * * `description` - The description of `sort_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `sort_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `sort_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `sort_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `sort_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sort_buffer_size`.
+     * 
+     * ## sql_mode
+     * 
+     * The following arguments are supported in the `sql_mode` specification block:
+     * 
+     * * `description` - The description of `sql_mode`.
+     * 
+     * * `example` - An example of a valid value for `sql_mode`.
+     * 
+     * * `maxLength` - The maximum valid length of `sql_mode`.
+     * 
+     * * `pattern` - The pattern to match for `sql_mode`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_mode` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_mode`.
+     * 
+     * ## sql_require_primary_key
+     * 
+     * The following arguments are supported in the `sql_require_primary_key` specification block:
+     * 
+     * * `description` - The description of `sql_require_primary_key`.
+     * 
+     * * `example` - An example of a valid value for `sql_require_primary_key`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_require_primary_key` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_require_primary_key`.
+     * 
+     * ## tmp_table_size
+     * 
+     * The following arguments are supported in the `tmp_table_size` specification block:
+     * 
+     * * `description` - The description of `tmp_table_size`.
+     * 
+     * * `example` - An example of a valid value for `tmp_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `tmp_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `tmp_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `tmp_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `tmp_table_size`.
+     * 
+     * ## wait_timeout
+     * 
+     * The following arguments are supported in the `wait_timeout` specification block:
+     * 
+     * * `description` - The description of `wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `wait_timeout`.
+     * 
+     */
+    public static Output<GetDatabaseMysqlConfigResult> getDatabaseMysqlConfig(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getDatabaseMysqlConfig:getDatabaseMysqlConfig", TypeShape.of(GetDatabaseMysqlConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode MySQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a MySQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabaseMysqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## binlog_retention_period
+     * 
+     * The following arguments are supported in the `binlog_retention_period` specification block:
+     * 
+     * * `description` - The description of `binlog_retention_period`.
+     * 
+     * * `example` - An example of a valid value for `binlog_retention_period`.
+     * 
+     * * `maximum` - The maximum valid value of `binlog_retention_period`.
+     * 
+     * * `minimum` - The minimum valid value of `binlog_retention_period`.
+     * 
+     * * `requires_restart` - Whether changing the value `binlog_retention_period` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `binlog_retention_period`.
+     * 
+     * ## mysql
+     * 
+     * The following arguments are supported in the `mysql` specification block:
+     * 
+     * * `connect_timeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * 
+     * * `default_time_zone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * 
+     * * `group_concat_max_len` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * 
+     * * `information_schema_stats_expiry` - The time, in seconds, before cached statistics expire.
+     * 
+     * * `innodb_change_buffer_max_size` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     * * `innodb_flush_neighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * 
+     * * `innodb_ft_min_token_size` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_ft_server_stopword_table` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * 
+     * * `innodb_lock_wait_timeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     * * `innodb_log_buffer_size` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     * * `innodb_online_alter_log_max_size` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     * * `innodb_read_io_threads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_rollback_on_timeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `innodb_thread_concurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     * * `innodb_write_io_threads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `interactive_timeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     * * `internal_tmp_mem_storage_engine` - The storage engine for in-memory internal temporary tables.
+     * 
+     * * `max_allowed_packet` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     * * `max_heap_table_size` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     * * `net_buffer_length` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     * * `net_read_timeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     * * `net_write_timeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     * * `sort_buffer_size` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     * * `sql_mode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * 
+     * * `sql_require_primary_key` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * 
+     * * `tmp_table_size` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     * * `wait_timeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     * ## connect_timeout
+     * 
+     * The following arguments are supported in the `connect_timeout` specification block:
+     * 
+     * * `description` - The description of `connect_timeout`.
+     * 
+     * * `example` - An example of a valid value for `connect_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of  `connect_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of  `connect_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `connect_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `connect_timeout`.
+     * 
+     * ## default_time_zone
+     * 
+     * The following arguments are supported in the `default_time_zone` specification block:
+     * 
+     * * `description` - The description of `default_time_zone`.
+     * 
+     * * `example` - An example of a valid value for `default_time_zone`.
+     * 
+     * * `maxLength` - The maximum length of the `default_time_zone` value.
+     * 
+     * * `minLength` - The minimum length of the `default_time_zone` value.
+     * 
+     * * `pattern` - A regular expression that the `default_time_zone` value must match.
+     * 
+     * * `requires_restart` - Whether changing the value `default_time_zone` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_time_zone`.
+     * 
+     * ## group_concat_max_len
+     * 
+     * The following arguments are supported in the `group_concat_max_len` specification block:
+     * 
+     * * `description` - The description of `group_concat_max_len`.
+     * 
+     * * `example` - An example of a valid value for `group_concat_max_len`.
+     * 
+     * * `maximum` - The maximum valid value of `group_concat_max_len`.
+     * 
+     * * `minimum` - The minimum valid value of `group_concat_max_len`.
+     * 
+     * * `requires_restart` - Whether changing the value `group_concat_max_len` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `group_concat_max_len`.
+     * 
+     * ## information_schema_stats_expiry
+     * 
+     * The following arguments are supported in the `information_schema_stats_expiry` specification block:
+     * 
+     * * `description` - The description of `information_schema_stats_expiry`.
+     * 
+     * * `example` - An example of a valid value for `information_schema_stats_expiry`.
+     * 
+     * * `maximum` - The maximum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `minimum` - The minimum valid value of `information_schema_stats_expiry`.
+     * 
+     * * `requires_restart` - Whether changing the value `information_schema_stats_expiry` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `information_schema_stats_expiry`.
+     * 
+     * ## innodb_change_buffer_max_size
+     * 
+     * The following arguments are supported in the `innodb_change_buffer_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_change_buffer_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_change_buffer_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_change_buffer_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_change_buffer_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_change_buffer_max_size`.
+     * 
+     * ## innodb_flush_neighbors
+     * 
+     * The following arguments are supported in the `innodb_flush_neighbors` specification block:
+     * 
+     * * `description` - The description of `innodb_flush_neighbors`.
+     * 
+     * * `example` - An example of a valid value for `innodb_flush_neighbors`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_flush_neighbors`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_flush_neighbors` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_flush_neighbors`.
+     * 
+     * ## innodb_ft_min_token_size
+     * 
+     * The following arguments are supported in the `innodb_ft_min_token_size` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_min_token_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_min_token_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_ft_min_token_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_min_token_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_min_token_size`.
+     * 
+     * ## innodb_ft_server_stopword_table
+     * 
+     * The following arguments are supported in the `innodb_ft_server_stopword_table` specification block:
+     * 
+     * * `description` - The description of `innodb_ft_server_stopword_table`.
+     * 
+     * * `example` - An example of a valid value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `maxLength` - The maximum length of the value for `innodb_ft_server_stopword_table`.
+     * 
+     * * `pattern` - A regex pattern that a value of `innodb_ft_server_stopword_table` must match.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_ft_server_stopword_table` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_ft_server_stopword_table`.
+     * 
+     * ## innodb_lock_wait_timeout
+     * 
+     * The following arguments are supported in the `innodb_lock_wait_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_lock_wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_lock_wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_lock_wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_lock_wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_lock_wait_timeout`.
+     * 
+     * ## innodb_log_buffer_size
+     * 
+     * The following arguments are supported in the `innodb_log_buffer_size` specification block:
+     * 
+     * * `description` - The description of `innodb_log_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_log_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_log_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_log_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_log_buffer_size`.
+     * 
+     * ## innodb_online_alter_log_max_size
+     * 
+     * The following arguments are supported in the `innodb_online_alter_log_max_size` specification block:
+     * 
+     * * `description` - The description of `innodb_online_alter_log_max_size`.
+     * 
+     * * `example` - An example of a valid value for `innodb_online_alter_log_max_size`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_online_alter_log_max_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_online_alter_log_max_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_online_alter_log_max_size`.
+     * 
+     * ## innodb_read_io_threads
+     * 
+     * The following arguments are supported in the `innodb_read_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_read_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_read_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_read_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_read_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_read_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_read_io_threads`.
+     * 
+     * ## innodb_rollback_on_timeout
+     * 
+     * The following arguments are supported in the `innodb_rollback_on_timeout` specification block:
+     * 
+     * * `description` - The description of `innodb_rollback_on_timeout`.
+     * 
+     * * `example` - An example of a valid value for `innodb_rollback_on_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_rollback_on_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_rollback_on_timeout`.
+     * 
+     * ## innodb_thread_concurrency
+     * 
+     * The following arguments are supported in the `innodb_thread_concurrency` specification block:
+     * 
+     * * `description` - The description of `innodb_thread_concurrency`.
+     * 
+     * * `example` - An example of a valid value for `innodb_thread_concurrency`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_thread_concurrency`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_thread_concurrency` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_thread_concurrency`.
+     * 
+     * ## innodb_write_io_threads
+     * 
+     * The following arguments are supported in the `innodb_write_io_threads` specification block:
+     * 
+     * * `description` - The description of `innodb_write_io_threads`.
+     * 
+     * * `example` - An example of a valid value for `innodb_write_io_threads`.
+     * 
+     * * `maximum` - The maximum valid value of `innodb_write_io_threads`.
+     * 
+     * * `minimum` - The minimum valid value of `innodb_write_io_threads`.
+     * 
+     * * `requires_restart` - Whether changing the value `innodb_write_io_threads` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `innodb_write_io_threads`.
+     * 
+     * ## interactive_timeout
+     * 
+     * The following arguments are supported in the `interactive_timeout` specification block:
+     * 
+     * * `description` - The description of `interactive_timeout`.
+     * 
+     * * `example` - An example of a valid value for `interactive_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `interactive_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `interactive_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `interactive_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `interactive_timeout`.
+     * 
+     * ## internal_tmp_mem_storage_engine
+     * 
+     * The following arguments are supported in the `internal_tmp_mem_storage_engine` specification block:
+     * 
+     * * `description` - The description of `internal_tmp_mem_storage_engine`.
+     * 
+     * * `enum` - A list of valid enum values for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `example` - An example of a valid value for `internal_tmp_mem_storage_engine`.
+     * 
+     * * `requires_restart` - Whether changing the value `internal_tmp_mem_storage_engine` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `internal_tmp_mem_storage_engine`.
+     * 
+     * ## max_allowed_packet
+     * 
+     * The following arguments are supported in the `max_allowed_packet` specification block:
+     * 
+     * * `description` - The description of `max_allowed_packet`.
+     * 
+     * * `example` - An example of a valid value for `max_allowed_packet`.
+     * 
+     * * `maximum` - The maximum valid value of `max_allowed_packet`.
+     * 
+     * * `minimum` - The minimum valid value of `max_allowed_packet`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_allowed_packet` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_allowed_packet`.
+     * 
+     * ## max_heap_table_size
+     * 
+     * The following arguments are supported in the `max_heap_table_size` specification block:
+     * 
+     * * `description` - The description of `max_heap_table_size`.
+     * 
+     * * `example` - An example of a valid value for `max_heap_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `max_heap_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `max_heap_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `max_heap_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_heap_table_size`.
+     * 
+     * ## net_buffer_length
+     * 
+     * The following arguments are supported in the `net_buffer_length` specification block:
+     * 
+     * * `description` - The description of `net_buffer_length`.
+     * 
+     * * `example` - An example of a valid value for `net_buffer_length`.
+     * 
+     * * `maximum` - The maximum valid value of `net_buffer_length`.
+     * 
+     * * `minimum` - The minimum valid value of `net_buffer_length`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_buffer_length` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_buffer_length`.
+     * 
+     * ## net_read_timeout
+     * 
+     * The following arguments are supported in the `net_read_timeout` specification block:
+     * 
+     * * `description` - The description of `net_read_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_read_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_read_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_read_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_read_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_read_timeout`.
+     * 
+     * ## net_write_timeout
+     * 
+     * The following arguments are supported in the `net_write_timeout` specification block:
+     * 
+     * * `description` - The description of `net_write_timeout`.
+     * 
+     * * `example` - An example of a valid value for `net_write_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `net_write_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `net_write_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `net_write_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `net_write_timeout`.
+     * 
+     * ## sort_buffer_size
+     * 
+     * The following arguments are supported in the `sort_buffer_size` specification block:
+     * 
+     * * `description` - The description of `sort_buffer_size`.
+     * 
+     * * `example` - An example of a valid value for `sort_buffer_size`.
+     * 
+     * * `maximum` - The maximum valid value of `sort_buffer_size`.
+     * 
+     * * `minimum` - The minimum valid value of `sort_buffer_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `sort_buffer_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sort_buffer_size`.
+     * 
+     * ## sql_mode
+     * 
+     * The following arguments are supported in the `sql_mode` specification block:
+     * 
+     * * `description` - The description of `sql_mode`.
+     * 
+     * * `example` - An example of a valid value for `sql_mode`.
+     * 
+     * * `maxLength` - The maximum valid length of `sql_mode`.
+     * 
+     * * `pattern` - The pattern to match for `sql_mode`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_mode` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_mode`.
+     * 
+     * ## sql_require_primary_key
+     * 
+     * The following arguments are supported in the `sql_require_primary_key` specification block:
+     * 
+     * * `description` - The description of `sql_require_primary_key`.
+     * 
+     * * `example` - An example of a valid value for `sql_require_primary_key`.
+     * 
+     * * `requires_restart` - Whether changing the value `sql_require_primary_key` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `sql_require_primary_key`.
+     * 
+     * ## tmp_table_size
+     * 
+     * The following arguments are supported in the `tmp_table_size` specification block:
+     * 
+     * * `description` - The description of `tmp_table_size`.
+     * 
+     * * `example` - An example of a valid value for `tmp_table_size`.
+     * 
+     * * `maximum` - The maximum valid value of `tmp_table_size`.
+     * 
+     * * `minimum` - The minimum valid value of `tmp_table_size`.
+     * 
+     * * `requires_restart` - Whether changing the value `tmp_table_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `tmp_table_size`.
+     * 
+     * ## wait_timeout
+     * 
+     * The following arguments are supported in the `wait_timeout` specification block:
+     * 
+     * * `description` - The description of `wait_timeout`.
+     * 
+     * * `example` - An example of a valid value for `wait_timeout`.
+     * 
+     * * `maximum` - The maximum valid value of `wait_timeout`.
+     * 
+     * * `minimum` - The minimum valid value of `wait_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value `wait_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `wait_timeout`.
+     * 
+     */
+    public static CompletableFuture<GetDatabaseMysqlConfigResult> getDatabaseMysqlConfigPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getDatabaseMysqlConfig:getDatabaseMysqlConfig", TypeShape.of(GetDatabaseMysqlConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides information about a Linode MySQL Database.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance).
      * 
@@ -5993,6 +9775,5676 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetDatabasePostgresqlResult> getDatabasePostgresqlPlain(GetDatabasePostgresqlPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getDatabasePostgresql:getDatabasePostgresql", TypeShape.of(GetDatabasePostgresqlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabasePostgresqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pg_stat_monitor_enable
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_enable` specification block:
+     * 
+     * * `description` - The description of `pg_stat_monitor_enable`.
+     * 
+     * * `requires_restart` - Whether changing the value `pg_stat_monitor_enable` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `pg_stat_monitor_enable`.
+     * 
+     * ## pglookout
+     * 
+     * The following arguments are supported in the `pglookout` specification block:
+     * 
+     * * `max_failover_replication_time_lag` - The maximum failover replication time lag for `pglookout`.
+     * 
+     * ## max_failover_replication_time_lag
+     * 
+     * The following arguments are supported in the `max_failover_replication_time_lag` specification block:
+     * 
+     * * `description` - The description of `max_failover_replication_time_lag`.
+     * 
+     * * `maximum` - The maximum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `minimum` - The minimum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_failover_replication_time_lag` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_failover_replication_time_lag`.
+     * 
+     * ## shared_buffers_percentage
+     * 
+     * The following arguments are supported in the `shared_buffers_percentage` specification block:
+     * 
+     * * `description` - The description of `shared_buffers_percentage`.
+     * 
+     * * `example` - An example of a valid value for `shared_buffers_percentage`.
+     * 
+     * * `maximum` - The maximum valid value for `shared_buffers_percentage`.
+     * 
+     * * `minimum` - The minimum valid value for `shared_buffers_percentage`.
+     * 
+     * * `requires_restart` - Whether changing the value of `shared_buffers_percentage` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `shared_buffers_percentage`.
+     * 
+     * ## work_mem
+     * 
+     * The following arguments are supported in the `work_mem` specification block:
+     * 
+     * * `description` - The description of `work_mem`.
+     * 
+     * * `example` - An example of a valid value for `work_mem`.
+     * 
+     * * `maximum` - The maximum valid value for `work_mem`.
+     * 
+     * * `minimum` - The minimum valid value for `work_mem`.
+     * 
+     * * `requires_restart` - Whether changing the value of `work_mem` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `work_mem`.
+     * 
+     * ## pg
+     * 
+     * The following arguments are supported in the `pg` specification block:
+     * 
+     * * `autovacuum_analyze_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_analyze_threshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * 
+     * * `autovacuum_max_workers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     * * `autovacuum_naptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * 
+     * * `autovacuum_vacuum_cost_delay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * 
+     * * `autovacuum_vacuum_cost_limit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * 
+     * * `autovacuum_vacuum_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_vacuum_threshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     * * `bgwriter_delay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     * * `bgwriter_flush_after` - (Optional) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     * * `bgwriter_lru_maxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     * * `bgwriter_lru_multiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     * * `deadlock_timeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     * * `default_toast_compression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     * * `idle_in_transaction_session_timeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * 
+     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     * * `max_files_per_process` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * 
+     * * `max_locks_per_transaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * 
+     * * `max_logical_replication_workers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * 
+     * * `max_parallel_workers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     * * `max_parallel_workers_per_gather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     * * `max_pred_locks_per_transaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * 
+     * * `max_replication_slots` - (Optional) PostgreSQL maximum replication slots.
+     * 
+     * * `max_slot_wal_keep_size` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * 
+     * * `max_stack_depth` - (Optional) Maximum depth of the stack in bytes.
+     * 
+     * * `max_standby_archive_delay` - (Optional) Max standby archive delay in milliseconds.
+     * 
+     * * `max_standby_streaming_delay` - (Optional) Max standby streaming delay in milliseconds.
+     * 
+     * * `max_wal_senders` - (Optional) PostgreSQL maximum WAL senders.
+     * 
+     * * `max_worker_processes` - (Optional) Sets the maximum number of background processes that the system can support.
+     * 
+     * * `password_encryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * 
+     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * 
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * 
+     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     * * `temp_file_limit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * 
+     * * `track_activity_query_size` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     * * `track_commit_timestamp` - (Optional) Record commit time of transactions.
+     * 
+     * * `track_functions` - (Optional) Enables tracking of function call counts and time used.
+     * 
+     * * `track_io_timing` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     * * `wal_sender_timeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     * * `wal_writer_delay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     * ## autovacuum_analyze_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_scale_factor`.
+     * 
+     * ## autovacuum_analyze_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_threshold`.
+     * 
+     * ## autovacuum_max_workers
+     * 
+     * The following arguments are supported in the `autovacuum_max_workers` specification block:
+     * 
+     * * `description` - The description of `autovacuum_max_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_max_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_max_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_max_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_max_workers`.
+     * 
+     * ## autovacuum_naptime
+     * 
+     * The following arguments are supported in the `autovacuum_naptime` specification block:
+     * 
+     * * `description` - The description of `autovacuum_naptime`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_naptime`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_naptime`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_naptime` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_naptime`.
+     * 
+     * ## autovacuum_vacuum_cost_delay
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_delay` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_delay`.
+     * 
+     * ## autovacuum_vacuum_cost_limit
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_limit` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_limit`.
+     * 
+     * ## autovacuum_vacuum_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_scale_factor`.
+     * 
+     * ## autovacuum_vacuum_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_threshold`.
+     * 
+     * ## bgwriter_delay
+     * 
+     * The following arguments are supported in the `bgwriter_delay` specification block:
+     * 
+     * * `description` - The description of `bgwriter_delay`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_delay`.
+     * 
+     * ## bgwriter_flush_after
+     * 
+     * The following arguments are supported in the `bgwriter_flush_after` specification block:
+     * 
+     * * `description` - The description of `bgwriter_flush_after`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_flush_after`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_flush_after`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_flush_after`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_flush_after` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_flush_after`.
+     * 
+     * ## bgwriter_lru_maxpages
+     * 
+     * The following arguments are supported in the `bgwriter_lru_maxpages` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_maxpages`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_maxpages` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_maxpages`.
+     * 
+     * ## bgwriter_lru_multiplier
+     * 
+     * The following arguments are supported in the `bgwriter_lru_multiplier` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_multiplier`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_multiplier` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_multiplier`.
+     * 
+     * ## deadlock_timeout
+     * 
+     * The following arguments are supported in the `deadlock_timeout` specification block:
+     * 
+     * * `description` - The description of `deadlock_timeout`.
+     * 
+     * * `example` - An example of a valid value for `deadlock_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `deadlock_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `deadlock_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `deadlock_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `deadlock_timeout`.
+     * 
+     * ## default_toast_compression
+     * 
+     * The following arguments are supported in the `default_toast_compression` specification block:
+     * 
+     * * `description` - The description of `default_toast_compression`.
+     * 
+     * * `enum` - A list of valid compression methods for `default_toast_compression`.
+     * 
+     * * `example` - An example of a valid value for `default_toast_compression`.
+     * 
+     * * `requires_restart` - Whether changing the value of `default_toast_compression` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_toast_compression`.
+     * 
+     * ## idle_in_transaction_session_timeout
+     * 
+     * The following arguments are supported in the `idle_in_transaction_session_timeout` specification block:
+     * 
+     * * `description` - The description of `idle_in_transaction_session_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `idle_in_transaction_session_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `idle_in_transaction_session_timeout`.
+     * 
+     * ## jit
+     * 
+     * The following arguments are supported in the `jit` specification block:
+     * 
+     * * `description` - The description of `jit`.
+     * 
+     * * `example` - An example of a valid value for `jit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `jit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `jit`.
+     * 
+     * ## max_files_per_process
+     * 
+     * The following arguments are supported in the `max_files_per_process` specification block:
+     * 
+     * * `description` - The description of `max_files_per_process`.
+     * 
+     * * `maximum` - The maximum valid value for `max_files_per_process`.
+     * 
+     * * `minimum` - The minimum valid value for `max_files_per_process`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_files_per_process` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_files_per_process`.
+     * 
+     * ## max_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_locks_per_transaction`.
+     * 
+     * ## max_logical_replication_workers
+     * 
+     * The following arguments are supported in the `max_logical_replication_workers` specification block:
+     * 
+     * * `description` - The description of `max_logical_replication_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_logical_replication_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_logical_replication_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_logical_replication_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_logical_replication_workers`.
+     * 
+     * ## max_parallel_workers
+     * 
+     * The following arguments are supported in the `max_parallel_workers` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers`.
+     * 
+     * ## max_parallel_workers_per_gather
+     * 
+     * The following arguments are supported in the `max_parallel_workers_per_gather` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers_per_gather`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers_per_gather` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers_per_gather`.
+     * 
+     * ## max_pred_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_pred_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_pred_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_pred_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_pred_locks_per_transaction`.
+     * 
+     * ## max_replication_slots
+     * 
+     * The following arguments are supported in the `max_replication_slots` specification block:
+     * 
+     * * `description` - The description of `max_replication_slots`.
+     * 
+     * * `maximum` - The maximum valid value for `max_replication_slots`.
+     * 
+     * * `minimum` - The minimum valid value for `max_replication_slots`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_replication_slots` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_replication_slots`.
+     * 
+     * ## max_slot_wal_keep_size
+     * 
+     * The following arguments are supported in the `max_slot_wal_keep_size` specification block:
+     * 
+     * * `description` - The description of `max_slot_wal_keep_size`.
+     * 
+     * * `maximum` - The maximum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `minimum` - The minimum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_slot_wal_keep_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_slot_wal_keep_size`.
+     * 
+     * ## max_stack_depth
+     * 
+     * The following arguments are supported in the `max_stack_depth` specification block:
+     * 
+     * * `description` - The description of `max_stack_depth`.
+     * 
+     * * `maximum` - The maximum valid value for `max_stack_depth`.
+     * 
+     * * `minimum` - The minimum valid value for `max_stack_depth`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_stack_depth` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_stack_depth`.
+     * 
+     * ## max_standby_archive_delay
+     * 
+     * The following arguments are supported in the `max_standby_archive_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_archive_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_archive_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_archive_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_archive_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_archive_delay`.
+     * 
+     * ## max_standby_streaming_delay
+     * 
+     * The following arguments are supported in the `max_standby_streaming_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_streaming_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_streaming_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_streaming_delay`.
+     * 
+     * ## max_wal_senders
+     * 
+     * The following arguments are supported in the `max_wal_senders` specification block:
+     * 
+     * * `description` - The description of `max_wal_senders`.
+     * 
+     * * `maximum` - The maximum valid value for `max_wal_senders`.
+     * 
+     * * `minimum` - The minimum valid value for `max_wal_senders`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_wal_senders` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_wal_senders`.
+     * 
+     * ## max_worker_processes
+     * 
+     * The following arguments are supported in the `max_worker_processes` specification block:
+     * 
+     * * `description` - The description of `max_worker_processes`.
+     * 
+     * * `maximum` - The maximum valid value for `max_worker_processes`.
+     * 
+     * * `minimum` - The minimum valid value for `max_worker_processes`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_worker_processes` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_worker_processes`.
+     * 
+     * ## password_encryption
+     * 
+     * The following arguments are supported in the `password_encryption` specification block:
+     * 
+     * * `description` - The description of the `password_encryption` setting.
+     * 
+     * * `enum` - A list of valid values for the `password_encryption` setting.
+     * 
+     * * `example` - An example value for the `password_encryption` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `password_encryption` requires the DB to restart.
+     * 
+     * * `type` - A list of types for the `password_encryption` setting.
+     * 
+     * ## pg_partman_bgw_interval
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_interval` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_interval` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_interval` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_interval` setting.
+     * 
+     * ## pg_partman_bgw_role
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_role` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_role` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_role` setting.
+     * 
+     * * `maxLength` - The maximum length for the `pg_partman_bgw_role` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `pg_partman_bgw_role` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_role` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_role` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_enable_query_plan
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_enable_query_plan` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_enable_query_plan` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_max_buckets
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_max_buckets` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_max_buckets` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * ## pg_stat_statements_track
+     * 
+     * The following arguments are supported in the `pg_stat_statements_track` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_statements_track` setting.
+     * 
+     * * `enum` - A list of valid values for the `pg_stat_statements_track` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_statements_track` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_statements_track` setting.
+     * 
+     * ## temp_file_limit
+     * 
+     * The following arguments are supported in the `temp_file_limit` specification block:
+     * 
+     * * `description` - The description of the `temp_file_limit` setting.
+     * 
+     * * `example` - An example value for the `temp_file_limit` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `temp_file_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the `temp_file_limit` setting.
+     * 
+     * ## timezone
+     * 
+     * The following arguments are supported in the `timezone` specification block:
+     * 
+     * * `description` - The description of the `timezone` setting.
+     * 
+     * * `example` - An example value for the `timezone` setting.
+     * 
+     * * `maxLength` - The maximum length for the `timezone` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `timezone` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `timezone` requires the DB to restart.
+     * 
+     * * `type` - The type of the `timezone` setting.
+     * 
+     * ## track_activity_query_size
+     * 
+     * The following arguments are supported in the `track_activity_query_size` specification block:
+     * 
+     * * `description` - The description of the `track_activity_query_size` setting.
+     * 
+     * * `example` - An example value for the `track_activity_query_size` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_activity_query_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_activity_query_size` setting.
+     * 
+     * ## track_commit_timestamp
+     * 
+     * The following arguments are supported in the `track_commit_timestamp` specification block:
+     * 
+     * * `description` - The description of the `track_commit_timestamp` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_commit_timestamp` setting.
+     * 
+     * * `example` - An example value for the `track_commit_timestamp` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_commit_timestamp` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_commit_timestamp` setting.
+     * 
+     * ## track_functions
+     * 
+     * The following arguments are supported in the `track_functions` specification block:
+     * 
+     * * `description` - The description of the `track_functions` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_functions` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_functions` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_functions` setting.
+     * 
+     * ## track_io_timing
+     * 
+     * The following arguments are supported in the `track_io_timing` specification block:
+     * 
+     * * `description` - The description of the `track_io_timing` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_io_timing` setting.
+     * 
+     * * `example` - An example value for the `track_io_timing` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_io_timing` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_io_timing` setting.
+     * 
+     * ## wal_sender_timeout
+     * 
+     * The following arguments are supported in the `wal_sender_timeout` specification block:
+     * 
+     * * `description` - The description of the `wal_sender_timeout` setting.
+     * 
+     * * `example` - An example value for the `wal_sender_timeout` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_sender_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_sender_timeout` setting.
+     * 
+     * ## wal_writer_delay
+     * 
+     * The following arguments are supported in the `wal_writer_delay` specification block:
+     * 
+     * * `description` - The description of the `wal_writer_delay` setting.
+     * 
+     * * `example` - An example value for the `wal_writer_delay` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_writer_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_writer_delay` setting.
+     * 
+     */
+    public static Output<GetDatabasePostgresqlConfigResult> getDatabasePostgresqlConfig() {
+        return getDatabasePostgresqlConfig(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabasePostgresqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pg_stat_monitor_enable
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_enable` specification block:
+     * 
+     * * `description` - The description of `pg_stat_monitor_enable`.
+     * 
+     * * `requires_restart` - Whether changing the value `pg_stat_monitor_enable` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `pg_stat_monitor_enable`.
+     * 
+     * ## pglookout
+     * 
+     * The following arguments are supported in the `pglookout` specification block:
+     * 
+     * * `max_failover_replication_time_lag` - The maximum failover replication time lag for `pglookout`.
+     * 
+     * ## max_failover_replication_time_lag
+     * 
+     * The following arguments are supported in the `max_failover_replication_time_lag` specification block:
+     * 
+     * * `description` - The description of `max_failover_replication_time_lag`.
+     * 
+     * * `maximum` - The maximum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `minimum` - The minimum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_failover_replication_time_lag` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_failover_replication_time_lag`.
+     * 
+     * ## shared_buffers_percentage
+     * 
+     * The following arguments are supported in the `shared_buffers_percentage` specification block:
+     * 
+     * * `description` - The description of `shared_buffers_percentage`.
+     * 
+     * * `example` - An example of a valid value for `shared_buffers_percentage`.
+     * 
+     * * `maximum` - The maximum valid value for `shared_buffers_percentage`.
+     * 
+     * * `minimum` - The minimum valid value for `shared_buffers_percentage`.
+     * 
+     * * `requires_restart` - Whether changing the value of `shared_buffers_percentage` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `shared_buffers_percentage`.
+     * 
+     * ## work_mem
+     * 
+     * The following arguments are supported in the `work_mem` specification block:
+     * 
+     * * `description` - The description of `work_mem`.
+     * 
+     * * `example` - An example of a valid value for `work_mem`.
+     * 
+     * * `maximum` - The maximum valid value for `work_mem`.
+     * 
+     * * `minimum` - The minimum valid value for `work_mem`.
+     * 
+     * * `requires_restart` - Whether changing the value of `work_mem` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `work_mem`.
+     * 
+     * ## pg
+     * 
+     * The following arguments are supported in the `pg` specification block:
+     * 
+     * * `autovacuum_analyze_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_analyze_threshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * 
+     * * `autovacuum_max_workers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     * * `autovacuum_naptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * 
+     * * `autovacuum_vacuum_cost_delay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * 
+     * * `autovacuum_vacuum_cost_limit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * 
+     * * `autovacuum_vacuum_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_vacuum_threshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     * * `bgwriter_delay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     * * `bgwriter_flush_after` - (Optional) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     * * `bgwriter_lru_maxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     * * `bgwriter_lru_multiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     * * `deadlock_timeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     * * `default_toast_compression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     * * `idle_in_transaction_session_timeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * 
+     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     * * `max_files_per_process` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * 
+     * * `max_locks_per_transaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * 
+     * * `max_logical_replication_workers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * 
+     * * `max_parallel_workers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     * * `max_parallel_workers_per_gather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     * * `max_pred_locks_per_transaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * 
+     * * `max_replication_slots` - (Optional) PostgreSQL maximum replication slots.
+     * 
+     * * `max_slot_wal_keep_size` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * 
+     * * `max_stack_depth` - (Optional) Maximum depth of the stack in bytes.
+     * 
+     * * `max_standby_archive_delay` - (Optional) Max standby archive delay in milliseconds.
+     * 
+     * * `max_standby_streaming_delay` - (Optional) Max standby streaming delay in milliseconds.
+     * 
+     * * `max_wal_senders` - (Optional) PostgreSQL maximum WAL senders.
+     * 
+     * * `max_worker_processes` - (Optional) Sets the maximum number of background processes that the system can support.
+     * 
+     * * `password_encryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * 
+     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * 
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * 
+     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     * * `temp_file_limit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * 
+     * * `track_activity_query_size` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     * * `track_commit_timestamp` - (Optional) Record commit time of transactions.
+     * 
+     * * `track_functions` - (Optional) Enables tracking of function call counts and time used.
+     * 
+     * * `track_io_timing` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     * * `wal_sender_timeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     * * `wal_writer_delay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     * ## autovacuum_analyze_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_scale_factor`.
+     * 
+     * ## autovacuum_analyze_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_threshold`.
+     * 
+     * ## autovacuum_max_workers
+     * 
+     * The following arguments are supported in the `autovacuum_max_workers` specification block:
+     * 
+     * * `description` - The description of `autovacuum_max_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_max_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_max_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_max_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_max_workers`.
+     * 
+     * ## autovacuum_naptime
+     * 
+     * The following arguments are supported in the `autovacuum_naptime` specification block:
+     * 
+     * * `description` - The description of `autovacuum_naptime`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_naptime`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_naptime`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_naptime` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_naptime`.
+     * 
+     * ## autovacuum_vacuum_cost_delay
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_delay` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_delay`.
+     * 
+     * ## autovacuum_vacuum_cost_limit
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_limit` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_limit`.
+     * 
+     * ## autovacuum_vacuum_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_scale_factor`.
+     * 
+     * ## autovacuum_vacuum_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_threshold`.
+     * 
+     * ## bgwriter_delay
+     * 
+     * The following arguments are supported in the `bgwriter_delay` specification block:
+     * 
+     * * `description` - The description of `bgwriter_delay`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_delay`.
+     * 
+     * ## bgwriter_flush_after
+     * 
+     * The following arguments are supported in the `bgwriter_flush_after` specification block:
+     * 
+     * * `description` - The description of `bgwriter_flush_after`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_flush_after`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_flush_after`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_flush_after`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_flush_after` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_flush_after`.
+     * 
+     * ## bgwriter_lru_maxpages
+     * 
+     * The following arguments are supported in the `bgwriter_lru_maxpages` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_maxpages`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_maxpages` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_maxpages`.
+     * 
+     * ## bgwriter_lru_multiplier
+     * 
+     * The following arguments are supported in the `bgwriter_lru_multiplier` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_multiplier`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_multiplier` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_multiplier`.
+     * 
+     * ## deadlock_timeout
+     * 
+     * The following arguments are supported in the `deadlock_timeout` specification block:
+     * 
+     * * `description` - The description of `deadlock_timeout`.
+     * 
+     * * `example` - An example of a valid value for `deadlock_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `deadlock_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `deadlock_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `deadlock_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `deadlock_timeout`.
+     * 
+     * ## default_toast_compression
+     * 
+     * The following arguments are supported in the `default_toast_compression` specification block:
+     * 
+     * * `description` - The description of `default_toast_compression`.
+     * 
+     * * `enum` - A list of valid compression methods for `default_toast_compression`.
+     * 
+     * * `example` - An example of a valid value for `default_toast_compression`.
+     * 
+     * * `requires_restart` - Whether changing the value of `default_toast_compression` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_toast_compression`.
+     * 
+     * ## idle_in_transaction_session_timeout
+     * 
+     * The following arguments are supported in the `idle_in_transaction_session_timeout` specification block:
+     * 
+     * * `description` - The description of `idle_in_transaction_session_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `idle_in_transaction_session_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `idle_in_transaction_session_timeout`.
+     * 
+     * ## jit
+     * 
+     * The following arguments are supported in the `jit` specification block:
+     * 
+     * * `description` - The description of `jit`.
+     * 
+     * * `example` - An example of a valid value for `jit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `jit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `jit`.
+     * 
+     * ## max_files_per_process
+     * 
+     * The following arguments are supported in the `max_files_per_process` specification block:
+     * 
+     * * `description` - The description of `max_files_per_process`.
+     * 
+     * * `maximum` - The maximum valid value for `max_files_per_process`.
+     * 
+     * * `minimum` - The minimum valid value for `max_files_per_process`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_files_per_process` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_files_per_process`.
+     * 
+     * ## max_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_locks_per_transaction`.
+     * 
+     * ## max_logical_replication_workers
+     * 
+     * The following arguments are supported in the `max_logical_replication_workers` specification block:
+     * 
+     * * `description` - The description of `max_logical_replication_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_logical_replication_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_logical_replication_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_logical_replication_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_logical_replication_workers`.
+     * 
+     * ## max_parallel_workers
+     * 
+     * The following arguments are supported in the `max_parallel_workers` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers`.
+     * 
+     * ## max_parallel_workers_per_gather
+     * 
+     * The following arguments are supported in the `max_parallel_workers_per_gather` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers_per_gather`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers_per_gather` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers_per_gather`.
+     * 
+     * ## max_pred_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_pred_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_pred_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_pred_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_pred_locks_per_transaction`.
+     * 
+     * ## max_replication_slots
+     * 
+     * The following arguments are supported in the `max_replication_slots` specification block:
+     * 
+     * * `description` - The description of `max_replication_slots`.
+     * 
+     * * `maximum` - The maximum valid value for `max_replication_slots`.
+     * 
+     * * `minimum` - The minimum valid value for `max_replication_slots`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_replication_slots` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_replication_slots`.
+     * 
+     * ## max_slot_wal_keep_size
+     * 
+     * The following arguments are supported in the `max_slot_wal_keep_size` specification block:
+     * 
+     * * `description` - The description of `max_slot_wal_keep_size`.
+     * 
+     * * `maximum` - The maximum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `minimum` - The minimum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_slot_wal_keep_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_slot_wal_keep_size`.
+     * 
+     * ## max_stack_depth
+     * 
+     * The following arguments are supported in the `max_stack_depth` specification block:
+     * 
+     * * `description` - The description of `max_stack_depth`.
+     * 
+     * * `maximum` - The maximum valid value for `max_stack_depth`.
+     * 
+     * * `minimum` - The minimum valid value for `max_stack_depth`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_stack_depth` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_stack_depth`.
+     * 
+     * ## max_standby_archive_delay
+     * 
+     * The following arguments are supported in the `max_standby_archive_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_archive_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_archive_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_archive_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_archive_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_archive_delay`.
+     * 
+     * ## max_standby_streaming_delay
+     * 
+     * The following arguments are supported in the `max_standby_streaming_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_streaming_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_streaming_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_streaming_delay`.
+     * 
+     * ## max_wal_senders
+     * 
+     * The following arguments are supported in the `max_wal_senders` specification block:
+     * 
+     * * `description` - The description of `max_wal_senders`.
+     * 
+     * * `maximum` - The maximum valid value for `max_wal_senders`.
+     * 
+     * * `minimum` - The minimum valid value for `max_wal_senders`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_wal_senders` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_wal_senders`.
+     * 
+     * ## max_worker_processes
+     * 
+     * The following arguments are supported in the `max_worker_processes` specification block:
+     * 
+     * * `description` - The description of `max_worker_processes`.
+     * 
+     * * `maximum` - The maximum valid value for `max_worker_processes`.
+     * 
+     * * `minimum` - The minimum valid value for `max_worker_processes`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_worker_processes` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_worker_processes`.
+     * 
+     * ## password_encryption
+     * 
+     * The following arguments are supported in the `password_encryption` specification block:
+     * 
+     * * `description` - The description of the `password_encryption` setting.
+     * 
+     * * `enum` - A list of valid values for the `password_encryption` setting.
+     * 
+     * * `example` - An example value for the `password_encryption` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `password_encryption` requires the DB to restart.
+     * 
+     * * `type` - A list of types for the `password_encryption` setting.
+     * 
+     * ## pg_partman_bgw_interval
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_interval` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_interval` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_interval` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_interval` setting.
+     * 
+     * ## pg_partman_bgw_role
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_role` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_role` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_role` setting.
+     * 
+     * * `maxLength` - The maximum length for the `pg_partman_bgw_role` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `pg_partman_bgw_role` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_role` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_role` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_enable_query_plan
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_enable_query_plan` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_enable_query_plan` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_max_buckets
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_max_buckets` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_max_buckets` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * ## pg_stat_statements_track
+     * 
+     * The following arguments are supported in the `pg_stat_statements_track` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_statements_track` setting.
+     * 
+     * * `enum` - A list of valid values for the `pg_stat_statements_track` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_statements_track` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_statements_track` setting.
+     * 
+     * ## temp_file_limit
+     * 
+     * The following arguments are supported in the `temp_file_limit` specification block:
+     * 
+     * * `description` - The description of the `temp_file_limit` setting.
+     * 
+     * * `example` - An example value for the `temp_file_limit` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `temp_file_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the `temp_file_limit` setting.
+     * 
+     * ## timezone
+     * 
+     * The following arguments are supported in the `timezone` specification block:
+     * 
+     * * `description` - The description of the `timezone` setting.
+     * 
+     * * `example` - An example value for the `timezone` setting.
+     * 
+     * * `maxLength` - The maximum length for the `timezone` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `timezone` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `timezone` requires the DB to restart.
+     * 
+     * * `type` - The type of the `timezone` setting.
+     * 
+     * ## track_activity_query_size
+     * 
+     * The following arguments are supported in the `track_activity_query_size` specification block:
+     * 
+     * * `description` - The description of the `track_activity_query_size` setting.
+     * 
+     * * `example` - An example value for the `track_activity_query_size` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_activity_query_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_activity_query_size` setting.
+     * 
+     * ## track_commit_timestamp
+     * 
+     * The following arguments are supported in the `track_commit_timestamp` specification block:
+     * 
+     * * `description` - The description of the `track_commit_timestamp` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_commit_timestamp` setting.
+     * 
+     * * `example` - An example value for the `track_commit_timestamp` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_commit_timestamp` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_commit_timestamp` setting.
+     * 
+     * ## track_functions
+     * 
+     * The following arguments are supported in the `track_functions` specification block:
+     * 
+     * * `description` - The description of the `track_functions` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_functions` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_functions` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_functions` setting.
+     * 
+     * ## track_io_timing
+     * 
+     * The following arguments are supported in the `track_io_timing` specification block:
+     * 
+     * * `description` - The description of the `track_io_timing` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_io_timing` setting.
+     * 
+     * * `example` - An example value for the `track_io_timing` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_io_timing` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_io_timing` setting.
+     * 
+     * ## wal_sender_timeout
+     * 
+     * The following arguments are supported in the `wal_sender_timeout` specification block:
+     * 
+     * * `description` - The description of the `wal_sender_timeout` setting.
+     * 
+     * * `example` - An example value for the `wal_sender_timeout` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_sender_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_sender_timeout` setting.
+     * 
+     * ## wal_writer_delay
+     * 
+     * The following arguments are supported in the `wal_writer_delay` specification block:
+     * 
+     * * `description` - The description of the `wal_writer_delay` setting.
+     * 
+     * * `example` - An example value for the `wal_writer_delay` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_writer_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_writer_delay` setting.
+     * 
+     */
+    public static CompletableFuture<GetDatabasePostgresqlConfigResult> getDatabasePostgresqlConfigPlain() {
+        return getDatabasePostgresqlConfigPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabasePostgresqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pg_stat_monitor_enable
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_enable` specification block:
+     * 
+     * * `description` - The description of `pg_stat_monitor_enable`.
+     * 
+     * * `requires_restart` - Whether changing the value `pg_stat_monitor_enable` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `pg_stat_monitor_enable`.
+     * 
+     * ## pglookout
+     * 
+     * The following arguments are supported in the `pglookout` specification block:
+     * 
+     * * `max_failover_replication_time_lag` - The maximum failover replication time lag for `pglookout`.
+     * 
+     * ## max_failover_replication_time_lag
+     * 
+     * The following arguments are supported in the `max_failover_replication_time_lag` specification block:
+     * 
+     * * `description` - The description of `max_failover_replication_time_lag`.
+     * 
+     * * `maximum` - The maximum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `minimum` - The minimum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_failover_replication_time_lag` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_failover_replication_time_lag`.
+     * 
+     * ## shared_buffers_percentage
+     * 
+     * The following arguments are supported in the `shared_buffers_percentage` specification block:
+     * 
+     * * `description` - The description of `shared_buffers_percentage`.
+     * 
+     * * `example` - An example of a valid value for `shared_buffers_percentage`.
+     * 
+     * * `maximum` - The maximum valid value for `shared_buffers_percentage`.
+     * 
+     * * `minimum` - The minimum valid value for `shared_buffers_percentage`.
+     * 
+     * * `requires_restart` - Whether changing the value of `shared_buffers_percentage` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `shared_buffers_percentage`.
+     * 
+     * ## work_mem
+     * 
+     * The following arguments are supported in the `work_mem` specification block:
+     * 
+     * * `description` - The description of `work_mem`.
+     * 
+     * * `example` - An example of a valid value for `work_mem`.
+     * 
+     * * `maximum` - The maximum valid value for `work_mem`.
+     * 
+     * * `minimum` - The minimum valid value for `work_mem`.
+     * 
+     * * `requires_restart` - Whether changing the value of `work_mem` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `work_mem`.
+     * 
+     * ## pg
+     * 
+     * The following arguments are supported in the `pg` specification block:
+     * 
+     * * `autovacuum_analyze_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_analyze_threshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * 
+     * * `autovacuum_max_workers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     * * `autovacuum_naptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * 
+     * * `autovacuum_vacuum_cost_delay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * 
+     * * `autovacuum_vacuum_cost_limit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * 
+     * * `autovacuum_vacuum_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_vacuum_threshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     * * `bgwriter_delay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     * * `bgwriter_flush_after` - (Optional) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     * * `bgwriter_lru_maxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     * * `bgwriter_lru_multiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     * * `deadlock_timeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     * * `default_toast_compression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     * * `idle_in_transaction_session_timeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * 
+     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     * * `max_files_per_process` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * 
+     * * `max_locks_per_transaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * 
+     * * `max_logical_replication_workers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * 
+     * * `max_parallel_workers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     * * `max_parallel_workers_per_gather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     * * `max_pred_locks_per_transaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * 
+     * * `max_replication_slots` - (Optional) PostgreSQL maximum replication slots.
+     * 
+     * * `max_slot_wal_keep_size` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * 
+     * * `max_stack_depth` - (Optional) Maximum depth of the stack in bytes.
+     * 
+     * * `max_standby_archive_delay` - (Optional) Max standby archive delay in milliseconds.
+     * 
+     * * `max_standby_streaming_delay` - (Optional) Max standby streaming delay in milliseconds.
+     * 
+     * * `max_wal_senders` - (Optional) PostgreSQL maximum WAL senders.
+     * 
+     * * `max_worker_processes` - (Optional) Sets the maximum number of background processes that the system can support.
+     * 
+     * * `password_encryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * 
+     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * 
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * 
+     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     * * `temp_file_limit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * 
+     * * `track_activity_query_size` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     * * `track_commit_timestamp` - (Optional) Record commit time of transactions.
+     * 
+     * * `track_functions` - (Optional) Enables tracking of function call counts and time used.
+     * 
+     * * `track_io_timing` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     * * `wal_sender_timeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     * * `wal_writer_delay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     * ## autovacuum_analyze_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_scale_factor`.
+     * 
+     * ## autovacuum_analyze_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_threshold`.
+     * 
+     * ## autovacuum_max_workers
+     * 
+     * The following arguments are supported in the `autovacuum_max_workers` specification block:
+     * 
+     * * `description` - The description of `autovacuum_max_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_max_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_max_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_max_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_max_workers`.
+     * 
+     * ## autovacuum_naptime
+     * 
+     * The following arguments are supported in the `autovacuum_naptime` specification block:
+     * 
+     * * `description` - The description of `autovacuum_naptime`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_naptime`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_naptime`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_naptime` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_naptime`.
+     * 
+     * ## autovacuum_vacuum_cost_delay
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_delay` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_delay`.
+     * 
+     * ## autovacuum_vacuum_cost_limit
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_limit` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_limit`.
+     * 
+     * ## autovacuum_vacuum_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_scale_factor`.
+     * 
+     * ## autovacuum_vacuum_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_threshold`.
+     * 
+     * ## bgwriter_delay
+     * 
+     * The following arguments are supported in the `bgwriter_delay` specification block:
+     * 
+     * * `description` - The description of `bgwriter_delay`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_delay`.
+     * 
+     * ## bgwriter_flush_after
+     * 
+     * The following arguments are supported in the `bgwriter_flush_after` specification block:
+     * 
+     * * `description` - The description of `bgwriter_flush_after`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_flush_after`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_flush_after`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_flush_after`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_flush_after` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_flush_after`.
+     * 
+     * ## bgwriter_lru_maxpages
+     * 
+     * The following arguments are supported in the `bgwriter_lru_maxpages` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_maxpages`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_maxpages` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_maxpages`.
+     * 
+     * ## bgwriter_lru_multiplier
+     * 
+     * The following arguments are supported in the `bgwriter_lru_multiplier` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_multiplier`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_multiplier` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_multiplier`.
+     * 
+     * ## deadlock_timeout
+     * 
+     * The following arguments are supported in the `deadlock_timeout` specification block:
+     * 
+     * * `description` - The description of `deadlock_timeout`.
+     * 
+     * * `example` - An example of a valid value for `deadlock_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `deadlock_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `deadlock_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `deadlock_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `deadlock_timeout`.
+     * 
+     * ## default_toast_compression
+     * 
+     * The following arguments are supported in the `default_toast_compression` specification block:
+     * 
+     * * `description` - The description of `default_toast_compression`.
+     * 
+     * * `enum` - A list of valid compression methods for `default_toast_compression`.
+     * 
+     * * `example` - An example of a valid value for `default_toast_compression`.
+     * 
+     * * `requires_restart` - Whether changing the value of `default_toast_compression` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_toast_compression`.
+     * 
+     * ## idle_in_transaction_session_timeout
+     * 
+     * The following arguments are supported in the `idle_in_transaction_session_timeout` specification block:
+     * 
+     * * `description` - The description of `idle_in_transaction_session_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `idle_in_transaction_session_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `idle_in_transaction_session_timeout`.
+     * 
+     * ## jit
+     * 
+     * The following arguments are supported in the `jit` specification block:
+     * 
+     * * `description` - The description of `jit`.
+     * 
+     * * `example` - An example of a valid value for `jit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `jit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `jit`.
+     * 
+     * ## max_files_per_process
+     * 
+     * The following arguments are supported in the `max_files_per_process` specification block:
+     * 
+     * * `description` - The description of `max_files_per_process`.
+     * 
+     * * `maximum` - The maximum valid value for `max_files_per_process`.
+     * 
+     * * `minimum` - The minimum valid value for `max_files_per_process`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_files_per_process` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_files_per_process`.
+     * 
+     * ## max_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_locks_per_transaction`.
+     * 
+     * ## max_logical_replication_workers
+     * 
+     * The following arguments are supported in the `max_logical_replication_workers` specification block:
+     * 
+     * * `description` - The description of `max_logical_replication_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_logical_replication_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_logical_replication_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_logical_replication_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_logical_replication_workers`.
+     * 
+     * ## max_parallel_workers
+     * 
+     * The following arguments are supported in the `max_parallel_workers` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers`.
+     * 
+     * ## max_parallel_workers_per_gather
+     * 
+     * The following arguments are supported in the `max_parallel_workers_per_gather` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers_per_gather`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers_per_gather` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers_per_gather`.
+     * 
+     * ## max_pred_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_pred_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_pred_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_pred_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_pred_locks_per_transaction`.
+     * 
+     * ## max_replication_slots
+     * 
+     * The following arguments are supported in the `max_replication_slots` specification block:
+     * 
+     * * `description` - The description of `max_replication_slots`.
+     * 
+     * * `maximum` - The maximum valid value for `max_replication_slots`.
+     * 
+     * * `minimum` - The minimum valid value for `max_replication_slots`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_replication_slots` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_replication_slots`.
+     * 
+     * ## max_slot_wal_keep_size
+     * 
+     * The following arguments are supported in the `max_slot_wal_keep_size` specification block:
+     * 
+     * * `description` - The description of `max_slot_wal_keep_size`.
+     * 
+     * * `maximum` - The maximum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `minimum` - The minimum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_slot_wal_keep_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_slot_wal_keep_size`.
+     * 
+     * ## max_stack_depth
+     * 
+     * The following arguments are supported in the `max_stack_depth` specification block:
+     * 
+     * * `description` - The description of `max_stack_depth`.
+     * 
+     * * `maximum` - The maximum valid value for `max_stack_depth`.
+     * 
+     * * `minimum` - The minimum valid value for `max_stack_depth`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_stack_depth` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_stack_depth`.
+     * 
+     * ## max_standby_archive_delay
+     * 
+     * The following arguments are supported in the `max_standby_archive_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_archive_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_archive_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_archive_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_archive_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_archive_delay`.
+     * 
+     * ## max_standby_streaming_delay
+     * 
+     * The following arguments are supported in the `max_standby_streaming_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_streaming_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_streaming_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_streaming_delay`.
+     * 
+     * ## max_wal_senders
+     * 
+     * The following arguments are supported in the `max_wal_senders` specification block:
+     * 
+     * * `description` - The description of `max_wal_senders`.
+     * 
+     * * `maximum` - The maximum valid value for `max_wal_senders`.
+     * 
+     * * `minimum` - The minimum valid value for `max_wal_senders`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_wal_senders` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_wal_senders`.
+     * 
+     * ## max_worker_processes
+     * 
+     * The following arguments are supported in the `max_worker_processes` specification block:
+     * 
+     * * `description` - The description of `max_worker_processes`.
+     * 
+     * * `maximum` - The maximum valid value for `max_worker_processes`.
+     * 
+     * * `minimum` - The minimum valid value for `max_worker_processes`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_worker_processes` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_worker_processes`.
+     * 
+     * ## password_encryption
+     * 
+     * The following arguments are supported in the `password_encryption` specification block:
+     * 
+     * * `description` - The description of the `password_encryption` setting.
+     * 
+     * * `enum` - A list of valid values for the `password_encryption` setting.
+     * 
+     * * `example` - An example value for the `password_encryption` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `password_encryption` requires the DB to restart.
+     * 
+     * * `type` - A list of types for the `password_encryption` setting.
+     * 
+     * ## pg_partman_bgw_interval
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_interval` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_interval` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_interval` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_interval` setting.
+     * 
+     * ## pg_partman_bgw_role
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_role` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_role` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_role` setting.
+     * 
+     * * `maxLength` - The maximum length for the `pg_partman_bgw_role` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `pg_partman_bgw_role` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_role` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_role` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_enable_query_plan
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_enable_query_plan` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_enable_query_plan` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_max_buckets
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_max_buckets` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_max_buckets` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * ## pg_stat_statements_track
+     * 
+     * The following arguments are supported in the `pg_stat_statements_track` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_statements_track` setting.
+     * 
+     * * `enum` - A list of valid values for the `pg_stat_statements_track` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_statements_track` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_statements_track` setting.
+     * 
+     * ## temp_file_limit
+     * 
+     * The following arguments are supported in the `temp_file_limit` specification block:
+     * 
+     * * `description` - The description of the `temp_file_limit` setting.
+     * 
+     * * `example` - An example value for the `temp_file_limit` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `temp_file_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the `temp_file_limit` setting.
+     * 
+     * ## timezone
+     * 
+     * The following arguments are supported in the `timezone` specification block:
+     * 
+     * * `description` - The description of the `timezone` setting.
+     * 
+     * * `example` - An example value for the `timezone` setting.
+     * 
+     * * `maxLength` - The maximum length for the `timezone` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `timezone` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `timezone` requires the DB to restart.
+     * 
+     * * `type` - The type of the `timezone` setting.
+     * 
+     * ## track_activity_query_size
+     * 
+     * The following arguments are supported in the `track_activity_query_size` specification block:
+     * 
+     * * `description` - The description of the `track_activity_query_size` setting.
+     * 
+     * * `example` - An example value for the `track_activity_query_size` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_activity_query_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_activity_query_size` setting.
+     * 
+     * ## track_commit_timestamp
+     * 
+     * The following arguments are supported in the `track_commit_timestamp` specification block:
+     * 
+     * * `description` - The description of the `track_commit_timestamp` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_commit_timestamp` setting.
+     * 
+     * * `example` - An example value for the `track_commit_timestamp` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_commit_timestamp` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_commit_timestamp` setting.
+     * 
+     * ## track_functions
+     * 
+     * The following arguments are supported in the `track_functions` specification block:
+     * 
+     * * `description` - The description of the `track_functions` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_functions` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_functions` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_functions` setting.
+     * 
+     * ## track_io_timing
+     * 
+     * The following arguments are supported in the `track_io_timing` specification block:
+     * 
+     * * `description` - The description of the `track_io_timing` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_io_timing` setting.
+     * 
+     * * `example` - An example value for the `track_io_timing` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_io_timing` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_io_timing` setting.
+     * 
+     * ## wal_sender_timeout
+     * 
+     * The following arguments are supported in the `wal_sender_timeout` specification block:
+     * 
+     * * `description` - The description of the `wal_sender_timeout` setting.
+     * 
+     * * `example` - An example value for the `wal_sender_timeout` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_sender_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_sender_timeout` setting.
+     * 
+     * ## wal_writer_delay
+     * 
+     * The following arguments are supported in the `wal_writer_delay` specification block:
+     * 
+     * * `description` - The description of the `wal_writer_delay` setting.
+     * 
+     * * `example` - An example value for the `wal_writer_delay` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_writer_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_writer_delay` setting.
+     * 
+     */
+    public static Output<GetDatabasePostgresqlConfigResult> getDatabasePostgresqlConfig(InvokeArgs args) {
+        return getDatabasePostgresqlConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabasePostgresqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pg_stat_monitor_enable
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_enable` specification block:
+     * 
+     * * `description` - The description of `pg_stat_monitor_enable`.
+     * 
+     * * `requires_restart` - Whether changing the value `pg_stat_monitor_enable` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `pg_stat_monitor_enable`.
+     * 
+     * ## pglookout
+     * 
+     * The following arguments are supported in the `pglookout` specification block:
+     * 
+     * * `max_failover_replication_time_lag` - The maximum failover replication time lag for `pglookout`.
+     * 
+     * ## max_failover_replication_time_lag
+     * 
+     * The following arguments are supported in the `max_failover_replication_time_lag` specification block:
+     * 
+     * * `description` - The description of `max_failover_replication_time_lag`.
+     * 
+     * * `maximum` - The maximum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `minimum` - The minimum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_failover_replication_time_lag` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_failover_replication_time_lag`.
+     * 
+     * ## shared_buffers_percentage
+     * 
+     * The following arguments are supported in the `shared_buffers_percentage` specification block:
+     * 
+     * * `description` - The description of `shared_buffers_percentage`.
+     * 
+     * * `example` - An example of a valid value for `shared_buffers_percentage`.
+     * 
+     * * `maximum` - The maximum valid value for `shared_buffers_percentage`.
+     * 
+     * * `minimum` - The minimum valid value for `shared_buffers_percentage`.
+     * 
+     * * `requires_restart` - Whether changing the value of `shared_buffers_percentage` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `shared_buffers_percentage`.
+     * 
+     * ## work_mem
+     * 
+     * The following arguments are supported in the `work_mem` specification block:
+     * 
+     * * `description` - The description of `work_mem`.
+     * 
+     * * `example` - An example of a valid value for `work_mem`.
+     * 
+     * * `maximum` - The maximum valid value for `work_mem`.
+     * 
+     * * `minimum` - The minimum valid value for `work_mem`.
+     * 
+     * * `requires_restart` - Whether changing the value of `work_mem` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `work_mem`.
+     * 
+     * ## pg
+     * 
+     * The following arguments are supported in the `pg` specification block:
+     * 
+     * * `autovacuum_analyze_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_analyze_threshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * 
+     * * `autovacuum_max_workers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     * * `autovacuum_naptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * 
+     * * `autovacuum_vacuum_cost_delay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * 
+     * * `autovacuum_vacuum_cost_limit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * 
+     * * `autovacuum_vacuum_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_vacuum_threshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     * * `bgwriter_delay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     * * `bgwriter_flush_after` - (Optional) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     * * `bgwriter_lru_maxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     * * `bgwriter_lru_multiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     * * `deadlock_timeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     * * `default_toast_compression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     * * `idle_in_transaction_session_timeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * 
+     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     * * `max_files_per_process` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * 
+     * * `max_locks_per_transaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * 
+     * * `max_logical_replication_workers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * 
+     * * `max_parallel_workers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     * * `max_parallel_workers_per_gather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     * * `max_pred_locks_per_transaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * 
+     * * `max_replication_slots` - (Optional) PostgreSQL maximum replication slots.
+     * 
+     * * `max_slot_wal_keep_size` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * 
+     * * `max_stack_depth` - (Optional) Maximum depth of the stack in bytes.
+     * 
+     * * `max_standby_archive_delay` - (Optional) Max standby archive delay in milliseconds.
+     * 
+     * * `max_standby_streaming_delay` - (Optional) Max standby streaming delay in milliseconds.
+     * 
+     * * `max_wal_senders` - (Optional) PostgreSQL maximum WAL senders.
+     * 
+     * * `max_worker_processes` - (Optional) Sets the maximum number of background processes that the system can support.
+     * 
+     * * `password_encryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * 
+     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * 
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * 
+     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     * * `temp_file_limit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * 
+     * * `track_activity_query_size` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     * * `track_commit_timestamp` - (Optional) Record commit time of transactions.
+     * 
+     * * `track_functions` - (Optional) Enables tracking of function call counts and time used.
+     * 
+     * * `track_io_timing` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     * * `wal_sender_timeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     * * `wal_writer_delay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     * ## autovacuum_analyze_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_scale_factor`.
+     * 
+     * ## autovacuum_analyze_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_threshold`.
+     * 
+     * ## autovacuum_max_workers
+     * 
+     * The following arguments are supported in the `autovacuum_max_workers` specification block:
+     * 
+     * * `description` - The description of `autovacuum_max_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_max_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_max_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_max_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_max_workers`.
+     * 
+     * ## autovacuum_naptime
+     * 
+     * The following arguments are supported in the `autovacuum_naptime` specification block:
+     * 
+     * * `description` - The description of `autovacuum_naptime`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_naptime`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_naptime`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_naptime` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_naptime`.
+     * 
+     * ## autovacuum_vacuum_cost_delay
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_delay` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_delay`.
+     * 
+     * ## autovacuum_vacuum_cost_limit
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_limit` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_limit`.
+     * 
+     * ## autovacuum_vacuum_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_scale_factor`.
+     * 
+     * ## autovacuum_vacuum_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_threshold`.
+     * 
+     * ## bgwriter_delay
+     * 
+     * The following arguments are supported in the `bgwriter_delay` specification block:
+     * 
+     * * `description` - The description of `bgwriter_delay`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_delay`.
+     * 
+     * ## bgwriter_flush_after
+     * 
+     * The following arguments are supported in the `bgwriter_flush_after` specification block:
+     * 
+     * * `description` - The description of `bgwriter_flush_after`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_flush_after`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_flush_after`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_flush_after`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_flush_after` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_flush_after`.
+     * 
+     * ## bgwriter_lru_maxpages
+     * 
+     * The following arguments are supported in the `bgwriter_lru_maxpages` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_maxpages`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_maxpages` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_maxpages`.
+     * 
+     * ## bgwriter_lru_multiplier
+     * 
+     * The following arguments are supported in the `bgwriter_lru_multiplier` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_multiplier`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_multiplier` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_multiplier`.
+     * 
+     * ## deadlock_timeout
+     * 
+     * The following arguments are supported in the `deadlock_timeout` specification block:
+     * 
+     * * `description` - The description of `deadlock_timeout`.
+     * 
+     * * `example` - An example of a valid value for `deadlock_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `deadlock_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `deadlock_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `deadlock_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `deadlock_timeout`.
+     * 
+     * ## default_toast_compression
+     * 
+     * The following arguments are supported in the `default_toast_compression` specification block:
+     * 
+     * * `description` - The description of `default_toast_compression`.
+     * 
+     * * `enum` - A list of valid compression methods for `default_toast_compression`.
+     * 
+     * * `example` - An example of a valid value for `default_toast_compression`.
+     * 
+     * * `requires_restart` - Whether changing the value of `default_toast_compression` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_toast_compression`.
+     * 
+     * ## idle_in_transaction_session_timeout
+     * 
+     * The following arguments are supported in the `idle_in_transaction_session_timeout` specification block:
+     * 
+     * * `description` - The description of `idle_in_transaction_session_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `idle_in_transaction_session_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `idle_in_transaction_session_timeout`.
+     * 
+     * ## jit
+     * 
+     * The following arguments are supported in the `jit` specification block:
+     * 
+     * * `description` - The description of `jit`.
+     * 
+     * * `example` - An example of a valid value for `jit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `jit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `jit`.
+     * 
+     * ## max_files_per_process
+     * 
+     * The following arguments are supported in the `max_files_per_process` specification block:
+     * 
+     * * `description` - The description of `max_files_per_process`.
+     * 
+     * * `maximum` - The maximum valid value for `max_files_per_process`.
+     * 
+     * * `minimum` - The minimum valid value for `max_files_per_process`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_files_per_process` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_files_per_process`.
+     * 
+     * ## max_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_locks_per_transaction`.
+     * 
+     * ## max_logical_replication_workers
+     * 
+     * The following arguments are supported in the `max_logical_replication_workers` specification block:
+     * 
+     * * `description` - The description of `max_logical_replication_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_logical_replication_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_logical_replication_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_logical_replication_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_logical_replication_workers`.
+     * 
+     * ## max_parallel_workers
+     * 
+     * The following arguments are supported in the `max_parallel_workers` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers`.
+     * 
+     * ## max_parallel_workers_per_gather
+     * 
+     * The following arguments are supported in the `max_parallel_workers_per_gather` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers_per_gather`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers_per_gather` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers_per_gather`.
+     * 
+     * ## max_pred_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_pred_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_pred_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_pred_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_pred_locks_per_transaction`.
+     * 
+     * ## max_replication_slots
+     * 
+     * The following arguments are supported in the `max_replication_slots` specification block:
+     * 
+     * * `description` - The description of `max_replication_slots`.
+     * 
+     * * `maximum` - The maximum valid value for `max_replication_slots`.
+     * 
+     * * `minimum` - The minimum valid value for `max_replication_slots`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_replication_slots` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_replication_slots`.
+     * 
+     * ## max_slot_wal_keep_size
+     * 
+     * The following arguments are supported in the `max_slot_wal_keep_size` specification block:
+     * 
+     * * `description` - The description of `max_slot_wal_keep_size`.
+     * 
+     * * `maximum` - The maximum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `minimum` - The minimum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_slot_wal_keep_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_slot_wal_keep_size`.
+     * 
+     * ## max_stack_depth
+     * 
+     * The following arguments are supported in the `max_stack_depth` specification block:
+     * 
+     * * `description` - The description of `max_stack_depth`.
+     * 
+     * * `maximum` - The maximum valid value for `max_stack_depth`.
+     * 
+     * * `minimum` - The minimum valid value for `max_stack_depth`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_stack_depth` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_stack_depth`.
+     * 
+     * ## max_standby_archive_delay
+     * 
+     * The following arguments are supported in the `max_standby_archive_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_archive_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_archive_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_archive_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_archive_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_archive_delay`.
+     * 
+     * ## max_standby_streaming_delay
+     * 
+     * The following arguments are supported in the `max_standby_streaming_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_streaming_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_streaming_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_streaming_delay`.
+     * 
+     * ## max_wal_senders
+     * 
+     * The following arguments are supported in the `max_wal_senders` specification block:
+     * 
+     * * `description` - The description of `max_wal_senders`.
+     * 
+     * * `maximum` - The maximum valid value for `max_wal_senders`.
+     * 
+     * * `minimum` - The minimum valid value for `max_wal_senders`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_wal_senders` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_wal_senders`.
+     * 
+     * ## max_worker_processes
+     * 
+     * The following arguments are supported in the `max_worker_processes` specification block:
+     * 
+     * * `description` - The description of `max_worker_processes`.
+     * 
+     * * `maximum` - The maximum valid value for `max_worker_processes`.
+     * 
+     * * `minimum` - The minimum valid value for `max_worker_processes`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_worker_processes` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_worker_processes`.
+     * 
+     * ## password_encryption
+     * 
+     * The following arguments are supported in the `password_encryption` specification block:
+     * 
+     * * `description` - The description of the `password_encryption` setting.
+     * 
+     * * `enum` - A list of valid values for the `password_encryption` setting.
+     * 
+     * * `example` - An example value for the `password_encryption` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `password_encryption` requires the DB to restart.
+     * 
+     * * `type` - A list of types for the `password_encryption` setting.
+     * 
+     * ## pg_partman_bgw_interval
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_interval` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_interval` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_interval` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_interval` setting.
+     * 
+     * ## pg_partman_bgw_role
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_role` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_role` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_role` setting.
+     * 
+     * * `maxLength` - The maximum length for the `pg_partman_bgw_role` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `pg_partman_bgw_role` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_role` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_role` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_enable_query_plan
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_enable_query_plan` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_enable_query_plan` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_max_buckets
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_max_buckets` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_max_buckets` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * ## pg_stat_statements_track
+     * 
+     * The following arguments are supported in the `pg_stat_statements_track` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_statements_track` setting.
+     * 
+     * * `enum` - A list of valid values for the `pg_stat_statements_track` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_statements_track` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_statements_track` setting.
+     * 
+     * ## temp_file_limit
+     * 
+     * The following arguments are supported in the `temp_file_limit` specification block:
+     * 
+     * * `description` - The description of the `temp_file_limit` setting.
+     * 
+     * * `example` - An example value for the `temp_file_limit` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `temp_file_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the `temp_file_limit` setting.
+     * 
+     * ## timezone
+     * 
+     * The following arguments are supported in the `timezone` specification block:
+     * 
+     * * `description` - The description of the `timezone` setting.
+     * 
+     * * `example` - An example value for the `timezone` setting.
+     * 
+     * * `maxLength` - The maximum length for the `timezone` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `timezone` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `timezone` requires the DB to restart.
+     * 
+     * * `type` - The type of the `timezone` setting.
+     * 
+     * ## track_activity_query_size
+     * 
+     * The following arguments are supported in the `track_activity_query_size` specification block:
+     * 
+     * * `description` - The description of the `track_activity_query_size` setting.
+     * 
+     * * `example` - An example value for the `track_activity_query_size` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_activity_query_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_activity_query_size` setting.
+     * 
+     * ## track_commit_timestamp
+     * 
+     * The following arguments are supported in the `track_commit_timestamp` specification block:
+     * 
+     * * `description` - The description of the `track_commit_timestamp` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_commit_timestamp` setting.
+     * 
+     * * `example` - An example value for the `track_commit_timestamp` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_commit_timestamp` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_commit_timestamp` setting.
+     * 
+     * ## track_functions
+     * 
+     * The following arguments are supported in the `track_functions` specification block:
+     * 
+     * * `description` - The description of the `track_functions` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_functions` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_functions` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_functions` setting.
+     * 
+     * ## track_io_timing
+     * 
+     * The following arguments are supported in the `track_io_timing` specification block:
+     * 
+     * * `description` - The description of the `track_io_timing` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_io_timing` setting.
+     * 
+     * * `example` - An example value for the `track_io_timing` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_io_timing` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_io_timing` setting.
+     * 
+     * ## wal_sender_timeout
+     * 
+     * The following arguments are supported in the `wal_sender_timeout` specification block:
+     * 
+     * * `description` - The description of the `wal_sender_timeout` setting.
+     * 
+     * * `example` - An example value for the `wal_sender_timeout` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_sender_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_sender_timeout` setting.
+     * 
+     * ## wal_writer_delay
+     * 
+     * The following arguments are supported in the `wal_writer_delay` specification block:
+     * 
+     * * `description` - The description of the `wal_writer_delay` setting.
+     * 
+     * * `example` - An example value for the `wal_writer_delay` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_writer_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_writer_delay` setting.
+     * 
+     */
+    public static CompletableFuture<GetDatabasePostgresqlConfigResult> getDatabasePostgresqlConfigPlain(InvokeArgs args) {
+        return getDatabasePostgresqlConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabasePostgresqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pg_stat_monitor_enable
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_enable` specification block:
+     * 
+     * * `description` - The description of `pg_stat_monitor_enable`.
+     * 
+     * * `requires_restart` - Whether changing the value `pg_stat_monitor_enable` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `pg_stat_monitor_enable`.
+     * 
+     * ## pglookout
+     * 
+     * The following arguments are supported in the `pglookout` specification block:
+     * 
+     * * `max_failover_replication_time_lag` - The maximum failover replication time lag for `pglookout`.
+     * 
+     * ## max_failover_replication_time_lag
+     * 
+     * The following arguments are supported in the `max_failover_replication_time_lag` specification block:
+     * 
+     * * `description` - The description of `max_failover_replication_time_lag`.
+     * 
+     * * `maximum` - The maximum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `minimum` - The minimum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_failover_replication_time_lag` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_failover_replication_time_lag`.
+     * 
+     * ## shared_buffers_percentage
+     * 
+     * The following arguments are supported in the `shared_buffers_percentage` specification block:
+     * 
+     * * `description` - The description of `shared_buffers_percentage`.
+     * 
+     * * `example` - An example of a valid value for `shared_buffers_percentage`.
+     * 
+     * * `maximum` - The maximum valid value for `shared_buffers_percentage`.
+     * 
+     * * `minimum` - The minimum valid value for `shared_buffers_percentage`.
+     * 
+     * * `requires_restart` - Whether changing the value of `shared_buffers_percentage` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `shared_buffers_percentage`.
+     * 
+     * ## work_mem
+     * 
+     * The following arguments are supported in the `work_mem` specification block:
+     * 
+     * * `description` - The description of `work_mem`.
+     * 
+     * * `example` - An example of a valid value for `work_mem`.
+     * 
+     * * `maximum` - The maximum valid value for `work_mem`.
+     * 
+     * * `minimum` - The minimum valid value for `work_mem`.
+     * 
+     * * `requires_restart` - Whether changing the value of `work_mem` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `work_mem`.
+     * 
+     * ## pg
+     * 
+     * The following arguments are supported in the `pg` specification block:
+     * 
+     * * `autovacuum_analyze_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_analyze_threshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * 
+     * * `autovacuum_max_workers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     * * `autovacuum_naptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * 
+     * * `autovacuum_vacuum_cost_delay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * 
+     * * `autovacuum_vacuum_cost_limit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * 
+     * * `autovacuum_vacuum_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_vacuum_threshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     * * `bgwriter_delay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     * * `bgwriter_flush_after` - (Optional) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     * * `bgwriter_lru_maxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     * * `bgwriter_lru_multiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     * * `deadlock_timeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     * * `default_toast_compression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     * * `idle_in_transaction_session_timeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * 
+     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     * * `max_files_per_process` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * 
+     * * `max_locks_per_transaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * 
+     * * `max_logical_replication_workers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * 
+     * * `max_parallel_workers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     * * `max_parallel_workers_per_gather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     * * `max_pred_locks_per_transaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * 
+     * * `max_replication_slots` - (Optional) PostgreSQL maximum replication slots.
+     * 
+     * * `max_slot_wal_keep_size` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * 
+     * * `max_stack_depth` - (Optional) Maximum depth of the stack in bytes.
+     * 
+     * * `max_standby_archive_delay` - (Optional) Max standby archive delay in milliseconds.
+     * 
+     * * `max_standby_streaming_delay` - (Optional) Max standby streaming delay in milliseconds.
+     * 
+     * * `max_wal_senders` - (Optional) PostgreSQL maximum WAL senders.
+     * 
+     * * `max_worker_processes` - (Optional) Sets the maximum number of background processes that the system can support.
+     * 
+     * * `password_encryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * 
+     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * 
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * 
+     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     * * `temp_file_limit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * 
+     * * `track_activity_query_size` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     * * `track_commit_timestamp` - (Optional) Record commit time of transactions.
+     * 
+     * * `track_functions` - (Optional) Enables tracking of function call counts and time used.
+     * 
+     * * `track_io_timing` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     * * `wal_sender_timeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     * * `wal_writer_delay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     * ## autovacuum_analyze_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_scale_factor`.
+     * 
+     * ## autovacuum_analyze_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_threshold`.
+     * 
+     * ## autovacuum_max_workers
+     * 
+     * The following arguments are supported in the `autovacuum_max_workers` specification block:
+     * 
+     * * `description` - The description of `autovacuum_max_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_max_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_max_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_max_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_max_workers`.
+     * 
+     * ## autovacuum_naptime
+     * 
+     * The following arguments are supported in the `autovacuum_naptime` specification block:
+     * 
+     * * `description` - The description of `autovacuum_naptime`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_naptime`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_naptime`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_naptime` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_naptime`.
+     * 
+     * ## autovacuum_vacuum_cost_delay
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_delay` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_delay`.
+     * 
+     * ## autovacuum_vacuum_cost_limit
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_limit` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_limit`.
+     * 
+     * ## autovacuum_vacuum_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_scale_factor`.
+     * 
+     * ## autovacuum_vacuum_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_threshold`.
+     * 
+     * ## bgwriter_delay
+     * 
+     * The following arguments are supported in the `bgwriter_delay` specification block:
+     * 
+     * * `description` - The description of `bgwriter_delay`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_delay`.
+     * 
+     * ## bgwriter_flush_after
+     * 
+     * The following arguments are supported in the `bgwriter_flush_after` specification block:
+     * 
+     * * `description` - The description of `bgwriter_flush_after`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_flush_after`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_flush_after`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_flush_after`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_flush_after` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_flush_after`.
+     * 
+     * ## bgwriter_lru_maxpages
+     * 
+     * The following arguments are supported in the `bgwriter_lru_maxpages` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_maxpages`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_maxpages` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_maxpages`.
+     * 
+     * ## bgwriter_lru_multiplier
+     * 
+     * The following arguments are supported in the `bgwriter_lru_multiplier` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_multiplier`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_multiplier` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_multiplier`.
+     * 
+     * ## deadlock_timeout
+     * 
+     * The following arguments are supported in the `deadlock_timeout` specification block:
+     * 
+     * * `description` - The description of `deadlock_timeout`.
+     * 
+     * * `example` - An example of a valid value for `deadlock_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `deadlock_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `deadlock_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `deadlock_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `deadlock_timeout`.
+     * 
+     * ## default_toast_compression
+     * 
+     * The following arguments are supported in the `default_toast_compression` specification block:
+     * 
+     * * `description` - The description of `default_toast_compression`.
+     * 
+     * * `enum` - A list of valid compression methods for `default_toast_compression`.
+     * 
+     * * `example` - An example of a valid value for `default_toast_compression`.
+     * 
+     * * `requires_restart` - Whether changing the value of `default_toast_compression` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_toast_compression`.
+     * 
+     * ## idle_in_transaction_session_timeout
+     * 
+     * The following arguments are supported in the `idle_in_transaction_session_timeout` specification block:
+     * 
+     * * `description` - The description of `idle_in_transaction_session_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `idle_in_transaction_session_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `idle_in_transaction_session_timeout`.
+     * 
+     * ## jit
+     * 
+     * The following arguments are supported in the `jit` specification block:
+     * 
+     * * `description` - The description of `jit`.
+     * 
+     * * `example` - An example of a valid value for `jit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `jit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `jit`.
+     * 
+     * ## max_files_per_process
+     * 
+     * The following arguments are supported in the `max_files_per_process` specification block:
+     * 
+     * * `description` - The description of `max_files_per_process`.
+     * 
+     * * `maximum` - The maximum valid value for `max_files_per_process`.
+     * 
+     * * `minimum` - The minimum valid value for `max_files_per_process`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_files_per_process` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_files_per_process`.
+     * 
+     * ## max_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_locks_per_transaction`.
+     * 
+     * ## max_logical_replication_workers
+     * 
+     * The following arguments are supported in the `max_logical_replication_workers` specification block:
+     * 
+     * * `description` - The description of `max_logical_replication_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_logical_replication_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_logical_replication_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_logical_replication_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_logical_replication_workers`.
+     * 
+     * ## max_parallel_workers
+     * 
+     * The following arguments are supported in the `max_parallel_workers` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers`.
+     * 
+     * ## max_parallel_workers_per_gather
+     * 
+     * The following arguments are supported in the `max_parallel_workers_per_gather` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers_per_gather`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers_per_gather` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers_per_gather`.
+     * 
+     * ## max_pred_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_pred_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_pred_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_pred_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_pred_locks_per_transaction`.
+     * 
+     * ## max_replication_slots
+     * 
+     * The following arguments are supported in the `max_replication_slots` specification block:
+     * 
+     * * `description` - The description of `max_replication_slots`.
+     * 
+     * * `maximum` - The maximum valid value for `max_replication_slots`.
+     * 
+     * * `minimum` - The minimum valid value for `max_replication_slots`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_replication_slots` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_replication_slots`.
+     * 
+     * ## max_slot_wal_keep_size
+     * 
+     * The following arguments are supported in the `max_slot_wal_keep_size` specification block:
+     * 
+     * * `description` - The description of `max_slot_wal_keep_size`.
+     * 
+     * * `maximum` - The maximum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `minimum` - The minimum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_slot_wal_keep_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_slot_wal_keep_size`.
+     * 
+     * ## max_stack_depth
+     * 
+     * The following arguments are supported in the `max_stack_depth` specification block:
+     * 
+     * * `description` - The description of `max_stack_depth`.
+     * 
+     * * `maximum` - The maximum valid value for `max_stack_depth`.
+     * 
+     * * `minimum` - The minimum valid value for `max_stack_depth`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_stack_depth` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_stack_depth`.
+     * 
+     * ## max_standby_archive_delay
+     * 
+     * The following arguments are supported in the `max_standby_archive_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_archive_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_archive_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_archive_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_archive_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_archive_delay`.
+     * 
+     * ## max_standby_streaming_delay
+     * 
+     * The following arguments are supported in the `max_standby_streaming_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_streaming_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_streaming_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_streaming_delay`.
+     * 
+     * ## max_wal_senders
+     * 
+     * The following arguments are supported in the `max_wal_senders` specification block:
+     * 
+     * * `description` - The description of `max_wal_senders`.
+     * 
+     * * `maximum` - The maximum valid value for `max_wal_senders`.
+     * 
+     * * `minimum` - The minimum valid value for `max_wal_senders`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_wal_senders` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_wal_senders`.
+     * 
+     * ## max_worker_processes
+     * 
+     * The following arguments are supported in the `max_worker_processes` specification block:
+     * 
+     * * `description` - The description of `max_worker_processes`.
+     * 
+     * * `maximum` - The maximum valid value for `max_worker_processes`.
+     * 
+     * * `minimum` - The minimum valid value for `max_worker_processes`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_worker_processes` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_worker_processes`.
+     * 
+     * ## password_encryption
+     * 
+     * The following arguments are supported in the `password_encryption` specification block:
+     * 
+     * * `description` - The description of the `password_encryption` setting.
+     * 
+     * * `enum` - A list of valid values for the `password_encryption` setting.
+     * 
+     * * `example` - An example value for the `password_encryption` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `password_encryption` requires the DB to restart.
+     * 
+     * * `type` - A list of types for the `password_encryption` setting.
+     * 
+     * ## pg_partman_bgw_interval
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_interval` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_interval` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_interval` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_interval` setting.
+     * 
+     * ## pg_partman_bgw_role
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_role` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_role` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_role` setting.
+     * 
+     * * `maxLength` - The maximum length for the `pg_partman_bgw_role` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `pg_partman_bgw_role` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_role` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_role` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_enable_query_plan
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_enable_query_plan` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_enable_query_plan` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_max_buckets
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_max_buckets` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_max_buckets` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * ## pg_stat_statements_track
+     * 
+     * The following arguments are supported in the `pg_stat_statements_track` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_statements_track` setting.
+     * 
+     * * `enum` - A list of valid values for the `pg_stat_statements_track` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_statements_track` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_statements_track` setting.
+     * 
+     * ## temp_file_limit
+     * 
+     * The following arguments are supported in the `temp_file_limit` specification block:
+     * 
+     * * `description` - The description of the `temp_file_limit` setting.
+     * 
+     * * `example` - An example value for the `temp_file_limit` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `temp_file_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the `temp_file_limit` setting.
+     * 
+     * ## timezone
+     * 
+     * The following arguments are supported in the `timezone` specification block:
+     * 
+     * * `description` - The description of the `timezone` setting.
+     * 
+     * * `example` - An example value for the `timezone` setting.
+     * 
+     * * `maxLength` - The maximum length for the `timezone` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `timezone` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `timezone` requires the DB to restart.
+     * 
+     * * `type` - The type of the `timezone` setting.
+     * 
+     * ## track_activity_query_size
+     * 
+     * The following arguments are supported in the `track_activity_query_size` specification block:
+     * 
+     * * `description` - The description of the `track_activity_query_size` setting.
+     * 
+     * * `example` - An example value for the `track_activity_query_size` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_activity_query_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_activity_query_size` setting.
+     * 
+     * ## track_commit_timestamp
+     * 
+     * The following arguments are supported in the `track_commit_timestamp` specification block:
+     * 
+     * * `description` - The description of the `track_commit_timestamp` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_commit_timestamp` setting.
+     * 
+     * * `example` - An example value for the `track_commit_timestamp` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_commit_timestamp` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_commit_timestamp` setting.
+     * 
+     * ## track_functions
+     * 
+     * The following arguments are supported in the `track_functions` specification block:
+     * 
+     * * `description` - The description of the `track_functions` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_functions` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_functions` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_functions` setting.
+     * 
+     * ## track_io_timing
+     * 
+     * The following arguments are supported in the `track_io_timing` specification block:
+     * 
+     * * `description` - The description of the `track_io_timing` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_io_timing` setting.
+     * 
+     * * `example` - An example value for the `track_io_timing` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_io_timing` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_io_timing` setting.
+     * 
+     * ## wal_sender_timeout
+     * 
+     * The following arguments are supported in the `wal_sender_timeout` specification block:
+     * 
+     * * `description` - The description of the `wal_sender_timeout` setting.
+     * 
+     * * `example` - An example value for the `wal_sender_timeout` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_sender_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_sender_timeout` setting.
+     * 
+     * ## wal_writer_delay
+     * 
+     * The following arguments are supported in the `wal_writer_delay` specification block:
+     * 
+     * * `description` - The description of the `wal_writer_delay` setting.
+     * 
+     * * `example` - An example value for the `wal_writer_delay` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_writer_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_writer_delay` setting.
+     * 
+     */
+    public static Output<GetDatabasePostgresqlConfigResult> getDatabasePostgresqlConfig(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getDatabasePostgresqlConfig:getDatabasePostgresqlConfig", TypeShape.of(GetDatabasePostgresqlConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabasePostgresqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pg_stat_monitor_enable
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_enable` specification block:
+     * 
+     * * `description` - The description of `pg_stat_monitor_enable`.
+     * 
+     * * `requires_restart` - Whether changing the value `pg_stat_monitor_enable` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `pg_stat_monitor_enable`.
+     * 
+     * ## pglookout
+     * 
+     * The following arguments are supported in the `pglookout` specification block:
+     * 
+     * * `max_failover_replication_time_lag` - The maximum failover replication time lag for `pglookout`.
+     * 
+     * ## max_failover_replication_time_lag
+     * 
+     * The following arguments are supported in the `max_failover_replication_time_lag` specification block:
+     * 
+     * * `description` - The description of `max_failover_replication_time_lag`.
+     * 
+     * * `maximum` - The maximum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `minimum` - The minimum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_failover_replication_time_lag` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_failover_replication_time_lag`.
+     * 
+     * ## shared_buffers_percentage
+     * 
+     * The following arguments are supported in the `shared_buffers_percentage` specification block:
+     * 
+     * * `description` - The description of `shared_buffers_percentage`.
+     * 
+     * * `example` - An example of a valid value for `shared_buffers_percentage`.
+     * 
+     * * `maximum` - The maximum valid value for `shared_buffers_percentage`.
+     * 
+     * * `minimum` - The minimum valid value for `shared_buffers_percentage`.
+     * 
+     * * `requires_restart` - Whether changing the value of `shared_buffers_percentage` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `shared_buffers_percentage`.
+     * 
+     * ## work_mem
+     * 
+     * The following arguments are supported in the `work_mem` specification block:
+     * 
+     * * `description` - The description of `work_mem`.
+     * 
+     * * `example` - An example of a valid value for `work_mem`.
+     * 
+     * * `maximum` - The maximum valid value for `work_mem`.
+     * 
+     * * `minimum` - The minimum valid value for `work_mem`.
+     * 
+     * * `requires_restart` - Whether changing the value of `work_mem` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `work_mem`.
+     * 
+     * ## pg
+     * 
+     * The following arguments are supported in the `pg` specification block:
+     * 
+     * * `autovacuum_analyze_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_analyze_threshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * 
+     * * `autovacuum_max_workers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     * * `autovacuum_naptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * 
+     * * `autovacuum_vacuum_cost_delay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * 
+     * * `autovacuum_vacuum_cost_limit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * 
+     * * `autovacuum_vacuum_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_vacuum_threshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     * * `bgwriter_delay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     * * `bgwriter_flush_after` - (Optional) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     * * `bgwriter_lru_maxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     * * `bgwriter_lru_multiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     * * `deadlock_timeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     * * `default_toast_compression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     * * `idle_in_transaction_session_timeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * 
+     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     * * `max_files_per_process` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * 
+     * * `max_locks_per_transaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * 
+     * * `max_logical_replication_workers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * 
+     * * `max_parallel_workers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     * * `max_parallel_workers_per_gather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     * * `max_pred_locks_per_transaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * 
+     * * `max_replication_slots` - (Optional) PostgreSQL maximum replication slots.
+     * 
+     * * `max_slot_wal_keep_size` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * 
+     * * `max_stack_depth` - (Optional) Maximum depth of the stack in bytes.
+     * 
+     * * `max_standby_archive_delay` - (Optional) Max standby archive delay in milliseconds.
+     * 
+     * * `max_standby_streaming_delay` - (Optional) Max standby streaming delay in milliseconds.
+     * 
+     * * `max_wal_senders` - (Optional) PostgreSQL maximum WAL senders.
+     * 
+     * * `max_worker_processes` - (Optional) Sets the maximum number of background processes that the system can support.
+     * 
+     * * `password_encryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * 
+     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * 
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * 
+     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     * * `temp_file_limit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * 
+     * * `track_activity_query_size` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     * * `track_commit_timestamp` - (Optional) Record commit time of transactions.
+     * 
+     * * `track_functions` - (Optional) Enables tracking of function call counts and time used.
+     * 
+     * * `track_io_timing` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     * * `wal_sender_timeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     * * `wal_writer_delay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     * ## autovacuum_analyze_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_scale_factor`.
+     * 
+     * ## autovacuum_analyze_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_threshold`.
+     * 
+     * ## autovacuum_max_workers
+     * 
+     * The following arguments are supported in the `autovacuum_max_workers` specification block:
+     * 
+     * * `description` - The description of `autovacuum_max_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_max_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_max_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_max_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_max_workers`.
+     * 
+     * ## autovacuum_naptime
+     * 
+     * The following arguments are supported in the `autovacuum_naptime` specification block:
+     * 
+     * * `description` - The description of `autovacuum_naptime`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_naptime`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_naptime`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_naptime` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_naptime`.
+     * 
+     * ## autovacuum_vacuum_cost_delay
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_delay` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_delay`.
+     * 
+     * ## autovacuum_vacuum_cost_limit
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_limit` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_limit`.
+     * 
+     * ## autovacuum_vacuum_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_scale_factor`.
+     * 
+     * ## autovacuum_vacuum_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_threshold`.
+     * 
+     * ## bgwriter_delay
+     * 
+     * The following arguments are supported in the `bgwriter_delay` specification block:
+     * 
+     * * `description` - The description of `bgwriter_delay`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_delay`.
+     * 
+     * ## bgwriter_flush_after
+     * 
+     * The following arguments are supported in the `bgwriter_flush_after` specification block:
+     * 
+     * * `description` - The description of `bgwriter_flush_after`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_flush_after`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_flush_after`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_flush_after`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_flush_after` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_flush_after`.
+     * 
+     * ## bgwriter_lru_maxpages
+     * 
+     * The following arguments are supported in the `bgwriter_lru_maxpages` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_maxpages`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_maxpages` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_maxpages`.
+     * 
+     * ## bgwriter_lru_multiplier
+     * 
+     * The following arguments are supported in the `bgwriter_lru_multiplier` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_multiplier`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_multiplier` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_multiplier`.
+     * 
+     * ## deadlock_timeout
+     * 
+     * The following arguments are supported in the `deadlock_timeout` specification block:
+     * 
+     * * `description` - The description of `deadlock_timeout`.
+     * 
+     * * `example` - An example of a valid value for `deadlock_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `deadlock_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `deadlock_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `deadlock_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `deadlock_timeout`.
+     * 
+     * ## default_toast_compression
+     * 
+     * The following arguments are supported in the `default_toast_compression` specification block:
+     * 
+     * * `description` - The description of `default_toast_compression`.
+     * 
+     * * `enum` - A list of valid compression methods for `default_toast_compression`.
+     * 
+     * * `example` - An example of a valid value for `default_toast_compression`.
+     * 
+     * * `requires_restart` - Whether changing the value of `default_toast_compression` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_toast_compression`.
+     * 
+     * ## idle_in_transaction_session_timeout
+     * 
+     * The following arguments are supported in the `idle_in_transaction_session_timeout` specification block:
+     * 
+     * * `description` - The description of `idle_in_transaction_session_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `idle_in_transaction_session_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `idle_in_transaction_session_timeout`.
+     * 
+     * ## jit
+     * 
+     * The following arguments are supported in the `jit` specification block:
+     * 
+     * * `description` - The description of `jit`.
+     * 
+     * * `example` - An example of a valid value for `jit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `jit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `jit`.
+     * 
+     * ## max_files_per_process
+     * 
+     * The following arguments are supported in the `max_files_per_process` specification block:
+     * 
+     * * `description` - The description of `max_files_per_process`.
+     * 
+     * * `maximum` - The maximum valid value for `max_files_per_process`.
+     * 
+     * * `minimum` - The minimum valid value for `max_files_per_process`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_files_per_process` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_files_per_process`.
+     * 
+     * ## max_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_locks_per_transaction`.
+     * 
+     * ## max_logical_replication_workers
+     * 
+     * The following arguments are supported in the `max_logical_replication_workers` specification block:
+     * 
+     * * `description` - The description of `max_logical_replication_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_logical_replication_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_logical_replication_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_logical_replication_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_logical_replication_workers`.
+     * 
+     * ## max_parallel_workers
+     * 
+     * The following arguments are supported in the `max_parallel_workers` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers`.
+     * 
+     * ## max_parallel_workers_per_gather
+     * 
+     * The following arguments are supported in the `max_parallel_workers_per_gather` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers_per_gather`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers_per_gather` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers_per_gather`.
+     * 
+     * ## max_pred_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_pred_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_pred_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_pred_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_pred_locks_per_transaction`.
+     * 
+     * ## max_replication_slots
+     * 
+     * The following arguments are supported in the `max_replication_slots` specification block:
+     * 
+     * * `description` - The description of `max_replication_slots`.
+     * 
+     * * `maximum` - The maximum valid value for `max_replication_slots`.
+     * 
+     * * `minimum` - The minimum valid value for `max_replication_slots`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_replication_slots` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_replication_slots`.
+     * 
+     * ## max_slot_wal_keep_size
+     * 
+     * The following arguments are supported in the `max_slot_wal_keep_size` specification block:
+     * 
+     * * `description` - The description of `max_slot_wal_keep_size`.
+     * 
+     * * `maximum` - The maximum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `minimum` - The minimum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_slot_wal_keep_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_slot_wal_keep_size`.
+     * 
+     * ## max_stack_depth
+     * 
+     * The following arguments are supported in the `max_stack_depth` specification block:
+     * 
+     * * `description` - The description of `max_stack_depth`.
+     * 
+     * * `maximum` - The maximum valid value for `max_stack_depth`.
+     * 
+     * * `minimum` - The minimum valid value for `max_stack_depth`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_stack_depth` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_stack_depth`.
+     * 
+     * ## max_standby_archive_delay
+     * 
+     * The following arguments are supported in the `max_standby_archive_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_archive_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_archive_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_archive_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_archive_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_archive_delay`.
+     * 
+     * ## max_standby_streaming_delay
+     * 
+     * The following arguments are supported in the `max_standby_streaming_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_streaming_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_streaming_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_streaming_delay`.
+     * 
+     * ## max_wal_senders
+     * 
+     * The following arguments are supported in the `max_wal_senders` specification block:
+     * 
+     * * `description` - The description of `max_wal_senders`.
+     * 
+     * * `maximum` - The maximum valid value for `max_wal_senders`.
+     * 
+     * * `minimum` - The minimum valid value for `max_wal_senders`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_wal_senders` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_wal_senders`.
+     * 
+     * ## max_worker_processes
+     * 
+     * The following arguments are supported in the `max_worker_processes` specification block:
+     * 
+     * * `description` - The description of `max_worker_processes`.
+     * 
+     * * `maximum` - The maximum valid value for `max_worker_processes`.
+     * 
+     * * `minimum` - The minimum valid value for `max_worker_processes`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_worker_processes` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_worker_processes`.
+     * 
+     * ## password_encryption
+     * 
+     * The following arguments are supported in the `password_encryption` specification block:
+     * 
+     * * `description` - The description of the `password_encryption` setting.
+     * 
+     * * `enum` - A list of valid values for the `password_encryption` setting.
+     * 
+     * * `example` - An example value for the `password_encryption` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `password_encryption` requires the DB to restart.
+     * 
+     * * `type` - A list of types for the `password_encryption` setting.
+     * 
+     * ## pg_partman_bgw_interval
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_interval` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_interval` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_interval` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_interval` setting.
+     * 
+     * ## pg_partman_bgw_role
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_role` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_role` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_role` setting.
+     * 
+     * * `maxLength` - The maximum length for the `pg_partman_bgw_role` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `pg_partman_bgw_role` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_role` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_role` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_enable_query_plan
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_enable_query_plan` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_enable_query_plan` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_max_buckets
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_max_buckets` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_max_buckets` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * ## pg_stat_statements_track
+     * 
+     * The following arguments are supported in the `pg_stat_statements_track` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_statements_track` setting.
+     * 
+     * * `enum` - A list of valid values for the `pg_stat_statements_track` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_statements_track` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_statements_track` setting.
+     * 
+     * ## temp_file_limit
+     * 
+     * The following arguments are supported in the `temp_file_limit` specification block:
+     * 
+     * * `description` - The description of the `temp_file_limit` setting.
+     * 
+     * * `example` - An example value for the `temp_file_limit` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `temp_file_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the `temp_file_limit` setting.
+     * 
+     * ## timezone
+     * 
+     * The following arguments are supported in the `timezone` specification block:
+     * 
+     * * `description` - The description of the `timezone` setting.
+     * 
+     * * `example` - An example value for the `timezone` setting.
+     * 
+     * * `maxLength` - The maximum length for the `timezone` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `timezone` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `timezone` requires the DB to restart.
+     * 
+     * * `type` - The type of the `timezone` setting.
+     * 
+     * ## track_activity_query_size
+     * 
+     * The following arguments are supported in the `track_activity_query_size` specification block:
+     * 
+     * * `description` - The description of the `track_activity_query_size` setting.
+     * 
+     * * `example` - An example value for the `track_activity_query_size` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_activity_query_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_activity_query_size` setting.
+     * 
+     * ## track_commit_timestamp
+     * 
+     * The following arguments are supported in the `track_commit_timestamp` specification block:
+     * 
+     * * `description` - The description of the `track_commit_timestamp` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_commit_timestamp` setting.
+     * 
+     * * `example` - An example value for the `track_commit_timestamp` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_commit_timestamp` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_commit_timestamp` setting.
+     * 
+     * ## track_functions
+     * 
+     * The following arguments are supported in the `track_functions` specification block:
+     * 
+     * * `description` - The description of the `track_functions` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_functions` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_functions` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_functions` setting.
+     * 
+     * ## track_io_timing
+     * 
+     * The following arguments are supported in the `track_io_timing` specification block:
+     * 
+     * * `description` - The description of the `track_io_timing` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_io_timing` setting.
+     * 
+     * * `example` - An example value for the `track_io_timing` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_io_timing` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_io_timing` setting.
+     * 
+     * ## wal_sender_timeout
+     * 
+     * The following arguments are supported in the `wal_sender_timeout` specification block:
+     * 
+     * * `description` - The description of the `wal_sender_timeout` setting.
+     * 
+     * * `example` - An example value for the `wal_sender_timeout` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_sender_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_sender_timeout` setting.
+     * 
+     * ## wal_writer_delay
+     * 
+     * The following arguments are supported in the `wal_writer_delay` specification block:
+     * 
+     * * `description` - The description of the `wal_writer_delay` setting.
+     * 
+     * * `example` - An example value for the `wal_writer_delay` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_writer_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_writer_delay` setting.
+     * 
+     */
+    public static Output<GetDatabasePostgresqlConfigResult> getDatabasePostgresqlConfig(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getDatabasePostgresqlConfig:getDatabasePostgresqlConfig", TypeShape.of(GetDatabasePostgresqlConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode PostgreSQL Database&#39;s Configuration Options.
+     * For more information, see the Linode APIv4 docs.
+     * 
+     * ## Example Usage
+     * 
+     * Get information about a PostgreSQL database&#39;s configuration options:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-db-config = LinodeFunctions.getDatabasePostgresqlConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## pg_stat_monitor_enable
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_enable` specification block:
+     * 
+     * * `description` - The description of `pg_stat_monitor_enable`.
+     * 
+     * * `requires_restart` - Whether changing the value `pg_stat_monitor_enable` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `pg_stat_monitor_enable`.
+     * 
+     * ## pglookout
+     * 
+     * The following arguments are supported in the `pglookout` specification block:
+     * 
+     * * `max_failover_replication_time_lag` - The maximum failover replication time lag for `pglookout`.
+     * 
+     * ## max_failover_replication_time_lag
+     * 
+     * The following arguments are supported in the `max_failover_replication_time_lag` specification block:
+     * 
+     * * `description` - The description of `max_failover_replication_time_lag`.
+     * 
+     * * `maximum` - The maximum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `minimum` - The minimum valid value for `max_failover_replication_time_lag`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_failover_replication_time_lag` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_failover_replication_time_lag`.
+     * 
+     * ## shared_buffers_percentage
+     * 
+     * The following arguments are supported in the `shared_buffers_percentage` specification block:
+     * 
+     * * `description` - The description of `shared_buffers_percentage`.
+     * 
+     * * `example` - An example of a valid value for `shared_buffers_percentage`.
+     * 
+     * * `maximum` - The maximum valid value for `shared_buffers_percentage`.
+     * 
+     * * `minimum` - The minimum valid value for `shared_buffers_percentage`.
+     * 
+     * * `requires_restart` - Whether changing the value of `shared_buffers_percentage` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `shared_buffers_percentage`.
+     * 
+     * ## work_mem
+     * 
+     * The following arguments are supported in the `work_mem` specification block:
+     * 
+     * * `description` - The description of `work_mem`.
+     * 
+     * * `example` - An example of a valid value for `work_mem`.
+     * 
+     * * `maximum` - The maximum valid value for `work_mem`.
+     * 
+     * * `minimum` - The minimum valid value for `work_mem`.
+     * 
+     * * `requires_restart` - Whether changing the value of `work_mem` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `work_mem`.
+     * 
+     * ## pg
+     * 
+     * The following arguments are supported in the `pg` specification block:
+     * 
+     * * `autovacuum_analyze_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_analyze_threshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * 
+     * * `autovacuum_max_workers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * 
+     * * `autovacuum_naptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * 
+     * * `autovacuum_vacuum_cost_delay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * 
+     * * `autovacuum_vacuum_cost_limit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * 
+     * * `autovacuum_vacuum_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * 
+     * * `autovacuum_vacuum_threshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * 
+     * * `bgwriter_delay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * 
+     * * `bgwriter_flush_after` - (Optional) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * 
+     * * `bgwriter_lru_maxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * 
+     * * `bgwriter_lru_multiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * 
+     * * `deadlock_timeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * 
+     * * `default_toast_compression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * 
+     * * `idle_in_transaction_session_timeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * 
+     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * 
+     * * `max_files_per_process` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * 
+     * * `max_locks_per_transaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * 
+     * * `max_logical_replication_workers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * 
+     * * `max_parallel_workers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * 
+     * * `max_parallel_workers_per_gather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * 
+     * * `max_pred_locks_per_transaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * 
+     * * `max_replication_slots` - (Optional) PostgreSQL maximum replication slots.
+     * 
+     * * `max_slot_wal_keep_size` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * 
+     * * `max_stack_depth` - (Optional) Maximum depth of the stack in bytes.
+     * 
+     * * `max_standby_archive_delay` - (Optional) Max standby archive delay in milliseconds.
+     * 
+     * * `max_standby_streaming_delay` - (Optional) Max standby streaming delay in milliseconds.
+     * 
+     * * `max_wal_senders` - (Optional) PostgreSQL maximum WAL senders.
+     * 
+     * * `max_worker_processes` - (Optional) Sets the maximum number of background processes that the system can support.
+     * 
+     * * `password_encryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * 
+     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * 
+     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * 
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * 
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * 
+     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * 
+     * * `temp_file_limit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * 
+     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * 
+     * * `track_activity_query_size` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * 
+     * * `track_commit_timestamp` - (Optional) Record commit time of transactions.
+     * 
+     * * `track_functions` - (Optional) Enables tracking of function call counts and time used.
+     * 
+     * * `track_io_timing` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * 
+     * * `wal_sender_timeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * 
+     * * `wal_writer_delay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * 
+     * ## autovacuum_analyze_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_scale_factor`.
+     * 
+     * ## autovacuum_analyze_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_analyze_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_analyze_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_analyze_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_analyze_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_analyze_threshold`.
+     * 
+     * ## autovacuum_max_workers
+     * 
+     * The following arguments are supported in the `autovacuum_max_workers` specification block:
+     * 
+     * * `description` - The description of `autovacuum_max_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_max_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_max_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_max_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_max_workers`.
+     * 
+     * ## autovacuum_naptime
+     * 
+     * The following arguments are supported in the `autovacuum_naptime` specification block:
+     * 
+     * * `description` - The description of `autovacuum_naptime`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_naptime`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_naptime`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_naptime` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_naptime`.
+     * 
+     * ## autovacuum_vacuum_cost_delay
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_delay` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_delay`.
+     * 
+     * ## autovacuum_vacuum_cost_limit
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_cost_limit` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_cost_limit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_cost_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_cost_limit`.
+     * 
+     * ## autovacuum_vacuum_scale_factor
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_scale_factor` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_scale_factor`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_scale_factor` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_scale_factor`.
+     * 
+     * ## autovacuum_vacuum_threshold
+     * 
+     * The following arguments are supported in the `autovacuum_vacuum_threshold` specification block:
+     * 
+     * * `description` - The description of `autovacuum_vacuum_threshold`.
+     * 
+     * * `maximum` - The maximum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `minimum` - The minimum valid value for `autovacuum_vacuum_threshold`.
+     * 
+     * * `requires_restart` - Whether changing the value of `autovacuum_vacuum_threshold` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `autovacuum_vacuum_threshold`.
+     * 
+     * ## bgwriter_delay
+     * 
+     * The following arguments are supported in the `bgwriter_delay` specification block:
+     * 
+     * * `description` - The description of `bgwriter_delay`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_delay`.
+     * 
+     * ## bgwriter_flush_after
+     * 
+     * The following arguments are supported in the `bgwriter_flush_after` specification block:
+     * 
+     * * `description` - The description of `bgwriter_flush_after`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_flush_after`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_flush_after`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_flush_after`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_flush_after` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_flush_after`.
+     * 
+     * ## bgwriter_lru_maxpages
+     * 
+     * The following arguments are supported in the `bgwriter_lru_maxpages` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_maxpages`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_maxpages`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_maxpages` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_maxpages`.
+     * 
+     * ## bgwriter_lru_multiplier
+     * 
+     * The following arguments are supported in the `bgwriter_lru_multiplier` specification block:
+     * 
+     * * `description` - The description of `bgwriter_lru_multiplier`.
+     * 
+     * * `example` - An example of a valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `maximum` - The maximum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `minimum` - The minimum valid value for `bgwriter_lru_multiplier`.
+     * 
+     * * `requires_restart` - Whether changing the value of `bgwriter_lru_multiplier` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `bgwriter_lru_multiplier`.
+     * 
+     * ## deadlock_timeout
+     * 
+     * The following arguments are supported in the `deadlock_timeout` specification block:
+     * 
+     * * `description` - The description of `deadlock_timeout`.
+     * 
+     * * `example` - An example of a valid value for `deadlock_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `deadlock_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `deadlock_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `deadlock_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `deadlock_timeout`.
+     * 
+     * ## default_toast_compression
+     * 
+     * The following arguments are supported in the `default_toast_compression` specification block:
+     * 
+     * * `description` - The description of `default_toast_compression`.
+     * 
+     * * `enum` - A list of valid compression methods for `default_toast_compression`.
+     * 
+     * * `example` - An example of a valid value for `default_toast_compression`.
+     * 
+     * * `requires_restart` - Whether changing the value of `default_toast_compression` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `default_toast_compression`.
+     * 
+     * ## idle_in_transaction_session_timeout
+     * 
+     * The following arguments are supported in the `idle_in_transaction_session_timeout` specification block:
+     * 
+     * * `description` - The description of `idle_in_transaction_session_timeout`.
+     * 
+     * * `maximum` - The maximum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `minimum` - The minimum valid value for `idle_in_transaction_session_timeout`.
+     * 
+     * * `requires_restart` - Whether changing the value of `idle_in_transaction_session_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `idle_in_transaction_session_timeout`.
+     * 
+     * ## jit
+     * 
+     * The following arguments are supported in the `jit` specification block:
+     * 
+     * * `description` - The description of `jit`.
+     * 
+     * * `example` - An example of a valid value for `jit`.
+     * 
+     * * `requires_restart` - Whether changing the value of `jit` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `jit`.
+     * 
+     * ## max_files_per_process
+     * 
+     * The following arguments are supported in the `max_files_per_process` specification block:
+     * 
+     * * `description` - The description of `max_files_per_process`.
+     * 
+     * * `maximum` - The maximum valid value for `max_files_per_process`.
+     * 
+     * * `minimum` - The minimum valid value for `max_files_per_process`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_files_per_process` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_files_per_process`.
+     * 
+     * ## max_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_locks_per_transaction`.
+     * 
+     * ## max_logical_replication_workers
+     * 
+     * The following arguments are supported in the `max_logical_replication_workers` specification block:
+     * 
+     * * `description` - The description of `max_logical_replication_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_logical_replication_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_logical_replication_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_logical_replication_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_logical_replication_workers`.
+     * 
+     * ## max_parallel_workers
+     * 
+     * The following arguments are supported in the `max_parallel_workers` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers`.
+     * 
+     * ## max_parallel_workers_per_gather
+     * 
+     * The following arguments are supported in the `max_parallel_workers_per_gather` specification block:
+     * 
+     * * `description` - The description of `max_parallel_workers_per_gather`.
+     * 
+     * * `maximum` - The maximum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `minimum` - The minimum valid value for `max_parallel_workers_per_gather`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_parallel_workers_per_gather` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_parallel_workers_per_gather`.
+     * 
+     * ## max_pred_locks_per_transaction
+     * 
+     * The following arguments are supported in the `max_pred_locks_per_transaction` specification block:
+     * 
+     * * `description` - The description of `max_pred_locks_per_transaction`.
+     * 
+     * * `maximum` - The maximum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `minimum` - The minimum valid value for `max_pred_locks_per_transaction`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_pred_locks_per_transaction` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_pred_locks_per_transaction`.
+     * 
+     * ## max_replication_slots
+     * 
+     * The following arguments are supported in the `max_replication_slots` specification block:
+     * 
+     * * `description` - The description of `max_replication_slots`.
+     * 
+     * * `maximum` - The maximum valid value for `max_replication_slots`.
+     * 
+     * * `minimum` - The minimum valid value for `max_replication_slots`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_replication_slots` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_replication_slots`.
+     * 
+     * ## max_slot_wal_keep_size
+     * 
+     * The following arguments are supported in the `max_slot_wal_keep_size` specification block:
+     * 
+     * * `description` - The description of `max_slot_wal_keep_size`.
+     * 
+     * * `maximum` - The maximum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `minimum` - The minimum valid value for `max_slot_wal_keep_size`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_slot_wal_keep_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_slot_wal_keep_size`.
+     * 
+     * ## max_stack_depth
+     * 
+     * The following arguments are supported in the `max_stack_depth` specification block:
+     * 
+     * * `description` - The description of `max_stack_depth`.
+     * 
+     * * `maximum` - The maximum valid value for `max_stack_depth`.
+     * 
+     * * `minimum` - The minimum valid value for `max_stack_depth`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_stack_depth` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_stack_depth`.
+     * 
+     * ## max_standby_archive_delay
+     * 
+     * The following arguments are supported in the `max_standby_archive_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_archive_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_archive_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_archive_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_archive_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_archive_delay`.
+     * 
+     * ## max_standby_streaming_delay
+     * 
+     * The following arguments are supported in the `max_standby_streaming_delay` specification block:
+     * 
+     * * `description` - The description of `max_standby_streaming_delay`.
+     * 
+     * * `maximum` - The maximum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `minimum` - The minimum valid value for `max_standby_streaming_delay`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_standby_streaming_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_standby_streaming_delay`.
+     * 
+     * ## max_wal_senders
+     * 
+     * The following arguments are supported in the `max_wal_senders` specification block:
+     * 
+     * * `description` - The description of `max_wal_senders`.
+     * 
+     * * `maximum` - The maximum valid value for `max_wal_senders`.
+     * 
+     * * `minimum` - The minimum valid value for `max_wal_senders`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_wal_senders` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_wal_senders`.
+     * 
+     * ## max_worker_processes
+     * 
+     * The following arguments are supported in the `max_worker_processes` specification block:
+     * 
+     * * `description` - The description of `max_worker_processes`.
+     * 
+     * * `maximum` - The maximum valid value for `max_worker_processes`.
+     * 
+     * * `minimum` - The minimum valid value for `max_worker_processes`.
+     * 
+     * * `requires_restart` - Whether changing the value of `max_worker_processes` requires the DB to restart.
+     * 
+     * * `type` - The type of the value of `max_worker_processes`.
+     * 
+     * ## password_encryption
+     * 
+     * The following arguments are supported in the `password_encryption` specification block:
+     * 
+     * * `description` - The description of the `password_encryption` setting.
+     * 
+     * * `enum` - A list of valid values for the `password_encryption` setting.
+     * 
+     * * `example` - An example value for the `password_encryption` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `password_encryption` requires the DB to restart.
+     * 
+     * * `type` - A list of types for the `password_encryption` setting.
+     * 
+     * ## pg_partman_bgw_interval
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_interval` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_interval` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_partman_bgw_interval` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_interval` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_interval` setting.
+     * 
+     * ## pg_partman_bgw_role
+     * 
+     * The following arguments are supported in the `pg_partman_bgw_role` specification block:
+     * 
+     * * `description` - The description of the `pg_partman_bgw_role` setting.
+     * 
+     * * `example` - An example value for the `pg_partman_bgw_role` setting.
+     * 
+     * * `maxLength` - The maximum length for the `pg_partman_bgw_role` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `pg_partman_bgw_role` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_partman_bgw_role` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_partman_bgw_role` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_enable_query_plan
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_enable_query_plan` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_enable_query_plan` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_enable_query_plan` setting.
+     * 
+     * ## pg_stat_monitor_pgsm_max_buckets
+     * 
+     * The following arguments are supported in the `pg_stat_monitor_pgsm_max_buckets` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `example` - An example value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_monitor_pgsm_max_buckets` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_monitor_pgsm_max_buckets` setting.
+     * 
+     * ## pg_stat_statements_track
+     * 
+     * The following arguments are supported in the `pg_stat_statements_track` specification block:
+     * 
+     * * `description` - The description of the `pg_stat_statements_track` setting.
+     * 
+     * * `enum` - A list of valid values for the `pg_stat_statements_track` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `pg_stat_statements_track` requires the DB to restart.
+     * 
+     * * `type` - The type of the `pg_stat_statements_track` setting.
+     * 
+     * ## temp_file_limit
+     * 
+     * The following arguments are supported in the `temp_file_limit` specification block:
+     * 
+     * * `description` - The description of the `temp_file_limit` setting.
+     * 
+     * * `example` - An example value for the `temp_file_limit` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `temp_file_limit` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `temp_file_limit` requires the DB to restart.
+     * 
+     * * `type` - The type of the `temp_file_limit` setting.
+     * 
+     * ## timezone
+     * 
+     * The following arguments are supported in the `timezone` specification block:
+     * 
+     * * `description` - The description of the `timezone` setting.
+     * 
+     * * `example` - An example value for the `timezone` setting.
+     * 
+     * * `maxLength` - The maximum length for the `timezone` setting.
+     * 
+     * * `pattern` - The regular expression pattern for validating the `timezone` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `timezone` requires the DB to restart.
+     * 
+     * * `type` - The type of the `timezone` setting.
+     * 
+     * ## track_activity_query_size
+     * 
+     * The following arguments are supported in the `track_activity_query_size` specification block:
+     * 
+     * * `description` - The description of the `track_activity_query_size` setting.
+     * 
+     * * `example` - An example value for the `track_activity_query_size` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `track_activity_query_size` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_activity_query_size` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_activity_query_size` setting.
+     * 
+     * ## track_commit_timestamp
+     * 
+     * The following arguments are supported in the `track_commit_timestamp` specification block:
+     * 
+     * * `description` - The description of the `track_commit_timestamp` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_commit_timestamp` setting.
+     * 
+     * * `example` - An example value for the `track_commit_timestamp` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_commit_timestamp` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_commit_timestamp` setting.
+     * 
+     * ## track_functions
+     * 
+     * The following arguments are supported in the `track_functions` specification block:
+     * 
+     * * `description` - The description of the `track_functions` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_functions` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_functions` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_functions` setting.
+     * 
+     * ## track_io_timing
+     * 
+     * The following arguments are supported in the `track_io_timing` specification block:
+     * 
+     * * `description` - The description of the `track_io_timing` setting.
+     * 
+     * * `enum` - A list of valid values for the `track_io_timing` setting.
+     * 
+     * * `example` - An example value for the `track_io_timing` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `track_io_timing` requires the DB to restart.
+     * 
+     * * `type` - The type of the `track_io_timing` setting.
+     * 
+     * ## wal_sender_timeout
+     * 
+     * The following arguments are supported in the `wal_sender_timeout` specification block:
+     * 
+     * * `description` - The description of the `wal_sender_timeout` setting.
+     * 
+     * * `example` - An example value for the `wal_sender_timeout` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_sender_timeout` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_sender_timeout` setting.
+     * 
+     * ## wal_writer_delay
+     * 
+     * The following arguments are supported in the `wal_writer_delay` specification block:
+     * 
+     * * `description` - The description of the `wal_writer_delay` setting.
+     * 
+     * * `example` - An example value for the `wal_writer_delay` setting.
+     * 
+     * * `maximum` - The maximum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `minimum` - The minimum allowed value for the `wal_writer_delay` setting.
+     * 
+     * * `requires_restart` - Whether changing the value of `wal_writer_delay` requires the DB to restart.
+     * 
+     * * `type` - The type of the `wal_writer_delay` setting.
+     * 
+     */
+    public static CompletableFuture<GetDatabasePostgresqlConfigResult> getDatabasePostgresqlConfigPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getDatabasePostgresqlConfig:getDatabasePostgresqlConfig", TypeShape.of(GetDatabasePostgresqlConfigResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode PostgreSQL Database.
@@ -19279,7 +28731,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about Object Storage quota information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
      * 
      * ## Example Usage
      * 
@@ -19324,7 +28776,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about Object Storage quota information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
      * 
      * ## Example Usage
      * 
@@ -19369,7 +28821,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about Object Storage quota information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
      * 
      * ## Example Usage
      * 
@@ -19414,7 +28866,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about Object Storage quota information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
      * 
      * ## Example Usage
      * 
@@ -19459,7 +28911,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about Object Storage quota information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
      * 
      * ## Example Usage
      * 
@@ -19504,7 +28956,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a list of Object Storage quotas information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
      * 
@@ -19568,7 +29020,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a list of Object Storage quotas information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
      * 
@@ -19632,7 +29084,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a list of Object Storage quotas information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
      * 
@@ -19696,7 +29148,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a list of Object Storage quotas information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
      * 
@@ -19760,7 +29212,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a list of Object Storage quotas information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
      * 
@@ -19824,7 +29276,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a list of Object Storage quotas information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
      * 
@@ -19888,7 +29340,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about a list of Object Storage quotas information on your account.
-     * For more information, see the Linode APIv4 docs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
      * 

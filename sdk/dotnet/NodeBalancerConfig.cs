@@ -41,6 +41,7 @@ namespace Pulumi.Linode
     ///         CheckPath = "/foo",
     ///         CheckAttempts = 3,
     ///         CheckTimeout = 30,
+    ///         UdpCheckPort = 12345,
     ///         Stickiness = "http_cookie",
     ///         Algorithm = "source",
     ///     });
@@ -176,6 +177,20 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("stickiness")]
         public Output<string> Stickiness { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+        /// 
+        /// * **NOTE: This argument may not be generally available.**
+        /// </summary>
+        [Output("udpCheckPort")]
+        public Output<int> UdpCheckPort { get; private set; } = null!;
+
+        /// <summary>
+        /// The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+        /// </summary>
+        [Output("udpSessionTimeout")]
+        public Output<int> UdpSessionTimeout { get; private set; } = null!;
 
 
         /// <summary>
@@ -347,6 +362,14 @@ namespace Pulumi.Linode
         [Input("stickiness")]
         public Input<string>? Stickiness { get; set; }
 
+        /// <summary>
+        /// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+        /// 
+        /// * **NOTE: This argument may not be generally available.**
+        /// </summary>
+        [Input("udpCheckPort")]
+        public Input<int>? UdpCheckPort { get; set; }
+
         public NodeBalancerConfigArgs()
         {
         }
@@ -498,6 +521,20 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("stickiness")]
         public Input<string>? Stickiness { get; set; }
+
+        /// <summary>
+        /// Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
+        /// 
+        /// * **NOTE: This argument may not be generally available.**
+        /// </summary>
+        [Input("udpCheckPort")]
+        public Input<int>? UdpCheckPort { get; set; }
+
+        /// <summary>
+        /// The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
+        /// </summary>
+        [Input("udpSessionTimeout")]
+        public Input<int>? UdpSessionTimeout { get; set; }
 
         public NodeBalancerConfigState()
         {

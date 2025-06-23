@@ -32,6 +32,21 @@ public final class GetNodebalancersNodebalancer extends com.pulumi.resources.Inv
     }
 
     /**
+     * Throttle UDP sessions per second (0-20).
+     * 
+     */
+    @Import(name="clientUdpSessThrottle", required=true)
+    private Integer clientUdpSessThrottle;
+
+    /**
+     * @return Throttle UDP sessions per second (0-20).
+     * 
+     */
+    public Integer clientUdpSessThrottle() {
+        return this.clientUdpSessThrottle;
+    }
+
+    /**
      * When this Linode NodeBalancer was created
      * 
      */
@@ -185,6 +200,7 @@ public final class GetNodebalancersNodebalancer extends com.pulumi.resources.Inv
 
     private GetNodebalancersNodebalancer(GetNodebalancersNodebalancer $) {
         this.clientConnThrottle = $.clientConnThrottle;
+        this.clientUdpSessThrottle = $.clientUdpSessThrottle;
         this.created = $.created;
         this.hostname = $.hostname;
         this.id = $.id;
@@ -223,6 +239,17 @@ public final class GetNodebalancersNodebalancer extends com.pulumi.resources.Inv
          */
         public Builder clientConnThrottle(Integer clientConnThrottle) {
             $.clientConnThrottle = clientConnThrottle;
+            return this;
+        }
+
+        /**
+         * @param clientUdpSessThrottle Throttle UDP sessions per second (0-20).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientUdpSessThrottle(Integer clientUdpSessThrottle) {
+            $.clientUdpSessThrottle = clientUdpSessThrottle;
             return this;
         }
 
@@ -359,6 +386,9 @@ public final class GetNodebalancersNodebalancer extends com.pulumi.resources.Inv
         public GetNodebalancersNodebalancer build() {
             if ($.clientConnThrottle == null) {
                 throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "clientConnThrottle");
+            }
+            if ($.clientUdpSessThrottle == null) {
+                throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "clientUdpSessThrottle");
             }
             if ($.created == null) {
                 throw new MissingRequiredPropertyException("GetNodebalancersNodebalancer", "created");
