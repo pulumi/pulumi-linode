@@ -1599,8 +1599,8 @@ github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2
 github.com/felixge/httpsnoop v1.0.4/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
 github.com/fogleman/gg v1.2.1-0.20190220221249-0403632d5b90/go.mod h1:R/bRT+9gY/C5z7JzPU0zXsXHKM4/ayA+zqcVNZzPa1k=
 github.com/fogleman/gg v1.3.0/go.mod h1:R/bRT+9gY/C5z7JzPU0zXsXHKM4/ayA+zqcVNZzPa1k=
-github.com/frankban/quicktest v1.14.4 h1:g2rn0vABPOOXmZUj+vbmUp0lPoXEMuhTpIluN0XL9UY=
-github.com/frankban/quicktest v1.14.4/go.mod h1:4ptaffx2x8+WTWXmUCuVU6aPUX1/Mz7zb5vbUoiM6w0=
+github.com/frankban/quicktest v1.14.3 h1:FJKSZTDHjyhriyC81FLQ0LY93eSai0ZyR/ZIkd3ZUKE=
+github.com/frankban/quicktest v1.14.3/go.mod h1:mgiwOwqx65TmIk1wJ6Q7wvnVMocbUorkibMOrVTHZps=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
 github.com/fsnotify/fsnotify v1.4.9/go.mod h1:znqG4EE+3YCdAaPaxE2ZRY/06pZUdp0tY4IgpuI1SZQ=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
@@ -1667,8 +1667,8 @@ github.com/goccy/go-json v0.9.11/go.mod h1:6MelG93GURQebXPDq3khkgXZkazVtN9CRI+MG
 github.com/goccy/go-json v0.10.2/go.mod h1:6MelG93GURQebXPDq3khkgXZkazVtN9CRI+MGFi0w8I=
 github.com/goccy/go-yaml v1.9.8/go.mod h1:JubOolP3gh0HpiBc4BLRD4YmjEjHAmIIB2aaXKkTfoE=
 github.com/goccy/go-yaml v1.11.0/go.mod h1:H+mJrWtjPTJAHvRbV09MCK9xYwODM+wRTVFFTWckfng=
-github.com/gofrs/uuid v4.3.1+incompatible h1:0/KbAdpx3UXAx1kEOWHJeOkpbgRFGHVgv+CFIY7dBJI=
-github.com/gofrs/uuid v4.3.1+incompatible/go.mod h1:b2aQJv3Z4Fp6yNu3cdSllBxTCLRxnplIgP/c0N/04lM=
+github.com/gofrs/uuid v4.2.0+incompatible h1:yyYWMnhkhrKwwr8gAOcOCYxOOscHgDS9yZgBrnJfGa0=
+github.com/gofrs/uuid v4.2.0+incompatible/go.mod h1:b2aQJv3Z4Fp6yNu3cdSllBxTCLRxnplIgP/c0N/04lM=
 github.com/gogo/protobuf v1.3.1/go.mod h1:SlYgWuQ5SjCEi6WLHjHCa1yvBfUnHcTbrrZtXPKa29o=
 github.com/gogo/protobuf v1.3.2 h1:Ov1cvc58UF3b5XjBnZv7+opcTcQFZebYjWzi34vdm4Q=
 github.com/gogo/protobuf v1.3.2/go.mod h1:P1XiOD3dCwIKUDQYPy72D8LYyHL2YPYrpS2s69NZV8Q=
@@ -1922,9 +1922,8 @@ github.com/hashicorp/terraform-plugin-log v0.9.0 h1:i7hOA+vdAItN1/7UrfBqBwvYPQ9T
 github.com/hashicorp/terraform-plugin-log v0.9.0/go.mod h1:rKL8egZQ/eXSyDqzLUuwUYLVdlYeamldAHSxjUFADow=
 github.com/hashicorp/terraform-plugin-mux v0.20.0 h1:3QpBnI9uCuL0Yy2Rq/kR9cOdmOFNhw88A2GoZtk5aXM=
 github.com/hashicorp/terraform-plugin-mux v0.20.0/go.mod h1:wSIZwJjSYk86NOTX3fKUlThMT4EAV1XpBHz9SAvjQr4=
+github.com/hashicorp/terraform-plugin-sdk v1.7.0 h1:B//oq0ZORG+EkVrIJy0uPGSonvmXqxSzXe8+GhknoW0=
 github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
-github.com/hashicorp/terraform-plugin-sdk v1.11.0 h1:qAI27eiSdIm0D+GCdlyGwtcWAYkjdVWC7OdS/3XcJq4=
-github.com/hashicorp/terraform-plugin-sdk v1.11.0/go.mod h1:HiWIPD/T9HixIhQUwaSoDQxo4BLFdmiBi/Qz5gjB8Q0=
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
 github.com/hashicorp/terraform-plugin-testing v1.13.1 h1:0nhSm8lngGTggqXptU4vunFI0S2XjLAhJg3RylC5aLw=
 github.com/hashicorp/terraform-plugin-testing v1.13.1/go.mod h1:b/hl6YZLm9fjeud/3goqh/gdqhZXbRfbHMkEiY9dZwc=
@@ -2022,8 +2021,6 @@ github.com/linode/linodego v1.52.1 h1:HJ1cz1n9n3chRP9UrtqmP91+xTi0Q5l+H/4z4tpkwg
 github.com/linode/linodego v1.52.1/go.mod h1:zEN2sX+cSdp67EuRY1HJiyuLujoa7HqvVwNEcJv3iXw=
 github.com/linode/linodego/k8s v1.25.2 h1:PY6S0sAD3xANVvM9WY38bz9GqMTjIbytC8IJJ9Cv23o=
 github.com/linode/linodego/k8s v1.25.2/go.mod h1:DC1XCSRZRGsmaa/ggpDPSDUmOM6aK1bhSIP6+f9Cwhc=
-github.com/linode/terraform-provider-linode/v2 v2.39.0 h1:vI/LEaZZjD//jcPl9TEpIUlG/9sytXutVUREr34V1ng=
-github.com/linode/terraform-provider-linode/v2 v2.39.0/go.mod h1:WzPHbvtSyJ2YP/K61gTiiq1Lb60dUz7B8+vivh11qXM=
 github.com/linode/terraform-provider-linode/v3 v3.0.0 h1:0IooilQYRJ1Rdb7VY7Hhltepq1qu53XVBRXriRM8QSY=
 github.com/linode/terraform-provider-linode/v3 v3.0.0/go.mod h1:3bYmd8BldgedVbDEFHKWbUR0ttIUeUNoGTNs9bYbs1s=
 github.com/lucasb-eyer/go-colorful v1.2.0 h1:1nnpGOrhyZZuNyfu1QjKiUICQ74+3FNCN69Aj6K7nkY=
@@ -2224,8 +2221,6 @@ github.com/pulumi/providertest v0.3.0 h1:Dv10aoFaNQBDRtK8cRbd2uk9vEhpC/NryN+0y7N
 github.com/pulumi/providertest v0.3.0/go.mod h1:aTxVfdxP/Pe0iPbokjBp99x0XaY4fkZB2CjIS5wysMs=
 github.com/pulumi/pulumi-java/pkg v1.12.0 h1:T7yFnFr0bgqy6huVUANMyUeGO1/Y3r2CJJ6S5YQDQCU=
 github.com/pulumi/pulumi-java/pkg v1.12.0/go.mod h1:g8QQjEgB5wTsZptyf1vbIcI/pgYEGJObnihAEgymkAo=
-github.com/pulumi/pulumi-linode/provider/v4 v4.0.0-20250618062429-21d7f4439125 h1:sAiHi4+i/xn1mME8nAxexqNhFEUTVy0Pl2YFofS5m1I=
-github.com/pulumi/pulumi-linode/provider/v4 v4.0.0-20250618062429-21d7f4439125/go.mod h1:IuQgtK5/uZq3CBliu2m9aXSdJtV6FpkK/WVg+y9toOk=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.110.0 h1:dSrgT3BVGDtmFZtIyT1fyO3nJ7mFt4/WEoGXoiym0tQ=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.110.0/go.mod h1:u/wPklZlf0stCHcpZBncPau9h8p5QoCwZeKEds/O0FM=
 github.com/pulumi/pulumi-yaml v1.19.1 h1:Y92eTQv07p5RbbNj6s/54+ibdPgvndLJ2Lb1IjYffng=
