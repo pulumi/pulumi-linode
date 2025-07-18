@@ -2012,6 +2012,10 @@ export interface GetLkeClusterPool {
      */
     id?: number;
     /**
+     * The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     */
+    k8sVersion?: string;
+    /**
      * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
      */
     labels?: {[key: string]: string};
@@ -2031,6 +2035,10 @@ export interface GetLkeClusterPool {
      * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type?: string;
+    /**
+     * The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     */
+    updateStrategy?: string;
 }
 
 export interface GetLkeClusterPoolArgs {
@@ -2055,6 +2063,10 @@ export interface GetLkeClusterPoolArgs {
      */
     id?: pulumi.Input<number>;
     /**
+     * The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     */
+    k8sVersion?: pulumi.Input<string>;
+    /**
      * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2074,6 +2086,10 @@ export interface GetLkeClusterPoolArgs {
      * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type?: pulumi.Input<string>;
+    /**
+     * The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     */
+    updateStrategy?: pulumi.Input<string>;
 }
 
 export interface GetLkeClusterPoolAutoscaler {
@@ -6457,6 +6473,10 @@ export interface LkeClusterPool {
      */
     id?: pulumi.Input<number>;
     /**
+     * The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     */
+    k8sVersion?: pulumi.Input<string>;
+    /**
      * A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -6476,6 +6496,10 @@ export interface LkeClusterPool {
      * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
     type: pulumi.Input<string>;
+    /**
+     * The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     */
+    updateStrategy?: pulumi.Input<string>;
 }
 
 export interface LkeClusterPoolAutoscaler {

@@ -77,7 +77,7 @@ export interface GetLkeClusterResult {
      */
     readonly id: number;
     /**
-     * The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+     * The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
     readonly k8sVersion: string;
     /**

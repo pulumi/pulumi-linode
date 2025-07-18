@@ -3125,6 +3125,10 @@ class LkeClusterPool(dict):
         suggest = None
         if key == "diskEncryption":
             suggest = "disk_encryption"
+        elif key == "k8sVersion":
+            suggest = "k8s_version"
+        elif key == "updateStrategy":
+            suggest = "update_strategy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in LkeClusterPool. Access the value via the '{suggest}' property getter instead.")
@@ -3143,20 +3147,24 @@ class LkeClusterPool(dict):
                  count: Optional[builtins.int] = None,
                  disk_encryption: Optional[builtins.str] = None,
                  id: Optional[builtins.int] = None,
+                 k8s_version: Optional[builtins.str] = None,
                  labels: Optional[Mapping[str, builtins.str]] = None,
                  nodes: Optional[Sequence['outputs.LkeClusterPoolNode']] = None,
                  tags: Optional[Sequence[builtins.str]] = None,
-                 taints: Optional[Sequence['outputs.LkeClusterPoolTaint']] = None):
+                 taints: Optional[Sequence['outputs.LkeClusterPoolTaint']] = None,
+                 update_strategy: Optional[builtins.str] = None):
         """
         :param builtins.str type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param 'LkeClusterPoolAutoscalerArgs' autoscaler: When specified, the number of nodes autoscales within the defined minimum and maximum values.
         :param builtins.int count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param builtins.str disk_encryption: The disk encryption policy for nodes in this pool.
         :param builtins.int id: The ID of the node.
+        :param builtins.str k8s_version: The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param Mapping[str, builtins.str] labels: A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
         :param Sequence['LkeClusterPoolNodeArgs'] nodes: The nodes in the node pool.
         :param Sequence[builtins.str] tags: A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
         :param Sequence['LkeClusterPoolTaintArgs'] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        :param builtins.str update_strategy: The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
         """
         pulumi.set(__self__, "type", type)
         if autoscaler is not None:
@@ -3167,6 +3175,8 @@ class LkeClusterPool(dict):
             pulumi.set(__self__, "disk_encryption", disk_encryption)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if k8s_version is not None:
+            pulumi.set(__self__, "k8s_version", k8s_version)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if nodes is not None:
@@ -3175,6 +3185,8 @@ class LkeClusterPool(dict):
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if update_strategy is not None:
+            pulumi.set(__self__, "update_strategy", update_strategy)
 
     @property
     @pulumi.getter
@@ -3217,6 +3229,14 @@ class LkeClusterPool(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="k8sVersion")
+    def k8s_version(self) -> Optional[builtins.str]:
+        """
+        The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        """
+        return pulumi.get(self, "k8s_version")
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, builtins.str]]:
         """
@@ -3247,6 +3267,14 @@ class LkeClusterPool(dict):
         Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> Optional[builtins.str]:
+        """
+        The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+        """
+        return pulumi.get(self, "update_strategy")
 
 
 @pulumi.output_type
@@ -12936,10 +12964,12 @@ class GetLkeClusterPoolResult(dict):
                  count: builtins.int,
                  disk_encryption: builtins.str,
                  id: builtins.int,
+                 k8s_version: builtins.str,
                  labels: Mapping[str, builtins.str],
                  tags: Sequence[builtins.str],
                  taints: Sequence['outputs.GetLkeClusterPoolTaintResult'],
                  type: builtins.str,
+                 update_strategy: builtins.str,
                  autoscalers: Optional[Sequence['outputs.GetLkeClusterPoolAutoscalerResult']] = None,
                  disks: Optional[Sequence['outputs.GetLkeClusterPoolDiskResult']] = None,
                  nodes: Optional[Sequence['outputs.GetLkeClusterPoolNodeResult']] = None):
@@ -12947,10 +12977,12 @@ class GetLkeClusterPoolResult(dict):
         :param builtins.int count: The number of nodes in the Node Pool.
         :param builtins.str disk_encryption: The disk encryption policy for nodes in this pool.
         :param builtins.int id: The LKE Cluster's ID.
+        :param builtins.str k8s_version: The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param Mapping[str, builtins.str] labels: Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
         :param Sequence[builtins.str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param Sequence['GetLkeClusterPoolTaintArgs'] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
         :param builtins.str type: The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        :param builtins.str update_strategy: The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param Sequence['GetLkeClusterPoolAutoscalerArgs'] autoscalers: The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
         :param Sequence['GetLkeClusterPoolDiskArgs'] disks: This Node Pool’s custom disk layout.
         :param Sequence['GetLkeClusterPoolNodeArgs'] nodes: The nodes in the Node Pool.
@@ -12958,10 +12990,12 @@ class GetLkeClusterPoolResult(dict):
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "disk_encryption", disk_encryption)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "k8s_version", k8s_version)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "update_strategy", update_strategy)
         if autoscalers is not None:
             pulumi.set(__self__, "autoscalers", autoscalers)
         if disks is not None:
@@ -12994,6 +13028,14 @@ class GetLkeClusterPoolResult(dict):
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="k8sVersion")
+    def k8s_version(self) -> builtins.str:
+        """
+        The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        """
+        return pulumi.get(self, "k8s_version")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, builtins.str]:
         """
@@ -13024,6 +13066,14 @@ class GetLkeClusterPoolResult(dict):
         The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="updateStrategy")
+    def update_strategy(self) -> builtins.str:
+        """
+        The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+        """
+        return pulumi.get(self, "update_strategy")
 
     @property
     @pulumi.getter

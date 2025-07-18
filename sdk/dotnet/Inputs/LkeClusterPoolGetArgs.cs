@@ -36,6 +36,12 @@ namespace Pulumi.Linode.Inputs
         [Input("id")]
         public Input<int>? Id { get; set; }
 
+        /// <summary>
+        /// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        /// </summary>
+        [Input("k8sVersion")]
+        public Input<string>? K8sVersion { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -89,6 +95,12 @@ namespace Pulumi.Linode.Inputs
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
+
+        /// <summary>
+        /// The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+        /// </summary>
+        [Input("updateStrategy")]
+        public Input<string>? UpdateStrategy { get; set; }
 
         public LkeClusterPoolGetArgs()
         {
