@@ -83,6 +83,21 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    @Import(name="k8sVersion")
+    private @Nullable Output<String> k8sVersion;
+
+    /**
+     * @return The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    public Optional<Output<String>> k8sVersion() {
+        return Optional.ofNullable(this.k8sVersion);
+    }
+
+    /**
      * A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      * 
      */
@@ -157,6 +172,21 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         return this.type;
     }
 
+    /**
+     * The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    @Import(name="updateStrategy")
+    private @Nullable Output<String> updateStrategy;
+
+    /**
+     * @return The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    public Optional<Output<String>> updateStrategy() {
+        return Optional.ofNullable(this.updateStrategy);
+    }
+
     private LkeClusterPoolArgs() {}
 
     private LkeClusterPoolArgs(LkeClusterPoolArgs $) {
@@ -164,11 +194,13 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         this.count = $.count;
         this.diskEncryption = $.diskEncryption;
         this.id = $.id;
+        this.k8sVersion = $.k8sVersion;
         this.labels = $.labels;
         this.nodes = $.nodes;
         this.tags = $.tags;
         this.taints = $.taints;
         this.type = $.type;
+        this.updateStrategy = $.updateStrategy;
     }
 
     public static Builder builder() {
@@ -271,6 +303,27 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder id(Integer id) {
             return id(Output.of(id));
+        }
+
+        /**
+         * @param k8sVersion The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder k8sVersion(@Nullable Output<String> k8sVersion) {
+            $.k8sVersion = k8sVersion;
+            return this;
+        }
+
+        /**
+         * @param k8sVersion The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder k8sVersion(String k8sVersion) {
+            return k8sVersion(Output.of(k8sVersion));
         }
 
         /**
@@ -406,6 +459,27 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param updateStrategy The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateStrategy(@Nullable Output<String> updateStrategy) {
+            $.updateStrategy = updateStrategy;
+            return this;
+        }
+
+        /**
+         * @param updateStrategy The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateStrategy(String updateStrategy) {
+            return updateStrategy(Output.of(updateStrategy));
         }
 
         public LkeClusterPoolArgs build() {

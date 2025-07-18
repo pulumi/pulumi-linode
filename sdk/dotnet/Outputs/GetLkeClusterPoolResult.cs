@@ -34,6 +34,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int Id;
         /// <summary>
+        /// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        /// </summary>
+        public readonly string K8sVersion;
+        /// <summary>
         /// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -53,6 +57,10 @@ namespace Pulumi.Linode.Outputs
         /// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+        /// </summary>
+        public readonly string UpdateStrategy;
 
         [OutputConstructor]
         private GetLkeClusterPoolResult(
@@ -66,6 +74,8 @@ namespace Pulumi.Linode.Outputs
 
             int id,
 
+            string k8sVersion,
+
             ImmutableDictionary<string, string> labels,
 
             ImmutableArray<Outputs.GetLkeClusterPoolNodeResult> nodes,
@@ -74,18 +84,22 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.GetLkeClusterPoolTaintResult> taints,
 
-            string type)
+            string type,
+
+            string updateStrategy)
         {
             Autoscalers = autoscalers;
             Count = count;
             DiskEncryption = diskEncryption;
             Disks = disks;
             Id = id;
+            K8sVersion = k8sVersion;
             Labels = labels;
             Nodes = nodes;
             Tags = tags;
             Taints = taints;
             Type = type;
+            UpdateStrategy = updateStrategy;
         }
     }
 }

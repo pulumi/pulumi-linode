@@ -44,6 +44,11 @@ public final class GetLkeClusterPool {
      */
     private Integer id;
     /**
+     * @return The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    private String k8sVersion;
+    /**
      * @return Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
      * 
      */
@@ -68,6 +73,11 @@ public final class GetLkeClusterPool {
      * 
      */
     private String type;
+    /**
+     * @return The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    private String updateStrategy;
 
     private GetLkeClusterPool() {}
     /**
@@ -106,6 +116,13 @@ public final class GetLkeClusterPool {
         return this.id;
     }
     /**
+     * @return The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    public String k8sVersion() {
+        return this.k8sVersion;
+    }
+    /**
      * @return Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
      * 
      */
@@ -140,6 +157,13 @@ public final class GetLkeClusterPool {
     public String type() {
         return this.type;
     }
+    /**
+     * @return The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    public String updateStrategy() {
+        return this.updateStrategy;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -155,11 +179,13 @@ public final class GetLkeClusterPool {
         private String diskEncryption;
         private @Nullable List<GetLkeClusterPoolDisk> disks;
         private Integer id;
+        private String k8sVersion;
         private Map<String,String> labels;
         private @Nullable List<GetLkeClusterPoolNode> nodes;
         private List<String> tags;
         private List<GetLkeClusterPoolTaint> taints;
         private String type;
+        private String updateStrategy;
         public Builder() {}
         public Builder(GetLkeClusterPool defaults) {
     	      Objects.requireNonNull(defaults);
@@ -168,11 +194,13 @@ public final class GetLkeClusterPool {
     	      this.diskEncryption = defaults.diskEncryption;
     	      this.disks = defaults.disks;
     	      this.id = defaults.id;
+    	      this.k8sVersion = defaults.k8sVersion;
     	      this.labels = defaults.labels;
     	      this.nodes = defaults.nodes;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
     	      this.type = defaults.type;
+    	      this.updateStrategy = defaults.updateStrategy;
         }
 
         @CustomType.Setter
@@ -215,6 +243,14 @@ public final class GetLkeClusterPool {
               throw new MissingRequiredPropertyException("GetLkeClusterPool", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder k8sVersion(String k8sVersion) {
+            if (k8sVersion == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "k8sVersion");
+            }
+            this.k8sVersion = k8sVersion;
             return this;
         }
         @CustomType.Setter
@@ -264,6 +300,14 @@ public final class GetLkeClusterPool {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder updateStrategy(String updateStrategy) {
+            if (updateStrategy == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "updateStrategy");
+            }
+            this.updateStrategy = updateStrategy;
+            return this;
+        }
         public GetLkeClusterPool build() {
             final var _resultValue = new GetLkeClusterPool();
             _resultValue.autoscalers = autoscalers;
@@ -271,11 +315,13 @@ public final class GetLkeClusterPool {
             _resultValue.diskEncryption = diskEncryption;
             _resultValue.disks = disks;
             _resultValue.id = id;
+            _resultValue.k8sVersion = k8sVersion;
             _resultValue.labels = labels;
             _resultValue.nodes = nodes;
             _resultValue.tags = tags;
             _resultValue.taints = taints;
             _resultValue.type = type;
+            _resultValue.updateStrategy = updateStrategy;
             return _resultValue;
         }
     }

@@ -99,6 +99,21 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    @Import(name="k8sVersion", required=true)
+    private Output<String> k8sVersion;
+
+    /**
+     * @return The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    public Output<String> k8sVersion() {
+        return this.k8sVersion;
+    }
+
+    /**
      * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
      * 
      */
@@ -173,6 +188,21 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
         return this.type;
     }
 
+    /**
+     * The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    @Import(name="updateStrategy", required=true)
+    private Output<String> updateStrategy;
+
+    /**
+     * @return The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    public Output<String> updateStrategy() {
+        return this.updateStrategy;
+    }
+
     private GetLkeClusterPoolArgs() {}
 
     private GetLkeClusterPoolArgs(GetLkeClusterPoolArgs $) {
@@ -181,11 +211,13 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
         this.diskEncryption = $.diskEncryption;
         this.disks = $.disks;
         this.id = $.id;
+        this.k8sVersion = $.k8sVersion;
         this.labels = $.labels;
         this.nodes = $.nodes;
         this.tags = $.tags;
         this.taints = $.taints;
         this.type = $.type;
+        this.updateStrategy = $.updateStrategy;
     }
 
     public static Builder builder() {
@@ -332,6 +364,27 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param k8sVersion The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder k8sVersion(Output<String> k8sVersion) {
+            $.k8sVersion = k8sVersion;
+            return this;
+        }
+
+        /**
+         * @param k8sVersion The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder k8sVersion(String k8sVersion) {
+            return k8sVersion(Output.of(k8sVersion));
+        }
+
+        /**
          * @param labels Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
          * 
          * @return builder
@@ -466,6 +519,27 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
             return type(Output.of(type));
         }
 
+        /**
+         * @param updateStrategy The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateStrategy(Output<String> updateStrategy) {
+            $.updateStrategy = updateStrategy;
+            return this;
+        }
+
+        /**
+         * @param updateStrategy The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateStrategy(String updateStrategy) {
+            return updateStrategy(Output.of(updateStrategy));
+        }
+
         public GetLkeClusterPoolArgs build() {
             if ($.count == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "count");
@@ -475,6 +549,9 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
             }
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "id");
+            }
+            if ($.k8sVersion == null) {
+                throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "k8sVersion");
             }
             if ($.labels == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "labels");
@@ -487,6 +564,9 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "type");
+            }
+            if ($.updateStrategy == null) {
+                throw new MissingRequiredPropertyException("GetLkeClusterPoolArgs", "updateStrategy");
             }
             return $;
         }

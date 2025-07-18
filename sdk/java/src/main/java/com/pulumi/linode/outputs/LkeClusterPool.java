@@ -39,6 +39,11 @@ public final class LkeClusterPool {
      */
     private @Nullable Integer id;
     /**
+     * @return The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    private @Nullable String k8sVersion;
+    /**
      * @return A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      * 
      */
@@ -63,6 +68,11 @@ public final class LkeClusterPool {
      * 
      */
     private String type;
+    /**
+     * @return The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    private @Nullable String updateStrategy;
 
     private LkeClusterPool() {}
     /**
@@ -92,6 +102,13 @@ public final class LkeClusterPool {
      */
     public Optional<Integer> id() {
         return Optional.ofNullable(this.id);
+    }
+    /**
+     * @return The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    public Optional<String> k8sVersion() {
+        return Optional.ofNullable(this.k8sVersion);
     }
     /**
      * @return A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
@@ -128,6 +145,13 @@ public final class LkeClusterPool {
     public String type() {
         return this.type;
     }
+    /**
+     * @return The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    public Optional<String> updateStrategy() {
+        return Optional.ofNullable(this.updateStrategy);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -142,11 +166,13 @@ public final class LkeClusterPool {
         private @Nullable Integer count;
         private @Nullable String diskEncryption;
         private @Nullable Integer id;
+        private @Nullable String k8sVersion;
         private @Nullable Map<String,String> labels;
         private @Nullable List<LkeClusterPoolNode> nodes;
         private @Nullable List<String> tags;
         private @Nullable List<LkeClusterPoolTaint> taints;
         private String type;
+        private @Nullable String updateStrategy;
         public Builder() {}
         public Builder(LkeClusterPool defaults) {
     	      Objects.requireNonNull(defaults);
@@ -154,11 +180,13 @@ public final class LkeClusterPool {
     	      this.count = defaults.count;
     	      this.diskEncryption = defaults.diskEncryption;
     	      this.id = defaults.id;
+    	      this.k8sVersion = defaults.k8sVersion;
     	      this.labels = defaults.labels;
     	      this.nodes = defaults.nodes;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
     	      this.type = defaults.type;
+    	      this.updateStrategy = defaults.updateStrategy;
         }
 
         @CustomType.Setter
@@ -183,6 +211,12 @@ public final class LkeClusterPool {
         public Builder id(@Nullable Integer id) {
 
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder k8sVersion(@Nullable String k8sVersion) {
+
+            this.k8sVersion = k8sVersion;
             return this;
         }
         @CustomType.Setter
@@ -226,17 +260,25 @@ public final class LkeClusterPool {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder updateStrategy(@Nullable String updateStrategy) {
+
+            this.updateStrategy = updateStrategy;
+            return this;
+        }
         public LkeClusterPool build() {
             final var _resultValue = new LkeClusterPool();
             _resultValue.autoscaler = autoscaler;
             _resultValue.count = count;
             _resultValue.diskEncryption = diskEncryption;
             _resultValue.id = id;
+            _resultValue.k8sVersion = k8sVersion;
             _resultValue.labels = labels;
             _resultValue.nodes = nodes;
             _resultValue.tags = tags;
             _resultValue.taints = taints;
             _resultValue.type = type;
+            _resultValue.updateStrategy = updateStrategy;
             return _resultValue;
         }
     }

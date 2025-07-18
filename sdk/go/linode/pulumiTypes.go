@@ -6692,6 +6692,8 @@ type LkeClusterPool struct {
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// The ID of the node.
 	Id *int `pulumi:"id"`
+	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+	K8sVersion *string `pulumi:"k8sVersion"`
 	// A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The nodes in the node pool.
@@ -6702,6 +6704,8 @@ type LkeClusterPool struct {
 	Taints []LkeClusterPoolTaint `pulumi:"taints"`
 	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
+	// The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+	UpdateStrategy *string `pulumi:"updateStrategy"`
 }
 
 // LkeClusterPoolInput is an input type that accepts LkeClusterPoolArgs and LkeClusterPoolOutput values.
@@ -6724,6 +6728,8 @@ type LkeClusterPoolArgs struct {
 	DiskEncryption pulumi.StringPtrInput `pulumi:"diskEncryption"`
 	// The ID of the node.
 	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+	K8sVersion pulumi.StringPtrInput `pulumi:"k8sVersion"`
 	// A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The nodes in the node pool.
@@ -6734,6 +6740,8 @@ type LkeClusterPoolArgs struct {
 	Taints LkeClusterPoolTaintArrayInput `pulumi:"taints"`
 	// A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput `pulumi:"type"`
+	// The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+	UpdateStrategy pulumi.StringPtrInput `pulumi:"updateStrategy"`
 }
 
 func (LkeClusterPoolArgs) ElementType() reflect.Type {
@@ -6807,6 +6815,11 @@ func (o LkeClusterPoolOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LkeClusterPool) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
+// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+func (o LkeClusterPoolOutput) K8sVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LkeClusterPool) *string { return v.K8sVersion }).(pulumi.StringPtrOutput)
+}
+
 // A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
 func (o LkeClusterPoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LkeClusterPool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -6830,6 +6843,11 @@ func (o LkeClusterPoolOutput) Taints() LkeClusterPoolTaintArrayOutput {
 // A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 func (o LkeClusterPoolOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LkeClusterPool) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+func (o LkeClusterPoolOutput) UpdateStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LkeClusterPool) *string { return v.UpdateStrategy }).(pulumi.StringPtrOutput)
 }
 
 type LkeClusterPoolArrayOutput struct{ *pulumi.OutputState }
@@ -27392,6 +27410,8 @@ type GetLkeClusterPool struct {
 	Disks []GetLkeClusterPoolDisk `pulumi:"disks"`
 	// The LKE Cluster's ID.
 	Id int `pulumi:"id"`
+	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+	K8sVersion string `pulumi:"k8sVersion"`
 	// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
 	Labels map[string]string `pulumi:"labels"`
 	// The nodes in the Node Pool.
@@ -27402,6 +27422,8 @@ type GetLkeClusterPool struct {
 	Taints []GetLkeClusterPoolTaint `pulumi:"taints"`
 	// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
+	// The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+	UpdateStrategy string `pulumi:"updateStrategy"`
 }
 
 // GetLkeClusterPoolInput is an input type that accepts GetLkeClusterPoolArgs and GetLkeClusterPoolOutput values.
@@ -27426,6 +27448,8 @@ type GetLkeClusterPoolArgs struct {
 	Disks GetLkeClusterPoolDiskArrayInput `pulumi:"disks"`
 	// The LKE Cluster's ID.
 	Id pulumi.IntInput `pulumi:"id"`
+	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+	K8sVersion pulumi.StringInput `pulumi:"k8sVersion"`
 	// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The nodes in the Node Pool.
@@ -27436,6 +27460,8 @@ type GetLkeClusterPoolArgs struct {
 	Taints GetLkeClusterPoolTaintArrayInput `pulumi:"taints"`
 	// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput `pulumi:"type"`
+	// The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+	UpdateStrategy pulumi.StringInput `pulumi:"updateStrategy"`
 }
 
 func (GetLkeClusterPoolArgs) ElementType() reflect.Type {
@@ -27514,6 +27540,11 @@ func (o GetLkeClusterPoolOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+func (o GetLkeClusterPoolOutput) K8sVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) string { return v.K8sVersion }).(pulumi.StringOutput)
+}
+
 // Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
 func (o GetLkeClusterPoolOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -27537,6 +27568,11 @@ func (o GetLkeClusterPoolOutput) Taints() GetLkeClusterPoolTaintArrayOutput {
 // The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 func (o GetLkeClusterPoolOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+func (o GetLkeClusterPoolOutput) UpdateStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) string { return v.UpdateStrategy }).(pulumi.StringOutput)
 }
 
 type GetLkeClusterPoolArrayOutput struct{ *pulumi.OutputState }

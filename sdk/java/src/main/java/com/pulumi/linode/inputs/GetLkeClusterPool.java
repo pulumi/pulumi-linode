@@ -98,6 +98,21 @@ public final class GetLkeClusterPool extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    @Import(name="k8sVersion", required=true)
+    private String k8sVersion;
+
+    /**
+     * @return The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    public String k8sVersion() {
+        return this.k8sVersion;
+    }
+
+    /**
      * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
      * 
      */
@@ -172,6 +187,21 @@ public final class GetLkeClusterPool extends com.pulumi.resources.InvokeArgs {
         return this.type;
     }
 
+    /**
+     * The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    @Import(name="updateStrategy", required=true)
+    private String updateStrategy;
+
+    /**
+     * @return The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+     * 
+     */
+    public String updateStrategy() {
+        return this.updateStrategy;
+    }
+
     private GetLkeClusterPool() {}
 
     private GetLkeClusterPool(GetLkeClusterPool $) {
@@ -180,11 +210,13 @@ public final class GetLkeClusterPool extends com.pulumi.resources.InvokeArgs {
         this.diskEncryption = $.diskEncryption;
         this.disks = $.disks;
         this.id = $.id;
+        this.k8sVersion = $.k8sVersion;
         this.labels = $.labels;
         this.nodes = $.nodes;
         this.tags = $.tags;
         this.taints = $.taints;
         this.type = $.type;
+        this.updateStrategy = $.updateStrategy;
     }
 
     public static Builder builder() {
@@ -281,6 +313,17 @@ public final class GetLkeClusterPool extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param k8sVersion The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder k8sVersion(String k8sVersion) {
+            $.k8sVersion = k8sVersion;
+            return this;
+        }
+
+        /**
          * @param labels Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
          * 
          * @return builder
@@ -365,6 +408,17 @@ public final class GetLkeClusterPool extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param updateStrategy The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateStrategy(String updateStrategy) {
+            $.updateStrategy = updateStrategy;
+            return this;
+        }
+
         public GetLkeClusterPool build() {
             if ($.count == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPool", "count");
@@ -374,6 +428,9 @@ public final class GetLkeClusterPool extends com.pulumi.resources.InvokeArgs {
             }
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPool", "id");
+            }
+            if ($.k8sVersion == null) {
+                throw new MissingRequiredPropertyException("GetLkeClusterPool", "k8sVersion");
             }
             if ($.labels == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPool", "labels");
@@ -386,6 +443,9 @@ public final class GetLkeClusterPool extends com.pulumi.resources.InvokeArgs {
             }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterPool", "type");
+            }
+            if ($.updateStrategy == null) {
+                throw new MissingRequiredPropertyException("GetLkeClusterPool", "updateStrategy");
             }
             return $;
         }

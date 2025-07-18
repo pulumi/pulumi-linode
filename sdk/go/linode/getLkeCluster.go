@@ -73,7 +73,7 @@ type LookupLkeClusterResult struct {
 	DashboardUrl string `pulumi:"dashboardUrl"`
 	// The ID of the node.
 	Id int `pulumi:"id"`
-	// The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion string `pulumi:"k8sVersion"`
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
 	Kubeconfig string `pulumi:"kubeconfig"`
@@ -161,7 +161,7 @@ func (o LookupLkeClusterResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 func (o LookupLkeClusterResultOutput) K8sVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.K8sVersion }).(pulumi.StringOutput)
 }

@@ -47,7 +47,7 @@ public final class GetLkeClusterResult {
      */
     private Integer id;
     /**
-     * @return The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+     * @return The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      * 
      */
     private String k8sVersion;
@@ -136,7 +136,7 @@ public final class GetLkeClusterResult {
         return this.id;
     }
     /**
-     * @return The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
+     * @return The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      * 
      */
     public String k8sVersion() {
