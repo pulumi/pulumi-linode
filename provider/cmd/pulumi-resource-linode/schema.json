@@ -1325,6 +1325,10 @@
                     "type": "integer",
                     "description": "The ID of the node.\n"
                 },
+                "k8sVersion": {
+                    "type": "string",
+                    "description": "The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -1356,6 +1360,10 @@
                 "type": {
                     "type": "string",
                     "description": "A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).\n"
+                },
+                "updateStrategy": {
+                    "type": "string",
+                    "description": "The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.\n"
                 }
             },
             "type": "object",
@@ -1368,8 +1376,10 @@
                         "count",
                         "diskEncryption",
                         "id",
+                        "k8sVersion",
                         "nodes",
-                        "type"
+                        "type",
+                        "updateStrategy"
                     ]
                 }
             }
@@ -7335,6 +7345,10 @@
                     "type": "integer",
                     "description": "The LKE Cluster's ID.\n"
                 },
+                "k8sVersion": {
+                    "type": "string",
+                    "description": "The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -7366,6 +7380,10 @@
                 "type": {
                     "type": "string",
                     "description": "The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).\n"
+                },
+                "updateStrategy": {
+                    "type": "string",
+                    "description": "The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.\n"
                 }
             },
             "type": "object",
@@ -7373,10 +7391,12 @@
                 "count",
                 "diskEncryption",
                 "id",
+                "k8sVersion",
                 "labels",
                 "tags",
                 "taints",
-                "type"
+                "type",
+                "updateStrategy"
             ],
             "language": {
                 "nodejs": {
@@ -21978,7 +21998,7 @@
                         "type": "integer"
                     },
                     "k8sVersion": {
-                        "description": "The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).\n",
+                        "description": "The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.\n",
                         "type": "string"
                     },
                     "kubeconfig": {
