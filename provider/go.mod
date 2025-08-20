@@ -6,7 +6,7 @@ toolchain go1.23.5
 
 require (
 	github.com/linode/terraform-provider-linode/v3 v3.1.1
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.111.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.112.0
 	github.com/pulumi/pulumi/sdk/v3 v3.185.0
 )
 
@@ -111,7 +111,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.23.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.15.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.15.1 // indirect
 	github.com/hashicorp/terraform-plugin-framework-nettypes v0.3.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timeouts v0.5.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timetypes v0.5.0 // indirect
