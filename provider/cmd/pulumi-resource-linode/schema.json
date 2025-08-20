@@ -24586,7 +24586,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:linode"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:linode/terraformConfig",
