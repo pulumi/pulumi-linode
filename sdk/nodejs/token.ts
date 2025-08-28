@@ -66,23 +66,23 @@ export class Token extends pulumi.CustomResource {
     /**
      * The date this Token was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * When this token will expire. Personal Access Tokens cannot be renewed, so after this time the token will be completely unusable and a new token will need to be generated. Tokens may be created with 'null' as their expiry and will never expire unless revoked.
      */
-    public readonly expiry!: pulumi.Output<string>;
+    declare public readonly expiry: pulumi.Output<string>;
     /**
      * A label for the Token.
      */
-    public readonly label!: pulumi.Output<string | undefined>;
+    declare public readonly label: pulumi.Output<string | undefined>;
     /**
      * The scopes this token was created with. These define what parts of the Account the token can be used to access. Many command-line tools, such as the Linode CLI, require tokens with access to *. Tokens with more restrictive scopes are generally more secure. All scopes can be viewed in [the Linode API documentation](https://techdocs.akamai.com/linode-api/reference/get-started#oauth-reference).
      */
-    public readonly scopes!: pulumi.Output<string>;
+    declare public readonly scopes: pulumi.Output<string>;
     /**
      * The token used to access the API.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
 
     /**
      * Create a Token resource with the given unique name, arguments, and options.
@@ -97,19 +97,19 @@ export class Token extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TokenState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["expiry"] = state ? state.expiry : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["scopes"] = state ? state.scopes : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["expiry"] = state?.expiry;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["scopes"] = state?.scopes;
+            resourceInputs["token"] = state?.token;
         } else {
             const args = argsOrState as TokenArgs | undefined;
-            if ((!args || args.scopes === undefined) && !opts.urn) {
+            if (args?.scopes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopes'");
             }
-            resourceInputs["expiry"] = args ? args.expiry : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["expiry"] = args?.expiry;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["scopes"] = args?.scopes;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
         }

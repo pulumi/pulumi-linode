@@ -59,23 +59,23 @@ export class AccountSettings extends pulumi.CustomResource {
     /**
      * The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
      */
-    public readonly backupsEnabled!: pulumi.Output<boolean>;
+    declare public readonly backupsEnabled: pulumi.Output<boolean>;
     /**
      * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
      */
-    public readonly longviewSubscription!: pulumi.Output<string>;
+    declare public readonly longviewSubscription: pulumi.Output<string>;
     /**
      * Enables monitoring for connectivity, response, and total request time.
      */
-    public /*out*/ readonly managed!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly managed: pulumi.Output<boolean>;
     /**
      * Enables network helper across all users by default for new Linodes and Linode Configs.
      */
-    public readonly networkHelper!: pulumi.Output<boolean>;
+    declare public readonly networkHelper: pulumi.Output<boolean>;
     /**
      * A string describing the status of this account's Object Storage service enrollment.
      */
-    public /*out*/ readonly objectStorage!: pulumi.Output<string>;
+    declare public /*out*/ readonly objectStorage: pulumi.Output<string>;
 
     /**
      * Create a AccountSettings resource with the given unique name, arguments, and options.
@@ -90,16 +90,16 @@ export class AccountSettings extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountSettingsState | undefined;
-            resourceInputs["backupsEnabled"] = state ? state.backupsEnabled : undefined;
-            resourceInputs["longviewSubscription"] = state ? state.longviewSubscription : undefined;
-            resourceInputs["managed"] = state ? state.managed : undefined;
-            resourceInputs["networkHelper"] = state ? state.networkHelper : undefined;
-            resourceInputs["objectStorage"] = state ? state.objectStorage : undefined;
+            resourceInputs["backupsEnabled"] = state?.backupsEnabled;
+            resourceInputs["longviewSubscription"] = state?.longviewSubscription;
+            resourceInputs["managed"] = state?.managed;
+            resourceInputs["networkHelper"] = state?.networkHelper;
+            resourceInputs["objectStorage"] = state?.objectStorage;
         } else {
             const args = argsOrState as AccountSettingsArgs | undefined;
-            resourceInputs["backupsEnabled"] = args ? args.backupsEnabled : undefined;
-            resourceInputs["longviewSubscription"] = args ? args.longviewSubscription : undefined;
-            resourceInputs["networkHelper"] = args ? args.networkHelper : undefined;
+            resourceInputs["backupsEnabled"] = args?.backupsEnabled;
+            resourceInputs["longviewSubscription"] = args?.longviewSubscription;
+            resourceInputs["networkHelper"] = args?.networkHelper;
             resourceInputs["managed"] = undefined /*out*/;
             resourceInputs["objectStorage"] = undefined /*out*/;
         }

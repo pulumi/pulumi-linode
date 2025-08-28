@@ -151,8 +151,7 @@ Object.defineProperty(exports, "objSecretKey", {
 });
 
 /**
- * If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
- * linodeObjectSorageBucket resource.
+ * If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linodeObjectSorageBucket resource.
  */
 export declare const objUseTempKeys: boolean | undefined;
 Object.defineProperty(exports, "objUseTempKeys", {

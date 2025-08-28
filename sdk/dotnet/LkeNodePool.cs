@@ -67,8 +67,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-        /// allowing them to repel certain pods.
+        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
         /// </summary>
         [Output("taints")]
         public Output<ImmutableArray<Outputs.LkeNodePoolTaint>> Taints { get; private set; } = null!;
@@ -184,8 +183,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.LkeNodePoolTaintArgs>? _taints;
 
         /// <summary>
-        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-        /// allowing them to repel certain pods.
+        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
         /// </summary>
         public InputList<Inputs.LkeNodePoolTaintArgs> Taints
         {
@@ -284,8 +282,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.LkeNodePoolTaintGetArgs>? _taints;
 
         /// <summary>
-        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-        /// allowing them to repel certain pods.
+        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
         /// </summary>
         public InputList<Inputs.LkeNodePoolTaintGetArgs> Taints
         {

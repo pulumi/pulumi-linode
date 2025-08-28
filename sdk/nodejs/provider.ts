@@ -28,39 +28,39 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The path to a Linode API CA file to trust.
      */
-    public readonly apiCaPath!: pulumi.Output<string | undefined>;
+    declare public readonly apiCaPath: pulumi.Output<string | undefined>;
     /**
      * The version of Linode API.
      */
-    public readonly apiVersion!: pulumi.Output<string | undefined>;
+    declare public readonly apiVersion: pulumi.Output<string | undefined>;
     /**
      * The path to the Linode config file to use. (default `~/.config/linode`)
      */
-    public readonly configPath!: pulumi.Output<string | undefined>;
+    declare public readonly configPath: pulumi.Output<string | undefined>;
     /**
      * The Linode config profile to use. (default `default`)
      */
-    public readonly configProfile!: pulumi.Output<string | undefined>;
+    declare public readonly configProfile: pulumi.Output<string | undefined>;
     /**
      * The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      */
-    public readonly objAccessKey!: pulumi.Output<string | undefined>;
+    declare public readonly objAccessKey: pulumi.Output<string | undefined>;
     /**
      * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      */
-    public readonly objSecretKey!: pulumi.Output<string | undefined>;
+    declare public readonly objSecretKey: pulumi.Output<string | undefined>;
     /**
      * The token that allows you access to your Linode account
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
     /**
      * An HTTP User-Agent Prefix to prepend in API requests.
      */
-    public readonly uaPrefix!: pulumi.Output<string | undefined>;
+    declare public readonly uaPrefix: pulumi.Output<string | undefined>;
     /**
      * The HTTP(S) API address of the Linode API to use.
      */
-    public readonly url!: pulumi.Output<string | undefined>;
+    declare public readonly url: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -73,26 +73,26 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["apiCaPath"] = args ? args.apiCaPath : undefined;
-            resourceInputs["apiVersion"] = (args ? args.apiVersion : undefined) ?? utilities.getEnv("LINODE_API_VERSION");
-            resourceInputs["configPath"] = args ? args.configPath : undefined;
-            resourceInputs["configProfile"] = args ? args.configProfile : undefined;
-            resourceInputs["disableInternalCache"] = pulumi.output(args ? args.disableInternalCache : undefined).apply(JSON.stringify);
-            resourceInputs["eventPollMs"] = pulumi.output(args ? args.eventPollMs : undefined).apply(JSON.stringify);
-            resourceInputs["lkeEventPollMs"] = pulumi.output(args ? args.lkeEventPollMs : undefined).apply(JSON.stringify);
-            resourceInputs["lkeNodeReadyPollMs"] = pulumi.output(args ? args.lkeNodeReadyPollMs : undefined).apply(JSON.stringify);
-            resourceInputs["maxRetryDelayMs"] = pulumi.output(args ? args.maxRetryDelayMs : undefined).apply(JSON.stringify);
-            resourceInputs["minRetryDelayMs"] = pulumi.output(args ? args.minRetryDelayMs : undefined).apply(JSON.stringify);
-            resourceInputs["objAccessKey"] = args ? args.objAccessKey : undefined;
-            resourceInputs["objBucketForceDelete"] = pulumi.output(args ? args.objBucketForceDelete : undefined).apply(JSON.stringify);
+            resourceInputs["apiCaPath"] = args?.apiCaPath;
+            resourceInputs["apiVersion"] = (args?.apiVersion) ?? utilities.getEnv("LINODE_API_VERSION");
+            resourceInputs["configPath"] = args?.configPath;
+            resourceInputs["configProfile"] = args?.configProfile;
+            resourceInputs["disableInternalCache"] = pulumi.output(args?.disableInternalCache).apply(JSON.stringify);
+            resourceInputs["eventPollMs"] = pulumi.output(args?.eventPollMs).apply(JSON.stringify);
+            resourceInputs["lkeEventPollMs"] = pulumi.output(args?.lkeEventPollMs).apply(JSON.stringify);
+            resourceInputs["lkeNodeReadyPollMs"] = pulumi.output(args?.lkeNodeReadyPollMs).apply(JSON.stringify);
+            resourceInputs["maxRetryDelayMs"] = pulumi.output(args?.maxRetryDelayMs).apply(JSON.stringify);
+            resourceInputs["minRetryDelayMs"] = pulumi.output(args?.minRetryDelayMs).apply(JSON.stringify);
+            resourceInputs["objAccessKey"] = args?.objAccessKey;
+            resourceInputs["objBucketForceDelete"] = pulumi.output(args?.objBucketForceDelete).apply(JSON.stringify);
             resourceInputs["objSecretKey"] = args?.objSecretKey ? pulumi.secret(args.objSecretKey) : undefined;
-            resourceInputs["objUseTempKeys"] = pulumi.output(args ? args.objUseTempKeys : undefined).apply(JSON.stringify);
-            resourceInputs["skipImplicitReboots"] = pulumi.output(args ? args.skipImplicitReboots : undefined).apply(JSON.stringify);
-            resourceInputs["skipInstanceDeletePoll"] = pulumi.output(args ? args.skipInstanceDeletePoll : undefined).apply(JSON.stringify);
-            resourceInputs["skipInstanceReadyPoll"] = pulumi.output(args ? args.skipInstanceReadyPoll : undefined).apply(JSON.stringify);
-            resourceInputs["token"] = args ? args.token : undefined;
-            resourceInputs["uaPrefix"] = (args ? args.uaPrefix : undefined) ?? utilities.getEnv("LINODE_UA_PREFIX");
-            resourceInputs["url"] = (args ? args.url : undefined) ?? utilities.getEnv("LINODE_URL");
+            resourceInputs["objUseTempKeys"] = pulumi.output(args?.objUseTempKeys).apply(JSON.stringify);
+            resourceInputs["skipImplicitReboots"] = pulumi.output(args?.skipImplicitReboots).apply(JSON.stringify);
+            resourceInputs["skipInstanceDeletePoll"] = pulumi.output(args?.skipInstanceDeletePoll).apply(JSON.stringify);
+            resourceInputs["skipInstanceReadyPoll"] = pulumi.output(args?.skipInstanceReadyPoll).apply(JSON.stringify);
+            resourceInputs["token"] = args?.token;
+            resourceInputs["uaPrefix"] = (args?.uaPrefix) ?? utilities.getEnv("LINODE_UA_PREFIX");
+            resourceInputs["url"] = (args?.url) ?? utilities.getEnv("LINODE_URL");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["objSecretKey"] };
@@ -167,8 +167,7 @@ export interface ProviderArgs {
      */
     objSecretKey?: pulumi.Input<string>;
     /**
-     * If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
-     * linodeObjectSorageBucket resource.
+     * If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linodeObjectSorageBucket resource.
      */
     objUseTempKeys?: pulumi.Input<boolean>;
     /**

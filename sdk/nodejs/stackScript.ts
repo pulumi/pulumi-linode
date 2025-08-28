@@ -85,57 +85,57 @@ export class StackScript extends pulumi.CustomResource {
     /**
      * The date this StackScript was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * Count of currently active, deployed Linodes created from this StackScript.
      */
-    public /*out*/ readonly deploymentsActive!: pulumi.Output<number>;
+    declare public /*out*/ readonly deploymentsActive: pulumi.Output<number>;
     /**
      * The total number of times this StackScript has been deployed.
      */
-    public /*out*/ readonly deploymentsTotal!: pulumi.Output<number>;
+    declare public /*out*/ readonly deploymentsTotal: pulumi.Output<number>;
     /**
      * A description for the StackScript.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
      *
      * - - -
      */
-    public readonly images!: pulumi.Output<string[]>;
+    declare public readonly images: pulumi.Output<string[]>;
     /**
      * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      */
-    public readonly isPublic!: pulumi.Output<boolean>;
+    declare public readonly isPublic: pulumi.Output<boolean>;
     /**
      * The StackScript's label is for display purposes only.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * This field allows you to add notes for the set of revisions made to this StackScript.
      */
-    public readonly revNote!: pulumi.Output<string>;
+    declare public readonly revNote: pulumi.Output<string>;
     /**
      * The script to execute when provisioning a new Linode with this StackScript.
      */
-    public readonly script!: pulumi.Output<string>;
+    declare public readonly script: pulumi.Output<string>;
     /**
      * The date this StackScript was updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
     /**
      * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
      */
-    public /*out*/ readonly userDefinedFields!: pulumi.Output<outputs.StackScriptUserDefinedField[]>;
+    declare public /*out*/ readonly userDefinedFields: pulumi.Output<outputs.StackScriptUserDefinedField[]>;
     /**
      * The Gravatar ID for the User who created the StackScript.
      */
-    public /*out*/ readonly userGravatarId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userGravatarId: pulumi.Output<string>;
     /**
      * The User who created the StackScript.
      */
-    public /*out*/ readonly username!: pulumi.Output<string>;
+    declare public /*out*/ readonly username: pulumi.Output<string>;
 
     /**
      * Create a StackScript resource with the given unique name, arguments, and options.
@@ -150,39 +150,39 @@ export class StackScript extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StackScriptState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["deploymentsActive"] = state ? state.deploymentsActive : undefined;
-            resourceInputs["deploymentsTotal"] = state ? state.deploymentsTotal : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["images"] = state ? state.images : undefined;
-            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["revNote"] = state ? state.revNote : undefined;
-            resourceInputs["script"] = state ? state.script : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
-            resourceInputs["userDefinedFields"] = state ? state.userDefinedFields : undefined;
-            resourceInputs["userGravatarId"] = state ? state.userGravatarId : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["deploymentsActive"] = state?.deploymentsActive;
+            resourceInputs["deploymentsTotal"] = state?.deploymentsTotal;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["images"] = state?.images;
+            resourceInputs["isPublic"] = state?.isPublic;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["revNote"] = state?.revNote;
+            resourceInputs["script"] = state?.script;
+            resourceInputs["updated"] = state?.updated;
+            resourceInputs["userDefinedFields"] = state?.userDefinedFields;
+            resourceInputs["userGravatarId"] = state?.userGravatarId;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as StackScriptArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.images === undefined) && !opts.urn) {
+            if (args?.images === undefined && !opts.urn) {
                 throw new Error("Missing required property 'images'");
             }
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.script === undefined) && !opts.urn) {
+            if (args?.script === undefined && !opts.urn) {
                 throw new Error("Missing required property 'script'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["images"] = args ? args.images : undefined;
-            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["revNote"] = args ? args.revNote : undefined;
-            resourceInputs["script"] = args ? args.script : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["images"] = args?.images;
+            resourceInputs["isPublic"] = args?.isPublic;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["revNote"] = args?.revNote;
+            resourceInputs["script"] = args?.script;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["deploymentsActive"] = undefined /*out*/;
             resourceInputs["deploymentsTotal"] = undefined /*out*/;

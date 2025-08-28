@@ -58,16 +58,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s
-     * `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
      * 
      */
     @Import(name="authorizedUsers")
     private @Nullable Output<List<String>> authorizedUsers;
 
     /**
-     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s
-     * `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
      * 
      */
     public Optional<Output<List<String>>> authorizedUsers() {
@@ -75,20 +73,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup
-     * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-     * /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually
-     * exclusive.
+     * A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
      * 
      */
     @Import(name="backupId")
     private @Nullable Output<Integer> backupId;
 
     /**
-     * @return A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup
-     * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-     * /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually
-     * exclusive.
+     * @return A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
      * 
      */
     public Optional<Output<Integer>> backupId() {
@@ -300,16 +292,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-     * See /images for more information on the Images available for you to use.
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-     * See /images for more information on the Images available for you to use.
+     * @return An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
      * 
      */
     public Optional<Output<String>> image() {
@@ -317,16 +307,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-     * must be declared in the config block.
+     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
      * 
      */
     @Import(name="interfaces")
     private @Nullable Output<List<InstanceInterfaceArgs>> interfaces;
 
     /**
-     * @return An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-     * must be declared in the config block.
+     * @return An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
      * 
      */
     public Optional<Output<List<InstanceInterfaceArgs>>> interfaces() {
@@ -618,16 +606,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-     * accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
     @Import(name="stackscriptData")
     private @Nullable Output<Map<String,String>> stackscriptData;
 
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-     * accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
      * 
      */
     public Optional<Output<Map<String,String>>> stackscriptData() {
@@ -635,16 +621,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image
-     * that is compatible with this StackScript.
+     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
      * 
      */
     @Import(name="stackscriptId")
     private @Nullable Output<Integer> stackscriptId;
 
     /**
-     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image
-     * that is compatible with this StackScript.
+     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
      * 
      */
     public Optional<Output<Integer>> stackscriptId() {
@@ -667,16 +651,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-     * is used to set the swap disk size for the newly-created Linode.
+     * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
      * 
      */
     @Import(name="swapSize")
     private @Nullable Output<Integer> swapSize;
 
     /**
-     * @return When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-     * is used to set the swap disk size for the newly-created Linode.
+     * @return When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
      * 
      */
     public Optional<Output<Integer>> swapSize() {
@@ -849,8 +831,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s
-         * `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
          * 
          * @return builder
          * 
@@ -861,8 +842,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s
-         * `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
          * 
          * @return builder
          * 
@@ -872,8 +852,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s
-         * `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
          * 
          * @return builder
          * 
@@ -883,10 +862,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupId A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup
-         * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-         * /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually
-         * exclusive.
+         * @param backupId A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
          * 
          * @return builder
          * 
@@ -897,10 +873,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupId A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup
-         * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-         * /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually
-         * exclusive.
+         * @param backupId A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
          * 
          * @return builder
          * 
@@ -1232,8 +1205,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-         * See /images for more information on the Images available for you to use.
+         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
          * 
          * @return builder
          * 
@@ -1244,8 +1216,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-         * See /images for more information on the Images available for you to use.
+         * @param image An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
          * 
          * @return builder
          * 
@@ -1255,8 +1226,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interfaces An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-         * must be declared in the config block.
+         * @param interfaces An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
          * 
          * @return builder
          * 
@@ -1267,8 +1237,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interfaces An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-         * must be declared in the config block.
+         * @param interfaces An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
          * 
          * @return builder
          * 
@@ -1278,8 +1247,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interfaces An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-         * must be declared in the config block.
+         * @param interfaces An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
          * 
          * @return builder
          * 
@@ -1715,8 +1683,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-         * accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
          * 
          * @return builder
          * 
@@ -1727,8 +1694,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-         * accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
          * 
          * @return builder
          * 
@@ -1738,8 +1704,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image
-         * that is compatible with this StackScript.
+         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
          * 
          * @return builder
          * 
@@ -1750,8 +1715,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image
-         * that is compatible with this StackScript.
+         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
          * 
          * @return builder
          * 
@@ -1782,8 +1746,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param swapSize When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-         * is used to set the swap disk size for the newly-created Linode.
+         * @param swapSize When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
          * 
          * @return builder
          * 
@@ -1794,8 +1757,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param swapSize When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-         * is used to set the swap disk size for the newly-created Linode.
+         * @param swapSize When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
          * 
          * @return builder
          * 

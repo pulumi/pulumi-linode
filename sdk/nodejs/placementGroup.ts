@@ -64,27 +64,27 @@ export class PlacementGroup extends pulumi.CustomResource {
     /**
      * Whether this Linode is currently compliant with the group's placement group type.
      */
-    public /*out*/ readonly isCompliant!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isCompliant: pulumi.Output<boolean>;
     /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * A set of Linodes currently assigned to this Placement Group.
      */
-    public /*out*/ readonly members!: pulumi.Output<outputs.PlacementGroupMember[]>;
+    declare public /*out*/ readonly members: pulumi.Output<outputs.PlacementGroupMember[]>;
     /**
      * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      */
-    public readonly placementGroupPolicy!: pulumi.Output<string>;
+    declare public readonly placementGroupPolicy: pulumi.Output<string>;
     /**
      * The placement group type to use when placing Linodes in this group.
      */
-    public readonly placementGroupType!: pulumi.Output<string>;
+    declare public readonly placementGroupType: pulumi.Output<string>;
     /**
      * The region of the Placement Group.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a PlacementGroup resource with the given unique name, arguments, and options.
@@ -99,27 +99,27 @@ export class PlacementGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PlacementGroupState | undefined;
-            resourceInputs["isCompliant"] = state ? state.isCompliant : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["placementGroupPolicy"] = state ? state.placementGroupPolicy : undefined;
-            resourceInputs["placementGroupType"] = state ? state.placementGroupType : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["isCompliant"] = state?.isCompliant;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["placementGroupPolicy"] = state?.placementGroupPolicy;
+            resourceInputs["placementGroupType"] = state?.placementGroupType;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as PlacementGroupArgs | undefined;
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.placementGroupType === undefined) && !opts.urn) {
+            if (args?.placementGroupType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'placementGroupType'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["placementGroupPolicy"] = args ? args.placementGroupPolicy : undefined;
-            resourceInputs["placementGroupType"] = args ? args.placementGroupType : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["placementGroupPolicy"] = args?.placementGroupPolicy;
+            resourceInputs["placementGroupType"] = args?.placementGroupType;
+            resourceInputs["region"] = args?.region;
             resourceInputs["isCompliant"] = undefined /*out*/;
             resourceInputs["members"] = undefined /*out*/;
         }

@@ -119,11 +119,11 @@ export class InstanceSharedIps extends pulumi.CustomResource {
     /**
      * The set of IPs to share with the Linode.
      */
-    public readonly addresses!: pulumi.Output<string[]>;
+    declare public readonly addresses: pulumi.Output<string[]>;
     /**
      * The ID of the Linode to share the IPs to.
      */
-    public readonly linodeId!: pulumi.Output<number>;
+    declare public readonly linodeId: pulumi.Output<number>;
 
     /**
      * Create a InstanceSharedIps resource with the given unique name, arguments, and options.
@@ -138,18 +138,18 @@ export class InstanceSharedIps extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceSharedIpsState | undefined;
-            resourceInputs["addresses"] = state ? state.addresses : undefined;
-            resourceInputs["linodeId"] = state ? state.linodeId : undefined;
+            resourceInputs["addresses"] = state?.addresses;
+            resourceInputs["linodeId"] = state?.linodeId;
         } else {
             const args = argsOrState as InstanceSharedIpsArgs | undefined;
-            if ((!args || args.addresses === undefined) && !opts.urn) {
+            if (args?.addresses === undefined && !opts.urn) {
                 throw new Error("Missing required property 'addresses'");
             }
-            if ((!args || args.linodeId === undefined) && !opts.urn) {
+            if (args?.linodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'linodeId'");
             }
-            resourceInputs["addresses"] = args ? args.addresses : undefined;
-            resourceInputs["linodeId"] = args ? args.linodeId : undefined;
+            resourceInputs["addresses"] = args?.addresses;
+            resourceInputs["linodeId"] = args?.linodeId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceSharedIps.__pulumiType, name, resourceInputs, opts);

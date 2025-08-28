@@ -37,8 +37,7 @@ type LkeNodePool struct {
 	Nodes LkeNodePoolNodeArrayOutput `pulumi:"nodes"`
 	// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-	// allowing them to repel certain pods.
+	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
 	Taints LkeNodePoolTaintArrayOutput `pulumi:"taints"`
 	// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -101,8 +100,7 @@ type lkeNodePoolState struct {
 	Nodes []LkeNodePoolNode `pulumi:"nodes"`
 	// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
 	Tags []string `pulumi:"tags"`
-	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-	// allowing them to repel certain pods.
+	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
 	Taints []LkeNodePoolTaint `pulumi:"taints"`
 	// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type *string `pulumi:"type"`
@@ -130,8 +128,7 @@ type LkeNodePoolState struct {
 	Nodes LkeNodePoolNodeArrayInput
 	// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
 	Tags pulumi.StringArrayInput
-	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-	// allowing them to repel certain pods.
+	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
 	Taints LkeNodePoolTaintArrayInput
 	// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringPtrInput
@@ -159,8 +156,7 @@ type lkeNodePoolArgs struct {
 	NodeCount *int `pulumi:"nodeCount"`
 	// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
 	Tags []string `pulumi:"tags"`
-	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-	// allowing them to repel certain pods.
+	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
 	Taints []LkeNodePoolTaint `pulumi:"taints"`
 	// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type string `pulumi:"type"`
@@ -185,8 +181,7 @@ type LkeNodePoolArgs struct {
 	NodeCount pulumi.IntPtrInput
 	// An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
 	Tags pulumi.StringArrayInput
-	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-	// allowing them to repel certain pods.
+	// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
 	Taints LkeNodePoolTaintArrayInput
 	// A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
 	Type pulumi.StringInput
@@ -324,8 +319,7 @@ func (o LkeNodePoolOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LkeNodePool) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-// allowing them to repel certain pods.
+// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
 func (o LkeNodePoolOutput) Taints() LkeNodePoolTaintArrayOutput {
 	return o.ApplyT(func(v *LkeNodePool) LkeNodePoolTaintArrayOutput { return v.Taints }).(LkeNodePoolTaintArrayOutput)
 }

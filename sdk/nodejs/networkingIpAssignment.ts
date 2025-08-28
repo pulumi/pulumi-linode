@@ -42,11 +42,11 @@ export class NetworkingIpAssignment extends pulumi.CustomResource {
     /**
      * A list of IP/Linode assignments to apply.
      */
-    public readonly assignments!: pulumi.Output<outputs.NetworkingIpAssignmentAssignment[] | undefined>;
+    declare public readonly assignments: pulumi.Output<outputs.NetworkingIpAssignmentAssignment[] | undefined>;
     /**
      * The region where the IP addresses will be assigned.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a NetworkingIpAssignment resource with the given unique name, arguments, and options.
@@ -61,15 +61,15 @@ export class NetworkingIpAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkingIpAssignmentState | undefined;
-            resourceInputs["assignments"] = state ? state.assignments : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["assignments"] = state?.assignments;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as NetworkingIpAssignmentArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["assignments"] = args ? args.assignments : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["assignments"] = args?.assignments;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NetworkingIpAssignment.__pulumiType, name, resourceInputs, opts);

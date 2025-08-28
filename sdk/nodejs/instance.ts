@@ -130,141 +130,135 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Configuration options for alert triggers on this Linode.
      */
-    public readonly alerts!: pulumi.Output<outputs.InstanceAlerts>;
+    declare public readonly alerts: pulumi.Output<outputs.InstanceAlerts>;
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
      */
-    public readonly authorizedKeys!: pulumi.Output<string[] | undefined>;
+    declare public readonly authorizedKeys: pulumi.Output<string[] | undefined>;
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-     * `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
      */
-    public readonly authorizedUsers!: pulumi.Output<string[] | undefined>;
+    declare public readonly authorizedUsers: pulumi.Output<string[] | undefined>;
     /**
-     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
-     * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-     * /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-     * exclusive.
+     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
      */
-    public readonly backupId!: pulumi.Output<number | undefined>;
+    declare public readonly backupId: pulumi.Output<number | undefined>;
     /**
      * Information about this Linode's backups status.
      */
-    public /*out*/ readonly backups!: pulumi.Output<outputs.InstanceBackup[]>;
+    declare public /*out*/ readonly backups: pulumi.Output<outputs.InstanceBackup[]>;
     /**
      * If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
      */
-    public readonly backupsEnabled!: pulumi.Output<boolean>;
+    declare public readonly backupsEnabled: pulumi.Output<boolean>;
     /**
      * The Label of the Instance Config that should be used to boot the Linode instance.
      */
-    public readonly bootConfigLabel!: pulumi.Output<string>;
+    declare public readonly bootConfigLabel: pulumi.Output<string>;
     /**
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
      */
-    public readonly booted!: pulumi.Output<boolean>;
+    declare public readonly booted: pulumi.Output<boolean>;
     /**
      * A list of capabilities of this Linode instance.
      */
-    public /*out*/ readonly capabilities!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly capabilities: pulumi.Output<string[]>;
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      *
      * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
      */
-    public readonly configs!: pulumi.Output<outputs.InstanceConfig[]>;
+    declare public readonly configs: pulumi.Output<outputs.InstanceConfig[]>;
     /**
      * The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
      *
      * * **NOTE: Disk encryption may not currently be available to all users.**
      */
-    public readonly diskEncryption!: pulumi.Output<string>;
+    declare public readonly diskEncryption: pulumi.Output<string>;
     /**
      * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
      */
-    public readonly disks!: pulumi.Output<outputs.InstanceDisk[]>;
+    declare public readonly disks: pulumi.Output<outputs.InstanceDisk[]>;
     /**
      * The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
      */
-    public readonly firewallId!: pulumi.Output<number | undefined>;
+    declare public readonly firewallId: pulumi.Output<number | undefined>;
     /**
      * A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
      *
      * @deprecated Group label is deprecated. We recommend using tags instead.
      */
-    public readonly group!: pulumi.Output<string | undefined>;
+    declare public readonly group: pulumi.Output<string | undefined>;
     /**
      * Whether this Instance was created with user-data.
      */
-    public /*out*/ readonly hasUserData!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly hasUserData: pulumi.Output<boolean>;
     /**
      * The Linode’s host machine, as a UUID.
      */
-    public /*out*/ readonly hostUuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostUuid: pulumi.Output<string>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-     * See /images for more information on the Images available for you to use.
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
      */
-    public readonly image!: pulumi.Output<string | undefined>;
+    declare public readonly image: pulumi.Output<string | undefined>;
     /**
-     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-     * must be declared in the config block.
+     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
      */
-    public readonly interfaces!: pulumi.Output<outputs.InstanceInterface[] | undefined>;
+    declare public readonly interfaces: pulumi.Output<outputs.InstanceInterface[] | undefined>;
     /**
      * A string containing the Linode's public IP address.
      *
      * @deprecated The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
      */
-    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipAddress: pulumi.Output<string>;
     /**
      * A set of reserved IPv4 addresses to assign to this Linode on creation.
      *
      * * **NOTE: IP reservation is not currently available to all users.**
      */
-    public readonly ipv4s!: pulumi.Output<string[]>;
+    declare public readonly ipv4s: pulumi.Output<string[]>;
     /**
      * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
      */
-    public /*out*/ readonly ipv6!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv6: pulumi.Output<string>;
     /**
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * If applicable, the ID of the LKE cluster this instance is a part of.
      */
-    public /*out*/ readonly lkeClusterId!: pulumi.Output<number>;
+    declare public /*out*/ readonly lkeClusterId: pulumi.Output<number>;
     /**
      * Various fields related to the Linode Metadata service.
      */
-    public readonly metadatas!: pulumi.Output<outputs.InstanceMetadata[] | undefined>;
+    declare public readonly metadatas: pulumi.Output<outputs.InstanceMetadata[] | undefined>;
     /**
      * The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
      *
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      */
-    public readonly migrationType!: pulumi.Output<string | undefined>;
+    declare public readonly migrationType: pulumi.Output<string | undefined>;
     /**
      * Information about the Placement Group this Linode is assigned to.
      */
-    public readonly placementGroup!: pulumi.Output<outputs.InstancePlacementGroup | undefined>;
+    declare public readonly placementGroup: pulumi.Output<outputs.InstancePlacementGroup | undefined>;
     /**
      * If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the linode.PlacementGroupAssignment resource.
      */
-    public readonly placementGroupExternallyManaged!: pulumi.Output<boolean | undefined>;
+    declare public readonly placementGroupExternallyManaged: pulumi.Output<boolean | undefined>;
     /**
      * If true, the created Linode will have private networking enabled, allowing use of the 192.168.128.0/17 network within the Linode's region. It can be enabled on an existing Linode but it can't be disabled.
      */
-    public readonly privateIp!: pulumi.Output<boolean | undefined>;
+    declare public readonly privateIp: pulumi.Output<boolean | undefined>;
     /**
      * This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
      */
-    public /*out*/ readonly privateIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateIpAddress: pulumi.Output<string>;
     /**
      * This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
      *
@@ -278,11 +272,11 @@ export class Instance extends pulumi.CustomResource {
      *
      * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
      */
-    public readonly resizeDisk!: pulumi.Output<boolean | undefined>;
+    declare public readonly resizeDisk: pulumi.Output<boolean | undefined>;
     /**
      * The password that will be initially assigned to the 'root' user account.
      */
-    public readonly rootPass!: pulumi.Output<string | undefined>;
+    declare public readonly rootPass: pulumi.Output<string | undefined>;
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      *
@@ -290,44 +284,41 @@ export class Instance extends pulumi.CustomResource {
      *
      * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      */
-    public readonly sharedIpv4s!: pulumi.Output<string[]>;
+    declare public readonly sharedIpv4s: pulumi.Output<string[]>;
     /**
      * Information about the resources available to this Linode.
      */
-    public /*out*/ readonly specs!: pulumi.Output<outputs.InstanceSpec[]>;
+    declare public /*out*/ readonly specs: pulumi.Output<outputs.InstanceSpec[]>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-     * accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
      */
-    public readonly stackscriptData!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly stackscriptData: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-     * that is compatible with this StackScript.
+     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
      */
-    public readonly stackscriptId!: pulumi.Output<number | undefined>;
+    declare public readonly stackscriptId: pulumi.Output<number | undefined>;
     /**
      * The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-     * is used to set the swap disk size for the newly-created Linode.
+     * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
      */
-    public readonly swapSize!: pulumi.Output<number>;
+    declare public readonly swapSize: pulumi.Output<number>;
     /**
      * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
      *
      * - - -
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The watchdog, named Lassie, is a Shutdown Watchdog that monitors your Linode and will reboot it if it powers off unexpectedly. It works by issuing a boot job when your Linode powers off without a shutdown job being responsible. To prevent a loop, Lassie will give up if there have been more than 5 boot jobs issued within 15 minutes.
      */
-    public readonly watchdogEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly watchdogEnabled: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -342,83 +333,83 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["alerts"] = state ? state.alerts : undefined;
-            resourceInputs["authorizedKeys"] = state ? state.authorizedKeys : undefined;
-            resourceInputs["authorizedUsers"] = state ? state.authorizedUsers : undefined;
-            resourceInputs["backupId"] = state ? state.backupId : undefined;
-            resourceInputs["backups"] = state ? state.backups : undefined;
-            resourceInputs["backupsEnabled"] = state ? state.backupsEnabled : undefined;
-            resourceInputs["bootConfigLabel"] = state ? state.bootConfigLabel : undefined;
-            resourceInputs["booted"] = state ? state.booted : undefined;
-            resourceInputs["capabilities"] = state ? state.capabilities : undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
-            resourceInputs["disks"] = state ? state.disks : undefined;
-            resourceInputs["firewallId"] = state ? state.firewallId : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["hasUserData"] = state ? state.hasUserData : undefined;
-            resourceInputs["hostUuid"] = state ? state.hostUuid : undefined;
-            resourceInputs["image"] = state ? state.image : undefined;
-            resourceInputs["interfaces"] = state ? state.interfaces : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["ipv4s"] = state ? state.ipv4s : undefined;
-            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["lkeClusterId"] = state ? state.lkeClusterId : undefined;
-            resourceInputs["metadatas"] = state ? state.metadatas : undefined;
-            resourceInputs["migrationType"] = state ? state.migrationType : undefined;
-            resourceInputs["placementGroup"] = state ? state.placementGroup : undefined;
-            resourceInputs["placementGroupExternallyManaged"] = state ? state.placementGroupExternallyManaged : undefined;
-            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
-            resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resizeDisk"] = state ? state.resizeDisk : undefined;
-            resourceInputs["rootPass"] = state ? state.rootPass : undefined;
-            resourceInputs["sharedIpv4s"] = state ? state.sharedIpv4s : undefined;
-            resourceInputs["specs"] = state ? state.specs : undefined;
-            resourceInputs["stackscriptData"] = state ? state.stackscriptData : undefined;
-            resourceInputs["stackscriptId"] = state ? state.stackscriptId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["swapSize"] = state ? state.swapSize : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["watchdogEnabled"] = state ? state.watchdogEnabled : undefined;
+            resourceInputs["alerts"] = state?.alerts;
+            resourceInputs["authorizedKeys"] = state?.authorizedKeys;
+            resourceInputs["authorizedUsers"] = state?.authorizedUsers;
+            resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["backups"] = state?.backups;
+            resourceInputs["backupsEnabled"] = state?.backupsEnabled;
+            resourceInputs["bootConfigLabel"] = state?.bootConfigLabel;
+            resourceInputs["booted"] = state?.booted;
+            resourceInputs["capabilities"] = state?.capabilities;
+            resourceInputs["configs"] = state?.configs;
+            resourceInputs["diskEncryption"] = state?.diskEncryption;
+            resourceInputs["disks"] = state?.disks;
+            resourceInputs["firewallId"] = state?.firewallId;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["hasUserData"] = state?.hasUserData;
+            resourceInputs["hostUuid"] = state?.hostUuid;
+            resourceInputs["image"] = state?.image;
+            resourceInputs["interfaces"] = state?.interfaces;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["ipv4s"] = state?.ipv4s;
+            resourceInputs["ipv6"] = state?.ipv6;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["lkeClusterId"] = state?.lkeClusterId;
+            resourceInputs["metadatas"] = state?.metadatas;
+            resourceInputs["migrationType"] = state?.migrationType;
+            resourceInputs["placementGroup"] = state?.placementGroup;
+            resourceInputs["placementGroupExternallyManaged"] = state?.placementGroupExternallyManaged;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["privateIpAddress"] = state?.privateIpAddress;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resizeDisk"] = state?.resizeDisk;
+            resourceInputs["rootPass"] = state?.rootPass;
+            resourceInputs["sharedIpv4s"] = state?.sharedIpv4s;
+            resourceInputs["specs"] = state?.specs;
+            resourceInputs["stackscriptData"] = state?.stackscriptData;
+            resourceInputs["stackscriptId"] = state?.stackscriptId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["swapSize"] = state?.swapSize;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["watchdogEnabled"] = state?.watchdogEnabled;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["alerts"] = args ? args.alerts : undefined;
-            resourceInputs["authorizedKeys"] = args ? args.authorizedKeys : undefined;
-            resourceInputs["authorizedUsers"] = args ? args.authorizedUsers : undefined;
-            resourceInputs["backupId"] = args ? args.backupId : undefined;
-            resourceInputs["backupsEnabled"] = args ? args.backupsEnabled : undefined;
-            resourceInputs["bootConfigLabel"] = args ? args.bootConfigLabel : undefined;
-            resourceInputs["booted"] = args ? args.booted : undefined;
-            resourceInputs["configs"] = args ? args.configs : undefined;
-            resourceInputs["diskEncryption"] = args ? args.diskEncryption : undefined;
-            resourceInputs["disks"] = args ? args.disks : undefined;
-            resourceInputs["firewallId"] = args ? args.firewallId : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["image"] = args ? args.image : undefined;
-            resourceInputs["interfaces"] = args ? args.interfaces : undefined;
-            resourceInputs["ipv4s"] = args ? args.ipv4s : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["metadatas"] = args ? args.metadatas : undefined;
-            resourceInputs["migrationType"] = args ? args.migrationType : undefined;
-            resourceInputs["placementGroup"] = args ? args.placementGroup : undefined;
-            resourceInputs["placementGroupExternallyManaged"] = args ? args.placementGroupExternallyManaged : undefined;
-            resourceInputs["privateIp"] = args ? args.privateIp : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["resizeDisk"] = args ? args.resizeDisk : undefined;
+            resourceInputs["alerts"] = args?.alerts;
+            resourceInputs["authorizedKeys"] = args?.authorizedKeys;
+            resourceInputs["authorizedUsers"] = args?.authorizedUsers;
+            resourceInputs["backupId"] = args?.backupId;
+            resourceInputs["backupsEnabled"] = args?.backupsEnabled;
+            resourceInputs["bootConfigLabel"] = args?.bootConfigLabel;
+            resourceInputs["booted"] = args?.booted;
+            resourceInputs["configs"] = args?.configs;
+            resourceInputs["diskEncryption"] = args?.diskEncryption;
+            resourceInputs["disks"] = args?.disks;
+            resourceInputs["firewallId"] = args?.firewallId;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["image"] = args?.image;
+            resourceInputs["interfaces"] = args?.interfaces;
+            resourceInputs["ipv4s"] = args?.ipv4s;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["metadatas"] = args?.metadatas;
+            resourceInputs["migrationType"] = args?.migrationType;
+            resourceInputs["placementGroup"] = args?.placementGroup;
+            resourceInputs["placementGroupExternallyManaged"] = args?.placementGroupExternallyManaged;
+            resourceInputs["privateIp"] = args?.privateIp;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["resizeDisk"] = args?.resizeDisk;
             resourceInputs["rootPass"] = args?.rootPass ? pulumi.secret(args.rootPass) : undefined;
-            resourceInputs["sharedIpv4s"] = args ? args.sharedIpv4s : undefined;
+            resourceInputs["sharedIpv4s"] = args?.sharedIpv4s;
             resourceInputs["stackscriptData"] = args?.stackscriptData ? pulumi.secret(args.stackscriptData) : undefined;
-            resourceInputs["stackscriptId"] = args ? args.stackscriptId : undefined;
-            resourceInputs["swapSize"] = args ? args.swapSize : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["watchdogEnabled"] = args ? args.watchdogEnabled : undefined;
+            resourceInputs["stackscriptId"] = args?.stackscriptId;
+            resourceInputs["swapSize"] = args?.swapSize;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["watchdogEnabled"] = args?.watchdogEnabled;
             resourceInputs["backups"] = undefined /*out*/;
             resourceInputs["capabilities"] = undefined /*out*/;
             resourceInputs["hasUserData"] = undefined /*out*/;
@@ -450,15 +441,11 @@ export interface InstanceState {
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-     * `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
-     * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-     * /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-     * exclusive.
+     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
      */
     backupId?: pulumi.Input<number>;
     /**
@@ -516,13 +503,11 @@ export interface InstanceState {
      */
     hostUuid?: pulumi.Input<string>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-     * See /images for more information on the Images available for you to use.
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
      */
     image?: pulumi.Input<string>;
     /**
-     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-     * must be declared in the config block.
+     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
     /**
@@ -610,13 +595,11 @@ export interface InstanceState {
      */
     specs?: pulumi.Input<pulumi.Input<inputs.InstanceSpec>[]>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-     * accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
      */
     stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-     * that is compatible with this StackScript.
+     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
      */
     stackscriptId?: pulumi.Input<number>;
     /**
@@ -624,8 +607,7 @@ export interface InstanceState {
      */
     status?: pulumi.Input<string>;
     /**
-     * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-     * is used to set the swap disk size for the newly-created Linode.
+     * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
      */
     swapSize?: pulumi.Input<number>;
     /**
@@ -657,15 +639,11 @@ export interface InstanceArgs {
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-     * `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
-     * must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-     * /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-     * exclusive.
+     * A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
      */
     backupId?: pulumi.Input<number>;
     /**
@@ -707,13 +685,11 @@ export interface InstanceArgs {
      */
     group?: pulumi.Input<string>;
     /**
-     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-     * See /images for more information on the Images available for you to use.
+     * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
      */
     image?: pulumi.Input<string>;
     /**
-     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-     * must be declared in the config block.
+     * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
     /**
@@ -779,18 +755,15 @@ export interface InstanceArgs {
      */
     sharedIpv4s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-     * accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
      */
     stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-     * that is compatible with this StackScript.
+     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
      */
     stackscriptId?: pulumi.Input<number>;
     /**
-     * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-     * is used to set the swap disk size for the newly-created Linode.
+     * When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
      */
     swapSize?: pulumi.Input<number>;
     /**

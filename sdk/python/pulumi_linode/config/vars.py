@@ -114,8 +114,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def obj_use_temp_keys(self) -> Optional[bool]:
         """
-        If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
-        linode_object_sorage_bucket resource.
+        If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and linode_object_sorage_bucket resource.
         """
         return __config__.get_bool('objUseTempKeys')
 

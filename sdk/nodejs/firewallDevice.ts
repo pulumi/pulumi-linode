@@ -79,23 +79,23 @@ export class FirewallDevice extends pulumi.CustomResource {
     /**
      * When the Firewall Device was last created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The unique ID of the entity to attach.
      */
-    public readonly entityId!: pulumi.Output<number>;
+    declare public readonly entityId: pulumi.Output<number>;
     /**
      * The type of the entity to attach. (default: `linode`)
      */
-    public readonly entityType!: pulumi.Output<string>;
+    declare public readonly entityType: pulumi.Output<string>;
     /**
      * The unique ID of the target Firewall.
      */
-    public readonly firewallId!: pulumi.Output<number>;
+    declare public readonly firewallId: pulumi.Output<number>;
     /**
      * When the Firewall Device was last updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
 
     /**
      * Create a FirewallDevice resource with the given unique name, arguments, and options.
@@ -110,22 +110,22 @@ export class FirewallDevice extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallDeviceState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["entityId"] = state ? state.entityId : undefined;
-            resourceInputs["entityType"] = state ? state.entityType : undefined;
-            resourceInputs["firewallId"] = state ? state.firewallId : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["entityId"] = state?.entityId;
+            resourceInputs["entityType"] = state?.entityType;
+            resourceInputs["firewallId"] = state?.firewallId;
+            resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as FirewallDeviceArgs | undefined;
-            if ((!args || args.entityId === undefined) && !opts.urn) {
+            if (args?.entityId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entityId'");
             }
-            if ((!args || args.firewallId === undefined) && !opts.urn) {
+            if (args?.firewallId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firewallId'");
             }
-            resourceInputs["entityId"] = args ? args.entityId : undefined;
-            resourceInputs["entityType"] = args ? args.entityType : undefined;
-            resourceInputs["firewallId"] = args ? args.firewallId : undefined;
+            resourceInputs["entityId"] = args?.entityId;
+            resourceInputs["entityType"] = args?.entityType;
+            resourceInputs["firewallId"] = args?.firewallId;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
         }

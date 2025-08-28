@@ -98,16 +98,16 @@ export class Rdns extends pulumi.CustomResource {
     /**
      * The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * The name of the RDNS address.
      */
-    public readonly rdns!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.RdnsTimeouts | undefined>;
+    declare public readonly rdns: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.RdnsTimeouts | undefined>;
     /**
      * If true, the RDNS assignment will be retried within the operation timeout period.
      */
-    public readonly waitForAvailable!: pulumi.Output<boolean>;
+    declare public readonly waitForAvailable: pulumi.Output<boolean>;
 
     /**
      * Create a Rdns resource with the given unique name, arguments, and options.
@@ -122,22 +122,22 @@ export class Rdns extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RdnsState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["rdns"] = state ? state.rdns : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["waitForAvailable"] = state ? state.waitForAvailable : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["rdns"] = state?.rdns;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["waitForAvailable"] = state?.waitForAvailable;
         } else {
             const args = argsOrState as RdnsArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.rdns === undefined) && !opts.urn) {
+            if (args?.rdns === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rdns'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["rdns"] = args ? args.rdns : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["waitForAvailable"] = args ? args.waitForAvailable : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["rdns"] = args?.rdns;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["waitForAvailable"] = args?.waitForAvailable;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Rdns.__pulumiType, name, resourceInputs, opts);

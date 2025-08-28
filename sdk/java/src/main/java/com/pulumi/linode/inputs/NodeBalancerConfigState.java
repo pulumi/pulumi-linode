@@ -65,16 +65,14 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
     }
 
     /**
-     * This value must be present in the response body of the check in order for it to pass. If this value is not present in
-     * the response body of a check request, the backend is considered to be down
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
      * 
      */
     @Import(name="checkBody")
     private @Nullable Output<String> checkBody;
 
     /**
-     * @return This value must be present in the response body of the check in order for it to pass. If this value is not present in
-     * the response body of a check request, the backend is considered to be down
+     * @return This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
      * 
      */
     public Optional<Output<String>> checkBody() {
@@ -157,16 +155,14 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
     }
 
     /**
-     * A structure containing information about the health of the backends for this port. This information is updated
-     * periodically as checks are performed against backends.
+     * A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
      * 
      */
     @Import(name="nodeStatuses")
     private @Nullable Output<List<NodeBalancerConfigNodeStatusArgs>> nodeStatuses;
 
     /**
-     * @return A structure containing information about the health of the backends for this port. This information is updated
-     * periodically as checks are performed against backends.
+     * @return A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
      * 
      */
     public Optional<Output<List<NodeBalancerConfigNodeStatusArgs>>> nodeStatuses() {
@@ -454,8 +450,7 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param checkBody This value must be present in the response body of the check in order for it to pass. If this value is not present in
-         * the response body of a check request, the backend is considered to be down
+         * @param checkBody This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
          * 
          * @return builder
          * 
@@ -466,8 +461,7 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param checkBody This value must be present in the response body of the check in order for it to pass. If this value is not present in
-         * the response body of a check request, the backend is considered to be down
+         * @param checkBody This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
          * 
          * @return builder
          * 
@@ -582,8 +576,7 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nodeStatuses A structure containing information about the health of the backends for this port. This information is updated
-         * periodically as checks are performed against backends.
+         * @param nodeStatuses A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
          * 
          * @return builder
          * 
@@ -594,8 +587,7 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nodeStatuses A structure containing information about the health of the backends for this port. This information is updated
-         * periodically as checks are performed against backends.
+         * @param nodeStatuses A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
          * 
          * @return builder
          * 
@@ -605,8 +597,7 @@ public final class NodeBalancerConfigState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param nodeStatuses A structure containing information about the health of the backends for this port. This information is updated
-         * periodically as checks are performed against backends.
+         * @param nodeStatuses A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
          * 
          * @return builder
          * 

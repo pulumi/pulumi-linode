@@ -84,8 +84,7 @@ func GetObjSecretKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "linode:objSecretKey")
 }
 
-// If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
-// linodeObjectSorageBucket resource.
+// If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and linodeObjectSorageBucket resource.
 func GetObjUseTempKeys(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "linode:objUseTempKeys")
 }

@@ -54,31 +54,31 @@ export class Ipv6Range extends pulumi.CustomResource {
     /**
      * Whether this IPv6 range is shared.
      */
-    public /*out*/ readonly isBgp!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isBgp: pulumi.Output<boolean>;
     /**
      * The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
      */
-    public readonly linodeId!: pulumi.Output<number | undefined>;
+    declare public readonly linodeId: pulumi.Output<number | undefined>;
     /**
      * A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
      */
-    public /*out*/ readonly linodes!: pulumi.Output<number[]>;
+    declare public /*out*/ readonly linodes: pulumi.Output<number[]>;
     /**
      * The prefix length of the IPv6 range.
      */
-    public readonly prefixLength!: pulumi.Output<number>;
+    declare public readonly prefixLength: pulumi.Output<number>;
     /**
      * The IPv6 range of addresses in this pool.
      */
-    public /*out*/ readonly range!: pulumi.Output<string>;
+    declare public /*out*/ readonly range: pulumi.Output<string>;
     /**
      * The region for this range of IPv6 addresses.
      */
-    public /*out*/ readonly region!: pulumi.Output<string>;
+    declare public /*out*/ readonly region: pulumi.Output<string>;
     /**
      * The IPv6 SLAAC address to assign this range to.
      */
-    public readonly routeTarget!: pulumi.Output<string>;
+    declare public readonly routeTarget: pulumi.Output<string>;
 
     /**
      * Create a Ipv6Range resource with the given unique name, arguments, and options.
@@ -93,21 +93,21 @@ export class Ipv6Range extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ipv6RangeState | undefined;
-            resourceInputs["isBgp"] = state ? state.isBgp : undefined;
-            resourceInputs["linodeId"] = state ? state.linodeId : undefined;
-            resourceInputs["linodes"] = state ? state.linodes : undefined;
-            resourceInputs["prefixLength"] = state ? state.prefixLength : undefined;
-            resourceInputs["range"] = state ? state.range : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["routeTarget"] = state ? state.routeTarget : undefined;
+            resourceInputs["isBgp"] = state?.isBgp;
+            resourceInputs["linodeId"] = state?.linodeId;
+            resourceInputs["linodes"] = state?.linodes;
+            resourceInputs["prefixLength"] = state?.prefixLength;
+            resourceInputs["range"] = state?.range;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["routeTarget"] = state?.routeTarget;
         } else {
             const args = argsOrState as Ipv6RangeArgs | undefined;
-            if ((!args || args.prefixLength === undefined) && !opts.urn) {
+            if (args?.prefixLength === undefined && !opts.urn) {
                 throw new Error("Missing required property 'prefixLength'");
             }
-            resourceInputs["linodeId"] = args ? args.linodeId : undefined;
-            resourceInputs["prefixLength"] = args ? args.prefixLength : undefined;
-            resourceInputs["routeTarget"] = args ? args.routeTarget : undefined;
+            resourceInputs["linodeId"] = args?.linodeId;
+            resourceInputs["prefixLength"] = args?.prefixLength;
+            resourceInputs["routeTarget"] = args?.routeTarget;
             resourceInputs["isBgp"] = undefined /*out*/;
             resourceInputs["linodes"] = undefined /*out*/;
             resourceInputs["range"] = undefined /*out*/;

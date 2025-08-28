@@ -84,228 +84,228 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
     /**
      * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
      */
-    public readonly allowLists!: pulumi.Output<string[]>;
+    declare public readonly allowLists: pulumi.Output<string[]>;
     /**
      * The base64-encoded SSL CA certificate for the Managed Database.
      */
-    public /*out*/ readonly caCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly caCert: pulumi.Output<string>;
     /**
      * The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
      */
-    public readonly clusterSize!: pulumi.Output<number>;
+    declare public readonly clusterSize: pulumi.Output<number>;
     /**
      * When this Managed Database was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * Whether the Managed Databases is encrypted.
      */
-    public /*out*/ readonly encrypted!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly encrypted: pulumi.Output<boolean>;
     /**
      * The Managed Database engine. (e.g. `mysql`)
      */
-    public /*out*/ readonly engine!: pulumi.Output<string>;
+    declare public /*out*/ readonly engine: pulumi.Output<string>;
     /**
      * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
      */
-    public readonly engineConfigBinlogRetentionPeriod!: pulumi.Output<number>;
+    declare public readonly engineConfigBinlogRetentionPeriod: pulumi.Output<number>;
     /**
      * The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
      */
-    public readonly engineConfigMysqlConnectTimeout!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlConnectTimeout: pulumi.Output<number>;
     /**
      * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
      */
-    public readonly engineConfigMysqlDefaultTimeZone!: pulumi.Output<string>;
+    declare public readonly engineConfigMysqlDefaultTimeZone: pulumi.Output<string>;
     /**
      * The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
      */
-    public readonly engineConfigMysqlGroupConcatMaxLen!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlGroupConcatMaxLen: pulumi.Output<number>;
     /**
      * The time, in seconds, before cached statistics expire.
      */
-    public readonly engineConfigMysqlInformationSchemaStatsExpiry!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlInformationSchemaStatsExpiry: pulumi.Output<number>;
     /**
      * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
      */
-    public readonly engineConfigMysqlInnodbChangeBufferMaxSize!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlInnodbChangeBufferMaxSize: pulumi.Output<number>;
     /**
      * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
      */
-    public readonly engineConfigMysqlInnodbFlushNeighbors!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlInnodbFlushNeighbors: pulumi.Output<number>;
     /**
      * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
      */
-    public readonly engineConfigMysqlInnodbFtMinTokenSize!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlInnodbFtMinTokenSize: pulumi.Output<number>;
     /**
      * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
      */
-    public readonly engineConfigMysqlInnodbFtServerStopwordTable!: pulumi.Output<string | undefined>;
+    declare public readonly engineConfigMysqlInnodbFtServerStopwordTable: pulumi.Output<string | undefined>;
     /**
      * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
      */
-    public readonly engineConfigMysqlInnodbLockWaitTimeout!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlInnodbLockWaitTimeout: pulumi.Output<number>;
     /**
      * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
      */
-    public readonly engineConfigMysqlInnodbLogBufferSize!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlInnodbLogBufferSize: pulumi.Output<number>;
     /**
      * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      */
-    public readonly engineConfigMysqlInnodbOnlineAlterLogMaxSize!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlInnodbOnlineAlterLogMaxSize: pulumi.Output<number>;
     /**
      * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
      */
-    public readonly engineConfigMysqlInnodbReadIoThreads!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlInnodbReadIoThreads: pulumi.Output<number>;
     /**
      * When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
      */
-    public readonly engineConfigMysqlInnodbRollbackOnTimeout!: pulumi.Output<boolean>;
+    declare public readonly engineConfigMysqlInnodbRollbackOnTimeout: pulumi.Output<boolean>;
     /**
      * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
      */
-    public readonly engineConfigMysqlInnodbThreadConcurrency!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlInnodbThreadConcurrency: pulumi.Output<number>;
     /**
      * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
      */
-    public readonly engineConfigMysqlInnodbWriteIoThreads!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlInnodbWriteIoThreads: pulumi.Output<number>;
     /**
      * The number of seconds the server waits for activity on an interactive connection before closing it.
      */
-    public readonly engineConfigMysqlInteractiveTimeout!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlInteractiveTimeout: pulumi.Output<number>;
     /**
      * The storage engine for in-memory internal temporary tables.
      */
-    public readonly engineConfigMysqlInternalTmpMemStorageEngine!: pulumi.Output<string>;
+    declare public readonly engineConfigMysqlInternalTmpMemStorageEngine: pulumi.Output<string>;
     /**
      * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      */
-    public readonly engineConfigMysqlMaxAllowedPacket!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlMaxAllowedPacket: pulumi.Output<number>;
     /**
      * Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
      */
-    public readonly engineConfigMysqlMaxHeapTableSize!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlMaxHeapTableSize: pulumi.Output<number>;
     /**
      * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
      */
-    public readonly engineConfigMysqlNetBufferLength!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlNetBufferLength: pulumi.Output<number>;
     /**
      * The number of seconds to wait for more data from a connection before aborting the read.
      */
-    public readonly engineConfigMysqlNetReadTimeout!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlNetReadTimeout: pulumi.Output<number>;
     /**
      * The number of seconds to wait for a block to be written to a connection before aborting the write.
      */
-    public readonly engineConfigMysqlNetWriteTimeout!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlNetWriteTimeout: pulumi.Output<number>;
     /**
      * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
      */
-    public readonly engineConfigMysqlSortBufferSize!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlSortBufferSize: pulumi.Output<number>;
     /**
      * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
      */
-    public readonly engineConfigMysqlSqlMode!: pulumi.Output<string>;
+    declare public readonly engineConfigMysqlSqlMode: pulumi.Output<string>;
     /**
      * Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
      */
-    public readonly engineConfigMysqlSqlRequirePrimaryKey!: pulumi.Output<boolean>;
+    declare public readonly engineConfigMysqlSqlRequirePrimaryKey: pulumi.Output<boolean>;
     /**
      * Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
      */
-    public readonly engineConfigMysqlTmpTableSize!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlTmpTableSize: pulumi.Output<number>;
     /**
      * The number of seconds the server waits for activity on a noninteractive connection before closing it.
      */
-    public readonly engineConfigMysqlWaitTimeout!: pulumi.Output<number>;
+    declare public readonly engineConfigMysqlWaitTimeout: pulumi.Output<number>;
     /**
      * The Managed Database engine in engine/version format. (e.g. `mysql`)
      */
-    public readonly engineId!: pulumi.Output<string>;
+    declare public readonly engineId: pulumi.Output<string>;
     /**
      * The database timestamp from which it was restored.
      */
-    public readonly forkRestoreTime!: pulumi.Output<string>;
+    declare public readonly forkRestoreTime: pulumi.Output<string>;
     /**
      * The ID of the database that was forked from.
      *
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
-    public readonly forkSource!: pulumi.Output<number | undefined>;
+    declare public readonly forkSource: pulumi.Output<number | undefined>;
     /**
      * The primary host for the Managed Database.
      */
-    public /*out*/ readonly hostPrimary!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostPrimary: pulumi.Output<string>;
     /**
      * The secondary/private host for the managed database.
      */
-    public /*out*/ readonly hostSecondary!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostSecondary: pulumi.Output<string>;
     /**
      * A unique, user-defined string referring to the Managed Database.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * A mapping between IP addresses and strings designating them as primary or failover.
      */
-    public /*out*/ readonly members!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly members: pulumi.Output<{[key: string]: string}>;
     /**
      * The oldest time to which a database can be restored.
      */
-    public /*out*/ readonly oldestRestoreTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly oldestRestoreTime: pulumi.Output<string>;
     /**
      * A set of pending updates.
      */
-    public /*out*/ readonly pendingUpdates!: pulumi.Output<outputs.DatabaseMysqlV2PendingUpdate[]>;
+    declare public /*out*/ readonly pendingUpdates: pulumi.Output<outputs.DatabaseMysqlV2PendingUpdate[]>;
     /**
      * The back-end platform for relational databases used by the service.
      */
-    public /*out*/ readonly platform!: pulumi.Output<string>;
+    declare public /*out*/ readonly platform: pulumi.Output<string>;
     /**
      * The access port for this Managed Database.
      */
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * The region to use for the Managed Database.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The randomly-generated root password for the Managed Database instance.
      */
-    public /*out*/ readonly rootPassword!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootPassword: pulumi.Output<string>;
     /**
      * The root username for the Managed Database instance.
      */
-    public /*out*/ readonly rootUsername!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootUsername: pulumi.Output<string>;
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database.
      */
-    public /*out*/ readonly sslConnection!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly sslConnection: pulumi.Output<boolean>;
     /**
      * The operating status of the Managed Database.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Whether this Managed Database should be suspended.
      */
-    public readonly suspended!: pulumi.Output<boolean>;
-    public readonly timeouts!: pulumi.Output<outputs.DatabaseMysqlV2Timeouts | undefined>;
+    declare public readonly suspended: pulumi.Output<boolean>;
+    declare public readonly timeouts: pulumi.Output<outputs.DatabaseMysqlV2Timeouts | undefined>;
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
      *
      * - - -
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * When this Managed Database was last updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
     /**
      * Configuration settings for automated patch update maintenance for the Managed Database.
      */
-    public readonly updates!: pulumi.Output<outputs.DatabaseMysqlV2Updates>;
+    declare public readonly updates: pulumi.Output<outputs.DatabaseMysqlV2Updates>;
     /**
      * The Managed Database engine version. (e.g. `13.2`)
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a DatabaseMysqlV2 resource with the given unique name, arguments, and options.
@@ -320,115 +320,115 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseMysqlV2State | undefined;
-            resourceInputs["allowLists"] = state ? state.allowLists : undefined;
-            resourceInputs["caCert"] = state ? state.caCert : undefined;
-            resourceInputs["clusterSize"] = state ? state.clusterSize : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["encrypted"] = state ? state.encrypted : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineConfigBinlogRetentionPeriod"] = state ? state.engineConfigBinlogRetentionPeriod : undefined;
-            resourceInputs["engineConfigMysqlConnectTimeout"] = state ? state.engineConfigMysqlConnectTimeout : undefined;
-            resourceInputs["engineConfigMysqlDefaultTimeZone"] = state ? state.engineConfigMysqlDefaultTimeZone : undefined;
-            resourceInputs["engineConfigMysqlGroupConcatMaxLen"] = state ? state.engineConfigMysqlGroupConcatMaxLen : undefined;
-            resourceInputs["engineConfigMysqlInformationSchemaStatsExpiry"] = state ? state.engineConfigMysqlInformationSchemaStatsExpiry : undefined;
-            resourceInputs["engineConfigMysqlInnodbChangeBufferMaxSize"] = state ? state.engineConfigMysqlInnodbChangeBufferMaxSize : undefined;
-            resourceInputs["engineConfigMysqlInnodbFlushNeighbors"] = state ? state.engineConfigMysqlInnodbFlushNeighbors : undefined;
-            resourceInputs["engineConfigMysqlInnodbFtMinTokenSize"] = state ? state.engineConfigMysqlInnodbFtMinTokenSize : undefined;
-            resourceInputs["engineConfigMysqlInnodbFtServerStopwordTable"] = state ? state.engineConfigMysqlInnodbFtServerStopwordTable : undefined;
-            resourceInputs["engineConfigMysqlInnodbLockWaitTimeout"] = state ? state.engineConfigMysqlInnodbLockWaitTimeout : undefined;
-            resourceInputs["engineConfigMysqlInnodbLogBufferSize"] = state ? state.engineConfigMysqlInnodbLogBufferSize : undefined;
-            resourceInputs["engineConfigMysqlInnodbOnlineAlterLogMaxSize"] = state ? state.engineConfigMysqlInnodbOnlineAlterLogMaxSize : undefined;
-            resourceInputs["engineConfigMysqlInnodbReadIoThreads"] = state ? state.engineConfigMysqlInnodbReadIoThreads : undefined;
-            resourceInputs["engineConfigMysqlInnodbRollbackOnTimeout"] = state ? state.engineConfigMysqlInnodbRollbackOnTimeout : undefined;
-            resourceInputs["engineConfigMysqlInnodbThreadConcurrency"] = state ? state.engineConfigMysqlInnodbThreadConcurrency : undefined;
-            resourceInputs["engineConfigMysqlInnodbWriteIoThreads"] = state ? state.engineConfigMysqlInnodbWriteIoThreads : undefined;
-            resourceInputs["engineConfigMysqlInteractiveTimeout"] = state ? state.engineConfigMysqlInteractiveTimeout : undefined;
-            resourceInputs["engineConfigMysqlInternalTmpMemStorageEngine"] = state ? state.engineConfigMysqlInternalTmpMemStorageEngine : undefined;
-            resourceInputs["engineConfigMysqlMaxAllowedPacket"] = state ? state.engineConfigMysqlMaxAllowedPacket : undefined;
-            resourceInputs["engineConfigMysqlMaxHeapTableSize"] = state ? state.engineConfigMysqlMaxHeapTableSize : undefined;
-            resourceInputs["engineConfigMysqlNetBufferLength"] = state ? state.engineConfigMysqlNetBufferLength : undefined;
-            resourceInputs["engineConfigMysqlNetReadTimeout"] = state ? state.engineConfigMysqlNetReadTimeout : undefined;
-            resourceInputs["engineConfigMysqlNetWriteTimeout"] = state ? state.engineConfigMysqlNetWriteTimeout : undefined;
-            resourceInputs["engineConfigMysqlSortBufferSize"] = state ? state.engineConfigMysqlSortBufferSize : undefined;
-            resourceInputs["engineConfigMysqlSqlMode"] = state ? state.engineConfigMysqlSqlMode : undefined;
-            resourceInputs["engineConfigMysqlSqlRequirePrimaryKey"] = state ? state.engineConfigMysqlSqlRequirePrimaryKey : undefined;
-            resourceInputs["engineConfigMysqlTmpTableSize"] = state ? state.engineConfigMysqlTmpTableSize : undefined;
-            resourceInputs["engineConfigMysqlWaitTimeout"] = state ? state.engineConfigMysqlWaitTimeout : undefined;
-            resourceInputs["engineId"] = state ? state.engineId : undefined;
-            resourceInputs["forkRestoreTime"] = state ? state.forkRestoreTime : undefined;
-            resourceInputs["forkSource"] = state ? state.forkSource : undefined;
-            resourceInputs["hostPrimary"] = state ? state.hostPrimary : undefined;
-            resourceInputs["hostSecondary"] = state ? state.hostSecondary : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["oldestRestoreTime"] = state ? state.oldestRestoreTime : undefined;
-            resourceInputs["pendingUpdates"] = state ? state.pendingUpdates : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["rootPassword"] = state ? state.rootPassword : undefined;
-            resourceInputs["rootUsername"] = state ? state.rootUsername : undefined;
-            resourceInputs["sslConnection"] = state ? state.sslConnection : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["suspended"] = state ? state.suspended : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
-            resourceInputs["updates"] = state ? state.updates : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["allowLists"] = state?.allowLists;
+            resourceInputs["caCert"] = state?.caCert;
+            resourceInputs["clusterSize"] = state?.clusterSize;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["encrypted"] = state?.encrypted;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineConfigBinlogRetentionPeriod"] = state?.engineConfigBinlogRetentionPeriod;
+            resourceInputs["engineConfigMysqlConnectTimeout"] = state?.engineConfigMysqlConnectTimeout;
+            resourceInputs["engineConfigMysqlDefaultTimeZone"] = state?.engineConfigMysqlDefaultTimeZone;
+            resourceInputs["engineConfigMysqlGroupConcatMaxLen"] = state?.engineConfigMysqlGroupConcatMaxLen;
+            resourceInputs["engineConfigMysqlInformationSchemaStatsExpiry"] = state?.engineConfigMysqlInformationSchemaStatsExpiry;
+            resourceInputs["engineConfigMysqlInnodbChangeBufferMaxSize"] = state?.engineConfigMysqlInnodbChangeBufferMaxSize;
+            resourceInputs["engineConfigMysqlInnodbFlushNeighbors"] = state?.engineConfigMysqlInnodbFlushNeighbors;
+            resourceInputs["engineConfigMysqlInnodbFtMinTokenSize"] = state?.engineConfigMysqlInnodbFtMinTokenSize;
+            resourceInputs["engineConfigMysqlInnodbFtServerStopwordTable"] = state?.engineConfigMysqlInnodbFtServerStopwordTable;
+            resourceInputs["engineConfigMysqlInnodbLockWaitTimeout"] = state?.engineConfigMysqlInnodbLockWaitTimeout;
+            resourceInputs["engineConfigMysqlInnodbLogBufferSize"] = state?.engineConfigMysqlInnodbLogBufferSize;
+            resourceInputs["engineConfigMysqlInnodbOnlineAlterLogMaxSize"] = state?.engineConfigMysqlInnodbOnlineAlterLogMaxSize;
+            resourceInputs["engineConfigMysqlInnodbReadIoThreads"] = state?.engineConfigMysqlInnodbReadIoThreads;
+            resourceInputs["engineConfigMysqlInnodbRollbackOnTimeout"] = state?.engineConfigMysqlInnodbRollbackOnTimeout;
+            resourceInputs["engineConfigMysqlInnodbThreadConcurrency"] = state?.engineConfigMysqlInnodbThreadConcurrency;
+            resourceInputs["engineConfigMysqlInnodbWriteIoThreads"] = state?.engineConfigMysqlInnodbWriteIoThreads;
+            resourceInputs["engineConfigMysqlInteractiveTimeout"] = state?.engineConfigMysqlInteractiveTimeout;
+            resourceInputs["engineConfigMysqlInternalTmpMemStorageEngine"] = state?.engineConfigMysqlInternalTmpMemStorageEngine;
+            resourceInputs["engineConfigMysqlMaxAllowedPacket"] = state?.engineConfigMysqlMaxAllowedPacket;
+            resourceInputs["engineConfigMysqlMaxHeapTableSize"] = state?.engineConfigMysqlMaxHeapTableSize;
+            resourceInputs["engineConfigMysqlNetBufferLength"] = state?.engineConfigMysqlNetBufferLength;
+            resourceInputs["engineConfigMysqlNetReadTimeout"] = state?.engineConfigMysqlNetReadTimeout;
+            resourceInputs["engineConfigMysqlNetWriteTimeout"] = state?.engineConfigMysqlNetWriteTimeout;
+            resourceInputs["engineConfigMysqlSortBufferSize"] = state?.engineConfigMysqlSortBufferSize;
+            resourceInputs["engineConfigMysqlSqlMode"] = state?.engineConfigMysqlSqlMode;
+            resourceInputs["engineConfigMysqlSqlRequirePrimaryKey"] = state?.engineConfigMysqlSqlRequirePrimaryKey;
+            resourceInputs["engineConfigMysqlTmpTableSize"] = state?.engineConfigMysqlTmpTableSize;
+            resourceInputs["engineConfigMysqlWaitTimeout"] = state?.engineConfigMysqlWaitTimeout;
+            resourceInputs["engineId"] = state?.engineId;
+            resourceInputs["forkRestoreTime"] = state?.forkRestoreTime;
+            resourceInputs["forkSource"] = state?.forkSource;
+            resourceInputs["hostPrimary"] = state?.hostPrimary;
+            resourceInputs["hostSecondary"] = state?.hostSecondary;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["oldestRestoreTime"] = state?.oldestRestoreTime;
+            resourceInputs["pendingUpdates"] = state?.pendingUpdates;
+            resourceInputs["platform"] = state?.platform;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["rootPassword"] = state?.rootPassword;
+            resourceInputs["rootUsername"] = state?.rootUsername;
+            resourceInputs["sslConnection"] = state?.sslConnection;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["suspended"] = state?.suspended;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updated"] = state?.updated;
+            resourceInputs["updates"] = state?.updates;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as DatabaseMysqlV2Args | undefined;
-            if ((!args || args.engineId === undefined) && !opts.urn) {
+            if (args?.engineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineId'");
             }
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["allowLists"] = args ? args.allowLists : undefined;
-            resourceInputs["clusterSize"] = args ? args.clusterSize : undefined;
-            resourceInputs["engineConfigBinlogRetentionPeriod"] = args ? args.engineConfigBinlogRetentionPeriod : undefined;
-            resourceInputs["engineConfigMysqlConnectTimeout"] = args ? args.engineConfigMysqlConnectTimeout : undefined;
-            resourceInputs["engineConfigMysqlDefaultTimeZone"] = args ? args.engineConfigMysqlDefaultTimeZone : undefined;
-            resourceInputs["engineConfigMysqlGroupConcatMaxLen"] = args ? args.engineConfigMysqlGroupConcatMaxLen : undefined;
-            resourceInputs["engineConfigMysqlInformationSchemaStatsExpiry"] = args ? args.engineConfigMysqlInformationSchemaStatsExpiry : undefined;
-            resourceInputs["engineConfigMysqlInnodbChangeBufferMaxSize"] = args ? args.engineConfigMysqlInnodbChangeBufferMaxSize : undefined;
-            resourceInputs["engineConfigMysqlInnodbFlushNeighbors"] = args ? args.engineConfigMysqlInnodbFlushNeighbors : undefined;
-            resourceInputs["engineConfigMysqlInnodbFtMinTokenSize"] = args ? args.engineConfigMysqlInnodbFtMinTokenSize : undefined;
-            resourceInputs["engineConfigMysqlInnodbFtServerStopwordTable"] = args ? args.engineConfigMysqlInnodbFtServerStopwordTable : undefined;
-            resourceInputs["engineConfigMysqlInnodbLockWaitTimeout"] = args ? args.engineConfigMysqlInnodbLockWaitTimeout : undefined;
-            resourceInputs["engineConfigMysqlInnodbLogBufferSize"] = args ? args.engineConfigMysqlInnodbLogBufferSize : undefined;
-            resourceInputs["engineConfigMysqlInnodbOnlineAlterLogMaxSize"] = args ? args.engineConfigMysqlInnodbOnlineAlterLogMaxSize : undefined;
-            resourceInputs["engineConfigMysqlInnodbReadIoThreads"] = args ? args.engineConfigMysqlInnodbReadIoThreads : undefined;
-            resourceInputs["engineConfigMysqlInnodbRollbackOnTimeout"] = args ? args.engineConfigMysqlInnodbRollbackOnTimeout : undefined;
-            resourceInputs["engineConfigMysqlInnodbThreadConcurrency"] = args ? args.engineConfigMysqlInnodbThreadConcurrency : undefined;
-            resourceInputs["engineConfigMysqlInnodbWriteIoThreads"] = args ? args.engineConfigMysqlInnodbWriteIoThreads : undefined;
-            resourceInputs["engineConfigMysqlInteractiveTimeout"] = args ? args.engineConfigMysqlInteractiveTimeout : undefined;
-            resourceInputs["engineConfigMysqlInternalTmpMemStorageEngine"] = args ? args.engineConfigMysqlInternalTmpMemStorageEngine : undefined;
-            resourceInputs["engineConfigMysqlMaxAllowedPacket"] = args ? args.engineConfigMysqlMaxAllowedPacket : undefined;
-            resourceInputs["engineConfigMysqlMaxHeapTableSize"] = args ? args.engineConfigMysqlMaxHeapTableSize : undefined;
-            resourceInputs["engineConfigMysqlNetBufferLength"] = args ? args.engineConfigMysqlNetBufferLength : undefined;
-            resourceInputs["engineConfigMysqlNetReadTimeout"] = args ? args.engineConfigMysqlNetReadTimeout : undefined;
-            resourceInputs["engineConfigMysqlNetWriteTimeout"] = args ? args.engineConfigMysqlNetWriteTimeout : undefined;
-            resourceInputs["engineConfigMysqlSortBufferSize"] = args ? args.engineConfigMysqlSortBufferSize : undefined;
-            resourceInputs["engineConfigMysqlSqlMode"] = args ? args.engineConfigMysqlSqlMode : undefined;
-            resourceInputs["engineConfigMysqlSqlRequirePrimaryKey"] = args ? args.engineConfigMysqlSqlRequirePrimaryKey : undefined;
-            resourceInputs["engineConfigMysqlTmpTableSize"] = args ? args.engineConfigMysqlTmpTableSize : undefined;
-            resourceInputs["engineConfigMysqlWaitTimeout"] = args ? args.engineConfigMysqlWaitTimeout : undefined;
-            resourceInputs["engineId"] = args ? args.engineId : undefined;
-            resourceInputs["forkRestoreTime"] = args ? args.forkRestoreTime : undefined;
-            resourceInputs["forkSource"] = args ? args.forkSource : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["suspended"] = args ? args.suspended : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["updates"] = args ? args.updates : undefined;
+            resourceInputs["allowLists"] = args?.allowLists;
+            resourceInputs["clusterSize"] = args?.clusterSize;
+            resourceInputs["engineConfigBinlogRetentionPeriod"] = args?.engineConfigBinlogRetentionPeriod;
+            resourceInputs["engineConfigMysqlConnectTimeout"] = args?.engineConfigMysqlConnectTimeout;
+            resourceInputs["engineConfigMysqlDefaultTimeZone"] = args?.engineConfigMysqlDefaultTimeZone;
+            resourceInputs["engineConfigMysqlGroupConcatMaxLen"] = args?.engineConfigMysqlGroupConcatMaxLen;
+            resourceInputs["engineConfigMysqlInformationSchemaStatsExpiry"] = args?.engineConfigMysqlInformationSchemaStatsExpiry;
+            resourceInputs["engineConfigMysqlInnodbChangeBufferMaxSize"] = args?.engineConfigMysqlInnodbChangeBufferMaxSize;
+            resourceInputs["engineConfigMysqlInnodbFlushNeighbors"] = args?.engineConfigMysqlInnodbFlushNeighbors;
+            resourceInputs["engineConfigMysqlInnodbFtMinTokenSize"] = args?.engineConfigMysqlInnodbFtMinTokenSize;
+            resourceInputs["engineConfigMysqlInnodbFtServerStopwordTable"] = args?.engineConfigMysqlInnodbFtServerStopwordTable;
+            resourceInputs["engineConfigMysqlInnodbLockWaitTimeout"] = args?.engineConfigMysqlInnodbLockWaitTimeout;
+            resourceInputs["engineConfigMysqlInnodbLogBufferSize"] = args?.engineConfigMysqlInnodbLogBufferSize;
+            resourceInputs["engineConfigMysqlInnodbOnlineAlterLogMaxSize"] = args?.engineConfigMysqlInnodbOnlineAlterLogMaxSize;
+            resourceInputs["engineConfigMysqlInnodbReadIoThreads"] = args?.engineConfigMysqlInnodbReadIoThreads;
+            resourceInputs["engineConfigMysqlInnodbRollbackOnTimeout"] = args?.engineConfigMysqlInnodbRollbackOnTimeout;
+            resourceInputs["engineConfigMysqlInnodbThreadConcurrency"] = args?.engineConfigMysqlInnodbThreadConcurrency;
+            resourceInputs["engineConfigMysqlInnodbWriteIoThreads"] = args?.engineConfigMysqlInnodbWriteIoThreads;
+            resourceInputs["engineConfigMysqlInteractiveTimeout"] = args?.engineConfigMysqlInteractiveTimeout;
+            resourceInputs["engineConfigMysqlInternalTmpMemStorageEngine"] = args?.engineConfigMysqlInternalTmpMemStorageEngine;
+            resourceInputs["engineConfigMysqlMaxAllowedPacket"] = args?.engineConfigMysqlMaxAllowedPacket;
+            resourceInputs["engineConfigMysqlMaxHeapTableSize"] = args?.engineConfigMysqlMaxHeapTableSize;
+            resourceInputs["engineConfigMysqlNetBufferLength"] = args?.engineConfigMysqlNetBufferLength;
+            resourceInputs["engineConfigMysqlNetReadTimeout"] = args?.engineConfigMysqlNetReadTimeout;
+            resourceInputs["engineConfigMysqlNetWriteTimeout"] = args?.engineConfigMysqlNetWriteTimeout;
+            resourceInputs["engineConfigMysqlSortBufferSize"] = args?.engineConfigMysqlSortBufferSize;
+            resourceInputs["engineConfigMysqlSqlMode"] = args?.engineConfigMysqlSqlMode;
+            resourceInputs["engineConfigMysqlSqlRequirePrimaryKey"] = args?.engineConfigMysqlSqlRequirePrimaryKey;
+            resourceInputs["engineConfigMysqlTmpTableSize"] = args?.engineConfigMysqlTmpTableSize;
+            resourceInputs["engineConfigMysqlWaitTimeout"] = args?.engineConfigMysqlWaitTimeout;
+            resourceInputs["engineId"] = args?.engineId;
+            resourceInputs["forkRestoreTime"] = args?.forkRestoreTime;
+            resourceInputs["forkSource"] = args?.forkSource;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["suspended"] = args?.suspended;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["updates"] = args?.updates;
             resourceInputs["caCert"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["encrypted"] = undefined /*out*/;

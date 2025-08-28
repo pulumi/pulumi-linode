@@ -130,51 +130,51 @@ export class Image extends pulumi.CustomResource {
     /**
      * The capabilities of this Image.
      */
-    public /*out*/ readonly capabilities!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly capabilities: pulumi.Output<string[]>;
     /**
      * Whether this image supports cloud-init.
      */
-    public readonly cloudInit!: pulumi.Output<boolean>;
+    declare public readonly cloudInit: pulumi.Output<boolean>;
     /**
      * When this Image was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The name of the User who created this Image.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * Whether or not this Image is deprecated. Will only be True for deprecated public Images.
      */
-    public /*out*/ readonly deprecated!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly deprecated: pulumi.Output<boolean>;
     /**
      * A detailed description of this Image.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the Linode Disk that this Image will be created from.
      */
-    public readonly diskId!: pulumi.Output<number | undefined>;
+    declare public readonly diskId: pulumi.Output<number | undefined>;
     /**
      * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
      */
-    public /*out*/ readonly expiry!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiry: pulumi.Output<string>;
     /**
      * The MD5 hash of the file to be uploaded. This is used to trigger file updates.
      */
-    public readonly fileHash!: pulumi.Output<string | undefined>;
+    declare public readonly fileHash: pulumi.Output<string | undefined>;
     /**
      * The path of the image file to be uploaded.
      */
-    public readonly filePath!: pulumi.Output<string | undefined>;
+    declare public readonly filePath: pulumi.Output<string | undefined>;
     /**
      * True if the Image is public.
      */
-    public /*out*/ readonly isPublic!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isPublic: pulumi.Output<boolean>;
     /**
      * A short description of the Image. Labels cannot contain special characters.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * The ID of the Linode that this Image will be created from.
      *
@@ -184,44 +184,44 @@ export class Image extends pulumi.CustomResource {
      *
      * The following arguments apply to uploading an image:
      */
-    public readonly linodeId!: pulumi.Output<number | undefined>;
+    declare public readonly linodeId: pulumi.Output<number | undefined>;
     /**
      * The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
      */
-    public readonly replicaRegions!: pulumi.Output<string[] | undefined>;
+    declare public readonly replicaRegions: pulumi.Output<string[] | undefined>;
     /**
      * A list of image replications region and corresponding status.
      */
-    public /*out*/ readonly replications!: pulumi.Output<outputs.ImageReplication[]>;
+    declare public /*out*/ readonly replications: pulumi.Output<outputs.ImageReplication[]>;
     /**
      * The minimum size this Image needs to deploy. Size is in MB.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * The status of an image replica.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A list of customized tags.
      */
-    public readonly tags!: pulumi.Output<string[]>;
-    public readonly timeouts!: pulumi.Output<outputs.ImageTimeouts | undefined>;
+    declare public readonly tags: pulumi.Output<string[]>;
+    declare public readonly timeouts: pulumi.Output<outputs.ImageTimeouts | undefined>;
     /**
      * The total size of the image in all available regions.
      */
-    public /*out*/ readonly totalSize!: pulumi.Output<number>;
+    declare public /*out*/ readonly totalSize: pulumi.Output<number>;
     /**
      * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The upstream distribution vendor. Nil for private Images.
      */
-    public /*out*/ readonly vendor!: pulumi.Output<string>;
+    declare public /*out*/ readonly vendor: pulumi.Output<string>;
     /**
      * Whether to wait for all image replications become `available`. Default to false.
      *
@@ -229,7 +229,7 @@ export class Image extends pulumi.CustomResource {
      *
      * The following arguments apply to creating an image from an existing Linode Instance:
      */
-    public readonly waitForReplications!: pulumi.Output<boolean>;
+    declare public readonly waitForReplications: pulumi.Output<boolean>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -244,47 +244,47 @@ export class Image extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            resourceInputs["capabilities"] = state ? state.capabilities : undefined;
-            resourceInputs["cloudInit"] = state ? state.cloudInit : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["deprecated"] = state ? state.deprecated : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["diskId"] = state ? state.diskId : undefined;
-            resourceInputs["expiry"] = state ? state.expiry : undefined;
-            resourceInputs["fileHash"] = state ? state.fileHash : undefined;
-            resourceInputs["filePath"] = state ? state.filePath : undefined;
-            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["linodeId"] = state ? state.linodeId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["replicaRegions"] = state ? state.replicaRegions : undefined;
-            resourceInputs["replications"] = state ? state.replications : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["totalSize"] = state ? state.totalSize : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vendor"] = state ? state.vendor : undefined;
-            resourceInputs["waitForReplications"] = state ? state.waitForReplications : undefined;
+            resourceInputs["capabilities"] = state?.capabilities;
+            resourceInputs["cloudInit"] = state?.cloudInit;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["deprecated"] = state?.deprecated;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["diskId"] = state?.diskId;
+            resourceInputs["expiry"] = state?.expiry;
+            resourceInputs["fileHash"] = state?.fileHash;
+            resourceInputs["filePath"] = state?.filePath;
+            resourceInputs["isPublic"] = state?.isPublic;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["linodeId"] = state?.linodeId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["replicaRegions"] = state?.replicaRegions;
+            resourceInputs["replications"] = state?.replications;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["totalSize"] = state?.totalSize;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vendor"] = state?.vendor;
+            resourceInputs["waitForReplications"] = state?.waitForReplications;
         } else {
             const args = argsOrState as ImageArgs | undefined;
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            resourceInputs["cloudInit"] = args ? args.cloudInit : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["diskId"] = args ? args.diskId : undefined;
-            resourceInputs["fileHash"] = args ? args.fileHash : undefined;
-            resourceInputs["filePath"] = args ? args.filePath : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["linodeId"] = args ? args.linodeId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["replicaRegions"] = args ? args.replicaRegions : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["waitForReplications"] = args ? args.waitForReplications : undefined;
+            resourceInputs["cloudInit"] = args?.cloudInit;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["diskId"] = args?.diskId;
+            resourceInputs["fileHash"] = args?.fileHash;
+            resourceInputs["filePath"] = args?.filePath;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["linodeId"] = args?.linodeId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["replicaRegions"] = args?.replicaRegions;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["waitForReplications"] = args?.waitForReplications;
             resourceInputs["capabilities"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;

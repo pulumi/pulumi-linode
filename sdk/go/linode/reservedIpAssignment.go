@@ -17,8 +17,7 @@ type ReservedIpAssignment struct {
 
 	// The resulting IPv4 address.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-	// `skipImplicitReboots` provider argument.
+	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
 	ApplyImmediately pulumi.BoolOutput `pulumi:"applyImmediately"`
 	// The default gateway for this address
 	Gateway pulumi.StringOutput `pulumi:"gateway"`
@@ -80,8 +79,7 @@ func GetReservedIpAssignment(ctx *pulumi.Context,
 type reservedIpAssignmentState struct {
 	// The resulting IPv4 address.
 	Address *string `pulumi:"address"`
-	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-	// `skipImplicitReboots` provider argument.
+	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
 	ApplyImmediately *bool `pulumi:"applyImmediately"`
 	// The default gateway for this address
 	Gateway *string `pulumi:"gateway"`
@@ -108,8 +106,7 @@ type reservedIpAssignmentState struct {
 type ReservedIpAssignmentState struct {
 	// The resulting IPv4 address.
 	Address pulumi.StringPtrInput
-	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-	// `skipImplicitReboots` provider argument.
+	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
 	ApplyImmediately pulumi.BoolPtrInput
 	// The default gateway for this address
 	Gateway pulumi.StringPtrInput
@@ -140,8 +137,7 @@ func (ReservedIpAssignmentState) ElementType() reflect.Type {
 type reservedIpAssignmentArgs struct {
 	// The resulting IPv4 address.
 	Address string `pulumi:"address"`
-	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-	// `skipImplicitReboots` provider argument.
+	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
 	ApplyImmediately *bool `pulumi:"applyImmediately"`
 	// The ID of the Linode to allocate an IPv4 address for.
 	LinodeId int `pulumi:"linodeId"`
@@ -155,8 +151,7 @@ type reservedIpAssignmentArgs struct {
 type ReservedIpAssignmentArgs struct {
 	// The resulting IPv4 address.
 	Address pulumi.StringInput
-	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-	// `skipImplicitReboots` provider argument.
+	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
 	ApplyImmediately pulumi.BoolPtrInput
 	// The ID of the Linode to allocate an IPv4 address for.
 	LinodeId pulumi.IntInput
@@ -258,8 +253,7 @@ func (o ReservedIpAssignmentOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
-// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-// `skipImplicitReboots` provider argument.
+// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
 func (o ReservedIpAssignmentOutput) ApplyImmediately() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.BoolOutput { return v.ApplyImmediately }).(pulumi.BoolOutput)
 }

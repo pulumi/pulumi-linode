@@ -137,16 +137,14 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
         return this.tags;
     }
     /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-     * allowing them to repel certain pods.
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
      * 
      */
     @Export(name="taints", refs={List.class,LkeNodePoolTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LkeNodePoolTaint>> taints;
 
     /**
-     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-     * allowing them to repel certain pods.
+     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
      * 
      */
     public Output<Optional<List<LkeNodePoolTaint>>> taints() {

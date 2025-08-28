@@ -50,7 +50,7 @@ export class InstanceConfig extends pulumi.CustomResource {
     /**
      * If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
      */
-    public readonly booted!: pulumi.Output<boolean>;
+    declare public readonly booted: pulumi.Output<boolean>;
     /**
      * Optional field for arbitrary User comments on this Config.
      *
@@ -60,55 +60,55 @@ export class InstanceConfig extends pulumi.CustomResource {
      *
      * * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
      */
-    public readonly comments!: pulumi.Output<string | undefined>;
+    declare public readonly comments: pulumi.Output<string | undefined>;
     /**
      * Blocks for device disks in a Linode's configuration profile.
      */
-    public readonly device!: pulumi.Output<outputs.InstanceConfigDevice[]>;
+    declare public readonly device: pulumi.Output<outputs.InstanceConfigDevice[]>;
     /**
      * A dictionary of device disks to use as a device map in a Linode's configuration profile.
      *
      * @deprecated Devices attribute is deprecated in favor of `device`.
      */
-    public readonly devices!: pulumi.Output<outputs.InstanceConfigDevices>;
+    declare public readonly devices: pulumi.Output<outputs.InstanceConfigDevices>;
     /**
      * Helpers enabled when booting to this Linode Config.
      */
-    public readonly helpers!: pulumi.Output<outputs.InstanceConfigHelper[]>;
+    declare public readonly helpers: pulumi.Output<outputs.InstanceConfigHelper[]>;
     /**
      * An array of Network Interfaces to add to this Linode's Configuration Profile.
      */
-    public readonly interfaces!: pulumi.Output<outputs.InstanceConfigInterface[] | undefined>;
+    declare public readonly interfaces: pulumi.Output<outputs.InstanceConfigInterface[] | undefined>;
     /**
      * A Kernel ID to boot a Linode with. Default is `linode/latest-64bit`. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
      */
-    public readonly kernel!: pulumi.Output<string | undefined>;
+    declare public readonly kernel: pulumi.Output<string | undefined>;
     /**
      * The Config’s label for display purposes only.
      *
      * - - -
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * The ID of the Linode to create this configuration profile under.
      */
-    public readonly linodeId!: pulumi.Output<number>;
+    declare public readonly linodeId: pulumi.Output<number>;
     /**
      * The memory limit of the Config. Defaults to the total ram of the Linode.
      */
-    public readonly memoryLimit!: pulumi.Output<number>;
+    declare public readonly memoryLimit: pulumi.Output<number>;
     /**
      * The root device to boot. (default `/dev/sda`)
      */
-    public readonly rootDevice!: pulumi.Output<string | undefined>;
+    declare public readonly rootDevice: pulumi.Output<string | undefined>;
     /**
      * Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
      */
-    public readonly runLevel!: pulumi.Output<string | undefined>;
+    declare public readonly runLevel: pulumi.Output<string | undefined>;
     /**
      * Controls the virtualization mode. (`paravirt`, `fullvirt`)
      */
-    public readonly virtMode!: pulumi.Output<string | undefined>;
+    declare public readonly virtMode: pulumi.Output<string | undefined>;
 
     /**
      * Create a InstanceConfig resource with the given unique name, arguments, and options.
@@ -123,40 +123,40 @@ export class InstanceConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceConfigState | undefined;
-            resourceInputs["booted"] = state ? state.booted : undefined;
-            resourceInputs["comments"] = state ? state.comments : undefined;
-            resourceInputs["device"] = state ? state.device : undefined;
-            resourceInputs["devices"] = state ? state.devices : undefined;
-            resourceInputs["helpers"] = state ? state.helpers : undefined;
-            resourceInputs["interfaces"] = state ? state.interfaces : undefined;
-            resourceInputs["kernel"] = state ? state.kernel : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["linodeId"] = state ? state.linodeId : undefined;
-            resourceInputs["memoryLimit"] = state ? state.memoryLimit : undefined;
-            resourceInputs["rootDevice"] = state ? state.rootDevice : undefined;
-            resourceInputs["runLevel"] = state ? state.runLevel : undefined;
-            resourceInputs["virtMode"] = state ? state.virtMode : undefined;
+            resourceInputs["booted"] = state?.booted;
+            resourceInputs["comments"] = state?.comments;
+            resourceInputs["device"] = state?.device;
+            resourceInputs["devices"] = state?.devices;
+            resourceInputs["helpers"] = state?.helpers;
+            resourceInputs["interfaces"] = state?.interfaces;
+            resourceInputs["kernel"] = state?.kernel;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["linodeId"] = state?.linodeId;
+            resourceInputs["memoryLimit"] = state?.memoryLimit;
+            resourceInputs["rootDevice"] = state?.rootDevice;
+            resourceInputs["runLevel"] = state?.runLevel;
+            resourceInputs["virtMode"] = state?.virtMode;
         } else {
             const args = argsOrState as InstanceConfigArgs | undefined;
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.linodeId === undefined) && !opts.urn) {
+            if (args?.linodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'linodeId'");
             }
-            resourceInputs["booted"] = args ? args.booted : undefined;
-            resourceInputs["comments"] = args ? args.comments : undefined;
-            resourceInputs["device"] = args ? args.device : undefined;
-            resourceInputs["devices"] = args ? args.devices : undefined;
-            resourceInputs["helpers"] = args ? args.helpers : undefined;
-            resourceInputs["interfaces"] = args ? args.interfaces : undefined;
-            resourceInputs["kernel"] = args ? args.kernel : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["linodeId"] = args ? args.linodeId : undefined;
-            resourceInputs["memoryLimit"] = args ? args.memoryLimit : undefined;
-            resourceInputs["rootDevice"] = args ? args.rootDevice : undefined;
-            resourceInputs["runLevel"] = args ? args.runLevel : undefined;
-            resourceInputs["virtMode"] = args ? args.virtMode : undefined;
+            resourceInputs["booted"] = args?.booted;
+            resourceInputs["comments"] = args?.comments;
+            resourceInputs["device"] = args?.device;
+            resourceInputs["devices"] = args?.devices;
+            resourceInputs["helpers"] = args?.helpers;
+            resourceInputs["interfaces"] = args?.interfaces;
+            resourceInputs["kernel"] = args?.kernel;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["linodeId"] = args?.linodeId;
+            resourceInputs["memoryLimit"] = args?.memoryLimit;
+            resourceInputs["rootDevice"] = args?.rootDevice;
+            resourceInputs["runLevel"] = args?.runLevel;
+            resourceInputs["virtMode"] = args?.virtMode;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceConfig.__pulumiType, name, resourceInputs, opts);

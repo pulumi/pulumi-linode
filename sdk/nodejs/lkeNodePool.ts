@@ -43,44 +43,43 @@ export class LkeNodePool extends pulumi.CustomResource {
         return obj['__pulumiType'] === LkeNodePool.__pulumiType;
     }
 
-    public readonly autoscaler!: pulumi.Output<outputs.LkeNodePoolAutoscaler | undefined>;
+    declare public readonly autoscaler: pulumi.Output<outputs.LkeNodePoolAutoscaler | undefined>;
     /**
      * ID of the LKE Cluster where to create the current Node Pool.
      */
-    public readonly clusterId!: pulumi.Output<number>;
+    declare public readonly clusterId: pulumi.Output<number>;
     /**
      * The disk encryption policy for nodes in this pool.
      */
-    public /*out*/ readonly diskEncryption!: pulumi.Output<string>;
+    declare public /*out*/ readonly diskEncryption: pulumi.Output<string>;
     /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
-    public readonly k8sVersion!: pulumi.Output<string>;
+    declare public readonly k8sVersion: pulumi.Output<string>;
     /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      */
-    public readonly nodeCount!: pulumi.Output<number>;
+    declare public readonly nodeCount: pulumi.Output<number>;
     /**
      * A list of nodes in the node pool.
      */
-    public /*out*/ readonly nodes!: pulumi.Output<outputs.LkeNodePoolNode[]>;
+    declare public /*out*/ readonly nodes: pulumi.Output<outputs.LkeNodePoolNode[]>;
     /**
      * An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-     * allowing them to repel certain pods.
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
      */
-    public readonly taints!: pulumi.Output<outputs.LkeNodePoolTaint[] | undefined>;
+    declare public readonly taints: pulumi.Output<outputs.LkeNodePoolTaint[] | undefined>;
     /**
      * A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
      *
@@ -88,7 +87,7 @@ export class LkeNodePool extends pulumi.CustomResource {
      *
      * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
-    public readonly updateStrategy!: pulumi.Output<string>;
+    declare public readonly updateStrategy: pulumi.Output<string>;
 
     /**
      * Create a LkeNodePool resource with the given unique name, arguments, and options.
@@ -103,34 +102,34 @@ export class LkeNodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LkeNodePoolState | undefined;
-            resourceInputs["autoscaler"] = state ? state.autoscaler : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
-            resourceInputs["k8sVersion"] = state ? state.k8sVersion : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["nodes"] = state ? state.nodes : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taints"] = state ? state.taints : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateStrategy"] = state ? state.updateStrategy : undefined;
+            resourceInputs["autoscaler"] = state?.autoscaler;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["diskEncryption"] = state?.diskEncryption;
+            resourceInputs["k8sVersion"] = state?.k8sVersion;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taints"] = state?.taints;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateStrategy"] = state?.updateStrategy;
         } else {
             const args = argsOrState as LkeNodePoolArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["autoscaler"] = args ? args.autoscaler : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["k8sVersion"] = args ? args.k8sVersion : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["taints"] = args ? args.taints : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["updateStrategy"] = args ? args.updateStrategy : undefined;
+            resourceInputs["autoscaler"] = args?.autoscaler;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["k8sVersion"] = args?.k8sVersion;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["taints"] = args?.taints;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["updateStrategy"] = args?.updateStrategy;
             resourceInputs["diskEncryption"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
         }
@@ -173,8 +172,7 @@ export interface LkeNodePoolState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-     * allowing them to repel certain pods.
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.LkeNodePoolTaint>[]>;
     /**
@@ -217,8 +215,7 @@ export interface LkeNodePoolArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-     * allowing them to repel certain pods.
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.LkeNodePoolTaint>[]>;
     /**

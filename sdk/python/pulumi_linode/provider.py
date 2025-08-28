@@ -54,8 +54,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] obj_access_key: The access key to be used in ObjectStorageBucket and linode_object_storage_object.
         :param pulumi.Input[_builtins.bool] obj_bucket_force_delete: If true, when deleting a ObjectStorageBucket any objects and versions will be force deleted.
         :param pulumi.Input[_builtins.str] obj_secret_key: The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
-        :param pulumi.Input[_builtins.bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
-               linode_object_sorage_bucket resource.
+        :param pulumi.Input[_builtins.bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and linode_object_sorage_bucket resource.
         :param pulumi.Input[_builtins.bool] skip_implicit_reboots: If true, Linode Instances will not be rebooted on config and interface changes.
         :param pulumi.Input[_builtins.bool] skip_instance_delete_poll: Skip waiting for a Instance resource to finish deleting.
         :param pulumi.Input[_builtins.bool] skip_instance_ready_poll: Skip waiting for a Instance resource to be running.
@@ -270,8 +269,7 @@ class ProviderArgs:
     @pulumi.getter(name="objUseTempKeys")
     def obj_use_temp_keys(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
-        linode_object_sorage_bucket resource.
+        If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and linode_object_sorage_bucket resource.
         """
         return pulumi.get(self, "obj_use_temp_keys")
 
@@ -400,8 +398,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] obj_access_key: The access key to be used in ObjectStorageBucket and linode_object_storage_object.
         :param pulumi.Input[_builtins.bool] obj_bucket_force_delete: If true, when deleting a ObjectStorageBucket any objects and versions will be force deleted.
         :param pulumi.Input[_builtins.str] obj_secret_key: The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
-        :param pulumi.Input[_builtins.bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
-               linode_object_sorage_bucket resource.
+        :param pulumi.Input[_builtins.bool] obj_use_temp_keys: If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and linode_object_sorage_bucket resource.
         :param pulumi.Input[_builtins.bool] skip_implicit_reboots: If true, Linode Instances will not be rebooted on config and interface changes.
         :param pulumi.Input[_builtins.bool] skip_instance_delete_poll: Skip waiting for a Instance resource to finish deleting.
         :param pulumi.Input[_builtins.bool] skip_instance_ready_poll: Skip waiting for a Instance resource to be running.

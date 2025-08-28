@@ -37,52 +37,51 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
     /**
      * The resulting IPv4 address.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
-     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-     * `skipImplicitReboots` provider argument.
+     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
      */
-    public readonly applyImmediately!: pulumi.Output<boolean>;
+    declare public readonly applyImmediately: pulumi.Output<boolean>;
     /**
      * The default gateway for this address
      */
-    public /*out*/ readonly gateway!: pulumi.Output<string>;
+    declare public /*out*/ readonly gateway: pulumi.Output<string>;
     /**
      * The ID of the Linode to allocate an IPv4 address for.
      */
-    public readonly linodeId!: pulumi.Output<number>;
+    declare public readonly linodeId: pulumi.Output<number>;
     /**
      * The number of bits set in the subnet mask.
      */
-    public /*out*/ readonly prefix!: pulumi.Output<number>;
+    declare public /*out*/ readonly prefix: pulumi.Output<number>;
     /**
      * Whether the IPv4 address is public or private.
      */
-    public readonly public!: pulumi.Output<boolean>;
+    declare public readonly public: pulumi.Output<boolean>;
     /**
      * The reverse DNS assigned to this address.
      */
-    public readonly rdns!: pulumi.Output<string>;
+    declare public readonly rdns: pulumi.Output<string>;
     /**
      * The region this IP resides in.
      */
-    public /*out*/ readonly region!: pulumi.Output<string>;
+    declare public /*out*/ readonly region: pulumi.Output<string>;
     /**
      * The reservation status of the IP address
      */
-    public /*out*/ readonly reserved!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reserved: pulumi.Output<boolean>;
     /**
      * The mask that separates host bits from network bits for this address.
      */
-    public /*out*/ readonly subnetMask!: pulumi.Output<string>;
+    declare public /*out*/ readonly subnetMask: pulumi.Output<string>;
     /**
      * The type of IP address.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
      */
-    public /*out*/ readonly vpcNat11s!: pulumi.Output<outputs.ReservedIpAssignmentVpcNat11[]>;
+    declare public /*out*/ readonly vpcNat11s: pulumi.Output<outputs.ReservedIpAssignmentVpcNat11[]>;
 
     /**
      * Create a ReservedIpAssignment resource with the given unique name, arguments, and options.
@@ -97,31 +96,31 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservedIpAssignmentState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["applyImmediately"] = state ? state.applyImmediately : undefined;
-            resourceInputs["gateway"] = state ? state.gateway : undefined;
-            resourceInputs["linodeId"] = state ? state.linodeId : undefined;
-            resourceInputs["prefix"] = state ? state.prefix : undefined;
-            resourceInputs["public"] = state ? state.public : undefined;
-            resourceInputs["rdns"] = state ? state.rdns : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["reserved"] = state ? state.reserved : undefined;
-            resourceInputs["subnetMask"] = state ? state.subnetMask : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vpcNat11s"] = state ? state.vpcNat11s : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["applyImmediately"] = state?.applyImmediately;
+            resourceInputs["gateway"] = state?.gateway;
+            resourceInputs["linodeId"] = state?.linodeId;
+            resourceInputs["prefix"] = state?.prefix;
+            resourceInputs["public"] = state?.public;
+            resourceInputs["rdns"] = state?.rdns;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["reserved"] = state?.reserved;
+            resourceInputs["subnetMask"] = state?.subnetMask;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vpcNat11s"] = state?.vpcNat11s;
         } else {
             const args = argsOrState as ReservedIpAssignmentArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.linodeId === undefined) && !opts.urn) {
+            if (args?.linodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'linodeId'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["applyImmediately"] = args ? args.applyImmediately : undefined;
-            resourceInputs["linodeId"] = args ? args.linodeId : undefined;
-            resourceInputs["public"] = args ? args.public : undefined;
-            resourceInputs["rdns"] = args ? args.rdns : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["applyImmediately"] = args?.applyImmediately;
+            resourceInputs["linodeId"] = args?.linodeId;
+            resourceInputs["public"] = args?.public;
+            resourceInputs["rdns"] = args?.rdns;
             resourceInputs["gateway"] = undefined /*out*/;
             resourceInputs["prefix"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
@@ -144,8 +143,7 @@ export interface ReservedIpAssignmentState {
      */
     address?: pulumi.Input<string>;
     /**
-     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-     * `skipImplicitReboots` provider argument.
+     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
      */
     applyImmediately?: pulumi.Input<boolean>;
     /**
@@ -199,8 +197,7 @@ export interface ReservedIpAssignmentArgs {
      */
     address: pulumi.Input<string>;
     /**
-     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-     * `skipImplicitReboots` provider argument.
+     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
      */
     applyImmediately?: pulumi.Input<boolean>;
     /**
