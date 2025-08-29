@@ -49,31 +49,31 @@ export class NodeBalancerNode extends pulumi.CustomResource {
      *
      * - - -
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * The ID of the NodeBalancerConfig to access.
      */
-    public readonly configId!: pulumi.Output<number>;
+    declare public readonly configId: pulumi.Output<number>;
     /**
      * The label of the Linode NodeBalancer Node. This is for display purposes only.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * The ID of the NodeBalancer to access.
      */
-    public readonly nodebalancerId!: pulumi.Output<number>;
+    declare public readonly nodebalancerId: pulumi.Output<number>;
     /**
      * The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */
-    public readonly weight!: pulumi.Output<number>;
+    declare public readonly weight: pulumi.Output<number>;
 
     /**
      * Create a NodeBalancerNode resource with the given unique name, arguments, and options.
@@ -88,33 +88,33 @@ export class NodeBalancerNode extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeBalancerNodeState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["configId"] = state ? state.configId : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["nodebalancerId"] = state ? state.nodebalancerId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["configId"] = state?.configId;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["nodebalancerId"] = state?.nodebalancerId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as NodeBalancerNodeArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.configId === undefined) && !opts.urn) {
+            if (args?.configId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.nodebalancerId === undefined) && !opts.urn) {
+            if (args?.nodebalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodebalancerId'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["configId"] = args ? args.configId : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["nodebalancerId"] = args ? args.nodebalancerId : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["configId"] = args?.configId;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["nodebalancerId"] = args?.nodebalancerId;
+            resourceInputs["weight"] = args?.weight;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

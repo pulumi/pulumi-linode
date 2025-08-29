@@ -72,57 +72,57 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
      */
-    public readonly axfrIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly axfrIps: pulumi.Output<string[] | undefined>;
     /**
      * A description for this Domain. This is for display purposes only.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
-    public readonly expireSec!: pulumi.Output<number | undefined>;
+    declare public readonly expireSec: pulumi.Output<number | undefined>;
     /**
      * The group this Domain belongs to. This is for display purposes only.
      */
-    public readonly group!: pulumi.Output<string | undefined>;
+    declare public readonly group: pulumi.Output<string | undefined>;
     /**
      * The IP addresses representing the master DNS for this Domain.
      *
      * - - -
      */
-    public readonly masterIps!: pulumi.Output<string[] | undefined>;
+    declare public readonly masterIps: pulumi.Output<string[] | undefined>;
     /**
      * The amount of time in seconds before this Domain should be refreshed. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
-    public readonly refreshSec!: pulumi.Output<number | undefined>;
+    declare public readonly refreshSec: pulumi.Output<number | undefined>;
     /**
      * The interval, in seconds, at which a failed refresh should be retried. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
-    public readonly retrySec!: pulumi.Output<number | undefined>;
+    declare public readonly retrySec: pulumi.Output<number | undefined>;
     /**
      * Start of Authority email address. This is required for master Domains.
      */
-    public readonly soaEmail!: pulumi.Output<string | undefined>;
+    declare public readonly soaEmail: pulumi.Output<string | undefined>;
     /**
      * Used to control whether this Domain is currently being rendered (defaults to "active").
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
-    public readonly ttlSec!: pulumi.Output<number | undefined>;
+    declare public readonly ttlSec: pulumi.Output<number | undefined>;
     /**
      * If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -137,40 +137,40 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["axfrIps"] = state ? state.axfrIps : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["expireSec"] = state ? state.expireSec : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["masterIps"] = state ? state.masterIps : undefined;
-            resourceInputs["refreshSec"] = state ? state.refreshSec : undefined;
-            resourceInputs["retrySec"] = state ? state.retrySec : undefined;
-            resourceInputs["soaEmail"] = state ? state.soaEmail : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["ttlSec"] = state ? state.ttlSec : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["axfrIps"] = state?.axfrIps;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["expireSec"] = state?.expireSec;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["masterIps"] = state?.masterIps;
+            resourceInputs["refreshSec"] = state?.refreshSec;
+            resourceInputs["retrySec"] = state?.retrySec;
+            resourceInputs["soaEmail"] = state?.soaEmail;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["ttlSec"] = state?.ttlSec;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["axfrIps"] = args ? args.axfrIps : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["expireSec"] = args ? args.expireSec : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["masterIps"] = args ? args.masterIps : undefined;
-            resourceInputs["refreshSec"] = args ? args.refreshSec : undefined;
-            resourceInputs["retrySec"] = args ? args.retrySec : undefined;
-            resourceInputs["soaEmail"] = args ? args.soaEmail : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["ttlSec"] = args ? args.ttlSec : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["axfrIps"] = args?.axfrIps;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["expireSec"] = args?.expireSec;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["masterIps"] = args?.masterIps;
+            resourceInputs["refreshSec"] = args?.refreshSec;
+            resourceInputs["retrySec"] = args?.retrySec;
+            resourceInputs["soaEmail"] = args?.soaEmail;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["ttlSec"] = args?.ttlSec;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Domain.__pulumiType, name, resourceInputs, opts);

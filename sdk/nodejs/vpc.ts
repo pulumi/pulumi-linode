@@ -56,23 +56,23 @@ export class Vpc extends pulumi.CustomResource {
     /**
      * The date and time when the VPC was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The user-defined description of this VPC.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The label of the VPC. This field can only contain ASCII letters, digits and dashes.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * The region of the VPC.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The date and time when the VPC was last updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
 
     /**
      * Create a Vpc resource with the given unique name, arguments, and options.
@@ -87,22 +87,22 @@ export class Vpc extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as VpcArgs | undefined;
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["region"] = args?.region;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
         }

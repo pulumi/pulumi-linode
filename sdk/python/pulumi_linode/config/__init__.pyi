@@ -81,8 +81,7 @@ The secret key to be used in ObjectStorageBucket and linode_object_storage_objec
 
 objUseTempKeys: Optional[bool]
 """
-If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
-linode_object_sorage_bucket resource.
+If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and linode_object_sorage_bucket resource.
 """
 
 skipImplicitReboots: Optional[bool]

@@ -147,16 +147,14 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-     * public.
+     * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-     * public.
+     * @return The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -472,8 +470,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param hostname The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-         * public.
+         * @param hostname The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
          * 
          * @return builder
          * 
@@ -484,8 +481,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param hostname The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-         * public.
+         * @param hostname The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
          * 
          * @return builder
          * 

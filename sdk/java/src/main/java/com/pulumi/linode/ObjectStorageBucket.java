@@ -240,16 +240,14 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
         return this.endpointType;
     }
     /**
-     * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-     * public.
+     * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
      * 
      */
     @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
-     * @return The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-     * public.
+     * @return The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
      * 
      */
     public Output<String> hostname() {

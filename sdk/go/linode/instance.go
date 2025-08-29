@@ -163,13 +163,9 @@ type Instance struct {
 	Alerts InstanceAlertsOutput `pulumi:"alerts"`
 	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
 	AuthorizedKeys pulumi.StringArrayOutput `pulumi:"authorizedKeys"`
-	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-	// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers pulumi.StringArrayOutput `pulumi:"authorizedUsers"`
-	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
-	// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-	// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-	// exclusive.
+	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
 	BackupId pulumi.IntPtrOutput `pulumi:"backupId"`
 	// Information about this Linode's backups status.
 	Backups InstanceBackupArrayOutput `pulumi:"backups"`
@@ -201,11 +197,9 @@ type Instance struct {
 	HasUserData pulumi.BoolOutput `pulumi:"hasUserData"`
 	// The Linode’s host machine, as a UUID.
 	HostUuid pulumi.StringOutput `pulumi:"hostUuid"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-	// See /images for more information on the Images available for you to use.
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
 	Image pulumi.StringPtrOutput `pulumi:"image"`
-	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-	// must be declared in the config block.
+	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 	Interfaces InstanceInterfaceArrayOutput `pulumi:"interfaces"`
 	// A string containing the Linode's public IP address.
 	//
@@ -259,16 +253,13 @@ type Instance struct {
 	SharedIpv4s pulumi.StringArrayOutput `pulumi:"sharedIpv4s"`
 	// Information about the resources available to this Linode.
 	Specs InstanceSpecArrayOutput `pulumi:"specs"`
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	StackscriptData pulumi.StringMapOutput `pulumi:"stackscriptData"`
-	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-	// that is compatible with this StackScript.
+	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 	StackscriptId pulumi.IntPtrOutput `pulumi:"stackscriptId"`
 	// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
 	Status pulumi.StringOutput `pulumi:"status"`
-	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-	// is used to set the swap disk size for the newly-created Linode.
+	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 	SwapSize pulumi.IntOutput `pulumi:"swapSize"`
 	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -328,13 +319,9 @@ type instanceState struct {
 	Alerts *InstanceAlerts `pulumi:"alerts"`
 	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`
-	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-	// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
-	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
-	// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-	// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-	// exclusive.
+	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
 	BackupId *int `pulumi:"backupId"`
 	// Information about this Linode's backups status.
 	Backups []InstanceBackup `pulumi:"backups"`
@@ -366,11 +353,9 @@ type instanceState struct {
 	HasUserData *bool `pulumi:"hasUserData"`
 	// The Linode’s host machine, as a UUID.
 	HostUuid *string `pulumi:"hostUuid"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-	// See /images for more information on the Images available for you to use.
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
 	Image *string `pulumi:"image"`
-	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-	// must be declared in the config block.
+	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
 	// A string containing the Linode's public IP address.
 	//
@@ -424,16 +409,13 @@ type instanceState struct {
 	SharedIpv4s []string `pulumi:"sharedIpv4s"`
 	// Information about the resources available to this Linode.
 	Specs []InstanceSpec `pulumi:"specs"`
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	StackscriptData map[string]string `pulumi:"stackscriptData"`
-	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-	// that is compatible with this StackScript.
+	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 	StackscriptId *int `pulumi:"stackscriptId"`
 	// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
 	Status *string `pulumi:"status"`
-	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-	// is used to set the swap disk size for the newly-created Linode.
+	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 	SwapSize *int `pulumi:"swapSize"`
 	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
@@ -450,13 +432,9 @@ type InstanceState struct {
 	Alerts InstanceAlertsPtrInput
 	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
 	AuthorizedKeys pulumi.StringArrayInput
-	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-	// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers pulumi.StringArrayInput
-	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
-	// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-	// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-	// exclusive.
+	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
 	BackupId pulumi.IntPtrInput
 	// Information about this Linode's backups status.
 	Backups InstanceBackupArrayInput
@@ -488,11 +466,9 @@ type InstanceState struct {
 	HasUserData pulumi.BoolPtrInput
 	// The Linode’s host machine, as a UUID.
 	HostUuid pulumi.StringPtrInput
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-	// See /images for more information on the Images available for you to use.
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
 	Image pulumi.StringPtrInput
-	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-	// must be declared in the config block.
+	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 	Interfaces InstanceInterfaceArrayInput
 	// A string containing the Linode's public IP address.
 	//
@@ -546,16 +522,13 @@ type InstanceState struct {
 	SharedIpv4s pulumi.StringArrayInput
 	// Information about the resources available to this Linode.
 	Specs InstanceSpecArrayInput
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	StackscriptData pulumi.StringMapInput
-	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-	// that is compatible with this StackScript.
+	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 	StackscriptId pulumi.IntPtrInput
 	// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
 	Status pulumi.StringPtrInput
-	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-	// is used to set the swap disk size for the newly-created Linode.
+	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 	SwapSize pulumi.IntPtrInput
 	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
@@ -576,13 +549,9 @@ type instanceArgs struct {
 	Alerts *InstanceAlerts `pulumi:"alerts"`
 	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`
-	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-	// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers []string `pulumi:"authorizedUsers"`
-	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
-	// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-	// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-	// exclusive.
+	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
 	BackupId *int `pulumi:"backupId"`
 	// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`
@@ -606,11 +575,9 @@ type instanceArgs struct {
 	//
 	// Deprecated: Group label is deprecated. We recommend using tags instead.
 	Group *string `pulumi:"group"`
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-	// See /images for more information on the Images available for you to use.
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
 	Image *string `pulumi:"image"`
-	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-	// must be declared in the config block.
+	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
 	// A set of reserved IPv4 addresses to assign to this Linode on creation.
 	//
@@ -652,14 +619,11 @@ type instanceArgs struct {
 	//
 	// * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
 	SharedIpv4s []string `pulumi:"sharedIpv4s"`
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	StackscriptData map[string]string `pulumi:"stackscriptData"`
-	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-	// that is compatible with this StackScript.
+	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 	StackscriptId *int `pulumi:"stackscriptId"`
-	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-	// is used to set the swap disk size for the newly-created Linode.
+	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 	SwapSize *int `pulumi:"swapSize"`
 	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
@@ -677,13 +641,9 @@ type InstanceArgs struct {
 	Alerts InstanceAlertsPtrInput
 	// A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
 	AuthorizedKeys pulumi.StringArrayInput
-	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-	// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+	// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 	AuthorizedUsers pulumi.StringArrayInput
-	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
-	// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-	// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-	// exclusive.
+	// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
 	BackupId pulumi.IntPtrInput
 	// If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
 	BackupsEnabled pulumi.BoolPtrInput
@@ -707,11 +667,9 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Group label is deprecated. We recommend using tags instead.
 	Group pulumi.StringPtrInput
-	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-	// See /images for more information on the Images available for you to use.
+	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
 	Image pulumi.StringPtrInput
-	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-	// must be declared in the config block.
+	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 	Interfaces InstanceInterfaceArrayInput
 	// A set of reserved IPv4 addresses to assign to this Linode on creation.
 	//
@@ -753,14 +711,11 @@ type InstanceArgs struct {
 	//
 	// * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
 	SharedIpv4s pulumi.StringArrayInput
-	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-	// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+	// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 	StackscriptData pulumi.StringMapInput
-	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-	// that is compatible with this StackScript.
+	// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 	StackscriptId pulumi.IntPtrInput
-	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-	// is used to set the swap disk size for the newly-created Linode.
+	// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 	SwapSize pulumi.IntPtrInput
 	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
@@ -869,16 +824,12 @@ func (o InstanceOutput) AuthorizedKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.AuthorizedKeys }).(pulumi.StringArrayOutput)
 }
 
-// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
 func (o InstanceOutput) AuthorizedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.AuthorizedUsers }).(pulumi.StringArrayOutput)
 }
 
-// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup
-// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-// exclusive.
+// A Backup ID from another Linode's available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
 func (o InstanceOutput) BackupId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.BackupId }).(pulumi.IntPtrOutput)
 }
@@ -949,14 +900,12 @@ func (o InstanceOutput) HostUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HostUuid }).(pulumi.StringOutput)
 }
 
-// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-// See /images for more information on the Images available for you to use.
+// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
 func (o InstanceOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-// must be declared in the config block.
+// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 func (o InstanceOutput) Interfaces() InstanceInterfaceArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceInterfaceArrayOutput { return v.Interfaces }).(InstanceInterfaceArrayOutput)
 }
@@ -1061,14 +1010,12 @@ func (o InstanceOutput) Specs() InstanceSpecArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceSpecArrayOutput { return v.Specs }).(InstanceSpecArrayOutput)
 }
 
-// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
 func (o InstanceOutput) StackscriptData() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.StackscriptData }).(pulumi.StringMapOutput)
 }
 
-// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-// that is compatible with this StackScript.
+// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
 func (o InstanceOutput) StackscriptId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.StackscriptId }).(pulumi.IntPtrOutput)
 }
@@ -1078,8 +1025,7 @@ func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-// is used to set the swap disk size for the newly-created Linode.
+// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
 func (o InstanceOutput) SwapSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SwapSize }).(pulumi.IntOutput)
 }

@@ -19,8 +19,7 @@ namespace Pulumi.Linode
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-        /// `skip_implicit_reboots` provider argument.
+        /// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
         /// </summary>
         [Output("applyImmediately")]
         public Output<bool> ApplyImmediately { get; private set; } = null!;
@@ -138,8 +137,7 @@ namespace Pulumi.Linode
         public Input<string> Address { get; set; } = null!;
 
         /// <summary>
-        /// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-        /// `skip_implicit_reboots` provider argument.
+        /// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
         /// </summary>
         [Input("applyImmediately")]
         public Input<bool>? ApplyImmediately { get; set; }
@@ -177,8 +175,7 @@ namespace Pulumi.Linode
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-        /// `skip_implicit_reboots` provider argument.
+        /// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
         /// </summary>
         [Input("applyImmediately")]
         public Input<bool>? ApplyImmediately { get; set; }

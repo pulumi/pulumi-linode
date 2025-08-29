@@ -76,15 +76,15 @@ export class SshKey extends pulumi.CustomResource {
     /**
      * The date this SSH Key was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * A label for the SSH Key.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
      */
-    public readonly sshKey!: pulumi.Output<string>;
+    declare public readonly sshKey: pulumi.Output<string>;
 
     /**
      * Create a SshKey resource with the given unique name, arguments, and options.
@@ -99,19 +99,19 @@ export class SshKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SshKeyState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["sshKey"] = state ? state.sshKey : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["sshKey"] = state?.sshKey;
         } else {
             const args = argsOrState as SshKeyArgs | undefined;
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.sshKey === undefined) && !opts.urn) {
+            if (args?.sshKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sshKey'");
             }
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["sshKey"] = args ? args.sshKey : undefined;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["sshKey"] = args?.sshKey;
             resourceInputs["created"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

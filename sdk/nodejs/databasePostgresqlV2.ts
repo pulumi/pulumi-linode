@@ -84,304 +84,304 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
     /**
      * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
      */
-    public readonly allowLists!: pulumi.Output<string[]>;
+    declare public readonly allowLists: pulumi.Output<string[]>;
     /**
      * The base64-encoded SSL CA certificate for the Managed Database.
      */
-    public /*out*/ readonly caCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly caCert: pulumi.Output<string>;
     /**
      * The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
      */
-    public readonly clusterSize!: pulumi.Output<number>;
+    declare public readonly clusterSize: pulumi.Output<number>;
     /**
      * When this Managed Database was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * Whether the Managed Databases is encrypted.
      */
-    public /*out*/ readonly encrypted!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly encrypted: pulumi.Output<boolean>;
     /**
      * The Managed Database engine. (e.g. `postgresql`)
      */
-    public /*out*/ readonly engine!: pulumi.Output<string>;
+    declare public /*out*/ readonly engine: pulumi.Output<string>;
     /**
      * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
      */
-    public readonly engineConfigPgAutovacuumAnalyzeScaleFactor!: pulumi.Output<number>;
+    declare public readonly engineConfigPgAutovacuumAnalyzeScaleFactor: pulumi.Output<number>;
     /**
      * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
      */
-    public readonly engineConfigPgAutovacuumAnalyzeThreshold!: pulumi.Output<number>;
+    declare public readonly engineConfigPgAutovacuumAnalyzeThreshold: pulumi.Output<number>;
     /**
      * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
      */
-    public readonly engineConfigPgAutovacuumMaxWorkers!: pulumi.Output<number>;
+    declare public readonly engineConfigPgAutovacuumMaxWorkers: pulumi.Output<number>;
     /**
      * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
      */
-    public readonly engineConfigPgAutovacuumNaptime!: pulumi.Output<number>;
+    declare public readonly engineConfigPgAutovacuumNaptime: pulumi.Output<number>;
     /**
      * Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
      */
-    public readonly engineConfigPgAutovacuumVacuumCostDelay!: pulumi.Output<number>;
+    declare public readonly engineConfigPgAutovacuumVacuumCostDelay: pulumi.Output<number>;
     /**
      * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
      */
-    public readonly engineConfigPgAutovacuumVacuumCostLimit!: pulumi.Output<number>;
+    declare public readonly engineConfigPgAutovacuumVacuumCostLimit: pulumi.Output<number>;
     /**
      * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
      */
-    public readonly engineConfigPgAutovacuumVacuumScaleFactor!: pulumi.Output<number>;
+    declare public readonly engineConfigPgAutovacuumVacuumScaleFactor: pulumi.Output<number>;
     /**
      * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
      */
-    public readonly engineConfigPgAutovacuumVacuumThreshold!: pulumi.Output<number>;
+    declare public readonly engineConfigPgAutovacuumVacuumThreshold: pulumi.Output<number>;
     /**
      * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
      */
-    public readonly engineConfigPgBgwriterDelay!: pulumi.Output<number>;
+    declare public readonly engineConfigPgBgwriterDelay: pulumi.Output<number>;
     /**
      * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
      */
-    public readonly engineConfigPgBgwriterFlushAfter!: pulumi.Output<number>;
+    declare public readonly engineConfigPgBgwriterFlushAfter: pulumi.Output<number>;
     /**
      * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
      */
-    public readonly engineConfigPgBgwriterLruMaxpages!: pulumi.Output<number>;
+    declare public readonly engineConfigPgBgwriterLruMaxpages: pulumi.Output<number>;
     /**
      * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
      */
-    public readonly engineConfigPgBgwriterLruMultiplier!: pulumi.Output<number>;
+    declare public readonly engineConfigPgBgwriterLruMultiplier: pulumi.Output<number>;
     /**
      * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
      */
-    public readonly engineConfigPgDeadlockTimeout!: pulumi.Output<number>;
+    declare public readonly engineConfigPgDeadlockTimeout: pulumi.Output<number>;
     /**
      * Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
      */
-    public readonly engineConfigPgDefaultToastCompression!: pulumi.Output<string>;
+    declare public readonly engineConfigPgDefaultToastCompression: pulumi.Output<string>;
     /**
      * Time out sessions with open transactions after this number of milliseconds.
      */
-    public readonly engineConfigPgIdleInTransactionSessionTimeout!: pulumi.Output<number>;
+    declare public readonly engineConfigPgIdleInTransactionSessionTimeout: pulumi.Output<number>;
     /**
      * Controls system-wide use of Just-in-Time Compilation (JIT).
      */
-    public readonly engineConfigPgJit!: pulumi.Output<boolean>;
+    declare public readonly engineConfigPgJit: pulumi.Output<boolean>;
     /**
      * PostgreSQL maximum number of files that can be open per process.
      */
-    public readonly engineConfigPgMaxFilesPerProcess!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxFilesPerProcess: pulumi.Output<number>;
     /**
      * PostgreSQL maximum locks per transaction.
      */
-    public readonly engineConfigPgMaxLocksPerTransaction!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxLocksPerTransaction: pulumi.Output<number>;
     /**
      * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
      */
-    public readonly engineConfigPgMaxLogicalReplicationWorkers!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxLogicalReplicationWorkers: pulumi.Output<number>;
     /**
      * Sets the maximum number of workers that the system can support for parallel queries.
      */
-    public readonly engineConfigPgMaxParallelWorkers!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxParallelWorkers: pulumi.Output<number>;
     /**
      * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
      */
-    public readonly engineConfigPgMaxParallelWorkersPerGather!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxParallelWorkersPerGather: pulumi.Output<number>;
     /**
      * PostgreSQL maximum predicate locks per transaction.
      */
-    public readonly engineConfigPgMaxPredLocksPerTransaction!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxPredLocksPerTransaction: pulumi.Output<number>;
     /**
      * PostgreSQL maximum replication slots.
      */
-    public readonly engineConfigPgMaxReplicationSlots!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxReplicationSlots: pulumi.Output<number>;
     /**
      * PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
      */
-    public readonly engineConfigPgMaxSlotWalKeepSize!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxSlotWalKeepSize: pulumi.Output<number>;
     /**
      * Maximum depth of the stack in bytes.
      */
-    public readonly engineConfigPgMaxStackDepth!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxStackDepth: pulumi.Output<number>;
     /**
      * Max standby archive delay in milliseconds.
      */
-    public readonly engineConfigPgMaxStandbyArchiveDelay!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxStandbyArchiveDelay: pulumi.Output<number>;
     /**
      * Max standby streaming delay in milliseconds.
      */
-    public readonly engineConfigPgMaxStandbyStreamingDelay!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxStandbyStreamingDelay: pulumi.Output<number>;
     /**
      * PostgreSQL maximum WAL senders.
      */
-    public readonly engineConfigPgMaxWalSenders!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxWalSenders: pulumi.Output<number>;
     /**
      * Sets the maximum number of background processes that the system can support.
      */
-    public readonly engineConfigPgMaxWorkerProcesses!: pulumi.Output<number>;
+    declare public readonly engineConfigPgMaxWorkerProcesses: pulumi.Output<number>;
     /**
      * Chooses the algorithm for encrypting passwords. (default `md5`)
      */
-    public readonly engineConfigPgPasswordEncryption!: pulumi.Output<string>;
+    declare public readonly engineConfigPgPasswordEncryption: pulumi.Output<string>;
     /**
      * Sets the time interval to run pg_partman's scheduled tasks.
      */
-    public readonly engineConfigPgPgPartmanBgwInterval!: pulumi.Output<number>;
+    declare public readonly engineConfigPgPgPartmanBgwInterval: pulumi.Output<number>;
     /**
      * Controls which role to use for pg_partman's scheduled background tasks.
      */
-    public readonly engineConfigPgPgPartmanBgwRole!: pulumi.Output<string>;
+    declare public readonly engineConfigPgPgPartmanBgwRole: pulumi.Output<string>;
     /**
      * Enables or disables query plan monitoring.
      */
-    public readonly engineConfigPgPgStatMonitorPgsmEnableQueryPlan!: pulumi.Output<boolean>;
+    declare public readonly engineConfigPgPgStatMonitorPgsmEnableQueryPlan: pulumi.Output<boolean>;
     /**
      * Sets the maximum number of buckets.
      */
-    public readonly engineConfigPgPgStatMonitorPgsmMaxBuckets!: pulumi.Output<number>;
+    declare public readonly engineConfigPgPgStatMonitorPgsmMaxBuckets: pulumi.Output<number>;
     /**
      * Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
      */
-    public readonly engineConfigPgPgStatStatementsTrack!: pulumi.Output<string>;
+    declare public readonly engineConfigPgPgStatStatementsTrack: pulumi.Output<string>;
     /**
      * Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pgStatStatements results for utility commands are unreliable. (default `false`)
      */
-    public readonly engineConfigPgStatMonitorEnable!: pulumi.Output<boolean>;
+    declare public readonly engineConfigPgStatMonitorEnable: pulumi.Output<boolean>;
     /**
      * PostgreSQL temporary file limit in KiB, -1 for unlimited.
      */
-    public readonly engineConfigPgTempFileLimit!: pulumi.Output<number>;
+    declare public readonly engineConfigPgTempFileLimit: pulumi.Output<number>;
     /**
      * PostgreSQL service timezone.
      */
-    public readonly engineConfigPgTimezone!: pulumi.Output<string>;
+    declare public readonly engineConfigPgTimezone: pulumi.Output<string>;
     /**
      * Specifies the number of bytes reserved to track the currently executing command for each active session.
      */
-    public readonly engineConfigPgTrackActivityQuerySize!: pulumi.Output<number>;
+    declare public readonly engineConfigPgTrackActivityQuerySize: pulumi.Output<number>;
     /**
      * Record commit time of transactions.
      */
-    public readonly engineConfigPgTrackCommitTimestamp!: pulumi.Output<string>;
+    declare public readonly engineConfigPgTrackCommitTimestamp: pulumi.Output<string>;
     /**
      * Enables tracking of function call counts and time used.
      */
-    public readonly engineConfigPgTrackFunctions!: pulumi.Output<string>;
+    declare public readonly engineConfigPgTrackFunctions: pulumi.Output<string>;
     /**
      * Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
      */
-    public readonly engineConfigPgTrackIoTiming!: pulumi.Output<string>;
+    declare public readonly engineConfigPgTrackIoTiming: pulumi.Output<string>;
     /**
      * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
      */
-    public readonly engineConfigPgWalSenderTimeout!: pulumi.Output<number>;
+    declare public readonly engineConfigPgWalSenderTimeout: pulumi.Output<number>;
     /**
      * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
      */
-    public readonly engineConfigPgWalWriterDelay!: pulumi.Output<number>;
+    declare public readonly engineConfigPgWalWriterDelay: pulumi.Output<number>;
     /**
      * Number of seconds of master unavailability before triggering database failover to standby. (default `60`)
      */
-    public readonly engineConfigPglookoutMaxFailoverReplicationTimeLag!: pulumi.Output<number>;
+    declare public readonly engineConfigPglookoutMaxFailoverReplicationTimeLag: pulumi.Output<number>;
     /**
      * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
      */
-    public readonly engineConfigSharedBuffersPercentage!: pulumi.Output<number>;
+    declare public readonly engineConfigSharedBuffersPercentage: pulumi.Output<number>;
     /**
      * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
      */
-    public readonly engineConfigWorkMem!: pulumi.Output<number>;
+    declare public readonly engineConfigWorkMem: pulumi.Output<number>;
     /**
      * The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
      */
-    public readonly engineId!: pulumi.Output<string>;
+    declare public readonly engineId: pulumi.Output<string>;
     /**
      * The database timestamp from which it was restored.
      */
-    public readonly forkRestoreTime!: pulumi.Output<string>;
+    declare public readonly forkRestoreTime: pulumi.Output<string>;
     /**
      * The ID of the database that was forked from.
      *
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
-    public readonly forkSource!: pulumi.Output<number | undefined>;
+    declare public readonly forkSource: pulumi.Output<number | undefined>;
     /**
      * The primary host for the Managed Database.
      */
-    public /*out*/ readonly hostPrimary!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostPrimary: pulumi.Output<string>;
     /**
      * The secondary/private host for the managed database.
      */
-    public /*out*/ readonly hostSecondary!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostSecondary: pulumi.Output<string>;
     /**
      * A unique, user-defined string referring to the Managed Database.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * A mapping between IP addresses and strings designating them as primary or failover.
      */
-    public /*out*/ readonly members!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly members: pulumi.Output<{[key: string]: string}>;
     /**
      * The oldest time to which a database can be restored.
      */
-    public /*out*/ readonly oldestRestoreTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly oldestRestoreTime: pulumi.Output<string>;
     /**
      * A set of pending updates.
      */
-    public /*out*/ readonly pendingUpdates!: pulumi.Output<outputs.DatabasePostgresqlV2PendingUpdate[]>;
+    declare public /*out*/ readonly pendingUpdates: pulumi.Output<outputs.DatabasePostgresqlV2PendingUpdate[]>;
     /**
      * The back-end platform for relational databases used by the service.
      */
-    public /*out*/ readonly platform!: pulumi.Output<string>;
+    declare public /*out*/ readonly platform: pulumi.Output<string>;
     /**
      * The access port for this Managed Database.
      */
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * The region to use for the Managed Database.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The randomly-generated root password for the Managed Database instance.
      */
-    public /*out*/ readonly rootPassword!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootPassword: pulumi.Output<string>;
     /**
      * The root username for the Managed Database instance.
      */
-    public /*out*/ readonly rootUsername!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootUsername: pulumi.Output<string>;
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database.
      */
-    public /*out*/ readonly sslConnection!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly sslConnection: pulumi.Output<boolean>;
     /**
      * The operating status of the Managed Database.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Whether this Managed Database should be suspended.
      */
-    public readonly suspended!: pulumi.Output<boolean>;
-    public readonly timeouts!: pulumi.Output<outputs.DatabasePostgresqlV2Timeouts | undefined>;
+    declare public readonly suspended: pulumi.Output<boolean>;
+    declare public readonly timeouts: pulumi.Output<outputs.DatabasePostgresqlV2Timeouts | undefined>;
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
      *
      * - - -
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * When this Managed Database was last updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
     /**
      * Configuration settings for automated patch update maintenance for the Managed Database.
      */
-    public readonly updates!: pulumi.Output<outputs.DatabasePostgresqlV2Updates>;
+    declare public readonly updates: pulumi.Output<outputs.DatabasePostgresqlV2Updates>;
     /**
      * The Managed Database engine version. (e.g. `13.2`)
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a DatabasePostgresqlV2 resource with the given unique name, arguments, and options.
@@ -396,153 +396,153 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabasePostgresqlV2State | undefined;
-            resourceInputs["allowLists"] = state ? state.allowLists : undefined;
-            resourceInputs["caCert"] = state ? state.caCert : undefined;
-            resourceInputs["clusterSize"] = state ? state.clusterSize : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["encrypted"] = state ? state.encrypted : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineConfigPgAutovacuumAnalyzeScaleFactor"] = state ? state.engineConfigPgAutovacuumAnalyzeScaleFactor : undefined;
-            resourceInputs["engineConfigPgAutovacuumAnalyzeThreshold"] = state ? state.engineConfigPgAutovacuumAnalyzeThreshold : undefined;
-            resourceInputs["engineConfigPgAutovacuumMaxWorkers"] = state ? state.engineConfigPgAutovacuumMaxWorkers : undefined;
-            resourceInputs["engineConfigPgAutovacuumNaptime"] = state ? state.engineConfigPgAutovacuumNaptime : undefined;
-            resourceInputs["engineConfigPgAutovacuumVacuumCostDelay"] = state ? state.engineConfigPgAutovacuumVacuumCostDelay : undefined;
-            resourceInputs["engineConfigPgAutovacuumVacuumCostLimit"] = state ? state.engineConfigPgAutovacuumVacuumCostLimit : undefined;
-            resourceInputs["engineConfigPgAutovacuumVacuumScaleFactor"] = state ? state.engineConfigPgAutovacuumVacuumScaleFactor : undefined;
-            resourceInputs["engineConfigPgAutovacuumVacuumThreshold"] = state ? state.engineConfigPgAutovacuumVacuumThreshold : undefined;
-            resourceInputs["engineConfigPgBgwriterDelay"] = state ? state.engineConfigPgBgwriterDelay : undefined;
-            resourceInputs["engineConfigPgBgwriterFlushAfter"] = state ? state.engineConfigPgBgwriterFlushAfter : undefined;
-            resourceInputs["engineConfigPgBgwriterLruMaxpages"] = state ? state.engineConfigPgBgwriterLruMaxpages : undefined;
-            resourceInputs["engineConfigPgBgwriterLruMultiplier"] = state ? state.engineConfigPgBgwriterLruMultiplier : undefined;
-            resourceInputs["engineConfigPgDeadlockTimeout"] = state ? state.engineConfigPgDeadlockTimeout : undefined;
-            resourceInputs["engineConfigPgDefaultToastCompression"] = state ? state.engineConfigPgDefaultToastCompression : undefined;
-            resourceInputs["engineConfigPgIdleInTransactionSessionTimeout"] = state ? state.engineConfigPgIdleInTransactionSessionTimeout : undefined;
-            resourceInputs["engineConfigPgJit"] = state ? state.engineConfigPgJit : undefined;
-            resourceInputs["engineConfigPgMaxFilesPerProcess"] = state ? state.engineConfigPgMaxFilesPerProcess : undefined;
-            resourceInputs["engineConfigPgMaxLocksPerTransaction"] = state ? state.engineConfigPgMaxLocksPerTransaction : undefined;
-            resourceInputs["engineConfigPgMaxLogicalReplicationWorkers"] = state ? state.engineConfigPgMaxLogicalReplicationWorkers : undefined;
-            resourceInputs["engineConfigPgMaxParallelWorkers"] = state ? state.engineConfigPgMaxParallelWorkers : undefined;
-            resourceInputs["engineConfigPgMaxParallelWorkersPerGather"] = state ? state.engineConfigPgMaxParallelWorkersPerGather : undefined;
-            resourceInputs["engineConfigPgMaxPredLocksPerTransaction"] = state ? state.engineConfigPgMaxPredLocksPerTransaction : undefined;
-            resourceInputs["engineConfigPgMaxReplicationSlots"] = state ? state.engineConfigPgMaxReplicationSlots : undefined;
-            resourceInputs["engineConfigPgMaxSlotWalKeepSize"] = state ? state.engineConfigPgMaxSlotWalKeepSize : undefined;
-            resourceInputs["engineConfigPgMaxStackDepth"] = state ? state.engineConfigPgMaxStackDepth : undefined;
-            resourceInputs["engineConfigPgMaxStandbyArchiveDelay"] = state ? state.engineConfigPgMaxStandbyArchiveDelay : undefined;
-            resourceInputs["engineConfigPgMaxStandbyStreamingDelay"] = state ? state.engineConfigPgMaxStandbyStreamingDelay : undefined;
-            resourceInputs["engineConfigPgMaxWalSenders"] = state ? state.engineConfigPgMaxWalSenders : undefined;
-            resourceInputs["engineConfigPgMaxWorkerProcesses"] = state ? state.engineConfigPgMaxWorkerProcesses : undefined;
-            resourceInputs["engineConfigPgPasswordEncryption"] = state ? state.engineConfigPgPasswordEncryption : undefined;
-            resourceInputs["engineConfigPgPgPartmanBgwInterval"] = state ? state.engineConfigPgPgPartmanBgwInterval : undefined;
-            resourceInputs["engineConfigPgPgPartmanBgwRole"] = state ? state.engineConfigPgPgPartmanBgwRole : undefined;
-            resourceInputs["engineConfigPgPgStatMonitorPgsmEnableQueryPlan"] = state ? state.engineConfigPgPgStatMonitorPgsmEnableQueryPlan : undefined;
-            resourceInputs["engineConfigPgPgStatMonitorPgsmMaxBuckets"] = state ? state.engineConfigPgPgStatMonitorPgsmMaxBuckets : undefined;
-            resourceInputs["engineConfigPgPgStatStatementsTrack"] = state ? state.engineConfigPgPgStatStatementsTrack : undefined;
-            resourceInputs["engineConfigPgStatMonitorEnable"] = state ? state.engineConfigPgStatMonitorEnable : undefined;
-            resourceInputs["engineConfigPgTempFileLimit"] = state ? state.engineConfigPgTempFileLimit : undefined;
-            resourceInputs["engineConfigPgTimezone"] = state ? state.engineConfigPgTimezone : undefined;
-            resourceInputs["engineConfigPgTrackActivityQuerySize"] = state ? state.engineConfigPgTrackActivityQuerySize : undefined;
-            resourceInputs["engineConfigPgTrackCommitTimestamp"] = state ? state.engineConfigPgTrackCommitTimestamp : undefined;
-            resourceInputs["engineConfigPgTrackFunctions"] = state ? state.engineConfigPgTrackFunctions : undefined;
-            resourceInputs["engineConfigPgTrackIoTiming"] = state ? state.engineConfigPgTrackIoTiming : undefined;
-            resourceInputs["engineConfigPgWalSenderTimeout"] = state ? state.engineConfigPgWalSenderTimeout : undefined;
-            resourceInputs["engineConfigPgWalWriterDelay"] = state ? state.engineConfigPgWalWriterDelay : undefined;
-            resourceInputs["engineConfigPglookoutMaxFailoverReplicationTimeLag"] = state ? state.engineConfigPglookoutMaxFailoverReplicationTimeLag : undefined;
-            resourceInputs["engineConfigSharedBuffersPercentage"] = state ? state.engineConfigSharedBuffersPercentage : undefined;
-            resourceInputs["engineConfigWorkMem"] = state ? state.engineConfigWorkMem : undefined;
-            resourceInputs["engineId"] = state ? state.engineId : undefined;
-            resourceInputs["forkRestoreTime"] = state ? state.forkRestoreTime : undefined;
-            resourceInputs["forkSource"] = state ? state.forkSource : undefined;
-            resourceInputs["hostPrimary"] = state ? state.hostPrimary : undefined;
-            resourceInputs["hostSecondary"] = state ? state.hostSecondary : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["oldestRestoreTime"] = state ? state.oldestRestoreTime : undefined;
-            resourceInputs["pendingUpdates"] = state ? state.pendingUpdates : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["rootPassword"] = state ? state.rootPassword : undefined;
-            resourceInputs["rootUsername"] = state ? state.rootUsername : undefined;
-            resourceInputs["sslConnection"] = state ? state.sslConnection : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["suspended"] = state ? state.suspended : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
-            resourceInputs["updates"] = state ? state.updates : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["allowLists"] = state?.allowLists;
+            resourceInputs["caCert"] = state?.caCert;
+            resourceInputs["clusterSize"] = state?.clusterSize;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["encrypted"] = state?.encrypted;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineConfigPgAutovacuumAnalyzeScaleFactor"] = state?.engineConfigPgAutovacuumAnalyzeScaleFactor;
+            resourceInputs["engineConfigPgAutovacuumAnalyzeThreshold"] = state?.engineConfigPgAutovacuumAnalyzeThreshold;
+            resourceInputs["engineConfigPgAutovacuumMaxWorkers"] = state?.engineConfigPgAutovacuumMaxWorkers;
+            resourceInputs["engineConfigPgAutovacuumNaptime"] = state?.engineConfigPgAutovacuumNaptime;
+            resourceInputs["engineConfigPgAutovacuumVacuumCostDelay"] = state?.engineConfigPgAutovacuumVacuumCostDelay;
+            resourceInputs["engineConfigPgAutovacuumVacuumCostLimit"] = state?.engineConfigPgAutovacuumVacuumCostLimit;
+            resourceInputs["engineConfigPgAutovacuumVacuumScaleFactor"] = state?.engineConfigPgAutovacuumVacuumScaleFactor;
+            resourceInputs["engineConfigPgAutovacuumVacuumThreshold"] = state?.engineConfigPgAutovacuumVacuumThreshold;
+            resourceInputs["engineConfigPgBgwriterDelay"] = state?.engineConfigPgBgwriterDelay;
+            resourceInputs["engineConfigPgBgwriterFlushAfter"] = state?.engineConfigPgBgwriterFlushAfter;
+            resourceInputs["engineConfigPgBgwriterLruMaxpages"] = state?.engineConfigPgBgwriterLruMaxpages;
+            resourceInputs["engineConfigPgBgwriterLruMultiplier"] = state?.engineConfigPgBgwriterLruMultiplier;
+            resourceInputs["engineConfigPgDeadlockTimeout"] = state?.engineConfigPgDeadlockTimeout;
+            resourceInputs["engineConfigPgDefaultToastCompression"] = state?.engineConfigPgDefaultToastCompression;
+            resourceInputs["engineConfigPgIdleInTransactionSessionTimeout"] = state?.engineConfigPgIdleInTransactionSessionTimeout;
+            resourceInputs["engineConfigPgJit"] = state?.engineConfigPgJit;
+            resourceInputs["engineConfigPgMaxFilesPerProcess"] = state?.engineConfigPgMaxFilesPerProcess;
+            resourceInputs["engineConfigPgMaxLocksPerTransaction"] = state?.engineConfigPgMaxLocksPerTransaction;
+            resourceInputs["engineConfigPgMaxLogicalReplicationWorkers"] = state?.engineConfigPgMaxLogicalReplicationWorkers;
+            resourceInputs["engineConfigPgMaxParallelWorkers"] = state?.engineConfigPgMaxParallelWorkers;
+            resourceInputs["engineConfigPgMaxParallelWorkersPerGather"] = state?.engineConfigPgMaxParallelWorkersPerGather;
+            resourceInputs["engineConfigPgMaxPredLocksPerTransaction"] = state?.engineConfigPgMaxPredLocksPerTransaction;
+            resourceInputs["engineConfigPgMaxReplicationSlots"] = state?.engineConfigPgMaxReplicationSlots;
+            resourceInputs["engineConfigPgMaxSlotWalKeepSize"] = state?.engineConfigPgMaxSlotWalKeepSize;
+            resourceInputs["engineConfigPgMaxStackDepth"] = state?.engineConfigPgMaxStackDepth;
+            resourceInputs["engineConfigPgMaxStandbyArchiveDelay"] = state?.engineConfigPgMaxStandbyArchiveDelay;
+            resourceInputs["engineConfigPgMaxStandbyStreamingDelay"] = state?.engineConfigPgMaxStandbyStreamingDelay;
+            resourceInputs["engineConfigPgMaxWalSenders"] = state?.engineConfigPgMaxWalSenders;
+            resourceInputs["engineConfigPgMaxWorkerProcesses"] = state?.engineConfigPgMaxWorkerProcesses;
+            resourceInputs["engineConfigPgPasswordEncryption"] = state?.engineConfigPgPasswordEncryption;
+            resourceInputs["engineConfigPgPgPartmanBgwInterval"] = state?.engineConfigPgPgPartmanBgwInterval;
+            resourceInputs["engineConfigPgPgPartmanBgwRole"] = state?.engineConfigPgPgPartmanBgwRole;
+            resourceInputs["engineConfigPgPgStatMonitorPgsmEnableQueryPlan"] = state?.engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+            resourceInputs["engineConfigPgPgStatMonitorPgsmMaxBuckets"] = state?.engineConfigPgPgStatMonitorPgsmMaxBuckets;
+            resourceInputs["engineConfigPgPgStatStatementsTrack"] = state?.engineConfigPgPgStatStatementsTrack;
+            resourceInputs["engineConfigPgStatMonitorEnable"] = state?.engineConfigPgStatMonitorEnable;
+            resourceInputs["engineConfigPgTempFileLimit"] = state?.engineConfigPgTempFileLimit;
+            resourceInputs["engineConfigPgTimezone"] = state?.engineConfigPgTimezone;
+            resourceInputs["engineConfigPgTrackActivityQuerySize"] = state?.engineConfigPgTrackActivityQuerySize;
+            resourceInputs["engineConfigPgTrackCommitTimestamp"] = state?.engineConfigPgTrackCommitTimestamp;
+            resourceInputs["engineConfigPgTrackFunctions"] = state?.engineConfigPgTrackFunctions;
+            resourceInputs["engineConfigPgTrackIoTiming"] = state?.engineConfigPgTrackIoTiming;
+            resourceInputs["engineConfigPgWalSenderTimeout"] = state?.engineConfigPgWalSenderTimeout;
+            resourceInputs["engineConfigPgWalWriterDelay"] = state?.engineConfigPgWalWriterDelay;
+            resourceInputs["engineConfigPglookoutMaxFailoverReplicationTimeLag"] = state?.engineConfigPglookoutMaxFailoverReplicationTimeLag;
+            resourceInputs["engineConfigSharedBuffersPercentage"] = state?.engineConfigSharedBuffersPercentage;
+            resourceInputs["engineConfigWorkMem"] = state?.engineConfigWorkMem;
+            resourceInputs["engineId"] = state?.engineId;
+            resourceInputs["forkRestoreTime"] = state?.forkRestoreTime;
+            resourceInputs["forkSource"] = state?.forkSource;
+            resourceInputs["hostPrimary"] = state?.hostPrimary;
+            resourceInputs["hostSecondary"] = state?.hostSecondary;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["oldestRestoreTime"] = state?.oldestRestoreTime;
+            resourceInputs["pendingUpdates"] = state?.pendingUpdates;
+            resourceInputs["platform"] = state?.platform;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["rootPassword"] = state?.rootPassword;
+            resourceInputs["rootUsername"] = state?.rootUsername;
+            resourceInputs["sslConnection"] = state?.sslConnection;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["suspended"] = state?.suspended;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updated"] = state?.updated;
+            resourceInputs["updates"] = state?.updates;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as DatabasePostgresqlV2Args | undefined;
-            if ((!args || args.engineId === undefined) && !opts.urn) {
+            if (args?.engineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineId'");
             }
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["allowLists"] = args ? args.allowLists : undefined;
-            resourceInputs["clusterSize"] = args ? args.clusterSize : undefined;
-            resourceInputs["engineConfigPgAutovacuumAnalyzeScaleFactor"] = args ? args.engineConfigPgAutovacuumAnalyzeScaleFactor : undefined;
-            resourceInputs["engineConfigPgAutovacuumAnalyzeThreshold"] = args ? args.engineConfigPgAutovacuumAnalyzeThreshold : undefined;
-            resourceInputs["engineConfigPgAutovacuumMaxWorkers"] = args ? args.engineConfigPgAutovacuumMaxWorkers : undefined;
-            resourceInputs["engineConfigPgAutovacuumNaptime"] = args ? args.engineConfigPgAutovacuumNaptime : undefined;
-            resourceInputs["engineConfigPgAutovacuumVacuumCostDelay"] = args ? args.engineConfigPgAutovacuumVacuumCostDelay : undefined;
-            resourceInputs["engineConfigPgAutovacuumVacuumCostLimit"] = args ? args.engineConfigPgAutovacuumVacuumCostLimit : undefined;
-            resourceInputs["engineConfigPgAutovacuumVacuumScaleFactor"] = args ? args.engineConfigPgAutovacuumVacuumScaleFactor : undefined;
-            resourceInputs["engineConfigPgAutovacuumVacuumThreshold"] = args ? args.engineConfigPgAutovacuumVacuumThreshold : undefined;
-            resourceInputs["engineConfigPgBgwriterDelay"] = args ? args.engineConfigPgBgwriterDelay : undefined;
-            resourceInputs["engineConfigPgBgwriterFlushAfter"] = args ? args.engineConfigPgBgwriterFlushAfter : undefined;
-            resourceInputs["engineConfigPgBgwriterLruMaxpages"] = args ? args.engineConfigPgBgwriterLruMaxpages : undefined;
-            resourceInputs["engineConfigPgBgwriterLruMultiplier"] = args ? args.engineConfigPgBgwriterLruMultiplier : undefined;
-            resourceInputs["engineConfigPgDeadlockTimeout"] = args ? args.engineConfigPgDeadlockTimeout : undefined;
-            resourceInputs["engineConfigPgDefaultToastCompression"] = args ? args.engineConfigPgDefaultToastCompression : undefined;
-            resourceInputs["engineConfigPgIdleInTransactionSessionTimeout"] = args ? args.engineConfigPgIdleInTransactionSessionTimeout : undefined;
-            resourceInputs["engineConfigPgJit"] = args ? args.engineConfigPgJit : undefined;
-            resourceInputs["engineConfigPgMaxFilesPerProcess"] = args ? args.engineConfigPgMaxFilesPerProcess : undefined;
-            resourceInputs["engineConfigPgMaxLocksPerTransaction"] = args ? args.engineConfigPgMaxLocksPerTransaction : undefined;
-            resourceInputs["engineConfigPgMaxLogicalReplicationWorkers"] = args ? args.engineConfigPgMaxLogicalReplicationWorkers : undefined;
-            resourceInputs["engineConfigPgMaxParallelWorkers"] = args ? args.engineConfigPgMaxParallelWorkers : undefined;
-            resourceInputs["engineConfigPgMaxParallelWorkersPerGather"] = args ? args.engineConfigPgMaxParallelWorkersPerGather : undefined;
-            resourceInputs["engineConfigPgMaxPredLocksPerTransaction"] = args ? args.engineConfigPgMaxPredLocksPerTransaction : undefined;
-            resourceInputs["engineConfigPgMaxReplicationSlots"] = args ? args.engineConfigPgMaxReplicationSlots : undefined;
-            resourceInputs["engineConfigPgMaxSlotWalKeepSize"] = args ? args.engineConfigPgMaxSlotWalKeepSize : undefined;
-            resourceInputs["engineConfigPgMaxStackDepth"] = args ? args.engineConfigPgMaxStackDepth : undefined;
-            resourceInputs["engineConfigPgMaxStandbyArchiveDelay"] = args ? args.engineConfigPgMaxStandbyArchiveDelay : undefined;
-            resourceInputs["engineConfigPgMaxStandbyStreamingDelay"] = args ? args.engineConfigPgMaxStandbyStreamingDelay : undefined;
-            resourceInputs["engineConfigPgMaxWalSenders"] = args ? args.engineConfigPgMaxWalSenders : undefined;
-            resourceInputs["engineConfigPgMaxWorkerProcesses"] = args ? args.engineConfigPgMaxWorkerProcesses : undefined;
-            resourceInputs["engineConfigPgPasswordEncryption"] = args ? args.engineConfigPgPasswordEncryption : undefined;
-            resourceInputs["engineConfigPgPgPartmanBgwInterval"] = args ? args.engineConfigPgPgPartmanBgwInterval : undefined;
-            resourceInputs["engineConfigPgPgPartmanBgwRole"] = args ? args.engineConfigPgPgPartmanBgwRole : undefined;
-            resourceInputs["engineConfigPgPgStatMonitorPgsmEnableQueryPlan"] = args ? args.engineConfigPgPgStatMonitorPgsmEnableQueryPlan : undefined;
-            resourceInputs["engineConfigPgPgStatMonitorPgsmMaxBuckets"] = args ? args.engineConfigPgPgStatMonitorPgsmMaxBuckets : undefined;
-            resourceInputs["engineConfigPgPgStatStatementsTrack"] = args ? args.engineConfigPgPgStatStatementsTrack : undefined;
-            resourceInputs["engineConfigPgStatMonitorEnable"] = args ? args.engineConfigPgStatMonitorEnable : undefined;
-            resourceInputs["engineConfigPgTempFileLimit"] = args ? args.engineConfigPgTempFileLimit : undefined;
-            resourceInputs["engineConfigPgTimezone"] = args ? args.engineConfigPgTimezone : undefined;
-            resourceInputs["engineConfigPgTrackActivityQuerySize"] = args ? args.engineConfigPgTrackActivityQuerySize : undefined;
-            resourceInputs["engineConfigPgTrackCommitTimestamp"] = args ? args.engineConfigPgTrackCommitTimestamp : undefined;
-            resourceInputs["engineConfigPgTrackFunctions"] = args ? args.engineConfigPgTrackFunctions : undefined;
-            resourceInputs["engineConfigPgTrackIoTiming"] = args ? args.engineConfigPgTrackIoTiming : undefined;
-            resourceInputs["engineConfigPgWalSenderTimeout"] = args ? args.engineConfigPgWalSenderTimeout : undefined;
-            resourceInputs["engineConfigPgWalWriterDelay"] = args ? args.engineConfigPgWalWriterDelay : undefined;
-            resourceInputs["engineConfigPglookoutMaxFailoverReplicationTimeLag"] = args ? args.engineConfigPglookoutMaxFailoverReplicationTimeLag : undefined;
-            resourceInputs["engineConfigSharedBuffersPercentage"] = args ? args.engineConfigSharedBuffersPercentage : undefined;
-            resourceInputs["engineConfigWorkMem"] = args ? args.engineConfigWorkMem : undefined;
-            resourceInputs["engineId"] = args ? args.engineId : undefined;
-            resourceInputs["forkRestoreTime"] = args ? args.forkRestoreTime : undefined;
-            resourceInputs["forkSource"] = args ? args.forkSource : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["suspended"] = args ? args.suspended : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["updates"] = args ? args.updates : undefined;
+            resourceInputs["allowLists"] = args?.allowLists;
+            resourceInputs["clusterSize"] = args?.clusterSize;
+            resourceInputs["engineConfigPgAutovacuumAnalyzeScaleFactor"] = args?.engineConfigPgAutovacuumAnalyzeScaleFactor;
+            resourceInputs["engineConfigPgAutovacuumAnalyzeThreshold"] = args?.engineConfigPgAutovacuumAnalyzeThreshold;
+            resourceInputs["engineConfigPgAutovacuumMaxWorkers"] = args?.engineConfigPgAutovacuumMaxWorkers;
+            resourceInputs["engineConfigPgAutovacuumNaptime"] = args?.engineConfigPgAutovacuumNaptime;
+            resourceInputs["engineConfigPgAutovacuumVacuumCostDelay"] = args?.engineConfigPgAutovacuumVacuumCostDelay;
+            resourceInputs["engineConfigPgAutovacuumVacuumCostLimit"] = args?.engineConfigPgAutovacuumVacuumCostLimit;
+            resourceInputs["engineConfigPgAutovacuumVacuumScaleFactor"] = args?.engineConfigPgAutovacuumVacuumScaleFactor;
+            resourceInputs["engineConfigPgAutovacuumVacuumThreshold"] = args?.engineConfigPgAutovacuumVacuumThreshold;
+            resourceInputs["engineConfigPgBgwriterDelay"] = args?.engineConfigPgBgwriterDelay;
+            resourceInputs["engineConfigPgBgwriterFlushAfter"] = args?.engineConfigPgBgwriterFlushAfter;
+            resourceInputs["engineConfigPgBgwriterLruMaxpages"] = args?.engineConfigPgBgwriterLruMaxpages;
+            resourceInputs["engineConfigPgBgwriterLruMultiplier"] = args?.engineConfigPgBgwriterLruMultiplier;
+            resourceInputs["engineConfigPgDeadlockTimeout"] = args?.engineConfigPgDeadlockTimeout;
+            resourceInputs["engineConfigPgDefaultToastCompression"] = args?.engineConfigPgDefaultToastCompression;
+            resourceInputs["engineConfigPgIdleInTransactionSessionTimeout"] = args?.engineConfigPgIdleInTransactionSessionTimeout;
+            resourceInputs["engineConfigPgJit"] = args?.engineConfigPgJit;
+            resourceInputs["engineConfigPgMaxFilesPerProcess"] = args?.engineConfigPgMaxFilesPerProcess;
+            resourceInputs["engineConfigPgMaxLocksPerTransaction"] = args?.engineConfigPgMaxLocksPerTransaction;
+            resourceInputs["engineConfigPgMaxLogicalReplicationWorkers"] = args?.engineConfigPgMaxLogicalReplicationWorkers;
+            resourceInputs["engineConfigPgMaxParallelWorkers"] = args?.engineConfigPgMaxParallelWorkers;
+            resourceInputs["engineConfigPgMaxParallelWorkersPerGather"] = args?.engineConfigPgMaxParallelWorkersPerGather;
+            resourceInputs["engineConfigPgMaxPredLocksPerTransaction"] = args?.engineConfigPgMaxPredLocksPerTransaction;
+            resourceInputs["engineConfigPgMaxReplicationSlots"] = args?.engineConfigPgMaxReplicationSlots;
+            resourceInputs["engineConfigPgMaxSlotWalKeepSize"] = args?.engineConfigPgMaxSlotWalKeepSize;
+            resourceInputs["engineConfigPgMaxStackDepth"] = args?.engineConfigPgMaxStackDepth;
+            resourceInputs["engineConfigPgMaxStandbyArchiveDelay"] = args?.engineConfigPgMaxStandbyArchiveDelay;
+            resourceInputs["engineConfigPgMaxStandbyStreamingDelay"] = args?.engineConfigPgMaxStandbyStreamingDelay;
+            resourceInputs["engineConfigPgMaxWalSenders"] = args?.engineConfigPgMaxWalSenders;
+            resourceInputs["engineConfigPgMaxWorkerProcesses"] = args?.engineConfigPgMaxWorkerProcesses;
+            resourceInputs["engineConfigPgPasswordEncryption"] = args?.engineConfigPgPasswordEncryption;
+            resourceInputs["engineConfigPgPgPartmanBgwInterval"] = args?.engineConfigPgPgPartmanBgwInterval;
+            resourceInputs["engineConfigPgPgPartmanBgwRole"] = args?.engineConfigPgPgPartmanBgwRole;
+            resourceInputs["engineConfigPgPgStatMonitorPgsmEnableQueryPlan"] = args?.engineConfigPgPgStatMonitorPgsmEnableQueryPlan;
+            resourceInputs["engineConfigPgPgStatMonitorPgsmMaxBuckets"] = args?.engineConfigPgPgStatMonitorPgsmMaxBuckets;
+            resourceInputs["engineConfigPgPgStatStatementsTrack"] = args?.engineConfigPgPgStatStatementsTrack;
+            resourceInputs["engineConfigPgStatMonitorEnable"] = args?.engineConfigPgStatMonitorEnable;
+            resourceInputs["engineConfigPgTempFileLimit"] = args?.engineConfigPgTempFileLimit;
+            resourceInputs["engineConfigPgTimezone"] = args?.engineConfigPgTimezone;
+            resourceInputs["engineConfigPgTrackActivityQuerySize"] = args?.engineConfigPgTrackActivityQuerySize;
+            resourceInputs["engineConfigPgTrackCommitTimestamp"] = args?.engineConfigPgTrackCommitTimestamp;
+            resourceInputs["engineConfigPgTrackFunctions"] = args?.engineConfigPgTrackFunctions;
+            resourceInputs["engineConfigPgTrackIoTiming"] = args?.engineConfigPgTrackIoTiming;
+            resourceInputs["engineConfigPgWalSenderTimeout"] = args?.engineConfigPgWalSenderTimeout;
+            resourceInputs["engineConfigPgWalWriterDelay"] = args?.engineConfigPgWalWriterDelay;
+            resourceInputs["engineConfigPglookoutMaxFailoverReplicationTimeLag"] = args?.engineConfigPglookoutMaxFailoverReplicationTimeLag;
+            resourceInputs["engineConfigSharedBuffersPercentage"] = args?.engineConfigSharedBuffersPercentage;
+            resourceInputs["engineConfigWorkMem"] = args?.engineConfigWorkMem;
+            resourceInputs["engineId"] = args?.engineId;
+            resourceInputs["forkRestoreTime"] = args?.forkRestoreTime;
+            resourceInputs["forkSource"] = args?.forkSource;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["suspended"] = args?.suspended;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["updates"] = args?.updates;
             resourceInputs["caCert"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["encrypted"] = undefined /*out*/;

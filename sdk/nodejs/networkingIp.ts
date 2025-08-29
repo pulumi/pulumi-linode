@@ -63,47 +63,47 @@ export class NetworkingIp extends pulumi.CustomResource {
     /**
      * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
-    public /*out*/ readonly address!: pulumi.Output<string>;
+    declare public /*out*/ readonly address: pulumi.Output<string>;
     /**
      * The default gateway for this address.
      */
-    public /*out*/ readonly gateway!: pulumi.Output<string>;
+    declare public /*out*/ readonly gateway: pulumi.Output<string>;
     /**
      * The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      */
-    public readonly linodeId!: pulumi.Output<number>;
+    declare public readonly linodeId: pulumi.Output<number>;
     /**
      * The number of bits set in the subnet mask.
      */
-    public /*out*/ readonly prefix!: pulumi.Output<number>;
+    declare public /*out*/ readonly prefix: pulumi.Output<number>;
     /**
      * Whether the IP address is public. Defaults to true.
      */
-    public readonly public!: pulumi.Output<boolean>;
+    declare public readonly public: pulumi.Output<boolean>;
     /**
      * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
      */
-    public /*out*/ readonly rdns!: pulumi.Output<string>;
+    declare public /*out*/ readonly rdns: pulumi.Output<string>;
     /**
      * The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Whether the IPv4 address should be reserved.
      */
-    public readonly reserved!: pulumi.Output<boolean>;
+    declare public readonly reserved: pulumi.Output<boolean>;
     /**
      * The mask that separates host bits from network bits for this address.
      */
-    public /*out*/ readonly subnetMask!: pulumi.Output<string>;
+    declare public /*out*/ readonly subnetMask: pulumi.Output<string>;
     /**
      * The type of IP address. (ipv4, ipv6, etc.)
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
      */
-    public /*out*/ readonly vpcNat11!: pulumi.Output<outputs.NetworkingIpVpcNat11>;
+    declare public /*out*/ readonly vpcNat11: pulumi.Output<outputs.NetworkingIpVpcNat11>;
 
     /**
      * Create a NetworkingIp resource with the given unique name, arguments, and options.
@@ -118,24 +118,24 @@ export class NetworkingIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkingIpState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["gateway"] = state ? state.gateway : undefined;
-            resourceInputs["linodeId"] = state ? state.linodeId : undefined;
-            resourceInputs["prefix"] = state ? state.prefix : undefined;
-            resourceInputs["public"] = state ? state.public : undefined;
-            resourceInputs["rdns"] = state ? state.rdns : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["reserved"] = state ? state.reserved : undefined;
-            resourceInputs["subnetMask"] = state ? state.subnetMask : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vpcNat11"] = state ? state.vpcNat11 : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["gateway"] = state?.gateway;
+            resourceInputs["linodeId"] = state?.linodeId;
+            resourceInputs["prefix"] = state?.prefix;
+            resourceInputs["public"] = state?.public;
+            resourceInputs["rdns"] = state?.rdns;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["reserved"] = state?.reserved;
+            resourceInputs["subnetMask"] = state?.subnetMask;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vpcNat11"] = state?.vpcNat11;
         } else {
             const args = argsOrState as NetworkingIpArgs | undefined;
-            resourceInputs["linodeId"] = args ? args.linodeId : undefined;
-            resourceInputs["public"] = args ? args.public : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["reserved"] = args ? args.reserved : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["linodeId"] = args?.linodeId;
+            resourceInputs["public"] = args?.public;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["reserved"] = args?.reserved;
+            resourceInputs["type"] = args?.type;
             resourceInputs["address"] = undefined /*out*/;
             resourceInputs["gateway"] = undefined /*out*/;
             resourceInputs["prefix"] = undefined /*out*/;

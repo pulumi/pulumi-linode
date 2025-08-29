@@ -64,27 +64,27 @@ export class VpcSubnet extends pulumi.CustomResource {
     /**
      * The date and time when the VPC was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The IPv4 range of this subnet in CIDR format.
      */
-    public readonly ipv4!: pulumi.Output<string>;
+    declare public readonly ipv4: pulumi.Output<string>;
     /**
      * The label of the VPC. Only contains ASCII letters, digits and dashes.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * A list of Linode IDs that added to this subnet.
      */
-    public /*out*/ readonly linodes!: pulumi.Output<outputs.VpcSubnetLinode[]>;
+    declare public /*out*/ readonly linodes: pulumi.Output<outputs.VpcSubnetLinode[]>;
     /**
      * The date and time when the VPC was last updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
     /**
      * The id of the parent VPC for this VPC Subnet.
      */
-    public readonly vpcId!: pulumi.Output<number>;
+    declare public readonly vpcId: pulumi.Output<number>;
 
     /**
      * Create a VpcSubnet resource with the given unique name, arguments, and options.
@@ -99,26 +99,26 @@ export class VpcSubnet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcSubnetState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["linodes"] = state ? state.linodes : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["ipv4"] = state?.ipv4;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["linodes"] = state?.linodes;
+            resourceInputs["updated"] = state?.updated;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as VpcSubnetArgs | undefined;
-            if ((!args || args.ipv4 === undefined) && !opts.urn) {
+            if (args?.ipv4 === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipv4'");
             }
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["ipv4"] = args ? args.ipv4 : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["ipv4"] = args?.ipv4;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["linodes"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;

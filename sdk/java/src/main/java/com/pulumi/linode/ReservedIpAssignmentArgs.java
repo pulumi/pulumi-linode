@@ -34,16 +34,14 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-     * `skip_implicit_reboots` provider argument.
+     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
      * 
      */
     @Import(name="applyImmediately")
     private @Nullable Output<Boolean> applyImmediately;
 
     /**
-     * @return If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-     * `skip_implicit_reboots` provider argument.
+     * @return If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
      * 
      */
     public Optional<Output<Boolean>> applyImmediately() {
@@ -145,8 +143,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-         * `skip_implicit_reboots` provider argument.
+         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
          * 
          * @return builder
          * 
@@ -157,8 +154,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-         * `skip_implicit_reboots` provider argument.
+         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
          * 
          * @return builder
          * 

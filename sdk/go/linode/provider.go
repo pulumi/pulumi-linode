@@ -103,8 +103,7 @@ type providerArgs struct {
 	ObjBucketForceDelete *bool `pulumi:"objBucketForceDelete"`
 	// The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjSecretKey *string `pulumi:"objSecretKey"`
-	// If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
-	// linodeObjectSorageBucket resource.
+	// If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and linodeObjectSorageBucket resource.
 	ObjUseTempKeys *bool `pulumi:"objUseTempKeys"`
 	// If true, Linode Instances will not be rebooted on config and interface changes.
 	SkipImplicitReboots *bool `pulumi:"skipImplicitReboots"`
@@ -148,8 +147,7 @@ type ProviderArgs struct {
 	ObjBucketForceDelete pulumi.BoolPtrInput
 	// The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
 	ObjSecretKey pulumi.StringPtrInput
-	// If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and
-	// linodeObjectSorageBucket resource.
+	// If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and linodeObjectSorageBucket resource.
 	ObjUseTempKeys pulumi.BoolPtrInput
 	// If true, Linode Instances will not be rebooted on config and interface changes.
 	SkipImplicitReboots pulumi.BoolPtrInput

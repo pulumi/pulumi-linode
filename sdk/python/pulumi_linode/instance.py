@@ -57,12 +57,8 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
         :param pulumi.Input['InstanceAlertsArgs'] alerts: Configuration options for alert triggers on this Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-               `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
-        :param pulumi.Input[_builtins.int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
-               must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-               /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-               exclusive.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        :param pulumi.Input[_builtins.int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         :param pulumi.Input[_builtins.bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[_builtins.str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[_builtins.bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
@@ -72,10 +68,8 @@ class InstanceArgs:
                * **NOTE: Disk encryption may not currently be available to all users.**
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[_builtins.str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
-        :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-               See /images for more information on the Images available for you to use.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-               must be declared in the config block.
+        :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
                
                * **NOTE: IP reservation is not currently available to all users.**
@@ -104,12 +98,9 @@ class InstanceArgs:
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-               accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-               that is compatible with this StackScript.
-        :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-               is used to set the swap disk size for the newly-created Linode.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[_builtins.str] type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
                
@@ -227,8 +218,7 @@ class InstanceArgs:
     @pulumi.getter(name="authorizedUsers")
     def authorized_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-        `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         """
         return pulumi.get(self, "authorized_users")
 
@@ -240,10 +230,7 @@ class InstanceArgs:
     @pulumi.getter(name="backupId")
     def backup_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
-        must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-        /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-        exclusive.
+        A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         """
         return pulumi.get(self, "backup_id")
 
@@ -353,8 +340,7 @@ class InstanceArgs:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-        See /images for more information on the Images available for you to use.
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
         """
         return pulumi.get(self, "image")
 
@@ -366,8 +352,7 @@ class InstanceArgs:
     @pulumi.getter
     def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]]:
         """
-        An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-        must be declared in the config block.
+        An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         """
         return pulumi.get(self, "interfaces")
 
@@ -517,8 +502,7 @@ class InstanceArgs:
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-        accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         """
         return pulumi.get(self, "stackscript_data")
 
@@ -530,8 +514,7 @@ class InstanceArgs:
     @pulumi.getter(name="stackscriptId")
     def stackscript_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-        that is compatible with this StackScript.
+        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         """
         return pulumi.get(self, "stackscript_id")
 
@@ -543,8 +526,7 @@ class InstanceArgs:
     @pulumi.getter(name="swapSize")
     def swap_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-        is used to set the swap disk size for the newly-created Linode.
+        When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         """
         return pulumi.get(self, "swap_size")
 
@@ -639,12 +621,8 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input['InstanceAlertsArgs'] alerts: Configuration options for alert triggers on this Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-               `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
-        :param pulumi.Input[_builtins.int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
-               must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-               /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-               exclusive.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        :param pulumi.Input[_builtins.int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceBackupArgs']]] backups: Information about this Linode's backups status.
         :param pulumi.Input[_builtins.bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[_builtins.str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
@@ -658,10 +636,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         :param pulumi.Input[_builtins.bool] has_user_data: Whether this Instance was created with user-data.
         :param pulumi.Input[_builtins.str] host_uuid: The Linode’s host machine, as a UUID.
-        :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-               See /images for more information on the Images available for you to use.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-               must be declared in the config block.
+        :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         :param pulumi.Input[_builtins.str] ip_address: A string containing the Linode's public IP address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
                
@@ -696,13 +672,10 @@ class _InstanceState:
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSpecArgs']]] specs: Information about the resources available to this Linode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-               accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-               that is compatible with this StackScript.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         :param pulumi.Input[_builtins.str] status: The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
-        :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-               is used to set the swap disk size for the newly-created Linode.
+        :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[_builtins.str] type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
                
@@ -832,8 +805,7 @@ class _InstanceState:
     @pulumi.getter(name="authorizedUsers")
     def authorized_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-        `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         """
         return pulumi.get(self, "authorized_users")
 
@@ -845,10 +817,7 @@ class _InstanceState:
     @pulumi.getter(name="backupId")
     def backup_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
-        must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-        /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-        exclusive.
+        A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         """
         return pulumi.get(self, "backup_id")
 
@@ -1006,8 +975,7 @@ class _InstanceState:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-        See /images for more information on the Images available for you to use.
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
         """
         return pulumi.get(self, "image")
 
@@ -1019,8 +987,7 @@ class _InstanceState:
     @pulumi.getter
     def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]]:
         """
-        An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-        must be declared in the config block.
+        An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         """
         return pulumi.get(self, "interfaces")
 
@@ -1243,8 +1210,7 @@ class _InstanceState:
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-        accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         """
         return pulumi.get(self, "stackscript_data")
 
@@ -1256,8 +1222,7 @@ class _InstanceState:
     @pulumi.getter(name="stackscriptId")
     def stackscript_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-        that is compatible with this StackScript.
+        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         """
         return pulumi.get(self, "stackscript_id")
 
@@ -1281,8 +1246,7 @@ class _InstanceState:
     @pulumi.getter(name="swapSize")
     def swap_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-        is used to set the swap disk size for the newly-created Linode.
+        When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         """
         return pulumi.get(self, "swap_size")
 
@@ -1461,12 +1425,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict']] alerts: Configuration options for alert triggers on this Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-               `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
-        :param pulumi.Input[_builtins.int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
-               must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-               /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-               exclusive.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        :param pulumi.Input[_builtins.int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         :param pulumi.Input[_builtins.bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[_builtins.str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[_builtins.bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
@@ -1476,10 +1436,8 @@ class Instance(pulumi.CustomResource):
                * **NOTE: Disk encryption may not currently be available to all users.**
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[_builtins.str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
-        :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-               See /images for more information on the Images available for you to use.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-               must be declared in the config block.
+        :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
                
                * **NOTE: IP reservation is not currently available to all users.**
@@ -1509,12 +1467,9 @@ class Instance(pulumi.CustomResource):
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-               accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-               that is compatible with this StackScript.
-        :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-               is used to set the swap disk size for the newly-created Linode.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[_builtins.str] type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
                
@@ -1777,12 +1732,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict']] alerts: Configuration options for alert triggers on this Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-               `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
-        :param pulumi.Input[_builtins.int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
-               must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-               /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-               exclusive.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        :param pulumi.Input[_builtins.int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBackupArgs', 'InstanceBackupArgsDict']]]] backups: Information about this Linode's backups status.
         :param pulumi.Input[_builtins.bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[_builtins.str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
@@ -1796,10 +1747,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         :param pulumi.Input[_builtins.bool] has_user_data: Whether this Instance was created with user-data.
         :param pulumi.Input[_builtins.str] host_uuid: The Linode’s host machine, as a UUID.
-        :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-               See /images for more information on the Images available for you to use.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-               must be declared in the config block.
+        :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         :param pulumi.Input[_builtins.str] ip_address: A string containing the Linode's public IP address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
                
@@ -1834,13 +1783,10 @@ class Instance(pulumi.CustomResource):
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSpecArgs', 'InstanceSpecArgsDict']]]] specs: Information about the resources available to this Linode.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-               accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-               that is compatible with this StackScript.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         :param pulumi.Input[_builtins.str] status: The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
-        :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-               is used to set the swap disk size for the newly-created Linode.
+        :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[_builtins.str] type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
                
@@ -1914,8 +1860,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="authorizedUsers")
     def authorized_users(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-        `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         """
         return pulumi.get(self, "authorized_users")
 
@@ -1923,10 +1868,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
-        must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-        /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-        exclusive.
+        A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         """
         return pulumi.get(self, "backup_id")
 
@@ -2032,8 +1974,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def image(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-        See /images for more information on the Images available for you to use.
+        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
         """
         return pulumi.get(self, "image")
 
@@ -2041,8 +1982,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceInterface']]]:
         """
-        An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-        must be declared in the config block.
+        An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         """
         return pulumi.get(self, "interfaces")
 
@@ -2197,8 +2137,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-        accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         """
         return pulumi.get(self, "stackscript_data")
 
@@ -2206,8 +2145,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="stackscriptId")
     def stackscript_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-        that is compatible with this StackScript.
+        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         """
         return pulumi.get(self, "stackscript_id")
 
@@ -2223,8 +2161,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="swapSize")
     def swap_size(self) -> pulumi.Output[_builtins.int]:
         """
-        When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-        is used to set the swap disk size for the newly-created Linode.
+        When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         """
         return pulumi.get(self, "swap_size")
 

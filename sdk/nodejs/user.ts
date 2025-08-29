@@ -110,39 +110,39 @@ export class User extends pulumi.CustomResource {
     /**
      * The domains the user has permissions access to.
      */
-    public readonly domainGrants!: pulumi.Output<outputs.UserDomainGrant[]>;
+    declare public readonly domainGrants: pulumi.Output<outputs.UserDomainGrant[]>;
     /**
      * The email address of the user.
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * The firewalls the user has permissions access to.
      */
-    public readonly firewallGrants!: pulumi.Output<outputs.UserFirewallGrant[]>;
+    declare public readonly firewallGrants: pulumi.Output<outputs.UserFirewallGrant[]>;
     /**
      * A structure containing the Account-level grants a User has.
      */
-    public readonly globalGrants!: pulumi.Output<outputs.UserGlobalGrants>;
+    declare public readonly globalGrants: pulumi.Output<outputs.UserGlobalGrants>;
     /**
      * The images the user has permissions access to.
      */
-    public readonly imageGrants!: pulumi.Output<outputs.UserImageGrant[]>;
+    declare public readonly imageGrants: pulumi.Output<outputs.UserImageGrant[]>;
     /**
      * The Linodes the user has permissions access to.
      */
-    public readonly linodeGrants!: pulumi.Output<outputs.UserLinodeGrant[]>;
+    declare public readonly linodeGrants: pulumi.Output<outputs.UserLinodeGrant[]>;
     /**
      * The longview the user has permissions access to.
      */
-    public readonly longviewGrants!: pulumi.Output<outputs.UserLongviewGrant[]>;
+    declare public readonly longviewGrants: pulumi.Output<outputs.UserLongviewGrant[]>;
     /**
      * The NodeBalancers the user has permissions access to.
      */
-    public readonly nodebalancerGrants!: pulumi.Output<outputs.UserNodebalancerGrant[]>;
+    declare public readonly nodebalancerGrants: pulumi.Output<outputs.UserNodebalancerGrant[]>;
     /**
      * The Placement Groups the user has permissions access to.
      */
-    public readonly placementGroupGrants!: pulumi.Output<outputs.UserPlacementGroupGrant[]>;
+    declare public readonly placementGroupGrants: pulumi.Output<outputs.UserPlacementGroupGrant[]>;
     /**
      * If true, this user will only have explicit permissions granted.
      *
@@ -150,35 +150,35 @@ export class User extends pulumi.CustomResource {
      *
      * The following arguments are sets of entity grants:
      */
-    public readonly restricted!: pulumi.Output<boolean | undefined>;
+    declare public readonly restricted: pulumi.Output<boolean | undefined>;
     /**
      * A list of the User's SSH keys.
      */
-    public /*out*/ readonly sshKeys!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly sshKeys: pulumi.Output<string[]>;
     /**
      * The StackScripts the user has permissions access to.
      */
-    public readonly stackscriptGrants!: pulumi.Output<outputs.UserStackscriptGrant[]>;
+    declare public readonly stackscriptGrants: pulumi.Output<outputs.UserStackscriptGrant[]>;
     /**
      * Whether the user has two-factor-authentication enabled.
      */
-    public /*out*/ readonly tfaEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly tfaEnabled: pulumi.Output<boolean>;
     /**
      * The type of this user.
      */
-    public /*out*/ readonly userType!: pulumi.Output<string>;
+    declare public /*out*/ readonly userType: pulumi.Output<string>;
     /**
      * The username of the user.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
     /**
      * The volumes the user has permissions access to.
      */
-    public readonly volumeGrants!: pulumi.Output<outputs.UserVolumeGrant[]>;
+    declare public readonly volumeGrants: pulumi.Output<outputs.UserVolumeGrant[]>;
     /**
      * The Virtual Private Clouds (VPCs) the user has permissions access to.
      */
-    public readonly vpcGrants!: pulumi.Output<outputs.UserVpcGrant[]>;
+    declare public readonly vpcGrants: pulumi.Output<outputs.UserVpcGrant[]>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -193,45 +193,45 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["domainGrants"] = state ? state.domainGrants : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["firewallGrants"] = state ? state.firewallGrants : undefined;
-            resourceInputs["globalGrants"] = state ? state.globalGrants : undefined;
-            resourceInputs["imageGrants"] = state ? state.imageGrants : undefined;
-            resourceInputs["linodeGrants"] = state ? state.linodeGrants : undefined;
-            resourceInputs["longviewGrants"] = state ? state.longviewGrants : undefined;
-            resourceInputs["nodebalancerGrants"] = state ? state.nodebalancerGrants : undefined;
-            resourceInputs["placementGroupGrants"] = state ? state.placementGroupGrants : undefined;
-            resourceInputs["restricted"] = state ? state.restricted : undefined;
-            resourceInputs["sshKeys"] = state ? state.sshKeys : undefined;
-            resourceInputs["stackscriptGrants"] = state ? state.stackscriptGrants : undefined;
-            resourceInputs["tfaEnabled"] = state ? state.tfaEnabled : undefined;
-            resourceInputs["userType"] = state ? state.userType : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["volumeGrants"] = state ? state.volumeGrants : undefined;
-            resourceInputs["vpcGrants"] = state ? state.vpcGrants : undefined;
+            resourceInputs["domainGrants"] = state?.domainGrants;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["firewallGrants"] = state?.firewallGrants;
+            resourceInputs["globalGrants"] = state?.globalGrants;
+            resourceInputs["imageGrants"] = state?.imageGrants;
+            resourceInputs["linodeGrants"] = state?.linodeGrants;
+            resourceInputs["longviewGrants"] = state?.longviewGrants;
+            resourceInputs["nodebalancerGrants"] = state?.nodebalancerGrants;
+            resourceInputs["placementGroupGrants"] = state?.placementGroupGrants;
+            resourceInputs["restricted"] = state?.restricted;
+            resourceInputs["sshKeys"] = state?.sshKeys;
+            resourceInputs["stackscriptGrants"] = state?.stackscriptGrants;
+            resourceInputs["tfaEnabled"] = state?.tfaEnabled;
+            resourceInputs["userType"] = state?.userType;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["volumeGrants"] = state?.volumeGrants;
+            resourceInputs["vpcGrants"] = state?.vpcGrants;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["domainGrants"] = args ? args.domainGrants : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["firewallGrants"] = args ? args.firewallGrants : undefined;
-            resourceInputs["globalGrants"] = args ? args.globalGrants : undefined;
-            resourceInputs["imageGrants"] = args ? args.imageGrants : undefined;
-            resourceInputs["linodeGrants"] = args ? args.linodeGrants : undefined;
-            resourceInputs["longviewGrants"] = args ? args.longviewGrants : undefined;
-            resourceInputs["nodebalancerGrants"] = args ? args.nodebalancerGrants : undefined;
-            resourceInputs["placementGroupGrants"] = args ? args.placementGroupGrants : undefined;
-            resourceInputs["restricted"] = args ? args.restricted : undefined;
-            resourceInputs["stackscriptGrants"] = args ? args.stackscriptGrants : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
-            resourceInputs["volumeGrants"] = args ? args.volumeGrants : undefined;
-            resourceInputs["vpcGrants"] = args ? args.vpcGrants : undefined;
+            resourceInputs["domainGrants"] = args?.domainGrants;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["firewallGrants"] = args?.firewallGrants;
+            resourceInputs["globalGrants"] = args?.globalGrants;
+            resourceInputs["imageGrants"] = args?.imageGrants;
+            resourceInputs["linodeGrants"] = args?.linodeGrants;
+            resourceInputs["longviewGrants"] = args?.longviewGrants;
+            resourceInputs["nodebalancerGrants"] = args?.nodebalancerGrants;
+            resourceInputs["placementGroupGrants"] = args?.placementGroupGrants;
+            resourceInputs["restricted"] = args?.restricted;
+            resourceInputs["stackscriptGrants"] = args?.stackscriptGrants;
+            resourceInputs["username"] = args?.username;
+            resourceInputs["volumeGrants"] = args?.volumeGrants;
+            resourceInputs["vpcGrants"] = args?.vpcGrants;
             resourceInputs["sshKeys"] = undefined /*out*/;
             resourceInputs["tfaEnabled"] = undefined /*out*/;
             resourceInputs["userType"] = undefined /*out*/;

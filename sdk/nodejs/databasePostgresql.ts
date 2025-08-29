@@ -110,51 +110,51 @@ export class DatabasePostgresql extends pulumi.CustomResource {
     /**
      * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
      */
-    public readonly allowLists!: pulumi.Output<string[]>;
+    declare public readonly allowLists: pulumi.Output<string[]>;
     /**
      * The base64-encoded SSL CA certificate for the Managed Database instance.
      */
-    public /*out*/ readonly caCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly caCert: pulumi.Output<string>;
     /**
      * The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
      */
-    public readonly clusterSize!: pulumi.Output<number | undefined>;
+    declare public readonly clusterSize: pulumi.Output<number | undefined>;
     /**
      * When this Managed Database was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * Whether the Managed Databases is encrypted. (default `false`)
      */
-    public readonly encrypted!: pulumi.Output<boolean | undefined>;
+    declare public readonly encrypted: pulumi.Output<boolean | undefined>;
     /**
      * The Managed Database engine. (e.g. `postgresql`)
      */
-    public /*out*/ readonly engine!: pulumi.Output<string>;
+    declare public /*out*/ readonly engine: pulumi.Output<string>;
     /**
      * The Managed Database engine in engine/version format. (e.g. `postgresql/13.2`)
      */
-    public readonly engineId!: pulumi.Output<string>;
+    declare public readonly engineId: pulumi.Output<string>;
     /**
      * The primary host for the Managed Database.
      */
-    public /*out*/ readonly hostPrimary!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostPrimary: pulumi.Output<string>;
     /**
      * The secondary/private network host for the Managed Database.
      */
-    public /*out*/ readonly hostSecondary!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostSecondary: pulumi.Output<string>;
     /**
      * A unique, user-defined string referring to the Managed Database.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * The access port for this Managed Database.
      */
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * The region to use for the Managed Database.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
      *
@@ -162,7 +162,7 @@ export class DatabasePostgresql extends pulumi.CustomResource {
      *
      * * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
      */
-    public readonly replicationCommitType!: pulumi.Output<string | undefined>;
+    declare public readonly replicationCommitType: pulumi.Output<string | undefined>;
     /**
      * The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
      *
@@ -170,43 +170,43 @@ export class DatabasePostgresql extends pulumi.CustomResource {
      *
      * * Must be `asynch` or `semiSynch` for a high availability cluster.
      */
-    public readonly replicationType!: pulumi.Output<string | undefined>;
+    declare public readonly replicationType: pulumi.Output<string | undefined>;
     /**
      * The randomly-generated root password for the Managed Database instance.
      */
-    public /*out*/ readonly rootPassword!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootPassword: pulumi.Output<string>;
     /**
      * The root username for the Managed Database instance.
      */
-    public /*out*/ readonly rootUsername!: pulumi.Output<string>;
+    declare public /*out*/ readonly rootUsername: pulumi.Output<string>;
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
      *
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
-    public readonly sslConnection!: pulumi.Output<boolean | undefined>;
+    declare public readonly sslConnection: pulumi.Output<boolean | undefined>;
     /**
      * The operating status of the Managed Database.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The Linode Instance type used for the nodes of the  Managed Database instance.
      *
      * - - -
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * When this Managed Database was last updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
     /**
      * Configuration settings for automated patch update maintenance for the Managed Database.
      */
-    public readonly updates!: pulumi.Output<outputs.DatabasePostgresqlUpdates>;
+    declare public readonly updates: pulumi.Output<outputs.DatabasePostgresqlUpdates>;
     /**
      * The Managed Database engine version. (e.g. `13.2`)
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a DatabasePostgresql resource with the given unique name, arguments, and options.
@@ -221,53 +221,53 @@ export class DatabasePostgresql extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabasePostgresqlState | undefined;
-            resourceInputs["allowLists"] = state ? state.allowLists : undefined;
-            resourceInputs["caCert"] = state ? state.caCert : undefined;
-            resourceInputs["clusterSize"] = state ? state.clusterSize : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["encrypted"] = state ? state.encrypted : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineId"] = state ? state.engineId : undefined;
-            resourceInputs["hostPrimary"] = state ? state.hostPrimary : undefined;
-            resourceInputs["hostSecondary"] = state ? state.hostSecondary : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["replicationCommitType"] = state ? state.replicationCommitType : undefined;
-            resourceInputs["replicationType"] = state ? state.replicationType : undefined;
-            resourceInputs["rootPassword"] = state ? state.rootPassword : undefined;
-            resourceInputs["rootUsername"] = state ? state.rootUsername : undefined;
-            resourceInputs["sslConnection"] = state ? state.sslConnection : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
-            resourceInputs["updates"] = state ? state.updates : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["allowLists"] = state?.allowLists;
+            resourceInputs["caCert"] = state?.caCert;
+            resourceInputs["clusterSize"] = state?.clusterSize;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["encrypted"] = state?.encrypted;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineId"] = state?.engineId;
+            resourceInputs["hostPrimary"] = state?.hostPrimary;
+            resourceInputs["hostSecondary"] = state?.hostSecondary;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["replicationCommitType"] = state?.replicationCommitType;
+            resourceInputs["replicationType"] = state?.replicationType;
+            resourceInputs["rootPassword"] = state?.rootPassword;
+            resourceInputs["rootUsername"] = state?.rootUsername;
+            resourceInputs["sslConnection"] = state?.sslConnection;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updated"] = state?.updated;
+            resourceInputs["updates"] = state?.updates;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as DatabasePostgresqlArgs | undefined;
-            if ((!args || args.engineId === undefined) && !opts.urn) {
+            if (args?.engineId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineId'");
             }
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["allowLists"] = args ? args.allowLists : undefined;
-            resourceInputs["clusterSize"] = args ? args.clusterSize : undefined;
-            resourceInputs["encrypted"] = args ? args.encrypted : undefined;
-            resourceInputs["engineId"] = args ? args.engineId : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["replicationCommitType"] = args ? args.replicationCommitType : undefined;
-            resourceInputs["replicationType"] = args ? args.replicationType : undefined;
-            resourceInputs["sslConnection"] = args ? args.sslConnection : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["updates"] = args ? args.updates : undefined;
+            resourceInputs["allowLists"] = args?.allowLists;
+            resourceInputs["clusterSize"] = args?.clusterSize;
+            resourceInputs["encrypted"] = args?.encrypted;
+            resourceInputs["engineId"] = args?.engineId;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["replicationCommitType"] = args?.replicationCommitType;
+            resourceInputs["replicationType"] = args?.replicationType;
+            resourceInputs["sslConnection"] = args?.sslConnection;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["updates"] = args?.updates;
             resourceInputs["caCert"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["engine"] = undefined /*out*/;

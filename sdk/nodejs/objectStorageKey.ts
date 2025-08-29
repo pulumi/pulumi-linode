@@ -91,33 +91,33 @@ export class ObjectStorageKey extends pulumi.CustomResource {
     /**
      * This keypair's access key. This is not secret.
      */
-    public /*out*/ readonly accessKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessKey: pulumi.Output<string>;
     /**
      * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
      */
-    public readonly bucketAccesses!: pulumi.Output<outputs.ObjectStorageKeyBucketAccess[] | undefined>;
+    declare public readonly bucketAccesses: pulumi.Output<outputs.ObjectStorageKeyBucketAccess[] | undefined>;
     /**
      * The label given to this key. For display purposes only.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * Whether or not this key is a limited access key.
      */
-    public /*out*/ readonly limited!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly limited: pulumi.Output<boolean>;
     /**
      * A set of regions where the key will grant access to create buckets.
      *
      * - - -
      */
-    public readonly regions!: pulumi.Output<string[]>;
+    declare public readonly regions: pulumi.Output<string[]>;
     /**
      * A set of objects containing the detailed info of the regions where this key can access.
      */
-    public /*out*/ readonly regionsDetails!: pulumi.Output<outputs.ObjectStorageKeyRegionsDetail[]>;
+    declare public /*out*/ readonly regionsDetails: pulumi.Output<outputs.ObjectStorageKeyRegionsDetail[]>;
     /**
      * This keypair's secret key.
      */
-    public /*out*/ readonly secretKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly secretKey: pulumi.Output<string>;
 
     /**
      * Create a ObjectStorageKey resource with the given unique name, arguments, and options.
@@ -132,21 +132,21 @@ export class ObjectStorageKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObjectStorageKeyState | undefined;
-            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
-            resourceInputs["bucketAccesses"] = state ? state.bucketAccesses : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["limited"] = state ? state.limited : undefined;
-            resourceInputs["regions"] = state ? state.regions : undefined;
-            resourceInputs["regionsDetails"] = state ? state.regionsDetails : undefined;
-            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
+            resourceInputs["accessKey"] = state?.accessKey;
+            resourceInputs["bucketAccesses"] = state?.bucketAccesses;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["limited"] = state?.limited;
+            resourceInputs["regions"] = state?.regions;
+            resourceInputs["regionsDetails"] = state?.regionsDetails;
+            resourceInputs["secretKey"] = state?.secretKey;
         } else {
             const args = argsOrState as ObjectStorageKeyArgs | undefined;
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            resourceInputs["bucketAccesses"] = args ? args.bucketAccesses : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["regions"] = args ? args.regions : undefined;
+            resourceInputs["bucketAccesses"] = args?.bucketAccesses;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["regions"] = args?.regions;
             resourceInputs["accessKey"] = undefined /*out*/;
             resourceInputs["limited"] = undefined /*out*/;
             resourceInputs["regionsDetails"] = undefined /*out*/;

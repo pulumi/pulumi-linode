@@ -76,15 +76,15 @@ export class PlacementGroupAssignment extends pulumi.CustomResource {
         return obj['__pulumiType'] === PlacementGroupAssignment.__pulumiType;
     }
 
-    public readonly compliantOnly!: pulumi.Output<boolean | undefined>;
+    declare public readonly compliantOnly: pulumi.Output<boolean | undefined>;
     /**
      * The unique ID of the Linode to assign.
      */
-    public readonly linodeId!: pulumi.Output<number>;
+    declare public readonly linodeId: pulumi.Output<number>;
     /**
      * The unique ID of the target Placement Group.
      */
-    public readonly placementGroupId!: pulumi.Output<number>;
+    declare public readonly placementGroupId: pulumi.Output<number>;
 
     /**
      * Create a PlacementGroupAssignment resource with the given unique name, arguments, and options.
@@ -99,20 +99,20 @@ export class PlacementGroupAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PlacementGroupAssignmentState | undefined;
-            resourceInputs["compliantOnly"] = state ? state.compliantOnly : undefined;
-            resourceInputs["linodeId"] = state ? state.linodeId : undefined;
-            resourceInputs["placementGroupId"] = state ? state.placementGroupId : undefined;
+            resourceInputs["compliantOnly"] = state?.compliantOnly;
+            resourceInputs["linodeId"] = state?.linodeId;
+            resourceInputs["placementGroupId"] = state?.placementGroupId;
         } else {
             const args = argsOrState as PlacementGroupAssignmentArgs | undefined;
-            if ((!args || args.linodeId === undefined) && !opts.urn) {
+            if (args?.linodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'linodeId'");
             }
-            if ((!args || args.placementGroupId === undefined) && !opts.urn) {
+            if (args?.placementGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'placementGroupId'");
             }
-            resourceInputs["compliantOnly"] = args ? args.compliantOnly : undefined;
-            resourceInputs["linodeId"] = args ? args.linodeId : undefined;
-            resourceInputs["placementGroupId"] = args ? args.placementGroupId : undefined;
+            resourceInputs["compliantOnly"] = args?.compliantOnly;
+            resourceInputs["linodeId"] = args?.linodeId;
+            resourceInputs["placementGroupId"] = args?.placementGroupId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PlacementGroupAssignment.__pulumiType, name, resourceInputs, opts);

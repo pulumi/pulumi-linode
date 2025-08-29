@@ -90,63 +90,62 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
      * * configured by `objAccessKey` in the provider configuration;
      * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
-    public readonly accessKey!: pulumi.Output<string | undefined>;
+    declare public readonly accessKey: pulumi.Output<string | undefined>;
     /**
      * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
      */
-    public readonly acl!: pulumi.Output<string | undefined>;
+    declare public readonly acl: pulumi.Output<string | undefined>;
     /**
      * The cert used by this Object Storage Bucket.
      */
-    public readonly cert!: pulumi.Output<outputs.ObjectStorageBucketCert | undefined>;
+    declare public readonly cert: pulumi.Output<outputs.ObjectStorageBucketCert | undefined>;
     /**
      * The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
      * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
      *
      * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
      */
-    public readonly cluster!: pulumi.Output<string>;
+    declare public readonly cluster: pulumi.Output<string>;
     /**
      * If true, the bucket will have CORS enabled for all origins.
      */
-    public readonly corsEnabled!: pulumi.Output<boolean>;
+    declare public readonly corsEnabled: pulumi.Output<boolean>;
     /**
      * The endpoint for the bucket used for s3 connections.
      *
      * @deprecated Use `s3Endpoint` instead
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      */
-    public readonly endpointType!: pulumi.Output<string>;
+    declare public readonly endpointType: pulumi.Output<string>;
     /**
-     * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-     * public.
+     * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
      */
-    public /*out*/ readonly hostname!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostname: pulumi.Output<string>;
     /**
      * The label of the Linode Object Storage Bucket.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * Lifecycle rules to be applied to the bucket.
      */
-    public readonly lifecycleRules!: pulumi.Output<outputs.ObjectStorageBucketLifecycleRule[] | undefined>;
+    declare public readonly lifecycleRules: pulumi.Output<outputs.ObjectStorageBucketLifecycleRule[] | undefined>;
     /**
      * The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The user's s3 endpoint URL, based on the `endpointType` and `region`.
      */
-    public readonly s3Endpoint!: pulumi.Output<string>;
+    declare public readonly s3Endpoint: pulumi.Output<string>;
     /**
      * The secret key to authenticate with. If not specified with the resource, its value can be
      * * configured by `objSecretKey` in the provider configuration;
      * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
-    public readonly secretKey!: pulumi.Output<string | undefined>;
+    declare public readonly secretKey: pulumi.Output<string | undefined>;
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      *
@@ -154,7 +153,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
      *
      * * `cert` - (Optional) The bucket's TLS/SSL certificate.
      */
-    public readonly versioning!: pulumi.Output<boolean>;
+    declare public readonly versioning: pulumi.Output<boolean>;
 
     /**
      * Create a ObjectStorageBucket resource with the given unique name, arguments, and options.
@@ -169,37 +168,37 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObjectStorageBucketState | undefined;
-            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["cert"] = state ? state.cert : undefined;
-            resourceInputs["cluster"] = state ? state.cluster : undefined;
-            resourceInputs["corsEnabled"] = state ? state.corsEnabled : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["endpointType"] = state ? state.endpointType : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["s3Endpoint"] = state ? state.s3Endpoint : undefined;
-            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
-            resourceInputs["versioning"] = state ? state.versioning : undefined;
+            resourceInputs["accessKey"] = state?.accessKey;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["cert"] = state?.cert;
+            resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["corsEnabled"] = state?.corsEnabled;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["endpointType"] = state?.endpointType;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["lifecycleRules"] = state?.lifecycleRules;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["s3Endpoint"] = state?.s3Endpoint;
+            resourceInputs["secretKey"] = state?.secretKey;
+            resourceInputs["versioning"] = state?.versioning;
         } else {
             const args = argsOrState as ObjectStorageBucketArgs | undefined;
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["cert"] = args ? args.cert : undefined;
-            resourceInputs["cluster"] = args ? args.cluster : undefined;
-            resourceInputs["corsEnabled"] = args ? args.corsEnabled : undefined;
-            resourceInputs["endpointType"] = args ? args.endpointType : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["s3Endpoint"] = args ? args.s3Endpoint : undefined;
+            resourceInputs["accessKey"] = args?.accessKey;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["cert"] = args?.cert;
+            resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["corsEnabled"] = args?.corsEnabled;
+            resourceInputs["endpointType"] = args?.endpointType;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["lifecycleRules"] = args?.lifecycleRules;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["s3Endpoint"] = args?.s3Endpoint;
             resourceInputs["secretKey"] = args?.secretKey ? pulumi.secret(args.secretKey) : undefined;
-            resourceInputs["versioning"] = args ? args.versioning : undefined;
+            resourceInputs["versioning"] = args?.versioning;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
         }
@@ -250,8 +249,7 @@ export interface ObjectStorageBucketState {
      */
     endpointType?: pulumi.Input<string>;
     /**
-     * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-     * public.
+     * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
      */
     hostname?: pulumi.Input<string>;
     /**

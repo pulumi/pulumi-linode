@@ -64,16 +64,14 @@ public final class NodeBalancerConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * This value must be present in the response body of the check in order for it to pass. If this value is not present in
-     * the response body of a check request, the backend is considered to be down
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
      * 
      */
     @Import(name="checkBody")
     private @Nullable Output<String> checkBody;
 
     /**
-     * @return This value must be present in the response body of the check in order for it to pass. If this value is not present in
-     * the response body of a check request, the backend is considered to be down
+     * @return This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
      * 
      */
     public Optional<Output<String>> checkBody() {
@@ -387,8 +385,7 @@ public final class NodeBalancerConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param checkBody This value must be present in the response body of the check in order for it to pass. If this value is not present in
-         * the response body of a check request, the backend is considered to be down
+         * @param checkBody This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
          * 
          * @return builder
          * 
@@ -399,8 +396,7 @@ public final class NodeBalancerConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param checkBody This value must be present in the response body of the check in order for it to pass. If this value is not present in
-         * the response body of a check request, the backend is considered to be down
+         * @param checkBody This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
          * 
          * @return builder
          * 

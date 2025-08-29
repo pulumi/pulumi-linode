@@ -46,39 +46,39 @@ export class LkeCluster extends pulumi.CustomResource {
     /**
      * The endpoints for the Kubernetes API server.
      */
-    public /*out*/ readonly apiEndpoints!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly apiEndpoints: pulumi.Output<string[]>;
     /**
      * Enables the App Platform Layer
      */
-    public readonly aplEnabled!: pulumi.Output<boolean>;
+    declare public readonly aplEnabled: pulumi.Output<boolean>;
     /**
      * Defines settings for the Kubernetes Control Plane.
      */
-    public readonly controlPlane!: pulumi.Output<outputs.LkeClusterControlPlane>;
+    declare public readonly controlPlane: pulumi.Output<outputs.LkeClusterControlPlane>;
     /**
      * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
      */
-    public /*out*/ readonly dashboardUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly dashboardUrl: pulumi.Output<string>;
     /**
      * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      */
-    public readonly externalPoolTags!: pulumi.Output<string[] | undefined>;
+    declare public readonly externalPoolTags: pulumi.Output<string[] | undefined>;
     /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */
-    public readonly k8sVersion!: pulumi.Output<string>;
+    declare public readonly k8sVersion: pulumi.Output<string>;
     /**
      * The base64 encoded kubeconfig for the Kubernetes cluster.
      */
-    public /*out*/ readonly kubeconfig!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubeconfig: pulumi.Output<string>;
     /**
      * This Kubernetes cluster's unique label.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * Additional nested attributes:
      */
-    public readonly pools!: pulumi.Output<outputs.LkeClusterPool[]>;
+    declare public readonly pools: pulumi.Output<outputs.LkeClusterPool[]>;
     /**
      * This Kubernetes cluster's location.
      *
@@ -86,19 +86,19 @@ export class LkeCluster extends pulumi.CustomResource {
      *
      * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The status of the node. (`ready`, `notReady`)
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
      */
-    public readonly tier!: pulumi.Output<string>;
+    declare public readonly tier: pulumi.Output<string>;
 
     /**
      * Create a LkeCluster resource with the given unique name, arguments, and options.
@@ -113,42 +113,42 @@ export class LkeCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LkeClusterState | undefined;
-            resourceInputs["apiEndpoints"] = state ? state.apiEndpoints : undefined;
-            resourceInputs["aplEnabled"] = state ? state.aplEnabled : undefined;
-            resourceInputs["controlPlane"] = state ? state.controlPlane : undefined;
-            resourceInputs["dashboardUrl"] = state ? state.dashboardUrl : undefined;
-            resourceInputs["externalPoolTags"] = state ? state.externalPoolTags : undefined;
-            resourceInputs["k8sVersion"] = state ? state.k8sVersion : undefined;
-            resourceInputs["kubeconfig"] = state ? state.kubeconfig : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["pools"] = state ? state.pools : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tier"] = state ? state.tier : undefined;
+            resourceInputs["apiEndpoints"] = state?.apiEndpoints;
+            resourceInputs["aplEnabled"] = state?.aplEnabled;
+            resourceInputs["controlPlane"] = state?.controlPlane;
+            resourceInputs["dashboardUrl"] = state?.dashboardUrl;
+            resourceInputs["externalPoolTags"] = state?.externalPoolTags;
+            resourceInputs["k8sVersion"] = state?.k8sVersion;
+            resourceInputs["kubeconfig"] = state?.kubeconfig;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["pools"] = state?.pools;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tier"] = state?.tier;
         } else {
             const args = argsOrState as LkeClusterArgs | undefined;
-            if ((!args || args.k8sVersion === undefined) && !opts.urn) {
+            if (args?.k8sVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'k8sVersion'");
             }
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.pools === undefined) && !opts.urn) {
+            if (args?.pools === undefined && !opts.urn) {
                 throw new Error("Missing required property 'pools'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["aplEnabled"] = args ? args.aplEnabled : undefined;
-            resourceInputs["controlPlane"] = args ? args.controlPlane : undefined;
-            resourceInputs["externalPoolTags"] = args ? args.externalPoolTags : undefined;
-            resourceInputs["k8sVersion"] = args ? args.k8sVersion : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["pools"] = args ? args.pools : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tier"] = args ? args.tier : undefined;
+            resourceInputs["aplEnabled"] = args?.aplEnabled;
+            resourceInputs["controlPlane"] = args?.controlPlane;
+            resourceInputs["externalPoolTags"] = args?.externalPoolTags;
+            resourceInputs["k8sVersion"] = args?.k8sVersion;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["pools"] = args?.pools;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tier"] = args?.tier;
             resourceInputs["apiEndpoints"] = undefined /*out*/;
             resourceInputs["dashboardUrl"] = undefined /*out*/;
             resourceInputs["kubeconfig"] = undefined /*out*/;

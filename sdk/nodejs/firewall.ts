@@ -109,59 +109,59 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * When this firewall was created
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The devices associated with this firewall.
      */
-    public /*out*/ readonly devices!: pulumi.Output<outputs.FirewallDevice[]>;
+    declare public /*out*/ readonly devices: pulumi.Output<outputs.FirewallDevice[]>;
     /**
      * If `true`, the Firewall's rules are not enforced (defaults to `false`).
      *
      * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      */
-    public readonly disabled!: pulumi.Output<boolean>;
+    declare public readonly disabled: pulumi.Output<boolean>;
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      *
      * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      */
-    public readonly inboundPolicy!: pulumi.Output<string>;
+    declare public readonly inboundPolicy: pulumi.Output<string>;
     /**
      * A firewall rule that specifies what inbound network traffic is allowed.
      */
-    public readonly inbounds!: pulumi.Output<outputs.FirewallInbound[] | undefined>;
+    declare public readonly inbounds: pulumi.Output<outputs.FirewallInbound[] | undefined>;
     /**
      * This Firewall's unique label.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * A list of IDs of Linodes this Firewall should govern network traffic for.
      */
-    public readonly linodes!: pulumi.Output<number[]>;
+    declare public readonly linodes: pulumi.Output<number[]>;
     /**
      * A list of IDs of NodeBalancers this Firewall should govern network traffic for.
      */
-    public readonly nodebalancers!: pulumi.Output<number[]>;
+    declare public readonly nodebalancers: pulumi.Output<number[]>;
     /**
      * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */
-    public readonly outboundPolicy!: pulumi.Output<string>;
+    declare public readonly outboundPolicy: pulumi.Output<string>;
     /**
      * A firewall rule that specifies what outbound network traffic is allowed.
      */
-    public readonly outbounds!: pulumi.Output<outputs.FirewallOutbound[] | undefined>;
+    declare public readonly outbounds: pulumi.Output<outputs.FirewallOutbound[] | undefined>;
     /**
      * The status of the Firewall.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * When this firewall was last updated
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -176,39 +176,39 @@ export class Firewall extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallState | undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["devices"] = state ? state.devices : undefined;
-            resourceInputs["disabled"] = state ? state.disabled : undefined;
-            resourceInputs["inboundPolicy"] = state ? state.inboundPolicy : undefined;
-            resourceInputs["inbounds"] = state ? state.inbounds : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["linodes"] = state ? state.linodes : undefined;
-            resourceInputs["nodebalancers"] = state ? state.nodebalancers : undefined;
-            resourceInputs["outboundPolicy"] = state ? state.outboundPolicy : undefined;
-            resourceInputs["outbounds"] = state ? state.outbounds : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["devices"] = state?.devices;
+            resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["inboundPolicy"] = state?.inboundPolicy;
+            resourceInputs["inbounds"] = state?.inbounds;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["linodes"] = state?.linodes;
+            resourceInputs["nodebalancers"] = state?.nodebalancers;
+            resourceInputs["outboundPolicy"] = state?.outboundPolicy;
+            resourceInputs["outbounds"] = state?.outbounds;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            if ((!args || args.inboundPolicy === undefined) && !opts.urn) {
+            if (args?.inboundPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'inboundPolicy'");
             }
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.outboundPolicy === undefined) && !opts.urn) {
+            if (args?.outboundPolicy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'outboundPolicy'");
             }
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
-            resourceInputs["inboundPolicy"] = args ? args.inboundPolicy : undefined;
-            resourceInputs["inbounds"] = args ? args.inbounds : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["linodes"] = args ? args.linodes : undefined;
-            resourceInputs["nodebalancers"] = args ? args.nodebalancers : undefined;
-            resourceInputs["outboundPolicy"] = args ? args.outboundPolicy : undefined;
-            resourceInputs["outbounds"] = args ? args.outbounds : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["disabled"] = args?.disabled;
+            resourceInputs["inboundPolicy"] = args?.inboundPolicy;
+            resourceInputs["inbounds"] = args?.inbounds;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["linodes"] = args?.linodes;
+            resourceInputs["nodebalancers"] = args?.nodebalancers;
+            resourceInputs["outboundPolicy"] = args?.outboundPolicy;
+            resourceInputs["outbounds"] = args?.outbounds;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["devices"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
