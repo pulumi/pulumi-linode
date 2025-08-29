@@ -66,15 +66,15 @@ export class DatabaseAccessControls extends pulumi.CustomResource {
     /**
      * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
      */
-    public readonly allowLists!: pulumi.Output<string[]>;
+    declare public readonly allowLists: pulumi.Output<string[]>;
     /**
      * The unique ID of the target database.
      */
-    public readonly databaseId!: pulumi.Output<number>;
+    declare public readonly databaseId: pulumi.Output<number>;
     /**
      * The unique type of the target database. (`mysql`, `postgresql`)
      */
-    public readonly databaseType!: pulumi.Output<string>;
+    declare public readonly databaseType: pulumi.Output<string>;
 
     /**
      * Create a DatabaseAccessControls resource with the given unique name, arguments, and options.
@@ -89,23 +89,23 @@ export class DatabaseAccessControls extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseAccessControlsState | undefined;
-            resourceInputs["allowLists"] = state ? state.allowLists : undefined;
-            resourceInputs["databaseId"] = state ? state.databaseId : undefined;
-            resourceInputs["databaseType"] = state ? state.databaseType : undefined;
+            resourceInputs["allowLists"] = state?.allowLists;
+            resourceInputs["databaseId"] = state?.databaseId;
+            resourceInputs["databaseType"] = state?.databaseType;
         } else {
             const args = argsOrState as DatabaseAccessControlsArgs | undefined;
-            if ((!args || args.allowLists === undefined) && !opts.urn) {
+            if (args?.allowLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'allowLists'");
             }
-            if ((!args || args.databaseId === undefined) && !opts.urn) {
+            if (args?.databaseId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseId'");
             }
-            if ((!args || args.databaseType === undefined) && !opts.urn) {
+            if (args?.databaseType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseType'");
             }
-            resourceInputs["allowLists"] = args ? args.allowLists : undefined;
-            resourceInputs["databaseId"] = args ? args.databaseId : undefined;
-            resourceInputs["databaseType"] = args ? args.databaseType : undefined;
+            resourceInputs["allowLists"] = args?.allowLists;
+            resourceInputs["databaseId"] = args?.databaseId;
+            resourceInputs["databaseType"] = args?.databaseType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DatabaseAccessControls.__pulumiType, name, resourceInputs, opts);

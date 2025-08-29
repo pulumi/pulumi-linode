@@ -97,62 +97,62 @@ export class InstanceDisk extends pulumi.CustomResource {
     /**
      * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
      */
-    public readonly authorizedKeys!: pulumi.Output<string[] | undefined>;
+    declare public readonly authorizedKeys: pulumi.Output<string[] | undefined>;
     /**
      * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
      */
-    public readonly authorizedUsers!: pulumi.Output<string[] | undefined>;
+    declare public readonly authorizedUsers: pulumi.Output<string[] | undefined>;
     /**
      * When this disk was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
      */
-    public /*out*/ readonly diskEncryption!: pulumi.Output<string>;
+    declare public /*out*/ readonly diskEncryption: pulumi.Output<string>;
     /**
      * The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
      */
-    public readonly filesystem!: pulumi.Output<string>;
+    declare public readonly filesystem: pulumi.Output<string>;
     /**
      * An Image ID to deploy the Linode Disk from.
      */
-    public readonly image!: pulumi.Output<string | undefined>;
+    declare public readonly image: pulumi.Output<string | undefined>;
     /**
      * The Disk's label for display purposes only.
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * The ID of the Linode to create this Disk under.
      */
-    public readonly linodeId!: pulumi.Output<number>;
+    declare public readonly linodeId: pulumi.Output<number>;
     /**
      * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
      */
-    public readonly rootPass!: pulumi.Output<string | undefined>;
+    declare public readonly rootPass: pulumi.Output<string | undefined>;
     /**
      * The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
      *
      * - - -
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      */
-    public readonly stackscriptData!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly stackscriptData: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      */
-    public readonly stackscriptId!: pulumi.Output<number | undefined>;
+    declare public readonly stackscriptId: pulumi.Output<number | undefined>;
     /**
      * A brief description of this Disk's current state.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly timeouts!: pulumi.Output<outputs.InstanceDiskTimeouts | undefined>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.InstanceDiskTimeouts | undefined>;
     /**
      * When this disk was last updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
 
     /**
      * Create a InstanceDisk resource with the given unique name, arguments, and options.
@@ -167,43 +167,43 @@ export class InstanceDisk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceDiskState | undefined;
-            resourceInputs["authorizedKeys"] = state ? state.authorizedKeys : undefined;
-            resourceInputs["authorizedUsers"] = state ? state.authorizedUsers : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
-            resourceInputs["filesystem"] = state ? state.filesystem : undefined;
-            resourceInputs["image"] = state ? state.image : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["linodeId"] = state ? state.linodeId : undefined;
-            resourceInputs["rootPass"] = state ? state.rootPass : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["stackscriptData"] = state ? state.stackscriptData : undefined;
-            resourceInputs["stackscriptId"] = state ? state.stackscriptId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["authorizedKeys"] = state?.authorizedKeys;
+            resourceInputs["authorizedUsers"] = state?.authorizedUsers;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["diskEncryption"] = state?.diskEncryption;
+            resourceInputs["filesystem"] = state?.filesystem;
+            resourceInputs["image"] = state?.image;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["linodeId"] = state?.linodeId;
+            resourceInputs["rootPass"] = state?.rootPass;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["stackscriptData"] = state?.stackscriptData;
+            resourceInputs["stackscriptId"] = state?.stackscriptId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as InstanceDiskArgs | undefined;
-            if ((!args || args.label === undefined) && !opts.urn) {
+            if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
-            if ((!args || args.linodeId === undefined) && !opts.urn) {
+            if (args?.linodeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'linodeId'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            resourceInputs["authorizedKeys"] = args ? args.authorizedKeys : undefined;
-            resourceInputs["authorizedUsers"] = args ? args.authorizedUsers : undefined;
-            resourceInputs["filesystem"] = args ? args.filesystem : undefined;
-            resourceInputs["image"] = args ? args.image : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["linodeId"] = args ? args.linodeId : undefined;
+            resourceInputs["authorizedKeys"] = args?.authorizedKeys;
+            resourceInputs["authorizedUsers"] = args?.authorizedUsers;
+            resourceInputs["filesystem"] = args?.filesystem;
+            resourceInputs["image"] = args?.image;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["linodeId"] = args?.linodeId;
             resourceInputs["rootPass"] = args?.rootPass ? pulumi.secret(args.rootPass) : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["size"] = args?.size;
             resourceInputs["stackscriptData"] = args?.stackscriptData ? pulumi.secret(args.stackscriptData) : undefined;
-            resourceInputs["stackscriptId"] = args ? args.stackscriptId : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
+            resourceInputs["stackscriptId"] = args?.stackscriptId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["diskEncryption"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

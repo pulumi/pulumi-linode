@@ -156,17 +156,13 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> AuthorizedKeys { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-        /// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         /// </summary>
         [Output("authorizedUsers")]
         public Output<ImmutableArray<string>> AuthorizedUsers { get; private set; } = null!;
 
         /// <summary>
-        /// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
-        /// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-        /// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-        /// exclusive.
+        /// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         /// </summary>
         [Output("backupId")]
         public Output<int?> BackupId { get; private set; } = null!;
@@ -243,15 +239,13 @@ namespace Pulumi.Linode
         public Output<string> HostUuid { get; private set; } = null!;
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-        /// See /images for more information on the Images available for you to use.
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
         /// </summary>
         [Output("image")]
         public Output<string?> Image { get; private set; } = null!;
 
         /// <summary>
-        /// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-        /// must be declared in the config block.
+        /// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         /// </summary>
         [Output("interfaces")]
         public Output<ImmutableArray<Outputs.InstanceInterface>> Interfaces { get; private set; } = null!;
@@ -371,15 +365,13 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.InstanceSpec>> Specs { get; private set; } = null!;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-        /// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         /// </summary>
         [Output("stackscriptData")]
         public Output<ImmutableDictionary<string, string>?> StackscriptData { get; private set; } = null!;
 
         /// <summary>
-        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-        /// that is compatible with this StackScript.
+        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         /// </summary>
         [Output("stackscriptId")]
         public Output<int?> StackscriptId { get; private set; } = null!;
@@ -391,8 +383,7 @@ namespace Pulumi.Linode
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-        /// is used to set the swap disk size for the newly-created Linode.
+        /// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         /// </summary>
         [Output("swapSize")]
         public Output<int> SwapSize { get; private set; } = null!;
@@ -490,8 +481,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedUsers;
 
         /// <summary>
-        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-        /// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         /// </summary>
         public InputList<string> AuthorizedUsers
         {
@@ -500,10 +490,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
-        /// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-        /// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-        /// exclusive.
+        /// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         /// </summary>
         [Input("backupId")]
         public Input<int>? BackupId { get; set; }
@@ -569,8 +556,7 @@ namespace Pulumi.Linode
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-        /// See /images for more information on the Images available for you to use.
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -579,8 +565,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.InstanceInterfaceArgs>? _interfaces;
 
         /// <summary>
-        /// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-        /// must be declared in the config block.
+        /// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         /// </summary>
         public InputList<Inputs.InstanceInterfaceArgs> Interfaces
         {
@@ -704,8 +689,7 @@ namespace Pulumi.Linode
         private InputMap<string>? _stackscriptData;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-        /// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         /// </summary>
         public InputMap<string> StackscriptData
         {
@@ -718,15 +702,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-        /// that is compatible with this StackScript.
+        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         /// </summary>
         [Input("stackscriptId")]
         public Input<int>? StackscriptId { get; set; }
 
         /// <summary>
-        /// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-        /// is used to set the swap disk size for the newly-created Linode.
+        /// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         /// </summary>
         [Input("swapSize")]
         public Input<int>? SwapSize { get; set; }
@@ -787,8 +769,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedUsers;
 
         /// <summary>
-        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's
-        /// `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         /// </summary>
         public InputList<string> AuthorizedUsers
         {
@@ -797,10 +778,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup
-        /// must have a status of successful, and the Linode must be deployed to the same region as the Backup. See
-        /// /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually
-        /// exclusive.
+        /// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         /// </summary>
         [Input("backupId")]
         public Input<int>? BackupId { get; set; }
@@ -902,8 +880,7 @@ namespace Pulumi.Linode
         public Input<string>? HostUuid { get; set; }
 
         /// <summary>
-        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-        /// See /images for more information on the Images available for you to use.
+        /// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -912,8 +889,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.InstanceInterfaceGetArgs>? _interfaces;
 
         /// <summary>
-        /// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces
-        /// must be declared in the config block.
+        /// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         /// </summary>
         public InputList<Inputs.InstanceInterfaceGetArgs> Interfaces
         {
@@ -1073,8 +1049,7 @@ namespace Pulumi.Linode
         private InputMap<string>? _stackscriptData;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only
-        /// accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
         /// </summary>
         public InputMap<string> StackscriptData
         {
@@ -1087,8 +1062,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image
-        /// that is compatible with this StackScript.
+        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
         /// </summary>
         [Input("stackscriptId")]
         public Input<int>? StackscriptId { get; set; }
@@ -1100,8 +1074,7 @@ namespace Pulumi.Linode
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This
-        /// is used to set the swap disk size for the newly-created Linode.
+        /// When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         /// </summary>
         [Input("swapSize")]
         public Input<int>? SwapSize { get; set; }

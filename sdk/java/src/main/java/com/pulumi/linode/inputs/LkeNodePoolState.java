@@ -134,16 +134,14 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-     * allowing them to repel certain pods.
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
      * 
      */
     @Import(name="taints")
     private @Nullable Output<List<LkeNodePoolTaintArgs>> taints;
 
     /**
-     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-     * allowing them to repel certain pods.
+     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
      * 
      */
     public Optional<Output<List<LkeNodePoolTaintArgs>>> taints() {
@@ -399,8 +397,7 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-         * allowing them to repel certain pods.
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
          * 
          * @return builder
          * 
@@ -411,8 +408,7 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-         * allowing them to repel certain pods.
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
          * 
          * @return builder
          * 
@@ -422,8 +418,7 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically
-         * allowing them to repel certain pods.
+         * @param taints Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
          * 
          * @return builder
          * 

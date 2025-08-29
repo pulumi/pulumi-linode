@@ -66,59 +66,59 @@ export class NodeBalancer extends pulumi.CustomResource {
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
-    public readonly clientConnThrottle!: pulumi.Output<number>;
+    declare public readonly clientConnThrottle: pulumi.Output<number>;
     /**
      * Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
      *
      * * **NOTE: This argument may not be generally available.**
      */
-    public readonly clientUdpSessThrottle!: pulumi.Output<number>;
+    declare public readonly clientUdpSessThrottle: pulumi.Output<number>;
     /**
      * When this firewall was created.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * ID for the firewall you'd like to use with this NodeBalancer.
      */
-    public readonly firewallId!: pulumi.Output<number | undefined>;
+    declare public readonly firewallId: pulumi.Output<number | undefined>;
     /**
      * A list of Firewalls assigned to this NodeBalancer.
      */
-    public /*out*/ readonly firewalls!: pulumi.Output<outputs.NodeBalancerFirewall[]>;
+    declare public /*out*/ readonly firewalls: pulumi.Output<outputs.NodeBalancerFirewall[]>;
     /**
      * This NodeBalancer's hostname, ending with .nodebalancer.linode.com
      */
-    public /*out*/ readonly hostname!: pulumi.Output<string>;
+    declare public /*out*/ readonly hostname: pulumi.Output<string>;
     /**
      * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */
-    public /*out*/ readonly ipv4!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv4: pulumi.Output<string>;
     /**
      * A list of IPv6 addresses or networks. Must be in IP/mask format.
      */
-    public /*out*/ readonly ipv6!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv6: pulumi.Output<string>;
     /**
      * The label of the Linode NodeBalancer
      */
-    public readonly label!: pulumi.Output<string | undefined>;
+    declare public readonly label: pulumi.Output<string | undefined>;
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      *
      * - - -
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
-    public readonly tags!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<string[]>;
     /**
      * Information about the amount of transfer this NodeBalancer has had so far this month.
      */
-    public /*out*/ readonly transfers!: pulumi.Output<outputs.NodeBalancerTransfer[]>;
+    declare public /*out*/ readonly transfers: pulumi.Output<outputs.NodeBalancerTransfer[]>;
     /**
      * When this firewall was last updated.
      */
-    public /*out*/ readonly updated!: pulumi.Output<string>;
+    declare public /*out*/ readonly updated: pulumi.Output<string>;
 
     /**
      * Create a NodeBalancer resource with the given unique name, arguments, and options.
@@ -133,27 +133,27 @@ export class NodeBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeBalancerState | undefined;
-            resourceInputs["clientConnThrottle"] = state ? state.clientConnThrottle : undefined;
-            resourceInputs["clientUdpSessThrottle"] = state ? state.clientUdpSessThrottle : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["firewallId"] = state ? state.firewallId : undefined;
-            resourceInputs["firewalls"] = state ? state.firewalls : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
-            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transfers"] = state ? state.transfers : undefined;
-            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["clientConnThrottle"] = state?.clientConnThrottle;
+            resourceInputs["clientUdpSessThrottle"] = state?.clientUdpSessThrottle;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["firewallId"] = state?.firewallId;
+            resourceInputs["firewalls"] = state?.firewalls;
+            resourceInputs["hostname"] = state?.hostname;
+            resourceInputs["ipv4"] = state?.ipv4;
+            resourceInputs["ipv6"] = state?.ipv6;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transfers"] = state?.transfers;
+            resourceInputs["updated"] = state?.updated;
         } else {
             const args = argsOrState as NodeBalancerArgs | undefined;
-            resourceInputs["clientConnThrottle"] = args ? args.clientConnThrottle : undefined;
-            resourceInputs["clientUdpSessThrottle"] = args ? args.clientUdpSessThrottle : undefined;
-            resourceInputs["firewallId"] = args ? args.firewallId : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["clientConnThrottle"] = args?.clientConnThrottle;
+            resourceInputs["clientUdpSessThrottle"] = args?.clientUdpSessThrottle;
+            resourceInputs["firewallId"] = args?.firewallId;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["firewalls"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;

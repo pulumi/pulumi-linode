@@ -30,8 +30,7 @@ class ReservedIpAssignmentArgs:
         The set of arguments for constructing a ReservedIpAssignment resource.
         :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
-        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-               `skip_implicit_reboots` provider argument.
+        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
         :param pulumi.Input[_builtins.bool] public: Whether the IPv4 address is public or private.
         :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address.
         """
@@ -72,8 +71,7 @@ class ReservedIpAssignmentArgs:
     @pulumi.getter(name="applyImmediately")
     def apply_immediately(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-        `skip_implicit_reboots` provider argument.
+        If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
         """
         return pulumi.get(self, "apply_immediately")
 
@@ -124,8 +122,7 @@ class _ReservedIpAssignmentState:
         """
         Input properties used for looking up and filtering ReservedIpAssignment resources.
         :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
-        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-               `skip_implicit_reboots` provider argument.
+        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
         :param pulumi.Input[_builtins.int] prefix: The number of bits set in the subnet mask.
@@ -178,8 +175,7 @@ class _ReservedIpAssignmentState:
     @pulumi.getter(name="applyImmediately")
     def apply_immediately(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-        `skip_implicit_reboots` provider argument.
+        If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
         """
         return pulumi.get(self, "apply_immediately")
 
@@ -325,8 +321,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
-        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-               `skip_implicit_reboots` provider argument.
+        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
         :param pulumi.Input[_builtins.bool] public: Whether the IPv4 address is public or private.
         :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address.
@@ -414,8 +409,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
-        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-               `skip_implicit_reboots` provider argument.
+        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
         :param pulumi.Input[_builtins.int] prefix: The number of bits set in the subnet mask.
@@ -457,8 +451,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
     @pulumi.getter(name="applyImmediately")
     def apply_immediately(self) -> pulumi.Output[_builtins.bool]:
         """
-        If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the
-        `skip_implicit_reboots` provider argument.
+        If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
         """
         return pulumi.get(self, "apply_immediately")
 

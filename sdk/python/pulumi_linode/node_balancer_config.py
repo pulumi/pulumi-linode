@@ -46,8 +46,7 @@ class NodeBalancerConfigArgs:
         :param pulumi.Input[_builtins.str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         :param pulumi.Input[_builtins.str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         :param pulumi.Input[_builtins.int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
-        :param pulumi.Input[_builtins.str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
-               the response body of a check request, the backend is considered to be down
+        :param pulumi.Input[_builtins.str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
         :param pulumi.Input[_builtins.int] check_interval: How often, in seconds, to check that backends are up and serving requests.
         :param pulumi.Input[_builtins.bool] check_passive: If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         :param pulumi.Input[_builtins.str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
@@ -151,8 +150,7 @@ class NodeBalancerConfigArgs:
     @pulumi.getter(name="checkBody")
     def check_body(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This value must be present in the response body of the check in order for it to pass. If this value is not present in
-        the response body of a check request, the backend is considered to be down
+        This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
         """
         return pulumi.get(self, "check_body")
 
@@ -336,15 +334,13 @@ class _NodeBalancerConfigState:
         :param pulumi.Input[_builtins.str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         :param pulumi.Input[_builtins.str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         :param pulumi.Input[_builtins.int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
-        :param pulumi.Input[_builtins.str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
-               the response body of a check request, the backend is considered to be down
+        :param pulumi.Input[_builtins.str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
         :param pulumi.Input[_builtins.int] check_interval: How often, in seconds, to check that backends are up and serving requests.
         :param pulumi.Input[_builtins.bool] check_passive: If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         :param pulumi.Input[_builtins.str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
         :param pulumi.Input[_builtins.int] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         :param pulumi.Input[_builtins.str] cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]] node_statuses: A structure containing information about the health of the backends for this port. This information is updated
-               periodically as checks are performed against backends.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]] node_statuses: A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
         :param pulumi.Input[_builtins.int] nodebalancer_id: The ID of the NodeBalancer to access.
                
                - - -
@@ -444,8 +440,7 @@ class _NodeBalancerConfigState:
     @pulumi.getter(name="checkBody")
     def check_body(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        This value must be present in the response body of the check in order for it to pass. If this value is not present in
-        the response body of a check request, the backend is considered to be down
+        This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
         """
         return pulumi.get(self, "check_body")
 
@@ -517,8 +512,7 @@ class _NodeBalancerConfigState:
     @pulumi.getter(name="nodeStatuses")
     def node_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]]]:
         """
-        A structure containing information about the health of the backends for this port. This information is updated
-        periodically as checks are performed against backends.
+        A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
         """
         return pulumi.get(self, "node_statuses")
 
@@ -729,8 +723,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         :param pulumi.Input[_builtins.str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         :param pulumi.Input[_builtins.int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
-        :param pulumi.Input[_builtins.str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
-               the response body of a check request, the backend is considered to be down
+        :param pulumi.Input[_builtins.str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
         :param pulumi.Input[_builtins.int] check_interval: How often, in seconds, to check that backends are up and serving requests.
         :param pulumi.Input[_builtins.bool] check_passive: If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         :param pulumi.Input[_builtins.str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
@@ -899,15 +892,13 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         :param pulumi.Input[_builtins.str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         :param pulumi.Input[_builtins.int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
-        :param pulumi.Input[_builtins.str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in
-               the response body of a check request, the backend is considered to be down
+        :param pulumi.Input[_builtins.str] check_body: This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
         :param pulumi.Input[_builtins.int] check_interval: How often, in seconds, to check that backends are up and serving requests.
         :param pulumi.Input[_builtins.bool] check_passive: If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         :param pulumi.Input[_builtins.str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
         :param pulumi.Input[_builtins.int] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         :param pulumi.Input[_builtins.str] cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerConfigNodeStatusArgs', 'NodeBalancerConfigNodeStatusArgsDict']]]] node_statuses: A structure containing information about the health of the backends for this port. This information is updated
-               periodically as checks are performed against backends.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerConfigNodeStatusArgs', 'NodeBalancerConfigNodeStatusArgsDict']]]] node_statuses: A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
         :param pulumi.Input[_builtins.int] nodebalancer_id: The ID of the NodeBalancer to access.
                
                - - -
@@ -979,8 +970,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @pulumi.getter(name="checkBody")
     def check_body(self) -> pulumi.Output[_builtins.str]:
         """
-        This value must be present in the response body of the check in order for it to pass. If this value is not present in
-        the response body of a check request, the backend is considered to be down
+        This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
         """
         return pulumi.get(self, "check_body")
 
@@ -1028,8 +1018,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
     @pulumi.getter(name="nodeStatuses")
     def node_statuses(self) -> pulumi.Output[Sequence['outputs.NodeBalancerConfigNodeStatus']]:
         """
-        A structure containing information about the health of the backends for this port. This information is updated
-        periodically as checks are performed against backends.
+        A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
         """
         return pulumi.get(self, "node_statuses")
 

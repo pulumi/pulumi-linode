@@ -199,8 +199,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and
-        /// linode_object_sorage_bucket resource.
+        /// If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linode_object_sorage_bucket resource.
         /// </summary>
         [Input("objUseTempKeys", json: true)]
         public Input<bool>? ObjUseTempKeys { get; set; }

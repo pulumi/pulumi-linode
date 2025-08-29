@@ -122,8 +122,7 @@ type ObjectStorageBucket struct {
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
-	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-	// public.
+	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringOutput `pulumi:"label"`
@@ -206,8 +205,7 @@ type objectStorageBucketState struct {
 	Endpoint *string `pulumi:"endpoint"`
 	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
 	EndpointType *string `pulumi:"endpointType"`
-	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-	// public.
+	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
 	Hostname *string `pulumi:"hostname"`
 	// The label of the Linode Object Storage Bucket.
 	Label *string `pulumi:"label"`
@@ -251,8 +249,7 @@ type ObjectStorageBucketState struct {
 	Endpoint pulumi.StringPtrInput
 	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
 	EndpointType pulumi.StringPtrInput
-	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-	// public.
+	// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
 	Hostname pulumi.StringPtrInput
 	// The label of the Linode Object Storage Bucket.
 	Label pulumi.StringPtrInput
@@ -484,8 +481,7 @@ func (o ObjectStorageBucketOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
 }
 
-// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-// public.
+// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
 func (o ObjectStorageBucketOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }

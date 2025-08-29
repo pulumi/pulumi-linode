@@ -132,8 +132,7 @@ namespace Pulumi.Linode
         public Output<string> EndpointType { get; private set; } = null!;
 
         /// <summary>
-        /// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-        /// public.
+        /// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
@@ -381,8 +380,7 @@ namespace Pulumi.Linode
         public Input<string>? EndpointType { get; set; }
 
         /// <summary>
-        /// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made
-        /// public.
+        /// The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }

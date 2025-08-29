@@ -76,93 +76,91 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
     /**
      * What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
      */
-    public readonly algorithm!: pulumi.Output<string>;
+    declare public readonly algorithm: pulumi.Output<string>;
     /**
      * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
      */
-    public readonly check!: pulumi.Output<string>;
+    declare public readonly check: pulumi.Output<string>;
     /**
      * How many times to attempt a check before considering a backend to be down. (1-30)
      */
-    public readonly checkAttempts!: pulumi.Output<number>;
+    declare public readonly checkAttempts: pulumi.Output<number>;
     /**
-     * This value must be present in the response body of the check in order for it to pass. If this value is not present in
-     * the response body of a check request, the backend is considered to be down
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
      */
-    public readonly checkBody!: pulumi.Output<string>;
+    declare public readonly checkBody: pulumi.Output<string>;
     /**
      * How often, in seconds, to check that backends are up and serving requests.
      */
-    public readonly checkInterval!: pulumi.Output<number>;
+    declare public readonly checkInterval: pulumi.Output<number>;
     /**
      * If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
      */
-    public readonly checkPassive!: pulumi.Output<boolean>;
+    declare public readonly checkPassive: pulumi.Output<boolean>;
     /**
      * The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
      */
-    public readonly checkPath!: pulumi.Output<string>;
+    declare public readonly checkPath: pulumi.Output<string>;
     /**
      * How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
      */
-    public readonly checkTimeout!: pulumi.Output<number>;
+    declare public readonly checkTimeout: pulumi.Output<number>;
     /**
      * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
      */
-    public readonly cipherSuite!: pulumi.Output<string>;
+    declare public readonly cipherSuite: pulumi.Output<string>;
     /**
-     * A structure containing information about the health of the backends for this port. This information is updated
-     * periodically as checks are performed against backends.
+     * A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
      */
-    public /*out*/ readonly nodeStatuses!: pulumi.Output<outputs.NodeBalancerConfigNodeStatus[]>;
+    declare public /*out*/ readonly nodeStatuses: pulumi.Output<outputs.NodeBalancerConfigNodeStatus[]>;
     /**
      * The ID of the NodeBalancer to access.
      *
      * - - -
      */
-    public readonly nodebalancerId!: pulumi.Output<number>;
+    declare public readonly nodebalancerId: pulumi.Output<number>;
     /**
      * The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
      */
-    public readonly proxyProtocol!: pulumi.Output<string>;
+    declare public readonly proxyProtocol: pulumi.Output<string>;
     /**
      * The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */
-    public readonly sslCert!: pulumi.Output<string | undefined>;
+    declare public readonly sslCert: pulumi.Output<string | undefined>;
     /**
      * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      */
-    public /*out*/ readonly sslCommonname!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslCommonname: pulumi.Output<string>;
     /**
      * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
      */
-    public /*out*/ readonly sslFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly sslFingerprint: pulumi.Output<string>;
     /**
      * The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      */
-    public readonly sslKey!: pulumi.Output<string | undefined>;
+    declare public readonly sslKey: pulumi.Output<string | undefined>;
     /**
      * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      */
-    public readonly stickiness!: pulumi.Output<string>;
+    declare public readonly stickiness: pulumi.Output<string>;
     /**
      * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
      *
      * * **NOTE: This argument may not be generally available.**
      */
-    public readonly udpCheckPort!: pulumi.Output<number>;
+    declare public readonly udpCheckPort: pulumi.Output<number>;
     /**
      * The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
      */
-    public /*out*/ readonly udpSessionTimeout!: pulumi.Output<number>;
+    declare public /*out*/ readonly udpSessionTimeout: pulumi.Output<number>;
 
     /**
      * Create a NodeBalancerConfig resource with the given unique name, arguments, and options.
@@ -177,49 +175,49 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeBalancerConfigState | undefined;
-            resourceInputs["algorithm"] = state ? state.algorithm : undefined;
-            resourceInputs["check"] = state ? state.check : undefined;
-            resourceInputs["checkAttempts"] = state ? state.checkAttempts : undefined;
-            resourceInputs["checkBody"] = state ? state.checkBody : undefined;
-            resourceInputs["checkInterval"] = state ? state.checkInterval : undefined;
-            resourceInputs["checkPassive"] = state ? state.checkPassive : undefined;
-            resourceInputs["checkPath"] = state ? state.checkPath : undefined;
-            resourceInputs["checkTimeout"] = state ? state.checkTimeout : undefined;
-            resourceInputs["cipherSuite"] = state ? state.cipherSuite : undefined;
-            resourceInputs["nodeStatuses"] = state ? state.nodeStatuses : undefined;
-            resourceInputs["nodebalancerId"] = state ? state.nodebalancerId : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
-            resourceInputs["sslCert"] = state ? state.sslCert : undefined;
-            resourceInputs["sslCommonname"] = state ? state.sslCommonname : undefined;
-            resourceInputs["sslFingerprint"] = state ? state.sslFingerprint : undefined;
-            resourceInputs["sslKey"] = state ? state.sslKey : undefined;
-            resourceInputs["stickiness"] = state ? state.stickiness : undefined;
-            resourceInputs["udpCheckPort"] = state ? state.udpCheckPort : undefined;
-            resourceInputs["udpSessionTimeout"] = state ? state.udpSessionTimeout : undefined;
+            resourceInputs["algorithm"] = state?.algorithm;
+            resourceInputs["check"] = state?.check;
+            resourceInputs["checkAttempts"] = state?.checkAttempts;
+            resourceInputs["checkBody"] = state?.checkBody;
+            resourceInputs["checkInterval"] = state?.checkInterval;
+            resourceInputs["checkPassive"] = state?.checkPassive;
+            resourceInputs["checkPath"] = state?.checkPath;
+            resourceInputs["checkTimeout"] = state?.checkTimeout;
+            resourceInputs["cipherSuite"] = state?.cipherSuite;
+            resourceInputs["nodeStatuses"] = state?.nodeStatuses;
+            resourceInputs["nodebalancerId"] = state?.nodebalancerId;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["proxyProtocol"] = state?.proxyProtocol;
+            resourceInputs["sslCert"] = state?.sslCert;
+            resourceInputs["sslCommonname"] = state?.sslCommonname;
+            resourceInputs["sslFingerprint"] = state?.sslFingerprint;
+            resourceInputs["sslKey"] = state?.sslKey;
+            resourceInputs["stickiness"] = state?.stickiness;
+            resourceInputs["udpCheckPort"] = state?.udpCheckPort;
+            resourceInputs["udpSessionTimeout"] = state?.udpSessionTimeout;
         } else {
             const args = argsOrState as NodeBalancerConfigArgs | undefined;
-            if ((!args || args.nodebalancerId === undefined) && !opts.urn) {
+            if (args?.nodebalancerId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodebalancerId'");
             }
-            resourceInputs["algorithm"] = args ? args.algorithm : undefined;
-            resourceInputs["check"] = args ? args.check : undefined;
-            resourceInputs["checkAttempts"] = args ? args.checkAttempts : undefined;
-            resourceInputs["checkBody"] = args ? args.checkBody : undefined;
-            resourceInputs["checkInterval"] = args ? args.checkInterval : undefined;
-            resourceInputs["checkPassive"] = args ? args.checkPassive : undefined;
-            resourceInputs["checkPath"] = args ? args.checkPath : undefined;
-            resourceInputs["checkTimeout"] = args ? args.checkTimeout : undefined;
-            resourceInputs["cipherSuite"] = args ? args.cipherSuite : undefined;
-            resourceInputs["nodebalancerId"] = args ? args.nodebalancerId : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
+            resourceInputs["algorithm"] = args?.algorithm;
+            resourceInputs["check"] = args?.check;
+            resourceInputs["checkAttempts"] = args?.checkAttempts;
+            resourceInputs["checkBody"] = args?.checkBody;
+            resourceInputs["checkInterval"] = args?.checkInterval;
+            resourceInputs["checkPassive"] = args?.checkPassive;
+            resourceInputs["checkPath"] = args?.checkPath;
+            resourceInputs["checkTimeout"] = args?.checkTimeout;
+            resourceInputs["cipherSuite"] = args?.cipherSuite;
+            resourceInputs["nodebalancerId"] = args?.nodebalancerId;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["proxyProtocol"] = args?.proxyProtocol;
             resourceInputs["sslCert"] = args?.sslCert ? pulumi.secret(args.sslCert) : undefined;
             resourceInputs["sslKey"] = args?.sslKey ? pulumi.secret(args.sslKey) : undefined;
-            resourceInputs["stickiness"] = args ? args.stickiness : undefined;
-            resourceInputs["udpCheckPort"] = args ? args.udpCheckPort : undefined;
+            resourceInputs["stickiness"] = args?.stickiness;
+            resourceInputs["udpCheckPort"] = args?.udpCheckPort;
             resourceInputs["nodeStatuses"] = undefined /*out*/;
             resourceInputs["sslCommonname"] = undefined /*out*/;
             resourceInputs["sslFingerprint"] = undefined /*out*/;
@@ -249,8 +247,7 @@ export interface NodeBalancerConfigState {
      */
     checkAttempts?: pulumi.Input<number>;
     /**
-     * This value must be present in the response body of the check in order for it to pass. If this value is not present in
-     * the response body of a check request, the backend is considered to be down
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
      */
     checkBody?: pulumi.Input<string>;
     /**
@@ -274,8 +271,7 @@ export interface NodeBalancerConfigState {
      */
     cipherSuite?: pulumi.Input<string>;
     /**
-     * A structure containing information about the health of the backends for this port. This information is updated
-     * periodically as checks are performed against backends.
+     * A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
      */
     nodeStatuses?: pulumi.Input<pulumi.Input<inputs.NodeBalancerConfigNodeStatus>[]>;
     /**
@@ -345,8 +341,7 @@ export interface NodeBalancerConfigArgs {
      */
     checkAttempts?: pulumi.Input<number>;
     /**
-     * This value must be present in the response body of the check in order for it to pass. If this value is not present in
-     * the response body of a check request, the backend is considered to be down
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
      */
     checkBody?: pulumi.Input<string>;
     /**

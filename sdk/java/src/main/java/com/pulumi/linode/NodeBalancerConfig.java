@@ -130,16 +130,14 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
         return this.checkAttempts;
     }
     /**
-     * This value must be present in the response body of the check in order for it to pass. If this value is not present in
-     * the response body of a check request, the backend is considered to be down
+     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
      * 
      */
     @Export(name="checkBody", refs={String.class}, tree="[0]")
     private Output<String> checkBody;
 
     /**
-     * @return This value must be present in the response body of the check in order for it to pass. If this value is not present in
-     * the response body of a check request, the backend is considered to be down
+     * @return This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
      * 
      */
     public Output<String> checkBody() {
@@ -216,16 +214,14 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
         return this.cipherSuite;
     }
     /**
-     * A structure containing information about the health of the backends for this port. This information is updated
-     * periodically as checks are performed against backends.
+     * A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
      * 
      */
     @Export(name="nodeStatuses", refs={List.class,NodeBalancerConfigNodeStatus.class}, tree="[0,1]")
     private Output<List<NodeBalancerConfigNodeStatus>> nodeStatuses;
 
     /**
-     * @return A structure containing information about the health of the backends for this port. This information is updated
-     * periodically as checks are performed against backends.
+     * @return A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
      * 
      */
     public Output<List<NodeBalancerConfigNodeStatus>> nodeStatuses() {

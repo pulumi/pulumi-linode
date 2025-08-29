@@ -76,8 +76,7 @@ type NodeBalancerConfig struct {
 	Check pulumi.StringOutput `pulumi:"check"`
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts pulumi.IntOutput `pulumi:"checkAttempts"`
-	// This value must be present in the response body of the check in order for it to pass. If this value is not present in
-	// the response body of a check request, the backend is considered to be down
+	// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
 	CheckBody pulumi.StringOutput `pulumi:"checkBody"`
 	// How often, in seconds, to check that backends are up and serving requests.
 	CheckInterval pulumi.IntOutput `pulumi:"checkInterval"`
@@ -89,8 +88,7 @@ type NodeBalancerConfig struct {
 	CheckTimeout pulumi.IntOutput `pulumi:"checkTimeout"`
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
 	CipherSuite pulumi.StringOutput `pulumi:"cipherSuite"`
-	// A structure containing information about the health of the backends for this port. This information is updated
-	// periodically as checks are performed against backends.
+	// A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
 	NodeStatuses NodeBalancerConfigNodeStatusArrayOutput `pulumi:"nodeStatuses"`
 	// The ID of the NodeBalancer to access.
 	//
@@ -170,8 +168,7 @@ type nodeBalancerConfigState struct {
 	Check *string `pulumi:"check"`
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts *int `pulumi:"checkAttempts"`
-	// This value must be present in the response body of the check in order for it to pass. If this value is not present in
-	// the response body of a check request, the backend is considered to be down
+	// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
 	CheckBody *string `pulumi:"checkBody"`
 	// How often, in seconds, to check that backends are up and serving requests.
 	CheckInterval *int `pulumi:"checkInterval"`
@@ -183,8 +180,7 @@ type nodeBalancerConfigState struct {
 	CheckTimeout *int `pulumi:"checkTimeout"`
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
 	CipherSuite *string `pulumi:"cipherSuite"`
-	// A structure containing information about the health of the backends for this port. This information is updated
-	// periodically as checks are performed against backends.
+	// A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
 	NodeStatuses []NodeBalancerConfigNodeStatus `pulumi:"nodeStatuses"`
 	// The ID of the NodeBalancer to access.
 	//
@@ -221,8 +217,7 @@ type NodeBalancerConfigState struct {
 	Check pulumi.StringPtrInput
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts pulumi.IntPtrInput
-	// This value must be present in the response body of the check in order for it to pass. If this value is not present in
-	// the response body of a check request, the backend is considered to be down
+	// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
 	CheckBody pulumi.StringPtrInput
 	// How often, in seconds, to check that backends are up and serving requests.
 	CheckInterval pulumi.IntPtrInput
@@ -234,8 +229,7 @@ type NodeBalancerConfigState struct {
 	CheckTimeout pulumi.IntPtrInput
 	// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
 	CipherSuite pulumi.StringPtrInput
-	// A structure containing information about the health of the backends for this port. This information is updated
-	// periodically as checks are performed against backends.
+	// A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
 	NodeStatuses NodeBalancerConfigNodeStatusArrayInput
 	// The ID of the NodeBalancer to access.
 	//
@@ -276,8 +270,7 @@ type nodeBalancerConfigArgs struct {
 	Check *string `pulumi:"check"`
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts *int `pulumi:"checkAttempts"`
-	// This value must be present in the response body of the check in order for it to pass. If this value is not present in
-	// the response body of a check request, the backend is considered to be down
+	// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
 	CheckBody *string `pulumi:"checkBody"`
 	// How often, in seconds, to check that backends are up and serving requests.
 	CheckInterval *int `pulumi:"checkInterval"`
@@ -319,8 +312,7 @@ type NodeBalancerConfigArgs struct {
 	Check pulumi.StringPtrInput
 	// How many times to attempt a check before considering a backend to be down. (1-30)
 	CheckAttempts pulumi.IntPtrInput
-	// This value must be present in the response body of the check in order for it to pass. If this value is not present in
-	// the response body of a check request, the backend is considered to be down
+	// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
 	CheckBody pulumi.StringPtrInput
 	// How often, in seconds, to check that backends are up and serving requests.
 	CheckInterval pulumi.IntPtrInput
@@ -456,8 +448,7 @@ func (o NodeBalancerConfigOutput) CheckAttempts() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.IntOutput { return v.CheckAttempts }).(pulumi.IntOutput)
 }
 
-// This value must be present in the response body of the check in order for it to pass. If this value is not present in
-// the response body of a check request, the backend is considered to be down
+// This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
 func (o NodeBalancerConfigOutput) CheckBody() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.StringOutput { return v.CheckBody }).(pulumi.StringOutput)
 }
@@ -487,8 +478,7 @@ func (o NodeBalancerConfigOutput) CipherSuite() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancerConfig) pulumi.StringOutput { return v.CipherSuite }).(pulumi.StringOutput)
 }
 
-// A structure containing information about the health of the backends for this port. This information is updated
-// periodically as checks are performed against backends.
+// A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
 func (o NodeBalancerConfigOutput) NodeStatuses() NodeBalancerConfigNodeStatusArrayOutput {
 	return o.ApplyT(func(v *NodeBalancerConfig) NodeBalancerConfigNodeStatusArrayOutput { return v.NodeStatuses }).(NodeBalancerConfigNodeStatusArrayOutput)
 }
