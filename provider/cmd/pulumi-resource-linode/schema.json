@@ -53,11 +53,11 @@
         "variables": {
             "apiCaPath": {
                 "type": "string",
-                "description": "The path to a Linode API CA file to trust.\n"
+                "description": "The path to a Linode API CA file to trust."
             },
             "apiVersion": {
                 "type": "string",
-                "description": "The version of Linode API.\n",
+                "description": "The version of Linode API.",
                 "defaultInfo": {
                     "environment": [
                         "LINODE_API_VERSION"
@@ -66,72 +66,72 @@
             },
             "configPath": {
                 "type": "string",
-                "description": "The path to the Linode config file to use. (default `~/.config/linode`)\n"
+                "description": "The path to the Linode config file to use. (default `~/.config/linode`)"
             },
             "configProfile": {
                 "type": "string",
-                "description": "The Linode config profile to use. (default `default`)\n"
+                "description": "The Linode config profile to use. (default `default`)"
             },
             "disableInternalCache": {
                 "type": "boolean",
-                "description": "Disable the internal caching system that backs certain Linode API requests.\n"
+                "description": "Disable the internal caching system that backs certain Linode API requests."
             },
             "eventPollMs": {
                 "type": "integer",
-                "description": "The rate in milliseconds to poll for events.\n"
+                "description": "The rate in milliseconds to poll for events."
             },
             "lkeEventPollMs": {
                 "type": "integer",
-                "description": "The rate in milliseconds to poll for LKE events.\n"
+                "description": "The rate in milliseconds to poll for LKE events."
             },
             "lkeNodeReadyPollMs": {
                 "type": "integer",
-                "description": "The rate in milliseconds to poll for an LKE node to be ready.\n"
+                "description": "The rate in milliseconds to poll for an LKE node to be ready."
             },
             "maxRetryDelayMs": {
                 "type": "integer",
-                "description": "Maximum delay in milliseconds before retrying a request.\n"
+                "description": "Maximum delay in milliseconds before retrying a request."
             },
             "minRetryDelayMs": {
                 "type": "integer",
-                "description": "Minimum delay in milliseconds before retrying a request.\n"
+                "description": "Minimum delay in milliseconds before retrying a request."
             },
             "objAccessKey": {
                 "type": "string",
-                "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n"
+                "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object."
             },
             "objBucketForceDelete": {
                 "type": "boolean",
-                "description": "If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.\n"
+                "description": "If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted."
             },
             "objSecretKey": {
                 "type": "string",
-                "description": "The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n",
+                "description": "The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.",
                 "secret": true
             },
             "objUseTempKeys": {
                 "type": "boolean",
-                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and\nlinode_object_sorage_bucket resource.\n"
+                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linode_object_sorage_bucket resource."
             },
             "skipImplicitReboots": {
                 "type": "boolean",
-                "description": "If true, Linode Instances will not be rebooted on config and interface changes.\n"
+                "description": "If true, Linode Instances will not be rebooted on config and interface changes."
             },
             "skipInstanceDeletePoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode.Instance resource to finish deleting.\n"
+                "description": "Skip waiting for a linode.Instance resource to finish deleting."
             },
             "skipInstanceReadyPoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode.Instance resource to be running.\n"
+                "description": "Skip waiting for a linode.Instance resource to be running."
             },
             "token": {
                 "type": "string",
-                "description": "The token that allows you access to your Linode account\n"
+                "description": "The token that allows you access to your Linode account"
             },
             "uaPrefix": {
                 "type": "string",
-                "description": "An HTTP User-Agent Prefix to prepend in API requests.\n",
+                "description": "An HTTP User-Agent Prefix to prepend in API requests.",
                 "defaultInfo": {
                     "environment": [
                         "LINODE_UA_PREFIX"
@@ -140,7 +140,7 @@
             },
             "url": {
                 "type": "string",
-                "description": "The HTTP(S) API address of the Linode API to use.\n",
+                "description": "The HTTP(S) API address of the Linode API to use.",
                 "defaultInfo": {
                     "environment": [
                         "LINODE_URL"
@@ -10831,94 +10831,94 @@
         "properties": {
             "apiCaPath": {
                 "type": "string",
-                "description": "The path to a Linode API CA file to trust.\n"
+                "description": "The path to a Linode API CA file to trust."
             },
             "apiVersion": {
                 "type": "string",
-                "description": "The version of Linode API.\n"
+                "description": "The version of Linode API."
             },
             "configPath": {
                 "type": "string",
-                "description": "The path to the Linode config file to use. (default `~/.config/linode`)\n"
+                "description": "The path to the Linode config file to use. (default `~/.config/linode`)"
             },
             "configProfile": {
                 "type": "string",
-                "description": "The Linode config profile to use. (default `default`)\n"
+                "description": "The Linode config profile to use. (default `default`)"
             },
             "disableInternalCache": {
                 "type": "boolean",
-                "description": "Disable the internal caching system that backs certain Linode API requests.\n"
+                "description": "Disable the internal caching system that backs certain Linode API requests."
             },
             "eventPollMs": {
                 "type": "integer",
-                "description": "The rate in milliseconds to poll for events.\n"
+                "description": "The rate in milliseconds to poll for events."
             },
             "lkeEventPollMs": {
                 "type": "integer",
-                "description": "The rate in milliseconds to poll for LKE events.\n"
+                "description": "The rate in milliseconds to poll for LKE events."
             },
             "lkeNodeReadyPollMs": {
                 "type": "integer",
-                "description": "The rate in milliseconds to poll for an LKE node to be ready.\n"
+                "description": "The rate in milliseconds to poll for an LKE node to be ready."
             },
             "maxRetryDelayMs": {
                 "type": "integer",
-                "description": "Maximum delay in milliseconds before retrying a request.\n"
+                "description": "Maximum delay in milliseconds before retrying a request."
             },
             "minRetryDelayMs": {
                 "type": "integer",
-                "description": "Minimum delay in milliseconds before retrying a request.\n"
+                "description": "Minimum delay in milliseconds before retrying a request."
             },
             "objAccessKey": {
                 "type": "string",
-                "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n"
+                "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object."
             },
             "objBucketForceDelete": {
                 "type": "boolean",
-                "description": "If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.\n"
+                "description": "If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted."
             },
             "objSecretKey": {
                 "type": "string",
-                "description": "The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n",
+                "description": "The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.",
                 "secret": true
             },
             "objUseTempKeys": {
                 "type": "boolean",
-                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and\nlinode_object_sorage_bucket resource.\n"
+                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linode_object_sorage_bucket resource."
             },
             "skipImplicitReboots": {
                 "type": "boolean",
-                "description": "If true, Linode Instances will not be rebooted on config and interface changes.\n"
+                "description": "If true, Linode Instances will not be rebooted on config and interface changes."
             },
             "skipInstanceDeletePoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode.Instance resource to finish deleting.\n"
+                "description": "Skip waiting for a linode.Instance resource to finish deleting."
             },
             "skipInstanceReadyPoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode.Instance resource to be running.\n"
+                "description": "Skip waiting for a linode.Instance resource to be running."
             },
             "token": {
                 "type": "string",
-                "description": "The token that allows you access to your Linode account\n"
+                "description": "The token that allows you access to your Linode account"
             },
             "uaPrefix": {
                 "type": "string",
-                "description": "An HTTP User-Agent Prefix to prepend in API requests.\n"
+                "description": "An HTTP User-Agent Prefix to prepend in API requests."
             },
             "url": {
                 "type": "string",
-                "description": "The HTTP(S) API address of the Linode API to use.\n"
+                "description": "The HTTP(S) API address of the Linode API to use."
             }
         },
         "inputProperties": {
             "apiCaPath": {
                 "type": "string",
-                "description": "The path to a Linode API CA file to trust.\n"
+                "description": "The path to a Linode API CA file to trust."
             },
             "apiVersion": {
                 "type": "string",
-                "description": "The version of Linode API.\n",
+                "description": "The version of Linode API.",
                 "defaultInfo": {
                     "environment": [
                         "LINODE_API_VERSION"
@@ -10927,72 +10927,72 @@
             },
             "configPath": {
                 "type": "string",
-                "description": "The path to the Linode config file to use. (default `~/.config/linode`)\n"
+                "description": "The path to the Linode config file to use. (default `~/.config/linode`)"
             },
             "configProfile": {
                 "type": "string",
-                "description": "The Linode config profile to use. (default `default`)\n"
+                "description": "The Linode config profile to use. (default `default`)"
             },
             "disableInternalCache": {
                 "type": "boolean",
-                "description": "Disable the internal caching system that backs certain Linode API requests.\n"
+                "description": "Disable the internal caching system that backs certain Linode API requests."
             },
             "eventPollMs": {
                 "type": "integer",
-                "description": "The rate in milliseconds to poll for events.\n"
+                "description": "The rate in milliseconds to poll for events."
             },
             "lkeEventPollMs": {
                 "type": "integer",
-                "description": "The rate in milliseconds to poll for LKE events.\n"
+                "description": "The rate in milliseconds to poll for LKE events."
             },
             "lkeNodeReadyPollMs": {
                 "type": "integer",
-                "description": "The rate in milliseconds to poll for an LKE node to be ready.\n"
+                "description": "The rate in milliseconds to poll for an LKE node to be ready."
             },
             "maxRetryDelayMs": {
                 "type": "integer",
-                "description": "Maximum delay in milliseconds before retrying a request.\n"
+                "description": "Maximum delay in milliseconds before retrying a request."
             },
             "minRetryDelayMs": {
                 "type": "integer",
-                "description": "Minimum delay in milliseconds before retrying a request.\n"
+                "description": "Minimum delay in milliseconds before retrying a request."
             },
             "objAccessKey": {
                 "type": "string",
-                "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n"
+                "description": "The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object."
             },
             "objBucketForceDelete": {
                 "type": "boolean",
-                "description": "If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.\n"
+                "description": "If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted."
             },
             "objSecretKey": {
                 "type": "string",
-                "description": "The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.\n",
+                "description": "The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.",
                 "secret": true
             },
             "objUseTempKeys": {
                 "type": "boolean",
-                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and\nlinode_object_sorage_bucket resource.\n"
+                "description": "If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linode_object_sorage_bucket resource."
             },
             "skipImplicitReboots": {
                 "type": "boolean",
-                "description": "If true, Linode Instances will not be rebooted on config and interface changes.\n"
+                "description": "If true, Linode Instances will not be rebooted on config and interface changes."
             },
             "skipInstanceDeletePoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode.Instance resource to finish deleting.\n"
+                "description": "Skip waiting for a linode.Instance resource to finish deleting."
             },
             "skipInstanceReadyPoll": {
                 "type": "boolean",
-                "description": "Skip waiting for a linode.Instance resource to be running.\n"
+                "description": "Skip waiting for a linode.Instance resource to be running."
             },
             "token": {
                 "type": "string",
-                "description": "The token that allows you access to your Linode account\n"
+                "description": "The token that allows you access to your Linode account"
             },
             "uaPrefix": {
                 "type": "string",
-                "description": "An HTTP User-Agent Prefix to prepend in API requests.\n",
+                "description": "An HTTP User-Agent Prefix to prepend in API requests.",
                 "defaultInfo": {
                     "environment": [
                         "LINODE_UA_PREFIX"
@@ -11001,7 +11001,7 @@
             },
             "url": {
                 "type": "string",
-                "description": "The HTTP(S) API address of the Linode API to use.\n",
+                "description": "The HTTP(S) API address of the Linode API to use.",
                 "defaultInfo": {
                     "environment": [
                         "LINODE_URL"
@@ -11027,7 +11027,7 @@
                 },
                 "managed": {
                     "type": "boolean",
-                    "description": "Enables monitoring for connectivity, response, and total request time.\n"
+                    "description": "Enables monitoring for connectivity, response, and total request time."
                 },
                 "networkHelper": {
                     "type": "boolean",
@@ -11035,7 +11035,7 @@
                 },
                 "objectStorage": {
                     "type": "string",
-                    "description": "A string describing the status of this account's Object Storage service enrollment.\n"
+                    "description": "A string describing the status of this account's Object Storage service enrollment."
                 }
             },
             "required": [
@@ -11072,7 +11072,7 @@
                     },
                     "managed": {
                         "type": "boolean",
-                        "description": "Enables monitoring for connectivity, response, and total request time.\n"
+                        "description": "Enables monitoring for connectivity, response, and total request time."
                     },
                     "networkHelper": {
                         "type": "boolean",
@@ -11080,7 +11080,7 @@
                     },
                     "objectStorage": {
                         "type": "string",
-                        "description": "A string describing the status of this account's Object Storage service enrollment.\n"
+                        "description": "A string describing the status of this account's Object Storage service enrollment."
                     }
                 },
                 "type": "object"
@@ -11241,7 +11241,7 @@
                 },
                 "updates": {
                     "$ref": "#/types/linode:index/DatabaseMysqlUpdates:DatabaseMysqlUpdates",
-                    "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                    "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                 },
                 "version": {
                     "type": "string",
@@ -11315,7 +11315,7 @@
                 },
                 "updates": {
                     "$ref": "#/types/linode:index/DatabaseMysqlUpdates:DatabaseMysqlUpdates",
-                    "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                    "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                 }
             },
             "requiredInputs": [
@@ -11414,7 +11414,7 @@
                     },
                     "updates": {
                         "$ref": "#/types/linode:index/DatabaseMysqlUpdates:DatabaseMysqlUpdates",
-                        "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                        "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                     },
                     "version": {
                         "type": "string",
@@ -11596,11 +11596,11 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A mapping between IP addresses and strings designating them as primary or failover.\n"
+                    "description": "A mapping between IP addresses and strings designating them as primary or failover."
                 },
                 "oldestRestoreTime": {
                     "type": "string",
-                    "description": "The oldest time to which a database can be restored.\n"
+                    "description": "The oldest time to which a database can be restored."
                 },
                 "pendingUpdates": {
                     "type": "array",
@@ -11656,7 +11656,7 @@
                 },
                 "updates": {
                     "$ref": "#/types/linode:index/DatabaseMysqlV2Updates:DatabaseMysqlV2Updates",
-                    "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                    "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                 },
                 "version": {
                     "type": "string",
@@ -11875,7 +11875,7 @@
                 },
                 "updates": {
                     "$ref": "#/types/linode:index/DatabaseMysqlV2Updates:DatabaseMysqlV2Updates",
-                    "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                    "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                 }
             },
             "requiredInputs": [
@@ -12056,11 +12056,11 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "A mapping between IP addresses and strings designating them as primary or failover.\n"
+                        "description": "A mapping between IP addresses and strings designating them as primary or failover."
                     },
                     "oldestRestoreTime": {
                         "type": "string",
-                        "description": "The oldest time to which a database can be restored.\n"
+                        "description": "The oldest time to which a database can be restored."
                     },
                     "pendingUpdates": {
                         "type": "array",
@@ -12116,7 +12116,7 @@
                     },
                     "updates": {
                         "$ref": "#/types/linode:index/DatabaseMysqlV2Updates:DatabaseMysqlV2Updates",
-                        "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                        "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                     },
                     "version": {
                         "type": "string",
@@ -12175,7 +12175,7 @@
                 },
                 "port": {
                     "type": "integer",
-                    "description": "The access port for this Managed Database.\n"
+                    "description": "The access port for this Managed Database."
                 },
                 "region": {
                     "type": "string",
@@ -12217,7 +12217,7 @@
                 },
                 "updates": {
                     "$ref": "#/types/linode:index/DatabasePostgresqlUpdates:DatabasePostgresqlUpdates",
-                    "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                    "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                 },
                 "version": {
                     "type": "string",
@@ -12297,7 +12297,7 @@
                 },
                 "updates": {
                     "$ref": "#/types/linode:index/DatabasePostgresqlUpdates:DatabasePostgresqlUpdates",
-                    "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                    "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                 }
             },
             "requiredInputs": [
@@ -12358,7 +12358,7 @@
                     },
                     "port": {
                         "type": "integer",
-                        "description": "The access port for this Managed Database.\n"
+                        "description": "The access port for this Managed Database."
                     },
                     "region": {
                         "type": "string",
@@ -12405,7 +12405,7 @@
                     },
                     "updates": {
                         "$ref": "#/types/linode:index/DatabasePostgresqlUpdates:DatabasePostgresqlUpdates",
-                        "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                        "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                     },
                     "version": {
                         "type": "string",
@@ -12663,11 +12663,11 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A mapping between IP addresses and strings designating them as primary or failover.\n"
+                    "description": "A mapping between IP addresses and strings designating them as primary or failover."
                 },
                 "oldestRestoreTime": {
                     "type": "string",
-                    "description": "The oldest time to which a database can be restored.\n"
+                    "description": "The oldest time to which a database can be restored."
                 },
                 "pendingUpdates": {
                     "type": "array",
@@ -12723,7 +12723,7 @@
                 },
                 "updates": {
                     "$ref": "#/types/linode:index/DatabasePostgresqlV2Updates:DatabasePostgresqlV2Updates",
-                    "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                    "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                 },
                 "version": {
                     "type": "string",
@@ -13038,7 +13038,7 @@
                 },
                 "updates": {
                     "$ref": "#/types/linode:index/DatabasePostgresqlV2Updates:DatabasePostgresqlV2Updates",
-                    "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                    "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                 }
             },
             "requiredInputs": [
@@ -13295,11 +13295,11 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "A mapping between IP addresses and strings designating them as primary or failover.\n"
+                        "description": "A mapping between IP addresses and strings designating them as primary or failover."
                     },
                     "oldestRestoreTime": {
                         "type": "string",
-                        "description": "The oldest time to which a database can be restored.\n"
+                        "description": "The oldest time to which a database can be restored."
                     },
                     "pendingUpdates": {
                         "type": "array",
@@ -13355,7 +13355,7 @@
                     },
                     "updates": {
                         "$ref": "#/types/linode:index/DatabasePostgresqlV2Updates:DatabasePostgresqlV2Updates",
-                        "description": "Configuration settings for automated patch update maintenance for the Managed Database.\n"
+                        "description": "Configuration settings for automated patch update maintenance for the Managed Database."
                     },
                     "version": {
                         "type": "string",
@@ -13753,14 +13753,14 @@
             "properties": {
                 "created": {
                     "type": "string",
-                    "description": "When this firewall was created\n"
+                    "description": "When this firewall was created"
                 },
                 "devices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/FirewallDevice:FirewallDevice"
                     },
-                    "description": "The devices associated with this firewall.\n"
+                    "description": "The devices associated with this firewall."
                 },
                 "disabled": {
                     "type": "boolean",
@@ -13775,7 +13775,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/FirewallInbound:FirewallInbound"
                     },
-                    "description": "A firewall rule that specifies what inbound network traffic is allowed.\n"
+                    "description": "A firewall rule that specifies what inbound network traffic is allowed."
                 },
                 "label": {
                     "type": "string",
@@ -13804,7 +13804,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/FirewallOutbound:FirewallOutbound"
                     },
-                    "description": "A firewall rule that specifies what outbound network traffic is allowed.\n"
+                    "description": "A firewall rule that specifies what outbound network traffic is allowed."
                 },
                 "status": {
                     "type": "string",
@@ -13819,7 +13819,7 @@
                 },
                 "updated": {
                     "type": "string",
-                    "description": "When this firewall was last updated\n"
+                    "description": "When this firewall was last updated"
                 }
             },
             "required": [
@@ -13849,7 +13849,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/FirewallInbound:FirewallInbound"
                     },
-                    "description": "A firewall rule that specifies what inbound network traffic is allowed.\n"
+                    "description": "A firewall rule that specifies what inbound network traffic is allowed."
                 },
                 "label": {
                     "type": "string",
@@ -13878,7 +13878,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/FirewallOutbound:FirewallOutbound"
                     },
-                    "description": "A firewall rule that specifies what outbound network traffic is allowed.\n"
+                    "description": "A firewall rule that specifies what outbound network traffic is allowed."
                 },
                 "tags": {
                     "type": "array",
@@ -13898,14 +13898,14 @@
                 "properties": {
                     "created": {
                         "type": "string",
-                        "description": "When this firewall was created\n"
+                        "description": "When this firewall was created"
                     },
                     "devices": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/FirewallDevice:FirewallDevice"
                         },
-                        "description": "The devices associated with this firewall.\n"
+                        "description": "The devices associated with this firewall."
                     },
                     "disabled": {
                         "type": "boolean",
@@ -13920,7 +13920,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/FirewallInbound:FirewallInbound"
                         },
-                        "description": "A firewall rule that specifies what inbound network traffic is allowed.\n"
+                        "description": "A firewall rule that specifies what inbound network traffic is allowed."
                     },
                     "label": {
                         "type": "string",
@@ -13949,7 +13949,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/FirewallOutbound:FirewallOutbound"
                         },
-                        "description": "A firewall rule that specifies what outbound network traffic is allowed.\n"
+                        "description": "A firewall rule that specifies what outbound network traffic is allowed."
                     },
                     "status": {
                         "type": "string",
@@ -13964,7 +13964,7 @@
                     },
                     "updated": {
                         "type": "string",
-                        "description": "When this firewall was last updated\n"
+                        "description": "When this firewall was last updated"
                     }
                 },
                 "type": "object"
@@ -14054,11 +14054,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The capabilities of this Image.\n"
+                    "description": "The capabilities of this Image."
                 },
                 "cloudInit": {
                     "type": "boolean",
-                    "description": "Whether this image supports cloud-init.\n"
+                    "description": "Whether this image supports cloud-init."
                 },
                 "created": {
                     "type": "string",
@@ -14178,7 +14178,7 @@
             "inputProperties": {
                 "cloudInit": {
                     "type": "boolean",
-                    "description": "Whether this image supports cloud-init.\n"
+                    "description": "Whether this image supports cloud-init."
                 },
                 "description": {
                     "type": "string",
@@ -14241,11 +14241,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The capabilities of this Image.\n"
+                        "description": "The capabilities of this Image."
                     },
                     "cloudInit": {
                         "type": "boolean",
-                        "description": "Whether this image supports cloud-init.\n"
+                        "description": "Whether this image supports cloud-init."
                     },
                     "created": {
                         "type": "string",
@@ -14352,25 +14352,25 @@
             "properties": {
                 "alerts": {
                     "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts",
-                    "description": "Configuration options for alert triggers on this Linode.\n"
+                    "description": "Configuration options for alert triggers on this Linode."
                 },
                 "authorizedKeys": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.\n"
+                    "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided."
                 },
                 "authorizedUsers": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's\n`~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.\n"
+                    "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided."
                 },
                 "backupId": {
                     "type": "integer",
-                    "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup\nmust have a status of successful, and the Linode must be deployed to the same region as the Backup. See\n/linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually\nexclusive.\n"
+                    "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive."
                 },
                 "backups": {
                     "type": "array",
@@ -14385,7 +14385,7 @@
                 },
                 "bootConfigLabel": {
                     "type": "string",
-                    "description": "The Label of the Instance Config that should be used to boot the Linode instance.\n"
+                    "description": "The Label of the Instance Config that should be used to boot the Linode instance."
                 },
                 "booted": {
                     "type": "boolean",
@@ -14396,14 +14396,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of capabilities of this Linode instance.\n"
+                    "description": "A list of capabilities of this Linode instance."
                 },
                 "configs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/InstanceConfig:InstanceConfig"
                     },
-                    "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n",
+                    "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.",
                     "deprecationMessage": "The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource."
                 },
                 "diskEncryption": {
@@ -14432,18 +14432,18 @@
                 },
                 "hostUuid": {
                     "type": "string",
-                    "description": "The Linode’s host machine, as a UUID.\n"
+                    "description": "The Linode’s host machine, as a UUID."
                 },
                 "image": {
                     "type": "string",
-                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.\nSee /images for more information on the Images available for you to use.\n"
+                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use."
                 },
                 "interfaces": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/InstanceInterface:InstanceInterface"
                     },
-                    "description": "An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces\nmust be declared in the config block.\n"
+                    "description": "An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block."
                 },
                 "ipAddress": {
                     "type": "string",
@@ -14474,7 +14474,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceMetadata:InstanceMetadata"
                     },
-                    "description": "Various fields related to the Linode Metadata service.\n"
+                    "description": "Various fields related to the Linode Metadata service."
                 },
                 "migrationType": {
                     "type": "string",
@@ -14506,7 +14506,7 @@
                 },
                 "rootPass": {
                     "type": "string",
-                    "description": "The password that will be initially assigned to the 'root' user account.\n",
+                    "description": "The password that will be initially assigned to the 'root' user account.",
                     "secret": true
                 },
                 "sharedIpv4s": {
@@ -14521,19 +14521,19 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceSpec:InstanceSpec"
                     },
-                    "description": "Information about the resources available to this Linode.\n"
+                    "description": "Information about the resources available to this Linode."
                 },
                 "stackscriptData": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only\naccepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.\n",
+                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.",
                     "secret": true
                 },
                 "stackscriptId": {
                     "type": "integer",
-                    "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image\nthat is compatible with this StackScript.\n"
+                    "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript."
                 },
                 "status": {
                     "type": "string",
@@ -14541,7 +14541,7 @@
                 },
                 "swapSize": {
                     "type": "integer",
-                    "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This\nis used to set the swap disk size for the newly-created Linode.\n"
+                    "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode."
                 },
                 "tags": {
                     "type": "array",
@@ -14587,14 +14587,14 @@
             "inputProperties": {
                 "alerts": {
                     "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts",
-                    "description": "Configuration options for alert triggers on this Linode.\n"
+                    "description": "Configuration options for alert triggers on this Linode."
                 },
                 "authorizedKeys": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.\n",
+                    "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.",
                     "willReplaceOnChanges": true
                 },
                 "authorizedUsers": {
@@ -14602,12 +14602,12 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's\n`~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.\n",
+                    "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.",
                     "willReplaceOnChanges": true
                 },
                 "backupId": {
                     "type": "integer",
-                    "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup\nmust have a status of successful, and the Linode must be deployed to the same region as the Backup. See\n/linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually\nexclusive.\n",
+                    "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.",
                     "willReplaceOnChanges": true
                 },
                 "backupsEnabled": {
@@ -14616,7 +14616,7 @@
                 },
                 "bootConfigLabel": {
                     "type": "string",
-                    "description": "The Label of the Instance Config that should be used to boot the Linode instance.\n"
+                    "description": "The Label of the Instance Config that should be used to boot the Linode instance."
                 },
                 "booted": {
                     "type": "boolean",
@@ -14627,7 +14627,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceConfig:InstanceConfig"
                     },
-                    "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n",
+                    "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.",
                     "deprecationMessage": "The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource."
                 },
                 "diskEncryption": {
@@ -14654,7 +14654,7 @@
                 },
                 "image": {
                     "type": "string",
-                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.\nSee /images for more information on the Images available for you to use.\n",
+                    "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.",
                     "willReplaceOnChanges": true
                 },
                 "interfaces": {
@@ -14662,7 +14662,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceInterface:InstanceInterface"
                     },
-                    "description": "An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces\nmust be declared in the config block.\n"
+                    "description": "An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block."
                 },
                 "ipv4s": {
                     "type": "array",
@@ -14681,7 +14681,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceMetadata:InstanceMetadata"
                     },
-                    "description": "Various fields related to the Linode Metadata service.\n"
+                    "description": "Various fields related to the Linode Metadata service."
                 },
                 "migrationType": {
                     "type": "string",
@@ -14709,7 +14709,7 @@
                 },
                 "rootPass": {
                     "type": "string",
-                    "description": "The password that will be initially assigned to the 'root' user account.\n",
+                    "description": "The password that will be initially assigned to the 'root' user account.",
                     "secret": true,
                     "willReplaceOnChanges": true
                 },
@@ -14725,18 +14725,18 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only\naccepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.\n",
+                    "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.",
                     "secret": true,
                     "willReplaceOnChanges": true
                 },
                 "stackscriptId": {
                     "type": "integer",
-                    "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image\nthat is compatible with this StackScript.\n",
+                    "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.",
                     "willReplaceOnChanges": true
                 },
                 "swapSize": {
                     "type": "integer",
-                    "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This\nis used to set the swap disk size for the newly-created Linode.\n"
+                    "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode."
                 },
                 "tags": {
                     "type": "array",
@@ -14762,14 +14762,14 @@
                 "properties": {
                     "alerts": {
                         "$ref": "#/types/linode:index/InstanceAlerts:InstanceAlerts",
-                        "description": "Configuration options for alert triggers on this Linode.\n"
+                        "description": "Configuration options for alert triggers on this Linode."
                     },
                     "authorizedKeys": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.\n",
+                        "description": "A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.",
                         "willReplaceOnChanges": true
                     },
                     "authorizedUsers": {
@@ -14777,12 +14777,12 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's\n`~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.\n",
+                        "description": "A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.",
                         "willReplaceOnChanges": true
                     },
                     "backupId": {
                         "type": "integer",
-                        "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup\nmust have a status of successful, and the Linode must be deployed to the same region as the Backup. See\n/linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually\nexclusive.\n",
+                        "description": "A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.",
                         "willReplaceOnChanges": true
                     },
                     "backups": {
@@ -14798,7 +14798,7 @@
                     },
                     "bootConfigLabel": {
                         "type": "string",
-                        "description": "The Label of the Instance Config that should be used to boot the Linode instance.\n"
+                        "description": "The Label of the Instance Config that should be used to boot the Linode instance."
                     },
                     "booted": {
                         "type": "boolean",
@@ -14809,14 +14809,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of capabilities of this Linode instance.\n"
+                        "description": "A list of capabilities of this Linode instance."
                     },
                     "configs": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/InstanceConfig:InstanceConfig"
                         },
-                        "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.\n",
+                        "description": "Configuration profiles define the VM settings and boot behavior of the Linode Instance.",
                         "deprecationMessage": "The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource."
                     },
                     "diskEncryption": {
@@ -14847,11 +14847,11 @@
                     },
                     "hostUuid": {
                         "type": "string",
-                        "description": "The Linode’s host machine, as a UUID.\n"
+                        "description": "The Linode’s host machine, as a UUID."
                     },
                     "image": {
                         "type": "string",
-                        "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.\nSee /images for more information on the Images available for you to use.\n",
+                        "description": "An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.",
                         "willReplaceOnChanges": true
                     },
                     "interfaces": {
@@ -14859,7 +14859,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/InstanceInterface:InstanceInterface"
                         },
-                        "description": "An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces\nmust be declared in the config block.\n"
+                        "description": "An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block."
                     },
                     "ipAddress": {
                         "type": "string",
@@ -14891,7 +14891,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/InstanceMetadata:InstanceMetadata"
                         },
-                        "description": "Various fields related to the Linode Metadata service.\n"
+                        "description": "Various fields related to the Linode Metadata service."
                     },
                     "migrationType": {
                         "type": "string",
@@ -14923,7 +14923,7 @@
                     },
                     "rootPass": {
                         "type": "string",
-                        "description": "The password that will be initially assigned to the 'root' user account.\n",
+                        "description": "The password that will be initially assigned to the 'root' user account.",
                         "secret": true,
                         "willReplaceOnChanges": true
                     },
@@ -14939,20 +14939,20 @@
                         "items": {
                             "$ref": "#/types/linode:index/InstanceSpec:InstanceSpec"
                         },
-                        "description": "Information about the resources available to this Linode.\n"
+                        "description": "Information about the resources available to this Linode."
                     },
                     "stackscriptData": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only\naccepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.\n",
+                        "description": "An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.",
                         "secret": true,
                         "willReplaceOnChanges": true
                     },
                     "stackscriptId": {
                         "type": "integer",
-                        "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image\nthat is compatible with this StackScript.\n",
+                        "description": "The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.",
                         "willReplaceOnChanges": true
                     },
                     "status": {
@@ -14961,7 +14961,7 @@
                     },
                     "swapSize": {
                         "type": "integer",
-                        "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This\nis used to set the swap disk size for the newly-created Linode.\n"
+                        "description": "When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode."
                     },
                     "tags": {
                         "type": "array",
@@ -14998,11 +14998,11 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceConfigDevice:InstanceConfigDevice"
                     },
-                    "description": "Blocks for device disks in a Linode's configuration profile.\n"
+                    "description": "Blocks for device disks in a Linode's configuration profile."
                 },
                 "devices": {
                     "$ref": "#/types/linode:index/InstanceConfigDevices:InstanceConfigDevices",
-                    "description": "A dictionary of device disks to use as a device map in a Linode's configuration profile.\n",
+                    "description": "A dictionary of device disks to use as a device map in a Linode's configuration profile.",
                     "deprecationMessage": "Devices attribute is deprecated in favor of `device`."
                 },
                 "helpers": {
@@ -15010,14 +15010,14 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceConfigHelper:InstanceConfigHelper"
                     },
-                    "description": "Helpers enabled when booting to this Linode Config.\n"
+                    "description": "Helpers enabled when booting to this Linode Config."
                 },
                 "interfaces": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/InstanceConfigInterface:InstanceConfigInterface"
                     },
-                    "description": "An array of Network Interfaces to add to this Linode's Configuration Profile.\n"
+                    "description": "An array of Network Interfaces to add to this Linode's Configuration Profile."
                 },
                 "kernel": {
                     "type": "string",
@@ -15071,11 +15071,11 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceConfigDevice:InstanceConfigDevice"
                     },
-                    "description": "Blocks for device disks in a Linode's configuration profile.\n"
+                    "description": "Blocks for device disks in a Linode's configuration profile."
                 },
                 "devices": {
                     "$ref": "#/types/linode:index/InstanceConfigDevices:InstanceConfigDevices",
-                    "description": "A dictionary of device disks to use as a device map in a Linode's configuration profile.\n",
+                    "description": "A dictionary of device disks to use as a device map in a Linode's configuration profile.",
                     "deprecationMessage": "Devices attribute is deprecated in favor of `device`."
                 },
                 "helpers": {
@@ -15083,14 +15083,14 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceConfigHelper:InstanceConfigHelper"
                     },
-                    "description": "Helpers enabled when booting to this Linode Config.\n"
+                    "description": "Helpers enabled when booting to this Linode Config."
                 },
                 "interfaces": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/InstanceConfigInterface:InstanceConfigInterface"
                     },
-                    "description": "An array of Network Interfaces to add to this Linode's Configuration Profile.\n"
+                    "description": "An array of Network Interfaces to add to this Linode's Configuration Profile."
                 },
                 "kernel": {
                     "type": "string",
@@ -15142,11 +15142,11 @@
                         "items": {
                             "$ref": "#/types/linode:index/InstanceConfigDevice:InstanceConfigDevice"
                         },
-                        "description": "Blocks for device disks in a Linode's configuration profile.\n"
+                        "description": "Blocks for device disks in a Linode's configuration profile."
                     },
                     "devices": {
                         "$ref": "#/types/linode:index/InstanceConfigDevices:InstanceConfigDevices",
-                        "description": "A dictionary of device disks to use as a device map in a Linode's configuration profile.\n",
+                        "description": "A dictionary of device disks to use as a device map in a Linode's configuration profile.",
                         "deprecationMessage": "Devices attribute is deprecated in favor of `device`."
                     },
                     "helpers": {
@@ -15154,14 +15154,14 @@
                         "items": {
                             "$ref": "#/types/linode:index/InstanceConfigHelper:InstanceConfigHelper"
                         },
-                        "description": "Helpers enabled when booting to this Linode Config.\n"
+                        "description": "Helpers enabled when booting to this Linode Config."
                     },
                     "interfaces": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/InstanceConfigInterface:InstanceConfigInterface"
                         },
-                        "description": "An array of Network Interfaces to add to this Linode's Configuration Profile.\n"
+                        "description": "An array of Network Interfaces to add to this Linode's Configuration Profile."
                     },
                     "kernel": {
                         "type": "string",
@@ -15466,7 +15466,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/InstanceIpVpcNat11:InstanceIpVpcNat11"
                     },
-                    "description": "Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.\n"
+                    "description": "Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet."
                 }
             },
             "required": [
@@ -15551,7 +15551,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/InstanceIpVpcNat11:InstanceIpVpcNat11"
                         },
-                        "description": "Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.\n"
+                        "description": "Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet."
                     }
                 },
                 "type": "object"
@@ -15725,7 +15725,7 @@
                 },
                 "controlPlane": {
                     "$ref": "#/types/linode:index/LkeClusterControlPlane:LkeClusterControlPlane",
-                    "description": "Defines settings for the Kubernetes Control Plane.\n"
+                    "description": "Defines settings for the Kubernetes Control Plane."
                 },
                 "dashboardUrl": {
                     "type": "string",
@@ -15800,7 +15800,7 @@
                 },
                 "controlPlane": {
                     "$ref": "#/types/linode:index/LkeClusterControlPlane:LkeClusterControlPlane",
-                    "description": "Defines settings for the Kubernetes Control Plane.\n"
+                    "description": "Defines settings for the Kubernetes Control Plane."
                 },
                 "externalPoolTags": {
                     "type": "array",
@@ -15865,7 +15865,7 @@
                     },
                     "controlPlane": {
                         "$ref": "#/types/linode:index/LkeClusterControlPlane:LkeClusterControlPlane",
-                        "description": "Defines settings for the Kubernetes Control Plane.\n"
+                        "description": "Defines settings for the Kubernetes Control Plane."
                     },
                     "dashboardUrl": {
                         "type": "string",
@@ -15957,7 +15957,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/LkeNodePoolNode:LkeNodePoolNode"
                     },
-                    "description": "A list of nodes in the node pool.\n"
+                    "description": "A list of nodes in the node pool."
                 },
                 "tags": {
                     "type": "array",
@@ -15971,7 +15971,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/LkeNodePoolTaint:LkeNodePoolTaint"
                     },
-                    "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically\nallowing them to repel certain pods.\n"
+                    "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods."
                 },
                 "type": {
                     "type": "string",
@@ -16028,7 +16028,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/LkeNodePoolTaint:LkeNodePoolTaint"
                     },
-                    "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically\nallowing them to repel certain pods.\n"
+                    "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods."
                 },
                 "type": {
                     "type": "string",
@@ -16077,7 +16077,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/LkeNodePoolNode:LkeNodePoolNode"
                         },
-                        "description": "A list of nodes in the node pool.\n"
+                        "description": "A list of nodes in the node pool."
                     },
                     "tags": {
                         "type": "array",
@@ -16091,7 +16091,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/LkeNodePoolTaint:LkeNodePoolTaint"
                         },
-                        "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically\nallowing them to repel certain pods.\n"
+                        "description": "Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods."
                     },
                     "type": {
                         "type": "string",
@@ -16134,11 +16134,11 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.\n"
+                    "description": "The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set."
                 },
                 "reserved": {
                     "type": "boolean",
-                    "description": "Whether the IPv4 address should be reserved.\n"
+                    "description": "Whether the IPv4 address should be reserved."
                 },
                 "subnetMask": {
                     "type": "string",
@@ -16177,11 +16177,11 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.\n"
+                    "description": "The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set."
                 },
                 "reserved": {
                     "type": "boolean",
-                    "description": "Whether the IPv4 address should be reserved.\n"
+                    "description": "Whether the IPv4 address should be reserved."
                 },
                 "type": {
                     "type": "string",
@@ -16217,11 +16217,11 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.\n"
+                        "description": "The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set."
                     },
                     "reserved": {
                         "type": "boolean",
-                        "description": "Whether the IPv4 address should be reserved.\n"
+                        "description": "Whether the IPv4 address should be reserved."
                     },
                     "subnetMask": {
                         "type": "string",
@@ -16308,14 +16308,14 @@
                 },
                 "firewallId": {
                     "type": "integer",
-                    "description": "ID for the firewall you'd like to use with this NodeBalancer.\n"
+                    "description": "ID for the firewall you'd like to use with this NodeBalancer."
                 },
                 "firewalls": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/NodeBalancerFirewall:NodeBalancerFirewall"
                     },
-                    "description": "A list of Firewalls assigned to this NodeBalancer.\n"
+                    "description": "A list of Firewalls assigned to this NodeBalancer."
                 },
                 "hostname": {
                     "type": "string",
@@ -16349,7 +16349,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/NodeBalancerTransfer:NodeBalancerTransfer"
                     },
-                    "description": "Information about the amount of transfer this NodeBalancer has had so far this month.\n"
+                    "description": "Information about the amount of transfer this NodeBalancer has had so far this month."
                 },
                 "updated": {
                     "type": "string",
@@ -16380,7 +16380,7 @@
                 },
                 "firewallId": {
                     "type": "integer",
-                    "description": "ID for the firewall you'd like to use with this NodeBalancer.\n"
+                    "description": "ID for the firewall you'd like to use with this NodeBalancer."
                 },
                 "label": {
                     "type": "string",
@@ -16415,14 +16415,14 @@
                     },
                     "firewallId": {
                         "type": "integer",
-                        "description": "ID for the firewall you'd like to use with this NodeBalancer.\n"
+                        "description": "ID for the firewall you'd like to use with this NodeBalancer."
                     },
                     "firewalls": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/NodeBalancerFirewall:NodeBalancerFirewall"
                         },
-                        "description": "A list of Firewalls assigned to this NodeBalancer.\n"
+                        "description": "A list of Firewalls assigned to this NodeBalancer."
                     },
                     "hostname": {
                         "type": "string",
@@ -16456,7 +16456,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/NodeBalancerTransfer:NodeBalancerTransfer"
                         },
-                        "description": "Information about the amount of transfer this NodeBalancer has had so far this month.\n"
+                        "description": "Information about the amount of transfer this NodeBalancer has had so far this month."
                     },
                     "updated": {
                         "type": "string",
@@ -16483,7 +16483,7 @@
                 },
                 "checkBody": {
                     "type": "string",
-                    "description": "This value must be present in the response body of the check in order for it to pass. If this value is not present in\nthe response body of a check request, the backend is considered to be down\n"
+                    "description": "This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down"
                 },
                 "checkInterval": {
                     "type": "integer",
@@ -16510,7 +16510,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
                     },
-                    "description": "A structure containing information about the health of the backends for this port. This information is updated\nperiodically as checks are performed against backends.\n"
+                    "description": "A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends."
                 },
                 "nodebalancerId": {
                     "type": "integer",
@@ -16595,7 +16595,7 @@
                 },
                 "checkBody": {
                     "type": "string",
-                    "description": "This value must be present in the response body of the check in order for it to pass. If this value is not present in\nthe response body of a check request, the backend is considered to be down\n"
+                    "description": "This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down"
                 },
                 "checkInterval": {
                     "type": "integer",
@@ -16672,7 +16672,7 @@
                     },
                     "checkBody": {
                         "type": "string",
-                        "description": "This value must be present in the response body of the check in order for it to pass. If this value is not present in\nthe response body of a check request, the backend is considered to be down\n"
+                        "description": "This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down"
                     },
                     "checkInterval": {
                         "type": "integer",
@@ -16699,7 +16699,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/NodeBalancerConfigNodeStatus:NodeBalancerConfigNodeStatus"
                         },
-                        "description": "A structure containing information about the health of the backends for this port. This information is updated\nperiodically as checks are performed against backends.\n"
+                        "description": "A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends."
                     },
                     "nodebalancerId": {
                         "type": "integer",
@@ -16872,7 +16872,7 @@
                 },
                 "cert": {
                     "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert",
-                    "description": "The cert used by this Object Storage Bucket.\n"
+                    "description": "The cert used by this Object Storage Bucket."
                 },
                 "cluster": {
                     "type": "string",
@@ -16885,7 +16885,7 @@
                 },
                 "endpoint": {
                     "type": "string",
-                    "description": "The endpoint for the bucket used for s3 connections.\n",
+                    "description": "The endpoint for the bucket used for s3 connections.",
                     "deprecationMessage": "Use `s3_endpoint` instead"
                 },
                 "endpointType": {
@@ -16894,7 +16894,7 @@
                 },
                 "hostname": {
                     "type": "string",
-                    "description": "The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made\npublic.\n"
+                    "description": "The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public."
                 },
                 "label": {
                     "type": "string",
@@ -16905,7 +16905,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/ObjectStorageBucketLifecycleRule:ObjectStorageBucketLifecycleRule"
                     },
-                    "description": "Lifecycle rules to be applied to the bucket.\n"
+                    "description": "Lifecycle rules to be applied to the bucket."
                 },
                 "region": {
                     "type": "string",
@@ -16947,7 +16947,7 @@
                 },
                 "cert": {
                     "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert",
-                    "description": "The cert used by this Object Storage Bucket.\n"
+                    "description": "The cert used by this Object Storage Bucket."
                 },
                 "cluster": {
                     "type": "string",
@@ -16974,7 +16974,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/ObjectStorageBucketLifecycleRule:ObjectStorageBucketLifecycleRule"
                     },
-                    "description": "Lifecycle rules to be applied to the bucket.\n"
+                    "description": "Lifecycle rules to be applied to the bucket."
                 },
                 "region": {
                     "type": "string",
@@ -17012,7 +17012,7 @@
                     },
                     "cert": {
                         "$ref": "#/types/linode:index/ObjectStorageBucketCert:ObjectStorageBucketCert",
-                        "description": "The cert used by this Object Storage Bucket.\n"
+                        "description": "The cert used by this Object Storage Bucket."
                     },
                     "cluster": {
                         "type": "string",
@@ -17026,7 +17026,7 @@
                     },
                     "endpoint": {
                         "type": "string",
-                        "description": "The endpoint for the bucket used for s3 connections.\n",
+                        "description": "The endpoint for the bucket used for s3 connections.",
                         "deprecationMessage": "Use `s3_endpoint` instead"
                     },
                     "endpointType": {
@@ -17036,7 +17036,7 @@
                     },
                     "hostname": {
                         "type": "string",
-                        "description": "The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made\npublic.\n"
+                        "description": "The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public."
                     },
                     "label": {
                         "type": "string",
@@ -17048,7 +17048,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/ObjectStorageBucketLifecycleRule:ObjectStorageBucketLifecycleRule"
                         },
-                        "description": "Lifecycle rules to be applied to the bucket.\n"
+                        "description": "Lifecycle rules to be applied to the bucket."
                     },
                     "region": {
                         "type": "string",
@@ -17245,7 +17245,7 @@
                 },
                 "etag": {
                     "type": "string",
-                    "description": "The specific version of this object.\n"
+                    "description": "The specific version of this object."
                 },
                 "forceDestroy": {
                     "type": "boolean",
@@ -17347,7 +17347,7 @@
                 },
                 "etag": {
                     "type": "string",
-                    "description": "The specific version of this object.\n"
+                    "description": "The specific version of this object."
                 },
                 "forceDestroy": {
                     "type": "boolean",
@@ -17440,7 +17440,7 @@
                     },
                     "etag": {
                         "type": "string",
-                        "description": "The specific version of this object.\n"
+                        "description": "The specific version of this object."
                     },
                     "forceDestroy": {
                         "type": "boolean",
@@ -17498,7 +17498,7 @@
                     "items": {
                         "$ref": "#/types/linode:index/PlacementGroupMember:PlacementGroupMember"
                     },
-                    "description": "A set of Linodes currently assigned to this Placement Group.\n"
+                    "description": "A set of Linodes currently assigned to this Placement Group."
                 },
                 "placementGroupPolicy": {
                     "type": "string",
@@ -17560,7 +17560,7 @@
                         "items": {
                             "$ref": "#/types/linode:index/PlacementGroupMember:PlacementGroupMember"
                         },
-                        "description": "A set of Linodes currently assigned to this Placement Group.\n"
+                        "description": "A set of Linodes currently assigned to this Placement Group."
                     },
                     "placementGroupPolicy": {
                         "type": "string",
@@ -17718,54 +17718,54 @@
             "properties": {
                 "address": {
                     "type": "string",
-                    "description": "The resulting IPv4 address.\n"
+                    "description": "The resulting IPv4 address."
                 },
                 "applyImmediately": {
                     "type": "boolean",
-                    "description": "If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the\n`skip_implicit_reboots` provider argument.\n"
+                    "description": "If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument."
                 },
                 "gateway": {
                     "type": "string",
-                    "description": "The default gateway for this address\n"
+                    "description": "The default gateway for this address"
                 },
                 "linodeId": {
                     "type": "integer",
-                    "description": "The ID of the Linode to allocate an IPv4 address for.\n"
+                    "description": "The ID of the Linode to allocate an IPv4 address for."
                 },
                 "prefix": {
                     "type": "integer",
-                    "description": "The number of bits set in the subnet mask.\n"
+                    "description": "The number of bits set in the subnet mask."
                 },
                 "public": {
                     "type": "boolean",
-                    "description": "Whether the IPv4 address is public or private.\n"
+                    "description": "Whether the IPv4 address is public or private."
                 },
                 "rdns": {
                     "type": "string",
-                    "description": "The reverse DNS assigned to this address.\n"
+                    "description": "The reverse DNS assigned to this address."
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region this IP resides in.\n"
+                    "description": "The region this IP resides in."
                 },
                 "reserved": {
                     "type": "boolean",
-                    "description": "The reservation status of the IP address\n"
+                    "description": "The reservation status of the IP address"
                 },
                 "subnetMask": {
                     "type": "string",
-                    "description": "The mask that separates host bits from network bits for this address.\n"
+                    "description": "The mask that separates host bits from network bits for this address."
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of IP address.\n"
+                    "description": "The type of IP address."
                 },
                 "vpcNat11s": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/linode:index/ReservedIpAssignmentVpcNat11:ReservedIpAssignmentVpcNat11"
                     },
-                    "description": "Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.\n"
+                    "description": "Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet."
                 }
             },
             "required": [
@@ -17785,23 +17785,23 @@
             "inputProperties": {
                 "address": {
                     "type": "string",
-                    "description": "The resulting IPv4 address.\n"
+                    "description": "The resulting IPv4 address."
                 },
                 "applyImmediately": {
                     "type": "boolean",
-                    "description": "If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the\n`skip_implicit_reboots` provider argument.\n"
+                    "description": "If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument."
                 },
                 "linodeId": {
                     "type": "integer",
-                    "description": "The ID of the Linode to allocate an IPv4 address for.\n"
+                    "description": "The ID of the Linode to allocate an IPv4 address for."
                 },
                 "public": {
                     "type": "boolean",
-                    "description": "Whether the IPv4 address is public or private.\n"
+                    "description": "Whether the IPv4 address is public or private."
                 },
                 "rdns": {
                     "type": "string",
-                    "description": "The reverse DNS assigned to this address.\n"
+                    "description": "The reverse DNS assigned to this address."
                 }
             },
             "requiredInputs": [
@@ -17813,54 +17813,54 @@
                 "properties": {
                     "address": {
                         "type": "string",
-                        "description": "The resulting IPv4 address.\n"
+                        "description": "The resulting IPv4 address."
                     },
                     "applyImmediately": {
                         "type": "boolean",
-                        "description": "If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the\n`skip_implicit_reboots` provider argument.\n"
+                        "description": "If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument."
                     },
                     "gateway": {
                         "type": "string",
-                        "description": "The default gateway for this address\n"
+                        "description": "The default gateway for this address"
                     },
                     "linodeId": {
                         "type": "integer",
-                        "description": "The ID of the Linode to allocate an IPv4 address for.\n"
+                        "description": "The ID of the Linode to allocate an IPv4 address for."
                     },
                     "prefix": {
                         "type": "integer",
-                        "description": "The number of bits set in the subnet mask.\n"
+                        "description": "The number of bits set in the subnet mask."
                     },
                     "public": {
                         "type": "boolean",
-                        "description": "Whether the IPv4 address is public or private.\n"
+                        "description": "Whether the IPv4 address is public or private."
                     },
                     "rdns": {
                         "type": "string",
-                        "description": "The reverse DNS assigned to this address.\n"
+                        "description": "The reverse DNS assigned to this address."
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region this IP resides in.\n"
+                        "description": "The region this IP resides in."
                     },
                     "reserved": {
                         "type": "boolean",
-                        "description": "The reservation status of the IP address\n"
+                        "description": "The reservation status of the IP address"
                     },
                     "subnetMask": {
                         "type": "string",
-                        "description": "The mask that separates host bits from network bits for this address.\n"
+                        "description": "The mask that separates host bits from network bits for this address."
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of IP address.\n"
+                        "description": "The type of IP address."
                     },
                     "vpcNat11s": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/linode:index/ReservedIpAssignmentVpcNat11:ReservedIpAssignmentVpcNat11"
                         },
-                        "description": "Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.\n"
+                        "description": "Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet."
                     }
                 },
                 "type": "object"
@@ -18221,7 +18221,7 @@
                 },
                 "globalGrants": {
                     "$ref": "#/types/linode:index/UserGlobalGrants:UserGlobalGrants",
-                    "description": "A structure containing the Account-level grants a User has.\n"
+                    "description": "A structure containing the Account-level grants a User has."
                 },
                 "imageGrants": {
                     "type": "array",
@@ -18343,7 +18343,7 @@
                 },
                 "globalGrants": {
                     "$ref": "#/types/linode:index/UserGlobalGrants:UserGlobalGrants",
-                    "description": "A structure containing the Account-level grants a User has.\n"
+                    "description": "A structure containing the Account-level grants a User has."
                 },
                 "imageGrants": {
                     "type": "array",
@@ -18438,7 +18438,7 @@
                     },
                     "globalGrants": {
                         "$ref": "#/types/linode:index/UserGlobalGrants:UserGlobalGrants",
-                        "description": "A structure containing the Account-level grants a User has.\n"
+                        "description": "A structure containing the Account-level grants a User has."
                     },
                     "imageGrants": {
                         "type": "array",
@@ -19000,7 +19000,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "region": {
@@ -19660,7 +19660,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "latest": {
@@ -21612,7 +21612,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "instances": {
