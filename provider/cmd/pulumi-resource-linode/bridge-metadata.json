@@ -1685,6 +1685,25 @@
                     }
                 }
             },
+            "linode_maintenance_policies": {
+                "current": "linode:index/getMaintenancePolicies:getMaintenancePolicies",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "maintenance_policies": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_nb_types": {
                 "current": "linode:index/getNbTypes:getNbTypes",
                 "majorVersion": 5,
@@ -2484,6 +2503,7 @@
             "linode:index/getLkeTypes:getLkeTypes": 1,
             "linode:index/getLkeVersion:getLkeVersion": 1,
             "linode:index/getLkeVersions:getLkeVersions": 1,
+            "linode:index/getMaintenancePolicies:getMaintenancePolicies": 1,
             "linode:index/getNbTypes:getNbTypes": 1,
             "linode:index/getNetworkTransferPrices:getNetworkTransferPrices": 1,
             "linode:index/getNetworkingIp:getNetworkingIp": 1,

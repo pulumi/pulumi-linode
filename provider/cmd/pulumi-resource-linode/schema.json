@@ -1329,6 +1329,10 @@
                     "type": "string",
                     "description": "The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.\n"
                 },
+                "label": {
+                    "type": "string",
+                    "description": "A label for the Node Pool. If not provided, it defaults to empty string.\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -6358,6 +6362,10 @@
                     "type": "integer",
                     "description": "If applicable, the ID of the LKE cluster this instance is a part of.\n"
                 },
+                "maintenancePolicy": {
+                    "type": "string",
+                    "description": "The maintenance policy of this Linode instance. (**Note: v4beta only.**)\n"
+                },
                 "placementGroups": {
                     "type": "array",
                     "items": {
@@ -6421,6 +6429,7 @@
                 "ipv6",
                 "label",
                 "lkeClusterId",
+                "maintenancePolicy",
                 "placementGroups",
                 "privateIpAddress",
                 "region",
@@ -7349,6 +7358,10 @@
                     "type": "string",
                     "description": "The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.\n"
                 },
+                "label": {
+                    "type": "string",
+                    "description": "The label of the Node Pool.\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -7739,6 +7752,72 @@
                     "requiredInputs": [
                         "id"
                     ]
+                }
+            }
+        },
+        "linode:index/getMaintenancePoliciesFilter:getMaintenancePoliciesFilter": {
+            "properties": {
+                "matchBy": {
+                    "type": "string",
+                    "description": "The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values for the filter to allow. These values should all be in string form.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "values"
+            ]
+        },
+        "linode:index/getMaintenancePoliciesMaintenancePolicy:getMaintenancePoliciesMaintenancePolicy": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of this policy\n"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Whether this is the default policy for the account.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "The label for this policy.\n"
+                },
+                "notificationPeriodSec": {
+                    "type": "integer",
+                    "description": "The notification lead time in seconds.\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "Unique identifier for this policy\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of action taken during maintenance.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "isDefault",
+                "label",
+                "notificationPeriodSec",
+                "slug",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
                 }
             }
         },
@@ -11025,6 +11104,10 @@
                     "type": "string",
                     "description": "The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.\n"
                 },
+                "maintenancePolicy": {
+                    "type": "string",
+                    "description": "The default maintenance policy for this account. Examples are `\"linode/migrate\"` and `\"linode/power_off_on\"`. Defaults to `\"linode/migrate\"`. (**Note: v4beta only.**)\n"
+                },
                 "managed": {
                     "type": "boolean",
                     "description": "Enables monitoring for connectivity, response, and total request time."
@@ -11041,6 +11124,7 @@
             "required": [
                 "backupsEnabled",
                 "longviewSubscription",
+                "maintenancePolicy",
                 "managed",
                 "networkHelper",
                 "objectStorage"
@@ -11053,6 +11137,10 @@
                 "longviewSubscription": {
                     "type": "string",
                     "description": "The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.\n"
+                },
+                "maintenancePolicy": {
+                    "type": "string",
+                    "description": "The default maintenance policy for this account. Examples are `\"linode/migrate\"` and `\"linode/power_off_on\"`. Defaults to `\"linode/migrate\"`. (**Note: v4beta only.**)\n"
                 },
                 "networkHelper": {
                     "type": "boolean",
@@ -11069,6 +11157,10 @@
                     "longviewSubscription": {
                         "type": "string",
                         "description": "The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.\n"
+                    },
+                    "maintenancePolicy": {
+                        "type": "string",
+                        "description": "The default maintenance policy for this account. Examples are `\"linode/migrate\"` and `\"linode/power_off_on\"`. Defaults to `\"linode/migrate\"`. (**Note: v4beta only.**)\n"
                     },
                     "managed": {
                         "type": "boolean",
@@ -14469,6 +14561,10 @@
                     "type": "integer",
                     "description": "If applicable, the ID of the LKE cluster this instance is a part of.\n"
                 },
+                "maintenancePolicy": {
+                    "type": "string",
+                    "description": "The maintenance policy of this Linode instance. Examples are `\"linode/migrate\"` and `\"linode/power_off_on\"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)\n"
+                },
                 "metadatas": {
                     "type": "array",
                     "items": {
@@ -14576,6 +14672,7 @@
                 "ipv6",
                 "label",
                 "lkeClusterId",
+                "maintenancePolicy",
                 "privateIpAddress",
                 "region",
                 "sharedIpv4s",
@@ -14675,6 +14772,10 @@
                 "label": {
                     "type": "string",
                     "description": "The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.\n"
+                },
+                "maintenancePolicy": {
+                    "type": "string",
+                    "description": "The maintenance policy of this Linode instance. Examples are `\"linode/migrate\"` and `\"linode/power_off_on\"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)\n"
                 },
                 "metadatas": {
                     "type": "array",
@@ -14885,6 +14986,10 @@
                     "lkeClusterId": {
                         "type": "integer",
                         "description": "If applicable, the ID of the LKE cluster this instance is a part of.\n"
+                    },
+                    "maintenancePolicy": {
+                        "type": "string",
+                        "description": "The maintenance policy of this Linode instance. Examples are `\"linode/migrate\"` and `\"linode/power_off_on\"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)\n"
                     },
                     "metadatas": {
                         "type": "array",
@@ -15941,6 +16046,10 @@
                     "type": "string",
                     "description": "The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.\n"
                 },
+                "label": {
+                    "type": "string",
+                    "description": "A label for the Node Pool. If not provided, it defaults to empty string.\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -15986,6 +16095,7 @@
                 "clusterId",
                 "diskEncryption",
                 "k8sVersion",
+                "label",
                 "labels",
                 "nodeCount",
                 "nodes",
@@ -16004,6 +16114,10 @@
                 "k8sVersion": {
                     "type": "string",
                     "description": "The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.\n"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "A label for the Node Pool. If not provided, it defaults to empty string.\n"
                 },
                 "labels": {
                     "type": "object",
@@ -16060,6 +16174,10 @@
                     "k8sVersion": {
                         "type": "string",
                         "description": "The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.\n"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "A label for the Node Pool. If not provided, it defaults to empty string.\n"
                     },
                     "labels": {
                         "type": "object",
@@ -19139,6 +19257,10 @@
                         "description": "The Longview Pro tier you are currently subscribed to.\n",
                         "type": "string"
                     },
+                    "maintenancePolicy": {
+                        "description": "The default maintenance policy for this account. (**Note: v4beta only.**)\n",
+                        "type": "string"
+                    },
                     "managed": {
                         "description": "Enables monitoring for connectivity, response, and total request time.\n",
                         "type": "boolean"
@@ -19156,6 +19278,7 @@
                     "backupsEnabled",
                     "id",
                     "longviewSubscription",
+                    "maintenancePolicy",
                     "managed",
                     "networkHelper",
                     "objectStorage"
@@ -22007,7 +22130,7 @@
                         "type": "string"
                     },
                     "label": {
-                        "description": "The unique label for the cluster.\n",
+                        "description": "The label of the Node Pool.\n",
                         "type": "string"
                     },
                     "pools": {
@@ -22249,6 +22372,51 @@
                     "versions": {
                         "items": {
                             "$ref": "#/types/linode:index/getLkeVersionsVersion:getLkeVersionsVersion"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getMaintenancePolicies:getMaintenancePolicies": {
+            "description": "Provides details about the Maintenance Policies available to apply to Accounts and Instances.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)\n\n## Example Usage\n\nThe following example shows how one might use this data source to access information about Maintenance Policies:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst example = linode.getMaintenancePolicies({});\nexport const exampleOutput = example;\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexample = linode.get_maintenance_policies()\npulumi.export(\"exampleOutput\", example)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Linode.GetMaintenancePolicies.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"exampleOutput\"] = example,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v5/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := linode.GetMaintenancePolicies(ctx, \u0026linode.GetMaintenancePoliciesArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"exampleOutput\", example)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LinodeFunctions.getMaintenancePolicies(GetMaintenancePoliciesArgs.builder()\n            .build());\n\n        ctx.export(\"exampleOutput\", example);\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: linode:getMaintenancePolicies\n      arguments: {}\noutputs:\n  exampleOutput: ${example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMaintenancePolicies.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getMaintenancePoliciesFilter:getMaintenancePoliciesFilter"
+                        }
+                    },
+                    "maintenancePolicies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/linode:index/getMaintenancePoliciesMaintenancePolicy:getMaintenancePoliciesMaintenancePolicy"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMaintenancePolicies.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getMaintenancePoliciesFilter:getMaintenancePoliciesFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "maintenancePolicies": {
+                        "items": {
+                            "$ref": "#/types/linode:index/getMaintenancePoliciesMaintenancePolicy:getMaintenancePoliciesMaintenancePolicy"
                         },
                         "type": "array"
                     }
