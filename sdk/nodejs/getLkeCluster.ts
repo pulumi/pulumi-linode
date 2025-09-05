@@ -85,7 +85,7 @@ export interface GetLkeClusterResult {
      */
     readonly kubeconfig: string;
     /**
-     * The unique label for the cluster.
+     * The label of the Node Pool.
      */
     readonly label: string;
     /**

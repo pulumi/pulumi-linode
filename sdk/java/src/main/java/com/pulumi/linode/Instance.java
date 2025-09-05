@@ -544,6 +544,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.lkeClusterId;
     }
     /**
+     * The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+     * 
+     */
+    @Export(name="maintenancePolicy", refs={String.class}, tree="[0]")
+    private Output<String> maintenancePolicy;
+
+    /**
+     * @return The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+     * 
+     */
+    public Output<String> maintenancePolicy() {
+        return this.maintenancePolicy;
+    }
+    /**
      * Various fields related to the Linode Metadata service.
      * 
      */

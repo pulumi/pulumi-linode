@@ -39,6 +39,10 @@ export interface GetAccountSettingsResult {
      */
     readonly longviewSubscription: string;
     /**
+     * The default maintenance policy for this account. (**Note: v4beta only.**)
+     */
+    readonly maintenancePolicy: string;
+    /**
      * Enables monitoring for connectivity, response, and total request time.
      */
     readonly managed: boolean;

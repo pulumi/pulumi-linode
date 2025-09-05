@@ -59,6 +59,21 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A label for the Node Pool. If not provided, it defaults to empty string.
+     * 
+     */
+    @Import(name="label")
+    private @Nullable Output<String> label;
+
+    /**
+     * @return A label for the Node Pool. If not provided, it defaults to empty string.
+     * 
+     */
+    public Optional<Output<String>> label() {
+        return Optional.ofNullable(this.label);
+    }
+
+    /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      * 
      */
@@ -162,6 +177,7 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.autoscaler = $.autoscaler;
         this.clusterId = $.clusterId;
         this.k8sVersion = $.k8sVersion;
+        this.label = $.label;
         this.labels = $.labels;
         this.nodeCount = $.nodeCount;
         this.tags = $.tags;
@@ -237,6 +253,27 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder k8sVersion(String k8sVersion) {
             return k8sVersion(Output.of(k8sVersion));
+        }
+
+        /**
+         * @param label A label for the Node Pool. If not provided, it defaults to empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder label(@Nullable Output<String> label) {
+            $.label = label;
+            return this;
+        }
+
+        /**
+         * @param label A label for the Node Pool. If not provided, it defaults to empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder label(String label) {
+            return label(Output.of(label));
         }
 
         /**

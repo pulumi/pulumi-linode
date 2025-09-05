@@ -14,6 +14,7 @@ import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -48,6 +49,11 @@ public final class GetLkeClusterPool {
      * 
      */
     private String k8sVersion;
+    /**
+     * @return The label of the Node Pool.
+     * 
+     */
+    private @Nullable String label;
     /**
      * @return Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
      * 
@@ -123,6 +129,13 @@ public final class GetLkeClusterPool {
         return this.k8sVersion;
     }
     /**
+     * @return The label of the Node Pool.
+     * 
+     */
+    public Optional<String> label() {
+        return Optional.ofNullable(this.label);
+    }
+    /**
      * @return Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
      * 
      */
@@ -180,6 +193,7 @@ public final class GetLkeClusterPool {
         private @Nullable List<GetLkeClusterPoolDisk> disks;
         private Integer id;
         private String k8sVersion;
+        private @Nullable String label;
         private Map<String,String> labels;
         private @Nullable List<GetLkeClusterPoolNode> nodes;
         private List<String> tags;
@@ -195,6 +209,7 @@ public final class GetLkeClusterPool {
     	      this.disks = defaults.disks;
     	      this.id = defaults.id;
     	      this.k8sVersion = defaults.k8sVersion;
+    	      this.label = defaults.label;
     	      this.labels = defaults.labels;
     	      this.nodes = defaults.nodes;
     	      this.tags = defaults.tags;
@@ -251,6 +266,12 @@ public final class GetLkeClusterPool {
               throw new MissingRequiredPropertyException("GetLkeClusterPool", "k8sVersion");
             }
             this.k8sVersion = k8sVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder label(@Nullable String label) {
+
+            this.label = label;
             return this;
         }
         @CustomType.Setter
@@ -316,6 +337,7 @@ public final class GetLkeClusterPool {
             _resultValue.disks = disks;
             _resultValue.id = id;
             _resultValue.k8sVersion = k8sVersion;
+            _resultValue.label = label;
             _resultValue.labels = labels;
             _resultValue.nodes = nodes;
             _resultValue.tags = tags;

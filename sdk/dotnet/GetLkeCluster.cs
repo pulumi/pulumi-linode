@@ -201,7 +201,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Kubeconfig;
         /// <summary>
-        /// The unique label for the cluster.
+        /// The label of the Node Pool.
         /// </summary>
         public readonly string Label;
         /// <summary>

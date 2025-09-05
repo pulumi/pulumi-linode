@@ -215,6 +215,8 @@ type Instance struct {
 	Label pulumi.StringOutput `pulumi:"label"`
 	// If applicable, the ID of the LKE cluster this instance is a part of.
 	LkeClusterId pulumi.IntOutput `pulumi:"lkeClusterId"`
+	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+	MaintenancePolicy pulumi.StringOutput `pulumi:"maintenancePolicy"`
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayOutput `pulumi:"metadatas"`
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -371,6 +373,8 @@ type instanceState struct {
 	Label *string `pulumi:"label"`
 	// If applicable, the ID of the LKE cluster this instance is a part of.
 	LkeClusterId *int `pulumi:"lkeClusterId"`
+	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// Various fields related to the Linode Metadata service.
 	Metadatas []InstanceMetadata `pulumi:"metadatas"`
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -484,6 +488,8 @@ type InstanceState struct {
 	Label pulumi.StringPtrInput
 	// If applicable, the ID of the LKE cluster this instance is a part of.
 	LkeClusterId pulumi.IntPtrInput
+	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+	MaintenancePolicy pulumi.StringPtrInput
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayInput
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -585,6 +591,8 @@ type instanceArgs struct {
 	Ipv4s []string `pulumi:"ipv4s"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label *string `pulumi:"label"`
+	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// Various fields related to the Linode Metadata service.
 	Metadatas []InstanceMetadata `pulumi:"metadatas"`
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -677,6 +685,8 @@ type InstanceArgs struct {
 	Ipv4s pulumi.StringArrayInput
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringPtrInput
+	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+	MaintenancePolicy pulumi.StringPtrInput
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayInput
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -937,6 +947,11 @@ func (o InstanceOutput) Label() pulumi.StringOutput {
 // If applicable, the ID of the LKE cluster this instance is a part of.
 func (o InstanceOutput) LkeClusterId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.LkeClusterId }).(pulumi.IntOutput)
+}
+
+// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+func (o InstanceOutput) MaintenancePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintenancePolicy }).(pulumi.StringOutput)
 }
 
 // Various fields related to the Linode Metadata service.

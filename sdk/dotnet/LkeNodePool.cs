@@ -43,6 +43,12 @@ namespace Pulumi.Linode
         public Output<string> K8sVersion { get; private set; } = null!;
 
         /// <summary>
+        /// A label for the Node Pool. If not provided, it defaults to empty string.
+        /// </summary>
+        [Output("label")]
+        public Output<string> Label { get; private set; } = null!;
+
+        /// <summary>
         /// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         /// </summary>
         [Output("labels")]
@@ -149,6 +155,12 @@ namespace Pulumi.Linode
         [Input("k8sVersion")]
         public Input<string>? K8sVersion { get; set; }
 
+        /// <summary>
+        /// A label for the Node Pool. If not provided, it defaults to empty string.
+        /// </summary>
+        [Input("label")]
+        public Input<string>? Label { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -235,6 +247,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("k8sVersion")]
         public Input<string>? K8sVersion { get; set; }
+
+        /// <summary>
+        /// A label for the Node Pool. If not provided, it defaults to empty string.
+        /// </summary>
+        [Input("label")]
+        public Input<string>? Label { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

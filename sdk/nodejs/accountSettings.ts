@@ -65,6 +65,10 @@ export class AccountSettings extends pulumi.CustomResource {
      */
     declare public readonly longviewSubscription: pulumi.Output<string>;
     /**
+     * The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+     */
+    declare public readonly maintenancePolicy: pulumi.Output<string>;
+    /**
      * Enables monitoring for connectivity, response, and total request time.
      */
     declare public /*out*/ readonly managed: pulumi.Output<boolean>;
@@ -92,6 +96,7 @@ export class AccountSettings extends pulumi.CustomResource {
             const state = argsOrState as AccountSettingsState | undefined;
             resourceInputs["backupsEnabled"] = state?.backupsEnabled;
             resourceInputs["longviewSubscription"] = state?.longviewSubscription;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
             resourceInputs["managed"] = state?.managed;
             resourceInputs["networkHelper"] = state?.networkHelper;
             resourceInputs["objectStorage"] = state?.objectStorage;
@@ -99,6 +104,7 @@ export class AccountSettings extends pulumi.CustomResource {
             const args = argsOrState as AccountSettingsArgs | undefined;
             resourceInputs["backupsEnabled"] = args?.backupsEnabled;
             resourceInputs["longviewSubscription"] = args?.longviewSubscription;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["networkHelper"] = args?.networkHelper;
             resourceInputs["managed"] = undefined /*out*/;
             resourceInputs["objectStorage"] = undefined /*out*/;
@@ -120,6 +126,10 @@ export interface AccountSettingsState {
      * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
      */
     longviewSubscription?: pulumi.Input<string>;
+    /**
+     * The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+     */
+    maintenancePolicy?: pulumi.Input<string>;
     /**
      * Enables monitoring for connectivity, response, and total request time.
      */
@@ -146,6 +156,10 @@ export interface AccountSettingsArgs {
      * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
      */
     longviewSubscription?: pulumi.Input<string>;
+    /**
+     * The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+     */
+    maintenancePolicy?: pulumi.Input<string>;
     /**
      * Enables network helper across all users by default for new Linodes and Linode Configs.
      */

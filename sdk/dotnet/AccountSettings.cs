@@ -56,6 +56,12 @@ namespace Pulumi.Linode
         public Output<string> LongviewSubscription { get; private set; } = null!;
 
         /// <summary>
+        /// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<string> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Enables monitoring for connectivity, response, and total request time.
         /// </summary>
         [Output("managed")]
@@ -132,6 +138,12 @@ namespace Pulumi.Linode
         public Input<string>? LongviewSubscription { get; set; }
 
         /// <summary>
+        /// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<string>? MaintenancePolicy { get; set; }
+
+        /// <summary>
         /// Enables network helper across all users by default for new Linodes and Linode Configs.
         /// </summary>
         [Input("networkHelper")]
@@ -156,6 +168,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("longviewSubscription")]
         public Input<string>? LongviewSubscription { get; set; }
+
+        /// <summary>
+        /// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<string>? MaintenancePolicy { get; set; }
 
         /// <summary>
         /// Enables monitoring for connectivity, response, and total request time.

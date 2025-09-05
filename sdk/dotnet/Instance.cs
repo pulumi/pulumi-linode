@@ -283,6 +283,12 @@ namespace Pulumi.Linode
         public Output<int> LkeClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<string> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Various fields related to the Linode Metadata service.
         /// </summary>
         [Output("metadatas")]
@@ -592,6 +598,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
+
+        /// <summary>
+        /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<string>? MaintenancePolicy { get; set; }
 
         [Input("metadatas")]
         private InputList<Inputs.InstanceMetadataArgs>? _metadatas;
@@ -934,6 +946,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("lkeClusterId")]
         public Input<int>? LkeClusterId { get; set; }
+
+        /// <summary>
+        /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<string>? MaintenancePolicy { get; set; }
 
         [Input("metadatas")]
         private InputList<Inputs.InstanceMetadataGetArgs>? _metadatas;

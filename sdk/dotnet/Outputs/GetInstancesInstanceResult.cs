@@ -78,6 +78,10 @@ namespace Pulumi.Linode.Outputs
         /// If applicable, the ID of the LKE cluster this instance is a part of.
         /// </summary>
         public readonly int LkeClusterId;
+        /// <summary>
+        /// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+        /// </summary>
+        public readonly string MaintenancePolicy;
         public readonly ImmutableArray<Outputs.GetInstancesInstancePlacementGroupResult> PlacementGroups;
         /// <summary>
         /// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -145,6 +149,8 @@ namespace Pulumi.Linode.Outputs
 
             int lkeClusterId,
 
+            string maintenancePolicy,
+
             ImmutableArray<Outputs.GetInstancesInstancePlacementGroupResult> placementGroups,
 
             string privateIpAddress,
@@ -180,6 +186,7 @@ namespace Pulumi.Linode.Outputs
             Ipv6 = ipv6;
             Label = label;
             LkeClusterId = lkeClusterId;
+            MaintenancePolicy = maintenancePolicy;
             PlacementGroups = placementGroups;
             PrivateIpAddress = privateIpAddress;
             Region = region;

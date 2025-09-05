@@ -29,6 +29,8 @@ type LkeNodePool struct {
 	DiskEncryption pulumi.StringOutput `pulumi:"diskEncryption"`
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion pulumi.StringOutput `pulumi:"k8sVersion"`
+	// A label for the Node Pool. If not provided, it defaults to empty string.
+	Label pulumi.StringOutput `pulumi:"label"`
 	// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
@@ -92,6 +94,8 @@ type lkeNodePoolState struct {
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion *string `pulumi:"k8sVersion"`
+	// A label for the Node Pool. If not provided, it defaults to empty string.
+	Label *string `pulumi:"label"`
 	// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
 	Labels map[string]string `pulumi:"labels"`
 	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
@@ -120,6 +124,8 @@ type LkeNodePoolState struct {
 	DiskEncryption pulumi.StringPtrInput
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion pulumi.StringPtrInput
+	// A label for the Node Pool. If not provided, it defaults to empty string.
+	Label pulumi.StringPtrInput
 	// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
 	Labels pulumi.StringMapInput
 	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
@@ -150,6 +156,8 @@ type lkeNodePoolArgs struct {
 	ClusterId int `pulumi:"clusterId"`
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion *string `pulumi:"k8sVersion"`
+	// A label for the Node Pool. If not provided, it defaults to empty string.
+	Label *string `pulumi:"label"`
 	// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
 	Labels map[string]string `pulumi:"labels"`
 	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
@@ -175,6 +183,8 @@ type LkeNodePoolArgs struct {
 	ClusterId pulumi.IntInput
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion pulumi.StringPtrInput
+	// A label for the Node Pool. If not provided, it defaults to empty string.
+	Label pulumi.StringPtrInput
 	// A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
 	Labels pulumi.StringMapInput
 	// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
@@ -297,6 +307,11 @@ func (o LkeNodePoolOutput) DiskEncryption() pulumi.StringOutput {
 // The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 func (o LkeNodePoolOutput) K8sVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeNodePool) pulumi.StringOutput { return v.K8sVersion }).(pulumi.StringOutput)
+}
+
+// A label for the Node Pool. If not provided, it defaults to empty string.
+func (o LkeNodePoolOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v *LkeNodePool) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }
 
 // A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).

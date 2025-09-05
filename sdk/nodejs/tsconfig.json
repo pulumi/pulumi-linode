@@ -66,6 +66,7 @@
         "getLkeTypes.ts",
         "getLkeVersion.ts",
         "getLkeVersions.ts",
+        "getMaintenancePolicies.ts",
         "getNbTypes.ts",
         "getNetworkTransferPrices.ts",
         "getNetworkingIp.ts",

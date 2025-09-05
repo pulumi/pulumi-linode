@@ -77,7 +77,7 @@ type LookupLkeClusterResult struct {
 	K8sVersion string `pulumi:"k8sVersion"`
 	// The base64 encoded kubeconfig for the Kubernetes cluster.
 	Kubeconfig string `pulumi:"kubeconfig"`
-	// The unique label for the cluster.
+	// The label of the Node Pool.
 	Label string `pulumi:"label"`
 	// Node pools associated with this cluster.
 	Pools []GetLkeClusterPool `pulumi:"pools"`
@@ -171,7 +171,7 @@ func (o LookupLkeClusterResultOutput) Kubeconfig() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Kubeconfig }).(pulumi.StringOutput)
 }
 
-// The unique label for the cluster.
+// The label of the Node Pool.
 func (o LookupLkeClusterResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Label }).(pulumi.StringOutput)
 }

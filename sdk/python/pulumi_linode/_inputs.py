@@ -281,6 +281,10 @@ __all__ = [
     'GetLkeTypesTypeRegionPriceArgsDict',
     'GetLkeVersionsVersionArgs',
     'GetLkeVersionsVersionArgsDict',
+    'GetMaintenancePoliciesFilterArgs',
+    'GetMaintenancePoliciesFilterArgsDict',
+    'GetMaintenancePoliciesMaintenancePolicyArgs',
+    'GetMaintenancePoliciesMaintenancePolicyArgsDict',
     'GetNbTypesFilterArgs',
     'GetNbTypesFilterArgsDict',
     'GetNbTypesTypeArgs',
@@ -4228,6 +4232,10 @@ if not MYPY:
         """
         The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         """
+        label: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A label for the Node Pool. If not provided, it defaults to empty string.
+        """
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
         A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
@@ -4260,6 +4268,7 @@ class LkeClusterPoolArgs:
                  disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
                  id: Optional[pulumi.Input[_builtins.int]] = None,
                  k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 label: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -4272,6 +4281,7 @@ class LkeClusterPoolArgs:
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[_builtins.int] id: The ID of the node.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]] nodes: The nodes in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
@@ -4289,6 +4299,8 @@ class LkeClusterPoolArgs:
             pulumi.set(__self__, "id", id)
         if k8s_version is not None:
             pulumi.set(__self__, "k8s_version", k8s_version)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if nodes is not None:
@@ -4371,6 +4383,18 @@ class LkeClusterPoolArgs:
     @k8s_version.setter
     def k8s_version(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "k8s_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A label for the Node Pool. If not provided, it defaults to empty string.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
@@ -11500,6 +11524,10 @@ if not MYPY:
         """
         This Node Pool’s custom disk layout.
         """
+        label: NotRequired[_builtins.str]
+        """
+        The label of the Node Pool.
+        """
         nodes: NotRequired[Sequence['GetLkeClusterPoolNodeArgsDict']]
         """
         The nodes in the Node Pool.
@@ -11521,6 +11549,7 @@ class GetLkeClusterPoolArgs:
                  update_strategy: _builtins.str,
                  autoscalers: Optional[Sequence['GetLkeClusterPoolAutoscalerArgs']] = None,
                  disks: Optional[Sequence['GetLkeClusterPoolDiskArgs']] = None,
+                 label: Optional[_builtins.str] = None,
                  nodes: Optional[Sequence['GetLkeClusterPoolNodeArgs']] = None):
         """
         :param _builtins.int count: The number of nodes in the Node Pool.
@@ -11534,6 +11563,7 @@ class GetLkeClusterPoolArgs:
         :param _builtins.str update_strategy: The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param Sequence['GetLkeClusterPoolAutoscalerArgs'] autoscalers: The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
         :param Sequence['GetLkeClusterPoolDiskArgs'] disks: This Node Pool’s custom disk layout.
+        :param _builtins.str label: The label of the Node Pool.
         :param Sequence['GetLkeClusterPoolNodeArgs'] nodes: The nodes in the Node Pool.
         """
         pulumi.set(__self__, "count", count)
@@ -11549,6 +11579,8 @@ class GetLkeClusterPoolArgs:
             pulumi.set(__self__, "autoscalers", autoscalers)
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
 
@@ -11683,6 +11715,18 @@ class GetLkeClusterPoolArgs:
     @disks.setter
     def disks(self, value: Optional[Sequence['GetLkeClusterPoolDiskArgs']]):
         pulumi.set(self, "disks", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> Optional[_builtins.str]:
+        """
+        The label of the Node Pool.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
@@ -12607,6 +12651,202 @@ class GetLkeVersionsVersionArgs:
     @tier.setter
     def tier(self, value: _builtins.str):
         pulumi.set(self, "tier", value)
+
+
+if not MYPY:
+    class GetMaintenancePoliciesFilterArgsDict(TypedDict):
+        name: _builtins.str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[_builtins.str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[_builtins.str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetMaintenancePoliciesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetMaintenancePoliciesFilterArgs:
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetMaintenancePoliciesMaintenancePolicyArgsDict(TypedDict):
+        description: _builtins.str
+        """
+        Description of this policy
+        """
+        is_default: _builtins.bool
+        """
+        Whether this is the default policy for the account.
+        """
+        label: _builtins.str
+        """
+        The label for this policy.
+        """
+        notification_period_sec: _builtins.int
+        """
+        The notification lead time in seconds.
+        """
+        slug: _builtins.str
+        """
+        Unique identifier for this policy
+        """
+        type: _builtins.str
+        """
+        The type of action taken during maintenance.
+        """
+elif False:
+    GetMaintenancePoliciesMaintenancePolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetMaintenancePoliciesMaintenancePolicyArgs:
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 is_default: _builtins.bool,
+                 label: _builtins.str,
+                 notification_period_sec: _builtins.int,
+                 slug: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str description: Description of this policy
+        :param _builtins.bool is_default: Whether this is the default policy for the account.
+        :param _builtins.str label: The label for this policy.
+        :param _builtins.int notification_period_sec: The notification lead time in seconds.
+        :param _builtins.str slug: Unique identifier for this policy
+        :param _builtins.str type: The type of action taken during maintenance.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "is_default", is_default)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "notification_period_sec", notification_period_sec)
+        pulumi.set(__self__, "slug", slug)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of this policy
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: _builtins.str):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> _builtins.bool:
+        """
+        Whether this is the default policy for the account.
+        """
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: _builtins.bool):
+        pulumi.set(self, "is_default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        The label for this policy.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: _builtins.str):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notificationPeriodSec")
+    def notification_period_sec(self) -> _builtins.int:
+        """
+        The notification lead time in seconds.
+        """
+        return pulumi.get(self, "notification_period_sec")
+
+    @notification_period_sec.setter
+    def notification_period_sec(self, value: _builtins.int):
+        pulumi.set(self, "notification_period_sec", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def slug(self) -> _builtins.str:
+        """
+        Unique identifier for this policy
+        """
+        return pulumi.get(self, "slug")
+
+    @slug.setter
+    def slug(self, value: _builtins.str):
+        pulumi.set(self, "slug", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of action taken during maintenance.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: _builtins.str):
+        pulumi.set(self, "type", value)
 
 
 if not MYPY:

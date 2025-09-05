@@ -56,6 +56,8 @@ type LookupAccountSettingsResult struct {
 	Id             string `pulumi:"id"`
 	// The Longview Pro tier you are currently subscribed to.
 	LongviewSubscription string `pulumi:"longviewSubscription"`
+	// The default maintenance policy for this account. (**Note: v4beta only.**)
+	MaintenancePolicy string `pulumi:"maintenancePolicy"`
 	// Enables monitoring for connectivity, response, and total request time.
 	Managed bool `pulumi:"managed"`
 	// Enables network helper across all users by default for new Linodes and Linode Configs.
@@ -98,6 +100,11 @@ func (o LookupAccountSettingsResultOutput) Id() pulumi.StringOutput {
 // The Longview Pro tier you are currently subscribed to.
 func (o LookupAccountSettingsResultOutput) LongviewSubscription() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSettingsResult) string { return v.LongviewSubscription }).(pulumi.StringOutput)
+}
+
+// The default maintenance policy for this account. (**Note: v4beta only.**)
+func (o LookupAccountSettingsResultOutput) MaintenancePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountSettingsResult) string { return v.MaintenancePolicy }).(pulumi.StringOutput)
 }
 
 // Enables monitoring for connectivity, response, and total request time.

@@ -42,6 +42,12 @@ namespace Pulumi.Linode.Inputs
         [Input("k8sVersion")]
         public Input<string>? K8sVersion { get; set; }
 
+        /// <summary>
+        /// A label for the Node Pool. If not provided, it defaults to empty string.
+        /// </summary>
+        [Input("label")]
+        public Input<string>? Label { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
