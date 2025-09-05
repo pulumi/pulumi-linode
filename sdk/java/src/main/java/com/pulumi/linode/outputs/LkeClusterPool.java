@@ -44,6 +44,11 @@ public final class LkeClusterPool {
      */
     private @Nullable String k8sVersion;
     /**
+     * @return A label for the Node Pool. If not provided, it defaults to empty string.
+     * 
+     */
+    private @Nullable String label;
+    /**
      * @return A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      * 
      */
@@ -111,6 +116,13 @@ public final class LkeClusterPool {
         return Optional.ofNullable(this.k8sVersion);
     }
     /**
+     * @return A label for the Node Pool. If not provided, it defaults to empty string.
+     * 
+     */
+    public Optional<String> label() {
+        return Optional.ofNullable(this.label);
+    }
+    /**
      * @return A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      * 
      */
@@ -167,6 +179,7 @@ public final class LkeClusterPool {
         private @Nullable String diskEncryption;
         private @Nullable Integer id;
         private @Nullable String k8sVersion;
+        private @Nullable String label;
         private @Nullable Map<String,String> labels;
         private @Nullable List<LkeClusterPoolNode> nodes;
         private @Nullable List<String> tags;
@@ -181,6 +194,7 @@ public final class LkeClusterPool {
     	      this.diskEncryption = defaults.diskEncryption;
     	      this.id = defaults.id;
     	      this.k8sVersion = defaults.k8sVersion;
+    	      this.label = defaults.label;
     	      this.labels = defaults.labels;
     	      this.nodes = defaults.nodes;
     	      this.tags = defaults.tags;
@@ -217,6 +231,12 @@ public final class LkeClusterPool {
         public Builder k8sVersion(@Nullable String k8sVersion) {
 
             this.k8sVersion = k8sVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder label(@Nullable String label) {
+
+            this.label = label;
             return this;
         }
         @CustomType.Setter
@@ -273,6 +293,7 @@ public final class LkeClusterPool {
             _resultValue.diskEncryption = diskEncryption;
             _resultValue.id = id;
             _resultValue.k8sVersion = k8sVersion;
+            _resultValue.label = label;
             _resultValue.labels = labels;
             _resultValue.nodes = nodes;
             _resultValue.tags = tags;

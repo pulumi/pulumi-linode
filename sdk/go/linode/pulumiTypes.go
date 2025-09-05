@@ -6694,6 +6694,8 @@ type LkeClusterPool struct {
 	Id *int `pulumi:"id"`
 	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion *string `pulumi:"k8sVersion"`
+	// A label for the Node Pool. If not provided, it defaults to empty string.
+	Label *string `pulumi:"label"`
 	// A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The nodes in the node pool.
@@ -6730,6 +6732,8 @@ type LkeClusterPoolArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion pulumi.StringPtrInput `pulumi:"k8sVersion"`
+	// A label for the Node Pool. If not provided, it defaults to empty string.
+	Label pulumi.StringPtrInput `pulumi:"label"`
 	// A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The nodes in the node pool.
@@ -6818,6 +6822,11 @@ func (o LkeClusterPoolOutput) Id() pulumi.IntPtrOutput {
 // The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 func (o LkeClusterPoolOutput) K8sVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LkeClusterPool) *string { return v.K8sVersion }).(pulumi.StringPtrOutput)
+}
+
+// A label for the Node Pool. If not provided, it defaults to empty string.
+func (o LkeClusterPoolOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LkeClusterPool) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
 // A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
@@ -23943,8 +23952,10 @@ type GetInstancesInstance struct {
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label string `pulumi:"label"`
 	// If applicable, the ID of the LKE cluster this instance is a part of.
-	LkeClusterId    int                                  `pulumi:"lkeClusterId"`
-	PlacementGroups []GetInstancesInstancePlacementGroup `pulumi:"placementGroups"`
+	LkeClusterId int `pulumi:"lkeClusterId"`
+	// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+	MaintenancePolicy string                               `pulumi:"maintenancePolicy"`
+	PlacementGroups   []GetInstancesInstancePlacementGroup `pulumi:"placementGroups"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 	PrivateIpAddress string `pulumi:"privateIpAddress"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
@@ -24006,8 +24017,10 @@ type GetInstancesInstanceArgs struct {
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringInput `pulumi:"label"`
 	// If applicable, the ID of the LKE cluster this instance is a part of.
-	LkeClusterId    pulumi.IntInput                              `pulumi:"lkeClusterId"`
-	PlacementGroups GetInstancesInstancePlacementGroupArrayInput `pulumi:"placementGroups"`
+	LkeClusterId pulumi.IntInput `pulumi:"lkeClusterId"`
+	// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+	MaintenancePolicy pulumi.StringInput                           `pulumi:"maintenancePolicy"`
+	PlacementGroups   GetInstancesInstancePlacementGroupArrayInput `pulumi:"placementGroups"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
 	PrivateIpAddress pulumi.StringInput `pulumi:"privateIpAddress"`
 	// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
@@ -24158,6 +24171,11 @@ func (o GetInstancesInstanceOutput) Label() pulumi.StringOutput {
 // If applicable, the ID of the LKE cluster this instance is a part of.
 func (o GetInstancesInstanceOutput) LkeClusterId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.LkeClusterId }).(pulumi.IntOutput)
+}
+
+// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+func (o GetInstancesInstanceOutput) MaintenancePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintenancePolicy }).(pulumi.StringOutput)
 }
 
 func (o GetInstancesInstanceOutput) PlacementGroups() GetInstancesInstancePlacementGroupArrayOutput {
@@ -27412,6 +27430,8 @@ type GetLkeClusterPool struct {
 	Id int `pulumi:"id"`
 	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion string `pulumi:"k8sVersion"`
+	// The label of the Node Pool.
+	Label *string `pulumi:"label"`
 	// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
 	Labels map[string]string `pulumi:"labels"`
 	// The nodes in the Node Pool.
@@ -27450,6 +27470,8 @@ type GetLkeClusterPoolArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion pulumi.StringInput `pulumi:"k8sVersion"`
+	// The label of the Node Pool.
+	Label pulumi.StringPtrInput `pulumi:"label"`
 	// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The nodes in the Node Pool.
@@ -27543,6 +27565,11 @@ func (o GetLkeClusterPoolOutput) Id() pulumi.IntOutput {
 // The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 func (o GetLkeClusterPoolOutput) K8sVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) string { return v.K8sVersion }).(pulumi.StringOutput)
+}
+
+// The label of the Node Pool.
+func (o GetLkeClusterPoolOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
 // Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
@@ -29052,6 +29079,263 @@ func (o GetLkeVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetLkeVersion
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeVersionsVersion {
 		return vs[0].([]GetLkeVersionsVersion)[vs[1].(int)]
 	}).(GetLkeVersionsVersionOutput)
+}
+
+type GetMaintenancePoliciesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetMaintenancePoliciesFilterInput is an input type that accepts GetMaintenancePoliciesFilterArgs and GetMaintenancePoliciesFilterOutput values.
+// You can construct a concrete instance of `GetMaintenancePoliciesFilterInput` via:
+//
+//	GetMaintenancePoliciesFilterArgs{...}
+type GetMaintenancePoliciesFilterInput interface {
+	pulumi.Input
+
+	ToGetMaintenancePoliciesFilterOutput() GetMaintenancePoliciesFilterOutput
+	ToGetMaintenancePoliciesFilterOutputWithContext(context.Context) GetMaintenancePoliciesFilterOutput
+}
+
+type GetMaintenancePoliciesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetMaintenancePoliciesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMaintenancePoliciesFilter)(nil)).Elem()
+}
+
+func (i GetMaintenancePoliciesFilterArgs) ToGetMaintenancePoliciesFilterOutput() GetMaintenancePoliciesFilterOutput {
+	return i.ToGetMaintenancePoliciesFilterOutputWithContext(context.Background())
+}
+
+func (i GetMaintenancePoliciesFilterArgs) ToGetMaintenancePoliciesFilterOutputWithContext(ctx context.Context) GetMaintenancePoliciesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMaintenancePoliciesFilterOutput)
+}
+
+// GetMaintenancePoliciesFilterArrayInput is an input type that accepts GetMaintenancePoliciesFilterArray and GetMaintenancePoliciesFilterArrayOutput values.
+// You can construct a concrete instance of `GetMaintenancePoliciesFilterArrayInput` via:
+//
+//	GetMaintenancePoliciesFilterArray{ GetMaintenancePoliciesFilterArgs{...} }
+type GetMaintenancePoliciesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetMaintenancePoliciesFilterArrayOutput() GetMaintenancePoliciesFilterArrayOutput
+	ToGetMaintenancePoliciesFilterArrayOutputWithContext(context.Context) GetMaintenancePoliciesFilterArrayOutput
+}
+
+type GetMaintenancePoliciesFilterArray []GetMaintenancePoliciesFilterInput
+
+func (GetMaintenancePoliciesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMaintenancePoliciesFilter)(nil)).Elem()
+}
+
+func (i GetMaintenancePoliciesFilterArray) ToGetMaintenancePoliciesFilterArrayOutput() GetMaintenancePoliciesFilterArrayOutput {
+	return i.ToGetMaintenancePoliciesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetMaintenancePoliciesFilterArray) ToGetMaintenancePoliciesFilterArrayOutputWithContext(ctx context.Context) GetMaintenancePoliciesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMaintenancePoliciesFilterArrayOutput)
+}
+
+type GetMaintenancePoliciesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetMaintenancePoliciesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMaintenancePoliciesFilter)(nil)).Elem()
+}
+
+func (o GetMaintenancePoliciesFilterOutput) ToGetMaintenancePoliciesFilterOutput() GetMaintenancePoliciesFilterOutput {
+	return o
+}
+
+func (o GetMaintenancePoliciesFilterOutput) ToGetMaintenancePoliciesFilterOutputWithContext(ctx context.Context) GetMaintenancePoliciesFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetMaintenancePoliciesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMaintenancePoliciesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetMaintenancePoliciesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMaintenancePoliciesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetMaintenancePoliciesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMaintenancePoliciesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetMaintenancePoliciesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMaintenancePoliciesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMaintenancePoliciesFilter)(nil)).Elem()
+}
+
+func (o GetMaintenancePoliciesFilterArrayOutput) ToGetMaintenancePoliciesFilterArrayOutput() GetMaintenancePoliciesFilterArrayOutput {
+	return o
+}
+
+func (o GetMaintenancePoliciesFilterArrayOutput) ToGetMaintenancePoliciesFilterArrayOutputWithContext(ctx context.Context) GetMaintenancePoliciesFilterArrayOutput {
+	return o
+}
+
+func (o GetMaintenancePoliciesFilterArrayOutput) Index(i pulumi.IntInput) GetMaintenancePoliciesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMaintenancePoliciesFilter {
+		return vs[0].([]GetMaintenancePoliciesFilter)[vs[1].(int)]
+	}).(GetMaintenancePoliciesFilterOutput)
+}
+
+type GetMaintenancePoliciesMaintenancePolicy struct {
+	// Description of this policy
+	Description string `pulumi:"description"`
+	// Whether this is the default policy for the account.
+	IsDefault bool `pulumi:"isDefault"`
+	// The label for this policy.
+	Label string `pulumi:"label"`
+	// The notification lead time in seconds.
+	NotificationPeriodSec int `pulumi:"notificationPeriodSec"`
+	// Unique identifier for this policy
+	Slug string `pulumi:"slug"`
+	// The type of action taken during maintenance.
+	Type string `pulumi:"type"`
+}
+
+// GetMaintenancePoliciesMaintenancePolicyInput is an input type that accepts GetMaintenancePoliciesMaintenancePolicyArgs and GetMaintenancePoliciesMaintenancePolicyOutput values.
+// You can construct a concrete instance of `GetMaintenancePoliciesMaintenancePolicyInput` via:
+//
+//	GetMaintenancePoliciesMaintenancePolicyArgs{...}
+type GetMaintenancePoliciesMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToGetMaintenancePoliciesMaintenancePolicyOutput() GetMaintenancePoliciesMaintenancePolicyOutput
+	ToGetMaintenancePoliciesMaintenancePolicyOutputWithContext(context.Context) GetMaintenancePoliciesMaintenancePolicyOutput
+}
+
+type GetMaintenancePoliciesMaintenancePolicyArgs struct {
+	// Description of this policy
+	Description pulumi.StringInput `pulumi:"description"`
+	// Whether this is the default policy for the account.
+	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
+	// The label for this policy.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The notification lead time in seconds.
+	NotificationPeriodSec pulumi.IntInput `pulumi:"notificationPeriodSec"`
+	// Unique identifier for this policy
+	Slug pulumi.StringInput `pulumi:"slug"`
+	// The type of action taken during maintenance.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetMaintenancePoliciesMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMaintenancePoliciesMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetMaintenancePoliciesMaintenancePolicyArgs) ToGetMaintenancePoliciesMaintenancePolicyOutput() GetMaintenancePoliciesMaintenancePolicyOutput {
+	return i.ToGetMaintenancePoliciesMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i GetMaintenancePoliciesMaintenancePolicyArgs) ToGetMaintenancePoliciesMaintenancePolicyOutputWithContext(ctx context.Context) GetMaintenancePoliciesMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMaintenancePoliciesMaintenancePolicyOutput)
+}
+
+// GetMaintenancePoliciesMaintenancePolicyArrayInput is an input type that accepts GetMaintenancePoliciesMaintenancePolicyArray and GetMaintenancePoliciesMaintenancePolicyArrayOutput values.
+// You can construct a concrete instance of `GetMaintenancePoliciesMaintenancePolicyArrayInput` via:
+//
+//	GetMaintenancePoliciesMaintenancePolicyArray{ GetMaintenancePoliciesMaintenancePolicyArgs{...} }
+type GetMaintenancePoliciesMaintenancePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetMaintenancePoliciesMaintenancePolicyArrayOutput() GetMaintenancePoliciesMaintenancePolicyArrayOutput
+	ToGetMaintenancePoliciesMaintenancePolicyArrayOutputWithContext(context.Context) GetMaintenancePoliciesMaintenancePolicyArrayOutput
+}
+
+type GetMaintenancePoliciesMaintenancePolicyArray []GetMaintenancePoliciesMaintenancePolicyInput
+
+func (GetMaintenancePoliciesMaintenancePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMaintenancePoliciesMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetMaintenancePoliciesMaintenancePolicyArray) ToGetMaintenancePoliciesMaintenancePolicyArrayOutput() GetMaintenancePoliciesMaintenancePolicyArrayOutput {
+	return i.ToGetMaintenancePoliciesMaintenancePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetMaintenancePoliciesMaintenancePolicyArray) ToGetMaintenancePoliciesMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetMaintenancePoliciesMaintenancePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMaintenancePoliciesMaintenancePolicyArrayOutput)
+}
+
+type GetMaintenancePoliciesMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetMaintenancePoliciesMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMaintenancePoliciesMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetMaintenancePoliciesMaintenancePolicyOutput) ToGetMaintenancePoliciesMaintenancePolicyOutput() GetMaintenancePoliciesMaintenancePolicyOutput {
+	return o
+}
+
+func (o GetMaintenancePoliciesMaintenancePolicyOutput) ToGetMaintenancePoliciesMaintenancePolicyOutputWithContext(ctx context.Context) GetMaintenancePoliciesMaintenancePolicyOutput {
+	return o
+}
+
+// Description of this policy
+func (o GetMaintenancePoliciesMaintenancePolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMaintenancePoliciesMaintenancePolicy) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether this is the default policy for the account.
+func (o GetMaintenancePoliciesMaintenancePolicyOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMaintenancePoliciesMaintenancePolicy) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// The label for this policy.
+func (o GetMaintenancePoliciesMaintenancePolicyOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMaintenancePoliciesMaintenancePolicy) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The notification lead time in seconds.
+func (o GetMaintenancePoliciesMaintenancePolicyOutput) NotificationPeriodSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMaintenancePoliciesMaintenancePolicy) int { return v.NotificationPeriodSec }).(pulumi.IntOutput)
+}
+
+// Unique identifier for this policy
+func (o GetMaintenancePoliciesMaintenancePolicyOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMaintenancePoliciesMaintenancePolicy) string { return v.Slug }).(pulumi.StringOutput)
+}
+
+// The type of action taken during maintenance.
+func (o GetMaintenancePoliciesMaintenancePolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMaintenancePoliciesMaintenancePolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetMaintenancePoliciesMaintenancePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMaintenancePoliciesMaintenancePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMaintenancePoliciesMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetMaintenancePoliciesMaintenancePolicyArrayOutput) ToGetMaintenancePoliciesMaintenancePolicyArrayOutput() GetMaintenancePoliciesMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetMaintenancePoliciesMaintenancePolicyArrayOutput) ToGetMaintenancePoliciesMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetMaintenancePoliciesMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetMaintenancePoliciesMaintenancePolicyArrayOutput) Index(i pulumi.IntInput) GetMaintenancePoliciesMaintenancePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMaintenancePoliciesMaintenancePolicy {
+		return vs[0].([]GetMaintenancePoliciesMaintenancePolicy)[vs[1].(int)]
+	}).(GetMaintenancePoliciesMaintenancePolicyOutput)
 }
 
 type GetNbTypesFilter struct {
@@ -41472,6 +41756,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesTypeRegionPriceArrayInput)(nil)).Elem(), GetLkeTypesTypeRegionPriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeVersionsVersionInput)(nil)).Elem(), GetLkeVersionsVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeVersionsVersionArrayInput)(nil)).Elem(), GetLkeVersionsVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMaintenancePoliciesFilterInput)(nil)).Elem(), GetMaintenancePoliciesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMaintenancePoliciesFilterArrayInput)(nil)).Elem(), GetMaintenancePoliciesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMaintenancePoliciesMaintenancePolicyInput)(nil)).Elem(), GetMaintenancePoliciesMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMaintenancePoliciesMaintenancePolicyArrayInput)(nil)).Elem(), GetMaintenancePoliciesMaintenancePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesFilterInput)(nil)).Elem(), GetNbTypesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesFilterArrayInput)(nil)).Elem(), GetNbTypesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeInput)(nil)).Elem(), GetNbTypesTypeArgs{})
@@ -42069,6 +42357,10 @@ func init() {
 	pulumi.RegisterOutputType(GetLkeTypesTypeRegionPriceArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeVersionsVersionOutput{})
 	pulumi.RegisterOutputType(GetLkeVersionsVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetMaintenancePoliciesFilterOutput{})
+	pulumi.RegisterOutputType(GetMaintenancePoliciesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetMaintenancePoliciesMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(GetMaintenancePoliciesMaintenancePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetNbTypesFilterOutput{})
 	pulumi.RegisterOutputType(GetNbTypesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetNbTypesTypeOutput{})

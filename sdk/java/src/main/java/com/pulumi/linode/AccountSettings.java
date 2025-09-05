@@ -94,6 +94,20 @@ public class AccountSettings extends com.pulumi.resources.CustomResource {
         return this.longviewSubscription;
     }
     /**
+     * The default maintenance policy for this account. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to `&#34;linode/migrate&#34;`. (**Note: v4beta only.**)
+     * 
+     */
+    @Export(name="maintenancePolicy", refs={String.class}, tree="[0]")
+    private Output<String> maintenancePolicy;
+
+    /**
+     * @return The default maintenance policy for this account. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to `&#34;linode/migrate&#34;`. (**Note: v4beta only.**)
+     * 
+     */
+    public Output<String> maintenancePolicy() {
+        return this.maintenancePolicy;
+    }
+    /**
      * Enables monitoring for connectivity, response, and total request time.
      * 
      */

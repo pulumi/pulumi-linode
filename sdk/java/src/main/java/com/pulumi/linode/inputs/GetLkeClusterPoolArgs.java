@@ -114,6 +114,21 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The label of the Node Pool.
+     * 
+     */
+    @Import(name="label")
+    private @Nullable Output<String> label;
+
+    /**
+     * @return The label of the Node Pool.
+     * 
+     */
+    public Optional<Output<String>> label() {
+        return Optional.ofNullable(this.label);
+    }
+
+    /**
      * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
      * 
      */
@@ -212,6 +227,7 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
         this.disks = $.disks;
         this.id = $.id;
         this.k8sVersion = $.k8sVersion;
+        this.label = $.label;
         this.labels = $.labels;
         this.nodes = $.nodes;
         this.tags = $.tags;
@@ -382,6 +398,27 @@ public final class GetLkeClusterPoolArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder k8sVersion(String k8sVersion) {
             return k8sVersion(Output.of(k8sVersion));
+        }
+
+        /**
+         * @param label The label of the Node Pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder label(@Nullable Output<String> label) {
+            $.label = label;
+            return this;
+        }
+
+        /**
+         * @param label The label of the Node Pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder label(String label) {
+            return label(Output.of(label));
         }
 
         /**

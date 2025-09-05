@@ -2134,6 +2134,10 @@ export interface GetInstancesInstance {
      * If applicable, the ID of the LKE cluster this instance is a part of.
      */
     lkeClusterId: number;
+    /**
+     * The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+     */
+    maintenancePolicy: string;
     placementGroups: outputs.GetInstancesInstancePlacementGroup[];
     /**
      * This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -2703,6 +2707,10 @@ export interface GetLkeClusterPool {
      */
     k8sVersion: string;
     /**
+     * The label of the Node Pool.
+     */
+    label?: string;
+    /**
      * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
      */
     labels: {[key: string]: string};
@@ -2920,6 +2928,48 @@ export interface GetLkeVersionsVersion {
      * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
      */
     tier: string;
+}
+
+export interface GetMaintenancePoliciesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetMaintenancePoliciesMaintenancePolicy {
+    /**
+     * Description of this policy
+     */
+    description: string;
+    /**
+     * Whether this is the default policy for the account.
+     */
+    isDefault: boolean;
+    /**
+     * The label for this policy.
+     */
+    label: string;
+    /**
+     * The notification lead time in seconds.
+     */
+    notificationPeriodSec: number;
+    /**
+     * Unique identifier for this policy
+     */
+    slug: string;
+    /**
+     * The type of action taken during maintenance.
+     */
+    type: string;
 }
 
 export interface GetNbTypesFilter {
@@ -5407,6 +5457,10 @@ export interface LkeClusterPool {
      * The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
     k8sVersion: string;
+    /**
+     * A label for the Node Pool. If not provided, it defaults to empty string.
+     */
+    label?: string;
     /**
      * A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      */

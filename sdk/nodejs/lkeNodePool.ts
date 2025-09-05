@@ -57,6 +57,10 @@ export class LkeNodePool extends pulumi.CustomResource {
      */
     declare public readonly k8sVersion: pulumi.Output<string>;
     /**
+     * A label for the Node Pool. If not provided, it defaults to empty string.
+     */
+    declare public readonly label: pulumi.Output<string>;
+    /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string}>;
@@ -106,6 +110,7 @@ export class LkeNodePool extends pulumi.CustomResource {
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["diskEncryption"] = state?.diskEncryption;
             resourceInputs["k8sVersion"] = state?.k8sVersion;
+            resourceInputs["label"] = state?.label;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["nodeCount"] = state?.nodeCount;
             resourceInputs["nodes"] = state?.nodes;
@@ -124,6 +129,7 @@ export class LkeNodePool extends pulumi.CustomResource {
             resourceInputs["autoscaler"] = args?.autoscaler;
             resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["k8sVersion"] = args?.k8sVersion;
+            resourceInputs["label"] = args?.label;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["nodeCount"] = args?.nodeCount;
             resourceInputs["tags"] = args?.tags;
@@ -155,6 +161,10 @@ export interface LkeNodePoolState {
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
     k8sVersion?: pulumi.Input<string>;
+    /**
+     * A label for the Node Pool. If not provided, it defaults to empty string.
+     */
+    label?: pulumi.Input<string>;
     /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
@@ -202,6 +212,10 @@ export interface LkeNodePoolArgs {
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
     k8sVersion?: pulumi.Input<string>;
+    /**
+     * A label for the Node Pool. If not provided, it defaults to empty string.
+     */
+    label?: pulumi.Input<string>;
     /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */

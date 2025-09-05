@@ -143,7 +143,7 @@ class GetLkeClusterResult:
     @pulumi.getter
     def label(self) -> _builtins.str:
         """
-        The unique label for the cluster.
+        The label of the Node Pool.
         """
         return pulumi.get(self, "label")
 

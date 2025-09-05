@@ -241,6 +241,8 @@ __all__ = [
     'GetLkeTypesTypePriceResult',
     'GetLkeTypesTypeRegionPriceResult',
     'GetLkeVersionsVersionResult',
+    'GetMaintenancePoliciesFilterResult',
+    'GetMaintenancePoliciesMaintenancePolicyResult',
     'GetNbTypesFilterResult',
     'GetNbTypesTypeResult',
     'GetNbTypesTypePriceResult',
@@ -3147,6 +3149,7 @@ class LkeClusterPool(dict):
                  disk_encryption: Optional[_builtins.str] = None,
                  id: Optional[_builtins.int] = None,
                  k8s_version: Optional[_builtins.str] = None,
+                 label: Optional[_builtins.str] = None,
                  labels: Optional[Mapping[str, _builtins.str]] = None,
                  nodes: Optional[Sequence['outputs.LkeClusterPoolNode']] = None,
                  tags: Optional[Sequence[_builtins.str]] = None,
@@ -3159,6 +3162,7 @@ class LkeClusterPool(dict):
         :param _builtins.str disk_encryption: The disk encryption policy for nodes in this pool.
         :param _builtins.int id: The ID of the node.
         :param _builtins.str k8s_version: The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        :param _builtins.str label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param Mapping[str, _builtins.str] labels: A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
         :param Sequence['LkeClusterPoolNodeArgs'] nodes: The nodes in the node pool.
         :param Sequence[_builtins.str] tags: A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
@@ -3176,6 +3180,8 @@ class LkeClusterPool(dict):
             pulumi.set(__self__, "id", id)
         if k8s_version is not None:
             pulumi.set(__self__, "k8s_version", k8s_version)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if nodes is not None:
@@ -3234,6 +3240,14 @@ class LkeClusterPool(dict):
         The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         """
         return pulumi.get(self, "k8s_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> Optional[_builtins.str]:
+        """
+        A label for the Node Pool. If not provided, it defaults to empty string.
+        """
+        return pulumi.get(self, "label")
 
     @_builtins.property
     @pulumi.getter
@@ -11294,6 +11308,7 @@ class GetInstancesInstanceResult(dict):
                  ipv6: _builtins.str,
                  label: _builtins.str,
                  lke_cluster_id: _builtins.int,
+                 maintenance_policy: _builtins.str,
                  placement_groups: Sequence['outputs.GetInstancesInstancePlacementGroupResult'],
                  private_ip_address: _builtins.str,
                  region: _builtins.str,
@@ -11320,6 +11335,7 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param _builtins.str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         :param _builtins.int lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
+        :param _builtins.str maintenance_policy: The maintenance policy of this Linode instance. (**Note: v4beta only.**)
         :param _builtins.str private_ip_address: This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         :param _builtins.str region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
         :param _builtins.str status: The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
@@ -11345,6 +11361,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "ipv6", ipv6)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "lke_cluster_id", lke_cluster_id)
+        pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         pulumi.set(__self__, "placement_groups", placement_groups)
         pulumi.set(__self__, "private_ip_address", private_ip_address)
         pulumi.set(__self__, "region", region)
@@ -11487,6 +11504,14 @@ class GetInstancesInstanceResult(dict):
         If applicable, the ID of the LKE cluster this instance is a part of.
         """
         return pulumi.get(self, "lke_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> _builtins.str:
+        """
+        The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+        """
+        return pulumi.get(self, "maintenance_policy")
 
     @_builtins.property
     @pulumi.getter(name="placementGroups")
@@ -12971,6 +12996,7 @@ class GetLkeClusterPoolResult(dict):
                  update_strategy: _builtins.str,
                  autoscalers: Optional[Sequence['outputs.GetLkeClusterPoolAutoscalerResult']] = None,
                  disks: Optional[Sequence['outputs.GetLkeClusterPoolDiskResult']] = None,
+                 label: Optional[_builtins.str] = None,
                  nodes: Optional[Sequence['outputs.GetLkeClusterPoolNodeResult']] = None):
         """
         :param _builtins.int count: The number of nodes in the Node Pool.
@@ -12984,6 +13010,7 @@ class GetLkeClusterPoolResult(dict):
         :param _builtins.str update_strategy: The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param Sequence['GetLkeClusterPoolAutoscalerArgs'] autoscalers: The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
         :param Sequence['GetLkeClusterPoolDiskArgs'] disks: This Node Pool’s custom disk layout.
+        :param _builtins.str label: The label of the Node Pool.
         :param Sequence['GetLkeClusterPoolNodeArgs'] nodes: The nodes in the Node Pool.
         """
         pulumi.set(__self__, "count", count)
@@ -12999,6 +13026,8 @@ class GetLkeClusterPoolResult(dict):
             pulumi.set(__self__, "autoscalers", autoscalers)
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
 
@@ -13089,6 +13118,14 @@ class GetLkeClusterPoolResult(dict):
         This Node Pool’s custom disk layout.
         """
         return pulumi.get(self, "disks")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> Optional[_builtins.str]:
+        """
+        The label of the Node Pool.
+        """
+        return pulumi.get(self, "label")
 
     @_builtins.property
     @pulumi.getter
@@ -13627,6 +13664,120 @@ class GetLkeVersionsVersionResult(dict):
         The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
         """
         return pulumi.get(self, "tier")
+
+
+@pulumi.output_type
+class GetMaintenancePoliciesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetMaintenancePoliciesMaintenancePolicyResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 is_default: _builtins.bool,
+                 label: _builtins.str,
+                 notification_period_sec: _builtins.int,
+                 slug: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str description: Description of this policy
+        :param _builtins.bool is_default: Whether this is the default policy for the account.
+        :param _builtins.str label: The label for this policy.
+        :param _builtins.int notification_period_sec: The notification lead time in seconds.
+        :param _builtins.str slug: Unique identifier for this policy
+        :param _builtins.str type: The type of action taken during maintenance.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "is_default", is_default)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "notification_period_sec", notification_period_sec)
+        pulumi.set(__self__, "slug", slug)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of this policy
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> _builtins.bool:
+        """
+        Whether this is the default policy for the account.
+        """
+        return pulumi.get(self, "is_default")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        The label for this policy.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter(name="notificationPeriodSec")
+    def notification_period_sec(self) -> _builtins.int:
+        """
+        The notification lead time in seconds.
+        """
+        return pulumi.get(self, "notification_period_sec")
+
+    @_builtins.property
+    @pulumi.getter
+    def slug(self) -> _builtins.str:
+        """
+        Unique identifier for this policy
+        """
+        return pulumi.get(self, "slug")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of action taken during maintenance.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

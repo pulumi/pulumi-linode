@@ -98,6 +98,10 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string LongviewSubscription;
         /// <summary>
+        /// The default maintenance policy for this account. (**Note: v4beta only.**)
+        /// </summary>
+        public readonly string MaintenancePolicy;
+        /// <summary>
         /// Enables monitoring for connectivity, response, and total request time.
         /// </summary>
         public readonly bool Managed;
@@ -118,6 +122,8 @@ namespace Pulumi.Linode
 
             string longviewSubscription,
 
+            string maintenancePolicy,
+
             bool managed,
 
             bool networkHelper,
@@ -127,6 +133,7 @@ namespace Pulumi.Linode
             BackupsEnabled = backupsEnabled;
             Id = id;
             LongviewSubscription = longviewSubscription;
+            MaintenancePolicy = maintenancePolicy;
             Managed = managed;
             NetworkHelper = networkHelper;
             ObjectStorage = objectStorage;

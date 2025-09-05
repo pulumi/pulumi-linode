@@ -38,6 +38,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string K8sVersion;
         /// <summary>
+        /// The label of the Node Pool.
+        /// </summary>
+        public readonly string? Label;
+        /// <summary>
         /// Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -76,6 +80,8 @@ namespace Pulumi.Linode.Outputs
 
             string k8sVersion,
 
+            string? label,
+
             ImmutableDictionary<string, string> labels,
 
             ImmutableArray<Outputs.GetLkeClusterPoolNodeResult> nodes,
@@ -94,6 +100,7 @@ namespace Pulumi.Linode.Outputs
             Disks = disks;
             Id = id;
             K8sVersion = k8sVersion;
+            Label = label;
             Labels = labels;
             Nodes = nodes;
             Tags = tags;

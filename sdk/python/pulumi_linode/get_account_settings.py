@@ -26,7 +26,7 @@ class GetAccountSettingsResult:
     """
     A collection of values returned by getAccountSettings.
     """
-    def __init__(__self__, backups_enabled=None, id=None, longview_subscription=None, managed=None, network_helper=None, object_storage=None):
+    def __init__(__self__, backups_enabled=None, id=None, longview_subscription=None, maintenance_policy=None, managed=None, network_helper=None, object_storage=None):
         if backups_enabled and not isinstance(backups_enabled, bool):
             raise TypeError("Expected argument 'backups_enabled' to be a bool")
         pulumi.set(__self__, "backups_enabled", backups_enabled)
@@ -36,6 +36,9 @@ class GetAccountSettingsResult:
         if longview_subscription and not isinstance(longview_subscription, str):
             raise TypeError("Expected argument 'longview_subscription' to be a str")
         pulumi.set(__self__, "longview_subscription", longview_subscription)
+        if maintenance_policy and not isinstance(maintenance_policy, str):
+            raise TypeError("Expected argument 'maintenance_policy' to be a str")
+        pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if managed and not isinstance(managed, bool):
             raise TypeError("Expected argument 'managed' to be a bool")
         pulumi.set(__self__, "managed", managed)
@@ -66,6 +69,14 @@ class GetAccountSettingsResult:
         The Longview Pro tier you are currently subscribed to.
         """
         return pulumi.get(self, "longview_subscription")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> _builtins.str:
+        """
+        The default maintenance policy for this account. (**Note: v4beta only.**)
+        """
+        return pulumi.get(self, "maintenance_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -101,6 +112,7 @@ class AwaitableGetAccountSettingsResult(GetAccountSettingsResult):
             backups_enabled=self.backups_enabled,
             id=self.id,
             longview_subscription=self.longview_subscription,
+            maintenance_policy=self.maintenance_policy,
             managed=self.managed,
             network_helper=self.network_helper,
             object_storage=self.object_storage)
@@ -130,6 +142,7 @@ def get_account_settings(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
         backups_enabled=pulumi.get(__ret__, 'backups_enabled'),
         id=pulumi.get(__ret__, 'id'),
         longview_subscription=pulumi.get(__ret__, 'longview_subscription'),
+        maintenance_policy=pulumi.get(__ret__, 'maintenance_policy'),
         managed=pulumi.get(__ret__, 'managed'),
         network_helper=pulumi.get(__ret__, 'network_helper'),
         object_storage=pulumi.get(__ret__, 'object_storage'))
@@ -156,6 +169,7 @@ def get_account_settings_output(opts: Optional[Union[pulumi.InvokeOptions, pulum
         backups_enabled=pulumi.get(__response__, 'backups_enabled'),
         id=pulumi.get(__response__, 'id'),
         longview_subscription=pulumi.get(__response__, 'longview_subscription'),
+        maintenance_policy=pulumi.get(__response__, 'maintenance_policy'),
         managed=pulumi.get(__response__, 'managed'),
         network_helper=pulumi.get(__response__, 'network_helper'),
         object_storage=pulumi.get(__response__, 'object_storage')))

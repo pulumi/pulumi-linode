@@ -60,6 +60,12 @@ namespace Pulumi.Linode.Inputs
         [Input("k8sVersion", required: true)]
         public string K8sVersion { get; set; } = null!;
 
+        /// <summary>
+        /// The label of the Node Pool.
+        /// </summary>
+        [Input("label")]
+        public string? Label { get; set; }
+
         [Input("labels", required: true)]
         private Dictionary<string, string>? _labels;
 

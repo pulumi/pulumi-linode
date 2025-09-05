@@ -34,6 +34,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? K8sVersion;
         /// <summary>
+        /// A label for the Node Pool. If not provided, it defaults to empty string.
+        /// </summary>
+        public readonly string? Label;
+        /// <summary>
         /// A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
@@ -70,6 +74,8 @@ namespace Pulumi.Linode.Outputs
 
             string? k8sVersion,
 
+            string? label,
+
             ImmutableDictionary<string, string>? labels,
 
             ImmutableArray<Outputs.LkeClusterPoolNode> nodes,
@@ -87,6 +93,7 @@ namespace Pulumi.Linode.Outputs
             DiskEncryption = diskEncryption;
             Id = id;
             K8sVersion = k8sVersion;
+            Label = label;
             Labels = labels;
             Nodes = nodes;
             Tags = tags;

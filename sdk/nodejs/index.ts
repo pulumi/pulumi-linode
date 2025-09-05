@@ -260,6 +260,11 @@ export const getLkeVersions: typeof import("./getLkeVersions").getLkeVersions = 
 export const getLkeVersionsOutput: typeof import("./getLkeVersions").getLkeVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getLkeVersions","getLkeVersionsOutput"], () => require("./getLkeVersions"));
 
+export { GetMaintenancePoliciesArgs, GetMaintenancePoliciesResult, GetMaintenancePoliciesOutputArgs } from "./getMaintenancePolicies";
+export const getMaintenancePolicies: typeof import("./getMaintenancePolicies").getMaintenancePolicies = null as any;
+export const getMaintenancePoliciesOutput: typeof import("./getMaintenancePolicies").getMaintenancePoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getMaintenancePolicies","getMaintenancePoliciesOutput"], () => require("./getMaintenancePolicies"));
+
 export { GetNbTypesArgs, GetNbTypesResult, GetNbTypesOutputArgs } from "./getNbTypes";
 export const getNbTypes: typeof import("./getNbTypes").getNbTypes = null as any;
 export const getNbTypesOutput: typeof import("./getNbTypes").getNbTypesOutput = null as any;

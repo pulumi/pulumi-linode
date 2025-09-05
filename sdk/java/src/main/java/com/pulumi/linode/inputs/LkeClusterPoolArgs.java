@@ -98,6 +98,21 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A label for the Node Pool. If not provided, it defaults to empty string.
+     * 
+     */
+    @Import(name="label")
+    private @Nullable Output<String> label;
+
+    /**
+     * @return A label for the Node Pool. If not provided, it defaults to empty string.
+     * 
+     */
+    public Optional<Output<String>> label() {
+        return Optional.ofNullable(this.label);
+    }
+
+    /**
      * A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      * 
      */
@@ -195,6 +210,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         this.diskEncryption = $.diskEncryption;
         this.id = $.id;
         this.k8sVersion = $.k8sVersion;
+        this.label = $.label;
         this.labels = $.labels;
         this.nodes = $.nodes;
         this.tags = $.tags;
@@ -324,6 +340,27 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder k8sVersion(String k8sVersion) {
             return k8sVersion(Output.of(k8sVersion));
+        }
+
+        /**
+         * @param label A label for the Node Pool. If not provided, it defaults to empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder label(@Nullable Output<String> label) {
+            $.label = label;
+            return this;
+        }
+
+        /**
+         * @param label A label for the Node Pool. If not provided, it defaults to empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder label(String label) {
+            return label(Output.of(label));
         }
 
         /**

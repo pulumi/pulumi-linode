@@ -57,7 +57,7 @@ public final class GetLkeClusterResult {
      */
     private String kubeconfig;
     /**
-     * @return The unique label for the cluster.
+     * @return The label of the Node Pool.
      * 
      */
     private String label;
@@ -150,7 +150,7 @@ public final class GetLkeClusterResult {
         return this.kubeconfig;
     }
     /**
-     * @return The unique label for the cluster.
+     * @return The label of the Node Pool.
      * 
      */
     public String label() {

@@ -230,6 +230,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lkeClusterId: pulumi.Output<number>;
     /**
+     * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+     */
+    declare public readonly maintenancePolicy: pulumi.Output<string>;
+    /**
      * Various fields related to the Linode Metadata service.
      */
     declare public readonly metadatas: pulumi.Output<outputs.InstanceMetadata[] | undefined>;
@@ -356,6 +360,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipv6"] = state?.ipv6;
             resourceInputs["label"] = state?.label;
             resourceInputs["lkeClusterId"] = state?.lkeClusterId;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
             resourceInputs["metadatas"] = state?.metadatas;
             resourceInputs["migrationType"] = state?.migrationType;
             resourceInputs["placementGroup"] = state?.placementGroup;
@@ -395,6 +400,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["interfaces"] = args?.interfaces;
             resourceInputs["ipv4s"] = args?.ipv4s;
             resourceInputs["label"] = args?.label;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["metadatas"] = args?.metadatas;
             resourceInputs["migrationType"] = args?.migrationType;
             resourceInputs["placementGroup"] = args?.placementGroup;
@@ -534,6 +540,10 @@ export interface InstanceState {
      * If applicable, the ID of the LKE cluster this instance is a part of.
      */
     lkeClusterId?: pulumi.Input<number>;
+    /**
+     * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+     */
+    maintenancePolicy?: pulumi.Input<string>;
     /**
      * Various fields related to the Linode Metadata service.
      */
@@ -702,6 +712,10 @@ export interface InstanceArgs {
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label?: pulumi.Input<string>;
+    /**
+     * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+     */
+    maintenancePolicy?: pulumi.Input<string>;
     /**
      * Various fields related to the Linode Metadata service.
      */

@@ -47,6 +47,21 @@ public final class AccountSettingsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The default maintenance policy for this account. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to `&#34;linode/migrate&#34;`. (**Note: v4beta only.**)
+     * 
+     */
+    @Import(name="maintenancePolicy")
+    private @Nullable Output<String> maintenancePolicy;
+
+    /**
+     * @return The default maintenance policy for this account. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to `&#34;linode/migrate&#34;`. (**Note: v4beta only.**)
+     * 
+     */
+    public Optional<Output<String>> maintenancePolicy() {
+        return Optional.ofNullable(this.maintenancePolicy);
+    }
+
+    /**
      * Enables monitoring for connectivity, response, and total request time.
      * 
      */
@@ -96,6 +111,7 @@ public final class AccountSettingsState extends com.pulumi.resources.ResourceArg
     private AccountSettingsState(AccountSettingsState $) {
         this.backupsEnabled = $.backupsEnabled;
         this.longviewSubscription = $.longviewSubscription;
+        this.maintenancePolicy = $.maintenancePolicy;
         this.managed = $.managed;
         this.networkHelper = $.networkHelper;
         this.objectStorage = $.objectStorage;
@@ -159,6 +175,27 @@ public final class AccountSettingsState extends com.pulumi.resources.ResourceArg
          */
         public Builder longviewSubscription(String longviewSubscription) {
             return longviewSubscription(Output.of(longviewSubscription));
+        }
+
+        /**
+         * @param maintenancePolicy The default maintenance policy for this account. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to `&#34;linode/migrate&#34;`. (**Note: v4beta only.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(@Nullable Output<String> maintenancePolicy) {
+            $.maintenancePolicy = maintenancePolicy;
+            return this;
+        }
+
+        /**
+         * @param maintenancePolicy The default maintenance policy for this account. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to `&#34;linode/migrate&#34;`. (**Note: v4beta only.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(String maintenancePolicy) {
+            return maintenancePolicy(Output.of(maintenancePolicy));
         }
 
         /**

@@ -25,6 +25,7 @@ class LkeNodePoolArgs:
                  type: pulumi.Input[_builtins.str],
                  autoscaler: Optional[pulumi.Input['LkeNodePoolAutoscalerArgs']] = None,
                  k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 label: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -35,6 +36,7 @@ class LkeNodePoolArgs:
         :param pulumi.Input[_builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[_builtins.str] type: A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
@@ -51,6 +53,8 @@ class LkeNodePoolArgs:
             pulumi.set(__self__, "autoscaler", autoscaler)
         if k8s_version is not None:
             pulumi.set(__self__, "k8s_version", k8s_version)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if node_count is not None:
@@ -106,6 +110,18 @@ class LkeNodePoolArgs:
     @k8s_version.setter
     def k8s_version(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "k8s_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A label for the Node Pool. If not provided, it defaults to empty string.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
@@ -179,6 +195,7 @@ class _LkeNodePoolState:
                  cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
                  disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
                  k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 label: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]]] = None,
@@ -191,6 +208,7 @@ class _LkeNodePoolState:
         :param pulumi.Input[_builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]] nodes: A list of nodes in the node pool.
@@ -211,6 +229,8 @@ class _LkeNodePoolState:
             pulumi.set(__self__, "disk_encryption", disk_encryption)
         if k8s_version is not None:
             pulumi.set(__self__, "k8s_version", k8s_version)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if node_count is not None:
@@ -270,6 +290,18 @@ class _LkeNodePoolState:
     @k8s_version.setter
     def k8s_version(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "k8s_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A label for the Node Pool. If not provided, it defaults to empty string.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
@@ -369,6 +401,7 @@ class LkeNodePool(pulumi.CustomResource):
                  autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
                  k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 label: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -389,6 +422,7 @@ class LkeNodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
@@ -433,6 +467,7 @@ class LkeNodePool(pulumi.CustomResource):
                  autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
                  cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
                  k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 label: Optional[pulumi.Input[_builtins.str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -453,6 +488,7 @@ class LkeNodePool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["k8s_version"] = k8s_version
+            __props__.__dict__["label"] = label
             __props__.__dict__["labels"] = labels
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["tags"] = tags
@@ -477,6 +513,7 @@ class LkeNodePool(pulumi.CustomResource):
             cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
             disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
             k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
+            label: Optional[pulumi.Input[_builtins.str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             node_count: Optional[pulumi.Input[_builtins.int]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict']]]]] = None,
@@ -494,6 +531,7 @@ class LkeNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+        :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict']]]] nodes: A list of nodes in the node pool.
@@ -514,6 +552,7 @@ class LkeNodePool(pulumi.CustomResource):
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["disk_encryption"] = disk_encryption
         __props__.__dict__["k8s_version"] = k8s_version
+        __props__.__dict__["label"] = label
         __props__.__dict__["labels"] = labels
         __props__.__dict__["node_count"] = node_count
         __props__.__dict__["nodes"] = nodes
@@ -551,6 +590,14 @@ class LkeNodePool(pulumi.CustomResource):
         The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         """
         return pulumi.get(self, "k8s_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Output[_builtins.str]:
+        """
+        A label for the Node Pool. If not provided, it defaults to empty string.
+        """
+        return pulumi.get(self, "label")
 
     @_builtins.property
     @pulumi.getter

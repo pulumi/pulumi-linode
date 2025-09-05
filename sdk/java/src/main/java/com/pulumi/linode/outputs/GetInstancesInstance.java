@@ -100,6 +100,11 @@ public final class GetInstancesInstance {
      * 
      */
     private Integer lkeClusterId;
+    /**
+     * @return The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+     * 
+     */
+    private String maintenancePolicy;
     private List<GetInstancesInstancePlacementGroup> placementGroups;
     /**
      * @return This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -254,6 +259,13 @@ public final class GetInstancesInstance {
     public Integer lkeClusterId() {
         return this.lkeClusterId;
     }
+    /**
+     * @return The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+     * 
+     */
+    public String maintenancePolicy() {
+        return this.maintenancePolicy;
+    }
     public List<GetInstancesInstancePlacementGroup> placementGroups() {
         return this.placementGroups;
     }
@@ -336,6 +348,7 @@ public final class GetInstancesInstance {
         private String ipv6;
         private String label;
         private Integer lkeClusterId;
+        private String maintenancePolicy;
         private List<GetInstancesInstancePlacementGroup> placementGroups;
         private String privateIpAddress;
         private String region;
@@ -365,6 +378,7 @@ public final class GetInstancesInstance {
     	      this.ipv6 = defaults.ipv6;
     	      this.label = defaults.label;
     	      this.lkeClusterId = defaults.lkeClusterId;
+    	      this.maintenancePolicy = defaults.maintenancePolicy;
     	      this.placementGroups = defaults.placementGroups;
     	      this.privateIpAddress = defaults.privateIpAddress;
     	      this.region = defaults.region;
@@ -528,6 +542,14 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder maintenancePolicy(String maintenancePolicy) {
+            if (maintenancePolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "maintenancePolicy");
+            }
+            this.maintenancePolicy = maintenancePolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder placementGroups(List<GetInstancesInstancePlacementGroup> placementGroups) {
             if (placementGroups == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "placementGroups");
@@ -627,6 +649,7 @@ public final class GetInstancesInstance {
             _resultValue.ipv6 = ipv6;
             _resultValue.label = label;
             _resultValue.lkeClusterId = lkeClusterId;
+            _resultValue.maintenancePolicy = maintenancePolicy;
             _resultValue.placementGroups = placementGroups;
             _resultValue.privateIpAddress = privateIpAddress;
             _resultValue.region = region;

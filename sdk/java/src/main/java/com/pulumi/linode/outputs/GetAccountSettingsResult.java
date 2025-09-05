@@ -23,6 +23,11 @@ public final class GetAccountSettingsResult {
      */
     private String longviewSubscription;
     /**
+     * @return The default maintenance policy for this account. (**Note: v4beta only.**)
+     * 
+     */
+    private String maintenancePolicy;
+    /**
      * @return Enables monitoring for connectivity, response, and total request time.
      * 
      */
@@ -55,6 +60,13 @@ public final class GetAccountSettingsResult {
      */
     public String longviewSubscription() {
         return this.longviewSubscription;
+    }
+    /**
+     * @return The default maintenance policy for this account. (**Note: v4beta only.**)
+     * 
+     */
+    public String maintenancePolicy() {
+        return this.maintenancePolicy;
     }
     /**
      * @return Enables monitoring for connectivity, response, and total request time.
@@ -90,6 +102,7 @@ public final class GetAccountSettingsResult {
         private Boolean backupsEnabled;
         private String id;
         private String longviewSubscription;
+        private String maintenancePolicy;
         private Boolean managed;
         private Boolean networkHelper;
         private String objectStorage;
@@ -99,6 +112,7 @@ public final class GetAccountSettingsResult {
     	      this.backupsEnabled = defaults.backupsEnabled;
     	      this.id = defaults.id;
     	      this.longviewSubscription = defaults.longviewSubscription;
+    	      this.maintenancePolicy = defaults.maintenancePolicy;
     	      this.managed = defaults.managed;
     	      this.networkHelper = defaults.networkHelper;
     	      this.objectStorage = defaults.objectStorage;
@@ -126,6 +140,14 @@ public final class GetAccountSettingsResult {
               throw new MissingRequiredPropertyException("GetAccountSettingsResult", "longviewSubscription");
             }
             this.longviewSubscription = longviewSubscription;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maintenancePolicy(String maintenancePolicy) {
+            if (maintenancePolicy == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingsResult", "maintenancePolicy");
+            }
+            this.maintenancePolicy = maintenancePolicy;
             return this;
         }
         @CustomType.Setter
@@ -157,6 +179,7 @@ public final class GetAccountSettingsResult {
             _resultValue.backupsEnabled = backupsEnabled;
             _resultValue.id = id;
             _resultValue.longviewSubscription = longviewSubscription;
+            _resultValue.maintenancePolicy = maintenancePolicy;
             _resultValue.managed = managed;
             _resultValue.networkHelper = networkHelper;
             _resultValue.objectStorage = objectStorage;

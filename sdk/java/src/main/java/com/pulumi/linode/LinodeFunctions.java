@@ -83,6 +83,8 @@ import com.pulumi.linode.inputs.GetLkeVersionArgs;
 import com.pulumi.linode.inputs.GetLkeVersionPlainArgs;
 import com.pulumi.linode.inputs.GetLkeVersionsArgs;
 import com.pulumi.linode.inputs.GetLkeVersionsPlainArgs;
+import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
+import com.pulumi.linode.inputs.GetMaintenancePoliciesPlainArgs;
 import com.pulumi.linode.inputs.GetNbTypesArgs;
 import com.pulumi.linode.inputs.GetNbTypesPlainArgs;
 import com.pulumi.linode.inputs.GetNetworkTransferPricesArgs;
@@ -188,6 +190,7 @@ import com.pulumi.linode.outputs.GetLkeClustersResult;
 import com.pulumi.linode.outputs.GetLkeTypesResult;
 import com.pulumi.linode.outputs.GetLkeVersionResult;
 import com.pulumi.linode.outputs.GetLkeVersionsResult;
+import com.pulumi.linode.outputs.GetMaintenancePoliciesResult;
 import com.pulumi.linode.outputs.GetNbTypesResult;
 import com.pulumi.linode.outputs.GetNetworkTransferPricesResult;
 import com.pulumi.linode.outputs.GetNetworkingIpResult;
@@ -25306,6 +25309,335 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain(GetLkeVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeVersions:getLkeVersions", TypeShape.of(GetLkeVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMaintenancePolicies(GetMaintenancePoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
+     * 
+     */
+    public static Output<GetMaintenancePoliciesResult> getMaintenancePolicies() {
+        return getMaintenancePolicies(GetMaintenancePoliciesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMaintenancePolicies(GetMaintenancePoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
+     * 
+     */
+    public static CompletableFuture<GetMaintenancePoliciesResult> getMaintenancePoliciesPlain() {
+        return getMaintenancePoliciesPlain(GetMaintenancePoliciesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMaintenancePolicies(GetMaintenancePoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
+     * 
+     */
+    public static Output<GetMaintenancePoliciesResult> getMaintenancePolicies(GetMaintenancePoliciesArgs args) {
+        return getMaintenancePolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMaintenancePolicies(GetMaintenancePoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
+     * 
+     */
+    public static CompletableFuture<GetMaintenancePoliciesResult> getMaintenancePoliciesPlain(GetMaintenancePoliciesPlainArgs args) {
+        return getMaintenancePoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMaintenancePolicies(GetMaintenancePoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
+     * 
+     */
+    public static Output<GetMaintenancePoliciesResult> getMaintenancePolicies(GetMaintenancePoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMaintenancePolicies:getMaintenancePolicies", TypeShape.of(GetMaintenancePoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMaintenancePolicies(GetMaintenancePoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
+     * 
+     */
+    public static Output<GetMaintenancePoliciesResult> getMaintenancePolicies(GetMaintenancePoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMaintenancePolicies:getMaintenancePolicies", TypeShape.of(GetMaintenancePoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMaintenancePolicies(GetMaintenancePoliciesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
+     * 
+     */
+    public static CompletableFuture<GetMaintenancePoliciesResult> getMaintenancePoliciesPlain(GetMaintenancePoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getMaintenancePolicies:getMaintenancePolicies", TypeShape.of(GetMaintenancePoliciesResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetNbTypesResult> getNbTypes() {
         return getNbTypes(GetNbTypesArgs.Empty, InvokeOptions.Empty);

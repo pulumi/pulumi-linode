@@ -57,6 +57,7 @@ from .get_lke_clusters import *
 from .get_lke_types import *
 from .get_lke_version import *
 from .get_lke_versions import *
+from .get_maintenance_policies import *
 from .get_nb_types import *
 from .get_network_transfer_prices import *
 from .get_networking_ip import *
