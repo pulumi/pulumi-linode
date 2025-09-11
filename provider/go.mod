@@ -5,7 +5,7 @@ go 1.23.11
 toolchain go1.24.6
 
 require (
-	github.com/linode/terraform-provider-linode/v3 v3.2.0
+	github.com/linode/terraform-provider-linode/v3 v3.3.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.113.0
 	github.com/pulumi/pulumi/sdk/v3 v3.190.0
 )
@@ -133,7 +133,7 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
 	github.com/klauspost/compress v1.16.7 // indirect
-	github.com/linode/linodego v1.56.0 // indirect
+	github.com/linode/linodego v1.57.0 // indirect
 	github.com/linode/linodego/k8s v1.25.2 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect

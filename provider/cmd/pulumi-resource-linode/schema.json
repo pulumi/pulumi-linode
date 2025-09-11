@@ -1241,9 +1241,13 @@
                     "$ref": "#/types/linode:index/LkeClusterControlPlaneAcl:LkeClusterControlPlaneAcl",
                     "description": "Defines the ACL configuration for an LKE cluster's control plane.\n"
                 },
+                "auditLogsEnabled": {
+                    "type": "boolean",
+                    "description": "Enables audit logs on the cluster's control plane.\n\n* `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.\n"
+                },
                 "highAvailability": {
                     "type": "boolean",
-                    "description": "Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.\n\n* `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.\n"
+                    "description": "Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.\n"
                 }
             },
             "type": "object",
@@ -1251,6 +1255,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "acl",
+                        "auditLogsEnabled",
                         "highAvailability"
                     ]
                 }
@@ -7259,6 +7264,10 @@
                     },
                     "description": "The ACL configuration for an LKE cluster's control plane.\n"
                 },
+                "auditLogsEnabled": {
+                    "type": "boolean",
+                    "description": "Enables audit logs on the cluster's control plane.\n"
+                },
                 "highAvailability": {
                     "type": "boolean",
                     "description": "Whether High Availability is enabled for the cluster Control Plane.\n"
@@ -7266,6 +7275,7 @@
             },
             "type": "object",
             "required": [
+                "auditLogsEnabled",
                 "highAvailability"
             ],
             "language": {
@@ -7569,9 +7579,17 @@
                     "type": "string",
                     "description": "This Kubernetes cluster's location.\n"
                 },
+                "stackType": {
+                    "type": "string",
+                    "description": "The networking stack type of the Kubernetes cluster.\n"
+                },
                 "status": {
                     "type": "string",
                     "description": "The status of the cluster.\n"
+                },
+                "subnetId": {
+                    "type": "integer",
+                    "description": "The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).\n"
                 },
                 "tags": {
                     "type": "array",
@@ -7587,6 +7605,10 @@
                 "updated": {
                     "type": "string",
                     "description": "When this Kubernetes cluster was updated.\n"
+                },
+                "vpcId": {
+                    "type": "integer",
+                    "description": "The ID of the VPC to use for the Kubernetes cluster.\n"
                 }
             },
             "type": "object",
@@ -7597,10 +7619,13 @@
                 "k8sVersion",
                 "label",
                 "region",
+                "stackType",
                 "status",
+                "subnetId",
                 "tags",
                 "tier",
-                "updated"
+                "updated",
+                "vpcId"
             ],
             "language": {
                 "nodejs": {
@@ -7610,6 +7635,10 @@
         },
         "linode:index/getLkeClustersLkeClusterControlPlane:getLkeClustersLkeClusterControlPlane": {
             "properties": {
+                "auditLogsEnabled": {
+                    "type": "boolean",
+                    "description": "Enables audit logs on the cluster's control plane.\n"
+                },
                 "highAvailability": {
                     "type": "boolean",
                     "description": "Whether High Availability is enabled for the cluster Control Plane.\n"
@@ -7617,6 +7646,7 @@
             },
             "type": "object",
             "required": [
+                "auditLogsEnabled",
                 "highAvailability"
             ],
             "language": {
@@ -15867,9 +15897,17 @@
                     "type": "string",
                     "description": "This Kubernetes cluster's location.\n\n* `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.\n\n* `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.\n"
                 },
+                "stackType": {
+                    "type": "string",
+                    "description": "The networking stack type of the Kubernetes cluster.\n"
+                },
                 "status": {
                     "type": "string",
                     "description": "The status of the node. (`ready`, `not_ready`)\n"
+                },
+                "subnetId": {
+                    "type": "integer",
+                    "description": "The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)\n"
                 },
                 "tags": {
                     "type": "array",
@@ -15881,6 +15919,10 @@
                 "tier": {
                     "type": "string",
                     "description": "The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)\n"
+                },
+                "vpcId": {
+                    "type": "integer",
+                    "description": "The ID of the VPC to use for the Kubernetes cluster.\n"
                 }
             },
             "required": [
@@ -15893,9 +15935,12 @@
                 "label",
                 "pools",
                 "region",
+                "stackType",
                 "status",
+                "subnetId",
                 "tags",
-                "tier"
+                "tier",
+                "vpcId"
             ],
             "inputProperties": {
                 "aplEnabled": {
@@ -15934,6 +15979,14 @@
                     "description": "This Kubernetes cluster's location.\n\n* `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.\n\n* `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.\n",
                     "willReplaceOnChanges": true
                 },
+                "stackType": {
+                    "type": "string",
+                    "description": "The networking stack type of the Kubernetes cluster.\n"
+                },
+                "subnetId": {
+                    "type": "integer",
+                    "description": "The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)\n"
+                },
                 "tags": {
                     "type": "array",
                     "items": {
@@ -15945,6 +15998,10 @@
                     "type": "string",
                     "description": "The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)\n",
                     "willReplaceOnChanges": true
+                },
+                "vpcId": {
+                    "type": "integer",
+                    "description": "The ID of the VPC to use for the Kubernetes cluster.\n"
                 }
             },
             "requiredInputs": [
@@ -16008,9 +16065,17 @@
                         "description": "This Kubernetes cluster's location.\n\n* `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.\n\n* `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.\n",
                         "willReplaceOnChanges": true
                     },
+                    "stackType": {
+                        "type": "string",
+                        "description": "The networking stack type of the Kubernetes cluster.\n"
+                    },
                     "status": {
                         "type": "string",
                         "description": "The status of the node. (`ready`, `not_ready`)\n"
+                    },
+                    "subnetId": {
+                        "type": "integer",
+                        "description": "The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)\n"
                     },
                     "tags": {
                         "type": "array",
@@ -16023,6 +16088,10 @@
                         "type": "string",
                         "description": "The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)\n",
                         "willReplaceOnChanges": true
+                    },
+                    "vpcId": {
+                        "type": "integer",
+                        "description": "The ID of the VPC to use for the Kubernetes cluster.\n"
                     }
                 },
                 "type": "object"
@@ -22144,9 +22213,17 @@
                         "description": "This Kubernetes cluster's location.\n",
                         "type": "string"
                     },
+                    "stackType": {
+                        "description": "The networking stack type of the Kubernetes cluster.\n",
+                        "type": "string"
+                    },
                     "status": {
                         "description": "The status of the node. (`ready`, `not_ready`)\n",
                         "type": "string"
+                    },
+                    "subnetId": {
+                        "description": "The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).\n",
+                        "type": "integer"
                     },
                     "tags": {
                         "description": "An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.\n",
@@ -22162,6 +22239,10 @@
                     "updated": {
                         "description": "When this Kubernetes cluster was updated.\n",
                         "type": "string"
+                    },
+                    "vpcId": {
+                        "description": "The ID of the VPC to use for the Kubernetes cluster.\n",
+                        "type": "integer"
                     }
                 },
                 "required": [
@@ -22174,10 +22255,13 @@
                     "kubeconfig",
                     "label",
                     "region",
+                    "stackType",
                     "status",
+                    "subnetId",
                     "tags",
                     "tier",
-                    "updated"
+                    "updated",
+                    "vpcId"
                 ],
                 "type": "object"
             }
