@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.LkeClusterControlPlaneArgs;
 import com.pulumi.linode.inputs.LkeClusterPoolArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -178,6 +179,21 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    @Import(name="stackType")
+    private @Nullable Output<String> stackType;
+
+    /**
+     * @return The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    public Optional<Output<String>> stackType() {
+        return Optional.ofNullable(this.stackType);
+    }
+
+    /**
      * The status of the node. (`ready`, `not_ready`)
      * 
      */
@@ -190,6 +206,21 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    @Import(name="subnetId")
+    private @Nullable Output<Integer> subnetId;
+
+    /**
+     * @return The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public Optional<Output<Integer>> subnetId() {
+        return Optional.ofNullable(this.subnetId);
     }
 
     /**
@@ -222,6 +253,21 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tier);
     }
 
+    /**
+     * The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<Integer> vpcId;
+
+    /**
+     * @return The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    public Optional<Output<Integer>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
     private LkeClusterState() {}
 
     private LkeClusterState(LkeClusterState $) {
@@ -235,9 +281,12 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         this.label = $.label;
         this.pools = $.pools;
         this.region = $.region;
+        this.stackType = $.stackType;
         this.status = $.status;
+        this.subnetId = $.subnetId;
         this.tags = $.tags;
         this.tier = $.tier;
+        this.vpcId = $.vpcId;
     }
 
     public static Builder builder() {
@@ -507,6 +556,27 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param stackType The networking stack type of the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(@Nullable Output<String> stackType) {
+            $.stackType = stackType;
+            return this;
+        }
+
+        /**
+         * @param stackType The networking stack type of the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(String stackType) {
+            return stackType(Output.of(stackType));
+        }
+
+        /**
          * @param status The status of the node. (`ready`, `not_ready`)
          * 
          * @return builder
@@ -525,6 +595,27 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param subnetId The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(@Nullable Output<Integer> subnetId) {
+            $.subnetId = subnetId;
+            return this;
+        }
+
+        /**
+         * @param subnetId The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(Integer subnetId) {
+            return subnetId(Output.of(subnetId));
         }
 
         /**
@@ -577,6 +668,27 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tier(String tier) {
             return tier(Output.of(tier));
+        }
+
+        /**
+         * @param vpcId The ID of the VPC to use for the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<Integer> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The ID of the VPC to use for the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(Integer vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         public LkeClusterState build() {

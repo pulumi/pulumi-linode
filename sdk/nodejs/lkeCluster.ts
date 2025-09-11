@@ -88,9 +88,17 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
+     * The networking stack type of the Kubernetes cluster.
+     */
+    declare public readonly stackType: pulumi.Output<string>;
+    /**
      * The status of the node. (`ready`, `notReady`)
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    declare public readonly subnetId: pulumi.Output<number>;
     /**
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
@@ -99,6 +107,10 @@ export class LkeCluster extends pulumi.CustomResource {
      * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
      */
     declare public readonly tier: pulumi.Output<string>;
+    /**
+     * The ID of the VPC to use for the Kubernetes cluster.
+     */
+    declare public readonly vpcId: pulumi.Output<number>;
 
     /**
      * Create a LkeCluster resource with the given unique name, arguments, and options.
@@ -123,9 +135,12 @@ export class LkeCluster extends pulumi.CustomResource {
             resourceInputs["label"] = state?.label;
             resourceInputs["pools"] = state?.pools;
             resourceInputs["region"] = state?.region;
+            resourceInputs["stackType"] = state?.stackType;
             resourceInputs["status"] = state?.status;
+            resourceInputs["subnetId"] = state?.subnetId;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["tier"] = state?.tier;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as LkeClusterArgs | undefined;
             if (args?.k8sVersion === undefined && !opts.urn) {
@@ -147,8 +162,11 @@ export class LkeCluster extends pulumi.CustomResource {
             resourceInputs["label"] = args?.label;
             resourceInputs["pools"] = args?.pools;
             resourceInputs["region"] = args?.region;
+            resourceInputs["stackType"] = args?.stackType;
+            resourceInputs["subnetId"] = args?.subnetId;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["tier"] = args?.tier;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["apiEndpoints"] = undefined /*out*/;
             resourceInputs["dashboardUrl"] = undefined /*out*/;
             resourceInputs["kubeconfig"] = undefined /*out*/;
@@ -210,9 +228,17 @@ export interface LkeClusterState {
      */
     region?: pulumi.Input<string>;
     /**
+     * The networking stack type of the Kubernetes cluster.
+     */
+    stackType?: pulumi.Input<string>;
+    /**
      * The status of the node. (`ready`, `notReady`)
      */
     status?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    subnetId?: pulumi.Input<number>;
     /**
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
@@ -221,6 +247,10 @@ export interface LkeClusterState {
      * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
      */
     tier?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC to use for the Kubernetes cluster.
+     */
+    vpcId?: pulumi.Input<number>;
 }
 
 /**
@@ -260,6 +290,14 @@ export interface LkeClusterArgs {
      */
     region: pulumi.Input<string>;
     /**
+     * The networking stack type of the Kubernetes cluster.
+     */
+    stackType?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    subnetId?: pulumi.Input<number>;
+    /**
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -267,4 +305,8 @@ export interface LkeClusterArgs {
      * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
      */
     tier?: pulumi.Input<string>;
+    /**
+     * The ID of the VPC to use for the Kubernetes cluster.
+     */
+    vpcId?: pulumi.Input<number>;
 }

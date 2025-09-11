@@ -14,13 +14,21 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetLkeClustersLkeClusterControlPlaneResult
     {
         /// <summary>
+        /// Enables audit logs on the cluster's control plane.
+        /// </summary>
+        public readonly bool AuditLogsEnabled;
+        /// <summary>
         /// Whether High Availability is enabled for the cluster Control Plane.
         /// </summary>
         public readonly bool HighAvailability;
 
         [OutputConstructor]
-        private GetLkeClustersLkeClusterControlPlaneResult(bool highAvailability)
+        private GetLkeClustersLkeClusterControlPlaneResult(
+            bool auditLogsEnabled,
+
+            bool highAvailability)
         {
+            AuditLogsEnabled = auditLogsEnabled;
             HighAvailability = highAvailability;
         }
     }

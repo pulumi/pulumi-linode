@@ -19,6 +19,11 @@ public final class GetLkeClusterControlPlane {
      */
     private @Nullable List<GetLkeClusterControlPlaneAcl> acls;
     /**
+     * @return Enables audit logs on the cluster&#39;s control plane.
+     * 
+     */
+    private Boolean auditLogsEnabled;
+    /**
      * @return Whether High Availability is enabled for the cluster Control Plane.
      * 
      */
@@ -31,6 +36,13 @@ public final class GetLkeClusterControlPlane {
      */
     public List<GetLkeClusterControlPlaneAcl> acls() {
         return this.acls == null ? List.of() : this.acls;
+    }
+    /**
+     * @return Enables audit logs on the cluster&#39;s control plane.
+     * 
+     */
+    public Boolean auditLogsEnabled() {
+        return this.auditLogsEnabled;
     }
     /**
      * @return Whether High Availability is enabled for the cluster Control Plane.
@@ -50,11 +62,13 @@ public final class GetLkeClusterControlPlane {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetLkeClusterControlPlaneAcl> acls;
+        private Boolean auditLogsEnabled;
         private Boolean highAvailability;
         public Builder() {}
         public Builder(GetLkeClusterControlPlane defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acls = defaults.acls;
+    	      this.auditLogsEnabled = defaults.auditLogsEnabled;
     	      this.highAvailability = defaults.highAvailability;
         }
 
@@ -68,6 +82,14 @@ public final class GetLkeClusterControlPlane {
             return acls(List.of(acls));
         }
         @CustomType.Setter
+        public Builder auditLogsEnabled(Boolean auditLogsEnabled) {
+            if (auditLogsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterControlPlane", "auditLogsEnabled");
+            }
+            this.auditLogsEnabled = auditLogsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder highAvailability(Boolean highAvailability) {
             if (highAvailability == null) {
               throw new MissingRequiredPropertyException("GetLkeClusterControlPlane", "highAvailability");
@@ -78,6 +100,7 @@ public final class GetLkeClusterControlPlane {
         public GetLkeClusterControlPlane build() {
             final var _resultValue = new GetLkeClusterControlPlane();
             _resultValue.acls = acls;
+            _resultValue.auditLogsEnabled = auditLogsEnabled;
             _resultValue.highAvailability = highAvailability;
             return _resultValue;
         }

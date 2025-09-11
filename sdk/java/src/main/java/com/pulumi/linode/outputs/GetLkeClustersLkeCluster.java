@@ -52,10 +52,20 @@ public final class GetLkeClustersLkeCluster {
      */
     private String region;
     /**
+     * @return The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    private String stackType;
+    /**
      * @return The status of the cluster.
      * 
      */
     private String status;
+    /**
+     * @return The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+     * 
+     */
+    private Integer subnetId;
     /**
      * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
@@ -71,6 +81,11 @@ public final class GetLkeClustersLkeCluster {
      * 
      */
     private String updated;
+    /**
+     * @return The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    private Integer vpcId;
 
     private GetLkeClustersLkeCluster() {}
     /**
@@ -123,11 +138,25 @@ public final class GetLkeClustersLkeCluster {
         return this.region;
     }
     /**
+     * @return The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    public String stackType() {
+        return this.stackType;
+    }
+    /**
      * @return The status of the cluster.
      * 
      */
     public String status() {
         return this.status;
+    }
+    /**
+     * @return The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+     * 
+     */
+    public Integer subnetId() {
+        return this.subnetId;
     }
     /**
      * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
@@ -150,6 +179,13 @@ public final class GetLkeClustersLkeCluster {
     public String updated() {
         return this.updated;
     }
+    /**
+     * @return The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    public Integer vpcId() {
+        return this.vpcId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -167,10 +203,13 @@ public final class GetLkeClustersLkeCluster {
         private String k8sVersion;
         private String label;
         private String region;
+        private String stackType;
         private String status;
+        private Integer subnetId;
         private List<String> tags;
         private String tier;
         private String updated;
+        private Integer vpcId;
         public Builder() {}
         public Builder(GetLkeClustersLkeCluster defaults) {
     	      Objects.requireNonNull(defaults);
@@ -181,10 +220,13 @@ public final class GetLkeClustersLkeCluster {
     	      this.k8sVersion = defaults.k8sVersion;
     	      this.label = defaults.label;
     	      this.region = defaults.region;
+    	      this.stackType = defaults.stackType;
     	      this.status = defaults.status;
+    	      this.subnetId = defaults.subnetId;
     	      this.tags = defaults.tags;
     	      this.tier = defaults.tier;
     	      this.updated = defaults.updated;
+    	      this.vpcId = defaults.vpcId;
         }
 
         @CustomType.Setter
@@ -242,11 +284,27 @@ public final class GetLkeClustersLkeCluster {
             return this;
         }
         @CustomType.Setter
+        public Builder stackType(String stackType) {
+            if (stackType == null) {
+              throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "stackType");
+            }
+            this.stackType = stackType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "status");
             }
             this.status = status;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder subnetId(Integer subnetId) {
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "subnetId");
+            }
+            this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
@@ -276,6 +334,14 @@ public final class GetLkeClustersLkeCluster {
             this.updated = updated;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpcId(Integer vpcId) {
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "vpcId");
+            }
+            this.vpcId = vpcId;
+            return this;
+        }
         public GetLkeClustersLkeCluster build() {
             final var _resultValue = new GetLkeClustersLkeCluster();
             _resultValue.aplEnabled = aplEnabled;
@@ -285,10 +351,13 @@ public final class GetLkeClustersLkeCluster {
             _resultValue.k8sVersion = k8sVersion;
             _resultValue.label = label;
             _resultValue.region = region;
+            _resultValue.stackType = stackType;
             _resultValue.status = status;
+            _resultValue.subnetId = subnetId;
             _resultValue.tags = tags;
             _resultValue.tier = tier;
             _resultValue.updated = updated;
+            _resultValue.vpcId = vpcId;
             return _resultValue;
         }
     }

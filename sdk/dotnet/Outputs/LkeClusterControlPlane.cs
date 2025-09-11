@@ -18,9 +18,13 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly Outputs.LkeClusterControlPlaneAcl? Acl;
         /// <summary>
-        /// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+        /// Enables audit logs on the cluster's control plane.
         /// 
         /// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+        /// </summary>
+        public readonly bool? AuditLogsEnabled;
+        /// <summary>
+        /// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
         /// </summary>
         public readonly bool? HighAvailability;
 
@@ -28,9 +32,12 @@ namespace Pulumi.Linode.Outputs
         private LkeClusterControlPlane(
             Outputs.LkeClusterControlPlaneAcl? acl,
 
+            bool? auditLogsEnabled,
+
             bool? highAvailability)
         {
             Acl = acl;
+            AuditLogsEnabled = auditLogsEnabled;
             HighAvailability = highAvailability;
         }
     }

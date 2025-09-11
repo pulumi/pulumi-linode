@@ -6252,9 +6252,11 @@ func (o InstanceSpecArrayOutput) Index(i pulumi.IntInput) InstanceSpecOutput {
 type LkeClusterControlPlane struct {
 	// Defines the ACL configuration for an LKE cluster's control plane.
 	Acl *LkeClusterControlPlaneAcl `pulumi:"acl"`
-	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+	// Enables audit logs on the cluster's control plane.
 	//
 	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+	AuditLogsEnabled *bool `pulumi:"auditLogsEnabled"`
+	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 	HighAvailability *bool `pulumi:"highAvailability"`
 }
 
@@ -6272,9 +6274,11 @@ type LkeClusterControlPlaneInput interface {
 type LkeClusterControlPlaneArgs struct {
 	// Defines the ACL configuration for an LKE cluster's control plane.
 	Acl LkeClusterControlPlaneAclPtrInput `pulumi:"acl"`
-	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+	// Enables audit logs on the cluster's control plane.
 	//
 	// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+	AuditLogsEnabled pulumi.BoolPtrInput `pulumi:"auditLogsEnabled"`
+	// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 	HighAvailability pulumi.BoolPtrInput `pulumi:"highAvailability"`
 }
 
@@ -6360,9 +6364,14 @@ func (o LkeClusterControlPlaneOutput) Acl() LkeClusterControlPlaneAclPtrOutput {
 	return o.ApplyT(func(v LkeClusterControlPlane) *LkeClusterControlPlaneAcl { return v.Acl }).(LkeClusterControlPlaneAclPtrOutput)
 }
 
-// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+// Enables audit logs on the cluster's control plane.
 //
 // * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+func (o LkeClusterControlPlaneOutput) AuditLogsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LkeClusterControlPlane) *bool { return v.AuditLogsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 func (o LkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LkeClusterControlPlane) *bool { return v.HighAvailability }).(pulumi.BoolPtrOutput)
 }
@@ -6401,9 +6410,19 @@ func (o LkeClusterControlPlanePtrOutput) Acl() LkeClusterControlPlaneAclPtrOutpu
 	}).(LkeClusterControlPlaneAclPtrOutput)
 }
 
-// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+// Enables audit logs on the cluster's control plane.
 //
 // * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+func (o LkeClusterControlPlanePtrOutput) AuditLogsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LkeClusterControlPlane) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AuditLogsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
 func (o LkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LkeClusterControlPlane) *bool {
 		if v == nil {
@@ -27102,6 +27121,8 @@ func (o GetKernelsKernelArrayOutput) Index(i pulumi.IntInput) GetKernelsKernelOu
 type GetLkeClusterControlPlane struct {
 	// The ACL configuration for an LKE cluster's control plane.
 	Acls []GetLkeClusterControlPlaneAcl `pulumi:"acls"`
+	// Enables audit logs on the cluster's control plane.
+	AuditLogsEnabled bool `pulumi:"auditLogsEnabled"`
 	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability bool `pulumi:"highAvailability"`
 }
@@ -27120,6 +27141,8 @@ type GetLkeClusterControlPlaneInput interface {
 type GetLkeClusterControlPlaneArgs struct {
 	// The ACL configuration for an LKE cluster's control plane.
 	Acls GetLkeClusterControlPlaneAclArrayInput `pulumi:"acls"`
+	// Enables audit logs on the cluster's control plane.
+	AuditLogsEnabled pulumi.BoolInput `pulumi:"auditLogsEnabled"`
 	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
 }
@@ -27178,6 +27201,11 @@ func (o GetLkeClusterControlPlaneOutput) ToGetLkeClusterControlPlaneOutputWithCo
 // The ACL configuration for an LKE cluster's control plane.
 func (o GetLkeClusterControlPlaneOutput) Acls() GetLkeClusterControlPlaneAclArrayOutput {
 	return o.ApplyT(func(v GetLkeClusterControlPlane) []GetLkeClusterControlPlaneAcl { return v.Acls }).(GetLkeClusterControlPlaneAclArrayOutput)
+}
+
+// Enables audit logs on the cluster's control plane.
+func (o GetLkeClusterControlPlaneOutput) AuditLogsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLkeClusterControlPlane) bool { return v.AuditLogsEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether High Availability is enabled for the cluster Control Plane.
@@ -28203,14 +28231,20 @@ type GetLkeClustersLkeCluster struct {
 	Label string `pulumi:"label"`
 	// This Kubernetes cluster's location.
 	Region string `pulumi:"region"`
+	// The networking stack type of the Kubernetes cluster.
+	StackType string `pulumi:"stackType"`
 	// The status of the cluster.
 	Status string `pulumi:"status"`
+	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+	SubnetId int `pulumi:"subnetId"`
 	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
 	Tier string `pulumi:"tier"`
 	// When this Kubernetes cluster was updated.
 	Updated string `pulumi:"updated"`
+	// The ID of the VPC to use for the Kubernetes cluster.
+	VpcId int `pulumi:"vpcId"`
 }
 
 // GetLkeClustersLkeClusterInput is an input type that accepts GetLkeClustersLkeClusterArgs and GetLkeClustersLkeClusterOutput values.
@@ -28239,14 +28273,20 @@ type GetLkeClustersLkeClusterArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// This Kubernetes cluster's location.
 	Region pulumi.StringInput `pulumi:"region"`
+	// The networking stack type of the Kubernetes cluster.
+	StackType pulumi.StringInput `pulumi:"stackType"`
 	// The status of the cluster.
 	Status pulumi.StringInput `pulumi:"status"`
+	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
 	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
 	Tier pulumi.StringInput `pulumi:"tier"`
 	// When this Kubernetes cluster was updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
+	// The ID of the VPC to use for the Kubernetes cluster.
+	VpcId pulumi.IntInput `pulumi:"vpcId"`
 }
 
 func (GetLkeClustersLkeClusterArgs) ElementType() reflect.Type {
@@ -28335,9 +28375,19 @@ func (o GetLkeClustersLkeClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// The networking stack type of the Kubernetes cluster.
+func (o GetLkeClustersLkeClusterOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.StackType }).(pulumi.StringOutput)
+}
+
 // The status of the cluster.
 func (o GetLkeClustersLkeClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+func (o GetLkeClustersLkeClusterOutput) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) int { return v.SubnetId }).(pulumi.IntOutput)
 }
 
 // An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
@@ -28353,6 +28403,11 @@ func (o GetLkeClustersLkeClusterOutput) Tier() pulumi.StringOutput {
 // When this Kubernetes cluster was updated.
 func (o GetLkeClustersLkeClusterOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC to use for the Kubernetes cluster.
+func (o GetLkeClustersLkeClusterOutput) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) int { return v.VpcId }).(pulumi.IntOutput)
 }
 
 type GetLkeClustersLkeClusterArrayOutput struct{ *pulumi.OutputState }
@@ -28376,6 +28431,8 @@ func (o GetLkeClustersLkeClusterArrayOutput) Index(i pulumi.IntInput) GetLkeClus
 }
 
 type GetLkeClustersLkeClusterControlPlane struct {
+	// Enables audit logs on the cluster's control plane.
+	AuditLogsEnabled bool `pulumi:"auditLogsEnabled"`
 	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability bool `pulumi:"highAvailability"`
 }
@@ -28392,6 +28449,8 @@ type GetLkeClustersLkeClusterControlPlaneInput interface {
 }
 
 type GetLkeClustersLkeClusterControlPlaneArgs struct {
+	// Enables audit logs on the cluster's control plane.
+	AuditLogsEnabled pulumi.BoolInput `pulumi:"auditLogsEnabled"`
 	// Whether High Availability is enabled for the cluster Control Plane.
 	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
 }
@@ -28473,6 +28532,11 @@ func (o GetLkeClustersLkeClusterControlPlaneOutput) ToGetLkeClustersLkeClusterCo
 	}).(GetLkeClustersLkeClusterControlPlanePtrOutput)
 }
 
+// Enables audit logs on the cluster's control plane.
+func (o GetLkeClustersLkeClusterControlPlaneOutput) AuditLogsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeClusterControlPlane) bool { return v.AuditLogsEnabled }).(pulumi.BoolOutput)
+}
+
 // Whether High Availability is enabled for the cluster Control Plane.
 func (o GetLkeClustersLkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeClusterControlPlane) bool { return v.HighAvailability }).(pulumi.BoolOutput)
@@ -28500,6 +28564,16 @@ func (o GetLkeClustersLkeClusterControlPlanePtrOutput) Elem() GetLkeClustersLkeC
 		var ret GetLkeClustersLkeClusterControlPlane
 		return ret
 	}).(GetLkeClustersLkeClusterControlPlaneOutput)
+}
+
+// Enables audit logs on the cluster's control plane.
+func (o GetLkeClustersLkeClusterControlPlanePtrOutput) AuditLogsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetLkeClustersLkeClusterControlPlane) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AuditLogsEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether High Availability is enabled for the cluster Control Plane.
