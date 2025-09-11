@@ -14,6 +14,21 @@ public final class GetLkeClustersLkeClusterControlPlane extends com.pulumi.resou
     public static final GetLkeClustersLkeClusterControlPlane Empty = new GetLkeClustersLkeClusterControlPlane();
 
     /**
+     * Enables audit logs on the cluster&#39;s control plane.
+     * 
+     */
+    @Import(name="auditLogsEnabled", required=true)
+    private Boolean auditLogsEnabled;
+
+    /**
+     * @return Enables audit logs on the cluster&#39;s control plane.
+     * 
+     */
+    public Boolean auditLogsEnabled() {
+        return this.auditLogsEnabled;
+    }
+
+    /**
      * Whether High Availability is enabled for the cluster Control Plane.
      * 
      */
@@ -31,6 +46,7 @@ public final class GetLkeClustersLkeClusterControlPlane extends com.pulumi.resou
     private GetLkeClustersLkeClusterControlPlane() {}
 
     private GetLkeClustersLkeClusterControlPlane(GetLkeClustersLkeClusterControlPlane $) {
+        this.auditLogsEnabled = $.auditLogsEnabled;
         this.highAvailability = $.highAvailability;
     }
 
@@ -53,6 +69,17 @@ public final class GetLkeClustersLkeClusterControlPlane extends com.pulumi.resou
         }
 
         /**
+         * @param auditLogsEnabled Enables audit logs on the cluster&#39;s control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLogsEnabled(Boolean auditLogsEnabled) {
+            $.auditLogsEnabled = auditLogsEnabled;
+            return this;
+        }
+
+        /**
          * @param highAvailability Whether High Availability is enabled for the cluster Control Plane.
          * 
          * @return builder
@@ -64,6 +91,9 @@ public final class GetLkeClustersLkeClusterControlPlane extends com.pulumi.resou
         }
 
         public GetLkeClustersLkeClusterControlPlane build() {
+            if ($.auditLogsEnabled == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterControlPlane", "auditLogsEnabled");
+            }
             if ($.highAvailability == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterControlPlane", "highAvailability");
             }

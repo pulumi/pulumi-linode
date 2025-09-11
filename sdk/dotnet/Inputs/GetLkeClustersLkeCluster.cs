@@ -55,10 +55,22 @@ namespace Pulumi.Linode.Inputs
         public string Region { get; set; } = null!;
 
         /// <summary>
+        /// The networking stack type of the Kubernetes cluster.
+        /// </summary>
+        [Input("stackType", required: true)]
+        public string StackType { get; set; } = null!;
+
+        /// <summary>
         /// The status of the cluster.
         /// </summary>
         [Input("status", required: true)]
         public string Status { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+        /// </summary>
+        [Input("subnetId", required: true)]
+        public int SubnetId { get; set; }
 
         [Input("tags", required: true)]
         private List<string>? _tags;
@@ -83,6 +95,12 @@ namespace Pulumi.Linode.Inputs
         /// </summary>
         [Input("updated", required: true)]
         public string Updated { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC to use for the Kubernetes cluster.
+        /// </summary>
+        [Input("vpcId", required: true)]
+        public int VpcId { get; set; }
 
         public GetLkeClustersLkeClusterArgs()
         {

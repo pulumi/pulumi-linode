@@ -18,6 +18,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterControlPlaneAclResult> Acls;
         /// <summary>
+        /// Enables audit logs on the cluster's control plane.
+        /// </summary>
+        public readonly bool AuditLogsEnabled;
+        /// <summary>
         /// Whether High Availability is enabled for the cluster Control Plane.
         /// </summary>
         public readonly bool HighAvailability;
@@ -26,9 +30,12 @@ namespace Pulumi.Linode.Outputs
         private GetLkeClusterControlPlaneResult(
             ImmutableArray<Outputs.GetLkeClusterControlPlaneAclResult> acls,
 
+            bool auditLogsEnabled,
+
             bool highAvailability)
         {
             Acls = acls;
+            AuditLogsEnabled = auditLogsEnabled;
             HighAvailability = highAvailability;
         }
     }

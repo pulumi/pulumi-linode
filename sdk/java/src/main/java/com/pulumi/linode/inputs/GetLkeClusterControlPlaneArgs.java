@@ -34,6 +34,21 @@ public final class GetLkeClusterControlPlaneArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Enables audit logs on the cluster&#39;s control plane.
+     * 
+     */
+    @Import(name="auditLogsEnabled", required=true)
+    private Output<Boolean> auditLogsEnabled;
+
+    /**
+     * @return Enables audit logs on the cluster&#39;s control plane.
+     * 
+     */
+    public Output<Boolean> auditLogsEnabled() {
+        return this.auditLogsEnabled;
+    }
+
+    /**
      * Whether High Availability is enabled for the cluster Control Plane.
      * 
      */
@@ -52,6 +67,7 @@ public final class GetLkeClusterControlPlaneArgs extends com.pulumi.resources.Re
 
     private GetLkeClusterControlPlaneArgs(GetLkeClusterControlPlaneArgs $) {
         this.acls = $.acls;
+        this.auditLogsEnabled = $.auditLogsEnabled;
         this.highAvailability = $.highAvailability;
     }
 
@@ -105,6 +121,27 @@ public final class GetLkeClusterControlPlaneArgs extends com.pulumi.resources.Re
         }
 
         /**
+         * @param auditLogsEnabled Enables audit logs on the cluster&#39;s control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLogsEnabled(Output<Boolean> auditLogsEnabled) {
+            $.auditLogsEnabled = auditLogsEnabled;
+            return this;
+        }
+
+        /**
+         * @param auditLogsEnabled Enables audit logs on the cluster&#39;s control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLogsEnabled(Boolean auditLogsEnabled) {
+            return auditLogsEnabled(Output.of(auditLogsEnabled));
+        }
+
+        /**
          * @param highAvailability Whether High Availability is enabled for the cluster Control Plane.
          * 
          * @return builder
@@ -126,6 +163,9 @@ public final class GetLkeClusterControlPlaneArgs extends com.pulumi.resources.Re
         }
 
         public GetLkeClusterControlPlaneArgs build() {
+            if ($.auditLogsEnabled == null) {
+                throw new MissingRequiredPropertyException("GetLkeClusterControlPlaneArgs", "auditLogsEnabled");
+            }
             if ($.highAvailability == null) {
                 throw new MissingRequiredPropertyException("GetLkeClusterControlPlaneArgs", "highAvailability");
             }

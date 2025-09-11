@@ -125,6 +125,21 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
     }
 
     /**
+     * The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    @Import(name="stackType", required=true)
+    private String stackType;
+
+    /**
+     * @return The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    public String stackType() {
+        return this.stackType;
+    }
+
+    /**
      * The status of the cluster.
      * 
      */
@@ -137,6 +152,21 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
      */
     public String status() {
         return this.status;
+    }
+
+    /**
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+     * 
+     */
+    @Import(name="subnetId", required=true)
+    private Integer subnetId;
+
+    /**
+     * @return The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+     * 
+     */
+    public Integer subnetId() {
+        return this.subnetId;
     }
 
     /**
@@ -184,6 +214,21 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
         return this.updated;
     }
 
+    /**
+     * The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    @Import(name="vpcId", required=true)
+    private Integer vpcId;
+
+    /**
+     * @return The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    public Integer vpcId() {
+        return this.vpcId;
+    }
+
     private GetLkeClustersLkeCluster() {}
 
     private GetLkeClustersLkeCluster(GetLkeClustersLkeCluster $) {
@@ -194,10 +239,13 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
         this.k8sVersion = $.k8sVersion;
         this.label = $.label;
         this.region = $.region;
+        this.stackType = $.stackType;
         this.status = $.status;
+        this.subnetId = $.subnetId;
         this.tags = $.tags;
         this.tier = $.tier;
         this.updated = $.updated;
+        this.vpcId = $.vpcId;
     }
 
     public static Builder builder() {
@@ -296,6 +344,17 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
         }
 
         /**
+         * @param stackType The networking stack type of the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(String stackType) {
+            $.stackType = stackType;
+            return this;
+        }
+
+        /**
          * @param status The status of the cluster.
          * 
          * @return builder
@@ -303,6 +362,17 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
          */
         public Builder status(String status) {
             $.status = status;
+            return this;
+        }
+
+        /**
+         * @param subnetId The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(Integer subnetId) {
+            $.subnetId = subnetId;
             return this;
         }
 
@@ -349,6 +419,17 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
             return this;
         }
 
+        /**
+         * @param vpcId The ID of the VPC to use for the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(Integer vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
         public GetLkeClustersLkeCluster build() {
             if ($.aplEnabled == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "aplEnabled");
@@ -368,8 +449,14 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "region");
             }
+            if ($.stackType == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "stackType");
+            }
             if ($.status == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "status");
+            }
+            if ($.subnetId == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "subnetId");
             }
             if ($.tags == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "tags");
@@ -379,6 +466,9 @@ public final class GetLkeClustersLkeCluster extends com.pulumi.resources.InvokeA
             }
             if ($.updated == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "updated");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "vpcId");
             }
             return $;
         }

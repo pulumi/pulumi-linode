@@ -2654,6 +2654,10 @@ export interface GetLkeClusterControlPlane {
      */
     acls?: outputs.GetLkeClusterControlPlaneAcl[];
     /**
+     * Enables audit logs on the cluster's control plane.
+     */
+    auditLogsEnabled: boolean;
+    /**
      * Whether High Availability is enabled for the cluster Control Plane.
      */
     highAvailability: boolean;
@@ -2837,9 +2841,17 @@ export interface GetLkeClustersLkeCluster {
      */
     region: string;
     /**
+     * The networking stack type of the Kubernetes cluster.
+     */
+    stackType: string;
+    /**
      * The status of the cluster.
      */
     status: string;
+    /**
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+     */
+    subnetId: number;
     /**
      * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
@@ -2852,9 +2864,17 @@ export interface GetLkeClustersLkeCluster {
      * When this Kubernetes cluster was updated.
      */
     updated: string;
+    /**
+     * The ID of the VPC to use for the Kubernetes cluster.
+     */
+    vpcId: number;
 }
 
 export interface GetLkeClustersLkeClusterControlPlane {
+    /**
+     * Enables audit logs on the cluster's control plane.
+     */
+    auditLogsEnabled: boolean;
     /**
      * Whether High Availability is enabled for the cluster Control Plane.
      */
@@ -5405,9 +5425,13 @@ export interface LkeClusterControlPlane {
      */
     acl: outputs.LkeClusterControlPlaneAcl;
     /**
-     * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+     * Enables audit logs on the cluster's control plane.
      *
      * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+     */
+    auditLogsEnabled: boolean;
+    /**
+     * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      */
     highAvailability: boolean;
 }

@@ -13,6 +13,7 @@ import com.pulumi.linode.inputs.LkeClusterState;
 import com.pulumi.linode.outputs.LkeClusterControlPlane;
 import com.pulumi.linode.outputs.LkeClusterPool;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -179,6 +180,20 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
+     * The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    @Export(name="stackType", refs={String.class}, tree="[0]")
+    private Output<String> stackType;
+
+    /**
+     * @return The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    public Output<String> stackType() {
+        return this.stackType;
+    }
+    /**
      * The status of the node. (`ready`, `not_ready`)
      * 
      */
@@ -191,6 +206,20 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    @Export(name="subnetId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> subnetId;
+
+    /**
+     * @return The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public Output<Integer> subnetId() {
+        return this.subnetId;
     }
     /**
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
@@ -219,6 +248,20 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> tier() {
         return this.tier;
+    }
+    /**
+     * The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    @Export(name="vpcId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> vpcId;
+
+    /**
+     * @return The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    public Output<Integer> vpcId() {
+        return this.vpcId;
     }
 
     /**

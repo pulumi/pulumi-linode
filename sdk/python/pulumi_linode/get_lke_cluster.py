@@ -28,7 +28,7 @@ class GetLkeClusterResult:
     """
     A collection of values returned by getLkeCluster.
     """
-    def __init__(__self__, api_endpoints=None, apl_enabled=None, control_planes=None, created=None, dashboard_url=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, status=None, tags=None, tier=None, updated=None):
+    def __init__(__self__, api_endpoints=None, apl_enabled=None, control_planes=None, created=None, dashboard_url=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, stack_type=None, status=None, subnet_id=None, tags=None, tier=None, updated=None, vpc_id=None):
         if api_endpoints and not isinstance(api_endpoints, list):
             raise TypeError("Expected argument 'api_endpoints' to be a list")
         pulumi.set(__self__, "api_endpoints", api_endpoints)
@@ -62,9 +62,15 @@ class GetLkeClusterResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if stack_type and not isinstance(stack_type, str):
+            raise TypeError("Expected argument 'stack_type' to be a str")
+        pulumi.set(__self__, "stack_type", stack_type)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if subnet_id and not isinstance(subnet_id, int):
+            raise TypeError("Expected argument 'subnet_id' to be a int")
+        pulumi.set(__self__, "subnet_id", subnet_id)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -74,6 +80,9 @@ class GetLkeClusterResult:
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
         pulumi.set(__self__, "updated", updated)
+        if vpc_id and not isinstance(vpc_id, int):
+            raise TypeError("Expected argument 'vpc_id' to be a int")
+        pulumi.set(__self__, "vpc_id", vpc_id)
 
     @_builtins.property
     @pulumi.getter(name="apiEndpoints")
@@ -164,12 +173,28 @@ class GetLkeClusterResult:
         return pulumi.get(self, "region")
 
     @_builtins.property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> _builtins.str:
+        """
+        The networking stack type of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
         The status of the node. (`ready`, `not_ready`)
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+        """
+        return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
@@ -195,6 +220,14 @@ class GetLkeClusterResult:
         """
         return pulumi.get(self, "updated")
 
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.int:
+        """
+        The ID of the VPC to use for the Kubernetes cluster.
+        """
+        return pulumi.get(self, "vpc_id")
+
 
 class AwaitableGetLkeClusterResult(GetLkeClusterResult):
     # pylint: disable=using-constant-test
@@ -213,10 +246,13 @@ class AwaitableGetLkeClusterResult(GetLkeClusterResult):
             label=self.label,
             pools=self.pools,
             region=self.region,
+            stack_type=self.stack_type,
             status=self.status,
+            subnet_id=self.subnet_id,
             tags=self.tags,
             tier=self.tier,
-            updated=self.updated)
+            updated=self.updated,
+            vpc_id=self.vpc_id)
 
 
 def get_lke_cluster(control_planes: Optional[Sequence[Union['GetLkeClusterControlPlaneArgs', 'GetLkeClusterControlPlaneArgsDict']]] = None,
@@ -260,10 +296,13 @@ def get_lke_cluster(control_planes: Optional[Sequence[Union['GetLkeClusterContro
         label=pulumi.get(__ret__, 'label'),
         pools=pulumi.get(__ret__, 'pools'),
         region=pulumi.get(__ret__, 'region'),
+        stack_type=pulumi.get(__ret__, 'stack_type'),
         status=pulumi.get(__ret__, 'status'),
+        subnet_id=pulumi.get(__ret__, 'subnet_id'),
         tags=pulumi.get(__ret__, 'tags'),
         tier=pulumi.get(__ret__, 'tier'),
-        updated=pulumi.get(__ret__, 'updated'))
+        updated=pulumi.get(__ret__, 'updated'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
 def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClusterControlPlaneArgs', 'GetLkeClusterControlPlaneArgsDict']]]]] = None,
                            id: Optional[pulumi.Input[_builtins.int]] = None,
                            pools: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClusterPoolArgs', 'GetLkeClusterPoolArgsDict']]]]] = None,
@@ -304,7 +343,10 @@ def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequen
         label=pulumi.get(__response__, 'label'),
         pools=pulumi.get(__response__, 'pools'),
         region=pulumi.get(__response__, 'region'),
+        stack_type=pulumi.get(__response__, 'stack_type'),
         status=pulumi.get(__response__, 'status'),
+        subnet_id=pulumi.get(__response__, 'subnet_id'),
         tags=pulumi.get(__response__, 'tags'),
         tier=pulumi.get(__response__, 'tier'),
-        updated=pulumi.get(__response__, 'updated')))
+        updated=pulumi.get(__response__, 'updated'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

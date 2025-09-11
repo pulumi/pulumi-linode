@@ -126,6 +126,21 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    @Import(name="stackType", required=true)
+    private Output<String> stackType;
+
+    /**
+     * @return The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    public Output<String> stackType() {
+        return this.stackType;
+    }
+
+    /**
      * The status of the cluster.
      * 
      */
@@ -138,6 +153,21 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
      */
     public Output<String> status() {
         return this.status;
+    }
+
+    /**
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+     * 
+     */
+    @Import(name="subnetId", required=true)
+    private Output<Integer> subnetId;
+
+    /**
+     * @return The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+     * 
+     */
+    public Output<Integer> subnetId() {
+        return this.subnetId;
     }
 
     /**
@@ -185,6 +215,21 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
         return this.updated;
     }
 
+    /**
+     * The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    @Import(name="vpcId", required=true)
+    private Output<Integer> vpcId;
+
+    /**
+     * @return The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    public Output<Integer> vpcId() {
+        return this.vpcId;
+    }
+
     private GetLkeClustersLkeClusterArgs() {}
 
     private GetLkeClustersLkeClusterArgs(GetLkeClustersLkeClusterArgs $) {
@@ -195,10 +240,13 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
         this.k8sVersion = $.k8sVersion;
         this.label = $.label;
         this.region = $.region;
+        this.stackType = $.stackType;
         this.status = $.status;
+        this.subnetId = $.subnetId;
         this.tags = $.tags;
         this.tier = $.tier;
         this.updated = $.updated;
+        this.vpcId = $.vpcId;
     }
 
     public static Builder builder() {
@@ -367,6 +415,27 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param stackType The networking stack type of the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(Output<String> stackType) {
+            $.stackType = stackType;
+            return this;
+        }
+
+        /**
+         * @param stackType The networking stack type of the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(String stackType) {
+            return stackType(Output.of(stackType));
+        }
+
+        /**
          * @param status The status of the cluster.
          * 
          * @return builder
@@ -385,6 +454,27 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param subnetId The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(Output<Integer> subnetId) {
+            $.subnetId = subnetId;
+            return this;
+        }
+
+        /**
+         * @param subnetId The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(Integer subnetId) {
+            return subnetId(Output.of(subnetId));
         }
 
         /**
@@ -460,6 +550,27 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
             return updated(Output.of(updated));
         }
 
+        /**
+         * @param vpcId The ID of the VPC to use for the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(Output<Integer> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The ID of the VPC to use for the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(Integer vpcId) {
+            return vpcId(Output.of(vpcId));
+        }
+
         public GetLkeClustersLkeClusterArgs build() {
             if ($.aplEnabled == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "aplEnabled");
@@ -479,8 +590,14 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "region");
             }
+            if ($.stackType == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "stackType");
+            }
             if ($.status == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "status");
+            }
+            if ($.subnetId == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "subnetId");
             }
             if ($.tags == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "tags");
@@ -490,6 +607,9 @@ public final class GetLkeClustersLkeClusterArgs extends com.pulumi.resources.Res
             }
             if ($.updated == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "updated");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterArgs", "vpcId");
             }
             return $;
         }

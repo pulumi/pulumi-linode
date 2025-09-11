@@ -19,9 +19,15 @@ namespace Pulumi.Linode.Inputs
         public Input<Inputs.LkeClusterControlPlaneAclGetArgs>? Acl { get; set; }
 
         /// <summary>
-        /// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+        /// Enables audit logs on the cluster's control plane.
         /// 
         /// * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+        /// </summary>
+        [Input("auditLogsEnabled")]
+        public Input<bool>? AuditLogsEnabled { get; set; }
+
+        /// <summary>
+        /// Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
         /// </summary>
         [Input("highAvailability")]
         public Input<bool>? HighAvailability { get; set; }

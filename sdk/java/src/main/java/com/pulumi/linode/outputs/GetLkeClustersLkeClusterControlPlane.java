@@ -11,12 +11,24 @@ import java.util.Objects;
 @CustomType
 public final class GetLkeClustersLkeClusterControlPlane {
     /**
+     * @return Enables audit logs on the cluster&#39;s control plane.
+     * 
+     */
+    private Boolean auditLogsEnabled;
+    /**
      * @return Whether High Availability is enabled for the cluster Control Plane.
      * 
      */
     private Boolean highAvailability;
 
     private GetLkeClustersLkeClusterControlPlane() {}
+    /**
+     * @return Enables audit logs on the cluster&#39;s control plane.
+     * 
+     */
+    public Boolean auditLogsEnabled() {
+        return this.auditLogsEnabled;
+    }
     /**
      * @return Whether High Availability is enabled for the cluster Control Plane.
      * 
@@ -34,13 +46,23 @@ public final class GetLkeClustersLkeClusterControlPlane {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean auditLogsEnabled;
         private Boolean highAvailability;
         public Builder() {}
         public Builder(GetLkeClustersLkeClusterControlPlane defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.auditLogsEnabled = defaults.auditLogsEnabled;
     	      this.highAvailability = defaults.highAvailability;
         }
 
+        @CustomType.Setter
+        public Builder auditLogsEnabled(Boolean auditLogsEnabled) {
+            if (auditLogsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterControlPlane", "auditLogsEnabled");
+            }
+            this.auditLogsEnabled = auditLogsEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder highAvailability(Boolean highAvailability) {
             if (highAvailability == null) {
@@ -51,6 +73,7 @@ public final class GetLkeClustersLkeClusterControlPlane {
         }
         public GetLkeClustersLkeClusterControlPlane build() {
             final var _resultValue = new GetLkeClustersLkeClusterControlPlane();
+            _resultValue.auditLogsEnabled = auditLogsEnabled;
             _resultValue.highAvailability = highAvailability;
             return _resultValue;
         }

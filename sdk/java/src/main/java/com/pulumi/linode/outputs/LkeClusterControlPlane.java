@@ -18,9 +18,14 @@ public final class LkeClusterControlPlane {
      */
     private @Nullable LkeClusterControlPlaneAcl acl;
     /**
-     * @return Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+     * @return Enables audit logs on the cluster&#39;s control plane.
      * 
      * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+     * 
+     */
+    private @Nullable Boolean auditLogsEnabled;
+    /**
+     * @return Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      * 
      */
     private @Nullable Boolean highAvailability;
@@ -34,9 +39,16 @@ public final class LkeClusterControlPlane {
         return Optional.ofNullable(this.acl);
     }
     /**
-     * @return Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+     * @return Enables audit logs on the cluster&#39;s control plane.
      * 
      * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+     * 
+     */
+    public Optional<Boolean> auditLogsEnabled() {
+        return Optional.ofNullable(this.auditLogsEnabled);
+    }
+    /**
+     * @return Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      * 
      */
     public Optional<Boolean> highAvailability() {
@@ -53,11 +65,13 @@ public final class LkeClusterControlPlane {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable LkeClusterControlPlaneAcl acl;
+        private @Nullable Boolean auditLogsEnabled;
         private @Nullable Boolean highAvailability;
         public Builder() {}
         public Builder(LkeClusterControlPlane defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acl = defaults.acl;
+    	      this.auditLogsEnabled = defaults.auditLogsEnabled;
     	      this.highAvailability = defaults.highAvailability;
         }
 
@@ -65,6 +79,12 @@ public final class LkeClusterControlPlane {
         public Builder acl(@Nullable LkeClusterControlPlaneAcl acl) {
 
             this.acl = acl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder auditLogsEnabled(@Nullable Boolean auditLogsEnabled) {
+
+            this.auditLogsEnabled = auditLogsEnabled;
             return this;
         }
         @CustomType.Setter
@@ -76,6 +96,7 @@ public final class LkeClusterControlPlane {
         public LkeClusterControlPlane build() {
             final var _resultValue = new LkeClusterControlPlane();
             _resultValue.acl = acl;
+            _resultValue.auditLogsEnabled = auditLogsEnabled;
             _resultValue.highAvailability = highAvailability;
             return _resultValue;
         }

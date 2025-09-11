@@ -42,9 +42,17 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
+        /// The networking stack type of the Kubernetes cluster.
+        /// </summary>
+        public readonly string StackType;
+        /// <summary>
         /// The status of the cluster.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+        /// </summary>
+        public readonly int SubnetId;
         /// <summary>
         /// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         /// </summary>
@@ -57,6 +65,10 @@ namespace Pulumi.Linode.Outputs
         /// When this Kubernetes cluster was updated.
         /// </summary>
         public readonly string Updated;
+        /// <summary>
+        /// The ID of the VPC to use for the Kubernetes cluster.
+        /// </summary>
+        public readonly int VpcId;
 
         [OutputConstructor]
         private GetLkeClustersLkeClusterResult(
@@ -74,13 +86,19 @@ namespace Pulumi.Linode.Outputs
 
             string region,
 
+            string stackType,
+
             string status,
+
+            int subnetId,
 
             ImmutableArray<string> tags,
 
             string tier,
 
-            string updated)
+            string updated,
+
+            int vpcId)
         {
             AplEnabled = aplEnabled;
             ControlPlane = controlPlane;
@@ -89,10 +107,13 @@ namespace Pulumi.Linode.Outputs
             K8sVersion = k8sVersion;
             Label = label;
             Region = region;
+            StackType = stackType;
             Status = status;
+            SubnetId = subnetId;
             Tags = tags;
             Tier = tier;
             Updated = updated;
+            VpcId = vpcId;
         }
     }
 }

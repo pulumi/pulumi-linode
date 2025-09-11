@@ -32,9 +32,26 @@ public final class LkeClusterControlPlaneArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+     * Enables audit logs on the cluster&#39;s control plane.
      * 
      * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+     * 
+     */
+    @Import(name="auditLogsEnabled")
+    private @Nullable Output<Boolean> auditLogsEnabled;
+
+    /**
+     * @return Enables audit logs on the cluster&#39;s control plane.
+     * 
+     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+     * 
+     */
+    public Optional<Output<Boolean>> auditLogsEnabled() {
+        return Optional.ofNullable(this.auditLogsEnabled);
+    }
+
+    /**
+     * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      * 
      */
     @Import(name="highAvailability")
@@ -42,8 +59,6 @@ public final class LkeClusterControlPlaneArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
-     * 
-     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
      * 
      */
     public Optional<Output<Boolean>> highAvailability() {
@@ -54,6 +69,7 @@ public final class LkeClusterControlPlaneArgs extends com.pulumi.resources.Resou
 
     private LkeClusterControlPlaneArgs(LkeClusterControlPlaneArgs $) {
         this.acl = $.acl;
+        this.auditLogsEnabled = $.auditLogsEnabled;
         this.highAvailability = $.highAvailability;
     }
 
@@ -97,9 +113,32 @@ public final class LkeClusterControlPlaneArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param highAvailability Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+         * @param auditLogsEnabled Enables audit logs on the cluster&#39;s control plane.
          * 
          * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLogsEnabled(@Nullable Output<Boolean> auditLogsEnabled) {
+            $.auditLogsEnabled = auditLogsEnabled;
+            return this;
+        }
+
+        /**
+         * @param auditLogsEnabled Enables audit logs on the cluster&#39;s control plane.
+         * 
+         * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLogsEnabled(Boolean auditLogsEnabled) {
+            return auditLogsEnabled(Output.of(auditLogsEnabled));
+        }
+
+        /**
+         * @param highAvailability Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
          * 
          * @return builder
          * 
@@ -111,8 +150,6 @@ public final class LkeClusterControlPlaneArgs extends com.pulumi.resources.Resou
 
         /**
          * @param highAvailability Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
-         * 
-         * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
          * 
          * @return builder
          * 

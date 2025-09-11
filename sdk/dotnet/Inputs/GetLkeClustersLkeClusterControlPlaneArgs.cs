@@ -13,6 +13,12 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetLkeClustersLkeClusterControlPlaneInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enables audit logs on the cluster's control plane.
+        /// </summary>
+        [Input("auditLogsEnabled", required: true)]
+        public Input<bool> AuditLogsEnabled { get; set; } = null!;
+
+        /// <summary>
         /// Whether High Availability is enabled for the cluster Control Plane.
         /// </summary>
         [Input("highAvailability", required: true)]

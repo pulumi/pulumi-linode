@@ -97,9 +97,17 @@ export interface GetLkeClusterResult {
      */
     readonly region: string;
     /**
+     * The networking stack type of the Kubernetes cluster.
+     */
+    readonly stackType: string;
+    /**
      * The status of the node. (`ready`, `notReady`)
      */
     readonly status: string;
+    /**
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+     */
+    readonly subnetId: number;
     /**
      * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
@@ -112,6 +120,10 @@ export interface GetLkeClusterResult {
      * When this Kubernetes cluster was updated.
      */
     readonly updated: string;
+    /**
+     * The ID of the VPC to use for the Kubernetes cluster.
+     */
+    readonly vpcId: number;
 }
 /**
  * Provides details about an LKE Cluster.

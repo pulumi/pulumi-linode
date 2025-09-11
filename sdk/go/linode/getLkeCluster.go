@@ -83,14 +83,20 @@ type LookupLkeClusterResult struct {
 	Pools []GetLkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
 	Region string `pulumi:"region"`
+	// The networking stack type of the Kubernetes cluster.
+	StackType string `pulumi:"stackType"`
 	// The status of the node. (`ready`, `notReady`)
 	Status string `pulumi:"status"`
+	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+	SubnetId int `pulumi:"subnetId"`
 	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
 	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
 	Tier string `pulumi:"tier"`
 	// When this Kubernetes cluster was updated.
 	Updated string `pulumi:"updated"`
+	// The ID of the VPC to use for the Kubernetes cluster.
+	VpcId int `pulumi:"vpcId"`
 }
 
 func LookupLkeClusterOutput(ctx *pulumi.Context, args LookupLkeClusterOutputArgs, opts ...pulumi.InvokeOption) LookupLkeClusterResultOutput {
@@ -186,9 +192,19 @@ func (o LookupLkeClusterResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// The networking stack type of the Kubernetes cluster.
+func (o LookupLkeClusterResultOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.StackType }).(pulumi.StringOutput)
+}
+
 // The status of the node. (`ready`, `notReady`)
 func (o LookupLkeClusterResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+func (o LookupLkeClusterResultOutput) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) int { return v.SubnetId }).(pulumi.IntOutput)
 }
 
 // An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
@@ -204,6 +220,11 @@ func (o LookupLkeClusterResultOutput) Tier() pulumi.StringOutput {
 // When this Kubernetes cluster was updated.
 func (o LookupLkeClusterResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC to use for the Kubernetes cluster.
+func (o LookupLkeClusterResultOutput) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) int { return v.VpcId }).(pulumi.IntOutput)
 }
 
 func init() {

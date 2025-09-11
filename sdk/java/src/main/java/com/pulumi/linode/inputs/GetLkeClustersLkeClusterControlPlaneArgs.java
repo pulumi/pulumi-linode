@@ -15,6 +15,21 @@ public final class GetLkeClustersLkeClusterControlPlaneArgs extends com.pulumi.r
     public static final GetLkeClustersLkeClusterControlPlaneArgs Empty = new GetLkeClustersLkeClusterControlPlaneArgs();
 
     /**
+     * Enables audit logs on the cluster&#39;s control plane.
+     * 
+     */
+    @Import(name="auditLogsEnabled", required=true)
+    private Output<Boolean> auditLogsEnabled;
+
+    /**
+     * @return Enables audit logs on the cluster&#39;s control plane.
+     * 
+     */
+    public Output<Boolean> auditLogsEnabled() {
+        return this.auditLogsEnabled;
+    }
+
+    /**
      * Whether High Availability is enabled for the cluster Control Plane.
      * 
      */
@@ -32,6 +47,7 @@ public final class GetLkeClustersLkeClusterControlPlaneArgs extends com.pulumi.r
     private GetLkeClustersLkeClusterControlPlaneArgs() {}
 
     private GetLkeClustersLkeClusterControlPlaneArgs(GetLkeClustersLkeClusterControlPlaneArgs $) {
+        this.auditLogsEnabled = $.auditLogsEnabled;
         this.highAvailability = $.highAvailability;
     }
 
@@ -51,6 +67,27 @@ public final class GetLkeClustersLkeClusterControlPlaneArgs extends com.pulumi.r
 
         public Builder(GetLkeClustersLkeClusterControlPlaneArgs defaults) {
             $ = new GetLkeClustersLkeClusterControlPlaneArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param auditLogsEnabled Enables audit logs on the cluster&#39;s control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLogsEnabled(Output<Boolean> auditLogsEnabled) {
+            $.auditLogsEnabled = auditLogsEnabled;
+            return this;
+        }
+
+        /**
+         * @param auditLogsEnabled Enables audit logs on the cluster&#39;s control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLogsEnabled(Boolean auditLogsEnabled) {
+            return auditLogsEnabled(Output.of(auditLogsEnabled));
         }
 
         /**
@@ -75,6 +112,9 @@ public final class GetLkeClustersLkeClusterControlPlaneArgs extends com.pulumi.r
         }
 
         public GetLkeClustersLkeClusterControlPlaneArgs build() {
+            if ($.auditLogsEnabled == null) {
+                throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterControlPlaneArgs", "auditLogsEnabled");
+            }
             if ($.highAvailability == null) {
                 throw new MissingRequiredPropertyException("GetLkeClustersLkeClusterControlPlaneArgs", "highAvailability");
             }

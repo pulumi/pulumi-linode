@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.LkeClusterControlPlaneArgs;
 import com.pulumi.linode.inputs.LkeClusterPoolArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -134,6 +135,36 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    @Import(name="stackType")
+    private @Nullable Output<String> stackType;
+
+    /**
+     * @return The networking stack type of the Kubernetes cluster.
+     * 
+     */
+    public Optional<Output<String>> stackType() {
+        return Optional.ofNullable(this.stackType);
+    }
+
+    /**
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    @Import(name="subnetId")
+    private @Nullable Output<Integer> subnetId;
+
+    /**
+     * @return The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public Optional<Output<Integer>> subnetId() {
+        return Optional.ofNullable(this.subnetId);
+    }
+
+    /**
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      * 
      */
@@ -163,6 +194,21 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tier);
     }
 
+    /**
+     * The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    @Import(name="vpcId")
+    private @Nullable Output<Integer> vpcId;
+
+    /**
+     * @return The ID of the VPC to use for the Kubernetes cluster.
+     * 
+     */
+    public Optional<Output<Integer>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
+    }
+
     private LkeClusterArgs() {}
 
     private LkeClusterArgs(LkeClusterArgs $) {
@@ -173,8 +219,11 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.label = $.label;
         this.pools = $.pools;
         this.region = $.region;
+        this.stackType = $.stackType;
+        this.subnetId = $.subnetId;
         this.tags = $.tags;
         this.tier = $.tier;
+        this.vpcId = $.vpcId;
     }
 
     public static Builder builder() {
@@ -371,6 +420,48 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param stackType The networking stack type of the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(@Nullable Output<String> stackType) {
+            $.stackType = stackType;
+            return this;
+        }
+
+        /**
+         * @param stackType The networking stack type of the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(String stackType) {
+            return stackType(Output.of(stackType));
+        }
+
+        /**
+         * @param subnetId The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(@Nullable Output<Integer> subnetId) {
+            $.subnetId = subnetId;
+            return this;
+        }
+
+        /**
+         * @param subnetId The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(Integer subnetId) {
+            return subnetId(Output.of(subnetId));
+        }
+
+        /**
          * @param tags An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
          * 
          * @return builder
@@ -420,6 +511,27 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tier(String tier) {
             return tier(Output.of(tier));
+        }
+
+        /**
+         * @param vpcId The ID of the VPC to use for the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(@Nullable Output<Integer> vpcId) {
+            $.vpcId = vpcId;
+            return this;
+        }
+
+        /**
+         * @param vpcId The ID of the VPC to use for the Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcId(Integer vpcId) {
+            return vpcId(Output.of(vpcId));
         }
 
         public LkeClusterArgs build() {

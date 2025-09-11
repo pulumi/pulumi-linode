@@ -3006,7 +3006,9 @@ class LkeClusterControlPlane(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "highAvailability":
+        if key == "auditLogsEnabled":
+            suggest = "audit_logs_enabled"
+        elif key == "highAvailability":
             suggest = "high_availability"
 
         if suggest:
@@ -3022,15 +3024,19 @@ class LkeClusterControlPlane(dict):
 
     def __init__(__self__, *,
                  acl: Optional['outputs.LkeClusterControlPlaneAcl'] = None,
+                 audit_logs_enabled: Optional[_builtins.bool] = None,
                  high_availability: Optional[_builtins.bool] = None):
         """
         :param 'LkeClusterControlPlaneAclArgs' acl: Defines the ACL configuration for an LKE cluster's control plane.
-        :param _builtins.bool high_availability: Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+        :param _builtins.bool audit_logs_enabled: Enables audit logs on the cluster's control plane.
                
                * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+        :param _builtins.bool high_availability: Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
+        if audit_logs_enabled is not None:
+            pulumi.set(__self__, "audit_logs_enabled", audit_logs_enabled)
         if high_availability is not None:
             pulumi.set(__self__, "high_availability", high_availability)
 
@@ -3043,12 +3049,20 @@ class LkeClusterControlPlane(dict):
         return pulumi.get(self, "acl")
 
     @_builtins.property
+    @pulumi.getter(name="auditLogsEnabled")
+    def audit_logs_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enables audit logs on the cluster's control plane.
+
+        * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+        """
+        return pulumi.get(self, "audit_logs_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="highAvailability")
     def high_availability(self) -> Optional[_builtins.bool]:
         """
         Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
-
-        * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
         """
         return pulumi.get(self, "high_availability")
 
@@ -12896,15 +12910,26 @@ class GetKernelsKernelResult(dict):
 @pulumi.output_type
 class GetLkeClusterControlPlaneResult(dict):
     def __init__(__self__, *,
+                 audit_logs_enabled: _builtins.bool,
                  high_availability: _builtins.bool,
                  acls: Optional[Sequence['outputs.GetLkeClusterControlPlaneAclResult']] = None):
         """
+        :param _builtins.bool audit_logs_enabled: Enables audit logs on the cluster's control plane.
         :param _builtins.bool high_availability: Whether High Availability is enabled for the cluster Control Plane.
         :param Sequence['GetLkeClusterControlPlaneAclArgs'] acls: The ACL configuration for an LKE cluster's control plane.
         """
+        pulumi.set(__self__, "audit_logs_enabled", audit_logs_enabled)
         pulumi.set(__self__, "high_availability", high_availability)
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
+
+    @_builtins.property
+    @pulumi.getter(name="auditLogsEnabled")
+    def audit_logs_enabled(self) -> _builtins.bool:
+        """
+        Enables audit logs on the cluster's control plane.
+        """
+        return pulumi.get(self, "audit_logs_enabled")
 
     @_builtins.property
     @pulumi.getter(name="highAvailability")
@@ -13335,10 +13360,13 @@ class GetLkeClustersLkeClusterResult(dict):
                  k8s_version: _builtins.str,
                  label: _builtins.str,
                  region: _builtins.str,
+                 stack_type: _builtins.str,
                  status: _builtins.str,
+                 subnet_id: _builtins.int,
                  tags: Sequence[_builtins.str],
                  tier: _builtins.str,
                  updated: _builtins.str,
+                 vpc_id: _builtins.int,
                  control_plane: Optional['outputs.GetLkeClustersLkeClusterControlPlaneResult'] = None):
         """
         :param _builtins.bool apl_enabled: Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
@@ -13347,10 +13375,13 @@ class GetLkeClustersLkeClusterResult(dict):
         :param _builtins.str k8s_version: The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
         :param _builtins.str label: The unique label for the cluster.
         :param _builtins.str region: This Kubernetes cluster's location.
+        :param _builtins.str stack_type: The networking stack type of the Kubernetes cluster.
         :param _builtins.str status: The status of the cluster.
+        :param _builtins.int subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
         :param Sequence[_builtins.str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param _builtins.str tier: The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
         :param _builtins.str updated: When this Kubernetes cluster was updated.
+        :param _builtins.int vpc_id: The ID of the VPC to use for the Kubernetes cluster.
         :param 'GetLkeClustersLkeClusterControlPlaneArgs' control_plane: Defines settings for the Kubernetes Control Plane.
         """
         pulumi.set(__self__, "apl_enabled", apl_enabled)
@@ -13359,10 +13390,13 @@ class GetLkeClustersLkeClusterResult(dict):
         pulumi.set(__self__, "k8s_version", k8s_version)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "stack_type", stack_type)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "subnet_id", subnet_id)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "tier", tier)
         pulumi.set(__self__, "updated", updated)
+        pulumi.set(__self__, "vpc_id", vpc_id)
         if control_plane is not None:
             pulumi.set(__self__, "control_plane", control_plane)
 
@@ -13415,12 +13449,28 @@ class GetLkeClustersLkeClusterResult(dict):
         return pulumi.get(self, "region")
 
     @_builtins.property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> _builtins.str:
+        """
+        The networking stack type of the Kubernetes cluster.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
         The status of the cluster.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
+        """
+        return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
@@ -13447,6 +13497,14 @@ class GetLkeClustersLkeClusterResult(dict):
         return pulumi.get(self, "updated")
 
     @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.int:
+        """
+        The ID of the VPC to use for the Kubernetes cluster.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
     @pulumi.getter(name="controlPlane")
     def control_plane(self) -> Optional['outputs.GetLkeClustersLkeClusterControlPlaneResult']:
         """
@@ -13458,11 +13516,22 @@ class GetLkeClustersLkeClusterResult(dict):
 @pulumi.output_type
 class GetLkeClustersLkeClusterControlPlaneResult(dict):
     def __init__(__self__, *,
+                 audit_logs_enabled: _builtins.bool,
                  high_availability: _builtins.bool):
         """
+        :param _builtins.bool audit_logs_enabled: Enables audit logs on the cluster's control plane.
         :param _builtins.bool high_availability: Whether High Availability is enabled for the cluster Control Plane.
         """
+        pulumi.set(__self__, "audit_logs_enabled", audit_logs_enabled)
         pulumi.set(__self__, "high_availability", high_availability)
+
+    @_builtins.property
+    @pulumi.getter(name="auditLogsEnabled")
+    def audit_logs_enabled(self) -> _builtins.bool:
+        """
+        Enables audit logs on the cluster's control plane.
+        """
+        return pulumi.get(self, "audit_logs_enabled")
 
     @_builtins.property
     @pulumi.getter(name="highAvailability")
