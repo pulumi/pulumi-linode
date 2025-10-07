@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetObjectStorageEndpointsEndpointResult
     {
         /// <summary>
-        /// The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        /// The type of `S3Endpoint` available to the active `User`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
+        /// Your s3 endpoint URL, based on the `EndpointType` and `Region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
         /// </summary>
         public readonly string S3Endpoint;
 

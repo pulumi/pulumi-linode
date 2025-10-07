@@ -49,6 +49,58 @@ namespace Pulumi.Linode
     /// 
     /// Volumes can also be attached using the Linode Instance config device map.
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Linode.Instance("foo", new()
+    ///     {
+    ///         Region = "us-east",
+    ///         Type = "g6-nanode-1",
+    ///     });
+    /// 
+    ///     var fooInstanceConfig = new Linode.InstanceConfig("foo", new()
+    ///     {
+    ///         LinodeId = foo.Id,
+    ///         Label = "boot-existing-volume",
+    ///         Kernel = "linode/grub2",
+    ///         Devices = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "deviceName", "sda" },
+    ///                 { "volumeId", 12345 },
+    ///             },
+    ///         },
+    ///         Booted = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Volumes may also be cloned from existing volumes.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.Volume("foobar", new()
+    ///     {
+    ///         Label = "my-cloned-volume",
+    ///         SourceVolumeId = 12345,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Linodes Volumes can be imported using the Linode Volume `id`, e.g.
@@ -85,7 +137,7 @@ namespace Pulumi.Linode
         public Output<int> LinodeId { get; private set; } = null!;
 
         /// <summary>
-        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `Region` forces the creation of a new Linode Volume.*.
         /// 
         /// - - -
         /// </summary>
@@ -105,7 +157,7 @@ namespace Pulumi.Linode
         public Output<int?> SourceVolumeId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
+        /// The status of the Linode Volume. (`Creating`, `Active`, `Resizing`, `ContactSupport`)
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -184,7 +236,7 @@ namespace Pulumi.Linode
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `Region` forces the creation of a new Linode Volume.*.
         /// 
         /// - - -
         /// </summary>
@@ -251,7 +303,7 @@ namespace Pulumi.Linode
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
+        /// The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `Region` forces the creation of a new Linode Volume.*.
         /// 
         /// - - -
         /// </summary>
@@ -271,7 +323,7 @@ namespace Pulumi.Linode
         public Input<int>? SourceVolumeId { get; set; }
 
         /// <summary>
-        /// The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
+        /// The status of the Linode Volume. (`Creating`, `Active`, `Resizing`, `ContactSupport`)
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

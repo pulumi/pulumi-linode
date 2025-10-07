@@ -15,14 +15,14 @@ public final class GetUsersUserGlobalGrant extends com.pulumi.resources.InvokeAr
     public static final GetUsersUserGlobalGrant Empty = new GetUsersUserGlobalGrant();
 
     /**
-     * The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+     * The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
      * 
      */
     @Import(name="accountAccess", required=true)
     private String accountAccess;
 
     /**
-     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
      * 
      */
     public String accountAccess() {
@@ -254,7 +254,7 @@ public final class GetUsersUserGlobalGrant extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param accountAccess The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+         * @param accountAccess The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class GetVpcIpsVpcIp extends com.pulumi.resources.InvokeArgs {
     public static final GetVpcIpsVpcIp Empty = new GetVpcIpsVpcIp();
 
     /**
-     * True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+     * True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
      * 
      */
     @Import(name="active", required=true)
     private Boolean active;
 
     /**
-     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
      * 
      */
     public Boolean active() {
@@ -251,7 +251,7 @@ public final class GetVpcIpsVpcIp extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param active True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+         * @param active True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
          * 
          * @return builder
          * 

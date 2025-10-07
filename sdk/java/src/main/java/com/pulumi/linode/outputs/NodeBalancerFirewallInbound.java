@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class NodeBalancerFirewallInbound {
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      * 
      */
     private String action;
@@ -45,7 +45,7 @@ public final class NodeBalancerFirewallInbound {
 
     private NodeBalancerFirewallInbound() {}
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      * 
      */
     public String action() {

@@ -26,7 +26,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpRanges;
         /// <summary>
-        /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
+        /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `Vlan` purpose.
         /// </summary>
         public readonly string? IpamAddress;
         /// <summary>
@@ -34,23 +34,23 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly Outputs.InstanceConfigInterfaceIpv4? Ipv4;
         /// <summary>
-        /// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        /// The name of the VLAN to join. This field is only allowed and required for interfaces with the `Vlan` purpose.
         /// </summary>
         public readonly string? Label;
         /// <summary>
-        /// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+        /// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `Public` or `Vpc` purpose.
         /// 
-        /// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+        /// * `Ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `Vpc` purpose.
         /// 
         /// The following computed attribute is available in a VPC interface:
         /// </summary>
         public readonly bool? Primary;
         /// <summary>
-        /// The type of interface. (`public`, `vlan`, `vpc`)
+        /// The type of interface. (`Public`, `Vlan`, `Vpc`)
         /// </summary>
         public readonly string Purpose;
         /// <summary>
-        /// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+        /// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `Vpc` purpose.
         /// </summary>
         public readonly int? SubnetId;
         /// <summary>

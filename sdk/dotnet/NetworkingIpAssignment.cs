@@ -13,6 +13,41 @@ namespace Pulumi.Linode
     /// Manages the assignment of multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in a specified region.
     /// 
     /// For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.NetworkingIpAssignment("foobar", new()
+    ///     {
+    ///         Region = "us-mia",
+    ///         Assignments = new[]
+    ///         {
+    ///             new Linode.Inputs.NetworkingIpAssignmentAssignmentArgs
+    ///             {
+    ///                 Address = reservedIp1.Address,
+    ///                 Linode_id = terraform_web1.Id,
+    ///             },
+    ///             new Linode.Inputs.NetworkingIpAssignmentAssignmentArgs
+    ///             {
+    ///                 Address = reservedIp2.Address,
+    ///                 Linode_id = terraform_web2.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Network IP assignments cannot be imported.
     /// </summary>
     [LinodeResourceType("linode:index/networkingIpAssignment:NetworkingIpAssignment")]
     public partial class NetworkingIpAssignment : global::Pulumi.CustomResource

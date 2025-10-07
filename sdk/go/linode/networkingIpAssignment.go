@@ -15,6 +15,46 @@ import (
 // Manages the assignment of multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in a specified region.
 //
 // For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewNetworkingIpAssignment(ctx, "foobar", &linode.NetworkingIpAssignmentArgs{
+//				Region: pulumi.String("us-mia"),
+//				Assignments: linode.NetworkingIpAssignmentAssignmentArray{
+//					&linode.NetworkingIpAssignmentAssignmentArgs{
+//						Address:   pulumi.Any(reservedIp1.Address),
+//						Linode_id: terraform_web1.Id,
+//					},
+//					&linode.NetworkingIpAssignmentAssignmentArgs{
+//						Address:   pulumi.Any(reservedIp2.Address),
+//						Linode_id: terraform_web2.Id,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Network IP assignments cannot be imported.
 type NetworkingIpAssignment struct {
 	pulumi.CustomResourceState
 

@@ -45,6 +45,126 @@ import * as utilities from "./utilities";
  *
  * Creating a complex PostgreSQL database:
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.DatabasePostgresqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "postgresql/16",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
+ *     allowLists: ["10.0.0.3/32"],
+ *     clusterSize: 3,
+ *     updates: {
+ *         duration: 4,
+ *         frequency: "weekly",
+ *         hour_of_day: 22,
+ *         day_of_week: 2,
+ *     },
+ * });
+ * ```
+ *
+ * Creating a PostgreSQL database with engine config fields specified:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.DatabasePostgresqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "postgresql/16",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
+ *     engineConfigPgAutovacuumAnalyzeScaleFactor: 0.1,
+ *     engineConfigPgAutovacuumAnalyzeThreshold: 50,
+ *     engineConfigPgAutovacuumMaxWorkers: 3,
+ *     engineConfigPgAutovacuumNaptime: 100,
+ *     engineConfigPgAutovacuumVacuumCostDelay: 20,
+ *     engineConfigPgAutovacuumVacuumCostLimit: 200,
+ *     engineConfigPgAutovacuumVacuumScaleFactor: 0.2,
+ *     engineConfigPgAutovacuumVacuumThreshold: 100,
+ *     engineConfigPgBgwriterDelay: 1000,
+ *     engineConfigPgBgwriterFlushAfter: 512,
+ *     engineConfigPgBgwriterLruMaxpages: 100,
+ *     engineConfigPgBgwriterLruMultiplier: 2,
+ *     engineConfigPgDeadlockTimeout: 1000,
+ *     engineConfigPgDefaultToastCompression: "pglz",
+ *     engineConfigPgIdleInTransactionSessionTimeout: 60000,
+ *     engineConfigPgJit: true,
+ *     engineConfigPgMaxFilesPerProcess: 1000,
+ *     engineConfigPgMaxLocksPerTransaction: 64,
+ *     engineConfigPgMaxLogicalReplicationWorkers: 4,
+ *     engineConfigPgMaxParallelWorkers: 8,
+ *     engineConfigPgMaxParallelWorkersPerGather: 2,
+ *     engineConfigPgMaxPredLocksPerTransaction: 128,
+ *     engineConfigPgMaxReplicationSlots: 8,
+ *     engineConfigPgMaxSlotWalKeepSize: 128,
+ *     engineConfigPgMaxStackDepth: 2097152,
+ *     engineConfigPgMaxStandbyArchiveDelay: 60000,
+ *     engineConfigPgMaxStandbyStreamingDelay: 60000,
+ *     engineConfigPgMaxWalSenders: 20,
+ *     engineConfigPgMaxWorkerProcesses: 8,
+ *     engineConfigPgPasswordEncryption: "scram-sha-256",
+ *     engineConfigPgPgPartmanBgwInterval: 3600,
+ *     engineConfigPgPgPartmanBgwRole: "myrolename",
+ *     engineConfigPgPgStatMonitorPgsmEnableQueryPlan: true,
+ *     engineConfigPgPgStatMonitorPgsmMaxBuckets: 5,
+ *     engineConfigPgPgStatStatementsTrack: "all",
+ *     engineConfigPgTempFileLimit: 100,
+ *     engineConfigPgTimezone: "Europe/Helsinki",
+ *     engineConfigPgTrackActivityQuerySize: 2048,
+ *     engineConfigPgTrackCommitTimestamp: "on",
+ *     engineConfigPgTrackFunctions: "all",
+ *     engineConfigPgTrackIoTiming: "on",
+ *     engineConfigPgWalSenderTimeout: 60000,
+ *     engineConfigPgWalWriterDelay: 200,
+ *     engineConfigPgStatMonitorEnable: true,
+ *     engineConfigPglookoutMaxFailoverReplicationTimeLag: 10000,
+ *     engineConfigSharedBuffersPercentage: 25,
+ *     engineConfigWorkMem: 400,
+ * });
+ * ```
+ *
+ * Creating a forked PostgreSQL database:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.DatabasePostgresqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "postgresql/16",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
+ *     forkSource: 12345,
+ * });
+ * ```
+ *
+ * > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
+ *
+ * ## pendingUpdates
+ *
+ * The following arguments are exposed by each entry in the `pendingUpdates` attribute:
+ *
+ * * `deadline` - The time when a mandatory update needs to be applied.
+ *
+ * * `description` - A description of the update.
+ *
+ * * `plannedFor` - The date and time a maintenance update will be applied.
+ *
+ * ## updates
+ *
+ * The following arguments are supported in the `updates` specification block:
+ *
+ * * `dayOfWeek` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+ *
+ * * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+ *
+ * * `frequency` - (Required) The frequency at which maintenance occurs. (`weekly`)
+ *
+ * * `hourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+ *
  * ## Import
  *
  * Linode PostgreSQL Databases can be imported using the `id`, e.g.

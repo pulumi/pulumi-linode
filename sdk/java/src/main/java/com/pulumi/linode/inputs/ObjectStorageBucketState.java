@@ -21,8 +21,8 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
 
     /**
      * The access key to authenticate with. If not specified with the resource, its value can be
-     * * configured by `obj_access_key` in the provider configuration;
-     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+     * * configured by `objAccessKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      * 
      */
     @Import(name="accessKey")
@@ -30,8 +30,8 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
 
     /**
      * @return The access key to authenticate with. If not specified with the resource, its value can be
-     * * configured by `obj_access_key` in the provider configuration;
-     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+     * * configured by `objAccessKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -112,10 +112,10 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
      * The endpoint for the bucket used for s3 connections.
      * 
      * @deprecated
-     * Use `s3_endpoint` instead
+     * Use `s3Endpoint` instead
      * 
      */
-    @Deprecated /* Use `s3_endpoint` instead */
+    @Deprecated /* Use `s3Endpoint` instead */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
@@ -123,23 +123,23 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
      * @return The endpoint for the bucket used for s3 connections.
      * 
      * @deprecated
-     * Use `s3_endpoint` instead
+     * Use `s3Endpoint` instead
      * 
      */
-    @Deprecated /* Use `s3_endpoint` instead */
+    @Deprecated /* Use `s3Endpoint` instead */
     public Optional<Output<String>> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
 
     /**
-     * The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     @Import(name="endpointType")
     private @Nullable Output<String> endpointType;
 
     /**
-     * @return The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * @return The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     public Optional<Output<String>> endpointType() {
@@ -207,14 +207,14 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+     * The user&#39;s s3 endpoint URL, based on the `endpointType` and `region`.
      * 
      */
     @Import(name="s3Endpoint")
     private @Nullable Output<String> s3Endpoint;
 
     /**
-     * @return The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+     * @return The user&#39;s s3 endpoint URL, based on the `endpointType` and `region`.
      * 
      */
     public Optional<Output<String>> s3Endpoint() {
@@ -223,8 +223,8 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
 
     /**
      * The secret key to authenticate with. If not specified with the resource, its value can be
-     * * configured by `obj_secret_key` in the provider configuration;
-     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+     * * configured by `objSecretKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      * 
      */
     @Import(name="secretKey")
@@ -232,8 +232,8 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
 
     /**
      * @return The secret key to authenticate with. If not specified with the resource, its value can be
-     * * configured by `obj_secret_key` in the provider configuration;
-     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+     * * configured by `objSecretKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -241,9 +241,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+     * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      * 
-     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+     * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
      * 
      * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
@@ -252,9 +252,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     private @Nullable Output<Boolean> versioning;
 
     /**
-     * @return Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+     * @return Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      * 
-     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+     * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
      * 
      * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
@@ -302,8 +302,8 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
 
         /**
          * @param accessKey The access key to authenticate with. If not specified with the resource, its value can be
-         * * configured by `obj_access_key` in the provider configuration;
-         * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+         * * configured by `objAccessKey` in the provider configuration;
+         * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
          * 
          * @return builder
          * 
@@ -315,8 +315,8 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
 
         /**
          * @param accessKey The access key to authenticate with. If not specified with the resource, its value can be
-         * * configured by `obj_access_key` in the provider configuration;
-         * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+         * * configured by `objAccessKey` in the provider configuration;
+         * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
          * 
          * @return builder
          * 
@@ -425,10 +425,10 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          * @deprecated
-         * Use `s3_endpoint` instead
+         * Use `s3Endpoint` instead
          * 
          */
-        @Deprecated /* Use `s3_endpoint` instead */
+        @Deprecated /* Use `s3Endpoint` instead */
         public Builder endpoint(@Nullable Output<String> endpoint) {
             $.endpoint = endpoint;
             return this;
@@ -440,16 +440,16 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          * @deprecated
-         * Use `s3_endpoint` instead
+         * Use `s3Endpoint` instead
          * 
          */
-        @Deprecated /* Use `s3_endpoint` instead */
+        @Deprecated /* Use `s3Endpoint` instead */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
         }
 
         /**
-         * @param endpointType The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+         * @param endpointType The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpointType The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+         * @param endpointType The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param s3Endpoint The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+         * @param s3Endpoint The user&#39;s s3 endpoint URL, based on the `endpointType` and `region`.
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param s3Endpoint The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+         * @param s3Endpoint The user&#39;s s3 endpoint URL, based on the `endpointType` and `region`.
          * 
          * @return builder
          * 
@@ -586,8 +586,8 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
 
         /**
          * @param secretKey The secret key to authenticate with. If not specified with the resource, its value can be
-         * * configured by `obj_secret_key` in the provider configuration;
-         * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+         * * configured by `objSecretKey` in the provider configuration;
+         * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
          * 
          * @return builder
          * 
@@ -599,8 +599,8 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
 
         /**
          * @param secretKey The secret key to authenticate with. If not specified with the resource, its value can be
-         * * configured by `obj_secret_key` in the provider configuration;
-         * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+         * * configured by `objSecretKey` in the provider configuration;
+         * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
          * 
          * @return builder
          * 
@@ -610,9 +610,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param versioning Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+         * @param versioning Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
          * 
-         * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+         * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
          * 
          * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
          * 
@@ -625,9 +625,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param versioning Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+         * @param versioning Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
          * 
-         * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+         * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
          * 
          * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
          * 

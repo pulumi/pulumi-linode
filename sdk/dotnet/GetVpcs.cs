@@ -51,13 +51,13 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `region`
+        /// * `Region`
         /// </summary>
         public static Task<GetVpcsResult> InvokeAsync(GetVpcsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcsResult>("linode:index/getVpcs:getVpcs", args ?? new GetVpcsArgs(), options.WithDefaults());
@@ -102,13 +102,13 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `region`
+        /// * `Region`
         /// </summary>
         public static Output<GetVpcsResult> Invoke(GetVpcsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcsResult>("linode:index/getVpcs:getVpcs", args ?? new GetVpcsInvokeArgs(), options.WithDefaults());
@@ -153,13 +153,13 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `region`
+        /// * `Region`
         /// </summary>
         public static Output<GetVpcsResult> Invoke(GetVpcsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcsResult>("linode:index/getVpcs:getVpcs", args ?? new GetVpcsInvokeArgs(), options.WithDefaults());

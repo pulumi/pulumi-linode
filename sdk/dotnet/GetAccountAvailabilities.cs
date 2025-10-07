@@ -51,11 +51,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `unavailable`
+        /// * `Unavailable`
         /// 
-        /// * `available`
+        /// * `Available`
         /// </summary>
         public static Task<GetAccountAvailabilitiesResult> InvokeAsync(GetAccountAvailabilitiesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAvailabilitiesResult>("linode:index/getAccountAvailabilities:getAccountAvailabilities", args ?? new GetAccountAvailabilitiesArgs(), options.WithDefaults());
@@ -100,11 +100,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `unavailable`
+        /// * `Unavailable`
         /// 
-        /// * `available`
+        /// * `Available`
         /// </summary>
         public static Output<GetAccountAvailabilitiesResult> Invoke(GetAccountAvailabilitiesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAvailabilitiesResult>("linode:index/getAccountAvailabilities:getAccountAvailabilities", args ?? new GetAccountAvailabilitiesInvokeArgs(), options.WithDefaults());
@@ -149,11 +149,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `unavailable`
+        /// * `Unavailable`
         /// 
-        /// * `available`
+        /// * `Available`
         /// </summary>
         public static Output<GetAccountAvailabilitiesResult> Invoke(GetAccountAvailabilitiesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAvailabilitiesResult>("linode:index/getAccountAvailabilities:getAccountAvailabilities", args ?? new GetAccountAvailabilitiesInvokeArgs(), options.WithDefaults());

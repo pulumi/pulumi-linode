@@ -70,21 +70,21 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `class`
+        /// * `Class`
         /// 
-        /// * `disk`
+        /// * `Disk`
         /// 
-        /// * `gpus`
+        /// * `Gpus`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `memory`
+        /// * `Memory`
         /// 
-        /// * `network_out`
+        /// * `NetworkOut`
         /// 
-        /// * `transfer`
+        /// * `Transfer`
         /// 
-        /// * `vcpus`
+        /// * `Vcpus`
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("linode:index/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
@@ -148,21 +148,21 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `class`
+        /// * `Class`
         /// 
-        /// * `disk`
+        /// * `Disk`
         /// 
-        /// * `gpus`
+        /// * `Gpus`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `memory`
+        /// * `Memory`
         /// 
-        /// * `network_out`
+        /// * `NetworkOut`
         /// 
-        /// * `transfer`
+        /// * `Transfer`
         /// 
-        /// * `vcpus`
+        /// * `Vcpus`
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("linode:index/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
@@ -226,21 +226,21 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `class`
+        /// * `Class`
         /// 
-        /// * `disk`
+        /// * `Disk`
         /// 
-        /// * `gpus`
+        /// * `Gpus`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `memory`
+        /// * `Memory`
         /// 
-        /// * `network_out`
+        /// * `NetworkOut`
         /// 
-        /// * `transfer`
+        /// * `Transfer`
         /// 
-        /// * `vcpus`
+        /// * `Vcpus`
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("linode:index/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());
@@ -258,7 +258,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -294,7 +294,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

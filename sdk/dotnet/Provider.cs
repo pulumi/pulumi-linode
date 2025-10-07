@@ -37,7 +37,7 @@ namespace Pulumi.Linode
         public Output<string?> ConfigPath { get; private set; } = null!;
 
         /// <summary>
-        /// The Linode config profile to use. (default `default`)
+        /// The Linode config profile to use. (default `Default`)
         /// </summary>
         [Output("configProfile")]
         public Output<string?> ConfigProfile { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Linode
         public Input<string>? ConfigPath { get; set; }
 
         /// <summary>
-        /// The Linode config profile to use. (default `default`)
+        /// The Linode config profile to use. (default `Default`)
         /// </summary>
         [Input("configProfile")]
         public Input<string>? ConfigProfile { get; set; }
@@ -199,7 +199,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linode_object_sorage_bucket resource.
+        /// If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and LinodeObjectSorageBucket resource.
         /// </summary>
         [Input("objUseTempKeys", json: true)]
         public Input<bool>? ObjUseTempKeys { get; set; }

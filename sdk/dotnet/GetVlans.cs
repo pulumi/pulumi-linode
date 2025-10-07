@@ -13,7 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// &gt; **Beta Notice** VLANs are currently available through early access.
-        /// To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+        /// To use early access resources, the `ApiVersion` provider argument must be set to `V4beta`.
         /// To learn more, see the early access documentation.
         /// 
         /// Provides details about Linode VLANs.
@@ -70,16 +70,16 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `region`
+        /// * `Region`
         /// </summary>
         public static Task<GetVlansResult> InvokeAsync(GetVlansArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **Beta Notice** VLANs are currently available through early access.
-        /// To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+        /// To use early access resources, the `ApiVersion` provider argument must be set to `V4beta`.
         /// To learn more, see the early access documentation.
         /// 
         /// Provides details about Linode VLANs.
@@ -136,16 +136,16 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `region`
+        /// * `Region`
         /// </summary>
         public static Output<GetVlansResult> Invoke(GetVlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// &gt; **Beta Notice** VLANs are currently available through early access.
-        /// To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+        /// To use early access resources, the `ApiVersion` provider argument must be set to `V4beta`.
         /// To learn more, see the early access documentation.
         /// 
         /// Provides details about Linode VLANs.
@@ -202,9 +202,9 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `region`
+        /// * `Region`
         /// </summary>
         public static Output<GetVlansResult> Invoke(GetVlansInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVlansResult>("linode:index/getVlans:getVlans", args ?? new GetVlansInvokeArgs(), options.WithDefaults());
@@ -222,7 +222,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -258,7 +258,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
