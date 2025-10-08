@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * Manages a single assignment between a Linode and a Placement Group.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-group-add-linode).
  * 
- * To prevent update conflicts, Linodes managed through the `linode.Instance` resource should specify `placement_group_externally_managed`:
+ * To prevent update conflicts, Linodes managed through the `linode.Instance` resource should specify `placementGroupExternallyManaged`:
  * 
  * <pre>
  * {@code

@@ -55,13 +55,13 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `country`
+        /// * `Country`
         /// 
-        /// * `capabilities`
+        /// * `Capabilities`
         /// 
-        /// * `site_type`
+        /// * `SiteType`
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("linode:index/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
@@ -110,13 +110,13 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `country`
+        /// * `Country`
         /// 
-        /// * `capabilities`
+        /// * `Capabilities`
         /// 
-        /// * `site_type`
+        /// * `SiteType`
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("linode:index/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
@@ -165,13 +165,13 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `country`
+        /// * `Country`
         /// 
-        /// * `capabilities`
+        /// * `Capabilities`
         /// 
-        /// * `site_type`
+        /// * `SiteType`
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("linode:index/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());

@@ -61,7 +61,7 @@ namespace Pulumi.Linode.Inputs
         public Input<int> Size { get; set; } = null!;
 
         /// <summary>
-        /// The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+        /// The current status of the Volume. (`Creating`, `Active`, `Resizing`, `ContactSupport`)
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;

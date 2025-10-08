@@ -111,6 +111,30 @@ class NetworkingIpAssignment(pulumi.CustomResource):
 
         For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.NetworkingIpAssignment("foobar",
+            region="us-mia",
+            assignments=[
+                {
+                    "address": reserved_ip1["address"],
+                    "linode_id": terraform_web1["id"],
+                },
+                {
+                    "address": reserved_ip2["address"],
+                    "linode_id": terraform_web2["id"],
+                },
+            ])
+        ```
+
+        ## Import
+
+        Network IP assignments cannot be imported.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict']]]] assignments: A list of IP/Linode assignments to apply.
@@ -126,6 +150,30 @@ class NetworkingIpAssignment(pulumi.CustomResource):
         Manages the assignment of multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in a specified region.
 
         For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.NetworkingIpAssignment("foobar",
+            region="us-mia",
+            assignments=[
+                {
+                    "address": reserved_ip1["address"],
+                    "linode_id": terraform_web1["id"],
+                },
+                {
+                    "address": reserved_ip2["address"],
+                    "linode_id": terraform_web2["id"],
+                },
+            ])
+        ```
+
+        ## Import
+
+        Network IP assignments cannot be imported.
 
         :param str resource_name: The name of the resource.
         :param NetworkingIpAssignmentArgs args: The arguments to use to populate this resource's properties.

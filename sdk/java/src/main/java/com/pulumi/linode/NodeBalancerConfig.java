@@ -100,14 +100,14 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
         return this.algorithm;
     }
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
      * 
      */
     @Export(name="check", refs={String.class}, tree="[0]")
     private Output<String> check;
 
     /**
-     * @return The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+     * @return The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
      * 
      */
     public Output<String> check() {
@@ -258,14 +258,14 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
         return this.port;
     }
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
-     * @return The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+     * @return The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      * 
      */
     public Output<String> protocol() {
@@ -286,14 +286,14 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
         return this.proxyProtocol;
     }
     /**
-     * The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      * 
      */
     @Export(name="sslCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslCert;
 
     /**
-     * @return The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * @return The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      * 
      */
     public Output<Optional<String>> sslCert() {
@@ -328,28 +328,28 @@ public class NodeBalancerConfig extends com.pulumi.resources.CustomResource {
         return this.sslFingerprint;
     }
     /**
-     * The private key corresponding to this port&#39;s certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * The private key corresponding to this port&#39;s certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      * 
      */
     @Export(name="sslKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslKey;
 
     /**
-     * @return The private key corresponding to this port&#39;s certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+     * @return The private key corresponding to this port&#39;s certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the sslCommonname and sslFingerprint to identify the certificate.
      * 
      */
     public Output<Optional<String>> sslKey() {
         return Codegen.optional(this.sslKey);
     }
     /**
-     * Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+     * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      * 
      */
     @Export(name="stickiness", refs={String.class}, tree="[0]")
     private Output<String> stickiness;
 
     /**
-     * @return Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+     * @return Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      * 
      */
     public Output<String> stickiness() {

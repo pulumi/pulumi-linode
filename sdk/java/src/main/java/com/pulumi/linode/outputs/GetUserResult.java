@@ -54,7 +54,7 @@ public final class GetUserResult {
      */
     private Boolean restricted;
     /**
-     * @return A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+     * @return A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
      * 
      */
     private List<String> sshKeys;
@@ -135,7 +135,7 @@ public final class GetUserResult {
         return this.restricted;
     }
     /**
-     * @return A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+     * @return A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
      * 
      */
     public List<String> sshKeys() {

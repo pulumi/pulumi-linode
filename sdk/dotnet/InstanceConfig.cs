@@ -14,6 +14,152 @@ namespace Pulumi.Linode
     /// 
     /// Creating a simple bootable Linode Instance Configuration Profile:
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     {
+    ///         Label = "my-instance",
+    ///         Type = "g6-standard-1",
+    ///         Region = "us-southeast",
+    ///     });
+    /// 
+    ///     var boot = new Linode.InstanceDisk("boot", new()
+    ///     {
+    ///         Label = "boot",
+    ///         LinodeId = my_instance.Id,
+    ///         Size = my_instance.Specs.Apply(specs =&gt; specs[0].Disk),
+    ///         Image = "linode/ubuntu22.04",
+    ///         RootPass = "myc00lpass!",
+    ///     });
+    /// 
+    ///     var my_config = new Linode.InstanceConfig("my-config", new()
+    ///     {
+    ///         LinodeId = my_instance.Id,
+    ///         Label = "my-config",
+    ///         Devices = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "deviceName", "sda" },
+    ///                 { "diskId", boot.Id },
+    ///             },
+    ///         },
+    ///         Booted = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating a complex bootable Instance Configuration Profile with a VPC:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a VPC and a subnet
+    ///     var foobar = new Linode.Vpc("foobar", new()
+    ///     {
+    ///         Label = "my-vpc",
+    ///         Region = "us-mia",
+    ///         Description = "test description",
+    ///     });
+    /// 
+    ///     var foobarVpcSubnet = new Linode.VpcSubnet("foobar", new()
+    ///     {
+    ///         VpcId = foobar.Id,
+    ///         Label = "my-subnet",
+    ///         Ipv4 = "10.0.4.0/24",
+    ///     });
+    /// 
+    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     {
+    ///         Label = "my-instance",
+    ///         Type = "g6-standard-1",
+    ///         Region = "us-mia",
+    ///     });
+    /// 
+    ///     // Create a boot disk
+    ///     var boot = new Linode.InstanceDisk("boot", new()
+    ///     {
+    ///         Label = "boot",
+    ///         LinodeId = my_instance.Id,
+    ///         Size = my_instance.Specs.Apply(specs =&gt; specs[0].Disk - 512),
+    ///         Image = "linode/ubuntu22.04",
+    ///         RootPass = "myc00lpass!ciuw23asxbviwuc",
+    ///     });
+    /// 
+    ///     // Create a swap disk
+    ///     var swap = new Linode.InstanceDisk("swap", new()
+    ///     {
+    ///         Label = "swap",
+    ///         LinodeId = my_instance.Id,
+    ///         Size = 512,
+    ///         Filesystem = "swap",
+    ///     });
+    /// 
+    ///     var my_config = new Linode.InstanceConfig("my-config", new()
+    ///     {
+    ///         LinodeId = my_instance.Id,
+    ///         Label = "my-config",
+    ///         Devices = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "deviceName", "sda" },
+    ///                 { "diskId", boot.Id },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "deviceName", "sdb" },
+    ///                 { "diskId", swap.Id },
+    ///             },
+    ///         },
+    ///         Helpers = new[]
+    ///         {
+    ///             new Linode.Inputs.InstanceConfigHelperArgs
+    ///             {
+    ///                 UpdatedbDisabled = false,
+    ///             },
+    ///         },
+    ///         Interfaces = new[]
+    ///         {
+    ///             new Linode.Inputs.InstanceConfigInterfaceArgs
+    ///             {
+    ///                 Purpose = "public",
+    ///             },
+    ///             new Linode.Inputs.InstanceConfigInterfaceArgs
+    ///             {
+    ///                 Purpose = "vlan",
+    ///                 Label = "my-vlan",
+    ///                 IpamAddress = "10.0.0.2/24",
+    ///             },
+    ///             new Linode.Inputs.InstanceConfigInterfaceArgs
+    ///             {
+    ///                 Purpose = "vpc",
+    ///                 SubnetId = foobarVpcSubnet.Id,
+    ///                 Ipv4 = new Linode.Inputs.InstanceConfigInterfaceIpv4Args
+    ///                 {
+    ///                     Vpc = "10.0.4.250",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Booted = true,
+    ///     });
+    /// 
+    ///     // Unsupported provisioner type remote-exec
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Instance Configs can be imported using the `linode_id` followed by the Instance Config `id` separated by a comma, e.g.
@@ -34,11 +180,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Optional field for arbitrary User comments on this Config.
         /// 
-        /// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        /// * `Devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
         /// 
-        /// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        /// * `Helpers` - (Optional) Helpers enabled when booting to this Linode Config.
         /// 
-        /// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        /// * `Interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
         /// </summary>
         [Output("comments")]
         public Output<string?> Comments { get; private set; } = null!;
@@ -100,13 +246,13 @@ namespace Pulumi.Linode
         public Output<string?> RootDevice { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
+        /// Defines the state of your Linode after booting. (`Default`, `Single`, `Binbash`)
         /// </summary>
         [Output("runLevel")]
         public Output<string?> RunLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Controls the virtualization mode. (`paravirt`, `fullvirt`)
+        /// Controls the virtualization mode. (`Paravirt`, `Fullvirt`)
         /// </summary>
         [Output("virtMode")]
         public Output<string?> VirtMode { get; private set; } = null!;
@@ -166,11 +312,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Optional field for arbitrary User comments on this Config.
         /// 
-        /// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        /// * `Devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
         /// 
-        /// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        /// * `Helpers` - (Optional) Helpers enabled when booting to this Linode Config.
         /// 
-        /// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        /// * `Interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
         /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }
@@ -250,13 +396,13 @@ namespace Pulumi.Linode
         public Input<string>? RootDevice { get; set; }
 
         /// <summary>
-        /// Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
+        /// Defines the state of your Linode after booting. (`Default`, `Single`, `Binbash`)
         /// </summary>
         [Input("runLevel")]
         public Input<string>? RunLevel { get; set; }
 
         /// <summary>
-        /// Controls the virtualization mode. (`paravirt`, `fullvirt`)
+        /// Controls the virtualization mode. (`Paravirt`, `Fullvirt`)
         /// </summary>
         [Input("virtMode")]
         public Input<string>? VirtMode { get; set; }
@@ -278,11 +424,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Optional field for arbitrary User comments on this Config.
         /// 
-        /// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        /// * `Devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
         /// 
-        /// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        /// * `Helpers` - (Optional) Helpers enabled when booting to this Linode Config.
         /// 
-        /// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        /// * `Interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
         /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }
@@ -362,13 +508,13 @@ namespace Pulumi.Linode
         public Input<string>? RootDevice { get; set; }
 
         /// <summary>
-        /// Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
+        /// Defines the state of your Linode after booting. (`Default`, `Single`, `Binbash`)
         /// </summary>
         [Input("runLevel")]
         public Input<string>? RunLevel { get; set; }
 
         /// <summary>
-        /// Controls the virtualization mode. (`paravirt`, `fullvirt`)
+        /// Controls the virtualization mode. (`Paravirt`, `Fullvirt`)
         /// </summary>
         [Input("virtMode")]
         public Input<string>? VirtMode { get; set; }

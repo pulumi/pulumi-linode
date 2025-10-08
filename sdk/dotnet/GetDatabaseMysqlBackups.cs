@@ -206,19 +206,19 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, only the latest backup will be returned.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
         /// <summary>
-        /// The attribute to order the results by. (`created`)
+        /// The attribute to order the results by. (`Created`)
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -248,19 +248,19 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, only the latest backup will be returned.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select database backups that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
         /// <summary>
-        /// The attribute to order the results by. (`created`)
+        /// The attribute to order the results by. (`Created`)
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }

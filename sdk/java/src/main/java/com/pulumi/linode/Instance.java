@@ -131,6 +131,87 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Linode Instance with Explicit Configs and Disks
+ * 
+ * Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.LinodeFunctions;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.Volume;
+ * import com.pulumi.linode.VolumeArgs;
+ * import com.pulumi.linode.InstanceDisk;
+ * import com.pulumi.linode.InstanceDiskArgs;
+ * import com.pulumi.linode.InstanceConfig;
+ * import com.pulumi.linode.InstanceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var me = LinodeFunctions.getProfile(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+ * 
+ *         var web = new Instance("web", InstanceArgs.builder()
+ *             .label("complex_instance")
+ *             .tags("foo")
+ *             .region("us-central")
+ *             .type("g6-nanode-1")
+ *             .privateIp(true)
+ *             .build());
+ * 
+ *         var webVolume = new Volume("webVolume", VolumeArgs.builder()
+ *             .label("web_volume")
+ *             .size(20)
+ *             .region("us-central")
+ *             .build());
+ * 
+ *         var bootDisk = new InstanceDisk("bootDisk", InstanceDiskArgs.builder()
+ *             .label("boot")
+ *             .linodeId(web.id())
+ *             .size(3000)
+ *             .image("linode/ubuntu22.04")
+ *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")
+ *             .authorizedUsers(me.username())
+ *             .rootPass("terr4form-test")
+ *             .build());
+ * 
+ *         var bootConfig = new InstanceConfig("bootConfig", InstanceConfigArgs.builder()
+ *             .label("boot_config")
+ *             .linodeId(web.id())
+ *             .devices(            
+ *                 InstanceConfigDevicesArgs.builder()
+ *                     .deviceName("sda")
+ *                     .diskId(bootDisk.id())
+ *                     .build(),
+ *                 InstanceConfigDevicesArgs.builder()
+ *                     .deviceName("sdb")
+ *                     .volumeId(webVolume.id())
+ *                     .build())
+ *             .rootDevice("/dev/sda")
+ *             .kernel("linode/latest-64bit")
+ *             .booted(true)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ### Linode Instance Assigned to a Placement Group
  * 
  * The following example shows how one might use this resource to configure a Linode instance assigned to a
@@ -233,14 +314,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authorizedUsers);
     }
     /**
-     * A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
+     * A Backup ID from another Linode&#39;s available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
      * 
      */
     @Export(name="backupId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> backupId;
 
     /**
-     * @return A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
+     * @return A Backup ID from another Linode&#39;s available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
      * 
      */
     public Output<Optional<Integer>> backupId() {
@@ -365,14 +446,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.disks;
     }
     /**
-     * The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+     * The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
      * 
      */
     @Export(name="firewallId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> firewallId;
 
     /**
-     * @return The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+     * @return The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
      * 
      */
     public Output<Optional<Integer>> firewallId() {
@@ -456,10 +537,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A string containing the Linode&#39;s public IP address.
      * 
      * @deprecated
-     * The `ip_address` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
+     * The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
      * 
      */
-    @Deprecated /* The `ip_address` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead. */
+    @Deprecated /* The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead. */
     @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 

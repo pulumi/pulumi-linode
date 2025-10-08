@@ -125,8 +125,8 @@ import javax.annotation.Nullable;
 public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
     /**
      * The access key to authenticate with. If not specified with the resource, its value can be
-     * * configured by `obj_access_key` in the provider configuration;
-     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+     * * configured by `objAccessKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
@@ -134,8 +134,8 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The access key to authenticate with. If not specified with the resource, its value can be
-     * * configured by `obj_access_key` in the provider configuration;
-     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+     * * configured by `objAccessKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      * 
      */
     public Output<Optional<String>> accessKey() {
@@ -207,10 +207,10 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
      * The endpoint for the bucket used for s3 connections.
      * 
      * @deprecated
-     * Use `s3_endpoint` instead
+     * Use `s3Endpoint` instead
      * 
      */
-    @Deprecated /* Use `s3_endpoint` instead */
+    @Deprecated /* Use `s3Endpoint` instead */
     @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
@@ -222,14 +222,14 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
         return this.endpoint;
     }
     /**
-     * The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
-     * @return The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * @return The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     public Output<String> endpointType() {
@@ -292,14 +292,14 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+     * The user&#39;s s3 endpoint URL, based on the `endpointType` and `region`.
      * 
      */
     @Export(name="s3Endpoint", refs={String.class}, tree="[0]")
     private Output<String> s3Endpoint;
 
     /**
-     * @return The user&#39;s s3 endpoint URL, based on the `endpoint_type` and `region`.
+     * @return The user&#39;s s3 endpoint URL, based on the `endpointType` and `region`.
      * 
      */
     public Output<String> s3Endpoint() {
@@ -307,8 +307,8 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
     }
     /**
      * The secret key to authenticate with. If not specified with the resource, its value can be
-     * * configured by `obj_secret_key` in the provider configuration;
-     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+     * * configured by `objSecretKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      * 
      */
     @Export(name="secretKey", refs={String.class}, tree="[0]")
@@ -316,17 +316,17 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The secret key to authenticate with. If not specified with the resource, its value can be
-     * * configured by `obj_secret_key` in the provider configuration;
-     * * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+     * * configured by `objSecretKey` in the provider configuration;
+     * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      * 
      */
     public Output<Optional<String>> secretKey() {
         return Codegen.optional(this.secretKey);
     }
     /**
-     * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+     * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      * 
-     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+     * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
      * 
      * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 
@@ -335,9 +335,9 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
     private Output<Boolean> versioning;
 
     /**
-     * @return Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+     * @return Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      * 
-     * * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+     * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
      * 
      * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
      * 

@@ -45,7 +45,7 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
+        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `Accept` this backend is accepting traffic. If set to `Reject` this backend will not receive traffic. If set to `Drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`Accept`, `Reject`, `Drain`, `Backup`)
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -57,7 +57,7 @@ namespace Pulumi.Linode
         public Output<int> NodebalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
+        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (`Unknown`, `UP`, `DOWN`).
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.Linode
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
+        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `Accept` this backend is accepting traffic. If set to `Reject` this backend will not receive traffic. If set to `Drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`Accept`, `Reject`, `Drain`, `Backup`)
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -181,7 +181,7 @@ namespace Pulumi.Linode
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
+        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `Accept` this backend is accepting traffic. If set to `Reject` this backend will not receive traffic. If set to `Drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`Accept`, `Reject`, `Drain`, `Backup`)
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.Linode
         public Input<int>? NodebalancerId { get; set; }
 
         /// <summary>
-        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
+        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (`Unknown`, `UP`, `DOWN`).
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

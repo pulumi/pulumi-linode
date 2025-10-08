@@ -45,14 +45,14 @@ public final class GetUserStackscriptGrant extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
      * 
      */
     @Import(name="permissions", required=true)
     private String permissions;
 
     /**
-     * @return The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+     * @return The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
      * 
      */
     public String permissions() {
@@ -108,7 +108,7 @@ public final class GetUserStackscriptGrant extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param permissions The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+         * @param permissions The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
          * 
          * @return builder
          * 

@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        /// The level of access this User has to this entity. If null, this User has no access. (`ReadOnly`, `ReadWrite`)
         /// </summary>
         public readonly string Permissions;
 

@@ -65,7 +65,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.PlacementGroupMember>> Members { get; private set; } = null!;
 
         /// <summary>
-        /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        /// Whether Linodes must be able to become compliant during assignment. (Default `Strict`)
         /// </summary>
         [Output("placementGroupPolicy")]
         public Output<string> PlacementGroupPolicy { get; private set; } = null!;
@@ -135,7 +135,7 @@ namespace Pulumi.Linode
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        /// Whether Linodes must be able to become compliant during assignment. (Default `Strict`)
         /// </summary>
         [Input("placementGroupPolicy")]
         public Input<string>? PlacementGroupPolicy { get; set; }
@@ -185,7 +185,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        /// Whether Linodes must be able to become compliant during assignment. (Default `Strict`)
         /// </summary>
         [Input("placementGroupPolicy")]
         public Input<string>? PlacementGroupPolicy { get; set; }

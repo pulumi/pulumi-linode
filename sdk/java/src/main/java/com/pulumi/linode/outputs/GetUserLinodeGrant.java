@@ -22,7 +22,7 @@ public final class GetUserLinodeGrant {
      */
     private String label;
     /**
-     * @return The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+     * @return The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
      * 
      */
     private String permissions;
@@ -43,7 +43,7 @@ public final class GetUserLinodeGrant {
         return this.label;
     }
     /**
-     * @return The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+     * @return The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
      * 
      */
     public String permissions() {

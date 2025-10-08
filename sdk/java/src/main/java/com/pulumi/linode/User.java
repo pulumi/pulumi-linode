@@ -114,37 +114,37 @@ import javax.annotation.Nullable;
  * 
  * ## Global Grants
  * 
- * * `account_access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)
+ * * `accountAccess` - (optional) The level of access this User has to Account-level actions, like billing information. (`readOnly`, `readWrite`)
  * 
- * * `add_domains` - (optional) If true, this User may add Domains.
+ * * `addDomains` - (optional) If true, this User may add Domains.
  * 
- * * `add_databases` - (optional) If true, this User may add Databases.
+ * * `addDatabases` - (optional) If true, this User may add Databases.
  * 
- * * `add_firewalls` - (optional) If true, this User may add Firewalls.
+ * * `addFirewalls` - (optional) If true, this User may add Firewalls.
  * 
- * * `add_images` - (optional) If true, this User may add Images.
+ * * `addImages` - (optional) If true, this User may add Images.
  * 
- * * `add_linodes` - (optional) If true, this User may create Linodes.
+ * * `addLinodes` - (optional) If true, this User may create Linodes.
  * 
- * * `add_longview` - (optional) If true, this User may create Longview clients and view the current plan.
+ * * `addLongview` - (optional) If true, this User may create Longview clients and view the current plan.
  * 
- * * `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.
+ * * `addNodebalancers` - (optional) If true, this User may add NodeBalancers.
  * 
- * * `add_placement_groups` - (optional) If true, this User may add Placement Groups.
+ * * `addPlacementGroups` - (optional) If true, this User may add Placement Groups.
  * 
- * * `add_stackscripts` - (optional) If true, this User may add StackScripts.
+ * * `addStackscripts` - (optional) If true, this User may add StackScripts.
  * 
- * * `add_vpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
+ * * `addVpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
  * 
- * * `cancel_account` - (optional) If true, this User may cancel the entire Account.
+ * * `cancelAccount` - (optional) If true, this User may cancel the entire Account.
  * 
- * * `longview_subscription` - (optional) If true, this User may manage the Account’s Longview subscription.
+ * * `longviewSubscription` - (optional) If true, this User may manage the Account’s Longview subscription.
  * 
  * ## Entity Grants
  * 
  * * `id` - (required) The ID of the entity this grant applies to.
  * 
- * * `permissions` - (required) The level of access this User has to this entity. (`read_only`, `read_write`)
+ * * `permissions` - (required) The level of access this User has to this entity. (`readOnly`, `readWrite`)
  * 
  */
 @ResourceType(type="linode:index/user:User")
@@ -278,7 +278,7 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * If true, this user will only have explicit permissions granted.
      * 
-     * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
      * 
      * The following arguments are sets of entity grants:
      * 
@@ -289,7 +289,7 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * @return If true, this user will only have explicit permissions granted.
      * 
-     * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
      * 
      * The following arguments are sets of entity grants:
      * 

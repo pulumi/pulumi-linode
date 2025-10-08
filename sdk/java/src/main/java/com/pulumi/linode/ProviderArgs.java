@@ -214,14 +214,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linode_object_sorage_bucket resource.
+     * If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linodeObjectSorageBucket resource.
      * 
      */
     @Import(name="objUseTempKeys", json=true)
     private @Nullable Output<Boolean> objUseTempKeys;
 
     /**
-     * @return If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linode_object_sorage_bucket resource.
+     * @return If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linodeObjectSorageBucket resource.
      * 
      */
     public Optional<Output<Boolean>> objUseTempKeys() {
@@ -635,7 +635,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objUseTempKeys If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linode_object_sorage_bucket resource.
+         * @param objUseTempKeys If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linodeObjectSorageBucket resource.
          * 
          * @return builder
          * 
@@ -646,7 +646,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objUseTempKeys If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linode_object_sorage_bucket resource.
+         * @param objUseTempKeys If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linodeObjectSorageBucket resource.
          * 
          * @return builder
          * 

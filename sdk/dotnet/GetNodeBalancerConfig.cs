@@ -136,11 +136,11 @@ namespace Pulumi.Linode
     public sealed class GetNodeBalancerConfigResult
     {
         /// <summary>
-        /// What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
+        /// What algorithm this NodeBalancer should use for routing traffic to backends (`Roundrobin`, `Leastconn`, `Source`)
         /// </summary>
         public readonly string Algorithm;
         /// <summary>
-        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and HttpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`None`, `Connection`, `Http`, `HttpBody`)
         /// </summary>
         public readonly string Check;
         /// <summary>
@@ -165,7 +165,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int CheckTimeout;
         /// <summary>
-        /// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
+        /// What ciphers to use for SSL connections served by this NodeBalancer. `Legacy` is considered insecure and should only be used if necessary. (`Recommended`, `Legacy`)
         /// </summary>
         public readonly string CipherSuite;
         public readonly int Id;
@@ -176,11 +176,11 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        /// The protocol this port is configured to serve. If this is set to https you must include an SslCert and an ssl_key. (`Http`, `Https`, `Tcp`) (Defaults to `Http`)
         /// </summary>
         public readonly string Protocol;
         /// <summary>
-        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
+        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `Tcp`. (`None`, `V1`, and `V2`) (Defaults to `None`)
         /// </summary>
         public readonly string ProxyProtocol;
         /// <summary>
@@ -192,7 +192,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string SslFingerprint;
         /// <summary>
-        /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        /// Controls how session stickiness is handled on this port. (`None`, `Table`, `HttpCookie`)
         /// </summary>
         public readonly string Stickiness;
         /// <summary>

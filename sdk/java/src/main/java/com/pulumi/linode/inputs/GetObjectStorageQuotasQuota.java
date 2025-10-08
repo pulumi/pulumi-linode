@@ -60,14 +60,14 @@ public final class GetObjectStorageQuotasQuota extends com.pulumi.resources.Invo
     }
 
     /**
-     * The maximum quantity of the `resource_metric` allowed by the quota.
+     * The maximum quantity of the `resourceMetric` allowed by the quota.
      * 
      */
     @Import(name="quotaLimit", required=true)
     private Integer quotaLimit;
 
     /**
-     * @return The maximum quantity of the `resource_metric` allowed by the quota.
+     * @return The maximum quantity of the `resourceMetric` allowed by the quota.
      * 
      */
     public Integer quotaLimit() {
@@ -105,14 +105,14 @@ public final class GetObjectStorageQuotasQuota extends com.pulumi.resources.Invo
     }
 
     /**
-     * The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+     * The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
      * 
      */
     @Import(name="s3Endpoint", required=true)
     private String s3Endpoint;
 
     /**
-     * @return The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+     * @return The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
      * 
      */
     public String s3Endpoint() {
@@ -183,7 +183,7 @@ public final class GetObjectStorageQuotasQuota extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param quotaLimit The maximum quantity of the `resource_metric` allowed by the quota.
+         * @param quotaLimit The maximum quantity of the `resourceMetric` allowed by the quota.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class GetObjectStorageQuotasQuota extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param s3Endpoint The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+         * @param s3Endpoint The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
          * 
          * @return builder
          * 

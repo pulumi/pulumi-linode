@@ -95,13 +95,13 @@ namespace Pulumi.Linode
     public partial class InstanceDisk : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `Image`)
         /// </summary>
         [Output("authorizedKeys")]
         public Output<ImmutableArray<string>> AuthorizedKeys { get; private set; } = null!;
 
         /// <summary>
-        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `Image`)
         /// </summary>
         [Output("authorizedUsers")]
         public Output<ImmutableArray<string>> AuthorizedUsers { get; private set; } = null!;
@@ -113,13 +113,13 @@ namespace Pulumi.Linode
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+        /// The disk encryption policy for this disk's parent instance. (`Enabled`, `Disabled`)
         /// </summary>
         [Output("diskEncryption")]
         public Output<string> DiskEncryption { get; private set; } = null!;
 
         /// <summary>
-        /// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
+        /// The filesystem of this disk. (`Raw`, `Swap`, `Ext3`, `Ext4`, `Initrd`)
         /// </summary>
         [Output("filesystem")]
         public Output<string> Filesystem { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.Linode
         public Output<int> LinodeId { get; private set; } = null!;
 
         /// <summary>
-        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `Image`)
         /// </summary>
         [Output("rootPass")]
         public Output<string?> RootPass { get; private set; } = null!;
@@ -157,13 +157,13 @@ namespace Pulumi.Linode
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `StackscriptId` is given. (Requires `Image`)
         /// </summary>
         [Output("stackscriptData")]
         public Output<ImmutableDictionary<string, string>?> StackscriptData { get; private set; } = null!;
 
         /// <summary>
-        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
+        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `Image`)
         /// </summary>
         [Output("stackscriptId")]
         public Output<int?> StackscriptId { get; private set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedKeys;
 
         /// <summary>
-        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `Image`)
         /// </summary>
         public InputList<string> AuthorizedKeys
         {
@@ -250,7 +250,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedUsers;
 
         /// <summary>
-        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `Image`)
         /// </summary>
         public InputList<string> AuthorizedUsers
         {
@@ -259,7 +259,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
+        /// The filesystem of this disk. (`Raw`, `Swap`, `Ext3`, `Ext4`, `Initrd`)
         /// </summary>
         [Input("filesystem")]
         public Input<string>? Filesystem { get; set; }
@@ -286,7 +286,7 @@ namespace Pulumi.Linode
         private Input<string>? _rootPass;
 
         /// <summary>
-        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `Image`)
         /// </summary>
         public Input<string>? RootPass
         {
@@ -310,7 +310,7 @@ namespace Pulumi.Linode
         private InputMap<string>? _stackscriptData;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `StackscriptId` is given. (Requires `Image`)
         /// </summary>
         public InputMap<string> StackscriptData
         {
@@ -323,7 +323,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
+        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `Image`)
         /// </summary>
         [Input("stackscriptId")]
         public Input<int>? StackscriptId { get; set; }
@@ -343,7 +343,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedKeys;
 
         /// <summary>
-        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `Image`)
         /// </summary>
         public InputList<string> AuthorizedKeys
         {
@@ -355,7 +355,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedUsers;
 
         /// <summary>
-        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `Image`)
         /// </summary>
         public InputList<string> AuthorizedUsers
         {
@@ -370,13 +370,13 @@ namespace Pulumi.Linode
         public Input<string>? Created { get; set; }
 
         /// <summary>
-        /// The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
+        /// The disk encryption policy for this disk's parent instance. (`Enabled`, `Disabled`)
         /// </summary>
         [Input("diskEncryption")]
         public Input<string>? DiskEncryption { get; set; }
 
         /// <summary>
-        /// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
+        /// The filesystem of this disk. (`Raw`, `Swap`, `Ext3`, `Ext4`, `Initrd`)
         /// </summary>
         [Input("filesystem")]
         public Input<string>? Filesystem { get; set; }
@@ -403,7 +403,7 @@ namespace Pulumi.Linode
         private Input<string>? _rootPass;
 
         /// <summary>
-        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `Image`)
         /// </summary>
         public Input<string>? RootPass
         {
@@ -427,7 +427,7 @@ namespace Pulumi.Linode
         private InputMap<string>? _stackscriptData;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `StackscriptId` is given. (Requires `Image`)
         /// </summary>
         public InputMap<string> StackscriptData
         {
@@ -440,7 +440,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
+        /// A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `Image`)
         /// </summary>
         [Input("stackscriptId")]
         public Input<int>? StackscriptId { get; set; }

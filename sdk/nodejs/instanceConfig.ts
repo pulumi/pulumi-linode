@@ -11,6 +11,108 @@ import * as utilities from "./utilities";
  *
  * Creating a simple bootable Linode Instance Configuration Profile:
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_instance = new linode.Instance("my-instance", {
+ *     label: "my-instance",
+ *     type: "g6-standard-1",
+ *     region: "us-southeast",
+ * });
+ * const boot = new linode.InstanceDisk("boot", {
+ *     label: "boot",
+ *     linodeId: my_instance.id,
+ *     size: my_instance.specs.apply(specs => specs[0].disk),
+ *     image: "linode/ubuntu22.04",
+ *     rootPass: "myc00lpass!",
+ * });
+ * const my_config = new linode.InstanceConfig("my-config", {
+ *     linodeId: my_instance.id,
+ *     label: "my-config",
+ *     devices: [{
+ *         deviceName: "sda",
+ *         diskId: boot.id,
+ *     }],
+ *     booted: true,
+ * });
+ * ```
+ *
+ * Creating a complex bootable Instance Configuration Profile with a VPC:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * // Create a VPC and a subnet
+ * const foobar = new linode.Vpc("foobar", {
+ *     label: "my-vpc",
+ *     region: "us-mia",
+ *     description: "test description",
+ * });
+ * const foobarVpcSubnet = new linode.VpcSubnet("foobar", {
+ *     vpcId: foobar.id,
+ *     label: "my-subnet",
+ *     ipv4: "10.0.4.0/24",
+ * });
+ * const my_instance = new linode.Instance("my-instance", {
+ *     label: "my-instance",
+ *     type: "g6-standard-1",
+ *     region: "us-mia",
+ * });
+ * // Create a boot disk
+ * const boot = new linode.InstanceDisk("boot", {
+ *     label: "boot",
+ *     linodeId: my_instance.id,
+ *     size: my_instance.specs.apply(specs => specs[0].disk - 512),
+ *     image: "linode/ubuntu22.04",
+ *     rootPass: "myc00lpass!ciuw23asxbviwuc",
+ * });
+ * // Create a swap disk
+ * const swap = new linode.InstanceDisk("swap", {
+ *     label: "swap",
+ *     linodeId: my_instance.id,
+ *     size: 512,
+ *     filesystem: "swap",
+ * });
+ * const my_config = new linode.InstanceConfig("my-config", {
+ *     linodeId: my_instance.id,
+ *     label: "my-config",
+ *     devices: [
+ *         {
+ *             deviceName: "sda",
+ *             diskId: boot.id,
+ *         },
+ *         {
+ *             deviceName: "sdb",
+ *             diskId: swap.id,
+ *         },
+ *     ],
+ *     helpers: [{
+ *         updatedbDisabled: false,
+ *     }],
+ *     interfaces: [
+ *         {
+ *             purpose: "public",
+ *         },
+ *         {
+ *             purpose: "vlan",
+ *             label: "my-vlan",
+ *             ipamAddress: "10.0.0.2/24",
+ *         },
+ *         {
+ *             purpose: "vpc",
+ *             subnetId: foobarVpcSubnet.id,
+ *             ipv4: {
+ *                 vpc: "10.0.4.250",
+ *             },
+ *         },
+ *     ],
+ *     booted: true,
+ * });
+ * // Unsupported provisioner type remote-exec
+ * ```
+ *
  * ## Import
  *
  * Instance Configs can be imported using the `linode_id` followed by the Instance Config `id` separated by a comma, e.g.

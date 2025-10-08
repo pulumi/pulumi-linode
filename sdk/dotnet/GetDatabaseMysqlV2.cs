@@ -35,27 +35,27 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## pending_updates
+        /// ## PendingUpdates
         /// 
-        /// The following arguments are exposed by each entry in the `pending_updates` attribute:
+        /// The following arguments are exposed by each entry in the `PendingUpdates` attribute:
         /// 
-        /// * `deadline` - The time when a mandatory update needs to be applied.
+        /// * `Deadline` - The time when a mandatory update needs to be applied.
         /// 
-        /// * `description` - A description of the update.
+        /// * `Description` - A description of the update.
         /// 
-        /// * `planned_for` - The date and time a maintenance update will be applied.
+        /// * `PlannedFor` - The date and time a maintenance update will be applied.
         /// 
         /// ## updates
         /// 
-        /// The following arguments are supported in the `updates` specification block:
+        /// The following arguments are supported in the `Updates` specification block:
         /// 
-        /// * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+        /// * `DayOfWeek` - The day to perform maintenance. (`Monday`, `Tuesday`, ...)
         /// 
-        /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+        /// * `Duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
+        /// * `Frequency` - The frequency at which maintenance occurs. (`Weekly`)
         /// 
-        /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// * `HourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
         /// </summary>
         public static Task<GetDatabaseMysqlV2Result> InvokeAsync(GetDatabaseMysqlV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlV2Result>("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", args ?? new GetDatabaseMysqlV2Args(), options.WithDefaults());
@@ -84,27 +84,27 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## pending_updates
+        /// ## PendingUpdates
         /// 
-        /// The following arguments are exposed by each entry in the `pending_updates` attribute:
+        /// The following arguments are exposed by each entry in the `PendingUpdates` attribute:
         /// 
-        /// * `deadline` - The time when a mandatory update needs to be applied.
+        /// * `Deadline` - The time when a mandatory update needs to be applied.
         /// 
-        /// * `description` - A description of the update.
+        /// * `Description` - A description of the update.
         /// 
-        /// * `planned_for` - The date and time a maintenance update will be applied.
+        /// * `PlannedFor` - The date and time a maintenance update will be applied.
         /// 
         /// ## updates
         /// 
-        /// The following arguments are supported in the `updates` specification block:
+        /// The following arguments are supported in the `Updates` specification block:
         /// 
-        /// * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+        /// * `DayOfWeek` - The day to perform maintenance. (`Monday`, `Tuesday`, ...)
         /// 
-        /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+        /// * `Duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
+        /// * `Frequency` - The frequency at which maintenance occurs. (`Weekly`)
         /// 
-        /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// * `HourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
         /// </summary>
         public static Output<GetDatabaseMysqlV2Result> Invoke(GetDatabaseMysqlV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlV2Result>("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", args ?? new GetDatabaseMysqlV2InvokeArgs(), options.WithDefaults());
@@ -133,27 +133,27 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## pending_updates
+        /// ## PendingUpdates
         /// 
-        /// The following arguments are exposed by each entry in the `pending_updates` attribute:
+        /// The following arguments are exposed by each entry in the `PendingUpdates` attribute:
         /// 
-        /// * `deadline` - The time when a mandatory update needs to be applied.
+        /// * `Deadline` - The time when a mandatory update needs to be applied.
         /// 
-        /// * `description` - A description of the update.
+        /// * `Description` - A description of the update.
         /// 
-        /// * `planned_for` - The date and time a maintenance update will be applied.
+        /// * `PlannedFor` - The date and time a maintenance update will be applied.
         /// 
         /// ## updates
         /// 
-        /// The following arguments are supported in the `updates` specification block:
+        /// The following arguments are supported in the `Updates` specification block:
         /// 
-        /// * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+        /// * `DayOfWeek` - The day to perform maintenance. (`Monday`, `Tuesday`, ...)
         /// 
-        /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+        /// * `Duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
+        /// * `Frequency` - The frequency at which maintenance occurs. (`Weekly`)
         /// 
-        /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// * `HourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
         /// </summary>
         public static Output<GetDatabaseMysqlV2Result> Invoke(GetDatabaseMysqlV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlV2Result>("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", args ?? new GetDatabaseMysqlV2InvokeArgs(), options.WithDefaults());
@@ -213,7 +213,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly bool Encrypted;
         /// <summary>
-        /// The Managed Database engine. (e.g. `mysql`)
+        /// The Managed Database engine. (e.g. `Mysql`)
         /// </summary>
         public readonly string Engine;
         /// <summary>
@@ -329,7 +329,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int EngineConfigMysqlWaitTimeout;
         /// <summary>
-        /// The Managed Database engine in engine/version format. (e.g. `mysql`)
+        /// The Managed Database engine in engine/version format. (e.g. `Mysql`)
         /// </summary>
         public readonly string EngineId;
         /// <summary>

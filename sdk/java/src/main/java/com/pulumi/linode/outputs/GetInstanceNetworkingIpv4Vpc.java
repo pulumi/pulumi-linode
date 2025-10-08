@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceNetworkingIpv4Vpc {
     /**
-     * @return Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `config_id` to which the interface belongs. Otherwise returns `false`.
+     * @return Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `configId` to which the interface belongs. Otherwise returns `false`.
      * 
      */
     private Boolean active;
@@ -48,7 +48,7 @@ public final class GetInstanceNetworkingIpv4Vpc {
      */
     private Integer linodeId;
     /**
-     * @return The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `address_range` or NAT 1:1 isn&#39;t used.
+     * @return The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `addressRange` or NAT 1:1 isn&#39;t used.
      * 
      */
     private String nat11;
@@ -80,7 +80,7 @@ public final class GetInstanceNetworkingIpv4Vpc {
 
     private GetInstanceNetworkingIpv4Vpc() {}
     /**
-     * @return Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `config_id` to which the interface belongs. Otherwise returns `false`.
+     * @return Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `configId` to which the interface belongs. Otherwise returns `false`.
      * 
      */
     public Boolean active() {
@@ -129,7 +129,7 @@ public final class GetInstanceNetworkingIpv4Vpc {
         return this.linodeId;
     }
     /**
-     * @return The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `address_range` or NAT 1:1 isn&#39;t used.
+     * @return The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `addressRange` or NAT 1:1 isn&#39;t used.
      * 
      */
     public String nat11() {
