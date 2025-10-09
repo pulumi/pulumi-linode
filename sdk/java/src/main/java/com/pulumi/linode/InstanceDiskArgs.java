@@ -145,14 +145,14 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      * 
      */
     @Import(name="stackscriptData")
     private @Nullable Output<Map<String,String>> stackscriptData;
 
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      * 
      */
     public Optional<Output<Map<String,String>>> stackscriptData() {
@@ -408,7 +408,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class InstanceDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
          * 
          * @return builder
          * 

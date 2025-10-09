@@ -65,6 +65,120 @@ namespace Pulumi.Linode
     /// 
     /// Creating a complex PostgreSQL database:
     /// 
+    /// Creating a PostgreSQL database with engine config fields specified:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
+    ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "postgresql/16",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
+    ///         EngineConfigPgAutovacuumAnalyzeScaleFactor = 0.1,
+    ///         EngineConfigPgAutovacuumAnalyzeThreshold = 50,
+    ///         EngineConfigPgAutovacuumMaxWorkers = 3,
+    ///         EngineConfigPgAutovacuumNaptime = 100,
+    ///         EngineConfigPgAutovacuumVacuumCostDelay = 20,
+    ///         EngineConfigPgAutovacuumVacuumCostLimit = 200,
+    ///         EngineConfigPgAutovacuumVacuumScaleFactor = 0.2,
+    ///         EngineConfigPgAutovacuumVacuumThreshold = 100,
+    ///         EngineConfigPgBgwriterDelay = 1000,
+    ///         EngineConfigPgBgwriterFlushAfter = 512,
+    ///         EngineConfigPgBgwriterLruMaxpages = 100,
+    ///         EngineConfigPgBgwriterLruMultiplier = 2,
+    ///         EngineConfigPgDeadlockTimeout = 1000,
+    ///         EngineConfigPgDefaultToastCompression = "pglz",
+    ///         EngineConfigPgIdleInTransactionSessionTimeout = 60000,
+    ///         EngineConfigPgJit = true,
+    ///         EngineConfigPgMaxFilesPerProcess = 1000,
+    ///         EngineConfigPgMaxLocksPerTransaction = 64,
+    ///         EngineConfigPgMaxLogicalReplicationWorkers = 4,
+    ///         EngineConfigPgMaxParallelWorkers = 8,
+    ///         EngineConfigPgMaxParallelWorkersPerGather = 2,
+    ///         EngineConfigPgMaxPredLocksPerTransaction = 128,
+    ///         EngineConfigPgMaxReplicationSlots = 8,
+    ///         EngineConfigPgMaxSlotWalKeepSize = 128,
+    ///         EngineConfigPgMaxStackDepth = 2097152,
+    ///         EngineConfigPgMaxStandbyArchiveDelay = 60000,
+    ///         EngineConfigPgMaxStandbyStreamingDelay = 60000,
+    ///         EngineConfigPgMaxWalSenders = 20,
+    ///         EngineConfigPgMaxWorkerProcesses = 8,
+    ///         EngineConfigPgPasswordEncryption = "scram-sha-256",
+    ///         EngineConfigPgPgPartmanBgwInterval = 3600,
+    ///         EngineConfigPgPgPartmanBgwRole = "myrolename",
+    ///         EngineConfigPgPgStatMonitorPgsmEnableQueryPlan = true,
+    ///         EngineConfigPgPgStatMonitorPgsmMaxBuckets = 5,
+    ///         EngineConfigPgPgStatStatementsTrack = "all",
+    ///         EngineConfigPgTempFileLimit = 100,
+    ///         EngineConfigPgTimezone = "Europe/Helsinki",
+    ///         EngineConfigPgTrackActivityQuerySize = 2048,
+    ///         EngineConfigPgTrackCommitTimestamp = "on",
+    ///         EngineConfigPgTrackFunctions = "all",
+    ///         EngineConfigPgTrackIoTiming = "on",
+    ///         EngineConfigPgWalSenderTimeout = 60000,
+    ///         EngineConfigPgWalWriterDelay = 200,
+    ///         EngineConfigPgStatMonitorEnable = true,
+    ///         EngineConfigPglookoutMaxFailoverReplicationTimeLag = 10000,
+    ///         EngineConfigSharedBuffersPercentage = 25,
+    ///         EngineConfigWorkMem = 400,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating a forked PostgreSQL database:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
+    ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "postgresql/16",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
+    ///         ForkSource = 12345,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **_NOTE:_** The name of the default database in the returned database cluster is `Defaultdb`.
+    /// 
+    /// ## PendingUpdates
+    /// 
+    /// The following arguments are exposed by each entry in the `PendingUpdates` attribute:
+    /// 
+    /// * `Deadline` - The time when a mandatory update needs to be applied.
+    /// 
+    /// * `Description` - A description of the update.
+    /// 
+    /// * `PlannedFor` - The date and time a maintenance update will be applied.
+    /// 
+    /// ## updates
+    /// 
+    /// The following arguments are supported in the `Updates` specification block:
+    /// 
+    /// * `DayOfWeek` - (Required) The day to perform maintenance. (`Monday`, `Tuesday`, ...)
+    /// 
+    /// * `Duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+    /// 
+    /// * `Frequency` - (Required) The frequency at which maintenance occurs. (`Weekly`)
+    /// 
+    /// * `HourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+    /// 
     /// ## Import
     /// 
     /// Linode PostgreSQL Databases can be imported using the `id`, e.g.
@@ -107,13 +221,13 @@ namespace Pulumi.Linode
         public Output<bool> Encrypted { get; private set; } = null!;
 
         /// <summary>
-        /// The Managed Database engine. (e.g. `postgresql`)
+        /// The Managed Database engine. (e.g. `Postgresql`)
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        /// Specifies a fraction of the table size to add to AutovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
         /// </summary>
         [Output("engineConfigPgAutovacuumAnalyzeScaleFactor")]
         public Output<double> EngineConfigPgAutovacuumAnalyzeScaleFactor { get; private set; } = null!;
@@ -137,19 +251,19 @@ namespace Pulumi.Linode
         public Output<int> EngineConfigPgAutovacuumNaptime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular VacuumCostDelay value will be used. The default value is 20 milliseconds
         /// </summary>
         [Output("engineConfigPgAutovacuumVacuumCostDelay")]
         public Output<int> EngineConfigPgAutovacuumVacuumCostDelay { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular VacuumCostLimit value will be used.
         /// </summary>
         [Output("engineConfigPgAutovacuumVacuumCostLimit")]
         public Output<int> EngineConfigPgAutovacuumVacuumCostLimit { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        /// Specifies a fraction of the table size to add to AutovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
         /// </summary>
         [Output("engineConfigPgAutovacuumVacuumScaleFactor")]
         public Output<double> EngineConfigPgAutovacuumVacuumScaleFactor { get; private set; } = null!;
@@ -167,7 +281,7 @@ namespace Pulumi.Linode
         public Output<int> EngineConfigPgBgwriterDelay { get; private set; } = null!;
 
         /// <summary>
-        /// Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        /// Whenever more than BgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
         /// </summary>
         [Output("engineConfigPgBgwriterFlushAfter")]
         public Output<int> EngineConfigPgBgwriterFlushAfter { get; private set; } = null!;
@@ -179,7 +293,7 @@ namespace Pulumi.Linode
         public Output<int> EngineConfigPgBgwriterLruMaxpages { get; private set; } = null!;
 
         /// <summary>
-        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// The average recent need for new buffers is multiplied by BgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
         /// </summary>
         [Output("engineConfigPgBgwriterLruMultiplier")]
         public Output<double> EngineConfigPgBgwriterLruMultiplier { get; private set; } = null!;
@@ -251,7 +365,7 @@ namespace Pulumi.Linode
         public Output<int> EngineConfigPgMaxReplicationSlots { get; private set; } = null!;
 
         /// <summary>
-        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). WalKeepSize minimum WAL size setting takes precedence over this.
         /// </summary>
         [Output("engineConfigPgMaxSlotWalKeepSize")]
         public Output<int> EngineConfigPgMaxSlotWalKeepSize { get; private set; } = null!;
@@ -287,7 +401,7 @@ namespace Pulumi.Linode
         public Output<int> EngineConfigPgMaxWorkerProcesses { get; private set; } = null!;
 
         /// <summary>
-        /// Chooses the algorithm for encrypting passwords. (default `md5`)
+        /// Chooses the algorithm for encrypting passwords. (default `Md5`)
         /// </summary>
         [Output("engineConfigPgPasswordEncryption")]
         public Output<string> EngineConfigPgPasswordEncryption { get; private set; } = null!;
@@ -323,7 +437,7 @@ namespace Pulumi.Linode
         public Output<string> EngineConfigPgPgStatStatementsTrack { get; private set; } = null!;
 
         /// <summary>
-        /// Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        /// Enable the PgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, PgStatStatements results for utility commands are unreliable. (default `False`)
         /// </summary>
         [Output("engineConfigPgStatMonitorEnable")]
         public Output<bool> EngineConfigPgStatMonitorEnable { get; private set; } = null!;
@@ -383,7 +497,7 @@ namespace Pulumi.Linode
         public Output<int> EngineConfigPglookoutMaxFailoverReplicationTimeLag { get; private set; } = null!;
 
         /// <summary>
-        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the SharedBuffers configuration value.
         /// </summary>
         [Output("engineConfigSharedBuffersPercentage")]
         public Output<double> EngineConfigSharedBuffersPercentage { get; private set; } = null!;
@@ -409,7 +523,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Output("forkSource")]
         public Output<int?> ForkSource { get; private set; } = null!;
@@ -598,7 +712,7 @@ namespace Pulumi.Linode
         public Input<int>? ClusterSize { get; set; }
 
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        /// Specifies a fraction of the table size to add to AutovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
         /// </summary>
         [Input("engineConfigPgAutovacuumAnalyzeScaleFactor")]
         public Input<double>? EngineConfigPgAutovacuumAnalyzeScaleFactor { get; set; }
@@ -622,19 +736,19 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPgAutovacuumNaptime { get; set; }
 
         /// <summary>
-        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular VacuumCostDelay value will be used. The default value is 20 milliseconds
         /// </summary>
         [Input("engineConfigPgAutovacuumVacuumCostDelay")]
         public Input<int>? EngineConfigPgAutovacuumVacuumCostDelay { get; set; }
 
         /// <summary>
-        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular VacuumCostLimit value will be used.
         /// </summary>
         [Input("engineConfigPgAutovacuumVacuumCostLimit")]
         public Input<int>? EngineConfigPgAutovacuumVacuumCostLimit { get; set; }
 
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        /// Specifies a fraction of the table size to add to AutovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
         /// </summary>
         [Input("engineConfigPgAutovacuumVacuumScaleFactor")]
         public Input<double>? EngineConfigPgAutovacuumVacuumScaleFactor { get; set; }
@@ -652,7 +766,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPgBgwriterDelay { get; set; }
 
         /// <summary>
-        /// Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        /// Whenever more than BgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
         /// </summary>
         [Input("engineConfigPgBgwriterFlushAfter")]
         public Input<int>? EngineConfigPgBgwriterFlushAfter { get; set; }
@@ -664,7 +778,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPgBgwriterLruMaxpages { get; set; }
 
         /// <summary>
-        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// The average recent need for new buffers is multiplied by BgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
         /// </summary>
         [Input("engineConfigPgBgwriterLruMultiplier")]
         public Input<double>? EngineConfigPgBgwriterLruMultiplier { get; set; }
@@ -736,7 +850,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPgMaxReplicationSlots { get; set; }
 
         /// <summary>
-        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). WalKeepSize minimum WAL size setting takes precedence over this.
         /// </summary>
         [Input("engineConfigPgMaxSlotWalKeepSize")]
         public Input<int>? EngineConfigPgMaxSlotWalKeepSize { get; set; }
@@ -772,7 +886,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPgMaxWorkerProcesses { get; set; }
 
         /// <summary>
-        /// Chooses the algorithm for encrypting passwords. (default `md5`)
+        /// Chooses the algorithm for encrypting passwords. (default `Md5`)
         /// </summary>
         [Input("engineConfigPgPasswordEncryption")]
         public Input<string>? EngineConfigPgPasswordEncryption { get; set; }
@@ -808,7 +922,7 @@ namespace Pulumi.Linode
         public Input<string>? EngineConfigPgPgStatStatementsTrack { get; set; }
 
         /// <summary>
-        /// Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        /// Enable the PgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, PgStatStatements results for utility commands are unreliable. (default `False`)
         /// </summary>
         [Input("engineConfigPgStatMonitorEnable")]
         public Input<bool>? EngineConfigPgStatMonitorEnable { get; set; }
@@ -868,7 +982,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPglookoutMaxFailoverReplicationTimeLag { get; set; }
 
         /// <summary>
-        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the SharedBuffers configuration value.
         /// </summary>
         [Input("engineConfigSharedBuffersPercentage")]
         public Input<double>? EngineConfigSharedBuffersPercentage { get; set; }
@@ -894,7 +1008,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Input("forkSource")]
         public Input<int>? ForkSource { get; set; }
@@ -989,13 +1103,13 @@ namespace Pulumi.Linode
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
-        /// The Managed Database engine. (e.g. `postgresql`)
+        /// The Managed Database engine. (e.g. `Postgresql`)
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        /// Specifies a fraction of the table size to add to AutovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
         /// </summary>
         [Input("engineConfigPgAutovacuumAnalyzeScaleFactor")]
         public Input<double>? EngineConfigPgAutovacuumAnalyzeScaleFactor { get; set; }
@@ -1019,19 +1133,19 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPgAutovacuumNaptime { get; set; }
 
         /// <summary>
-        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular VacuumCostDelay value will be used. The default value is 20 milliseconds
         /// </summary>
         [Input("engineConfigPgAutovacuumVacuumCostDelay")]
         public Input<int>? EngineConfigPgAutovacuumVacuumCostDelay { get; set; }
 
         /// <summary>
-        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular VacuumCostLimit value will be used.
         /// </summary>
         [Input("engineConfigPgAutovacuumVacuumCostLimit")]
         public Input<int>? EngineConfigPgAutovacuumVacuumCostLimit { get; set; }
 
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        /// Specifies a fraction of the table size to add to AutovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
         /// </summary>
         [Input("engineConfigPgAutovacuumVacuumScaleFactor")]
         public Input<double>? EngineConfigPgAutovacuumVacuumScaleFactor { get; set; }
@@ -1049,7 +1163,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPgBgwriterDelay { get; set; }
 
         /// <summary>
-        /// Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        /// Whenever more than BgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
         /// </summary>
         [Input("engineConfigPgBgwriterFlushAfter")]
         public Input<int>? EngineConfigPgBgwriterFlushAfter { get; set; }
@@ -1061,7 +1175,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPgBgwriterLruMaxpages { get; set; }
 
         /// <summary>
-        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// The average recent need for new buffers is multiplied by BgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
         /// </summary>
         [Input("engineConfigPgBgwriterLruMultiplier")]
         public Input<double>? EngineConfigPgBgwriterLruMultiplier { get; set; }
@@ -1133,7 +1247,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPgMaxReplicationSlots { get; set; }
 
         /// <summary>
-        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). WalKeepSize minimum WAL size setting takes precedence over this.
         /// </summary>
         [Input("engineConfigPgMaxSlotWalKeepSize")]
         public Input<int>? EngineConfigPgMaxSlotWalKeepSize { get; set; }
@@ -1169,7 +1283,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPgMaxWorkerProcesses { get; set; }
 
         /// <summary>
-        /// Chooses the algorithm for encrypting passwords. (default `md5`)
+        /// Chooses the algorithm for encrypting passwords. (default `Md5`)
         /// </summary>
         [Input("engineConfigPgPasswordEncryption")]
         public Input<string>? EngineConfigPgPasswordEncryption { get; set; }
@@ -1205,7 +1319,7 @@ namespace Pulumi.Linode
         public Input<string>? EngineConfigPgPgStatStatementsTrack { get; set; }
 
         /// <summary>
-        /// Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+        /// Enable the PgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, PgStatStatements results for utility commands are unreliable. (default `False`)
         /// </summary>
         [Input("engineConfigPgStatMonitorEnable")]
         public Input<bool>? EngineConfigPgStatMonitorEnable { get; set; }
@@ -1265,7 +1379,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigPglookoutMaxFailoverReplicationTimeLag { get; set; }
 
         /// <summary>
-        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the SharedBuffers configuration value.
         /// </summary>
         [Input("engineConfigSharedBuffersPercentage")]
         public Input<double>? EngineConfigSharedBuffersPercentage { get; set; }
@@ -1291,7 +1405,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Input("forkSource")]
         public Input<int>? ForkSource { get; set; }

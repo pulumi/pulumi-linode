@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? Comments;
         /// <summary>
-        /// Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+        /// Device sda-sdh can be either a Disk or Volume identified by DiskLabel or volume_id. Only one type per slot allowed.
         /// </summary>
         public readonly Outputs.InstanceConfigDevices? Devices;
         /// <summary>

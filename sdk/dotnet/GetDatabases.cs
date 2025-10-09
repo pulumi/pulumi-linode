@@ -212,13 +212,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
         /// <summary>
-        /// The attribute to order the results by. (`version`)
+        /// The attribute to order the results by. (`Version`)
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -248,13 +248,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
         /// <summary>
-        /// The attribute to order the results by. (`version`)
+        /// The attribute to order the results by. (`Version`)
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }

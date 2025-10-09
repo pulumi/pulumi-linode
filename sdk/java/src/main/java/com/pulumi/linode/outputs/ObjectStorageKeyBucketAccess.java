@@ -21,13 +21,13 @@ public final class ObjectStorageKeyBucketAccess {
      * @return The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
      * 
      * @deprecated
-     * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
+     * The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
      * 
      */
-    @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
+    @Deprecated /* The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
     private @Nullable String cluster;
     /**
-     * @return This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
+     * @return This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      * 
      */
     private String permissions;
@@ -49,15 +49,15 @@ public final class ObjectStorageKeyBucketAccess {
      * @return The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
      * 
      * @deprecated
-     * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
+     * The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
      * 
      */
-    @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
+    @Deprecated /* The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
     public Optional<String> cluster() {
         return Optional.ofNullable(this.cluster);
     }
     /**
-     * @return This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
+     * @return This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      * 
      */
     public String permissions() {

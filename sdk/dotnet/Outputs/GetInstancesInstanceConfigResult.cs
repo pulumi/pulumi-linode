@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesInstanceConfigResult
     {
         /// <summary>
-        /// Arbitrary user comments about this `config`.
+        /// Arbitrary user comments about this `Config`.
         /// </summary>
         public readonly string Comments;
         /// <summary>
-        /// A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
+        /// A list of `Disk` or `Volume` attachments for this `Config`.  If the `BootConfigLabel` omits a `Devices` block, the Linode will not be booted.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceResult> Devices;
         /// <summary>

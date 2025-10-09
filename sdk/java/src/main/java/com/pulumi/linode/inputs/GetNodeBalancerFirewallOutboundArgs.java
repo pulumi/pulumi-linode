@@ -16,14 +16,14 @@ public final class GetNodeBalancerFirewallOutboundArgs extends com.pulumi.resour
     public static final GetNodeBalancerFirewallOutboundArgs Empty = new GetNodeBalancerFirewallOutboundArgs();
 
     /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      * 
      */
     public Output<String> action() {
@@ -135,7 +135,7 @@ public final class GetNodeBalancerFirewallOutboundArgs extends com.pulumi.resour
         }
 
         /**
-         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class GetNodeBalancerFirewallOutboundArgs extends com.pulumi.resour
         }
 
         /**
-         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
          * 
          * @return builder
          * 

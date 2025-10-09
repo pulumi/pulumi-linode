@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesInstanceDiskResult
     {
         /// <summary>
-        /// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `initrd` (not currently supported in this provider).
+        /// The Disk filesystem can be one of: `"raw"`, `"swap"`, `"ext3"`, `"ext4"`, or `"initrd"` which has a max size of 32mb and can be used in the config `Initrd` (not currently supported in this provider).
         /// </summary>
         public readonly string Filesystem;
         /// <summary>

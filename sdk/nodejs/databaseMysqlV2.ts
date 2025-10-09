@@ -45,6 +45,87 @@ import * as utilities from "./utilities";
  *
  * Creating a complex MySQL database:
  *
+ * Creating a MySQL database with engine config fields specified:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.DatabaseMysqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "mysql/8",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
+ *     engineConfigBinlogRetentionPeriod: 3600,
+ *     engineConfigMysqlConnectTimeout: 10,
+ *     engineConfigMysqlDefaultTimeZone: "+00:00",
+ *     engineConfigMysqlGroupConcatMaxLen: 4096,
+ *     engineConfigMysqlInformationSchemaStatsExpiry: 3600,
+ *     engineConfigMysqlInnodbChangeBufferMaxSize: 25,
+ *     engineConfigMysqlInnodbFlushNeighbors: 0,
+ *     engineConfigMysqlInnodbFtMinTokenSize: 7,
+ *     engineConfigMysqlInnodbFtServerStopwordTable: "mysql/innodb_ft_default_stopword",
+ *     engineConfigMysqlInnodbLockWaitTimeout: 300,
+ *     engineConfigMysqlInnodbLogBufferSize: 16777216,
+ *     engineConfigMysqlInnodbOnlineAlterLogMaxSize: 268435456,
+ *     engineConfigMysqlInnodbReadIoThreads: 4,
+ *     engineConfigMysqlInnodbRollbackOnTimeout: true,
+ *     engineConfigMysqlInnodbThreadConcurrency: 8,
+ *     engineConfigMysqlInnodbWriteIoThreads: 4,
+ *     engineConfigMysqlInteractiveTimeout: 300,
+ *     engineConfigMysqlInternalTmpMemStorageEngine: "TempTable",
+ *     engineConfigMysqlMaxAllowedPacket: 67108864,
+ *     engineConfigMysqlMaxHeapTableSize: 16777216,
+ *     engineConfigMysqlNetBufferLength: 16384,
+ *     engineConfigMysqlNetReadTimeout: 30,
+ *     engineConfigMysqlNetWriteTimeout: 30,
+ *     engineConfigMysqlSortBufferSize: 262144,
+ *     engineConfigMysqlSqlMode: "TRADITIONAL,ANSI",
+ *     engineConfigMysqlSqlRequirePrimaryKey: false,
+ *     engineConfigMysqlTmpTableSize: 16777216,
+ *     engineConfigMysqlWaitTimeout: 28800,
+ * });
+ * ```
+ *
+ * Creating a forked MySQL database:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.DatabaseMysqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "mysql/8",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
+ *     forkSource: 12345,
+ * });
+ * ```
+ *
+ * > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
+ *
+ * ## pendingUpdates
+ *
+ * The following arguments are exposed by each entry in the `pendingUpdates` attribute:
+ *
+ * * `deadline` - The time when a mandatory update needs to be applied.
+ *
+ * * `description` - A description of the update.
+ *
+ * * `plannedFor` - The date and time a maintenance update will be applied.
+ *
+ * ## updates
+ *
+ * The following arguments are supported in the `updates` specification block:
+ *
+ * * `dayOfWeek` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+ *
+ * * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+ *
+ * * `frequency` - (Required) The frequency at which maintenance occurs. (`weekly`)
+ *
+ * * `hourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+ *
  * ## Import
  *
  * Linode MySQL Databases can be imported using the `id`, e.g.

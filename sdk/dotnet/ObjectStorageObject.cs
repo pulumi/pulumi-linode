@@ -96,14 +96,14 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
-        /// * configuring the `obj_access_key` in the provider configuration;
-        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+        /// * configuring the `ObjAccessKey` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `ObjUseTempKeys` at provider-level.
         /// </summary>
         [Output("accessKey")]
         public Output<string?> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
+        /// The canned ACL to apply. (`Private`, `public-read`, `authenticated-read`, `public-read-write`, `Custom`) (defaults to `Private`).
         /// </summary>
         [Output("acl")]
         public Output<string> Acl { get; private set; } = null!;
@@ -115,13 +115,13 @@ namespace Pulumi.Linode
         public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+        /// Specifies caching behavior along the request/reply chain Read [w3c CacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         /// </summary>
         [Output("cacheControl")]
         public Output<string?> CacheControl { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+        /// The cluster the bucket is in. Required if `Region` is not configured. Deprecated in favor of `Region`.
         /// </summary>
         [Output("cluster")]
         public Output<string?> Cluster { get; private set; } = null!;
@@ -133,13 +133,13 @@ namespace Pulumi.Linode
         public Output<string?> Content { get; private set; } = null!;
 
         /// <summary>
-        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `Gzipbase64` function with small text strings. For larger objects, use `Source` to stream the content from a disk file.
         /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+        /// Specifies presentational information for the object. Read [w3c ContentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
         /// </summary>
         [Output("contentDisposition")]
         public Output<string?> ContentDisposition { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.Linode
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
+        /// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `False`).
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool> ForceDestroy { get; private set; } = null!;
@@ -193,15 +193,15 @@ namespace Pulumi.Linode
         public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster the bucket is in. Required if `cluster` is not configured.
+        /// The cluster the bucket is in. Required if `Cluster` is not configured.
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
         /// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
-        /// * configuring the `obj_secret_key` in the provider configuration;
-        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+        /// * configuring the `ObjSecretKey` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `ObjUseTempKeys` at provider-level.
         /// </summary>
         [Output("secretKey")]
         public Output<string?> SecretKey { get; private set; } = null!;
@@ -276,14 +276,14 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
-        /// * configuring the `obj_access_key` in the provider configuration;
-        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+        /// * configuring the `ObjAccessKey` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `ObjUseTempKeys` at provider-level.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
+        /// The canned ACL to apply. (`Private`, `public-read`, `authenticated-read`, `public-read-write`, `Custom`) (defaults to `Private`).
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -295,13 +295,13 @@ namespace Pulumi.Linode
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+        /// Specifies caching behavior along the request/reply chain Read [w3c CacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         /// </summary>
         [Input("cacheControl")]
         public Input<string>? CacheControl { get; set; }
 
         /// <summary>
-        /// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+        /// The cluster the bucket is in. Required if `Region` is not configured. Deprecated in favor of `Region`.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
@@ -313,13 +313,13 @@ namespace Pulumi.Linode
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `Gzipbase64` function with small text strings. For larger objects, use `Source` to stream the content from a disk file.
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
         /// <summary>
-        /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+        /// Specifies presentational information for the object. Read [w3c ContentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
         /// </summary>
         [Input("contentDisposition")]
         public Input<string>? ContentDisposition { get; set; }
@@ -355,7 +355,7 @@ namespace Pulumi.Linode
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
+        /// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `False`).
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -379,7 +379,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The cluster the bucket is in. Required if `cluster` is not configured.
+        /// The cluster the bucket is in. Required if `Cluster` is not configured.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -389,8 +389,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
-        /// * configuring the `obj_secret_key` in the provider configuration;
-        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+        /// * configuring the `ObjSecretKey` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `ObjUseTempKeys` at provider-level.
         /// </summary>
         public Input<string>? SecretKey
         {
@@ -424,14 +424,14 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
-        /// * configuring the `obj_access_key` in the provider configuration;
-        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+        /// * configuring the `ObjAccessKey` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `ObjUseTempKeys` at provider-level.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
         /// <summary>
-        /// The canned ACL to apply. (`private`, `public-read`, `authenticated-read`, `public-read-write`, `custom`) (defaults to `private`).
+        /// The canned ACL to apply. (`Private`, `public-read`, `authenticated-read`, `public-read-write`, `Custom`) (defaults to `Private`).
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -443,13 +443,13 @@ namespace Pulumi.Linode
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+        /// Specifies caching behavior along the request/reply chain Read [w3c CacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         /// </summary>
         [Input("cacheControl")]
         public Input<string>? CacheControl { get; set; }
 
         /// <summary>
-        /// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
+        /// The cluster the bucket is in. Required if `Region` is not configured. Deprecated in favor of `Region`.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
@@ -461,13 +461,13 @@ namespace Pulumi.Linode
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `Gzipbase64` function with small text strings. For larger objects, use `Source` to stream the content from a disk file.
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
         /// <summary>
-        /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+        /// Specifies presentational information for the object. Read [w3c ContentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
         /// </summary>
         [Input("contentDisposition")]
         public Input<string>? ContentDisposition { get; set; }
@@ -503,7 +503,7 @@ namespace Pulumi.Linode
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
+        /// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `False`).
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -527,7 +527,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The cluster the bucket is in. Required if `cluster` is not configured.
+        /// The cluster the bucket is in. Required if `Cluster` is not configured.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -537,8 +537,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
-        /// * configuring the `obj_secret_key` in the provider configuration;
-        /// * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+        /// * configuring the `ObjSecretKey` in the provider configuration;
+        /// * or, opting-in generating it implicitly at apply-time using `ObjUseTempKeys` at provider-level.
         /// </summary>
         public Input<string>? SecretKey
         {

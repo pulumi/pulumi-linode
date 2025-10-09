@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetVpcIpsVpcIpResult
     {
         /// <summary>
-        /// True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+        /// True if the VPC interface is in use, meaning that the Linode was powered on using the ConfigId to which the interface belongs. Otherwise false.
         /// </summary>
         public readonly bool Active;
         /// <summary>
@@ -64,7 +64,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The id of the parent VPC for the list of VPC IPs.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
         /// </summary>
         public readonly int VpcId;
 

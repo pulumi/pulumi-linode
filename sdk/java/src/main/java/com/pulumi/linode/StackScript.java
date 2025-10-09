@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `&lt;UDF ...&gt;` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
+ * The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `&lt;UDF ...&gt;` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscriptData` field.
  * 
  * <pre>
  * {@code
@@ -166,14 +166,14 @@ public class StackScript extends com.pulumi.resources.CustomResource {
         return this.images;
     }
     /**
-     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      * 
      */
     @Export(name="isPublic", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isPublic;
 
     /**
-     * @return This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+     * @return This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      * 
      */
     public Output<Boolean> isPublic() {

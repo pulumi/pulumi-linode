@@ -18,14 +18,14 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
     public static final FirewallOutboundArgs Empty = new FirewallOutboundArgs();
 
     /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      * 
      */
     public Output<String> action() {
@@ -153,7 +153,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class FirewallOutboundArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+         * @param action Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall&#39;s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
          * 
          * @return builder
          * 

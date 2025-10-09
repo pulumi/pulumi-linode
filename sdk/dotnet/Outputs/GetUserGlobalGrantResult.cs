@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetUserGlobalGrantResult
     {
         /// <summary>
-        /// The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+        /// The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`ReadOnly`, `ReadWrite`)
         /// </summary>
         public readonly string AccountAccess;
         /// <summary>

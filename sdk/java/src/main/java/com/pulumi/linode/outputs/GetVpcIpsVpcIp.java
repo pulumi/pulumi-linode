@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetVpcIpsVpcIp {
     /**
-     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
      * 
      */
     private Boolean active;
@@ -82,7 +82,7 @@ public final class GetVpcIpsVpcIp {
 
     private GetVpcIpsVpcIp() {}
     /**
-     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
      * 
      */
     public Boolean active() {

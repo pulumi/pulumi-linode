@@ -65,6 +65,101 @@ namespace Pulumi.Linode
     /// 
     /// Creating a complex MySQL database:
     /// 
+    /// Creating a MySQL database with engine config fields specified:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
+    ///         EngineConfigBinlogRetentionPeriod = 3600,
+    ///         EngineConfigMysqlConnectTimeout = 10,
+    ///         EngineConfigMysqlDefaultTimeZone = "+00:00",
+    ///         EngineConfigMysqlGroupConcatMaxLen = 4096,
+    ///         EngineConfigMysqlInformationSchemaStatsExpiry = 3600,
+    ///         EngineConfigMysqlInnodbChangeBufferMaxSize = 25,
+    ///         EngineConfigMysqlInnodbFlushNeighbors = 0,
+    ///         EngineConfigMysqlInnodbFtMinTokenSize = 7,
+    ///         EngineConfigMysqlInnodbFtServerStopwordTable = "mysql/innodb_ft_default_stopword",
+    ///         EngineConfigMysqlInnodbLockWaitTimeout = 300,
+    ///         EngineConfigMysqlInnodbLogBufferSize = 16777216,
+    ///         EngineConfigMysqlInnodbOnlineAlterLogMaxSize = 268435456,
+    ///         EngineConfigMysqlInnodbReadIoThreads = 4,
+    ///         EngineConfigMysqlInnodbRollbackOnTimeout = true,
+    ///         EngineConfigMysqlInnodbThreadConcurrency = 8,
+    ///         EngineConfigMysqlInnodbWriteIoThreads = 4,
+    ///         EngineConfigMysqlInteractiveTimeout = 300,
+    ///         EngineConfigMysqlInternalTmpMemStorageEngine = "TempTable",
+    ///         EngineConfigMysqlMaxAllowedPacket = 67108864,
+    ///         EngineConfigMysqlMaxHeapTableSize = 16777216,
+    ///         EngineConfigMysqlNetBufferLength = 16384,
+    ///         EngineConfigMysqlNetReadTimeout = 30,
+    ///         EngineConfigMysqlNetWriteTimeout = 30,
+    ///         EngineConfigMysqlSortBufferSize = 262144,
+    ///         EngineConfigMysqlSqlMode = "TRADITIONAL,ANSI",
+    ///         EngineConfigMysqlSqlRequirePrimaryKey = false,
+    ///         EngineConfigMysqlTmpTableSize = 16777216,
+    ///         EngineConfigMysqlWaitTimeout = 28800,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Creating a forked MySQL database:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
+    ///         ForkSource = 12345,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **_NOTE:_** The name of the default database in the returned database cluster is `Defaultdb`.
+    /// 
+    /// ## PendingUpdates
+    /// 
+    /// The following arguments are exposed by each entry in the `PendingUpdates` attribute:
+    /// 
+    /// * `Deadline` - The time when a mandatory update needs to be applied.
+    /// 
+    /// * `Description` - A description of the update.
+    /// 
+    /// * `PlannedFor` - The date and time a maintenance update will be applied.
+    /// 
+    /// ## updates
+    /// 
+    /// The following arguments are supported in the `Updates` specification block:
+    /// 
+    /// * `DayOfWeek` - (Required) The day to perform maintenance. (`Monday`, `Tuesday`, ...)
+    /// 
+    /// * `Duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+    /// 
+    /// * `Frequency` - (Required) The frequency at which maintenance occurs. (`Weekly`)
+    /// 
+    /// * `HourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+    /// 
     /// ## Import
     /// 
     /// Linode MySQL Databases can be imported using the `id`, e.g.
@@ -107,7 +202,7 @@ namespace Pulumi.Linode
         public Output<bool> Encrypted { get; private set; } = null!;
 
         /// <summary>
-        /// The Managed Database engine. (e.g. `mysql`)
+        /// The Managed Database engine. (e.g. `Mysql`)
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -263,7 +358,7 @@ namespace Pulumi.Linode
         public Output<string> EngineConfigMysqlSqlMode { get; private set; } = null!;
 
         /// <summary>
-        /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `True`)
         /// </summary>
         [Output("engineConfigMysqlSqlRequirePrimaryKey")]
         public Output<bool> EngineConfigMysqlSqlRequirePrimaryKey { get; private set; } = null!;
@@ -281,7 +376,7 @@ namespace Pulumi.Linode
         public Output<int> EngineConfigMysqlWaitTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// The Managed Database engine in engine/version format. (e.g. `mysql`)
+        /// The Managed Database engine in engine/version format. (e.g. `Mysql`)
         /// </summary>
         [Output("engineId")]
         public Output<string> EngineId { get; private set; } = null!;
@@ -295,7 +390,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Output("forkSource")]
         public Output<int?> ForkSource { get; private set; } = null!;
@@ -634,7 +729,7 @@ namespace Pulumi.Linode
         public Input<string>? EngineConfigMysqlSqlMode { get; set; }
 
         /// <summary>
-        /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `True`)
         /// </summary>
         [Input("engineConfigMysqlSqlRequirePrimaryKey")]
         public Input<bool>? EngineConfigMysqlSqlRequirePrimaryKey { get; set; }
@@ -652,7 +747,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigMysqlWaitTimeout { get; set; }
 
         /// <summary>
-        /// The Managed Database engine in engine/version format. (e.g. `mysql`)
+        /// The Managed Database engine in engine/version format. (e.g. `Mysql`)
         /// </summary>
         [Input("engineId", required: true)]
         public Input<string> EngineId { get; set; } = null!;
@@ -666,7 +761,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Input("forkSource")]
         public Input<int>? ForkSource { get; set; }
@@ -761,7 +856,7 @@ namespace Pulumi.Linode
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
-        /// The Managed Database engine. (e.g. `mysql`)
+        /// The Managed Database engine. (e.g. `Mysql`)
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -917,7 +1012,7 @@ namespace Pulumi.Linode
         public Input<string>? EngineConfigMysqlSqlMode { get; set; }
 
         /// <summary>
-        /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
+        /// Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `True`)
         /// </summary>
         [Input("engineConfigMysqlSqlRequirePrimaryKey")]
         public Input<bool>? EngineConfigMysqlSqlRequirePrimaryKey { get; set; }
@@ -935,7 +1030,7 @@ namespace Pulumi.Linode
         public Input<int>? EngineConfigMysqlWaitTimeout { get; set; }
 
         /// <summary>
-        /// The Managed Database engine in engine/version format. (e.g. `mysql`)
+        /// The Managed Database engine in engine/version format. (e.g. `Mysql`)
         /// </summary>
         [Input("engineId")]
         public Input<string>? EngineId { get; set; }
@@ -949,7 +1044,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Input("forkSource")]
         public Input<int>? ForkSource { get; set; }

@@ -2268,6 +2268,104 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
 
         Creating a complex PostgreSQL database:
 
+        Creating a PostgreSQL database with engine config fields specified:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            engine_config_pg_autovacuum_analyze_scale_factor=0.1,
+            engine_config_pg_autovacuum_analyze_threshold=50,
+            engine_config_pg_autovacuum_max_workers=3,
+            engine_config_pg_autovacuum_naptime=100,
+            engine_config_pg_autovacuum_vacuum_cost_delay=20,
+            engine_config_pg_autovacuum_vacuum_cost_limit=200,
+            engine_config_pg_autovacuum_vacuum_scale_factor=0.2,
+            engine_config_pg_autovacuum_vacuum_threshold=100,
+            engine_config_pg_bgwriter_delay=1000,
+            engine_config_pg_bgwriter_flush_after=512,
+            engine_config_pg_bgwriter_lru_maxpages=100,
+            engine_config_pg_bgwriter_lru_multiplier=2,
+            engine_config_pg_deadlock_timeout=1000,
+            engine_config_pg_default_toast_compression="pglz",
+            engine_config_pg_idle_in_transaction_session_timeout=60000,
+            engine_config_pg_jit=True,
+            engine_config_pg_max_files_per_process=1000,
+            engine_config_pg_max_locks_per_transaction=64,
+            engine_config_pg_max_logical_replication_workers=4,
+            engine_config_pg_max_parallel_workers=8,
+            engine_config_pg_max_parallel_workers_per_gather=2,
+            engine_config_pg_max_pred_locks_per_transaction=128,
+            engine_config_pg_max_replication_slots=8,
+            engine_config_pg_max_slot_wal_keep_size=128,
+            engine_config_pg_max_stack_depth=2097152,
+            engine_config_pg_max_standby_archive_delay=60000,
+            engine_config_pg_max_standby_streaming_delay=60000,
+            engine_config_pg_max_wal_senders=20,
+            engine_config_pg_max_worker_processes=8,
+            engine_config_pg_password_encryption="scram-sha-256",
+            engine_config_pg_pg_partman_bgw_interval=3600,
+            engine_config_pg_pg_partman_bgw_role="myrolename",
+            engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan=True,
+            engine_config_pg_pg_stat_monitor_pgsm_max_buckets=5,
+            engine_config_pg_pg_stat_statements_track="all",
+            engine_config_pg_temp_file_limit=100,
+            engine_config_pg_timezone="Europe/Helsinki",
+            engine_config_pg_track_activity_query_size=2048,
+            engine_config_pg_track_commit_timestamp="on",
+            engine_config_pg_track_functions="all",
+            engine_config_pg_track_io_timing="on",
+            engine_config_pg_wal_sender_timeout=60000,
+            engine_config_pg_wal_writer_delay=200,
+            engine_config_pg_stat_monitor_enable=True,
+            engine_config_pglookout_max_failover_replication_time_lag=10000,
+            engine_config_shared_buffers_percentage=25,
+            engine_config_work_mem=400)
+        ```
+
+        Creating a forked PostgreSQL database:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            fork_source=12345)
+        ```
+
+        > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
+
+        ## pending_updates
+
+        The following arguments are exposed by each entry in the `pending_updates` attribute:
+
+        * `deadline` - The time when a mandatory update needs to be applied.
+
+        * `description` - A description of the update.
+
+        * `planned_for` - The date and time a maintenance update will be applied.
+
+        ## updates
+
+        The following arguments are supported in the `updates` specification block:
+
+        * `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+
+        * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+
+        * `frequency` - (Required) The frequency at which maintenance occurs. (`weekly`)
+
+        * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+
         ## Import
 
         Linode PostgreSQL Databases can be imported using the `id`, e.g.
@@ -2382,6 +2480,104 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         ```
 
         Creating a complex PostgreSQL database:
+
+        Creating a PostgreSQL database with engine config fields specified:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            engine_config_pg_autovacuum_analyze_scale_factor=0.1,
+            engine_config_pg_autovacuum_analyze_threshold=50,
+            engine_config_pg_autovacuum_max_workers=3,
+            engine_config_pg_autovacuum_naptime=100,
+            engine_config_pg_autovacuum_vacuum_cost_delay=20,
+            engine_config_pg_autovacuum_vacuum_cost_limit=200,
+            engine_config_pg_autovacuum_vacuum_scale_factor=0.2,
+            engine_config_pg_autovacuum_vacuum_threshold=100,
+            engine_config_pg_bgwriter_delay=1000,
+            engine_config_pg_bgwriter_flush_after=512,
+            engine_config_pg_bgwriter_lru_maxpages=100,
+            engine_config_pg_bgwriter_lru_multiplier=2,
+            engine_config_pg_deadlock_timeout=1000,
+            engine_config_pg_default_toast_compression="pglz",
+            engine_config_pg_idle_in_transaction_session_timeout=60000,
+            engine_config_pg_jit=True,
+            engine_config_pg_max_files_per_process=1000,
+            engine_config_pg_max_locks_per_transaction=64,
+            engine_config_pg_max_logical_replication_workers=4,
+            engine_config_pg_max_parallel_workers=8,
+            engine_config_pg_max_parallel_workers_per_gather=2,
+            engine_config_pg_max_pred_locks_per_transaction=128,
+            engine_config_pg_max_replication_slots=8,
+            engine_config_pg_max_slot_wal_keep_size=128,
+            engine_config_pg_max_stack_depth=2097152,
+            engine_config_pg_max_standby_archive_delay=60000,
+            engine_config_pg_max_standby_streaming_delay=60000,
+            engine_config_pg_max_wal_senders=20,
+            engine_config_pg_max_worker_processes=8,
+            engine_config_pg_password_encryption="scram-sha-256",
+            engine_config_pg_pg_partman_bgw_interval=3600,
+            engine_config_pg_pg_partman_bgw_role="myrolename",
+            engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan=True,
+            engine_config_pg_pg_stat_monitor_pgsm_max_buckets=5,
+            engine_config_pg_pg_stat_statements_track="all",
+            engine_config_pg_temp_file_limit=100,
+            engine_config_pg_timezone="Europe/Helsinki",
+            engine_config_pg_track_activity_query_size=2048,
+            engine_config_pg_track_commit_timestamp="on",
+            engine_config_pg_track_functions="all",
+            engine_config_pg_track_io_timing="on",
+            engine_config_pg_wal_sender_timeout=60000,
+            engine_config_pg_wal_writer_delay=200,
+            engine_config_pg_stat_monitor_enable=True,
+            engine_config_pglookout_max_failover_replication_time_lag=10000,
+            engine_config_shared_buffers_percentage=25,
+            engine_config_work_mem=400)
+        ```
+
+        Creating a forked PostgreSQL database:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            fork_source=12345)
+        ```
+
+        > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
+
+        ## pending_updates
+
+        The following arguments are exposed by each entry in the `pending_updates` attribute:
+
+        * `deadline` - The time when a mandatory update needs to be applied.
+
+        * `description` - A description of the update.
+
+        * `planned_for` - The date and time a maintenance update will be applied.
+
+        ## updates
+
+        The following arguments are supported in the `updates` specification block:
+
+        * `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+
+        * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+
+        * `frequency` - (Required) The frequency at which maintenance occurs. (`weekly`)
+
+        * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
 
         ## Import
 

@@ -38,7 +38,7 @@ namespace Pulumi.Linode
         /// ```
         /// 
         /// The following example shows how one might use this data source to access information about a Linode LKE Version
-        /// with additional information about the Linode LKE Version's tier (`enterprise` or `standard`).
+        /// with additional information about the Linode LKE Version's tier (`Enterprise` or `Standard`).
         /// 
         /// &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
         /// 
@@ -93,7 +93,7 @@ namespace Pulumi.Linode
         /// ```
         /// 
         /// The following example shows how one might use this data source to access information about a Linode LKE Version
-        /// with additional information about the Linode LKE Version's tier (`enterprise` or `standard`).
+        /// with additional information about the Linode LKE Version's tier (`Enterprise` or `Standard`).
         /// 
         /// &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
         /// 
@@ -148,7 +148,7 @@ namespace Pulumi.Linode
         /// ```
         /// 
         /// The following example shows how one might use this data source to access information about a Linode LKE Version
-        /// with additional information about the Linode LKE Version's tier (`enterprise` or `standard`).
+        /// with additional information about the Linode LKE Version's tier (`Enterprise` or `Standard`).
         /// 
         /// &gt; **_NOTE:_**  This functionality may not be currently available to all users and can only be used with v4beta.
         /// 
@@ -181,7 +181,7 @@ namespace Pulumi.Linode
     public sealed class GetLkeVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+        /// The tier (`Standard` or `Enterprise`) of Linode LKE Versions to fetch.
         /// </summary>
         [Input("tier")]
         public string? Tier { get; set; }
@@ -203,7 +203,7 @@ namespace Pulumi.Linode
     public sealed class GetLkeVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+        /// The tier (`Standard` or `Enterprise`) of Linode LKE Versions to fetch.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
@@ -231,7 +231,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
+        /// The Kubernetes version tier. Only exported if `Tier` was provided when using the datasource.
         /// </summary>
         public readonly string? Tier;
         public readonly ImmutableArray<Outputs.GetLkeVersionsVersionResult> Versions;

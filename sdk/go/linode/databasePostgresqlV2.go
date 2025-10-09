@@ -82,6 +82,136 @@ import (
 //
 // Creating a complex PostgreSQL database:
 //
+// Creating a PostgreSQL database with engine config fields specified:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("postgresql/16"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
+//				EngineConfigPgAutovacuumAnalyzeScaleFactor:         pulumi.Float64(0.1),
+//				EngineConfigPgAutovacuumAnalyzeThreshold:           pulumi.Int(50),
+//				EngineConfigPgAutovacuumMaxWorkers:                 pulumi.Int(3),
+//				EngineConfigPgAutovacuumNaptime:                    pulumi.Int(100),
+//				EngineConfigPgAutovacuumVacuumCostDelay:            pulumi.Int(20),
+//				EngineConfigPgAutovacuumVacuumCostLimit:            pulumi.Int(200),
+//				EngineConfigPgAutovacuumVacuumScaleFactor:          pulumi.Float64(0.2),
+//				EngineConfigPgAutovacuumVacuumThreshold:            pulumi.Int(100),
+//				EngineConfigPgBgwriterDelay:                        pulumi.Int(1000),
+//				EngineConfigPgBgwriterFlushAfter:                   pulumi.Int(512),
+//				EngineConfigPgBgwriterLruMaxpages:                  pulumi.Int(100),
+//				EngineConfigPgBgwriterLruMultiplier:                pulumi.Float64(2),
+//				EngineConfigPgDeadlockTimeout:                      pulumi.Int(1000),
+//				EngineConfigPgDefaultToastCompression:              pulumi.String("pglz"),
+//				EngineConfigPgIdleInTransactionSessionTimeout:      pulumi.Int(60000),
+//				EngineConfigPgJit:                                  pulumi.Bool(true),
+//				EngineConfigPgMaxFilesPerProcess:                   pulumi.Int(1000),
+//				EngineConfigPgMaxLocksPerTransaction:               pulumi.Int(64),
+//				EngineConfigPgMaxLogicalReplicationWorkers:         pulumi.Int(4),
+//				EngineConfigPgMaxParallelWorkers:                   pulumi.Int(8),
+//				EngineConfigPgMaxParallelWorkersPerGather:          pulumi.Int(2),
+//				EngineConfigPgMaxPredLocksPerTransaction:           pulumi.Int(128),
+//				EngineConfigPgMaxReplicationSlots:                  pulumi.Int(8),
+//				EngineConfigPgMaxSlotWalKeepSize:                   pulumi.Int(128),
+//				EngineConfigPgMaxStackDepth:                        pulumi.Int(2097152),
+//				EngineConfigPgMaxStandbyArchiveDelay:               pulumi.Int(60000),
+//				EngineConfigPgMaxStandbyStreamingDelay:             pulumi.Int(60000),
+//				EngineConfigPgMaxWalSenders:                        pulumi.Int(20),
+//				EngineConfigPgMaxWorkerProcesses:                   pulumi.Int(8),
+//				EngineConfigPgPasswordEncryption:                   pulumi.String("scram-sha-256"),
+//				EngineConfigPgPgPartmanBgwInterval:                 pulumi.Int(3600),
+//				EngineConfigPgPgPartmanBgwRole:                     pulumi.String("myrolename"),
+//				EngineConfigPgPgStatMonitorPgsmEnableQueryPlan:     pulumi.Bool(true),
+//				EngineConfigPgPgStatMonitorPgsmMaxBuckets:          pulumi.Int(5),
+//				EngineConfigPgPgStatStatementsTrack:                pulumi.String("all"),
+//				EngineConfigPgTempFileLimit:                        pulumi.Int(100),
+//				EngineConfigPgTimezone:                             pulumi.String("Europe/Helsinki"),
+//				EngineConfigPgTrackActivityQuerySize:               pulumi.Int(2048),
+//				EngineConfigPgTrackCommitTimestamp:                 pulumi.String("on"),
+//				EngineConfigPgTrackFunctions:                       pulumi.String("all"),
+//				EngineConfigPgTrackIoTiming:                        pulumi.String("on"),
+//				EngineConfigPgWalSenderTimeout:                     pulumi.Int(60000),
+//				EngineConfigPgWalWriterDelay:                       pulumi.Int(200),
+//				EngineConfigPgStatMonitorEnable:                    pulumi.Bool(true),
+//				EngineConfigPglookoutMaxFailoverReplicationTimeLag: pulumi.Int(10000),
+//				EngineConfigSharedBuffersPercentage:                pulumi.Float64(25),
+//				EngineConfigWorkMem:                                pulumi.Int(400),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating a forked PostgreSQL database:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
+//				Label:      pulumi.String("mydatabase"),
+//				EngineId:   pulumi.String("postgresql/16"),
+//				Region:     pulumi.String("us-mia"),
+//				Type:       pulumi.String("g6-nanode-1"),
+//				ForkSource: pulumi.Int(12345),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
+//
+// ## pendingUpdates
+//
+// The following arguments are exposed by each entry in the `pendingUpdates` attribute:
+//
+// * `deadline` - The time when a mandatory update needs to be applied.
+//
+// * `description` - A description of the update.
+//
+// * `plannedFor` - The date and time a maintenance update will be applied.
+//
+// ## updates
+//
+// The following arguments are supported in the `updates` specification block:
+//
+// * `dayOfWeek` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+//
+// * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+//
+// * `frequency` - (Required) The frequency at which maintenance occurs. (`weekly`)
+//
+// * `hourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+//
 // ## Import
 //
 // Linode PostgreSQL Databases can be imported using the `id`, e.g.

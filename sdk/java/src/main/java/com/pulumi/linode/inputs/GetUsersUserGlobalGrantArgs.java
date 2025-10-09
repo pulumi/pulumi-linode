@@ -16,14 +16,14 @@ public final class GetUsersUserGlobalGrantArgs extends com.pulumi.resources.Reso
     public static final GetUsersUserGlobalGrantArgs Empty = new GetUsersUserGlobalGrantArgs();
 
     /**
-     * The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+     * The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
      * 
      */
     @Import(name="accountAccess", required=true)
     private Output<String> accountAccess;
 
     /**
-     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
      * 
      */
     public Output<String> accountAccess() {
@@ -255,7 +255,7 @@ public final class GetUsersUserGlobalGrantArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param accountAccess The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+         * @param accountAccess The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class GetUsersUserGlobalGrantArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param accountAccess The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+         * @param accountAccess The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
          * 
          * @return builder
          * 

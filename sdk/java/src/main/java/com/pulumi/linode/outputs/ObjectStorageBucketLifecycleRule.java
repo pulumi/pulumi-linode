@@ -21,7 +21,7 @@ public final class ObjectStorageBucketLifecycleRule {
      * 
      * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
      * 
-     * * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+     * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
      * 
      */
     private @Nullable Integer abortIncompleteMultipartUploadDays;
@@ -57,7 +57,7 @@ public final class ObjectStorageBucketLifecycleRule {
      * 
      * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
      * 
-     * * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+     * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
      * 
      */
     public Optional<Integer> abortIncompleteMultipartUploadDays() {

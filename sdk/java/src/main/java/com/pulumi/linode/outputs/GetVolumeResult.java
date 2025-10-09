@@ -53,7 +53,7 @@ public final class GetVolumeResult {
      */
     private Integer size;
     /**
-     * @return The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+     * @return The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
      * 
      */
     private String status;
@@ -126,7 +126,7 @@ public final class GetVolumeResult {
         return this.size;
     }
     /**
-     * @return The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+     * @return The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
      * 
      */
     public String status() {

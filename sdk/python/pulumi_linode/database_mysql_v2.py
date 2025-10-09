@@ -1641,6 +1641,85 @@ class DatabaseMysqlV2(pulumi.CustomResource):
 
         Creating a complex MySQL database:
 
+        Creating a MySQL database with engine config fields specified:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysqlV2("foobar",
+            label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
+            engine_config_binlog_retention_period=3600,
+            engine_config_mysql_connect_timeout=10,
+            engine_config_mysql_default_time_zone="+00:00",
+            engine_config_mysql_group_concat_max_len=4096,
+            engine_config_mysql_information_schema_stats_expiry=3600,
+            engine_config_mysql_innodb_change_buffer_max_size=25,
+            engine_config_mysql_innodb_flush_neighbors=0,
+            engine_config_mysql_innodb_ft_min_token_size=7,
+            engine_config_mysql_innodb_ft_server_stopword_table="mysql/innodb_ft_default_stopword",
+            engine_config_mysql_innodb_lock_wait_timeout=300,
+            engine_config_mysql_innodb_log_buffer_size=16777216,
+            engine_config_mysql_innodb_online_alter_log_max_size=268435456,
+            engine_config_mysql_innodb_read_io_threads=4,
+            engine_config_mysql_innodb_rollback_on_timeout=True,
+            engine_config_mysql_innodb_thread_concurrency=8,
+            engine_config_mysql_innodb_write_io_threads=4,
+            engine_config_mysql_interactive_timeout=300,
+            engine_config_mysql_internal_tmp_mem_storage_engine="TempTable",
+            engine_config_mysql_max_allowed_packet=67108864,
+            engine_config_mysql_max_heap_table_size=16777216,
+            engine_config_mysql_net_buffer_length=16384,
+            engine_config_mysql_net_read_timeout=30,
+            engine_config_mysql_net_write_timeout=30,
+            engine_config_mysql_sort_buffer_size=262144,
+            engine_config_mysql_sql_mode="TRADITIONAL,ANSI",
+            engine_config_mysql_sql_require_primary_key=False,
+            engine_config_mysql_tmp_table_size=16777216,
+            engine_config_mysql_wait_timeout=28800)
+        ```
+
+        Creating a forked MySQL database:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysqlV2("foobar",
+            label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
+            fork_source=12345)
+        ```
+
+        > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
+
+        ## pending_updates
+
+        The following arguments are exposed by each entry in the `pending_updates` attribute:
+
+        * `deadline` - The time when a mandatory update needs to be applied.
+
+        * `description` - A description of the update.
+
+        * `planned_for` - The date and time a maintenance update will be applied.
+
+        ## updates
+
+        The following arguments are supported in the `updates` specification block:
+
+        * `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+
+        * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+
+        * `frequency` - (Required) The frequency at which maintenance occurs. (`weekly`)
+
+        * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+
         ## Import
 
         Linode MySQL Databases can be imported using the `id`, e.g.
@@ -1736,6 +1815,85 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         ```
 
         Creating a complex MySQL database:
+
+        Creating a MySQL database with engine config fields specified:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysqlV2("foobar",
+            label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
+            engine_config_binlog_retention_period=3600,
+            engine_config_mysql_connect_timeout=10,
+            engine_config_mysql_default_time_zone="+00:00",
+            engine_config_mysql_group_concat_max_len=4096,
+            engine_config_mysql_information_schema_stats_expiry=3600,
+            engine_config_mysql_innodb_change_buffer_max_size=25,
+            engine_config_mysql_innodb_flush_neighbors=0,
+            engine_config_mysql_innodb_ft_min_token_size=7,
+            engine_config_mysql_innodb_ft_server_stopword_table="mysql/innodb_ft_default_stopword",
+            engine_config_mysql_innodb_lock_wait_timeout=300,
+            engine_config_mysql_innodb_log_buffer_size=16777216,
+            engine_config_mysql_innodb_online_alter_log_max_size=268435456,
+            engine_config_mysql_innodb_read_io_threads=4,
+            engine_config_mysql_innodb_rollback_on_timeout=True,
+            engine_config_mysql_innodb_thread_concurrency=8,
+            engine_config_mysql_innodb_write_io_threads=4,
+            engine_config_mysql_interactive_timeout=300,
+            engine_config_mysql_internal_tmp_mem_storage_engine="TempTable",
+            engine_config_mysql_max_allowed_packet=67108864,
+            engine_config_mysql_max_heap_table_size=16777216,
+            engine_config_mysql_net_buffer_length=16384,
+            engine_config_mysql_net_read_timeout=30,
+            engine_config_mysql_net_write_timeout=30,
+            engine_config_mysql_sort_buffer_size=262144,
+            engine_config_mysql_sql_mode="TRADITIONAL,ANSI",
+            engine_config_mysql_sql_require_primary_key=False,
+            engine_config_mysql_tmp_table_size=16777216,
+            engine_config_mysql_wait_timeout=28800)
+        ```
+
+        Creating a forked MySQL database:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysqlV2("foobar",
+            label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
+            fork_source=12345)
+        ```
+
+        > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
+
+        ## pending_updates
+
+        The following arguments are exposed by each entry in the `pending_updates` attribute:
+
+        * `deadline` - The time when a mandatory update needs to be applied.
+
+        * `description` - A description of the update.
+
+        * `planned_for` - The date and time a maintenance update will be applied.
+
+        ## updates
+
+        The following arguments are supported in the `updates` specification block:
+
+        * `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+
+        * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+
+        * `frequency` - (Required) The frequency at which maintenance occurs. (`weekly`)
+
+        * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
 
         ## Import
 

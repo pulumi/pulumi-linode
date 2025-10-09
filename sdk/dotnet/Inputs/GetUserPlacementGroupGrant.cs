@@ -25,7 +25,7 @@ namespace Pulumi.Linode.Inputs
         public string Label { get; set; } = null!;
 
         /// <summary>
-        /// The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+        /// The level of access this User has to this entity. If null, this User has no access. (`ReadOnly`, `ReadWrite`)
         /// </summary>
         [Input("permissions", required: true)]
         public string Permissions { get; set; } = null!;
