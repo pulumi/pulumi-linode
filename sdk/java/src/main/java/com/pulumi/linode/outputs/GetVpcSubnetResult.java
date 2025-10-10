@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetVpcSubnetIpv6;
 import com.pulumi.linode.outputs.GetVpcSubnetLinode;
 import java.lang.Integer;
 import java.lang.String;
@@ -24,6 +25,7 @@ public final class GetVpcSubnetResult {
      * 
      */
     private String ipv4;
+    private List<GetVpcSubnetIpv6> ipv6s;
     /**
      * @return The label of the VPC subnet.
      * 
@@ -58,6 +60,9 @@ public final class GetVpcSubnetResult {
      */
     public String ipv4() {
         return this.ipv4;
+    }
+    public List<GetVpcSubnetIpv6> ipv6s() {
+        return this.ipv6s;
     }
     /**
      * @return The label of the VPC subnet.
@@ -96,6 +101,7 @@ public final class GetVpcSubnetResult {
         private String created;
         private String id;
         private String ipv4;
+        private List<GetVpcSubnetIpv6> ipv6s;
         private String label;
         private List<GetVpcSubnetLinode> linodes;
         private String updated;
@@ -106,6 +112,7 @@ public final class GetVpcSubnetResult {
     	      this.created = defaults.created;
     	      this.id = defaults.id;
     	      this.ipv4 = defaults.ipv4;
+    	      this.ipv6s = defaults.ipv6s;
     	      this.label = defaults.label;
     	      this.linodes = defaults.linodes;
     	      this.updated = defaults.updated;
@@ -135,6 +142,17 @@ public final class GetVpcSubnetResult {
             }
             this.ipv4 = ipv4;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6s(List<GetVpcSubnetIpv6> ipv6s) {
+            if (ipv6s == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetResult", "ipv6s");
+            }
+            this.ipv6s = ipv6s;
+            return this;
+        }
+        public Builder ipv6s(GetVpcSubnetIpv6... ipv6s) {
+            return ipv6s(List.of(ipv6s));
         }
         @CustomType.Setter
         public Builder label(String label) {
@@ -176,6 +194,7 @@ public final class GetVpcSubnetResult {
             _resultValue.created = created;
             _resultValue.id = id;
             _resultValue.ipv4 = ipv4;
+            _resultValue.ipv6s = ipv6s;
             _resultValue.label = label;
             _resultValue.linodes = linodes;
             _resultValue.updated = updated;

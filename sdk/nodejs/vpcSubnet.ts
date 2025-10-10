@@ -25,6 +25,40 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * Create a VPC subnet with an implicitly determined IPv6 range:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const testVpc = new linode.Vpc("test", {
+ *     label: "test-vpc",
+ *     region: "us-mia",
+ *     ipv6s: [{
+ *         range: "/52",
+ *     }],
+ * });
+ * // NOTE: IPv6 VPCs may not currently be available to all users.
+ * const test = new linode.VpcSubnet("test", {
+ *     vpcId: testVpc.id,
+ *     label: "test-subnet",
+ *     ipv4: "10.0.0.0/24",
+ *     ipv6s: [{
+ *         range: "auto",
+ *     }],
+ * });
+ * ```
+ *
+ * ## IPv6
+ *
+ * > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+ *
+ * The following arguments can be configured for each entry under the `ipv6` field:
+ *
+ * * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If `auto`, a range with the default prefix will be allocated for this VPC.
+ *
+ * * `allocatedRange` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+ *
  * ## Import
  *
  * Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpc_id` followed by the subnet `id` separated by a comma, e.g.
@@ -67,8 +101,14 @@ export class VpcSubnet extends pulumi.CustomResource {
     declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The IPv4 range of this subnet in CIDR format.
+     *
+     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      */
-    declare public readonly ipv4: pulumi.Output<string>;
+    declare public readonly ipv4: pulumi.Output<string | undefined>;
+    /**
+     * The IPv6 ranges of this subnet.
+     */
+    declare public readonly ipv6s: pulumi.Output<outputs.VpcSubnetIpv6[] | undefined>;
     /**
      * The label of the VPC. Only contains ASCII letters, digits and dashes.
      */
@@ -82,7 +122,7 @@ export class VpcSubnet extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updated: pulumi.Output<string>;
     /**
-     * The id of the parent VPC for this VPC Subnet.
+     * The id of the parent VPC for this VPC subnet.
      */
     declare public readonly vpcId: pulumi.Output<number>;
 
@@ -101,15 +141,13 @@ export class VpcSubnet extends pulumi.CustomResource {
             const state = argsOrState as VpcSubnetState | undefined;
             resourceInputs["created"] = state?.created;
             resourceInputs["ipv4"] = state?.ipv4;
+            resourceInputs["ipv6s"] = state?.ipv6s;
             resourceInputs["label"] = state?.label;
             resourceInputs["linodes"] = state?.linodes;
             resourceInputs["updated"] = state?.updated;
             resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as VpcSubnetArgs | undefined;
-            if (args?.ipv4 === undefined && !opts.urn) {
-                throw new Error("Missing required property 'ipv4'");
-            }
             if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
             }
@@ -117,6 +155,7 @@ export class VpcSubnet extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vpcId'");
             }
             resourceInputs["ipv4"] = args?.ipv4;
+            resourceInputs["ipv6s"] = args?.ipv6s;
             resourceInputs["label"] = args?.label;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["created"] = undefined /*out*/;
@@ -138,8 +177,14 @@ export interface VpcSubnetState {
     created?: pulumi.Input<string>;
     /**
      * The IPv4 range of this subnet in CIDR format.
+     *
+     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      */
     ipv4?: pulumi.Input<string>;
+    /**
+     * The IPv6 ranges of this subnet.
+     */
+    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcSubnetIpv6>[]>;
     /**
      * The label of the VPC. Only contains ASCII letters, digits and dashes.
      */
@@ -153,7 +198,7 @@ export interface VpcSubnetState {
      */
     updated?: pulumi.Input<string>;
     /**
-     * The id of the parent VPC for this VPC Subnet.
+     * The id of the parent VPC for this VPC subnet.
      */
     vpcId?: pulumi.Input<number>;
 }
@@ -164,14 +209,20 @@ export interface VpcSubnetState {
 export interface VpcSubnetArgs {
     /**
      * The IPv4 range of this subnet in CIDR format.
+     *
+     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      */
-    ipv4: pulumi.Input<string>;
+    ipv4?: pulumi.Input<string>;
+    /**
+     * The IPv6 ranges of this subnet.
+     */
+    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcSubnetIpv6>[]>;
     /**
      * The label of the VPC. Only contains ASCII letters, digits and dashes.
      */
     label: pulumi.Input<string>;
     /**
-     * The id of the parent VPC for this VPC Subnet.
+     * The id of the parent VPC for this VPC subnet.
      */
     vpcId: pulumi.Input<number>;
 }

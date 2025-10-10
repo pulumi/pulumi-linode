@@ -137,21 +137,6 @@ public final class UserGlobalGrantsArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * If true, this User may add Placement Groups.
-     * 
-     */
-    @Import(name="addPlacementGroups")
-    private @Nullable Output<Boolean> addPlacementGroups;
-
-    /**
-     * @return If true, this User may add Placement Groups.
-     * 
-     */
-    public Optional<Output<Boolean>> addPlacementGroups() {
-        return Optional.ofNullable(this.addPlacementGroups);
-    }
-
-    /**
      * If true, this User may add StackScripts.
      * 
      */
@@ -237,7 +222,6 @@ public final class UserGlobalGrantsArgs extends com.pulumi.resources.ResourceArg
         this.addLinodes = $.addLinodes;
         this.addLongview = $.addLongview;
         this.addNodebalancers = $.addNodebalancers;
-        this.addPlacementGroups = $.addPlacementGroups;
         this.addStackscripts = $.addStackscripts;
         this.addVolumes = $.addVolumes;
         this.addVpcs = $.addVpcs;
@@ -429,27 +413,6 @@ public final class UserGlobalGrantsArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder addNodebalancers(Boolean addNodebalancers) {
             return addNodebalancers(Output.of(addNodebalancers));
-        }
-
-        /**
-         * @param addPlacementGroups If true, this User may add Placement Groups.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder addPlacementGroups(@Nullable Output<Boolean> addPlacementGroups) {
-            $.addPlacementGroups = addPlacementGroups;
-            return this;
-        }
-
-        /**
-         * @param addPlacementGroups If true, this User may add Placement Groups.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder addPlacementGroups(Boolean addPlacementGroups) {
-            return addPlacementGroups(Output.of(addPlacementGroups));
         }
 
         /**

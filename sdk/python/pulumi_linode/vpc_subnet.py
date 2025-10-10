@@ -21,30 +21,25 @@ __all__ = ['VpcSubnetArgs', 'VpcSubnet']
 @pulumi.input_type
 class VpcSubnetArgs:
     def __init__(__self__, *,
-                 ipv4: pulumi.Input[_builtins.str],
                  label: pulumi.Input[_builtins.str],
-                 vpc_id: pulumi.Input[_builtins.int]):
+                 vpc_id: pulumi.Input[_builtins.int],
+                 ipv4: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]]] = None):
         """
         The set of arguments for constructing a VpcSubnet resource.
-        :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. Only contains ASCII letters, digits and dashes.
-        :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC Subnet.
+        :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC subnet.
+        :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
+               
+               * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]] ipv6s: The IPv6 ranges of this subnet.
         """
-        pulumi.set(__self__, "ipv4", ipv4)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "vpc_id", vpc_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def ipv4(self) -> pulumi.Input[_builtins.str]:
-        """
-        The IPv4 range of this subnet in CIDR format.
-        """
-        return pulumi.get(self, "ipv4")
-
-    @ipv4.setter
-    def ipv4(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "ipv4", value)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
 
     @_builtins.property
     @pulumi.getter
@@ -62,7 +57,7 @@ class VpcSubnetArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.int]:
         """
-        The id of the parent VPC for this VPC Subnet.
+        The id of the parent VPC for this VPC subnet.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -70,12 +65,39 @@ class VpcSubnetArgs:
     def vpc_id(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "vpc_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IPv4 range of this subnet in CIDR format.
+
+        * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ipv4", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]]]:
+        """
+        The IPv6 ranges of this subnet.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @ipv6s.setter
+    def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]]]):
+        pulumi.set(self, "ipv6s", value)
+
 
 @pulumi.input_type
 class _VpcSubnetState:
     def __init__(__self__, *,
                  created: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  linodes: Optional[pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeArgs']]]] = None,
                  updated: Optional[pulumi.Input[_builtins.str]] = None,
@@ -84,15 +106,20 @@ class _VpcSubnetState:
         Input properties used for looking up and filtering VpcSubnet resources.
         :param pulumi.Input[_builtins.str] created: The date and time when the VPC was created.
         :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
+               
+               * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]] ipv6s: The IPv6 ranges of this subnet.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. Only contains ASCII letters, digits and dashes.
         :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeArgs']]] linodes: A list of Linode IDs that added to this subnet.
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
-        :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC Subnet.
+        :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC subnet.
         """
         if created is not None:
             pulumi.set(__self__, "created", created)
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if linodes is not None:
@@ -119,12 +146,26 @@ class _VpcSubnetState:
     def ipv4(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The IPv4 range of this subnet in CIDR format.
+
+        * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         """
         return pulumi.get(self, "ipv4")
 
     @ipv4.setter
     def ipv4(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ipv4", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]]]:
+        """
+        The IPv6 ranges of this subnet.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @ipv6s.setter
+    def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]]]):
+        pulumi.set(self, "ipv6s", value)
 
     @_builtins.property
     @pulumi.getter
@@ -166,7 +207,7 @@ class _VpcSubnetState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The id of the parent VPC for this VPC Subnet.
+        The id of the parent VPC for this VPC subnet.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -182,6 +223,7 @@ class VpcSubnet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ipv4: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetIpv6Args', 'VpcSubnetIpv6ArgsDict']]]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -203,6 +245,38 @@ class VpcSubnet(pulumi.CustomResource):
             ipv4="10.0.0.0/24")
         ```
 
+        Create a VPC subnet with an implicitly determined IPv6 range:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        test_vpc = linode.Vpc("test",
+            label="test-vpc",
+            region="us-mia",
+            ipv6s=[{
+                "range": "/52",
+            }])
+        # NOTE: IPv6 VPCs may not currently be available to all users.
+        test = linode.VpcSubnet("test",
+            vpc_id=test_vpc.id,
+            label="test-subnet",
+            ipv4="10.0.0.0/24",
+            ipv6s=[{
+                "range": "auto",
+            }])
+        ```
+
+        ## IPv6
+
+        > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+
+        The following arguments can be configured for each entry under the `ipv6` field:
+
+        * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If `auto`, a range with the default prefix will be allocated for this VPC.
+
+        * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+
         ## Import
 
         Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpc_id` followed by the subnet `id` separated by a comma, e.g.
@@ -214,8 +288,11 @@ class VpcSubnet(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
+               
+               * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetIpv6Args', 'VpcSubnetIpv6ArgsDict']]]] ipv6s: The IPv6 ranges of this subnet.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. Only contains ASCII letters, digits and dashes.
-        :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC Subnet.
+        :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC subnet.
         """
         ...
     @overload
@@ -241,6 +318,38 @@ class VpcSubnet(pulumi.CustomResource):
             ipv4="10.0.0.0/24")
         ```
 
+        Create a VPC subnet with an implicitly determined IPv6 range:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        test_vpc = linode.Vpc("test",
+            label="test-vpc",
+            region="us-mia",
+            ipv6s=[{
+                "range": "/52",
+            }])
+        # NOTE: IPv6 VPCs may not currently be available to all users.
+        test = linode.VpcSubnet("test",
+            vpc_id=test_vpc.id,
+            label="test-subnet",
+            ipv4="10.0.0.0/24",
+            ipv6s=[{
+                "range": "auto",
+            }])
+        ```
+
+        ## IPv6
+
+        > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+
+        The following arguments can be configured for each entry under the `ipv6` field:
+
+        * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If `auto`, a range with the default prefix will be allocated for this VPC.
+
+        * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+
         ## Import
 
         Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpc_id` followed by the subnet `id` separated by a comma, e.g.
@@ -265,6 +374,7 @@ class VpcSubnet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ipv4: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetIpv6Args', 'VpcSubnetIpv6ArgsDict']]]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
@@ -276,9 +386,8 @@ class VpcSubnet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VpcSubnetArgs.__new__(VpcSubnetArgs)
 
-            if ipv4 is None and not opts.urn:
-                raise TypeError("Missing required property 'ipv4'")
             __props__.__dict__["ipv4"] = ipv4
+            __props__.__dict__["ipv6s"] = ipv6s
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__.__dict__["label"] = label
@@ -300,6 +409,7 @@ class VpcSubnet(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created: Optional[pulumi.Input[_builtins.str]] = None,
             ipv4: Optional[pulumi.Input[_builtins.str]] = None,
+            ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetIpv6Args', 'VpcSubnetIpv6ArgsDict']]]]] = None,
             label: Optional[pulumi.Input[_builtins.str]] = None,
             linodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetLinodeArgs', 'VpcSubnetLinodeArgsDict']]]]] = None,
             updated: Optional[pulumi.Input[_builtins.str]] = None,
@@ -313,10 +423,13 @@ class VpcSubnet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created: The date and time when the VPC was created.
         :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
+               
+               * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetIpv6Args', 'VpcSubnetIpv6ArgsDict']]]] ipv6s: The IPv6 ranges of this subnet.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. Only contains ASCII letters, digits and dashes.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetLinodeArgs', 'VpcSubnetLinodeArgsDict']]]] linodes: A list of Linode IDs that added to this subnet.
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
-        :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC Subnet.
+        :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC subnet.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -324,6 +437,7 @@ class VpcSubnet(pulumi.CustomResource):
 
         __props__.__dict__["created"] = created
         __props__.__dict__["ipv4"] = ipv4
+        __props__.__dict__["ipv6s"] = ipv6s
         __props__.__dict__["label"] = label
         __props__.__dict__["linodes"] = linodes
         __props__.__dict__["updated"] = updated
@@ -340,11 +454,21 @@ class VpcSubnet(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def ipv4(self) -> pulumi.Output[_builtins.str]:
+    def ipv4(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The IPv4 range of this subnet in CIDR format.
+
+        * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         """
         return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> pulumi.Output[Optional[Sequence['outputs.VpcSubnetIpv6']]]:
+        """
+        The IPv6 ranges of this subnet.
+        """
+        return pulumi.get(self, "ipv6s")
 
     @_builtins.property
     @pulumi.getter
@@ -374,7 +498,7 @@ class VpcSubnet(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.int]:
         """
-        The id of the parent VPC for this VPC Subnet.
+        The id of the parent VPC for this VPC subnet.
         """
         return pulumi.get(self, "vpc_id")
 

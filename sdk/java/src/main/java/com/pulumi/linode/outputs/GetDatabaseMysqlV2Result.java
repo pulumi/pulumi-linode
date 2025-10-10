@@ -6,6 +6,7 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetDatabaseMysqlV2PendingUpdate;
+import com.pulumi.linode.outputs.GetDatabaseMysqlV2PrivateNetwork;
 import com.pulumi.linode.outputs.GetDatabaseMysqlV2Updates;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -231,6 +232,7 @@ public final class GetDatabaseMysqlV2Result {
      * 
      */
     private Integer port;
+    private GetDatabaseMysqlV2PrivateNetwork privateNetwork;
     /**
      * @return The region to use for the Managed Database.
      * 
@@ -585,6 +587,9 @@ public final class GetDatabaseMysqlV2Result {
     public Integer port() {
         return this.port;
     }
+    public GetDatabaseMysqlV2PrivateNetwork privateNetwork() {
+        return this.privateNetwork;
+    }
     /**
      * @return The region to use for the Managed Database.
      * 
@@ -707,6 +712,7 @@ public final class GetDatabaseMysqlV2Result {
         private List<GetDatabaseMysqlV2PendingUpdate> pendingUpdates;
         private String platform;
         private Integer port;
+        private GetDatabaseMysqlV2PrivateNetwork privateNetwork;
         private String region;
         private String rootPassword;
         private String rootUsername;
@@ -766,6 +772,7 @@ public final class GetDatabaseMysqlV2Result {
     	      this.pendingUpdates = defaults.pendingUpdates;
     	      this.platform = defaults.platform;
     	      this.port = defaults.port;
+    	      this.privateNetwork = defaults.privateNetwork;
     	      this.region = defaults.region;
     	      this.rootPassword = defaults.rootPassword;
     	      this.rootUsername = defaults.rootUsername;
@@ -1153,6 +1160,14 @@ public final class GetDatabaseMysqlV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder privateNetwork(GetDatabaseMysqlV2PrivateNetwork privateNetwork) {
+            if (privateNetwork == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseMysqlV2Result", "privateNetwork");
+            }
+            this.privateNetwork = privateNetwork;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetDatabaseMysqlV2Result", "region");
@@ -1280,6 +1295,7 @@ public final class GetDatabaseMysqlV2Result {
             _resultValue.pendingUpdates = pendingUpdates;
             _resultValue.platform = platform;
             _resultValue.port = port;
+            _resultValue.privateNetwork = privateNetwork;
             _resultValue.region = region;
             _resultValue.rootPassword = rootPassword;
             _resultValue.rootUsername = rootUsername;

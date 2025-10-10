@@ -46,13 +46,62 @@ import (
 //	}
 //
 // ```
+//
+// Create a VPC with a `/52` IPv6 range prefix:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE: IPv6 VPCs may not currently be available to all users.
+//			_, err := linode.NewVpc(ctx, "test", &linode.VpcArgs{
+//				Label:  pulumi.String("test-vpc"),
+//				Region: pulumi.String("us-iad"),
+//				Ipv6s: linode.VpcIpv6Array{
+//					&linode.VpcIpv6Args{
+//						Range: pulumi.String("/52"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## IPv6
+//
+// > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+//
+// Configures a single IPv6 range under this VPC.
+//
+// * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+//
+// * `allocationClass` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+//
+// * `allocatedRange` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
 type Vpc struct {
 	pulumi.CustomResourceState
 
 	// The date and time when the VPC was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The user-defined description of this VPC.
+	//
+	// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The IPv6 configuration of this VPC.
+	Ipv6s VpcIpv6ArrayOutput `pulumi:"ipv6s"`
 	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The region of the VPC.
@@ -100,7 +149,11 @@ type vpcState struct {
 	// The date and time when the VPC was created.
 	Created *string `pulumi:"created"`
 	// The user-defined description of this VPC.
+	//
+	// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 	Description *string `pulumi:"description"`
+	// The IPv6 configuration of this VPC.
+	Ipv6s []VpcIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
 	Label *string `pulumi:"label"`
 	// The region of the VPC.
@@ -113,7 +166,11 @@ type VpcState struct {
 	// The date and time when the VPC was created.
 	Created pulumi.StringPtrInput
 	// The user-defined description of this VPC.
+	//
+	// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 	Description pulumi.StringPtrInput
+	// The IPv6 configuration of this VPC.
+	Ipv6s VpcIpv6ArrayInput
 	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringPtrInput
 	// The region of the VPC.
@@ -128,7 +185,11 @@ func (VpcState) ElementType() reflect.Type {
 
 type vpcArgs struct {
 	// The user-defined description of this VPC.
+	//
+	// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 	Description *string `pulumi:"description"`
+	// The IPv6 configuration of this VPC.
+	Ipv6s []VpcIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
 	Label string `pulumi:"label"`
 	// The region of the VPC.
@@ -138,7 +199,11 @@ type vpcArgs struct {
 // The set of arguments for constructing a Vpc resource.
 type VpcArgs struct {
 	// The user-defined description of this VPC.
+	//
+	// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 	Description pulumi.StringPtrInput
+	// The IPv6 configuration of this VPC.
+	Ipv6s VpcIpv6ArrayInput
 	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringInput
 	// The region of the VPC.
@@ -238,8 +303,15 @@ func (o VpcOutput) Created() pulumi.StringOutput {
 }
 
 // The user-defined description of this VPC.
+//
+// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 func (o VpcOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The IPv6 configuration of this VPC.
+func (o VpcOutput) Ipv6s() VpcIpv6ArrayOutput {
+	return o.ApplyT(func(v *Vpc) VpcIpv6ArrayOutput { return v.Ipv6s }).(VpcIpv6ArrayOutput)
 }
 
 // The label of the VPC. This field can only contain ASCII letters, digits and dashes.

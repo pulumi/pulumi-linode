@@ -24,6 +24,14 @@ import * as utilities from "./utilities";
  * });
  * export const vpcSubnet = foo;
  * ```
+ *
+ * ## IPv6
+ *
+ * > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+ *
+ * The following attributes are exported under each entry of the `ipv6` field:
+ *
+ * * `range` - An IPv6 range allocated to this subnet in CIDR format.
  */
 export function getVpcSubnet(args: GetVpcSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcSubnetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -60,6 +68,7 @@ export interface GetVpcSubnetResult {
      * The IPv4 range of this subnet in CIDR format.
      */
     readonly ipv4: string;
+    readonly ipv6s: outputs.GetVpcSubnetIpv6[];
     /**
      * The label of the VPC subnet.
      */
@@ -92,6 +101,14 @@ export interface GetVpcSubnetResult {
  * });
  * export const vpcSubnet = foo;
  * ```
+ *
+ * ## IPv6
+ *
+ * > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+ *
+ * The following attributes are exported under each entry of the `ipv6` field:
+ *
+ * * `range` - An IPv6 range allocated to this subnet in CIDR format.
  */
 export function getVpcSubnetOutput(args: GetVpcSubnetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcSubnetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

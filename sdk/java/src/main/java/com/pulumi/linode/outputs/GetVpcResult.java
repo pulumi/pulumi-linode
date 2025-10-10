@@ -5,7 +5,9 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetVpcIpv6;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -21,6 +23,11 @@ public final class GetVpcResult {
      */
     private String description;
     private String id;
+    /**
+     * @return A list of IPv6 allocations under this VPC.
+     * 
+     */
+    private List<GetVpcIpv6> ipv6s;
     /**
      * @return The label of the VPC.
      * 
@@ -56,6 +63,13 @@ public final class GetVpcResult {
         return this.id;
     }
     /**
+     * @return A list of IPv6 allocations under this VPC.
+     * 
+     */
+    public List<GetVpcIpv6> ipv6s() {
+        return this.ipv6s;
+    }
+    /**
      * @return The label of the VPC.
      * 
      */
@@ -89,6 +103,7 @@ public final class GetVpcResult {
         private String created;
         private String description;
         private String id;
+        private List<GetVpcIpv6> ipv6s;
         private String label;
         private String region;
         private String updated;
@@ -98,6 +113,7 @@ public final class GetVpcResult {
     	      this.created = defaults.created;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
+    	      this.ipv6s = defaults.ipv6s;
     	      this.label = defaults.label;
     	      this.region = defaults.region;
     	      this.updated = defaults.updated;
@@ -128,6 +144,17 @@ public final class GetVpcResult {
             return this;
         }
         @CustomType.Setter
+        public Builder ipv6s(List<GetVpcIpv6> ipv6s) {
+            if (ipv6s == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "ipv6s");
+            }
+            this.ipv6s = ipv6s;
+            return this;
+        }
+        public Builder ipv6s(GetVpcIpv6... ipv6s) {
+            return ipv6s(List.of(ipv6s));
+        }
+        @CustomType.Setter
         public Builder label(String label) {
             if (label == null) {
               throw new MissingRequiredPropertyException("GetVpcResult", "label");
@@ -156,6 +183,7 @@ public final class GetVpcResult {
             _resultValue.created = created;
             _resultValue.description = description;
             _resultValue.id = id;
+            _resultValue.ipv6s = ipv6s;
             _resultValue.label = label;
             _resultValue.region = region;
             _resultValue.updated = updated;

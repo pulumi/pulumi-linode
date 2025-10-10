@@ -12,6 +12,7 @@ import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.NodeBalancerNodeState;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -116,6 +117,34 @@ public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    @Export(name="subnetId", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> subnetId;
+
+    /**
+     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    public Output<Optional<Integer>> subnetId() {
+        return Codegen.optional(this.subnetId);
+    }
+    /**
+     * The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    @Export(name="vpcConfigId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> vpcConfigId;
+
+    /**
+     * @return The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    public Output<Integer> vpcConfigId() {
+        return this.vpcConfigId;
     }
     /**
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).

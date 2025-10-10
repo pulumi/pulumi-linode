@@ -56,6 +56,16 @@ namespace Pulumi.Linode
         /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// 
+        /// ## private_network
+        /// 
+        /// The following arguments are exposed by the `private_network` attribute:
+        /// 
+        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// 
+        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// 
+        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Task<GetDatabaseMysqlV2Result> InvokeAsync(GetDatabaseMysqlV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlV2Result>("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", args ?? new GetDatabaseMysqlV2Args(), options.WithDefaults());
@@ -105,6 +115,16 @@ namespace Pulumi.Linode
         /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// 
+        /// ## private_network
+        /// 
+        /// The following arguments are exposed by the `private_network` attribute:
+        /// 
+        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// 
+        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// 
+        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Output<GetDatabaseMysqlV2Result> Invoke(GetDatabaseMysqlV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlV2Result>("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", args ?? new GetDatabaseMysqlV2InvokeArgs(), options.WithDefaults());
@@ -154,6 +174,16 @@ namespace Pulumi.Linode
         /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// 
+        /// ## private_network
+        /// 
+        /// The following arguments are exposed by the `private_network` attribute:
+        /// 
+        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// 
+        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// 
+        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Output<GetDatabaseMysqlV2Result> Invoke(GetDatabaseMysqlV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlV2Result>("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", args ?? new GetDatabaseMysqlV2InvokeArgs(), options.WithDefaults());
@@ -364,6 +394,7 @@ namespace Pulumi.Linode
         /// The access port for this Managed Database.
         /// </summary>
         public readonly int Port;
+        public readonly Outputs.GetDatabaseMysqlV2PrivateNetworkResult PrivateNetwork;
         /// <summary>
         /// The region to use for the Managed Database.
         /// </summary>
@@ -496,6 +527,8 @@ namespace Pulumi.Linode
 
             int port,
 
+            Outputs.GetDatabaseMysqlV2PrivateNetworkResult privateNetwork,
+
             string region,
 
             string rootPassword,
@@ -562,6 +595,7 @@ namespace Pulumi.Linode
             PendingUpdates = pendingUpdates;
             Platform = platform;
             Port = port;
+            PrivateNetwork = privateNetwork;
             Region = region;
             RootPassword = rootPassword;
             RootUsername = rootUsername;

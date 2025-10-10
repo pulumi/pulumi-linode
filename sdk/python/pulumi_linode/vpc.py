@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['VpcArgs', 'Vpc']
 
@@ -21,17 +23,23 @@ class VpcArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]] = None):
         """
         The set of arguments for constructing a Vpc resource.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
+               
+               * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]] ipv6s: The IPv6 configuration of this VPC.
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
 
     @_builtins.property
     @pulumi.getter
@@ -62,6 +70,8 @@ class VpcArgs:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The user-defined description of this VPC.
+
+        * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         """
         return pulumi.get(self, "description")
 
@@ -69,12 +79,25 @@ class VpcArgs:
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]]:
+        """
+        The IPv6 configuration of this VPC.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @ipv6s.setter
+    def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]]):
+        pulumi.set(self, "ipv6s", value)
+
 
 @pulumi.input_type
 class _VpcState:
     def __init__(__self__, *,
                  created: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  updated: Optional[pulumi.Input[_builtins.str]] = None):
@@ -82,6 +105,9 @@ class _VpcState:
         Input properties used for looking up and filtering Vpc resources.
         :param pulumi.Input[_builtins.str] created: The date and time when the VPC was created.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
+               
+               * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]] ipv6s: The IPv6 configuration of this VPC.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
@@ -90,6 +116,8 @@ class _VpcState:
             pulumi.set(__self__, "created", created)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if region is not None:
@@ -114,12 +142,26 @@ class _VpcState:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The user-defined description of this VPC.
+
+        * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         """
         return pulumi.get(self, "description")
 
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]]:
+        """
+        The IPv6 configuration of this VPC.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @ipv6s.setter
+    def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]]):
+        pulumi.set(self, "ipv6s", value)
 
     @_builtins.property
     @pulumi.getter
@@ -165,6 +207,7 @@ class Vpc(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -188,9 +231,39 @@ class Vpc(pulumi.CustomResource):
             description="My first VPC.")
         ```
 
+        Create a VPC with a `/52` IPv6 range prefix:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # NOTE: IPv6 VPCs may not currently be available to all users.
+        test = linode.Vpc("test",
+            label="test-vpc",
+            region="us-iad",
+            ipv6s=[{
+                "range": "/52",
+            }])
+        ```
+
+        ## IPv6
+
+        > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+
+        Configures a single IPv6 range under this VPC.
+
+        * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+
+        * `allocation_class` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+
+        * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
+               
+               * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]] ipv6s: The IPv6 configuration of this VPC.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
         """
@@ -220,6 +293,33 @@ class Vpc(pulumi.CustomResource):
             description="My first VPC.")
         ```
 
+        Create a VPC with a `/52` IPv6 range prefix:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # NOTE: IPv6 VPCs may not currently be available to all users.
+        test = linode.Vpc("test",
+            label="test-vpc",
+            region="us-iad",
+            ipv6s=[{
+                "range": "/52",
+            }])
+        ```
+
+        ## IPv6
+
+        > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+
+        Configures a single IPv6 range under this VPC.
+
+        * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+
+        * `allocation_class` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+
+        * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+
         :param str resource_name: The name of the resource.
         :param VpcArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -236,6 +336,7 @@ class Vpc(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -248,6 +349,7 @@ class Vpc(pulumi.CustomResource):
             __props__ = VpcArgs.__new__(VpcArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["ipv6s"] = ipv6s
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__.__dict__["label"] = label
@@ -268,6 +370,7 @@ class Vpc(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
             label: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             updated: Optional[pulumi.Input[_builtins.str]] = None) -> 'Vpc':
@@ -280,6 +383,9 @@ class Vpc(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created: The date and time when the VPC was created.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
+               
+               * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]] ipv6s: The IPv6 configuration of this VPC.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
@@ -290,6 +396,7 @@ class Vpc(pulumi.CustomResource):
 
         __props__.__dict__["created"] = created
         __props__.__dict__["description"] = description
+        __props__.__dict__["ipv6s"] = ipv6s
         __props__.__dict__["label"] = label
         __props__.__dict__["region"] = region
         __props__.__dict__["updated"] = updated
@@ -308,8 +415,18 @@ class Vpc(pulumi.CustomResource):
     def description(self) -> pulumi.Output[_builtins.str]:
         """
         The user-defined description of this VPC.
+
+        * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> pulumi.Output[Optional[Sequence['outputs.VpcIpv6']]]:
+        """
+        The IPv6 configuration of this VPC.
+        """
+        return pulumi.get(self, "ipv6s")
 
     @_builtins.property
     @pulumi.getter

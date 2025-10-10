@@ -26,6 +26,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Ipv4;
         /// <summary>
+        /// The IPv6 ranges of this subnet.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetIpv6Result> Ipv6s;
+        /// <summary>
         /// The label of the VPC subnet.
         /// </summary>
         public readonly string Label;
@@ -46,6 +50,8 @@ namespace Pulumi.Linode.Outputs
 
             string ipv4,
 
+            ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetIpv6Result> ipv6s,
+
             string label,
 
             ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetLinodeResult> linodes,
@@ -55,6 +61,7 @@ namespace Pulumi.Linode.Outputs
             Created = created;
             Id = id;
             Ipv4 = ipv4;
+            Ipv6s = ipv6s;
             Label = label;
             Linodes = linodes;
             Updated = updated;

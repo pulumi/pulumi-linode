@@ -24,6 +24,7 @@ class NodeBalancerNodeArgs:
                  label: pulumi.Input[_builtins.str],
                  nodebalancer_id: pulumi.Input[_builtins.int],
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet_id: Optional[pulumi.Input[_builtins.int]] = None,
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a NodeBalancerNode resource.
@@ -34,6 +35,7 @@ class NodeBalancerNodeArgs:
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[_builtins.int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[_builtins.str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
+        :param pulumi.Input[_builtins.int] subnet_id: The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
         :param pulumi.Input[_builtins.int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
         pulumi.set(__self__, "address", address)
@@ -42,6 +44,8 @@ class NodeBalancerNodeArgs:
         pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
 
@@ -108,6 +112,18 @@ class NodeBalancerNodeArgs:
         pulumi.set(self, "mode", value)
 
     @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "subnet_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -129,6 +145,8 @@ class _NodeBalancerNodeState:
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpc_config_id: Optional[pulumi.Input[_builtins.int]] = None,
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering NodeBalancerNode resources.
@@ -140,6 +158,8 @@ class _NodeBalancerNodeState:
         :param pulumi.Input[_builtins.str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         :param pulumi.Input[_builtins.int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[_builtins.str] status: The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
+        :param pulumi.Input[_builtins.int] subnet_id: The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        :param pulumi.Input[_builtins.int] vpc_config_id: The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
         :param pulumi.Input[_builtins.int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
         if address is not None:
@@ -154,6 +174,10 @@ class _NodeBalancerNodeState:
             pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+        if vpc_config_id is not None:
+            pulumi.set(__self__, "vpc_config_id", vpc_config_id)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
 
@@ -232,6 +256,30 @@ class _NodeBalancerNodeState:
         pulumi.set(self, "status", value)
 
     @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "subnet_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcConfigId")
+    def vpc_config_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        """
+        return pulumi.get(self, "vpc_config_id")
+
+    @vpc_config_id.setter
+    def vpc_config_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "vpc_config_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -255,6 +303,7 @@ class NodeBalancerNode(pulumi.CustomResource):
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 subnet_id: Optional[pulumi.Input[_builtins.int]] = None,
                  weight: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
@@ -278,6 +327,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[_builtins.str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         :param pulumi.Input[_builtins.int] nodebalancer_id: The ID of the NodeBalancer to access.
+        :param pulumi.Input[_builtins.int] subnet_id: The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
         :param pulumi.Input[_builtins.int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
         ...
@@ -318,6 +368,7 @@ class NodeBalancerNode(pulumi.CustomResource):
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  mode: Optional[pulumi.Input[_builtins.str]] = None,
                  nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 subnet_id: Optional[pulumi.Input[_builtins.int]] = None,
                  weight: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -341,8 +392,10 @@ class NodeBalancerNode(pulumi.CustomResource):
             if nodebalancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'nodebalancer_id'")
             __props__.__dict__["nodebalancer_id"] = nodebalancer_id
+            __props__.__dict__["subnet_id"] = subnet_id
             __props__.__dict__["weight"] = weight
             __props__.__dict__["status"] = None
+            __props__.__dict__["vpc_config_id"] = None
         super(NodeBalancerNode, __self__).__init__(
             'linode:index/nodeBalancerNode:NodeBalancerNode',
             resource_name,
@@ -359,6 +412,8 @@ class NodeBalancerNode(pulumi.CustomResource):
             mode: Optional[pulumi.Input[_builtins.str]] = None,
             nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
+            subnet_id: Optional[pulumi.Input[_builtins.int]] = None,
+            vpc_config_id: Optional[pulumi.Input[_builtins.int]] = None,
             weight: Optional[pulumi.Input[_builtins.int]] = None) -> 'NodeBalancerNode':
         """
         Get an existing NodeBalancerNode resource's state with the given name, id, and optional extra
@@ -375,6 +430,8 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
         :param pulumi.Input[_builtins.int] nodebalancer_id: The ID of the NodeBalancer to access.
         :param pulumi.Input[_builtins.str] status: The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
+        :param pulumi.Input[_builtins.int] subnet_id: The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        :param pulumi.Input[_builtins.int] vpc_config_id: The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
         :param pulumi.Input[_builtins.int] weight: Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -387,6 +444,8 @@ class NodeBalancerNode(pulumi.CustomResource):
         __props__.__dict__["mode"] = mode
         __props__.__dict__["nodebalancer_id"] = nodebalancer_id
         __props__.__dict__["status"] = status
+        __props__.__dict__["subnet_id"] = subnet_id
+        __props__.__dict__["vpc_config_id"] = vpc_config_id
         __props__.__dict__["weight"] = weight
         return NodeBalancerNode(resource_name, opts=opts, __props__=__props__)
 
@@ -439,6 +498,22 @@ class NodeBalancerNode(pulumi.CustomResource):
         The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcConfigId")
+    def vpc_config_id(self) -> pulumi.Output[_builtins.int]:
+        """
+        The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        """
+        return pulumi.get(self, "vpc_config_id")
 
     @_builtins.property
     @pulumi.getter

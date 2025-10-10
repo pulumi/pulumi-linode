@@ -5,6 +5,7 @@ package com.pulumi.linode;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.NodeBalancerVpcArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -115,6 +116,21 @@ public final class NodeBalancerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * A list of VPCs to be assigned to this NodeBalancer.
+     * 
+     */
+    @Import(name="vpcs")
+    private @Nullable Output<List<NodeBalancerVpcArgs>> vpcs;
+
+    /**
+     * @return A list of VPCs to be assigned to this NodeBalancer.
+     * 
+     */
+    public Optional<Output<List<NodeBalancerVpcArgs>>> vpcs() {
+        return Optional.ofNullable(this.vpcs);
+    }
+
     private NodeBalancerArgs() {}
 
     private NodeBalancerArgs(NodeBalancerArgs $) {
@@ -124,6 +140,7 @@ public final class NodeBalancerArgs extends com.pulumi.resources.ResourceArgs {
         this.label = $.label;
         this.region = $.region;
         this.tags = $.tags;
+        this.vpcs = $.vpcs;
     }
 
     public static Builder builder() {
@@ -286,6 +303,37 @@ public final class NodeBalancerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param vpcs A list of VPCs to be assigned to this NodeBalancer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcs(@Nullable Output<List<NodeBalancerVpcArgs>> vpcs) {
+            $.vpcs = vpcs;
+            return this;
+        }
+
+        /**
+         * @param vpcs A list of VPCs to be assigned to this NodeBalancer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcs(List<NodeBalancerVpcArgs> vpcs) {
+            return vpcs(Output.of(vpcs));
+        }
+
+        /**
+         * @param vpcs A list of VPCs to be assigned to this NodeBalancer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcs(NodeBalancerVpcArgs... vpcs) {
+            return vpcs(List.of(vpcs));
         }
 
         public NodeBalancerArgs build() {

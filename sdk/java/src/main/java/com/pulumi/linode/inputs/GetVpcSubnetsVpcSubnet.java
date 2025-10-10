@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetVpcSubnetsVpcSubnetIpv6;
 import com.pulumi.linode.inputs.GetVpcSubnetsVpcSubnetLinode;
 import java.lang.Integer;
 import java.lang.String;
@@ -62,6 +63,21 @@ public final class GetVpcSubnetsVpcSubnet extends com.pulumi.resources.InvokeArg
     }
 
     /**
+     * The IPv6 ranges of this subnet.
+     * 
+     */
+    @Import(name="ipv6s", required=true)
+    private List<GetVpcSubnetsVpcSubnetIpv6> ipv6s;
+
+    /**
+     * @return The IPv6 ranges of this subnet.
+     * 
+     */
+    public List<GetVpcSubnetsVpcSubnetIpv6> ipv6s() {
+        return this.ipv6s;
+    }
+
+    /**
      * The label of the VPC subnet.
      * 
      */
@@ -112,6 +128,7 @@ public final class GetVpcSubnetsVpcSubnet extends com.pulumi.resources.InvokeArg
         this.created = $.created;
         this.id = $.id;
         this.ipv4 = $.ipv4;
+        this.ipv6s = $.ipv6s;
         this.label = $.label;
         this.linodes = $.linodes;
         this.updated = $.updated;
@@ -169,6 +186,27 @@ public final class GetVpcSubnetsVpcSubnet extends com.pulumi.resources.InvokeArg
         }
 
         /**
+         * @param ipv6s The IPv6 ranges of this subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(List<GetVpcSubnetsVpcSubnetIpv6> ipv6s) {
+            $.ipv6s = ipv6s;
+            return this;
+        }
+
+        /**
+         * @param ipv6s The IPv6 ranges of this subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(GetVpcSubnetsVpcSubnetIpv6... ipv6s) {
+            return ipv6s(List.of(ipv6s));
+        }
+
+        /**
          * @param label The label of the VPC subnet.
          * 
          * @return builder
@@ -220,6 +258,9 @@ public final class GetVpcSubnetsVpcSubnet extends com.pulumi.resources.InvokeArg
             }
             if ($.ipv4 == null) {
                 throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "ipv4");
+            }
+            if ($.ipv6s == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "ipv6s");
             }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "label");

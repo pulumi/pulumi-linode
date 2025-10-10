@@ -6,9 +6,13 @@ package com.pulumi.linode;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.VpcSubnetIpv6Args;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,16 +22,35 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The IPv4 range of this subnet in CIDR format.
      * 
+     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+     * 
      */
-    @Import(name="ipv4", required=true)
-    private Output<String> ipv4;
+    @Import(name="ipv4")
+    private @Nullable Output<String> ipv4;
 
     /**
      * @return The IPv4 range of this subnet in CIDR format.
      * 
+     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+     * 
      */
-    public Output<String> ipv4() {
-        return this.ipv4;
+    public Optional<Output<String>> ipv4() {
+        return Optional.ofNullable(this.ipv4);
+    }
+
+    /**
+     * The IPv6 ranges of this subnet.
+     * 
+     */
+    @Import(name="ipv6s")
+    private @Nullable Output<List<VpcSubnetIpv6Args>> ipv6s;
+
+    /**
+     * @return The IPv6 ranges of this subnet.
+     * 
+     */
+    public Optional<Output<List<VpcSubnetIpv6Args>>> ipv6s() {
+        return Optional.ofNullable(this.ipv6s);
     }
 
     /**
@@ -46,14 +69,14 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the parent VPC for this VPC Subnet.
+     * The id of the parent VPC for this VPC subnet.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<Integer> vpcId;
 
     /**
-     * @return The id of the parent VPC for this VPC Subnet.
+     * @return The id of the parent VPC for this VPC subnet.
      * 
      */
     public Output<Integer> vpcId() {
@@ -64,6 +87,7 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
 
     private VpcSubnetArgs(VpcSubnetArgs $) {
         this.ipv4 = $.ipv4;
+        this.ipv6s = $.ipv6s;
         this.label = $.label;
         this.vpcId = $.vpcId;
     }
@@ -89,10 +113,12 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param ipv4 The IPv4 range of this subnet in CIDR format.
          * 
+         * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+         * 
          * @return builder
          * 
          */
-        public Builder ipv4(Output<String> ipv4) {
+        public Builder ipv4(@Nullable Output<String> ipv4) {
             $.ipv4 = ipv4;
             return this;
         }
@@ -100,11 +126,44 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param ipv4 The IPv4 range of this subnet in CIDR format.
          * 
+         * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+         * 
          * @return builder
          * 
          */
         public Builder ipv4(String ipv4) {
             return ipv4(Output.of(ipv4));
+        }
+
+        /**
+         * @param ipv6s The IPv6 ranges of this subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(@Nullable Output<List<VpcSubnetIpv6Args>> ipv6s) {
+            $.ipv6s = ipv6s;
+            return this;
+        }
+
+        /**
+         * @param ipv6s The IPv6 ranges of this subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(List<VpcSubnetIpv6Args> ipv6s) {
+            return ipv6s(Output.of(ipv6s));
+        }
+
+        /**
+         * @param ipv6s The IPv6 ranges of this subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(VpcSubnetIpv6Args... ipv6s) {
+            return ipv6s(List.of(ipv6s));
         }
 
         /**
@@ -129,7 +188,7 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The id of the parent VPC for this VPC Subnet.
+         * @param vpcId The id of the parent VPC for this VPC subnet.
          * 
          * @return builder
          * 
@@ -140,7 +199,7 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The id of the parent VPC for this VPC Subnet.
+         * @param vpcId The id of the parent VPC for this VPC subnet.
          * 
          * @return builder
          * 
@@ -150,9 +209,6 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VpcSubnetArgs build() {
-            if ($.ipv4 == null) {
-                throw new MissingRequiredPropertyException("VpcSubnetArgs", "ipv4");
-            }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("VpcSubnetArgs", "label");
             }

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetVpcIpsFilterArgs;
 import com.pulumi.linode.inputs.GetVpcIpsVpcIpArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +24,13 @@ public final class GetVpcIpsArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<Output<List<GetVpcIpsFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
+    }
+
+    @Import(name="ipv6")
+    private @Nullable Output<Boolean> ipv6;
+
+    public Optional<Output<Boolean>> ipv6() {
+        return Optional.ofNullable(this.ipv6);
     }
 
     /**
@@ -55,6 +63,7 @@ public final class GetVpcIpsArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetVpcIpsArgs(GetVpcIpsArgs $) {
         this.filters = $.filters;
+        this.ipv6 = $.ipv6;
         this.vpcId = $.vpcId;
         this.vpcIps = $.vpcIps;
     }
@@ -88,6 +97,15 @@ public final class GetVpcIpsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder filters(GetVpcIpsFilterArgs... filters) {
             return filters(List.of(filters));
+        }
+
+        public Builder ipv6(@Nullable Output<Boolean> ipv6) {
+            $.ipv6 = ipv6;
+            return this;
+        }
+
+        public Builder ipv6(Boolean ipv6) {
+            return ipv6(Output.of(ipv6));
         }
 
         /**

@@ -63,8 +63,6 @@ import * as utilities from "./utilities";
  *
  * * `addNodebalancers` - (optional) If true, this User may add NodeBalancers.
  *
- * * `addPlacementGroups` - (optional) If true, this User may add Placement Groups.
- *
  * * `addStackscripts` - (optional) If true, this User may add StackScripts.
  *
  * * `addVpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
@@ -140,10 +138,6 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly nodebalancerGrants: pulumi.Output<outputs.UserNodebalancerGrant[]>;
     /**
-     * The Placement Groups the user has permissions access to.
-     */
-    declare public readonly placementGroupGrants: pulumi.Output<outputs.UserPlacementGroupGrant[]>;
-    /**
      * If true, this user will only have explicit permissions granted.
      *
      * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -201,7 +195,6 @@ export class User extends pulumi.CustomResource {
             resourceInputs["linodeGrants"] = state?.linodeGrants;
             resourceInputs["longviewGrants"] = state?.longviewGrants;
             resourceInputs["nodebalancerGrants"] = state?.nodebalancerGrants;
-            resourceInputs["placementGroupGrants"] = state?.placementGroupGrants;
             resourceInputs["restricted"] = state?.restricted;
             resourceInputs["sshKeys"] = state?.sshKeys;
             resourceInputs["stackscriptGrants"] = state?.stackscriptGrants;
@@ -226,7 +219,6 @@ export class User extends pulumi.CustomResource {
             resourceInputs["linodeGrants"] = args?.linodeGrants;
             resourceInputs["longviewGrants"] = args?.longviewGrants;
             resourceInputs["nodebalancerGrants"] = args?.nodebalancerGrants;
-            resourceInputs["placementGroupGrants"] = args?.placementGroupGrants;
             resourceInputs["restricted"] = args?.restricted;
             resourceInputs["stackscriptGrants"] = args?.stackscriptGrants;
             resourceInputs["username"] = args?.username;
@@ -277,10 +269,6 @@ export interface UserState {
      * The NodeBalancers the user has permissions access to.
      */
     nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
-    /**
-     * The Placement Groups the user has permissions access to.
-     */
-    placementGroupGrants?: pulumi.Input<pulumi.Input<inputs.UserPlacementGroupGrant>[]>;
     /**
      * If true, this user will only have explicit permissions granted.
      *
@@ -355,10 +343,6 @@ export interface UserArgs {
      * The NodeBalancers the user has permissions access to.
      */
     nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
-    /**
-     * The Placement Groups the user has permissions access to.
-     */
-    placementGroupGrants?: pulumi.Input<pulumi.Input<inputs.UserPlacementGroupGrant>[]>;
     /**
      * If true, this user will only have explicit permissions granted.
      *

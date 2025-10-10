@@ -30,6 +30,18 @@ namespace Pulumi.Linode.Inputs
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
+        [Input("ipv6s", required: true)]
+        private List<Inputs.GetVpcsVpcIpv6Args>? _ipv6s;
+
+        /// <summary>
+        /// A list of IPv6 allocations under this VPC.
+        /// </summary>
+        public List<Inputs.GetVpcsVpcIpv6Args> Ipv6s
+        {
+            get => _ipv6s ?? (_ipv6s = new List<Inputs.GetVpcsVpcIpv6Args>());
+            set => _ipv6s = value;
+        }
+
         /// <summary>
         /// The label of the VPC.
         /// </summary>

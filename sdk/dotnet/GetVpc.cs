@@ -38,6 +38,18 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
+        /// 
+        /// ## IPv6
+        /// 
+        /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv6 allocation under this VPC.
+        /// 
+        /// * `range` - The allocated range in CIDR format.
+        /// 
+        /// ### Subnets Reference
+        /// 
+        /// To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
         /// </summary>
         public static Task<GetVpcResult> InvokeAsync(GetVpcArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcResult>("linode:index/getVpc:getVpc", args ?? new GetVpcArgs(), options.WithDefaults());
@@ -69,6 +81,18 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
+        /// 
+        /// ## IPv6
+        /// 
+        /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv6 allocation under this VPC.
+        /// 
+        /// * `range` - The allocated range in CIDR format.
+        /// 
+        /// ### Subnets Reference
+        /// 
+        /// To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
         /// </summary>
         public static Output<GetVpcResult> Invoke(GetVpcInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcResult>("linode:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithDefaults());
@@ -100,6 +124,18 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
+        /// 
+        /// ## IPv6
+        /// 
+        /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv6 allocation under this VPC.
+        /// 
+        /// * `range` - The allocated range in CIDR format.
+        /// 
+        /// ### Subnets Reference
+        /// 
+        /// To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
         /// </summary>
         public static Output<GetVpcResult> Invoke(GetVpcInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcResult>("linode:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithDefaults());
@@ -148,6 +184,10 @@ namespace Pulumi.Linode
         public readonly string Description;
         public readonly string Id;
         /// <summary>
+        /// A list of IPv6 allocations under this VPC.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVpcIpv6Result> Ipv6s;
+        /// <summary>
         /// The label of the VPC.
         /// </summary>
         public readonly string Label;
@@ -168,6 +208,8 @@ namespace Pulumi.Linode
 
             string id,
 
+            ImmutableArray<Outputs.GetVpcIpv6Result> ipv6s,
+
             string label,
 
             string region,
@@ -177,6 +219,7 @@ namespace Pulumi.Linode
             Created = created;
             Description = description;
             Id = id;
+            Ipv6s = ipv6s;
             Label = label;
             Region = region;
             Updated = updated;

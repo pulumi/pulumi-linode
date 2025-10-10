@@ -13,7 +13,6 @@ import com.pulumi.linode.inputs.GetUserImageGrantArgs;
 import com.pulumi.linode.inputs.GetUserLinodeGrantArgs;
 import com.pulumi.linode.inputs.GetUserLongviewGrantArgs;
 import com.pulumi.linode.inputs.GetUserNodebalancerGrantArgs;
-import com.pulumi.linode.inputs.GetUserPlacementGroupGrantArgs;
 import com.pulumi.linode.inputs.GetUserStackscriptGrantArgs;
 import com.pulumi.linode.inputs.GetUserVolumeGrantArgs;
 import com.pulumi.linode.inputs.GetUserVpcGrantArgs;
@@ -77,13 +76,6 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.nodebalancerGrants);
     }
 
-    @Import(name="placementGroupGrants")
-    private @Nullable Output<List<GetUserPlacementGroupGrantArgs>> placementGroupGrants;
-
-    public Optional<Output<List<GetUserPlacementGroupGrantArgs>>> placementGroupGrants() {
-        return Optional.ofNullable(this.placementGroupGrants);
-    }
-
     @Import(name="stackscriptGrants")
     private @Nullable Output<List<GetUserStackscriptGrantArgs>> stackscriptGrants;
 
@@ -130,7 +122,6 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         this.linodeGrants = $.linodeGrants;
         this.longviewGrants = $.longviewGrants;
         this.nodebalancerGrants = $.nodebalancerGrants;
-        this.placementGroupGrants = $.placementGroupGrants;
         this.stackscriptGrants = $.stackscriptGrants;
         this.username = $.username;
         this.volumeGrants = $.volumeGrants;
@@ -244,19 +235,6 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder nodebalancerGrants(GetUserNodebalancerGrantArgs... nodebalancerGrants) {
             return nodebalancerGrants(List.of(nodebalancerGrants));
-        }
-
-        public Builder placementGroupGrants(@Nullable Output<List<GetUserPlacementGroupGrantArgs>> placementGroupGrants) {
-            $.placementGroupGrants = placementGroupGrants;
-            return this;
-        }
-
-        public Builder placementGroupGrants(List<GetUserPlacementGroupGrantArgs> placementGroupGrants) {
-            return placementGroupGrants(Output.of(placementGroupGrants));
-        }
-
-        public Builder placementGroupGrants(GetUserPlacementGroupGrantArgs... placementGroupGrants) {
-            return placementGroupGrants(List.of(placementGroupGrants));
         }
 
         public Builder stackscriptGrants(@Nullable Output<List<GetUserStackscriptGrantArgs>> stackscriptGrants) {

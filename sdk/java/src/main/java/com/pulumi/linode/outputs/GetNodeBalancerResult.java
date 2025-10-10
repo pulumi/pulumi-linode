@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetNodeBalancerFirewall;
 import com.pulumi.linode.outputs.GetNodeBalancerTransfer;
+import com.pulumi.linode.outputs.GetNodeBalancerVpc;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -72,6 +73,7 @@ public final class GetNodeBalancerResult {
      * 
      */
     private String updated;
+    private List<GetNodeBalancerVpc> vpcs;
 
     private GetNodeBalancerResult() {}
     /**
@@ -157,6 +159,9 @@ public final class GetNodeBalancerResult {
     public String updated() {
         return this.updated;
     }
+    public List<GetNodeBalancerVpc> vpcs() {
+        return this.vpcs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -180,6 +185,7 @@ public final class GetNodeBalancerResult {
         private List<String> tags;
         private List<GetNodeBalancerTransfer> transfers;
         private String updated;
+        private List<GetNodeBalancerVpc> vpcs;
         public Builder() {}
         public Builder(GetNodeBalancerResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -196,6 +202,7 @@ public final class GetNodeBalancerResult {
     	      this.tags = defaults.tags;
     	      this.transfers = defaults.transfers;
     	      this.updated = defaults.updated;
+    	      this.vpcs = defaults.vpcs;
         }
 
         @CustomType.Setter
@@ -309,6 +316,17 @@ public final class GetNodeBalancerResult {
             this.updated = updated;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpcs(List<GetNodeBalancerVpc> vpcs) {
+            if (vpcs == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "vpcs");
+            }
+            this.vpcs = vpcs;
+            return this;
+        }
+        public Builder vpcs(GetNodeBalancerVpc... vpcs) {
+            return vpcs(List.of(vpcs));
+        }
         public GetNodeBalancerResult build() {
             final var _resultValue = new GetNodeBalancerResult();
             _resultValue.clientConnThrottle = clientConnThrottle;
@@ -324,6 +342,7 @@ public final class GetNodeBalancerResult {
             _resultValue.tags = tags;
             _resultValue.transfers = transfers;
             _resultValue.updated = updated;
+            _resultValue.vpcs = vpcs;
             return _resultValue;
         }
     }

@@ -34,6 +34,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly Outputs.GetInstancesInstanceConfigInterfaceIpv4Result Ipv4;
         /// <summary>
+        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+        /// </summary>
+        public readonly Outputs.GetInstancesInstanceConfigInterfaceIpv6Result Ipv6;
+        /// <summary>
         /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         /// </summary>
         public readonly string? Label;
@@ -66,6 +70,8 @@ namespace Pulumi.Linode.Outputs
 
             Outputs.GetInstancesInstanceConfigInterfaceIpv4Result ipv4,
 
+            Outputs.GetInstancesInstanceConfigInterfaceIpv6Result ipv6,
+
             string? label,
 
             bool? primary,
@@ -81,6 +87,7 @@ namespace Pulumi.Linode.Outputs
             IpRanges = ipRanges;
             IpamAddress = ipamAddress;
             Ipv4 = ipv4;
+            Ipv6 = ipv6;
             Label = label;
             Primary = primary;
             Purpose = purpose;

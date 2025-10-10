@@ -74,6 +74,10 @@ type LookupNodeBalancerNodeResult struct {
 	NodebalancerId int    `pulumi:"nodebalancerId"`
 	// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 	Status string `pulumi:"status"`
+	// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+	SubnetId int `pulumi:"subnetId"`
+	// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+	VpcConfigId int `pulumi:"vpcConfigId"`
 	// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
 	Weight int `pulumi:"weight"`
 }
@@ -146,6 +150,16 @@ func (o LookupNodeBalancerNodeResultOutput) NodebalancerId() pulumi.IntOutput {
 // The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 func (o LookupNodeBalancerNodeResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerNodeResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+func (o LookupNodeBalancerNodeResultOutput) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerNodeResult) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+func (o LookupNodeBalancerNodeResultOutput) VpcConfigId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNodeBalancerNodeResult) int { return v.VpcConfigId }).(pulumi.IntOutput)
 }
 
 // Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).

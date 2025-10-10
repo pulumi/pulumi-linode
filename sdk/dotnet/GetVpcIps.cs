@@ -15,9 +15,6 @@ namespace Pulumi.Linode
         /// Provides information about a list of Linode VPC IPs that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
         /// 
-        /// Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
-        /// 
         /// ## Example Usage
         /// 
         /// The following example shows how one might use this data source to list VPC IPs.
@@ -71,6 +68,24 @@ namespace Pulumi.Linode
         ///     {
         ///         ["vpcIps"] = specific_vpc_ips.Apply(specific_vpc_ips =&gt; specific_vpc_ips.Apply(getVpcIpsResult =&gt; getVpcIpsResult.VpcIps)),
         ///     };
+        /// });
+        /// ```
+        /// 
+        /// By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_vpc_ipv6 = Linode.GetVpcIps.Invoke(new()
+        ///     {
+        ///         Ipv6 = true,
+        ///     });
+        /// 
         /// });
         /// ```
         /// 
@@ -93,9 +108,6 @@ namespace Pulumi.Linode
         /// Provides information about a list of Linode VPC IPs that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
         /// 
-        /// Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
-        /// 
         /// ## Example Usage
         /// 
         /// The following example shows how one might use this data source to list VPC IPs.
@@ -149,6 +161,24 @@ namespace Pulumi.Linode
         ///     {
         ///         ["vpcIps"] = specific_vpc_ips.Apply(specific_vpc_ips =&gt; specific_vpc_ips.Apply(getVpcIpsResult =&gt; getVpcIpsResult.VpcIps)),
         ///     };
+        /// });
+        /// ```
+        /// 
+        /// By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_vpc_ipv6 = Linode.GetVpcIps.Invoke(new()
+        ///     {
+        ///         Ipv6 = true,
+        ///     });
+        /// 
         /// });
         /// ```
         /// 
@@ -171,9 +201,6 @@ namespace Pulumi.Linode
         /// Provides information about a list of Linode VPC IPs that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
         /// 
-        /// Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
-        /// 
         /// ## Example Usage
         /// 
         /// The following example shows how one might use this data source to list VPC IPs.
@@ -227,6 +254,24 @@ namespace Pulumi.Linode
         ///     {
         ///         ["vpcIps"] = specific_vpc_ips.Apply(specific_vpc_ips =&gt; specific_vpc_ips.Apply(getVpcIpsResult =&gt; getVpcIpsResult.VpcIps)),
         ///     };
+        /// });
+        /// ```
+        /// 
+        /// By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_vpc_ipv6 = Linode.GetVpcIps.Invoke(new()
+        ///     {
+        ///         Ipv6 = true,
+        ///     });
+        /// 
         /// });
         /// ```
         /// 
@@ -256,6 +301,9 @@ namespace Pulumi.Linode
             get => _filters ?? (_filters = new List<Inputs.GetVpcIpsFilterArgs>());
             set => _filters = value;
         }
+
+        [Input("ipv6")]
+        public bool? Ipv6 { get; set; }
 
         /// <summary>
         /// The id of the parent VPC for the list of VPC IPs.
@@ -289,6 +337,9 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
+        [Input("ipv6")]
+        public Input<bool>? Ipv6 { get; set; }
+
         /// <summary>
         /// The id of the parent VPC for the list of VPC IPs.
         /// 
@@ -317,6 +368,7 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetVpcIpsFilterResult> Filters;
         public readonly string Id;
+        public readonly bool? Ipv6;
         /// <summary>
         /// The unique globally general API entity identifier for the VPC.
         /// </summary>
@@ -329,12 +381,15 @@ namespace Pulumi.Linode
 
             string id,
 
+            bool? ipv6,
+
             int? vpcId,
 
             ImmutableArray<Outputs.GetVpcIpsVpcIpResult> vpcIps)
         {
             Filters = filters;
             Id = id;
+            Ipv6 = ipv6;
             VpcId = vpcId;
             VpcIps = vpcIps;
         }

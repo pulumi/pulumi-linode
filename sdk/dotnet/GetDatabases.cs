@@ -67,6 +67,16 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
+        /// 
+        /// ## private_network
+        /// 
+        /// The following arguments are exposed by the `private_network` attribute:
+        /// 
+        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// 
+        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// 
+        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Task<GetDatabasesResult> InvokeAsync(GetDatabasesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("linode:index/getDatabases:getDatabases", args ?? new GetDatabasesArgs(), options.WithDefaults());
@@ -127,6 +137,16 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
+        /// 
+        /// ## private_network
+        /// 
+        /// The following arguments are exposed by the `private_network` attribute:
+        /// 
+        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// 
+        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// 
+        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("linode:index/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());
@@ -187,6 +207,16 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
+        /// 
+        /// ## private_network
+        /// 
+        /// The following arguments are exposed by the `private_network` attribute:
+        /// 
+        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// 
+        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// 
+        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("linode:index/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());

@@ -182,6 +182,7 @@ namespace Pulumi.Linode
         /// When this firewall was last updated.
         /// </summary>
         public readonly string Updated;
+        public readonly ImmutableArray<Outputs.GetNodeBalancerVpcResult> Vpcs;
 
         [OutputConstructor]
         private GetNodeBalancerResult(
@@ -209,7 +210,9 @@ namespace Pulumi.Linode
 
             ImmutableArray<Outputs.GetNodeBalancerTransferResult> transfers,
 
-            string updated)
+            string updated,
+
+            ImmutableArray<Outputs.GetNodeBalancerVpcResult> vpcs)
         {
             ClientConnThrottle = clientConnThrottle;
             ClientUdpSessThrottle = clientUdpSessThrottle;
@@ -224,6 +227,7 @@ namespace Pulumi.Linode
             Tags = tags;
             Transfers = transfers;
             Updated = updated;
+            Vpcs = vpcs;
         }
     }
 }

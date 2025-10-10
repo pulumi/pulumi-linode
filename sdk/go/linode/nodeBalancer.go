@@ -48,6 +48,8 @@ import (
 //
 // ```
 //
+// The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
+//
 // ## Import
 //
 // Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -88,6 +90,8 @@ type NodeBalancer struct {
 	Transfers NodeBalancerTransferArrayOutput `pulumi:"transfers"`
 	// When this firewall was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
+	// A list of VPCs to be assigned to this NodeBalancer.
+	Vpcs NodeBalancerVpcArrayOutput `pulumi:"vpcs"`
 }
 
 // NewNodeBalancer registers a new resource with the given unique name, arguments, and options.
@@ -150,6 +154,8 @@ type nodeBalancerState struct {
 	Transfers []NodeBalancerTransfer `pulumi:"transfers"`
 	// When this firewall was last updated.
 	Updated *string `pulumi:"updated"`
+	// A list of VPCs to be assigned to this NodeBalancer.
+	Vpcs []NodeBalancerVpc `pulumi:"vpcs"`
 }
 
 type NodeBalancerState struct {
@@ -183,6 +189,8 @@ type NodeBalancerState struct {
 	Transfers NodeBalancerTransferArrayInput
 	// When this firewall was last updated.
 	Updated pulumi.StringPtrInput
+	// A list of VPCs to be assigned to this NodeBalancer.
+	Vpcs NodeBalancerVpcArrayInput
 }
 
 func (NodeBalancerState) ElementType() reflect.Type {
@@ -206,6 +214,8 @@ type nodeBalancerArgs struct {
 	Region *string `pulumi:"region"`
 	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
+	// A list of VPCs to be assigned to this NodeBalancer.
+	Vpcs []NodeBalancerVpc `pulumi:"vpcs"`
 }
 
 // The set of arguments for constructing a NodeBalancer resource.
@@ -226,6 +236,8 @@ type NodeBalancerArgs struct {
 	Region pulumi.StringPtrInput
 	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
+	// A list of VPCs to be assigned to this NodeBalancer.
+	Vpcs NodeBalancerVpcArrayInput
 }
 
 func (NodeBalancerArgs) ElementType() reflect.Type {
@@ -382,6 +394,11 @@ func (o NodeBalancerOutput) Transfers() NodeBalancerTransferArrayOutput {
 // When this firewall was last updated.
 func (o NodeBalancerOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
+// A list of VPCs to be assigned to this NodeBalancer.
+func (o NodeBalancerOutput) Vpcs() NodeBalancerVpcArrayOutput {
+	return o.ApplyT(func(v *NodeBalancer) NodeBalancerVpcArrayOutput { return v.Vpcs }).(NodeBalancerVpcArrayOutput)
 }
 
 type NodeBalancerArrayOutput struct{ *pulumi.OutputState }

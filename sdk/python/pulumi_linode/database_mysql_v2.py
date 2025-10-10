@@ -57,6 +57,7 @@ class DatabaseMysqlV2Args:
                  engine_config_mysql_wait_timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  fork_restore_time: Optional[pulumi.Input[_builtins.str]] = None,
                  fork_source: Optional[pulumi.Input[_builtins.int]] = None,
+                 private_network: Optional[pulumi.Input['DatabaseMysqlV2PrivateNetworkArgs']] = None,
                  suspended: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeouts: Optional[pulumi.Input['DatabaseMysqlV2TimeoutsArgs']] = None,
                  updates: Optional[pulumi.Input['DatabaseMysqlV2UpdatesArgs']] = None):
@@ -101,7 +102,10 @@ class DatabaseMysqlV2Args:
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
+               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input['DatabaseMysqlV2PrivateNetworkArgs'] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param pulumi.Input[_builtins.bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input['DatabaseMysqlV2UpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
@@ -173,6 +177,8 @@ class DatabaseMysqlV2Args:
             pulumi.set(__self__, "fork_restore_time", fork_restore_time)
         if fork_source is not None:
             pulumi.set(__self__, "fork_source", fork_source)
+        if private_network is not None:
+            pulumi.set(__self__, "private_network", private_network)
         if suspended is not None:
             pulumi.set(__self__, "suspended", suspended)
         if timeouts is not None:
@@ -608,6 +614,8 @@ class DatabaseMysqlV2Args:
         """
         The ID of the database that was forked from.
 
+        * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+
         * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         """
         return pulumi.get(self, "fork_source")
@@ -615,6 +623,18 @@ class DatabaseMysqlV2Args:
     @fork_source.setter
     def fork_source(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "fork_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateNetwork")
+    def private_network(self) -> Optional[pulumi.Input['DatabaseMysqlV2PrivateNetworkArgs']]:
+        """
+        Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        """
+        return pulumi.get(self, "private_network")
+
+    @private_network.setter
+    def private_network(self, value: Optional[pulumi.Input['DatabaseMysqlV2PrivateNetworkArgs']]):
+        pulumi.set(self, "private_network", value)
 
     @_builtins.property
     @pulumi.getter
@@ -698,6 +718,7 @@ class _DatabaseMysqlV2State:
                  pending_updates: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseMysqlV2PendingUpdateArgs']]]] = None,
                  platform: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
+                 private_network: Optional[pulumi.Input['DatabaseMysqlV2PrivateNetworkArgs']] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  root_password: Optional[pulumi.Input[_builtins.str]] = None,
                  root_username: Optional[pulumi.Input[_builtins.str]] = None,
@@ -749,6 +770,8 @@ class _DatabaseMysqlV2State:
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
+               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[_builtins.str] host_primary: The primary host for the Managed Database.
         :param pulumi.Input[_builtins.str] host_secondary: The secondary/private host for the managed database.
@@ -758,6 +781,7 @@ class _DatabaseMysqlV2State:
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseMysqlV2PendingUpdateArgs']]] pending_updates: A set of pending updates.
         :param pulumi.Input[_builtins.str] platform: The back-end platform for relational databases used by the service.
         :param pulumi.Input[_builtins.int] port: The access port for this Managed Database.
+        :param pulumi.Input['DatabaseMysqlV2PrivateNetworkArgs'] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param pulumi.Input[_builtins.str] region: The region to use for the Managed Database.
         :param pulumi.Input[_builtins.str] root_password: The randomly-generated root password for the Managed Database instance.
         :param pulumi.Input[_builtins.str] root_username: The root username for the Managed Database instance.
@@ -861,6 +885,8 @@ class _DatabaseMysqlV2State:
             pulumi.set(__self__, "platform", platform)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if private_network is not None:
+            pulumi.set(__self__, "private_network", private_network)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if root_password is not None:
@@ -1322,6 +1348,8 @@ class _DatabaseMysqlV2State:
         """
         The ID of the database that was forked from.
 
+        * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+
         * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         """
         return pulumi.get(self, "fork_source")
@@ -1425,6 +1453,18 @@ class _DatabaseMysqlV2State:
     @port.setter
     def port(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateNetwork")
+    def private_network(self) -> Optional[pulumi.Input['DatabaseMysqlV2PrivateNetworkArgs']]:
+        """
+        Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        """
+        return pulumi.get(self, "private_network")
+
+    @private_network.setter
+    def private_network(self, value: Optional[pulumi.Input['DatabaseMysqlV2PrivateNetworkArgs']]):
+        pulumi.set(self, "private_network", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1598,6 +1638,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
                  fork_restore_time: Optional[pulumi.Input[_builtins.str]] = None,
                  fork_source: Optional[pulumi.Input[_builtins.int]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_network: Optional[pulumi.Input[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  suspended: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeouts: Optional[pulumi.Input[Union['DatabaseMysqlV2TimeoutsArgs', 'DatabaseMysqlV2TimeoutsArgsDict']]] = None,
@@ -1685,8 +1726,11 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
+               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
+        :param pulumi.Input[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param pulumi.Input[_builtins.str] region: The region to use for the Managed Database.
         :param pulumi.Input[_builtins.bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input[_builtins.str] type: The Linode Instance type used for the nodes of the Managed Database.
@@ -1794,6 +1838,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
                  fork_restore_time: Optional[pulumi.Input[_builtins.str]] = None,
                  fork_source: Optional[pulumi.Input[_builtins.int]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
+                 private_network: Optional[pulumi.Input[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  suspended: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeouts: Optional[pulumi.Input[Union['DatabaseMysqlV2TimeoutsArgs', 'DatabaseMysqlV2TimeoutsArgsDict']]] = None,
@@ -1846,6 +1891,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__.__dict__["label"] = label
+            __props__.__dict__["private_network"] = private_network
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -1929,6 +1975,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             pending_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseMysqlV2PendingUpdateArgs', 'DatabaseMysqlV2PendingUpdateArgsDict']]]]] = None,
             platform: Optional[pulumi.Input[_builtins.str]] = None,
             port: Optional[pulumi.Input[_builtins.int]] = None,
+            private_network: Optional[pulumi.Input[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             root_password: Optional[pulumi.Input[_builtins.str]] = None,
             root_username: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1985,6 +2032,8 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
+               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[_builtins.str] host_primary: The primary host for the Managed Database.
         :param pulumi.Input[_builtins.str] host_secondary: The secondary/private host for the managed database.
@@ -1994,6 +2043,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseMysqlV2PendingUpdateArgs', 'DatabaseMysqlV2PendingUpdateArgsDict']]]] pending_updates: A set of pending updates.
         :param pulumi.Input[_builtins.str] platform: The back-end platform for relational databases used by the service.
         :param pulumi.Input[_builtins.int] port: The access port for this Managed Database.
+        :param pulumi.Input[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param pulumi.Input[_builtins.str] region: The region to use for the Managed Database.
         :param pulumi.Input[_builtins.str] root_password: The randomly-generated root password for the Managed Database instance.
         :param pulumi.Input[_builtins.str] root_username: The root username for the Managed Database instance.
@@ -2056,6 +2106,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         __props__.__dict__["pending_updates"] = pending_updates
         __props__.__dict__["platform"] = platform
         __props__.__dict__["port"] = port
+        __props__.__dict__["private_network"] = private_network
         __props__.__dict__["region"] = region
         __props__.__dict__["root_password"] = root_password
         __props__.__dict__["root_username"] = root_username
@@ -2363,6 +2414,8 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         """
         The ID of the database that was forked from.
 
+        * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+
         * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         """
         return pulumi.get(self, "fork_source")
@@ -2430,6 +2483,14 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         The access port for this Managed Database.
         """
         return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privateNetwork")
+    def private_network(self) -> pulumi.Output[Optional['outputs.DatabaseMysqlV2PrivateNetwork']]:
+        """
+        Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        """
+        return pulumi.get(self, "private_network")
 
     @_builtins.property
     @pulumi.getter

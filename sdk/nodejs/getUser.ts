@@ -35,7 +35,6 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
         "linodeGrants": args.linodeGrants,
         "longviewGrants": args.longviewGrants,
         "nodebalancerGrants": args.nodebalancerGrants,
-        "placementGroupGrants": args.placementGroupGrants,
         "stackscriptGrants": args.stackscriptGrants,
         "username": args.username,
         "volumeGrants": args.volumeGrants,
@@ -54,7 +53,6 @@ export interface GetUserArgs {
     linodeGrants?: inputs.GetUserLinodeGrant[];
     longviewGrants?: inputs.GetUserLongviewGrant[];
     nodebalancerGrants?: inputs.GetUserNodebalancerGrant[];
-    placementGroupGrants?: inputs.GetUserPlacementGroupGrant[];
     stackscriptGrants?: inputs.GetUserStackscriptGrant[];
     /**
      * The unique username of this User.
@@ -88,7 +86,6 @@ export interface GetUserResult {
      * The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
      */
     readonly passwordCreated: string;
-    readonly placementGroupGrants: outputs.GetUserPlacementGroupGrant[];
     /**
      * If true, this User must be granted access to perform actions or access entities on this Account.
      */
@@ -143,7 +140,6 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOutpu
         "linodeGrants": args.linodeGrants,
         "longviewGrants": args.longviewGrants,
         "nodebalancerGrants": args.nodebalancerGrants,
-        "placementGroupGrants": args.placementGroupGrants,
         "stackscriptGrants": args.stackscriptGrants,
         "username": args.username,
         "volumeGrants": args.volumeGrants,
@@ -162,7 +158,6 @@ export interface GetUserOutputArgs {
     linodeGrants?: pulumi.Input<pulumi.Input<inputs.GetUserLinodeGrantArgs>[]>;
     longviewGrants?: pulumi.Input<pulumi.Input<inputs.GetUserLongviewGrantArgs>[]>;
     nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.GetUserNodebalancerGrantArgs>[]>;
-    placementGroupGrants?: pulumi.Input<pulumi.Input<inputs.GetUserPlacementGroupGrantArgs>[]>;
     stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.GetUserStackscriptGrantArgs>[]>;
     /**
      * The unique username of this User.

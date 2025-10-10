@@ -51,11 +51,6 @@ public final class GetUsersUserGlobalGrant {
      * 
      */
     private Boolean addNodebalancers;
-    /**
-     * @return If true, this User may add Placement Groups.
-     * 
-     */
-    private Boolean addPlacementGroups;
     private Boolean addStackscripts;
     /**
      * @return If true, this User may add Volumes.
@@ -135,13 +130,6 @@ public final class GetUsersUserGlobalGrant {
     public Boolean addNodebalancers() {
         return this.addNodebalancers;
     }
-    /**
-     * @return If true, this User may add Placement Groups.
-     * 
-     */
-    public Boolean addPlacementGroups() {
-        return this.addPlacementGroups;
-    }
     public Boolean addStackscripts() {
         return this.addStackscripts;
     }
@@ -191,7 +179,6 @@ public final class GetUsersUserGlobalGrant {
         private Boolean addLinodes;
         private Boolean addLongview;
         private Boolean addNodebalancers;
-        private Boolean addPlacementGroups;
         private Boolean addStackscripts;
         private Boolean addVolumes;
         private Boolean addVpcs;
@@ -208,7 +195,6 @@ public final class GetUsersUserGlobalGrant {
     	      this.addLinodes = defaults.addLinodes;
     	      this.addLongview = defaults.addLongview;
     	      this.addNodebalancers = defaults.addNodebalancers;
-    	      this.addPlacementGroups = defaults.addPlacementGroups;
     	      this.addStackscripts = defaults.addStackscripts;
     	      this.addVolumes = defaults.addVolumes;
     	      this.addVpcs = defaults.addVpcs;
@@ -281,14 +267,6 @@ public final class GetUsersUserGlobalGrant {
             return this;
         }
         @CustomType.Setter
-        public Builder addPlacementGroups(Boolean addPlacementGroups) {
-            if (addPlacementGroups == null) {
-              throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addPlacementGroups");
-            }
-            this.addPlacementGroups = addPlacementGroups;
-            return this;
-        }
-        @CustomType.Setter
         public Builder addStackscripts(Boolean addStackscripts) {
             if (addStackscripts == null) {
               throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addStackscripts");
@@ -338,7 +316,6 @@ public final class GetUsersUserGlobalGrant {
             _resultValue.addLinodes = addLinodes;
             _resultValue.addLongview = addLongview;
             _resultValue.addNodebalancers = addNodebalancers;
-            _resultValue.addPlacementGroups = addPlacementGroups;
             _resultValue.addStackscripts = addStackscripts;
             _resultValue.addVolumes = addVolumes;
             _resultValue.addVpcs = addVpcs;

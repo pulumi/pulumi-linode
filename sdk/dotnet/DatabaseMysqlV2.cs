@@ -295,6 +295,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
+        /// * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// 
         /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Output("forkSource")]
@@ -347,6 +349,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("port")]
         public Output<int> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// </summary>
+        [Output("privateNetwork")]
+        public Output<Outputs.DatabaseMysqlV2PrivateNetwork?> PrivateNetwork { get; private set; } = null!;
 
         /// <summary>
         /// The region to use for the Managed Database.
@@ -666,6 +674,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
+        /// * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// 
         /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Input("forkSource")]
@@ -676,6 +686,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
+
+        /// <summary>
+        /// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// </summary>
+        [Input("privateNetwork")]
+        public Input<Inputs.DatabaseMysqlV2PrivateNetworkArgs>? PrivateNetwork { get; set; }
 
         /// <summary>
         /// The region to use for the Managed Database.
@@ -949,6 +965,8 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
+        /// * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// 
         /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Input("forkSource")]
@@ -1013,6 +1031,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
+
+        /// <summary>
+        /// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// </summary>
+        [Input("privateNetwork")]
+        public Input<Inputs.DatabaseMysqlV2PrivateNetworkGetArgs>? PrivateNetwork { get; set; }
 
         /// <summary>
         /// The region to use for the Managed Database.

@@ -166,6 +166,8 @@ type DatabaseMysqlV2 struct {
 	ForkRestoreTime pulumi.StringOutput `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
+	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	//
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	ForkSource pulumi.IntPtrOutput `pulumi:"forkSource"`
 	// The primary host for the Managed Database.
@@ -184,6 +186,8 @@ type DatabaseMysqlV2 struct {
 	Platform pulumi.StringOutput `pulumi:"platform"`
 	// The access port for this Managed Database.
 	Port pulumi.IntOutput `pulumi:"port"`
+	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	PrivateNetwork DatabaseMysqlV2PrivateNetworkPtrOutput `pulumi:"privateNetwork"`
 	// The region to use for the Managed Database.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The randomly-generated root password for the Managed Database instance.
@@ -331,6 +335,8 @@ type databaseMysqlV2State struct {
 	ForkRestoreTime *string `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
+	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	//
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	ForkSource *int `pulumi:"forkSource"`
 	// The primary host for the Managed Database.
@@ -349,6 +355,8 @@ type databaseMysqlV2State struct {
 	Platform *string `pulumi:"platform"`
 	// The access port for this Managed Database.
 	Port *int `pulumi:"port"`
+	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	PrivateNetwork *DatabaseMysqlV2PrivateNetwork `pulumi:"privateNetwork"`
 	// The region to use for the Managed Database.
 	Region *string `pulumi:"region"`
 	// The randomly-generated root password for the Managed Database instance.
@@ -449,6 +457,8 @@ type DatabaseMysqlV2State struct {
 	ForkRestoreTime pulumi.StringPtrInput
 	// The ID of the database that was forked from.
 	//
+	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	//
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	ForkSource pulumi.IntPtrInput
 	// The primary host for the Managed Database.
@@ -467,6 +477,8 @@ type DatabaseMysqlV2State struct {
 	Platform pulumi.StringPtrInput
 	// The access port for this Managed Database.
 	Port pulumi.IntPtrInput
+	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	PrivateNetwork DatabaseMysqlV2PrivateNetworkPtrInput
 	// The region to use for the Managed Database.
 	Region pulumi.StringPtrInput
 	// The randomly-generated root password for the Managed Database instance.
@@ -563,10 +575,14 @@ type databaseMysqlV2Args struct {
 	ForkRestoreTime *string `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
+	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	//
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	ForkSource *int `pulumi:"forkSource"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label string `pulumi:"label"`
+	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	PrivateNetwork *DatabaseMysqlV2PrivateNetwork `pulumi:"privateNetwork"`
 	// The region to use for the Managed Database.
 	Region string `pulumi:"region"`
 	// Whether this Managed Database should be suspended.
@@ -648,10 +664,14 @@ type DatabaseMysqlV2Args struct {
 	ForkRestoreTime pulumi.StringPtrInput
 	// The ID of the database that was forked from.
 	//
+	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	//
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	ForkSource pulumi.IntPtrInput
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringInput
+	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	PrivateNetwork DatabaseMysqlV2PrivateNetworkPtrInput
 	// The region to use for the Managed Database.
 	Region pulumi.StringInput
 	// Whether this Managed Database should be suspended.
@@ -934,6 +954,8 @@ func (o DatabaseMysqlV2Output) ForkRestoreTime() pulumi.StringOutput {
 
 // The ID of the database that was forked from.
 //
+// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+//
 // * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 func (o DatabaseMysqlV2Output) ForkSource() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlV2) pulumi.IntPtrOutput { return v.ForkSource }).(pulumi.IntPtrOutput)
@@ -977,6 +999,11 @@ func (o DatabaseMysqlV2Output) Platform() pulumi.StringOutput {
 // The access port for this Managed Database.
 func (o DatabaseMysqlV2Output) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseMysqlV2) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+func (o DatabaseMysqlV2Output) PrivateNetwork() DatabaseMysqlV2PrivateNetworkPtrOutput {
+	return o.ApplyT(func(v *DatabaseMysqlV2) DatabaseMysqlV2PrivateNetworkPtrOutput { return v.PrivateNetwork }).(DatabaseMysqlV2PrivateNetworkPtrOutput)
 }
 
 // The region to use for the Managed Database.

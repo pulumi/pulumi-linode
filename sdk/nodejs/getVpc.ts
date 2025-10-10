@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,6 +23,18 @@ import * as utilities from "./utilities";
  * });
  * export const vpc = foo;
  * ```
+ *
+ * ## IPv6
+ *
+ * > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+ *
+ * Contains information about a single IPv6 allocation under this VPC.
+ *
+ * * `range` - The allocated range in CIDR format.
+ *
+ * ### Subnets Reference
+ *
+ * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
  */
 export function getVpc(args: GetVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,6 +67,10 @@ export interface GetVpcResult {
     readonly description: string;
     readonly id: string;
     /**
+     * A list of IPv6 allocations under this VPC.
+     */
+    readonly ipv6s: outputs.GetVpcIpv6[];
+    /**
      * The label of the VPC.
      */
     readonly label: string;
@@ -82,6 +100,18 @@ export interface GetVpcResult {
  * });
  * export const vpc = foo;
  * ```
+ *
+ * ## IPv6
+ *
+ * > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+ *
+ * Contains information about a single IPv6 allocation under this VPC.
+ *
+ * * `range` - The allocated range in CIDR format.
+ *
+ * ### Subnets Reference
+ *
+ * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
  */
 export function getVpcOutput(args: GetVpcOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

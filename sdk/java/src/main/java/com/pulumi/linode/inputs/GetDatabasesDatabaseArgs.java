@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetDatabasesDatabasePrivateNetworkArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -168,6 +169,21 @@ public final class GetDatabasesDatabaseArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    @Import(name="privateNetwork", required=true)
+    private Output<GetDatabasesDatabasePrivateNetworkArgs> privateNetwork;
+
+    /**
+     * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    public Output<GetDatabasesDatabasePrivateNetworkArgs> privateNetwork() {
+        return this.privateNetwork;
+    }
+
+    /**
      * The region to use for the Managed Database.
      * 
      */
@@ -285,6 +301,7 @@ public final class GetDatabasesDatabaseArgs extends com.pulumi.resources.Resourc
         this.id = $.id;
         this.instanceUri = $.instanceUri;
         this.label = $.label;
+        this.privateNetwork = $.privateNetwork;
         this.region = $.region;
         this.replicationType = $.replicationType;
         this.sslConnection = $.sslConnection;
@@ -533,6 +550,27 @@ public final class GetDatabasesDatabaseArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param privateNetwork Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateNetwork(Output<GetDatabasesDatabasePrivateNetworkArgs> privateNetwork) {
+            $.privateNetwork = privateNetwork;
+            return this;
+        }
+
+        /**
+         * @param privateNetwork Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateNetwork(GetDatabasesDatabasePrivateNetworkArgs privateNetwork) {
+            return privateNetwork(Output.of(privateNetwork));
+        }
+
+        /**
          * @param region The region to use for the Managed Database.
          * 
          * @return builder
@@ -709,6 +747,9 @@ public final class GetDatabasesDatabaseArgs extends com.pulumi.resources.Resourc
             }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "label");
+            }
+            if ($.privateNetwork == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "privateNetwork");
             }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("GetDatabasesDatabaseArgs", "region");

@@ -60,12 +60,6 @@ namespace Pulumi.Linode.Inputs
         [Input("addNodebalancers", required: true)]
         public Input<bool> AddNodebalancers { get; set; } = null!;
 
-        /// <summary>
-        /// If true, this User may add Placement Groups.
-        /// </summary>
-        [Input("addPlacementGroups", required: true)]
-        public Input<bool> AddPlacementGroups { get; set; } = null!;
-
         [Input("addStackscripts", required: true)]
         public Input<bool> AddStackscripts { get; set; } = null!;
 

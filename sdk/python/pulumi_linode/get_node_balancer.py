@@ -28,7 +28,7 @@ class GetNodeBalancerResult:
     """
     A collection of values returned by getNodeBalancer.
     """
-    def __init__(__self__, client_conn_throttle=None, client_udp_sess_throttle=None, created=None, firewalls=None, hostname=None, id=None, ipv4=None, ipv6=None, label=None, region=None, tags=None, transfers=None, updated=None):
+    def __init__(__self__, client_conn_throttle=None, client_udp_sess_throttle=None, created=None, firewalls=None, hostname=None, id=None, ipv4=None, ipv6=None, label=None, region=None, tags=None, transfers=None, updated=None, vpcs=None):
         if client_conn_throttle and not isinstance(client_conn_throttle, int):
             raise TypeError("Expected argument 'client_conn_throttle' to be a int")
         pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
@@ -68,6 +68,9 @@ class GetNodeBalancerResult:
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
         pulumi.set(__self__, "updated", updated)
+        if vpcs and not isinstance(vpcs, list):
+            raise TypeError("Expected argument 'vpcs' to be a list")
+        pulumi.set(__self__, "vpcs", vpcs)
 
     @_builtins.property
     @pulumi.getter(name="clientConnThrottle")
@@ -167,6 +170,11 @@ class GetNodeBalancerResult:
         """
         return pulumi.get(self, "updated")
 
+    @_builtins.property
+    @pulumi.getter
+    def vpcs(self) -> Sequence['outputs.GetNodeBalancerVpcResult']:
+        return pulumi.get(self, "vpcs")
+
 
 class AwaitableGetNodeBalancerResult(GetNodeBalancerResult):
     # pylint: disable=using-constant-test
@@ -186,7 +194,8 @@ class AwaitableGetNodeBalancerResult(GetNodeBalancerResult):
             region=self.region,
             tags=self.tags,
             transfers=self.transfers,
-            updated=self.updated)
+            updated=self.updated,
+            vpcs=self.vpcs)
 
 
 def get_node_balancer(firewalls: Optional[Sequence[Union['GetNodeBalancerFirewallArgs', 'GetNodeBalancerFirewallArgsDict']]] = None,
@@ -227,7 +236,8 @@ def get_node_balancer(firewalls: Optional[Sequence[Union['GetNodeBalancerFirewal
         region=pulumi.get(__ret__, 'region'),
         tags=pulumi.get(__ret__, 'tags'),
         transfers=pulumi.get(__ret__, 'transfers'),
-        updated=pulumi.get(__ret__, 'updated'))
+        updated=pulumi.get(__ret__, 'updated'),
+        vpcs=pulumi.get(__ret__, 'vpcs'))
 def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[Union['GetNodeBalancerFirewallArgs', 'GetNodeBalancerFirewallArgsDict']]]]] = None,
                              id: Optional[pulumi.Input[_builtins.int]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeBalancerResult]:
@@ -265,4 +275,5 @@ def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[
         region=pulumi.get(__response__, 'region'),
         tags=pulumi.get(__response__, 'tags'),
         transfers=pulumi.get(__response__, 'transfers'),
-        updated=pulumi.get(__response__, 'updated')))
+        updated=pulumi.get(__response__, 'updated'),
+        vpcs=pulumi.get(__response__, 'vpcs')))

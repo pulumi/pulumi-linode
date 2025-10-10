@@ -51,6 +51,12 @@ namespace Pulumi.Linode.Inputs
         public Input<Inputs.InstanceInterfaceIpv4GetArgs>? Ipv4 { get; set; }
 
         /// <summary>
+        /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+        /// </summary>
+        [Input("ipv6")]
+        public Input<Inputs.InstanceInterfaceIpv6GetArgs>? Ipv6 { get; set; }
+
+        /// <summary>
         /// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         /// </summary>
         [Input("label")]
@@ -60,6 +66,8 @@ namespace Pulumi.Linode.Inputs
         /// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
         /// 
         /// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+        /// 
+        /// * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
         /// 
         /// The following computed attribute is available in a VPC interface:
         /// </summary>

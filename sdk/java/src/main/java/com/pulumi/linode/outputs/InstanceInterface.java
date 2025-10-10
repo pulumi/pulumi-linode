@@ -6,6 +6,7 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.InstanceInterfaceIpv4;
+import com.pulumi.linode.outputs.InstanceInterfaceIpv6;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -44,6 +45,11 @@ public final class InstanceInterface {
      */
     private @Nullable InstanceInterfaceIpv4 ipv4;
     /**
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+     * 
+     */
+    private @Nullable InstanceInterfaceIpv6 ipv6;
+    /**
      * @return The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      * 
      */
@@ -52,6 +58,8 @@ public final class InstanceInterface {
      * @return Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      * 
      * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     * 
+     * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      * 
      * The following computed attribute is available in a VPC interface:
      * 
@@ -112,6 +120,13 @@ public final class InstanceInterface {
         return Optional.ofNullable(this.ipv4);
     }
     /**
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+     * 
+     */
+    public Optional<InstanceInterfaceIpv6> ipv6() {
+        return Optional.ofNullable(this.ipv6);
+    }
+    /**
      * @return The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      * 
      */
@@ -122,6 +137,8 @@ public final class InstanceInterface {
      * @return Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      * 
      * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     * 
+     * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      * 
      * The following computed attribute is available in a VPC interface:
      * 
@@ -165,6 +182,7 @@ public final class InstanceInterface {
         private @Nullable List<String> ipRanges;
         private @Nullable String ipamAddress;
         private @Nullable InstanceInterfaceIpv4 ipv4;
+        private @Nullable InstanceInterfaceIpv6 ipv6;
         private @Nullable String label;
         private @Nullable Boolean primary;
         private String purpose;
@@ -178,6 +196,7 @@ public final class InstanceInterface {
     	      this.ipRanges = defaults.ipRanges;
     	      this.ipamAddress = defaults.ipamAddress;
     	      this.ipv4 = defaults.ipv4;
+    	      this.ipv6 = defaults.ipv6;
     	      this.label = defaults.label;
     	      this.primary = defaults.primary;
     	      this.purpose = defaults.purpose;
@@ -219,6 +238,12 @@ public final class InstanceInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder ipv6(@Nullable InstanceInterfaceIpv6 ipv6) {
+
+            this.ipv6 = ipv6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
 
             this.label = label;
@@ -257,6 +282,7 @@ public final class InstanceInterface {
             _resultValue.ipRanges = ipRanges;
             _resultValue.ipamAddress = ipamAddress;
             _resultValue.ipv4 = ipv4;
+            _resultValue.ipv6 = ipv6;
             _resultValue.label = label;
             _resultValue.primary = primary;
             _resultValue.purpose = purpose;

@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetDatabasesDatabasePrivateNetwork;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -63,6 +64,11 @@ public final class GetDatabasesDatabase {
      * 
      */
     private String label;
+    /**
+     * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    private GetDatabasesDatabasePrivateNetwork privateNetwork;
     /**
      * @return The region to use for the Managed Database.
      * 
@@ -171,6 +177,13 @@ public final class GetDatabasesDatabase {
         return this.label;
     }
     /**
+     * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    public GetDatabasesDatabasePrivateNetwork privateNetwork() {
+        return this.privateNetwork;
+    }
+    /**
      * @return The region to use for the Managed Database.
      * 
      */
@@ -239,6 +252,7 @@ public final class GetDatabasesDatabase {
         private Integer id;
         private String instanceUri;
         private String label;
+        private GetDatabasesDatabasePrivateNetwork privateNetwork;
         private String region;
         private String replicationType;
         private Boolean sslConnection;
@@ -259,6 +273,7 @@ public final class GetDatabasesDatabase {
     	      this.id = defaults.id;
     	      this.instanceUri = defaults.instanceUri;
     	      this.label = defaults.label;
+    	      this.privateNetwork = defaults.privateNetwork;
     	      this.region = defaults.region;
     	      this.replicationType = defaults.replicationType;
     	      this.sslConnection = defaults.sslConnection;
@@ -352,6 +367,14 @@ public final class GetDatabasesDatabase {
             return this;
         }
         @CustomType.Setter
+        public Builder privateNetwork(GetDatabasesDatabasePrivateNetwork privateNetwork) {
+            if (privateNetwork == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "privateNetwork");
+            }
+            this.privateNetwork = privateNetwork;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetDatabasesDatabase", "region");
@@ -419,6 +442,7 @@ public final class GetDatabasesDatabase {
             _resultValue.id = id;
             _resultValue.instanceUri = instanceUri;
             _resultValue.label = label;
+            _resultValue.privateNetwork = privateNetwork;
             _resultValue.region = region;
             _resultValue.replicationType = replicationType;
             _resultValue.sslConnection = sslConnection;

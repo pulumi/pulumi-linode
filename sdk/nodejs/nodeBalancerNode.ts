@@ -71,6 +71,14 @@ export class NodeBalancerNode extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
+     * The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+     */
+    declare public readonly subnetId: pulumi.Output<number | undefined>;
+    /**
+     * The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+     */
+    declare public /*out*/ readonly vpcConfigId: pulumi.Output<number>;
+    /**
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */
     declare public readonly weight: pulumi.Output<number>;
@@ -94,6 +102,8 @@ export class NodeBalancerNode extends pulumi.CustomResource {
             resourceInputs["mode"] = state?.mode;
             resourceInputs["nodebalancerId"] = state?.nodebalancerId;
             resourceInputs["status"] = state?.status;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["vpcConfigId"] = state?.vpcConfigId;
             resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as NodeBalancerNodeArgs | undefined;
@@ -114,8 +124,10 @@ export class NodeBalancerNode extends pulumi.CustomResource {
             resourceInputs["label"] = args?.label;
             resourceInputs["mode"] = args?.mode;
             resourceInputs["nodebalancerId"] = args?.nodebalancerId;
+            resourceInputs["subnetId"] = args?.subnetId;
             resourceInputs["weight"] = args?.weight;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["vpcConfigId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NodeBalancerNode.__pulumiType, name, resourceInputs, opts);
@@ -153,6 +165,14 @@ export interface NodeBalancerNodeState {
      */
     status?: pulumi.Input<string>;
     /**
+     * The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+     */
+    subnetId?: pulumi.Input<number>;
+    /**
+     * The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+     */
+    vpcConfigId?: pulumi.Input<number>;
+    /**
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */
     weight?: pulumi.Input<number>;
@@ -184,6 +204,10 @@ export interface NodeBalancerNodeArgs {
      * The ID of the NodeBalancer to access.
      */
     nodebalancerId: pulumi.Input<number>;
+    /**
+     * The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+     */
+    subnetId?: pulumi.Input<number>;
     /**
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */

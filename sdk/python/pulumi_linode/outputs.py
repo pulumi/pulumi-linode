@@ -18,10 +18,12 @@ from . import outputs
 __all__ = [
     'DatabaseMysqlUpdates',
     'DatabaseMysqlV2PendingUpdate',
+    'DatabaseMysqlV2PrivateNetwork',
     'DatabaseMysqlV2Timeouts',
     'DatabaseMysqlV2Updates',
     'DatabasePostgresqlUpdates',
     'DatabasePostgresqlV2PendingUpdate',
+    'DatabasePostgresqlV2PrivateNetwork',
     'DatabasePostgresqlV2Timeouts',
     'DatabasePostgresqlV2Updates',
     'FirewallDevice',
@@ -47,10 +49,16 @@ __all__ = [
     'InstanceConfigHelpers',
     'InstanceConfigInterface',
     'InstanceConfigInterfaceIpv4',
+    'InstanceConfigInterfaceIpv6',
+    'InstanceConfigInterfaceIpv6Range',
+    'InstanceConfigInterfaceIpv6Slaac',
     'InstanceDisk',
     'InstanceDiskTimeouts',
     'InstanceInterface',
     'InstanceInterfaceIpv4',
+    'InstanceInterfaceIpv6',
+    'InstanceInterfaceIpv6Range',
+    'InstanceInterfaceIpv6Slaac',
     'InstanceIpVpcNat11',
     'InstanceMetadata',
     'InstancePlacementGroup',
@@ -72,6 +80,7 @@ __all__ = [
     'NodeBalancerFirewallInbound',
     'NodeBalancerFirewallOutbound',
     'NodeBalancerTransfer',
+    'NodeBalancerVpc',
     'ObjectStorageBucketCert',
     'ObjectStorageBucketLifecycleRule',
     'ObjectStorageBucketLifecycleRuleExpiration',
@@ -89,11 +98,12 @@ __all__ = [
     'UserLinodeGrant',
     'UserLongviewGrant',
     'UserNodebalancerGrant',
-    'UserPlacementGroupGrant',
     'UserStackscriptGrant',
     'UserVolumeGrant',
     'UserVpcGrant',
     'VolumeTimeouts',
+    'VpcIpv6',
+    'VpcSubnetIpv6',
     'VpcSubnetLinode',
     'VpcSubnetLinodeInterface',
     'GetAccountAvailabilitiesAvailabilityResult',
@@ -139,6 +149,7 @@ __all__ = [
     'GetDatabaseMysqlConfigMysqlWaitTimeoutResult',
     'GetDatabaseMysqlUpdateResult',
     'GetDatabaseMysqlV2PendingUpdateResult',
+    'GetDatabaseMysqlV2PrivateNetworkResult',
     'GetDatabaseMysqlV2UpdatesResult',
     'GetDatabasePostgresqlConfigPgStatMonitorEnableResult',
     'GetDatabasePostgresqlConfigPglookoutResult',
@@ -147,8 +158,10 @@ __all__ = [
     'GetDatabasePostgresqlConfigWorkMemResult',
     'GetDatabasePostgresqlUpdateResult',
     'GetDatabasePostgresqlV2PendingUpdateResult',
+    'GetDatabasePostgresqlV2PrivateNetworkResult',
     'GetDatabasePostgresqlV2UpdatesResult',
     'GetDatabasesDatabaseResult',
+    'GetDatabasesDatabasePrivateNetworkResult',
     'GetDatabasesFilterResult',
     'GetDomainsDomainResult',
     'GetDomainsFilterResult',
@@ -218,6 +231,9 @@ __all__ = [
     'GetInstancesInstanceConfigHelperResult',
     'GetInstancesInstanceConfigInterfaceResult',
     'GetInstancesInstanceConfigInterfaceIpv4Result',
+    'GetInstancesInstanceConfigInterfaceIpv6Result',
+    'GetInstancesInstanceConfigInterfaceIpv6RangeResult',
+    'GetInstancesInstanceConfigInterfaceIpv6SlaacResult',
     'GetInstancesInstanceDiskResult',
     'GetInstancesInstancePlacementGroupResult',
     'GetInstancesInstanceSpecResult',
@@ -260,9 +276,12 @@ __all__ = [
     'GetNodeBalancerFirewallInboundResult',
     'GetNodeBalancerFirewallOutboundResult',
     'GetNodeBalancerTransferResult',
+    'GetNodeBalancerVpcResult',
     'GetNodebalancerConfigsFilterResult',
     'GetNodebalancerConfigsNodebalancerConfigResult',
     'GetNodebalancerConfigsNodebalancerConfigNodeStatusResult',
+    'GetNodebalancerVpcsFilterResult',
+    'GetNodebalancerVpcsVpcConfigResult',
     'GetNodebalancersFilterResult',
     'GetNodebalancersNodebalancerResult',
     'GetNodebalancersNodebalancerTransferResult',
@@ -302,7 +321,6 @@ __all__ = [
     'GetUserLinodeGrantResult',
     'GetUserLongviewGrantResult',
     'GetUserNodebalancerGrantResult',
-    'GetUserPlacementGroupGrantResult',
     'GetUserStackscriptGrantResult',
     'GetUserVolumeGrantResult',
     'GetUserVpcGrantResult',
@@ -316,7 +334,6 @@ __all__ = [
     'GetUsersUserLinodeGrantResult',
     'GetUsersUserLongviewGrantResult',
     'GetUsersUserNodebalancerGrantResult',
-    'GetUsersUserPlacementGroupGrantResult',
     'GetUsersUserStackscriptGrantResult',
     'GetUsersUserVolumeGrantResult',
     'GetUsersUserVpcGrantResult',
@@ -330,14 +347,19 @@ __all__ = [
     'GetVolumesVolumeResult',
     'GetVpcIpsFilterResult',
     'GetVpcIpsVpcIpResult',
+    'GetVpcIpsVpcIpIpv6AddressResult',
+    'GetVpcIpv6Result',
+    'GetVpcSubnetIpv6Result',
     'GetVpcSubnetLinodeResult',
     'GetVpcSubnetLinodeInterfaceResult',
     'GetVpcSubnetsFilterResult',
     'GetVpcSubnetsVpcSubnetResult',
+    'GetVpcSubnetsVpcSubnetIpv6Result',
     'GetVpcSubnetsVpcSubnetLinodeResult',
     'GetVpcSubnetsVpcSubnetLinodeInterfaceResult',
     'GetVpcsFilterResult',
     'GetVpcsVpcResult',
+    'GetVpcsVpcIpv6Result',
 ]
 
 @pulumi.output_type
@@ -465,6 +487,68 @@ class DatabaseMysqlV2PendingUpdate(dict):
     @pulumi.getter(name="plannedFor")
     def planned_for(self) -> _builtins.str:
         return pulumi.get(self, "planned_for")
+
+
+@pulumi.output_type
+class DatabaseMysqlV2PrivateNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+        elif key == "publicAccess":
+            suggest = "public_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseMysqlV2PrivateNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseMysqlV2PrivateNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseMysqlV2PrivateNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet_id: _builtins.int,
+                 vpc_id: _builtins.int,
+                 public_access: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.int subnet_id: The ID of the VPC subnet to restrict access to this database using.
+        :param _builtins.int vpc_id: The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        :param _builtins.bool public_access: Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the VPC subnet to restrict access to this database using.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.int:
+        """
+        The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
+        """
+        return pulumi.get(self, "public_access")
 
 
 @pulumi.output_type
@@ -687,6 +771,68 @@ class DatabasePostgresqlV2PendingUpdate(dict):
     @pulumi.getter(name="plannedFor")
     def planned_for(self) -> _builtins.str:
         return pulumi.get(self, "planned_for")
+
+
+@pulumi.output_type
+class DatabasePostgresqlV2PrivateNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+        elif key == "publicAccess":
+            suggest = "public_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabasePostgresqlV2PrivateNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabasePostgresqlV2PrivateNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabasePostgresqlV2PrivateNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet_id: _builtins.int,
+                 vpc_id: _builtins.int,
+                 public_access: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.int subnet_id: The ID of the VPC subnet to restrict access to this database using.
+        :param _builtins.int vpc_id: The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        :param _builtins.bool public_access: Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+        if public_access is not None:
+            pulumi.set(__self__, "public_access", public_access)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the VPC subnet to restrict access to this database using.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.int:
+        """
+        The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
+        """
+        return pulumi.get(self, "public_access")
 
 
 @pulumi.output_type
@@ -2180,6 +2326,7 @@ class InstanceConfigInterface(dict):
                  ip_ranges: Optional[Sequence[_builtins.str]] = None,
                  ipam_address: Optional[_builtins.str] = None,
                  ipv4: Optional['outputs.InstanceConfigInterfaceIpv4'] = None,
+                 ipv6: Optional['outputs.InstanceConfigInterfaceIpv6'] = None,
                  label: Optional[_builtins.str] = None,
                  primary: Optional[_builtins.bool] = None,
                  subnet_id: Optional[_builtins.int] = None,
@@ -2191,10 +2338,13 @@ class InstanceConfigInterface(dict):
         :param Sequence[_builtins.str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param _builtins.str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
         :param 'InstanceConfigInterfaceIpv4Args' ipv4: The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
+        :param 'InstanceConfigInterfaceIpv6Args' ipv6: The IPv6 configuration of the VPC interface. This attribute is only allowed for VPC interfaces.
         :param _builtins.str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param _builtins.bool primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
                
                * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+               
+               * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
                
                The following computed attribute is available in a VPC interface:
         :param _builtins.int subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
@@ -2211,6 +2361,8 @@ class InstanceConfigInterface(dict):
             pulumi.set(__self__, "ipam_address", ipam_address)
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if primary is not None:
@@ -2270,6 +2422,14 @@ class InstanceConfigInterface(dict):
 
     @_builtins.property
     @pulumi.getter
+    def ipv6(self) -> Optional['outputs.InstanceConfigInterfaceIpv6']:
+        """
+        The IPv6 configuration of the VPC interface. This attribute is only allowed for VPC interfaces.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @_builtins.property
+    @pulumi.getter
     def label(self) -> Optional[_builtins.str]:
         """
         The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
@@ -2283,6 +2443,8 @@ class InstanceConfigInterface(dict):
         Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
 
         * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+
+        * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
 
         The following computed attribute is available in a VPC interface:
         """
@@ -2334,6 +2496,182 @@ class InstanceConfigInterfaceIpv4(dict):
         The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
         """
         return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class InstanceConfigInterfaceIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isPublic":
+            suggest = "is_public"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigInterfaceIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigInterfaceIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigInterfaceIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_public: Optional[_builtins.bool] = None,
+                 ranges: Optional[Sequence['outputs.InstanceConfigInterfaceIpv6Range']] = None,
+                 slaacs: Optional[Sequence['outputs.InstanceConfigInterfaceIpv6Slaac']] = None):
+        """
+        :param _builtins.bool is_public: If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+               
+               * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+               
+               * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+        :param Sequence['InstanceConfigInterfaceIpv6RangeArgs'] ranges: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        :param Sequence['InstanceConfigInterfaceIpv6SlaacArgs'] slaacs: An array of SLAAC prefixes to use for this interface.
+        """
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
+        if ranges is not None:
+            pulumi.set(__self__, "ranges", ranges)
+        if slaacs is not None:
+            pulumi.set(__self__, "slaacs", slaacs)
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[_builtins.bool]:
+        """
+        If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+
+        * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+
+        * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+        """
+        return pulumi.get(self, "is_public")
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Optional[Sequence['outputs.InstanceConfigInterfaceIpv6Range']]:
+        """
+        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        return pulumi.get(self, "ranges")
+
+    @_builtins.property
+    @pulumi.getter
+    def slaacs(self) -> Optional[Sequence['outputs.InstanceConfigInterfaceIpv6Slaac']]:
+        """
+        An array of SLAAC prefixes to use for this interface.
+        """
+        return pulumi.get(self, "slaacs")
+
+
+@pulumi.output_type
+class InstanceConfigInterfaceIpv6Range(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assignedRange":
+            suggest = "assigned_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigInterfaceIpv6Range. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigInterfaceIpv6Range.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigInterfaceIpv6Range.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assigned_range: Optional[_builtins.str] = None,
+                 range: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str assigned_range: The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        :param _builtins.str range: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        if assigned_range is not None:
+            pulumi.set(__self__, "assigned_range", assigned_range)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedRange")
+    def assigned_range(self) -> Optional[_builtins.str]:
+        """
+        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        """
+        return pulumi.get(self, "assigned_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[_builtins.str]:
+        """
+        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class InstanceConfigInterfaceIpv6Slaac(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assignedRange":
+            suggest = "assigned_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceConfigInterfaceIpv6Slaac. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceConfigInterfaceIpv6Slaac.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceConfigInterfaceIpv6Slaac.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 assigned_range: Optional[_builtins.str] = None,
+                 range: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str address: The SLAAC address chosen for this interface.
+        :param _builtins.str assigned_range: The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        :param _builtins.str range: A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if assigned_range is not None:
+            pulumi.set(__self__, "assigned_range", assigned_range)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        The SLAAC address chosen for this interface.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="assignedRange")
+    def assigned_range(self) -> Optional[_builtins.str]:
+        """
+        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        """
+        return pulumi.get(self, "assigned_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[_builtins.str]:
+        """
+        A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        return pulumi.get(self, "range")
 
 
 @pulumi.output_type
@@ -2575,6 +2913,7 @@ class InstanceInterface(dict):
                  ip_ranges: Optional[Sequence[_builtins.str]] = None,
                  ipam_address: Optional[_builtins.str] = None,
                  ipv4: Optional['outputs.InstanceInterfaceIpv4'] = None,
+                 ipv6: Optional['outputs.InstanceInterfaceIpv6'] = None,
                  label: Optional[_builtins.str] = None,
                  primary: Optional[_builtins.bool] = None,
                  subnet_id: Optional[_builtins.int] = None,
@@ -2588,10 +2927,13 @@ class InstanceInterface(dict):
         :param 'InstanceInterfaceIpv4Args' ipv4: A set of reserved IPv4 addresses to assign to this Linode on creation.
                
                * **NOTE: IP reservation is not currently available to all users.**
+        :param 'InstanceInterfaceIpv6Args' ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param _builtins.str label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param _builtins.bool primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
                
                * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+               
+               * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
                
                The following computed attribute is available in a VPC interface:
         :param _builtins.int subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
@@ -2608,6 +2950,8 @@ class InstanceInterface(dict):
             pulumi.set(__self__, "ipam_address", ipam_address)
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if primary is not None:
@@ -2669,6 +3013,14 @@ class InstanceInterface(dict):
 
     @_builtins.property
     @pulumi.getter
+    def ipv6(self) -> Optional['outputs.InstanceInterfaceIpv6']:
+        """
+        This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @_builtins.property
+    @pulumi.getter
     def label(self) -> Optional[_builtins.str]:
         """
         The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
@@ -2682,6 +3034,8 @@ class InstanceInterface(dict):
         Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
 
         * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+
+        * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
 
         The following computed attribute is available in a VPC interface:
         """
@@ -2733,6 +3087,182 @@ class InstanceInterfaceIpv4(dict):
         The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
         """
         return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class InstanceInterfaceIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isPublic":
+            suggest = "is_public"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceInterfaceIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceInterfaceIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceInterfaceIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_public: Optional[_builtins.bool] = None,
+                 ranges: Optional[Sequence['outputs.InstanceInterfaceIpv6Range']] = None,
+                 slaacs: Optional[Sequence['outputs.InstanceInterfaceIpv6Slaac']] = None):
+        """
+        :param _builtins.bool is_public: If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+               
+               * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+               
+               * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+        :param Sequence['InstanceInterfaceIpv6RangeArgs'] ranges: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        :param Sequence['InstanceInterfaceIpv6SlaacArgs'] slaacs: An array of SLAAC prefixes to use for this interface.
+        """
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
+        if ranges is not None:
+            pulumi.set(__self__, "ranges", ranges)
+        if slaacs is not None:
+            pulumi.set(__self__, "slaacs", slaacs)
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[_builtins.bool]:
+        """
+        If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+
+        * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+
+        * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+        """
+        return pulumi.get(self, "is_public")
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Optional[Sequence['outputs.InstanceInterfaceIpv6Range']]:
+        """
+        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        return pulumi.get(self, "ranges")
+
+    @_builtins.property
+    @pulumi.getter
+    def slaacs(self) -> Optional[Sequence['outputs.InstanceInterfaceIpv6Slaac']]:
+        """
+        An array of SLAAC prefixes to use for this interface.
+        """
+        return pulumi.get(self, "slaacs")
+
+
+@pulumi.output_type
+class InstanceInterfaceIpv6Range(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assignedRange":
+            suggest = "assigned_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceInterfaceIpv6Range. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceInterfaceIpv6Range.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceInterfaceIpv6Range.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assigned_range: Optional[_builtins.str] = None,
+                 range: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str assigned_range: The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        :param _builtins.str range: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        if assigned_range is not None:
+            pulumi.set(__self__, "assigned_range", assigned_range)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedRange")
+    def assigned_range(self) -> Optional[_builtins.str]:
+        """
+        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        """
+        return pulumi.get(self, "assigned_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[_builtins.str]:
+        """
+        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class InstanceInterfaceIpv6Slaac(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assignedRange":
+            suggest = "assigned_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceInterfaceIpv6Slaac. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceInterfaceIpv6Slaac.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceInterfaceIpv6Slaac.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 assigned_range: Optional[_builtins.str] = None,
+                 range: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str address: The SLAAC address chosen for this interface.
+        :param _builtins.str assigned_range: The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        :param _builtins.str range: A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if assigned_range is not None:
+            pulumi.set(__self__, "assigned_range", assigned_range)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        The SLAAC address chosen for this interface.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="assignedRange")
+    def assigned_range(self) -> Optional[_builtins.str]:
+        """
+        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        """
+        return pulumi.get(self, "assigned_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[_builtins.str]:
+        """
+        A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        return pulumi.get(self, "range")
 
 
 @pulumi.output_type
@@ -4045,6 +4575,55 @@ class NodeBalancerTransfer(dict):
 
 
 @pulumi.output_type
+class NodeBalancerVpc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "ipv4Range":
+            suggest = "ipv4_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeBalancerVpc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeBalancerVpc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeBalancerVpc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet_id: _builtins.int,
+                 ipv4_range: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int subnet_id: (Required) The ID of a subnet to assign to this NodeBalancer.
+        :param _builtins.str ipv4_range: (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        if ipv4_range is not None:
+            pulumi.set(__self__, "ipv4_range", ipv4_range)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        (Required) The ID of a subnet to assign to this NodeBalancer.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> Optional[_builtins.str]:
+        """
+        (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+        """
+        return pulumi.get(self, "ipv4_range")
+
+
+@pulumi.output_type
 class ObjectStorageBucketCert(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4698,8 +5277,6 @@ class UserGlobalGrants(dict):
             suggest = "add_longview"
         elif key == "addNodebalancers":
             suggest = "add_nodebalancers"
-        elif key == "addPlacementGroups":
-            suggest = "add_placement_groups"
         elif key == "addStackscripts":
             suggest = "add_stackscripts"
         elif key == "addVolumes":
@@ -4731,7 +5308,6 @@ class UserGlobalGrants(dict):
                  add_linodes: Optional[_builtins.bool] = None,
                  add_longview: Optional[_builtins.bool] = None,
                  add_nodebalancers: Optional[_builtins.bool] = None,
-                 add_placement_groups: Optional[_builtins.bool] = None,
                  add_stackscripts: Optional[_builtins.bool] = None,
                  add_volumes: Optional[_builtins.bool] = None,
                  add_vpcs: Optional[_builtins.bool] = None,
@@ -4746,7 +5322,6 @@ class UserGlobalGrants(dict):
         :param _builtins.bool add_linodes: If true, this User may create Linodes.
         :param _builtins.bool add_longview: If true, this User may create Longview clients and view the current plan.
         :param _builtins.bool add_nodebalancers: If true, this User may add NodeBalancers.
-        :param _builtins.bool add_placement_groups: If true, this User may add Placement Groups.
         :param _builtins.bool add_stackscripts: If true, this User may add StackScripts.
         :param _builtins.bool add_volumes: If true, this User may add Volumes.
         :param _builtins.bool add_vpcs: If true, this User may add Virtual Private Clouds (VPCs).
@@ -4769,8 +5344,6 @@ class UserGlobalGrants(dict):
             pulumi.set(__self__, "add_longview", add_longview)
         if add_nodebalancers is not None:
             pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
-        if add_placement_groups is not None:
-            pulumi.set(__self__, "add_placement_groups", add_placement_groups)
         if add_stackscripts is not None:
             pulumi.set(__self__, "add_stackscripts", add_stackscripts)
         if add_volumes is not None:
@@ -4845,14 +5418,6 @@ class UserGlobalGrants(dict):
         If true, this User may add NodeBalancers.
         """
         return pulumi.get(self, "add_nodebalancers")
-
-    @_builtins.property
-    @pulumi.getter(name="addPlacementGroups")
-    def add_placement_groups(self) -> Optional[_builtins.bool]:
-        """
-        If true, this User may add Placement Groups.
-        """
-        return pulumi.get(self, "add_placement_groups")
 
     @_builtins.property
     @pulumi.getter(name="addStackscripts")
@@ -5012,35 +5577,6 @@ class UserNodebalancerGrant(dict):
 
 
 @pulumi.output_type
-class UserPlacementGroupGrant(dict):
-    def __init__(__self__, *,
-                 id: _builtins.int,
-                 permissions: _builtins.str):
-        """
-        :param _builtins.int id: The ID of the entity this grant applies to.
-        :param _builtins.str permissions: The level of access this User has to this entity. If null, this User has no access.
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "permissions", permissions)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.int:
-        """
-        The ID of the entity this grant applies to.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def permissions(self) -> _builtins.str:
-        """
-        The level of access this User has to this entity. If null, this User has no access.
-        """
-        return pulumi.get(self, "permissions")
-
-
-@pulumi.output_type
 class UserStackscriptGrant(dict):
     def __init__(__self__, *,
                  id: _builtins.int,
@@ -5168,6 +5704,102 @@ class VolumeTimeouts(dict):
         Used when updating the volume when necessary during update - e.g. when resizing the volume
         """
         return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class VpcIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocatedRange":
+            suggest = "allocated_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpcIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpcIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpcIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allocated_range: Optional[_builtins.str] = None,
+                 range: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str allocated_range: The IPv6 range assigned to this VPC.
+        :param _builtins.str range: The IPv6 range assigned to this VPC.
+        """
+        if allocated_range is not None:
+            pulumi.set(__self__, "allocated_range", allocated_range)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedRange")
+    def allocated_range(self) -> Optional[_builtins.str]:
+        """
+        The IPv6 range assigned to this VPC.
+        """
+        return pulumi.get(self, "allocated_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[_builtins.str]:
+        """
+        The IPv6 range assigned to this VPC.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class VpcSubnetIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocatedRange":
+            suggest = "allocated_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpcSubnetIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpcSubnetIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpcSubnetIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allocated_range: Optional[_builtins.str] = None,
+                 range: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str allocated_range: The IPv6 range assigned to this subnet.
+        :param _builtins.str range: An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+        """
+        if allocated_range is not None:
+            pulumi.set(__self__, "allocated_range", allocated_range)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter(name="allocatedRange")
+    def allocated_range(self) -> Optional[_builtins.str]:
+        """
+        The IPv6 range assigned to this subnet.
+        """
+        return pulumi.get(self, "allocated_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[_builtins.str]:
+        """
+        An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+        """
+        return pulumi.get(self, "range")
 
 
 @pulumi.output_type
@@ -7453,6 +8085,46 @@ class GetDatabaseMysqlV2PendingUpdateResult(dict):
 
 
 @pulumi.output_type
+class GetDatabaseMysqlV2PrivateNetworkResult(dict):
+    def __init__(__self__, *,
+                 public_access: _builtins.bool,
+                 subnet_id: _builtins.int,
+                 vpc_id: _builtins.int):
+        """
+        :param _builtins.bool public_access: If true, clients outside of the VPC can connect to the database using a public IP address.
+        :param _builtins.int subnet_id: The ID of the VPC subnet to restrict access to this database using.
+        :param _builtins.int vpc_id: The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        """
+        pulumi.set(__self__, "public_access", public_access)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> _builtins.bool:
+        """
+        If true, clients outside of the VPC can connect to the database using a public IP address.
+        """
+        return pulumi.get(self, "public_access")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the VPC subnet to restrict access to this database using.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.int:
+        """
+        The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
 class GetDatabaseMysqlV2UpdatesResult(dict):
     def __init__(__self__, *,
                  day_of_week: _builtins.int,
@@ -7724,6 +8396,46 @@ class GetDatabasePostgresqlV2PendingUpdateResult(dict):
 
 
 @pulumi.output_type
+class GetDatabasePostgresqlV2PrivateNetworkResult(dict):
+    def __init__(__self__, *,
+                 public_access: _builtins.bool,
+                 subnet_id: _builtins.int,
+                 vpc_id: _builtins.int):
+        """
+        :param _builtins.bool public_access: If true, clients outside of the VPC can connect to the database using a public IP address.
+        :param _builtins.int subnet_id: The ID of the VPC subnet to restrict access to this database using.
+        :param _builtins.int vpc_id: The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        """
+        pulumi.set(__self__, "public_access", public_access)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> _builtins.bool:
+        """
+        If true, clients outside of the VPC can connect to the database using a public IP address.
+        """
+        return pulumi.get(self, "public_access")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the VPC subnet to restrict access to this database using.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.int:
+        """
+        The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
 class GetDatabasePostgresqlV2UpdatesResult(dict):
     def __init__(__self__, *,
                  day_of_week: _builtins.int,
@@ -7769,6 +8481,7 @@ class GetDatabasesDatabaseResult(dict):
                  id: _builtins.int,
                  instance_uri: _builtins.str,
                  label: _builtins.str,
+                 private_network: 'outputs.GetDatabasesDatabasePrivateNetworkResult',
                  region: _builtins.str,
                  replication_type: _builtins.str,
                  ssl_connection: _builtins.bool,
@@ -7787,6 +8500,7 @@ class GetDatabasesDatabaseResult(dict):
         :param _builtins.int id: The ID of the Managed Database.
         :param _builtins.str instance_uri: he API route for the database instance.
         :param _builtins.str label: A unique, user-defined string referring to the Managed Database.
+        :param 'GetDatabasesDatabasePrivateNetworkArgs' private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param _builtins.str region: The region to use for the Managed Database.
         :param _builtins.str replication_type: The replication method used for the Managed Database.
         :param _builtins.bool ssl_connection: Whether to require SSL credentials to establish a connection to the Managed Database.
@@ -7805,6 +8519,7 @@ class GetDatabasesDatabaseResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_uri", instance_uri)
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "replication_type", replication_type)
         pulumi.set(__self__, "ssl_connection", ssl_connection)
@@ -7894,6 +8609,14 @@ class GetDatabasesDatabaseResult(dict):
         return pulumi.get(self, "label")
 
     @_builtins.property
+    @pulumi.getter(name="privateNetwork")
+    def private_network(self) -> 'outputs.GetDatabasesDatabasePrivateNetworkResult':
+        """
+        Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        """
+        return pulumi.get(self, "private_network")
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> _builtins.str:
         """
@@ -7948,6 +8671,46 @@ class GetDatabasesDatabaseResult(dict):
         The Managed Database engine version.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetDatabasesDatabasePrivateNetworkResult(dict):
+    def __init__(__self__, *,
+                 public_access: _builtins.bool,
+                 subnet_id: _builtins.int,
+                 vpc_id: _builtins.int):
+        """
+        :param _builtins.bool public_access: If true, clients outside of the VPC can connect to the database using a public IP address.
+        :param _builtins.int subnet_id: The ID of the VPC subnet to restrict access to this database using.
+        :param _builtins.int vpc_id: The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        """
+        pulumi.set(__self__, "public_access", public_access)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter(name="publicAccess")
+    def public_access(self) -> _builtins.bool:
+        """
+        If true, clients outside of the VPC can connect to the database using a public IP address.
+        """
+        return pulumi.get(self, "public_access")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the VPC subnet to restrict access to this database using.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.int:
+        """
+        The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        """
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type
@@ -12348,6 +13111,7 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
                  active: _builtins.bool,
                  id: _builtins.int,
                  ipv4: 'outputs.GetInstancesInstanceConfigInterfaceIpv4Result',
+                 ipv6: 'outputs.GetInstancesInstanceConfigInterfaceIpv6Result',
                  purpose: _builtins.str,
                  vpc_id: _builtins.int,
                  ip_ranges: Optional[Sequence[_builtins.str]] = None,
@@ -12359,6 +13123,7 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
         :param _builtins.bool active: Whether this interface is currently booted and active.
         :param _builtins.int id: The ID of the Placement Group in the Linode API.
         :param 'GetInstancesInstanceConfigInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param 'GetInstancesInstanceConfigInterfaceIpv6Args' ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param _builtins.str purpose: The type of interface. (`public`, `vlan`, `vpc`)
         :param _builtins.int vpc_id: The ID of VPC which this interface is attached to.
         :param Sequence[_builtins.str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
@@ -12370,6 +13135,7 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
         pulumi.set(__self__, "active", active)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
         pulumi.set(__self__, "purpose", purpose)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if ip_ranges is not None:
@@ -12406,6 +13172,14 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
         This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         """
         return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> 'outputs.GetInstancesInstanceConfigInterfaceIpv6Result':
+        """
+        This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+        """
+        return pulumi.get(self, "ipv6")
 
     @_builtins.property
     @pulumi.getter
@@ -12491,6 +13265,117 @@ class GetInstancesInstanceConfigInterfaceIpv4Result(dict):
         The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
         """
         return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigInterfaceIpv6Result(dict):
+    def __init__(__self__, *,
+                 is_public: _builtins.bool,
+                 ranges: Sequence['outputs.GetInstancesInstanceConfigInterfaceIpv6RangeResult'],
+                 slaacs: Sequence['outputs.GetInstancesInstanceConfigInterfaceIpv6SlaacResult']):
+        """
+        :param _builtins.bool is_public: If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+        :param Sequence['GetInstancesInstanceConfigInterfaceIpv6RangeArgs'] ranges: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        :param Sequence['GetInstancesInstanceConfigInterfaceIpv6SlaacArgs'] slaacs: An array of SLAAC prefixes to use for this interface.
+        """
+        pulumi.set(__self__, "is_public", is_public)
+        pulumi.set(__self__, "ranges", ranges)
+        pulumi.set(__self__, "slaacs", slaacs)
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> _builtins.bool:
+        """
+        If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+        """
+        return pulumi.get(self, "is_public")
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Sequence['outputs.GetInstancesInstanceConfigInterfaceIpv6RangeResult']:
+        """
+        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        return pulumi.get(self, "ranges")
+
+    @_builtins.property
+    @pulumi.getter
+    def slaacs(self) -> Sequence['outputs.GetInstancesInstanceConfigInterfaceIpv6SlaacResult']:
+        """
+        An array of SLAAC prefixes to use for this interface.
+        """
+        return pulumi.get(self, "slaacs")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigInterfaceIpv6RangeResult(dict):
+    def __init__(__self__, *,
+                 assigned_range: _builtins.str,
+                 range: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str assigned_range: The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        :param _builtins.str range: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        pulumi.set(__self__, "assigned_range", assigned_range)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedRange")
+    def assigned_range(self) -> _builtins.str:
+        """
+        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        """
+        return pulumi.get(self, "assigned_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[_builtins.str]:
+        """
+        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetInstancesInstanceConfigInterfaceIpv6SlaacResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 assigned_range: _builtins.str,
+                 range: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str address: The SLAAC address chosen for this interface.
+        :param _builtins.str assigned_range: The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        :param _builtins.str range: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "assigned_range", assigned_range)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The SLAAC address chosen for this interface.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="assignedRange")
+    def assigned_range(self) -> _builtins.str:
+        """
+        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        """
+        return pulumi.get(self, "assigned_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[_builtins.str]:
+        """
+        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        return pulumi.get(self, "range")
 
 
 @pulumi.output_type
@@ -14745,6 +15630,35 @@ class GetNodeBalancerTransferResult(dict):
 
 
 @pulumi.output_type
+class GetNodeBalancerVpcResult(dict):
+    def __init__(__self__, *,
+                 ipv4_range: _builtins.str,
+                 subnet_id: _builtins.int):
+        """
+        :param _builtins.str ipv4_range: A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+        :param _builtins.int subnet_id: The ID of a subnet to assign to this NodeBalancer.
+        """
+        pulumi.set(__self__, "ipv4_range", ipv4_range)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> _builtins.str:
+        """
+        A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+        """
+        return pulumi.get(self, "ipv4_range")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of a subnet to assign to this NodeBalancer.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
 class GetNodebalancerConfigsFilterResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
@@ -15043,6 +15957,113 @@ class GetNodebalancerConfigsNodebalancerConfigNodeStatusResult(dict):
         The number of backends considered to be 'UP' and healthy, and that are serving requests.
         """
         return pulumi.get(self, "up")
+
+
+@pulumi.output_type
+class GetNodebalancerVpcsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetNodebalancerVpcsVpcConfigResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.int,
+                 ipv4_range: _builtins.str,
+                 nodebalancer_id: _builtins.int,
+                 subnet_id: _builtins.int,
+                 vpc_id: _builtins.int):
+        """
+        :param _builtins.int id: The ID of the VPC configuration.
+        :param _builtins.str ipv4_range: A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+        :param _builtins.int nodebalancer_id: The ID of the NodeBalancer to list VPC configurations for.
+               
+               * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+        :param _builtins.int subnet_id: The ID of this configuration's VPC subnet.
+        :param _builtins.int vpc_id: The ID of this configuration's VPC.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4_range", ipv4_range)
+        pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the VPC configuration.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> _builtins.str:
+        """
+        A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+        """
+        return pulumi.get(self, "ipv4_range")
+
+    @_builtins.property
+    @pulumi.getter(name="nodebalancerId")
+    def nodebalancer_id(self) -> _builtins.int:
+        """
+        The ID of the NodeBalancer to list VPC configurations for.
+
+        * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+        """
+        return pulumi.get(self, "nodebalancer_id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of this configuration's VPC subnet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.int:
+        """
+        The ID of this configuration's VPC.
+        """
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type
@@ -16720,7 +17741,6 @@ class GetUserGlobalGrantResult(dict):
                  add_linodes: _builtins.bool,
                  add_longview: _builtins.bool,
                  add_nodebalancers: _builtins.bool,
-                 add_placement_groups: _builtins.bool,
                  add_stackscripts: _builtins.bool,
                  add_volumes: _builtins.bool,
                  add_vpcs: _builtins.bool,
@@ -16735,7 +17755,6 @@ class GetUserGlobalGrantResult(dict):
         :param _builtins.bool add_linodes: If true, this User may create Linodes.
         :param _builtins.bool add_longview: If true, this User may create Longview clients and view the current plan.
         :param _builtins.bool add_nodebalancers: If true, this User may add NodeBalancers.
-        :param _builtins.bool add_placement_groups: If true, this User may add Placement Groups.
         :param _builtins.bool add_volumes: If true, this User may add Volumes.
         :param _builtins.bool add_vpcs: If true, this User may add Virtual Private Clouds (VPCs).
         :param _builtins.bool cancel_account: If true, this User may cancel the entire Account.
@@ -16749,7 +17768,6 @@ class GetUserGlobalGrantResult(dict):
         pulumi.set(__self__, "add_linodes", add_linodes)
         pulumi.set(__self__, "add_longview", add_longview)
         pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
-        pulumi.set(__self__, "add_placement_groups", add_placement_groups)
         pulumi.set(__self__, "add_stackscripts", add_stackscripts)
         pulumi.set(__self__, "add_volumes", add_volumes)
         pulumi.set(__self__, "add_vpcs", add_vpcs)
@@ -16819,14 +17837,6 @@ class GetUserGlobalGrantResult(dict):
         If true, this User may add NodeBalancers.
         """
         return pulumi.get(self, "add_nodebalancers")
-
-    @_builtins.property
-    @pulumi.getter(name="addPlacementGroups")
-    def add_placement_groups(self) -> _builtins.bool:
-        """
-        If true, this User may add Placement Groups.
-        """
-        return pulumi.get(self, "add_placement_groups")
 
     @_builtins.property
     @pulumi.getter(name="addStackscripts")
@@ -16988,46 +17998,6 @@ class GetUserLongviewGrantResult(dict):
 
 @pulumi.output_type
 class GetUserNodebalancerGrantResult(dict):
-    def __init__(__self__, *,
-                 id: _builtins.int,
-                 label: _builtins.str,
-                 permissions: _builtins.str):
-        """
-        :param _builtins.int id: The ID of entity this grant applies to.
-        :param _builtins.str label: The current label of the entity this grant applies to, for display purposes.
-        :param _builtins.str permissions: The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.int:
-        """
-        The ID of entity this grant applies to.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def label(self) -> _builtins.str:
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        return pulumi.get(self, "label")
-
-    @_builtins.property
-    @pulumi.getter
-    def permissions(self) -> _builtins.str:
-        """
-        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-        return pulumi.get(self, "permissions")
-
-
-@pulumi.output_type
-class GetUserPlacementGroupGrantResult(dict):
     def __init__(__self__, *,
                  id: _builtins.int,
                  label: _builtins.str,
@@ -17241,7 +18211,6 @@ class GetUsersUserResult(dict):
                  longview_grants: Sequence['outputs.GetUsersUserLongviewGrantResult'],
                  nodebalancer_grants: Sequence['outputs.GetUsersUserNodebalancerGrantResult'],
                  password_created: _builtins.str,
-                 placement_group_grants: Sequence['outputs.GetUsersUserPlacementGroupGrantResult'],
                  restricted: _builtins.bool,
                  ssh_keys: Sequence[_builtins.str],
                  stackscript_grants: Sequence['outputs.GetUsersUserStackscriptGrantResult'],
@@ -17263,7 +18232,6 @@ class GetUsersUserResult(dict):
         :param Sequence['GetUsersUserLongviewGrantArgs'] longview_grants: A set containing all of the user's active grants.
         :param Sequence['GetUsersUserNodebalancerGrantArgs'] nodebalancer_grants: A set containing all of the user's active grants.
         :param _builtins.str password_created: The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
-        :param Sequence['GetUsersUserPlacementGroupGrantArgs'] placement_group_grants: A set containing all of the user's active grants.
         :param _builtins.bool restricted: If true, this User must be granted access to perform actions or access entities on this Account.
         :param Sequence[_builtins.str] ssh_keys: A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
         :param Sequence['GetUsersUserStackscriptGrantArgs'] stackscript_grants: A set containing all of the user's active grants.
@@ -17285,7 +18253,6 @@ class GetUsersUserResult(dict):
         pulumi.set(__self__, "longview_grants", longview_grants)
         pulumi.set(__self__, "nodebalancer_grants", nodebalancer_grants)
         pulumi.set(__self__, "password_created", password_created)
-        pulumi.set(__self__, "placement_group_grants", placement_group_grants)
         pulumi.set(__self__, "restricted", restricted)
         pulumi.set(__self__, "ssh_keys", ssh_keys)
         pulumi.set(__self__, "stackscript_grants", stackscript_grants)
@@ -17383,14 +18350,6 @@ class GetUsersUserResult(dict):
         The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
         """
         return pulumi.get(self, "password_created")
-
-    @_builtins.property
-    @pulumi.getter(name="placementGroupGrants")
-    def placement_group_grants(self) -> Sequence['outputs.GetUsersUserPlacementGroupGrantResult']:
-        """
-        A set containing all of the user's active grants.
-        """
-        return pulumi.get(self, "placement_group_grants")
 
     @_builtins.property
     @pulumi.getter
@@ -17596,7 +18555,6 @@ class GetUsersUserGlobalGrantResult(dict):
                  add_linodes: _builtins.bool,
                  add_longview: _builtins.bool,
                  add_nodebalancers: _builtins.bool,
-                 add_placement_groups: _builtins.bool,
                  add_stackscripts: _builtins.bool,
                  add_volumes: _builtins.bool,
                  add_vpcs: _builtins.bool,
@@ -17611,7 +18569,6 @@ class GetUsersUserGlobalGrantResult(dict):
         :param _builtins.bool add_linodes: If true, this User may create Linodes.
         :param _builtins.bool add_longview: If true, this User may create Longview clients and view the current plan.
         :param _builtins.bool add_nodebalancers: If true, this User may add NodeBalancers.
-        :param _builtins.bool add_placement_groups: If true, this User may add Placement Groups.
         :param _builtins.bool add_volumes: If true, this User may add Volumes.
         :param _builtins.bool add_vpcs: If true, this User may add Virtual Private Clouds (VPCs).
         :param _builtins.bool cancel_account: If true, this User may cancel the entire Account.
@@ -17625,7 +18582,6 @@ class GetUsersUserGlobalGrantResult(dict):
         pulumi.set(__self__, "add_linodes", add_linodes)
         pulumi.set(__self__, "add_longview", add_longview)
         pulumi.set(__self__, "add_nodebalancers", add_nodebalancers)
-        pulumi.set(__self__, "add_placement_groups", add_placement_groups)
         pulumi.set(__self__, "add_stackscripts", add_stackscripts)
         pulumi.set(__self__, "add_volumes", add_volumes)
         pulumi.set(__self__, "add_vpcs", add_vpcs)
@@ -17695,14 +18651,6 @@ class GetUsersUserGlobalGrantResult(dict):
         If true, this User may add NodeBalancers.
         """
         return pulumi.get(self, "add_nodebalancers")
-
-    @_builtins.property
-    @pulumi.getter(name="addPlacementGroups")
-    def add_placement_groups(self) -> _builtins.bool:
-        """
-        If true, this User may add Placement Groups.
-        """
-        return pulumi.get(self, "add_placement_groups")
 
     @_builtins.property
     @pulumi.getter(name="addStackscripts")
@@ -17864,46 +18812,6 @@ class GetUsersUserLongviewGrantResult(dict):
 
 @pulumi.output_type
 class GetUsersUserNodebalancerGrantResult(dict):
-    def __init__(__self__, *,
-                 id: _builtins.int,
-                 label: _builtins.str,
-                 permissions: _builtins.str):
-        """
-        :param _builtins.int id: The ID of entity this grant applies to.
-        :param _builtins.str label: The current label of the entity this grant applies to, for display purposes.
-        :param _builtins.str permissions: The level of access this User has to this entity. If null, this User has no access.
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "permissions", permissions)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.int:
-        """
-        The ID of entity this grant applies to.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def label(self) -> _builtins.str:
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        return pulumi.get(self, "label")
-
-    @_builtins.property
-    @pulumi.getter
-    def permissions(self) -> _builtins.str:
-        """
-        The level of access this User has to this entity. If null, this User has no access.
-        """
-        return pulumi.get(self, "permissions")
-
-
-@pulumi.output_type
-class GetUsersUserPlacementGroupGrantResult(dict):
     def __init__(__self__, *,
                  id: _builtins.int,
                  label: _builtins.str,
@@ -18537,6 +19445,9 @@ class GetVpcIpsVpcIpResult(dict):
                  config_id: _builtins.int,
                  gateway: _builtins.str,
                  interface_id: _builtins.int,
+                 ipv6_addresses: Sequence['outputs.GetVpcIpsVpcIpIpv6AddressResult'],
+                 ipv6_is_public: _builtins.bool,
+                 ipv6_range: _builtins.str,
                  linode_id: _builtins.int,
                  nat11: _builtins.str,
                  prefix: _builtins.int,
@@ -18551,6 +19462,9 @@ class GetVpcIpsVpcIpResult(dict):
         :param _builtins.int config_id: The globally general entity identifier for the Linode configuration profile where the VPC is included.
         :param _builtins.str gateway: The default gateway for the VPC subnet that the IP or IP range belongs to.
         :param _builtins.int interface_id: The globally general API entity identifier for the Linode interface.
+        :param Sequence['GetVpcIpsVpcIpIpv6AddressArgs'] ipv6_addresses: The addresses within the prefix that the interface is associated with.
+        :param _builtins.bool ipv6_is_public: The is_public setting for the interface associated with this address.
+        :param _builtins.str ipv6_range: The /64 prefix, in CIDR notation, assigned to an interface.
         :param _builtins.int linode_id: The identifier for the Linode the VPC interface currently belongs to.
         :param _builtins.str nat11: The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
         :param _builtins.int prefix: The number of bits set in the subnet mask.
@@ -18567,6 +19481,9 @@ class GetVpcIpsVpcIpResult(dict):
         pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "gateway", gateway)
         pulumi.set(__self__, "interface_id", interface_id)
+        pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
+        pulumi.set(__self__, "ipv6_is_public", ipv6_is_public)
+        pulumi.set(__self__, "ipv6_range", ipv6_range)
         pulumi.set(__self__, "linode_id", linode_id)
         pulumi.set(__self__, "nat11", nat11)
         pulumi.set(__self__, "prefix", prefix)
@@ -18622,6 +19539,30 @@ class GetVpcIpsVpcIpResult(dict):
         The globally general API entity identifier for the Linode interface.
         """
         return pulumi.get(self, "interface_id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> Sequence['outputs.GetVpcIpsVpcIpIpv6AddressResult']:
+        """
+        The addresses within the prefix that the interface is associated with.
+        """
+        return pulumi.get(self, "ipv6_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6IsPublic")
+    def ipv6_is_public(self) -> _builtins.bool:
+        """
+        The is_public setting for the interface associated with this address.
+        """
+        return pulumi.get(self, "ipv6_is_public")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Range")
+    def ipv6_range(self) -> _builtins.str:
+        """
+        The /64 prefix, in CIDR notation, assigned to an interface.
+        """
+        return pulumi.get(self, "ipv6_range")
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
@@ -18680,6 +19621,60 @@ class GetVpcIpsVpcIpResult(dict):
         * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
         """
         return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class GetVpcIpsVpcIpIpv6AddressResult(dict):
+    def __init__(__self__, *,
+                 slaac_address: _builtins.str):
+        """
+        :param _builtins.str slaac_address: A specific address within the prefix that the interface is expected to autoconfigure through SLAAC.
+        """
+        pulumi.set(__self__, "slaac_address", slaac_address)
+
+    @_builtins.property
+    @pulumi.getter(name="slaacAddress")
+    def slaac_address(self) -> _builtins.str:
+        """
+        A specific address within the prefix that the interface is expected to autoconfigure through SLAAC.
+        """
+        return pulumi.get(self, "slaac_address")
+
+
+@pulumi.output_type
+class GetVpcIpv6Result(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: The IPv6 range assigned to this VPC.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        The IPv6 range assigned to this VPC.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetVpcSubnetIpv6Result(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: An IPv6 range allocated to this subnet.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        An IPv6 range allocated to this subnet.
+        """
+        return pulumi.get(self, "range")
 
 
 @pulumi.output_type
@@ -18779,6 +19774,7 @@ class GetVpcSubnetsVpcSubnetResult(dict):
                  created: _builtins.str,
                  id: _builtins.int,
                  ipv4: _builtins.str,
+                 ipv6s: Sequence['outputs.GetVpcSubnetsVpcSubnetIpv6Result'],
                  label: _builtins.str,
                  linodes: Sequence['outputs.GetVpcSubnetsVpcSubnetLinodeResult'],
                  updated: _builtins.str):
@@ -18786,6 +19782,7 @@ class GetVpcSubnetsVpcSubnetResult(dict):
         :param _builtins.str created: The date and time when the VPC Subnet was created.
         :param _builtins.int id: The unique id of the VPC subnet.
         :param _builtins.str ipv4: The IPv4 range of this subnet in CIDR format.
+        :param Sequence['GetVpcSubnetsVpcSubnetIpv6Args'] ipv6s: The IPv6 ranges of this subnet.
         :param _builtins.str label: The label of the VPC subnet.
         :param Sequence['GetVpcSubnetsVpcSubnetLinodeArgs'] linodes: A list of Linode IDs that added to this subnet.
         :param _builtins.str updated: The date and time when the VPC Subnet was last updated.
@@ -18793,6 +19790,7 @@ class GetVpcSubnetsVpcSubnetResult(dict):
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6s", ipv6s)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "linodes", linodes)
         pulumi.set(__self__, "updated", updated)
@@ -18823,6 +19821,14 @@ class GetVpcSubnetsVpcSubnetResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def ipv6s(self) -> Sequence['outputs.GetVpcSubnetsVpcSubnetIpv6Result']:
+        """
+        The IPv6 ranges of this subnet.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @_builtins.property
+    @pulumi.getter
     def label(self) -> _builtins.str:
         """
         The label of the VPC subnet.
@@ -18844,6 +19850,24 @@ class GetVpcSubnetsVpcSubnetResult(dict):
         The date and time when the VPC Subnet was last updated.
         """
         return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
+class GetVpcSubnetsVpcSubnetIpv6Result(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: An IPv6 range allocated to this subnet.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        An IPv6 range allocated to this subnet.
+        """
+        return pulumi.get(self, "range")
 
 
 @pulumi.output_type
@@ -18943,6 +19967,7 @@ class GetVpcsVpcResult(dict):
                  created: _builtins.str,
                  description: _builtins.str,
                  id: _builtins.str,
+                 ipv6s: Sequence['outputs.GetVpcsVpcIpv6Result'],
                  label: _builtins.str,
                  region: _builtins.str,
                  updated: _builtins.str):
@@ -18950,6 +19975,7 @@ class GetVpcsVpcResult(dict):
         :param _builtins.str created: The date and time when the VPC was created.
         :param _builtins.str description: The user-defined description of this VPC.
         :param _builtins.str id: The unique id of this VPC.
+        :param Sequence['GetVpcsVpcIpv6Args'] ipv6s: A list of IPv6 allocations under this VPC.
         :param _builtins.str label: The label of the VPC.
         :param _builtins.str region: The region where the VPC is deployed.
         :param _builtins.str updated: The date and time when the VPC was last updated.
@@ -18957,6 +19983,7 @@ class GetVpcsVpcResult(dict):
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv6s", ipv6s)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "updated", updated)
@@ -18987,6 +20014,14 @@ class GetVpcsVpcResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def ipv6s(self) -> Sequence['outputs.GetVpcsVpcIpv6Result']:
+        """
+        A list of IPv6 allocations under this VPC.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @_builtins.property
+    @pulumi.getter
     def label(self) -> _builtins.str:
         """
         The label of the VPC.
@@ -19008,5 +20043,23 @@ class GetVpcsVpcResult(dict):
         The date and time when the VPC was last updated.
         """
         return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
+class GetVpcsVpcIpv6Result(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: The IPv6 range assigned to this VPC.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        The IPv6 range assigned to this VPC.
+        """
+        return pulumi.get(self, "range")
 
 

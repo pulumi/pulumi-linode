@@ -28,6 +28,14 @@ import * as utilities from "./utilities";
  * export const vpcSubnets = filtered_subnets.then(filtered_subnets => filtered_subnets.vpcSubnets);
  * ```
  *
+ * ## IPv6
+ *
+ * > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+ *
+ * The following attributes are exported under each entry of the `ipv6` field:
+ *
+ * * `range` - An IPv6 range allocated to this subnet in CIDR format.
+ *
  * ## Filterable Fields
  *
  * * `id`
@@ -92,6 +100,14 @@ export interface GetVpcSubnetsResult {
  * });
  * export const vpcSubnets = filtered_subnets.then(filtered_subnets => filtered_subnets.vpcSubnets);
  * ```
+ *
+ * ## IPv6
+ *
+ * > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+ *
+ * The following attributes are exported under each entry of the `ipv6` field:
+ *
+ * * `range` - An IPv6 range allocated to this subnet in CIDR format.
  *
  * ## Filterable Fields
  *

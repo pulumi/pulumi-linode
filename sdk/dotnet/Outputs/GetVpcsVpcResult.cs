@@ -26,6 +26,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// A list of IPv6 allocations under this VPC.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVpcsVpcIpv6Result> Ipv6s;
+        /// <summary>
         /// The label of the VPC.
         /// </summary>
         public readonly string Label;
@@ -46,6 +50,8 @@ namespace Pulumi.Linode.Outputs
 
             string id,
 
+            ImmutableArray<Outputs.GetVpcsVpcIpv6Result> ipv6s,
+
             string label,
 
             string region,
@@ -55,6 +61,7 @@ namespace Pulumi.Linode.Outputs
             Created = created;
             Description = description;
             Id = id;
+            Ipv6s = ipv6s;
             Label = label;
             Region = region;
             Updated = updated;

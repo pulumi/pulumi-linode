@@ -30,7 +30,6 @@ class UserArgs:
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]]] = None,
                  longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]]] = None,
                  nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]]] = None,
-                 placement_group_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]] = None,
                  restricted: Optional[pulumi.Input[_builtins.bool]] = None,
                  stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]]] = None,
                  volume_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]]] = None,
@@ -46,7 +45,6 @@ class UserArgs:
         :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]] placement_group_grants: The Placement Groups the user has permissions access to.
         :param pulumi.Input[_builtins.bool] restricted: If true, this user will only have explicit permissions granted.
                
                * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -72,8 +70,6 @@ class UserArgs:
             pulumi.set(__self__, "longview_grants", longview_grants)
         if nodebalancer_grants is not None:
             pulumi.set(__self__, "nodebalancer_grants", nodebalancer_grants)
-        if placement_group_grants is not None:
-            pulumi.set(__self__, "placement_group_grants", placement_group_grants)
         if restricted is not None:
             pulumi.set(__self__, "restricted", restricted)
         if stackscript_grants is not None:
@@ -192,18 +188,6 @@ class UserArgs:
         pulumi.set(self, "nodebalancer_grants", value)
 
     @_builtins.property
-    @pulumi.getter(name="placementGroupGrants")
-    def placement_group_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]]:
-        """
-        The Placement Groups the user has permissions access to.
-        """
-        return pulumi.get(self, "placement_group_grants")
-
-    @placement_group_grants.setter
-    def placement_group_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]]):
-        pulumi.set(self, "placement_group_grants", value)
-
-    @_builtins.property
     @pulumi.getter
     def restricted(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -267,7 +251,6 @@ class _UserState:
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]]] = None,
                  longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]]] = None,
                  nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]]] = None,
-                 placement_group_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]] = None,
                  restricted: Optional[pulumi.Input[_builtins.bool]] = None,
                  ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]]] = None,
@@ -286,7 +269,6 @@ class _UserState:
         :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]] placement_group_grants: The Placement Groups the user has permissions access to.
         :param pulumi.Input[_builtins.bool] restricted: If true, this user will only have explicit permissions granted.
                
                * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -316,8 +298,6 @@ class _UserState:
             pulumi.set(__self__, "longview_grants", longview_grants)
         if nodebalancer_grants is not None:
             pulumi.set(__self__, "nodebalancer_grants", nodebalancer_grants)
-        if placement_group_grants is not None:
-            pulumi.set(__self__, "placement_group_grants", placement_group_grants)
         if restricted is not None:
             pulumi.set(__self__, "restricted", restricted)
         if ssh_keys is not None:
@@ -430,18 +410,6 @@ class _UserState:
     @nodebalancer_grants.setter
     def nodebalancer_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]]]):
         pulumi.set(self, "nodebalancer_grants", value)
-
-    @_builtins.property
-    @pulumi.getter(name="placementGroupGrants")
-    def placement_group_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]]:
-        """
-        The Placement Groups the user has permissions access to.
-        """
-        return pulumi.get(self, "placement_group_grants")
-
-    @placement_group_grants.setter
-    def placement_group_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserPlacementGroupGrantArgs']]]]):
-        pulumi.set(self, "placement_group_grants", value)
 
     @_builtins.property
     @pulumi.getter
@@ -558,7 +526,6 @@ class User(pulumi.CustomResource):
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]]] = None,
                  longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]]] = None,
                  nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]]] = None,
-                 placement_group_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPlacementGroupGrantArgs', 'UserPlacementGroupGrantArgsDict']]]]] = None,
                  restricted: Optional[pulumi.Input[_builtins.bool]] = None,
                  stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
@@ -620,8 +587,6 @@ class User(pulumi.CustomResource):
 
         * `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.
 
-        * `add_placement_groups` - (optional) If true, this User may add Placement Groups.
-
         * `add_stackscripts` - (optional) If true, this User may add StackScripts.
 
         * `add_vpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
@@ -646,7 +611,6 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPlacementGroupGrantArgs', 'UserPlacementGroupGrantArgsDict']]]] placement_group_grants: The Placement Groups the user has permissions access to.
         :param pulumi.Input[_builtins.bool] restricted: If true, this user will only have explicit permissions granted.
                
                * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -718,8 +682,6 @@ class User(pulumi.CustomResource):
 
         * `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.
 
-        * `add_placement_groups` - (optional) If true, this User may add Placement Groups.
-
         * `add_stackscripts` - (optional) If true, this User may add StackScripts.
 
         * `add_vpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
@@ -757,7 +719,6 @@ class User(pulumi.CustomResource):
                  linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]]] = None,
                  longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]]] = None,
                  nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]]] = None,
-                 placement_group_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPlacementGroupGrantArgs', 'UserPlacementGroupGrantArgsDict']]]]] = None,
                  restricted: Optional[pulumi.Input[_builtins.bool]] = None,
                  stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
@@ -782,7 +743,6 @@ class User(pulumi.CustomResource):
             __props__.__dict__["linode_grants"] = linode_grants
             __props__.__dict__["longview_grants"] = longview_grants
             __props__.__dict__["nodebalancer_grants"] = nodebalancer_grants
-            __props__.__dict__["placement_group_grants"] = placement_group_grants
             __props__.__dict__["restricted"] = restricted
             __props__.__dict__["stackscript_grants"] = stackscript_grants
             if username is None and not opts.urn:
@@ -811,7 +771,6 @@ class User(pulumi.CustomResource):
             linode_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]]] = None,
             longview_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]]] = None,
             nodebalancer_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]]] = None,
-            placement_group_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserPlacementGroupGrantArgs', 'UserPlacementGroupGrantArgsDict']]]]] = None,
             restricted: Optional[pulumi.Input[_builtins.bool]] = None,
             ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             stackscript_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]]] = None,
@@ -835,7 +794,6 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]] linode_grants: The Linodes the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]] longview_grants: The longview the user has permissions access to.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPlacementGroupGrantArgs', 'UserPlacementGroupGrantArgsDict']]]] placement_group_grants: The Placement Groups the user has permissions access to.
         :param pulumi.Input[_builtins.bool] restricted: If true, this user will only have explicit permissions granted.
                
                * `global_grants` - (optional) A structure containing the Account-level grants a User has.
@@ -861,7 +819,6 @@ class User(pulumi.CustomResource):
         __props__.__dict__["linode_grants"] = linode_grants
         __props__.__dict__["longview_grants"] = longview_grants
         __props__.__dict__["nodebalancer_grants"] = nodebalancer_grants
-        __props__.__dict__["placement_group_grants"] = placement_group_grants
         __props__.__dict__["restricted"] = restricted
         __props__.__dict__["ssh_keys"] = ssh_keys
         __props__.__dict__["stackscript_grants"] = stackscript_grants
@@ -935,14 +892,6 @@ class User(pulumi.CustomResource):
         The NodeBalancers the user has permissions access to.
         """
         return pulumi.get(self, "nodebalancer_grants")
-
-    @_builtins.property
-    @pulumi.getter(name="placementGroupGrants")
-    def placement_group_grants(self) -> pulumi.Output[Sequence['outputs.UserPlacementGroupGrant']]:
-        """
-        The Placement Groups the user has permissions access to.
-        """
-        return pulumi.get(self, "placement_group_grants")
 
     @_builtins.property
     @pulumi.getter

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -24,6 +26,34 @@ import * as utilities from "./utilities";
  *     description: "My first VPC.",
  * });
  * ```
+ *
+ * Create a VPC with a `/52` IPv6 range prefix:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * // NOTE: IPv6 VPCs may not currently be available to all users.
+ * const test = new linode.Vpc("test", {
+ *     label: "test-vpc",
+ *     region: "us-iad",
+ *     ipv6s: [{
+ *         range: "/52",
+ *     }],
+ * });
+ * ```
+ *
+ * ## IPv6
+ *
+ * > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+ *
+ * Configures a single IPv6 range under this VPC.
+ *
+ * * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+ *
+ * * `allocationClass` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+ *
+ * * `allocatedRange` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
  */
 export class Vpc extends pulumi.CustomResource {
     /**
@@ -59,8 +89,14 @@ export class Vpc extends pulumi.CustomResource {
     declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The user-defined description of this VPC.
+     *
+     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
      */
     declare public readonly description: pulumi.Output<string>;
+    /**
+     * The IPv6 configuration of this VPC.
+     */
+    declare public readonly ipv6s: pulumi.Output<outputs.VpcIpv6[] | undefined>;
     /**
      * The label of the VPC. This field can only contain ASCII letters, digits and dashes.
      */
@@ -89,6 +125,7 @@ export class Vpc extends pulumi.CustomResource {
             const state = argsOrState as VpcState | undefined;
             resourceInputs["created"] = state?.created;
             resourceInputs["description"] = state?.description;
+            resourceInputs["ipv6s"] = state?.ipv6s;
             resourceInputs["label"] = state?.label;
             resourceInputs["region"] = state?.region;
             resourceInputs["updated"] = state?.updated;
@@ -101,6 +138,7 @@ export class Vpc extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["description"] = args?.description;
+            resourceInputs["ipv6s"] = args?.ipv6s;
             resourceInputs["label"] = args?.label;
             resourceInputs["region"] = args?.region;
             resourceInputs["created"] = undefined /*out*/;
@@ -121,8 +159,14 @@ export interface VpcState {
     created?: pulumi.Input<string>;
     /**
      * The user-defined description of this VPC.
+     *
+     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The IPv6 configuration of this VPC.
+     */
+    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcIpv6>[]>;
     /**
      * The label of the VPC. This field can only contain ASCII letters, digits and dashes.
      */
@@ -143,8 +187,14 @@ export interface VpcState {
 export interface VpcArgs {
     /**
      * The user-defined description of this VPC.
+     *
+     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The IPv6 configuration of this VPC.
+     */
+    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcIpv6>[]>;
     /**
      * The label of the VPC. This field can only contain ASCII letters, digits and dashes.
      */

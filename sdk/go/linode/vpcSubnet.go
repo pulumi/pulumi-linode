@@ -45,6 +45,62 @@ import (
 //
 // ```
 //
+// Create a VPC subnet with an implicitly determined IPv6 range:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testVpc, err := linode.NewVpc(ctx, "test", &linode.VpcArgs{
+//				Label:  pulumi.String("test-vpc"),
+//				Region: pulumi.String("us-mia"),
+//				Ipv6s: linode.VpcIpv6Array{
+//					&linode.VpcIpv6Args{
+//						Range: pulumi.String("/52"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// NOTE: IPv6 VPCs may not currently be available to all users.
+//			_, err = linode.NewVpcSubnet(ctx, "test", &linode.VpcSubnetArgs{
+//				VpcId: testVpc.ID(),
+//				Label: pulumi.String("test-subnet"),
+//				Ipv4:  pulumi.String("10.0.0.0/24"),
+//				Ipv6s: linode.VpcSubnetIpv6Array{
+//					&linode.VpcSubnetIpv6Args{
+//						Range: pulumi.String("auto"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## IPv6
+//
+// > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+//
+// The following arguments can be configured for each entry under the `ipv6` field:
+//
+// * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If `auto`, a range with the default prefix will be allocated for this VPC.
+//
+// * `allocatedRange` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+//
 // ## Import
 //
 // Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpc_id` followed by the subnet `id` separated by a comma, e.g.
@@ -58,14 +114,18 @@ type VpcSubnet struct {
 	// The date and time when the VPC was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The IPv4 range of this subnet in CIDR format.
-	Ipv4 pulumi.StringOutput `pulumi:"ipv4"`
+	//
+	// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+	Ipv4 pulumi.StringPtrOutput `pulumi:"ipv4"`
+	// The IPv6 ranges of this subnet.
+	Ipv6s VpcSubnetIpv6ArrayOutput `pulumi:"ipv6s"`
 	// The label of the VPC. Only contains ASCII letters, digits and dashes.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// A list of Linode IDs that added to this subnet.
 	Linodes VpcSubnetLinodeArrayOutput `pulumi:"linodes"`
 	// The date and time when the VPC was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
-	// The id of the parent VPC for this VPC Subnet.
+	// The id of the parent VPC for this VPC subnet.
 	VpcId pulumi.IntOutput `pulumi:"vpcId"`
 }
 
@@ -76,9 +136,6 @@ func NewVpcSubnet(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Ipv4 == nil {
-		return nil, errors.New("invalid value for required argument 'Ipv4'")
-	}
 	if args.Label == nil {
 		return nil, errors.New("invalid value for required argument 'Label'")
 	}
@@ -111,14 +168,18 @@ type vpcSubnetState struct {
 	// The date and time when the VPC was created.
 	Created *string `pulumi:"created"`
 	// The IPv4 range of this subnet in CIDR format.
+	//
+	// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
 	Ipv4 *string `pulumi:"ipv4"`
+	// The IPv6 ranges of this subnet.
+	Ipv6s []VpcSubnetIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC. Only contains ASCII letters, digits and dashes.
 	Label *string `pulumi:"label"`
 	// A list of Linode IDs that added to this subnet.
 	Linodes []VpcSubnetLinode `pulumi:"linodes"`
 	// The date and time when the VPC was last updated.
 	Updated *string `pulumi:"updated"`
-	// The id of the parent VPC for this VPC Subnet.
+	// The id of the parent VPC for this VPC subnet.
 	VpcId *int `pulumi:"vpcId"`
 }
 
@@ -126,14 +187,18 @@ type VpcSubnetState struct {
 	// The date and time when the VPC was created.
 	Created pulumi.StringPtrInput
 	// The IPv4 range of this subnet in CIDR format.
+	//
+	// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
 	Ipv4 pulumi.StringPtrInput
+	// The IPv6 ranges of this subnet.
+	Ipv6s VpcSubnetIpv6ArrayInput
 	// The label of the VPC. Only contains ASCII letters, digits and dashes.
 	Label pulumi.StringPtrInput
 	// A list of Linode IDs that added to this subnet.
 	Linodes VpcSubnetLinodeArrayInput
 	// The date and time when the VPC was last updated.
 	Updated pulumi.StringPtrInput
-	// The id of the parent VPC for this VPC Subnet.
+	// The id of the parent VPC for this VPC subnet.
 	VpcId pulumi.IntPtrInput
 }
 
@@ -143,20 +208,28 @@ func (VpcSubnetState) ElementType() reflect.Type {
 
 type vpcSubnetArgs struct {
 	// The IPv4 range of this subnet in CIDR format.
-	Ipv4 string `pulumi:"ipv4"`
+	//
+	// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+	Ipv4 *string `pulumi:"ipv4"`
+	// The IPv6 ranges of this subnet.
+	Ipv6s []VpcSubnetIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC. Only contains ASCII letters, digits and dashes.
 	Label string `pulumi:"label"`
-	// The id of the parent VPC for this VPC Subnet.
+	// The id of the parent VPC for this VPC subnet.
 	VpcId int `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a VpcSubnet resource.
 type VpcSubnetArgs struct {
 	// The IPv4 range of this subnet in CIDR format.
-	Ipv4 pulumi.StringInput
+	//
+	// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+	Ipv4 pulumi.StringPtrInput
+	// The IPv6 ranges of this subnet.
+	Ipv6s VpcSubnetIpv6ArrayInput
 	// The label of the VPC. Only contains ASCII letters, digits and dashes.
 	Label pulumi.StringInput
-	// The id of the parent VPC for this VPC Subnet.
+	// The id of the parent VPC for this VPC subnet.
 	VpcId pulumi.IntInput
 }
 
@@ -253,8 +326,15 @@ func (o VpcSubnetOutput) Created() pulumi.StringOutput {
 }
 
 // The IPv4 range of this subnet in CIDR format.
-func (o VpcSubnetOutput) Ipv4() pulumi.StringOutput {
-	return o.ApplyT(func(v *VpcSubnet) pulumi.StringOutput { return v.Ipv4 }).(pulumi.StringOutput)
+//
+// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+func (o VpcSubnetOutput) Ipv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcSubnet) pulumi.StringPtrOutput { return v.Ipv4 }).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 ranges of this subnet.
+func (o VpcSubnetOutput) Ipv6s() VpcSubnetIpv6ArrayOutput {
+	return o.ApplyT(func(v *VpcSubnet) VpcSubnetIpv6ArrayOutput { return v.Ipv6s }).(VpcSubnetIpv6ArrayOutput)
 }
 
 // The label of the VPC. Only contains ASCII letters, digits and dashes.
@@ -272,7 +352,7 @@ func (o VpcSubnetOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcSubnet) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }
 
-// The id of the parent VPC for this VPC Subnet.
+// The id of the parent VPC for this VPC subnet.
 func (o VpcSubnetOutput) VpcId() pulumi.IntOutput {
 	return o.ApplyT(func(v *VpcSubnet) pulumi.IntOutput { return v.VpcId }).(pulumi.IntOutput)
 }

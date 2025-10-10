@@ -34,6 +34,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly Outputs.InstanceConfigInterfaceIpv4? Ipv4;
         /// <summary>
+        /// The IPv6 configuration of the VPC interface. This attribute is only allowed for VPC interfaces.
+        /// </summary>
+        public readonly Outputs.InstanceConfigInterfaceIpv6? Ipv6;
+        /// <summary>
         /// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         /// </summary>
         public readonly string? Label;
@@ -41,6 +45,8 @@ namespace Pulumi.Linode.Outputs
         /// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
         /// 
         /// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+        /// 
+        /// * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
         /// 
         /// The following computed attribute is available in a VPC interface:
         /// </summary>
@@ -70,6 +76,8 @@ namespace Pulumi.Linode.Outputs
 
             Outputs.InstanceConfigInterfaceIpv4? ipv4,
 
+            Outputs.InstanceConfigInterfaceIpv6? ipv6,
+
             string? label,
 
             bool? primary,
@@ -85,6 +93,7 @@ namespace Pulumi.Linode.Outputs
             IpRanges = ipRanges;
             IpamAddress = ipamAddress;
             Ipv4 = ipv4;
+            Ipv6 = ipv6;
             Label = label;
             Primary = primary;
             Purpose = purpose;

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetVpcIpsFilter;
 import com.pulumi.linode.outputs.GetVpcIpsVpcIp;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -18,6 +19,7 @@ import javax.annotation.Nullable;
 public final class GetVpcIpsResult {
     private @Nullable List<GetVpcIpsFilter> filters;
     private String id;
+    private @Nullable Boolean ipv6;
     /**
      * @return The unique globally general API entity identifier for the VPC.
      * 
@@ -31,6 +33,9 @@ public final class GetVpcIpsResult {
     }
     public String id() {
         return this.id;
+    }
+    public Optional<Boolean> ipv6() {
+        return Optional.ofNullable(this.ipv6);
     }
     /**
      * @return The unique globally general API entity identifier for the VPC.
@@ -54,6 +59,7 @@ public final class GetVpcIpsResult {
     public static final class Builder {
         private @Nullable List<GetVpcIpsFilter> filters;
         private String id;
+        private @Nullable Boolean ipv6;
         private @Nullable Integer vpcId;
         private @Nullable List<GetVpcIpsVpcIp> vpcIps;
         public Builder() {}
@@ -61,6 +67,7 @@ public final class GetVpcIpsResult {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
     	      this.id = defaults.id;
+    	      this.ipv6 = defaults.ipv6;
     	      this.vpcId = defaults.vpcId;
     	      this.vpcIps = defaults.vpcIps;
         }
@@ -83,6 +90,12 @@ public final class GetVpcIpsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder ipv6(@Nullable Boolean ipv6) {
+
+            this.ipv6 = ipv6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcId(@Nullable Integer vpcId) {
 
             this.vpcId = vpcId;
@@ -101,6 +114,7 @@ public final class GetVpcIpsResult {
             final var _resultValue = new GetVpcIpsResult();
             _resultValue.filters = filters;
             _resultValue.id = id;
+            _resultValue.ipv6 = ipv6;
             _resultValue.vpcId = vpcId;
             _resultValue.vpcIps = vpcIps;
             return _resultValue;

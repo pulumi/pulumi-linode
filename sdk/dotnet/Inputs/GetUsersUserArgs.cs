@@ -126,18 +126,6 @@ namespace Pulumi.Linode.Inputs
         [Input("passwordCreated", required: true)]
         public Input<string> PasswordCreated { get; set; } = null!;
 
-        [Input("placementGroupGrants", required: true)]
-        private InputList<Inputs.GetUsersUserPlacementGroupGrantInputArgs>? _placementGroupGrants;
-
-        /// <summary>
-        /// A set containing all of the user's active grants.
-        /// </summary>
-        public InputList<Inputs.GetUsersUserPlacementGroupGrantInputArgs> PlacementGroupGrants
-        {
-            get => _placementGroupGrants ?? (_placementGroupGrants = new InputList<Inputs.GetUsersUserPlacementGroupGrantInputArgs>());
-            set => _placementGroupGrants = value;
-        }
-
         /// <summary>
         /// If true, this User must be granted access to perform actions or access entities on this Account.
         /// </summary>

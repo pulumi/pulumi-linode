@@ -45,10 +45,6 @@ namespace Pulumi.Linode.Outputs
         /// If true, this User may add NodeBalancers.
         /// </summary>
         public readonly bool AddNodebalancers;
-        /// <summary>
-        /// If true, this User may add Placement Groups.
-        /// </summary>
-        public readonly bool AddPlacementGroups;
         public readonly bool AddStackscripts;
         /// <summary>
         /// If true, this User may add Volumes.
@@ -85,8 +81,6 @@ namespace Pulumi.Linode.Outputs
 
             bool addNodebalancers,
 
-            bool addPlacementGroups,
-
             bool addStackscripts,
 
             bool addVolumes,
@@ -105,7 +99,6 @@ namespace Pulumi.Linode.Outputs
             AddLinodes = addLinodes;
             AddLongview = addLongview;
             AddNodebalancers = addNodebalancers;
-            AddPlacementGroups = addPlacementGroups;
             AddStackscripts = addStackscripts;
             AddVolumes = addVolumes;
             AddVpcs = addVpcs;

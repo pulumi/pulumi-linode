@@ -43,6 +43,14 @@ import (
 //	}
 //
 // ```
+//
+// ## IPv6
+//
+// > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+//
+// The following attributes are exported under each entry of the `ipv6` field:
+//
+// * `range` - An IPv6 range allocated to this subnet in CIDR format.
 func LookupVpcSubnet(ctx *pulumi.Context, args *LookupVpcSubnetArgs, opts ...pulumi.InvokeOption) (*LookupVpcSubnetResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpcSubnetResult
@@ -67,7 +75,8 @@ type LookupVpcSubnetResult struct {
 	Created string `pulumi:"created"`
 	Id      string `pulumi:"id"`
 	// The IPv4 range of this subnet in CIDR format.
-	Ipv4 string `pulumi:"ipv4"`
+	Ipv4  string             `pulumi:"ipv4"`
+	Ipv6s []GetVpcSubnetIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC subnet.
 	Label string `pulumi:"label"`
 	// A list of Linode IDs that added to this subnet.
@@ -125,6 +134,10 @@ func (o LookupVpcSubnetResultOutput) Id() pulumi.StringOutput {
 // The IPv4 range of this subnet in CIDR format.
 func (o LookupVpcSubnetResultOutput) Ipv4() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+func (o LookupVpcSubnetResultOutput) Ipv6s() GetVpcSubnetIpv6ArrayOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) []GetVpcSubnetIpv6 { return v.Ipv6s }).(GetVpcSubnetIpv6ArrayOutput)
 }
 
 // The label of the VPC subnet.

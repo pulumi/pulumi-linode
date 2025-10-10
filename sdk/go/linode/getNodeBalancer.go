@@ -81,7 +81,8 @@ type LookupNodeBalancerResult struct {
 	Tags      []string                  `pulumi:"tags"`
 	Transfers []GetNodeBalancerTransfer `pulumi:"transfers"`
 	// When this firewall was last updated.
-	Updated string `pulumi:"updated"`
+	Updated string               `pulumi:"updated"`
+	Vpcs    []GetNodeBalancerVpc `pulumi:"vpcs"`
 }
 
 func LookupNodeBalancerOutput(ctx *pulumi.Context, args LookupNodeBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupNodeBalancerResultOutput {
@@ -180,6 +181,10 @@ func (o LookupNodeBalancerResultOutput) Transfers() GetNodeBalancerTransferArray
 // When this firewall was last updated.
 func (o LookupNodeBalancerResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+func (o LookupNodeBalancerResultOutput) Vpcs() GetNodeBalancerVpcArrayOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) []GetNodeBalancerVpc { return v.Vpcs }).(GetNodeBalancerVpcArrayOutput)
 }
 
 func init() {

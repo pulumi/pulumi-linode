@@ -35,6 +35,57 @@ namespace Pulumi.Linode
     /// });
     /// ```
     /// 
+    /// Create a VPC subnet with an implicitly determined IPv6 range:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testVpc = new Linode.Vpc("test", new()
+    ///     {
+    ///         Label = "test-vpc",
+    ///         Region = "us-mia",
+    ///         Ipv6s = new[]
+    ///         {
+    ///             new Linode.Inputs.VpcIpv6Args
+    ///             {
+    ///                 Range = "/52",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // NOTE: IPv6 VPCs may not currently be available to all users.
+    ///     var test = new Linode.VpcSubnet("test", new()
+    ///     {
+    ///         VpcId = testVpc.Id,
+    ///         Label = "test-subnet",
+    ///         Ipv4 = "10.0.0.0/24",
+    ///         Ipv6s = new[]
+    ///         {
+    ///             new Linode.Inputs.VpcSubnetIpv6Args
+    ///             {
+    ///                 Range = "auto",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## IPv6
+    /// 
+    /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+    /// 
+    /// The following arguments can be configured for each entry under the `ipv6` field:
+    /// 
+    /// * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If `auto`, a range with the default prefix will be allocated for this VPC.
+    /// 
+    /// * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+    /// 
     /// ## Import
     /// 
     /// Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpc_id` followed by the subnet `id` separated by a comma, e.g.
@@ -54,9 +105,17 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
+        /// 
+        /// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         /// </summary>
         [Output("ipv4")]
-        public Output<string> Ipv4 { get; private set; } = null!;
+        public Output<string?> Ipv4 { get; private set; } = null!;
+
+        /// <summary>
+        /// The IPv6 ranges of this subnet.
+        /// </summary>
+        [Output("ipv6s")]
+        public Output<ImmutableArray<Outputs.VpcSubnetIpv6>> Ipv6s { get; private set; } = null!;
 
         /// <summary>
         /// The label of the VPC. Only contains ASCII letters, digits and dashes.
@@ -77,7 +136,7 @@ namespace Pulumi.Linode
         public Output<string> Updated { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the parent VPC for this VPC Subnet.
+        /// The id of the parent VPC for this VPC subnet.
         /// </summary>
         [Output("vpcId")]
         public Output<int> VpcId { get; private set; } = null!;
@@ -130,9 +189,23 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
+        /// 
+        /// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         /// </summary>
-        [Input("ipv4", required: true)]
-        public Input<string> Ipv4 { get; set; } = null!;
+        [Input("ipv4")]
+        public Input<string>? Ipv4 { get; set; }
+
+        [Input("ipv6s")]
+        private InputList<Inputs.VpcSubnetIpv6Args>? _ipv6s;
+
+        /// <summary>
+        /// The IPv6 ranges of this subnet.
+        /// </summary>
+        public InputList<Inputs.VpcSubnetIpv6Args> Ipv6s
+        {
+            get => _ipv6s ?? (_ipv6s = new InputList<Inputs.VpcSubnetIpv6Args>());
+            set => _ipv6s = value;
+        }
 
         /// <summary>
         /// The label of the VPC. Only contains ASCII letters, digits and dashes.
@@ -141,7 +214,7 @@ namespace Pulumi.Linode
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// The id of the parent VPC for this VPC Subnet.
+        /// The id of the parent VPC for this VPC subnet.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<int> VpcId { get; set; } = null!;
@@ -162,9 +235,23 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
+        /// 
+        /// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         /// </summary>
         [Input("ipv4")]
         public Input<string>? Ipv4 { get; set; }
+
+        [Input("ipv6s")]
+        private InputList<Inputs.VpcSubnetIpv6GetArgs>? _ipv6s;
+
+        /// <summary>
+        /// The IPv6 ranges of this subnet.
+        /// </summary>
+        public InputList<Inputs.VpcSubnetIpv6GetArgs> Ipv6s
+        {
+            get => _ipv6s ?? (_ipv6s = new InputList<Inputs.VpcSubnetIpv6GetArgs>());
+            set => _ipv6s = value;
+        }
 
         /// <summary>
         /// The label of the VPC. Only contains ASCII letters, digits and dashes.
@@ -191,7 +278,7 @@ namespace Pulumi.Linode
         public Input<string>? Updated { get; set; }
 
         /// <summary>
-        /// The id of the parent VPC for this VPC Subnet.
+        /// The id of the parent VPC for this VPC subnet.
         /// </summary>
         [Input("vpcId")]
         public Input<int>? VpcId { get; set; }

@@ -13,7 +13,6 @@ import com.pulumi.linode.outputs.GetUserImageGrant;
 import com.pulumi.linode.outputs.GetUserLinodeGrant;
 import com.pulumi.linode.outputs.GetUserLongviewGrant;
 import com.pulumi.linode.outputs.GetUserNodebalancerGrant;
-import com.pulumi.linode.outputs.GetUserPlacementGroupGrant;
 import com.pulumi.linode.outputs.GetUserStackscriptGrant;
 import com.pulumi.linode.outputs.GetUserVolumeGrant;
 import com.pulumi.linode.outputs.GetUserVpcGrant;
@@ -47,7 +46,6 @@ public final class GetUserResult {
      * 
      */
     private String passwordCreated;
-    private List<GetUserPlacementGroupGrant> placementGroupGrants;
     /**
      * @return If true, this User must be granted access to perform actions or access entities on this Account.
      * 
@@ -124,9 +122,6 @@ public final class GetUserResult {
     public String passwordCreated() {
         return this.passwordCreated;
     }
-    public List<GetUserPlacementGroupGrant> placementGroupGrants() {
-        return this.placementGroupGrants;
-    }
     /**
      * @return If true, this User must be granted access to perform actions or access entities on this Account.
      * 
@@ -195,7 +190,6 @@ public final class GetUserResult {
         private List<GetUserLongviewGrant> longviewGrants;
         private List<GetUserNodebalancerGrant> nodebalancerGrants;
         private String passwordCreated;
-        private List<GetUserPlacementGroupGrant> placementGroupGrants;
         private Boolean restricted;
         private List<String> sshKeys;
         private List<GetUserStackscriptGrant> stackscriptGrants;
@@ -219,7 +213,6 @@ public final class GetUserResult {
     	      this.longviewGrants = defaults.longviewGrants;
     	      this.nodebalancerGrants = defaults.nodebalancerGrants;
     	      this.passwordCreated = defaults.passwordCreated;
-    	      this.placementGroupGrants = defaults.placementGroupGrants;
     	      this.restricted = defaults.restricted;
     	      this.sshKeys = defaults.sshKeys;
     	      this.stackscriptGrants = defaults.stackscriptGrants;
@@ -344,17 +337,6 @@ public final class GetUserResult {
             return this;
         }
         @CustomType.Setter
-        public Builder placementGroupGrants(List<GetUserPlacementGroupGrant> placementGroupGrants) {
-            if (placementGroupGrants == null) {
-              throw new MissingRequiredPropertyException("GetUserResult", "placementGroupGrants");
-            }
-            this.placementGroupGrants = placementGroupGrants;
-            return this;
-        }
-        public Builder placementGroupGrants(GetUserPlacementGroupGrant... placementGroupGrants) {
-            return placementGroupGrants(List.of(placementGroupGrants));
-        }
-        @CustomType.Setter
         public Builder restricted(Boolean restricted) {
             if (restricted == null) {
               throw new MissingRequiredPropertyException("GetUserResult", "restricted");
@@ -451,7 +433,6 @@ public final class GetUserResult {
             _resultValue.longviewGrants = longviewGrants;
             _resultValue.nodebalancerGrants = nodebalancerGrants;
             _resultValue.passwordCreated = passwordCreated;
-            _resultValue.placementGroupGrants = placementGroupGrants;
             _resultValue.restricted = restricted;
             _resultValue.sshKeys = sshKeys;
             _resultValue.stackscriptGrants = stackscriptGrants;

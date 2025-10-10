@@ -101,6 +101,10 @@ import com.pulumi.linode.inputs.GetNodeBalancerNodePlainArgs;
 import com.pulumi.linode.inputs.GetNodeBalancerPlainArgs;
 import com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;
 import com.pulumi.linode.inputs.GetNodebalancerConfigsPlainArgs;
+import com.pulumi.linode.inputs.GetNodebalancerVpcArgs;
+import com.pulumi.linode.inputs.GetNodebalancerVpcPlainArgs;
+import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+import com.pulumi.linode.inputs.GetNodebalancerVpcsPlainArgs;
 import com.pulumi.linode.inputs.GetNodebalancersArgs;
 import com.pulumi.linode.inputs.GetNodebalancersPlainArgs;
 import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
@@ -199,6 +203,8 @@ import com.pulumi.linode.outputs.GetNodeBalancerConfigResult;
 import com.pulumi.linode.outputs.GetNodeBalancerNodeResult;
 import com.pulumi.linode.outputs.GetNodeBalancerResult;
 import com.pulumi.linode.outputs.GetNodebalancerConfigsResult;
+import com.pulumi.linode.outputs.GetNodebalancerVpcResult;
+import com.pulumi.linode.outputs.GetNodebalancerVpcsResult;
 import com.pulumi.linode.outputs.GetNodebalancersResult;
 import com.pulumi.linode.outputs.GetObjectStorageClusterResult;
 import com.pulumi.linode.outputs.GetObjectStorageEndpointsResult;
@@ -8868,6 +8874,16 @@ public final class LinodeFunctions {
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
      * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+     * 
      */
     public static Output<GetDatabaseMysqlV2Result> getDatabaseMysqlV2(GetDatabaseMysqlV2Args args) {
         return getDatabaseMysqlV2(args, InvokeOptions.Empty);
@@ -8932,6 +8948,16 @@ public final class LinodeFunctions {
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
      * 
      */
     public static CompletableFuture<GetDatabaseMysqlV2Result> getDatabaseMysqlV2Plain(GetDatabaseMysqlV2PlainArgs args) {
@@ -8998,6 +9024,16 @@ public final class LinodeFunctions {
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
      * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+     * 
      */
     public static Output<GetDatabaseMysqlV2Result> getDatabaseMysqlV2(GetDatabaseMysqlV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", TypeShape.of(GetDatabaseMysqlV2Result.class), args, Utilities.withVersion(options));
@@ -9063,6 +9099,16 @@ public final class LinodeFunctions {
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
      * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+     * 
      */
     public static Output<GetDatabaseMysqlV2Result> getDatabaseMysqlV2(GetDatabaseMysqlV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", TypeShape.of(GetDatabaseMysqlV2Result.class), args, Utilities.withVersion(options));
@@ -9127,6 +9173,16 @@ public final class LinodeFunctions {
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
      * 
      */
     public static CompletableFuture<GetDatabaseMysqlV2Result> getDatabaseMysqlV2Plain(GetDatabaseMysqlV2PlainArgs args, InvokeOptions options) {
@@ -15262,6 +15318,16 @@ public final class LinodeFunctions {
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
      * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+     * 
      */
     public static Output<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args args) {
         return getDatabasePostgresqlV2(args, InvokeOptions.Empty);
@@ -15326,6 +15392,16 @@ public final class LinodeFunctions {
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
      * 
      */
     public static CompletableFuture<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2Plain(GetDatabasePostgresqlV2PlainArgs args) {
@@ -15392,6 +15468,16 @@ public final class LinodeFunctions {
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
      * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+     * 
      */
     public static Output<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", TypeShape.of(GetDatabasePostgresqlV2Result.class), args, Utilities.withVersion(options));
@@ -15457,6 +15543,16 @@ public final class LinodeFunctions {
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
      * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+     * 
      */
     public static Output<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2(GetDatabasePostgresqlV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", TypeShape.of(GetDatabasePostgresqlV2Result.class), args, Utilities.withVersion(options));
@@ -15521,6 +15617,16 @@ public final class LinodeFunctions {
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
      * * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+     * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
      * 
      */
     public static CompletableFuture<GetDatabasePostgresqlV2Result> getDatabasePostgresqlV2Plain(GetDatabasePostgresqlV2PlainArgs args, InvokeOptions options) {
@@ -15602,6 +15708,16 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+     * 
      */
     public static Output<GetDatabasesResult> getDatabases() {
         return getDatabases(GetDatabasesArgs.Empty, InvokeOptions.Empty);
@@ -15681,6 +15797,16 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain() {
@@ -15762,6 +15888,16 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+     * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args) {
         return getDatabases(args, InvokeOptions.Empty);
@@ -15841,6 +15977,16 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args) {
@@ -15922,6 +16068,16 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+     * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
@@ -16002,6 +16158,16 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+     * 
      */
     public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("linode:index/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
@@ -16081,6 +16247,16 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## private_network
+     * 
+     * The following arguments are exposed by the `private_network` attribute:
+     * 
+     * * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     * 
+     * * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+     * 
+     * * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
      * 
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args, InvokeOptions options) {
@@ -26985,6 +27161,706 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", TypeShape.of(GetNodebalancerConfigsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     * Provides information about a NodeBalancer VPC configuration.
+     * For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve information about a NodeBalancer VPC configuration:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
+     *             .nodebalancerId(123)
+     *             .id(456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNodebalancerVpcResult> getNodebalancerVpc(GetNodebalancerVpcArgs args) {
+        return getNodebalancerVpc(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     * Provides information about a NodeBalancer VPC configuration.
+     * For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve information about a NodeBalancer VPC configuration:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
+     *             .nodebalancerId(123)
+     *             .id(456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNodebalancerVpcResult> getNodebalancerVpcPlain(GetNodebalancerVpcPlainArgs args) {
+        return getNodebalancerVpcPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     * Provides information about a NodeBalancer VPC configuration.
+     * For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve information about a NodeBalancer VPC configuration:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
+     *             .nodebalancerId(123)
+     *             .id(456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNodebalancerVpcResult> getNodebalancerVpc(GetNodebalancerVpcArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getNodebalancerVpc:getNodebalancerVpc", TypeShape.of(GetNodebalancerVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     * Provides information about a NodeBalancer VPC configuration.
+     * For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve information about a NodeBalancer VPC configuration:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
+     *             .nodebalancerId(123)
+     *             .id(456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNodebalancerVpcResult> getNodebalancerVpc(GetNodebalancerVpcArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getNodebalancerVpc:getNodebalancerVpc", TypeShape.of(GetNodebalancerVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     * Provides information about a NodeBalancer VPC configuration.
+     * For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve information about a NodeBalancer VPC configuration:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
+     *             .nodebalancerId(123)
+     *             .id(456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNodebalancerVpcResult> getNodebalancerVpcPlain(GetNodebalancerVpcPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getNodebalancerVpc:getNodebalancerVpc", TypeShape.of(GetNodebalancerVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     * Provides information about Linode NodeBalancers VPC configurations that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all VPC configurations under a NodeBalancer:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of &#34;10.0.0.4/30&#34;:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .filters(GetNodebalancerVpcsFilterArgs.builder()
+     *                 .name("ipv4_range")
+     *                 .values("10.0.0.4/30")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `ipv4_range`
+     * 
+     * * `nodebalancer_id`
+     * 
+     * * `subnet_id`
+     * 
+     * * `vpc_id`
+     * 
+     */
+    public static Output<GetNodebalancerVpcsResult> getNodebalancerVpcs(GetNodebalancerVpcsArgs args) {
+        return getNodebalancerVpcs(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     * Provides information about Linode NodeBalancers VPC configurations that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all VPC configurations under a NodeBalancer:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of &#34;10.0.0.4/30&#34;:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .filters(GetNodebalancerVpcsFilterArgs.builder()
+     *                 .name("ipv4_range")
+     *                 .values("10.0.0.4/30")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `ipv4_range`
+     * 
+     * * `nodebalancer_id`
+     * 
+     * * `subnet_id`
+     * 
+     * * `vpc_id`
+     * 
+     */
+    public static CompletableFuture<GetNodebalancerVpcsResult> getNodebalancerVpcsPlain(GetNodebalancerVpcsPlainArgs args) {
+        return getNodebalancerVpcsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     * Provides information about Linode NodeBalancers VPC configurations that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all VPC configurations under a NodeBalancer:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of &#34;10.0.0.4/30&#34;:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .filters(GetNodebalancerVpcsFilterArgs.builder()
+     *                 .name("ipv4_range")
+     *                 .values("10.0.0.4/30")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `ipv4_range`
+     * 
+     * * `nodebalancer_id`
+     * 
+     * * `subnet_id`
+     * 
+     * * `vpc_id`
+     * 
+     */
+    public static Output<GetNodebalancerVpcsResult> getNodebalancerVpcs(GetNodebalancerVpcsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getNodebalancerVpcs:getNodebalancerVpcs", TypeShape.of(GetNodebalancerVpcsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     * Provides information about Linode NodeBalancers VPC configurations that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all VPC configurations under a NodeBalancer:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of &#34;10.0.0.4/30&#34;:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .filters(GetNodebalancerVpcsFilterArgs.builder()
+     *                 .name("ipv4_range")
+     *                 .values("10.0.0.4/30")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `ipv4_range`
+     * 
+     * * `nodebalancer_id`
+     * 
+     * * `subnet_id`
+     * 
+     * * `vpc_id`
+     * 
+     */
+    public static Output<GetNodebalancerVpcsResult> getNodebalancerVpcs(GetNodebalancerVpcsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getNodebalancerVpcs:getNodebalancerVpcs", TypeShape.of(GetNodebalancerVpcsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     * Provides information about Linode NodeBalancers VPC configurations that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all VPC configurations under a NodeBalancer:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of &#34;10.0.0.4/30&#34;:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
+     *             .filters(GetNodebalancerVpcsFilterArgs.builder()
+     *                 .name("ipv4_range")
+     *                 .values("10.0.0.4/30")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `ipv4_range`
+     * 
+     * * `nodebalancer_id`
+     * 
+     * * `subnet_id`
+     * 
+     * * `vpc_id`
+     * 
+     */
+    public static CompletableFuture<GetNodebalancerVpcsResult> getNodebalancerVpcsPlain(GetNodebalancerVpcsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getNodebalancerVpcs:getNodebalancerVpcs", TypeShape.of(GetNodebalancerVpcsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides information about Linode NodeBalancers that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
      * 
@@ -33668,6 +34544,18 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under this VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
+     * 
+     * ### Subnets Reference
+     * 
+     * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+     * 
      */
     public static Output<GetVpcResult> getVpc(GetVpcArgs args) {
         return getVpc(args, InvokeOptions.Empty);
@@ -33711,6 +34599,18 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under this VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
+     * 
+     * ### Subnets Reference
+     * 
+     * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
      * 
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args) {
@@ -33756,6 +34656,18 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under this VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
+     * 
+     * ### Subnets Reference
+     * 
+     * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+     * 
      */
     public static Output<GetVpcResult> getVpc(GetVpcArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
@@ -33799,6 +34711,18 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under this VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
+     * 
+     * ### Subnets Reference
+     * 
+     * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
      * 
      */
     public static Output<GetVpcResult> getVpc(GetVpcArgs args, InvokeOutputOptions options) {
@@ -33844,6 +34768,18 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under this VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
+     * 
+     * ### Subnets Reference
+     * 
+     * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+     * 
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
@@ -33851,9 +34787,6 @@ public final class LinodeFunctions {
     /**
      * Provides information about a list of Linode VPC IPs that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
-     * 
-     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
      * 
      * ## Example Usage
      * 
@@ -33923,6 +34856,39 @@ public final class LinodeFunctions {
      *             .build());
      * 
      *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-vpc-ipv6 = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .ipv6(true)
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -33948,9 +34914,6 @@ public final class LinodeFunctions {
      * Provides information about a list of Linode VPC IPs that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
      * 
-     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
-     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPC IPs.
@@ -34019,6 +34982,39 @@ public final class LinodeFunctions {
      *             .build());
      * 
      *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-vpc-ipv6 = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .ipv6(true)
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -34044,9 +35040,6 @@ public final class LinodeFunctions {
      * Provides information about a list of Linode VPC IPs that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
      * 
-     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
-     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPC IPs.
@@ -34115,6 +35108,39 @@ public final class LinodeFunctions {
      *             .build());
      * 
      *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-vpc-ipv6 = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .ipv6(true)
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -34140,9 +35166,6 @@ public final class LinodeFunctions {
      * Provides information about a list of Linode VPC IPs that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
      * 
-     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
-     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPC IPs.
@@ -34211,6 +35234,39 @@ public final class LinodeFunctions {
      *             .build());
      * 
      *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-vpc-ipv6 = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .ipv6(true)
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -34236,9 +35292,6 @@ public final class LinodeFunctions {
      * Provides information about a list of Linode VPC IPs that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
      * 
-     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
-     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPC IPs.
@@ -34307,6 +35360,39 @@ public final class LinodeFunctions {
      *             .build());
      * 
      *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-vpc-ipv6 = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .ipv6(true)
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -34332,9 +35418,6 @@ public final class LinodeFunctions {
      * Provides information about a list of Linode VPC IPs that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
      * 
-     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
-     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPC IPs.
@@ -34403,6 +35486,39 @@ public final class LinodeFunctions {
      *             .build());
      * 
      *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-vpc-ipv6 = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .ipv6(true)
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -34428,9 +35544,6 @@ public final class LinodeFunctions {
      * Provides information about a list of Linode VPC IPs that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
      * 
-     * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
-     * 
      * ## Example Usage
      * 
      * The following example shows how one might use this data source to list VPC IPs.
@@ -34499,6 +35612,39 @@ public final class LinodeFunctions {
      *             .build());
      * 
      *         ctx.export("vpcIps", specific_vpc_ips.vpcIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetVpcIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-vpc-ipv6 = LinodeFunctions.getVpcIps(GetVpcIpsArgs.builder()
+     *             .ipv6(true)
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -34561,6 +35707,14 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * The following attributes are exported under each entry of the `ipv6` field:
+     * 
+     * * `range` - An IPv6 range allocated to this subnet in CIDR format.
+     * 
      */
     public static Output<GetVpcSubnetResult> getVpcSubnet(GetVpcSubnetArgs args) {
         return getVpcSubnet(args, InvokeOptions.Empty);
@@ -34605,6 +35759,14 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * The following attributes are exported under each entry of the `ipv6` field:
+     * 
+     * * `range` - An IPv6 range allocated to this subnet in CIDR format.
      * 
      */
     public static CompletableFuture<GetVpcSubnetResult> getVpcSubnetPlain(GetVpcSubnetPlainArgs args) {
@@ -34651,6 +35813,14 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * The following attributes are exported under each entry of the `ipv6` field:
+     * 
+     * * `range` - An IPv6 range allocated to this subnet in CIDR format.
+     * 
      */
     public static Output<GetVpcSubnetResult> getVpcSubnet(GetVpcSubnetArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getVpcSubnet:getVpcSubnet", TypeShape.of(GetVpcSubnetResult.class), args, Utilities.withVersion(options));
@@ -34696,6 +35866,14 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * The following attributes are exported under each entry of the `ipv6` field:
+     * 
+     * * `range` - An IPv6 range allocated to this subnet in CIDR format.
+     * 
      */
     public static Output<GetVpcSubnetResult> getVpcSubnet(GetVpcSubnetArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("linode:index/getVpcSubnet:getVpcSubnet", TypeShape.of(GetVpcSubnetResult.class), args, Utilities.withVersion(options));
@@ -34740,6 +35918,14 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * The following attributes are exported under each entry of the `ipv6` field:
+     * 
+     * * `range` - An IPv6 range allocated to this subnet in CIDR format.
      * 
      */
     public static CompletableFuture<GetVpcSubnetResult> getVpcSubnetPlain(GetVpcSubnetPlainArgs args, InvokeOptions options) {
@@ -34788,6 +35974,14 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * The following attributes are exported under each entry of the `ipv6` field:
+     * 
+     * * `range` - An IPv6 range allocated to this subnet in CIDR format.
      * 
      * ## Filterable Fields
      * 
@@ -34845,6 +36039,14 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * The following attributes are exported under each entry of the `ipv6` field:
+     * 
+     * * `range` - An IPv6 range allocated to this subnet in CIDR format.
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -34900,6 +36102,14 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * The following attributes are exported under each entry of the `ipv6` field:
+     * 
+     * * `range` - An IPv6 range allocated to this subnet in CIDR format.
      * 
      * ## Filterable Fields
      * 
@@ -34957,6 +36167,14 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * The following attributes are exported under each entry of the `ipv6` field:
+     * 
+     * * `range` - An IPv6 range allocated to this subnet in CIDR format.
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -35013,6 +36231,14 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * The following attributes are exported under each entry of the `ipv6` field:
+     * 
+     * * `range` - An IPv6 range allocated to this subnet in CIDR format.
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -35067,6 +36293,14 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under a VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
      * 
      * ## Filterable Fields
      * 
@@ -35125,6 +36359,14 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under a VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -35181,6 +36423,14 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under a VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
      * 
      * ## Filterable Fields
      * 
@@ -35239,6 +36489,14 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under a VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -35295,6 +36553,14 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under a VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
      * 
      * ## Filterable Fields
      * 
@@ -35353,6 +36619,14 @@ public final class LinodeFunctions {
      * }
      * </pre>
      * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under a VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -35409,6 +36683,14 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
+     * 
+     * ## IPv6
+     * 
+     * &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+     * 
+     * Contains information about a single IPv6 allocation under a VPC.
+     * 
+     * * `range` - The allocated range in CIDR format.
      * 
      * ## Filterable Fields
      * 

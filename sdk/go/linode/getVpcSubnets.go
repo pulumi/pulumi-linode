@@ -51,6 +51,14 @@ import (
 //
 // ```
 //
+// ## IPv6
+//
+// > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+//
+// The following attributes are exported under each entry of the `ipv6` field:
+//
+// * `range` - An IPv6 range allocated to this subnet in CIDR format.
+//
 // ## Filterable Fields
 //
 // * `id`
