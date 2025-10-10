@@ -6,6 +6,7 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigInterfaceIpv4;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigInterfaceIpv6;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -41,6 +42,11 @@ public final class GetInstancesInstanceConfigInterface {
      * 
      */
     private GetInstancesInstanceConfigInterfaceIpv4 ipv4;
+    /**
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+     * 
+     */
+    private GetInstancesInstanceConfigInterfaceIpv6 ipv6;
     /**
      * @return The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      * 
@@ -104,6 +110,13 @@ public final class GetInstancesInstanceConfigInterface {
         return this.ipv4;
     }
     /**
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+     * 
+     */
+    public GetInstancesInstanceConfigInterfaceIpv6 ipv6() {
+        return this.ipv6;
+    }
+    /**
      * @return The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      * 
      */
@@ -153,6 +166,7 @@ public final class GetInstancesInstanceConfigInterface {
         private @Nullable List<String> ipRanges;
         private @Nullable String ipamAddress;
         private GetInstancesInstanceConfigInterfaceIpv4 ipv4;
+        private GetInstancesInstanceConfigInterfaceIpv6 ipv6;
         private @Nullable String label;
         private @Nullable Boolean primary;
         private String purpose;
@@ -166,6 +180,7 @@ public final class GetInstancesInstanceConfigInterface {
     	      this.ipRanges = defaults.ipRanges;
     	      this.ipamAddress = defaults.ipamAddress;
     	      this.ipv4 = defaults.ipv4;
+    	      this.ipv6 = defaults.ipv6;
     	      this.label = defaults.label;
     	      this.primary = defaults.primary;
     	      this.purpose = defaults.purpose;
@@ -213,6 +228,14 @@ public final class GetInstancesInstanceConfigInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder ipv6(GetInstancesInstanceConfigInterfaceIpv6 ipv6) {
+            if (ipv6 == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigInterface", "ipv6");
+            }
+            this.ipv6 = ipv6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
 
             this.label = label;
@@ -253,6 +276,7 @@ public final class GetInstancesInstanceConfigInterface {
             _resultValue.ipRanges = ipRanges;
             _resultValue.ipamAddress = ipamAddress;
             _resultValue.ipv4 = ipv4;
+            _resultValue.ipv6 = ipv6;
             _resultValue.label = label;
             _resultValue.primary = primary;
             _resultValue.purpose = purpose;

@@ -39,6 +39,10 @@ type NodeBalancerNode struct {
 	NodebalancerId pulumi.IntOutput `pulumi:"nodebalancerId"`
 	// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 	Status pulumi.StringOutput `pulumi:"status"`
+	// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+	SubnetId pulumi.IntPtrOutput `pulumi:"subnetId"`
+	// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+	VpcConfigId pulumi.IntOutput `pulumi:"vpcConfigId"`
 	// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
 	Weight pulumi.IntOutput `pulumi:"weight"`
 }
@@ -99,6 +103,10 @@ type nodeBalancerNodeState struct {
 	NodebalancerId *int `pulumi:"nodebalancerId"`
 	// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 	Status *string `pulumi:"status"`
+	// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+	SubnetId *int `pulumi:"subnetId"`
+	// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+	VpcConfigId *int `pulumi:"vpcConfigId"`
 	// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
 	Weight *int `pulumi:"weight"`
 }
@@ -118,6 +126,10 @@ type NodeBalancerNodeState struct {
 	NodebalancerId pulumi.IntPtrInput
 	// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 	Status pulumi.StringPtrInput
+	// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+	SubnetId pulumi.IntPtrInput
+	// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+	VpcConfigId pulumi.IntPtrInput
 	// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
 	Weight pulumi.IntPtrInput
 }
@@ -139,6 +151,8 @@ type nodeBalancerNodeArgs struct {
 	Mode *string `pulumi:"mode"`
 	// The ID of the NodeBalancer to access.
 	NodebalancerId int `pulumi:"nodebalancerId"`
+	// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+	SubnetId *int `pulumi:"subnetId"`
 	// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
 	Weight *int `pulumi:"weight"`
 }
@@ -157,6 +171,8 @@ type NodeBalancerNodeArgs struct {
 	Mode pulumi.StringPtrInput
 	// The ID of the NodeBalancer to access.
 	NodebalancerId pulumi.IntInput
+	// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+	SubnetId pulumi.IntPtrInput
 	// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
 	Weight pulumi.IntPtrInput
 }
@@ -278,6 +294,16 @@ func (o NodeBalancerNodeOutput) NodebalancerId() pulumi.IntOutput {
 // The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
 func (o NodeBalancerNodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancerNode) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+func (o NodeBalancerNodeOutput) SubnetId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodeBalancerNode) pulumi.IntPtrOutput { return v.SubnetId }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+func (o NodeBalancerNodeOutput) VpcConfigId() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodeBalancerNode) pulumi.IntOutput { return v.VpcConfigId }).(pulumi.IntOutput)
 }
 
 // Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).

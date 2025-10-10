@@ -44,6 +44,16 @@ import * as utilities from "./utilities";
  * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
  *
  * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+ *
+ * ## privateNetwork
+ *
+ * The following arguments are exposed by the `privateNetwork` attribute:
+ *
+ * * `vpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+ *
+ * * `subnetId` - The ID of the VPC subnet to restrict access to this database using.
+ *
+ * * `publicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
  */
 export function getDatabaseMysqlV2(args: GetDatabaseMysqlV2Args, opts?: pulumi.InvokeOptions): Promise<GetDatabaseMysqlV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -238,6 +248,7 @@ export interface GetDatabaseMysqlV2Result {
      * The access port for this Managed Database.
      */
     readonly port: number;
+    readonly privateNetwork: outputs.GetDatabaseMysqlV2PrivateNetwork;
     /**
      * The region to use for the Managed Database.
      */
@@ -314,6 +325,16 @@ export interface GetDatabaseMysqlV2Result {
  * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
  *
  * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+ *
+ * ## privateNetwork
+ *
+ * The following arguments are exposed by the `privateNetwork` attribute:
+ *
+ * * `vpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+ *
+ * * `subnetId` - The ID of the VPC subnet to restrict access to this database using.
+ *
+ * * `publicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
  */
 export function getDatabaseMysqlV2Output(args: GetDatabaseMysqlV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseMysqlV2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -204,6 +204,8 @@ type DatabasePostgresqlV2 struct {
 	ForkRestoreTime pulumi.StringOutput `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
+	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	//
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	ForkSource pulumi.IntPtrOutput `pulumi:"forkSource"`
 	// The primary host for the Managed Database.
@@ -222,6 +224,8 @@ type DatabasePostgresqlV2 struct {
 	Platform pulumi.StringOutput `pulumi:"platform"`
 	// The access port for this Managed Database.
 	Port pulumi.IntOutput `pulumi:"port"`
+	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	PrivateNetwork DatabasePostgresqlV2PrivateNetworkPtrOutput `pulumi:"privateNetwork"`
 	// The region to use for the Managed Database.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The randomly-generated root password for the Managed Database instance.
@@ -407,6 +411,8 @@ type databasePostgresqlV2State struct {
 	ForkRestoreTime *string `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
+	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	//
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	ForkSource *int `pulumi:"forkSource"`
 	// The primary host for the Managed Database.
@@ -425,6 +431,8 @@ type databasePostgresqlV2State struct {
 	Platform *string `pulumi:"platform"`
 	// The access port for this Managed Database.
 	Port *int `pulumi:"port"`
+	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	PrivateNetwork *DatabasePostgresqlV2PrivateNetwork `pulumi:"privateNetwork"`
 	// The region to use for the Managed Database.
 	Region *string `pulumi:"region"`
 	// The randomly-generated root password for the Managed Database instance.
@@ -563,6 +571,8 @@ type DatabasePostgresqlV2State struct {
 	ForkRestoreTime pulumi.StringPtrInput
 	// The ID of the database that was forked from.
 	//
+	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	//
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	ForkSource pulumi.IntPtrInput
 	// The primary host for the Managed Database.
@@ -581,6 +591,8 @@ type DatabasePostgresqlV2State struct {
 	Platform pulumi.StringPtrInput
 	// The access port for this Managed Database.
 	Port pulumi.IntPtrInput
+	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	PrivateNetwork DatabasePostgresqlV2PrivateNetworkPtrInput
 	// The region to use for the Managed Database.
 	Region pulumi.StringPtrInput
 	// The randomly-generated root password for the Managed Database instance.
@@ -715,10 +727,14 @@ type databasePostgresqlV2Args struct {
 	ForkRestoreTime *string `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
+	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	//
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	ForkSource *int `pulumi:"forkSource"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label string `pulumi:"label"`
+	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	PrivateNetwork *DatabasePostgresqlV2PrivateNetwork `pulumi:"privateNetwork"`
 	// The region to use for the Managed Database.
 	Region string `pulumi:"region"`
 	// Whether this Managed Database should be suspended.
@@ -838,10 +854,14 @@ type DatabasePostgresqlV2Args struct {
 	ForkRestoreTime pulumi.StringPtrInput
 	// The ID of the database that was forked from.
 	//
+	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	//
 	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 	ForkSource pulumi.IntPtrInput
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringInput
+	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	PrivateNetwork DatabasePostgresqlV2PrivateNetworkPtrInput
 	// The region to use for the Managed Database.
 	Region pulumi.StringInput
 	// Whether this Managed Database should be suspended.
@@ -1225,6 +1245,8 @@ func (o DatabasePostgresqlV2Output) ForkRestoreTime() pulumi.StringOutput {
 
 // The ID of the database that was forked from.
 //
+// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+//
 // * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
 func (o DatabasePostgresqlV2Output) ForkSource() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2) pulumi.IntPtrOutput { return v.ForkSource }).(pulumi.IntPtrOutput)
@@ -1268,6 +1290,11 @@ func (o DatabasePostgresqlV2Output) Platform() pulumi.StringOutput {
 // The access port for this Managed Database.
 func (o DatabasePostgresqlV2Output) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+func (o DatabasePostgresqlV2Output) PrivateNetwork() DatabasePostgresqlV2PrivateNetworkPtrOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2) DatabasePostgresqlV2PrivateNetworkPtrOutput { return v.PrivateNetwork }).(DatabasePostgresqlV2PrivateNetworkPtrOutput)
 }
 
 // The region to use for the Managed Database.

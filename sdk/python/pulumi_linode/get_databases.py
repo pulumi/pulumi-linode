@@ -121,6 +121,16 @@ def get_databases(databases: Optional[Sequence[Union['GetDatabasesDatabaseArgs',
     pulumi.export("databaseIds", [__item.id for __item in mysql.databases])
     ```
 
+    ## private_network
+
+    The following arguments are exposed by the `private_network` attribute:
+
+    * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+
+    * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+
+    * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+
 
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param _builtins.str order_by: The attribute to order the results by. (`version`)
@@ -172,6 +182,16 @@ def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[Unio
     }])
     pulumi.export("databaseIds", [__item.id for __item in mysql.databases])
     ```
+
+    ## private_network
+
+    The following arguments are exposed by the `private_network` attribute:
+
+    * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+
+    * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+
+    * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
 
 
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)

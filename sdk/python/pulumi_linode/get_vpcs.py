@@ -91,6 +91,14 @@ def get_vpcs(filters: Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilte
     pulumi.export("vpcs", filtered_vpcs.vpcs)
     ```
 
+    ## IPv6
+
+    > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+
+    Contains information about a single IPv6 allocation under a VPC.
+
+    * `range` - The allocated range in CIDR format.
+
     ## Filterable Fields
 
     * `id`
@@ -132,6 +140,14 @@ def get_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetV
     }])
     pulumi.export("vpcs", filtered_vpcs.vpcs)
     ```
+
+    ## IPv6
+
+    > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+
+    Contains information about a single IPv6 allocation under a VPC.
+
+    * `range` - The allocated range in CIDR format.
 
     ## Filterable Fields
 

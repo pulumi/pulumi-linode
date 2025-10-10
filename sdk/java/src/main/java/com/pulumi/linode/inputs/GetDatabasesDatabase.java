@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetDatabasesDatabasePrivateNetwork;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -167,6 +168,21 @@ public final class GetDatabasesDatabase extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    @Import(name="privateNetwork", required=true)
+    private GetDatabasesDatabasePrivateNetwork privateNetwork;
+
+    /**
+     * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    public GetDatabasesDatabasePrivateNetwork privateNetwork() {
+        return this.privateNetwork;
+    }
+
+    /**
      * The region to use for the Managed Database.
      * 
      */
@@ -284,6 +300,7 @@ public final class GetDatabasesDatabase extends com.pulumi.resources.InvokeArgs 
         this.id = $.id;
         this.instanceUri = $.instanceUri;
         this.label = $.label;
+        this.privateNetwork = $.privateNetwork;
         this.region = $.region;
         this.replicationType = $.replicationType;
         this.sslConnection = $.sslConnection;
@@ -432,6 +449,17 @@ public final class GetDatabasesDatabase extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
+         * @param privateNetwork Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateNetwork(GetDatabasesDatabasePrivateNetwork privateNetwork) {
+            $.privateNetwork = privateNetwork;
+            return this;
+        }
+
+        /**
          * @param region The region to use for the Managed Database.
          * 
          * @return builder
@@ -538,6 +566,9 @@ public final class GetDatabasesDatabase extends com.pulumi.resources.InvokeArgs 
             }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetDatabasesDatabase", "label");
+            }
+            if ($.privateNetwork == null) {
+                throw new MissingRequiredPropertyException("GetDatabasesDatabase", "privateNetwork");
             }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("GetDatabasesDatabase", "region");

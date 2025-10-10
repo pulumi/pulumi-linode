@@ -6,7 +6,9 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetVpcsVpcIpv6Args;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -60,6 +62,21 @@ public final class GetVpcsVpcArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of IPv6 allocations under this VPC.
+     * 
+     */
+    @Import(name="ipv6s", required=true)
+    private Output<List<GetVpcsVpcIpv6Args>> ipv6s;
+
+    /**
+     * @return A list of IPv6 allocations under this VPC.
+     * 
+     */
+    public Output<List<GetVpcsVpcIpv6Args>> ipv6s() {
+        return this.ipv6s;
+    }
+
+    /**
      * The label of the VPC.
      * 
      */
@@ -110,6 +127,7 @@ public final class GetVpcsVpcArgs extends com.pulumi.resources.ResourceArgs {
         this.created = $.created;
         this.description = $.description;
         this.id = $.id;
+        this.ipv6s = $.ipv6s;
         this.label = $.label;
         this.region = $.region;
         this.updated = $.updated;
@@ -197,6 +215,37 @@ public final class GetVpcsVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param ipv6s A list of IPv6 allocations under this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(Output<List<GetVpcsVpcIpv6Args>> ipv6s) {
+            $.ipv6s = ipv6s;
+            return this;
+        }
+
+        /**
+         * @param ipv6s A list of IPv6 allocations under this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(List<GetVpcsVpcIpv6Args> ipv6s) {
+            return ipv6s(Output.of(ipv6s));
+        }
+
+        /**
+         * @param ipv6s A list of IPv6 allocations under this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(GetVpcsVpcIpv6Args... ipv6s) {
+            return ipv6s(List.of(ipv6s));
+        }
+
+        /**
          * @param label The label of the VPC.
          * 
          * @return builder
@@ -268,6 +317,9 @@ public final class GetVpcsVpcArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("GetVpcsVpcArgs", "id");
+            }
+            if ($.ipv6s == null) {
+                throw new MissingRequiredPropertyException("GetVpcsVpcArgs", "ipv6s");
             }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetVpcsVpcArgs", "label");

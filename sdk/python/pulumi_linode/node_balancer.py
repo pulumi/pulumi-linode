@@ -26,7 +26,8 @@ class NodeBalancerArgs:
                  firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]]] = None):
         """
         The set of arguments for constructing a NodeBalancer resource.
         :param pulumi.Input[_builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
@@ -39,6 +40,7 @@ class NodeBalancerArgs:
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
         """
         if client_conn_throttle is not None:
             pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
@@ -52,6 +54,8 @@ class NodeBalancerArgs:
             pulumi.set(__self__, "region", region)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vpcs is not None:
+            pulumi.set(__self__, "vpcs", vpcs)
 
     @_builtins.property
     @pulumi.getter(name="clientConnThrottle")
@@ -129,6 +133,18 @@ class NodeBalancerArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]]]:
+        """
+        A list of VPCs to be assigned to this NodeBalancer.
+        """
+        return pulumi.get(self, "vpcs")
+
+    @vpcs.setter
+    def vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]]]):
+        pulumi.set(self, "vpcs", value)
+
 
 @pulumi.input_type
 class _NodeBalancerState:
@@ -145,7 +161,8 @@ class _NodeBalancerState:
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  transfers: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerTransferArgs']]]] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None):
+                 updated: Optional[pulumi.Input[_builtins.str]] = None,
+                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]]] = None):
         """
         Input properties used for looking up and filtering NodeBalancer resources.
         :param pulumi.Input[_builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
@@ -165,6 +182,7 @@ class _NodeBalancerState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerTransferArgs']]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
         :param pulumi.Input[_builtins.str] updated: When this firewall was last updated.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
         """
         if client_conn_throttle is not None:
             pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
@@ -192,6 +210,8 @@ class _NodeBalancerState:
             pulumi.set(__self__, "transfers", transfers)
         if updated is not None:
             pulumi.set(__self__, "updated", updated)
+        if vpcs is not None:
+            pulumi.set(__self__, "vpcs", vpcs)
 
     @_builtins.property
     @pulumi.getter(name="clientConnThrottle")
@@ -353,6 +373,18 @@ class _NodeBalancerState:
     def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]]]:
+        """
+        A list of VPCs to be assigned to this NodeBalancer.
+        """
+        return pulumi.get(self, "vpcs")
+
+    @vpcs.setter
+    def vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]]]):
+        pulumi.set(self, "vpcs", value)
+
 
 @pulumi.type_token("linode:index/nodeBalancer:NodeBalancer")
 class NodeBalancer(pulumi.CustomResource):
@@ -366,6 +398,7 @@ class NodeBalancer(pulumi.CustomResource):
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
@@ -387,6 +420,8 @@ class NodeBalancer(pulumi.CustomResource):
             tags=["foobar"])
         ```
 
+        The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
+
         ## Import
 
         Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -407,6 +442,7 @@ class NodeBalancer(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict']]]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
         """
         ...
     @overload
@@ -433,6 +469,8 @@ class NodeBalancer(pulumi.CustomResource):
             client_udp_sess_throttle=10,
             tags=["foobar"])
         ```
+
+        The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
 
         ## Import
 
@@ -463,6 +501,7 @@ class NodeBalancer(pulumi.CustomResource):
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -478,6 +517,7 @@ class NodeBalancer(pulumi.CustomResource):
             __props__.__dict__["label"] = label
             __props__.__dict__["region"] = region
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["vpcs"] = vpcs
             __props__.__dict__["created"] = None
             __props__.__dict__["firewalls"] = None
             __props__.__dict__["hostname"] = None
@@ -507,7 +547,8 @@ class NodeBalancer(pulumi.CustomResource):
             region: Optional[pulumi.Input[_builtins.str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             transfers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict']]]]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None) -> 'NodeBalancer':
+            updated: Optional[pulumi.Input[_builtins.str]] = None,
+            vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict']]]]] = None) -> 'NodeBalancer':
         """
         Get an existing NodeBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -532,6 +573,7 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict']]]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
         :param pulumi.Input[_builtins.str] updated: When this firewall was last updated.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict']]]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -550,6 +592,7 @@ class NodeBalancer(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         __props__.__dict__["transfers"] = transfers
         __props__.__dict__["updated"] = updated
+        __props__.__dict__["vpcs"] = vpcs
         return NodeBalancer(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -659,4 +702,12 @@ class NodeBalancer(pulumi.CustomResource):
         When this firewall was last updated.
         """
         return pulumi.get(self, "updated")
+
+    @_builtins.property
+    @pulumi.getter
+    def vpcs(self) -> pulumi.Output[Optional[Sequence['outputs.NodeBalancerVpc']]]:
+        """
+        A list of VPCs to be assigned to this NodeBalancer.
+        """
+        return pulumi.get(self, "vpcs")
 

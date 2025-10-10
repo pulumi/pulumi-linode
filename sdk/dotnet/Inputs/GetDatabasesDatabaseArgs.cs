@@ -79,6 +79,12 @@ namespace Pulumi.Linode.Inputs
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
+        /// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// </summary>
+        [Input("privateNetwork", required: true)]
+        public Input<Inputs.GetDatabasesDatabasePrivateNetworkInputArgs> PrivateNetwork { get; set; } = null!;
+
+        /// <summary>
         /// The region to use for the Managed Database.
         /// </summary>
         [Input("region", required: true)]

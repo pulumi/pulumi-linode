@@ -228,6 +228,8 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
     /**
      * The ID of the database that was forked from.
      *
+     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     *
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     declare public readonly forkSource: pulumi.Output<number | undefined>;
@@ -263,6 +265,10 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
      * The access port for this Managed Database.
      */
     declare public /*out*/ readonly port: pulumi.Output<number>;
+    /**
+     * Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     */
+    declare public readonly privateNetwork: pulumi.Output<outputs.DatabaseMysqlV2PrivateNetwork | undefined>;
     /**
      * The region to use for the Managed Database.
      */
@@ -365,6 +371,7 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
             resourceInputs["pendingUpdates"] = state?.pendingUpdates;
             resourceInputs["platform"] = state?.platform;
             resourceInputs["port"] = state?.port;
+            resourceInputs["privateNetwork"] = state?.privateNetwork;
             resourceInputs["region"] = state?.region;
             resourceInputs["rootPassword"] = state?.rootPassword;
             resourceInputs["rootUsername"] = state?.rootUsername;
@@ -424,6 +431,7 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
             resourceInputs["forkRestoreTime"] = args?.forkRestoreTime;
             resourceInputs["forkSource"] = args?.forkSource;
             resourceInputs["label"] = args?.label;
+            resourceInputs["privateNetwork"] = args?.privateNetwork;
             resourceInputs["region"] = args?.region;
             resourceInputs["suspended"] = args?.suspended;
             resourceInputs["timeouts"] = args?.timeouts;
@@ -605,6 +613,8 @@ export interface DatabaseMysqlV2State {
     /**
      * The ID of the database that was forked from.
      *
+     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     *
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     forkSource?: pulumi.Input<number>;
@@ -640,6 +650,10 @@ export interface DatabaseMysqlV2State {
      * The access port for this Managed Database.
      */
     port?: pulumi.Input<number>;
+    /**
+     * Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     */
+    privateNetwork?: pulumi.Input<inputs.DatabaseMysqlV2PrivateNetwork>;
     /**
      * The region to use for the Managed Database.
      */
@@ -820,6 +834,8 @@ export interface DatabaseMysqlV2Args {
     /**
      * The ID of the database that was forked from.
      *
+     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     *
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
     forkSource?: pulumi.Input<number>;
@@ -827,6 +843,10 @@ export interface DatabaseMysqlV2Args {
      * A unique, user-defined string referring to the Managed Database.
      */
     label: pulumi.Input<string>;
+    /**
+     * Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     */
+    privateNetwork?: pulumi.Input<inputs.DatabaseMysqlV2PrivateNetwork>;
     /**
      * The region to use for the Managed Database.
      */

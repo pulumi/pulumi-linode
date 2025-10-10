@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetVpcSubnetsVpcSubnetIpv6Args;
 import com.pulumi.linode.inputs.GetVpcSubnetsVpcSubnetLinodeArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -63,6 +64,21 @@ public final class GetVpcSubnetsVpcSubnetArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The IPv6 ranges of this subnet.
+     * 
+     */
+    @Import(name="ipv6s", required=true)
+    private Output<List<GetVpcSubnetsVpcSubnetIpv6Args>> ipv6s;
+
+    /**
+     * @return The IPv6 ranges of this subnet.
+     * 
+     */
+    public Output<List<GetVpcSubnetsVpcSubnetIpv6Args>> ipv6s() {
+        return this.ipv6s;
+    }
+
+    /**
      * The label of the VPC subnet.
      * 
      */
@@ -113,6 +129,7 @@ public final class GetVpcSubnetsVpcSubnetArgs extends com.pulumi.resources.Resou
         this.created = $.created;
         this.id = $.id;
         this.ipv4 = $.ipv4;
+        this.ipv6s = $.ipv6s;
         this.label = $.label;
         this.linodes = $.linodes;
         this.updated = $.updated;
@@ -200,6 +217,37 @@ public final class GetVpcSubnetsVpcSubnetArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param ipv6s The IPv6 ranges of this subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(Output<List<GetVpcSubnetsVpcSubnetIpv6Args>> ipv6s) {
+            $.ipv6s = ipv6s;
+            return this;
+        }
+
+        /**
+         * @param ipv6s The IPv6 ranges of this subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(List<GetVpcSubnetsVpcSubnetIpv6Args> ipv6s) {
+            return ipv6s(Output.of(ipv6s));
+        }
+
+        /**
+         * @param ipv6s The IPv6 ranges of this subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(GetVpcSubnetsVpcSubnetIpv6Args... ipv6s) {
+            return ipv6s(List.of(ipv6s));
+        }
+
+        /**
          * @param label The label of the VPC subnet.
          * 
          * @return builder
@@ -281,6 +329,9 @@ public final class GetVpcSubnetsVpcSubnetArgs extends com.pulumi.resources.Resou
             }
             if ($.ipv4 == null) {
                 throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetArgs", "ipv4");
+            }
+            if ($.ipv6s == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetArgs", "ipv6s");
             }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetArgs", "label");

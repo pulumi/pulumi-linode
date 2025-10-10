@@ -100,8 +100,6 @@ import (
 //
 // * `addNodebalancers` - (optional) If true, this User may add NodeBalancers.
 //
-// * `addPlacementGroups` - (optional) If true, this User may add Placement Groups.
-//
 // * `addStackscripts` - (optional) If true, this User may add StackScripts.
 //
 // * `addVpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
@@ -134,8 +132,6 @@ type User struct {
 	LongviewGrants UserLongviewGrantArrayOutput `pulumi:"longviewGrants"`
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayOutput `pulumi:"nodebalancerGrants"`
-	// The Placement Groups the user has permissions access to.
-	PlacementGroupGrants UserPlacementGroupGrantArrayOutput `pulumi:"placementGroupGrants"`
 	// If true, this user will only have explicit permissions granted.
 	//
 	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -210,8 +206,6 @@ type userState struct {
 	LongviewGrants []UserLongviewGrant `pulumi:"longviewGrants"`
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
-	// The Placement Groups the user has permissions access to.
-	PlacementGroupGrants []UserPlacementGroupGrant `pulumi:"placementGroupGrants"`
 	// If true, this user will only have explicit permissions granted.
 	//
 	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -251,8 +245,6 @@ type UserState struct {
 	LongviewGrants UserLongviewGrantArrayInput
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayInput
-	// The Placement Groups the user has permissions access to.
-	PlacementGroupGrants UserPlacementGroupGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
 	//
 	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -296,8 +288,6 @@ type userArgs struct {
 	LongviewGrants []UserLongviewGrant `pulumi:"longviewGrants"`
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
-	// The Placement Groups the user has permissions access to.
-	PlacementGroupGrants []UserPlacementGroupGrant `pulumi:"placementGroupGrants"`
 	// If true, this user will only have explicit permissions granted.
 	//
 	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -332,8 +322,6 @@ type UserArgs struct {
 	LongviewGrants UserLongviewGrantArrayInput
 	// The NodeBalancers the user has permissions access to.
 	NodebalancerGrants UserNodebalancerGrantArrayInput
-	// The Placement Groups the user has permissions access to.
-	PlacementGroupGrants UserPlacementGroupGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
 	//
 	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
@@ -475,11 +463,6 @@ func (o UserOutput) LongviewGrants() UserLongviewGrantArrayOutput {
 // The NodeBalancers the user has permissions access to.
 func (o UserOutput) NodebalancerGrants() UserNodebalancerGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserNodebalancerGrantArrayOutput { return v.NodebalancerGrants }).(UserNodebalancerGrantArrayOutput)
-}
-
-// The Placement Groups the user has permissions access to.
-func (o UserOutput) PlacementGroupGrants() UserPlacementGroupGrantArrayOutput {
-	return o.ApplyT(func(v *User) UserPlacementGroupGrantArrayOutput { return v.PlacementGroupGrants }).(UserPlacementGroupGrantArrayOutput)
 }
 
 // If true, this user will only have explicit permissions granted.

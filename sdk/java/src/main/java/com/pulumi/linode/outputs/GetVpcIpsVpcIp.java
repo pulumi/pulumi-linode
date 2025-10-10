@@ -5,9 +5,11 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetVpcIpsVpcIpIpv6Address;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -42,6 +44,21 @@ public final class GetVpcIpsVpcIp {
      * 
      */
     private Integer interfaceId;
+    /**
+     * @return The addresses within the prefix that the interface is associated with.
+     * 
+     */
+    private List<GetVpcIpsVpcIpIpv6Address> ipv6Addresses;
+    /**
+     * @return The is_public setting for the interface associated with this address.
+     * 
+     */
+    private Boolean ipv6IsPublic;
+    /**
+     * @return The /64 prefix, in CIDR notation, assigned to an interface.
+     * 
+     */
+    private String ipv6Range;
     /**
      * @return The identifier for the Linode the VPC interface currently belongs to.
      * 
@@ -124,6 +141,27 @@ public final class GetVpcIpsVpcIp {
         return this.interfaceId;
     }
     /**
+     * @return The addresses within the prefix that the interface is associated with.
+     * 
+     */
+    public List<GetVpcIpsVpcIpIpv6Address> ipv6Addresses() {
+        return this.ipv6Addresses;
+    }
+    /**
+     * @return The is_public setting for the interface associated with this address.
+     * 
+     */
+    public Boolean ipv6IsPublic() {
+        return this.ipv6IsPublic;
+    }
+    /**
+     * @return The /64 prefix, in CIDR notation, assigned to an interface.
+     * 
+     */
+    public String ipv6Range() {
+        return this.ipv6Range;
+    }
+    /**
      * @return The identifier for the Linode the VPC interface currently belongs to.
      * 
      */
@@ -190,6 +228,9 @@ public final class GetVpcIpsVpcIp {
         private Integer configId;
         private String gateway;
         private Integer interfaceId;
+        private List<GetVpcIpsVpcIpIpv6Address> ipv6Addresses;
+        private Boolean ipv6IsPublic;
+        private String ipv6Range;
         private Integer linodeId;
         private String nat11;
         private Integer prefix;
@@ -206,6 +247,9 @@ public final class GetVpcIpsVpcIp {
     	      this.configId = defaults.configId;
     	      this.gateway = defaults.gateway;
     	      this.interfaceId = defaults.interfaceId;
+    	      this.ipv6Addresses = defaults.ipv6Addresses;
+    	      this.ipv6IsPublic = defaults.ipv6IsPublic;
+    	      this.ipv6Range = defaults.ipv6Range;
     	      this.linodeId = defaults.linodeId;
     	      this.nat11 = defaults.nat11;
     	      this.prefix = defaults.prefix;
@@ -261,6 +305,33 @@ public final class GetVpcIpsVpcIp {
               throw new MissingRequiredPropertyException("GetVpcIpsVpcIp", "interfaceId");
             }
             this.interfaceId = interfaceId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Addresses(List<GetVpcIpsVpcIpIpv6Address> ipv6Addresses) {
+            if (ipv6Addresses == null) {
+              throw new MissingRequiredPropertyException("GetVpcIpsVpcIp", "ipv6Addresses");
+            }
+            this.ipv6Addresses = ipv6Addresses;
+            return this;
+        }
+        public Builder ipv6Addresses(GetVpcIpsVpcIpIpv6Address... ipv6Addresses) {
+            return ipv6Addresses(List.of(ipv6Addresses));
+        }
+        @CustomType.Setter
+        public Builder ipv6IsPublic(Boolean ipv6IsPublic) {
+            if (ipv6IsPublic == null) {
+              throw new MissingRequiredPropertyException("GetVpcIpsVpcIp", "ipv6IsPublic");
+            }
+            this.ipv6IsPublic = ipv6IsPublic;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Range(String ipv6Range) {
+            if (ipv6Range == null) {
+              throw new MissingRequiredPropertyException("GetVpcIpsVpcIp", "ipv6Range");
+            }
+            this.ipv6Range = ipv6Range;
             return this;
         }
         @CustomType.Setter
@@ -327,6 +398,9 @@ public final class GetVpcIpsVpcIp {
             _resultValue.configId = configId;
             _resultValue.gateway = gateway;
             _resultValue.interfaceId = interfaceId;
+            _resultValue.ipv6Addresses = ipv6Addresses;
+            _resultValue.ipv6IsPublic = ipv6IsPublic;
+            _resultValue.ipv6Range = ipv6Range;
             _resultValue.linodeId = linodeId;
             _resultValue.nat11 = nat11;
             _resultValue.prefix = prefix;

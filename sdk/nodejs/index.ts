@@ -305,6 +305,16 @@ export const getNodebalancerConfigs: typeof import("./getNodebalancerConfigs").g
 export const getNodebalancerConfigsOutput: typeof import("./getNodebalancerConfigs").getNodebalancerConfigsOutput = null as any;
 utilities.lazyLoad(exports, ["getNodebalancerConfigs","getNodebalancerConfigsOutput"], () => require("./getNodebalancerConfigs"));
 
+export { GetNodebalancerVpcArgs, GetNodebalancerVpcResult, GetNodebalancerVpcOutputArgs } from "./getNodebalancerVpc";
+export const getNodebalancerVpc: typeof import("./getNodebalancerVpc").getNodebalancerVpc = null as any;
+export const getNodebalancerVpcOutput: typeof import("./getNodebalancerVpc").getNodebalancerVpcOutput = null as any;
+utilities.lazyLoad(exports, ["getNodebalancerVpc","getNodebalancerVpcOutput"], () => require("./getNodebalancerVpc"));
+
+export { GetNodebalancerVpcsArgs, GetNodebalancerVpcsResult, GetNodebalancerVpcsOutputArgs } from "./getNodebalancerVpcs";
+export const getNodebalancerVpcs: typeof import("./getNodebalancerVpcs").getNodebalancerVpcs = null as any;
+export const getNodebalancerVpcsOutput: typeof import("./getNodebalancerVpcs").getNodebalancerVpcsOutput = null as any;
+utilities.lazyLoad(exports, ["getNodebalancerVpcs","getNodebalancerVpcsOutput"], () => require("./getNodebalancerVpcs"));
+
 export { GetNodebalancersArgs, GetNodebalancersResult, GetNodebalancersOutputArgs } from "./getNodebalancers";
 export const getNodebalancers: typeof import("./getNodebalancers").getNodebalancers = null as any;
 export const getNodebalancersOutput: typeof import("./getNodebalancers").getNodebalancersOutput = null as any;

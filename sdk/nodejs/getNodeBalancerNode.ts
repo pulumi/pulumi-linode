@@ -72,6 +72,14 @@ export interface GetNodeBalancerNodeResult {
      */
     readonly status: string;
     /**
+     * The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+     */
+    readonly subnetId: number;
+    /**
+     * The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
+     */
+    readonly vpcConfigId: number;
+    /**
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      */
     readonly weight: number;

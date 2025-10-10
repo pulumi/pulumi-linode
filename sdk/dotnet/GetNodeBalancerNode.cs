@@ -170,6 +170,14 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Status;
         /// <summary>
+        /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// </summary>
+        public readonly int SubnetId;
+        /// <summary>
+        /// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// </summary>
+        public readonly int VpcConfigId;
+        /// <summary>
         /// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         /// </summary>
         public readonly int Weight;
@@ -190,6 +198,10 @@ namespace Pulumi.Linode
 
             string status,
 
+            int subnetId,
+
+            int vpcConfigId,
+
             int weight)
         {
             Address = address;
@@ -199,6 +211,8 @@ namespace Pulumi.Linode
             Mode = mode;
             NodebalancerId = nodebalancerId;
             Status = status;
+            SubnetId = subnetId;
+            VpcConfigId = vpcConfigId;
             Weight = weight;
         }
     }

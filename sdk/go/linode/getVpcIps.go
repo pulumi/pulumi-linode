@@ -14,9 +14,6 @@ import (
 // Provides information about a list of Linode VPC IPs that match a set of filters.
 // For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
 //
-// Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
-//
 // ## Example Usage
 //
 // The following example shows how one might use this data source to list VPC IPs.
@@ -80,6 +77,32 @@ import (
 //
 // ```
 //
+// By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetVpcIps(ctx, &linode.GetVpcIpsArgs{
+//				Ipv6: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Filterable Fields
 //
 // * `active`
@@ -104,6 +127,7 @@ func GetVpcIps(ctx *pulumi.Context, args *GetVpcIpsArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getVpcIps.
 type GetVpcIpsArgs struct {
 	Filters []GetVpcIpsFilter `pulumi:"filters"`
+	Ipv6    *bool             `pulumi:"ipv6"`
 	// The id of the parent VPC for the list of VPC IPs.
 	//
 	// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
@@ -115,6 +139,7 @@ type GetVpcIpsArgs struct {
 type GetVpcIpsResult struct {
 	Filters []GetVpcIpsFilter `pulumi:"filters"`
 	Id      string            `pulumi:"id"`
+	Ipv6    *bool             `pulumi:"ipv6"`
 	// The unique globally general API entity identifier for the VPC.
 	VpcId  *int             `pulumi:"vpcId"`
 	VpcIps []GetVpcIpsVpcIp `pulumi:"vpcIps"`
@@ -132,6 +157,7 @@ func GetVpcIpsOutput(ctx *pulumi.Context, args GetVpcIpsOutputArgs, opts ...pulu
 // A collection of arguments for invoking getVpcIps.
 type GetVpcIpsOutputArgs struct {
 	Filters GetVpcIpsFilterArrayInput `pulumi:"filters"`
+	Ipv6    pulumi.BoolPtrInput       `pulumi:"ipv6"`
 	// The id of the parent VPC for the list of VPC IPs.
 	//
 	// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
@@ -164,6 +190,10 @@ func (o GetVpcIpsResultOutput) Filters() GetVpcIpsFilterArrayOutput {
 
 func (o GetVpcIpsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcIpsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVpcIpsResultOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetVpcIpsResult) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
 }
 
 // The unique globally general API entity identifier for the VPC.

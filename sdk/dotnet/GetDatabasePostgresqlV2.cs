@@ -56,6 +56,16 @@ namespace Pulumi.Linode
         /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// 
+        /// ## private_network
+        /// 
+        /// The following arguments are exposed by the `private_network` attribute:
+        /// 
+        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// 
+        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// 
+        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Task<GetDatabasePostgresqlV2Result> InvokeAsync(GetDatabasePostgresqlV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasePostgresqlV2Result>("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", args ?? new GetDatabasePostgresqlV2Args(), options.WithDefaults());
@@ -105,6 +115,16 @@ namespace Pulumi.Linode
         /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// 
+        /// ## private_network
+        /// 
+        /// The following arguments are exposed by the `private_network` attribute:
+        /// 
+        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// 
+        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// 
+        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Output<GetDatabasePostgresqlV2Result> Invoke(GetDatabasePostgresqlV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlV2Result>("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", args ?? new GetDatabasePostgresqlV2InvokeArgs(), options.WithDefaults());
@@ -154,6 +174,16 @@ namespace Pulumi.Linode
         /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
         /// 
         /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// 
+        /// ## private_network
+        /// 
+        /// The following arguments are exposed by the `private_network` attribute:
+        /// 
+        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// 
+        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// 
+        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Output<GetDatabasePostgresqlV2Result> Invoke(GetDatabasePostgresqlV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlV2Result>("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", args ?? new GetDatabasePostgresqlV2InvokeArgs(), options.WithDefaults());
@@ -440,6 +470,7 @@ namespace Pulumi.Linode
         /// The access port for this Managed Database.
         /// </summary>
         public readonly int Port;
+        public readonly Outputs.GetDatabasePostgresqlV2PrivateNetworkResult PrivateNetwork;
         /// <summary>
         /// The region to use for the Managed Database.
         /// </summary>
@@ -610,6 +641,8 @@ namespace Pulumi.Linode
 
             int port,
 
+            Outputs.GetDatabasePostgresqlV2PrivateNetworkResult privateNetwork,
+
             string region,
 
             string rootPassword,
@@ -695,6 +728,7 @@ namespace Pulumi.Linode
             PendingUpdates = pendingUpdates;
             Platform = platform;
             Port = port;
+            PrivateNetwork = privateNetwork;
             Region = region;
             RootPassword = rootPassword;
             RootUsername = rootUsername;

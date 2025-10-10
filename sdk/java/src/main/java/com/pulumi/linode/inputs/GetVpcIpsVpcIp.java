@@ -5,9 +5,11 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetVpcIpsVpcIpIpv6Address;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -103,6 +105,51 @@ public final class GetVpcIpsVpcIp extends com.pulumi.resources.InvokeArgs {
      */
     public Integer interfaceId() {
         return this.interfaceId;
+    }
+
+    /**
+     * The addresses within the prefix that the interface is associated with.
+     * 
+     */
+    @Import(name="ipv6Addresses", required=true)
+    private List<GetVpcIpsVpcIpIpv6Address> ipv6Addresses;
+
+    /**
+     * @return The addresses within the prefix that the interface is associated with.
+     * 
+     */
+    public List<GetVpcIpsVpcIpIpv6Address> ipv6Addresses() {
+        return this.ipv6Addresses;
+    }
+
+    /**
+     * The is_public setting for the interface associated with this address.
+     * 
+     */
+    @Import(name="ipv6IsPublic", required=true)
+    private Boolean ipv6IsPublic;
+
+    /**
+     * @return The is_public setting for the interface associated with this address.
+     * 
+     */
+    public Boolean ipv6IsPublic() {
+        return this.ipv6IsPublic;
+    }
+
+    /**
+     * The /64 prefix, in CIDR notation, assigned to an interface.
+     * 
+     */
+    @Import(name="ipv6Range", required=true)
+    private String ipv6Range;
+
+    /**
+     * @return The /64 prefix, in CIDR notation, assigned to an interface.
+     * 
+     */
+    public String ipv6Range() {
+        return this.ipv6Range;
     }
 
     /**
@@ -223,6 +270,9 @@ public final class GetVpcIpsVpcIp extends com.pulumi.resources.InvokeArgs {
         this.configId = $.configId;
         this.gateway = $.gateway;
         this.interfaceId = $.interfaceId;
+        this.ipv6Addresses = $.ipv6Addresses;
+        this.ipv6IsPublic = $.ipv6IsPublic;
+        this.ipv6Range = $.ipv6Range;
         this.linodeId = $.linodeId;
         this.nat11 = $.nat11;
         this.prefix = $.prefix;
@@ -313,6 +363,49 @@ public final class GetVpcIpsVpcIp extends com.pulumi.resources.InvokeArgs {
          */
         public Builder interfaceId(Integer interfaceId) {
             $.interfaceId = interfaceId;
+            return this;
+        }
+
+        /**
+         * @param ipv6Addresses The addresses within the prefix that the interface is associated with.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Addresses(List<GetVpcIpsVpcIpIpv6Address> ipv6Addresses) {
+            $.ipv6Addresses = ipv6Addresses;
+            return this;
+        }
+
+        /**
+         * @param ipv6Addresses The addresses within the prefix that the interface is associated with.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Addresses(GetVpcIpsVpcIpIpv6Address... ipv6Addresses) {
+            return ipv6Addresses(List.of(ipv6Addresses));
+        }
+
+        /**
+         * @param ipv6IsPublic The is_public setting for the interface associated with this address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6IsPublic(Boolean ipv6IsPublic) {
+            $.ipv6IsPublic = ipv6IsPublic;
+            return this;
+        }
+
+        /**
+         * @param ipv6Range The /64 prefix, in CIDR notation, assigned to an interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Range(String ipv6Range) {
+            $.ipv6Range = ipv6Range;
             return this;
         }
 
@@ -413,6 +506,15 @@ public final class GetVpcIpsVpcIp extends com.pulumi.resources.InvokeArgs {
             }
             if ($.interfaceId == null) {
                 throw new MissingRequiredPropertyException("GetVpcIpsVpcIp", "interfaceId");
+            }
+            if ($.ipv6Addresses == null) {
+                throw new MissingRequiredPropertyException("GetVpcIpsVpcIp", "ipv6Addresses");
+            }
+            if ($.ipv6IsPublic == null) {
+                throw new MissingRequiredPropertyException("GetVpcIpsVpcIp", "ipv6IsPublic");
+            }
+            if ($.ipv6Range == null) {
+                throw new MissingRequiredPropertyException("GetVpcIpsVpcIp", "ipv6Range");
             }
             if ($.linodeId == null) {
                 throw new MissingRequiredPropertyException("GetVpcIpsVpcIp", "linodeId");

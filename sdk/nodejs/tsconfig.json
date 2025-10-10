@@ -75,6 +75,8 @@
         "getNodeBalancerConfig.ts",
         "getNodeBalancerNode.ts",
         "getNodebalancerConfigs.ts",
+        "getNodebalancerVpc.ts",
+        "getNodebalancerVpcs.ts",
         "getNodebalancers.ts",
         "getObjectStorageCluster.ts",
         "getObjectStorageEndpoints.ts",

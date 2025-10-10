@@ -42,6 +42,18 @@ import (
 //	}
 //
 // ```
+//
+// ## IPv6
+//
+// > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+//
+// Contains information about a single IPv6 allocation under this VPC.
+//
+// * `range` - The allocated range in CIDR format.
+//
+// ### Subnets Reference
+//
+// To list all subnets under a VPC, please refer to the getVpcSubnets data source.
 func LookupVpc(ctx *pulumi.Context, args *LookupVpcArgs, opts ...pulumi.InvokeOption) (*LookupVpcResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpcResult
@@ -65,6 +77,8 @@ type LookupVpcResult struct {
 	// The user-defined description of this VPC.
 	Description string `pulumi:"description"`
 	Id          string `pulumi:"id"`
+	// A list of IPv6 allocations under this VPC.
+	Ipv6s []GetVpcIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC.
 	Label string `pulumi:"label"`
 	// The region where the VPC is deployed.
@@ -119,6 +133,11 @@ func (o LookupVpcResultOutput) Description() pulumi.StringOutput {
 
 func (o LookupVpcResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of IPv6 allocations under this VPC.
+func (o LookupVpcResultOutput) Ipv6s() GetVpcIpv6ArrayOutput {
+	return o.ApplyT(func(v LookupVpcResult) []GetVpcIpv6 { return v.Ipv6s }).(GetVpcIpv6ArrayOutput)
 }
 
 // The label of the VPC.

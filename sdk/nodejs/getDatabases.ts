@@ -36,6 +36,16 @@ import * as utilities from "./utilities";
  * });
  * export const databaseIds = mysql.then(mysql => mysql.databases.map(__item => __item.id));
  * ```
+ *
+ * ## privateNetwork
+ *
+ * The following arguments are exposed by the `privateNetwork` attribute:
+ *
+ * * `vpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+ *
+ * * `subnetId` - The ID of the VPC subnet to restrict access to this database using.
+ *
+ * * `publicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
  */
 export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasesResult> {
     args = args || {};
@@ -107,6 +117,16 @@ export interface GetDatabasesResult {
  * });
  * export const databaseIds = mysql.then(mysql => mysql.databases.map(__item => __item.id));
  * ```
+ *
+ * ## privateNetwork
+ *
+ * The following arguments are exposed by the `privateNetwork` attribute:
+ *
+ * * `vpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+ *
+ * * `subnetId` - The ID of the VPC subnet to restrict access to this database using.
+ *
+ * * `publicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
  */
 export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabasesResult> {
     args = args || {};

@@ -28,13 +28,16 @@ class GetVpcIpsResult:
     """
     A collection of values returned by getVpcIps.
     """
-    def __init__(__self__, filters=None, id=None, vpc_id=None, vpc_ips=None):
+    def __init__(__self__, filters=None, id=None, ipv6=None, vpc_id=None, vpc_ips=None):
         if filters and not isinstance(filters, list):
             raise TypeError("Expected argument 'filters' to be a list")
         pulumi.set(__self__, "filters", filters)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ipv6 and not isinstance(ipv6, bool):
+            raise TypeError("Expected argument 'ipv6' to be a bool")
+        pulumi.set(__self__, "ipv6", ipv6)
         if vpc_id and not isinstance(vpc_id, int):
             raise TypeError("Expected argument 'vpc_id' to be a int")
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -51,6 +54,11 @@ class GetVpcIpsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "ipv6")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
@@ -74,20 +82,19 @@ class AwaitableGetVpcIpsResult(GetVpcIpsResult):
         return GetVpcIpsResult(
             filters=self.filters,
             id=self.id,
+            ipv6=self.ipv6,
             vpc_id=self.vpc_id,
             vpc_ips=self.vpc_ips)
 
 
 def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcIpsFilterArgsDict']]] = None,
+                ipv6: Optional[_builtins.bool] = None,
                 vpc_id: Optional[_builtins.int] = None,
                 vpc_ips: Optional[Sequence[Union['GetVpcIpsVpcIpArgs', 'GetVpcIpsVpcIpArgsDict']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcIpsResult:
     """
     Provides information about a list of Linode VPC IPs that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
-
-    Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
 
     ## Example Usage
 
@@ -114,6 +121,15 @@ def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcI
     pulumi.export("vpcIps", specific_vpc_ips.vpc_ips)
     ```
 
+    By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    all_vpc_ipv6 = linode.get_vpc_ips(ipv6=True)
+    ```
+
     ## Filterable Fields
 
     * `active`
@@ -133,6 +149,7 @@ def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcI
     """
     __args__ = dict()
     __args__['filters'] = filters
+    __args__['ipv6'] = ipv6
     __args__['vpcId'] = vpc_id
     __args__['vpcIps'] = vpc_ips
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -141,18 +158,17 @@ def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcI
     return AwaitableGetVpcIpsResult(
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
+        ipv6=pulumi.get(__ret__, 'ipv6'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vpc_ips=pulumi.get(__ret__, 'vpc_ips'))
 def get_vpc_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcIpsFilterArgsDict']]]]] = None,
+                       ipv6: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                        vpc_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                        vpc_ips: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcIpsVpcIpArgs', 'GetVpcIpsVpcIpArgsDict']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcIpsResult]:
     """
     Provides information about a list of Linode VPC IPs that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
-
-    Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
-    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
 
     ## Example Usage
 
@@ -179,6 +195,15 @@ def get_vpc_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     pulumi.export("vpcIps", specific_vpc_ips.vpc_ips)
     ```
 
+    By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    all_vpc_ipv6 = linode.get_vpc_ips(ipv6=True)
+    ```
+
     ## Filterable Fields
 
     * `active`
@@ -198,6 +223,7 @@ def get_vpc_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     """
     __args__ = dict()
     __args__['filters'] = filters
+    __args__['ipv6'] = ipv6
     __args__['vpcId'] = vpc_id
     __args__['vpcIps'] = vpc_ips
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -205,5 +231,6 @@ def get_vpc_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     return __ret__.apply(lambda __response__: GetVpcIpsResult(
         filters=pulumi.get(__response__, 'filters'),
         id=pulumi.get(__response__, 'id'),
+        ipv6=pulumi.get(__response__, 'ipv6'),
         vpc_id=pulumi.get(__response__, 'vpc_id'),
         vpc_ips=pulumi.get(__response__, 'vpc_ips')))

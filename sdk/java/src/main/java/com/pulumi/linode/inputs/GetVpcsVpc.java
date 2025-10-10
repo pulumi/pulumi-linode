@@ -5,7 +5,9 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetVpcsVpcIpv6;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -59,6 +61,21 @@ public final class GetVpcsVpc extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * A list of IPv6 allocations under this VPC.
+     * 
+     */
+    @Import(name="ipv6s", required=true)
+    private List<GetVpcsVpcIpv6> ipv6s;
+
+    /**
+     * @return A list of IPv6 allocations under this VPC.
+     * 
+     */
+    public List<GetVpcsVpcIpv6> ipv6s() {
+        return this.ipv6s;
+    }
+
+    /**
      * The label of the VPC.
      * 
      */
@@ -109,6 +126,7 @@ public final class GetVpcsVpc extends com.pulumi.resources.InvokeArgs {
         this.created = $.created;
         this.description = $.description;
         this.id = $.id;
+        this.ipv6s = $.ipv6s;
         this.label = $.label;
         this.region = $.region;
         this.updated = $.updated;
@@ -166,6 +184,27 @@ public final class GetVpcsVpc extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param ipv6s A list of IPv6 allocations under this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(List<GetVpcsVpcIpv6> ipv6s) {
+            $.ipv6s = ipv6s;
+            return this;
+        }
+
+        /**
+         * @param ipv6s A list of IPv6 allocations under this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(GetVpcsVpcIpv6... ipv6s) {
+            return ipv6s(List.of(ipv6s));
+        }
+
+        /**
          * @param label The label of the VPC.
          * 
          * @return builder
@@ -207,6 +246,9 @@ public final class GetVpcsVpc extends com.pulumi.resources.InvokeArgs {
             }
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("GetVpcsVpc", "id");
+            }
+            if ($.ipv6s == null) {
+                throw new MissingRequiredPropertyException("GetVpcsVpc", "ipv6s");
             }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetVpcsVpc", "label");

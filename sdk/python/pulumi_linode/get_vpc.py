@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetVpcResult',
@@ -26,7 +27,7 @@ class GetVpcResult:
     """
     A collection of values returned by getVpc.
     """
-    def __init__(__self__, created=None, description=None, id=None, label=None, region=None, updated=None):
+    def __init__(__self__, created=None, description=None, id=None, ipv6s=None, label=None, region=None, updated=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -36,6 +37,9 @@ class GetVpcResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ipv6s and not isinstance(ipv6s, list):
+            raise TypeError("Expected argument 'ipv6s' to be a list")
+        pulumi.set(__self__, "ipv6s", ipv6s)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
@@ -66,6 +70,14 @@ class GetVpcResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence['outputs.GetVpcIpv6Result']:
+        """
+        A list of IPv6 allocations under this VPC.
+        """
+        return pulumi.get(self, "ipv6s")
 
     @_builtins.property
     @pulumi.getter
@@ -101,6 +113,7 @@ class AwaitableGetVpcResult(GetVpcResult):
             created=self.created,
             description=self.description,
             id=self.id,
+            ipv6s=self.ipv6s,
             label=self.label,
             region=self.region,
             updated=self.updated)
@@ -124,6 +137,18 @@ def get_vpc(id: Optional[_builtins.str] = None,
     pulumi.export("vpc", foo)
     ```
 
+    ## IPv6
+
+    > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+
+    Contains information about a single IPv6 allocation under this VPC.
+
+    * `range` - The allocated range in CIDR format.
+
+    ### Subnets Reference
+
+    To list all subnets under a VPC, please refer to the get_vpc_subnets data source.
+
 
     :param _builtins.str id: The unique id of this VPC.
     """
@@ -136,6 +161,7 @@ def get_vpc(id: Optional[_builtins.str] = None,
         created=pulumi.get(__ret__, 'created'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
+        ipv6s=pulumi.get(__ret__, 'ipv6s'),
         label=pulumi.get(__ret__, 'label'),
         region=pulumi.get(__ret__, 'region'),
         updated=pulumi.get(__ret__, 'updated'))
@@ -157,6 +183,18 @@ def get_vpc_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     pulumi.export("vpc", foo)
     ```
 
+    ## IPv6
+
+    > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+
+    Contains information about a single IPv6 allocation under this VPC.
+
+    * `range` - The allocated range in CIDR format.
+
+    ### Subnets Reference
+
+    To list all subnets under a VPC, please refer to the get_vpc_subnets data source.
+
 
     :param _builtins.str id: The unique id of this VPC.
     """
@@ -168,6 +206,7 @@ def get_vpc_output(id: Optional[pulumi.Input[_builtins.str]] = None,
         created=pulumi.get(__response__, 'created'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
+        ipv6s=pulumi.get(__response__, 'ipv6s'),
         label=pulumi.get(__response__, 'label'),
         region=pulumi.get(__response__, 'region'),
         updated=pulumi.get(__response__, 'updated')))

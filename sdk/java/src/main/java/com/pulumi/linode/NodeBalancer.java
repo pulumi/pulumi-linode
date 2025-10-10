@@ -12,6 +12,7 @@ import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.NodeBalancerState;
 import com.pulumi.linode.outputs.NodeBalancerFirewall;
 import com.pulumi.linode.outputs.NodeBalancerTransfer;
+import com.pulumi.linode.outputs.NodeBalancerVpc;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -60,6 +61,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
  * 
  * ## Import
  * 
@@ -261,6 +264,20 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updated() {
         return this.updated;
+    }
+    /**
+     * A list of VPCs to be assigned to this NodeBalancer.
+     * 
+     */
+    @Export(name="vpcs", refs={List.class,NodeBalancerVpc.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<NodeBalancerVpc>> vpcs;
+
+    /**
+     * @return A list of VPCs to be assigned to this NodeBalancer.
+     * 
+     */
+    public Output<Optional<List<NodeBalancerVpc>>> vpcs() {
+        return Codegen.optional(this.vpcs);
     }
 
     /**

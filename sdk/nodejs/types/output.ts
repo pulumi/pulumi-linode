@@ -34,6 +34,21 @@ export interface DatabaseMysqlV2PendingUpdate {
     plannedFor: string;
 }
 
+export interface DatabaseMysqlV2PrivateNetwork {
+    /**
+     * Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
+     */
+    publicAccess: boolean;
+    /**
+     * The ID of the VPC subnet to restrict access to this database using.
+     */
+    subnetId: number;
+    /**
+     * The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     */
+    vpcId: number;
+}
+
 export interface DatabaseMysqlV2Timeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -83,6 +98,21 @@ export interface DatabasePostgresqlV2PendingUpdate {
     deadline: string;
     description: string;
     plannedFor: string;
+}
+
+export interface DatabasePostgresqlV2PrivateNetwork {
+    /**
+     * Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
+     */
+    publicAccess: boolean;
+    /**
+     * The ID of the VPC subnet to restrict access to this database using.
+     */
+    subnetId: number;
+    /**
+     * The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     */
+    vpcId: number;
 }
 
 export interface DatabasePostgresqlV2Timeouts {
@@ -736,6 +766,21 @@ export interface GetDatabaseMysqlV2PendingUpdate {
     plannedFor: string;
 }
 
+export interface GetDatabaseMysqlV2PrivateNetwork {
+    /**
+     * If true, clients outside of the VPC can connect to the database using a public IP address.
+     */
+    publicAccess: boolean;
+    /**
+     * The ID of the VPC subnet to restrict access to this database using.
+     */
+    subnetId: number;
+    /**
+     * The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     */
+    vpcId: number;
+}
+
 export interface GetDatabaseMysqlV2Updates {
     dayOfWeek: number;
     duration: number;
@@ -793,6 +838,21 @@ export interface GetDatabasePostgresqlV2PendingUpdate {
     plannedFor: string;
 }
 
+export interface GetDatabasePostgresqlV2PrivateNetwork {
+    /**
+     * If true, clients outside of the VPC can connect to the database using a public IP address.
+     */
+    publicAccess: boolean;
+    /**
+     * The ID of the VPC subnet to restrict access to this database using.
+     */
+    subnetId: number;
+    /**
+     * The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     */
+    vpcId: number;
+}
+
 export interface GetDatabasePostgresqlV2Updates {
     dayOfWeek: number;
     duration: number;
@@ -842,6 +902,10 @@ export interface GetDatabasesDatabase {
      */
     label: string;
     /**
+     * Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     */
+    privateNetwork: outputs.GetDatabasesDatabasePrivateNetwork;
+    /**
      * The region to use for the Managed Database.
      */
     region: string;
@@ -869,6 +933,21 @@ export interface GetDatabasesDatabase {
      * The Managed Database engine version.
      */
     version: string;
+}
+
+export interface GetDatabasesDatabasePrivateNetwork {
+    /**
+     * If true, clients outside of the VPC can connect to the database using a public IP address.
+     */
+    publicAccess: boolean;
+    /**
+     * The ID of the VPC subnet to restrict access to this database using.
+     */
+    subnetId: number;
+    /**
+     * The ID of the virtual private cloud (VPC) to restrict access to this database using.
+     */
+    vpcId: number;
 }
 
 export interface GetDatabasesFilter {
@@ -2463,6 +2542,10 @@ export interface GetInstancesInstanceConfigInterface {
      */
     ipv4: outputs.GetInstancesInstanceConfigInterfaceIpv4;
     /**
+     * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+     */
+    ipv6: outputs.GetInstancesInstanceConfigInterfaceIpv6;
+    /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
     label?: string;
@@ -2493,6 +2576,47 @@ export interface GetInstancesInstanceConfigInterfaceIpv4 {
      * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
      */
     vpc: string;
+}
+
+export interface GetInstancesInstanceConfigInterfaceIpv6 {
+    /**
+     * If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+     */
+    isPublic: boolean;
+    /**
+     * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    ranges: outputs.GetInstancesInstanceConfigInterfaceIpv6Range[];
+    /**
+     * An array of SLAAC prefixes to use for this interface.
+     */
+    slaacs: outputs.GetInstancesInstanceConfigInterfaceIpv6Slaac[];
+}
+
+export interface GetInstancesInstanceConfigInterfaceIpv6Range {
+    /**
+     * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+     */
+    assignedRange: string;
+    /**
+     * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    range?: string;
+}
+
+export interface GetInstancesInstanceConfigInterfaceIpv6Slaac {
+    /**
+     * The SLAAC address chosen for this interface.
+     */
+    address: string;
+    /**
+     * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+     */
+    assignedRange: string;
+    /**
+     * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    range?: string;
 }
 
 export interface GetInstancesInstanceDisk {
@@ -3314,6 +3438,17 @@ export interface GetNodeBalancerTransfer {
     total: number;
 }
 
+export interface GetNodeBalancerVpc {
+    /**
+     * A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     */
+    ipv4Range: string;
+    /**
+     * The ID of a subnet to assign to this NodeBalancer.
+     */
+    subnetId: number;
+}
+
 export interface GetNodebalancerConfigsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -3423,6 +3558,46 @@ export interface GetNodebalancerConfigsNodebalancerConfigNodeStatus {
      * The number of backends considered to be 'UP' and healthy, and that are serving requests.
      */
     up: number;
+}
+
+export interface GetNodebalancerVpcsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetNodebalancerVpcsVpcConfig {
+    /**
+     * The ID of the VPC configuration.
+     */
+    id: number;
+    /**
+     * A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     */
+    ipv4Range: string;
+    /**
+     * The ID of the NodeBalancer to list VPC configurations for.
+     *
+     * * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+     */
+    nodebalancerId: number;
+    /**
+     * The ID of this configuration's VPC subnet.
+     */
+    subnetId: number;
+    /**
+     * The ID of this configuration's VPC.
+     */
+    vpcId: number;
 }
 
 export interface GetNodebalancersFilter {
@@ -4073,10 +4248,6 @@ export interface GetUserGlobalGrant {
      * If true, this User may add NodeBalancers.
      */
     addNodebalancers: boolean;
-    /**
-     * If true, this User may add Placement Groups.
-     */
-    addPlacementGroups: boolean;
     addStackscripts: boolean;
     /**
      * If true, this User may add Volumes.
@@ -4142,21 +4313,6 @@ export interface GetUserLongviewGrant {
 }
 
 export interface GetUserNodebalancerGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
-     */
-    permissions: string;
-}
-
-export interface GetUserPlacementGroupGrant {
     /**
      * The ID of entity this grant applies to.
      */
@@ -4277,10 +4433,6 @@ export interface GetUsersUser {
      */
     passwordCreated: string;
     /**
-     * A set containing all of the user's active grants.
-     */
-    placementGroupGrants: outputs.GetUsersUserPlacementGroupGrant[];
-    /**
      * If true, this User must be granted access to perform actions or access entities on this Account.
      */
     restricted: boolean;
@@ -4396,10 +4548,6 @@ export interface GetUsersUserGlobalGrant {
      * If true, this User may add NodeBalancers.
      */
     addNodebalancers: boolean;
-    /**
-     * If true, this User may add Placement Groups.
-     */
-    addPlacementGroups: boolean;
     addStackscripts: boolean;
     /**
      * If true, this User may add Volumes.
@@ -4465,21 +4613,6 @@ export interface GetUsersUserLongviewGrant {
 }
 
 export interface GetUsersUserNodebalancerGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
-export interface GetUsersUserPlacementGroupGrant {
     /**
      * The ID of entity this grant applies to.
      */
@@ -4734,6 +4867,18 @@ export interface GetVpcIpsVpcIp {
      */
     interfaceId: number;
     /**
+     * The addresses within the prefix that the interface is associated with.
+     */
+    ipv6Addresses: outputs.GetVpcIpsVpcIpIpv6Address[];
+    /**
+     * The isPublic setting for the interface associated with this address.
+     */
+    ipv6IsPublic: boolean;
+    /**
+     * The /64 prefix, in CIDR notation, assigned to an interface.
+     */
+    ipv6Range: string;
+    /**
      * The identifier for the Linode the VPC interface currently belongs to.
      */
     linodeId: number;
@@ -4763,6 +4908,27 @@ export interface GetVpcIpsVpcIp {
      * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
      */
     vpcId: number;
+}
+
+export interface GetVpcIpsVpcIpIpv6Address {
+    /**
+     * A specific address within the prefix that the interface is expected to autoconfigure through SLAAC.
+     */
+    slaacAddress: string;
+}
+
+export interface GetVpcIpv6 {
+    /**
+     * The IPv6 range assigned to this VPC.
+     */
+    range: string;
+}
+
+export interface GetVpcSubnetIpv6 {
+    /**
+     * An IPv6 range allocated to this subnet.
+     */
+    range: string;
 }
 
 export interface GetVpcSubnetLinode {
@@ -4810,6 +4976,10 @@ export interface GetVpcSubnetsVpcSubnet {
      */
     ipv4: string;
     /**
+     * The IPv6 ranges of this subnet.
+     */
+    ipv6s: outputs.GetVpcSubnetsVpcSubnetIpv6[];
+    /**
      * The label of the VPC subnet.
      */
     label: string;
@@ -4821,6 +4991,13 @@ export interface GetVpcSubnetsVpcSubnet {
      * The date and time when the VPC Subnet was last updated.
      */
     updated: string;
+}
+
+export interface GetVpcSubnetsVpcSubnetIpv6 {
+    /**
+     * An IPv6 range allocated to this subnet.
+     */
+    range: string;
 }
 
 export interface GetVpcSubnetsVpcSubnetLinode {
@@ -4868,6 +5045,10 @@ export interface GetVpcsVpc {
      */
     id: string;
     /**
+     * A list of IPv6 allocations under this VPC.
+     */
+    ipv6s: outputs.GetVpcsVpcIpv6[];
+    /**
      * The label of the VPC.
      */
     label: string;
@@ -4879,6 +5060,13 @@ export interface GetVpcsVpc {
      * The date and time when the VPC was last updated.
      */
     updated: string;
+}
+
+export interface GetVpcsVpcIpv6 {
+    /**
+     * The IPv6 range assigned to this VPC.
+     */
+    range: string;
 }
 
 export interface ImageReplication {
@@ -4969,7 +5157,7 @@ export interface InstanceConfig {
     /**
      * A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
      */
-    kernel?: string;
+    kernel: string;
     /**
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
@@ -5198,6 +5386,10 @@ export interface InstanceConfigInterface {
      */
     ipv4: outputs.InstanceConfigInterfaceIpv4;
     /**
+     * The IPv6 configuration of the VPC interface. This attribute is only allowed for VPC interfaces.
+     */
+    ipv6: outputs.InstanceConfigInterfaceIpv6;
+    /**
      * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
     label?: string;
@@ -5205,6 +5397,8 @@ export interface InstanceConfigInterface {
      * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      *
      * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      *
      * The following computed attribute is available in a VPC interface:
      */
@@ -5232,6 +5426,51 @@ export interface InstanceConfigInterfaceIpv4 {
      * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
      */
     vpc: string;
+}
+
+export interface InstanceConfigInterfaceIpv6 {
+    /**
+     * If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+     *
+     * * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+     *
+     * * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+     */
+    isPublic: boolean;
+    /**
+     * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    ranges: outputs.InstanceConfigInterfaceIpv6Range[];
+    /**
+     * An array of SLAAC prefixes to use for this interface.
+     */
+    slaacs: outputs.InstanceConfigInterfaceIpv6Slaac[];
+}
+
+export interface InstanceConfigInterfaceIpv6Range {
+    /**
+     * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+     */
+    assignedRange: string;
+    /**
+     * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    range?: string;
+}
+
+export interface InstanceConfigInterfaceIpv6Slaac {
+    /**
+     * The SLAAC address chosen for this interface.
+     */
+    address: string;
+    /**
+     * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+     */
+    assignedRange: string;
+    /**
+     * A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    range?: string;
 }
 
 export interface InstanceDisk {
@@ -5320,6 +5559,10 @@ export interface InstanceInterface {
      */
     ipv4: outputs.InstanceInterfaceIpv4;
     /**
+     * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+     */
+    ipv6: outputs.InstanceInterfaceIpv6;
+    /**
      * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
     label?: string;
@@ -5327,6 +5570,8 @@ export interface InstanceInterface {
      * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      *
      * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      *
      * The following computed attribute is available in a VPC interface:
      */
@@ -5354,6 +5599,51 @@ export interface InstanceInterfaceIpv4 {
      * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
      */
     vpc: string;
+}
+
+export interface InstanceInterfaceIpv6 {
+    /**
+     * If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+     *
+     * * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+     *
+     * * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+     */
+    isPublic: boolean;
+    /**
+     * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    ranges: outputs.InstanceInterfaceIpv6Range[];
+    /**
+     * An array of SLAAC prefixes to use for this interface.
+     */
+    slaacs: outputs.InstanceInterfaceIpv6Slaac[];
+}
+
+export interface InstanceInterfaceIpv6Range {
+    /**
+     * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+     */
+    assignedRange: string;
+    /**
+     * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    range?: string;
+}
+
+export interface InstanceInterfaceIpv6Slaac {
+    /**
+     * The SLAAC address chosen for this interface.
+     */
+    address: string;
+    /**
+     * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+     */
+    assignedRange: string;
+    /**
+     * A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    range?: string;
 }
 
 export interface InstanceIpVpcNat11 {
@@ -5740,6 +6030,17 @@ export interface NodeBalancerTransfer {
     total: number;
 }
 
+export interface NodeBalancerVpc {
+    /**
+     * (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     */
+    ipv4Range: string;
+    /**
+     * (Required) The ID of a subnet to assign to this NodeBalancer.
+     */
+    subnetId: number;
+}
+
 export interface ObjectStorageBucketCert {
     /**
      * The Base64 encoded and PEM formatted SSL certificate.
@@ -5951,10 +6252,6 @@ export interface UserGlobalGrants {
      */
     addNodebalancers?: boolean;
     /**
-     * If true, this User may add Placement Groups.
-     */
-    addPlacementGroups?: boolean;
-    /**
      * If true, this User may add StackScripts.
      */
     addStackscripts?: boolean;
@@ -6020,17 +6317,6 @@ export interface UserNodebalancerGrant {
     permissions: string;
 }
 
-export interface UserPlacementGroupGrant {
-    /**
-     * The ID of the entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
 export interface UserStackscriptGrant {
     /**
      * The ID of the entity this grant applies to.
@@ -6077,6 +6363,28 @@ export interface VolumeTimeouts {
      * Used when updating the volume when necessary during update - e.g. when resizing the volume
      */
     update?: string;
+}
+
+export interface VpcIpv6 {
+    /**
+     * The IPv6 range assigned to this VPC.
+     */
+    allocatedRange: string;
+    /**
+     * The IPv6 range assigned to this VPC.
+     */
+    range?: string;
+}
+
+export interface VpcSubnetIpv6 {
+    /**
+     * The IPv6 range assigned to this subnet.
+     */
+    allocatedRange: string;
+    /**
+     * An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+     */
+    range: string;
 }
 
 export interface VpcSubnetLinode {

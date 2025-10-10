@@ -27,6 +27,14 @@ import * as utilities from "./utilities";
  * export const vpcs = filtered_vpcs.then(filtered_vpcs => filtered_vpcs.vpcs);
  * ```
  *
+ * ## IPv6
+ *
+ * > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+ *
+ * Contains information about a single IPv6 allocation under a VPC.
+ *
+ * * `range` - The allocated range in CIDR format.
+ *
  * ## Filterable Fields
  *
  * * `id`
@@ -85,6 +93,14 @@ export interface GetVpcsResult {
  * });
  * export const vpcs = filtered_vpcs.then(filtered_vpcs => filtered_vpcs.vpcs);
  * ```
+ *
+ * ## IPv6
+ *
+ * > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+ *
+ * Contains information about a single IPv6 allocation under a VPC.
+ *
+ * * `range` - The allocated range in CIDR format.
  *
  * ## Filterable Fields
  *

@@ -63,6 +63,16 @@ import (
 // * `frequency` - The frequency at which maintenance occurs. (`weekly`)
 //
 // * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+//
+// ## privateNetwork
+//
+// The following arguments are exposed by the `privateNetwork` attribute:
+//
+// * `vpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+//
+// * `subnetId` - The ID of the VPC subnet to restrict access to this database using.
+//
+// * `publicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
 func LookupDatabaseMysqlV2(ctx *pulumi.Context, args *LookupDatabaseMysqlV2Args, opts ...pulumi.InvokeOption) (*LookupDatabaseMysqlV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseMysqlV2Result
@@ -168,7 +178,8 @@ type LookupDatabaseMysqlV2Result struct {
 	// The back-end platform for relational databases used by the service.
 	Platform string `pulumi:"platform"`
 	// The access port for this Managed Database.
-	Port int `pulumi:"port"`
+	Port           int                              `pulumi:"port"`
+	PrivateNetwork GetDatabaseMysqlV2PrivateNetwork `pulumi:"privateNetwork"`
 	// The region to use for the Managed Database.
 	Region string `pulumi:"region"`
 	// The randomly-generated root password for the Managed Database instance.
@@ -448,6 +459,10 @@ func (o LookupDatabaseMysqlV2ResultOutput) Platform() pulumi.StringOutput {
 // The access port for this Managed Database.
 func (o LookupDatabaseMysqlV2ResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o LookupDatabaseMysqlV2ResultOutput) PrivateNetwork() GetDatabaseMysqlV2PrivateNetworkOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) GetDatabaseMysqlV2PrivateNetwork { return v.PrivateNetwork }).(GetDatabaseMysqlV2PrivateNetworkOutput)
 }
 
 // The region to use for the Managed Database.

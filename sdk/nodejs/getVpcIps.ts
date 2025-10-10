@@ -10,9 +10,6 @@ import * as utilities from "./utilities";
  * Provides information about a list of Linode VPC IPs that match a set of filters.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
  *
- * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
- * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
- *
  * ## Example Usage
  *
  * The following example shows how one might use this data source to list VPC IPs.
@@ -40,6 +37,17 @@ import * as utilities from "./utilities";
  *     vpcId: 123,
  * });
  * export const vpcIps = specific_vpc_ips.then(specific_vpc_ips => specific_vpc_ips.vpcIps);
+ * ```
+ *
+ * By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all_vpc_ipv6 = linode.getVpcIps({
+ *     ipv6: true,
+ * });
  * ```
  *
  * ## Filterable Fields
@@ -59,6 +67,7 @@ export function getVpcIps(args?: GetVpcIpsArgs, opts?: pulumi.InvokeOptions): Pr
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getVpcIps:getVpcIps", {
         "filters": args.filters,
+        "ipv6": args.ipv6,
         "vpcId": args.vpcId,
         "vpcIps": args.vpcIps,
     }, opts);
@@ -69,6 +78,7 @@ export function getVpcIps(args?: GetVpcIpsArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetVpcIpsArgs {
     filters?: inputs.GetVpcIpsFilter[];
+    ipv6?: boolean;
     /**
      * The id of the parent VPC for the list of VPC IPs.
      *
@@ -84,6 +94,7 @@ export interface GetVpcIpsArgs {
 export interface GetVpcIpsResult {
     readonly filters?: outputs.GetVpcIpsFilter[];
     readonly id: string;
+    readonly ipv6?: boolean;
     /**
      * The unique globally general API entity identifier for the VPC.
      */
@@ -93,9 +104,6 @@ export interface GetVpcIpsResult {
 /**
  * Provides information about a list of Linode VPC IPs that match a set of filters.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-ips).
- *
- * Provides information about a list of Linode VPC IPs in a specific VPC that match a set of filters.
- * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpc-ips).
  *
  * ## Example Usage
  *
@@ -126,6 +134,17 @@ export interface GetVpcIpsResult {
  * export const vpcIps = specific_vpc_ips.then(specific_vpc_ips => specific_vpc_ips.vpcIps);
  * ```
  *
+ * By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all_vpc_ipv6 = linode.getVpcIps({
+ *     ipv6: true,
+ * });
+ * ```
+ *
  * ## Filterable Fields
  *
  * * `active`
@@ -143,6 +162,7 @@ export function getVpcIpsOutput(args?: GetVpcIpsOutputArgs, opts?: pulumi.Invoke
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getVpcIps:getVpcIps", {
         "filters": args.filters,
+        "ipv6": args.ipv6,
         "vpcId": args.vpcId,
         "vpcIps": args.vpcIps,
     }, opts);
@@ -153,6 +173,7 @@ export function getVpcIpsOutput(args?: GetVpcIpsOutputArgs, opts?: pulumi.Invoke
  */
 export interface GetVpcIpsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetVpcIpsFilterArgs>[]>;
+    ipv6?: pulumi.Input<boolean>;
     /**
      * The id of the parent VPC for the list of VPC IPs.
      *

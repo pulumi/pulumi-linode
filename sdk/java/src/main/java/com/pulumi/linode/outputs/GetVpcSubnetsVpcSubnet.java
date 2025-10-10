@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetVpcSubnetsVpcSubnetIpv6;
 import com.pulumi.linode.outputs.GetVpcSubnetsVpcSubnetLinode;
 import java.lang.Integer;
 import java.lang.String;
@@ -28,6 +29,11 @@ public final class GetVpcSubnetsVpcSubnet {
      * 
      */
     private String ipv4;
+    /**
+     * @return The IPv6 ranges of this subnet.
+     * 
+     */
+    private List<GetVpcSubnetsVpcSubnetIpv6> ipv6s;
     /**
      * @return The label of the VPC subnet.
      * 
@@ -67,6 +73,13 @@ public final class GetVpcSubnetsVpcSubnet {
         return this.ipv4;
     }
     /**
+     * @return The IPv6 ranges of this subnet.
+     * 
+     */
+    public List<GetVpcSubnetsVpcSubnetIpv6> ipv6s() {
+        return this.ipv6s;
+    }
+    /**
      * @return The label of the VPC subnet.
      * 
      */
@@ -100,6 +113,7 @@ public final class GetVpcSubnetsVpcSubnet {
         private String created;
         private Integer id;
         private String ipv4;
+        private List<GetVpcSubnetsVpcSubnetIpv6> ipv6s;
         private String label;
         private List<GetVpcSubnetsVpcSubnetLinode> linodes;
         private String updated;
@@ -109,6 +123,7 @@ public final class GetVpcSubnetsVpcSubnet {
     	      this.created = defaults.created;
     	      this.id = defaults.id;
     	      this.ipv4 = defaults.ipv4;
+    	      this.ipv6s = defaults.ipv6s;
     	      this.label = defaults.label;
     	      this.linodes = defaults.linodes;
     	      this.updated = defaults.updated;
@@ -137,6 +152,17 @@ public final class GetVpcSubnetsVpcSubnet {
             }
             this.ipv4 = ipv4;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6s(List<GetVpcSubnetsVpcSubnetIpv6> ipv6s) {
+            if (ipv6s == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "ipv6s");
+            }
+            this.ipv6s = ipv6s;
+            return this;
+        }
+        public Builder ipv6s(GetVpcSubnetsVpcSubnetIpv6... ipv6s) {
+            return ipv6s(List.of(ipv6s));
         }
         @CustomType.Setter
         public Builder label(String label) {
@@ -170,6 +196,7 @@ public final class GetVpcSubnetsVpcSubnet {
             _resultValue.created = created;
             _resultValue.id = id;
             _resultValue.ipv4 = ipv4;
+            _resultValue.ipv6s = ipv6s;
             _resultValue.label = label;
             _resultValue.linodes = linodes;
             _resultValue.updated = updated;

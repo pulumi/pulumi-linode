@@ -36,6 +36,45 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// 
+    /// Create a VPC with a `/52` IPv6 range prefix:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // NOTE: IPv6 VPCs may not currently be available to all users.
+    ///     var test = new Linode.Vpc("test", new()
+    ///     {
+    ///         Label = "test-vpc",
+    ///         Region = "us-iad",
+    ///         Ipv6s = new[]
+    ///         {
+    ///             new Linode.Inputs.VpcIpv6Args
+    ///             {
+    ///                 Range = "/52",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## IPv6
+    /// 
+    /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+    /// 
+    /// Configures a single IPv6 range under this VPC.
+    /// 
+    /// * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+    /// 
+    /// * `allocation_class` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+    /// 
+    /// * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
     /// </summary>
     [LinodeResourceType("linode:index/vpc:Vpc")]
     public partial class Vpc : global::Pulumi.CustomResource
@@ -48,9 +87,17 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The user-defined description of this VPC.
+        /// 
+        /// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The IPv6 configuration of this VPC.
+        /// </summary>
+        [Output("ipv6s")]
+        public Output<ImmutableArray<Outputs.VpcIpv6>> Ipv6s { get; private set; } = null!;
 
         /// <summary>
         /// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
@@ -118,9 +165,23 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The user-defined description of this VPC.
+        /// 
+        /// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("ipv6s")]
+        private InputList<Inputs.VpcIpv6Args>? _ipv6s;
+
+        /// <summary>
+        /// The IPv6 configuration of this VPC.
+        /// </summary>
+        public InputList<Inputs.VpcIpv6Args> Ipv6s
+        {
+            get => _ipv6s ?? (_ipv6s = new InputList<Inputs.VpcIpv6Args>());
+            set => _ipv6s = value;
+        }
 
         /// <summary>
         /// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
@@ -150,9 +211,23 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The user-defined description of this VPC.
+        /// 
+        /// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("ipv6s")]
+        private InputList<Inputs.VpcIpv6GetArgs>? _ipv6s;
+
+        /// <summary>
+        /// The IPv6 configuration of this VPC.
+        /// </summary>
+        public InputList<Inputs.VpcIpv6GetArgs> Ipv6s
+        {
+            get => _ipv6s ?? (_ipv6s = new InputList<Inputs.VpcIpv6GetArgs>());
+            set => _ipv6s = value;
+        }
 
         /// <summary>
         /// The label of the VPC. This field can only contain ASCII letters, digits and dashes.

@@ -35,6 +35,16 @@ public final class GetNodeBalancerNodeResult {
      */
     private String status;
     /**
+     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    private Integer subnetId;
+    /**
+     * @return The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    private Integer vpcConfigId;
+    /**
      * @return Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      * 
      */
@@ -79,6 +89,20 @@ public final class GetNodeBalancerNodeResult {
         return this.status;
     }
     /**
+     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    public Integer subnetId() {
+        return this.subnetId;
+    }
+    /**
+     * @return The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    public Integer vpcConfigId() {
+        return this.vpcConfigId;
+    }
+    /**
      * @return Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      * 
      */
@@ -102,6 +126,8 @@ public final class GetNodeBalancerNodeResult {
         private String mode;
         private Integer nodebalancerId;
         private String status;
+        private Integer subnetId;
+        private Integer vpcConfigId;
         private Integer weight;
         public Builder() {}
         public Builder(GetNodeBalancerNodeResult defaults) {
@@ -113,6 +139,8 @@ public final class GetNodeBalancerNodeResult {
     	      this.mode = defaults.mode;
     	      this.nodebalancerId = defaults.nodebalancerId;
     	      this.status = defaults.status;
+    	      this.subnetId = defaults.subnetId;
+    	      this.vpcConfigId = defaults.vpcConfigId;
     	      this.weight = defaults.weight;
         }
 
@@ -173,6 +201,22 @@ public final class GetNodeBalancerNodeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder subnetId(Integer subnetId) {
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerNodeResult", "subnetId");
+            }
+            this.subnetId = subnetId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vpcConfigId(Integer vpcConfigId) {
+            if (vpcConfigId == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerNodeResult", "vpcConfigId");
+            }
+            this.vpcConfigId = vpcConfigId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder weight(Integer weight) {
             if (weight == null) {
               throw new MissingRequiredPropertyException("GetNodeBalancerNodeResult", "weight");
@@ -189,6 +233,8 @@ public final class GetNodeBalancerNodeResult {
             _resultValue.mode = mode;
             _resultValue.nodebalancerId = nodebalancerId;
             _resultValue.status = status;
+            _resultValue.subnetId = subnetId;
+            _resultValue.vpcConfigId = vpcConfigId;
             _resultValue.weight = weight;
             return _resultValue;
         }

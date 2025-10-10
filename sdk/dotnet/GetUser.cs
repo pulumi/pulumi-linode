@@ -158,14 +158,6 @@ namespace Pulumi.Linode
             set => _nodebalancerGrants = value;
         }
 
-        [Input("placementGroupGrants")]
-        private List<Inputs.GetUserPlacementGroupGrantArgs>? _placementGroupGrants;
-        public List<Inputs.GetUserPlacementGroupGrantArgs> PlacementGroupGrants
-        {
-            get => _placementGroupGrants ?? (_placementGroupGrants = new List<Inputs.GetUserPlacementGroupGrantArgs>());
-            set => _placementGroupGrants = value;
-        }
-
         [Input("stackscriptGrants")]
         private List<Inputs.GetUserStackscriptGrantArgs>? _stackscriptGrants;
         public List<Inputs.GetUserStackscriptGrantArgs> StackscriptGrants
@@ -260,14 +252,6 @@ namespace Pulumi.Linode
             set => _nodebalancerGrants = value;
         }
 
-        [Input("placementGroupGrants")]
-        private InputList<Inputs.GetUserPlacementGroupGrantInputArgs>? _placementGroupGrants;
-        public InputList<Inputs.GetUserPlacementGroupGrantInputArgs> PlacementGroupGrants
-        {
-            get => _placementGroupGrants ?? (_placementGroupGrants = new InputList<Inputs.GetUserPlacementGroupGrantInputArgs>());
-            set => _placementGroupGrants = value;
-        }
-
         [Input("stackscriptGrants")]
         private InputList<Inputs.GetUserStackscriptGrantInputArgs>? _stackscriptGrants;
         public InputList<Inputs.GetUserStackscriptGrantInputArgs> StackscriptGrants
@@ -328,7 +312,6 @@ namespace Pulumi.Linode
         /// The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
         /// </summary>
         public readonly string PasswordCreated;
-        public readonly ImmutableArray<Outputs.GetUserPlacementGroupGrantResult> PlacementGroupGrants;
         /// <summary>
         /// If true, this User must be granted access to perform actions or access entities on this Account.
         /// </summary>
@@ -378,8 +361,6 @@ namespace Pulumi.Linode
 
             string passwordCreated,
 
-            ImmutableArray<Outputs.GetUserPlacementGroupGrantResult> placementGroupGrants,
-
             bool restricted,
 
             ImmutableArray<string> sshKeys,
@@ -409,7 +390,6 @@ namespace Pulumi.Linode
             LongviewGrants = longviewGrants;
             NodebalancerGrants = nodebalancerGrants;
             PasswordCreated = passwordCreated;
-            PlacementGroupGrants = placementGroupGrants;
             Restricted = restricted;
             SshKeys = sshKeys;
             StackscriptGrants = stackscriptGrants;

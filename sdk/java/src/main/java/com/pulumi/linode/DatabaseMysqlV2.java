@@ -11,6 +11,7 @@ import com.pulumi.linode.DatabaseMysqlV2Args;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.DatabaseMysqlV2State;
 import com.pulumi.linode.outputs.DatabaseMysqlV2PendingUpdate;
+import com.pulumi.linode.outputs.DatabaseMysqlV2PrivateNetwork;
 import com.pulumi.linode.outputs.DatabaseMysqlV2Timeouts;
 import com.pulumi.linode.outputs.DatabaseMysqlV2Updates;
 import java.lang.Boolean;
@@ -623,6 +624,8 @@ public class DatabaseMysqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the database that was forked from.
      * 
+     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
@@ -631,6 +634,8 @@ public class DatabaseMysqlV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the database that was forked from.
+     * 
+     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
      * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
@@ -749,6 +754,20 @@ public class DatabaseMysqlV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> port() {
         return this.port;
+    }
+    /**
+     * Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    @Export(name="privateNetwork", refs={DatabaseMysqlV2PrivateNetwork.class}, tree="[0]")
+    private Output</* @Nullable */ DatabaseMysqlV2PrivateNetwork> privateNetwork;
+
+    /**
+     * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    public Output<Optional<DatabaseMysqlV2PrivateNetwork>> privateNetwork() {
+        return Codegen.optional(this.privateNetwork);
     }
     /**
      * The region to use for the Managed Database.

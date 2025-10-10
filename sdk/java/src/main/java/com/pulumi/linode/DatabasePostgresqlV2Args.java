@@ -6,6 +6,7 @@ package com.pulumi.linode;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.DatabasePostgresqlV2PrivateNetworkArgs;
 import com.pulumi.linode.inputs.DatabasePostgresqlV2TimeoutsArgs;
 import com.pulumi.linode.inputs.DatabasePostgresqlV2UpdatesArgs;
 import java.lang.Boolean;
@@ -790,6 +791,8 @@ public final class DatabasePostgresqlV2Args extends com.pulumi.resources.Resourc
     /**
      * The ID of the database that was forked from.
      * 
+     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
@@ -798,6 +801,8 @@ public final class DatabasePostgresqlV2Args extends com.pulumi.resources.Resourc
 
     /**
      * @return The ID of the database that was forked from.
+     * 
+     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
      * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
@@ -819,6 +824,21 @@ public final class DatabasePostgresqlV2Args extends com.pulumi.resources.Resourc
      */
     public Output<String> label() {
         return this.label;
+    }
+
+    /**
+     * Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    @Import(name="privateNetwork")
+    private @Nullable Output<DatabasePostgresqlV2PrivateNetworkArgs> privateNetwork;
+
+    /**
+     * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    public Optional<Output<DatabasePostgresqlV2PrivateNetworkArgs>> privateNetwork() {
+        return Optional.ofNullable(this.privateNetwork);
     }
 
     /**
@@ -948,6 +968,7 @@ public final class DatabasePostgresqlV2Args extends com.pulumi.resources.Resourc
         this.forkRestoreTime = $.forkRestoreTime;
         this.forkSource = $.forkSource;
         this.label = $.label;
+        this.privateNetwork = $.privateNetwork;
         this.region = $.region;
         this.suspended = $.suspended;
         this.timeouts = $.timeouts;
@@ -2057,6 +2078,8 @@ public final class DatabasePostgresqlV2Args extends com.pulumi.resources.Resourc
         /**
          * @param forkSource The ID of the database that was forked from.
          * 
+         * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * 
          * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
          * 
          * @return builder
@@ -2069,6 +2092,8 @@ public final class DatabasePostgresqlV2Args extends com.pulumi.resources.Resourc
 
         /**
          * @param forkSource The ID of the database that was forked from.
+         * 
+         * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
          * 
          * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
          * 
@@ -2098,6 +2123,27 @@ public final class DatabasePostgresqlV2Args extends com.pulumi.resources.Resourc
          */
         public Builder label(String label) {
             return label(Output.of(label));
+        }
+
+        /**
+         * @param privateNetwork Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateNetwork(@Nullable Output<DatabasePostgresqlV2PrivateNetworkArgs> privateNetwork) {
+            $.privateNetwork = privateNetwork;
+            return this;
+        }
+
+        /**
+         * @param privateNetwork Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateNetwork(DatabasePostgresqlV2PrivateNetworkArgs privateNetwork) {
+            return privateNetwork(Output.of(privateNetwork));
         }
 
         /**

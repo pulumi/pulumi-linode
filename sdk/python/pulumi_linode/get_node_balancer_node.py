@@ -26,7 +26,7 @@ class GetNodeBalancerNodeResult:
     """
     A collection of values returned by getNodeBalancerNode.
     """
-    def __init__(__self__, address=None, config_id=None, id=None, label=None, mode=None, nodebalancer_id=None, status=None, weight=None):
+    def __init__(__self__, address=None, config_id=None, id=None, label=None, mode=None, nodebalancer_id=None, status=None, subnet_id=None, vpc_config_id=None, weight=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -48,6 +48,12 @@ class GetNodeBalancerNodeResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if subnet_id and not isinstance(subnet_id, int):
+            raise TypeError("Expected argument 'subnet_id' to be a int")
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        if vpc_config_id and not isinstance(vpc_config_id, int):
+            raise TypeError("Expected argument 'vpc_config_id' to be a int")
+        pulumi.set(__self__, "vpc_config_id", vpc_config_id)
         if weight and not isinstance(weight, int):
             raise TypeError("Expected argument 'weight' to be a int")
         pulumi.set(__self__, "weight", weight)
@@ -100,6 +106,22 @@ class GetNodeBalancerNodeResult:
         return pulumi.get(self, "status")
 
     @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcConfigId")
+    def vpc_config_id(self) -> _builtins.int:
+        """
+        The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        """
+        return pulumi.get(self, "vpc_config_id")
+
+    @_builtins.property
     @pulumi.getter
     def weight(self) -> _builtins.int:
         """
@@ -121,6 +143,8 @@ class AwaitableGetNodeBalancerNodeResult(GetNodeBalancerNodeResult):
             mode=self.mode,
             nodebalancer_id=self.nodebalancer_id,
             status=self.status,
+            subnet_id=self.subnet_id,
+            vpc_config_id=self.vpc_config_id,
             weight=self.weight)
 
 
@@ -163,6 +187,8 @@ def get_node_balancer_node(config_id: Optional[_builtins.int] = None,
         mode=pulumi.get(__ret__, 'mode'),
         nodebalancer_id=pulumi.get(__ret__, 'nodebalancer_id'),
         status=pulumi.get(__ret__, 'status'),
+        subnet_id=pulumi.get(__ret__, 'subnet_id'),
+        vpc_config_id=pulumi.get(__ret__, 'vpc_config_id'),
         weight=pulumi.get(__ret__, 'weight'))
 def get_node_balancer_node_output(config_id: Optional[pulumi.Input[_builtins.int]] = None,
                                   id: Optional[pulumi.Input[_builtins.int]] = None,
@@ -202,4 +228,6 @@ def get_node_balancer_node_output(config_id: Optional[pulumi.Input[_builtins.int
         mode=pulumi.get(__response__, 'mode'),
         nodebalancer_id=pulumi.get(__response__, 'nodebalancer_id'),
         status=pulumi.get(__response__, 'status'),
+        subnet_id=pulumi.get(__response__, 'subnet_id'),
+        vpc_config_id=pulumi.get(__response__, 'vpc_config_id'),
         weight=pulumi.get(__response__, 'weight')))

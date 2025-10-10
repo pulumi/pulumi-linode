@@ -134,21 +134,6 @@ public final class GetUsersUserGlobalGrant extends com.pulumi.resources.InvokeAr
         return this.addNodebalancers;
     }
 
-    /**
-     * If true, this User may add Placement Groups.
-     * 
-     */
-    @Import(name="addPlacementGroups", required=true)
-    private Boolean addPlacementGroups;
-
-    /**
-     * @return If true, this User may add Placement Groups.
-     * 
-     */
-    public Boolean addPlacementGroups() {
-        return this.addPlacementGroups;
-    }
-
     @Import(name="addStackscripts", required=true)
     private Boolean addStackscripts;
 
@@ -227,7 +212,6 @@ public final class GetUsersUserGlobalGrant extends com.pulumi.resources.InvokeAr
         this.addLinodes = $.addLinodes;
         this.addLongview = $.addLongview;
         this.addNodebalancers = $.addNodebalancers;
-        this.addPlacementGroups = $.addPlacementGroups;
         this.addStackscripts = $.addStackscripts;
         this.addVolumes = $.addVolumes;
         this.addVpcs = $.addVpcs;
@@ -341,17 +325,6 @@ public final class GetUsersUserGlobalGrant extends com.pulumi.resources.InvokeAr
             return this;
         }
 
-        /**
-         * @param addPlacementGroups If true, this User may add Placement Groups.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder addPlacementGroups(Boolean addPlacementGroups) {
-            $.addPlacementGroups = addPlacementGroups;
-            return this;
-        }
-
         public Builder addStackscripts(Boolean addStackscripts) {
             $.addStackscripts = addStackscripts;
             return this;
@@ -425,9 +398,6 @@ public final class GetUsersUserGlobalGrant extends com.pulumi.resources.InvokeAr
             }
             if ($.addNodebalancers == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addNodebalancers");
-            }
-            if ($.addPlacementGroups == null) {
-                throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addPlacementGroups");
             }
             if ($.addStackscripts == null) {
                 throw new MissingRequiredPropertyException("GetUsersUserGlobalGrant", "addStackscripts");

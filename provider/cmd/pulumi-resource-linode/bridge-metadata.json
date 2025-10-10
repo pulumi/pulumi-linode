@@ -220,6 +220,19 @@
                                             },
                                             "ipv4": {
                                                 "maxItemsOne": true
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "range": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "slaac": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -249,6 +262,19 @@
                                 },
                                 "ipv4": {
                                     "maxItemsOne": true
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "range": {
+                                                "maxItemsOne": false
+                                            },
+                                            "slaac": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -323,6 +349,19 @@
                                 },
                                 "ipv4": {
                                     "maxItemsOne": true
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "range": {
+                                                "maxItemsOne": false
+                                            },
+                                            "slaac": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -505,6 +544,9 @@
                     },
                     "transfer": {
                         "maxItemsOne": false
+                    },
+                    "vpcs": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -633,9 +675,6 @@
                     "nodebalancer_grant": {
                         "maxItemsOne": false
                     },
-                    "placement_group_grant": {
-                        "maxItemsOne": false
-                    },
                     "ssh_keys": {
                         "maxItemsOne": false
                     },
@@ -661,12 +700,20 @@
             },
             "linode_vpc": {
                 "current": "linode:index/vpc:Vpc",
-                "majorVersion": 5
+                "majorVersion": 5,
+                "fields": {
+                    "ipv6": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_vpc_subnet": {
                 "current": "linode:index/vpcSubnet:VpcSubnet",
                 "majorVersion": 5,
                 "fields": {
+                    "ipv6": {
+                        "maxItemsOne": false
+                    },
                     "linodes": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1478,6 +1525,19 @@
                                                         },
                                                         "ipv4": {
                                                             "maxItemsOne": true
+                                                        },
+                                                        "ipv6": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "range": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "slaac": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -1830,6 +1890,9 @@
                     },
                     "transfer": {
                         "maxItemsOne": false
+                    },
+                    "vpcs": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1871,6 +1934,29 @@
             "linode_nodebalancer_node": {
                 "current": "linode:index/getNodeBalancerNode:getNodeBalancerNode",
                 "majorVersion": 5
+            },
+            "linode_nodebalancer_vpc": {
+                "current": "linode:index/getNodebalancerVpc:getNodebalancerVpc",
+                "majorVersion": 5
+            },
+            "linode_nodebalancer_vpcs": {
+                "current": "linode:index/getNodebalancerVpcs:getNodebalancerVpcs",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "vpc_configs": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_nodebalancers": {
                 "current": "linode:index/getNodebalancers:getNodebalancers",
@@ -2157,9 +2243,6 @@
                     "nodebalancer_grant": {
                         "maxItemsOne": false
                     },
-                    "placement_group_grant": {
-                        "maxItemsOne": false
-                    },
                     "ssh_keys": {
                         "maxItemsOne": false
                     },
@@ -2214,9 +2297,6 @@
                                     "maxItemsOne": false
                                 },
                                 "nodebalancer_grant": {
-                                    "maxItemsOne": false
-                                },
-                                "placement_group_grant": {
                                     "maxItemsOne": false
                                 },
                                 "ssh_keys": {
@@ -2328,7 +2408,12 @@
             },
             "linode_vpc": {
                 "current": "linode:index/getVpc:getVpc",
-                "majorVersion": 5
+                "majorVersion": 5,
+                "fields": {
+                    "ipv6": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_vpc_ips": {
                 "current": "linode:index/getVpcIps:getVpcIps",
@@ -2345,7 +2430,14 @@
                         }
                     },
                     "vpc_ips": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipv6_addresses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2353,6 +2445,9 @@
                 "current": "linode:index/getVpcSubnet:getVpcSubnet",
                 "majorVersion": 5,
                 "fields": {
+                    "ipv6": {
+                        "maxItemsOne": false
+                    },
                     "linodes": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2383,6 +2478,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "ipv6": {
+                                    "maxItemsOne": false
+                                },
                                 "linodes": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -2413,7 +2511,14 @@
                         }
                     },
                     "vpcs": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipv6": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -2512,6 +2617,8 @@
             "linode:index/getNodeBalancerConfig:getNodeBalancerConfig": 1,
             "linode:index/getNodeBalancerNode:getNodeBalancerNode": 1,
             "linode:index/getNodebalancerConfigs:getNodebalancerConfigs": 1,
+            "linode:index/getNodebalancerVpc:getNodebalancerVpc": 1,
+            "linode:index/getNodebalancerVpcs:getNodebalancerVpcs": 1,
             "linode:index/getNodebalancers:getNodebalancers": 1,
             "linode:index/getObjectStorageCluster:getObjectStorageCluster": 1,
             "linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints": 1,

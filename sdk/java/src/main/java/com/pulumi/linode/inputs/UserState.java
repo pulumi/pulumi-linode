@@ -12,7 +12,6 @@ import com.pulumi.linode.inputs.UserImageGrantArgs;
 import com.pulumi.linode.inputs.UserLinodeGrantArgs;
 import com.pulumi.linode.inputs.UserLongviewGrantArgs;
 import com.pulumi.linode.inputs.UserNodebalancerGrantArgs;
-import com.pulumi.linode.inputs.UserPlacementGroupGrantArgs;
 import com.pulumi.linode.inputs.UserStackscriptGrantArgs;
 import com.pulumi.linode.inputs.UserVolumeGrantArgs;
 import com.pulumi.linode.inputs.UserVpcGrantArgs;
@@ -146,21 +145,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<UserNodebalancerGrantArgs>>> nodebalancerGrants() {
         return Optional.ofNullable(this.nodebalancerGrants);
-    }
-
-    /**
-     * The Placement Groups the user has permissions access to.
-     * 
-     */
-    @Import(name="placementGroupGrants")
-    private @Nullable Output<List<UserPlacementGroupGrantArgs>> placementGroupGrants;
-
-    /**
-     * @return The Placement Groups the user has permissions access to.
-     * 
-     */
-    public Optional<Output<List<UserPlacementGroupGrantArgs>>> placementGroupGrants() {
-        return Optional.ofNullable(this.placementGroupGrants);
     }
 
     /**
@@ -302,7 +286,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         this.linodeGrants = $.linodeGrants;
         this.longviewGrants = $.longviewGrants;
         this.nodebalancerGrants = $.nodebalancerGrants;
-        this.placementGroupGrants = $.placementGroupGrants;
         this.restricted = $.restricted;
         this.sshKeys = $.sshKeys;
         this.stackscriptGrants = $.stackscriptGrants;
@@ -557,37 +540,6 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nodebalancerGrants(UserNodebalancerGrantArgs... nodebalancerGrants) {
             return nodebalancerGrants(List.of(nodebalancerGrants));
-        }
-
-        /**
-         * @param placementGroupGrants The Placement Groups the user has permissions access to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder placementGroupGrants(@Nullable Output<List<UserPlacementGroupGrantArgs>> placementGroupGrants) {
-            $.placementGroupGrants = placementGroupGrants;
-            return this;
-        }
-
-        /**
-         * @param placementGroupGrants The Placement Groups the user has permissions access to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder placementGroupGrants(List<UserPlacementGroupGrantArgs> placementGroupGrants) {
-            return placementGroupGrants(Output.of(placementGroupGrants));
-        }
-
-        /**
-         * @param placementGroupGrants The Placement Groups the user has permissions access to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder placementGroupGrants(UserPlacementGroupGrantArgs... placementGroupGrants) {
-            return placementGroupGrants(List.of(placementGroupGrants));
         }
 
         /**

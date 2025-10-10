@@ -5,7 +5,9 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.VpcIpv6Args;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,6 +35,8 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
     /**
      * The user-defined description of this VPC.
      * 
+     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -40,9 +44,26 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The user-defined description of this VPC.
      * 
+     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+     * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The IPv6 configuration of this VPC.
+     * 
+     */
+    @Import(name="ipv6s")
+    private @Nullable Output<List<VpcIpv6Args>> ipv6s;
+
+    /**
+     * @return The IPv6 configuration of this VPC.
+     * 
+     */
+    public Optional<Output<List<VpcIpv6Args>>> ipv6s() {
+        return Optional.ofNullable(this.ipv6s);
     }
 
     /**
@@ -95,6 +116,7 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
     private VpcState(VpcState $) {
         this.created = $.created;
         this.description = $.description;
+        this.ipv6s = $.ipv6s;
         this.label = $.label;
         this.region = $.region;
         this.updated = $.updated;
@@ -142,6 +164,8 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description The user-defined description of this VPC.
          * 
+         * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+         * 
          * @return builder
          * 
          */
@@ -153,11 +177,44 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description The user-defined description of this VPC.
          * 
+         * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+         * 
          * @return builder
          * 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param ipv6s The IPv6 configuration of this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(@Nullable Output<List<VpcIpv6Args>> ipv6s) {
+            $.ipv6s = ipv6s;
+            return this;
+        }
+
+        /**
+         * @param ipv6s The IPv6 configuration of this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(List<VpcIpv6Args> ipv6s) {
+            return ipv6s(Output.of(ipv6s));
+        }
+
+        /**
+         * @param ipv6s The IPv6 configuration of this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6s(VpcIpv6Args... ipv6s) {
+            return ipv6s(List.of(ipv6s));
         }
 
         /**

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.InstanceInterfaceIpv4Args;
+import com.pulumi.linode.inputs.InstanceInterfaceIpv6Args;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -100,6 +101,21 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+     * 
+     */
+    @Import(name="ipv6")
+    private @Nullable Output<InstanceInterfaceIpv6Args> ipv6;
+
+    /**
+     * @return This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+     * 
+     */
+    public Optional<Output<InstanceInterfaceIpv6Args>> ipv6() {
+        return Optional.ofNullable(this.ipv6);
+    }
+
+    /**
      * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      * 
      */
@@ -119,6 +135,8 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
      * 
      * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
      * 
+     * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+     * 
      * The following computed attribute is available in a VPC interface:
      * 
      */
@@ -129,6 +147,8 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
      * @return Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      * 
      * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     * 
+     * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      * 
      * The following computed attribute is available in a VPC interface:
      * 
@@ -190,6 +210,7 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
         this.ipRanges = $.ipRanges;
         this.ipamAddress = $.ipamAddress;
         this.ipv4 = $.ipv4;
+        this.ipv6 = $.ipv6;
         this.label = $.label;
         this.primary = $.primary;
         this.purpose = $.purpose;
@@ -335,6 +356,27 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param ipv6 This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6(@Nullable Output<InstanceInterfaceIpv6Args> ipv6) {
+            $.ipv6 = ipv6;
+            return this;
+        }
+
+        /**
+         * @param ipv6 This Linode&#39;s IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6(InstanceInterfaceIpv6Args ipv6) {
+            return ipv6(Output.of(ipv6));
+        }
+
+        /**
          * @param label The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
          * 
          * @return builder
@@ -360,6 +402,8 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
          * 
          * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
          * 
+         * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+         * 
          * The following computed attribute is available in a VPC interface:
          * 
          * @return builder
@@ -374,6 +418,8 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
          * @param primary Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
          * 
          * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+         * 
+         * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
          * 
          * The following computed attribute is available in a VPC interface:
          * 

@@ -27,7 +27,7 @@ class GetVpcSubnetResult:
     """
     A collection of values returned by getVpcSubnet.
     """
-    def __init__(__self__, created=None, id=None, ipv4=None, label=None, linodes=None, updated=None, vpc_id=None):
+    def __init__(__self__, created=None, id=None, ipv4=None, ipv6s=None, label=None, linodes=None, updated=None, vpc_id=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -37,6 +37,9 @@ class GetVpcSubnetResult:
         if ipv4 and not isinstance(ipv4, str):
             raise TypeError("Expected argument 'ipv4' to be a str")
         pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6s and not isinstance(ipv6s, list):
+            raise TypeError("Expected argument 'ipv6s' to be a list")
+        pulumi.set(__self__, "ipv6s", ipv6s)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
@@ -70,6 +73,11 @@ class GetVpcSubnetResult:
         The IPv4 range of this subnet in CIDR format.
         """
         return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence['outputs.GetVpcSubnetIpv6Result']:
+        return pulumi.get(self, "ipv6s")
 
     @_builtins.property
     @pulumi.getter
@@ -110,6 +118,7 @@ class AwaitableGetVpcSubnetResult(GetVpcSubnetResult):
             created=self.created,
             id=self.id,
             ipv4=self.ipv4,
+            ipv6s=self.ipv6s,
             label=self.label,
             linodes=self.linodes,
             updated=self.updated,
@@ -136,6 +145,14 @@ def get_vpc_subnet(id: Optional[_builtins.str] = None,
     pulumi.export("vpcSubnet", foo)
     ```
 
+    ## IPv6
+
+    > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+
+    The following attributes are exported under each entry of the `ipv6` field:
+
+    * `range` - An IPv6 range allocated to this subnet in CIDR format.
+
 
     :param _builtins.str id: The unique id of this VPC subnet.
     :param _builtins.int vpc_id: The id of the parent VPC for this VPC Subnet.
@@ -150,6 +167,7 @@ def get_vpc_subnet(id: Optional[_builtins.str] = None,
         created=pulumi.get(__ret__, 'created'),
         id=pulumi.get(__ret__, 'id'),
         ipv4=pulumi.get(__ret__, 'ipv4'),
+        ipv6s=pulumi.get(__ret__, 'ipv6s'),
         label=pulumi.get(__ret__, 'label'),
         linodes=pulumi.get(__ret__, 'linodes'),
         updated=pulumi.get(__ret__, 'updated'),
@@ -174,6 +192,14 @@ def get_vpc_subnet_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     pulumi.export("vpcSubnet", foo)
     ```
 
+    ## IPv6
+
+    > **Limited Availability** IPv6 VPCs may not currently be available to all users.
+
+    The following attributes are exported under each entry of the `ipv6` field:
+
+    * `range` - An IPv6 range allocated to this subnet in CIDR format.
+
 
     :param _builtins.str id: The unique id of this VPC subnet.
     :param _builtins.int vpc_id: The id of the parent VPC for this VPC Subnet.
@@ -187,6 +213,7 @@ def get_vpc_subnet_output(id: Optional[pulumi.Input[_builtins.str]] = None,
         created=pulumi.get(__response__, 'created'),
         id=pulumi.get(__response__, 'id'),
         ipv4=pulumi.get(__response__, 'ipv4'),
+        ipv6s=pulumi.get(__response__, 'ipv6s'),
         label=pulumi.get(__response__, 'label'),
         linodes=pulumi.get(__response__, 'linodes'),
         updated=pulumi.get(__response__, 'updated'),

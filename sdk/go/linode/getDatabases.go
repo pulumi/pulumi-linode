@@ -71,6 +71,16 @@ import (
 // })
 // }
 // ```
+//
+// ## privateNetwork
+//
+// The following arguments are exposed by the `privateNetwork` attribute:
+//
+// * `vpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+//
+// * `subnetId` - The ID of the VPC subnet to restrict access to this database using.
+//
+// * `publicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabasesResult

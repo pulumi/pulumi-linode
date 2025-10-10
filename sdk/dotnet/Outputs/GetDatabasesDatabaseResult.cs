@@ -54,6 +54,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
+        /// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// </summary>
+        public readonly Outputs.GetDatabasesDatabasePrivateNetworkResult PrivateNetwork;
+        /// <summary>
         /// The region to use for the Managed Database.
         /// </summary>
         public readonly string Region;
@@ -104,6 +108,8 @@ namespace Pulumi.Linode.Outputs
 
             string label,
 
+            Outputs.GetDatabasesDatabasePrivateNetworkResult privateNetwork,
+
             string region,
 
             string replicationType,
@@ -128,6 +134,7 @@ namespace Pulumi.Linode.Outputs
             Id = id;
             InstanceUri = instanceUri;
             Label = label;
+            PrivateNetwork = privateNetwork;
             Region = region;
             ReplicationType = replicationType;
             SslConnection = sslConnection;

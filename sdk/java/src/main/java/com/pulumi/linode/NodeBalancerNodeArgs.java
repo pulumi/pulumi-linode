@@ -97,6 +97,21 @@ public final class NodeBalancerNodeArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    @Import(name="subnetId")
+    private @Nullable Output<Integer> subnetId;
+
+    /**
+     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    public Optional<Output<Integer>> subnetId() {
+        return Optional.ofNullable(this.subnetId);
+    }
+
+    /**
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      * 
      */
@@ -119,6 +134,7 @@ public final class NodeBalancerNodeArgs extends com.pulumi.resources.ResourceArg
         this.label = $.label;
         this.mode = $.mode;
         this.nodebalancerId = $.nodebalancerId;
+        this.subnetId = $.subnetId;
         this.weight = $.weight;
     }
 
@@ -247,6 +263,27 @@ public final class NodeBalancerNodeArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder nodebalancerId(Integer nodebalancerId) {
             return nodebalancerId(Output.of(nodebalancerId));
+        }
+
+        /**
+         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(@Nullable Output<Integer> subnetId) {
+            $.subnetId = subnetId;
+            return this;
+        }
+
+        /**
+         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(Integer subnetId) {
+            return subnetId(Output.of(subnetId));
         }
 
         /**

@@ -48,6 +48,30 @@ namespace Pulumi.Linode.Inputs
         [Input("interfaceId", required: true)]
         public Input<int> InterfaceId { get; set; } = null!;
 
+        [Input("ipv6Addresses", required: true)]
+        private InputList<Inputs.GetVpcIpsVpcIpIpv6AddressInputArgs>? _ipv6Addresses;
+
+        /// <summary>
+        /// The addresses within the prefix that the interface is associated with.
+        /// </summary>
+        public InputList<Inputs.GetVpcIpsVpcIpIpv6AddressInputArgs> Ipv6Addresses
+        {
+            get => _ipv6Addresses ?? (_ipv6Addresses = new InputList<Inputs.GetVpcIpsVpcIpIpv6AddressInputArgs>());
+            set => _ipv6Addresses = value;
+        }
+
+        /// <summary>
+        /// The is_public setting for the interface associated with this address.
+        /// </summary>
+        [Input("ipv6IsPublic", required: true)]
+        public Input<bool> Ipv6IsPublic { get; set; } = null!;
+
+        /// <summary>
+        /// The /64 prefix, in CIDR notation, assigned to an interface.
+        /// </summary>
+        [Input("ipv6Range", required: true)]
+        public Input<string> Ipv6Range { get; set; } = null!;
+
         /// <summary>
         /// The identifier for the Linode the VPC interface currently belongs to.
         /// </summary>

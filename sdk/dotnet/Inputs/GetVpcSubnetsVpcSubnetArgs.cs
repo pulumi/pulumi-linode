@@ -30,6 +30,18 @@ namespace Pulumi.Linode.Inputs
         [Input("ipv4", required: true)]
         public Input<string> Ipv4 { get; set; } = null!;
 
+        [Input("ipv6s", required: true)]
+        private InputList<Inputs.GetVpcSubnetsVpcSubnetIpv6InputArgs>? _ipv6s;
+
+        /// <summary>
+        /// The IPv6 ranges of this subnet.
+        /// </summary>
+        public InputList<Inputs.GetVpcSubnetsVpcSubnetIpv6InputArgs> Ipv6s
+        {
+            get => _ipv6s ?? (_ipv6s = new InputList<Inputs.GetVpcSubnetsVpcSubnetIpv6InputArgs>());
+            set => _ipv6s = value;
+        }
+
         /// <summary>
         /// The label of the VPC subnet.
         /// </summary>

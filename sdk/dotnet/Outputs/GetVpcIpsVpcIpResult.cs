@@ -38,6 +38,18 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int InterfaceId;
         /// <summary>
+        /// The addresses within the prefix that the interface is associated with.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVpcIpsVpcIpIpv6AddressResult> Ipv6Addresses;
+        /// <summary>
+        /// The is_public setting for the interface associated with this address.
+        /// </summary>
+        public readonly bool Ipv6IsPublic;
+        /// <summary>
+        /// The /64 prefix, in CIDR notation, assigned to an interface.
+        /// </summary>
+        public readonly string Ipv6Range;
+        /// <summary>
         /// The identifier for the Linode the VPC interface currently belongs to.
         /// </summary>
         public readonly int LinodeId;
@@ -82,6 +94,12 @@ namespace Pulumi.Linode.Outputs
 
             int interfaceId,
 
+            ImmutableArray<Outputs.GetVpcIpsVpcIpIpv6AddressResult> ipv6Addresses,
+
+            bool ipv6IsPublic,
+
+            string ipv6Range,
+
             int linodeId,
 
             string nat11,
@@ -102,6 +120,9 @@ namespace Pulumi.Linode.Outputs
             ConfigId = configId;
             Gateway = gateway;
             InterfaceId = interfaceId;
+            Ipv6Addresses = ipv6Addresses;
+            Ipv6IsPublic = ipv6IsPublic;
+            Ipv6Range = ipv6Range;
             LinodeId = linodeId;
             Nat11 = nat11;
             Prefix = prefix;

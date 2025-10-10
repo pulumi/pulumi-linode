@@ -55,15 +55,14 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	DatabaseGrants       []GetUserDatabaseGrant       `pulumi:"databaseGrants"`
-	DomainGrants         []GetUserDomainGrant         `pulumi:"domainGrants"`
-	FirewallGrants       []GetUserFirewallGrant       `pulumi:"firewallGrants"`
-	ImageGrants          []GetUserImageGrant          `pulumi:"imageGrants"`
-	LinodeGrants         []GetUserLinodeGrant         `pulumi:"linodeGrants"`
-	LongviewGrants       []GetUserLongviewGrant       `pulumi:"longviewGrants"`
-	NodebalancerGrants   []GetUserNodebalancerGrant   `pulumi:"nodebalancerGrants"`
-	PlacementGroupGrants []GetUserPlacementGroupGrant `pulumi:"placementGroupGrants"`
-	StackscriptGrants    []GetUserStackscriptGrant    `pulumi:"stackscriptGrants"`
+	DatabaseGrants     []GetUserDatabaseGrant     `pulumi:"databaseGrants"`
+	DomainGrants       []GetUserDomainGrant       `pulumi:"domainGrants"`
+	FirewallGrants     []GetUserFirewallGrant     `pulumi:"firewallGrants"`
+	ImageGrants        []GetUserImageGrant        `pulumi:"imageGrants"`
+	LinodeGrants       []GetUserLinodeGrant       `pulumi:"linodeGrants"`
+	LongviewGrants     []GetUserLongviewGrant     `pulumi:"longviewGrants"`
+	NodebalancerGrants []GetUserNodebalancerGrant `pulumi:"nodebalancerGrants"`
+	StackscriptGrants  []GetUserStackscriptGrant  `pulumi:"stackscriptGrants"`
 	// The unique username of this User.
 	Username     string               `pulumi:"username"`
 	VolumeGrants []GetUserVolumeGrant `pulumi:"volumeGrants"`
@@ -85,8 +84,7 @@ type LookupUserResult struct {
 	LongviewGrants     []GetUserLongviewGrant     `pulumi:"longviewGrants"`
 	NodebalancerGrants []GetUserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
-	PasswordCreated      string                       `pulumi:"passwordCreated"`
-	PlacementGroupGrants []GetUserPlacementGroupGrant `pulumi:"placementGroupGrants"`
+	PasswordCreated string `pulumi:"passwordCreated"`
 	// If true, this User must be granted access to perform actions or access entities on this Account.
 	Restricted bool `pulumi:"restricted"`
 	// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
@@ -114,15 +112,14 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
-	DatabaseGrants       GetUserDatabaseGrantArrayInput       `pulumi:"databaseGrants"`
-	DomainGrants         GetUserDomainGrantArrayInput         `pulumi:"domainGrants"`
-	FirewallGrants       GetUserFirewallGrantArrayInput       `pulumi:"firewallGrants"`
-	ImageGrants          GetUserImageGrantArrayInput          `pulumi:"imageGrants"`
-	LinodeGrants         GetUserLinodeGrantArrayInput         `pulumi:"linodeGrants"`
-	LongviewGrants       GetUserLongviewGrantArrayInput       `pulumi:"longviewGrants"`
-	NodebalancerGrants   GetUserNodebalancerGrantArrayInput   `pulumi:"nodebalancerGrants"`
-	PlacementGroupGrants GetUserPlacementGroupGrantArrayInput `pulumi:"placementGroupGrants"`
-	StackscriptGrants    GetUserStackscriptGrantArrayInput    `pulumi:"stackscriptGrants"`
+	DatabaseGrants     GetUserDatabaseGrantArrayInput     `pulumi:"databaseGrants"`
+	DomainGrants       GetUserDomainGrantArrayInput       `pulumi:"domainGrants"`
+	FirewallGrants     GetUserFirewallGrantArrayInput     `pulumi:"firewallGrants"`
+	ImageGrants        GetUserImageGrantArrayInput        `pulumi:"imageGrants"`
+	LinodeGrants       GetUserLinodeGrantArrayInput       `pulumi:"linodeGrants"`
+	LongviewGrants     GetUserLongviewGrantArrayInput     `pulumi:"longviewGrants"`
+	NodebalancerGrants GetUserNodebalancerGrantArrayInput `pulumi:"nodebalancerGrants"`
+	StackscriptGrants  GetUserStackscriptGrantArrayInput  `pulumi:"stackscriptGrants"`
 	// The unique username of this User.
 	Username     pulumi.StringInput           `pulumi:"username"`
 	VolumeGrants GetUserVolumeGrantArrayInput `pulumi:"volumeGrants"`
@@ -193,10 +190,6 @@ func (o LookupUserResultOutput) NodebalancerGrants() GetUserNodebalancerGrantArr
 // The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
 func (o LookupUserResultOutput) PasswordCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.PasswordCreated }).(pulumi.StringOutput)
-}
-
-func (o LookupUserResultOutput) PlacementGroupGrants() GetUserPlacementGroupGrantArrayOutput {
-	return o.ApplyT(func(v LookupUserResult) []GetUserPlacementGroupGrant { return v.PlacementGroupGrants }).(GetUserPlacementGroupGrantArrayOutput)
 }
 
 // If true, this User must be granted access to perform actions or access entities on this Account.

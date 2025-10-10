@@ -90,6 +90,7 @@ export interface GetNodeBalancerResult {
      * When this firewall was last updated.
      */
     readonly updated: string;
+    readonly vpcs: outputs.GetNodeBalancerVpc[];
 }
 /**
  * Provides details about a Linode NodeBalancer.

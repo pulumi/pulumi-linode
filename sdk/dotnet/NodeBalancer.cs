@@ -40,6 +40,8 @@ namespace Pulumi.Linode
     /// });
     /// ```
     /// 
+    /// The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
+    /// 
     /// ## Import
     /// 
     /// Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -133,6 +135,12 @@ namespace Pulumi.Linode
         [Output("updated")]
         public Output<string> Updated { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of VPCs to be assigned to this NodeBalancer.
+        /// </summary>
+        [Output("vpcs")]
+        public Output<ImmutableArray<Outputs.NodeBalancerVpc>> Vpcs { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a NodeBalancer resource with the given unique name, arguments, and options.
@@ -223,6 +231,18 @@ namespace Pulumi.Linode
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
+        }
+
+        [Input("vpcs")]
+        private InputList<Inputs.NodeBalancerVpcArgs>? _vpcs;
+
+        /// <summary>
+        /// A list of VPCs to be assigned to this NodeBalancer.
+        /// </summary>
+        public InputList<Inputs.NodeBalancerVpcArgs> Vpcs
+        {
+            get => _vpcs ?? (_vpcs = new InputList<Inputs.NodeBalancerVpcArgs>());
+            set => _vpcs = value;
         }
 
         public NodeBalancerArgs()
@@ -332,6 +352,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("updated")]
         public Input<string>? Updated { get; set; }
+
+        [Input("vpcs")]
+        private InputList<Inputs.NodeBalancerVpcGetArgs>? _vpcs;
+
+        /// <summary>
+        /// A list of VPCs to be assigned to this NodeBalancer.
+        /// </summary>
+        public InputList<Inputs.NodeBalancerVpcGetArgs> Vpcs
+        {
+            get => _vpcs ?? (_vpcs = new InputList<Inputs.NodeBalancerVpcGetArgs>());
+            set => _vpcs = value;
+        }
 
         public NodeBalancerState()
         {

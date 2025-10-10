@@ -63,6 +63,18 @@ namespace Pulumi.Linode
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// </summary>
+        [Output("subnetId")]
+        public Output<int?> SubnetId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// </summary>
+        [Output("vpcConfigId")]
+        public Output<int> VpcConfigId { get; private set; } = null!;
+
+        /// <summary>
         /// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         /// </summary>
         [Output("weight")]
@@ -147,6 +159,12 @@ namespace Pulumi.Linode
         public Input<int> NodebalancerId { get; set; } = null!;
 
         /// <summary>
+        /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// </summary>
+        [Input("subnetId")]
+        public Input<int>? SubnetId { get; set; }
+
+        /// <summary>
         /// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
         /// </summary>
         [Input("weight")]
@@ -197,6 +215,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// </summary>
+        [Input("subnetId")]
+        public Input<int>? SubnetId { get; set; }
+
+        /// <summary>
+        /// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// </summary>
+        [Input("vpcConfigId")]
+        public Input<int>? VpcConfigId { get; set; }
 
         /// <summary>
         /// Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).

@@ -39,6 +39,14 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
+        /// 
+        /// ## IPv6
+        /// 
+        /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+        /// 
+        /// The following attributes are exported under each entry of the `ipv6` field:
+        /// 
+        /// * `range` - An IPv6 range allocated to this subnet in CIDR format.
         /// </summary>
         public static Task<GetVpcSubnetResult> InvokeAsync(GetVpcSubnetArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcSubnetResult>("linode:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetArgs(), options.WithDefaults());
@@ -71,6 +79,14 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
+        /// 
+        /// ## IPv6
+        /// 
+        /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+        /// 
+        /// The following attributes are exported under each entry of the `ipv6` field:
+        /// 
+        /// * `range` - An IPv6 range allocated to this subnet in CIDR format.
         /// </summary>
         public static Output<GetVpcSubnetResult> Invoke(GetVpcSubnetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcSubnetResult>("linode:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetInvokeArgs(), options.WithDefaults());
@@ -103,6 +119,14 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
+        /// 
+        /// ## IPv6
+        /// 
+        /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
+        /// 
+        /// The following attributes are exported under each entry of the `ipv6` field:
+        /// 
+        /// * `range` - An IPv6 range allocated to this subnet in CIDR format.
         /// </summary>
         public static Output<GetVpcSubnetResult> Invoke(GetVpcSubnetInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcSubnetResult>("linode:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetInvokeArgs(), options.WithDefaults());
@@ -162,6 +186,7 @@ namespace Pulumi.Linode
         /// The IPv4 range of this subnet in CIDR format.
         /// </summary>
         public readonly string Ipv4;
+        public readonly ImmutableArray<Outputs.GetVpcSubnetIpv6Result> Ipv6s;
         /// <summary>
         /// The label of the VPC subnet.
         /// </summary>
@@ -184,6 +209,8 @@ namespace Pulumi.Linode
 
             string ipv4,
 
+            ImmutableArray<Outputs.GetVpcSubnetIpv6Result> ipv6s,
+
             string label,
 
             ImmutableArray<Outputs.GetVpcSubnetLinodeResult> linodes,
@@ -195,6 +222,7 @@ namespace Pulumi.Linode
             Created = created;
             Id = id;
             Ipv4 = ipv4;
+            Ipv6s = ipv6s;
             Label = label;
             Linodes = linodes;
             Updated = updated;

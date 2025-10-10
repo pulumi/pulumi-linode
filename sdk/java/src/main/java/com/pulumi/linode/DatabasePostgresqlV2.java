@@ -11,6 +11,7 @@ import com.pulumi.linode.DatabasePostgresqlV2Args;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.DatabasePostgresqlV2State;
 import com.pulumi.linode.outputs.DatabasePostgresqlV2PendingUpdate;
+import com.pulumi.linode.outputs.DatabasePostgresqlV2PrivateNetwork;
 import com.pulumi.linode.outputs.DatabasePostgresqlV2Timeouts;
 import com.pulumi.linode.outputs.DatabasePostgresqlV2Updates;
 import java.lang.Boolean;
@@ -889,6 +890,8 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the database that was forked from.
      * 
+     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
@@ -897,6 +900,8 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the database that was forked from.
+     * 
+     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
      * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
@@ -1015,6 +1020,20 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> port() {
         return this.port;
+    }
+    /**
+     * Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    @Export(name="privateNetwork", refs={DatabasePostgresqlV2PrivateNetwork.class}, tree="[0]")
+    private Output</* @Nullable */ DatabasePostgresqlV2PrivateNetwork> privateNetwork;
+
+    /**
+     * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    public Output<Optional<DatabasePostgresqlV2PrivateNetwork>> privateNetwork() {
+        return Codegen.optional(this.privateNetwork);
     }
     /**
      * The region to use for the Managed Database.

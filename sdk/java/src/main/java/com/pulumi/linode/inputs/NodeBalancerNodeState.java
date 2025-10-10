@@ -111,6 +111,36 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    @Import(name="subnetId")
+    private @Nullable Output<Integer> subnetId;
+
+    /**
+     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    public Optional<Output<Integer>> subnetId() {
+        return Optional.ofNullable(this.subnetId);
+    }
+
+    /**
+     * The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    @Import(name="vpcConfigId")
+    private @Nullable Output<Integer> vpcConfigId;
+
+    /**
+     * @return The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * 
+     */
+    public Optional<Output<Integer>> vpcConfigId() {
+        return Optional.ofNullable(this.vpcConfigId);
+    }
+
+    /**
      * Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
      * 
      */
@@ -134,6 +164,8 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
         this.mode = $.mode;
         this.nodebalancerId = $.nodebalancerId;
         this.status = $.status;
+        this.subnetId = $.subnetId;
+        this.vpcConfigId = $.vpcConfigId;
         this.weight = $.weight;
     }
 
@@ -283,6 +315,48 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(@Nullable Output<Integer> subnetId) {
+            $.subnetId = subnetId;
+            return this;
+        }
+
+        /**
+         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetId(Integer subnetId) {
+            return subnetId(Output.of(subnetId));
+        }
+
+        /**
+         * @param vpcConfigId The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcConfigId(@Nullable Output<Integer> vpcConfigId) {
+            $.vpcConfigId = vpcConfigId;
+            return this;
+        }
+
+        /**
+         * @param vpcConfigId The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcConfigId(Integer vpcConfigId) {
+            return vpcConfigId(Output.of(vpcConfigId));
         }
 
         /**

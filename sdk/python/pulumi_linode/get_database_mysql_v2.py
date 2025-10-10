@@ -27,7 +27,7 @@ class GetDatabaseMysqlV2Result:
     """
     A collection of values returned by getDatabaseMysqlV2.
     """
-    def __init__(__self__, allow_lists=None, ca_cert=None, cluster_size=None, created=None, encrypted=None, engine=None, engine_config_binlog_retention_period=None, engine_config_mysql_connect_timeout=None, engine_config_mysql_default_time_zone=None, engine_config_mysql_group_concat_max_len=None, engine_config_mysql_information_schema_stats_expiry=None, engine_config_mysql_innodb_change_buffer_max_size=None, engine_config_mysql_innodb_flush_neighbors=None, engine_config_mysql_innodb_ft_min_token_size=None, engine_config_mysql_innodb_ft_server_stopword_table=None, engine_config_mysql_innodb_lock_wait_timeout=None, engine_config_mysql_innodb_log_buffer_size=None, engine_config_mysql_innodb_online_alter_log_max_size=None, engine_config_mysql_innodb_read_io_threads=None, engine_config_mysql_innodb_rollback_on_timeout=None, engine_config_mysql_innodb_thread_concurrency=None, engine_config_mysql_innodb_write_io_threads=None, engine_config_mysql_interactive_timeout=None, engine_config_mysql_internal_tmp_mem_storage_engine=None, engine_config_mysql_max_allowed_packet=None, engine_config_mysql_max_heap_table_size=None, engine_config_mysql_net_buffer_length=None, engine_config_mysql_net_read_timeout=None, engine_config_mysql_net_write_timeout=None, engine_config_mysql_sort_buffer_size=None, engine_config_mysql_sql_mode=None, engine_config_mysql_sql_require_primary_key=None, engine_config_mysql_tmp_table_size=None, engine_config_mysql_wait_timeout=None, engine_id=None, fork_restore_time=None, fork_source=None, host_primary=None, host_secondary=None, id=None, label=None, members=None, oldest_restore_time=None, pending_updates=None, platform=None, port=None, region=None, root_password=None, root_username=None, ssl_connection=None, status=None, suspended=None, type=None, updated=None, updates=None, version=None):
+    def __init__(__self__, allow_lists=None, ca_cert=None, cluster_size=None, created=None, encrypted=None, engine=None, engine_config_binlog_retention_period=None, engine_config_mysql_connect_timeout=None, engine_config_mysql_default_time_zone=None, engine_config_mysql_group_concat_max_len=None, engine_config_mysql_information_schema_stats_expiry=None, engine_config_mysql_innodb_change_buffer_max_size=None, engine_config_mysql_innodb_flush_neighbors=None, engine_config_mysql_innodb_ft_min_token_size=None, engine_config_mysql_innodb_ft_server_stopword_table=None, engine_config_mysql_innodb_lock_wait_timeout=None, engine_config_mysql_innodb_log_buffer_size=None, engine_config_mysql_innodb_online_alter_log_max_size=None, engine_config_mysql_innodb_read_io_threads=None, engine_config_mysql_innodb_rollback_on_timeout=None, engine_config_mysql_innodb_thread_concurrency=None, engine_config_mysql_innodb_write_io_threads=None, engine_config_mysql_interactive_timeout=None, engine_config_mysql_internal_tmp_mem_storage_engine=None, engine_config_mysql_max_allowed_packet=None, engine_config_mysql_max_heap_table_size=None, engine_config_mysql_net_buffer_length=None, engine_config_mysql_net_read_timeout=None, engine_config_mysql_net_write_timeout=None, engine_config_mysql_sort_buffer_size=None, engine_config_mysql_sql_mode=None, engine_config_mysql_sql_require_primary_key=None, engine_config_mysql_tmp_table_size=None, engine_config_mysql_wait_timeout=None, engine_id=None, fork_restore_time=None, fork_source=None, host_primary=None, host_secondary=None, id=None, label=None, members=None, oldest_restore_time=None, pending_updates=None, platform=None, port=None, private_network=None, region=None, root_password=None, root_username=None, ssl_connection=None, status=None, suspended=None, type=None, updated=None, updates=None, version=None):
         if allow_lists and not isinstance(allow_lists, list):
             raise TypeError("Expected argument 'allow_lists' to be a list")
         pulumi.set(__self__, "allow_lists", allow_lists)
@@ -166,6 +166,9 @@ class GetDatabaseMysqlV2Result:
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
+        if private_network and not isinstance(private_network, dict):
+            raise TypeError("Expected argument 'private_network' to be a dict")
+        pulumi.set(__self__, "private_network", private_network)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -554,6 +557,11 @@ class GetDatabaseMysqlV2Result:
         return pulumi.get(self, "port")
 
     @_builtins.property
+    @pulumi.getter(name="privateNetwork")
+    def private_network(self) -> 'outputs.GetDatabaseMysqlV2PrivateNetworkResult':
+        return pulumi.get(self, "private_network")
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> _builtins.str:
         """
@@ -683,6 +691,7 @@ class AwaitableGetDatabaseMysqlV2Result(GetDatabaseMysqlV2Result):
             pending_updates=self.pending_updates,
             platform=self.platform,
             port=self.port,
+            private_network=self.private_network,
             region=self.region,
             root_password=self.root_password,
             root_username=self.root_username,
@@ -733,6 +742,16 @@ def get_database_mysql_v2(id: Optional[_builtins.str] = None,
     * `frequency` - The frequency at which maintenance occurs. (`weekly`)
 
     * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+
+    ## private_network
+
+    The following arguments are exposed by the `private_network` attribute:
+
+    * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+
+    * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+
+    * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
 
 
     :param _builtins.str id: The ID of the MySQL database.
@@ -789,6 +808,7 @@ def get_database_mysql_v2(id: Optional[_builtins.str] = None,
         pending_updates=pulumi.get(__ret__, 'pending_updates'),
         platform=pulumi.get(__ret__, 'platform'),
         port=pulumi.get(__ret__, 'port'),
+        private_network=pulumi.get(__ret__, 'private_network'),
         region=pulumi.get(__ret__, 'region'),
         root_password=pulumi.get(__ret__, 'root_password'),
         root_username=pulumi.get(__ret__, 'root_username'),
@@ -837,6 +857,16 @@ def get_database_mysql_v2_output(id: Optional[pulumi.Input[_builtins.str]] = Non
     * `frequency` - The frequency at which maintenance occurs. (`weekly`)
 
     * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+
+    ## private_network
+
+    The following arguments are exposed by the `private_network` attribute:
+
+    * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+
+    * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+
+    * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
 
 
     :param _builtins.str id: The ID of the MySQL database.
@@ -892,6 +922,7 @@ def get_database_mysql_v2_output(id: Optional[pulumi.Input[_builtins.str]] = Non
         pending_updates=pulumi.get(__response__, 'pending_updates'),
         platform=pulumi.get(__response__, 'platform'),
         port=pulumi.get(__response__, 'port'),
+        private_network=pulumi.get(__response__, 'private_network'),
         region=pulumi.get(__response__, 'region'),
         root_password=pulumi.get(__response__, 'root_password'),
         root_username=pulumi.get(__response__, 'root_username'),

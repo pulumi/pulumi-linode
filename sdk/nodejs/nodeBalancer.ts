@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
+ *
  * ## Import
  *
  * Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -119,6 +121,10 @@ export class NodeBalancer extends pulumi.CustomResource {
      * When this firewall was last updated.
      */
     declare public /*out*/ readonly updated: pulumi.Output<string>;
+    /**
+     * A list of VPCs to be assigned to this NodeBalancer.
+     */
+    declare public readonly vpcs: pulumi.Output<outputs.NodeBalancerVpc[] | undefined>;
 
     /**
      * Create a NodeBalancer resource with the given unique name, arguments, and options.
@@ -146,6 +152,7 @@ export class NodeBalancer extends pulumi.CustomResource {
             resourceInputs["tags"] = state?.tags;
             resourceInputs["transfers"] = state?.transfers;
             resourceInputs["updated"] = state?.updated;
+            resourceInputs["vpcs"] = state?.vpcs;
         } else {
             const args = argsOrState as NodeBalancerArgs | undefined;
             resourceInputs["clientConnThrottle"] = args?.clientConnThrottle;
@@ -154,6 +161,7 @@ export class NodeBalancer extends pulumi.CustomResource {
             resourceInputs["label"] = args?.label;
             resourceInputs["region"] = args?.region;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcs"] = args?.vpcs;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["firewalls"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
@@ -227,6 +235,10 @@ export interface NodeBalancerState {
      * When this firewall was last updated.
      */
     updated?: pulumi.Input<string>;
+    /**
+     * A list of VPCs to be assigned to this NodeBalancer.
+     */
+    vpcs?: pulumi.Input<pulumi.Input<inputs.NodeBalancerVpc>[]>;
 }
 
 /**
@@ -261,4 +273,8 @@ export interface NodeBalancerArgs {
      * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of VPCs to be assigned to this NodeBalancer.
+     */
+    vpcs?: pulumi.Input<pulumi.Input<inputs.NodeBalancerVpc>[]>;
 }

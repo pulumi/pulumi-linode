@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.DatabaseMysqlV2PendingUpdateArgs;
+import com.pulumi.linode.inputs.DatabaseMysqlV2PrivateNetworkArgs;
 import com.pulumi.linode.inputs.DatabaseMysqlV2TimeoutsArgs;
 import com.pulumi.linode.inputs.DatabaseMysqlV2UpdatesArgs;
 import java.lang.Boolean;
@@ -566,6 +567,8 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
     /**
      * The ID of the database that was forked from.
      * 
+     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
      */
@@ -574,6 +577,8 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The ID of the database that was forked from.
+     * 
+     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
      * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
@@ -700,6 +705,21 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
+    }
+
+    /**
+     * Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    @Import(name="privateNetwork")
+    private @Nullable Output<DatabaseMysqlV2PrivateNetworkArgs> privateNetwork;
+
+    /**
+     * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * 
+     */
+    public Optional<Output<DatabaseMysqlV2PrivateNetworkArgs>> privateNetwork() {
+        return Optional.ofNullable(this.privateNetwork);
     }
 
     /**
@@ -911,6 +931,7 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
         this.pendingUpdates = $.pendingUpdates;
         this.platform = $.platform;
         this.port = $.port;
+        this.privateNetwork = $.privateNetwork;
         this.region = $.region;
         this.rootPassword = $.rootPassword;
         this.rootUsername = $.rootUsername;
@@ -1711,6 +1732,8 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
         /**
          * @param forkSource The ID of the database that was forked from.
          * 
+         * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * 
          * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
          * 
          * @return builder
@@ -1723,6 +1746,8 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
 
         /**
          * @param forkSource The ID of the database that was forked from.
+         * 
+         * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
          * 
          * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
          * 
@@ -1909,6 +1934,27 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
          */
         public Builder port(Integer port) {
             return port(Output.of(port));
+        }
+
+        /**
+         * @param privateNetwork Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateNetwork(@Nullable Output<DatabaseMysqlV2PrivateNetworkArgs> privateNetwork) {
+            $.privateNetwork = privateNetwork;
+            return this;
+        }
+
+        /**
+         * @param privateNetwork Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateNetwork(DatabaseMysqlV2PrivateNetworkArgs privateNetwork) {
+            return privateNetwork(Output.of(privateNetwork));
         }
 
         /**
