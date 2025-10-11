@@ -131,6 +131,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Linode Instance with Explicit Configs and Disks
+ * 
+ * Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+ * 
  * ### Linode Instance Assigned to a Placement Group
  * 
  * The following example shows how one might use this resource to configure a Linode instance assigned to a
@@ -233,14 +237,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authorizedUsers);
     }
     /**
-     * A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
+     * A Backup ID from another Linode&#39;s available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
      * 
      */
     @Export(name="backupId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> backupId;
 
     /**
-     * @return A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
+     * @return A Backup ID from another Linode&#39;s available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
      * 
      */
     public Output<Optional<Integer>> backupId() {
@@ -365,14 +369,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.disks;
     }
     /**
-     * The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+     * The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
      * 
      */
     @Export(name="firewallId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> firewallId;
 
     /**
-     * @return The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+     * @return The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
      * 
      */
     public Output<Optional<Integer>> firewallId() {
@@ -456,10 +460,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A string containing the Linode&#39;s public IP address.
      * 
      * @deprecated
-     * The `ip_address` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
+     * The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
      * 
      */
-    @Deprecated /* The `ip_address` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead. */
+    @Deprecated /* The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead. */
     @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 

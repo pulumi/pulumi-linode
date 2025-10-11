@@ -70,6 +70,40 @@ import javax.annotation.Nullable;
  * 
  * Volumes can also be attached using the Linode Instance config device map.
  * 
+ * Volumes may also be cloned from existing volumes.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Volume;
+ * import com.pulumi.linode.VolumeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new Volume("foobar", VolumeArgs.builder()
+ *             .label("my-cloned-volume")
+ *             .sourceVolumeId(12345)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Linodes Volumes can be imported using the Linode Volume `id`, e.g.
@@ -184,14 +218,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceVolumeId);
     }
     /**
-     * The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
+     * The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
+     * @return The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
      * 
      */
     public Output<String> status() {

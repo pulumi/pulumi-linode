@@ -47,19 +47,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `quota_id`
+        /// * `QuotaId`
         /// 
-        /// * `quota_name`
+        /// * `QuotaName`
         /// 
-        /// * `endpoint_type`
+        /// * `EndpointType`
         /// 
-        /// * `s3_endpoint`
+        /// * `S3Endpoint`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `quota_limit`
+        /// * `QuotaLimit`
         /// 
-        /// * `resource_metric`
+        /// * `ResourceMetric`
         /// </summary>
         public static Task<GetObjectStorageQuotasResult> InvokeAsync(GetObjectStorageQuotasArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObjectStorageQuotasResult>("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", args ?? new GetObjectStorageQuotasArgs(), options.WithDefaults());
@@ -100,19 +100,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `quota_id`
+        /// * `QuotaId`
         /// 
-        /// * `quota_name`
+        /// * `QuotaName`
         /// 
-        /// * `endpoint_type`
+        /// * `EndpointType`
         /// 
-        /// * `s3_endpoint`
+        /// * `S3Endpoint`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `quota_limit`
+        /// * `QuotaLimit`
         /// 
-        /// * `resource_metric`
+        /// * `ResourceMetric`
         /// </summary>
         public static Output<GetObjectStorageQuotasResult> Invoke(GetObjectStorageQuotasInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectStorageQuotasResult>("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", args ?? new GetObjectStorageQuotasInvokeArgs(), options.WithDefaults());
@@ -153,19 +153,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `quota_id`
+        /// * `QuotaId`
         /// 
-        /// * `quota_name`
+        /// * `QuotaName`
         /// 
-        /// * `endpoint_type`
+        /// * `EndpointType`
         /// 
-        /// * `s3_endpoint`
+        /// * `S3Endpoint`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `quota_limit`
+        /// * `QuotaLimit`
         /// 
-        /// * `resource_metric`
+        /// * `ResourceMetric`
         /// </summary>
         public static Output<GetObjectStorageQuotasResult> Invoke(GetObjectStorageQuotasInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectStorageQuotasResult>("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", args ?? new GetObjectStorageQuotasInvokeArgs(), options.WithDefaults());

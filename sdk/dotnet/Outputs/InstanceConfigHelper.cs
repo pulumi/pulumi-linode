@@ -14,23 +14,23 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceConfigHelper
     {
         /// <summary>
-        /// Populates the /dev directory early during boot without udev. (default `true`)
+        /// Populates the /dev directory early during boot without udev. (default `True`)
         /// </summary>
         public readonly bool? DevtmpfsAutomount;
         /// <summary>
-        /// Helps maintain correct inittab/upstart console device. (default `true`)
+        /// Helps maintain correct inittab/upstart console device. (default `True`)
         /// </summary>
         public readonly bool? Distro;
         /// <summary>
-        /// Creates a modules dependency file for the Kernel you run. (default `true`)
+        /// Creates a modules dependency file for the Kernel you run. (default `True`)
         /// </summary>
         public readonly bool? ModulesDep;
         /// <summary>
-        /// Automatically configures static networking. (default `true`)
+        /// Automatically configures static networking. (default `True`)
         /// </summary>
         public readonly bool? Network;
         /// <summary>
-        /// Disables updatedb cron job to avoid disk thrashing. (default `true`)
+        /// Disables updatedb cron job to avoid disk thrashing. (default `True`)
         /// </summary>
         public readonly bool? UpdatedbDisabled;
 

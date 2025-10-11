@@ -35,12 +35,12 @@ public final class GetNodeBalancerNodeResult {
      */
     private String status;
     /**
-     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
      * 
      */
     private Integer subnetId;
     /**
-     * @return The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * @return The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
      * 
      */
     private Integer vpcConfigId;
@@ -89,14 +89,14 @@ public final class GetNodeBalancerNodeResult {
         return this.status;
     }
     /**
-     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
      * 
      */
     public Integer subnetId() {
         return this.subnetId;
     }
     /**
-     * @return The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * @return The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
      * 
      */
     public Integer vpcConfigId() {

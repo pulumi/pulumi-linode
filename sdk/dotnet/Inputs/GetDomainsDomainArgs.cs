@@ -85,7 +85,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string> SoaEmail { get; set; } = null!;
 
         /// <summary>
-        /// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+        /// Used to control whether this Domain is currently being rendered. (`Disabled`, `Active`)
         /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.Linode.Inputs
         public Input<int> TtlSec { get; set; } = null!;
 
         /// <summary>
-        /// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+        /// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`Master`, `Slave`)
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

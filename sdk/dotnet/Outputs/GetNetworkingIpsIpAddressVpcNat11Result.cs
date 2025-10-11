@@ -18,11 +18,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Address;
         /// <summary>
-        /// The `id` of the VPC Subnet for this Interface.
+        /// The `Id` of the VPC Subnet for this Interface.
         /// </summary>
         public readonly int SubnetId;
         /// <summary>
-        /// The `id` of the VPC configured for this Interface.
+        /// The `Id` of the VPC configured for this Interface.
         /// </summary>
         public readonly int VpcId;
 

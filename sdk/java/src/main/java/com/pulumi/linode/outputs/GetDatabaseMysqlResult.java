@@ -80,7 +80,7 @@ public final class GetDatabaseMysqlResult {
      */
     private String region;
     /**
-     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
+     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`)
      * 
      */
     private String replicationType;
@@ -212,7 +212,7 @@ public final class GetDatabaseMysqlResult {
         return this.region;
     }
     /**
-     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
+     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`)
      * 
      */
     public String replicationType() {

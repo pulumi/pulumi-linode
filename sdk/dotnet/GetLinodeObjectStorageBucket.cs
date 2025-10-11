@@ -100,7 +100,7 @@ namespace Pulumi.Linode
     public sealed class GetLinodeObjectStorageBucketArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+        /// The ID of the Object Storage Cluster this bucket is in. Required if `Region` is not configured.
         /// </summary>
         [Input("cluster")]
         public string? Cluster { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.Linode
         public string Label { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the region this bucket is in. Required if `cluster` is not configured.
+        /// The ID of the region this bucket is in. Required if `Cluster` is not configured.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.Linode
     public sealed class GetLinodeObjectStorageBucketInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
+        /// The ID of the Object Storage Cluster this bucket is in. Required if `Region` is not configured.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.Linode
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the region this bucket is in. Required if `cluster` is not configured.
+        /// The ID of the region this bucket is in. Required if `Cluster` is not configured.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

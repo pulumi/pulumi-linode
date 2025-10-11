@@ -36,9 +36,9 @@ namespace Pulumi.Linode
     /// 
     /// ## Additional Results
     /// 
-    /// * `managed` - Enables monitoring for connectivity, response, and total request time.
+    /// * `Managed` - Enables monitoring for connectivity, response, and total request time.
     /// 
-    /// * `object_storage` - A string describing the status of this account’s Object Storage service enrollment.
+    /// * `ObjectStorage` - A string describing the status of this account’s Object Storage service enrollment.
     /// </summary>
     [LinodeResourceType("linode:index/accountSettings:AccountSettings")]
     public partial class AccountSettings : global::Pulumi.CustomResource

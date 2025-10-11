@@ -152,14 +152,14 @@ public class NetworkingIp extends com.pulumi.resources.CustomResource {
         return this.rdns;
     }
     /**
-     * The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
+     * The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
+     * @return The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
      * 
      */
     public Output<String> region() {

@@ -506,7 +506,7 @@ public final class DatabaseMysqlV2Args extends com.pulumi.resources.ResourceArgs
     /**
      * The ID of the database that was forked from.
      * 
-     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
      * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
@@ -517,7 +517,7 @@ public final class DatabaseMysqlV2Args extends com.pulumi.resources.ResourceArgs
     /**
      * @return The ID of the database that was forked from.
      * 
-     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
      * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
@@ -1375,7 +1375,7 @@ public final class DatabaseMysqlV2Args extends com.pulumi.resources.ResourceArgs
         /**
          * @param forkSource The ID of the database that was forked from.
          * 
-         * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
          * 
          * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
          * 
@@ -1390,7 +1390,7 @@ public final class DatabaseMysqlV2Args extends com.pulumi.resources.ResourceArgs
         /**
          * @param forkSource The ID of the database that was forked from.
          * 
-         * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
          * 
          * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
          * 

@@ -51,19 +51,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `k8s_version`
+        /// * `K8sVersion`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `created`
+        /// * `Created`
         /// 
-        /// * `updated`
+        /// * `Updated`
         /// </summary>
         public static Task<GetLkeClustersResult> InvokeAsync(GetLkeClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLkeClustersResult>("linode:index/getLkeClusters:getLkeClusters", args ?? new GetLkeClustersArgs(), options.WithDefaults());
@@ -108,19 +108,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `k8s_version`
+        /// * `K8sVersion`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `created`
+        /// * `Created`
         /// 
-        /// * `updated`
+        /// * `Updated`
         /// </summary>
         public static Output<GetLkeClustersResult> Invoke(GetLkeClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLkeClustersResult>("linode:index/getLkeClusters:getLkeClusters", args ?? new GetLkeClustersInvokeArgs(), options.WithDefaults());
@@ -165,19 +165,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `k8s_version`
+        /// * `K8sVersion`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `created`
+        /// * `Created`
         /// 
-        /// * `updated`
+        /// * `Updated`
         /// </summary>
         public static Output<GetLkeClustersResult> Invoke(GetLkeClustersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLkeClustersResult>("linode:index/getLkeClusters:getLkeClusters", args ?? new GetLkeClustersInvokeArgs(), options.WithDefaults());
@@ -203,7 +203,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -239,7 +239,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

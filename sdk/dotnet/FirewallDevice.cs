@@ -13,7 +13,7 @@ namespace Pulumi.Linode
     /// Manages a Linode Firewall Device.
     /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-firewall-device).
     /// 
-    /// **NOTICE:** Attaching a Linode Firewall Device to a `linode.Firewall` resource with user-defined `linodes` may cause device conflicts.
+    /// **NOTICE:** Attaching a Linode Firewall Device to a `linode.Firewall` resource with user-defined `Linodes` may cause device conflicts.
     /// 
     /// ## Example Usage
     /// 
@@ -90,7 +90,7 @@ namespace Pulumi.Linode
         public Output<int> EntityId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the entity to attach. (default: `linode`)
+        /// The type of the entity to attach. (default: `Linode`)
         /// </summary>
         [Output("entityType")]
         public Output<string> EntityType { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.Linode
         public Input<int> EntityId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the entity to attach. (default: `linode`)
+        /// The type of the entity to attach. (default: `Linode`)
         /// </summary>
         [Input("entityType")]
         public Input<string>? EntityType { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.Linode
         public Input<int>? EntityId { get; set; }
 
         /// <summary>
-        /// The type of the entity to attach. (default: `linode`)
+        /// The type of the entity to attach. (default: `Linode`)
         /// </summary>
         [Input("entityType")]
         public Input<string>? EntityType { get; set; }

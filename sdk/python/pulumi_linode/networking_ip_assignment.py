@@ -111,6 +111,12 @@ class NetworkingIpAssignment(pulumi.CustomResource):
 
         For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
 
+        ## Example Usage
+
+        ## Import
+
+        Network IP assignments cannot be imported.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict']]]] assignments: A list of IP/Linode assignments to apply.
@@ -126,6 +132,12 @@ class NetworkingIpAssignment(pulumi.CustomResource):
         Manages the assignment of multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in a specified region.
 
         For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
+
+        ## Example Usage
+
+        ## Import
+
+        Network IP assignments cannot be imported.
 
         :param str resource_name: The name of the resource.
         :param NetworkingIpAssignmentArgs args: The arguments to use to populate this resource's properties.

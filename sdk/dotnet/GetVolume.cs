@@ -159,7 +159,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int Size;
         /// <summary>
-        /// The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+        /// The current status of the Volume. (`Creating`, `Active`, `Resizing`, `ContactSupport`)
         /// </summary>
         public readonly string Status;
         /// <summary>

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class ObjectStorageKeyRegionsDetail {
     /**
-     * @return The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * @return The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     private String endpointType;
@@ -28,7 +28,7 @@ public final class ObjectStorageKeyRegionsDetail {
 
     private ObjectStorageKeyRegionsDetail() {}
     /**
-     * @return The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * @return The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     public String endpointType() {

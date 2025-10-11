@@ -99,14 +99,14 @@ public final class StackScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      * 
      */
     @Import(name="isPublic")
     private @Nullable Output<Boolean> isPublic;
 
     /**
-     * @return This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+     * @return This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      * 
      */
     public Optional<Output<Boolean>> isPublic() {
@@ -376,7 +376,7 @@ public final class StackScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isPublic This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+         * @param isPublic This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class StackScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isPublic This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+         * @param isPublic This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
          * 
          * @return builder
          * 

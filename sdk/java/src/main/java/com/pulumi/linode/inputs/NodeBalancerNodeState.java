@@ -111,14 +111,14 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
      * 
      */
     @Import(name="subnetId")
     private @Nullable Output<Integer> subnetId;
 
     /**
-     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
      * 
      */
     public Optional<Output<Integer>> subnetId() {
@@ -126,14 +126,14 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
      * 
      */
     @Import(name="vpcConfigId")
     private @Nullable Output<Integer> vpcConfigId;
 
     /**
-     * @return The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * @return The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
      * 
      */
     public Optional<Output<Integer>> vpcConfigId() {
@@ -318,7 +318,7 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vpcConfigId The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * @param vpcConfigId The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vpcConfigId The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * @param vpcConfigId The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
          * 
          * @return builder
          * 

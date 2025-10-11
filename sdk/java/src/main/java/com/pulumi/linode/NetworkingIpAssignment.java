@@ -21,6 +21,12 @@ import javax.annotation.Nullable;
  * 
  * For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
  * 
+ * ## Example Usage
+ * 
+ * ## Import
+ * 
+ * Network IP assignments cannot be imported.
+ * 
  */
 @ResourceType(type="linode:index/networkingIpAssignment:NetworkingIpAssignment")
 public class NetworkingIpAssignment extends com.pulumi.resources.CustomResource {

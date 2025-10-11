@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  * * `managed` - Enables monitoring for connectivity, response, and total request time.
  * 
- * * `object_storage` - A string describing the status of this account’s Object Storage service enrollment.
+ * * `objectStorage` - A string describing the status of this account’s Object Storage service enrollment.
  * 
  */
 @ResourceType(type="linode:index/accountSettings:AccountSettings")

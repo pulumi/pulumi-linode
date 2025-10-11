@@ -33,14 +33,14 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
     }
 
     /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
      * 
      */
     @Import(name="check", required=true)
     private String check;
 
     /**
-     * @return The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+     * @return The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
      * 
      */
     public String check() {
@@ -217,14 +217,14 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
     }
 
     /**
-     * The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      * 
      */
     @Import(name="protocol", required=true)
     private String protocol;
 
     /**
-     * @return The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+     * @return The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      * 
      */
     public String protocol() {
@@ -277,14 +277,14 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
     }
 
     /**
-     * Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+     * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      * 
      */
     @Import(name="stickiness", required=true)
     private String stickiness;
 
     /**
-     * @return Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+     * @return Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      * 
      */
     public String stickiness() {
@@ -376,7 +376,7 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
         }
 
         /**
-         * @param check The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+         * @param check The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
         }
 
         /**
-         * @param protocol The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+         * @param protocol The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class GetNodebalancerConfigsNodebalancerConfig extends com.pulumi.r
         }
 
         /**
-         * @param stickiness Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+         * @param stickiness Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
          * 
          * @return builder
          * 

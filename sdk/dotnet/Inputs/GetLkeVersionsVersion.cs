@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Inputs
         public string Id { get; set; } = null!;
 
         /// <summary>
-        /// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+        /// The tier (`Standard` or `Enterprise`) of Linode LKE Versions to fetch.
         /// </summary>
         [Input("tier", required: true)]
         public string Tier { get; set; } = null!;

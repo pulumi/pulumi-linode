@@ -37,14 +37,14 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+     * Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
      * 
      */
     @Import(name="devices")
     private @Nullable Output<InstanceConfigDevicesArgs> devices;
 
     /**
-     * @return Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+     * @return Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<Output<InstanceConfigDevicesArgs>> devices() {
@@ -242,7 +242,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param devices Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+         * @param devices Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class InstanceConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param devices Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+         * @param devices Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 

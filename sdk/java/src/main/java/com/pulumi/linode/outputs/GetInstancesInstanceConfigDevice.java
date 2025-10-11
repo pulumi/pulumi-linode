@@ -19,98 +19,98 @@ import java.util.Objects;
 @CustomType
 public final class GetInstancesInstanceConfigDevice {
     /**
-     * @return ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
+     * @return ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
      * 
      */
     private List<GetInstancesInstanceConfigDeviceSda> sdas;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private List<GetInstancesInstanceConfigDeviceSdb> sdbs;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private List<GetInstancesInstanceConfigDeviceSdc> sdcs;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private List<GetInstancesInstanceConfigDeviceSdd> sdds;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private List<GetInstancesInstanceConfigDeviceSde> sdes;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private List<GetInstancesInstanceConfigDeviceSdf> sdfs;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private List<GetInstancesInstanceConfigDeviceSdg> sdgs;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private List<GetInstancesInstanceConfigDeviceSdh> sdhs;
 
     private GetInstancesInstanceConfigDevice() {}
     /**
-     * @return ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
+     * @return ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
      * 
      */
     public List<GetInstancesInstanceConfigDeviceSda> sdas() {
         return this.sdas;
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public List<GetInstancesInstanceConfigDeviceSdb> sdbs() {
         return this.sdbs;
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public List<GetInstancesInstanceConfigDeviceSdc> sdcs() {
         return this.sdcs;
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public List<GetInstancesInstanceConfigDeviceSdd> sdds() {
         return this.sdds;
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public List<GetInstancesInstanceConfigDeviceSde> sdes() {
         return this.sdes;
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public List<GetInstancesInstanceConfigDeviceSdf> sdfs() {
         return this.sdfs;
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public List<GetInstancesInstanceConfigDeviceSdg> sdgs() {
         return this.sdgs;
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public List<GetInstancesInstanceConfigDeviceSdh> sdhs() {

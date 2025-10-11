@@ -66,6 +66,10 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Linode Instance with Explicit Configs and Disks
+ *
+ * Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+ *
  * ### Linode Instance Assigned to a Placement Group
  *
  * The following example shows how one might use this resource to configure a Linode instance assigned to a

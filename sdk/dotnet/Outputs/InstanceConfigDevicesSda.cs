@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceConfigDevicesSda
     {
         /// <summary>
-        /// The Disk ID to map to this `device` slot
+        /// The Disk ID to map to this `Device` slot
         /// </summary>
         public readonly int? DiskId;
         /// <summary>
-        /// The Volume ID to map to this `device` slot.
+        /// The Volume ID to map to this `Device` slot.
         /// </summary>
         public readonly int? VolumeId;
 

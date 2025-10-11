@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInstancesInstanceConfigDeviceSdh {
     /**
-     * @return The Disk ID of the associated `disk_label`, if used
+     * @return The Disk ID of the associated `diskLabel`, if used
      * 
      */
     private Integer diskId;
@@ -31,7 +31,7 @@ public final class GetInstancesInstanceConfigDeviceSdh {
 
     private GetInstancesInstanceConfigDeviceSdh() {}
     /**
-     * @return The Disk ID of the associated `disk_label`, if used
+     * @return The Disk ID of the associated `diskLabel`, if used
      * 
      */
     public Integer diskId() {

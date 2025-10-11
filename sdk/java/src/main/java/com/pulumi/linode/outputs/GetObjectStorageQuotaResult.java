@@ -49,7 +49,7 @@ public final class GetObjectStorageQuotaResult {
      */
     private String resourceMetric;
     /**
-     * @return The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+     * @return The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
      * 
      */
     private String s3Endpoint;
@@ -108,7 +108,7 @@ public final class GetObjectStorageQuotaResult {
         return this.resourceMetric;
     }
     /**
-     * @return The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+     * @return The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
      * 
      */
     public String s3Endpoint() {

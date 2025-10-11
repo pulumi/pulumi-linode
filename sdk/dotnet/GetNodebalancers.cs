@@ -59,19 +59,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// 
-        /// * `ipv4`
+        /// * `Ipv4`
         /// 
-        /// * `ipv6`
+        /// * `Ipv6`
         /// 
-        /// * `hostname`
+        /// * `Hostname`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `client_conn_throttle`
+        /// * `ClientConnThrottle`
         /// </summary>
         public static Task<GetNodebalancersResult> InvokeAsync(GetNodebalancersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodebalancersResult>("linode:index/getNodebalancers:getNodebalancers", args ?? new GetNodebalancersArgs(), options.WithDefaults());
@@ -124,19 +124,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// 
-        /// * `ipv4`
+        /// * `Ipv4`
         /// 
-        /// * `ipv6`
+        /// * `Ipv6`
         /// 
-        /// * `hostname`
+        /// * `Hostname`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `client_conn_throttle`
+        /// * `ClientConnThrottle`
         /// </summary>
         public static Output<GetNodebalancersResult> Invoke(GetNodebalancersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancersResult>("linode:index/getNodebalancers:getNodebalancers", args ?? new GetNodebalancersInvokeArgs(), options.WithDefaults());
@@ -189,19 +189,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// 
-        /// * `ipv4`
+        /// * `Ipv4`
         /// 
-        /// * `ipv6`
+        /// * `Ipv6`
         /// 
-        /// * `hostname`
+        /// * `Hostname`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `client_conn_throttle`
+        /// * `ClientConnThrottle`
         /// </summary>
         public static Output<GetNodebalancersResult> Invoke(GetNodebalancersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancersResult>("linode:index/getNodebalancers:getNodebalancers", args ?? new GetNodebalancersInvokeArgs(), options.WithDefaults());
@@ -227,7 +227,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

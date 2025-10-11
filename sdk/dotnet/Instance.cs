@@ -99,6 +99,10 @@ namespace Pulumi.Linode
     /// });
     /// ```
     /// 
+    /// ### Linode Instance with Explicit Configs and Disks
+    /// 
+    /// Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+    /// 
     /// ### Linode Instance Assigned to a Placement Group
     /// 
     /// The following example shows how one might use this resource to configure a Linode instance assigned to a
@@ -156,13 +160,13 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> AuthorizedKeys { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `Root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         /// </summary>
         [Output("authorizedUsers")]
         public Output<ImmutableArray<string>> AuthorizedUsers { get; private set; } = null!;
 
         /// <summary>
-        /// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
+        /// A Backup ID from another Linode's available backups. Your User must have ReadWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         /// </summary>
         [Output("backupId")]
         public Output<int?> BackupId { get; private set; } = null!;
@@ -204,7 +208,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.InstanceConfig>> Configs { get; private set; } = null!;
 
         /// <summary>
-        /// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+        /// The disk encryption policy for this instance. (`Enabled`, `Disabled`; default `Enabled` in supported regions)
         /// 
         /// * **NOTE: Disk encryption may not currently be available to all users.**
         /// </summary>
@@ -215,13 +219,13 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.InstanceDisk>> Disks { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+        /// The ID of the Firewall to attach to the instance upon creation. *Changing `FirewallId` forces the creation of a new Linode Instance.*
         /// </summary>
         [Output("firewallId")]
         public Output<int?> FirewallId { get; private set; } = null!;
 
         /// <summary>
-        /// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+        /// A deprecated property denoting a group label for this Linode. We recommend using the `Tags` attribute instead.
         /// </summary>
         [Output("group")]
         public Output<string?> Group { get; private set; } = null!;
@@ -295,9 +299,9 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.InstanceMetadata>> Metadatas { get; private set; } = null!;
 
         /// <summary>
-        /// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+        /// The type of migration to use when updating the type or region of a Linode. (`Cold`, `Warm`; default `Cold`)
         /// 
-        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
         /// </summary>
         [Output("migrationType")]
         public Output<string?> MigrationType { get; private set; } = null!;
@@ -327,7 +331,7 @@ namespace Pulumi.Linode
         public Output<string> PrivateIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
+        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `Region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -383,7 +387,7 @@ namespace Pulumi.Linode
         public Output<int?> StackscriptId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
+        /// The status of the instance, indicating the current readiness state. (`Running`, `Offline`, ...)
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -487,7 +491,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedUsers;
 
         /// <summary>
-        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `Root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         /// </summary>
         public InputList<string> AuthorizedUsers
         {
@@ -496,7 +500,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
+        /// A Backup ID from another Linode's available backups. Your User must have ReadWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         /// </summary>
         [Input("backupId")]
         public Input<int>? BackupId { get; set; }
@@ -533,7 +537,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+        /// The disk encryption policy for this instance. (`Enabled`, `Disabled`; default `Enabled` in supported regions)
         /// 
         /// * **NOTE: Disk encryption may not currently be available to all users.**
         /// </summary>
@@ -550,13 +554,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+        /// The ID of the Firewall to attach to the instance upon creation. *Changing `FirewallId` forces the creation of a new Linode Instance.*
         /// </summary>
         [Input("firewallId")]
         public Input<int>? FirewallId { get; set; }
 
         /// <summary>
-        /// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+        /// A deprecated property denoting a group label for this Linode. We recommend using the `Tags` attribute instead.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
@@ -618,9 +622,9 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+        /// The type of migration to use when updating the type or region of a Linode. (`Cold`, `Warm`; default `Cold`)
         /// 
-        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
         /// </summary>
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }
@@ -644,7 +648,7 @@ namespace Pulumi.Linode
         public Input<bool>? PrivateIp { get; set; }
 
         /// <summary>
-        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
+        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `Region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -781,7 +785,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedUsers;
 
         /// <summary>
-        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `Root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         /// </summary>
         public InputList<string> AuthorizedUsers
         {
@@ -790,7 +794,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
+        /// A Backup ID from another Linode's available backups. Your User must have ReadWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
         /// </summary>
         [Input("backupId")]
         public Input<int>? BackupId { get; set; }
@@ -851,7 +855,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
+        /// The disk encryption policy for this instance. (`Enabled`, `Disabled`; default `Enabled` in supported regions)
         /// 
         /// * **NOTE: Disk encryption may not currently be available to all users.**
         /// </summary>
@@ -868,13 +872,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+        /// The ID of the Firewall to attach to the instance upon creation. *Changing `FirewallId` forces the creation of a new Linode Instance.*
         /// </summary>
         [Input("firewallId")]
         public Input<int>? FirewallId { get; set; }
 
         /// <summary>
-        /// A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
+        /// A deprecated property denoting a group label for this Linode. We recommend using the `Tags` attribute instead.
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }
@@ -966,9 +970,9 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+        /// The type of migration to use when updating the type or region of a Linode. (`Cold`, `Warm`; default `Cold`)
         /// 
-        /// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
         /// </summary>
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }
@@ -998,7 +1002,7 @@ namespace Pulumi.Linode
         public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
-        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
+        /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). *Changing `Region` will trigger a migration of this Linode. Migration operations are typically long-running operations, so the update timeout should be adjusted accordingly.*.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -1086,7 +1090,7 @@ namespace Pulumi.Linode
         public Input<int>? StackscriptId { get; set; }
 
         /// <summary>
-        /// The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
+        /// The status of the instance, indicating the current readiness state. (`Running`, `Offline`, ...)
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

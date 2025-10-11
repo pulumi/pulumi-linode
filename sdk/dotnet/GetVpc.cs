@@ -45,7 +45,7 @@ namespace Pulumi.Linode
         /// 
         /// Contains information about a single IPv6 allocation under this VPC.
         /// 
-        /// * `range` - The allocated range in CIDR format.
+        /// * `Range` - The allocated range in CIDR format.
         /// 
         /// ### Subnets Reference
         /// 
@@ -88,7 +88,7 @@ namespace Pulumi.Linode
         /// 
         /// Contains information about a single IPv6 allocation under this VPC.
         /// 
-        /// * `range` - The allocated range in CIDR format.
+        /// * `Range` - The allocated range in CIDR format.
         /// 
         /// ### Subnets Reference
         /// 
@@ -131,7 +131,7 @@ namespace Pulumi.Linode
         /// 
         /// Contains information about a single IPv6 allocation under this VPC.
         /// 
-        /// * `range` - The allocated range in CIDR format.
+        /// * `Range` - The allocated range in CIDR format.
         /// 
         /// ### Subnets Reference
         /// 

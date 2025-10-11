@@ -71,7 +71,7 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+        /// By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `Ipv6` field should be set to true:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -91,15 +91,15 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `active`
+        /// * `Active`
         /// 
-        /// * `config_id`
+        /// * `ConfigId`
         /// 
-        /// * `linode_id`
+        /// * `LinodeId`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `vpc_id`
+        /// * `VpcId`
         /// </summary>
         public static Task<GetVpcIpsResult> InvokeAsync(GetVpcIpsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcIpsResult>("linode:index/getVpcIps:getVpcIps", args ?? new GetVpcIpsArgs(), options.WithDefaults());
@@ -164,7 +164,7 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+        /// By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `Ipv6` field should be set to true:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -184,15 +184,15 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `active`
+        /// * `Active`
         /// 
-        /// * `config_id`
+        /// * `ConfigId`
         /// 
-        /// * `linode_id`
+        /// * `LinodeId`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `vpc_id`
+        /// * `VpcId`
         /// </summary>
         public static Output<GetVpcIpsResult> Invoke(GetVpcIpsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcIpsResult>("linode:index/getVpcIps:getVpcIps", args ?? new GetVpcIpsInvokeArgs(), options.WithDefaults());
@@ -257,7 +257,7 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `ipv6` field should be set to true:
+        /// By default, this data source retrieves only IPv4 addresses. To instead retrieve IPv6 addresses, the `Ipv6` field should be set to true:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -277,15 +277,15 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `active`
+        /// * `Active`
         /// 
-        /// * `config_id`
+        /// * `ConfigId`
         /// 
-        /// * `linode_id`
+        /// * `LinodeId`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `vpc_id`
+        /// * `VpcId`
         /// </summary>
         public static Output<GetVpcIpsResult> Invoke(GetVpcIpsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcIpsResult>("linode:index/getVpcIps:getVpcIps", args ?? new GetVpcIpsInvokeArgs(), options.WithDefaults());
@@ -308,7 +308,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The id of the parent VPC for the list of VPC IPs.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
         /// </summary>
         [Input("vpcId")]
         public int? VpcId { get; set; }
@@ -343,7 +343,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The id of the parent VPC for the list of VPC IPs.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
         /// </summary>
         [Input("vpcId")]
         public Input<int>? VpcId { get; set; }

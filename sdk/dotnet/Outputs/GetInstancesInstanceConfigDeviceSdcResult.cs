@@ -14,15 +14,15 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesInstanceConfigDeviceSdcResult
     {
         /// <summary>
-        /// The Disk ID of the associated `disk_label`, if used
+        /// The Disk ID of the associated `DiskLabel`, if used
         /// </summary>
         public readonly int DiskId;
         /// <summary>
-        /// The `label` of the `disk` to map to this `device` slot.
+        /// The `Label` of the `Disk` to map to this `Device` slot.
         /// </summary>
         public readonly string? DiskLabel;
         /// <summary>
-        /// The Volume ID to map to this `device` slot.
+        /// The Volume ID to map to this `Device` slot.
         /// </summary>
         public readonly int? VolumeId;
 

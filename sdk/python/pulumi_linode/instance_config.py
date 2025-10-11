@@ -513,6 +513,8 @@ class InstanceConfig(pulumi.CustomResource):
 
         Creating a simple bootable Linode Instance Configuration Profile:
 
+        Creating a complex bootable Instance Configuration Profile with a VPC:
+
         ## Import
 
         Instance Configs can be imported using the `linode_id` followed by the Instance Config `id` separated by a comma, e.g.
@@ -555,6 +557,8 @@ class InstanceConfig(pulumi.CustomResource):
         ## Example Usage
 
         Creating a simple bootable Linode Instance Configuration Profile:
+
+        Creating a complex bootable Instance Configuration Profile with a VPC:
 
         ## Import
 

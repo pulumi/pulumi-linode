@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstanceNetworkingIpv4VpcResult
     {
         /// <summary>
-        /// Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `config_id` to which the interface belongs. Otherwise returns `false`.
+        /// Returns `True` if the VPC interface is in use, meaning that the Linode was powered on using the `ConfigId` to which the interface belongs. Otherwise returns `False`.
         /// </summary>
         public readonly bool Active;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Address;
         /// <summary>
-        /// A range of IPv4 addresses configured for this VPC interface. it will be `null` if it's a single `address`.
+        /// A range of IPv4 addresses configured for this VPC interface. it will be `Null` if it's a single `Address`.
         /// </summary>
         public readonly string AddressRange;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int LinodeId;
         /// <summary>
-        /// The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `address_range` or NAT 1:1 isn't used.
+        /// The public IP address used for NAT 1:1 with the VPC. This is `Null` if the VPC interface uses an `AddressRange` or NAT 1:1 isn't used.
         /// </summary>
         public readonly string Nat11;
         /// <summary>

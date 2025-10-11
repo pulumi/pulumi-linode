@@ -274,14 +274,14 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
         return this.size;
     }
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      * 
      */
     @Export(name="stackscriptData", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> stackscriptData;
 
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      * 
      */
     public Output<Optional<Map<String,String>>> stackscriptData() {

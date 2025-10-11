@@ -78,39 +78,39 @@ namespace Pulumi.Linode
         /// 
         /// ## Firewall Rule
         /// 
-        /// * `label` - The label of this rule for display purposes only.
+        /// * `Label` - The label of this rule for display purposes only.
         /// 
-        /// * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+        /// * `Action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
         /// 
-        /// * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+        /// * `Protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
         /// 
-        /// * `ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        /// * `Ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         /// 
-        /// * `ipv4` - A list of IPv4 addresses or networks in IP/mask format.
+        /// * `Ipv4` - A list of IPv4 addresses or networks in IP/mask format.
         /// 
-        /// * `ipv6` - A list of IPv6 addresses or networks in IP/mask format.
+        /// * `Ipv6` - A list of IPv6 addresses or networks in IP/mask format.
         /// 
         /// ## Firewall Device
         /// 
-        /// * `id` - The unique ID of this Firewall Device assignment.
+        /// * `Id` - The unique ID of this Firewall Device assignment.
         /// 
-        /// * `entity_id` - The ID of the underlying entity this device references.
+        /// * `EntityId` - The ID of the underlying entity this device references.
         /// 
-        /// * `type` - The type of the assigned entity.
+        /// * `Type` - The type of the assigned entity.
         /// 
-        /// * `label` - The label of the assigned entity.
+        /// * `Label` - The label of the assigned entity.
         /// 
-        /// * `url` - The URL of the assigned entity.
+        /// * `Url` - The URL of the assigned entity.
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// </summary>
         public static Task<GetFirewallsResult> InvokeAsync(GetFirewallsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFirewallsResult>("linode:index/getFirewalls:getFirewalls", args ?? new GetFirewallsArgs(), options.WithDefaults());
@@ -182,39 +182,39 @@ namespace Pulumi.Linode
         /// 
         /// ## Firewall Rule
         /// 
-        /// * `label` - The label of this rule for display purposes only.
+        /// * `Label` - The label of this rule for display purposes only.
         /// 
-        /// * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+        /// * `Action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
         /// 
-        /// * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+        /// * `Protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
         /// 
-        /// * `ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        /// * `Ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         /// 
-        /// * `ipv4` - A list of IPv4 addresses or networks in IP/mask format.
+        /// * `Ipv4` - A list of IPv4 addresses or networks in IP/mask format.
         /// 
-        /// * `ipv6` - A list of IPv6 addresses or networks in IP/mask format.
+        /// * `Ipv6` - A list of IPv6 addresses or networks in IP/mask format.
         /// 
         /// ## Firewall Device
         /// 
-        /// * `id` - The unique ID of this Firewall Device assignment.
+        /// * `Id` - The unique ID of this Firewall Device assignment.
         /// 
-        /// * `entity_id` - The ID of the underlying entity this device references.
+        /// * `EntityId` - The ID of the underlying entity this device references.
         /// 
-        /// * `type` - The type of the assigned entity.
+        /// * `Type` - The type of the assigned entity.
         /// 
-        /// * `label` - The label of the assigned entity.
+        /// * `Label` - The label of the assigned entity.
         /// 
-        /// * `url` - The URL of the assigned entity.
+        /// * `Url` - The URL of the assigned entity.
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// </summary>
         public static Output<GetFirewallsResult> Invoke(GetFirewallsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFirewallsResult>("linode:index/getFirewalls:getFirewalls", args ?? new GetFirewallsInvokeArgs(), options.WithDefaults());
@@ -286,39 +286,39 @@ namespace Pulumi.Linode
         /// 
         /// ## Firewall Rule
         /// 
-        /// * `label` - The label of this rule for display purposes only.
+        /// * `Label` - The label of this rule for display purposes only.
         /// 
-        /// * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
+        /// * `Action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
         /// 
-        /// * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+        /// * `Protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
         /// 
-        /// * `ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+        /// * `Ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         /// 
-        /// * `ipv4` - A list of IPv4 addresses or networks in IP/mask format.
+        /// * `Ipv4` - A list of IPv4 addresses or networks in IP/mask format.
         /// 
-        /// * `ipv6` - A list of IPv6 addresses or networks in IP/mask format.
+        /// * `Ipv6` - A list of IPv6 addresses or networks in IP/mask format.
         /// 
         /// ## Firewall Device
         /// 
-        /// * `id` - The unique ID of this Firewall Device assignment.
+        /// * `Id` - The unique ID of this Firewall Device assignment.
         /// 
-        /// * `entity_id` - The ID of the underlying entity this device references.
+        /// * `EntityId` - The ID of the underlying entity this device references.
         /// 
-        /// * `type` - The type of the assigned entity.
+        /// * `Type` - The type of the assigned entity.
         /// 
-        /// * `label` - The label of the assigned entity.
+        /// * `Label` - The label of the assigned entity.
         /// 
-        /// * `url` - The URL of the assigned entity.
+        /// * `Url` - The URL of the assigned entity.
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// </summary>
         public static Output<GetFirewallsResult> Invoke(GetFirewallsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetFirewallsResult>("linode:index/getFirewalls:getFirewalls", args ?? new GetFirewallsInvokeArgs(), options.WithDefaults());
@@ -344,7 +344,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -380,7 +380,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

@@ -70,11 +70,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `endpoint_type`
+        /// * `EndpointType`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `s3_endpoint`
+        /// * `S3Endpoint`
         /// </summary>
         public static Task<GetObjectStorageEndpointsResult> InvokeAsync(GetObjectStorageEndpointsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObjectStorageEndpointsResult>("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", args ?? new GetObjectStorageEndpointsArgs(), options.WithDefaults());
@@ -138,11 +138,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `endpoint_type`
+        /// * `EndpointType`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `s3_endpoint`
+        /// * `S3Endpoint`
         /// </summary>
         public static Output<GetObjectStorageEndpointsResult> Invoke(GetObjectStorageEndpointsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectStorageEndpointsResult>("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", args ?? new GetObjectStorageEndpointsInvokeArgs(), options.WithDefaults());
@@ -206,11 +206,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `endpoint_type`
+        /// * `EndpointType`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `s3_endpoint`
+        /// * `S3Endpoint`
         /// </summary>
         public static Output<GetObjectStorageEndpointsResult> Invoke(GetObjectStorageEndpointsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectStorageEndpointsResult>("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", args ?? new GetObjectStorageEndpointsInvokeArgs(), options.WithDefaults());
@@ -236,7 +236,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

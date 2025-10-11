@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? Comments { get; set; }
 
         /// <summary>
-        /// Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+        /// Device sda-sdh can be either a Disk or Volume identified by DiskLabel or volume_id. Only one type per slot allowed.
         /// </summary>
         [Input("devices")]
         public Input<Inputs.InstanceConfigDevicesGetArgs>? Devices { get; set; }

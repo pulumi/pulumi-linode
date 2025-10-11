@@ -12,7 +12,7 @@ namespace Pulumi.Linode
     public static class GetNodebalancerVpcs
     {
         /// <summary>
-        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `ApiVersion` provider argument must be set to `V4beta`.
         /// 
         /// Provides information about Linode NodeBalancers VPC configurations that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
@@ -68,21 +68,21 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `ipv4_range`
+        /// * `Ipv4Range`
         /// 
-        /// * `nodebalancer_id`
+        /// * `NodebalancerId`
         /// 
-        /// * `subnet_id`
+        /// * `SubnetId`
         /// 
-        /// * `vpc_id`
+        /// * `VpcId`
         /// </summary>
         public static Task<GetNodebalancerVpcsResult> InvokeAsync(GetNodebalancerVpcsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodebalancerVpcsResult>("linode:index/getNodebalancerVpcs:getNodebalancerVpcs", args ?? new GetNodebalancerVpcsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `ApiVersion` provider argument must be set to `V4beta`.
         /// 
         /// Provides information about Linode NodeBalancers VPC configurations that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
@@ -138,21 +138,21 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `ipv4_range`
+        /// * `Ipv4Range`
         /// 
-        /// * `nodebalancer_id`
+        /// * `NodebalancerId`
         /// 
-        /// * `subnet_id`
+        /// * `SubnetId`
         /// 
-        /// * `vpc_id`
+        /// * `VpcId`
         /// </summary>
         public static Output<GetNodebalancerVpcsResult> Invoke(GetNodebalancerVpcsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancerVpcsResult>("linode:index/getNodebalancerVpcs:getNodebalancerVpcs", args ?? new GetNodebalancerVpcsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `ApiVersion` provider argument must be set to `V4beta`.
         /// 
         /// Provides information about Linode NodeBalancers VPC configurations that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-node-balancers).
@@ -208,15 +208,15 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `ipv4_range`
+        /// * `Ipv4Range`
         /// 
-        /// * `nodebalancer_id`
+        /// * `NodebalancerId`
         /// 
-        /// * `subnet_id`
+        /// * `SubnetId`
         /// 
-        /// * `vpc_id`
+        /// * `VpcId`
         /// </summary>
         public static Output<GetNodebalancerVpcsResult> Invoke(GetNodebalancerVpcsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancerVpcsResult>("linode:index/getNodebalancerVpcs:getNodebalancerVpcs", args ?? new GetNodebalancerVpcsInvokeArgs(), options.WithDefaults());
@@ -236,13 +236,13 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the NodeBalancer to list VPC configurations for.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
         /// </summary>
         [Input("nodebalancerId", required: true)]
         public int NodebalancerId { get; set; }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -272,13 +272,13 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the NodeBalancer to list VPC configurations for.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
         /// </summary>
         [Input("nodebalancerId", required: true)]
         public Input<int> NodebalancerId { get; set; } = null!;
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

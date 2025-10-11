@@ -23,14 +23,14 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
     public static final InstanceConfigDevicesArgs Empty = new InstanceConfigDevicesArgs();
 
     /**
-     * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
+     * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
      * 
      */
     @Import(name="sda")
     private @Nullable Output<InstanceConfigDevicesSdaArgs> sda;
 
     /**
-     * @return ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
+     * @return ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
      * 
      */
     public Optional<Output<InstanceConfigDevicesSdaArgs>> sda() {
@@ -38,14 +38,14 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     @Import(name="sdb")
     private @Nullable Output<InstanceConfigDevicesSdbArgs> sdb;
 
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<Output<InstanceConfigDevicesSdbArgs>> sdb() {
@@ -53,14 +53,14 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     @Import(name="sdc")
     private @Nullable Output<InstanceConfigDevicesSdcArgs> sdc;
 
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<Output<InstanceConfigDevicesSdcArgs>> sdc() {
@@ -68,14 +68,14 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     @Import(name="sdd")
     private @Nullable Output<InstanceConfigDevicesSddArgs> sdd;
 
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<Output<InstanceConfigDevicesSddArgs>> sdd() {
@@ -83,14 +83,14 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     @Import(name="sde")
     private @Nullable Output<InstanceConfigDevicesSdeArgs> sde;
 
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<Output<InstanceConfigDevicesSdeArgs>> sde() {
@@ -98,14 +98,14 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     @Import(name="sdf")
     private @Nullable Output<InstanceConfigDevicesSdfArgs> sdf;
 
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<Output<InstanceConfigDevicesSdfArgs>> sdf() {
@@ -113,14 +113,14 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     @Import(name="sdg")
     private @Nullable Output<InstanceConfigDevicesSdgArgs> sdg;
 
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<Output<InstanceConfigDevicesSdgArgs>> sdg() {
@@ -128,14 +128,14 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     @Import(name="sdh")
     private @Nullable Output<InstanceConfigDevicesSdhArgs> sdh;
 
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<Output<InstanceConfigDevicesSdhArgs>> sdh() {
@@ -174,7 +174,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sda ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
+         * @param sda ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sda ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
+         * @param sda ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdb Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdb Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdb Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdb Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdc Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdc Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdc Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdc Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdd Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdd Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdd Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdd Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sde Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sde Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sde Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sde Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdf Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdf Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdf Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdf Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdg Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdg Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdg Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdg Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdh Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdh Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sdh Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+         * @param sdh Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
          * 
          * @return builder
          * 

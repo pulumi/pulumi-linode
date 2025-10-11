@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceInterfaceIpv4Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+        /// The public IP that will be used for the one-to-one NAT purpose. If this is `Any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
         /// </summary>
         [Input("nat11")]
         public Input<string>? Nat11 { get; set; }

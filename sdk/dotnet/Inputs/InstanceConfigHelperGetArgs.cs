@@ -13,31 +13,31 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceConfigHelperGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Populates the /dev directory early during boot without udev. (default `true`)
+        /// Populates the /dev directory early during boot without udev. (default `True`)
         /// </summary>
         [Input("devtmpfsAutomount")]
         public Input<bool>? DevtmpfsAutomount { get; set; }
 
         /// <summary>
-        /// Helps maintain correct inittab/upstart console device. (default `true`)
+        /// Helps maintain correct inittab/upstart console device. (default `True`)
         /// </summary>
         [Input("distro")]
         public Input<bool>? Distro { get; set; }
 
         /// <summary>
-        /// Creates a modules dependency file for the Kernel you run. (default `true`)
+        /// Creates a modules dependency file for the Kernel you run. (default `True`)
         /// </summary>
         [Input("modulesDep")]
         public Input<bool>? ModulesDep { get; set; }
 
         /// <summary>
-        /// Automatically configures static networking. (default `true`)
+        /// Automatically configures static networking. (default `True`)
         /// </summary>
         [Input("network")]
         public Input<bool>? Network { get; set; }
 
         /// <summary>
-        /// Disables updatedb cron job to avoid disk thrashing. (default `true`)
+        /// Disables updatedb cron job to avoid disk thrashing. (default `True`)
         /// </summary>
         [Input("updatedbDisabled")]
         public Input<bool>? UpdatedbDisabled { get; set; }

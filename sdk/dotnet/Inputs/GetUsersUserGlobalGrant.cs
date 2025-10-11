@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetUsersUserGlobalGrantArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+        /// The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`ReadOnly`, `ReadWrite`)
         /// </summary>
         [Input("accountAccess", required: true)]
         public string AccountAccess { get; set; } = null!;

@@ -35,14 +35,14 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
+     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
      * 
      */
     @Import(name="applyImmediately")
     private @Nullable Output<Boolean> applyImmediately;
 
     /**
-     * @return If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
+     * @return If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
      * 
      */
     public Optional<Output<Boolean>> applyImmediately() {
@@ -256,7 +256,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
+         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
+         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
          * 
          * @return builder
          * 

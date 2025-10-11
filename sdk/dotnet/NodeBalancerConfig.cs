@@ -61,13 +61,13 @@ namespace Pulumi.Linode
     public partial class NodeBalancerConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
+        /// What algorithm this NodeBalancer should use for routing traffic to backends. (`Roundrobin`, `Leastconn`, `Source`)
         /// </summary>
         [Output("algorithm")]
         public Output<string> Algorithm { get; private set; } = null!;
 
         /// <summary>
-        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and HttpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`None`, `Connection`, `Http`, `HttpBody`)
         /// </summary>
         [Output("check")]
         public Output<string> Check { get; private set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.Linode
         public Output<int> CheckTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
+        /// What ciphers to use for SSL connections served by this NodeBalancer. `Legacy` is considered insecure and should only be used if necessary.
         /// </summary>
         [Output("cipherSuite")]
         public Output<string> CipherSuite { get; private set; } = null!;
@@ -135,19 +135,19 @@ namespace Pulumi.Linode
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        /// The protocol this port is configured to serve. If this is set to https you must include an SslCert and an ssl_key. (`Http`, `Https`, `Tcp`) (Defaults to `Http`)
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
+        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `Tcp`. (`None`, `V1`, `V2`) (Defaults to `None`)
         /// </summary>
         [Output("proxyProtocol")]
         public Output<string> ProxyProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+        /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the SslCommonname and SslFingerprint to identify the certificate.
         /// </summary>
         [Output("sslCert")]
         public Output<string?> SslCert { get; private set; } = null!;
@@ -165,13 +165,13 @@ namespace Pulumi.Linode
         public Output<string> SslFingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+        /// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the SslCommonname and SslFingerprint to identify the certificate.
         /// </summary>
         [Output("sslKey")]
         public Output<string?> SslKey { get; private set; } = null!;
 
         /// <summary>
-        /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        /// Controls how session stickiness is handled on this port. (`None`, `Table`, `HttpCookie`)
         /// </summary>
         [Output("stickiness")]
         public Output<string> Stickiness { get; private set; } = null!;
@@ -242,13 +242,13 @@ namespace Pulumi.Linode
     public sealed class NodeBalancerConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
+        /// What algorithm this NodeBalancer should use for routing traffic to backends. (`Roundrobin`, `Leastconn`, `Source`)
         /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
 
         /// <summary>
-        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and HttpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`None`, `Connection`, `Http`, `HttpBody`)
         /// </summary>
         [Input("check")]
         public Input<string>? Check { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.Linode
         public Input<int>? CheckTimeout { get; set; }
 
         /// <summary>
-        /// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
+        /// What ciphers to use for SSL connections served by this NodeBalancer. `Legacy` is considered insecure and should only be used if necessary.
         /// </summary>
         [Input("cipherSuite")]
         public Input<string>? CipherSuite { get; set; }
@@ -310,13 +310,13 @@ namespace Pulumi.Linode
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        /// The protocol this port is configured to serve. If this is set to https you must include an SslCert and an ssl_key. (`Http`, `Https`, `Tcp`) (Defaults to `Http`)
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
+        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `Tcp`. (`None`, `V1`, `V2`) (Defaults to `None`)
         /// </summary>
         [Input("proxyProtocol")]
         public Input<string>? ProxyProtocol { get; set; }
@@ -325,7 +325,7 @@ namespace Pulumi.Linode
         private Input<string>? _sslCert;
 
         /// <summary>
-        /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+        /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the SslCommonname and SslFingerprint to identify the certificate.
         /// </summary>
         public Input<string>? SslCert
         {
@@ -341,7 +341,7 @@ namespace Pulumi.Linode
         private Input<string>? _sslKey;
 
         /// <summary>
-        /// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+        /// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the SslCommonname and SslFingerprint to identify the certificate.
         /// </summary>
         public Input<string>? SslKey
         {
@@ -354,7 +354,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        /// Controls how session stickiness is handled on this port. (`None`, `Table`, `HttpCookie`)
         /// </summary>
         [Input("stickiness")]
         public Input<string>? Stickiness { get; set; }
@@ -376,13 +376,13 @@ namespace Pulumi.Linode
     public sealed class NodeBalancerConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
+        /// What algorithm this NodeBalancer should use for routing traffic to backends. (`Roundrobin`, `Leastconn`, `Source`)
         /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
 
         /// <summary>
-        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and HttpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`None`, `Connection`, `Http`, `HttpBody`)
         /// </summary>
         [Input("check")]
         public Input<string>? Check { get; set; }
@@ -424,7 +424,7 @@ namespace Pulumi.Linode
         public Input<int>? CheckTimeout { get; set; }
 
         /// <summary>
-        /// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
+        /// What ciphers to use for SSL connections served by this NodeBalancer. `Legacy` is considered insecure and should only be used if necessary.
         /// </summary>
         [Input("cipherSuite")]
         public Input<string>? CipherSuite { get; set; }
@@ -456,13 +456,13 @@ namespace Pulumi.Linode
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        /// The protocol this port is configured to serve. If this is set to https you must include an SslCert and an ssl_key. (`Http`, `Https`, `Tcp`) (Defaults to `Http`)
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
+        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `Tcp`. (`None`, `V1`, `V2`) (Defaults to `None`)
         /// </summary>
         [Input("proxyProtocol")]
         public Input<string>? ProxyProtocol { get; set; }
@@ -471,7 +471,7 @@ namespace Pulumi.Linode
         private Input<string>? _sslCert;
 
         /// <summary>
-        /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+        /// The certificate this port is serving. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the SslCommonname and SslFingerprint to identify the certificate.
         /// </summary>
         public Input<string>? SslCert
         {
@@ -499,7 +499,7 @@ namespace Pulumi.Linode
         private Input<string>? _sslKey;
 
         /// <summary>
-        /// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
+        /// The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the SslCommonname and SslFingerprint to identify the certificate.
         /// </summary>
         public Input<string>? SslKey
         {
@@ -512,7 +512,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        /// Controls how session stickiness is handled on this port. (`None`, `Table`, `HttpCookie`)
         /// </summary>
         [Input("stickiness")]
         public Input<string>? Stickiness { get; set; }

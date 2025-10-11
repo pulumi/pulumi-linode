@@ -16,7 +16,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `&lt;UDF ...&gt;` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `stackscript_data` field.
+    /// The following example shows how one might use this resource to configure a StackScript attached to a Linode Instance.  As shown below, StackScripts must begin with a shebang (`#!`).  The `&lt;UDF ...&gt;` element provided in the Bash comment block defines a variable whose value is provided when creating the Instance (or disk) using the `StackscriptData` field.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -107,7 +107,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> Images { get; private set; } = null!;
 
         /// <summary>
-        /// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+        /// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `IsPublic` forces the creation of a new StackScript*
         /// </summary>
         [Output("isPublic")]
         public Output<bool> IsPublic { get; private set; } = null!;
@@ -221,7 +221,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+        /// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `IsPublic` forces the creation of a new StackScript*
         /// </summary>
         [Input("isPublic")]
         public Input<bool>? IsPublic { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
+        /// This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `IsPublic` forces the creation of a new StackScript*
         /// </summary>
         [Input("isPublic")]
         public Input<bool>? IsPublic { get; set; }

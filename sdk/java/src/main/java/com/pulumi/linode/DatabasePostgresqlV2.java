@@ -106,6 +106,162 @@ import javax.annotation.Nullable;
  * 
  * Creating a complex PostgreSQL database:
  * 
+ * Creating a PostgreSQL database with engine config fields specified:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.DatabasePostgresqlV2;
+ * import com.pulumi.linode.DatabasePostgresqlV2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
+ *             .label("mydatabase")
+ *             .engineId("postgresql/16")
+ *             .region("us-mia")
+ *             .type("g6-nanode-1")
+ *             .engineConfigPgAutovacuumAnalyzeScaleFactor(0.1)
+ *             .engineConfigPgAutovacuumAnalyzeThreshold(50)
+ *             .engineConfigPgAutovacuumMaxWorkers(3)
+ *             .engineConfigPgAutovacuumNaptime(100)
+ *             .engineConfigPgAutovacuumVacuumCostDelay(20)
+ *             .engineConfigPgAutovacuumVacuumCostLimit(200)
+ *             .engineConfigPgAutovacuumVacuumScaleFactor(0.2)
+ *             .engineConfigPgAutovacuumVacuumThreshold(100)
+ *             .engineConfigPgBgwriterDelay(1000)
+ *             .engineConfigPgBgwriterFlushAfter(512)
+ *             .engineConfigPgBgwriterLruMaxpages(100)
+ *             .engineConfigPgBgwriterLruMultiplier(2.0)
+ *             .engineConfigPgDeadlockTimeout(1000)
+ *             .engineConfigPgDefaultToastCompression("pglz")
+ *             .engineConfigPgIdleInTransactionSessionTimeout(60000)
+ *             .engineConfigPgJit(true)
+ *             .engineConfigPgMaxFilesPerProcess(1000)
+ *             .engineConfigPgMaxLocksPerTransaction(64)
+ *             .engineConfigPgMaxLogicalReplicationWorkers(4)
+ *             .engineConfigPgMaxParallelWorkers(8)
+ *             .engineConfigPgMaxParallelWorkersPerGather(2)
+ *             .engineConfigPgMaxPredLocksPerTransaction(128)
+ *             .engineConfigPgMaxReplicationSlots(8)
+ *             .engineConfigPgMaxSlotWalKeepSize(128)
+ *             .engineConfigPgMaxStackDepth(2097152)
+ *             .engineConfigPgMaxStandbyArchiveDelay(60000)
+ *             .engineConfigPgMaxStandbyStreamingDelay(60000)
+ *             .engineConfigPgMaxWalSenders(20)
+ *             .engineConfigPgMaxWorkerProcesses(8)
+ *             .engineConfigPgPasswordEncryption("scram-sha-256")
+ *             .engineConfigPgPgPartmanBgwInterval(3600)
+ *             .engineConfigPgPgPartmanBgwRole("myrolename")
+ *             .engineConfigPgPgStatMonitorPgsmEnableQueryPlan(true)
+ *             .engineConfigPgPgStatMonitorPgsmMaxBuckets(5)
+ *             .engineConfigPgPgStatStatementsTrack("all")
+ *             .engineConfigPgTempFileLimit(100)
+ *             .engineConfigPgTimezone("Europe/Helsinki")
+ *             .engineConfigPgTrackActivityQuerySize(2048)
+ *             .engineConfigPgTrackCommitTimestamp("on")
+ *             .engineConfigPgTrackFunctions("all")
+ *             .engineConfigPgTrackIoTiming("on")
+ *             .engineConfigPgWalSenderTimeout(60000)
+ *             .engineConfigPgWalWriterDelay(200)
+ *             .engineConfigPgStatMonitorEnable(true)
+ *             .engineConfigPglookoutMaxFailoverReplicationTimeLag(10000)
+ *             .engineConfigSharedBuffersPercentage(25.0)
+ *             .engineConfigWorkMem(400)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Creating a forked PostgreSQL database:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.DatabasePostgresqlV2;
+ * import com.pulumi.linode.DatabasePostgresqlV2Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
+ *             .label("mydatabase")
+ *             .engineId("postgresql/16")
+ *             .region("us-mia")
+ *             .type("g6-nanode-1")
+ *             .forkSource(12345)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Creating a PostgreSQL database hidden behind a VPC:
+ * 
+ * &gt; **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
+ * 
+ * ## pendingUpdates
+ * 
+ * The following arguments are exposed by each entry in the `pendingUpdates` attribute:
+ * 
+ * * `deadline` - The time when a mandatory update needs to be applied.
+ * 
+ * * `description` - A description of the update.
+ * 
+ * * `plannedFor` - The date and time a maintenance update will be applied.
+ * 
+ * ## updates
+ * 
+ * The following arguments are supported in the `updates` specification block:
+ * 
+ * * `dayOfWeek` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+ * 
+ * * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+ * 
+ * * `frequency` - (Required) The frequency at which maintenance occurs. (`weekly`)
+ * 
+ * * `hourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+ * 
+ * ## privateNetwork
+ * 
+ * The following arguments are supported in the `privateNetwork` specification block:
+ * 
+ * * `vpcId` - (Required) The ID of the virtual private cloud (VPC) to restrict access to this database using.
+ * 
+ * * `subnetId` - (Required) The ID of the VPC subnet to restrict access to this database using.
+ * 
+ * * `publicAccess` - (Optional) Set to `true` to allow clients outside the VPC to connect to the database using a public IP address. (Default `false`)
+ * 
  * ## Import
  * 
  * Linode PostgreSQL Databases can be imported using the `id`, e.g.
@@ -202,14 +358,14 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
         return this.engine;
     }
     /**
-     * Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
      * 
      */
     @Export(name="engineConfigPgAutovacuumAnalyzeScaleFactor", refs={Double.class}, tree="[0]")
     private Output<Double> engineConfigPgAutovacuumAnalyzeScaleFactor;
 
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * @return Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
      * 
      */
     public Output<Double> engineConfigPgAutovacuumAnalyzeScaleFactor() {
@@ -258,42 +414,42 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
         return this.engineConfigPgAutovacuumNaptime;
     }
     /**
-     * Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
      * 
      */
     @Export(name="engineConfigPgAutovacuumVacuumCostDelay", refs={Integer.class}, tree="[0]")
     private Output<Integer> engineConfigPgAutovacuumVacuumCostDelay;
 
     /**
-     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
      * 
      */
     public Output<Integer> engineConfigPgAutovacuumVacuumCostDelay() {
         return this.engineConfigPgAutovacuumVacuumCostDelay;
     }
     /**
-     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
      * 
      */
     @Export(name="engineConfigPgAutovacuumVacuumCostLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> engineConfigPgAutovacuumVacuumCostLimit;
 
     /**
-     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
      * 
      */
     public Output<Integer> engineConfigPgAutovacuumVacuumCostLimit() {
         return this.engineConfigPgAutovacuumVacuumCostLimit;
     }
     /**
-     * Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
      * 
      */
     @Export(name="engineConfigPgAutovacuumVacuumScaleFactor", refs={Double.class}, tree="[0]")
     private Output<Double> engineConfigPgAutovacuumVacuumScaleFactor;
 
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * @return Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
      * 
      */
     public Output<Double> engineConfigPgAutovacuumVacuumScaleFactor() {
@@ -328,14 +484,14 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
         return this.engineConfigPgBgwriterDelay;
     }
     /**
-     * Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
      * 
      */
     @Export(name="engineConfigPgBgwriterFlushAfter", refs={Integer.class}, tree="[0]")
     private Output<Integer> engineConfigPgBgwriterFlushAfter;
 
     /**
-     * @return Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * @return Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
      * 
      */
     public Output<Integer> engineConfigPgBgwriterFlushAfter() {
@@ -356,14 +512,14 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
         return this.engineConfigPgBgwriterLruMaxpages;
     }
     /**
-     * The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
      * 
      */
     @Export(name="engineConfigPgBgwriterLruMultiplier", refs={Double.class}, tree="[0]")
     private Output<Double> engineConfigPgBgwriterLruMultiplier;
 
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * @return The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
      * 
      */
     public Output<Double> engineConfigPgBgwriterLruMultiplier() {
@@ -524,14 +680,14 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
         return this.engineConfigPgMaxReplicationSlots;
     }
     /**
-     * PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
      * 
      */
     @Export(name="engineConfigPgMaxSlotWalKeepSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> engineConfigPgMaxSlotWalKeepSize;
 
     /**
-     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
      * 
      */
     public Output<Integer> engineConfigPgMaxSlotWalKeepSize() {
@@ -692,14 +848,14 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
         return this.engineConfigPgPgStatStatementsTrack;
     }
     /**
-     * Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+     * Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pgStatStatements results for utility commands are unreliable. (default `false`)
      * 
      */
     @Export(name="engineConfigPgStatMonitorEnable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> engineConfigPgStatMonitorEnable;
 
     /**
-     * @return Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. (default `false`)
+     * @return Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pgStatStatements results for utility commands are unreliable. (default `false`)
      * 
      */
     public Output<Boolean> engineConfigPgStatMonitorEnable() {
@@ -832,14 +988,14 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
         return this.engineConfigPglookoutMaxFailoverReplicationTimeLag;
     }
     /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
      * 
      */
     @Export(name="engineConfigSharedBuffersPercentage", refs={Double.class}, tree="[0]")
     private Output<Double> engineConfigSharedBuffersPercentage;
 
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
      * 
      */
     public Output<Double> engineConfigSharedBuffersPercentage() {
@@ -890,7 +1046,7 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the database that was forked from.
      * 
-     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
      * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 
@@ -901,7 +1057,7 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the database that was forked from.
      * 
-     * * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
      * 
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      * 

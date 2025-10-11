@@ -217,7 +217,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string StackType;
         /// <summary>
-        /// The status of the node. (`ready`, `not_ready`)
+        /// The status of the node. (`Ready`, `NotReady`)
         /// </summary>
         public readonly string Status;
         /// <summary>

@@ -109,14 +109,14 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
+     * The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
+     * @return The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
      * 
      */
     public Optional<Output<String>> region() {
@@ -344,7 +344,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
+         * @param region The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
+         * @param region The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
          * 
          * @return builder
          * 

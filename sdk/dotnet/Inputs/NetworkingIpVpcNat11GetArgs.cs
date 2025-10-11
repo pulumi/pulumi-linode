@@ -19,13 +19,13 @@ namespace Pulumi.Linode.Inputs
         public Input<string> Address { get; set; } = null!;
 
         /// <summary>
-        /// The `id` of the VPC Subnet for this Interface.
+        /// The `Id` of the VPC Subnet for this Interface.
         /// </summary>
         [Input("subnetId", required: true)]
         public Input<int> SubnetId { get; set; } = null!;
 
         /// <summary>
-        /// The `id` of the VPC configured for this Interface.
+        /// The `Id` of the VPC configured for this Interface.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<int> VpcId { get; set; } = null!;

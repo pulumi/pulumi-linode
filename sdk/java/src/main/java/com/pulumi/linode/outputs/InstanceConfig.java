@@ -23,7 +23,7 @@ public final class InstanceConfig {
      */
     private @Nullable String comments;
     /**
-     * @return Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+     * @return Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
      * 
      */
     private @Nullable InstanceConfigDevices devices;
@@ -82,7 +82,7 @@ public final class InstanceConfig {
         return Optional.ofNullable(this.comments);
     }
     /**
-     * @return Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+     * @return Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<InstanceConfigDevices> devices() {

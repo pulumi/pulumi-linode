@@ -18,14 +18,14 @@ public final class GetVpcIpsVpcIp extends com.pulumi.resources.InvokeArgs {
     public static final GetVpcIpsVpcIp Empty = new GetVpcIpsVpcIp();
 
     /**
-     * True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+     * True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
      * 
      */
     @Import(name="active", required=true)
     private Boolean active;
 
     /**
-     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
      * 
      */
     public Boolean active() {
@@ -123,14 +123,14 @@ public final class GetVpcIpsVpcIp extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The is_public setting for the interface associated with this address.
+     * The isPublic setting for the interface associated with this address.
      * 
      */
     @Import(name="ipv6IsPublic", required=true)
     private Boolean ipv6IsPublic;
 
     /**
-     * @return The is_public setting for the interface associated with this address.
+     * @return The isPublic setting for the interface associated with this address.
      * 
      */
     public Boolean ipv6IsPublic() {
@@ -301,7 +301,7 @@ public final class GetVpcIpsVpcIp extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param active True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+         * @param active True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class GetVpcIpsVpcIp extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ipv6IsPublic The is_public setting for the interface associated with this address.
+         * @param ipv6IsPublic The isPublic setting for the interface associated with this address.
          * 
          * @return builder
          * 

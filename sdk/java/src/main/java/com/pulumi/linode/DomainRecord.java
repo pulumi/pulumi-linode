@@ -77,14 +77,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/domainRecord:DomainRecord")
 public class DomainRecord extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+     * The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
      * 
      */
     @Export(name="domainId", refs={Integer.class}, tree="[0]")
     private Output<Integer> domainId;
 
     /**
-     * @return The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+     * @return The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
      * 
      */
     public Output<Integer> domainId() {
@@ -147,14 +147,14 @@ public class DomainRecord extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.protocol);
     }
     /**
-     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `recordType` forces the creation of a new Linode Domain Record.*.
      * 
      */
     @Export(name="recordType", refs={String.class}, tree="[0]")
     private Output<String> recordType;
 
     /**
-     * @return The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+     * @return The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `recordType` forces the creation of a new Linode Domain Record.*.
      * 
      */
     public Output<String> recordType() {

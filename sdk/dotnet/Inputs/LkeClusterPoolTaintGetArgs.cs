@@ -27,7 +27,7 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The Kubernetes taint value.
         /// 
-        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// * `Autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

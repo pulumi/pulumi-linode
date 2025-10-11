@@ -87,9 +87,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
         /// 
-        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// * `Autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// 
-        /// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// * `Taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         /// </summary>
         [Output("updateStrategy")]
         public Output<string> UpdateStrategy { get; private set; } = null!;
@@ -212,9 +212,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
         /// 
-        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// * `Autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// 
-        /// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// * `Taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         /// </summary>
         [Input("updateStrategy")]
         public Input<string>? UpdateStrategy { get; set; }
@@ -317,9 +317,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
         /// 
-        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// * `Autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// 
-        /// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// * `Taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         /// </summary>
         [Input("updateStrategy")]
         public Input<string>? UpdateStrategy { get; set; }

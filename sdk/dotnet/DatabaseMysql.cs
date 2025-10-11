@@ -79,17 +79,17 @@ namespace Pulumi.Linode
     /// 
     /// ## updates
     /// 
-    /// The following arguments are supported in the `updates` specification block:
+    /// The following arguments are supported in the `Updates` specification block:
     /// 
-    /// * `day_of_week` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+    /// * `DayOfWeek` - (Required) The day to perform maintenance. (`Monday`, `Tuesday`, ...)
     /// 
-    /// * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+    /// * `Duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
     /// 
-    /// * `frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+    /// * `Frequency` - (Required) Whether maintenance occurs on a weekly or monthly basis. (`Weekly`, `Monthly`)
     /// 
-    /// * `hour_of_day` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+    /// * `HourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
     /// 
-    /// * `week_of_month` - (Optional) The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+    /// * `WeekOfMonth` - (Optional) The week of the month to perform monthly frequency updates. Required for `Monthly` frequency updates. (`1`..`4`)
     /// 
     /// ## Import
     /// 
@@ -127,13 +127,13 @@ namespace Pulumi.Linode
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the Managed Databases is encrypted. (default `false`)
+        /// Whether the Managed Databases is encrypted. (default `False`)
         /// </summary>
         [Output("encrypted")]
         public Output<bool?> Encrypted { get; private set; } = null!;
 
         /// <summary>
-        /// The Managed Database engine. (e.g. `mysql`)
+        /// The Managed Database engine. (e.g. `Mysql`)
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -169,11 +169,11 @@ namespace Pulumi.Linode
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+        /// The replication method used for the Managed Database. (`None`, `Asynch`, `SemiSynch`; default `None`)
         /// 
-        /// * Must be `none` for a single node cluster.
+        /// * Must be `None` for a single node cluster.
         /// 
-        /// * Must be `asynch` or `semi_synch` for a high availability cluster.
+        /// * Must be `Asynch` or `SemiSynch` for a high availability cluster.
         /// </summary>
         [Output("replicationType")]
         public Output<string?> ReplicationType { get; private set; } = null!;
@@ -191,9 +191,9 @@ namespace Pulumi.Linode
         public Output<string> RootUsername { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+        /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `False`)
         /// 
-        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Output("sslConnection")]
         public Output<bool?> SslConnection { get; private set; } = null!;
@@ -301,7 +301,7 @@ namespace Pulumi.Linode
         public Input<int>? ClusterSize { get; set; }
 
         /// <summary>
-        /// Whether the Managed Databases is encrypted. (default `false`)
+        /// Whether the Managed Databases is encrypted. (default `False`)
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -325,19 +325,19 @@ namespace Pulumi.Linode
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+        /// The replication method used for the Managed Database. (`None`, `Asynch`, `SemiSynch`; default `None`)
         /// 
-        /// * Must be `none` for a single node cluster.
+        /// * Must be `None` for a single node cluster.
         /// 
-        /// * Must be `asynch` or `semi_synch` for a high availability cluster.
+        /// * Must be `Asynch` or `SemiSynch` for a high availability cluster.
         /// </summary>
         [Input("replicationType")]
         public Input<string>? ReplicationType { get; set; }
 
         /// <summary>
-        /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+        /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `False`)
         /// 
-        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Input("sslConnection")]
         public Input<bool>? SslConnection { get; set; }
@@ -405,13 +405,13 @@ namespace Pulumi.Linode
         public Input<string>? Created { get; set; }
 
         /// <summary>
-        /// Whether the Managed Databases is encrypted. (default `false`)
+        /// Whether the Managed Databases is encrypted. (default `False`)
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
         /// <summary>
-        /// The Managed Database engine. (e.g. `mysql`)
+        /// The Managed Database engine. (e.g. `Mysql`)
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -447,11 +447,11 @@ namespace Pulumi.Linode
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+        /// The replication method used for the Managed Database. (`None`, `Asynch`, `SemiSynch`; default `None`)
         /// 
-        /// * Must be `none` for a single node cluster.
+        /// * Must be `None` for a single node cluster.
         /// 
-        /// * Must be `asynch` or `semi_synch` for a high availability cluster.
+        /// * Must be `Asynch` or `SemiSynch` for a high availability cluster.
         /// </summary>
         [Input("replicationType")]
         public Input<string>? ReplicationType { get; set; }
@@ -489,9 +489,9 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `false`)
+        /// Whether to require SSL credentials to establish a connection to the Managed Database. (default `False`)
         /// 
-        /// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         /// </summary>
         [Input("sslConnection")]
         public Input<bool>? SslConnection { get; set; }

@@ -70,11 +70,11 @@ namespace Pulumi.Linode
     /// 
     /// Configures a single IPv6 range under this VPC.
     /// 
-    /// * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+    /// * `Range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
     /// 
-    /// * `allocation_class` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+    /// * `AllocationClass` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
     /// 
-    /// * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+    /// * `AllocatedRange` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
     /// </summary>
     [LinodeResourceType("linode:index/vpc:Vpc")]
     public partial class Vpc : global::Pulumi.CustomResource
@@ -88,7 +88,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The user-defined description of this VPC.
         /// 
-        /// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+        /// * `Ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The user-defined description of this VPC.
         /// 
-        /// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+        /// * `Ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The user-defined description of this VPC.
         /// 
-        /// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+        /// * `Ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

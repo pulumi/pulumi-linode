@@ -77,7 +77,7 @@ public final class GetLkeClusterResult {
      */
     private String stackType;
     /**
-     * @return The status of the node. (`ready`, `not_ready`)
+     * @return The status of the node. (`ready`, `notReady`)
      * 
      */
     private String status;
@@ -193,7 +193,7 @@ public final class GetLkeClusterResult {
         return this.stackType;
     }
     /**
-     * @return The status of the node. (`ready`, `not_ready`)
+     * @return The status of the node. (`ready`, `notReady`)
      * 
      */
     public String status() {

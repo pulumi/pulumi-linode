@@ -14,10 +14,10 @@ namespace Pulumi.Linode
     /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-share-ips).
     /// 
     /// &gt; **Beta Notice** IPv6 sharing is currently available through early access.
-    /// To use early access resources, the `api_version` provider argument must be set to `v4beta`.
+    /// To use early access resources, the `ApiVersion` provider argument must be set to `V4beta`.
     /// To learn more, see the early access documentation.
     /// 
-    /// &gt; **Notice** This resource should only be defined once per-instance and should not be used alongside the `shared_ipv4` field in `linode.Instance`.
+    /// &gt; **Notice** This resource should only be defined once per-instance and should not be used alongside the `SharedIpv4` field in `linode.Instance`.
     /// 
     /// ## Example Usage
     /// 

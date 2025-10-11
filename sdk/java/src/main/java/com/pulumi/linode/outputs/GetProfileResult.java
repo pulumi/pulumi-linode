@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetProfileResult {
     /**
-     * @return The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is &#39;disabled&#39;.
+     * @return The list of SSH Keys authorized to use Lish for this user. This value is ignored if lishAuthMethod is &#39;disabled&#39;.
      * 
      */
     private List<String> authorizedKeys;
@@ -67,7 +67,7 @@ public final class GetProfileResult {
 
     private GetProfileResult() {}
     /**
-     * @return The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is &#39;disabled&#39;.
+     * @return The list of SSH Keys authorized to use Lish for this user. This value is ignored if lishAuthMethod is &#39;disabled&#39;.
      * 
      */
     public List<String> authorizedKeys() {

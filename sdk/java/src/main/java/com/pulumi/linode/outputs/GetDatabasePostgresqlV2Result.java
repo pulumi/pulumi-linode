@@ -49,7 +49,7 @@ public final class GetDatabasePostgresqlV2Result {
      */
     private String engine;
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * @return Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
      * 
      */
     private Double engineConfigPgAutovacuumAnalyzeScaleFactor;
@@ -69,17 +69,17 @@ public final class GetDatabasePostgresqlV2Result {
      */
     private Integer engineConfigPgAutovacuumNaptime;
     /**
-     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
      * 
      */
     private Integer engineConfigPgAutovacuumVacuumCostDelay;
     /**
-     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
      * 
      */
     private Integer engineConfigPgAutovacuumVacuumCostLimit;
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * @return Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
      * 
      */
     private Double engineConfigPgAutovacuumVacuumScaleFactor;
@@ -94,7 +94,7 @@ public final class GetDatabasePostgresqlV2Result {
      */
     private Integer engineConfigPgBgwriterDelay;
     /**
-     * @return Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * @return Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
      * 
      */
     private Integer engineConfigPgBgwriterFlushAfter;
@@ -104,7 +104,7 @@ public final class GetDatabasePostgresqlV2Result {
      */
     private Integer engineConfigPgBgwriterLruMaxpages;
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * @return The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
      * 
      */
     private Double engineConfigPgBgwriterLruMultiplier;
@@ -164,7 +164,7 @@ public final class GetDatabasePostgresqlV2Result {
      */
     private Integer engineConfigPgMaxReplicationSlots;
     /**
-     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
      * 
      */
     private Integer engineConfigPgMaxSlotWalKeepSize;
@@ -224,7 +224,7 @@ public final class GetDatabasePostgresqlV2Result {
      */
     private String engineConfigPgPgStatStatementsTrack;
     /**
-     * @return Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable.
+     * @return Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pgStatStatements results for utility commands are unreliable.
      * 
      */
     private Boolean engineConfigPgStatMonitorEnable;
@@ -274,7 +274,7 @@ public final class GetDatabasePostgresqlV2Result {
      */
     private Integer engineConfigPglookoutMaxFailoverReplicationTimeLag;
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
      * 
      */
     private Double engineConfigSharedBuffersPercentage;
@@ -419,7 +419,7 @@ public final class GetDatabasePostgresqlV2Result {
         return this.engine;
     }
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * @return Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
      * 
      */
     public Double engineConfigPgAutovacuumAnalyzeScaleFactor() {
@@ -447,21 +447,21 @@ public final class GetDatabasePostgresqlV2Result {
         return this.engineConfigPgAutovacuumNaptime;
     }
     /**
-     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+     * @return Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
      * 
      */
     public Integer engineConfigPgAutovacuumVacuumCostDelay() {
         return this.engineConfigPgAutovacuumVacuumCostDelay;
     }
     /**
-     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
      * 
      */
     public Integer engineConfigPgAutovacuumVacuumCostLimit() {
         return this.engineConfigPgAutovacuumVacuumCostLimit;
     }
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * @return Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
      * 
      */
     public Double engineConfigPgAutovacuumVacuumScaleFactor() {
@@ -482,7 +482,7 @@ public final class GetDatabasePostgresqlV2Result {
         return this.engineConfigPgBgwriterDelay;
     }
     /**
-     * @return Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * @return Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
      * 
      */
     public Integer engineConfigPgBgwriterFlushAfter() {
@@ -496,7 +496,7 @@ public final class GetDatabasePostgresqlV2Result {
         return this.engineConfigPgBgwriterLruMaxpages;
     }
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * @return The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
      * 
      */
     public Double engineConfigPgBgwriterLruMultiplier() {
@@ -580,7 +580,7 @@ public final class GetDatabasePostgresqlV2Result {
         return this.engineConfigPgMaxReplicationSlots;
     }
     /**
-     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+     * @return PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
      * 
      */
     public Integer engineConfigPgMaxSlotWalKeepSize() {
@@ -664,7 +664,7 @@ public final class GetDatabasePostgresqlV2Result {
         return this.engineConfigPgPgStatStatementsTrack;
     }
     /**
-     * @return Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable.
+     * @return Enable the pgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pgStatStatements results for utility commands are unreliable.
      * 
      */
     public Boolean engineConfigPgStatMonitorEnable() {
@@ -734,7 +734,7 @@ public final class GetDatabasePostgresqlV2Result {
         return this.engineConfigPglookoutMaxFailoverReplicationTimeLag;
     }
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
      * 
      */
     public Double engineConfigSharedBuffersPercentage() {

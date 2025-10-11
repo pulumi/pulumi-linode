@@ -51,31 +51,31 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `group`
+        /// * `Group`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// 
-        /// * `domain`
+        /// * `Domain`
         /// 
-        /// * `type`
+        /// * `Type`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `master_ips`
+        /// * `MasterIps`
         /// 
-        /// * `axfr_ips`
+        /// * `AxfrIps`
         /// 
-        /// * `ttl_sec`
+        /// * `TtlSec`
         /// 
-        /// * `retry_sec`
+        /// * `RetrySec`
         /// 
-        /// * `expire_sec`
+        /// * `ExpireSec`
         /// 
-        /// * `refresh_sec`
+        /// * `RefreshSec`
         /// 
-        /// * `soa_email`
+        /// * `SoaEmail`
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("linode:index/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
@@ -120,31 +120,31 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `group`
+        /// * `Group`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// 
-        /// * `domain`
+        /// * `Domain`
         /// 
-        /// * `type`
+        /// * `Type`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `master_ips`
+        /// * `MasterIps`
         /// 
-        /// * `axfr_ips`
+        /// * `AxfrIps`
         /// 
-        /// * `ttl_sec`
+        /// * `TtlSec`
         /// 
-        /// * `retry_sec`
+        /// * `RetrySec`
         /// 
-        /// * `expire_sec`
+        /// * `ExpireSec`
         /// 
-        /// * `refresh_sec`
+        /// * `RefreshSec`
         /// 
-        /// * `soa_email`
+        /// * `SoaEmail`
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("linode:index/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
@@ -189,31 +189,31 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `group`
+        /// * `Group`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// 
-        /// * `domain`
+        /// * `Domain`
         /// 
-        /// * `type`
+        /// * `Type`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `master_ips`
+        /// * `MasterIps`
         /// 
-        /// * `axfr_ips`
+        /// * `AxfrIps`
         /// 
-        /// * `ttl_sec`
+        /// * `TtlSec`
         /// 
-        /// * `retry_sec`
+        /// * `RetrySec`
         /// 
-        /// * `expire_sec`
+        /// * `ExpireSec`
         /// 
-        /// * `refresh_sec`
+        /// * `RefreshSec`
         /// 
-        /// * `soa_email`
+        /// * `SoaEmail`
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("linode:index/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
@@ -239,7 +239,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

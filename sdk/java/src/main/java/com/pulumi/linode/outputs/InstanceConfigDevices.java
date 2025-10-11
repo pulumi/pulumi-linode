@@ -19,98 +19,98 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceConfigDevices {
     /**
-     * @return ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
+     * @return ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
      * 
      */
     private @Nullable InstanceConfigDevicesSda sda;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private @Nullable InstanceConfigDevicesSdb sdb;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private @Nullable InstanceConfigDevicesSdc sdc;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private @Nullable InstanceConfigDevicesSdd sdd;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private @Nullable InstanceConfigDevicesSde sde;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private @Nullable InstanceConfigDevicesSdf sdf;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private @Nullable InstanceConfigDevicesSdg sdg;
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private @Nullable InstanceConfigDevicesSdh sdh;
 
     private InstanceConfigDevices() {}
     /**
-     * @return ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virt_mode`.
+     * @return ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
      * 
      */
     public Optional<InstanceConfigDevicesSda> sda() {
         return Optional.ofNullable(this.sda);
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<InstanceConfigDevicesSdb> sdb() {
         return Optional.ofNullable(this.sdb);
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<InstanceConfigDevicesSdc> sdc() {
         return Optional.ofNullable(this.sdc);
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<InstanceConfigDevicesSdd> sdd() {
         return Optional.ofNullable(this.sdd);
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<InstanceConfigDevicesSde> sde() {
         return Optional.ofNullable(this.sde);
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<InstanceConfigDevicesSdf> sdf() {
         return Optional.ofNullable(this.sdf);
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<InstanceConfigDevicesSdg> sdg() {
         return Optional.ofNullable(this.sdg);
     }
     /**
-     * @return Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public Optional<InstanceConfigDevicesSdh> sdh() {

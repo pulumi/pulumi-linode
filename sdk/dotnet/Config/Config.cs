@@ -64,7 +64,7 @@ namespace Pulumi.Linode
 
         private static readonly __Value<string?> _configProfile = new __Value<string?>(() => __config.Get("configProfile"));
         /// <summary>
-        /// The Linode config profile to use. (default `default`)
+        /// The Linode config profile to use. (default `Default`)
         /// </summary>
         public static string? ConfigProfile
         {
@@ -164,7 +164,7 @@ namespace Pulumi.Linode
 
         private static readonly __Value<bool?> _objUseTempKeys = new __Value<bool?>(() => __config.GetBoolean("objUseTempKeys"));
         /// <summary>
-        /// If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linode_object_sorage_bucket resource.
+        /// If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and LinodeObjectSorageBucket resource.
         /// </summary>
         public static bool? ObjUseTempKeys
         {

@@ -51,13 +51,13 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `range`
+        /// * `Range`
         /// 
-        /// * `route_target`
+        /// * `RouteTarget`
         /// 
-        /// * `prefix`
+        /// * `Prefix`
         /// 
-        /// * `region`
+        /// * `Region`
         /// </summary>
         public static Task<GetIpv6RangesResult> InvokeAsync(GetIpv6RangesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpv6RangesResult>("linode:index/getIpv6Ranges:getIpv6Ranges", args ?? new GetIpv6RangesArgs(), options.WithDefaults());
@@ -102,13 +102,13 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `range`
+        /// * `Range`
         /// 
-        /// * `route_target`
+        /// * `RouteTarget`
         /// 
-        /// * `prefix`
+        /// * `Prefix`
         /// 
-        /// * `region`
+        /// * `Region`
         /// </summary>
         public static Output<GetIpv6RangesResult> Invoke(GetIpv6RangesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpv6RangesResult>("linode:index/getIpv6Ranges:getIpv6Ranges", args ?? new GetIpv6RangesInvokeArgs(), options.WithDefaults());
@@ -153,13 +153,13 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `range`
+        /// * `Range`
         /// 
-        /// * `route_target`
+        /// * `RouteTarget`
         /// 
-        /// * `prefix`
+        /// * `Prefix`
         /// 
-        /// * `region`
+        /// * `Region`
         /// </summary>
         public static Output<GetIpv6RangesResult> Invoke(GetIpv6RangesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpv6RangesResult>("linode:index/getIpv6Ranges:getIpv6Ranges", args ?? new GetIpv6RangesInvokeArgs(), options.WithDefaults());

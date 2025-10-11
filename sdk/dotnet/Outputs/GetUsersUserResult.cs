@@ -62,7 +62,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly bool Restricted;
         /// <summary>
-        /// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+        /// A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the AuthorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
         /// </summary>
         public readonly ImmutableArray<string> SshKeys;
         /// <summary>

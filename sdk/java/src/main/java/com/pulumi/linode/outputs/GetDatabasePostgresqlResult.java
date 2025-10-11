@@ -81,12 +81,12 @@ public final class GetDatabasePostgresqlResult {
      */
     private String region;
     /**
-     * @return (Optional) The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`)
+     * @return (Optional) The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`)
      * 
      */
     private String replicationCommitType;
     /**
-     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
+     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`)
      * 
      */
     private String replicationType;
@@ -221,14 +221,14 @@ public final class GetDatabasePostgresqlResult {
         return this.region;
     }
     /**
-     * @return (Optional) The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`)
+     * @return (Optional) The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`)
      * 
      */
     public String replicationCommitType() {
         return this.replicationCommitType;
     }
     /**
-     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
+     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`)
      * 
      */
     public String replicationType() {

@@ -27,7 +27,7 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
         /// 
-        /// * `addresses` - (Optional) A list of ip addresses to allow.
+        /// * `Addresses` - (Optional) A list of ip addresses to allow.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

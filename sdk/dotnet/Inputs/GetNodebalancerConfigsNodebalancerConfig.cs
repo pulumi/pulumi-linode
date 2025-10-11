@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetNodebalancerConfigsNodebalancerConfigArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
+        /// What algorithm this NodeBalancer should use for routing traffic to backends (`Roundrobin`, `Leastconn`, `Source`)
         /// </summary>
         [Input("algorithm", required: true)]
         public string Algorithm { get; set; } = null!;
 
         /// <summary>
-        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+        /// The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and HttpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`None`, `Connection`, `Http`, `HttpBody`)
         /// </summary>
         [Input("check", required: true)]
         public string Check { get; set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.Linode.Inputs
         public int CheckTimeout { get; set; }
 
         /// <summary>
-        /// What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
+        /// What ciphers to use for SSL connections served by this NodeBalancer. `Legacy` is considered insecure and should only be used if necessary. (`Recommended`, `Legacy`)
         /// </summary>
         [Input("cipherSuite", required: true)]
         public string CipherSuite { get; set; } = null!;
@@ -87,7 +87,7 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The ID of the NodeBalancer to access.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
         /// </summary>
         [Input("nodebalancerId", required: true)]
         public int NodebalancerId { get; set; }
@@ -99,13 +99,13 @@ namespace Pulumi.Linode.Inputs
         public int Port { get; set; }
 
         /// <summary>
-        /// The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+        /// The protocol this port is configured to serve. If this is set to https you must include an SslCert and an ssl_key. (`Http`, `Https`, `Tcp`) (Defaults to `Http`)
         /// </summary>
         [Input("protocol", required: true)]
         public string Protocol { get; set; } = null!;
 
         /// <summary>
-        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
+        /// The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `Tcp`. (`None`, `V1`, and `V2`) (Defaults to `None`)
         /// </summary>
         [Input("proxyProtocol", required: true)]
         public string ProxyProtocol { get; set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Linode.Inputs
         public string SslFingerprint { get; set; } = null!;
 
         /// <summary>
-        /// Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+        /// Controls how session stickiness is handled on this port. (`None`, `Table`, `HttpCookie`)
         /// </summary>
         [Input("stickiness", required: true)]
         public string Stickiness { get; set; } = null!;

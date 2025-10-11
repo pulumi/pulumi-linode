@@ -128,14 +128,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
+     * The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
+     * @return The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
      * 
      */
     public Optional<Output<String>> status() {
@@ -349,7 +349,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
+         * @param status The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the Linode Volume. (`creating`, `active`, `resizing`, `contact_support`)
+         * @param status The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
          * 
          * @return builder
          * 

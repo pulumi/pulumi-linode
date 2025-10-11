@@ -115,7 +115,7 @@ namespace Pulumi.Linode.Inputs
         public int TotalSize { get; set; }
 
         /// <summary>
-        /// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+        /// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`Manual`, `Automatic`)
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;

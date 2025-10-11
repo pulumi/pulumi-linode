@@ -72,33 +72,33 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `euuid`
+        /// * `Euuid`
         /// 
-        /// * `email`
+        /// * `Email`
         /// 
-        /// * `first_name`
+        /// * `FirstName`
         /// 
-        /// * `last_name`
+        /// * `LastName`
         /// 
-        /// * `company`
+        /// * `Company`
         /// 
-        /// * `address_1`
+        /// * `Address1`
         /// 
-        /// * `address_2`
+        /// * `Address2`
         /// 
-        /// * `phone`
+        /// * `Phone`
         /// 
-        /// * `city`
+        /// * `City`
         /// 
-        /// * `state`
+        /// * `State`
         /// 
-        /// * `country`
+        /// * `Country`
         /// 
-        /// * `zip`
+        /// * `Zip`
         /// 
-        /// * `capabilities`
+        /// * `Capabilities`
         /// 
-        /// * `active_since`
+        /// * `ActiveSince`
         /// </summary>
         public static Task<GetChildAccountsResult> InvokeAsync(GetChildAccountsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetChildAccountsResult>("linode:index/getChildAccounts:getChildAccounts", args ?? new GetChildAccountsArgs(), options.WithDefaults());
@@ -164,33 +164,33 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `euuid`
+        /// * `Euuid`
         /// 
-        /// * `email`
+        /// * `Email`
         /// 
-        /// * `first_name`
+        /// * `FirstName`
         /// 
-        /// * `last_name`
+        /// * `LastName`
         /// 
-        /// * `company`
+        /// * `Company`
         /// 
-        /// * `address_1`
+        /// * `Address1`
         /// 
-        /// * `address_2`
+        /// * `Address2`
         /// 
-        /// * `phone`
+        /// * `Phone`
         /// 
-        /// * `city`
+        /// * `City`
         /// 
-        /// * `state`
+        /// * `State`
         /// 
-        /// * `country`
+        /// * `Country`
         /// 
-        /// * `zip`
+        /// * `Zip`
         /// 
-        /// * `capabilities`
+        /// * `Capabilities`
         /// 
-        /// * `active_since`
+        /// * `ActiveSince`
         /// </summary>
         public static Output<GetChildAccountsResult> Invoke(GetChildAccountsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetChildAccountsResult>("linode:index/getChildAccounts:getChildAccounts", args ?? new GetChildAccountsInvokeArgs(), options.WithDefaults());
@@ -256,33 +256,33 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `euuid`
+        /// * `Euuid`
         /// 
-        /// * `email`
+        /// * `Email`
         /// 
-        /// * `first_name`
+        /// * `FirstName`
         /// 
-        /// * `last_name`
+        /// * `LastName`
         /// 
-        /// * `company`
+        /// * `Company`
         /// 
-        /// * `address_1`
+        /// * `Address1`
         /// 
-        /// * `address_2`
+        /// * `Address2`
         /// 
-        /// * `phone`
+        /// * `Phone`
         /// 
-        /// * `city`
+        /// * `City`
         /// 
-        /// * `state`
+        /// * `State`
         /// 
-        /// * `country`
+        /// * `Country`
         /// 
-        /// * `zip`
+        /// * `Zip`
         /// 
-        /// * `capabilities`
+        /// * `Capabilities`
         /// 
-        /// * `active_since`
+        /// * `ActiveSince`
         /// </summary>
         public static Output<GetChildAccountsResult> Invoke(GetChildAccountsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetChildAccountsResult>("linode:index/getChildAccounts:getChildAccounts", args ?? new GetChildAccountsInvokeArgs(), options.WithDefaults());

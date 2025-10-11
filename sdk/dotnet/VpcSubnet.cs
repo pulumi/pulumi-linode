@@ -80,11 +80,11 @@ namespace Pulumi.Linode
     /// 
     /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
     /// 
-    /// The following arguments can be configured for each entry under the `ipv6` field:
+    /// The following arguments can be configured for each entry under the `Ipv6` field:
     /// 
-    /// * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If `auto`, a range with the default prefix will be allocated for this VPC.
+    /// * `Range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If `Auto`, a range with the default prefix will be allocated for this VPC.
     /// 
-    /// * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+    /// * `AllocatedRange` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
     /// 
     /// ## Import
     /// 
@@ -106,7 +106,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
         /// 
-        /// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        /// * `Ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         /// </summary>
         [Output("ipv4")]
         public Output<string?> Ipv4 { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
         /// 
-        /// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        /// * `Ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         /// </summary>
         [Input("ipv4")]
         public Input<string>? Ipv4 { get; set; }
@@ -236,7 +236,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
         /// 
-        /// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        /// * `Ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         /// </summary>
         [Input("ipv4")]
         public Input<string>? Ipv4 { get; set; }

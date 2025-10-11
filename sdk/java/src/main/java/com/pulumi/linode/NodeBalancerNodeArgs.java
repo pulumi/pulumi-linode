@@ -97,14 +97,14 @@ public final class NodeBalancerNodeArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
      * 
      */
     @Import(name="subnetId")
     private @Nullable Output<Integer> subnetId;
 
     /**
-     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+     * @return The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
      * 
      */
     public Optional<Output<Integer>> subnetId() {
@@ -266,7 +266,7 @@ public final class NodeBalancerNodeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class NodeBalancerNodeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+         * @param subnetId The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `apiVersion` provider argument must be set to `v4beta`.
          * 
          * @return builder
          * 

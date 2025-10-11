@@ -78,9 +78,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// This Kubernetes cluster's location.
         /// 
-        /// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// * `Pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// 
-        /// * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+        /// * `ControlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -92,7 +92,7 @@ namespace Pulumi.Linode
         public Output<string> StackType { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the node. (`ready`, `not_ready`)
+        /// The status of the node. (`Ready`, `NotReady`)
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -222,9 +222,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// This Kubernetes cluster's location.
         /// 
-        /// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// * `Pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// 
-        /// * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+        /// * `ControlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -358,9 +358,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// This Kubernetes cluster's location.
         /// 
-        /// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// * `Pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// 
-        /// * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+        /// * `ControlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -372,7 +372,7 @@ namespace Pulumi.Linode
         public Input<string>? StackType { get; set; }
 
         /// <summary>
-        /// The status of the node. (`ready`, `not_ready`)
+        /// The status of the node. (`Ready`, `NotReady`)
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -45,7 +45,7 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
+        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `Accept` this backend is accepting traffic. If set to `Reject` this backend will not receive traffic. If set to `Drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`Accept`, `Reject`, `Drain`, `Backup`)
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -57,19 +57,19 @@ namespace Pulumi.Linode
         public Output<int> NodebalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
+        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (`Unknown`, `UP`, `DOWN`).
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `ApiVersion` provider argument must be set to `V4beta`.
         /// </summary>
         [Output("subnetId")]
         public Output<int?> SubnetId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `ApiVersion` provider argument must be set to `V4beta`.
         /// </summary>
         [Output("vpcConfigId")]
         public Output<int> VpcConfigId { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Linode
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
+        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `Accept` this backend is accepting traffic. If set to `Reject` this backend will not receive traffic. If set to `Drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`Accept`, `Reject`, `Drain`, `Backup`)
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.Linode
         public Input<int> NodebalancerId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `ApiVersion` provider argument must be set to `V4beta`.
         /// </summary>
         [Input("subnetId")]
         public Input<int>? SubnetId { get; set; }
@@ -199,7 +199,7 @@ namespace Pulumi.Linode
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
+        /// The mode this NodeBalancer should use when sending traffic to this backend. If set to `Accept` this backend is accepting traffic. If set to `Reject` this backend will not receive traffic. If set to `Drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`Accept`, `Reject`, `Drain`, `Backup`)
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -211,19 +211,19 @@ namespace Pulumi.Linode
         public Input<int>? NodebalancerId { get; set; }
 
         /// <summary>
-        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (`unknown`, `UP`, `DOWN`).
+        /// The current status of this node, based on the configured checks of its NodeBalancer Config. (`Unknown`, `UP`, `DOWN`).
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `ApiVersion` provider argument must be set to `V4beta`.
         /// </summary>
         [Input("subnetId")]
         public Input<int>? SubnetId { get; set; }
 
         /// <summary>
-        /// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// The ID of the related NodeBalancer-VPC configuration. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `ApiVersion` provider argument must be set to `V4beta`.
         /// </summary>
         [Input("vpcConfigId")]
         public Input<int>? VpcConfigId { get; set; }

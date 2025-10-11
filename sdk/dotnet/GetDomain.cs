@@ -194,7 +194,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string SoaEmail;
         /// <summary>
-        /// Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
+        /// Used to control whether this Domain is currently being rendered. (`Disabled`, `Active`)
         /// </summary>
         public readonly string Status;
         /// <summary>
@@ -206,7 +206,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int TtlSec;
         /// <summary>
-        /// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
+        /// If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`Master`, `Slave`)
         /// </summary>
         public readonly string Type;
 

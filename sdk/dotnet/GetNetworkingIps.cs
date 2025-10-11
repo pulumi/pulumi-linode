@@ -61,25 +61,25 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `address`
+        /// * `Address`
         /// 
-        /// * `gateway`
+        /// * `Gateway`
         /// 
-        /// * `subnet_mask`
+        /// * `SubnetMask`
         /// 
-        /// * `prefix`
+        /// * `Prefix`
         /// 
-        /// * `type`
+        /// * `Type`
         /// 
-        /// * `public`
+        /// * `Public`
         /// 
-        /// * `rdns`
+        /// * `Rdns`
         /// 
-        /// * `linode_id`
+        /// * `LinodeId`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `reserved`
+        /// * `Reserved`
         /// </summary>
         public static Task<GetNetworkingIpsResult> InvokeAsync(GetNetworkingIpsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkingIpsResult>("linode:index/getNetworkingIps:getNetworkingIps", args ?? new GetNetworkingIpsArgs(), options.WithDefaults());
@@ -134,25 +134,25 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `address`
+        /// * `Address`
         /// 
-        /// * `gateway`
+        /// * `Gateway`
         /// 
-        /// * `subnet_mask`
+        /// * `SubnetMask`
         /// 
-        /// * `prefix`
+        /// * `Prefix`
         /// 
-        /// * `type`
+        /// * `Type`
         /// 
-        /// * `public`
+        /// * `Public`
         /// 
-        /// * `rdns`
+        /// * `Rdns`
         /// 
-        /// * `linode_id`
+        /// * `LinodeId`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `reserved`
+        /// * `Reserved`
         /// </summary>
         public static Output<GetNetworkingIpsResult> Invoke(GetNetworkingIpsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkingIpsResult>("linode:index/getNetworkingIps:getNetworkingIps", args ?? new GetNetworkingIpsInvokeArgs(), options.WithDefaults());
@@ -207,25 +207,25 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `address`
+        /// * `Address`
         /// 
-        /// * `gateway`
+        /// * `Gateway`
         /// 
-        /// * `subnet_mask`
+        /// * `SubnetMask`
         /// 
-        /// * `prefix`
+        /// * `Prefix`
         /// 
-        /// * `type`
+        /// * `Type`
         /// 
-        /// * `public`
+        /// * `Public`
         /// 
-        /// * `rdns`
+        /// * `Rdns`
         /// 
-        /// * `linode_id`
+        /// * `LinodeId`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `reserved`
+        /// * `Reserved`
         /// </summary>
         public static Output<GetNetworkingIpsResult> Invoke(GetNetworkingIpsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkingIpsResult>("linode:index/getNetworkingIps:getNetworkingIps", args ?? new GetNetworkingIpsInvokeArgs(), options.WithDefaults());
@@ -251,7 +251,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -287,7 +287,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

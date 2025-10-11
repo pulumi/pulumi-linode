@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AuthorizedKeys;
         /// <summary>
-        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+        /// A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `Root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
         /// </summary>
         public readonly ImmutableArray<string> AuthorizedUsers;
         /// <summary>

@@ -151,7 +151,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, this user will only have explicit permissions granted.
      * 
-     * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
      * 
      * The following arguments are sets of entity grants:
      * 
@@ -162,7 +162,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If true, this user will only have explicit permissions granted.
      * 
-     * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
      * 
      * The following arguments are sets of entity grants:
      * 
@@ -498,7 +498,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param restricted If true, this user will only have explicit permissions granted.
          * 
-         * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+         * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
          * 
          * The following arguments are sets of entity grants:
          * 
@@ -513,7 +513,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param restricted If true, this user will only have explicit permissions granted.
          * 
-         * * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+         * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
          * 
          * The following arguments are sets of entity grants:
          * 

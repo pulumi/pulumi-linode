@@ -213,7 +213,7 @@ namespace Pulumi.Linode
         /// 
         /// - - -
         /// 
-        /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+        /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `V4beta` in order to use this functionality.
         /// 
         /// The following arguments apply to uploading an image:
         /// </summary>
@@ -278,7 +278,7 @@ namespace Pulumi.Linode
         public Output<string> Vendor { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to wait for all image replications become `available`. Default to false.
+        /// Whether to wait for all image replications become `Available`. Default to false.
         /// 
         /// - - -
         /// 
@@ -374,7 +374,7 @@ namespace Pulumi.Linode
         /// 
         /// - - -
         /// 
-        /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+        /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `V4beta` in order to use this functionality.
         /// 
         /// The following arguments apply to uploading an image:
         /// </summary>
@@ -415,7 +415,7 @@ namespace Pulumi.Linode
         public Input<Inputs.ImageTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Whether to wait for all image replications become `available`. Default to false.
+        /// Whether to wait for all image replications become `Available`. Default to false.
         /// 
         /// - - -
         /// 
@@ -515,7 +515,7 @@ namespace Pulumi.Linode
         /// 
         /// - - -
         /// 
-        /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
+        /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `V4beta` in order to use this functionality.
         /// 
         /// The following arguments apply to uploading an image:
         /// </summary>
@@ -598,7 +598,7 @@ namespace Pulumi.Linode
         public Input<string>? Vendor { get; set; }
 
         /// <summary>
-        /// Whether to wait for all image replications become `available`. Default to false.
+        /// Whether to wait for all image replications become `Available`. Default to false.
         /// 
         /// - - -
         /// 

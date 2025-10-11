@@ -72,14 +72,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
+     * A Backup ID from another Linode&#39;s available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
      * 
      */
     @Import(name="backupId")
     private @Nullable Output<Integer> backupId;
 
     /**
-     * @return A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
+     * @return A Backup ID from another Linode&#39;s available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
      * 
      */
     public Optional<Output<Integer>> backupId() {
@@ -193,14 +193,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+     * The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
      * 
      */
     @Import(name="firewallId")
     private @Nullable Output<Integer> firewallId;
 
     /**
-     * @return The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+     * @return The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
      * 
      */
     public Optional<Output<Integer>> firewallId() {
@@ -709,7 +709,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupId A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
+         * @param backupId A Backup ID from another Linode&#39;s available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
          * 
          * @return builder
          * 
@@ -720,7 +720,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupId A Backup ID from another Linode&#39;s available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
+         * @param backupId A Backup ID from another Linode&#39;s available backups. Your User must have readWrite access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode&#39;s available backups. This field and the image field are mutually exclusive.
          * 
          * @return builder
          * 
@@ -898,7 +898,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firewallId The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+         * @param firewallId The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
          * 
          * @return builder
          * 
@@ -909,7 +909,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firewallId The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
+         * @param firewallId The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
          * 
          * @return builder
          * 

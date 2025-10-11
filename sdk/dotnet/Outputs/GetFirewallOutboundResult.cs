@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetFirewallOutboundResult
     {
         /// <summary>
-        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s InboundPolicy if this is an inbound rule, or the OutboundPolicy if this is an outbound rule.
         /// </summary>
         public readonly string Action;
         public readonly string Description;

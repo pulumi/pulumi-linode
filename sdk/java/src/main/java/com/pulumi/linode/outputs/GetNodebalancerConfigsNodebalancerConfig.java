@@ -20,7 +20,7 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
      */
     private String algorithm;
     /**
-     * @return The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+     * @return The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
      * 
      */
     private String check;
@@ -82,7 +82,7 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
      */
     private Integer port;
     /**
-     * @return The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+     * @return The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      * 
      */
     private String protocol;
@@ -102,7 +102,7 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
      */
     private String sslFingerprint;
     /**
-     * @return Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+     * @return Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      * 
      */
     private String stickiness;
@@ -126,7 +126,7 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
         return this.algorithm;
     }
     /**
-     * @return The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
+     * @return The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
      * 
      */
     public String check() {
@@ -212,7 +212,7 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
         return this.port;
     }
     /**
-     * @return The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
+     * @return The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
      * 
      */
     public String protocol() {
@@ -240,7 +240,7 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
         return this.sslFingerprint;
     }
     /**
-     * @return Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
+     * @return Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
      * 
      */
     public String stickiness() {

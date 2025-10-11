@@ -70,7 +70,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int TotalSize;
         /// <summary>
-        /// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+        /// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`Manual`, `Automatic`)
         /// </summary>
         public readonly string Type;
         /// <summary>

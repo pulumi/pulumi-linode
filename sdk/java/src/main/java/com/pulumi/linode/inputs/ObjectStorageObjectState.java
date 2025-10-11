@@ -19,8 +19,8 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
 
     /**
      * The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-     * * configuring the `obj_access_key` in the provider configuration;
-     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+     * * configuring the `objAccessKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      * 
      */
     @Import(name="accessKey")
@@ -28,8 +28,8 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
 
     /**
      * @return The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-     * * configuring the `obj_access_key` in the provider configuration;
-     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+     * * configuring the `objAccessKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -67,14 +67,14 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+     * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      * 
      */
     @Import(name="cacheControl")
     private @Nullable Output<String> cacheControl;
 
     /**
-     * @return Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+     * @return Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      * 
      */
     public Optional<Output<String>> cacheControl() {
@@ -135,14 +135,14 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+     * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      * 
      */
     @Import(name="contentDisposition")
     private @Nullable Output<String> contentDisposition;
 
     /**
-     * @return Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+     * @return Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      * 
      */
     public Optional<Output<String>> contentDisposition() {
@@ -286,8 +286,8 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
 
     /**
      * The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-     * * configuring the `obj_secret_key` in the provider configuration;
-     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+     * * configuring the `objSecretKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      * 
      */
     @Import(name="secretKey")
@@ -295,8 +295,8 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
 
     /**
      * @return The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-     * * configuring the `obj_secret_key` in the provider configuration;
-     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+     * * configuring the `objSecretKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      * 
      */
     public Optional<Output<String>> secretKey() {
@@ -394,8 +394,8 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
 
         /**
          * @param accessKey The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-         * * configuring the `obj_access_key` in the provider configuration;
-         * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+         * * configuring the `objAccessKey` in the provider configuration;
+         * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
          * 
          * @return builder
          * 
@@ -407,8 +407,8 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
 
         /**
          * @param accessKey The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-         * * configuring the `obj_access_key` in the provider configuration;
-         * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+         * * configuring the `objAccessKey` in the provider configuration;
+         * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cacheControl Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+         * @param cacheControl Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param cacheControl Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+         * @param cacheControl Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param contentDisposition Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+         * @param contentDisposition Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param contentDisposition Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+         * @param contentDisposition Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
          * 
          * @return builder
          * 
@@ -763,8 +763,8 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
 
         /**
          * @param secretKey The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-         * * configuring the `obj_secret_key` in the provider configuration;
-         * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+         * * configuring the `objSecretKey` in the provider configuration;
+         * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
          * 
          * @return builder
          * 
@@ -776,8 +776,8 @@ public final class ObjectStorageObjectState extends com.pulumi.resources.Resourc
 
         /**
          * @param secretKey The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-         * * configuring the `obj_secret_key` in the provider configuration;
-         * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+         * * configuring the `objSecretKey` in the provider configuration;
+         * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
          * 
          * @return builder
          * 

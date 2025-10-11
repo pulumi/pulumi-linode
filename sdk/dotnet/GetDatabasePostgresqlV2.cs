@@ -35,37 +35,37 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## pending_updates
+        /// ## PendingUpdates
         /// 
-        /// The following arguments are exposed by each entry in the `pending_updates` attribute:
+        /// The following arguments are exposed by each entry in the `PendingUpdates` attribute:
         /// 
-        /// * `deadline` - The time when a mandatory update needs to be applied.
+        /// * `Deadline` - The time when a mandatory update needs to be applied.
         /// 
-        /// * `description` - A description of the update.
+        /// * `Description` - A description of the update.
         /// 
-        /// * `planned_for` - The date and time a maintenance update will be applied.
+        /// * `PlannedFor` - The date and time a maintenance update will be applied.
         /// 
         /// ## updates
         /// 
-        /// The following arguments are supported in the `updates` specification block:
+        /// The following arguments are supported in the `Updates` specification block:
         /// 
-        /// * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+        /// * `DayOfWeek` - The day to perform maintenance. (`Monday`, `Tuesday`, ...)
         /// 
-        /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+        /// * `Duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
+        /// * `Frequency` - The frequency at which maintenance occurs. (`Weekly`)
         /// 
-        /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// * `HourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
         /// 
-        /// ## private_network
+        /// ## PrivateNetwork
         /// 
-        /// The following arguments are exposed by the `private_network` attribute:
+        /// The following arguments are exposed by the `PrivateNetwork` attribute:
         /// 
-        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// * `VpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
         /// 
-        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// * `SubnetId` - The ID of the VPC subnet to restrict access to this database using.
         /// 
-        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+        /// * `PublicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Task<GetDatabasePostgresqlV2Result> InvokeAsync(GetDatabasePostgresqlV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasePostgresqlV2Result>("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", args ?? new GetDatabasePostgresqlV2Args(), options.WithDefaults());
@@ -94,37 +94,37 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## pending_updates
+        /// ## PendingUpdates
         /// 
-        /// The following arguments are exposed by each entry in the `pending_updates` attribute:
+        /// The following arguments are exposed by each entry in the `PendingUpdates` attribute:
         /// 
-        /// * `deadline` - The time when a mandatory update needs to be applied.
+        /// * `Deadline` - The time when a mandatory update needs to be applied.
         /// 
-        /// * `description` - A description of the update.
+        /// * `Description` - A description of the update.
         /// 
-        /// * `planned_for` - The date and time a maintenance update will be applied.
+        /// * `PlannedFor` - The date and time a maintenance update will be applied.
         /// 
         /// ## updates
         /// 
-        /// The following arguments are supported in the `updates` specification block:
+        /// The following arguments are supported in the `Updates` specification block:
         /// 
-        /// * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+        /// * `DayOfWeek` - The day to perform maintenance. (`Monday`, `Tuesday`, ...)
         /// 
-        /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+        /// * `Duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
+        /// * `Frequency` - The frequency at which maintenance occurs. (`Weekly`)
         /// 
-        /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// * `HourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
         /// 
-        /// ## private_network
+        /// ## PrivateNetwork
         /// 
-        /// The following arguments are exposed by the `private_network` attribute:
+        /// The following arguments are exposed by the `PrivateNetwork` attribute:
         /// 
-        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// * `VpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
         /// 
-        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// * `SubnetId` - The ID of the VPC subnet to restrict access to this database using.
         /// 
-        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+        /// * `PublicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Output<GetDatabasePostgresqlV2Result> Invoke(GetDatabasePostgresqlV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlV2Result>("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", args ?? new GetDatabasePostgresqlV2InvokeArgs(), options.WithDefaults());
@@ -153,37 +153,37 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## pending_updates
+        /// ## PendingUpdates
         /// 
-        /// The following arguments are exposed by each entry in the `pending_updates` attribute:
+        /// The following arguments are exposed by each entry in the `PendingUpdates` attribute:
         /// 
-        /// * `deadline` - The time when a mandatory update needs to be applied.
+        /// * `Deadline` - The time when a mandatory update needs to be applied.
         /// 
-        /// * `description` - A description of the update.
+        /// * `Description` - A description of the update.
         /// 
-        /// * `planned_for` - The date and time a maintenance update will be applied.
+        /// * `PlannedFor` - The date and time a maintenance update will be applied.
         /// 
         /// ## updates
         /// 
-        /// The following arguments are supported in the `updates` specification block:
+        /// The following arguments are supported in the `Updates` specification block:
         /// 
-        /// * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+        /// * `DayOfWeek` - The day to perform maintenance. (`Monday`, `Tuesday`, ...)
         /// 
-        /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+        /// * `Duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - The frequency at which maintenance occurs. (`weekly`)
+        /// * `Frequency` - The frequency at which maintenance occurs. (`Weekly`)
         /// 
-        /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// * `HourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
         /// 
-        /// ## private_network
+        /// ## PrivateNetwork
         /// 
-        /// The following arguments are exposed by the `private_network` attribute:
+        /// The following arguments are exposed by the `PrivateNetwork` attribute:
         /// 
-        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// * `VpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
         /// 
-        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// * `SubnetId` - The ID of the VPC subnet to restrict access to this database using.
         /// 
-        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+        /// * `PublicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Output<GetDatabasePostgresqlV2Result> Invoke(GetDatabasePostgresqlV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasePostgresqlV2Result>("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", args ?? new GetDatabasePostgresqlV2InvokeArgs(), options.WithDefaults());
@@ -243,11 +243,11 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly bool Encrypted;
         /// <summary>
-        /// The Managed Database engine. (e.g. `postgresql`)
+        /// The Managed Database engine. (e.g. `Postgresql`)
         /// </summary>
         public readonly string Engine;
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+        /// Specifies a fraction of the table size to add to AutovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
         /// </summary>
         public readonly double EngineConfigPgAutovacuumAnalyzeScaleFactor;
         /// <summary>
@@ -263,15 +263,15 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int EngineConfigPgAutovacuumNaptime;
         /// <summary>
-        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+        /// Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular VacuumCostDelay value will be used. The default value is 20 milliseconds
         /// </summary>
         public readonly int EngineConfigPgAutovacuumVacuumCostDelay;
         /// <summary>
-        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular VacuumCostLimit value will be used.
         /// </summary>
         public readonly int EngineConfigPgAutovacuumVacuumCostLimit;
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+        /// Specifies a fraction of the table size to add to AutovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
         /// </summary>
         public readonly double EngineConfigPgAutovacuumVacuumScaleFactor;
         /// <summary>
@@ -283,7 +283,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int EngineConfigPgBgwriterDelay;
         /// <summary>
-        /// Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+        /// Whenever more than BgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
         /// </summary>
         public readonly int EngineConfigPgBgwriterFlushAfter;
         /// <summary>
@@ -291,7 +291,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int EngineConfigPgBgwriterLruMaxpages;
         /// <summary>
-        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// The average recent need for new buffers is multiplied by BgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
         /// </summary>
         public readonly double EngineConfigPgBgwriterLruMultiplier;
         /// <summary>
@@ -339,7 +339,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int EngineConfigPgMaxReplicationSlots;
         /// <summary>
-        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+        /// PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). WalKeepSize minimum WAL size setting takes precedence over this.
         /// </summary>
         public readonly int EngineConfigPgMaxSlotWalKeepSize;
         /// <summary>
@@ -387,7 +387,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string EngineConfigPgPgStatStatementsTrack;
         /// <summary>
-        /// Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, pg_stat_statements results for utility commands are unreliable.
+        /// Enable the PgStatMonitor extension. Enabling this extension will cause the cluster to be restarted. When this extension is enabled, PgStatStatements results for utility commands are unreliable.
         /// </summary>
         public readonly bool EngineConfigPgStatMonitorEnable;
         /// <summary>
@@ -427,7 +427,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int EngineConfigPglookoutMaxFailoverReplicationTimeLag;
         /// <summary>
-        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the SharedBuffers configuration value.
         /// </summary>
         public readonly double EngineConfigSharedBuffersPercentage;
         /// <summary>

@@ -39,17 +39,17 @@ namespace Pulumi.Linode
         /// 
         /// ## updates
         /// 
-        /// The following arguments are exported by the `updates` specification block:
+        /// The following arguments are exported by the `Updates` specification block:
         /// 
-        /// * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+        /// * `DayOfWeek` - The day to perform maintenance. (`Monday`, `Tuesday`, ...)
         /// 
-        /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+        /// * `Duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        /// * `Frequency` - Whether maintenance occurs on a weekly or monthly basis. (`Weekly`, `Monthly`)
         /// 
-        /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// * `HourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
         /// 
-        /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+        /// * `WeekOfMonth` - The week of the month to perform monthly frequency updates. Required for `Monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Task<GetDatabaseMysqlResult> InvokeAsync(GetDatabaseMysqlArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlResult>("linode:index/getDatabaseMysql:getDatabaseMysql", args ?? new GetDatabaseMysqlArgs(), options.WithDefaults());
@@ -82,17 +82,17 @@ namespace Pulumi.Linode
         /// 
         /// ## updates
         /// 
-        /// The following arguments are exported by the `updates` specification block:
+        /// The following arguments are exported by the `Updates` specification block:
         /// 
-        /// * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+        /// * `DayOfWeek` - The day to perform maintenance. (`Monday`, `Tuesday`, ...)
         /// 
-        /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+        /// * `Duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        /// * `Frequency` - Whether maintenance occurs on a weekly or monthly basis. (`Weekly`, `Monthly`)
         /// 
-        /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// * `HourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
         /// 
-        /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+        /// * `WeekOfMonth` - The week of the month to perform monthly frequency updates. Required for `Monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Output<GetDatabaseMysqlResult> Invoke(GetDatabaseMysqlInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlResult>("linode:index/getDatabaseMysql:getDatabaseMysql", args ?? new GetDatabaseMysqlInvokeArgs(), options.WithDefaults());
@@ -125,17 +125,17 @@ namespace Pulumi.Linode
         /// 
         /// ## updates
         /// 
-        /// The following arguments are exported by the `updates` specification block:
+        /// The following arguments are exported by the `Updates` specification block:
         /// 
-        /// * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+        /// * `DayOfWeek` - The day to perform maintenance. (`Monday`, `Tuesday`, ...)
         /// 
-        /// * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+        /// * `Duration` - The maximum maintenance window time in hours. (`1`..`3`)
         /// 
-        /// * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
+        /// * `Frequency` - Whether maintenance occurs on a weekly or monthly basis. (`Weekly`, `Monthly`)
         /// 
-        /// * `hour_of_day` - The hour to begin maintenance based in UTC time. (`0`..`23`)
+        /// * `HourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
         /// 
-        /// * `week_of_month` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
+        /// * `WeekOfMonth` - The week of the month to perform monthly frequency updates. Required for `Monthly` frequency updates. (`1`..`4`)
         /// </summary>
         public static Output<GetDatabaseMysqlResult> Invoke(GetDatabaseMysqlInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlResult>("linode:index/getDatabaseMysql:getDatabaseMysql", args ?? new GetDatabaseMysqlInvokeArgs(), options.WithDefaults());
@@ -151,7 +151,7 @@ namespace Pulumi.Linode
         public int? DatabaseId { get; set; }
 
         /// <summary>
-        /// The ID of the MySQL database. Mutually exclusive with `database_id`.
+        /// The ID of the MySQL database. Mutually exclusive with `DatabaseId`.
         /// </summary>
         [Input("id")]
         public int? Id { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.Linode
         public Input<int>? DatabaseId { get; set; }
 
         /// <summary>
-        /// The ID of the MySQL database. Mutually exclusive with `database_id`.
+        /// The ID of the MySQL database. Mutually exclusive with `DatabaseId`.
         /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly bool Encrypted;
         /// <summary>
-        /// The Managed Database engine. (e.g. `mysql`)
+        /// The Managed Database engine. (e.g. `Mysql`)
         /// </summary>
         public readonly string Engine;
         /// <summary>
@@ -233,7 +233,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`)
+        /// The replication method used for the Managed Database. (`None`, `Asynch`, `SemiSynch`)
         /// </summary>
         public readonly string ReplicationType;
         /// <summary>

@@ -156,7 +156,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string ResourceMetric;
         /// <summary>
-        /// The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+        /// The S3 endpoint URL of the Object Storage, based on the `EndpointType` and `Region`.
         /// </summary>
         public readonly string S3Endpoint;
 

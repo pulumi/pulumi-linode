@@ -69,35 +69,35 @@ namespace Pulumi.Linode
     /// 
     /// ## Global Grants
     /// 
-    /// * `account_access` - (optional) The level of access this User has to Account-level actions, like billing information. (`read_only`, `read_write`)
+    /// * `AccountAccess` - (optional) The level of access this User has to Account-level actions, like billing information. (`ReadOnly`, `ReadWrite`)
     /// 
-    /// * `add_domains` - (optional) If true, this User may add Domains.
+    /// * `AddDomains` - (optional) If true, this User may add Domains.
     /// 
-    /// * `add_databases` - (optional) If true, this User may add Databases.
+    /// * `AddDatabases` - (optional) If true, this User may add Databases.
     /// 
-    /// * `add_firewalls` - (optional) If true, this User may add Firewalls.
+    /// * `AddFirewalls` - (optional) If true, this User may add Firewalls.
     /// 
-    /// * `add_images` - (optional) If true, this User may add Images.
+    /// * `AddImages` - (optional) If true, this User may add Images.
     /// 
-    /// * `add_linodes` - (optional) If true, this User may create Linodes.
+    /// * `AddLinodes` - (optional) If true, this User may create Linodes.
     /// 
-    /// * `add_longview` - (optional) If true, this User may create Longview clients and view the current plan.
+    /// * `AddLongview` - (optional) If true, this User may create Longview clients and view the current plan.
     /// 
-    /// * `add_nodebalancers` - (optional) If true, this User may add NodeBalancers.
+    /// * `AddNodebalancers` - (optional) If true, this User may add NodeBalancers.
     /// 
-    /// * `add_stackscripts` - (optional) If true, this User may add StackScripts.
+    /// * `AddStackscripts` - (optional) If true, this User may add StackScripts.
     /// 
-    /// * `add_vpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
+    /// * `AddVpcs` - (optional) If true, this User may add Virtual Private Clouds (VPCs).
     /// 
-    /// * `cancel_account` - (optional) If true, this User may cancel the entire Account.
+    /// * `CancelAccount` - (optional) If true, this User may cancel the entire Account.
     /// 
-    /// * `longview_subscription` - (optional) If true, this User may manage the Account’s Longview subscription.
+    /// * `LongviewSubscription` - (optional) If true, this User may manage the Account’s Longview subscription.
     /// 
     /// ## Entity Grants
     /// 
-    /// * `id` - (required) The ID of the entity this grant applies to.
+    /// * `Id` - (required) The ID of the entity this grant applies to.
     /// 
-    /// * `permissions` - (required) The level of access this User has to this entity. (`read_only`, `read_write`)
+    /// * `Permissions` - (required) The level of access this User has to this entity. (`ReadOnly`, `ReadWrite`)
     /// </summary>
     [LinodeResourceType("linode:index/user:User")]
     public partial class User : global::Pulumi.CustomResource
@@ -153,7 +153,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
         /// 
-        /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        /// * `GlobalGrants` - (optional) A structure containing the Account-level grants a User has.
         /// 
         /// The following arguments are sets of entity grants:
         /// </summary>
@@ -335,7 +335,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
         /// 
-        /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        /// * `GlobalGrants` - (optional) A structure containing the Account-level grants a User has.
         /// 
         /// The following arguments are sets of entity grants:
         /// </summary>
@@ -479,7 +479,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
         /// 
-        /// * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        /// * `GlobalGrants` - (optional) A structure containing the Account-level grants a User has.
         /// 
         /// The following arguments are sets of entity grants:
         /// </summary>

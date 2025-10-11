@@ -49,7 +49,7 @@ namespace Pulumi.Linode.Inputs
         public Input<Inputs.GetPlacementGroupsPlacementGroupMigrationsInputArgs>? Migrations { get; set; }
 
         /// <summary>
-        /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        /// Whether Linodes must be able to become compliant during assignment. (Default `Strict`)
         /// </summary>
         [Input("placementGroupPolicy", required: true)]
         public Input<string> PlacementGroupPolicy { get; set; } = null!;

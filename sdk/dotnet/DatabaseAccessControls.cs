@@ -70,7 +70,7 @@ namespace Pulumi.Linode
         public Output<int> DatabaseId { get; private set; } = null!;
 
         /// <summary>
-        /// The unique type of the target database. (`mysql`, `postgresql`)
+        /// The unique type of the target database. (`Mysql`, `Postgresql`)
         /// </summary>
         [Output("databaseType")]
         public Output<string> DatabaseType { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Linode
         public Input<int> DatabaseId { get; set; } = null!;
 
         /// <summary>
-        /// The unique type of the target database. (`mysql`, `postgresql`)
+        /// The unique type of the target database. (`Mysql`, `Postgresql`)
         /// </summary>
         [Input("databaseType", required: true)]
         public Input<string> DatabaseType { get; set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.Linode
         public Input<int>? DatabaseId { get; set; }
 
         /// <summary>
-        /// The unique type of the target database. (`mysql`, `postgresql`)
+        /// The unique type of the target database. (`Mysql`, `Postgresql`)
         /// </summary>
         [Input("databaseType")]
         public Input<string>? DatabaseType { get; set; }

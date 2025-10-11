@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetVpcIpsVpcIpInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+        /// True if the VPC interface is in use, meaning that the Linode was powered on using the ConfigId to which the interface belongs. Otherwise false.
         /// </summary>
         [Input("active", required: true)]
         public Input<bool> Active { get; set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
-        /// The is_public setting for the interface associated with this address.
+        /// The IsPublic setting for the interface associated with this address.
         /// </summary>
         [Input("ipv6IsPublic", required: true)]
         public Input<bool> Ipv6IsPublic { get; set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The id of the parent VPC for the list of VPC IPs.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<int> VpcId { get; set; } = null!;

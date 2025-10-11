@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceConfigDevicesSdaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Disk ID to map to this `device` slot
+        /// The Disk ID to map to this `Device` slot
         /// </summary>
         [Input("diskId")]
         public Input<int>? DiskId { get; set; }
 
         /// <summary>
-        /// The Volume ID to map to this `device` slot.
+        /// The Volume ID to map to this `Device` slot.
         /// </summary>
         [Input("volumeId")]
         public Input<int>? VolumeId { get; set; }

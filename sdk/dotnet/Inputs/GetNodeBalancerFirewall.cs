@@ -67,7 +67,7 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
-        /// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+        /// The status of the firewall. (`Enabled`, `Disabled`, `Deleted`)
         /// </summary>
         [Input("status", required: true)]
         public string Status { get; set; } = null!;

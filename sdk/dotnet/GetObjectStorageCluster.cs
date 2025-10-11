@@ -140,7 +140,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string StaticSiteDomain;
         /// <summary>
-        /// This cluster's status. (`available`, `unavailable`)
+        /// This cluster's status. (`Available`, `Unavailable`)
         /// </summary>
         public readonly string Status;
 

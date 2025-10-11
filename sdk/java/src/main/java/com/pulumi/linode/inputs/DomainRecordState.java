@@ -17,14 +17,14 @@ public final class DomainRecordState extends com.pulumi.resources.ResourceArgs {
     public static final DomainRecordState Empty = new DomainRecordState();
 
     /**
-     * The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+     * The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
      * 
      */
     @Import(name="domainId")
     private @Nullable Output<Integer> domainId;
 
     /**
-     * @return The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+     * @return The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
      * 
      */
     public Optional<Output<Integer>> domainId() {
@@ -92,14 +92,14 @@ public final class DomainRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+     * The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `recordType` forces the creation of a new Linode Domain Record.*.
      * 
      */
     @Import(name="recordType")
     private @Nullable Output<String> recordType;
 
     /**
-     * @return The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+     * @return The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `recordType` forces the creation of a new Linode Domain Record.*.
      * 
      */
     public Optional<Output<String>> recordType() {
@@ -220,7 +220,7 @@ public final class DomainRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainId The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+         * @param domainId The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class DomainRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainId The ID of the Domain to access.  *Changing `domain_id` forces the creation of a new Linode Domain Record.*.
+         * @param domainId The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class DomainRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recordType The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+         * @param recordType The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `recordType` forces the creation of a new Linode Domain Record.*.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class DomainRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param recordType The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `record_type` forces the creation of a new Linode Domain Record.*.
+         * @param recordType The type of Record this is in the DNS system. For example, A records associate a domain name with an IPv4 address, and AAAA records associate a domain name with an IPv6 address. See all supported record types [here](https://techdocs.akamai.com/linode-api/reference/post-domain-record). *Changing `recordType` forces the creation of a new Linode Domain Record.*.
          * 
          * @return builder
          * 

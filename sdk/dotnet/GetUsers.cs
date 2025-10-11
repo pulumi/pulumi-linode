@@ -47,19 +47,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `username`
+        /// * `Username`
         /// 
-        /// * `email`
+        /// * `Email`
         /// 
-        /// * `restricted`
+        /// * `Restricted`
         /// 
-        /// * `user_type`
+        /// * `UserType`
         /// 
-        /// * `password_created`
+        /// * `PasswordCreated`
         /// 
-        /// * `tfa_enabled`
+        /// * `TfaEnabled`
         /// 
-        /// * `verfied_phone_number`
+        /// * `VerfiedPhoneNumber`
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("linode:index/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
@@ -100,19 +100,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `username`
+        /// * `Username`
         /// 
-        /// * `email`
+        /// * `Email`
         /// 
-        /// * `restricted`
+        /// * `Restricted`
         /// 
-        /// * `user_type`
+        /// * `UserType`
         /// 
-        /// * `password_created`
+        /// * `PasswordCreated`
         /// 
-        /// * `tfa_enabled`
+        /// * `TfaEnabled`
         /// 
-        /// * `verfied_phone_number`
+        /// * `VerfiedPhoneNumber`
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("linode:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
@@ -153,19 +153,19 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `username`
+        /// * `Username`
         /// 
-        /// * `email`
+        /// * `Email`
         /// 
-        /// * `restricted`
+        /// * `Restricted`
         /// 
-        /// * `user_type`
+        /// * `UserType`
         /// 
-        /// * `password_created`
+        /// * `PasswordCreated`
         /// 
-        /// * `tfa_enabled`
+        /// * `TfaEnabled`
         /// 
-        /// * `verfied_phone_number`
+        /// * `VerfiedPhoneNumber`
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("linode:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
@@ -183,7 +183,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

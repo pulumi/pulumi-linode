@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class VolumeTimeouts
     {
         /// <summary>
-        /// Used when creating the volume (until the volume is reaches the initial `active` state)
+        /// Used when creating the volume (until the volume is reaches the initial `Active` state)
         /// </summary>
         public readonly string? Create;
         /// <summary>

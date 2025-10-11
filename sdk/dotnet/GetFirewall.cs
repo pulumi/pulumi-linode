@@ -156,7 +156,7 @@ namespace Pulumi.Linode
         public readonly string OutboundPolicy;
         public readonly ImmutableArray<Outputs.GetFirewallOutboundResult> Outbounds;
         /// <summary>
-        /// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+        /// The status of the firewall. (`Enabled`, `Disabled`, `Deleted`)
         /// </summary>
         public readonly string Status;
         /// <summary>

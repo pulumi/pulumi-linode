@@ -14,14 +14,14 @@ public final class GetObjectStorageEndpointsEndpoint extends com.pulumi.resource
     public static final GetObjectStorageEndpointsEndpoint Empty = new GetObjectStorageEndpointsEndpoint();
 
     /**
-     * The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     @Import(name="endpointType", required=true)
     private String endpointType;
 
     /**
-     * @return The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * @return The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     public String endpointType() {
@@ -44,14 +44,14 @@ public final class GetObjectStorageEndpointsEndpoint extends com.pulumi.resource
     }
 
     /**
-     * Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven&#39;t assigned an endpoint for your user in this region with the specific endpoint type.
+     * Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven&#39;t assigned an endpoint for your user in this region with the specific endpoint type.
      * 
      */
     @Import(name="s3Endpoint", required=true)
     private String s3Endpoint;
 
     /**
-     * @return Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven&#39;t assigned an endpoint for your user in this region with the specific endpoint type.
+     * @return Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven&#39;t assigned an endpoint for your user in this region with the specific endpoint type.
      * 
      */
     public String s3Endpoint() {
@@ -85,7 +85,7 @@ public final class GetObjectStorageEndpointsEndpoint extends com.pulumi.resource
         }
 
         /**
-         * @param endpointType The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+         * @param endpointType The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class GetObjectStorageEndpointsEndpoint extends com.pulumi.resource
         }
 
         /**
-         * @param s3Endpoint Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven&#39;t assigned an endpoint for your user in this region with the specific endpoint type.
+         * @param s3Endpoint Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven&#39;t assigned an endpoint for your user in this region with the specific endpoint type.
          * 
          * @return builder
          * 

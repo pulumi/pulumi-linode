@@ -15,7 +15,7 @@ namespace Pulumi.Linode
         /// Provides information about Linode StackScripts that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
         /// 
-        /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
+        /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `IsPublic` is not filtered on.
         /// 
         /// ## Example Usage
         /// 
@@ -61,23 +61,23 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `deployments_active`
+        /// * `DeploymentsActive`
         /// 
-        /// * `deployments_total`
+        /// * `DeploymentsTotal`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `images`
+        /// * `Images`
         /// 
-        /// * `is_public`
+        /// * `IsPublic`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `mine`
+        /// * `Mine`
         /// 
-        /// * `rev_note`
+        /// * `RevNote`
         /// 
-        /// * `username`
+        /// * `Username`
         /// </summary>
         public static Task<GetStackScriptsResult> InvokeAsync(GetStackScriptsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStackScriptsResult>("linode:index/getStackScripts:getStackScripts", args ?? new GetStackScriptsArgs(), options.WithDefaults());
@@ -86,7 +86,7 @@ namespace Pulumi.Linode
         /// Provides information about Linode StackScripts that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
         /// 
-        /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
+        /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `IsPublic` is not filtered on.
         /// 
         /// ## Example Usage
         /// 
@@ -132,23 +132,23 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `deployments_active`
+        /// * `DeploymentsActive`
         /// 
-        /// * `deployments_total`
+        /// * `DeploymentsTotal`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `images`
+        /// * `Images`
         /// 
-        /// * `is_public`
+        /// * `IsPublic`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `mine`
+        /// * `Mine`
         /// 
-        /// * `rev_note`
+        /// * `RevNote`
         /// 
-        /// * `username`
+        /// * `Username`
         /// </summary>
         public static Output<GetStackScriptsResult> Invoke(GetStackScriptsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStackScriptsResult>("linode:index/getStackScripts:getStackScripts", args ?? new GetStackScriptsInvokeArgs(), options.WithDefaults());
@@ -157,7 +157,7 @@ namespace Pulumi.Linode
         /// Provides information about Linode StackScripts that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-stack-scripts).
         /// 
-        /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `is_public` is not filtered on.
+        /// **NOTICE:** Due to the large number of public StackScripts, this data source may time out if `IsPublic` is not filtered on.
         /// 
         /// ## Example Usage
         /// 
@@ -203,23 +203,23 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `deployments_active`
+        /// * `DeploymentsActive`
         /// 
-        /// * `deployments_total`
+        /// * `DeploymentsTotal`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `images`
+        /// * `Images`
         /// 
-        /// * `is_public`
+        /// * `IsPublic`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `mine`
+        /// * `Mine`
         /// 
-        /// * `rev_note`
+        /// * `RevNote`
         /// 
-        /// * `username`
+        /// * `Username`
         /// </summary>
         public static Output<GetStackScriptsResult> Invoke(GetStackScriptsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetStackScriptsResult>("linode:index/getStackScripts:getStackScripts", args ?? new GetStackScriptsInvokeArgs(), options.WithDefaults());
@@ -237,15 +237,15 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
+        /// If true, only the latest StackScript will be returned. StackScripts without a valid `Created` field are not included in the result.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -281,15 +281,15 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
+        /// If true, only the latest StackScript will be returned. StackScripts without a valid `Created` field are not included in the result.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
