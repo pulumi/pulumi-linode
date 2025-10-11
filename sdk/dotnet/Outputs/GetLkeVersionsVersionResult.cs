@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
+        /// The tier (`Standard` or `Enterprise`) of Linode LKE Versions to fetch.
         /// </summary>
         public readonly string Tier;
 

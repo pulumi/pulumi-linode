@@ -34,6 +34,18 @@ import * as utilities from "./utilities";
  *
  * Volumes can also be attached using the Linode Instance config device map.
  *
+ * Volumes may also be cloned from existing volumes.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.Volume("foobar", {
+ *     label: "my-cloned-volume",
+ *     sourceVolumeId: 12345,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Linodes Volumes can be imported using the Linode Volume `id`, e.g.

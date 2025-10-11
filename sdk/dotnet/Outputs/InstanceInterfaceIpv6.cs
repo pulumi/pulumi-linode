@@ -14,15 +14,15 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceInterfaceIpv6
     {
         /// <summary>
-        /// If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+        /// If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `False`)
         /// 
-        /// * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+        /// * `Slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
         /// 
-        /// * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+        /// * `Range` - (Optional) An array of IPv6 ranges to use for this interface.
         /// </summary>
         public readonly bool? IsPublic;
         /// <summary>
-        /// A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        /// A prefix to add to this interface, or `Auto` for a new IPv6 prefix to be automatically allocated.
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceInterfaceIpv6Range> Ranges;
         /// <summary>

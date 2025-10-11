@@ -52,29 +52,29 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `algorithm`
+        /// * `Algorithm`
         /// 
-        /// * `check`
+        /// * `Check`
         /// 
-        /// * `nodebalancer_id`
+        /// * `NodebalancerId`
         /// 
-        /// * `port`
+        /// * `Port`
         /// 
-        /// * `protocol`
+        /// * `Protocol`
         /// 
-        /// * `proxy_protocol`
+        /// * `ProxyProtocol`
         /// 
-        /// * `stickiness`
+        /// * `Stickiness`
         /// 
-        /// * `check_path`
+        /// * `CheckPath`
         /// 
-        /// * `check_body`
+        /// * `CheckBody`
         /// 
-        /// * `check_passive`
+        /// * `CheckPassive`
         /// 
-        /// * `cipher_suite`
+        /// * `CipherSuite`
         /// 
-        /// * `ssl_commonname`
+        /// * `SslCommonname`
         /// </summary>
         public static Task<GetNodebalancerConfigsResult> InvokeAsync(GetNodebalancerConfigsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodebalancerConfigsResult>("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", args ?? new GetNodebalancerConfigsArgs(), options.WithDefaults());
@@ -120,29 +120,29 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `algorithm`
+        /// * `Algorithm`
         /// 
-        /// * `check`
+        /// * `Check`
         /// 
-        /// * `nodebalancer_id`
+        /// * `NodebalancerId`
         /// 
-        /// * `port`
+        /// * `Port`
         /// 
-        /// * `protocol`
+        /// * `Protocol`
         /// 
-        /// * `proxy_protocol`
+        /// * `ProxyProtocol`
         /// 
-        /// * `stickiness`
+        /// * `Stickiness`
         /// 
-        /// * `check_path`
+        /// * `CheckPath`
         /// 
-        /// * `check_body`
+        /// * `CheckBody`
         /// 
-        /// * `check_passive`
+        /// * `CheckPassive`
         /// 
-        /// * `cipher_suite`
+        /// * `CipherSuite`
         /// 
-        /// * `ssl_commonname`
+        /// * `SslCommonname`
         /// </summary>
         public static Output<GetNodebalancerConfigsResult> Invoke(GetNodebalancerConfigsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancerConfigsResult>("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", args ?? new GetNodebalancerConfigsInvokeArgs(), options.WithDefaults());
@@ -188,29 +188,29 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `algorithm`
+        /// * `Algorithm`
         /// 
-        /// * `check`
+        /// * `Check`
         /// 
-        /// * `nodebalancer_id`
+        /// * `NodebalancerId`
         /// 
-        /// * `port`
+        /// * `Port`
         /// 
-        /// * `protocol`
+        /// * `Protocol`
         /// 
-        /// * `proxy_protocol`
+        /// * `ProxyProtocol`
         /// 
-        /// * `stickiness`
+        /// * `Stickiness`
         /// 
-        /// * `check_path`
+        /// * `CheckPath`
         /// 
-        /// * `check_body`
+        /// * `CheckBody`
         /// 
-        /// * `check_passive`
+        /// * `CheckPassive`
         /// 
-        /// * `cipher_suite`
+        /// * `CipherSuite`
         /// 
-        /// * `ssl_commonname`
+        /// * `SslCommonname`
         /// </summary>
         public static Output<GetNodebalancerConfigsResult> Invoke(GetNodebalancerConfigsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancerConfigsResult>("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", args ?? new GetNodebalancerConfigsInvokeArgs(), options.WithDefaults());
@@ -238,13 +238,13 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the NodeBalancer to access.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
         /// </summary>
         [Input("nodebalancerId", required: true)]
         public int NodebalancerId { get; set; }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -282,13 +282,13 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the NodeBalancer to access.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
         /// </summary>
         [Input("nodebalancerId", required: true)]
         public Input<int> NodebalancerId { get; set; } = null!;
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

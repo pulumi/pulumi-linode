@@ -23,7 +23,7 @@ public final class LkeClusterPoolNode {
      */
     private @Nullable Integer instanceId;
     /**
-     * @return The status of the node. (`ready`, `not_ready`)
+     * @return The status of the node. (`ready`, `notReady`)
      * 
      */
     private @Nullable String status;
@@ -44,7 +44,7 @@ public final class LkeClusterPoolNode {
         return Optional.ofNullable(this.instanceId);
     }
     /**
-     * @return The status of the node. (`ready`, `not_ready`)
+     * @return The status of the node. (`ready`, `notReady`)
      * 
      */
     public Optional<String> status() {

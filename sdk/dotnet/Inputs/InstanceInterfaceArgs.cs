@@ -37,7 +37,7 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
-        /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
+        /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `Vlan` purpose.
         /// </summary>
         [Input("ipamAddress")]
         public Input<string>? IpamAddress { get; set; }
@@ -57,17 +57,17 @@ namespace Pulumi.Linode.Inputs
         public Input<Inputs.InstanceInterfaceIpv6Args>? Ipv6 { get; set; }
 
         /// <summary>
-        /// The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+        /// The name of the VLAN to join. This field is only allowed and required for interfaces with the `Vlan` purpose.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+        /// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `Public` or `Vpc` purpose.
         /// 
-        /// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+        /// * `Ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `Vpc` purpose.
         /// 
-        /// * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+        /// * `Ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `Vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
         /// 
         /// The following computed attribute is available in a VPC interface:
         /// </summary>
@@ -75,13 +75,13 @@ namespace Pulumi.Linode.Inputs
         public Input<bool>? Primary { get; set; }
 
         /// <summary>
-        /// The type of interface. (`public`, `vlan`, `vpc`)
+        /// The type of interface. (`Public`, `Vlan`, `Vpc`)
         /// </summary>
         [Input("purpose", required: true)]
         public Input<string> Purpose { get; set; } = null!;
 
         /// <summary>
-        /// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+        /// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `Vpc` purpose.
         /// </summary>
         [Input("subnetId")]
         public Input<int>? SubnetId { get; set; }

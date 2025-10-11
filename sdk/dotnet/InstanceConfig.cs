@@ -14,6 +14,8 @@ namespace Pulumi.Linode
     /// 
     /// Creating a simple bootable Linode Instance Configuration Profile:
     /// 
+    /// Creating a complex bootable Instance Configuration Profile with a VPC:
+    /// 
     /// ## Import
     /// 
     /// Instance Configs can be imported using the `linode_id` followed by the Instance Config `id` separated by a comma, e.g.
@@ -34,11 +36,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Optional field for arbitrary User comments on this Config.
         /// 
-        /// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        /// * `Devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
         /// 
-        /// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        /// * `Helpers` - (Optional) Helpers enabled when booting to this Linode Config.
         /// 
-        /// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        /// * `Interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
         /// </summary>
         [Output("comments")]
         public Output<string?> Comments { get; private set; } = null!;
@@ -100,13 +102,13 @@ namespace Pulumi.Linode
         public Output<string?> RootDevice { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
+        /// Defines the state of your Linode after booting. (`Default`, `Single`, `Binbash`)
         /// </summary>
         [Output("runLevel")]
         public Output<string?> RunLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Controls the virtualization mode. (`paravirt`, `fullvirt`)
+        /// Controls the virtualization mode. (`Paravirt`, `Fullvirt`)
         /// </summary>
         [Output("virtMode")]
         public Output<string?> VirtMode { get; private set; } = null!;
@@ -166,11 +168,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Optional field for arbitrary User comments on this Config.
         /// 
-        /// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        /// * `Devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
         /// 
-        /// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        /// * `Helpers` - (Optional) Helpers enabled when booting to this Linode Config.
         /// 
-        /// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        /// * `Interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
         /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }
@@ -250,13 +252,13 @@ namespace Pulumi.Linode
         public Input<string>? RootDevice { get; set; }
 
         /// <summary>
-        /// Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
+        /// Defines the state of your Linode after booting. (`Default`, `Single`, `Binbash`)
         /// </summary>
         [Input("runLevel")]
         public Input<string>? RunLevel { get; set; }
 
         /// <summary>
-        /// Controls the virtualization mode. (`paravirt`, `fullvirt`)
+        /// Controls the virtualization mode. (`Paravirt`, `Fullvirt`)
         /// </summary>
         [Input("virtMode")]
         public Input<string>? VirtMode { get; set; }
@@ -278,11 +280,11 @@ namespace Pulumi.Linode
         /// <summary>
         /// Optional field for arbitrary User comments on this Config.
         /// 
-        /// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        /// * `Devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
         /// 
-        /// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        /// * `Helpers` - (Optional) Helpers enabled when booting to this Linode Config.
         /// 
-        /// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        /// * `Interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
         /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }
@@ -362,13 +364,13 @@ namespace Pulumi.Linode
         public Input<string>? RootDevice { get; set; }
 
         /// <summary>
-        /// Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
+        /// Defines the state of your Linode after booting. (`Default`, `Single`, `Binbash`)
         /// </summary>
         [Input("runLevel")]
         public Input<string>? RunLevel { get; set; }
 
         /// <summary>
-        /// Controls the virtualization mode. (`paravirt`, `fullvirt`)
+        /// Controls the virtualization mode. (`Paravirt`, `Fullvirt`)
         /// </summary>
         [Input("virtMode")]
         public Input<string>? VirtMode { get; set; }

@@ -21,7 +21,7 @@ public final class GetInstancesInstanceConfig {
      */
     private String comments;
     /**
-     * @return A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
+     * @return A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
      * 
      */
     private List<GetInstancesInstanceConfigDevice> devices;
@@ -80,7 +80,7 @@ public final class GetInstancesInstanceConfig {
         return this.comments;
     }
     /**
-     * @return A list of `disk` or `volume` attachments for this `config`.  If the `boot_config_label` omits a `devices` block, the Linode will not be booted.
+     * @return A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
      * 
      */
     public List<GetInstancesInstanceConfigDevice> devices() {

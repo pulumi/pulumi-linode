@@ -39,14 +39,14 @@ public final class GetDatabaseMysqlArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The ID of the MySQL database. Mutually exclusive with `database_id`.
+     * The ID of the MySQL database. Mutually exclusive with `databaseId`.
      * 
      */
     @Import(name="id")
     private @Nullable Output<Integer> id;
 
     /**
-     * @return The ID of the MySQL database. Mutually exclusive with `database_id`.
+     * @return The ID of the MySQL database. Mutually exclusive with `databaseId`.
      * 
      */
     public Optional<Output<Integer>> id() {
@@ -108,7 +108,7 @@ public final class GetDatabaseMysqlArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param id The ID of the MySQL database. Mutually exclusive with `database_id`.
+         * @param id The ID of the MySQL database. Mutually exclusive with `databaseId`.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GetDatabaseMysqlArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param id The ID of the MySQL database. Mutually exclusive with `database_id`.
+         * @param id The ID of the MySQL database. Mutually exclusive with `databaseId`.
          * 
          * @return builder
          * 

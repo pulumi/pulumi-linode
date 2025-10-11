@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetStackScriptsFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        /// The method to match the field by. (`Exact`, `Regex`, `Substring`; default `Exact`)
         /// </summary>
         [Input("matchBy")]
         public Input<string>? MatchBy { get; set; }

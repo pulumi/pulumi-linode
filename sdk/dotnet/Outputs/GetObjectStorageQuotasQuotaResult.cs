@@ -26,7 +26,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string QuotaId;
         /// <summary>
-        /// The maximum quantity of the `resource_metric` allowed by the quota.
+        /// The maximum quantity of the `ResourceMetric` allowed by the quota.
         /// </summary>
         public readonly int QuotaLimit;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string ResourceMetric;
         /// <summary>
-        /// The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+        /// The S3 endpoint URL of the Object Storage, based on the `EndpointType` and `Region`.
         /// </summary>
         public readonly string S3Endpoint;
 

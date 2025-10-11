@@ -35,10 +35,10 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
      * The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
      * 
      * @deprecated
-     * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
+     * The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
      * 
      */
-    @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
+    @Deprecated /* The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
     @Import(name="cluster")
     private @Nullable Output<String> cluster;
 
@@ -46,23 +46,23 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
      * @return The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
      * 
      * @deprecated
-     * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
+     * The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
      * 
      */
-    @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
+    @Deprecated /* The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
     public Optional<Output<String>> cluster() {
         return Optional.ofNullable(this.cluster);
     }
 
     /**
-     * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
+     * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      * 
      */
     @Import(name="permissions", required=true)
     private Output<String> permissions;
 
     /**
-     * @return This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
+     * @return This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      * 
      */
     public Output<String> permissions() {
@@ -138,10 +138,10 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
          * @return builder
          * 
          * @deprecated
-         * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
+         * The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
          * 
          */
-        @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
+        @Deprecated /* The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
         public Builder cluster(@Nullable Output<String> cluster) {
             $.cluster = cluster;
             return this;
@@ -153,16 +153,16 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
          * @return builder
          * 
          * @deprecated
-         * The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
+         * The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
          * 
          */
-        @Deprecated /* The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
+        @Deprecated /* The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
         public Builder cluster(String cluster) {
             return cluster(Output.of(cluster));
         }
 
         /**
-         * @param permissions This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
+         * @param permissions This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
         }
 
         /**
-         * @param permissions This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
+         * @param permissions This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
          * 
          * @return builder
          * 

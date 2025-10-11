@@ -46,14 +46,14 @@ public final class LkeNodePoolNodeArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The status of the node. (`ready`, `not_ready`)
+     * The status of the node. (`ready`, `notReady`)
      * 
      */
     @Import(name="status", required=true)
     private Output<String> status;
 
     /**
-     * @return The status of the node. (`ready`, `not_ready`)
+     * @return The status of the node. (`ready`, `notReady`)
      * 
      */
     public Output<String> status() {
@@ -129,7 +129,7 @@ public final class LkeNodePoolNodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the node. (`ready`, `not_ready`)
+         * @param status The status of the node. (`ready`, `notReady`)
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class LkeNodePoolNodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the node. (`ready`, `not_ready`)
+         * @param status The status of the node. (`ready`, `notReady`)
          * 
          * @return builder
          * 

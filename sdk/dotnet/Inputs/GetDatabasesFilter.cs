@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetDatabasesFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        /// The method to match the field by. (`Exact`, `Regex`, `Substring`; default `Exact`)
         /// </summary>
         [Input("matchBy")]
         public string? MatchBy { get; set; }

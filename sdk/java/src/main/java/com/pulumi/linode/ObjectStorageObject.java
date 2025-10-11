@@ -149,8 +149,8 @@ import javax.annotation.Nullable;
 public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
     /**
      * The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-     * * configuring the `obj_access_key` in the provider configuration;
-     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+     * * configuring the `objAccessKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
@@ -158,8 +158,8 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The REQUIRED access key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-     * * configuring the `obj_access_key` in the provider configuration;
-     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+     * * configuring the `objAccessKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      * 
      */
     public Output<Optional<String>> accessKey() {
@@ -194,14 +194,14 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
         return this.bucket;
     }
     /**
-     * Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+     * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      * 
      */
     @Export(name="cacheControl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cacheControl;
 
     /**
-     * @return Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+     * @return Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      * 
      */
     public Output<Optional<String>> cacheControl() {
@@ -254,14 +254,14 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.contentBase64);
     }
     /**
-     * Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+     * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      * 
      */
     @Export(name="contentDisposition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentDisposition;
 
     /**
-     * @return Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+     * @return Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      * 
      */
     public Output<Optional<String>> contentDisposition() {
@@ -395,8 +395,8 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
     }
     /**
      * The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-     * * configuring the `obj_secret_key` in the provider configuration;
-     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+     * * configuring the `objSecretKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      * 
      */
     @Export(name="secretKey", refs={String.class}, tree="[0]")
@@ -404,8 +404,8 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by
-     * * configuring the `obj_secret_key` in the provider configuration;
-     * * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
+     * * configuring the `objSecretKey` in the provider configuration;
+     * * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
      * 
      */
     public Output<Optional<String>> secretKey() {

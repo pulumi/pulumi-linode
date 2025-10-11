@@ -32,503 +32,503 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## binlog_retention_period
+        /// ## BinlogRetentionPeriod
         /// 
-        /// The following arguments are supported in the `binlog_retention_period` specification block:
+        /// The following arguments are supported in the `BinlogRetentionPeriod` specification block:
         /// 
-        /// * `description` - The description of `binlog_retention_period`.
+        /// * `Description` - The description of `BinlogRetentionPeriod`.
         /// 
-        /// * `example` - An example of a valid value for `binlog_retention_period`.
+        /// * `Example` - An example of a valid value for `BinlogRetentionPeriod`.
         /// 
-        /// * `maximum` - The maximum valid value of `binlog_retention_period`.
+        /// * `Maximum` - The maximum valid value of `BinlogRetentionPeriod`.
         /// 
-        /// * `minimum` - The minimum valid value of `binlog_retention_period`.
+        /// * `Minimum` - The minimum valid value of `BinlogRetentionPeriod`.
         /// 
-        /// * `requires_restart` - Whether changing the value `binlog_retention_period` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `BinlogRetentionPeriod` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `binlog_retention_period`.
+        /// * `Type` - The type of the value of `BinlogRetentionPeriod`.
         /// 
         /// ## mysql
         /// 
-        /// The following arguments are supported in the `mysql` specification block:
+        /// The following arguments are supported in the `Mysql` specification block:
         /// 
-        /// * `connect_timeout` - The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        /// * `ConnectTimeout` - The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
         /// 
-        /// * `default_time_zone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        /// * `DefaultTimeZone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
         /// 
-        /// * `group_concat_max_len` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        /// * `GroupConcatMaxLen` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
         /// 
-        /// * `information_schema_stats_expiry` - The time, in seconds, before cached statistics expire.
+        /// * `InformationSchemaStatsExpiry` - The time, in seconds, before cached statistics expire.
         /// 
-        /// * `innodb_change_buffer_max_size` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        /// * `InnodbChangeBufferMaxSize` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
         /// 
-        /// * `innodb_flush_neighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        /// * `InnodbFlushNeighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
         /// 
-        /// * `innodb_ft_min_token_size` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbFtMinTokenSize` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `innodb_ft_server_stopword_table` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+        /// * `InnodbFtServerStopwordTable` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
         /// 
-        /// * `innodb_lock_wait_timeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        /// * `InnodbLockWaitTimeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
         /// 
-        /// * `innodb_log_buffer_size` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        /// * `InnodbLogBufferSize` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
         /// 
-        /// * `innodb_online_alter_log_max_size` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        /// * `InnodbOnlineAlterLogMaxSize` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         /// 
-        /// * `innodb_read_io_threads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbReadIoThreads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `innodb_rollback_on_timeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbRollbackOnTimeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `innodb_thread_concurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        /// * `InnodbThreadConcurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
         /// 
-        /// * `innodb_write_io_threads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbWriteIoThreads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `interactive_timeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+        /// * `InteractiveTimeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
         /// 
-        /// * `internal_tmp_mem_storage_engine` - The storage engine for in-memory internal temporary tables.
+        /// * `InternalTmpMemStorageEngine` - The storage engine for in-memory internal temporary tables.
         /// 
-        /// * `max_allowed_packet` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        /// * `MaxAllowedPacket` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
         /// 
-        /// * `max_heap_table_size` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        /// * `MaxHeapTableSize` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
         /// 
-        /// * `net_buffer_length` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        /// * `NetBufferLength` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `net_read_timeout` - The number of seconds to wait for more data from a connection before aborting the read.
+        /// * `NetReadTimeout` - The number of seconds to wait for more data from a connection before aborting the read.
         /// 
-        /// * `net_write_timeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+        /// * `NetWriteTimeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
         /// 
-        /// * `sort_buffer_size` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        /// * `SortBufferSize` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
         /// 
-        /// * `sql_mode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+        /// * `SqlMode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
         /// 
-        /// * `sql_require_primary_key` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+        /// * `SqlRequirePrimaryKey` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
         /// 
-        /// * `tmp_table_size` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        /// * `TmpTableSize` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
         /// 
-        /// * `wait_timeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+        /// * `WaitTimeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
         /// 
-        /// ## connect_timeout
+        /// ## ConnectTimeout
         /// 
-        /// The following arguments are supported in the `connect_timeout` specification block:
+        /// The following arguments are supported in the `ConnectTimeout` specification block:
         /// 
-        /// * `description` - The description of `connect_timeout`.
+        /// * `Description` - The description of `ConnectTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `connect_timeout`.
+        /// * `Example` - An example of a valid value for `ConnectTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of  `connect_timeout`.
+        /// * `Maximum` - The maximum valid value of  `ConnectTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of  `connect_timeout`.
+        /// * `Minimum` - The minimum valid value of  `ConnectTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `connect_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `ConnectTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `connect_timeout`.
+        /// * `Type` - The type of the value of `ConnectTimeout`.
         /// 
-        /// ## default_time_zone
+        /// ## DefaultTimeZone
         /// 
-        /// The following arguments are supported in the `default_time_zone` specification block:
+        /// The following arguments are supported in the `DefaultTimeZone` specification block:
         /// 
-        /// * `description` - The description of `default_time_zone`.
+        /// * `Description` - The description of `DefaultTimeZone`.
         /// 
-        /// * `example` - An example of a valid value for `default_time_zone`.
+        /// * `Example` - An example of a valid value for `DefaultTimeZone`.
         /// 
-        /// * `maxLength` - The maximum length of the `default_time_zone` value.
+        /// * `maxLength` - The maximum length of the `DefaultTimeZone` value.
         /// 
-        /// * `minLength` - The minimum length of the `default_time_zone` value.
+        /// * `minLength` - The minimum length of the `DefaultTimeZone` value.
         /// 
-        /// * `pattern` - A regular expression that the `default_time_zone` value must match.
+        /// * `Pattern` - A regular expression that the `DefaultTimeZone` value must match.
         /// 
-        /// * `requires_restart` - Whether changing the value `default_time_zone` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `DefaultTimeZone` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `default_time_zone`.
+        /// * `Type` - The type of the value of `DefaultTimeZone`.
         /// 
-        /// ## group_concat_max_len
+        /// ## GroupConcatMaxLen
         /// 
-        /// The following arguments are supported in the `group_concat_max_len` specification block:
+        /// The following arguments are supported in the `GroupConcatMaxLen` specification block:
         /// 
-        /// * `description` - The description of `group_concat_max_len`.
+        /// * `Description` - The description of `GroupConcatMaxLen`.
         /// 
-        /// * `example` - An example of a valid value for `group_concat_max_len`.
+        /// * `Example` - An example of a valid value for `GroupConcatMaxLen`.
         /// 
-        /// * `maximum` - The maximum valid value of `group_concat_max_len`.
+        /// * `Maximum` - The maximum valid value of `GroupConcatMaxLen`.
         /// 
-        /// * `minimum` - The minimum valid value of `group_concat_max_len`.
+        /// * `Minimum` - The minimum valid value of `GroupConcatMaxLen`.
         /// 
-        /// * `requires_restart` - Whether changing the value `group_concat_max_len` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `GroupConcatMaxLen` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `group_concat_max_len`.
+        /// * `Type` - The type of the value of `GroupConcatMaxLen`.
         /// 
-        /// ## information_schema_stats_expiry
+        /// ## InformationSchemaStatsExpiry
         /// 
-        /// The following arguments are supported in the `information_schema_stats_expiry` specification block:
+        /// The following arguments are supported in the `InformationSchemaStatsExpiry` specification block:
         /// 
-        /// * `description` - The description of `information_schema_stats_expiry`.
+        /// * `Description` - The description of `InformationSchemaStatsExpiry`.
         /// 
-        /// * `example` - An example of a valid value for `information_schema_stats_expiry`.
+        /// * `Example` - An example of a valid value for `InformationSchemaStatsExpiry`.
         /// 
-        /// * `maximum` - The maximum valid value of `information_schema_stats_expiry`.
+        /// * `Maximum` - The maximum valid value of `InformationSchemaStatsExpiry`.
         /// 
-        /// * `minimum` - The minimum valid value of `information_schema_stats_expiry`.
+        /// * `Minimum` - The minimum valid value of `InformationSchemaStatsExpiry`.
         /// 
-        /// * `requires_restart` - Whether changing the value `information_schema_stats_expiry` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InformationSchemaStatsExpiry` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `information_schema_stats_expiry`.
+        /// * `Type` - The type of the value of `InformationSchemaStatsExpiry`.
         /// 
-        /// ## innodb_change_buffer_max_size
+        /// ## InnodbChangeBufferMaxSize
         /// 
-        /// The following arguments are supported in the `innodb_change_buffer_max_size` specification block:
+        /// The following arguments are supported in the `InnodbChangeBufferMaxSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_change_buffer_max_size`.
+        /// * `Description` - The description of `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_change_buffer_max_size`.
+        /// * `Example` - An example of a valid value for `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_change_buffer_max_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_change_buffer_max_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_change_buffer_max_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbChangeBufferMaxSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_change_buffer_max_size`.
+        /// * `Type` - The type of the value of `InnodbChangeBufferMaxSize`.
         /// 
-        /// ## innodb_flush_neighbors
+        /// ## InnodbFlushNeighbors
         /// 
-        /// The following arguments are supported in the `innodb_flush_neighbors` specification block:
+        /// The following arguments are supported in the `InnodbFlushNeighbors` specification block:
         /// 
-        /// * `description` - The description of `innodb_flush_neighbors`.
+        /// * `Description` - The description of `InnodbFlushNeighbors`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_flush_neighbors`.
+        /// * `Example` - An example of a valid value for `InnodbFlushNeighbors`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_flush_neighbors`.
+        /// * `Maximum` - The maximum valid value of `InnodbFlushNeighbors`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_flush_neighbors`.
+        /// * `Minimum` - The minimum valid value of `InnodbFlushNeighbors`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_flush_neighbors` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbFlushNeighbors` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_flush_neighbors`.
+        /// * `Type` - The type of the value of `InnodbFlushNeighbors`.
         /// 
-        /// ## innodb_ft_min_token_size
+        /// ## InnodbFtMinTokenSize
         /// 
-        /// The following arguments are supported in the `innodb_ft_min_token_size` specification block:
+        /// The following arguments are supported in the `InnodbFtMinTokenSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_ft_min_token_size`.
+        /// * `Description` - The description of `InnodbFtMinTokenSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_ft_min_token_size`.
+        /// * `Example` - An example of a valid value for `InnodbFtMinTokenSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_ft_min_token_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbFtMinTokenSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_ft_min_token_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbFtMinTokenSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_ft_min_token_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbFtMinTokenSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_ft_min_token_size`.
+        /// * `Type` - The type of the value of `InnodbFtMinTokenSize`.
         /// 
-        /// ## innodb_ft_server_stopword_table
+        /// ## InnodbFtServerStopwordTable
         /// 
-        /// The following arguments are supported in the `innodb_ft_server_stopword_table` specification block:
+        /// The following arguments are supported in the `InnodbFtServerStopwordTable` specification block:
         /// 
-        /// * `description` - The description of `innodb_ft_server_stopword_table`.
+        /// * `Description` - The description of `InnodbFtServerStopwordTable`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_ft_server_stopword_table`.
+        /// * `Example` - An example of a valid value for `InnodbFtServerStopwordTable`.
         /// 
-        /// * `maxLength` - The maximum length of the value for `innodb_ft_server_stopword_table`.
+        /// * `maxLength` - The maximum length of the value for `InnodbFtServerStopwordTable`.
         /// 
-        /// * `pattern` - A regex pattern that a value of `innodb_ft_server_stopword_table` must match.
+        /// * `Pattern` - A regex pattern that a value of `InnodbFtServerStopwordTable` must match.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_ft_server_stopword_table` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbFtServerStopwordTable` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_ft_server_stopword_table`.
+        /// * `Type` - The type of the value of `InnodbFtServerStopwordTable`.
         /// 
-        /// ## innodb_lock_wait_timeout
+        /// ## InnodbLockWaitTimeout
         /// 
-        /// The following arguments are supported in the `innodb_lock_wait_timeout` specification block:
+        /// The following arguments are supported in the `InnodbLockWaitTimeout` specification block:
         /// 
-        /// * `description` - The description of `innodb_lock_wait_timeout`.
+        /// * `Description` - The description of `InnodbLockWaitTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_lock_wait_timeout`.
+        /// * `Example` - An example of a valid value for `InnodbLockWaitTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_lock_wait_timeout`.
+        /// * `Maximum` - The maximum valid value of `InnodbLockWaitTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_lock_wait_timeout`.
+        /// * `Minimum` - The minimum valid value of `InnodbLockWaitTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_lock_wait_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbLockWaitTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_lock_wait_timeout`.
+        /// * `Type` - The type of the value of `InnodbLockWaitTimeout`.
         /// 
-        /// ## innodb_log_buffer_size
+        /// ## InnodbLogBufferSize
         /// 
-        /// The following arguments are supported in the `innodb_log_buffer_size` specification block:
+        /// The following arguments are supported in the `InnodbLogBufferSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_log_buffer_size`.
+        /// * `Description` - The description of `InnodbLogBufferSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_log_buffer_size`.
+        /// * `Example` - An example of a valid value for `InnodbLogBufferSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_log_buffer_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbLogBufferSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_log_buffer_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbLogBufferSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_log_buffer_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbLogBufferSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_log_buffer_size`.
+        /// * `Type` - The type of the value of `InnodbLogBufferSize`.
         /// 
-        /// ## innodb_online_alter_log_max_size
+        /// ## InnodbOnlineAlterLogMaxSize
         /// 
-        /// The following arguments are supported in the `innodb_online_alter_log_max_size` specification block:
+        /// The following arguments are supported in the `InnodbOnlineAlterLogMaxSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_online_alter_log_max_size`.
+        /// * `Description` - The description of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_online_alter_log_max_size`.
+        /// * `Example` - An example of a valid value for `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_online_alter_log_max_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_online_alter_log_max_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_online_alter_log_max_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbOnlineAlterLogMaxSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_online_alter_log_max_size`.
+        /// * `Type` - The type of the value of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// ## innodb_read_io_threads
+        /// ## InnodbReadIoThreads
         /// 
-        /// The following arguments are supported in the `innodb_read_io_threads` specification block:
+        /// The following arguments are supported in the `InnodbReadIoThreads` specification block:
         /// 
-        /// * `description` - The description of `innodb_read_io_threads`.
+        /// * `Description` - The description of `InnodbReadIoThreads`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_read_io_threads`.
+        /// * `Example` - An example of a valid value for `InnodbReadIoThreads`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_read_io_threads`.
+        /// * `Maximum` - The maximum valid value of `InnodbReadIoThreads`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_read_io_threads`.
+        /// * `Minimum` - The minimum valid value of `InnodbReadIoThreads`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_read_io_threads` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbReadIoThreads` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_read_io_threads`.
+        /// * `Type` - The type of the value of `InnodbReadIoThreads`.
         /// 
-        /// ## innodb_rollback_on_timeout
+        /// ## InnodbRollbackOnTimeout
         /// 
-        /// The following arguments are supported in the `innodb_rollback_on_timeout` specification block:
+        /// The following arguments are supported in the `InnodbRollbackOnTimeout` specification block:
         /// 
-        /// * `description` - The description of `innodb_rollback_on_timeout`.
+        /// * `Description` - The description of `InnodbRollbackOnTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_rollback_on_timeout`.
+        /// * `Example` - An example of a valid value for `InnodbRollbackOnTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_rollback_on_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbRollbackOnTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_rollback_on_timeout`.
+        /// * `Type` - The type of the value of `InnodbRollbackOnTimeout`.
         /// 
-        /// ## innodb_thread_concurrency
+        /// ## InnodbThreadConcurrency
         /// 
-        /// The following arguments are supported in the `innodb_thread_concurrency` specification block:
+        /// The following arguments are supported in the `InnodbThreadConcurrency` specification block:
         /// 
-        /// * `description` - The description of `innodb_thread_concurrency`.
+        /// * `Description` - The description of `InnodbThreadConcurrency`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_thread_concurrency`.
+        /// * `Example` - An example of a valid value for `InnodbThreadConcurrency`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_thread_concurrency`.
+        /// * `Maximum` - The maximum valid value of `InnodbThreadConcurrency`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_thread_concurrency`.
+        /// * `Minimum` - The minimum valid value of `InnodbThreadConcurrency`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_thread_concurrency` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbThreadConcurrency` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_thread_concurrency`.
+        /// * `Type` - The type of the value of `InnodbThreadConcurrency`.
         /// 
-        /// ## innodb_write_io_threads
+        /// ## InnodbWriteIoThreads
         /// 
-        /// The following arguments are supported in the `innodb_write_io_threads` specification block:
+        /// The following arguments are supported in the `InnodbWriteIoThreads` specification block:
         /// 
-        /// * `description` - The description of `innodb_write_io_threads`.
+        /// * `Description` - The description of `InnodbWriteIoThreads`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_write_io_threads`.
+        /// * `Example` - An example of a valid value for `InnodbWriteIoThreads`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_write_io_threads`.
+        /// * `Maximum` - The maximum valid value of `InnodbWriteIoThreads`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_write_io_threads`.
+        /// * `Minimum` - The minimum valid value of `InnodbWriteIoThreads`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_write_io_threads` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbWriteIoThreads` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_write_io_threads`.
+        /// * `Type` - The type of the value of `InnodbWriteIoThreads`.
         /// 
-        /// ## interactive_timeout
+        /// ## InteractiveTimeout
         /// 
-        /// The following arguments are supported in the `interactive_timeout` specification block:
+        /// The following arguments are supported in the `InteractiveTimeout` specification block:
         /// 
-        /// * `description` - The description of `interactive_timeout`.
+        /// * `Description` - The description of `InteractiveTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `interactive_timeout`.
+        /// * `Example` - An example of a valid value for `InteractiveTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `interactive_timeout`.
+        /// * `Maximum` - The maximum valid value of `InteractiveTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `interactive_timeout`.
+        /// * `Minimum` - The minimum valid value of `InteractiveTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `interactive_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InteractiveTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `interactive_timeout`.
+        /// * `Type` - The type of the value of `InteractiveTimeout`.
         /// 
-        /// ## internal_tmp_mem_storage_engine
+        /// ## InternalTmpMemStorageEngine
         /// 
-        /// The following arguments are supported in the `internal_tmp_mem_storage_engine` specification block:
+        /// The following arguments are supported in the `InternalTmpMemStorageEngine` specification block:
         /// 
-        /// * `description` - The description of `internal_tmp_mem_storage_engine`.
+        /// * `Description` - The description of `InternalTmpMemStorageEngine`.
         /// 
-        /// * `enum` - A list of valid enum values for `internal_tmp_mem_storage_engine`.
+        /// * `Enum` - A list of valid enum values for `InternalTmpMemStorageEngine`.
         /// 
-        /// * `example` - An example of a valid value for `internal_tmp_mem_storage_engine`.
+        /// * `Example` - An example of a valid value for `InternalTmpMemStorageEngine`.
         /// 
-        /// * `requires_restart` - Whether changing the value `internal_tmp_mem_storage_engine` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InternalTmpMemStorageEngine` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `internal_tmp_mem_storage_engine`.
+        /// * `Type` - The type of the value of `InternalTmpMemStorageEngine`.
         /// 
-        /// ## max_allowed_packet
+        /// ## MaxAllowedPacket
         /// 
-        /// The following arguments are supported in the `max_allowed_packet` specification block:
+        /// The following arguments are supported in the `MaxAllowedPacket` specification block:
         /// 
-        /// * `description` - The description of `max_allowed_packet`.
+        /// * `Description` - The description of `MaxAllowedPacket`.
         /// 
-        /// * `example` - An example of a valid value for `max_allowed_packet`.
+        /// * `Example` - An example of a valid value for `MaxAllowedPacket`.
         /// 
-        /// * `maximum` - The maximum valid value of `max_allowed_packet`.
+        /// * `Maximum` - The maximum valid value of `MaxAllowedPacket`.
         /// 
-        /// * `minimum` - The minimum valid value of `max_allowed_packet`.
+        /// * `Minimum` - The minimum valid value of `MaxAllowedPacket`.
         /// 
-        /// * `requires_restart` - Whether changing the value `max_allowed_packet` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `MaxAllowedPacket` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `max_allowed_packet`.
+        /// * `Type` - The type of the value of `MaxAllowedPacket`.
         /// 
-        /// ## max_heap_table_size
+        /// ## MaxHeapTableSize
         /// 
-        /// The following arguments are supported in the `max_heap_table_size` specification block:
+        /// The following arguments are supported in the `MaxHeapTableSize` specification block:
         /// 
-        /// * `description` - The description of `max_heap_table_size`.
+        /// * `Description` - The description of `MaxHeapTableSize`.
         /// 
-        /// * `example` - An example of a valid value for `max_heap_table_size`.
+        /// * `Example` - An example of a valid value for `MaxHeapTableSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `max_heap_table_size`.
+        /// * `Maximum` - The maximum valid value of `MaxHeapTableSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `max_heap_table_size`.
+        /// * `Minimum` - The minimum valid value of `MaxHeapTableSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `max_heap_table_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `MaxHeapTableSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `max_heap_table_size`.
+        /// * `Type` - The type of the value of `MaxHeapTableSize`.
         /// 
-        /// ## net_buffer_length
+        /// ## NetBufferLength
         /// 
-        /// The following arguments are supported in the `net_buffer_length` specification block:
+        /// The following arguments are supported in the `NetBufferLength` specification block:
         /// 
-        /// * `description` - The description of `net_buffer_length`.
+        /// * `Description` - The description of `NetBufferLength`.
         /// 
-        /// * `example` - An example of a valid value for `net_buffer_length`.
+        /// * `Example` - An example of a valid value for `NetBufferLength`.
         /// 
-        /// * `maximum` - The maximum valid value of `net_buffer_length`.
+        /// * `Maximum` - The maximum valid value of `NetBufferLength`.
         /// 
-        /// * `minimum` - The minimum valid value of `net_buffer_length`.
+        /// * `Minimum` - The minimum valid value of `NetBufferLength`.
         /// 
-        /// * `requires_restart` - Whether changing the value `net_buffer_length` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `NetBufferLength` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `net_buffer_length`.
+        /// * `Type` - The type of the value of `NetBufferLength`.
         /// 
-        /// ## net_read_timeout
+        /// ## NetReadTimeout
         /// 
-        /// The following arguments are supported in the `net_read_timeout` specification block:
+        /// The following arguments are supported in the `NetReadTimeout` specification block:
         /// 
-        /// * `description` - The description of `net_read_timeout`.
+        /// * `Description` - The description of `NetReadTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `net_read_timeout`.
+        /// * `Example` - An example of a valid value for `NetReadTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `net_read_timeout`.
+        /// * `Maximum` - The maximum valid value of `NetReadTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `net_read_timeout`.
+        /// * `Minimum` - The minimum valid value of `NetReadTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `net_read_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `NetReadTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `net_read_timeout`.
+        /// * `Type` - The type of the value of `NetReadTimeout`.
         /// 
-        /// ## net_write_timeout
+        /// ## NetWriteTimeout
         /// 
-        /// The following arguments are supported in the `net_write_timeout` specification block:
+        /// The following arguments are supported in the `NetWriteTimeout` specification block:
         /// 
-        /// * `description` - The description of `net_write_timeout`.
+        /// * `Description` - The description of `NetWriteTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `net_write_timeout`.
+        /// * `Example` - An example of a valid value for `NetWriteTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `net_write_timeout`.
+        /// * `Maximum` - The maximum valid value of `NetWriteTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `net_write_timeout`.
+        /// * `Minimum` - The minimum valid value of `NetWriteTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `net_write_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `NetWriteTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `net_write_timeout`.
+        /// * `Type` - The type of the value of `NetWriteTimeout`.
         /// 
-        /// ## sort_buffer_size
+        /// ## SortBufferSize
         /// 
-        /// The following arguments are supported in the `sort_buffer_size` specification block:
+        /// The following arguments are supported in the `SortBufferSize` specification block:
         /// 
-        /// * `description` - The description of `sort_buffer_size`.
+        /// * `Description` - The description of `SortBufferSize`.
         /// 
-        /// * `example` - An example of a valid value for `sort_buffer_size`.
+        /// * `Example` - An example of a valid value for `SortBufferSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `sort_buffer_size`.
+        /// * `Maximum` - The maximum valid value of `SortBufferSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `sort_buffer_size`.
+        /// * `Minimum` - The minimum valid value of `SortBufferSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `sort_buffer_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `SortBufferSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `sort_buffer_size`.
+        /// * `Type` - The type of the value of `SortBufferSize`.
         /// 
-        /// ## sql_mode
+        /// ## SqlMode
         /// 
-        /// The following arguments are supported in the `sql_mode` specification block:
+        /// The following arguments are supported in the `SqlMode` specification block:
         /// 
-        /// * `description` - The description of `sql_mode`.
+        /// * `Description` - The description of `SqlMode`.
         /// 
-        /// * `example` - An example of a valid value for `sql_mode`.
+        /// * `Example` - An example of a valid value for `SqlMode`.
         /// 
-        /// * `maxLength` - The maximum valid length of `sql_mode`.
+        /// * `maxLength` - The maximum valid length of `SqlMode`.
         /// 
-        /// * `pattern` - The pattern to match for `sql_mode`.
+        /// * `Pattern` - The pattern to match for `SqlMode`.
         /// 
-        /// * `requires_restart` - Whether changing the value `sql_mode` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `SqlMode` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `sql_mode`.
+        /// * `Type` - The type of the value of `SqlMode`.
         /// 
-        /// ## sql_require_primary_key
+        /// ## SqlRequirePrimaryKey
         /// 
-        /// The following arguments are supported in the `sql_require_primary_key` specification block:
+        /// The following arguments are supported in the `SqlRequirePrimaryKey` specification block:
         /// 
-        /// * `description` - The description of `sql_require_primary_key`.
+        /// * `Description` - The description of `SqlRequirePrimaryKey`.
         /// 
-        /// * `example` - An example of a valid value for `sql_require_primary_key`.
+        /// * `Example` - An example of a valid value for `SqlRequirePrimaryKey`.
         /// 
-        /// * `requires_restart` - Whether changing the value `sql_require_primary_key` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `SqlRequirePrimaryKey` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `sql_require_primary_key`.
+        /// * `Type` - The type of the value of `SqlRequirePrimaryKey`.
         /// 
-        /// ## tmp_table_size
+        /// ## TmpTableSize
         /// 
-        /// The following arguments are supported in the `tmp_table_size` specification block:
+        /// The following arguments are supported in the `TmpTableSize` specification block:
         /// 
-        /// * `description` - The description of `tmp_table_size`.
+        /// * `Description` - The description of `TmpTableSize`.
         /// 
-        /// * `example` - An example of a valid value for `tmp_table_size`.
+        /// * `Example` - An example of a valid value for `TmpTableSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `tmp_table_size`.
+        /// * `Maximum` - The maximum valid value of `TmpTableSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `tmp_table_size`.
+        /// * `Minimum` - The minimum valid value of `TmpTableSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `tmp_table_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `TmpTableSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `tmp_table_size`.
+        /// * `Type` - The type of the value of `TmpTableSize`.
         /// 
-        /// ## wait_timeout
+        /// ## WaitTimeout
         /// 
-        /// The following arguments are supported in the `wait_timeout` specification block:
+        /// The following arguments are supported in the `WaitTimeout` specification block:
         /// 
-        /// * `description` - The description of `wait_timeout`.
+        /// * `Description` - The description of `WaitTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `wait_timeout`.
+        /// * `Example` - An example of a valid value for `WaitTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `wait_timeout`.
+        /// * `Maximum` - The maximum valid value of `WaitTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `wait_timeout`.
+        /// * `Minimum` - The minimum valid value of `WaitTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `wait_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `WaitTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `wait_timeout`.
+        /// * `Type` - The type of the value of `WaitTimeout`.
         /// </summary>
         public static Task<GetDatabaseMysqlConfigResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseMysqlConfigResult>("linode:index/getDatabaseMysqlConfig:getDatabaseMysqlConfig", InvokeArgs.Empty, options.WithDefaults());
@@ -554,503 +554,503 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## binlog_retention_period
+        /// ## BinlogRetentionPeriod
         /// 
-        /// The following arguments are supported in the `binlog_retention_period` specification block:
+        /// The following arguments are supported in the `BinlogRetentionPeriod` specification block:
         /// 
-        /// * `description` - The description of `binlog_retention_period`.
+        /// * `Description` - The description of `BinlogRetentionPeriod`.
         /// 
-        /// * `example` - An example of a valid value for `binlog_retention_period`.
+        /// * `Example` - An example of a valid value for `BinlogRetentionPeriod`.
         /// 
-        /// * `maximum` - The maximum valid value of `binlog_retention_period`.
+        /// * `Maximum` - The maximum valid value of `BinlogRetentionPeriod`.
         /// 
-        /// * `minimum` - The minimum valid value of `binlog_retention_period`.
+        /// * `Minimum` - The minimum valid value of `BinlogRetentionPeriod`.
         /// 
-        /// * `requires_restart` - Whether changing the value `binlog_retention_period` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `BinlogRetentionPeriod` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `binlog_retention_period`.
+        /// * `Type` - The type of the value of `BinlogRetentionPeriod`.
         /// 
         /// ## mysql
         /// 
-        /// The following arguments are supported in the `mysql` specification block:
+        /// The following arguments are supported in the `Mysql` specification block:
         /// 
-        /// * `connect_timeout` - The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        /// * `ConnectTimeout` - The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
         /// 
-        /// * `default_time_zone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        /// * `DefaultTimeZone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
         /// 
-        /// * `group_concat_max_len` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        /// * `GroupConcatMaxLen` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
         /// 
-        /// * `information_schema_stats_expiry` - The time, in seconds, before cached statistics expire.
+        /// * `InformationSchemaStatsExpiry` - The time, in seconds, before cached statistics expire.
         /// 
-        /// * `innodb_change_buffer_max_size` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        /// * `InnodbChangeBufferMaxSize` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
         /// 
-        /// * `innodb_flush_neighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        /// * `InnodbFlushNeighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
         /// 
-        /// * `innodb_ft_min_token_size` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbFtMinTokenSize` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `innodb_ft_server_stopword_table` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+        /// * `InnodbFtServerStopwordTable` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
         /// 
-        /// * `innodb_lock_wait_timeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        /// * `InnodbLockWaitTimeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
         /// 
-        /// * `innodb_log_buffer_size` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        /// * `InnodbLogBufferSize` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
         /// 
-        /// * `innodb_online_alter_log_max_size` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        /// * `InnodbOnlineAlterLogMaxSize` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         /// 
-        /// * `innodb_read_io_threads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbReadIoThreads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `innodb_rollback_on_timeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbRollbackOnTimeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `innodb_thread_concurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        /// * `InnodbThreadConcurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
         /// 
-        /// * `innodb_write_io_threads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbWriteIoThreads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `interactive_timeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+        /// * `InteractiveTimeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
         /// 
-        /// * `internal_tmp_mem_storage_engine` - The storage engine for in-memory internal temporary tables.
+        /// * `InternalTmpMemStorageEngine` - The storage engine for in-memory internal temporary tables.
         /// 
-        /// * `max_allowed_packet` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        /// * `MaxAllowedPacket` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
         /// 
-        /// * `max_heap_table_size` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        /// * `MaxHeapTableSize` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
         /// 
-        /// * `net_buffer_length` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        /// * `NetBufferLength` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `net_read_timeout` - The number of seconds to wait for more data from a connection before aborting the read.
+        /// * `NetReadTimeout` - The number of seconds to wait for more data from a connection before aborting the read.
         /// 
-        /// * `net_write_timeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+        /// * `NetWriteTimeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
         /// 
-        /// * `sort_buffer_size` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        /// * `SortBufferSize` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
         /// 
-        /// * `sql_mode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+        /// * `SqlMode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
         /// 
-        /// * `sql_require_primary_key` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+        /// * `SqlRequirePrimaryKey` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
         /// 
-        /// * `tmp_table_size` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        /// * `TmpTableSize` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
         /// 
-        /// * `wait_timeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+        /// * `WaitTimeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
         /// 
-        /// ## connect_timeout
+        /// ## ConnectTimeout
         /// 
-        /// The following arguments are supported in the `connect_timeout` specification block:
+        /// The following arguments are supported in the `ConnectTimeout` specification block:
         /// 
-        /// * `description` - The description of `connect_timeout`.
+        /// * `Description` - The description of `ConnectTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `connect_timeout`.
+        /// * `Example` - An example of a valid value for `ConnectTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of  `connect_timeout`.
+        /// * `Maximum` - The maximum valid value of  `ConnectTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of  `connect_timeout`.
+        /// * `Minimum` - The minimum valid value of  `ConnectTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `connect_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `ConnectTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `connect_timeout`.
+        /// * `Type` - The type of the value of `ConnectTimeout`.
         /// 
-        /// ## default_time_zone
+        /// ## DefaultTimeZone
         /// 
-        /// The following arguments are supported in the `default_time_zone` specification block:
+        /// The following arguments are supported in the `DefaultTimeZone` specification block:
         /// 
-        /// * `description` - The description of `default_time_zone`.
+        /// * `Description` - The description of `DefaultTimeZone`.
         /// 
-        /// * `example` - An example of a valid value for `default_time_zone`.
+        /// * `Example` - An example of a valid value for `DefaultTimeZone`.
         /// 
-        /// * `maxLength` - The maximum length of the `default_time_zone` value.
+        /// * `maxLength` - The maximum length of the `DefaultTimeZone` value.
         /// 
-        /// * `minLength` - The minimum length of the `default_time_zone` value.
+        /// * `minLength` - The minimum length of the `DefaultTimeZone` value.
         /// 
-        /// * `pattern` - A regular expression that the `default_time_zone` value must match.
+        /// * `Pattern` - A regular expression that the `DefaultTimeZone` value must match.
         /// 
-        /// * `requires_restart` - Whether changing the value `default_time_zone` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `DefaultTimeZone` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `default_time_zone`.
+        /// * `Type` - The type of the value of `DefaultTimeZone`.
         /// 
-        /// ## group_concat_max_len
+        /// ## GroupConcatMaxLen
         /// 
-        /// The following arguments are supported in the `group_concat_max_len` specification block:
+        /// The following arguments are supported in the `GroupConcatMaxLen` specification block:
         /// 
-        /// * `description` - The description of `group_concat_max_len`.
+        /// * `Description` - The description of `GroupConcatMaxLen`.
         /// 
-        /// * `example` - An example of a valid value for `group_concat_max_len`.
+        /// * `Example` - An example of a valid value for `GroupConcatMaxLen`.
         /// 
-        /// * `maximum` - The maximum valid value of `group_concat_max_len`.
+        /// * `Maximum` - The maximum valid value of `GroupConcatMaxLen`.
         /// 
-        /// * `minimum` - The minimum valid value of `group_concat_max_len`.
+        /// * `Minimum` - The minimum valid value of `GroupConcatMaxLen`.
         /// 
-        /// * `requires_restart` - Whether changing the value `group_concat_max_len` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `GroupConcatMaxLen` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `group_concat_max_len`.
+        /// * `Type` - The type of the value of `GroupConcatMaxLen`.
         /// 
-        /// ## information_schema_stats_expiry
+        /// ## InformationSchemaStatsExpiry
         /// 
-        /// The following arguments are supported in the `information_schema_stats_expiry` specification block:
+        /// The following arguments are supported in the `InformationSchemaStatsExpiry` specification block:
         /// 
-        /// * `description` - The description of `information_schema_stats_expiry`.
+        /// * `Description` - The description of `InformationSchemaStatsExpiry`.
         /// 
-        /// * `example` - An example of a valid value for `information_schema_stats_expiry`.
+        /// * `Example` - An example of a valid value for `InformationSchemaStatsExpiry`.
         /// 
-        /// * `maximum` - The maximum valid value of `information_schema_stats_expiry`.
+        /// * `Maximum` - The maximum valid value of `InformationSchemaStatsExpiry`.
         /// 
-        /// * `minimum` - The minimum valid value of `information_schema_stats_expiry`.
+        /// * `Minimum` - The minimum valid value of `InformationSchemaStatsExpiry`.
         /// 
-        /// * `requires_restart` - Whether changing the value `information_schema_stats_expiry` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InformationSchemaStatsExpiry` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `information_schema_stats_expiry`.
+        /// * `Type` - The type of the value of `InformationSchemaStatsExpiry`.
         /// 
-        /// ## innodb_change_buffer_max_size
+        /// ## InnodbChangeBufferMaxSize
         /// 
-        /// The following arguments are supported in the `innodb_change_buffer_max_size` specification block:
+        /// The following arguments are supported in the `InnodbChangeBufferMaxSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_change_buffer_max_size`.
+        /// * `Description` - The description of `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_change_buffer_max_size`.
+        /// * `Example` - An example of a valid value for `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_change_buffer_max_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_change_buffer_max_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_change_buffer_max_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbChangeBufferMaxSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_change_buffer_max_size`.
+        /// * `Type` - The type of the value of `InnodbChangeBufferMaxSize`.
         /// 
-        /// ## innodb_flush_neighbors
+        /// ## InnodbFlushNeighbors
         /// 
-        /// The following arguments are supported in the `innodb_flush_neighbors` specification block:
+        /// The following arguments are supported in the `InnodbFlushNeighbors` specification block:
         /// 
-        /// * `description` - The description of `innodb_flush_neighbors`.
+        /// * `Description` - The description of `InnodbFlushNeighbors`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_flush_neighbors`.
+        /// * `Example` - An example of a valid value for `InnodbFlushNeighbors`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_flush_neighbors`.
+        /// * `Maximum` - The maximum valid value of `InnodbFlushNeighbors`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_flush_neighbors`.
+        /// * `Minimum` - The minimum valid value of `InnodbFlushNeighbors`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_flush_neighbors` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbFlushNeighbors` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_flush_neighbors`.
+        /// * `Type` - The type of the value of `InnodbFlushNeighbors`.
         /// 
-        /// ## innodb_ft_min_token_size
+        /// ## InnodbFtMinTokenSize
         /// 
-        /// The following arguments are supported in the `innodb_ft_min_token_size` specification block:
+        /// The following arguments are supported in the `InnodbFtMinTokenSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_ft_min_token_size`.
+        /// * `Description` - The description of `InnodbFtMinTokenSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_ft_min_token_size`.
+        /// * `Example` - An example of a valid value for `InnodbFtMinTokenSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_ft_min_token_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbFtMinTokenSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_ft_min_token_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbFtMinTokenSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_ft_min_token_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbFtMinTokenSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_ft_min_token_size`.
+        /// * `Type` - The type of the value of `InnodbFtMinTokenSize`.
         /// 
-        /// ## innodb_ft_server_stopword_table
+        /// ## InnodbFtServerStopwordTable
         /// 
-        /// The following arguments are supported in the `innodb_ft_server_stopword_table` specification block:
+        /// The following arguments are supported in the `InnodbFtServerStopwordTable` specification block:
         /// 
-        /// * `description` - The description of `innodb_ft_server_stopword_table`.
+        /// * `Description` - The description of `InnodbFtServerStopwordTable`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_ft_server_stopword_table`.
+        /// * `Example` - An example of a valid value for `InnodbFtServerStopwordTable`.
         /// 
-        /// * `maxLength` - The maximum length of the value for `innodb_ft_server_stopword_table`.
+        /// * `maxLength` - The maximum length of the value for `InnodbFtServerStopwordTable`.
         /// 
-        /// * `pattern` - A regex pattern that a value of `innodb_ft_server_stopword_table` must match.
+        /// * `Pattern` - A regex pattern that a value of `InnodbFtServerStopwordTable` must match.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_ft_server_stopword_table` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbFtServerStopwordTable` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_ft_server_stopword_table`.
+        /// * `Type` - The type of the value of `InnodbFtServerStopwordTable`.
         /// 
-        /// ## innodb_lock_wait_timeout
+        /// ## InnodbLockWaitTimeout
         /// 
-        /// The following arguments are supported in the `innodb_lock_wait_timeout` specification block:
+        /// The following arguments are supported in the `InnodbLockWaitTimeout` specification block:
         /// 
-        /// * `description` - The description of `innodb_lock_wait_timeout`.
+        /// * `Description` - The description of `InnodbLockWaitTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_lock_wait_timeout`.
+        /// * `Example` - An example of a valid value for `InnodbLockWaitTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_lock_wait_timeout`.
+        /// * `Maximum` - The maximum valid value of `InnodbLockWaitTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_lock_wait_timeout`.
+        /// * `Minimum` - The minimum valid value of `InnodbLockWaitTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_lock_wait_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbLockWaitTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_lock_wait_timeout`.
+        /// * `Type` - The type of the value of `InnodbLockWaitTimeout`.
         /// 
-        /// ## innodb_log_buffer_size
+        /// ## InnodbLogBufferSize
         /// 
-        /// The following arguments are supported in the `innodb_log_buffer_size` specification block:
+        /// The following arguments are supported in the `InnodbLogBufferSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_log_buffer_size`.
+        /// * `Description` - The description of `InnodbLogBufferSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_log_buffer_size`.
+        /// * `Example` - An example of a valid value for `InnodbLogBufferSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_log_buffer_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbLogBufferSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_log_buffer_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbLogBufferSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_log_buffer_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbLogBufferSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_log_buffer_size`.
+        /// * `Type` - The type of the value of `InnodbLogBufferSize`.
         /// 
-        /// ## innodb_online_alter_log_max_size
+        /// ## InnodbOnlineAlterLogMaxSize
         /// 
-        /// The following arguments are supported in the `innodb_online_alter_log_max_size` specification block:
+        /// The following arguments are supported in the `InnodbOnlineAlterLogMaxSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_online_alter_log_max_size`.
+        /// * `Description` - The description of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_online_alter_log_max_size`.
+        /// * `Example` - An example of a valid value for `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_online_alter_log_max_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_online_alter_log_max_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_online_alter_log_max_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbOnlineAlterLogMaxSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_online_alter_log_max_size`.
+        /// * `Type` - The type of the value of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// ## innodb_read_io_threads
+        /// ## InnodbReadIoThreads
         /// 
-        /// The following arguments are supported in the `innodb_read_io_threads` specification block:
+        /// The following arguments are supported in the `InnodbReadIoThreads` specification block:
         /// 
-        /// * `description` - The description of `innodb_read_io_threads`.
+        /// * `Description` - The description of `InnodbReadIoThreads`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_read_io_threads`.
+        /// * `Example` - An example of a valid value for `InnodbReadIoThreads`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_read_io_threads`.
+        /// * `Maximum` - The maximum valid value of `InnodbReadIoThreads`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_read_io_threads`.
+        /// * `Minimum` - The minimum valid value of `InnodbReadIoThreads`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_read_io_threads` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbReadIoThreads` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_read_io_threads`.
+        /// * `Type` - The type of the value of `InnodbReadIoThreads`.
         /// 
-        /// ## innodb_rollback_on_timeout
+        /// ## InnodbRollbackOnTimeout
         /// 
-        /// The following arguments are supported in the `innodb_rollback_on_timeout` specification block:
+        /// The following arguments are supported in the `InnodbRollbackOnTimeout` specification block:
         /// 
-        /// * `description` - The description of `innodb_rollback_on_timeout`.
+        /// * `Description` - The description of `InnodbRollbackOnTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_rollback_on_timeout`.
+        /// * `Example` - An example of a valid value for `InnodbRollbackOnTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_rollback_on_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbRollbackOnTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_rollback_on_timeout`.
+        /// * `Type` - The type of the value of `InnodbRollbackOnTimeout`.
         /// 
-        /// ## innodb_thread_concurrency
+        /// ## InnodbThreadConcurrency
         /// 
-        /// The following arguments are supported in the `innodb_thread_concurrency` specification block:
+        /// The following arguments are supported in the `InnodbThreadConcurrency` specification block:
         /// 
-        /// * `description` - The description of `innodb_thread_concurrency`.
+        /// * `Description` - The description of `InnodbThreadConcurrency`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_thread_concurrency`.
+        /// * `Example` - An example of a valid value for `InnodbThreadConcurrency`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_thread_concurrency`.
+        /// * `Maximum` - The maximum valid value of `InnodbThreadConcurrency`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_thread_concurrency`.
+        /// * `Minimum` - The minimum valid value of `InnodbThreadConcurrency`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_thread_concurrency` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbThreadConcurrency` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_thread_concurrency`.
+        /// * `Type` - The type of the value of `InnodbThreadConcurrency`.
         /// 
-        /// ## innodb_write_io_threads
+        /// ## InnodbWriteIoThreads
         /// 
-        /// The following arguments are supported in the `innodb_write_io_threads` specification block:
+        /// The following arguments are supported in the `InnodbWriteIoThreads` specification block:
         /// 
-        /// * `description` - The description of `innodb_write_io_threads`.
+        /// * `Description` - The description of `InnodbWriteIoThreads`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_write_io_threads`.
+        /// * `Example` - An example of a valid value for `InnodbWriteIoThreads`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_write_io_threads`.
+        /// * `Maximum` - The maximum valid value of `InnodbWriteIoThreads`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_write_io_threads`.
+        /// * `Minimum` - The minimum valid value of `InnodbWriteIoThreads`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_write_io_threads` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbWriteIoThreads` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_write_io_threads`.
+        /// * `Type` - The type of the value of `InnodbWriteIoThreads`.
         /// 
-        /// ## interactive_timeout
+        /// ## InteractiveTimeout
         /// 
-        /// The following arguments are supported in the `interactive_timeout` specification block:
+        /// The following arguments are supported in the `InteractiveTimeout` specification block:
         /// 
-        /// * `description` - The description of `interactive_timeout`.
+        /// * `Description` - The description of `InteractiveTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `interactive_timeout`.
+        /// * `Example` - An example of a valid value for `InteractiveTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `interactive_timeout`.
+        /// * `Maximum` - The maximum valid value of `InteractiveTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `interactive_timeout`.
+        /// * `Minimum` - The minimum valid value of `InteractiveTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `interactive_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InteractiveTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `interactive_timeout`.
+        /// * `Type` - The type of the value of `InteractiveTimeout`.
         /// 
-        /// ## internal_tmp_mem_storage_engine
+        /// ## InternalTmpMemStorageEngine
         /// 
-        /// The following arguments are supported in the `internal_tmp_mem_storage_engine` specification block:
+        /// The following arguments are supported in the `InternalTmpMemStorageEngine` specification block:
         /// 
-        /// * `description` - The description of `internal_tmp_mem_storage_engine`.
+        /// * `Description` - The description of `InternalTmpMemStorageEngine`.
         /// 
-        /// * `enum` - A list of valid enum values for `internal_tmp_mem_storage_engine`.
+        /// * `Enum` - A list of valid enum values for `InternalTmpMemStorageEngine`.
         /// 
-        /// * `example` - An example of a valid value for `internal_tmp_mem_storage_engine`.
+        /// * `Example` - An example of a valid value for `InternalTmpMemStorageEngine`.
         /// 
-        /// * `requires_restart` - Whether changing the value `internal_tmp_mem_storage_engine` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InternalTmpMemStorageEngine` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `internal_tmp_mem_storage_engine`.
+        /// * `Type` - The type of the value of `InternalTmpMemStorageEngine`.
         /// 
-        /// ## max_allowed_packet
+        /// ## MaxAllowedPacket
         /// 
-        /// The following arguments are supported in the `max_allowed_packet` specification block:
+        /// The following arguments are supported in the `MaxAllowedPacket` specification block:
         /// 
-        /// * `description` - The description of `max_allowed_packet`.
+        /// * `Description` - The description of `MaxAllowedPacket`.
         /// 
-        /// * `example` - An example of a valid value for `max_allowed_packet`.
+        /// * `Example` - An example of a valid value for `MaxAllowedPacket`.
         /// 
-        /// * `maximum` - The maximum valid value of `max_allowed_packet`.
+        /// * `Maximum` - The maximum valid value of `MaxAllowedPacket`.
         /// 
-        /// * `minimum` - The minimum valid value of `max_allowed_packet`.
+        /// * `Minimum` - The minimum valid value of `MaxAllowedPacket`.
         /// 
-        /// * `requires_restart` - Whether changing the value `max_allowed_packet` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `MaxAllowedPacket` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `max_allowed_packet`.
+        /// * `Type` - The type of the value of `MaxAllowedPacket`.
         /// 
-        /// ## max_heap_table_size
+        /// ## MaxHeapTableSize
         /// 
-        /// The following arguments are supported in the `max_heap_table_size` specification block:
+        /// The following arguments are supported in the `MaxHeapTableSize` specification block:
         /// 
-        /// * `description` - The description of `max_heap_table_size`.
+        /// * `Description` - The description of `MaxHeapTableSize`.
         /// 
-        /// * `example` - An example of a valid value for `max_heap_table_size`.
+        /// * `Example` - An example of a valid value for `MaxHeapTableSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `max_heap_table_size`.
+        /// * `Maximum` - The maximum valid value of `MaxHeapTableSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `max_heap_table_size`.
+        /// * `Minimum` - The minimum valid value of `MaxHeapTableSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `max_heap_table_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `MaxHeapTableSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `max_heap_table_size`.
+        /// * `Type` - The type of the value of `MaxHeapTableSize`.
         /// 
-        /// ## net_buffer_length
+        /// ## NetBufferLength
         /// 
-        /// The following arguments are supported in the `net_buffer_length` specification block:
+        /// The following arguments are supported in the `NetBufferLength` specification block:
         /// 
-        /// * `description` - The description of `net_buffer_length`.
+        /// * `Description` - The description of `NetBufferLength`.
         /// 
-        /// * `example` - An example of a valid value for `net_buffer_length`.
+        /// * `Example` - An example of a valid value for `NetBufferLength`.
         /// 
-        /// * `maximum` - The maximum valid value of `net_buffer_length`.
+        /// * `Maximum` - The maximum valid value of `NetBufferLength`.
         /// 
-        /// * `minimum` - The minimum valid value of `net_buffer_length`.
+        /// * `Minimum` - The minimum valid value of `NetBufferLength`.
         /// 
-        /// * `requires_restart` - Whether changing the value `net_buffer_length` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `NetBufferLength` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `net_buffer_length`.
+        /// * `Type` - The type of the value of `NetBufferLength`.
         /// 
-        /// ## net_read_timeout
+        /// ## NetReadTimeout
         /// 
-        /// The following arguments are supported in the `net_read_timeout` specification block:
+        /// The following arguments are supported in the `NetReadTimeout` specification block:
         /// 
-        /// * `description` - The description of `net_read_timeout`.
+        /// * `Description` - The description of `NetReadTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `net_read_timeout`.
+        /// * `Example` - An example of a valid value for `NetReadTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `net_read_timeout`.
+        /// * `Maximum` - The maximum valid value of `NetReadTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `net_read_timeout`.
+        /// * `Minimum` - The minimum valid value of `NetReadTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `net_read_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `NetReadTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `net_read_timeout`.
+        /// * `Type` - The type of the value of `NetReadTimeout`.
         /// 
-        /// ## net_write_timeout
+        /// ## NetWriteTimeout
         /// 
-        /// The following arguments are supported in the `net_write_timeout` specification block:
+        /// The following arguments are supported in the `NetWriteTimeout` specification block:
         /// 
-        /// * `description` - The description of `net_write_timeout`.
+        /// * `Description` - The description of `NetWriteTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `net_write_timeout`.
+        /// * `Example` - An example of a valid value for `NetWriteTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `net_write_timeout`.
+        /// * `Maximum` - The maximum valid value of `NetWriteTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `net_write_timeout`.
+        /// * `Minimum` - The minimum valid value of `NetWriteTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `net_write_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `NetWriteTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `net_write_timeout`.
+        /// * `Type` - The type of the value of `NetWriteTimeout`.
         /// 
-        /// ## sort_buffer_size
+        /// ## SortBufferSize
         /// 
-        /// The following arguments are supported in the `sort_buffer_size` specification block:
+        /// The following arguments are supported in the `SortBufferSize` specification block:
         /// 
-        /// * `description` - The description of `sort_buffer_size`.
+        /// * `Description` - The description of `SortBufferSize`.
         /// 
-        /// * `example` - An example of a valid value for `sort_buffer_size`.
+        /// * `Example` - An example of a valid value for `SortBufferSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `sort_buffer_size`.
+        /// * `Maximum` - The maximum valid value of `SortBufferSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `sort_buffer_size`.
+        /// * `Minimum` - The minimum valid value of `SortBufferSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `sort_buffer_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `SortBufferSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `sort_buffer_size`.
+        /// * `Type` - The type of the value of `SortBufferSize`.
         /// 
-        /// ## sql_mode
+        /// ## SqlMode
         /// 
-        /// The following arguments are supported in the `sql_mode` specification block:
+        /// The following arguments are supported in the `SqlMode` specification block:
         /// 
-        /// * `description` - The description of `sql_mode`.
+        /// * `Description` - The description of `SqlMode`.
         /// 
-        /// * `example` - An example of a valid value for `sql_mode`.
+        /// * `Example` - An example of a valid value for `SqlMode`.
         /// 
-        /// * `maxLength` - The maximum valid length of `sql_mode`.
+        /// * `maxLength` - The maximum valid length of `SqlMode`.
         /// 
-        /// * `pattern` - The pattern to match for `sql_mode`.
+        /// * `Pattern` - The pattern to match for `SqlMode`.
         /// 
-        /// * `requires_restart` - Whether changing the value `sql_mode` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `SqlMode` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `sql_mode`.
+        /// * `Type` - The type of the value of `SqlMode`.
         /// 
-        /// ## sql_require_primary_key
+        /// ## SqlRequirePrimaryKey
         /// 
-        /// The following arguments are supported in the `sql_require_primary_key` specification block:
+        /// The following arguments are supported in the `SqlRequirePrimaryKey` specification block:
         /// 
-        /// * `description` - The description of `sql_require_primary_key`.
+        /// * `Description` - The description of `SqlRequirePrimaryKey`.
         /// 
-        /// * `example` - An example of a valid value for `sql_require_primary_key`.
+        /// * `Example` - An example of a valid value for `SqlRequirePrimaryKey`.
         /// 
-        /// * `requires_restart` - Whether changing the value `sql_require_primary_key` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `SqlRequirePrimaryKey` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `sql_require_primary_key`.
+        /// * `Type` - The type of the value of `SqlRequirePrimaryKey`.
         /// 
-        /// ## tmp_table_size
+        /// ## TmpTableSize
         /// 
-        /// The following arguments are supported in the `tmp_table_size` specification block:
+        /// The following arguments are supported in the `TmpTableSize` specification block:
         /// 
-        /// * `description` - The description of `tmp_table_size`.
+        /// * `Description` - The description of `TmpTableSize`.
         /// 
-        /// * `example` - An example of a valid value for `tmp_table_size`.
+        /// * `Example` - An example of a valid value for `TmpTableSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `tmp_table_size`.
+        /// * `Maximum` - The maximum valid value of `TmpTableSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `tmp_table_size`.
+        /// * `Minimum` - The minimum valid value of `TmpTableSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `tmp_table_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `TmpTableSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `tmp_table_size`.
+        /// * `Type` - The type of the value of `TmpTableSize`.
         /// 
-        /// ## wait_timeout
+        /// ## WaitTimeout
         /// 
-        /// The following arguments are supported in the `wait_timeout` specification block:
+        /// The following arguments are supported in the `WaitTimeout` specification block:
         /// 
-        /// * `description` - The description of `wait_timeout`.
+        /// * `Description` - The description of `WaitTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `wait_timeout`.
+        /// * `Example` - An example of a valid value for `WaitTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `wait_timeout`.
+        /// * `Maximum` - The maximum valid value of `WaitTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `wait_timeout`.
+        /// * `Minimum` - The minimum valid value of `WaitTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `wait_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `WaitTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `wait_timeout`.
+        /// * `Type` - The type of the value of `WaitTimeout`.
         /// </summary>
         public static Output<GetDatabaseMysqlConfigResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlConfigResult>("linode:index/getDatabaseMysqlConfig:getDatabaseMysqlConfig", InvokeArgs.Empty, options.WithDefaults());
@@ -1076,503 +1076,503 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## binlog_retention_period
+        /// ## BinlogRetentionPeriod
         /// 
-        /// The following arguments are supported in the `binlog_retention_period` specification block:
+        /// The following arguments are supported in the `BinlogRetentionPeriod` specification block:
         /// 
-        /// * `description` - The description of `binlog_retention_period`.
+        /// * `Description` - The description of `BinlogRetentionPeriod`.
         /// 
-        /// * `example` - An example of a valid value for `binlog_retention_period`.
+        /// * `Example` - An example of a valid value for `BinlogRetentionPeriod`.
         /// 
-        /// * `maximum` - The maximum valid value of `binlog_retention_period`.
+        /// * `Maximum` - The maximum valid value of `BinlogRetentionPeriod`.
         /// 
-        /// * `minimum` - The minimum valid value of `binlog_retention_period`.
+        /// * `Minimum` - The minimum valid value of `BinlogRetentionPeriod`.
         /// 
-        /// * `requires_restart` - Whether changing the value `binlog_retention_period` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `BinlogRetentionPeriod` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `binlog_retention_period`.
+        /// * `Type` - The type of the value of `BinlogRetentionPeriod`.
         /// 
         /// ## mysql
         /// 
-        /// The following arguments are supported in the `mysql` specification block:
+        /// The following arguments are supported in the `Mysql` specification block:
         /// 
-        /// * `connect_timeout` - The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+        /// * `ConnectTimeout` - The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
         /// 
-        /// * `default_time_zone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+        /// * `DefaultTimeZone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
         /// 
-        /// * `group_concat_max_len` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+        /// * `GroupConcatMaxLen` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
         /// 
-        /// * `information_schema_stats_expiry` - The time, in seconds, before cached statistics expire.
+        /// * `InformationSchemaStatsExpiry` - The time, in seconds, before cached statistics expire.
         /// 
-        /// * `innodb_change_buffer_max_size` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        /// * `InnodbChangeBufferMaxSize` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
         /// 
-        /// * `innodb_flush_neighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        /// * `InnodbFlushNeighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
         /// 
-        /// * `innodb_ft_min_token_size` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbFtMinTokenSize` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `innodb_ft_server_stopword_table` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+        /// * `InnodbFtServerStopwordTable` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
         /// 
-        /// * `innodb_lock_wait_timeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        /// * `InnodbLockWaitTimeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
         /// 
-        /// * `innodb_log_buffer_size` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        /// * `InnodbLogBufferSize` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
         /// 
-        /// * `innodb_online_alter_log_max_size` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        /// * `InnodbOnlineAlterLogMaxSize` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         /// 
-        /// * `innodb_read_io_threads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbReadIoThreads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `innodb_rollback_on_timeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbRollbackOnTimeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `innodb_thread_concurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        /// * `InnodbThreadConcurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
         /// 
-        /// * `innodb_write_io_threads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// * `InnodbWriteIoThreads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `interactive_timeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+        /// * `InteractiveTimeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
         /// 
-        /// * `internal_tmp_mem_storage_engine` - The storage engine for in-memory internal temporary tables.
+        /// * `InternalTmpMemStorageEngine` - The storage engine for in-memory internal temporary tables.
         /// 
-        /// * `max_allowed_packet` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        /// * `MaxAllowedPacket` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
         /// 
-        /// * `max_heap_table_size` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        /// * `MaxHeapTableSize` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
         /// 
-        /// * `net_buffer_length` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        /// * `NetBufferLength` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
         /// 
-        /// * `net_read_timeout` - The number of seconds to wait for more data from a connection before aborting the read.
+        /// * `NetReadTimeout` - The number of seconds to wait for more data from a connection before aborting the read.
         /// 
-        /// * `net_write_timeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+        /// * `NetWriteTimeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
         /// 
-        /// * `sort_buffer_size` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        /// * `SortBufferSize` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
         /// 
-        /// * `sql_mode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+        /// * `SqlMode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
         /// 
-        /// * `sql_require_primary_key` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+        /// * `SqlRequirePrimaryKey` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
         /// 
-        /// * `tmp_table_size` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        /// * `TmpTableSize` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
         /// 
-        /// * `wait_timeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+        /// * `WaitTimeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
         /// 
-        /// ## connect_timeout
+        /// ## ConnectTimeout
         /// 
-        /// The following arguments are supported in the `connect_timeout` specification block:
+        /// The following arguments are supported in the `ConnectTimeout` specification block:
         /// 
-        /// * `description` - The description of `connect_timeout`.
+        /// * `Description` - The description of `ConnectTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `connect_timeout`.
+        /// * `Example` - An example of a valid value for `ConnectTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of  `connect_timeout`.
+        /// * `Maximum` - The maximum valid value of  `ConnectTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of  `connect_timeout`.
+        /// * `Minimum` - The minimum valid value of  `ConnectTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `connect_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `ConnectTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `connect_timeout`.
+        /// * `Type` - The type of the value of `ConnectTimeout`.
         /// 
-        /// ## default_time_zone
+        /// ## DefaultTimeZone
         /// 
-        /// The following arguments are supported in the `default_time_zone` specification block:
+        /// The following arguments are supported in the `DefaultTimeZone` specification block:
         /// 
-        /// * `description` - The description of `default_time_zone`.
+        /// * `Description` - The description of `DefaultTimeZone`.
         /// 
-        /// * `example` - An example of a valid value for `default_time_zone`.
+        /// * `Example` - An example of a valid value for `DefaultTimeZone`.
         /// 
-        /// * `maxLength` - The maximum length of the `default_time_zone` value.
+        /// * `maxLength` - The maximum length of the `DefaultTimeZone` value.
         /// 
-        /// * `minLength` - The minimum length of the `default_time_zone` value.
+        /// * `minLength` - The minimum length of the `DefaultTimeZone` value.
         /// 
-        /// * `pattern` - A regular expression that the `default_time_zone` value must match.
+        /// * `Pattern` - A regular expression that the `DefaultTimeZone` value must match.
         /// 
-        /// * `requires_restart` - Whether changing the value `default_time_zone` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `DefaultTimeZone` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `default_time_zone`.
+        /// * `Type` - The type of the value of `DefaultTimeZone`.
         /// 
-        /// ## group_concat_max_len
+        /// ## GroupConcatMaxLen
         /// 
-        /// The following arguments are supported in the `group_concat_max_len` specification block:
+        /// The following arguments are supported in the `GroupConcatMaxLen` specification block:
         /// 
-        /// * `description` - The description of `group_concat_max_len`.
+        /// * `Description` - The description of `GroupConcatMaxLen`.
         /// 
-        /// * `example` - An example of a valid value for `group_concat_max_len`.
+        /// * `Example` - An example of a valid value for `GroupConcatMaxLen`.
         /// 
-        /// * `maximum` - The maximum valid value of `group_concat_max_len`.
+        /// * `Maximum` - The maximum valid value of `GroupConcatMaxLen`.
         /// 
-        /// * `minimum` - The minimum valid value of `group_concat_max_len`.
+        /// * `Minimum` - The minimum valid value of `GroupConcatMaxLen`.
         /// 
-        /// * `requires_restart` - Whether changing the value `group_concat_max_len` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `GroupConcatMaxLen` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `group_concat_max_len`.
+        /// * `Type` - The type of the value of `GroupConcatMaxLen`.
         /// 
-        /// ## information_schema_stats_expiry
+        /// ## InformationSchemaStatsExpiry
         /// 
-        /// The following arguments are supported in the `information_schema_stats_expiry` specification block:
+        /// The following arguments are supported in the `InformationSchemaStatsExpiry` specification block:
         /// 
-        /// * `description` - The description of `information_schema_stats_expiry`.
+        /// * `Description` - The description of `InformationSchemaStatsExpiry`.
         /// 
-        /// * `example` - An example of a valid value for `information_schema_stats_expiry`.
+        /// * `Example` - An example of a valid value for `InformationSchemaStatsExpiry`.
         /// 
-        /// * `maximum` - The maximum valid value of `information_schema_stats_expiry`.
+        /// * `Maximum` - The maximum valid value of `InformationSchemaStatsExpiry`.
         /// 
-        /// * `minimum` - The minimum valid value of `information_schema_stats_expiry`.
+        /// * `Minimum` - The minimum valid value of `InformationSchemaStatsExpiry`.
         /// 
-        /// * `requires_restart` - Whether changing the value `information_schema_stats_expiry` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InformationSchemaStatsExpiry` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `information_schema_stats_expiry`.
+        /// * `Type` - The type of the value of `InformationSchemaStatsExpiry`.
         /// 
-        /// ## innodb_change_buffer_max_size
+        /// ## InnodbChangeBufferMaxSize
         /// 
-        /// The following arguments are supported in the `innodb_change_buffer_max_size` specification block:
+        /// The following arguments are supported in the `InnodbChangeBufferMaxSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_change_buffer_max_size`.
+        /// * `Description` - The description of `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_change_buffer_max_size`.
+        /// * `Example` - An example of a valid value for `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_change_buffer_max_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_change_buffer_max_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbChangeBufferMaxSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_change_buffer_max_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbChangeBufferMaxSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_change_buffer_max_size`.
+        /// * `Type` - The type of the value of `InnodbChangeBufferMaxSize`.
         /// 
-        /// ## innodb_flush_neighbors
+        /// ## InnodbFlushNeighbors
         /// 
-        /// The following arguments are supported in the `innodb_flush_neighbors` specification block:
+        /// The following arguments are supported in the `InnodbFlushNeighbors` specification block:
         /// 
-        /// * `description` - The description of `innodb_flush_neighbors`.
+        /// * `Description` - The description of `InnodbFlushNeighbors`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_flush_neighbors`.
+        /// * `Example` - An example of a valid value for `InnodbFlushNeighbors`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_flush_neighbors`.
+        /// * `Maximum` - The maximum valid value of `InnodbFlushNeighbors`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_flush_neighbors`.
+        /// * `Minimum` - The minimum valid value of `InnodbFlushNeighbors`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_flush_neighbors` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbFlushNeighbors` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_flush_neighbors`.
+        /// * `Type` - The type of the value of `InnodbFlushNeighbors`.
         /// 
-        /// ## innodb_ft_min_token_size
+        /// ## InnodbFtMinTokenSize
         /// 
-        /// The following arguments are supported in the `innodb_ft_min_token_size` specification block:
+        /// The following arguments are supported in the `InnodbFtMinTokenSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_ft_min_token_size`.
+        /// * `Description` - The description of `InnodbFtMinTokenSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_ft_min_token_size`.
+        /// * `Example` - An example of a valid value for `InnodbFtMinTokenSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_ft_min_token_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbFtMinTokenSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_ft_min_token_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbFtMinTokenSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_ft_min_token_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbFtMinTokenSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_ft_min_token_size`.
+        /// * `Type` - The type of the value of `InnodbFtMinTokenSize`.
         /// 
-        /// ## innodb_ft_server_stopword_table
+        /// ## InnodbFtServerStopwordTable
         /// 
-        /// The following arguments are supported in the `innodb_ft_server_stopword_table` specification block:
+        /// The following arguments are supported in the `InnodbFtServerStopwordTable` specification block:
         /// 
-        /// * `description` - The description of `innodb_ft_server_stopword_table`.
+        /// * `Description` - The description of `InnodbFtServerStopwordTable`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_ft_server_stopword_table`.
+        /// * `Example` - An example of a valid value for `InnodbFtServerStopwordTable`.
         /// 
-        /// * `maxLength` - The maximum length of the value for `innodb_ft_server_stopword_table`.
+        /// * `maxLength` - The maximum length of the value for `InnodbFtServerStopwordTable`.
         /// 
-        /// * `pattern` - A regex pattern that a value of `innodb_ft_server_stopword_table` must match.
+        /// * `Pattern` - A regex pattern that a value of `InnodbFtServerStopwordTable` must match.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_ft_server_stopword_table` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbFtServerStopwordTable` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_ft_server_stopword_table`.
+        /// * `Type` - The type of the value of `InnodbFtServerStopwordTable`.
         /// 
-        /// ## innodb_lock_wait_timeout
+        /// ## InnodbLockWaitTimeout
         /// 
-        /// The following arguments are supported in the `innodb_lock_wait_timeout` specification block:
+        /// The following arguments are supported in the `InnodbLockWaitTimeout` specification block:
         /// 
-        /// * `description` - The description of `innodb_lock_wait_timeout`.
+        /// * `Description` - The description of `InnodbLockWaitTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_lock_wait_timeout`.
+        /// * `Example` - An example of a valid value for `InnodbLockWaitTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_lock_wait_timeout`.
+        /// * `Maximum` - The maximum valid value of `InnodbLockWaitTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_lock_wait_timeout`.
+        /// * `Minimum` - The minimum valid value of `InnodbLockWaitTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_lock_wait_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbLockWaitTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_lock_wait_timeout`.
+        /// * `Type` - The type of the value of `InnodbLockWaitTimeout`.
         /// 
-        /// ## innodb_log_buffer_size
+        /// ## InnodbLogBufferSize
         /// 
-        /// The following arguments are supported in the `innodb_log_buffer_size` specification block:
+        /// The following arguments are supported in the `InnodbLogBufferSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_log_buffer_size`.
+        /// * `Description` - The description of `InnodbLogBufferSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_log_buffer_size`.
+        /// * `Example` - An example of a valid value for `InnodbLogBufferSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_log_buffer_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbLogBufferSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_log_buffer_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbLogBufferSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_log_buffer_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbLogBufferSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_log_buffer_size`.
+        /// * `Type` - The type of the value of `InnodbLogBufferSize`.
         /// 
-        /// ## innodb_online_alter_log_max_size
+        /// ## InnodbOnlineAlterLogMaxSize
         /// 
-        /// The following arguments are supported in the `innodb_online_alter_log_max_size` specification block:
+        /// The following arguments are supported in the `InnodbOnlineAlterLogMaxSize` specification block:
         /// 
-        /// * `description` - The description of `innodb_online_alter_log_max_size`.
+        /// * `Description` - The description of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_online_alter_log_max_size`.
+        /// * `Example` - An example of a valid value for `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_online_alter_log_max_size`.
+        /// * `Maximum` - The maximum valid value of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_online_alter_log_max_size`.
+        /// * `Minimum` - The minimum valid value of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_online_alter_log_max_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbOnlineAlterLogMaxSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_online_alter_log_max_size`.
+        /// * `Type` - The type of the value of `InnodbOnlineAlterLogMaxSize`.
         /// 
-        /// ## innodb_read_io_threads
+        /// ## InnodbReadIoThreads
         /// 
-        /// The following arguments are supported in the `innodb_read_io_threads` specification block:
+        /// The following arguments are supported in the `InnodbReadIoThreads` specification block:
         /// 
-        /// * `description` - The description of `innodb_read_io_threads`.
+        /// * `Description` - The description of `InnodbReadIoThreads`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_read_io_threads`.
+        /// * `Example` - An example of a valid value for `InnodbReadIoThreads`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_read_io_threads`.
+        /// * `Maximum` - The maximum valid value of `InnodbReadIoThreads`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_read_io_threads`.
+        /// * `Minimum` - The minimum valid value of `InnodbReadIoThreads`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_read_io_threads` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbReadIoThreads` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_read_io_threads`.
+        /// * `Type` - The type of the value of `InnodbReadIoThreads`.
         /// 
-        /// ## innodb_rollback_on_timeout
+        /// ## InnodbRollbackOnTimeout
         /// 
-        /// The following arguments are supported in the `innodb_rollback_on_timeout` specification block:
+        /// The following arguments are supported in the `InnodbRollbackOnTimeout` specification block:
         /// 
-        /// * `description` - The description of `innodb_rollback_on_timeout`.
+        /// * `Description` - The description of `InnodbRollbackOnTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_rollback_on_timeout`.
+        /// * `Example` - An example of a valid value for `InnodbRollbackOnTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_rollback_on_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbRollbackOnTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_rollback_on_timeout`.
+        /// * `Type` - The type of the value of `InnodbRollbackOnTimeout`.
         /// 
-        /// ## innodb_thread_concurrency
+        /// ## InnodbThreadConcurrency
         /// 
-        /// The following arguments are supported in the `innodb_thread_concurrency` specification block:
+        /// The following arguments are supported in the `InnodbThreadConcurrency` specification block:
         /// 
-        /// * `description` - The description of `innodb_thread_concurrency`.
+        /// * `Description` - The description of `InnodbThreadConcurrency`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_thread_concurrency`.
+        /// * `Example` - An example of a valid value for `InnodbThreadConcurrency`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_thread_concurrency`.
+        /// * `Maximum` - The maximum valid value of `InnodbThreadConcurrency`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_thread_concurrency`.
+        /// * `Minimum` - The minimum valid value of `InnodbThreadConcurrency`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_thread_concurrency` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbThreadConcurrency` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_thread_concurrency`.
+        /// * `Type` - The type of the value of `InnodbThreadConcurrency`.
         /// 
-        /// ## innodb_write_io_threads
+        /// ## InnodbWriteIoThreads
         /// 
-        /// The following arguments are supported in the `innodb_write_io_threads` specification block:
+        /// The following arguments are supported in the `InnodbWriteIoThreads` specification block:
         /// 
-        /// * `description` - The description of `innodb_write_io_threads`.
+        /// * `Description` - The description of `InnodbWriteIoThreads`.
         /// 
-        /// * `example` - An example of a valid value for `innodb_write_io_threads`.
+        /// * `Example` - An example of a valid value for `InnodbWriteIoThreads`.
         /// 
-        /// * `maximum` - The maximum valid value of `innodb_write_io_threads`.
+        /// * `Maximum` - The maximum valid value of `InnodbWriteIoThreads`.
         /// 
-        /// * `minimum` - The minimum valid value of `innodb_write_io_threads`.
+        /// * `Minimum` - The minimum valid value of `InnodbWriteIoThreads`.
         /// 
-        /// * `requires_restart` - Whether changing the value `innodb_write_io_threads` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InnodbWriteIoThreads` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `innodb_write_io_threads`.
+        /// * `Type` - The type of the value of `InnodbWriteIoThreads`.
         /// 
-        /// ## interactive_timeout
+        /// ## InteractiveTimeout
         /// 
-        /// The following arguments are supported in the `interactive_timeout` specification block:
+        /// The following arguments are supported in the `InteractiveTimeout` specification block:
         /// 
-        /// * `description` - The description of `interactive_timeout`.
+        /// * `Description` - The description of `InteractiveTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `interactive_timeout`.
+        /// * `Example` - An example of a valid value for `InteractiveTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `interactive_timeout`.
+        /// * `Maximum` - The maximum valid value of `InteractiveTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `interactive_timeout`.
+        /// * `Minimum` - The minimum valid value of `InteractiveTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `interactive_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InteractiveTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `interactive_timeout`.
+        /// * `Type` - The type of the value of `InteractiveTimeout`.
         /// 
-        /// ## internal_tmp_mem_storage_engine
+        /// ## InternalTmpMemStorageEngine
         /// 
-        /// The following arguments are supported in the `internal_tmp_mem_storage_engine` specification block:
+        /// The following arguments are supported in the `InternalTmpMemStorageEngine` specification block:
         /// 
-        /// * `description` - The description of `internal_tmp_mem_storage_engine`.
+        /// * `Description` - The description of `InternalTmpMemStorageEngine`.
         /// 
-        /// * `enum` - A list of valid enum values for `internal_tmp_mem_storage_engine`.
+        /// * `Enum` - A list of valid enum values for `InternalTmpMemStorageEngine`.
         /// 
-        /// * `example` - An example of a valid value for `internal_tmp_mem_storage_engine`.
+        /// * `Example` - An example of a valid value for `InternalTmpMemStorageEngine`.
         /// 
-        /// * `requires_restart` - Whether changing the value `internal_tmp_mem_storage_engine` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `InternalTmpMemStorageEngine` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `internal_tmp_mem_storage_engine`.
+        /// * `Type` - The type of the value of `InternalTmpMemStorageEngine`.
         /// 
-        /// ## max_allowed_packet
+        /// ## MaxAllowedPacket
         /// 
-        /// The following arguments are supported in the `max_allowed_packet` specification block:
+        /// The following arguments are supported in the `MaxAllowedPacket` specification block:
         /// 
-        /// * `description` - The description of `max_allowed_packet`.
+        /// * `Description` - The description of `MaxAllowedPacket`.
         /// 
-        /// * `example` - An example of a valid value for `max_allowed_packet`.
+        /// * `Example` - An example of a valid value for `MaxAllowedPacket`.
         /// 
-        /// * `maximum` - The maximum valid value of `max_allowed_packet`.
+        /// * `Maximum` - The maximum valid value of `MaxAllowedPacket`.
         /// 
-        /// * `minimum` - The minimum valid value of `max_allowed_packet`.
+        /// * `Minimum` - The minimum valid value of `MaxAllowedPacket`.
         /// 
-        /// * `requires_restart` - Whether changing the value `max_allowed_packet` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `MaxAllowedPacket` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `max_allowed_packet`.
+        /// * `Type` - The type of the value of `MaxAllowedPacket`.
         /// 
-        /// ## max_heap_table_size
+        /// ## MaxHeapTableSize
         /// 
-        /// The following arguments are supported in the `max_heap_table_size` specification block:
+        /// The following arguments are supported in the `MaxHeapTableSize` specification block:
         /// 
-        /// * `description` - The description of `max_heap_table_size`.
+        /// * `Description` - The description of `MaxHeapTableSize`.
         /// 
-        /// * `example` - An example of a valid value for `max_heap_table_size`.
+        /// * `Example` - An example of a valid value for `MaxHeapTableSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `max_heap_table_size`.
+        /// * `Maximum` - The maximum valid value of `MaxHeapTableSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `max_heap_table_size`.
+        /// * `Minimum` - The minimum valid value of `MaxHeapTableSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `max_heap_table_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `MaxHeapTableSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `max_heap_table_size`.
+        /// * `Type` - The type of the value of `MaxHeapTableSize`.
         /// 
-        /// ## net_buffer_length
+        /// ## NetBufferLength
         /// 
-        /// The following arguments are supported in the `net_buffer_length` specification block:
+        /// The following arguments are supported in the `NetBufferLength` specification block:
         /// 
-        /// * `description` - The description of `net_buffer_length`.
+        /// * `Description` - The description of `NetBufferLength`.
         /// 
-        /// * `example` - An example of a valid value for `net_buffer_length`.
+        /// * `Example` - An example of a valid value for `NetBufferLength`.
         /// 
-        /// * `maximum` - The maximum valid value of `net_buffer_length`.
+        /// * `Maximum` - The maximum valid value of `NetBufferLength`.
         /// 
-        /// * `minimum` - The minimum valid value of `net_buffer_length`.
+        /// * `Minimum` - The minimum valid value of `NetBufferLength`.
         /// 
-        /// * `requires_restart` - Whether changing the value `net_buffer_length` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `NetBufferLength` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `net_buffer_length`.
+        /// * `Type` - The type of the value of `NetBufferLength`.
         /// 
-        /// ## net_read_timeout
+        /// ## NetReadTimeout
         /// 
-        /// The following arguments are supported in the `net_read_timeout` specification block:
+        /// The following arguments are supported in the `NetReadTimeout` specification block:
         /// 
-        /// * `description` - The description of `net_read_timeout`.
+        /// * `Description` - The description of `NetReadTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `net_read_timeout`.
+        /// * `Example` - An example of a valid value for `NetReadTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `net_read_timeout`.
+        /// * `Maximum` - The maximum valid value of `NetReadTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `net_read_timeout`.
+        /// * `Minimum` - The minimum valid value of `NetReadTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `net_read_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `NetReadTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `net_read_timeout`.
+        /// * `Type` - The type of the value of `NetReadTimeout`.
         /// 
-        /// ## net_write_timeout
+        /// ## NetWriteTimeout
         /// 
-        /// The following arguments are supported in the `net_write_timeout` specification block:
+        /// The following arguments are supported in the `NetWriteTimeout` specification block:
         /// 
-        /// * `description` - The description of `net_write_timeout`.
+        /// * `Description` - The description of `NetWriteTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `net_write_timeout`.
+        /// * `Example` - An example of a valid value for `NetWriteTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `net_write_timeout`.
+        /// * `Maximum` - The maximum valid value of `NetWriteTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `net_write_timeout`.
+        /// * `Minimum` - The minimum valid value of `NetWriteTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `net_write_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `NetWriteTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `net_write_timeout`.
+        /// * `Type` - The type of the value of `NetWriteTimeout`.
         /// 
-        /// ## sort_buffer_size
+        /// ## SortBufferSize
         /// 
-        /// The following arguments are supported in the `sort_buffer_size` specification block:
+        /// The following arguments are supported in the `SortBufferSize` specification block:
         /// 
-        /// * `description` - The description of `sort_buffer_size`.
+        /// * `Description` - The description of `SortBufferSize`.
         /// 
-        /// * `example` - An example of a valid value for `sort_buffer_size`.
+        /// * `Example` - An example of a valid value for `SortBufferSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `sort_buffer_size`.
+        /// * `Maximum` - The maximum valid value of `SortBufferSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `sort_buffer_size`.
+        /// * `Minimum` - The minimum valid value of `SortBufferSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `sort_buffer_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `SortBufferSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `sort_buffer_size`.
+        /// * `Type` - The type of the value of `SortBufferSize`.
         /// 
-        /// ## sql_mode
+        /// ## SqlMode
         /// 
-        /// The following arguments are supported in the `sql_mode` specification block:
+        /// The following arguments are supported in the `SqlMode` specification block:
         /// 
-        /// * `description` - The description of `sql_mode`.
+        /// * `Description` - The description of `SqlMode`.
         /// 
-        /// * `example` - An example of a valid value for `sql_mode`.
+        /// * `Example` - An example of a valid value for `SqlMode`.
         /// 
-        /// * `maxLength` - The maximum valid length of `sql_mode`.
+        /// * `maxLength` - The maximum valid length of `SqlMode`.
         /// 
-        /// * `pattern` - The pattern to match for `sql_mode`.
+        /// * `Pattern` - The pattern to match for `SqlMode`.
         /// 
-        /// * `requires_restart` - Whether changing the value `sql_mode` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `SqlMode` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `sql_mode`.
+        /// * `Type` - The type of the value of `SqlMode`.
         /// 
-        /// ## sql_require_primary_key
+        /// ## SqlRequirePrimaryKey
         /// 
-        /// The following arguments are supported in the `sql_require_primary_key` specification block:
+        /// The following arguments are supported in the `SqlRequirePrimaryKey` specification block:
         /// 
-        /// * `description` - The description of `sql_require_primary_key`.
+        /// * `Description` - The description of `SqlRequirePrimaryKey`.
         /// 
-        /// * `example` - An example of a valid value for `sql_require_primary_key`.
+        /// * `Example` - An example of a valid value for `SqlRequirePrimaryKey`.
         /// 
-        /// * `requires_restart` - Whether changing the value `sql_require_primary_key` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `SqlRequirePrimaryKey` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `sql_require_primary_key`.
+        /// * `Type` - The type of the value of `SqlRequirePrimaryKey`.
         /// 
-        /// ## tmp_table_size
+        /// ## TmpTableSize
         /// 
-        /// The following arguments are supported in the `tmp_table_size` specification block:
+        /// The following arguments are supported in the `TmpTableSize` specification block:
         /// 
-        /// * `description` - The description of `tmp_table_size`.
+        /// * `Description` - The description of `TmpTableSize`.
         /// 
-        /// * `example` - An example of a valid value for `tmp_table_size`.
+        /// * `Example` - An example of a valid value for `TmpTableSize`.
         /// 
-        /// * `maximum` - The maximum valid value of `tmp_table_size`.
+        /// * `Maximum` - The maximum valid value of `TmpTableSize`.
         /// 
-        /// * `minimum` - The minimum valid value of `tmp_table_size`.
+        /// * `Minimum` - The minimum valid value of `TmpTableSize`.
         /// 
-        /// * `requires_restart` - Whether changing the value `tmp_table_size` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `TmpTableSize` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `tmp_table_size`.
+        /// * `Type` - The type of the value of `TmpTableSize`.
         /// 
-        /// ## wait_timeout
+        /// ## WaitTimeout
         /// 
-        /// The following arguments are supported in the `wait_timeout` specification block:
+        /// The following arguments are supported in the `WaitTimeout` specification block:
         /// 
-        /// * `description` - The description of `wait_timeout`.
+        /// * `Description` - The description of `WaitTimeout`.
         /// 
-        /// * `example` - An example of a valid value for `wait_timeout`.
+        /// * `Example` - An example of a valid value for `WaitTimeout`.
         /// 
-        /// * `maximum` - The maximum valid value of `wait_timeout`.
+        /// * `Maximum` - The maximum valid value of `WaitTimeout`.
         /// 
-        /// * `minimum` - The minimum valid value of `wait_timeout`.
+        /// * `Minimum` - The minimum valid value of `WaitTimeout`.
         /// 
-        /// * `requires_restart` - Whether changing the value `wait_timeout` requires the DB to restart.
+        /// * `RequiresRestart` - Whether changing the value `WaitTimeout` requires the DB to restart.
         /// 
-        /// * `type` - The type of the value of `wait_timeout`.
+        /// * `Type` - The type of the value of `WaitTimeout`.
         /// </summary>
         public static Output<GetDatabaseMysqlConfigResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseMysqlConfigResult>("linode:index/getDatabaseMysqlConfig:getDatabaseMysqlConfig", InvokeArgs.Empty, options.WithDefaults());

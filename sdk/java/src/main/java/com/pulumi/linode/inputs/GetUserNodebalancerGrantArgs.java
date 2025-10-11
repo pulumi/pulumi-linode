@@ -46,14 +46,14 @@ public final class GetUserNodebalancerGrantArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+     * The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
      * 
      */
     @Import(name="permissions", required=true)
     private Output<String> permissions;
 
     /**
-     * @return The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+     * @return The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
      * 
      */
     public Output<String> permissions() {
@@ -129,7 +129,7 @@ public final class GetUserNodebalancerGrantArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param permissions The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+         * @param permissions The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GetUserNodebalancerGrantArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param permissions The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+         * @param permissions The level of access this User has to this entity. If null, this User has no access. (`readOnly`, `readWrite`)
          * 
          * @return builder
          * 

@@ -185,22 +185,22 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+     * The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
      * 
      * * Must be `none` for a single node cluster.
      * 
-     * * Must be `asynch` or `semi_synch` for a high availability cluster.
+     * * Must be `asynch` or `semiSynch` for a high availability cluster.
      * 
      */
     @Import(name="replicationType")
     private @Nullable Output<String> replicationType;
 
     /**
-     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
      * 
      * * Must be `none` for a single node cluster.
      * 
-     * * Must be `asynch` or `semi_synch` for a high availability cluster.
+     * * Must be `asynch` or `semiSynch` for a high availability cluster.
      * 
      */
     public Optional<Output<String>> replicationType() {
@@ -620,11 +620,11 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+         * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
          * 
          * * Must be `none` for a single node cluster.
          * 
-         * * Must be `asynch` or `semi_synch` for a high availability cluster.
+         * * Must be `asynch` or `semiSynch` for a high availability cluster.
          * 
          * @return builder
          * 
@@ -635,11 +635,11 @@ public final class DatabaseMysqlState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+         * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
          * 
          * * Must be `none` for a single node cluster.
          * 
-         * * Must be `asynch` or `semi_synch` for a high availability cluster.
+         * * Must be `asynch` or `semiSynch` for a high availability cluster.
          * 
          * @return builder
          * 

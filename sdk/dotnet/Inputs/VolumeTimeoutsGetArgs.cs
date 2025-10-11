@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class VolumeTimeoutsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Used when creating the volume (until the volume is reaches the initial `active` state)
+        /// Used when creating the volume (until the volume is reaches the initial `Active` state)
         /// </summary>
         [Input("create")]
         public Input<string>? Create { get; set; }

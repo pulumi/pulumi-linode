@@ -15,14 +15,14 @@ public final class ObjectStorageKeyRegionsDetailArgs extends com.pulumi.resource
     public static final ObjectStorageKeyRegionsDetailArgs Empty = new ObjectStorageKeyRegionsDetailArgs();
 
     /**
-     * The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     @Import(name="endpointType", required=true)
     private Output<String> endpointType;
 
     /**
-     * @return The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * @return The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     public Output<String> endpointType() {
@@ -86,7 +86,7 @@ public final class ObjectStorageKeyRegionsDetailArgs extends com.pulumi.resource
         }
 
         /**
-         * @param endpointType The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+         * @param endpointType The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class ObjectStorageKeyRegionsDetailArgs extends com.pulumi.resource
         }
 
         /**
-         * @param endpointType The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+         * @param endpointType The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
          * 
          * @return builder
          * 

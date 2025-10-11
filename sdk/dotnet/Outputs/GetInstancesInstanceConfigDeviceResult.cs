@@ -14,35 +14,35 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesInstanceConfigDeviceResult
     {
         /// <summary>
-        /// ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_label` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
+        /// ... `Sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `DiskLabel` or `VolumeId`. Only one disk identifier is permitted per slot. Devices mapped from `Sde` through `Sdh` are unavailable in `"fullvirt"` `VirtMode`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaResult> Sdas;
         /// <summary>
-        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbResult> Sdbs;
         /// <summary>
-        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdcResult> Sdcs;
         /// <summary>
-        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSddResult> Sdds;
         /// <summary>
-        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdeResult> Sdes;
         /// <summary>
-        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdfResult> Sdfs;
         /// <summary>
-        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdgResult> Sdgs;
         /// <summary>
-        /// Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdhResult> Sdhs;
 

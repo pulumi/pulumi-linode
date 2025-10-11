@@ -24,7 +24,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The Kubernetes taint value.
         /// 
-        /// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// * `Autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
         /// </summary>
         public readonly string Value;
 

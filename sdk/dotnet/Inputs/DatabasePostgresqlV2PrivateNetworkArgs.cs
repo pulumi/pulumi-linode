@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class DatabasePostgresqlV2PrivateNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
+        /// Set to `True` to allow clients outside of the VPC to connect to the database using a public IP address.
         /// </summary>
         [Input("publicAccess")]
         public Input<bool>? PublicAccess { get; set; }

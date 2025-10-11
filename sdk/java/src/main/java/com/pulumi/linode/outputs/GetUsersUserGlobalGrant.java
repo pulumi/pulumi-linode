@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetUsersUserGlobalGrant {
     /**
-     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
      * 
      */
     private String accountAccess;
@@ -75,7 +75,7 @@ public final class GetUsersUserGlobalGrant {
 
     private GetUsersUserGlobalGrant() {}
     /**
-     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`read_only`, `read_write`)
+     * @return The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
      * 
      */
     public String accountAccess() {

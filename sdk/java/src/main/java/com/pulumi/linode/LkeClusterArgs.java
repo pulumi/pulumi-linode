@@ -116,7 +116,7 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      * 
      */
     @Import(name="region", required=true)
@@ -127,7 +127,7 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      * 
      */
     public Output<String> region() {
@@ -395,7 +395,7 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
          * 
-         * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+         * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
          * 
-         * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+         * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
          * 
          * @return builder
          * 
