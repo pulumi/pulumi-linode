@@ -10,6 +10,12 @@ import * as utilities from "./utilities";
  * Manages the assignment of multiple IPv4 addresses and/or IPv6 ranges to multiple Linodes in a specified region.
  *
  * For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-assign-ips).
+ *
+ * ## Example Usage
+ *
+ * ## Import
+ *
+ * Network IP assignments cannot be imported.
  */
 export class NetworkingIpAssignment extends pulumi.CustomResource {
     /**

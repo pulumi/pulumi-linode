@@ -42,7 +42,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNodeBalancerFirewallOutboundResult> Outbounds;
         /// <summary>
-        /// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+        /// The status of the firewall. (`Enabled`, `Disabled`, `Deleted`)
         /// </summary>
         public readonly string Status;
         /// <summary>

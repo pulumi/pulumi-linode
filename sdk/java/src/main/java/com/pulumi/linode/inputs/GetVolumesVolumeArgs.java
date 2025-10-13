@@ -137,14 +137,14 @@ public final class GetVolumesVolumeArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+     * The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
      * 
      */
     @Import(name="status", required=true)
     private Output<String> status;
 
     /**
-     * @return The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+     * @return The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
      * 
      */
     public Output<String> status() {
@@ -384,7 +384,7 @@ public final class GetVolumesVolumeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+         * @param status The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class GetVolumesVolumeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
+         * @param status The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
          * 
          * @return builder
          * 

@@ -55,21 +55,21 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `architecture`
+        /// * `Architecture`
         /// 
-        /// * `deprecated`
+        /// * `Deprecated`
         /// 
-        /// * `kvm`
+        /// * `Kvm`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `pvops`
+        /// * `Pvops`
         /// 
-        /// * `version`
+        /// * `Version`
         /// 
-        /// * `xen`
+        /// * `Xen`
         /// </summary>
         public static Task<GetKernelsResult> InvokeAsync(GetKernelsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKernelsResult>("linode:index/getKernels:getKernels", args ?? new GetKernelsArgs(), options.WithDefaults());
@@ -118,21 +118,21 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `architecture`
+        /// * `Architecture`
         /// 
-        /// * `deprecated`
+        /// * `Deprecated`
         /// 
-        /// * `kvm`
+        /// * `Kvm`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `pvops`
+        /// * `Pvops`
         /// 
-        /// * `version`
+        /// * `Version`
         /// 
-        /// * `xen`
+        /// * `Xen`
         /// </summary>
         public static Output<GetKernelsResult> Invoke(GetKernelsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKernelsResult>("linode:index/getKernels:getKernels", args ?? new GetKernelsInvokeArgs(), options.WithDefaults());
@@ -181,21 +181,21 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `architecture`
+        /// * `Architecture`
         /// 
-        /// * `deprecated`
+        /// * `Deprecated`
         /// 
-        /// * `kvm`
+        /// * `Kvm`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `pvops`
+        /// * `Pvops`
         /// 
-        /// * `version`
+        /// * `Version`
         /// 
-        /// * `xen`
+        /// * `Xen`
         /// </summary>
         public static Output<GetKernelsResult> Invoke(GetKernelsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKernelsResult>("linode:index/getKernels:getKernels", args ?? new GetKernelsInvokeArgs(), options.WithDefaults());
@@ -221,7 +221,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

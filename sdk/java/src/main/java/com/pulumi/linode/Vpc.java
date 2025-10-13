@@ -106,9 +106,9 @@ import javax.annotation.Nullable;
  * 
  * * `range` - (Optional) An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
  * 
- * * `allocation_class` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+ * * `allocationClass` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
  * 
- * * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+ * * `allocatedRange` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
  * 
  */
 @ResourceType(type="linode:index/vpc:Vpc")

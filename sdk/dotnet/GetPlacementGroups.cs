@@ -54,17 +54,17 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `placement_group_type`
+        /// * `PlacementGroupType`
         /// 
-        /// * `placement_group_policy`
+        /// * `PlacementGroupPolicy`
         /// 
-        /// * `is_compliant`
+        /// * `IsCompliant`
         /// </summary>
         public static Task<GetPlacementGroupsResult> InvokeAsync(GetPlacementGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPlacementGroupsResult>("linode:index/getPlacementGroups:getPlacementGroups", args ?? new GetPlacementGroupsArgs(), options.WithDefaults());
@@ -112,17 +112,17 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `placement_group_type`
+        /// * `PlacementGroupType`
         /// 
-        /// * `placement_group_policy`
+        /// * `PlacementGroupPolicy`
         /// 
-        /// * `is_compliant`
+        /// * `IsCompliant`
         /// </summary>
         public static Output<GetPlacementGroupsResult> Invoke(GetPlacementGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPlacementGroupsResult>("linode:index/getPlacementGroups:getPlacementGroups", args ?? new GetPlacementGroupsInvokeArgs(), options.WithDefaults());
@@ -170,17 +170,17 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `region`
+        /// * `Region`
         /// 
-        /// * `placement_group_type`
+        /// * `PlacementGroupType`
         /// 
-        /// * `placement_group_policy`
+        /// * `PlacementGroupPolicy`
         /// 
-        /// * `is_compliant`
+        /// * `IsCompliant`
         /// </summary>
         public static Output<GetPlacementGroupsResult> Invoke(GetPlacementGroupsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPlacementGroupsResult>("linode:index/getPlacementGroups:getPlacementGroups", args ?? new GetPlacementGroupsInvokeArgs(), options.WithDefaults());

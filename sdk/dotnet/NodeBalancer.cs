@@ -110,7 +110,7 @@ namespace Pulumi.Linode
         public Output<string?> Label { get; private set; } = null!;
 
         /// <summary>
-        /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+        /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `Region` forces the creation of a new Linode NodeBalancer.*.
         /// 
         /// - - -
         /// </summary>
@@ -214,7 +214,7 @@ namespace Pulumi.Linode
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+        /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `Region` forces the creation of a new Linode NodeBalancer.*.
         /// 
         /// - - -
         /// </summary>
@@ -316,7 +316,7 @@ namespace Pulumi.Linode
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
+        /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `Region` forces the creation of a new Linode NodeBalancer.*.
         /// 
         /// - - -
         /// </summary>

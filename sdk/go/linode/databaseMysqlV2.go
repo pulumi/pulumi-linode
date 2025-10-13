@@ -82,6 +82,129 @@ import (
 //
 // Creating a complex MySQL database:
 //
+// Creating a MySQL database with engine config fields specified:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
+//				Label:                              pulumi.String("mydatabase"),
+//				EngineId:                           pulumi.String("mysql/8"),
+//				Region:                             pulumi.String("us-mia"),
+//				Type:                               pulumi.String("g6-nanode-1"),
+//				EngineConfigBinlogRetentionPeriod:  pulumi.Int(3600),
+//				EngineConfigMysqlConnectTimeout:    pulumi.Int(10),
+//				EngineConfigMysqlDefaultTimeZone:   pulumi.String("+00:00"),
+//				EngineConfigMysqlGroupConcatMaxLen: pulumi.Float64(4096),
+//				EngineConfigMysqlInformationSchemaStatsExpiry: pulumi.Int(3600),
+//				EngineConfigMysqlInnodbChangeBufferMaxSize:    pulumi.Int(25),
+//				EngineConfigMysqlInnodbFlushNeighbors:         pulumi.Int(0),
+//				EngineConfigMysqlInnodbFtMinTokenSize:         pulumi.Int(7),
+//				EngineConfigMysqlInnodbFtServerStopwordTable:  pulumi.String("mysql/innodb_ft_default_stopword"),
+//				EngineConfigMysqlInnodbLockWaitTimeout:        pulumi.Int(300),
+//				EngineConfigMysqlInnodbLogBufferSize:          pulumi.Int(16777216),
+//				EngineConfigMysqlInnodbOnlineAlterLogMaxSize:  pulumi.Int(268435456),
+//				EngineConfigMysqlInnodbReadIoThreads:          pulumi.Int(4),
+//				EngineConfigMysqlInnodbRollbackOnTimeout:      pulumi.Bool(true),
+//				EngineConfigMysqlInnodbThreadConcurrency:      pulumi.Int(8),
+//				EngineConfigMysqlInnodbWriteIoThreads:         pulumi.Int(4),
+//				EngineConfigMysqlInteractiveTimeout:           pulumi.Int(300),
+//				EngineConfigMysqlInternalTmpMemStorageEngine:  pulumi.String("TempTable"),
+//				EngineConfigMysqlMaxAllowedPacket:             pulumi.Int(67108864),
+//				EngineConfigMysqlMaxHeapTableSize:             pulumi.Int(16777216),
+//				EngineConfigMysqlNetBufferLength:              pulumi.Int(16384),
+//				EngineConfigMysqlNetReadTimeout:               pulumi.Int(30),
+//				EngineConfigMysqlNetWriteTimeout:              pulumi.Int(30),
+//				EngineConfigMysqlSortBufferSize:               pulumi.Int(262144),
+//				EngineConfigMysqlSqlMode:                      pulumi.String("TRADITIONAL,ANSI"),
+//				EngineConfigMysqlSqlRequirePrimaryKey:         pulumi.Bool(false),
+//				EngineConfigMysqlTmpTableSize:                 pulumi.Int(16777216),
+//				EngineConfigMysqlWaitTimeout:                  pulumi.Int(28800),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating a forked MySQL database:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
+//				Label:      pulumi.String("mydatabase"),
+//				EngineId:   pulumi.String("mysql/8"),
+//				Region:     pulumi.String("us-mia"),
+//				Type:       pulumi.String("g6-nanode-1"),
+//				ForkSource: pulumi.Int(12345),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Creating a MySQL database hidden behind a VPC:
+//
+// > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
+//
+// ## pendingUpdates
+//
+// The following arguments are exposed by each entry in the `pendingUpdates` attribute:
+//
+// * `deadline` - The time when a mandatory update needs to be applied.
+//
+// * `description` - A description of the update.
+//
+// * `plannedFor` - The date and time a maintenance update will be applied.
+//
+// ## updates
+//
+// The following arguments are supported in the `updates` specification block:
+//
+// * `dayOfWeek` - (Required) The day to perform maintenance. (`monday`, `tuesday`, ...)
+//
+// * `duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+//
+// * `frequency` - (Required) The frequency at which maintenance occurs. (`weekly`)
+//
+// * `hourOfDay` - (Required) The hour to begin maintenance based in UTC time. (`0`..`23`)
+//
+// ## privateNetwork
+//
+// The following arguments are supported in the `privateNetwork` specification block:
+//
+// * `vpcId` - (Required) The ID of the virtual private cloud (VPC) to restrict access to this database using.
+//
+// * `subnetId` - (Required) The ID of the VPC subnet to restrict access to this database using.
+//
+// * `publicAccess` - (Optional) Set to `true` to allow clients outside the VPC to connect to the database using a public IP address. (Default `false`)
+//
 // ## Import
 //
 // Linode MySQL Databases can be imported using the `id`, e.g.

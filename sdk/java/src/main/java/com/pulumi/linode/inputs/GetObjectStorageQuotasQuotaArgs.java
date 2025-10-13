@@ -61,14 +61,14 @@ public final class GetObjectStorageQuotasQuotaArgs extends com.pulumi.resources.
     }
 
     /**
-     * The maximum quantity of the `resource_metric` allowed by the quota.
+     * The maximum quantity of the `resourceMetric` allowed by the quota.
      * 
      */
     @Import(name="quotaLimit", required=true)
     private Output<Integer> quotaLimit;
 
     /**
-     * @return The maximum quantity of the `resource_metric` allowed by the quota.
+     * @return The maximum quantity of the `resourceMetric` allowed by the quota.
      * 
      */
     public Output<Integer> quotaLimit() {
@@ -106,14 +106,14 @@ public final class GetObjectStorageQuotasQuotaArgs extends com.pulumi.resources.
     }
 
     /**
-     * The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+     * The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
      * 
      */
     @Import(name="s3Endpoint", required=true)
     private Output<String> s3Endpoint;
 
     /**
-     * @return The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+     * @return The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
      * 
      */
     public Output<String> s3Endpoint() {
@@ -214,7 +214,7 @@ public final class GetObjectStorageQuotasQuotaArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param quotaLimit The maximum quantity of the `resource_metric` allowed by the quota.
+         * @param quotaLimit The maximum quantity of the `resourceMetric` allowed by the quota.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class GetObjectStorageQuotasQuotaArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param quotaLimit The maximum quantity of the `resource_metric` allowed by the quota.
+         * @param quotaLimit The maximum quantity of the `resourceMetric` allowed by the quota.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class GetObjectStorageQuotasQuotaArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param s3Endpoint The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+         * @param s3Endpoint The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class GetObjectStorageQuotasQuotaArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param s3Endpoint The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+         * @param s3Endpoint The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
          * 
          * @return builder
          * 

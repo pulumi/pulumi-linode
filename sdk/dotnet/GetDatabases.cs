@@ -68,15 +68,15 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## private_network
+        /// ## PrivateNetwork
         /// 
-        /// The following arguments are exposed by the `private_network` attribute:
+        /// The following arguments are exposed by the `PrivateNetwork` attribute:
         /// 
-        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// * `VpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
         /// 
-        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// * `SubnetId` - The ID of the VPC subnet to restrict access to this database using.
         /// 
-        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+        /// * `PublicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Task<GetDatabasesResult> InvokeAsync(GetDatabasesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("linode:index/getDatabases:getDatabases", args ?? new GetDatabasesArgs(), options.WithDefaults());
@@ -138,15 +138,15 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## private_network
+        /// ## PrivateNetwork
         /// 
-        /// The following arguments are exposed by the `private_network` attribute:
+        /// The following arguments are exposed by the `PrivateNetwork` attribute:
         /// 
-        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// * `VpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
         /// 
-        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// * `SubnetId` - The ID of the VPC subnet to restrict access to this database using.
         /// 
-        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+        /// * `PublicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("linode:index/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());
@@ -208,15 +208,15 @@ namespace Pulumi.Linode
         /// });
         /// ```
         /// 
-        /// ## private_network
+        /// ## PrivateNetwork
         /// 
-        /// The following arguments are exposed by the `private_network` attribute:
+        /// The following arguments are exposed by the `PrivateNetwork` attribute:
         /// 
-        /// * `vpc_id` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
+        /// * `VpcId` - The ID of the virtual private cloud (VPC) to restrict access to this database using.
         /// 
-        /// * `subnet_id` - The ID of the VPC subnet to restrict access to this database using.
+        /// * `SubnetId` - The ID of the VPC subnet to restrict access to this database using.
         /// 
-        /// * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
+        /// * `PublicAccess` - If true, clients outside the VPC can connect to the database using a public IP address.
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("linode:index/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());
@@ -242,13 +242,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
         /// <summary>
-        /// The attribute to order the results by. (`version`)
+        /// The attribute to order the results by. (`Version`)
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -278,13 +278,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
         /// <summary>
-        /// The attribute to order the results by. (`version`)
+        /// The attribute to order the results by. (`Version`)
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }

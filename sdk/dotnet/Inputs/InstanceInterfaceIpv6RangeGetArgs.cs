@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceInterfaceIpv6RangeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        /// The value of `Range` computed by the API. This is necessary when needing to access the range implicitly allocated using `Auto`.
         /// </summary>
         [Input("assignedRange")]
         public Input<string>? AssignedRange { get; set; }
 
         /// <summary>
-        /// A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        /// A prefix to add to this interface, or `Auto` for a new IPv6 prefix to be automatically allocated.
         /// </summary>
         [Input("range")]
         public Input<string>? Range { get; set; }

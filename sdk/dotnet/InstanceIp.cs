@@ -102,7 +102,7 @@ namespace Pulumi.Linode
         public Output<string> SubnetMask { get; private set; } = null!;
 
         /// <summary>
-        /// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
+        /// The type of IP address. (`Ipv4`, `Ipv6`, `ipv6/pool`, `ipv6/range`)
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.Linode
         public Input<string>? SubnetMask { get; set; }
 
         /// <summary>
-        /// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
+        /// The type of IP address. (`Ipv4`, `Ipv6`, `ipv6/pool`, `ipv6/range`)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

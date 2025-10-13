@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetNodeBalancerFirewallInboundArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+        /// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s InboundPolicy if this is an inbound rule, or the OutboundPolicy if this is an outbound rule.
         /// </summary>
         [Input("action", required: true)]
         public string Action { get; set; } = null!;

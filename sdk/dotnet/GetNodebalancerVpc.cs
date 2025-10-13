@@ -12,7 +12,7 @@ namespace Pulumi.Linode
     public static class GetNodebalancerVpc
     {
         /// <summary>
-        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `ApiVersion` provider argument must be set to `V4beta`.
         /// 
         /// Provides information about a NodeBalancer VPC configuration.
         /// For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
@@ -42,7 +42,7 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodebalancerVpcResult>("linode:index/getNodebalancerVpc:getNodebalancerVpc", args ?? new GetNodebalancerVpcArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `ApiVersion` provider argument must be set to `V4beta`.
         /// 
         /// Provides information about a NodeBalancer VPC configuration.
         /// For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
@@ -72,7 +72,7 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancerVpcResult>("linode:index/getNodebalancerVpc:getNodebalancerVpc", args ?? new GetNodebalancerVpcInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
+        /// &gt; **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `ApiVersion` provider argument must be set to `V4beta`.
         /// 
         /// Provides information about a NodeBalancer VPC configuration.
         /// For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).

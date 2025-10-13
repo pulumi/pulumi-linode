@@ -45,14 +45,14 @@ public final class GetLkeClusterPoolNode extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The status of the node. (`ready`, `not_ready`)
+     * The status of the node. (`ready`, `notReady`)
      * 
      */
     @Import(name="status", required=true)
     private String status;
 
     /**
-     * @return The status of the node. (`ready`, `not_ready`)
+     * @return The status of the node. (`ready`, `notReady`)
      * 
      */
     public String status() {
@@ -108,7 +108,7 @@ public final class GetLkeClusterPoolNode extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of the node. (`ready`, `not_ready`)
+         * @param status The status of the node. (`ready`, `notReady`)
          * 
          * @return builder
          * 

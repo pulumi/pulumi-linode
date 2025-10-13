@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetObjectStorageEndpointsEndpoint {
     /**
-     * @return The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * @return The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     private String endpointType;
@@ -21,14 +21,14 @@ public final class GetObjectStorageEndpointsEndpoint {
      */
     private String region;
     /**
-     * @return Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven&#39;t assigned an endpoint for your user in this region with the specific endpoint type.
+     * @return Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven&#39;t assigned an endpoint for your user in this region with the specific endpoint type.
      * 
      */
     private String s3Endpoint;
 
     private GetObjectStorageEndpointsEndpoint() {}
     /**
-     * @return The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+     * @return The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      * 
      */
     public String endpointType() {
@@ -42,7 +42,7 @@ public final class GetObjectStorageEndpointsEndpoint {
         return this.region;
     }
     /**
-     * @return Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven&#39;t assigned an endpoint for your user in this region with the specific endpoint type.
+     * @return Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven&#39;t assigned an endpoint for your user in this region with the specific endpoint type.
      * 
      */
     public String s3Endpoint() {

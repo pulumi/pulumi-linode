@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class DatabasePostgresqlV2PrivateNetwork
     {
         /// <summary>
-        /// Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
+        /// Set to `True` to allow clients outside of the VPC to connect to the database using a public IP address.
         /// </summary>
         public readonly bool? PublicAccess;
         /// <summary>

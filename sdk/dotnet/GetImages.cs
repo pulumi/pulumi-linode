@@ -78,25 +78,25 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `created_by`
+        /// * `CreatedBy`
         /// 
-        /// * `deprecated`
+        /// * `Deprecated`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `is_public`
+        /// * `IsPublic`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `size`
+        /// * `Size`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `vendor`
+        /// * `Vendor`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("linode:index/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
@@ -168,25 +168,25 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `created_by`
+        /// * `CreatedBy`
         /// 
-        /// * `deprecated`
+        /// * `Deprecated`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `is_public`
+        /// * `IsPublic`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `size`
+        /// * `Size`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `vendor`
+        /// * `Vendor`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("linode:index/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
@@ -258,25 +258,25 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `created_by`
+        /// * `CreatedBy`
         /// 
-        /// * `deprecated`
+        /// * `Deprecated`
         /// 
-        /// * `description`
+        /// * `Description`
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `is_public`
+        /// * `IsPublic`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `size`
+        /// * `Size`
         /// 
-        /// * `status`
+        /// * `Status`
         /// 
-        /// * `vendor`
+        /// * `Vendor`
         /// 
-        /// * `tags`
+        /// * `Tags`
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("linode:index/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
@@ -302,15 +302,15 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+        /// If true, only the latest image will be returned. Images without a valid `Created` field are not included in the result.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -346,15 +346,15 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
+        /// If true, only the latest image will be returned. Images without a valid `Created` field are not included in the result.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

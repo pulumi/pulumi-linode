@@ -31,7 +31,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string> QuotaId { get; set; } = null!;
 
         /// <summary>
-        /// The maximum quantity of the `resource_metric` allowed by the quota.
+        /// The maximum quantity of the `ResourceMetric` allowed by the quota.
         /// </summary>
         [Input("quotaLimit", required: true)]
         public Input<int> QuotaLimit { get; set; } = null!;
@@ -49,7 +49,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string> ResourceMetric { get; set; } = null!;
 
         /// <summary>
-        /// The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
+        /// The S3 endpoint URL of the Object Storage, based on the `EndpointType` and `Region`.
         /// </summary>
         [Input("s3Endpoint", required: true)]
         public Input<string> S3Endpoint { get; set; } = null!;

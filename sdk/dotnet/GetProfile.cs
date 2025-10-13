@@ -89,7 +89,7 @@ namespace Pulumi.Linode
     public sealed class GetProfileResult
     {
         /// <summary>
-        /// The list of SSH Keys authorized to use Lish for this user. This value is ignored if lish_auth_method is 'disabled'.
+        /// The list of SSH Keys authorized to use Lish for this user. This value is ignored if LishAuthMethod is 'disabled'.
         /// </summary>
         public readonly ImmutableArray<string> AuthorizedKeys;
         /// <summary>

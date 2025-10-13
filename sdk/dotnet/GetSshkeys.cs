@@ -57,11 +57,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `ssh_key`
+        /// * `SshKey`
         /// </summary>
         public static Task<GetSshkeysResult> InvokeAsync(GetSshkeysArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshkeysResult>("linode:index/getSshkeys:getSshkeys", args ?? new GetSshkeysArgs(), options.WithDefaults());
@@ -112,11 +112,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `ssh_key`
+        /// * `SshKey`
         /// </summary>
         public static Output<GetSshkeysResult> Invoke(GetSshkeysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshkeysResult>("linode:index/getSshkeys:getSshkeys", args ?? new GetSshkeysInvokeArgs(), options.WithDefaults());
@@ -167,11 +167,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `ssh_key`
+        /// * `SshKey`
         /// </summary>
         public static Output<GetSshkeysResult> Invoke(GetSshkeysInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshkeysResult>("linode:index/getSshkeys:getSshkeys", args ?? new GetSshkeysInvokeArgs(), options.WithDefaults());
@@ -189,7 +189,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -225,7 +225,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

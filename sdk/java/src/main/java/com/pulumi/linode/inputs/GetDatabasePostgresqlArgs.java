@@ -39,14 +39,14 @@ public final class GetDatabasePostgresqlArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
+     * The ID of the PostgreSQL database. Mutually exclusive with `databaseId`.
      * 
      */
     @Import(name="id")
     private @Nullable Output<Integer> id;
 
     /**
-     * @return The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
+     * @return The ID of the PostgreSQL database. Mutually exclusive with `databaseId`.
      * 
      */
     public Optional<Output<Integer>> id() {
@@ -108,7 +108,7 @@ public final class GetDatabasePostgresqlArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param id The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
+         * @param id The ID of the PostgreSQL database. Mutually exclusive with `databaseId`.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GetDatabasePostgresqlArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param id The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
+         * @param id The ID of the PostgreSQL database. Mutually exclusive with `databaseId`.
          * 
          * @return builder
          * 

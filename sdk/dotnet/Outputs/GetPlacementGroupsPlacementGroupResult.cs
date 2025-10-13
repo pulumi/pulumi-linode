@@ -34,7 +34,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly Outputs.GetPlacementGroupsPlacementGroupMigrationsResult? Migrations;
         /// <summary>
-        /// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+        /// Whether Linodes must be able to become compliant during assignment. (Default `Strict`)
         /// </summary>
         public readonly string PlacementGroupPolicy;
         /// <summary>
