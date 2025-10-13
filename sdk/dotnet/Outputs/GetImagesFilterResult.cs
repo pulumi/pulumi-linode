@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetImagesFilterResult
     {
         /// <summary>
-        /// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        /// The method to match the field by. (`Exact`, `Regex`, `Substring`; default `Exact`)
         /// </summary>
         public readonly string? MatchBy;
         /// <summary>

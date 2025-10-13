@@ -88,8 +88,8 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The access key to authenticate with. If not specified with the resource, its value can be
-        /// * configured by `obj_access_key` in the provider configuration;
-        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+        /// * configured by `ObjAccessKey` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `ObjUseTempKeys` at provider-level is set.
         /// </summary>
         [Output("accessKey")]
         public Output<string?> AccessKey { get; private set; } = null!;
@@ -107,8 +107,8 @@ namespace Pulumi.Linode
         public Output<Outputs.ObjectStorageBucketCert?> Cert { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `Region` attribute.
+        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `Region` and `Cluster` is required for creating a bucket.
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Linode
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        /// The type of `S3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -150,31 +150,31 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.ObjectStorageBucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
 
         /// <summary>
-        /// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        /// The region of the Linode Object Storage Bucket. Exactly one of `Region` and `Cluster` is required for creating a bucket.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
+        /// The user's s3 endpoint URL, based on the `EndpointType` and `Region`.
         /// </summary>
         [Output("s3Endpoint")]
         public Output<string> S3Endpoint { get; private set; } = null!;
 
         /// <summary>
         /// The secret key to authenticate with. If not specified with the resource, its value can be
-        /// * configured by `obj_secret_key` in the provider configuration;
-        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+        /// * configured by `ObjSecretKey` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `ObjUseTempKeys` at provider-level is set.
         /// </summary>
         [Output("secretKey")]
         public Output<string?> SecretKey { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+        /// * `LifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `cert` - (Optional) The bucket's TLS/SSL certificate.
+        /// * `Cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Output("versioning")]
         public Output<bool> Versioning { get; private set; } = null!;
@@ -231,8 +231,8 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The access key to authenticate with. If not specified with the resource, its value can be
-        /// * configured by `obj_access_key` in the provider configuration;
-        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+        /// * configured by `ObjAccessKey` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `ObjUseTempKeys` at provider-level is set.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -250,8 +250,8 @@ namespace Pulumi.Linode
         public Input<Inputs.ObjectStorageBucketCertArgs>? Cert { get; set; }
 
         /// <summary>
-        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `Region` attribute.
+        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `Region` and `Cluster` is required for creating a bucket.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.Linode
         public Input<bool>? CorsEnabled { get; set; }
 
         /// <summary>
-        /// The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        /// The type of `S3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
@@ -287,13 +287,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        /// The region of the Linode Object Storage Bucket. Exactly one of `Region` and `Cluster` is required for creating a bucket.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
+        /// The user's s3 endpoint URL, based on the `EndpointType` and `Region`.
         /// </summary>
         [Input("s3Endpoint")]
         public Input<string>? S3Endpoint { get; set; }
@@ -303,8 +303,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The secret key to authenticate with. If not specified with the resource, its value can be
-        /// * configured by `obj_secret_key` in the provider configuration;
-        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+        /// * configured by `ObjSecretKey` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `ObjUseTempKeys` at provider-level is set.
         /// </summary>
         public Input<string>? SecretKey
         {
@@ -317,11 +317,11 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+        /// * `LifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `cert` - (Optional) The bucket's TLS/SSL certificate.
+        /// * `Cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }
@@ -336,8 +336,8 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The access key to authenticate with. If not specified with the resource, its value can be
-        /// * configured by `obj_access_key` in the provider configuration;
-        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+        /// * configured by `ObjAccessKey` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `ObjUseTempKeys` at provider-level is set.
         /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -355,8 +355,8 @@ namespace Pulumi.Linode
         public Input<Inputs.ObjectStorageBucketCertGetArgs>? Cert { get; set; }
 
         /// <summary>
-        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
+        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `Region` attribute.
+        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `Region` and `Cluster` is required for creating a bucket.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
@@ -374,7 +374,7 @@ namespace Pulumi.Linode
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        /// The type of `S3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
@@ -404,13 +404,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        /// The region of the Linode Object Storage Bucket. Exactly one of `Region` and `Cluster` is required for creating a bucket.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
+        /// The user's s3 endpoint URL, based on the `EndpointType` and `Region`.
         /// </summary>
         [Input("s3Endpoint")]
         public Input<string>? S3Endpoint { get; set; }
@@ -420,8 +420,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The secret key to authenticate with. If not specified with the resource, its value can be
-        /// * configured by `obj_secret_key` in the provider configuration;
-        /// * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
+        /// * configured by `ObjSecretKey` in the provider configuration;
+        /// * or, generated implicitly at apply-time if `ObjUseTempKeys` at provider-level is set.
         /// </summary>
         public Input<string>? SecretKey
         {
@@ -434,11 +434,11 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
+        /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+        /// * `LifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `cert` - (Optional) The bucket's TLS/SSL certificate.
+        /// * `Cert` - (Optional) The bucket's TLS/SSL certificate.
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }

@@ -22,7 +22,7 @@ public final class LkeNodePoolNode {
      */
     private Integer instanceId;
     /**
-     * @return The status of the node. (`ready`, `not_ready`)
+     * @return The status of the node. (`ready`, `notReady`)
      * 
      */
     private String status;
@@ -43,7 +43,7 @@ public final class LkeNodePoolNode {
         return this.instanceId;
     }
     /**
-     * @return The status of the node. (`ready`, `not_ready`)
+     * @return The status of the node. (`ready`, `notReady`)
      * 
      */
     public String status() {

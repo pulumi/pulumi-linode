@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FirewallInbound {
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      * 
      */
     private String action;
@@ -51,7 +51,7 @@ public final class FirewallInbound {
 
     private FirewallInbound() {}
     /**
-     * @return Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+     * @return Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
      * 
      */
     public String action() {

@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class ObjectStorageKeyRegionsDetail
     {
         /// <summary>
-        /// The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+        /// The type of `S3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         /// </summary>
         public readonly string EndpointType;
         /// <summary>

@@ -362,6 +362,17 @@ class Volume(pulumi.CustomResource):
 
         Volumes can also be attached using the Linode Instance config device map.
 
+        Volumes may also be cloned from existing volumes.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.Volume("foobar",
+            label="my-cloned-volume",
+            source_volume_id=12345)
+        ```
+
         ## Import
 
         Linodes Volumes can be imported using the Linode Volume `id`, e.g.
@@ -413,6 +424,17 @@ class Volume(pulumi.CustomResource):
         ```
 
         Volumes can also be attached using the Linode Instance config device map.
+
+        Volumes may also be cloned from existing volumes.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.Volume("foobar",
+            label="my-cloned-volume",
+            source_volume_id=12345)
+        ```
 
         ## Import
 

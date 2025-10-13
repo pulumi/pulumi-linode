@@ -207,14 +207,14 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+     * A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
      * 
      */
     @Import(name="sshKeys", required=true)
     private List<String> sshKeys;
 
     /**
-     * @return A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+     * @return A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
      * 
      */
     public List<String> sshKeys() {
@@ -582,7 +582,7 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sshKeys A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+         * @param sshKeys A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class GetUsersUser extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sshKeys A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorized_users field of a create Linode, rebuild Linode, or create Disk request.
+         * @param sshKeys A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
          * 
          * @return builder
          * 

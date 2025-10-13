@@ -24,7 +24,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The ID of the NodeBalancer to list VPC configurations for.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
         /// </summary>
         public readonly int NodebalancerId;
         /// <summary>

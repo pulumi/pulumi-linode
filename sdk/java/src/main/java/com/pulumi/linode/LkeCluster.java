@@ -162,7 +162,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * 
      * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
@@ -173,7 +173,7 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * 
      * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      * 
      */
     public Output<String> region() {
@@ -194,14 +194,14 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.stackType;
     }
     /**
-     * The status of the node. (`ready`, `not_ready`)
+     * The status of the node. (`ready`, `notReady`)
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the node. (`ready`, `not_ready`)
+     * @return The status of the node. (`ready`, `notReady`)
      * 
      */
     public Output<String> status() {

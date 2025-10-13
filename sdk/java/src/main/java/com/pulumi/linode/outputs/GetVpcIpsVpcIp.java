@@ -15,7 +15,7 @@ import java.util.Objects;
 @CustomType
 public final class GetVpcIpsVpcIp {
     /**
-     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
      * 
      */
     private Boolean active;
@@ -50,7 +50,7 @@ public final class GetVpcIpsVpcIp {
      */
     private List<GetVpcIpsVpcIpIpv6Address> ipv6Addresses;
     /**
-     * @return The is_public setting for the interface associated with this address.
+     * @return The isPublic setting for the interface associated with this address.
      * 
      */
     private Boolean ipv6IsPublic;
@@ -99,7 +99,7 @@ public final class GetVpcIpsVpcIp {
 
     private GetVpcIpsVpcIp() {}
     /**
-     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the config_id to which the interface belongs. Otherwise false.
+     * @return True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
      * 
      */
     public Boolean active() {
@@ -148,7 +148,7 @@ public final class GetVpcIpsVpcIp {
         return this.ipv6Addresses;
     }
     /**
-     * @return The is_public setting for the interface associated with this address.
+     * @return The isPublic setting for the interface associated with this address.
      * 
      */
     public Boolean ipv6IsPublic() {

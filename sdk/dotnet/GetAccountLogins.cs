@@ -59,11 +59,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `ip`
+        /// * `Ip`
         /// 
-        /// * `restricted`
+        /// * `Restricted`
         /// 
-        /// * `username`
+        /// * `Username`
         /// </summary>
         public static Task<GetAccountLoginsResult> InvokeAsync(GetAccountLoginsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountLoginsResult>("linode:index/getAccountLogins:getAccountLogins", args ?? new GetAccountLoginsArgs(), options.WithDefaults());
@@ -116,11 +116,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `ip`
+        /// * `Ip`
         /// 
-        /// * `restricted`
+        /// * `Restricted`
         /// 
-        /// * `username`
+        /// * `Username`
         /// </summary>
         public static Output<GetAccountLoginsResult> Invoke(GetAccountLoginsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountLoginsResult>("linode:index/getAccountLogins:getAccountLogins", args ?? new GetAccountLoginsInvokeArgs(), options.WithDefaults());
@@ -173,11 +173,11 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `ip`
+        /// * `Ip`
         /// 
-        /// * `restricted`
+        /// * `Restricted`
         /// 
-        /// * `username`
+        /// * `Username`
         /// </summary>
         public static Output<GetAccountLoginsResult> Invoke(GetAccountLoginsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountLoginsResult>("linode:index/getAccountLogins:getAccountLogins", args ?? new GetAccountLoginsInvokeArgs(), options.WithDefaults());

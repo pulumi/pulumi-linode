@@ -44,9 +44,9 @@ namespace Pulumi.Linode
         /// 
         /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
         /// 
-        /// The following attributes are exported under each entry of the `ipv6` field:
+        /// The following attributes are exported under each entry of the `Ipv6` field:
         /// 
-        /// * `range` - An IPv6 range allocated to this subnet in CIDR format.
+        /// * `Range` - An IPv6 range allocated to this subnet in CIDR format.
         /// </summary>
         public static Task<GetVpcSubnetResult> InvokeAsync(GetVpcSubnetArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcSubnetResult>("linode:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetArgs(), options.WithDefaults());
@@ -84,9 +84,9 @@ namespace Pulumi.Linode
         /// 
         /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
         /// 
-        /// The following attributes are exported under each entry of the `ipv6` field:
+        /// The following attributes are exported under each entry of the `Ipv6` field:
         /// 
-        /// * `range` - An IPv6 range allocated to this subnet in CIDR format.
+        /// * `Range` - An IPv6 range allocated to this subnet in CIDR format.
         /// </summary>
         public static Output<GetVpcSubnetResult> Invoke(GetVpcSubnetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcSubnetResult>("linode:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetInvokeArgs(), options.WithDefaults());
@@ -124,9 +124,9 @@ namespace Pulumi.Linode
         /// 
         /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
         /// 
-        /// The following attributes are exported under each entry of the `ipv6` field:
+        /// The following attributes are exported under each entry of the `Ipv6` field:
         /// 
-        /// * `range` - An IPv6 range allocated to this subnet in CIDR format.
+        /// * `Range` - An IPv6 range allocated to this subnet in CIDR format.
         /// </summary>
         public static Output<GetVpcSubnetResult> Invoke(GetVpcSubnetInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcSubnetResult>("linode:index/getVpcSubnet:getVpcSubnet", args ?? new GetVpcSubnetInvokeArgs(), options.WithDefaults());

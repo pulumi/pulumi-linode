@@ -111,22 +111,22 @@ public final class DatabasePostgresqlArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`; default `off`)
+     * The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
      * 
      * * Must be `local` or `off` for the `asynch` replication type.
      * 
-     * * Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
+     * * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
      * 
      */
     @Import(name="replicationCommitType")
     private @Nullable Output<String> replicationCommitType;
 
     /**
-     * @return The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`; default `off`)
+     * @return The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
      * 
      * * Must be `local` or `off` for the `asynch` replication type.
      * 
-     * * Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
+     * * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
      * 
      */
     public Optional<Output<String>> replicationCommitType() {
@@ -134,22 +134,22 @@ public final class DatabasePostgresqlArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+     * The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
      * 
      * * Must be `none` for a single node cluster.
      * 
-     * * Must be `asynch` or `semi_synch` for a high availability cluster.
+     * * Must be `asynch` or `semiSynch` for a high availability cluster.
      * 
      */
     @Import(name="replicationType")
     private @Nullable Output<String> replicationType;
 
     /**
-     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+     * @return The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
      * 
      * * Must be `none` for a single node cluster.
      * 
-     * * Must be `asynch` or `semi_synch` for a high availability cluster.
+     * * Must be `asynch` or `semiSynch` for a high availability cluster.
      * 
      */
     public Optional<Output<String>> replicationType() {
@@ -380,11 +380,11 @@ public final class DatabasePostgresqlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param replicationCommitType The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`; default `off`)
+         * @param replicationCommitType The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
          * 
          * * Must be `local` or `off` for the `asynch` replication type.
          * 
-         * * Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
+         * * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
          * 
          * @return builder
          * 
@@ -395,11 +395,11 @@ public final class DatabasePostgresqlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param replicationCommitType The synchronization level of the replicating server. (`on`, `local`, `remote_write`, `remote_apply`, `off`; default `off`)
+         * @param replicationCommitType The synchronization level of the replicating server. (`on`, `local`, `remoteWrite`, `remoteApply`, `off`; default `off`)
          * 
          * * Must be `local` or `off` for the `asynch` replication type.
          * 
-         * * Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
+         * * Must be `on`, `remoteWrite`, or `remoteApply` for the `semiSynch` replication type.
          * 
          * @return builder
          * 
@@ -409,11 +409,11 @@ public final class DatabasePostgresqlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+         * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
          * 
          * * Must be `none` for a single node cluster.
          * 
-         * * Must be `asynch` or `semi_synch` for a high availability cluster.
+         * * Must be `asynch` or `semiSynch` for a high availability cluster.
          * 
          * @return builder
          * 
@@ -424,11 +424,11 @@ public final class DatabasePostgresqlArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semi_synch`; default `none`)
+         * @param replicationType The replication method used for the Managed Database. (`none`, `asynch`, `semiSynch`; default `none`)
          * 
          * * Must be `none` for a single node cluster.
          * 
-         * * Must be `asynch` or `semi_synch` for a high availability cluster.
+         * * Must be `asynch` or `semiSynch` for a high availability cluster.
          * 
          * @return builder
          * 

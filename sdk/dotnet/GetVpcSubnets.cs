@@ -54,17 +54,17 @@ namespace Pulumi.Linode
         /// 
         /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
         /// 
-        /// The following attributes are exported under each entry of the `ipv6` field:
+        /// The following attributes are exported under each entry of the `Ipv6` field:
         /// 
-        /// * `range` - An IPv6 range allocated to this subnet in CIDR format.
+        /// * `Range` - An IPv6 range allocated to this subnet in CIDR format.
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `ipv4`
+        /// * `Ipv4`
         /// </summary>
         public static Task<GetVpcSubnetsResult> InvokeAsync(GetVpcSubnetsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcSubnetsResult>("linode:index/getVpcSubnets:getVpcSubnets", args ?? new GetVpcSubnetsArgs(), options.WithDefaults());
@@ -112,17 +112,17 @@ namespace Pulumi.Linode
         /// 
         /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
         /// 
-        /// The following attributes are exported under each entry of the `ipv6` field:
+        /// The following attributes are exported under each entry of the `Ipv6` field:
         /// 
-        /// * `range` - An IPv6 range allocated to this subnet in CIDR format.
+        /// * `Range` - An IPv6 range allocated to this subnet in CIDR format.
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `ipv4`
+        /// * `Ipv4`
         /// </summary>
         public static Output<GetVpcSubnetsResult> Invoke(GetVpcSubnetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcSubnetsResult>("linode:index/getVpcSubnets:getVpcSubnets", args ?? new GetVpcSubnetsInvokeArgs(), options.WithDefaults());
@@ -170,17 +170,17 @@ namespace Pulumi.Linode
         /// 
         /// &gt; **Limited Availability** IPv6 VPCs may not currently be available to all users.
         /// 
-        /// The following attributes are exported under each entry of the `ipv6` field:
+        /// The following attributes are exported under each entry of the `Ipv6` field:
         /// 
-        /// * `range` - An IPv6 range allocated to this subnet in CIDR format.
+        /// * `Range` - An IPv6 range allocated to this subnet in CIDR format.
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `id`
+        /// * `Id`
         /// 
-        /// * `label`
+        /// * `Label`
         /// 
-        /// * `ipv4`
+        /// * `Ipv4`
         /// </summary>
         public static Output<GetVpcSubnetsResult> Invoke(GetVpcSubnetsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcSubnetsResult>("linode:index/getVpcSubnets:getVpcSubnets", args ?? new GetVpcSubnetsInvokeArgs(), options.WithDefaults());
@@ -200,7 +200,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The id of the parent VPC for the list of VPCs.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
         /// </summary>
         [Input("vpcId", required: true)]
         public int VpcId { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The id of the parent VPC for the list of VPCs.
         /// 
-        /// * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+        /// * `Filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<int> VpcId { get; set; } = null!;
