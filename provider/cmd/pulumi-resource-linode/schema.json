@@ -1982,6 +1982,11 @@
                     "type": "string",
                     "description": "(Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.\n"
                 },
+                "ipv4RangeAutoAssign": {
+                    "type": "boolean",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\n(Optional, Write-Only) Enables the use of a larger\u003cspan pulumi-lang-nodejs=\" ipv4Range \" pulumi-lang-dotnet=\" Ipv4Range \" pulumi-lang-go=\" ipv4Range \" pulumi-lang-python=\" ipv4_range \" pulumi-lang-yaml=\" ipv4Range \" pulumi-lang-java=\" ipv4Range \"\u003e ipv4_range \u003c/span\u003esubnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.\n",
+                    "secret": true
+                },
                 "subnetId": {
                     "type": "integer",
                     "description": "(Required) The ID of a subnet to assign to this NodeBalancer.\n"
@@ -2464,6 +2469,11 @@
                 "allocatedRange": {
                     "type": "string",
                     "description": "The IPv6 range assigned to this VPC.\n"
+                },
+                "allocationClass": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nThe labeled IPv6 Inventory that the VPC Prefix should be allocated from.\n",
+                    "secret": true
                 },
                 "range": {
                     "type": "string",
