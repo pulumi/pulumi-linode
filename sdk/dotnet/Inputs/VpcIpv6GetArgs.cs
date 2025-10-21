@@ -18,6 +18,23 @@ namespace Pulumi.Linode.Inputs
         [Input("allocatedRange")]
         public Input<string>? AllocatedRange { get; set; }
 
+        [Input("allocationClass")]
+        private Input<string>? _allocationClass;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+        /// </summary>
+        public Input<string>? AllocationClass
+        {
+            get => _allocationClass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _allocationClass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The IPv6 range assigned to this VPC.
         /// </summary>

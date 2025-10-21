@@ -17,6 +17,12 @@ public final class VpcIpv6 {
      */
     private @Nullable String allocatedRange;
     /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+     * 
+     */
+    private @Nullable String allocationClass;
+    /**
      * @return The IPv6 range assigned to this VPC.
      * 
      */
@@ -29,6 +35,14 @@ public final class VpcIpv6 {
      */
     public Optional<String> allocatedRange() {
         return Optional.ofNullable(this.allocatedRange);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+     * 
+     */
+    public Optional<String> allocationClass() {
+        return Optional.ofNullable(this.allocationClass);
     }
     /**
      * @return The IPv6 range assigned to this VPC.
@@ -48,11 +62,13 @@ public final class VpcIpv6 {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String allocatedRange;
+        private @Nullable String allocationClass;
         private @Nullable String range;
         public Builder() {}
         public Builder(VpcIpv6 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedRange = defaults.allocatedRange;
+    	      this.allocationClass = defaults.allocationClass;
     	      this.range = defaults.range;
         }
 
@@ -60,6 +76,12 @@ public final class VpcIpv6 {
         public Builder allocatedRange(@Nullable String allocatedRange) {
 
             this.allocatedRange = allocatedRange;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allocationClass(@Nullable String allocationClass) {
+
+            this.allocationClass = allocationClass;
             return this;
         }
         @CustomType.Setter
@@ -71,6 +93,7 @@ public final class VpcIpv6 {
         public VpcIpv6 build() {
             final var _resultValue = new VpcIpv6();
             _resultValue.allocatedRange = allocatedRange;
+            _resultValue.allocationClass = allocationClass;
             _resultValue.range = range;
             return _resultValue;
         }

@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -33,6 +34,23 @@ public final class NodeBalancerVpcArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only) Enables the use of a larger ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer&#39;s backends.
+     * 
+     */
+    @Import(name="ipv4RangeAutoAssign")
+    private @Nullable Output<Boolean> ipv4RangeAutoAssign;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only) Enables the use of a larger ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer&#39;s backends.
+     * 
+     */
+    public Optional<Output<Boolean>> ipv4RangeAutoAssign() {
+        return Optional.ofNullable(this.ipv4RangeAutoAssign);
+    }
+
+    /**
      * (Required) The ID of a subnet to assign to this NodeBalancer.
      * 
      */
@@ -51,6 +69,7 @@ public final class NodeBalancerVpcArgs extends com.pulumi.resources.ResourceArgs
 
     private NodeBalancerVpcArgs(NodeBalancerVpcArgs $) {
         this.ipv4Range = $.ipv4Range;
+        this.ipv4RangeAutoAssign = $.ipv4RangeAutoAssign;
         this.subnetId = $.subnetId;
     }
 
@@ -91,6 +110,29 @@ public final class NodeBalancerVpcArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder ipv4Range(String ipv4Range) {
             return ipv4Range(Output.of(ipv4Range));
+        }
+
+        /**
+         * @param ipv4RangeAutoAssign **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only) Enables the use of a larger ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer&#39;s backends.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4RangeAutoAssign(@Nullable Output<Boolean> ipv4RangeAutoAssign) {
+            $.ipv4RangeAutoAssign = ipv4RangeAutoAssign;
+            return this;
+        }
+
+        /**
+         * @param ipv4RangeAutoAssign **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only) Enables the use of a larger ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer&#39;s backends.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4RangeAutoAssign(Boolean ipv4RangeAutoAssign) {
+            return ipv4RangeAutoAssign(Output.of(ipv4RangeAutoAssign));
         }
 
         /**

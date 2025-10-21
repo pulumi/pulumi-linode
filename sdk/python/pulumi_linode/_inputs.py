@@ -6210,6 +6210,11 @@ if not MYPY:
         """
         (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
         """
+        ipv4_range_auto_assign: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only) Enables the use of a larger ipv4_range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
+        """
 elif False:
     NodeBalancerVpcArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -6217,14 +6222,19 @@ elif False:
 class NodeBalancerVpcArgs:
     def __init__(__self__, *,
                  subnet_id: pulumi.Input[_builtins.int],
-                 ipv4_range: Optional[pulumi.Input[_builtins.str]] = None):
+                 ipv4_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv4_range_auto_assign: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.int] subnet_id: (Required) The ID of a subnet to assign to this NodeBalancer.
         :param pulumi.Input[_builtins.str] ipv4_range: (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+        :param pulumi.Input[_builtins.bool] ipv4_range_auto_assign: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only) Enables the use of a larger ipv4_range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
         """
         pulumi.set(__self__, "subnet_id", subnet_id)
         if ipv4_range is not None:
             pulumi.set(__self__, "ipv4_range", ipv4_range)
+        if ipv4_range_auto_assign is not None:
+            pulumi.set(__self__, "ipv4_range_auto_assign", ipv4_range_auto_assign)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
@@ -6249,6 +6259,19 @@ class NodeBalancerVpcArgs:
     @ipv4_range.setter
     def ipv4_range(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ipv4_range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4RangeAutoAssign")
+    def ipv4_range_auto_assign(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only) Enables the use of a larger ipv4_range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
+        """
+        return pulumi.get(self, "ipv4_range_auto_assign")
+
+    @ipv4_range_auto_assign.setter
+    def ipv4_range_auto_assign(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ipv4_range_auto_assign", value)
 
 
 if not MYPY:
@@ -7784,6 +7807,11 @@ if not MYPY:
         """
         The IPv6 range assigned to this VPC.
         """
+        allocation_class: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+        """
         range: NotRequired[pulumi.Input[_builtins.str]]
         """
         The IPv6 range assigned to this VPC.
@@ -7795,13 +7823,18 @@ elif False:
 class VpcIpv6Args:
     def __init__(__self__, *,
                  allocated_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 allocation_class: Optional[pulumi.Input[_builtins.str]] = None,
                  range: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] allocated_range: The IPv6 range assigned to this VPC.
+        :param pulumi.Input[_builtins.str] allocation_class: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
         :param pulumi.Input[_builtins.str] range: The IPv6 range assigned to this VPC.
         """
         if allocated_range is not None:
             pulumi.set(__self__, "allocated_range", allocated_range)
+        if allocation_class is not None:
+            pulumi.set(__self__, "allocation_class", allocation_class)
         if range is not None:
             pulumi.set(__self__, "range", range)
 
@@ -7816,6 +7849,19 @@ class VpcIpv6Args:
     @allocated_range.setter
     def allocated_range(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "allocated_range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allocationClass")
+    def allocation_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+        """
+        return pulumi.get(self, "allocation_class")
+
+    @allocation_class.setter
+    def allocation_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "allocation_class", value)
 
     @_builtins.property
     @pulumi.getter

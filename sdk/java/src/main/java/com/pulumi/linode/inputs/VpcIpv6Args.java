@@ -31,6 +31,23 @@ public final class VpcIpv6Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+     * 
+     */
+    @Import(name="allocationClass")
+    private @Nullable Output<String> allocationClass;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+     * 
+     */
+    public Optional<Output<String>> allocationClass() {
+        return Optional.ofNullable(this.allocationClass);
+    }
+
+    /**
      * The IPv6 range assigned to this VPC.
      * 
      */
@@ -49,6 +66,7 @@ public final class VpcIpv6Args extends com.pulumi.resources.ResourceArgs {
 
     private VpcIpv6Args(VpcIpv6Args $) {
         this.allocatedRange = $.allocatedRange;
+        this.allocationClass = $.allocationClass;
         this.range = $.range;
     }
 
@@ -89,6 +107,29 @@ public final class VpcIpv6Args extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allocatedRange(String allocatedRange) {
             return allocatedRange(Output.of(allocatedRange));
+        }
+
+        /**
+         * @param allocationClass **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocationClass(@Nullable Output<String> allocationClass) {
+            $.allocationClass = allocationClass;
+            return this;
+        }
+
+        /**
+         * @param allocationClass **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocationClass(String allocationClass) {
+            return allocationClass(Output.of(allocationClass));
         }
 
         /**
