@@ -18,6 +18,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? AllocatedRange;
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+        /// </summary>
+        public readonly string? AllocationClass;
+        /// <summary>
         /// The IPv6 range assigned to this VPC.
         /// </summary>
         public readonly string? Range;
@@ -26,9 +31,12 @@ namespace Pulumi.Linode.Outputs
         private VpcIpv6(
             string? allocatedRange,
 
+            string? allocationClass,
+
             string? range)
         {
             AllocatedRange = allocatedRange;
+            AllocationClass = allocationClass;
             Range = range;
         }
     }

@@ -18,6 +18,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? Ipv4Range;
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only) Enables the use of a larger Ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
+        /// </summary>
+        public readonly bool? Ipv4RangeAutoAssign;
+        /// <summary>
         /// (Required) The ID of a subnet to assign to this NodeBalancer.
         /// </summary>
         public readonly int SubnetId;
@@ -26,9 +31,12 @@ namespace Pulumi.Linode.Outputs
         private NodeBalancerVpc(
             string? ipv4Range,
 
+            bool? ipv4RangeAutoAssign,
+
             int subnetId)
         {
             Ipv4Range = ipv4Range;
+            Ipv4RangeAutoAssign = ipv4RangeAutoAssign;
             SubnetId = subnetId;
         }
     }

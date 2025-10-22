@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -19,6 +20,12 @@ public final class NodeBalancerVpc {
      */
     private @Nullable String ipv4Range;
     /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only) Enables the use of a larger ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer&#39;s backends.
+     * 
+     */
+    private @Nullable Boolean ipv4RangeAutoAssign;
+    /**
      * @return (Required) The ID of a subnet to assign to this NodeBalancer.
      * 
      */
@@ -31,6 +38,14 @@ public final class NodeBalancerVpc {
      */
     public Optional<String> ipv4Range() {
         return Optional.ofNullable(this.ipv4Range);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only) Enables the use of a larger ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer&#39;s backends.
+     * 
+     */
+    public Optional<Boolean> ipv4RangeAutoAssign() {
+        return Optional.ofNullable(this.ipv4RangeAutoAssign);
     }
     /**
      * @return (Required) The ID of a subnet to assign to this NodeBalancer.
@@ -50,11 +65,13 @@ public final class NodeBalancerVpc {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipv4Range;
+        private @Nullable Boolean ipv4RangeAutoAssign;
         private Integer subnetId;
         public Builder() {}
         public Builder(NodeBalancerVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipv4Range = defaults.ipv4Range;
+    	      this.ipv4RangeAutoAssign = defaults.ipv4RangeAutoAssign;
     	      this.subnetId = defaults.subnetId;
         }
 
@@ -62,6 +79,12 @@ public final class NodeBalancerVpc {
         public Builder ipv4Range(@Nullable String ipv4Range) {
 
             this.ipv4Range = ipv4Range;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv4RangeAutoAssign(@Nullable Boolean ipv4RangeAutoAssign) {
+
+            this.ipv4RangeAutoAssign = ipv4RangeAutoAssign;
             return this;
         }
         @CustomType.Setter
@@ -75,6 +98,7 @@ public final class NodeBalancerVpc {
         public NodeBalancerVpc build() {
             final var _resultValue = new NodeBalancerVpc();
             _resultValue.ipv4Range = ipv4Range;
+            _resultValue.ipv4RangeAutoAssign = ipv4RangeAutoAssign;
             _resultValue.subnetId = subnetId;
             return _resultValue;
         }

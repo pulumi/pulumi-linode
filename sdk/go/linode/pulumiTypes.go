@@ -9853,6 +9853,9 @@ func (o NodeBalancerTransferArrayOutput) Index(i pulumi.IntInput) NodeBalancerTr
 type NodeBalancerVpc struct {
 	// (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
 	Ipv4Range *string `pulumi:"ipv4Range"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only) Enables the use of a larger ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
+	Ipv4RangeAutoAssign *bool `pulumi:"ipv4RangeAutoAssign"`
 	// (Required) The ID of a subnet to assign to this NodeBalancer.
 	SubnetId int `pulumi:"subnetId"`
 }
@@ -9871,6 +9874,9 @@ type NodeBalancerVpcInput interface {
 type NodeBalancerVpcArgs struct {
 	// (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
 	Ipv4Range pulumi.StringPtrInput `pulumi:"ipv4Range"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only) Enables the use of a larger ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
+	Ipv4RangeAutoAssign pulumi.BoolPtrInput `pulumi:"ipv4RangeAutoAssign"`
 	// (Required) The ID of a subnet to assign to this NodeBalancer.
 	SubnetId pulumi.IntInput `pulumi:"subnetId"`
 }
@@ -9929,6 +9935,12 @@ func (o NodeBalancerVpcOutput) ToNodeBalancerVpcOutputWithContext(ctx context.Co
 // (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
 func (o NodeBalancerVpcOutput) Ipv4Range() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeBalancerVpc) *string { return v.Ipv4Range }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only) Enables the use of a larger ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
+func (o NodeBalancerVpcOutput) Ipv4RangeAutoAssign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeBalancerVpc) *bool { return v.Ipv4RangeAutoAssign }).(pulumi.BoolPtrOutput)
 }
 
 // (Required) The ID of a subnet to assign to this NodeBalancer.
@@ -12834,6 +12846,9 @@ func (o VolumeTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 type VpcIpv6 struct {
 	// The IPv6 range assigned to this VPC.
 	AllocatedRange *string `pulumi:"allocatedRange"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+	AllocationClass *string `pulumi:"allocationClass"`
 	// The IPv6 range assigned to this VPC.
 	Range *string `pulumi:"range"`
 }
@@ -12852,6 +12867,9 @@ type VpcIpv6Input interface {
 type VpcIpv6Args struct {
 	// The IPv6 range assigned to this VPC.
 	AllocatedRange pulumi.StringPtrInput `pulumi:"allocatedRange"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+	AllocationClass pulumi.StringPtrInput `pulumi:"allocationClass"`
 	// The IPv6 range assigned to this VPC.
 	Range pulumi.StringPtrInput `pulumi:"range"`
 }
@@ -12910,6 +12928,12 @@ func (o VpcIpv6Output) ToVpcIpv6OutputWithContext(ctx context.Context) VpcIpv6Ou
 // The IPv6 range assigned to this VPC.
 func (o VpcIpv6Output) AllocatedRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpcIpv6) *string { return v.AllocatedRange }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+func (o VpcIpv6Output) AllocationClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcIpv6) *string { return v.AllocationClass }).(pulumi.StringPtrOutput)
 }
 
 // The IPv6 range assigned to this VPC.
