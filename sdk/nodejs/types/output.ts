@@ -6036,6 +6036,11 @@ export interface NodeBalancerVpc {
      */
     ipv4Range: string;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only) Enables the use of a larger ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
+     */
+    ipv4RangeAutoAssign?: boolean;
+    /**
      * (Required) The ID of a subnet to assign to this NodeBalancer.
      */
     subnetId: number;
@@ -6370,6 +6375,11 @@ export interface VpcIpv6 {
      * The IPv6 range assigned to this VPC.
      */
     allocatedRange: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+     */
+    allocationClass?: string;
     /**
      * The IPv6 range assigned to this VPC.
      */

@@ -18,6 +18,23 @@ namespace Pulumi.Linode.Inputs
         [Input("ipv4Range")]
         public Input<string>? Ipv4Range { get; set; }
 
+        [Input("ipv4RangeAutoAssign")]
+        private Input<bool>? _ipv4RangeAutoAssign;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only) Enables the use of a larger Ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
+        /// </summary>
+        public Input<bool>? Ipv4RangeAutoAssign
+        {
+            get => _ipv4RangeAutoAssign;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _ipv4RangeAutoAssign = Output.Tuple<Input<bool>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// (Required) The ID of a subnet to assign to this NodeBalancer.
         /// </summary>
