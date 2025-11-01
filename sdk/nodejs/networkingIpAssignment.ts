@@ -13,6 +13,25 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.NetworkingIpAssignment("foobar", {
+ *     region: "us-mia",
+ *     assignments: [
+ *         {
+ *             address: reservedIp1.address,
+ *             linodeId: terraform_web1.id,
+ *         },
+ *         {
+ *             address: reservedIp2.address,
+ *             linodeId: terraform_web2.id,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Network IP assignments cannot be imported.

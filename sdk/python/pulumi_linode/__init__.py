@@ -16,6 +16,7 @@ from .domain import *
 from .domain_record import *
 from .firewall import *
 from .firewall_device import *
+from .firewall_settings import *
 from .get_account import *
 from .get_account_availabilities import *
 from .get_account_availability import *
@@ -39,6 +40,9 @@ from .get_domain_record import *
 from .get_domain_zonefile import *
 from .get_domains import *
 from .get_firewall import *
+from .get_firewall_settings import *
+from .get_firewall_template import *
+from .get_firewall_templates import *
 from .get_firewalls import *
 from .get_image import *
 from .get_images import *
@@ -99,6 +103,7 @@ from .instance_config import *
 from .instance_disk import *
 from .instance_ip import *
 from .instance_shared_ips import *
+from .interface import *
 from .ipv6_range import *
 from .lke_cluster import *
 from .lke_node_pool import *
@@ -217,6 +222,14 @@ _utilities.register(
  },
  {
   "pkg": "linode",
+  "mod": "index/firewallSettings",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/firewallSettings:FirewallSettings": "FirewallSettings"
+  }
+ },
+ {
+  "pkg": "linode",
   "mod": "index/image",
   "fqn": "pulumi_linode",
   "classes": {
@@ -261,6 +274,14 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/instanceSharedIps:InstanceSharedIps": "InstanceSharedIps"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/interface",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/interface:Interface": "Interface"
   }
  },
  {

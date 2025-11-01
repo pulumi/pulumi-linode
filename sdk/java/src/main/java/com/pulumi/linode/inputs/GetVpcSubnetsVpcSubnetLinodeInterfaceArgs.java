@@ -15,22 +15,45 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterfaceArgs extends com.pulumi.
 
     public static final GetVpcSubnetsVpcSubnetLinodeInterfaceArgs Empty = new GetVpcSubnetsVpcSubnetLinodeInterfaceArgs();
 
+    /**
+     * Whether the Interface is actively in use.
+     * 
+     */
     @Import(name="active", required=true)
     private Output<Boolean> active;
 
+    /**
+     * @return Whether the Interface is actively in use.
+     * 
+     */
     public Output<Boolean> active() {
         return this.active;
     }
 
     /**
-     * The unique id of the VPC subnet.
+     * ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     * 
+     */
+    @Import(name="configId", required=true)
+    private Output<Integer> configId;
+
+    /**
+     * @return ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     * 
+     */
+    public Output<Integer> configId() {
+        return this.configId;
+    }
+
+    /**
+     * ID of the interface.
      * 
      */
     @Import(name="id", required=true)
     private Output<Integer> id;
 
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of the interface.
      * 
      */
     public Output<Integer> id() {
@@ -41,6 +64,7 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterfaceArgs extends com.pulumi.
 
     private GetVpcSubnetsVpcSubnetLinodeInterfaceArgs(GetVpcSubnetsVpcSubnetLinodeInterfaceArgs $) {
         this.active = $.active;
+        this.configId = $.configId;
         this.id = $.id;
     }
 
@@ -62,17 +86,50 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterfaceArgs extends com.pulumi.
             $ = new GetVpcSubnetsVpcSubnetLinodeInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param active Whether the Interface is actively in use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder active(Output<Boolean> active) {
             $.active = active;
             return this;
         }
 
+        /**
+         * @param active Whether the Interface is actively in use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder active(Boolean active) {
             return active(Output.of(active));
         }
 
         /**
-         * @param id The unique id of the VPC subnet.
+         * @param configId ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configId(Output<Integer> configId) {
+            $.configId = configId;
+            return this;
+        }
+
+        /**
+         * @param configId ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configId(Integer configId) {
+            return configId(Output.of(configId));
+        }
+
+        /**
+         * @param id ID of the interface.
          * 
          * @return builder
          * 
@@ -83,7 +140,7 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterfaceArgs extends com.pulumi.
         }
 
         /**
-         * @param id The unique id of the VPC subnet.
+         * @param id ID of the interface.
          * 
          * @return builder
          * 
@@ -95,6 +152,9 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterfaceArgs extends com.pulumi.
         public GetVpcSubnetsVpcSubnetLinodeInterfaceArgs build() {
             if ($.active == null) {
                 throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetLinodeInterfaceArgs", "active");
+            }
+            if ($.configId == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetLinodeInterfaceArgs", "configId");
             }
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetLinodeInterfaceArgs", "id");

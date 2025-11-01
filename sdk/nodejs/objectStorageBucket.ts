@@ -107,7 +107,7 @@ export class ObjectStorageBucket extends pulumi.CustomResource {
      */
     declare public readonly cluster: pulumi.Output<string>;
     /**
-     * If true, the bucket will have CORS enabled for all origins.
+     * If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
      */
     declare public readonly corsEnabled: pulumi.Output<boolean>;
     /**
@@ -235,7 +235,7 @@ export interface ObjectStorageBucketState {
      */
     cluster?: pulumi.Input<string>;
     /**
-     * If true, the bucket will have CORS enabled for all origins.
+     * If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
      */
     corsEnabled?: pulumi.Input<boolean>;
     /**
@@ -310,7 +310,7 @@ export interface ObjectStorageBucketArgs {
      */
     cluster?: pulumi.Input<string>;
     /**
-     * If true, the bucket will have CORS enabled for all origins.
+     * If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
      */
     corsEnabled?: pulumi.Input<boolean>;
     /**

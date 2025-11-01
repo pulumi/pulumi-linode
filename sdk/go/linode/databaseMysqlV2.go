@@ -82,6 +82,43 @@ import (
 //
 // Creating a complex MySQL database:
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("mysql/8"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
+//				AllowLists: pulumi.StringArray{
+//					pulumi.String("10.0.0.3/32"),
+//				},
+//				ClusterSize: pulumi.Int(3),
+//				Updates: &linode.DatabaseMysqlV2UpdatesArgs{
+//					Duration:  pulumi.Int(4),
+//					Frequency: pulumi.String("weekly"),
+//					HourOfDay: pulumi.Int(22),
+//					DayOfWeek: pulumi.Int(3),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // Creating a MySQL database with engine config fields specified:
 //
 // ```go
@@ -170,6 +207,38 @@ import (
 // ```
 //
 // Creating a MySQL database hidden behind a VPC:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("mysql/16"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
+//				PrivateNetwork: &linode.DatabaseMysqlV2PrivateNetworkArgs{
+//					VpcId:        pulumi.Int(123),
+//					SubnetId:     pulumi.Int(456),
+//					PublicAccess: pulumi.Bool(false),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
 //

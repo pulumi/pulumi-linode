@@ -75,6 +75,21 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+     * 
+     */
+    @Import(name="interfaces")
+    private @Nullable Output<List<Integer>> interfaces;
+
+    /**
+     * @return A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+     * 
+     */
+    public Optional<Output<List<Integer>>> interfaces() {
+        return Optional.ofNullable(this.interfaces);
+    }
+
+    /**
      * This Firewall&#39;s unique label.
      * 
      */
@@ -170,6 +185,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
         this.disabled = $.disabled;
         this.inboundPolicy = $.inboundPolicy;
         this.inbounds = $.inbounds;
+        this.interfaces = $.interfaces;
         this.label = $.label;
         this.linodes = $.linodes;
         this.nodebalancers = $.nodebalancers;
@@ -275,6 +291,37 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder inbounds(FirewallInboundArgs... inbounds) {
             return inbounds(List.of(inbounds));
+        }
+
+        /**
+         * @param interfaces A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaces(@Nullable Output<List<Integer>> interfaces) {
+            $.interfaces = interfaces;
+            return this;
+        }
+
+        /**
+         * @param interfaces A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaces(List<Integer> interfaces) {
+            return interfaces(Output.of(interfaces));
+        }
+
+        /**
+         * @param interfaces A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaces(Integer... interfaces) {
+            return interfaces(List.of(interfaces));
         }
 
         /**

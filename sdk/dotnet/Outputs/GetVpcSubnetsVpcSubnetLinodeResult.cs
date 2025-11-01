@@ -14,9 +14,12 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetVpcSubnetsVpcSubnetLinodeResult
     {
         /// <summary>
-        /// The unique id of the VPC subnet.
+        /// ID of the interface.
         /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// A list of networking interfaces objects.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetLinodeInterfaceResult> Interfaces;
 
         [OutputConstructor]

@@ -65,6 +65,37 @@ namespace Pulumi.Linode
     /// 
     /// Creating a complex PostgreSQL database:
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
+    ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "postgresql/16",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
+    ///         AllowLists = new[]
+    ///         {
+    ///             "10.0.0.3/32",
+    ///         },
+    ///         ClusterSize = 3,
+    ///         Updates = new Linode.Inputs.DatabasePostgresqlV2UpdatesArgs
+    ///         {
+    ///             Duration = 4,
+    ///             Frequency = "weekly",
+    ///             HourOfDay = 22,
+    ///             DayOfWeek = 2,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// Creating a PostgreSQL database with engine config fields specified:
     /// 
     /// ```csharp
@@ -156,6 +187,31 @@ namespace Pulumi.Linode
     /// ```
     /// 
     /// Creating a PostgreSQL database hidden behind a VPC:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
+    ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "postgresql/16",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
+    ///         PrivateNetwork = new Linode.Inputs.DatabasePostgresqlV2PrivateNetworkArgs
+    ///         {
+    ///             VpcId = 123,
+    ///             SubnetId = 456,
+    ///             PublicAccess = false,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// &gt; **_NOTE:_** The name of the default database in the returned database cluster is `Defaultdb`.
     /// 

@@ -16,23 +16,31 @@ public final class GetVpcSubnetsVpcSubnetLinode extends com.pulumi.resources.Inv
     public static final GetVpcSubnetsVpcSubnetLinode Empty = new GetVpcSubnetsVpcSubnetLinode();
 
     /**
-     * The unique id of the VPC subnet.
+     * ID of the interface.
      * 
      */
     @Import(name="id", required=true)
     private Integer id;
 
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of the interface.
      * 
      */
     public Integer id() {
         return this.id;
     }
 
+    /**
+     * A list of networking interfaces objects.
+     * 
+     */
     @Import(name="interfaces", required=true)
     private List<GetVpcSubnetsVpcSubnetLinodeInterface> interfaces;
 
+    /**
+     * @return A list of networking interfaces objects.
+     * 
+     */
     public List<GetVpcSubnetsVpcSubnetLinodeInterface> interfaces() {
         return this.interfaces;
     }
@@ -63,7 +71,7 @@ public final class GetVpcSubnetsVpcSubnetLinode extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param id The unique id of the VPC subnet.
+         * @param id ID of the interface.
          * 
          * @return builder
          * 
@@ -73,11 +81,23 @@ public final class GetVpcSubnetsVpcSubnetLinode extends com.pulumi.resources.Inv
             return this;
         }
 
+        /**
+         * @param interfaces A list of networking interfaces objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaces(List<GetVpcSubnetsVpcSubnetLinodeInterface> interfaces) {
             $.interfaces = interfaces;
             return this;
         }
 
+        /**
+         * @param interfaces A list of networking interfaces objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaces(GetVpcSubnetsVpcSubnetLinodeInterface... interfaces) {
             return interfaces(List.of(interfaces));
         }

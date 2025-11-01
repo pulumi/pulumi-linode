@@ -89,7 +89,7 @@ type GetVpcSubnetsArgs struct {
 // A collection of values returned by getVpcSubnets.
 type GetVpcSubnetsResult struct {
 	Filters []GetVpcSubnetsFilter `pulumi:"filters"`
-	// The unique id of the VPC subnet.
+	// ID of the interface.
 	Id         string                   `pulumi:"id"`
 	VpcId      int                      `pulumi:"vpcId"`
 	VpcSubnets []GetVpcSubnetsVpcSubnet `pulumi:"vpcSubnets"`
@@ -137,7 +137,7 @@ func (o GetVpcSubnetsResultOutput) Filters() GetVpcSubnetsFilterArrayOutput {
 	return o.ApplyT(func(v GetVpcSubnetsResult) []GetVpcSubnetsFilter { return v.Filters }).(GetVpcSubnetsFilterArrayOutput)
 }
 
-// The unique id of the VPC subnet.
+// ID of the interface.
 func (o GetVpcSubnetsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcSubnetsResult) string { return v.Id }).(pulumi.StringOutput)
 }

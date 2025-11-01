@@ -48,6 +48,21 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The ID of the interface this address is assigned to.
+     * 
+     */
+    @Import(name="interfaceId", required=true)
+    private Output<Integer> interfaceId;
+
+    /**
+     * @return The ID of the interface this address is assigned to.
+     * 
+     */
+    public Output<Integer> interfaceId() {
+        return this.interfaceId;
+    }
+
+    /**
      * The ID of the Linode this address currently belongs to.
      * 
      */
@@ -187,6 +202,7 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
     private GetNetworkingIpsIpAddressArgs(GetNetworkingIpsIpAddressArgs $) {
         this.address = $.address;
         this.gateway = $.gateway;
+        this.interfaceId = $.interfaceId;
         this.linodeId = $.linodeId;
         this.prefix = $.prefix;
         this.public_ = $.public_;
@@ -256,6 +272,27 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
          */
         public Builder gateway(String gateway) {
             return gateway(Output.of(gateway));
+        }
+
+        /**
+         * @param interfaceId The ID of the interface this address is assigned to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaceId(Output<Integer> interfaceId) {
+            $.interfaceId = interfaceId;
+            return this;
+        }
+
+        /**
+         * @param interfaceId The ID of the interface this address is assigned to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaceId(Integer interfaceId) {
+            return interfaceId(Output.of(interfaceId));
         }
 
         /**
@@ -453,6 +490,9 @@ public final class GetNetworkingIpsIpAddressArgs extends com.pulumi.resources.Re
             }
             if ($.gateway == null) {
                 throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddressArgs", "gateway");
+            }
+            if ($.interfaceId == null) {
+                throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddressArgs", "interfaceId");
             }
             if ($.linodeId == null) {
                 throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddressArgs", "linodeId");

@@ -14,22 +14,45 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterface extends com.pulumi.reso
 
     public static final GetVpcSubnetsVpcSubnetLinodeInterface Empty = new GetVpcSubnetsVpcSubnetLinodeInterface();
 
+    /**
+     * Whether the Interface is actively in use.
+     * 
+     */
     @Import(name="active", required=true)
     private Boolean active;
 
+    /**
+     * @return Whether the Interface is actively in use.
+     * 
+     */
     public Boolean active() {
         return this.active;
     }
 
     /**
-     * The unique id of the VPC subnet.
+     * ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     * 
+     */
+    @Import(name="configId", required=true)
+    private Integer configId;
+
+    /**
+     * @return ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     * 
+     */
+    public Integer configId() {
+        return this.configId;
+    }
+
+    /**
+     * ID of the interface.
      * 
      */
     @Import(name="id", required=true)
     private Integer id;
 
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of the interface.
      * 
      */
     public Integer id() {
@@ -40,6 +63,7 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterface extends com.pulumi.reso
 
     private GetVpcSubnetsVpcSubnetLinodeInterface(GetVpcSubnetsVpcSubnetLinodeInterface $) {
         this.active = $.active;
+        this.configId = $.configId;
         this.id = $.id;
     }
 
@@ -61,13 +85,30 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterface extends com.pulumi.reso
             $ = new GetVpcSubnetsVpcSubnetLinodeInterface(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param active Whether the Interface is actively in use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder active(Boolean active) {
             $.active = active;
             return this;
         }
 
         /**
-         * @param id The unique id of the VPC subnet.
+         * @param configId ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configId(Integer configId) {
+            $.configId = configId;
+            return this;
+        }
+
+        /**
+         * @param id ID of the interface.
          * 
          * @return builder
          * 
@@ -80,6 +121,9 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterface extends com.pulumi.reso
         public GetVpcSubnetsVpcSubnetLinodeInterface build() {
             if ($.active == null) {
                 throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetLinodeInterface", "active");
+            }
+            if ($.configId == null) {
+                throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetLinodeInterface", "configId");
             }
             if ($.id == null) {
                 throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetLinodeInterface", "id");

@@ -32,7 +32,7 @@ class VolumeArgs:
         """
         The set of arguments for constructing a Volume resource.
         :param pulumi.Input[_builtins.str] label: The label of the Linode Volume
-        :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         :param pulumi.Input[_builtins.int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[_builtins.str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
                
@@ -73,7 +73,7 @@ class VolumeArgs:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         """
         return pulumi.get(self, "encryption")
 
@@ -168,7 +168,7 @@ class _VolumeState:
                  timeouts: Optional[pulumi.Input['VolumeTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering Volume resources.
-        :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         :param pulumi.Input[_builtins.str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         :param pulumi.Input[_builtins.str] label: The label of the Linode Volume
         :param pulumi.Input[_builtins.int] linode_id: The ID of a Linode Instance where the Volume should be attached.
@@ -205,7 +205,7 @@ class _VolumeState:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         """
         return pulumi.get(self, "encryption")
 
@@ -383,7 +383,7 @@ class Volume(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         :param pulumi.Input[_builtins.str] label: The label of the Linode Volume
         :param pulumi.Input[_builtins.int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[_builtins.str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
@@ -515,7 +515,7 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         :param pulumi.Input[_builtins.str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         :param pulumi.Input[_builtins.str] label: The label of the Linode Volume
         :param pulumi.Input[_builtins.int] linode_id: The ID of a Linode Instance where the Volume should be attached.
@@ -547,7 +547,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def encryption(self) -> pulumi.Output[_builtins.str]:
         """
-        Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         """
         return pulumi.get(self, "encryption")
 

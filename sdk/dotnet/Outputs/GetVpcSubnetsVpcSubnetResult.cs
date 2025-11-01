@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// The unique id of the VPC subnet.
+        /// ID of the interface.
         /// </summary>
         public readonly int Id;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// A list of Linode IDs that added to this subnet.
+        /// A list of Linodes added to this subnet.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetLinodeResult> Linodes;
         /// <summary>

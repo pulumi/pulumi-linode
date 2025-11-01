@@ -61,6 +61,10 @@ export interface GetFirewallResult {
     readonly inboundPolicy: string;
     readonly inbounds: outputs.GetFirewallInbound[];
     /**
+     * The IDs of Linode interfaces assigned to this Firewall.
+     */
+    readonly interfaces: number[];
+    /**
      * The label of the underlying entity this device references.
      */
     readonly label: string;

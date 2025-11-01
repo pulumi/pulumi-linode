@@ -24,6 +24,11 @@ public final class GetInstanceNetworkingIpv4Private {
      */
     private String gateway;
     /**
+     * @return The globally general API entity identifier for the Linode interface.
+     * 
+     */
+    private Integer interfaceId;
+    /**
      * @return The Linode instance&#39;s ID.
      * 
      */
@@ -78,6 +83,13 @@ public final class GetInstanceNetworkingIpv4Private {
      */
     public String gateway() {
         return this.gateway;
+    }
+    /**
+     * @return The globally general API entity identifier for the Linode interface.
+     * 
+     */
+    public Integer interfaceId() {
+        return this.interfaceId;
     }
     /**
      * @return The Linode instance&#39;s ID.
@@ -147,6 +159,7 @@ public final class GetInstanceNetworkingIpv4Private {
     public static final class Builder {
         private String address;
         private String gateway;
+        private Integer interfaceId;
         private Integer linodeId;
         private Integer prefix;
         private Boolean public_;
@@ -160,6 +173,7 @@ public final class GetInstanceNetworkingIpv4Private {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
     	      this.gateway = defaults.gateway;
+    	      this.interfaceId = defaults.interfaceId;
     	      this.linodeId = defaults.linodeId;
     	      this.prefix = defaults.prefix;
     	      this.public_ = defaults.public_;
@@ -184,6 +198,14 @@ public final class GetInstanceNetworkingIpv4Private {
               throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Private", "gateway");
             }
             this.gateway = gateway;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder interfaceId(Integer interfaceId) {
+            if (interfaceId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Private", "interfaceId");
+            }
+            this.interfaceId = interfaceId;
             return this;
         }
         @CustomType.Setter
@@ -254,6 +276,7 @@ public final class GetInstanceNetworkingIpv4Private {
             final var _resultValue = new GetInstanceNetworkingIpv4Private();
             _resultValue.address = address;
             _resultValue.gateway = gateway;
+            _resultValue.interfaceId = interfaceId;
             _resultValue.linodeId = linodeId;
             _resultValue.prefix = prefix;
             _resultValue.public_ = public_;

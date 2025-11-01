@@ -16,6 +16,35 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.NetworkingIpAssignment("foobar", new()
+    ///     {
+    ///         Region = "us-mia",
+    ///         Assignments = new[]
+    ///         {
+    ///             new Linode.Inputs.NetworkingIpAssignmentAssignmentArgs
+    ///             {
+    ///                 Address = reservedIp1.Address,
+    ///                 LinodeId = terraform_web1.Id,
+    ///             },
+    ///             new Linode.Inputs.NetworkingIpAssignmentAssignmentArgs
+    ///             {
+    ///                 Address = reservedIp2.Address,
+    ///                 LinodeId = terraform_web2.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Network IP assignments cannot be imported.

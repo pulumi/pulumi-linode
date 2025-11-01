@@ -76,6 +76,11 @@ public final class GetInstancesInstance {
      */
     private String image;
     /**
+     * @return The interface type for this Instance. (`linode`, `legacyConfig`)
+     * 
+     */
+    private String interfaceGeneration;
+    /**
      * @return (Deprecated) A string containing the Linode&#39;s public IP address.
      * 
      */
@@ -225,6 +230,13 @@ public final class GetInstancesInstance {
         return this.image;
     }
     /**
+     * @return The interface type for this Instance. (`linode`, `legacyConfig`)
+     * 
+     */
+    public String interfaceGeneration() {
+        return this.interfaceGeneration;
+    }
+    /**
      * @return (Deprecated) A string containing the Linode&#39;s public IP address.
      * 
      */
@@ -343,6 +355,7 @@ public final class GetInstancesInstance {
         private String hostUuid;
         private Integer id;
         private String image;
+        private String interfaceGeneration;
         private String ipAddress;
         private List<String> ipv4s;
         private String ipv6;
@@ -373,6 +386,7 @@ public final class GetInstancesInstance {
     	      this.hostUuid = defaults.hostUuid;
     	      this.id = defaults.id;
     	      this.image = defaults.image;
+    	      this.interfaceGeneration = defaults.interfaceGeneration;
     	      this.ipAddress = defaults.ipAddress;
     	      this.ipv4s = defaults.ipv4s;
     	      this.ipv6 = defaults.ipv6;
@@ -496,6 +510,14 @@ public final class GetInstancesInstance {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "image");
             }
             this.image = image;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder interfaceGeneration(String interfaceGeneration) {
+            if (interfaceGeneration == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "interfaceGeneration");
+            }
+            this.interfaceGeneration = interfaceGeneration;
             return this;
         }
         @CustomType.Setter
@@ -644,6 +666,7 @@ public final class GetInstancesInstance {
             _resultValue.hostUuid = hostUuid;
             _resultValue.id = id;
             _resultValue.image = image;
+            _resultValue.interfaceGeneration = interfaceGeneration;
             _resultValue.ipAddress = ipAddress;
             _resultValue.ipv4s = ipv4s;
             _resultValue.ipv6 = ipv6;

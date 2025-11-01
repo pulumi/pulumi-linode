@@ -190,14 +190,14 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
         return this.cluster;
     }
     /**
-     * If true, the bucket will have CORS enabled for all origins.
+     * If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
      * 
      */
     @Export(name="corsEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> corsEnabled;
 
     /**
-     * @return If true, the bucket will have CORS enabled for all origins.
+     * @return If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
      * 
      */
     public Output<Boolean> corsEnabled() {

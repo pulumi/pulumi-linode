@@ -80,7 +80,7 @@ namespace Pulumi.Linode
     public partial class Volume : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         /// </summary>
         [Output("encryption")]
         public Output<string> Encryption { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.Linode
     public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         /// </summary>
         [Input("encryption")]
         public Input<string>? Encryption { get; set; }
@@ -246,7 +246,7 @@ namespace Pulumi.Linode
     public sealed class VolumeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         /// </summary>
         [Input("encryption")]
         public Input<string>? Encryption { get; set; }

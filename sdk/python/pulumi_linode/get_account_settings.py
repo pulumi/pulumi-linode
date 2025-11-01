@@ -26,13 +26,16 @@ class GetAccountSettingsResult:
     """
     A collection of values returned by getAccountSettings.
     """
-    def __init__(__self__, backups_enabled=None, id=None, longview_subscription=None, maintenance_policy=None, managed=None, network_helper=None, object_storage=None):
+    def __init__(__self__, backups_enabled=None, id=None, interfaces_for_new_linodes=None, longview_subscription=None, maintenance_policy=None, managed=None, network_helper=None, object_storage=None):
         if backups_enabled and not isinstance(backups_enabled, bool):
             raise TypeError("Expected argument 'backups_enabled' to be a bool")
         pulumi.set(__self__, "backups_enabled", backups_enabled)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if interfaces_for_new_linodes and not isinstance(interfaces_for_new_linodes, str):
+            raise TypeError("Expected argument 'interfaces_for_new_linodes' to be a str")
+        pulumi.set(__self__, "interfaces_for_new_linodes", interfaces_for_new_linodes)
         if longview_subscription and not isinstance(longview_subscription, str):
             raise TypeError("Expected argument 'longview_subscription' to be a str")
         pulumi.set(__self__, "longview_subscription", longview_subscription)
@@ -61,6 +64,14 @@ class GetAccountSettingsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="interfacesForNewLinodes")
+    def interfaces_for_new_linodes(self) -> _builtins.str:
+        """
+        Type of interfaces for new Linode instances.
+        """
+        return pulumi.get(self, "interfaces_for_new_linodes")
 
     @_builtins.property
     @pulumi.getter(name="longviewSubscription")
@@ -111,6 +122,7 @@ class AwaitableGetAccountSettingsResult(GetAccountSettingsResult):
         return GetAccountSettingsResult(
             backups_enabled=self.backups_enabled,
             id=self.id,
+            interfaces_for_new_linodes=self.interfaces_for_new_linodes,
             longview_subscription=self.longview_subscription,
             maintenance_policy=self.maintenance_policy,
             managed=self.managed,
@@ -141,6 +153,7 @@ def get_account_settings(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
     return AwaitableGetAccountSettingsResult(
         backups_enabled=pulumi.get(__ret__, 'backups_enabled'),
         id=pulumi.get(__ret__, 'id'),
+        interfaces_for_new_linodes=pulumi.get(__ret__, 'interfaces_for_new_linodes'),
         longview_subscription=pulumi.get(__ret__, 'longview_subscription'),
         maintenance_policy=pulumi.get(__ret__, 'maintenance_policy'),
         managed=pulumi.get(__ret__, 'managed'),
@@ -168,6 +181,7 @@ def get_account_settings_output(opts: Optional[Union[pulumi.InvokeOptions, pulum
     return __ret__.apply(lambda __response__: GetAccountSettingsResult(
         backups_enabled=pulumi.get(__response__, 'backups_enabled'),
         id=pulumi.get(__response__, 'id'),
+        interfaces_for_new_linodes=pulumi.get(__response__, 'interfaces_for_new_linodes'),
         longview_subscription=pulumi.get(__response__, 'longview_subscription'),
         maintenance_policy=pulumi.get(__response__, 'maintenance_policy'),
         managed=pulumi.get(__response__, 'managed'),

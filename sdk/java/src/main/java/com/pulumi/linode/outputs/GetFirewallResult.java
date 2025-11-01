@@ -39,6 +39,11 @@ public final class GetFirewallResult {
     private String inboundPolicy;
     private List<GetFirewallInbound> inbounds;
     /**
+     * @return The IDs of Linode interfaces assigned to this Firewall.
+     * 
+     */
+    private List<Integer> interfaces;
+    /**
      * @return The label of the underlying entity this device references.
      * 
      */
@@ -111,6 +116,13 @@ public final class GetFirewallResult {
         return this.inbounds;
     }
     /**
+     * @return The IDs of Linode interfaces assigned to this Firewall.
+     * 
+     */
+    public List<Integer> interfaces() {
+        return this.interfaces;
+    }
+    /**
      * @return The label of the underlying entity this device references.
      * 
      */
@@ -178,6 +190,7 @@ public final class GetFirewallResult {
         private Integer id;
         private String inboundPolicy;
         private List<GetFirewallInbound> inbounds;
+        private List<Integer> interfaces;
         private String label;
         private List<Integer> linodes;
         private List<Integer> nodebalancers;
@@ -195,6 +208,7 @@ public final class GetFirewallResult {
     	      this.id = defaults.id;
     	      this.inboundPolicy = defaults.inboundPolicy;
     	      this.inbounds = defaults.inbounds;
+    	      this.interfaces = defaults.interfaces;
     	      this.label = defaults.label;
     	      this.linodes = defaults.linodes;
     	      this.nodebalancers = defaults.nodebalancers;
@@ -258,6 +272,17 @@ public final class GetFirewallResult {
         }
         public Builder inbounds(GetFirewallInbound... inbounds) {
             return inbounds(List.of(inbounds));
+        }
+        @CustomType.Setter
+        public Builder interfaces(List<Integer> interfaces) {
+            if (interfaces == null) {
+              throw new MissingRequiredPropertyException("GetFirewallResult", "interfaces");
+            }
+            this.interfaces = interfaces;
+            return this;
+        }
+        public Builder interfaces(Integer... interfaces) {
+            return interfaces(List.of(interfaces));
         }
         @CustomType.Setter
         public Builder label(String label) {
@@ -343,6 +368,7 @@ public final class GetFirewallResult {
             _resultValue.id = id;
             _resultValue.inboundPolicy = inboundPolicy;
             _resultValue.inbounds = inbounds;
+            _resultValue.interfaces = interfaces;
             _resultValue.label = label;
             _resultValue.linodes = linodes;
             _resultValue.nodebalancers = nodebalancers;

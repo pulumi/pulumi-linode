@@ -114,7 +114,7 @@ type ObjectStorageBucket struct {
 	//
 	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
-	// If true, the bucket will have CORS enabled for all origins.
+	// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
 	CorsEnabled pulumi.BoolOutput `pulumi:"corsEnabled"`
 	// The endpoint for the bucket used for s3 connections.
 	//
@@ -197,7 +197,7 @@ type objectStorageBucketState struct {
 	//
 	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster *string `pulumi:"cluster"`
-	// If true, the bucket will have CORS enabled for all origins.
+	// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
 	CorsEnabled *bool `pulumi:"corsEnabled"`
 	// The endpoint for the bucket used for s3 connections.
 	//
@@ -241,7 +241,7 @@ type ObjectStorageBucketState struct {
 	//
 	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster pulumi.StringPtrInput
-	// If true, the bucket will have CORS enabled for all origins.
+	// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
 	CorsEnabled pulumi.BoolPtrInput
 	// The endpoint for the bucket used for s3 connections.
 	//
@@ -289,7 +289,7 @@ type objectStorageBucketArgs struct {
 	//
 	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster *string `pulumi:"cluster"`
-	// If true, the bucket will have CORS enabled for all origins.
+	// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
 	CorsEnabled *bool `pulumi:"corsEnabled"`
 	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
 	EndpointType *string `pulumi:"endpointType"`
@@ -328,7 +328,7 @@ type ObjectStorageBucketArgs struct {
 	//
 	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
 	Cluster pulumi.StringPtrInput
-	// If true, the bucket will have CORS enabled for all origins.
+	// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
 	CorsEnabled pulumi.BoolPtrInput
 	// The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
 	EndpointType pulumi.StringPtrInput
@@ -464,7 +464,7 @@ func (o ObjectStorageBucketOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
 
-// If true, the bucket will have CORS enabled for all origins.
+// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
 func (o ObjectStorageBucketOutput) CorsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ObjectStorageBucket) pulumi.BoolOutput { return v.CorsEnabled }).(pulumi.BoolOutput)
 }

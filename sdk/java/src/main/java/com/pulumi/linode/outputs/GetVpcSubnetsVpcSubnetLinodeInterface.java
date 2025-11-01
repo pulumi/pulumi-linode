@@ -11,19 +11,39 @@ import java.util.Objects;
 
 @CustomType
 public final class GetVpcSubnetsVpcSubnetLinodeInterface {
+    /**
+     * @return Whether the Interface is actively in use.
+     * 
+     */
     private Boolean active;
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     * 
+     */
+    private Integer configId;
+    /**
+     * @return ID of the interface.
      * 
      */
     private Integer id;
 
     private GetVpcSubnetsVpcSubnetLinodeInterface() {}
+    /**
+     * @return Whether the Interface is actively in use.
+     * 
+     */
     public Boolean active() {
         return this.active;
     }
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     * 
+     */
+    public Integer configId() {
+        return this.configId;
+    }
+    /**
+     * @return ID of the interface.
      * 
      */
     public Integer id() {
@@ -40,11 +60,13 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterface {
     @CustomType.Builder
     public static final class Builder {
         private Boolean active;
+        private Integer configId;
         private Integer id;
         public Builder() {}
         public Builder(GetVpcSubnetsVpcSubnetLinodeInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.active = defaults.active;
+    	      this.configId = defaults.configId;
     	      this.id = defaults.id;
         }
 
@@ -54,6 +76,14 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterface {
               throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetLinodeInterface", "active");
             }
             this.active = active;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder configId(Integer configId) {
+            if (configId == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnetLinodeInterface", "configId");
+            }
+            this.configId = configId;
             return this;
         }
         @CustomType.Setter
@@ -67,6 +97,7 @@ public final class GetVpcSubnetsVpcSubnetLinodeInterface {
         public GetVpcSubnetsVpcSubnetLinodeInterface build() {
             final var _resultValue = new GetVpcSubnetsVpcSubnetLinodeInterface();
             _resultValue.active = active;
+            _resultValue.configId = configId;
             _resultValue.id = id;
             return _resultValue;
         }

@@ -106,6 +106,49 @@ import javax.annotation.Nullable;
  * 
  * Creating a complex PostgreSQL database:
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.DatabasePostgresqlV2;
+ * import com.pulumi.linode.DatabasePostgresqlV2Args;
+ * import com.pulumi.linode.inputs.DatabasePostgresqlV2UpdatesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
+ *             .label("mydatabase")
+ *             .engineId("postgresql/16")
+ *             .region("us-mia")
+ *             .type("g6-nanode-1")
+ *             .allowLists("10.0.0.3/32")
+ *             .clusterSize(3)
+ *             .updates(DatabasePostgresqlV2UpdatesArgs.builder()
+ *                 .duration(4)
+ *                 .frequency("weekly")
+ *                 .hourOfDay(22)
+ *                 .dayOfWeek(2)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * Creating a PostgreSQL database with engine config fields specified:
  * 
  * <pre>
@@ -227,6 +270,46 @@ import javax.annotation.Nullable;
  * </pre>
  * 
  * Creating a PostgreSQL database hidden behind a VPC:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.DatabasePostgresqlV2;
+ * import com.pulumi.linode.DatabasePostgresqlV2Args;
+ * import com.pulumi.linode.inputs.DatabasePostgresqlV2PrivateNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
+ *             .label("mydatabase")
+ *             .engineId("postgresql/16")
+ *             .region("us-mia")
+ *             .type("g6-nanode-1")
+ *             .privateNetwork(DatabasePostgresqlV2PrivateNetworkArgs.builder()
+ *                 .vpcId(123)
+ *                 .subnetId(456)
+ *                 .publicAccess(false)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * &gt; **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
  * 

@@ -116,14 +116,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/volume:Volume")
 public class Volume extends com.pulumi.resources.CustomResource {
     /**
-     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      * 
      */
     @Export(name="encryption", refs={String.class}, tree="[0]")
     private Output<String> encryption;
 
     /**
-     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      * 
      */
     public Output<String> encryption() {

@@ -31,7 +31,7 @@ namespace Pulumi.Linode
     ///         Label = "foo",
     ///         Description = "Installs a Package",
     ///         Script = @"#!/bin/bash
-    /// # &lt;UDF name=""package"" label=""System Package to Install"" example=""nginx"" default=""""&gt;
+    /// # &lt;UDF name=\""package\"" label=\""System Package to Install\"" example=\""nginx\"" default=\""\""&gt;
     /// apt-get -q update &amp;&amp; apt-get -q -y install $PACKAGE
     /// ",
     ///         Images = new[]

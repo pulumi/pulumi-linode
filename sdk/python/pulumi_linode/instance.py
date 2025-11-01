@@ -35,12 +35,14 @@ class InstanceArgs:
                  firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  image: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_generation: Optional[pulumi.Input[_builtins.str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]] = None,
                  ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]] = None,
                  migration_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_helper: Optional[pulumi.Input[_builtins.bool]] = None,
                  placement_group: Optional[pulumi.Input['InstancePlacementGroupArgs']] = None,
                  placement_group_externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  private_ip: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -70,6 +72,9 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[_builtins.str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
+        :param pulumi.Input[_builtins.str] interface_generation: Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacy_config`; default is determined by the account `interfaces_for_new_linodes` setting)
+               
+               * TODO(Linode Interfaces): Link to a usage example using the `linode_instance_interface` resource
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
                
@@ -78,6 +83,7 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+        :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input['InstancePlacementGroupArgs'] placement_group: Information about the Placement Group this Linode is assigned to.
@@ -145,6 +151,8 @@ class InstanceArgs:
             pulumi.set(__self__, "group", group)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if interface_generation is not None:
+            pulumi.set(__self__, "interface_generation", interface_generation)
         if interfaces is not None:
             pulumi.set(__self__, "interfaces", interfaces)
         if ipv4s is not None:
@@ -157,6 +165,8 @@ class InstanceArgs:
             pulumi.set(__self__, "metadatas", metadatas)
         if migration_type is not None:
             pulumi.set(__self__, "migration_type", migration_type)
+        if network_helper is not None:
+            pulumi.set(__self__, "network_helper", network_helper)
         if placement_group is not None:
             pulumi.set(__self__, "placement_group", placement_group)
         if placement_group_externally_managed is not None:
@@ -353,6 +363,20 @@ class InstanceArgs:
         pulumi.set(self, "image", value)
 
     @_builtins.property
+    @pulumi.getter(name="interfaceGeneration")
+    def interface_generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacy_config`; default is determined by the account `interfaces_for_new_linodes` setting)
+
+        * TODO(Linode Interfaces): Link to a usage example using the `linode_instance_interface` resource
+        """
+        return pulumi.get(self, "interface_generation")
+
+    @interface_generation.setter
+    def interface_generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "interface_generation", value)
+
+    @_builtins.property
     @pulumi.getter
     def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]]:
         """
@@ -419,14 +443,26 @@ class InstanceArgs:
     def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
-
-        * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         """
         return pulumi.get(self, "migration_type")
 
     @migration_type.setter
     def migration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "migration_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkHelper")
+    def network_helper(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
+
+        * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        """
+        return pulumi.get(self, "network_helper")
+
+    @network_helper.setter
+    def network_helper(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "network_helper", value)
 
     @_builtins.property
     @pulumi.getter(name="placementGroup")
@@ -609,6 +645,7 @@ class _InstanceState:
                  has_user_data: Optional[pulumi.Input[_builtins.bool]] = None,
                  host_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  image: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_generation: Optional[pulumi.Input[_builtins.str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]] = None,
                  ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -618,6 +655,7 @@ class _InstanceState:
                  maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]] = None,
                  migration_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_helper: Optional[pulumi.Input[_builtins.bool]] = None,
                  placement_group: Optional[pulumi.Input['InstancePlacementGroupArgs']] = None,
                  placement_group_externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  private_ip: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -654,6 +692,9 @@ class _InstanceState:
         :param pulumi.Input[_builtins.bool] has_user_data: Whether this Instance was created with user-data.
         :param pulumi.Input[_builtins.str] host_uuid: The Linode’s host machine, as a UUID.
         :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
+        :param pulumi.Input[_builtins.str] interface_generation: Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacy_config`; default is determined by the account `interfaces_for_new_linodes` setting)
+               
+               * TODO(Linode Interfaces): Link to a usage example using the `linode_instance_interface` resource
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         :param pulumi.Input[_builtins.str] ip_address: A string containing the Linode's public IP address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
@@ -665,6 +706,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+        :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input['InstancePlacementGroupArgs'] placement_group: Information about the Placement Group this Linode is assigned to.
@@ -743,6 +785,8 @@ class _InstanceState:
             pulumi.set(__self__, "host_uuid", host_uuid)
         if image is not None:
             pulumi.set(__self__, "image", image)
+        if interface_generation is not None:
+            pulumi.set(__self__, "interface_generation", interface_generation)
         if interfaces is not None:
             pulumi.set(__self__, "interfaces", interfaces)
         if ip_address is not None:
@@ -764,6 +808,8 @@ class _InstanceState:
             pulumi.set(__self__, "metadatas", metadatas)
         if migration_type is not None:
             pulumi.set(__self__, "migration_type", migration_type)
+        if network_helper is not None:
+            pulumi.set(__self__, "network_helper", network_helper)
         if placement_group is not None:
             pulumi.set(__self__, "placement_group", placement_group)
         if placement_group_externally_managed is not None:
@@ -1004,6 +1050,20 @@ class _InstanceState:
         pulumi.set(self, "image", value)
 
     @_builtins.property
+    @pulumi.getter(name="interfaceGeneration")
+    def interface_generation(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacy_config`; default is determined by the account `interfaces_for_new_linodes` setting)
+
+        * TODO(Linode Interfaces): Link to a usage example using the `linode_instance_interface` resource
+        """
+        return pulumi.get(self, "interface_generation")
+
+    @interface_generation.setter
+    def interface_generation(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "interface_generation", value)
+
+    @_builtins.property
     @pulumi.getter
     def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceArgs']]]]:
         """
@@ -1107,14 +1167,26 @@ class _InstanceState:
     def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
-
-        * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         """
         return pulumi.get(self, "migration_type")
 
     @migration_type.setter
     def migration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "migration_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkHelper")
+    def network_helper(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
+
+        * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+        """
+        return pulumi.get(self, "network_helper")
+
+    @network_helper.setter
+    def network_helper(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "network_helper", value)
 
     @_builtins.property
     @pulumi.getter(name="placementGroup")
@@ -1344,12 +1416,14 @@ class Instance(pulumi.CustomResource):
                  firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  image: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_generation: Optional[pulumi.Input[_builtins.str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]]] = None,
                  ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]]] = None,
                  migration_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_helper: Optional[pulumi.Input[_builtins.bool]] = None,
                  placement_group: Optional[pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']]] = None,
                  placement_group_externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  private_ip: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1474,6 +1548,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[_builtins.str] group: A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
         :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
+        :param pulumi.Input[_builtins.str] interface_generation: Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacy_config`; default is determined by the account `interfaces_for_new_linodes` setting)
+               
+               * TODO(Linode Interfaces): Link to a usage example using the `linode_instance_interface` resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
                
@@ -1482,6 +1559,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+        :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']] placement_group: Information about the Placement Group this Linode is assigned to.
@@ -1642,12 +1720,14 @@ class Instance(pulumi.CustomResource):
                  firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  image: Optional[pulumi.Input[_builtins.str]] = None,
+                 interface_generation: Optional[pulumi.Input[_builtins.str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]]] = None,
                  ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]]] = None,
                  migration_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_helper: Optional[pulumi.Input[_builtins.bool]] = None,
                  placement_group: Optional[pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']]] = None,
                  placement_group_externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
                  private_ip: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1683,12 +1763,14 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["firewall_id"] = firewall_id
             __props__.__dict__["group"] = group
             __props__.__dict__["image"] = image
+            __props__.__dict__["interface_generation"] = interface_generation
             __props__.__dict__["interfaces"] = interfaces
             __props__.__dict__["ipv4s"] = ipv4s
             __props__.__dict__["label"] = label
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["metadatas"] = metadatas
             __props__.__dict__["migration_type"] = migration_type
+            __props__.__dict__["network_helper"] = network_helper
             __props__.__dict__["placement_group"] = placement_group
             __props__.__dict__["placement_group_externally_managed"] = placement_group_externally_managed
             __props__.__dict__["private_ip"] = private_ip
@@ -1743,6 +1825,7 @@ class Instance(pulumi.CustomResource):
             has_user_data: Optional[pulumi.Input[_builtins.bool]] = None,
             host_uuid: Optional[pulumi.Input[_builtins.str]] = None,
             image: Optional[pulumi.Input[_builtins.str]] = None,
+            interface_generation: Optional[pulumi.Input[_builtins.str]] = None,
             interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]]] = None,
             ip_address: Optional[pulumi.Input[_builtins.str]] = None,
             ipv4s: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1752,6 +1835,7 @@ class Instance(pulumi.CustomResource):
             maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]]] = None,
             migration_type: Optional[pulumi.Input[_builtins.str]] = None,
+            network_helper: Optional[pulumi.Input[_builtins.bool]] = None,
             placement_group: Optional[pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']]] = None,
             placement_group_externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
             private_ip: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1793,6 +1877,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] has_user_data: Whether this Instance was created with user-data.
         :param pulumi.Input[_builtins.str] host_uuid: The Linode’s host machine, as a UUID.
         :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
+        :param pulumi.Input[_builtins.str] interface_generation: Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacy_config`; default is determined by the account `interfaces_for_new_linodes` setting)
+               
+               * TODO(Linode Interfaces): Link to a usage example using the `linode_instance_interface` resource
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         :param pulumi.Input[_builtins.str] ip_address: A string containing the Linode's public IP address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
@@ -1804,6 +1891,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+        :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         :param pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']] placement_group: Information about the Placement Group this Linode is assigned to.
@@ -1860,6 +1948,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["has_user_data"] = has_user_data
         __props__.__dict__["host_uuid"] = host_uuid
         __props__.__dict__["image"] = image
+        __props__.__dict__["interface_generation"] = interface_generation
         __props__.__dict__["interfaces"] = interfaces
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["ipv4s"] = ipv4s
@@ -1869,6 +1958,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["metadatas"] = metadatas
         __props__.__dict__["migration_type"] = migration_type
+        __props__.__dict__["network_helper"] = network_helper
         __props__.__dict__["placement_group"] = placement_group
         __props__.__dict__["placement_group_externally_managed"] = placement_group_externally_managed
         __props__.__dict__["private_ip"] = private_ip
@@ -2026,6 +2116,16 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "image")
 
     @_builtins.property
+    @pulumi.getter(name="interfaceGeneration")
+    def interface_generation(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacy_config`; default is determined by the account `interfaces_for_new_linodes` setting)
+
+        * TODO(Linode Interfaces): Link to a usage example using the `linode_instance_interface` resource
+        """
+        return pulumi.get(self, "interface_generation")
+
+    @_builtins.property
     @pulumi.getter
     def interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceInterface']]]:
         """
@@ -2097,10 +2197,18 @@ class Instance(pulumi.CustomResource):
     def migration_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+        """
+        return pulumi.get(self, "migration_type")
+
+    @_builtins.property
+    @pulumi.getter(name="networkHelper")
+    def network_helper(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
 
         * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
         """
-        return pulumi.get(self, "migration_type")
+        return pulumi.get(self, "network_helper")
 
     @_builtins.property
     @pulumi.getter(name="placementGroup")
