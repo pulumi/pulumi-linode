@@ -22,6 +22,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Gateway;
         /// <summary>
+        /// The ID of the interface this address is assigned to.
+        /// </summary>
+        public readonly int InterfaceId;
+        /// <summary>
         /// The ID of the Linode this address currently belongs to.
         /// </summary>
         public readonly int LinodeId;
@@ -64,6 +68,8 @@ namespace Pulumi.Linode.Outputs
 
             string gateway,
 
+            int interfaceId,
+
             int linodeId,
 
             int prefix,
@@ -84,6 +90,7 @@ namespace Pulumi.Linode.Outputs
         {
             Address = address;
             Gateway = gateway;
+            InterfaceId = interfaceId;
             LinodeId = linodeId;
             Prefix = prefix;
             Public = @public;

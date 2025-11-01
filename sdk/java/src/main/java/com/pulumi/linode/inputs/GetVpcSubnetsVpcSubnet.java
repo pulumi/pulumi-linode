@@ -33,14 +33,14 @@ public final class GetVpcSubnetsVpcSubnet extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The unique id of the VPC subnet.
+     * ID of the interface.
      * 
      */
     @Import(name="id", required=true)
     private Integer id;
 
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of the interface.
      * 
      */
     public Integer id() {
@@ -93,14 +93,14 @@ public final class GetVpcSubnetsVpcSubnet extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * A list of Linode IDs that added to this subnet.
+     * A list of Linodes added to this subnet.
      * 
      */
     @Import(name="linodes", required=true)
     private List<GetVpcSubnetsVpcSubnetLinode> linodes;
 
     /**
-     * @return A list of Linode IDs that added to this subnet.
+     * @return A list of Linodes added to this subnet.
      * 
      */
     public List<GetVpcSubnetsVpcSubnetLinode> linodes() {
@@ -164,7 +164,7 @@ public final class GetVpcSubnetsVpcSubnet extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param id The unique id of the VPC subnet.
+         * @param id ID of the interface.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class GetVpcSubnetsVpcSubnet extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param linodes A list of Linode IDs that added to this subnet.
+         * @param linodes A list of Linodes added to this subnet.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class GetVpcSubnetsVpcSubnet extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param linodes A list of Linode IDs that added to this subnet.
+         * @param linodes A list of Linodes added to this subnet.
          * 
          * @return builder
          * 

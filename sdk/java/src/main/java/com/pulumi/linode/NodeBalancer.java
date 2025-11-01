@@ -64,6 +64,43 @@ import javax.annotation.Nullable;
  * 
  * The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.NodeBalancer;
+ * import com.pulumi.linode.NodeBalancerArgs;
+ * import com.pulumi.linode.inputs.NodeBalancerVpcArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // NOTE: VPC-attached NodeBalancers may not currently be available to all users.
+ *         var foobar = new NodeBalancer("foobar", NodeBalancerArgs.builder()
+ *             .label("mynodebalancer")
+ *             .region("us-mia")
+ *             .vpcs(NodeBalancerVpcArgs.builder()
+ *                 .subnetId(test.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.

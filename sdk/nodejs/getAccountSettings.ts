@@ -35,6 +35,10 @@ export interface GetAccountSettingsResult {
     readonly backupsEnabled: boolean;
     readonly id: string;
     /**
+     * Type of interfaces for new Linode instances.
+     */
+    readonly interfacesForNewLinodes: string;
+    /**
      * The Longview Pro tier you are currently subscribed to.
      */
     readonly longviewSubscription: string;

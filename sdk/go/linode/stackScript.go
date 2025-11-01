@@ -35,7 +35,7 @@ import (
 //			foo, err := linode.NewStackScript(ctx, "foo", &linode.StackScriptArgs{
 //				Label:       pulumi.String("foo"),
 //				Description: pulumi.String("Installs a Package"),
-//				Script:      pulumi.String("#!/bin/bash\n# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\napt-get -q update && apt-get -q -y install $PACKAGE\n"),
+//				Script:      pulumi.String("#!/bin/bash\n# <UDF name=\\\"package\\\" label=\\\"System Package to Install\\\" example=\\\"nginx\\\" default=\\\"\\\">\napt-get -q update && apt-get -q -y install $PACKAGE\n"),
 //				Images: pulumi.StringArray{
 //					pulumi.String("linode/ubuntu22.04"),
 //					pulumi.String("linode/ubuntu20.04"),

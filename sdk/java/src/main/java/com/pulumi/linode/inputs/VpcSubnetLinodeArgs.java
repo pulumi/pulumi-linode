@@ -17,23 +17,31 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
     public static final VpcSubnetLinodeArgs Empty = new VpcSubnetLinodeArgs();
 
     /**
-     * The ID of the VPC Subnet.
+     * ID of the interface.
      * 
      */
     @Import(name="id", required=true)
     private Output<Integer> id;
 
     /**
-     * @return The ID of the VPC Subnet.
+     * @return ID of the interface.
      * 
      */
     public Output<Integer> id() {
         return this.id;
     }
 
+    /**
+     * A list of networking interfaces objects.
+     * 
+     */
     @Import(name="interfaces", required=true)
     private Output<List<VpcSubnetLinodeInterfaceArgs>> interfaces;
 
+    /**
+     * @return A list of networking interfaces objects.
+     * 
+     */
     public Output<List<VpcSubnetLinodeInterfaceArgs>> interfaces() {
         return this.interfaces;
     }
@@ -64,7 +72,7 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id The ID of the VPC Subnet.
+         * @param id ID of the interface.
          * 
          * @return builder
          * 
@@ -75,7 +83,7 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id The ID of the VPC Subnet.
+         * @param id ID of the interface.
          * 
          * @return builder
          * 
@@ -84,15 +92,33 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
             return id(Output.of(id));
         }
 
+        /**
+         * @param interfaces A list of networking interfaces objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaces(Output<List<VpcSubnetLinodeInterfaceArgs>> interfaces) {
             $.interfaces = interfaces;
             return this;
         }
 
+        /**
+         * @param interfaces A list of networking interfaces objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaces(List<VpcSubnetLinodeInterfaceArgs> interfaces) {
             return interfaces(Output.of(interfaces));
         }
 
+        /**
+         * @param interfaces A list of networking interfaces objects.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interfaces(VpcSubnetLinodeInterfaceArgs... interfaces) {
             return interfaces(List.of(interfaces));
         }

@@ -192,14 +192,14 @@ public class VpcSubnet extends com.pulumi.resources.CustomResource {
         return this.label;
     }
     /**
-     * A list of Linode IDs that added to this subnet.
+     * A list of Linode that added to this subnet.
      * 
      */
     @Export(name="linodes", refs={List.class,VpcSubnetLinode.class}, tree="[0,1]")
     private Output<List<VpcSubnetLinode>> linodes;
 
     /**
-     * @return A list of Linode IDs that added to this subnet.
+     * @return A list of Linode that added to this subnet.
      * 
      */
     public Output<List<VpcSubnetLinode>> linodes() {

@@ -64,6 +64,8 @@ type LookupNetworkingIpResult struct {
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
 	Id      string `pulumi:"id"`
+	// The ID of the interface this address is assigned to.
+	InterfaceId int `pulumi:"interfaceId"`
 	// The ID of the Linode this address currently belongs to.
 	LinodeId int `pulumi:"linodeId"`
 	// The number of bits set in the subnet mask.
@@ -130,6 +132,11 @@ func (o LookupNetworkingIpResultOutput) Gateway() pulumi.StringOutput {
 
 func (o LookupNetworkingIpResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the interface this address is assigned to.
+func (o LookupNetworkingIpResultOutput) InterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) int { return v.InterfaceId }).(pulumi.IntOutput)
 }
 
 // The ID of the Linode this address currently belongs to.

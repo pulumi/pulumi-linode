@@ -161,6 +161,12 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.FirewallInbound>> Inbounds { get; private set; } = null!;
 
         /// <summary>
+        /// A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+        /// </summary>
+        [Output("interfaces")]
+        public Output<ImmutableArray<int>> Interfaces { get; private set; } = null!;
+
+        /// <summary>
         /// This Firewall's unique label.
         /// </summary>
         [Output("label")]
@@ -282,6 +288,18 @@ namespace Pulumi.Linode
             set => _inbounds = value;
         }
 
+        [Input("interfaces")]
+        private InputList<int>? _interfaces;
+
+        /// <summary>
+        /// A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+        /// </summary>
+        public InputList<int> Interfaces
+        {
+            get => _interfaces ?? (_interfaces = new InputList<int>());
+            set => _interfaces = value;
+        }
+
         /// <summary>
         /// This Firewall's unique label.
         /// </summary>
@@ -394,6 +412,18 @@ namespace Pulumi.Linode
         {
             get => _inbounds ?? (_inbounds = new InputList<Inputs.FirewallInboundGetArgs>());
             set => _inbounds = value;
+        }
+
+        [Input("interfaces")]
+        private InputList<int>? _interfaces;
+
+        /// <summary>
+        /// A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+        /// </summary>
+        public InputList<int> Interfaces
+        {
+            get => _interfaces ?? (_interfaces = new InputList<int>());
+            set => _interfaces = value;
         }
 
         /// <summary>

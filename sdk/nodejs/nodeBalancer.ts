@@ -29,6 +29,20 @@ import * as utilities from "./utilities";
  *
  * The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * // NOTE: VPC-attached NodeBalancers may not currently be available to all users.
+ * const foobar = new linode.NodeBalancer("foobar", {
+ *     label: "mynodebalancer",
+ *     region: "us-mia",
+ *     vpcs: [{
+ *         subnetId: test.id,
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.

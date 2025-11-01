@@ -121,7 +121,7 @@ type VpcSubnet struct {
 	Ipv6s VpcSubnetIpv6ArrayOutput `pulumi:"ipv6s"`
 	// The label of the VPC. Only contains ASCII letters, digits and dashes.
 	Label pulumi.StringOutput `pulumi:"label"`
-	// A list of Linode IDs that added to this subnet.
+	// A list of Linode that added to this subnet.
 	Linodes VpcSubnetLinodeArrayOutput `pulumi:"linodes"`
 	// The date and time when the VPC was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
@@ -175,7 +175,7 @@ type vpcSubnetState struct {
 	Ipv6s []VpcSubnetIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC. Only contains ASCII letters, digits and dashes.
 	Label *string `pulumi:"label"`
-	// A list of Linode IDs that added to this subnet.
+	// A list of Linode that added to this subnet.
 	Linodes []VpcSubnetLinode `pulumi:"linodes"`
 	// The date and time when the VPC was last updated.
 	Updated *string `pulumi:"updated"`
@@ -194,7 +194,7 @@ type VpcSubnetState struct {
 	Ipv6s VpcSubnetIpv6ArrayInput
 	// The label of the VPC. Only contains ASCII letters, digits and dashes.
 	Label pulumi.StringPtrInput
-	// A list of Linode IDs that added to this subnet.
+	// A list of Linode that added to this subnet.
 	Linodes VpcSubnetLinodeArrayInput
 	// The date and time when the VPC was last updated.
 	Updated pulumi.StringPtrInput
@@ -342,7 +342,7 @@ func (o VpcSubnetOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcSubnet) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }
 
-// A list of Linode IDs that added to this subnet.
+// A list of Linode that added to this subnet.
 func (o VpcSubnetOutput) Linodes() VpcSubnetLinodeArrayOutput {
 	return o.ApplyT(func(v *VpcSubnet) VpcSubnetLinodeArrayOutput { return v.Linodes }).(VpcSubnetLinodeArrayOutput)
 }

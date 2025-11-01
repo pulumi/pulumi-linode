@@ -18,7 +18,7 @@ public final class GetVolumesVolume {
      */
     private String created;
     /**
-     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      * 
      */
     private String encryption;
@@ -77,7 +77,7 @@ public final class GetVolumesVolume {
         return this.created;
     }
     /**
-     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      * 
      */
     public String encryption() {

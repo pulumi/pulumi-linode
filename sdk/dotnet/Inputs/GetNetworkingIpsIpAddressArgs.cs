@@ -25,6 +25,12 @@ namespace Pulumi.Linode.Inputs
         public Input<string> Gateway { get; set; } = null!;
 
         /// <summary>
+        /// The ID of the interface this address is assigned to.
+        /// </summary>
+        [Input("interfaceId", required: true)]
+        public Input<int> InterfaceId { get; set; } = null!;
+
+        /// <summary>
         /// The ID of the Linode this address currently belongs to.
         /// </summary>
         [Input("linodeId", required: true)]

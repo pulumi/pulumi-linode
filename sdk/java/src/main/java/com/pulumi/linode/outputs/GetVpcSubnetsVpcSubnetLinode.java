@@ -13,20 +13,28 @@ import java.util.Objects;
 @CustomType
 public final class GetVpcSubnetsVpcSubnetLinode {
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of the interface.
      * 
      */
     private Integer id;
+    /**
+     * @return A list of networking interfaces objects.
+     * 
+     */
     private List<GetVpcSubnetsVpcSubnetLinodeInterface> interfaces;
 
     private GetVpcSubnetsVpcSubnetLinode() {}
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of the interface.
      * 
      */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return A list of networking interfaces objects.
+     * 
+     */
     public List<GetVpcSubnetsVpcSubnetLinodeInterface> interfaces() {
         return this.interfaces;
     }

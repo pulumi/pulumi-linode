@@ -19,6 +19,10 @@ public final class GetVpcSubnetResult {
      * 
      */
     private String created;
+    /**
+     * @return ID of the interface.
+     * 
+     */
     private String id;
     /**
      * @return The IPv4 range of this subnet in CIDR format.
@@ -32,7 +36,7 @@ public final class GetVpcSubnetResult {
      */
     private String label;
     /**
-     * @return A list of Linode IDs that added to this subnet.
+     * @return A list of Linodes added to this subnet.
      * 
      */
     private List<GetVpcSubnetLinode> linodes;
@@ -51,6 +55,10 @@ public final class GetVpcSubnetResult {
     public String created() {
         return this.created;
     }
+    /**
+     * @return ID of the interface.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -72,7 +80,7 @@ public final class GetVpcSubnetResult {
         return this.label;
     }
     /**
-     * @return A list of Linode IDs that added to this subnet.
+     * @return A list of Linodes added to this subnet.
      * 
      */
     public List<GetVpcSubnetLinode> linodes() {

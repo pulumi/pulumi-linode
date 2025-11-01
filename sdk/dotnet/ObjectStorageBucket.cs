@@ -114,7 +114,7 @@ namespace Pulumi.Linode
         public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the bucket will have CORS enabled for all origins.
+        /// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         /// </summary>
         [Output("corsEnabled")]
         public Output<bool> CorsEnabled { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.Linode
         public Input<string>? Cluster { get; set; }
 
         /// <summary>
-        /// If true, the bucket will have CORS enabled for all origins.
+        /// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         /// </summary>
         [Input("corsEnabled")]
         public Input<bool>? CorsEnabled { get; set; }
@@ -362,7 +362,7 @@ namespace Pulumi.Linode
         public Input<string>? Cluster { get; set; }
 
         /// <summary>
-        /// If true, the bucket will have CORS enabled for all origins.
+        /// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         /// </summary>
         [Input("corsEnabled")]
         public Input<bool>? CorsEnabled { get; set; }

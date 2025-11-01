@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Firewall{}
 	case "linode:index/firewallDevice:FirewallDevice":
 		r = &FirewallDevice{}
+	case "linode:index/firewallSettings:FirewallSettings":
+		r = &FirewallSettings{}
 	case "linode:index/image:Image":
 		r = &Image{}
 	case "linode:index/instance:Instance":
@@ -53,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceIp{}
 	case "linode:index/instanceSharedIps:InstanceSharedIps":
 		r = &InstanceSharedIps{}
+	case "linode:index/interface:Interface":
+		r = &Interface{}
 	case "linode:index/ipv6Range:Ipv6Range":
 		r = &Ipv6Range{}
 	case "linode:index/lkeCluster:LkeCluster":
@@ -180,6 +184,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"linode",
+		"index/firewallSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
 		"index/image",
 		&module{version},
 	)
@@ -206,6 +215,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/instanceSharedIps",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/interface",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

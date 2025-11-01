@@ -94,14 +94,14 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * If true, the bucket will have CORS enabled for all origins.
+     * If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
      * 
      */
     @Import(name="corsEnabled")
     private @Nullable Output<Boolean> corsEnabled;
 
     /**
-     * @return If true, the bucket will have CORS enabled for all origins.
+     * @return If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
      * 
      */
     public Optional<Output<Boolean>> corsEnabled() {
@@ -399,7 +399,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param corsEnabled If true, the bucket will have CORS enabled for all origins.
+         * @param corsEnabled If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param corsEnabled If true, the bucket will have CORS enabled for all origins.
+         * @param corsEnabled If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
          * 
          * @return builder
          * 

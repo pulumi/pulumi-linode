@@ -25,6 +25,11 @@ public final class GetNetworkingIpResult {
     private String gateway;
     private String id;
     /**
+     * @return The ID of the interface this address is assigned to.
+     * 
+     */
+    private Integer interfaceId;
+    /**
      * @return The ID of the Linode this address currently belongs to.
      * 
      */
@@ -87,6 +92,13 @@ public final class GetNetworkingIpResult {
     }
     public String id() {
         return this.id;
+    }
+    /**
+     * @return The ID of the interface this address is assigned to.
+     * 
+     */
+    public Integer interfaceId() {
+        return this.interfaceId;
     }
     /**
      * @return The ID of the Linode this address currently belongs to.
@@ -164,6 +176,7 @@ public final class GetNetworkingIpResult {
         private String address;
         private String gateway;
         private String id;
+        private Integer interfaceId;
         private Integer linodeId;
         private Integer prefix;
         private Boolean public_;
@@ -179,6 +192,7 @@ public final class GetNetworkingIpResult {
     	      this.address = defaults.address;
     	      this.gateway = defaults.gateway;
     	      this.id = defaults.id;
+    	      this.interfaceId = defaults.interfaceId;
     	      this.linodeId = defaults.linodeId;
     	      this.prefix = defaults.prefix;
     	      this.public_ = defaults.public_;
@@ -212,6 +226,14 @@ public final class GetNetworkingIpResult {
               throw new MissingRequiredPropertyException("GetNetworkingIpResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder interfaceId(Integer interfaceId) {
+            if (interfaceId == null) {
+              throw new MissingRequiredPropertyException("GetNetworkingIpResult", "interfaceId");
+            }
+            this.interfaceId = interfaceId;
             return this;
         }
         @CustomType.Setter
@@ -291,6 +313,7 @@ public final class GetNetworkingIpResult {
             _resultValue.address = address;
             _resultValue.gateway = gateway;
             _resultValue.id = id;
+            _resultValue.interfaceId = interfaceId;
             _resultValue.linodeId = linodeId;
             _resultValue.prefix = prefix;
             _resultValue.public_ = public_;

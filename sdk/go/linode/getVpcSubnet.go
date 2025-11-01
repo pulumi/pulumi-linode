@@ -73,13 +73,14 @@ type LookupVpcSubnetArgs struct {
 type LookupVpcSubnetResult struct {
 	// The date and time when the VPC Subnet was created.
 	Created string `pulumi:"created"`
-	Id      string `pulumi:"id"`
+	// ID of the interface.
+	Id string `pulumi:"id"`
 	// The IPv4 range of this subnet in CIDR format.
 	Ipv4  string             `pulumi:"ipv4"`
 	Ipv6s []GetVpcSubnetIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC subnet.
 	Label string `pulumi:"label"`
-	// A list of Linode IDs that added to this subnet.
+	// A list of Linodes added to this subnet.
 	Linodes []GetVpcSubnetLinode `pulumi:"linodes"`
 	// The date and time when the VPC Subnet was last updated.
 	Updated string `pulumi:"updated"`
@@ -127,6 +128,7 @@ func (o LookupVpcSubnetResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// ID of the interface.
 func (o LookupVpcSubnetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -145,7 +147,7 @@ func (o LookupVpcSubnetResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// A list of Linode IDs that added to this subnet.
+// A list of Linodes added to this subnet.
 func (o LookupVpcSubnetResultOutput) Linodes() GetVpcSubnetLinodeArrayOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) []GetVpcSubnetLinode { return v.Linodes }).(GetVpcSubnetLinodeArrayOutput)
 }

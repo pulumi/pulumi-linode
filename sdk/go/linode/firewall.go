@@ -135,6 +135,8 @@ type Firewall struct {
 	InboundPolicy pulumi.StringOutput `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayOutput `pulumi:"inbounds"`
+	// A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+	Interfaces pulumi.IntArrayOutput `pulumi:"interfaces"`
 	// This Firewall's unique label.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern network traffic for.
@@ -206,6 +208,8 @@ type firewallState struct {
 	InboundPolicy *string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
+	// A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+	Interfaces []int `pulumi:"interfaces"`
 	// This Firewall's unique label.
 	Label *string `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern network traffic for.
@@ -239,6 +243,8 @@ type FirewallState struct {
 	InboundPolicy pulumi.StringPtrInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
+	// A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+	Interfaces pulumi.IntArrayInput
 	// This Firewall's unique label.
 	Label pulumi.StringPtrInput
 	// A list of IDs of Linodes this Firewall should govern network traffic for.
@@ -272,6 +278,8 @@ type firewallArgs struct {
 	InboundPolicy string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
+	// A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+	Interfaces []int `pulumi:"interfaces"`
 	// This Firewall's unique label.
 	Label string `pulumi:"label"`
 	// A list of IDs of Linodes this Firewall should govern network traffic for.
@@ -298,6 +306,8 @@ type FirewallArgs struct {
 	InboundPolicy pulumi.StringInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
+	// A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+	Interfaces pulumi.IntArrayInput
 	// This Firewall's unique label.
 	Label pulumi.StringInput
 	// A list of IDs of Linodes this Firewall should govern network traffic for.
@@ -426,6 +436,11 @@ func (o FirewallOutput) InboundPolicy() pulumi.StringOutput {
 // A firewall rule that specifies what inbound network traffic is allowed.
 func (o FirewallOutput) Inbounds() FirewallInboundArrayOutput {
 	return o.ApplyT(func(v *Firewall) FirewallInboundArrayOutput { return v.Inbounds }).(FirewallInboundArrayOutput)
+}
+
+// A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+func (o FirewallOutput) Interfaces() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.IntArrayOutput { return v.Interfaces }).(pulumi.IntArrayOutput)
 }
 
 // This Firewall's unique label.

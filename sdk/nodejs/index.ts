@@ -55,6 +55,11 @@ export type FirewallDevice = import("./firewallDevice").FirewallDevice;
 export const FirewallDevice: typeof import("./firewallDevice").FirewallDevice = null as any;
 utilities.lazyLoad(exports, ["FirewallDevice"], () => require("./firewallDevice"));
 
+export { FirewallSettingsArgs, FirewallSettingsState } from "./firewallSettings";
+export type FirewallSettings = import("./firewallSettings").FirewallSettings;
+export const FirewallSettings: typeof import("./firewallSettings").FirewallSettings = null as any;
+utilities.lazyLoad(exports, ["FirewallSettings"], () => require("./firewallSettings"));
+
 export { GetAccountResult } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
 export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
@@ -169,6 +174,21 @@ export { GetFirewallArgs, GetFirewallResult, GetFirewallOutputArgs } from "./get
 export const getFirewall: typeof import("./getFirewall").getFirewall = null as any;
 export const getFirewallOutput: typeof import("./getFirewall").getFirewallOutput = null as any;
 utilities.lazyLoad(exports, ["getFirewall","getFirewallOutput"], () => require("./getFirewall"));
+
+export { GetFirewallSettingsResult } from "./getFirewallSettings";
+export const getFirewallSettings: typeof import("./getFirewallSettings").getFirewallSettings = null as any;
+export const getFirewallSettingsOutput: typeof import("./getFirewallSettings").getFirewallSettingsOutput = null as any;
+utilities.lazyLoad(exports, ["getFirewallSettings","getFirewallSettingsOutput"], () => require("./getFirewallSettings"));
+
+export { GetFirewallTemplateArgs, GetFirewallTemplateResult, GetFirewallTemplateOutputArgs } from "./getFirewallTemplate";
+export const getFirewallTemplate: typeof import("./getFirewallTemplate").getFirewallTemplate = null as any;
+export const getFirewallTemplateOutput: typeof import("./getFirewallTemplate").getFirewallTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getFirewallTemplate","getFirewallTemplateOutput"], () => require("./getFirewallTemplate"));
+
+export { GetFirewallTemplatesArgs, GetFirewallTemplatesResult, GetFirewallTemplatesOutputArgs } from "./getFirewallTemplates";
+export const getFirewallTemplates: typeof import("./getFirewallTemplates").getFirewallTemplates = null as any;
+export const getFirewallTemplatesOutput: typeof import("./getFirewallTemplates").getFirewallTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getFirewallTemplates","getFirewallTemplatesOutput"], () => require("./getFirewallTemplates"));
 
 export { GetFirewallsArgs, GetFirewallsResult, GetFirewallsOutputArgs } from "./getFirewalls";
 export const getFirewalls: typeof import("./getFirewalls").getFirewalls = null as any;
@@ -470,6 +490,11 @@ export type InstanceSharedIps = import("./instanceSharedIps").InstanceSharedIps;
 export const InstanceSharedIps: typeof import("./instanceSharedIps").InstanceSharedIps = null as any;
 utilities.lazyLoad(exports, ["InstanceSharedIps"], () => require("./instanceSharedIps"));
 
+export { InterfaceArgs, InterfaceState } from "./interface";
+export type Interface = import("./interface").Interface;
+export const Interface: typeof import("./interface").Interface = null as any;
+utilities.lazyLoad(exports, ["Interface"], () => require("./interface"));
+
 export { Ipv6RangeArgs, Ipv6RangeState } from "./ipv6Range";
 export type Ipv6Range = import("./ipv6Range").Ipv6Range;
 export const Ipv6Range: typeof import("./ipv6Range").Ipv6Range = null as any;
@@ -617,6 +642,8 @@ const _module = {
                 return new Firewall(name, <any>undefined, { urn })
             case "linode:index/firewallDevice:FirewallDevice":
                 return new FirewallDevice(name, <any>undefined, { urn })
+            case "linode:index/firewallSettings:FirewallSettings":
+                return new FirewallSettings(name, <any>undefined, { urn })
             case "linode:index/image:Image":
                 return new Image(name, <any>undefined, { urn })
             case "linode:index/instance:Instance":
@@ -629,6 +656,8 @@ const _module = {
                 return new InstanceIp(name, <any>undefined, { urn })
             case "linode:index/instanceSharedIps:InstanceSharedIps":
                 return new InstanceSharedIps(name, <any>undefined, { urn })
+            case "linode:index/interface:Interface":
+                return new Interface(name, <any>undefined, { urn })
             case "linode:index/ipv6Range:Ipv6Range":
                 return new Ipv6Range(name, <any>undefined, { urn })
             case "linode:index/lkeCluster:LkeCluster":
@@ -688,12 +717,14 @@ pulumi.runtime.registerResourceModule("linode", "index/domain", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domainRecord", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewall", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewallDevice", _module)
+pulumi.runtime.registerResourceModule("linode", "index/firewallSettings", _module)
 pulumi.runtime.registerResourceModule("linode", "index/image", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instance", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceConfig", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceDisk", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceIp", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceSharedIps", _module)
+pulumi.runtime.registerResourceModule("linode", "index/interface", _module)
 pulumi.runtime.registerResourceModule("linode", "index/ipv6Range", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeCluster", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeNodePool", _module)

@@ -47,6 +47,10 @@ import com.pulumi.linode.inputs.GetDomainsArgs;
 import com.pulumi.linode.inputs.GetDomainsPlainArgs;
 import com.pulumi.linode.inputs.GetFirewallArgs;
 import com.pulumi.linode.inputs.GetFirewallPlainArgs;
+import com.pulumi.linode.inputs.GetFirewallTemplateArgs;
+import com.pulumi.linode.inputs.GetFirewallTemplatePlainArgs;
+import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+import com.pulumi.linode.inputs.GetFirewallTemplatesPlainArgs;
 import com.pulumi.linode.inputs.GetFirewallsArgs;
 import com.pulumi.linode.inputs.GetFirewallsPlainArgs;
 import com.pulumi.linode.inputs.GetImageArgs;
@@ -176,6 +180,9 @@ import com.pulumi.linode.outputs.GetDomainResult;
 import com.pulumi.linode.outputs.GetDomainZonefileResult;
 import com.pulumi.linode.outputs.GetDomainsResult;
 import com.pulumi.linode.outputs.GetFirewallResult;
+import com.pulumi.linode.outputs.GetFirewallSettingsResult;
+import com.pulumi.linode.outputs.GetFirewallTemplateResult;
+import com.pulumi.linode.outputs.GetFirewallTemplatesResult;
 import com.pulumi.linode.outputs.GetFirewallsResult;
 import com.pulumi.linode.outputs.GetImageResult;
 import com.pulumi.linode.outputs.GetImagesResult;
@@ -17780,6 +17787,830 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetFirewallResult> getFirewallPlain(GetFirewallPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getFirewall:getFirewall", TypeShape.of(GetFirewallResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetFirewallSettingsResult> getFirewallSettings() {
+        return getFirewallSettings(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetFirewallSettingsResult> getFirewallSettingsPlain() {
+        return getFirewallSettingsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetFirewallSettingsResult> getFirewallSettings(InvokeArgs args) {
+        return getFirewallSettings(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetFirewallSettingsResult> getFirewallSettingsPlain(InvokeArgs args) {
+        return getFirewallSettingsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetFirewallSettingsResult> getFirewallSettings(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getFirewallSettings:getFirewallSettings", TypeShape.of(GetFirewallSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetFirewallSettingsResult> getFirewallSettings(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getFirewallSettings:getFirewallSettings", TypeShape.of(GetFirewallSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetFirewallSettingsResult> getFirewallSettingsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getFirewallSettings:getFirewallSettings", TypeShape.of(GetFirewallSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode Firewall Template.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a specific Firewall Template:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var public-template = LinodeFunctions.getFirewallTemplate(GetFirewallTemplateArgs.builder()
+     *             .slug("public")
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateId", public_template.id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetFirewallTemplateResult> getFirewallTemplate(GetFirewallTemplateArgs args) {
+        return getFirewallTemplate(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode Firewall Template.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a specific Firewall Template:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var public-template = LinodeFunctions.getFirewallTemplate(GetFirewallTemplateArgs.builder()
+     *             .slug("public")
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateId", public_template.id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetFirewallTemplateResult> getFirewallTemplatePlain(GetFirewallTemplatePlainArgs args) {
+        return getFirewallTemplatePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode Firewall Template.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a specific Firewall Template:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var public-template = LinodeFunctions.getFirewallTemplate(GetFirewallTemplateArgs.builder()
+     *             .slug("public")
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateId", public_template.id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetFirewallTemplateResult> getFirewallTemplate(GetFirewallTemplateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getFirewallTemplate:getFirewallTemplate", TypeShape.of(GetFirewallTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode Firewall Template.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a specific Firewall Template:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var public-template = LinodeFunctions.getFirewallTemplate(GetFirewallTemplateArgs.builder()
+     *             .slug("public")
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateId", public_template.id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetFirewallTemplateResult> getFirewallTemplate(GetFirewallTemplateArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getFirewallTemplate:getFirewallTemplate", TypeShape.of(GetFirewallTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode Firewall Template.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about a specific Firewall Template:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var public-template = LinodeFunctions.getFirewallTemplate(GetFirewallTemplateArgs.builder()
+     *             .slug("public")
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateId", public_template.id());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetFirewallTemplateResult> getFirewallTemplatePlain(GetFirewallTemplatePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getFirewallTemplate:getFirewallTemplate", TypeShape.of(GetFirewallTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about all Linode Firewall Templates.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list all available Firewall Templates:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", all.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Or with some filters to get a subset of the results.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .filters(GetFirewallTemplatesFilterArgs.builder()
+     *                 .name("slug")
+     *                 .values("public")
+     *                 .matchBy("exact")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", filtered.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `slug`
+     * 
+     */
+    public static Output<GetFirewallTemplatesResult> getFirewallTemplates() {
+        return getFirewallTemplates(GetFirewallTemplatesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about all Linode Firewall Templates.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list all available Firewall Templates:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", all.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Or with some filters to get a subset of the results.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .filters(GetFirewallTemplatesFilterArgs.builder()
+     *                 .name("slug")
+     *                 .values("public")
+     *                 .matchBy("exact")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", filtered.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `slug`
+     * 
+     */
+    public static CompletableFuture<GetFirewallTemplatesResult> getFirewallTemplatesPlain() {
+        return getFirewallTemplatesPlain(GetFirewallTemplatesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about all Linode Firewall Templates.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list all available Firewall Templates:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", all.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Or with some filters to get a subset of the results.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .filters(GetFirewallTemplatesFilterArgs.builder()
+     *                 .name("slug")
+     *                 .values("public")
+     *                 .matchBy("exact")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", filtered.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `slug`
+     * 
+     */
+    public static Output<GetFirewallTemplatesResult> getFirewallTemplates(GetFirewallTemplatesArgs args) {
+        return getFirewallTemplates(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about all Linode Firewall Templates.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list all available Firewall Templates:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", all.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Or with some filters to get a subset of the results.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .filters(GetFirewallTemplatesFilterArgs.builder()
+     *                 .name("slug")
+     *                 .values("public")
+     *                 .matchBy("exact")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", filtered.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `slug`
+     * 
+     */
+    public static CompletableFuture<GetFirewallTemplatesResult> getFirewallTemplatesPlain(GetFirewallTemplatesPlainArgs args) {
+        return getFirewallTemplatesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about all Linode Firewall Templates.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list all available Firewall Templates:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", all.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Or with some filters to get a subset of the results.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .filters(GetFirewallTemplatesFilterArgs.builder()
+     *                 .name("slug")
+     *                 .values("public")
+     *                 .matchBy("exact")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", filtered.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `slug`
+     * 
+     */
+    public static Output<GetFirewallTemplatesResult> getFirewallTemplates(GetFirewallTemplatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getFirewallTemplates:getFirewallTemplates", TypeShape.of(GetFirewallTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about all Linode Firewall Templates.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list all available Firewall Templates:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", all.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Or with some filters to get a subset of the results.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .filters(GetFirewallTemplatesFilterArgs.builder()
+     *                 .name("slug")
+     *                 .values("public")
+     *                 .matchBy("exact")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", filtered.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `slug`
+     * 
+     */
+    public static Output<GetFirewallTemplatesResult> getFirewallTemplates(GetFirewallTemplatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getFirewallTemplates:getFirewallTemplates", TypeShape.of(GetFirewallTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about all Linode Firewall Templates.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list all available Firewall Templates:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", all.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Or with some filters to get a subset of the results.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = LinodeFunctions.getFirewallTemplates(GetFirewallTemplatesArgs.builder()
+     *             .filters(GetFirewallTemplatesFilterArgs.builder()
+     *                 .name("slug")
+     *                 .values("public")
+     *                 .matchBy("exact")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("firewallTemplateSlugs", filtered.firewallTemplates());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `slug`
+     * 
+     */
+    public static CompletableFuture<GetFirewallTemplatesResult> getFirewallTemplatesPlain(GetFirewallTemplatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getFirewallTemplates:getFirewallTemplates", TypeShape.of(GetFirewallTemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about Linode Cloud Firewalls that match a set of filters.

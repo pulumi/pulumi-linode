@@ -222,6 +222,25 @@ export interface FirewallOutbound {
     protocol: string;
 }
 
+export interface FirewallSettingsDefaultFirewallIds {
+    /**
+     * The Linode's default firewall.
+     */
+    linode: number;
+    /**
+     * The NodeBalancer's default firewall.
+     */
+    nodebalancer: number;
+    /**
+     * The public interface's default firewall.
+     */
+    publicInterface: number;
+    /**
+     * The VPC interface's default firewall.
+     */
+    vpcInterface: number;
+}
+
 export interface GetAccountAvailabilitiesAvailability {
     /**
      * A set of services which are available for the given region.
@@ -1118,6 +1137,91 @@ export interface GetFirewallOutbound {
     protocol: string;
 }
 
+export interface GetFirewallSettingsDefaultFirewallIds {
+    linode: number;
+    nodebalancer: number;
+    publicInterface: number;
+    vpcInterface: number;
+}
+
+export interface GetFirewallTemplateInbound {
+    action: string;
+    description: string;
+    ipv4s: string[];
+    ipv6s: string[];
+    label: string;
+    ports: string;
+    protocol: string;
+}
+
+export interface GetFirewallTemplateOutbound {
+    action: string;
+    description: string;
+    ipv4s: string[];
+    ipv6s: string[];
+    label: string;
+    ports: string;
+    protocol: string;
+}
+
+export interface GetFirewallTemplatesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetFirewallTemplatesFirewallTemplate {
+    /**
+     * The default behavior for inbound traffic.
+     */
+    inboundPolicy: string;
+    /**
+     * A list of firewall rules specifying allowed inbound network traffic.
+     */
+    inbounds: outputs.GetFirewallTemplatesFirewallTemplateInbound[];
+    /**
+     * The default behavior for outbound traffic.
+     */
+    outboundPolicy: string;
+    /**
+     * A list of firewall rules specifying allowed outbound network traffic.
+     */
+    outbounds: outputs.GetFirewallTemplatesFirewallTemplateOutbound[];
+    /**
+     * The slug of the firewall template.
+     */
+    slug: string;
+}
+
+export interface GetFirewallTemplatesFirewallTemplateInbound {
+    action: string;
+    description: string;
+    ipv4s: string[];
+    ipv6s: string[];
+    label: string;
+    ports: string;
+    protocol: string;
+}
+
+export interface GetFirewallTemplatesFirewallTemplateOutbound {
+    action: string;
+    description: string;
+    ipv4s: string[];
+    ipv6s: string[];
+    label: string;
+    ports: string;
+    protocol: string;
+}
+
 export interface GetFirewallsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -1159,6 +1263,10 @@ export interface GetFirewallsFirewall {
      */
     inbounds?: outputs.GetFirewallsFirewallInbound[];
     /**
+     * The IDs of Linode Interfaces this firewall is applied to.
+     */
+    interfaces: number[];
+    /**
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      */
     label: string;
@@ -1167,7 +1275,7 @@ export interface GetFirewallsFirewall {
      */
     linodes: number[];
     /**
-     * The IDs of NodeBalancers assigned to this Firewall..
+     * The IDs of NodeBalancers this firewall is applied to.
      */
     nodebalancers: number[];
     /**
@@ -1550,6 +1658,10 @@ export interface GetInstanceNetworkingIpv4Private {
      */
     gateway: string;
     /**
+     * The globally general API entity identifier for the Linode interface.
+     */
+    interfaceId: number;
+    /**
      * The Linode instance's ID.
      */
     linodeId: number;
@@ -1607,6 +1719,10 @@ export interface GetInstanceNetworkingIpv4Public {
      * The default gateway for this address.
      */
     gateway: string;
+    /**
+     * The globally general API entity identifier for the Linode interface.
+     */
+    interfaceId: number;
     /**
      * The Linode instance's ID.
      */
@@ -1666,6 +1782,10 @@ export interface GetInstanceNetworkingIpv4Reserved {
      */
     gateway: string;
     /**
+     * The globally general API entity identifier for the Linode interface.
+     */
+    interfaceId: number;
+    /**
      * The Linode instance's ID.
      */
     linodeId: number;
@@ -1723,6 +1843,10 @@ export interface GetInstanceNetworkingIpv4Shared {
      * The default gateway for this address.
      */
     gateway: string;
+    /**
+     * The globally general API entity identifier for the Linode interface.
+     */
+    interfaceId: number;
     /**
      * The Linode instance's ID.
      */
@@ -1862,6 +1986,10 @@ export interface GetInstanceNetworkingIpv6LinkLocal {
      */
     gateway: string;
     /**
+     * The globally general API entity identifier for the Linode interface.
+     */
+    interfaceId: number;
+    /**
      * The Linode instance's ID.
      */
     linodeId: number;
@@ -1919,6 +2047,10 @@ export interface GetInstanceNetworkingIpv6Slaac {
      * The default gateway for this address.
      */
     gateway: string;
+    /**
+     * The globally general API entity identifier for the Linode interface.
+     */
+    interfaceId: number;
     /**
      * The Linode instance's ID.
      */
@@ -2193,6 +2325,10 @@ export interface GetInstancesInstance {
      * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
      */
     image: string;
+    /**
+     * The interface type for this Instance. (`linode`, `legacyConfig`)
+     */
+    interfaceGeneration: string;
     /**
      * (Deprecated) A string containing the Linode's public IP address.
      */
@@ -3262,6 +3398,10 @@ export interface GetNetworkingIpsIpAddress {
      * The default gateway for this address.
      */
     gateway: string;
+    /**
+     * The ID of the interface this address is assigned to.
+     */
+    interfaceId: number;
     /**
      * The ID of the Linode this address currently belongs to.
      */
@@ -4785,7 +4925,7 @@ export interface GetVolumesVolume {
      */
     created: string;
     /**
-     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      */
     encryption: string;
     /**
@@ -4936,11 +5076,21 @@ export interface GetVpcSubnetLinode {
      * The unique id of this VPC subnet.
      */
     id: number;
+    /**
+     * A list of networking interfaces objects.
+     */
     interfaces: outputs.GetVpcSubnetLinodeInterface[];
 }
 
 export interface GetVpcSubnetLinodeInterface {
+    /**
+     * Whether the Interface is actively in use.
+     */
     active: boolean;
+    /**
+     * ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     */
+    configId: number;
     /**
      * The unique id of this VPC subnet.
      */
@@ -4968,7 +5118,7 @@ export interface GetVpcSubnetsVpcSubnet {
      */
     created: string;
     /**
-     * The unique id of the VPC subnet.
+     * ID of the interface.
      */
     id: number;
     /**
@@ -4984,7 +5134,7 @@ export interface GetVpcSubnetsVpcSubnet {
      */
     label: string;
     /**
-     * A list of Linode IDs that added to this subnet.
+     * A list of Linodes added to this subnet.
      */
     linodes: outputs.GetVpcSubnetsVpcSubnetLinode[];
     /**
@@ -5002,16 +5152,26 @@ export interface GetVpcSubnetsVpcSubnetIpv6 {
 
 export interface GetVpcSubnetsVpcSubnetLinode {
     /**
-     * The unique id of the VPC subnet.
+     * ID of the interface.
      */
     id: number;
+    /**
+     * A list of networking interfaces objects.
+     */
     interfaces: outputs.GetVpcSubnetsVpcSubnetLinodeInterface[];
 }
 
 export interface GetVpcSubnetsVpcSubnetLinodeInterface {
+    /**
+     * Whether the Interface is actively in use.
+     */
     active: boolean;
     /**
-     * The unique id of the VPC subnet.
+     * ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     */
+    configId: number;
+    /**
+     * ID of the interface.
      */
     id: number;
 }
@@ -5709,6 +5869,283 @@ export interface InstanceSpec {
     vcpus: number;
 }
 
+export interface InterfaceDefaultRoute {
+    /**
+     * If set to true, the interface is used for the IPv4 default route.
+     */
+    ipv4: boolean;
+    /**
+     * If set to true, the interface is used for the IPv6 default route.
+     */
+    ipv6: boolean;
+}
+
+export interface InterfacePublic {
+    /**
+     * IPv4 addresses for this interface.
+     */
+    ipv4: outputs.InterfacePublicIpv4;
+    /**
+     * IPv6 addresses for this interface.
+     */
+    ipv6: outputs.InterfacePublicIpv6;
+}
+
+export interface InterfacePublicIpv4 {
+    /**
+     * IPv4 addresses configured for this Linode interface. Each object in this list supports:
+     */
+    addresses?: outputs.InterfacePublicIpv4Address[];
+    /**
+     * (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     */
+    assignedAddresses: outputs.InterfacePublicIpv4AssignedAddress[];
+    /**
+     * (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     */
+    shareds: outputs.InterfacePublicIpv4Shared[];
+}
+
+export interface InterfacePublicIpv4Address {
+    /**
+     * The IPv4 address. Defaults to "auto" for automatic assignment.
+     */
+    address: string;
+    /**
+     * Whether this address is the primary address for the interface.
+     */
+    primary?: boolean;
+}
+
+export interface InterfacePublicIpv4AssignedAddress {
+    /**
+     * The assigned IPv4 address.
+     */
+    address: string;
+    /**
+     * Whether this address is the primary address for the interface.
+     */
+    primary: boolean;
+}
+
+export interface InterfacePublicIpv4Shared {
+    /**
+     * The assigned IPv4 address.
+     */
+    address: string;
+    /**
+     * The ID of the Linode to assign this interface to.
+     */
+    linodeId: number;
+}
+
+export interface InterfacePublicIpv6 {
+    /**
+     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     */
+    assignedRanges: outputs.InterfacePublicIpv6AssignedRange[];
+    /**
+     * Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
+     */
+    ranges?: outputs.InterfacePublicIpv6Range[];
+    /**
+     * (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     */
+    shareds: outputs.InterfacePublicIpv6Shared[];
+    /**
+     * (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+     */
+    slaacs: outputs.InterfacePublicIpv6Slaac[];
+}
+
+export interface InterfacePublicIpv6AssignedRange {
+    /**
+     * The IPv6 network range in CIDR notation.
+     */
+    range: string;
+    /**
+     * The public IPv6 address that the range is routed to.
+     */
+    routeTarget: string;
+}
+
+export interface InterfacePublicIpv6Range {
+    /**
+     * The IPv6 range.
+     */
+    range: string;
+    /**
+     * The public IPv6 address that the range is routed to.
+     */
+    routeTarget?: string;
+}
+
+export interface InterfacePublicIpv6Shared {
+    /**
+     * The IPv6 network range in CIDR notation.
+     */
+    range: string;
+    /**
+     * The public IPv6 address that the range is routed to.
+     */
+    routeTarget: string;
+}
+
+export interface InterfacePublicIpv6Slaac {
+    /**
+     * The assigned IPv4 address.
+     */
+    address: string;
+    /**
+     * The subnet prefix length.
+     */
+    prefix: number;
+}
+
+export interface InterfaceVlan {
+    /**
+     * The VLAN interface's private IPv4 address in CIDR notation.
+     */
+    ipamAddress?: string;
+    /**
+     * The VLAN's unique label. Must be between 1 and 64 characters.
+     */
+    vlanLabel: string;
+}
+
+export interface InterfaceVpc {
+    /**
+     * IPv4 configuration for the VPC interface.
+     */
+    ipv4: outputs.InterfaceVpcIpv4;
+    /**
+     * IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+     */
+    ipv6: outputs.InterfaceVpcIpv6;
+    /**
+     * The VPC subnet identifier for this interface.
+     */
+    subnetId: number;
+}
+
+export interface InterfaceVpcIpv4 {
+    /**
+     * Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
+     */
+    addresses?: outputs.InterfaceVpcIpv4Address[];
+    /**
+     * (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     */
+    assignedAddresses: outputs.InterfaceVpcIpv4AssignedAddress[];
+    /**
+     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     */
+    assignedRanges: outputs.InterfaceVpcIpv4AssignedRange[];
+    /**
+     * IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
+     */
+    ranges?: outputs.InterfaceVpcIpv4Range[];
+}
+
+export interface InterfaceVpcIpv4Address {
+    /**
+     * The IPv4 address. Defaults to "auto" for automatic assignment.
+     */
+    address: string;
+    /**
+     * The 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+     */
+    nat11Address?: string;
+    /**
+     * Whether this address is the primary address for the interface.
+     */
+    primary?: boolean;
+}
+
+export interface InterfaceVpcIpv4AssignedAddress {
+    /**
+     * The assigned IPv4 address.
+     */
+    address: string;
+    /**
+     * The assigned 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+     */
+    nat11Address: string;
+    /**
+     * Whether this address is the primary address for the interface.
+     */
+    primary: boolean;
+}
+
+export interface InterfaceVpcIpv4AssignedRange {
+    /**
+     * The IPv6 network range in CIDR notation.
+     */
+    range: string;
+}
+
+export interface InterfaceVpcIpv4Range {
+    /**
+     * The IPv4 range.
+     */
+    range: string;
+}
+
+export interface InterfaceVpcIpv6 {
+    /**
+     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     */
+    assignedRanges: outputs.InterfaceVpcIpv6AssignedRange[];
+    /**
+     * Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+     */
+    assignedSlaacs: outputs.InterfaceVpcIpv6AssignedSlaac[];
+    /**
+     * Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
+     */
+    isPublic: boolean;
+    /**
+     * Defines additional IPv6 network ranges.
+     */
+    ranges?: outputs.InterfaceVpcIpv6Range[];
+    /**
+     * Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
+     */
+    slaacs?: outputs.InterfaceVpcIpv6Slaac[];
+}
+
+export interface InterfaceVpcIpv6AssignedRange {
+    /**
+     * The IPv6 network range in CIDR notation.
+     */
+    range: string;
+}
+
+export interface InterfaceVpcIpv6AssignedSlaac {
+    /**
+     * The assigned IPv4 address.
+     */
+    address: string;
+    /**
+     * The IPv6 network range in CIDR notation.
+     */
+    range: string;
+}
+
+export interface InterfaceVpcIpv6Range {
+    /**
+     * The IPv6 network range in CIDR notation.
+     */
+    range: string;
+}
+
+export interface InterfaceVpcIpv6Slaac {
+    /**
+     * The IPv6 network range in CIDR notation.
+     */
+    range: string;
+}
+
 export interface LkeClusterControlPlane {
     /**
      * Defines the ACL configuration for an LKE cluster's control plane.
@@ -6399,16 +6836,26 @@ export interface VpcSubnetIpv6 {
 
 export interface VpcSubnetLinode {
     /**
-     * The ID of the VPC Subnet.
+     * ID of the interface.
      */
     id: number;
+    /**
+     * A list of networking interfaces objects.
+     */
     interfaces: outputs.VpcSubnetLinodeInterface[];
 }
 
 export interface VpcSubnetLinodeInterface {
+    /**
+     * Whether the Interface is actively in use.
+     */
     active: boolean;
     /**
-     * The ID of the VPC Subnet.
+     * ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     */
+    configId: number;
+    /**
+     * ID of the interface.
      */
     id: number;
 }

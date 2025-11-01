@@ -139,6 +139,10 @@ namespace Pulumi.Linode
         public readonly string InboundPolicy;
         public readonly ImmutableArray<Outputs.GetFirewallInboundResult> Inbounds;
         /// <summary>
+        /// The IDs of Linode interfaces assigned to this Firewall.
+        /// </summary>
+        public readonly ImmutableArray<int> Interfaces;
+        /// <summary>
         /// The label of the underlying entity this device references.
         /// </summary>
         public readonly string Label;
@@ -182,6 +186,8 @@ namespace Pulumi.Linode
 
             ImmutableArray<Outputs.GetFirewallInboundResult> inbounds,
 
+            ImmutableArray<int> interfaces,
+
             string label,
 
             ImmutableArray<int> linodes,
@@ -204,6 +210,7 @@ namespace Pulumi.Linode
             Id = id;
             InboundPolicy = inboundPolicy;
             Inbounds = inbounds;
+            Interfaces = interfaces;
             Label = label;
             Linodes = linodes;
             Nodebalancers = nodebalancers;

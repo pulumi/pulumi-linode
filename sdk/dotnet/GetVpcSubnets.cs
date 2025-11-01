@@ -257,7 +257,7 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetVpcSubnetsFilterResult> Filters;
         /// <summary>
-        /// The unique id of the VPC subnet.
+        /// ID of the interface.
         /// </summary>
         public readonly string Id;
         public readonly int VpcId;
