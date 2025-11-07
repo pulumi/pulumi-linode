@@ -26,6 +26,7 @@ class FirewallArgs:
                  outbound_policy: pulumi.Input[_builtins.str],
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  inbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  outbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
@@ -41,6 +42,7 @@ class FirewallArgs:
                
                * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] interfaces: A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
@@ -53,6 +55,8 @@ class FirewallArgs:
             pulumi.set(__self__, "disabled", disabled)
         if inbounds is not None:
             pulumi.set(__self__, "inbounds", inbounds)
+        if interfaces is not None:
+            pulumi.set(__self__, "interfaces", interfaces)
         if linodes is not None:
             pulumi.set(__self__, "linodes", linodes)
         if nodebalancers is not None:
@@ -128,6 +132,18 @@ class FirewallArgs:
 
     @_builtins.property
     @pulumi.getter
+    def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @interfaces.setter
+    def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "interfaces", value)
+
+    @_builtins.property
+    @pulumi.getter
     def linodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of IDs of Linodes this Firewall should govern network traffic for.
@@ -183,6 +199,7 @@ class _FirewallState:
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  inbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  inbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -202,6 +219,7 @@ class _FirewallState:
                
                * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] interfaces: A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
         :param pulumi.Input[_builtins.str] label: This Firewall's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
@@ -221,6 +239,8 @@ class _FirewallState:
             pulumi.set(__self__, "inbound_policy", inbound_policy)
         if inbounds is not None:
             pulumi.set(__self__, "inbounds", inbounds)
+        if interfaces is not None:
+            pulumi.set(__self__, "interfaces", interfaces)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if linodes is not None:
@@ -301,6 +321,18 @@ class _FirewallState:
     @inbounds.setter
     def inbounds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]]):
         pulumi.set(self, "inbounds", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @interfaces.setter
+    def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "interfaces", value)
 
     @_builtins.property
     @pulumi.getter
@@ -408,6 +440,7 @@ class Firewall(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  inbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -494,6 +527,7 @@ class Firewall(pulumi.CustomResource):
                
                * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] interfaces: A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
         :param pulumi.Input[_builtins.str] label: This Firewall's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
@@ -595,6 +629,7 @@ class Firewall(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  inbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
+                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -615,6 +650,7 @@ class Firewall(pulumi.CustomResource):
                 raise TypeError("Missing required property 'inbound_policy'")
             __props__.__dict__["inbound_policy"] = inbound_policy
             __props__.__dict__["inbounds"] = inbounds
+            __props__.__dict__["interfaces"] = interfaces
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__.__dict__["label"] = label
@@ -644,6 +680,7 @@ class Firewall(pulumi.CustomResource):
             disabled: Optional[pulumi.Input[_builtins.bool]] = None,
             inbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
             inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
+            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
             label: Optional[pulumi.Input[_builtins.str]] = None,
             linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
             nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
@@ -668,6 +705,7 @@ class Firewall(pulumi.CustomResource):
                
                * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] interfaces: A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
         :param pulumi.Input[_builtins.str] label: This Firewall's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
@@ -686,6 +724,7 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["inbound_policy"] = inbound_policy
         __props__.__dict__["inbounds"] = inbounds
+        __props__.__dict__["interfaces"] = interfaces
         __props__.__dict__["label"] = label
         __props__.__dict__["linodes"] = linodes
         __props__.__dict__["nodebalancers"] = nodebalancers
@@ -739,6 +778,14 @@ class Firewall(pulumi.CustomResource):
         A firewall rule that specifies what inbound network traffic is allowed.
         """
         return pulumi.get(self, "inbounds")
+
+    @_builtins.property
+    @pulumi.getter
+    def interfaces(self) -> pulumi.Output[Sequence[_builtins.int]]:
+        """
+        A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+        """
+        return pulumi.get(self, "interfaces")
 
     @_builtins.property
     @pulumi.getter

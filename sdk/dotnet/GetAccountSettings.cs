@@ -94,6 +94,10 @@ namespace Pulumi.Linode
         public readonly bool BackupsEnabled;
         public readonly string Id;
         /// <summary>
+        /// Type of interfaces for new Linode instances.
+        /// </summary>
+        public readonly string InterfacesForNewLinodes;
+        /// <summary>
         /// The Longview Pro tier you are currently subscribed to.
         /// </summary>
         public readonly string LongviewSubscription;
@@ -120,6 +124,8 @@ namespace Pulumi.Linode
 
             string id,
 
+            string interfacesForNewLinodes,
+
             string longviewSubscription,
 
             string maintenancePolicy,
@@ -132,6 +138,7 @@ namespace Pulumi.Linode
         {
             BackupsEnabled = backupsEnabled;
             Id = id;
+            InterfacesForNewLinodes = interfacesForNewLinodes;
             LongviewSubscription = longviewSubscription;
             MaintenancePolicy = maintenancePolicy;
             Managed = managed;

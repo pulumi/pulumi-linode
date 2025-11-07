@@ -42,6 +42,31 @@ namespace Pulumi.Linode
     /// 
     /// The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // NOTE: VPC-attached NodeBalancers may not currently be available to all users.
+    ///     var foobar = new Linode.NodeBalancer("foobar", new()
+    ///     {
+    ///         Label = "mynodebalancer",
+    ///         Region = "us-mia",
+    ///         Vpcs = new[]
+    ///         {
+    ///             new Linode.Inputs.NodeBalancerVpcArgs
+    ///             {
+    ///                 SubnetId = test.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.

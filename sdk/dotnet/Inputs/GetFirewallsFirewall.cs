@@ -60,6 +60,18 @@ namespace Pulumi.Linode.Inputs
             set => _inbounds = value;
         }
 
+        [Input("interfaces", required: true)]
+        private List<int>? _interfaces;
+
+        /// <summary>
+        /// The IDs of Linode Interfaces this firewall is applied to.
+        /// </summary>
+        public List<int> Interfaces
+        {
+            get => _interfaces ?? (_interfaces = new List<int>());
+            set => _interfaces = value;
+        }
+
         /// <summary>
         /// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
         /// </summary>
@@ -82,7 +94,7 @@ namespace Pulumi.Linode.Inputs
         private List<int>? _nodebalancers;
 
         /// <summary>
-        /// The IDs of NodeBalancers assigned to this Firewall..
+        /// The IDs of NodeBalancers this firewall is applied to.
         /// </summary>
         public List<int> Nodebalancers
         {

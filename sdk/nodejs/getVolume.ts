@@ -47,7 +47,7 @@ export interface GetVolumeResult {
      */
     readonly created: string;
     /**
-     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      */
     readonly encryption: string;
     /**

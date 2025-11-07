@@ -22,6 +22,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Gateway;
         /// <summary>
+        /// The globally general API entity identifier for the Linode interface.
+        /// </summary>
+        public readonly int InterfaceId;
+        /// <summary>
         /// The Linode instance's ID.
         /// </summary>
         public readonly int LinodeId;
@@ -60,6 +64,8 @@ namespace Pulumi.Linode.Outputs
 
             string gateway,
 
+            int interfaceId,
+
             int linodeId,
 
             int prefix,
@@ -78,6 +84,7 @@ namespace Pulumi.Linode.Outputs
         {
             Address = address;
             Gateway = gateway;
+            InterfaceId = interfaceId;
             LinodeId = linodeId;
             Prefix = prefix;
             Public = @public;

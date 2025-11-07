@@ -43,7 +43,7 @@ class ObjectStorageBucketArgs:
         :param pulumi.Input['ObjectStorageBucketCertArgs'] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[_builtins.str] cluster: The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
                For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
-        :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
+        :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
         :param pulumi.Input[_builtins.str] region: The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
@@ -152,7 +152,7 @@ class ObjectStorageBucketArgs:
     @pulumi.getter(name="corsEnabled")
     def cors_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, the bucket will have CORS enabled for all origins.
+        If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         """
         return pulumi.get(self, "cors_enabled")
 
@@ -265,7 +265,7 @@ class _ObjectStorageBucketState:
         :param pulumi.Input['ObjectStorageBucketCertArgs'] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[_builtins.str] cluster: The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
                For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
-        :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
+        :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         :param pulumi.Input[_builtins.str] endpoint: The endpoint for the bucket used for s3 connections.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[_builtins.str] hostname: The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
@@ -373,7 +373,7 @@ class _ObjectStorageBucketState:
     @pulumi.getter(name="corsEnabled")
     def cors_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        If true, the bucket will have CORS enabled for all origins.
+        If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         """
         return pulumi.get(self, "cors_enabled")
 
@@ -574,7 +574,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[_builtins.str] cluster: The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
                For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
-        :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
+        :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[_builtins.str] label: The label of the Linode Object Storage Bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
@@ -736,7 +736,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
         :param pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[_builtins.str] cluster: The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
                For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
-        :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins.
+        :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         :param pulumi.Input[_builtins.str] endpoint: The endpoint for the bucket used for s3 connections.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[_builtins.str] hostname: The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
@@ -813,7 +813,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
     @pulumi.getter(name="corsEnabled")
     def cors_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        If true, the bucket will have CORS enabled for all origins.
+        If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         """
         return pulumi.get(self, "cors_enabled")
 

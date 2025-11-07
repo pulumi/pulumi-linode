@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Inputs
         public string Created { get; set; } = null!;
 
         /// <summary>
-        /// The unique id of the VPC subnet.
+        /// ID of the interface.
         /// </summary>
         [Input("id", required: true)]
         public int Id { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.Linode.Inputs
         private List<Inputs.GetVpcSubnetsVpcSubnetLinodeArgs>? _linodes;
 
         /// <summary>
-        /// A list of Linode IDs that added to this subnet.
+        /// A list of Linodes added to this subnet.
         /// </summary>
         public List<Inputs.GetVpcSubnetsVpcSubnetLinodeArgs> Linodes
         {

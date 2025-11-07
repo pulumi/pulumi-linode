@@ -64,6 +64,9 @@ class GetVpcSubnetResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        ID of the interface.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -91,7 +94,7 @@ class GetVpcSubnetResult:
     @pulumi.getter
     def linodes(self) -> Sequence['outputs.GetVpcSubnetLinodeResult']:
         """
-        A list of Linode IDs that added to this subnet.
+        A list of Linodes added to this subnet.
         """
         return pulumi.get(self, "linodes")
 

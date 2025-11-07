@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string> Created { get; set; } = null!;
 
         /// <summary>
-        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         /// </summary>
         [Input("encryption", required: true)]
         public Input<string> Encryption { get; set; } = null!;

@@ -41,6 +41,8 @@ __all__ = [
     'FirewallInboundArgsDict',
     'FirewallOutboundArgs',
     'FirewallOutboundArgsDict',
+    'FirewallSettingsDefaultFirewallIdsArgs',
+    'FirewallSettingsDefaultFirewallIdsArgsDict',
     'ImageReplicationArgs',
     'ImageReplicationArgsDict',
     'ImageTimeoutsArgs',
@@ -109,6 +111,52 @@ __all__ = [
     'InstancePlacementGroupArgsDict',
     'InstanceSpecArgs',
     'InstanceSpecArgsDict',
+    'InterfaceDefaultRouteArgs',
+    'InterfaceDefaultRouteArgsDict',
+    'InterfacePublicArgs',
+    'InterfacePublicArgsDict',
+    'InterfacePublicIpv4Args',
+    'InterfacePublicIpv4ArgsDict',
+    'InterfacePublicIpv4AddressArgs',
+    'InterfacePublicIpv4AddressArgsDict',
+    'InterfacePublicIpv4AssignedAddressArgs',
+    'InterfacePublicIpv4AssignedAddressArgsDict',
+    'InterfacePublicIpv4SharedArgs',
+    'InterfacePublicIpv4SharedArgsDict',
+    'InterfacePublicIpv6Args',
+    'InterfacePublicIpv6ArgsDict',
+    'InterfacePublicIpv6AssignedRangeArgs',
+    'InterfacePublicIpv6AssignedRangeArgsDict',
+    'InterfacePublicIpv6RangeArgs',
+    'InterfacePublicIpv6RangeArgsDict',
+    'InterfacePublicIpv6SharedArgs',
+    'InterfacePublicIpv6SharedArgsDict',
+    'InterfacePublicIpv6SlaacArgs',
+    'InterfacePublicIpv6SlaacArgsDict',
+    'InterfaceVlanArgs',
+    'InterfaceVlanArgsDict',
+    'InterfaceVpcArgs',
+    'InterfaceVpcArgsDict',
+    'InterfaceVpcIpv4Args',
+    'InterfaceVpcIpv4ArgsDict',
+    'InterfaceVpcIpv4AddressArgs',
+    'InterfaceVpcIpv4AddressArgsDict',
+    'InterfaceVpcIpv4AssignedAddressArgs',
+    'InterfaceVpcIpv4AssignedAddressArgsDict',
+    'InterfaceVpcIpv4AssignedRangeArgs',
+    'InterfaceVpcIpv4AssignedRangeArgsDict',
+    'InterfaceVpcIpv4RangeArgs',
+    'InterfaceVpcIpv4RangeArgsDict',
+    'InterfaceVpcIpv6Args',
+    'InterfaceVpcIpv6ArgsDict',
+    'InterfaceVpcIpv6AssignedRangeArgs',
+    'InterfaceVpcIpv6AssignedRangeArgsDict',
+    'InterfaceVpcIpv6AssignedSlaacArgs',
+    'InterfaceVpcIpv6AssignedSlaacArgsDict',
+    'InterfaceVpcIpv6RangeArgs',
+    'InterfaceVpcIpv6RangeArgsDict',
+    'InterfaceVpcIpv6SlaacArgs',
+    'InterfaceVpcIpv6SlaacArgsDict',
     'LkeClusterControlPlaneArgs',
     'LkeClusterControlPlaneArgsDict',
     'LkeClusterControlPlaneAclArgs',
@@ -227,6 +275,14 @@ __all__ = [
     'GetDomainsDomainArgsDict',
     'GetDomainsFilterArgs',
     'GetDomainsFilterArgsDict',
+    'GetFirewallTemplatesFilterArgs',
+    'GetFirewallTemplatesFilterArgsDict',
+    'GetFirewallTemplatesFirewallTemplateArgs',
+    'GetFirewallTemplatesFirewallTemplateArgsDict',
+    'GetFirewallTemplatesFirewallTemplateInboundArgs',
+    'GetFirewallTemplatesFirewallTemplateInboundArgsDict',
+    'GetFirewallTemplatesFirewallTemplateOutboundArgs',
+    'GetFirewallTemplatesFirewallTemplateOutboundArgsDict',
     'GetFirewallsFilterArgs',
     'GetFirewallsFilterArgsDict',
     'GetFirewallsFirewallArgs',
@@ -1596,6 +1652,98 @@ class FirewallOutboundArgs:
     @ports.setter
     def ports(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ports", value)
+
+
+if not MYPY:
+    class FirewallSettingsDefaultFirewallIdsArgsDict(TypedDict):
+        linode: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The Linode's default firewall.
+        """
+        nodebalancer: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The NodeBalancer's default firewall.
+        """
+        public_interface: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The public interface's default firewall.
+        """
+        vpc_interface: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The VPC interface's default firewall.
+        """
+elif False:
+    FirewallSettingsDefaultFirewallIdsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FirewallSettingsDefaultFirewallIdsArgs:
+    def __init__(__self__, *,
+                 linode: Optional[pulumi.Input[_builtins.int]] = None,
+                 nodebalancer: Optional[pulumi.Input[_builtins.int]] = None,
+                 public_interface: Optional[pulumi.Input[_builtins.int]] = None,
+                 vpc_interface: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] linode: The Linode's default firewall.
+        :param pulumi.Input[_builtins.int] nodebalancer: The NodeBalancer's default firewall.
+        :param pulumi.Input[_builtins.int] public_interface: The public interface's default firewall.
+        :param pulumi.Input[_builtins.int] vpc_interface: The VPC interface's default firewall.
+        """
+        if linode is not None:
+            pulumi.set(__self__, "linode", linode)
+        if nodebalancer is not None:
+            pulumi.set(__self__, "nodebalancer", nodebalancer)
+        if public_interface is not None:
+            pulumi.set(__self__, "public_interface", public_interface)
+        if vpc_interface is not None:
+            pulumi.set(__self__, "vpc_interface", vpc_interface)
+
+    @_builtins.property
+    @pulumi.getter
+    def linode(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The Linode's default firewall.
+        """
+        return pulumi.get(self, "linode")
+
+    @linode.setter
+    def linode(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "linode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nodebalancer(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The NodeBalancer's default firewall.
+        """
+        return pulumi.get(self, "nodebalancer")
+
+    @nodebalancer.setter
+    def nodebalancer(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "nodebalancer", value)
+
+    @_builtins.property
+    @pulumi.getter(name="publicInterface")
+    def public_interface(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The public interface's default firewall.
+        """
+        return pulumi.get(self, "public_interface")
+
+    @public_interface.setter
+    def public_interface(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "public_interface", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcInterface")
+    def vpc_interface(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The VPC interface's default firewall.
+        """
+        return pulumi.get(self, "vpc_interface")
+
+    @vpc_interface.setter
+    def vpc_interface(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "vpc_interface", value)
 
 
 if not MYPY:
@@ -4670,6 +4818,1318 @@ class InstanceSpecArgs:
     @vcpus.setter
     def vcpus(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "vcpus", value)
+
+
+if not MYPY:
+    class InterfaceDefaultRouteArgsDict(TypedDict):
+        ipv4: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, the interface is used for the IPv4 default route.
+        """
+        ipv6: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        If set to true, the interface is used for the IPv6 default route.
+        """
+elif False:
+    InterfaceDefaultRouteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceDefaultRouteArgs:
+    def __init__(__self__, *,
+                 ipv4: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ipv6: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] ipv4: If set to true, the interface is used for the IPv4 default route.
+        :param pulumi.Input[_builtins.bool] ipv6: If set to true, the interface is used for the IPv6 default route.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, the interface is used for the IPv4 default route.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ipv4", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, the interface is used for the IPv6 default route.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ipv6", value)
+
+
+if not MYPY:
+    class InterfacePublicArgsDict(TypedDict):
+        ipv4: NotRequired[pulumi.Input['InterfacePublicIpv4ArgsDict']]
+        """
+        IPv4 addresses for this interface.
+        """
+        ipv6: NotRequired[pulumi.Input['InterfacePublicIpv6ArgsDict']]
+        """
+        IPv6 addresses for this interface.
+        """
+elif False:
+    InterfacePublicArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfacePublicArgs:
+    def __init__(__self__, *,
+                 ipv4: Optional[pulumi.Input['InterfacePublicIpv4Args']] = None,
+                 ipv6: Optional[pulumi.Input['InterfacePublicIpv6Args']] = None):
+        """
+        :param pulumi.Input['InterfacePublicIpv4Args'] ipv4: IPv4 addresses for this interface.
+        :param pulumi.Input['InterfacePublicIpv6Args'] ipv6: IPv6 addresses for this interface.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input['InterfacePublicIpv4Args']]:
+        """
+        IPv4 addresses for this interface.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input['InterfacePublicIpv4Args']]):
+        pulumi.set(self, "ipv4", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input['InterfacePublicIpv6Args']]:
+        """
+        IPv6 addresses for this interface.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input['InterfacePublicIpv6Args']]):
+        pulumi.set(self, "ipv6", value)
+
+
+if not MYPY:
+    class InterfacePublicIpv4ArgsDict(TypedDict):
+        addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AddressArgsDict']]]]
+        """
+        IPv4 addresses configured for this Linode interface. Each object in this list supports:
+        """
+        assigned_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgsDict']]]]
+        """
+        (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+        """
+        shareds: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgsDict']]]]
+        """
+        (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+        """
+elif False:
+    InterfacePublicIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfacePublicIpv4Args:
+    def __init__(__self__, *,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AddressArgs']]]] = None,
+                 assigned_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgs']]]] = None,
+                 shareds: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AddressArgs']]] addresses: IPv4 addresses configured for this Linode interface. Each object in this list supports:
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgs']]] assigned_addresses: (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgs']]] shareds: (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+        """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+        if assigned_addresses is not None:
+            pulumi.set(__self__, "assigned_addresses", assigned_addresses)
+        if shareds is not None:
+            pulumi.set(__self__, "shareds", shareds)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AddressArgs']]]]:
+        """
+        IPv4 addresses configured for this Linode interface. Each object in this list supports:
+        """
+        return pulumi.get(self, "addresses")
+
+    @addresses.setter
+    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AddressArgs']]]]):
+        pulumi.set(self, "addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedAddresses")
+    def assigned_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgs']]]]:
+        """
+        (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+        """
+        return pulumi.get(self, "assigned_addresses")
+
+    @assigned_addresses.setter
+    def assigned_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgs']]]]):
+        pulumi.set(self, "assigned_addresses", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def shareds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgs']]]]:
+        """
+        (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+        """
+        return pulumi.get(self, "shareds")
+
+    @shareds.setter
+    def shareds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgs']]]]):
+        pulumi.set(self, "shareds", value)
+
+
+if not MYPY:
+    class InterfacePublicIpv4AddressArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The IPv4 address. Defaults to "auto" for automatic assignment.
+        """
+        primary: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether this address is the primary address for the interface.
+        """
+elif False:
+    InterfacePublicIpv4AddressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfacePublicIpv4AddressArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: The IPv4 address. Defaults to "auto" for automatic assignment.
+        :param pulumi.Input[_builtins.bool] primary: Whether this address is the primary address for the interface.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IPv4 address. Defaults to "auto" for automatic assignment.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether this address is the primary address for the interface.
+        """
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "primary", value)
+
+
+if not MYPY:
+    class InterfacePublicIpv4AssignedAddressArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The assigned IPv4 address.
+        """
+        primary: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether this address is the primary address for the interface.
+        """
+elif False:
+    InterfacePublicIpv4AssignedAddressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfacePublicIpv4AssignedAddressArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: The assigned IPv4 address.
+        :param pulumi.Input[_builtins.bool] primary: Whether this address is the primary address for the interface.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The assigned IPv4 address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether this address is the primary address for the interface.
+        """
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "primary", value)
+
+
+if not MYPY:
+    class InterfacePublicIpv4SharedArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The assigned IPv4 address.
+        """
+        linode_id: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The ID of the Linode to assign this interface to.
+        """
+elif False:
+    InterfacePublicIpv4SharedArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfacePublicIpv4SharedArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 linode_id: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: The assigned IPv4 address.
+        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to assign this interface to.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if linode_id is not None:
+            pulumi.set(__self__, "linode_id", linode_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The assigned IPv4 address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The ID of the Linode to assign this interface to.
+        """
+        return pulumi.get(self, "linode_id")
+
+    @linode_id.setter
+    def linode_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "linode_id", value)
+
+
+if not MYPY:
+    class InterfacePublicIpv6ArgsDict(TypedDict):
+        assigned_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgsDict']]]]
+        """
+        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        """
+        ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6RangeArgsDict']]]]
+        """
+        Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
+        """
+        shareds: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgsDict']]]]
+        """
+        (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+        """
+        slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgsDict']]]]
+        """
+        (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+        """
+elif False:
+    InterfacePublicIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfacePublicIpv6Args:
+    def __init__(__self__, *,
+                 assigned_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgs']]]] = None,
+                 ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6RangeArgs']]]] = None,
+                 shareds: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgs']]]] = None,
+                 slaacs: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgs']]] assigned_ranges: Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6RangeArgs']]] ranges: Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgs']]] shareds: (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgs']]] slaacs: (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+        """
+        if assigned_ranges is not None:
+            pulumi.set(__self__, "assigned_ranges", assigned_ranges)
+        if ranges is not None:
+            pulumi.set(__self__, "ranges", ranges)
+        if shareds is not None:
+            pulumi.set(__self__, "shareds", shareds)
+        if slaacs is not None:
+            pulumi.set(__self__, "slaacs", slaacs)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedRanges")
+    def assigned_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgs']]]]:
+        """
+        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        """
+        return pulumi.get(self, "assigned_ranges")
+
+    @assigned_ranges.setter
+    def assigned_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgs']]]]):
+        pulumi.set(self, "assigned_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6RangeArgs']]]]:
+        """
+        Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
+        """
+        return pulumi.get(self, "ranges")
+
+    @ranges.setter
+    def ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6RangeArgs']]]]):
+        pulumi.set(self, "ranges", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def shareds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgs']]]]:
+        """
+        (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+        """
+        return pulumi.get(self, "shareds")
+
+    @shareds.setter
+    def shareds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgs']]]]):
+        pulumi.set(self, "shareds", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def slaacs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgs']]]]:
+        """
+        (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+        """
+        return pulumi.get(self, "slaacs")
+
+    @slaacs.setter
+    def slaacs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgs']]]]):
+        pulumi.set(self, "slaacs", value)
+
+
+if not MYPY:
+    class InterfacePublicIpv6AssignedRangeArgsDict(TypedDict):
+        range: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The IPv6 network range in CIDR notation.
+        """
+        route_target: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The public IPv6 address that the range is routed to.
+        """
+elif False:
+    InterfacePublicIpv6AssignedRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfacePublicIpv6AssignedRangeArgs:
+    def __init__(__self__, *,
+                 range: Optional[pulumi.Input[_builtins.str]] = None,
+                 route_target: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] range: The IPv6 network range in CIDR notation.
+        :param pulumi.Input[_builtins.str] route_target: The public IPv6 address that the range is routed to.
+        """
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+        if route_target is not None:
+            pulumi.set(__self__, "route_target", route_target)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IPv6 network range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routeTarget")
+    def route_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The public IPv6 address that the range is routed to.
+        """
+        return pulumi.get(self, "route_target")
+
+    @route_target.setter
+    def route_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "route_target", value)
+
+
+if not MYPY:
+    class InterfacePublicIpv6RangeArgsDict(TypedDict):
+        range: pulumi.Input[_builtins.str]
+        """
+        The IPv6 range.
+        """
+        route_target: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The public IPv6 address that the range is routed to.
+        """
+elif False:
+    InterfacePublicIpv6RangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfacePublicIpv6RangeArgs:
+    def __init__(__self__, *,
+                 range: pulumi.Input[_builtins.str],
+                 route_target: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] range: The IPv6 range.
+        :param pulumi.Input[_builtins.str] route_target: The public IPv6 address that the range is routed to.
+        """
+        pulumi.set(__self__, "range", range)
+        if route_target is not None:
+            pulumi.set(__self__, "route_target", route_target)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IPv6 range.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routeTarget")
+    def route_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The public IPv6 address that the range is routed to.
+        """
+        return pulumi.get(self, "route_target")
+
+    @route_target.setter
+    def route_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "route_target", value)
+
+
+if not MYPY:
+    class InterfacePublicIpv6SharedArgsDict(TypedDict):
+        range: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The IPv6 network range in CIDR notation.
+        """
+        route_target: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The public IPv6 address that the range is routed to.
+        """
+elif False:
+    InterfacePublicIpv6SharedArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfacePublicIpv6SharedArgs:
+    def __init__(__self__, *,
+                 range: Optional[pulumi.Input[_builtins.str]] = None,
+                 route_target: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] range: The IPv6 network range in CIDR notation.
+        :param pulumi.Input[_builtins.str] route_target: The public IPv6 address that the range is routed to.
+        """
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+        if route_target is not None:
+            pulumi.set(__self__, "route_target", route_target)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IPv6 network range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routeTarget")
+    def route_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The public IPv6 address that the range is routed to.
+        """
+        return pulumi.get(self, "route_target")
+
+    @route_target.setter
+    def route_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "route_target", value)
+
+
+if not MYPY:
+    class InterfacePublicIpv6SlaacArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The assigned IPv4 address.
+        """
+        prefix: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The subnet prefix length.
+        """
+elif False:
+    InterfacePublicIpv6SlaacArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfacePublicIpv6SlaacArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 prefix: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: The assigned IPv4 address.
+        :param pulumi.Input[_builtins.int] prefix: The subnet prefix length.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The assigned IPv4 address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The subnet prefix length.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "prefix", value)
+
+
+if not MYPY:
+    class InterfaceVlanArgsDict(TypedDict):
+        vlan_label: pulumi.Input[_builtins.str]
+        """
+        The VLAN's unique label. Must be between 1 and 64 characters.
+        """
+        ipam_address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The VLAN interface's private IPv4 address in CIDR notation.
+        """
+elif False:
+    InterfaceVlanArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVlanArgs:
+    def __init__(__self__, *,
+                 vlan_label: pulumi.Input[_builtins.str],
+                 ipam_address: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] vlan_label: The VLAN's unique label. Must be between 1 and 64 characters.
+        :param pulumi.Input[_builtins.str] ipam_address: The VLAN interface's private IPv4 address in CIDR notation.
+        """
+        pulumi.set(__self__, "vlan_label", vlan_label)
+        if ipam_address is not None:
+            pulumi.set(__self__, "ipam_address", ipam_address)
+
+    @_builtins.property
+    @pulumi.getter(name="vlanLabel")
+    def vlan_label(self) -> pulumi.Input[_builtins.str]:
+        """
+        The VLAN's unique label. Must be between 1 and 64 characters.
+        """
+        return pulumi.get(self, "vlan_label")
+
+    @vlan_label.setter
+    def vlan_label(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "vlan_label", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipamAddress")
+    def ipam_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The VLAN interface's private IPv4 address in CIDR notation.
+        """
+        return pulumi.get(self, "ipam_address")
+
+    @ipam_address.setter
+    def ipam_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ipam_address", value)
+
+
+if not MYPY:
+    class InterfaceVpcArgsDict(TypedDict):
+        subnet_id: pulumi.Input[_builtins.int]
+        """
+        The VPC subnet identifier for this interface.
+        """
+        ipv4: NotRequired[pulumi.Input['InterfaceVpcIpv4ArgsDict']]
+        """
+        IPv4 configuration for the VPC interface.
+        """
+        ipv6: NotRequired[pulumi.Input['InterfaceVpcIpv6ArgsDict']]
+        """
+        IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+        """
+elif False:
+    InterfaceVpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVpcArgs:
+    def __init__(__self__, *,
+                 subnet_id: pulumi.Input[_builtins.int],
+                 ipv4: Optional[pulumi.Input['InterfaceVpcIpv4Args']] = None,
+                 ipv6: Optional[pulumi.Input['InterfaceVpcIpv6Args']] = None):
+        """
+        :param pulumi.Input[_builtins.int] subnet_id: The VPC subnet identifier for this interface.
+        :param pulumi.Input['InterfaceVpcIpv4Args'] ipv4: IPv4 configuration for the VPC interface.
+        :param pulumi.Input['InterfaceVpcIpv6Args'] ipv6: IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The VPC subnet identifier for this interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "subnet_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input['InterfaceVpcIpv4Args']]:
+        """
+        IPv4 configuration for the VPC interface.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input['InterfaceVpcIpv4Args']]):
+        pulumi.set(self, "ipv4", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input['InterfaceVpcIpv6Args']]:
+        """
+        IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input['InterfaceVpcIpv6Args']]):
+        pulumi.set(self, "ipv6", value)
+
+
+if not MYPY:
+    class InterfaceVpcIpv4ArgsDict(TypedDict):
+        addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AddressArgsDict']]]]
+        """
+        Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
+        """
+        assigned_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgsDict']]]]
+        """
+        (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+        """
+        assigned_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgsDict']]]]
+        """
+        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        """
+        ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgsDict']]]]
+        """
+        IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
+        """
+elif False:
+    InterfaceVpcIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVpcIpv4Args:
+    def __init__(__self__, *,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AddressArgs']]]] = None,
+                 assigned_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgs']]]] = None,
+                 assigned_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgs']]]] = None,
+                 ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AddressArgs']]] addresses: Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgs']]] assigned_addresses: (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgs']]] assigned_ranges: Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgs']]] ranges: IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
+        """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+        if assigned_addresses is not None:
+            pulumi.set(__self__, "assigned_addresses", assigned_addresses)
+        if assigned_ranges is not None:
+            pulumi.set(__self__, "assigned_ranges", assigned_ranges)
+        if ranges is not None:
+            pulumi.set(__self__, "ranges", ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AddressArgs']]]]:
+        """
+        Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
+        """
+        return pulumi.get(self, "addresses")
+
+    @addresses.setter
+    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AddressArgs']]]]):
+        pulumi.set(self, "addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedAddresses")
+    def assigned_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgs']]]]:
+        """
+        (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+        """
+        return pulumi.get(self, "assigned_addresses")
+
+    @assigned_addresses.setter
+    def assigned_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgs']]]]):
+        pulumi.set(self, "assigned_addresses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedRanges")
+    def assigned_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgs']]]]:
+        """
+        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        """
+        return pulumi.get(self, "assigned_ranges")
+
+    @assigned_ranges.setter
+    def assigned_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgs']]]]):
+        pulumi.set(self, "assigned_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgs']]]]:
+        """
+        IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
+        """
+        return pulumi.get(self, "ranges")
+
+    @ranges.setter
+    def ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgs']]]]):
+        pulumi.set(self, "ranges", value)
+
+
+if not MYPY:
+    class InterfaceVpcIpv4AddressArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The IPv4 address. Defaults to "auto" for automatic assignment.
+        """
+        nat11_address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+        """
+        primary: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether this address is the primary address for the interface.
+        """
+elif False:
+    InterfaceVpcIpv4AddressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVpcIpv4AddressArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 nat11_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: The IPv4 address. Defaults to "auto" for automatic assignment.
+        :param pulumi.Input[_builtins.str] nat11_address: The 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+        :param pulumi.Input[_builtins.bool] primary: Whether this address is the primary address for the interface.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if nat11_address is not None:
+            pulumi.set(__self__, "nat11_address", nat11_address)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IPv4 address. Defaults to "auto" for automatic assignment.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nat11Address")
+    def nat11_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+        """
+        return pulumi.get(self, "nat11_address")
+
+    @nat11_address.setter
+    def nat11_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "nat11_address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether this address is the primary address for the interface.
+        """
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "primary", value)
+
+
+if not MYPY:
+    class InterfaceVpcIpv4AssignedAddressArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The assigned IPv4 address.
+        """
+        nat11_address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The assigned 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+        """
+        primary: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether this address is the primary address for the interface.
+        """
+elif False:
+    InterfaceVpcIpv4AssignedAddressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVpcIpv4AssignedAddressArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 nat11_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: The assigned IPv4 address.
+        :param pulumi.Input[_builtins.str] nat11_address: The assigned 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+        :param pulumi.Input[_builtins.bool] primary: Whether this address is the primary address for the interface.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if nat11_address is not None:
+            pulumi.set(__self__, "nat11_address", nat11_address)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The assigned IPv4 address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nat11Address")
+    def nat11_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The assigned 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+        """
+        return pulumi.get(self, "nat11_address")
+
+    @nat11_address.setter
+    def nat11_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "nat11_address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether this address is the primary address for the interface.
+        """
+        return pulumi.get(self, "primary")
+
+    @primary.setter
+    def primary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "primary", value)
+
+
+if not MYPY:
+    class InterfaceVpcIpv4AssignedRangeArgsDict(TypedDict):
+        range: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The IPv6 network range in CIDR notation.
+        """
+elif False:
+    InterfaceVpcIpv4AssignedRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVpcIpv4AssignedRangeArgs:
+    def __init__(__self__, *,
+                 range: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] range: The IPv6 network range in CIDR notation.
+        """
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IPv6 network range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "range", value)
+
+
+if not MYPY:
+    class InterfaceVpcIpv4RangeArgsDict(TypedDict):
+        range: pulumi.Input[_builtins.str]
+        """
+        The IPv4 range.
+        """
+elif False:
+    InterfaceVpcIpv4RangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVpcIpv4RangeArgs:
+    def __init__(__self__, *,
+                 range: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] range: The IPv4 range.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IPv4 range.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "range", value)
+
+
+if not MYPY:
+    class InterfaceVpcIpv6ArgsDict(TypedDict):
+        assigned_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgsDict']]]]
+        """
+        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        """
+        assigned_slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgsDict']]]]
+        """
+        Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+        """
+        is_public: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
+        """
+        ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6RangeArgsDict']]]]
+        """
+        Defines additional IPv6 network ranges.
+        """
+        slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6SlaacArgsDict']]]]
+        """
+        Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
+        """
+elif False:
+    InterfaceVpcIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVpcIpv6Args:
+    def __init__(__self__, *,
+                 assigned_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgs']]]] = None,
+                 assigned_slaacs: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgs']]]] = None,
+                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ranges: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6RangeArgs']]]] = None,
+                 slaacs: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6SlaacArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgs']]] assigned_ranges: Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgs']]] assigned_slaacs: Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+        :param pulumi.Input[_builtins.bool] is_public: Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6RangeArgs']]] ranges: Defines additional IPv6 network ranges.
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6SlaacArgs']]] slaacs: Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
+        """
+        if assigned_ranges is not None:
+            pulumi.set(__self__, "assigned_ranges", assigned_ranges)
+        if assigned_slaacs is not None:
+            pulumi.set(__self__, "assigned_slaacs", assigned_slaacs)
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
+        if ranges is not None:
+            pulumi.set(__self__, "ranges", ranges)
+        if slaacs is not None:
+            pulumi.set(__self__, "slaacs", slaacs)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedRanges")
+    def assigned_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgs']]]]:
+        """
+        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        """
+        return pulumi.get(self, "assigned_ranges")
+
+    @assigned_ranges.setter
+    def assigned_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgs']]]]):
+        pulumi.set(self, "assigned_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedSlaacs")
+    def assigned_slaacs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgs']]]]:
+        """
+        Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+        """
+        return pulumi.get(self, "assigned_slaacs")
+
+    @assigned_slaacs.setter
+    def assigned_slaacs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgs']]]]):
+        pulumi.set(self, "assigned_slaacs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_public", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6RangeArgs']]]]:
+        """
+        Defines additional IPv6 network ranges.
+        """
+        return pulumi.get(self, "ranges")
+
+    @ranges.setter
+    def ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6RangeArgs']]]]):
+        pulumi.set(self, "ranges", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def slaacs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6SlaacArgs']]]]:
+        """
+        Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
+        """
+        return pulumi.get(self, "slaacs")
+
+    @slaacs.setter
+    def slaacs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6SlaacArgs']]]]):
+        pulumi.set(self, "slaacs", value)
+
+
+if not MYPY:
+    class InterfaceVpcIpv6AssignedRangeArgsDict(TypedDict):
+        range: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The IPv6 network range in CIDR notation.
+        """
+elif False:
+    InterfaceVpcIpv6AssignedRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVpcIpv6AssignedRangeArgs:
+    def __init__(__self__, *,
+                 range: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] range: The IPv6 network range in CIDR notation.
+        """
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IPv6 network range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "range", value)
+
+
+if not MYPY:
+    class InterfaceVpcIpv6AssignedSlaacArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The assigned IPv4 address.
+        """
+        range: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The IPv6 network range in CIDR notation.
+        """
+elif False:
+    InterfaceVpcIpv6AssignedSlaacArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVpcIpv6AssignedSlaacArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 range: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: The assigned IPv4 address.
+        :param pulumi.Input[_builtins.str] range: The IPv6 network range in CIDR notation.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The assigned IPv4 address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IPv6 network range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "range", value)
+
+
+if not MYPY:
+    class InterfaceVpcIpv6RangeArgsDict(TypedDict):
+        range: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The IPv6 network range in CIDR notation.
+        """
+elif False:
+    InterfaceVpcIpv6RangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVpcIpv6RangeArgs:
+    def __init__(__self__, *,
+                 range: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] range: The IPv6 network range in CIDR notation.
+        """
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IPv6 network range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "range", value)
+
+
+if not MYPY:
+    class InterfaceVpcIpv6SlaacArgsDict(TypedDict):
+        range: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The IPv6 network range in CIDR notation.
+        """
+elif False:
+    InterfaceVpcIpv6SlaacArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterfaceVpcIpv6SlaacArgs:
+    def __init__(__self__, *,
+                 range: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] range: The IPv6 network range in CIDR notation.
+        """
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The IPv6 network range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "range", value)
 
 
 if not MYPY:
@@ -7932,9 +9392,12 @@ if not MYPY:
     class VpcSubnetLinodeArgsDict(TypedDict):
         id: pulumi.Input[_builtins.int]
         """
-        The ID of the VPC Subnet.
+        ID of the interface.
         """
         interfaces: pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgsDict']]]
+        """
+        A list of networking interfaces objects.
+        """
 elif False:
     VpcSubnetLinodeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7944,7 +9407,8 @@ class VpcSubnetLinodeArgs:
                  id: pulumi.Input[_builtins.int],
                  interfaces: pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgs']]]):
         """
-        :param pulumi.Input[_builtins.int] id: The ID of the VPC Subnet.
+        :param pulumi.Input[_builtins.int] id: ID of the interface.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgs']]] interfaces: A list of networking interfaces objects.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "interfaces", interfaces)
@@ -7953,7 +9417,7 @@ class VpcSubnetLinodeArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.int]:
         """
-        The ID of the VPC Subnet.
+        ID of the interface.
         """
         return pulumi.get(self, "id")
 
@@ -7964,6 +9428,9 @@ class VpcSubnetLinodeArgs:
     @_builtins.property
     @pulumi.getter
     def interfaces(self) -> pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgs']]]:
+        """
+        A list of networking interfaces objects.
+        """
         return pulumi.get(self, "interfaces")
 
     @interfaces.setter
@@ -7974,9 +9441,16 @@ class VpcSubnetLinodeArgs:
 if not MYPY:
     class VpcSubnetLinodeInterfaceArgsDict(TypedDict):
         active: pulumi.Input[_builtins.bool]
+        """
+        Whether the Interface is actively in use.
+        """
+        config_id: pulumi.Input[_builtins.int]
+        """
+        ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+        """
         id: pulumi.Input[_builtins.int]
         """
-        The ID of the VPC Subnet.
+        ID of the interface.
         """
 elif False:
     VpcSubnetLinodeInterfaceArgsDict: TypeAlias = Mapping[str, Any]
@@ -7985,16 +9459,23 @@ elif False:
 class VpcSubnetLinodeInterfaceArgs:
     def __init__(__self__, *,
                  active: pulumi.Input[_builtins.bool],
+                 config_id: pulumi.Input[_builtins.int],
                  id: pulumi.Input[_builtins.int]):
         """
-        :param pulumi.Input[_builtins.int] id: The ID of the VPC Subnet.
+        :param pulumi.Input[_builtins.bool] active: Whether the Interface is actively in use.
+        :param pulumi.Input[_builtins.int] config_id: ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+        :param pulumi.Input[_builtins.int] id: ID of the interface.
         """
         pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the Interface is actively in use.
+        """
         return pulumi.get(self, "active")
 
     @active.setter
@@ -8002,10 +9483,22 @@ class VpcSubnetLinodeInterfaceArgs:
         pulumi.set(self, "active", value)
 
     @_builtins.property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+        """
+        return pulumi.get(self, "config_id")
+
+    @config_id.setter
+    def config_id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "config_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.int]:
         """
-        The ID of the VPC Subnet.
+        ID of the interface.
         """
         return pulumi.get(self, "id")
 
@@ -9946,6 +11439,371 @@ class GetDomainsFilterArgs:
 
 
 if not MYPY:
+    class GetFirewallTemplatesFilterArgsDict(TypedDict):
+        name: _builtins.str
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        values: Sequence[_builtins.str]
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        match_by: NotRequired[_builtins.str]
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+elif False:
+    GetFirewallTemplatesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFirewallTemplatesFilterArgs:
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetFirewallTemplatesFirewallTemplateArgsDict(TypedDict):
+        inbound_policy: _builtins.str
+        """
+        The default behavior for inbound traffic.
+        """
+        inbounds: Sequence['GetFirewallTemplatesFirewallTemplateInboundArgsDict']
+        """
+        A list of firewall rules specifying allowed inbound network traffic.
+        """
+        outbound_policy: _builtins.str
+        """
+        The default behavior for outbound traffic.
+        """
+        outbounds: Sequence['GetFirewallTemplatesFirewallTemplateOutboundArgsDict']
+        """
+        A list of firewall rules specifying allowed outbound network traffic.
+        """
+        slug: _builtins.str
+        """
+        The slug of the firewall template.
+        """
+elif False:
+    GetFirewallTemplatesFirewallTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFirewallTemplatesFirewallTemplateArgs:
+    def __init__(__self__, *,
+                 inbound_policy: _builtins.str,
+                 inbounds: Sequence['GetFirewallTemplatesFirewallTemplateInboundArgs'],
+                 outbound_policy: _builtins.str,
+                 outbounds: Sequence['GetFirewallTemplatesFirewallTemplateOutboundArgs'],
+                 slug: _builtins.str):
+        """
+        :param _builtins.str inbound_policy: The default behavior for inbound traffic.
+        :param Sequence['GetFirewallTemplatesFirewallTemplateInboundArgs'] inbounds: A list of firewall rules specifying allowed inbound network traffic.
+        :param _builtins.str outbound_policy: The default behavior for outbound traffic.
+        :param Sequence['GetFirewallTemplatesFirewallTemplateOutboundArgs'] outbounds: A list of firewall rules specifying allowed outbound network traffic.
+        :param _builtins.str slug: The slug of the firewall template.
+        """
+        pulumi.set(__self__, "inbound_policy", inbound_policy)
+        pulumi.set(__self__, "inbounds", inbounds)
+        pulumi.set(__self__, "outbound_policy", outbound_policy)
+        pulumi.set(__self__, "outbounds", outbounds)
+        pulumi.set(__self__, "slug", slug)
+
+    @_builtins.property
+    @pulumi.getter(name="inboundPolicy")
+    def inbound_policy(self) -> _builtins.str:
+        """
+        The default behavior for inbound traffic.
+        """
+        return pulumi.get(self, "inbound_policy")
+
+    @inbound_policy.setter
+    def inbound_policy(self, value: _builtins.str):
+        pulumi.set(self, "inbound_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def inbounds(self) -> Sequence['GetFirewallTemplatesFirewallTemplateInboundArgs']:
+        """
+        A list of firewall rules specifying allowed inbound network traffic.
+        """
+        return pulumi.get(self, "inbounds")
+
+    @inbounds.setter
+    def inbounds(self, value: Sequence['GetFirewallTemplatesFirewallTemplateInboundArgs']):
+        pulumi.set(self, "inbounds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outboundPolicy")
+    def outbound_policy(self) -> _builtins.str:
+        """
+        The default behavior for outbound traffic.
+        """
+        return pulumi.get(self, "outbound_policy")
+
+    @outbound_policy.setter
+    def outbound_policy(self, value: _builtins.str):
+        pulumi.set(self, "outbound_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def outbounds(self) -> Sequence['GetFirewallTemplatesFirewallTemplateOutboundArgs']:
+        """
+        A list of firewall rules specifying allowed outbound network traffic.
+        """
+        return pulumi.get(self, "outbounds")
+
+    @outbounds.setter
+    def outbounds(self, value: Sequence['GetFirewallTemplatesFirewallTemplateOutboundArgs']):
+        pulumi.set(self, "outbounds", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def slug(self) -> _builtins.str:
+        """
+        The slug of the firewall template.
+        """
+        return pulumi.get(self, "slug")
+
+    @slug.setter
+    def slug(self, value: _builtins.str):
+        pulumi.set(self, "slug", value)
+
+
+if not MYPY:
+    class GetFirewallTemplatesFirewallTemplateInboundArgsDict(TypedDict):
+        action: _builtins.str
+        description: _builtins.str
+        ipv4s: Sequence[_builtins.str]
+        ipv6s: Sequence[_builtins.str]
+        label: _builtins.str
+        ports: _builtins.str
+        protocol: _builtins.str
+elif False:
+    GetFirewallTemplatesFirewallTemplateInboundArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFirewallTemplatesFirewallTemplateInboundArgs:
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 description: _builtins.str,
+                 ipv4s: Sequence[_builtins.str],
+                 ipv6s: Sequence[_builtins.str],
+                 label: _builtins.str,
+                 ports: _builtins.str,
+                 protocol: _builtins.str):
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "ipv4s", ipv4s)
+        pulumi.set(__self__, "ipv6s", ipv6s)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: _builtins.str):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: _builtins.str):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4s(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "ipv4s")
+
+    @ipv4s.setter
+    def ipv4s(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "ipv4s", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "ipv6s")
+
+    @ipv6s.setter
+    def ipv6s(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "ipv6s", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: _builtins.str):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> _builtins.str:
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: _builtins.str):
+        pulumi.set(self, "ports", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: _builtins.str):
+        pulumi.set(self, "protocol", value)
+
+
+if not MYPY:
+    class GetFirewallTemplatesFirewallTemplateOutboundArgsDict(TypedDict):
+        action: _builtins.str
+        description: _builtins.str
+        ipv4s: Sequence[_builtins.str]
+        ipv6s: Sequence[_builtins.str]
+        label: _builtins.str
+        ports: _builtins.str
+        protocol: _builtins.str
+elif False:
+    GetFirewallTemplatesFirewallTemplateOutboundArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetFirewallTemplatesFirewallTemplateOutboundArgs:
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 description: _builtins.str,
+                 ipv4s: Sequence[_builtins.str],
+                 ipv6s: Sequence[_builtins.str],
+                 label: _builtins.str,
+                 ports: _builtins.str,
+                 protocol: _builtins.str):
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "ipv4s", ipv4s)
+        pulumi.set(__self__, "ipv6s", ipv6s)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "ports", ports)
+        pulumi.set(__self__, "protocol", protocol)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: _builtins.str):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: _builtins.str):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4s(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "ipv4s")
+
+    @ipv4s.setter
+    def ipv4s(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "ipv4s", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "ipv6s")
+
+    @ipv6s.setter
+    def ipv6s(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "ipv6s", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: _builtins.str):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> _builtins.str:
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: _builtins.str):
+        pulumi.set(self, "ports", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: _builtins.str):
+        pulumi.set(self, "protocol", value)
+
+
+if not MYPY:
     class GetFirewallsFilterArgsDict(TypedDict):
         name: _builtins.str
         """
@@ -10033,6 +11891,10 @@ if not MYPY:
         """
         The default behavior for inbound traffic.
         """
+        interfaces: Sequence[_builtins.int]
+        """
+        The IDs of Linode Interfaces this firewall is applied to.
+        """
         label: _builtins.str
         """
         The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
@@ -10043,7 +11905,7 @@ if not MYPY:
         """
         nodebalancers: Sequence[_builtins.int]
         """
-        The IDs of NodeBalancers assigned to this Firewall..
+        The IDs of NodeBalancers this firewall is applied to.
         """
         outbound_policy: _builtins.str
         """
@@ -10083,6 +11945,7 @@ class GetFirewallsFirewallArgs:
                  disabled: _builtins.bool,
                  id: _builtins.int,
                  inbound_policy: _builtins.str,
+                 interfaces: Sequence[_builtins.int],
                  label: _builtins.str,
                  linodes: Sequence[_builtins.int],
                  nodebalancers: Sequence[_builtins.int],
@@ -10098,9 +11961,10 @@ class GetFirewallsFirewallArgs:
         :param _builtins.bool disabled: If true, the Firewall is inactive.
         :param _builtins.int id: The unique ID assigned to this Firewall.
         :param _builtins.str inbound_policy: The default behavior for inbound traffic.
+        :param Sequence[_builtins.int] interfaces: The IDs of Linode Interfaces this firewall is applied to.
         :param _builtins.str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
         :param Sequence[_builtins.int] linodes: The IDs of Linodes this firewall is applied to.
-        :param Sequence[_builtins.int] nodebalancers: The IDs of NodeBalancers assigned to this Firewall..
+        :param Sequence[_builtins.int] nodebalancers: The IDs of NodeBalancers this firewall is applied to.
         :param _builtins.str outbound_policy: The default behavior for outbound traffic.
         :param _builtins.str status: The status of the firewall.
         :param Sequence[_builtins.str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
@@ -10113,6 +11977,7 @@ class GetFirewallsFirewallArgs:
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "inbound_policy", inbound_policy)
+        pulumi.set(__self__, "interfaces", interfaces)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "linodes", linodes)
         pulumi.set(__self__, "nodebalancers", nodebalancers)
@@ -10177,6 +12042,18 @@ class GetFirewallsFirewallArgs:
 
     @_builtins.property
     @pulumi.getter
+    def interfaces(self) -> Sequence[_builtins.int]:
+        """
+        The IDs of Linode Interfaces this firewall is applied to.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @interfaces.setter
+    def interfaces(self, value: Sequence[_builtins.int]):
+        pulumi.set(self, "interfaces", value)
+
+    @_builtins.property
+    @pulumi.getter
     def label(self) -> _builtins.str:
         """
         The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
@@ -10203,7 +12080,7 @@ class GetFirewallsFirewallArgs:
     @pulumi.getter
     def nodebalancers(self) -> Sequence[_builtins.int]:
         """
-        The IDs of NodeBalancers assigned to this Firewall..
+        The IDs of NodeBalancers this firewall is applied to.
         """
         return pulumi.get(self, "nodebalancers")
 
@@ -14436,6 +16313,10 @@ if not MYPY:
         """
         The default gateway for this address.
         """
+        interface_id: _builtins.int
+        """
+        The ID of the interface this address is assigned to.
+        """
         linode_id: _builtins.int
         """
         The ID of the Linode this address currently belongs to.
@@ -14480,6 +16361,7 @@ class GetNetworkingIpsIpAddressArgs:
     def __init__(__self__, *,
                  address: _builtins.str,
                  gateway: _builtins.str,
+                 interface_id: _builtins.int,
                  linode_id: _builtins.int,
                  prefix: _builtins.int,
                  public: _builtins.bool,
@@ -14492,6 +16374,7 @@ class GetNetworkingIpsIpAddressArgs:
         """
         :param _builtins.str address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         :param _builtins.str gateway: The default gateway for this address.
+        :param _builtins.int interface_id: The ID of the interface this address is assigned to.
         :param _builtins.int linode_id: The ID of the Linode this address currently belongs to.
         :param _builtins.int prefix: The number of bits set in the subnet mask.
         :param _builtins.bool public: Whether this is a public or private IP address.
@@ -14504,6 +16387,7 @@ class GetNetworkingIpsIpAddressArgs:
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "interface_id", interface_id)
         pulumi.set(__self__, "linode_id", linode_id)
         pulumi.set(__self__, "prefix", prefix)
         pulumi.set(__self__, "public", public)
@@ -14537,6 +16421,18 @@ class GetNetworkingIpsIpAddressArgs:
     @gateway.setter
     def gateway(self, value: _builtins.str):
         pulumi.set(self, "gateway", value)
+
+    @_builtins.property
+    @pulumi.getter(name="interfaceId")
+    def interface_id(self) -> _builtins.int:
+        """
+        The ID of the interface this address is assigned to.
+        """
+        return pulumi.get(self, "interface_id")
+
+    @interface_id.setter
+    def interface_id(self, value: _builtins.int):
+        pulumi.set(self, "interface_id", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
@@ -20676,7 +22572,7 @@ if not MYPY:
         """
         encryption: _builtins.str
         """
-        Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         """
         filesystem_path: _builtins.str
         """
@@ -20733,7 +22629,7 @@ class GetVolumesVolumeArgs:
                  updated: _builtins.str):
         """
         :param _builtins.str created: When this Volume was created.
-        :param _builtins.str encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        :param _builtins.str encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         :param _builtins.str filesystem_path: The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
         :param _builtins.int id: The unique ID of this Volume.
         :param _builtins.str label: This Volume's label is for display purposes only.
@@ -20772,7 +22668,7 @@ class GetVolumesVolumeArgs:
     @pulumi.getter
     def encryption(self) -> _builtins.str:
         """
-        Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         """
         return pulumi.get(self, "encryption")
 
@@ -21390,7 +23286,7 @@ if not MYPY:
         """
         id: _builtins.int
         """
-        The unique id of the VPC subnet.
+        ID of the interface.
         """
         ipv4: _builtins.str
         """
@@ -21406,7 +23302,7 @@ if not MYPY:
         """
         linodes: Sequence['GetVpcSubnetsVpcSubnetLinodeArgsDict']
         """
-        A list of Linode IDs that added to this subnet.
+        A list of Linodes added to this subnet.
         """
         updated: _builtins.str
         """
@@ -21427,11 +23323,11 @@ class GetVpcSubnetsVpcSubnetArgs:
                  updated: _builtins.str):
         """
         :param _builtins.str created: The date and time when the VPC Subnet was created.
-        :param _builtins.int id: The unique id of the VPC subnet.
+        :param _builtins.int id: ID of the interface.
         :param _builtins.str ipv4: The IPv4 range of this subnet in CIDR format.
         :param Sequence['GetVpcSubnetsVpcSubnetIpv6Args'] ipv6s: The IPv6 ranges of this subnet.
         :param _builtins.str label: The label of the VPC subnet.
-        :param Sequence['GetVpcSubnetsVpcSubnetLinodeArgs'] linodes: A list of Linode IDs that added to this subnet.
+        :param Sequence['GetVpcSubnetsVpcSubnetLinodeArgs'] linodes: A list of Linodes added to this subnet.
         :param _builtins.str updated: The date and time when the VPC Subnet was last updated.
         """
         pulumi.set(__self__, "created", created)
@@ -21458,7 +23354,7 @@ class GetVpcSubnetsVpcSubnetArgs:
     @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        The unique id of the VPC subnet.
+        ID of the interface.
         """
         return pulumi.get(self, "id")
 
@@ -21506,7 +23402,7 @@ class GetVpcSubnetsVpcSubnetArgs:
     @pulumi.getter
     def linodes(self) -> Sequence['GetVpcSubnetsVpcSubnetLinodeArgs']:
         """
-        A list of Linode IDs that added to this subnet.
+        A list of Linodes added to this subnet.
         """
         return pulumi.get(self, "linodes")
 
@@ -21562,9 +23458,12 @@ if not MYPY:
     class GetVpcSubnetsVpcSubnetLinodeArgsDict(TypedDict):
         id: _builtins.int
         """
-        The unique id of the VPC subnet.
+        ID of the interface.
         """
         interfaces: Sequence['GetVpcSubnetsVpcSubnetLinodeInterfaceArgsDict']
+        """
+        A list of networking interfaces objects.
+        """
 elif False:
     GetVpcSubnetsVpcSubnetLinodeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -21574,7 +23473,8 @@ class GetVpcSubnetsVpcSubnetLinodeArgs:
                  id: _builtins.int,
                  interfaces: Sequence['GetVpcSubnetsVpcSubnetLinodeInterfaceArgs']):
         """
-        :param _builtins.int id: The unique id of the VPC subnet.
+        :param _builtins.int id: ID of the interface.
+        :param Sequence['GetVpcSubnetsVpcSubnetLinodeInterfaceArgs'] interfaces: A list of networking interfaces objects.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "interfaces", interfaces)
@@ -21583,7 +23483,7 @@ class GetVpcSubnetsVpcSubnetLinodeArgs:
     @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        The unique id of the VPC subnet.
+        ID of the interface.
         """
         return pulumi.get(self, "id")
 
@@ -21594,6 +23494,9 @@ class GetVpcSubnetsVpcSubnetLinodeArgs:
     @_builtins.property
     @pulumi.getter
     def interfaces(self) -> Sequence['GetVpcSubnetsVpcSubnetLinodeInterfaceArgs']:
+        """
+        A list of networking interfaces objects.
+        """
         return pulumi.get(self, "interfaces")
 
     @interfaces.setter
@@ -21604,9 +23507,16 @@ class GetVpcSubnetsVpcSubnetLinodeArgs:
 if not MYPY:
     class GetVpcSubnetsVpcSubnetLinodeInterfaceArgsDict(TypedDict):
         active: _builtins.bool
+        """
+        Whether the Interface is actively in use.
+        """
+        config_id: _builtins.int
+        """
+        ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+        """
         id: _builtins.int
         """
-        The unique id of the VPC subnet.
+        ID of the interface.
         """
 elif False:
     GetVpcSubnetsVpcSubnetLinodeInterfaceArgsDict: TypeAlias = Mapping[str, Any]
@@ -21615,16 +23525,23 @@ elif False:
 class GetVpcSubnetsVpcSubnetLinodeInterfaceArgs:
     def __init__(__self__, *,
                  active: _builtins.bool,
+                 config_id: _builtins.int,
                  id: _builtins.int):
         """
-        :param _builtins.int id: The unique id of the VPC subnet.
+        :param _builtins.bool active: Whether the Interface is actively in use.
+        :param _builtins.int config_id: ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+        :param _builtins.int id: ID of the interface.
         """
         pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
     def active(self) -> _builtins.bool:
+        """
+        Whether the Interface is actively in use.
+        """
         return pulumi.get(self, "active")
 
     @active.setter
@@ -21632,10 +23549,22 @@ class GetVpcSubnetsVpcSubnetLinodeInterfaceArgs:
         pulumi.set(self, "active", value)
 
     @_builtins.property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> _builtins.int:
+        """
+        ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+        """
+        return pulumi.get(self, "config_id")
+
+    @config_id.setter
+    def config_id(self, value: _builtins.int):
+        pulumi.set(self, "config_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        The unique id of the VPC subnet.
+        ID of the interface.
         """
         return pulumi.get(self, "id")
 

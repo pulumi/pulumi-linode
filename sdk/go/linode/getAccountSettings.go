@@ -54,6 +54,8 @@ type LookupAccountSettingsResult struct {
 	// Account-wide backups default.
 	BackupsEnabled bool   `pulumi:"backupsEnabled"`
 	Id             string `pulumi:"id"`
+	// Type of interfaces for new Linode instances.
+	InterfacesForNewLinodes string `pulumi:"interfacesForNewLinodes"`
 	// The Longview Pro tier you are currently subscribed to.
 	LongviewSubscription string `pulumi:"longviewSubscription"`
 	// The default maintenance policy for this account. (**Note: v4beta only.**)
@@ -95,6 +97,11 @@ func (o LookupAccountSettingsResultOutput) BackupsEnabled() pulumi.BoolOutput {
 
 func (o LookupAccountSettingsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountSettingsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Type of interfaces for new Linode instances.
+func (o LookupAccountSettingsResultOutput) InterfacesForNewLinodes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountSettingsResult) string { return v.InterfacesForNewLinodes }).(pulumi.StringOutput)
 }
 
 // The Longview Pro tier you are currently subscribed to.
