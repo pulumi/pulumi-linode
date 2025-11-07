@@ -48,6 +48,11 @@ public final class GetFirewallsFirewall {
      */
     private @Nullable List<GetFirewallsFirewallInbound> inbounds;
     /**
+     * @return The IDs of Linode Interfaces this firewall is applied to.
+     * 
+     */
+    private List<Integer> interfaces;
+    /**
      * @return The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      * 
      */
@@ -58,7 +63,7 @@ public final class GetFirewallsFirewall {
      */
     private List<Integer> linodes;
     /**
-     * @return The IDs of NodeBalancers assigned to this Firewall..
+     * @return The IDs of NodeBalancers this firewall is applied to.
      * 
      */
     private List<Integer> nodebalancers;
@@ -132,6 +137,13 @@ public final class GetFirewallsFirewall {
         return this.inbounds == null ? List.of() : this.inbounds;
     }
     /**
+     * @return The IDs of Linode Interfaces this firewall is applied to.
+     * 
+     */
+    public List<Integer> interfaces() {
+        return this.interfaces;
+    }
+    /**
      * @return The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      * 
      */
@@ -146,7 +158,7 @@ public final class GetFirewallsFirewall {
         return this.linodes;
     }
     /**
-     * @return The IDs of NodeBalancers assigned to this Firewall..
+     * @return The IDs of NodeBalancers this firewall is applied to.
      * 
      */
     public List<Integer> nodebalancers() {
@@ -203,6 +215,7 @@ public final class GetFirewallsFirewall {
         private Integer id;
         private String inboundPolicy;
         private @Nullable List<GetFirewallsFirewallInbound> inbounds;
+        private List<Integer> interfaces;
         private String label;
         private List<Integer> linodes;
         private List<Integer> nodebalancers;
@@ -220,6 +233,7 @@ public final class GetFirewallsFirewall {
     	      this.id = defaults.id;
     	      this.inboundPolicy = defaults.inboundPolicy;
     	      this.inbounds = defaults.inbounds;
+    	      this.interfaces = defaults.interfaces;
     	      this.label = defaults.label;
     	      this.linodes = defaults.linodes;
     	      this.nodebalancers = defaults.nodebalancers;
@@ -279,6 +293,17 @@ public final class GetFirewallsFirewall {
         }
         public Builder inbounds(GetFirewallsFirewallInbound... inbounds) {
             return inbounds(List.of(inbounds));
+        }
+        @CustomType.Setter
+        public Builder interfaces(List<Integer> interfaces) {
+            if (interfaces == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewall", "interfaces");
+            }
+            this.interfaces = interfaces;
+            return this;
+        }
+        public Builder interfaces(Integer... interfaces) {
+            return interfaces(List.of(interfaces));
         }
         @CustomType.Setter
         public Builder label(String label) {
@@ -362,6 +387,7 @@ public final class GetFirewallsFirewall {
             _resultValue.id = id;
             _resultValue.inboundPolicy = inboundPolicy;
             _resultValue.inbounds = inbounds;
+            _resultValue.interfaces = interfaces;
             _resultValue.label = label;
             _resultValue.linodes = linodes;
             _resultValue.nodebalancers = nodebalancers;

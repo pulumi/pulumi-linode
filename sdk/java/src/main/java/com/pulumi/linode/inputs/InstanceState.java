@@ -307,6 +307,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+     * 
+     * * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+     * 
+     */
+    @Import(name="interfaceGeneration")
+    private @Nullable Output<String> interfaceGeneration;
+
+    /**
+     * @return Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+     * 
+     * * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+     * 
+     */
+    public Optional<Output<String>> interfaceGeneration() {
+        return Optional.ofNullable(this.interfaceGeneration);
+    }
+
+    /**
      * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
      * 
      */
@@ -441,8 +460,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
      * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-     * 
      */
     @Import(name="migrationType")
     private @Nullable Output<String> migrationType;
@@ -450,11 +467,28 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
      * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-     * 
      */
     public Optional<Output<String>> migrationType() {
         return Optional.ofNullable(this.migrationType);
+    }
+
+    /**
+     * Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
+     * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     * 
+     */
+    @Import(name="networkHelper")
+    private @Nullable Output<Boolean> networkHelper;
+
+    /**
+     * @return Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
+     * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     * 
+     */
+    public Optional<Output<Boolean>> networkHelper() {
+        return Optional.ofNullable(this.networkHelper);
     }
 
     /**
@@ -749,6 +783,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.hasUserData = $.hasUserData;
         this.hostUuid = $.hostUuid;
         this.image = $.image;
+        this.interfaceGeneration = $.interfaceGeneration;
         this.interfaces = $.interfaces;
         this.ipAddress = $.ipAddress;
         this.ipv4s = $.ipv4s;
@@ -758,6 +793,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.maintenancePolicy = $.maintenancePolicy;
         this.metadatas = $.metadatas;
         this.migrationType = $.migrationType;
+        this.networkHelper = $.networkHelper;
         this.placementGroup = $.placementGroup;
         this.placementGroupExternallyManaged = $.placementGroupExternallyManaged;
         this.privateIp = $.privateIp;
@@ -1242,6 +1278,31 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param interfaceGeneration Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+         * 
+         * * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaceGeneration(@Nullable Output<String> interfaceGeneration) {
+            $.interfaceGeneration = interfaceGeneration;
+            return this;
+        }
+
+        /**
+         * @param interfaceGeneration Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+         * 
+         * * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaceGeneration(String interfaceGeneration) {
+            return interfaceGeneration(Output.of(interfaceGeneration));
+        }
+
+        /**
          * @param interfaces An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
          * 
          * @return builder
@@ -1456,8 +1517,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param migrationType The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
          * 
-         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-         * 
          * @return builder
          * 
          */
@@ -1469,13 +1528,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param migrationType The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
          * 
-         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-         * 
          * @return builder
          * 
          */
         public Builder migrationType(String migrationType) {
             return migrationType(Output.of(migrationType));
+        }
+
+        /**
+         * @param networkHelper Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
+         * 
+         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkHelper(@Nullable Output<Boolean> networkHelper) {
+            $.networkHelper = networkHelper;
+            return this;
+        }
+
+        /**
+         * @param networkHelper Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
+         * 
+         * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkHelper(Boolean networkHelper) {
+            return networkHelper(Output.of(networkHelper));
         }
 
         /**

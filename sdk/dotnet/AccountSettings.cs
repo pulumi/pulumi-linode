@@ -50,6 +50,12 @@ namespace Pulumi.Linode
         public Output<bool> BackupsEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// Type of interfaces for new Linode instances. Available values are `"LegacyConfigOnly"`, `"LegacyConfigDefaultButLinodeAllowed"`, `"LinodeDefaultButLegacyConfigAllowed"`, and `"LinodeOnly"`.
+        /// </summary>
+        [Output("interfacesForNewLinodes")]
+        public Output<string> InterfacesForNewLinodes { get; private set; } = null!;
+
+        /// <summary>
         /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
         /// </summary>
         [Output("longviewSubscription")]
@@ -132,6 +138,12 @@ namespace Pulumi.Linode
         public Input<bool>? BackupsEnabled { get; set; }
 
         /// <summary>
+        /// Type of interfaces for new Linode instances. Available values are `"LegacyConfigOnly"`, `"LegacyConfigDefaultButLinodeAllowed"`, `"LinodeDefaultButLegacyConfigAllowed"`, and `"LinodeOnly"`.
+        /// </summary>
+        [Input("interfacesForNewLinodes")]
+        public Input<string>? InterfacesForNewLinodes { get; set; }
+
+        /// <summary>
         /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
         /// </summary>
         [Input("longviewSubscription")]
@@ -162,6 +174,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("backupsEnabled")]
         public Input<bool>? BackupsEnabled { get; set; }
+
+        /// <summary>
+        /// Type of interfaces for new Linode instances. Available values are `"LegacyConfigOnly"`, `"LegacyConfigDefaultButLinodeAllowed"`, `"LinodeDefaultButLegacyConfigAllowed"`, and `"LinodeOnly"`.
+        /// </summary>
+        [Input("interfacesForNewLinodes")]
+        public Input<string>? InterfacesForNewLinodes { get; set; }
 
         /// <summary>
         /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.

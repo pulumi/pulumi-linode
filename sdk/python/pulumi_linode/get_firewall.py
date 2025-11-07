@@ -27,7 +27,7 @@ class GetFirewallResult:
     """
     A collection of values returned by getFirewall.
     """
-    def __init__(__self__, created=None, devices=None, disabled=None, id=None, inbound_policy=None, inbounds=None, label=None, linodes=None, nodebalancers=None, outbound_policy=None, outbounds=None, status=None, tags=None, updated=None):
+    def __init__(__self__, created=None, devices=None, disabled=None, id=None, inbound_policy=None, inbounds=None, interfaces=None, label=None, linodes=None, nodebalancers=None, outbound_policy=None, outbounds=None, status=None, tags=None, updated=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -46,6 +46,9 @@ class GetFirewallResult:
         if inbounds and not isinstance(inbounds, list):
             raise TypeError("Expected argument 'inbounds' to be a list")
         pulumi.set(__self__, "inbounds", inbounds)
+        if interfaces and not isinstance(interfaces, list):
+            raise TypeError("Expected argument 'interfaces' to be a list")
+        pulumi.set(__self__, "interfaces", interfaces)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
@@ -112,6 +115,14 @@ class GetFirewallResult:
     @pulumi.getter
     def inbounds(self) -> Sequence['outputs.GetFirewallInboundResult']:
         return pulumi.get(self, "inbounds")
+
+    @_builtins.property
+    @pulumi.getter
+    def interfaces(self) -> Sequence[_builtins.int]:
+        """
+        The IDs of Linode interfaces assigned to this Firewall.
+        """
+        return pulumi.get(self, "interfaces")
 
     @_builtins.property
     @pulumi.getter
@@ -187,6 +198,7 @@ class AwaitableGetFirewallResult(GetFirewallResult):
             id=self.id,
             inbound_policy=self.inbound_policy,
             inbounds=self.inbounds,
+            interfaces=self.interfaces,
             label=self.label,
             linodes=self.linodes,
             nodebalancers=self.nodebalancers,
@@ -227,6 +239,7 @@ def get_firewall(id: Optional[_builtins.int] = None,
         id=pulumi.get(__ret__, 'id'),
         inbound_policy=pulumi.get(__ret__, 'inbound_policy'),
         inbounds=pulumi.get(__ret__, 'inbounds'),
+        interfaces=pulumi.get(__ret__, 'interfaces'),
         label=pulumi.get(__ret__, 'label'),
         linodes=pulumi.get(__ret__, 'linodes'),
         nodebalancers=pulumi.get(__ret__, 'nodebalancers'),
@@ -264,6 +277,7 @@ def get_firewall_output(id: Optional[pulumi.Input[_builtins.int]] = None,
         id=pulumi.get(__response__, 'id'),
         inbound_policy=pulumi.get(__response__, 'inbound_policy'),
         inbounds=pulumi.get(__response__, 'inbounds'),
+        interfaces=pulumi.get(__response__, 'interfaces'),
         label=pulumi.get(__response__, 'label'),
         linodes=pulumi.get(__response__, 'linodes'),
         nodebalancers=pulumi.get(__response__, 'nodebalancers'),

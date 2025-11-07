@@ -61,6 +61,10 @@ export class AccountSettings extends pulumi.CustomResource {
      */
     declare public readonly backupsEnabled: pulumi.Output<boolean>;
     /**
+     * Type of interfaces for new Linode instances. Available values are `"legacyConfigOnly"`, `"legacyConfigDefaultButLinodeAllowed"`, `"linodeDefaultButLegacyConfigAllowed"`, and `"linodeOnly"`.
+     */
+    declare public readonly interfacesForNewLinodes: pulumi.Output<string>;
+    /**
      * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
      */
     declare public readonly longviewSubscription: pulumi.Output<string>;
@@ -95,6 +99,7 @@ export class AccountSettings extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccountSettingsState | undefined;
             resourceInputs["backupsEnabled"] = state?.backupsEnabled;
+            resourceInputs["interfacesForNewLinodes"] = state?.interfacesForNewLinodes;
             resourceInputs["longviewSubscription"] = state?.longviewSubscription;
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
             resourceInputs["managed"] = state?.managed;
@@ -103,6 +108,7 @@ export class AccountSettings extends pulumi.CustomResource {
         } else {
             const args = argsOrState as AccountSettingsArgs | undefined;
             resourceInputs["backupsEnabled"] = args?.backupsEnabled;
+            resourceInputs["interfacesForNewLinodes"] = args?.interfacesForNewLinodes;
             resourceInputs["longviewSubscription"] = args?.longviewSubscription;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["networkHelper"] = args?.networkHelper;
@@ -122,6 +128,10 @@ export interface AccountSettingsState {
      * The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
      */
     backupsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Type of interfaces for new Linode instances. Available values are `"legacyConfigOnly"`, `"legacyConfigDefaultButLinodeAllowed"`, `"linodeDefaultButLegacyConfigAllowed"`, and `"linodeOnly"`.
+     */
+    interfacesForNewLinodes?: pulumi.Input<string>;
     /**
      * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
      */
@@ -152,6 +162,10 @@ export interface AccountSettingsArgs {
      * The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
      */
     backupsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Type of interfaces for new Linode instances. Available values are `"legacyConfigOnly"`, `"legacyConfigDefaultButLinodeAllowed"`, `"linodeDefaultButLegacyConfigAllowed"`, and `"linodeOnly"`.
+     */
+    interfacesForNewLinodes?: pulumi.Input<string>;
     /**
      * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
      */

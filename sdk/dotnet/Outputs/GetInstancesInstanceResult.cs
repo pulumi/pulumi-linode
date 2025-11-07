@@ -59,6 +59,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Image;
         /// <summary>
+        /// The interface type for this Instance. (`Linode`, `LegacyConfig`)
+        /// </summary>
+        public readonly string InterfaceGeneration;
+        /// <summary>
         /// (Deprecated) A string containing the Linode's public IP address.
         /// </summary>
         public readonly string IpAddress;
@@ -139,6 +143,8 @@ namespace Pulumi.Linode.Outputs
 
             string image,
 
+            string interfaceGeneration,
+
             string ipAddress,
 
             ImmutableArray<string> ipv4s,
@@ -181,6 +187,7 @@ namespace Pulumi.Linode.Outputs
             HostUuid = hostUuid;
             Id = id;
             Image = image;
+            InterfaceGeneration = interfaceGeneration;
             IpAddress = ipAddress;
             Ipv4s = ipv4s;
             Ipv6 = ipv6;

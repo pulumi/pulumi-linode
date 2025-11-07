@@ -12,11 +12,20 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class GetVpcSubnetsVpcSubnetLinodeInterfaceArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether the Interface is actively in use.
+        /// </summary>
         [Input("active", required: true)]
         public bool Active { get; set; }
 
         /// <summary>
-        /// The unique id of the VPC subnet.
+        /// ID of Linode Config that the interface is associated with. `Null` for a Linode Interface.
+        /// </summary>
+        [Input("configId", required: true)]
+        public int ConfigId { get; set; }
+
+        /// <summary>
+        /// ID of the interface.
         /// </summary>
         [Input("id", required: true)]
         public int Id { get; set; }

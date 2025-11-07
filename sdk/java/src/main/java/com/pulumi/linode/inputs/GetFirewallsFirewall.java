@@ -112,6 +112,21 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * The IDs of Linode Interfaces this firewall is applied to.
+     * 
+     */
+    @Import(name="interfaces", required=true)
+    private List<Integer> interfaces;
+
+    /**
+     * @return The IDs of Linode Interfaces this firewall is applied to.
+     * 
+     */
+    public List<Integer> interfaces() {
+        return this.interfaces;
+    }
+
+    /**
      * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
      * 
      */
@@ -142,14 +157,14 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The IDs of NodeBalancers assigned to this Firewall..
+     * The IDs of NodeBalancers this firewall is applied to.
      * 
      */
     @Import(name="nodebalancers", required=true)
     private List<Integer> nodebalancers;
 
     /**
-     * @return The IDs of NodeBalancers assigned to this Firewall..
+     * @return The IDs of NodeBalancers this firewall is applied to.
      * 
      */
     public List<Integer> nodebalancers() {
@@ -240,6 +255,7 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
         this.id = $.id;
         this.inboundPolicy = $.inboundPolicy;
         this.inbounds = $.inbounds;
+        this.interfaces = $.interfaces;
         this.label = $.label;
         this.linodes = $.linodes;
         this.nodebalancers = $.nodebalancers;
@@ -355,6 +371,27 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
+         * @param interfaces The IDs of Linode Interfaces this firewall is applied to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaces(List<Integer> interfaces) {
+            $.interfaces = interfaces;
+            return this;
+        }
+
+        /**
+         * @param interfaces The IDs of Linode Interfaces this firewall is applied to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaces(Integer... interfaces) {
+            return interfaces(List.of(interfaces));
+        }
+
+        /**
          * @param label The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
          * 
          * @return builder
@@ -387,7 +424,7 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param nodebalancers The IDs of NodeBalancers assigned to this Firewall..
+         * @param nodebalancers The IDs of NodeBalancers this firewall is applied to.
          * 
          * @return builder
          * 
@@ -398,7 +435,7 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param nodebalancers The IDs of NodeBalancers assigned to this Firewall..
+         * @param nodebalancers The IDs of NodeBalancers this firewall is applied to.
          * 
          * @return builder
          * 
@@ -494,6 +531,9 @@ public final class GetFirewallsFirewall extends com.pulumi.resources.InvokeArgs 
             }
             if ($.inboundPolicy == null) {
                 throw new MissingRequiredPropertyException("GetFirewallsFirewall", "inboundPolicy");
+            }
+            if ($.interfaces == null) {
+                throw new MissingRequiredPropertyException("GetFirewallsFirewall", "interfaces");
             }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("GetFirewallsFirewall", "label");

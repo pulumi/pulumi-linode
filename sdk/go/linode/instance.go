@@ -203,6 +203,10 @@ type Instance struct {
 	HostUuid pulumi.StringOutput `pulumi:"hostUuid"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
 	Image pulumi.StringPtrOutput `pulumi:"image"`
+	// Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+	//
+	// * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+	InterfaceGeneration pulumi.StringOutput `pulumi:"interfaceGeneration"`
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 	Interfaces InstanceInterfaceArrayOutput `pulumi:"interfaces"`
 	// A string containing the Linode's public IP address.
@@ -224,9 +228,11 @@ type Instance struct {
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayOutput `pulumi:"metadatas"`
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+	MigrationType pulumi.StringPtrOutput `pulumi:"migrationType"`
+	// Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
 	//
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-	MigrationType pulumi.StringPtrOutput `pulumi:"migrationType"`
+	NetworkHelper pulumi.BoolPtrOutput `pulumi:"networkHelper"`
 	// Information about the Placement Group this Linode is assigned to.
 	PlacementGroup InstancePlacementGroupPtrOutput `pulumi:"placementGroup"`
 	// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
@@ -361,6 +367,10 @@ type instanceState struct {
 	HostUuid *string `pulumi:"hostUuid"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
 	Image *string `pulumi:"image"`
+	// Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+	//
+	// * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+	InterfaceGeneration *string `pulumi:"interfaceGeneration"`
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
 	// A string containing the Linode's public IP address.
@@ -382,9 +392,11 @@ type instanceState struct {
 	// Various fields related to the Linode Metadata service.
 	Metadatas []InstanceMetadata `pulumi:"metadatas"`
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+	MigrationType *string `pulumi:"migrationType"`
+	// Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
 	//
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-	MigrationType *string `pulumi:"migrationType"`
+	NetworkHelper *bool `pulumi:"networkHelper"`
 	// Information about the Placement Group this Linode is assigned to.
 	PlacementGroup *InstancePlacementGroup `pulumi:"placementGroup"`
 	// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
@@ -476,6 +488,10 @@ type InstanceState struct {
 	HostUuid pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
 	Image pulumi.StringPtrInput
+	// Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+	//
+	// * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+	InterfaceGeneration pulumi.StringPtrInput
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 	Interfaces InstanceInterfaceArrayInput
 	// A string containing the Linode's public IP address.
@@ -497,9 +513,11 @@ type InstanceState struct {
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayInput
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+	MigrationType pulumi.StringPtrInput
+	// Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
 	//
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-	MigrationType pulumi.StringPtrInput
+	NetworkHelper pulumi.BoolPtrInput
 	// Information about the Placement Group this Linode is assigned to.
 	PlacementGroup InstancePlacementGroupPtrInput
 	// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
@@ -587,6 +605,10 @@ type instanceArgs struct {
 	Group *string `pulumi:"group"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
 	Image *string `pulumi:"image"`
+	// Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+	//
+	// * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+	InterfaceGeneration *string `pulumi:"interfaceGeneration"`
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 	Interfaces []InstanceInterface `pulumi:"interfaces"`
 	// A set of reserved IPv4 addresses to assign to this Linode on creation.
@@ -600,9 +622,11 @@ type instanceArgs struct {
 	// Various fields related to the Linode Metadata service.
 	Metadatas []InstanceMetadata `pulumi:"metadatas"`
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+	MigrationType *string `pulumi:"migrationType"`
+	// Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
 	//
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-	MigrationType *string `pulumi:"migrationType"`
+	NetworkHelper *bool `pulumi:"networkHelper"`
 	// Information about the Placement Group this Linode is assigned to.
 	PlacementGroup *InstancePlacementGroup `pulumi:"placementGroup"`
 	// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
@@ -681,6 +705,10 @@ type InstanceArgs struct {
 	Group pulumi.StringPtrInput
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
 	Image pulumi.StringPtrInput
+	// Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+	//
+	// * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+	InterfaceGeneration pulumi.StringPtrInput
 	// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 	Interfaces InstanceInterfaceArrayInput
 	// A set of reserved IPv4 addresses to assign to this Linode on creation.
@@ -694,9 +722,11 @@ type InstanceArgs struct {
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayInput
 	// The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+	MigrationType pulumi.StringPtrInput
+	// Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
 	//
 	// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-	MigrationType pulumi.StringPtrInput
+	NetworkHelper pulumi.BoolPtrInput
 	// Information about the Placement Group this Linode is assigned to.
 	PlacementGroup InstancePlacementGroupPtrInput
 	// If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
@@ -919,6 +949,13 @@ func (o InstanceOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Image }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+//
+// * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+func (o InstanceOutput) InterfaceGeneration() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InterfaceGeneration }).(pulumi.StringOutput)
+}
+
 // An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
 func (o InstanceOutput) Interfaces() InstanceInterfaceArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceInterfaceArrayOutput { return v.Interfaces }).(InstanceInterfaceArrayOutput)
@@ -964,10 +1001,15 @@ func (o InstanceOutput) Metadatas() InstanceMetadataArrayOutput {
 }
 
 // The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
-//
-// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
 func (o InstanceOutput) MigrationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MigrationType }).(pulumi.StringPtrOutput)
+}
+
+// Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
+//
+// * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+func (o InstanceOutput) NetworkHelper() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.NetworkHelper }).(pulumi.BoolPtrOutput)
 }
 
 // Information about the Placement Group this Linode is assigned to.

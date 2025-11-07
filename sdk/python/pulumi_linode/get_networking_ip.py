@@ -27,7 +27,7 @@ class GetNetworkingIpResult:
     """
     A collection of values returned by getNetworkingIp.
     """
-    def __init__(__self__, address=None, gateway=None, id=None, linode_id=None, prefix=None, public=None, rdns=None, region=None, reserved=None, subnet_mask=None, type=None, vpc_nat11=None):
+    def __init__(__self__, address=None, gateway=None, id=None, interface_id=None, linode_id=None, prefix=None, public=None, rdns=None, region=None, reserved=None, subnet_mask=None, type=None, vpc_nat11=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -37,6 +37,9 @@ class GetNetworkingIpResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if interface_id and not isinstance(interface_id, int):
+            raise TypeError("Expected argument 'interface_id' to be a int")
+        pulumi.set(__self__, "interface_id", interface_id)
         if linode_id and not isinstance(linode_id, int):
             raise TypeError("Expected argument 'linode_id' to be a int")
         pulumi.set(__self__, "linode_id", linode_id)
@@ -85,6 +88,14 @@ class GetNetworkingIpResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="interfaceId")
+    def interface_id(self) -> _builtins.int:
+        """
+        The ID of the interface this address is assigned to.
+        """
+        return pulumi.get(self, "interface_id")
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
@@ -168,6 +179,7 @@ class AwaitableGetNetworkingIpResult(GetNetworkingIpResult):
             address=self.address,
             gateway=self.gateway,
             id=self.id,
+            interface_id=self.interface_id,
             linode_id=self.linode_id,
             prefix=self.prefix,
             public=self.public,
@@ -208,6 +220,7 @@ def get_networking_ip(address: Optional[_builtins.str] = None,
         address=pulumi.get(__ret__, 'address'),
         gateway=pulumi.get(__ret__, 'gateway'),
         id=pulumi.get(__ret__, 'id'),
+        interface_id=pulumi.get(__ret__, 'interface_id'),
         linode_id=pulumi.get(__ret__, 'linode_id'),
         prefix=pulumi.get(__ret__, 'prefix'),
         public=pulumi.get(__ret__, 'public'),
@@ -245,6 +258,7 @@ def get_networking_ip_output(address: Optional[pulumi.Input[_builtins.str]] = No
         address=pulumi.get(__response__, 'address'),
         gateway=pulumi.get(__response__, 'gateway'),
         id=pulumi.get(__response__, 'id'),
+        interface_id=pulumi.get(__response__, 'interface_id'),
         linode_id=pulumi.get(__response__, 'linode_id'),
         prefix=pulumi.get(__response__, 'prefix'),
         public=pulumi.get(__response__, 'public'),

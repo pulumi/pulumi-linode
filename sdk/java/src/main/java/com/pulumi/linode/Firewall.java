@@ -199,6 +199,20 @@ public class Firewall extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.inbounds);
     }
     /**
+     * A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+     * 
+     */
+    @Export(name="interfaces", refs={List.class,Integer.class}, tree="[0,1]")
+    private Output<List<Integer>> interfaces;
+
+    /**
+     * @return A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+     * 
+     */
+    public Output<List<Integer>> interfaces() {
+        return this.interfaces;
+    }
+    /**
      * This Firewall&#39;s unique label.
      * 
      */

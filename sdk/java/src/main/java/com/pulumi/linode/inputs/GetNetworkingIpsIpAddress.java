@@ -47,6 +47,21 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
     }
 
     /**
+     * The ID of the interface this address is assigned to.
+     * 
+     */
+    @Import(name="interfaceId", required=true)
+    private Integer interfaceId;
+
+    /**
+     * @return The ID of the interface this address is assigned to.
+     * 
+     */
+    public Integer interfaceId() {
+        return this.interfaceId;
+    }
+
+    /**
      * The ID of the Linode this address currently belongs to.
      * 
      */
@@ -186,6 +201,7 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
     private GetNetworkingIpsIpAddress(GetNetworkingIpsIpAddress $) {
         this.address = $.address;
         this.gateway = $.gateway;
+        this.interfaceId = $.interfaceId;
         this.linodeId = $.linodeId;
         this.prefix = $.prefix;
         this.public_ = $.public_;
@@ -234,6 +250,17 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
          */
         public Builder gateway(String gateway) {
             $.gateway = gateway;
+            return this;
+        }
+
+        /**
+         * @param interfaceId The ID of the interface this address is assigned to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaceId(Integer interfaceId) {
+            $.interfaceId = interfaceId;
             return this;
         }
 
@@ -342,6 +369,9 @@ public final class GetNetworkingIpsIpAddress extends com.pulumi.resources.Invoke
             }
             if ($.gateway == null) {
                 throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddress", "gateway");
+            }
+            if ($.interfaceId == null) {
+                throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddress", "interfaceId");
             }
             if ($.linodeId == null) {
                 throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddress", "linodeId");

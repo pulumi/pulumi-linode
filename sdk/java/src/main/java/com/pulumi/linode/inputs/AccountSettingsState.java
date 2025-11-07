@@ -32,6 +32,21 @@ public final class AccountSettingsState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Type of interfaces for new Linode instances. Available values are `&#34;legacyConfigOnly&#34;`, `&#34;legacyConfigDefaultButLinodeAllowed&#34;`, `&#34;linodeDefaultButLegacyConfigAllowed&#34;`, and `&#34;linodeOnly&#34;`.
+     * 
+     */
+    @Import(name="interfacesForNewLinodes")
+    private @Nullable Output<String> interfacesForNewLinodes;
+
+    /**
+     * @return Type of interfaces for new Linode instances. Available values are `&#34;legacyConfigOnly&#34;`, `&#34;legacyConfigDefaultButLinodeAllowed&#34;`, `&#34;linodeDefaultButLegacyConfigAllowed&#34;`, and `&#34;linodeOnly&#34;`.
+     * 
+     */
+    public Optional<Output<String>> interfacesForNewLinodes() {
+        return Optional.ofNullable(this.interfacesForNewLinodes);
+    }
+
+    /**
      * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
      * 
      */
@@ -110,6 +125,7 @@ public final class AccountSettingsState extends com.pulumi.resources.ResourceArg
 
     private AccountSettingsState(AccountSettingsState $) {
         this.backupsEnabled = $.backupsEnabled;
+        this.interfacesForNewLinodes = $.interfacesForNewLinodes;
         this.longviewSubscription = $.longviewSubscription;
         this.maintenancePolicy = $.maintenancePolicy;
         this.managed = $.managed;
@@ -154,6 +170,27 @@ public final class AccountSettingsState extends com.pulumi.resources.ResourceArg
          */
         public Builder backupsEnabled(Boolean backupsEnabled) {
             return backupsEnabled(Output.of(backupsEnabled));
+        }
+
+        /**
+         * @param interfacesForNewLinodes Type of interfaces for new Linode instances. Available values are `&#34;legacyConfigOnly&#34;`, `&#34;legacyConfigDefaultButLinodeAllowed&#34;`, `&#34;linodeDefaultButLegacyConfigAllowed&#34;`, and `&#34;linodeOnly&#34;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfacesForNewLinodes(@Nullable Output<String> interfacesForNewLinodes) {
+            $.interfacesForNewLinodes = interfacesForNewLinodes;
+            return this;
+        }
+
+        /**
+         * @param interfacesForNewLinodes Type of interfaces for new Linode instances. Available values are `&#34;legacyConfigOnly&#34;`, `&#34;legacyConfigDefaultButLinodeAllowed&#34;`, `&#34;linodeDefaultButLegacyConfigAllowed&#34;`, and `&#34;linodeOnly&#34;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfacesForNewLinodes(String interfacesForNewLinodes) {
+            return interfacesForNewLinodes(Output.of(interfacesForNewLinodes));
         }
 
         /**

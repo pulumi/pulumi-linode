@@ -54,6 +54,10 @@ export interface GetNetworkingIpResult {
     readonly gateway: string;
     readonly id: string;
     /**
+     * The ID of the interface this address is assigned to.
+     */
+    readonly interfaceId: number;
+    /**
      * The ID of the Linode this address currently belongs to.
      */
     readonly linodeId: number;

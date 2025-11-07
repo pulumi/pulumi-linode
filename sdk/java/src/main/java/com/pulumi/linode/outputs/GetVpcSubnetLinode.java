@@ -17,6 +17,10 @@ public final class GetVpcSubnetLinode {
      * 
      */
     private Integer id;
+    /**
+     * @return A list of networking interfaces objects.
+     * 
+     */
     private List<GetVpcSubnetLinodeInterface> interfaces;
 
     private GetVpcSubnetLinode() {}
@@ -27,6 +31,10 @@ public final class GetVpcSubnetLinode {
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return A list of networking interfaces objects.
+     * 
+     */
     public List<GetVpcSubnetLinodeInterface> interfaces() {
         return this.interfaces;
     }

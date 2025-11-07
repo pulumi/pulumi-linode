@@ -13,13 +13,17 @@ namespace Pulumi.Linode.Inputs
     public sealed class VpcSubnetLinodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the VPC Subnet.
+        /// ID of the interface.
         /// </summary>
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
 
         [Input("interfaces", required: true)]
         private InputList<Inputs.VpcSubnetLinodeInterfaceGetArgs>? _interfaces;
+
+        /// <summary>
+        /// A list of networking interfaces objects.
+        /// </summary>
         public InputList<Inputs.VpcSubnetLinodeInterfaceGetArgs> Interfaces
         {
             get => _interfaces ?? (_interfaces = new InputList<Inputs.VpcSubnetLinodeInterfaceGetArgs>());

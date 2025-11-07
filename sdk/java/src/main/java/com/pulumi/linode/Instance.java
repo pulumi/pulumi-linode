@@ -443,6 +443,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.image);
     }
     /**
+     * Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+     * 
+     * * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+     * 
+     */
+    @Export(name="interfaceGeneration", refs={String.class}, tree="[0]")
+    private Output<String> interfaceGeneration;
+
+    /**
+     * @return Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+     * 
+     * * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+     * 
+     */
+    public Output<String> interfaceGeneration() {
+        return this.interfaceGeneration;
+    }
+    /**
      * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
      * 
      */
@@ -565,8 +583,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
      * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-     * 
      */
     @Export(name="migrationType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> migrationType;
@@ -574,11 +590,27 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
      * 
-     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
-     * 
      */
     public Output<Optional<String>> migrationType() {
         return Codegen.optional(this.migrationType);
+    }
+    /**
+     * Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
+     * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     * 
+     */
+    @Export(name="networkHelper", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> networkHelper;
+
+    /**
+     * @return Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
+     * 
+     * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     * 
+     */
+    public Output<Optional<Boolean>> networkHelper() {
+        return Codegen.optional(this.networkHelper);
     }
     /**
      * Information about the Placement Group this Linode is assigned to.

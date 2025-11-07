@@ -19,14 +19,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     public static final VolumeState Empty = new VolumeState();
 
     /**
-     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      * 
      */
     @Import(name="encryption")
     private @Nullable Output<String> encryption;
 
     /**
-     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      * 
      */
     public Optional<Output<String>> encryption() {
@@ -198,7 +198,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
          * 
          * @return builder
          * 
