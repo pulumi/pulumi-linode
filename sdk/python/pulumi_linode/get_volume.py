@@ -73,7 +73,7 @@ class GetVolumeResult:
     @pulumi.getter
     def encryption(self) -> _builtins.str:
         """
-        Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         """
         return pulumi.get(self, "encryption")
 

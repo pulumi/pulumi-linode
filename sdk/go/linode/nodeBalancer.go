@@ -50,6 +50,37 @@ import (
 //
 // The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE: VPC-attached NodeBalancers may not currently be available to all users.
+//			_, err := linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
+//				Label:  pulumi.String("mynodebalancer"),
+//				Region: pulumi.String("us-mia"),
+//				Vpcs: linode.NodeBalancerVpcArray{
+//					&linode.NodeBalancerVpcArgs{
+//						SubnetId: pulumi.Any(test.Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.

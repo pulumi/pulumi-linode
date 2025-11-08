@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .description("Installs a Package")
  *             .script("""
  * #!/bin/bash
- * # <UDF name="package" label="System Package to Install" example="nginx" default="">
+ * # <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">
  * apt-get -q update && apt-get -q -y install $PACKAGE
  *             """)
  *             .images(            

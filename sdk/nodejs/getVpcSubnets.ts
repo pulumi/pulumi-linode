@@ -73,7 +73,7 @@ export interface GetVpcSubnetsArgs {
 export interface GetVpcSubnetsResult {
     readonly filters?: outputs.GetVpcSubnetsFilter[];
     /**
-     * The unique id of the VPC subnet.
+     * ID of the interface.
      */
     readonly id: string;
     readonly vpcId: number;

@@ -84,14 +84,14 @@ public final class VpcSubnetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of Linode IDs that added to this subnet.
+     * A list of Linode that added to this subnet.
      * 
      */
     @Import(name="linodes")
     private @Nullable Output<List<VpcSubnetLinodeArgs>> linodes;
 
     /**
-     * @return A list of Linode IDs that added to this subnet.
+     * @return A list of Linode that added to this subnet.
      * 
      */
     public Optional<Output<List<VpcSubnetLinodeArgs>>> linodes() {
@@ -257,7 +257,7 @@ public final class VpcSubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodes A list of Linode IDs that added to this subnet.
+         * @param linodes A list of Linode that added to this subnet.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class VpcSubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodes A list of Linode IDs that added to this subnet.
+         * @param linodes A list of Linode that added to this subnet.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class VpcSubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodes A list of Linode IDs that added to this subnet.
+         * @param linodes A list of Linode that added to this subnet.
          * 
          * @return builder
          * 

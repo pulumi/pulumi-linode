@@ -18,6 +18,40 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewNetworkingIpAssignment(ctx, "foobar", &linode.NetworkingIpAssignmentArgs{
+//				Region: pulumi.String("us-mia"),
+//				Assignments: linode.NetworkingIpAssignmentAssignmentArray{
+//					&linode.NetworkingIpAssignmentAssignmentArgs{
+//						Address:  pulumi.Any(reservedIp1.Address),
+//						LinodeId: pulumi.Any(terraform_web1.Id),
+//					},
+//					&linode.NetworkingIpAssignmentAssignmentArgs{
+//						Address:  pulumi.Any(reservedIp2.Address),
+//						LinodeId: pulumi.Any(terraform_web2.Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Network IP assignments cannot be imported.

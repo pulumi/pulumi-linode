@@ -181,6 +181,9 @@ namespace Pulumi.Linode
         /// The date and time when the VPC Subnet was created.
         /// </summary>
         public readonly string Created;
+        /// <summary>
+        /// ID of the interface.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
@@ -192,7 +195,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// A list of Linode IDs that added to this subnet.
+        /// A list of Linodes added to this subnet.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcSubnetLinodeResult> Linodes;
         /// <summary>

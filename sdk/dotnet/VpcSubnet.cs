@@ -124,7 +124,7 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Linode IDs that added to this subnet.
+        /// A list of Linode that added to this subnet.
         /// </summary>
         [Output("linodes")]
         public Output<ImmutableArray<Outputs.VpcSubnetLinode>> Linodes { get; private set; } = null!;
@@ -263,7 +263,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.VpcSubnetLinodeGetArgs>? _linodes;
 
         /// <summary>
-        /// A list of Linode IDs that added to this subnet.
+        /// A list of Linode that added to this subnet.
         /// </summary>
         public InputList<Inputs.VpcSubnetLinodeGetArgs> Linodes
         {

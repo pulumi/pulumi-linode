@@ -249,6 +249,14 @@ namespace Pulumi.Linode
         public Output<string?> Image { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the interface type for the Linode. If set to `Linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`Linode`, `LegacyConfig`; default is determined by the account `InterfacesForNewLinodes` setting)
+        /// 
+        /// * TODO(Linode Interfaces): Link to a usage example using the `LinodeInstanceInterface` resource
+        /// </summary>
+        [Output("interfaceGeneration")]
+        public Output<string> InterfaceGeneration { get; private set; } = null!;
+
+        /// <summary>
         /// An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         /// </summary>
         [Output("interfaces")]
@@ -300,11 +308,17 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The type of migration to use when updating the type or region of a Linode. (`Cold`, `Warm`; default `Cold`)
-        /// 
-        /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
         /// </summary>
         [Output("migrationType")]
         public Output<string?> MigrationType { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables the Network Helper feature. The default value is determined by the NetworkHelper setting in the account settings.
+        /// 
+        /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
+        /// </summary>
+        [Output("networkHelper")]
+        public Output<bool?> NetworkHelper { get; private set; } = null!;
 
         /// <summary>
         /// Information about the Placement Group this Linode is assigned to.
@@ -571,6 +585,14 @@ namespace Pulumi.Linode
         [Input("image")]
         public Input<string>? Image { get; set; }
 
+        /// <summary>
+        /// Specifies the interface type for the Linode. If set to `Linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`Linode`, `LegacyConfig`; default is determined by the account `InterfacesForNewLinodes` setting)
+        /// 
+        /// * TODO(Linode Interfaces): Link to a usage example using the `LinodeInstanceInterface` resource
+        /// </summary>
+        [Input("interfaceGeneration")]
+        public Input<string>? InterfaceGeneration { get; set; }
+
         [Input("interfaces")]
         private InputList<Inputs.InstanceInterfaceArgs>? _interfaces;
 
@@ -623,11 +645,17 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The type of migration to use when updating the type or region of a Linode. (`Cold`, `Warm`; default `Cold`)
-        /// 
-        /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
         /// </summary>
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }
+
+        /// <summary>
+        /// Enables the Network Helper feature. The default value is determined by the NetworkHelper setting in the account settings.
+        /// 
+        /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
+        /// </summary>
+        [Input("networkHelper")]
+        public Input<bool>? NetworkHelper { get; set; }
 
         /// <summary>
         /// Information about the Placement Group this Linode is assigned to.
@@ -901,6 +929,14 @@ namespace Pulumi.Linode
         [Input("image")]
         public Input<string>? Image { get; set; }
 
+        /// <summary>
+        /// Specifies the interface type for the Linode. If set to `Linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`Linode`, `LegacyConfig`; default is determined by the account `InterfacesForNewLinodes` setting)
+        /// 
+        /// * TODO(Linode Interfaces): Link to a usage example using the `LinodeInstanceInterface` resource
+        /// </summary>
+        [Input("interfaceGeneration")]
+        public Input<string>? InterfaceGeneration { get; set; }
+
         [Input("interfaces")]
         private InputList<Inputs.InstanceInterfaceGetArgs>? _interfaces;
 
@@ -971,11 +1007,17 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The type of migration to use when updating the type or region of a Linode. (`Cold`, `Warm`; default `Cold`)
-        /// 
-        /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
         /// </summary>
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }
+
+        /// <summary>
+        /// Enables the Network Helper feature. The default value is determined by the NetworkHelper setting in the account settings.
+        /// 
+        /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
+        /// </summary>
+        [Input("networkHelper")]
+        public Input<bool>? NetworkHelper { get; set; }
 
         /// <summary>
         /// Information about the Placement Group this Linode is assigned to.

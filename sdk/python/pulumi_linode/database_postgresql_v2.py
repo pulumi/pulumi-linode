@@ -2309,6 +2309,25 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
 
         Creating a complex PostgreSQL database:
 
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            allow_lists=["10.0.0.3/32"],
+            cluster_size=3,
+            updates={
+                "duration": 4,
+                "frequency": "weekly",
+                "hour_of_day": 22,
+                "day_of_week": 2,
+            })
+        ```
+
         Creating a PostgreSQL database with engine config fields specified:
 
         ```python
@@ -2384,6 +2403,22 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         ```
 
         Creating a PostgreSQL database hidden behind a VPC:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            private_network={
+                "vpc_id": 123,
+                "subnet_id": 456,
+                "public_access": False,
+            })
+        ```
 
         > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
 
@@ -2537,6 +2572,25 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
 
         Creating a complex PostgreSQL database:
 
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            allow_lists=["10.0.0.3/32"],
+            cluster_size=3,
+            updates={
+                "duration": 4,
+                "frequency": "weekly",
+                "hour_of_day": 22,
+                "day_of_week": 2,
+            })
+        ```
+
         Creating a PostgreSQL database with engine config fields specified:
 
         ```python
@@ -2612,6 +2666,22 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         ```
 
         Creating a PostgreSQL database hidden behind a VPC:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            private_network={
+                "vpc_id": 123,
+                "subnet_id": 456,
+                "public_access": False,
+            })
+        ```
 
         > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
 

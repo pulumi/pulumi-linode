@@ -13,9 +13,16 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetVpcSubnetsVpcSubnetLinodeInterfaceResult
     {
+        /// <summary>
+        /// Whether the Interface is actively in use.
+        /// </summary>
         public readonly bool Active;
         /// <summary>
-        /// The unique id of the VPC subnet.
+        /// ID of Linode Config that the interface is associated with. `Null` for a Linode Interface.
+        /// </summary>
+        public readonly int ConfigId;
+        /// <summary>
+        /// ID of the interface.
         /// </summary>
         public readonly int Id;
 
@@ -23,9 +30,12 @@ namespace Pulumi.Linode.Outputs
         private GetVpcSubnetsVpcSubnetLinodeInterfaceResult(
             bool active,
 
+            int configId,
+
             int id)
         {
             Active = active;
+            ConfigId = configId;
             Id = id;
         }
     }

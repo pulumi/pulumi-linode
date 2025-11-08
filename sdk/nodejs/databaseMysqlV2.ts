@@ -45,6 +45,26 @@ import * as utilities from "./utilities";
  *
  * Creating a complex MySQL database:
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.DatabaseMysqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "mysql/8",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
+ *     allowLists: ["10.0.0.3/32"],
+ *     clusterSize: 3,
+ *     updates: {
+ *         duration: 4,
+ *         frequency: "weekly",
+ *         hourOfDay: 22,
+ *         dayOfWeek: 3,
+ *     },
+ * });
+ * ```
+ *
  * Creating a MySQL database with engine config fields specified:
  *
  * ```typescript
@@ -103,6 +123,23 @@ import * as utilities from "./utilities";
  * ```
  *
  * Creating a MySQL database hidden behind a VPC:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.DatabaseMysqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "mysql/16",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
+ *     privateNetwork: {
+ *         vpcId: 123,
+ *         subnetId: 456,
+ *         publicAccess: false,
+ *     },
+ * });
+ * ```
  *
  * > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
  *

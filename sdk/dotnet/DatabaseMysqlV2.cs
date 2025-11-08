@@ -65,6 +65,37 @@ namespace Pulumi.Linode
     /// 
     /// Creating a complex MySQL database:
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
+    ///         AllowLists = new[]
+    ///         {
+    ///             "10.0.0.3/32",
+    ///         },
+    ///         ClusterSize = 3,
+    ///         Updates = new Linode.Inputs.DatabaseMysqlV2UpdatesArgs
+    ///         {
+    ///             Duration = 4,
+    ///             Frequency = "weekly",
+    ///             HourOfDay = 22,
+    ///             DayOfWeek = 3,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// Creating a MySQL database with engine config fields specified:
     /// 
     /// ```csharp
@@ -137,6 +168,31 @@ namespace Pulumi.Linode
     /// ```
     /// 
     /// Creating a MySQL database hidden behind a VPC:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "mysql/16",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
+    ///         PrivateNetwork = new Linode.Inputs.DatabaseMysqlV2PrivateNetworkArgs
+    ///         {
+    ///             VpcId = 123,
+    ///             SubnetId = 456,
+    ///             PublicAccess = false,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// &gt; **_NOTE:_** The name of the default database in the returned database cluster is `Defaultdb`.
     /// 

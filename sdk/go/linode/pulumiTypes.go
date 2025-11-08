@@ -2142,6 +2142,200 @@ func (o FirewallOutboundArrayOutput) Index(i pulumi.IntInput) FirewallOutboundOu
 	}).(FirewallOutboundOutput)
 }
 
+type FirewallSettingsDefaultFirewallIds struct {
+	// The Linode's default firewall.
+	Linode *int `pulumi:"linode"`
+	// The NodeBalancer's default firewall.
+	Nodebalancer *int `pulumi:"nodebalancer"`
+	// The public interface's default firewall.
+	PublicInterface *int `pulumi:"publicInterface"`
+	// The VPC interface's default firewall.
+	VpcInterface *int `pulumi:"vpcInterface"`
+}
+
+// FirewallSettingsDefaultFirewallIdsInput is an input type that accepts FirewallSettingsDefaultFirewallIdsArgs and FirewallSettingsDefaultFirewallIdsOutput values.
+// You can construct a concrete instance of `FirewallSettingsDefaultFirewallIdsInput` via:
+//
+//	FirewallSettingsDefaultFirewallIdsArgs{...}
+type FirewallSettingsDefaultFirewallIdsInput interface {
+	pulumi.Input
+
+	ToFirewallSettingsDefaultFirewallIdsOutput() FirewallSettingsDefaultFirewallIdsOutput
+	ToFirewallSettingsDefaultFirewallIdsOutputWithContext(context.Context) FirewallSettingsDefaultFirewallIdsOutput
+}
+
+type FirewallSettingsDefaultFirewallIdsArgs struct {
+	// The Linode's default firewall.
+	Linode pulumi.IntPtrInput `pulumi:"linode"`
+	// The NodeBalancer's default firewall.
+	Nodebalancer pulumi.IntPtrInput `pulumi:"nodebalancer"`
+	// The public interface's default firewall.
+	PublicInterface pulumi.IntPtrInput `pulumi:"publicInterface"`
+	// The VPC interface's default firewall.
+	VpcInterface pulumi.IntPtrInput `pulumi:"vpcInterface"`
+}
+
+func (FirewallSettingsDefaultFirewallIdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallSettingsDefaultFirewallIds)(nil)).Elem()
+}
+
+func (i FirewallSettingsDefaultFirewallIdsArgs) ToFirewallSettingsDefaultFirewallIdsOutput() FirewallSettingsDefaultFirewallIdsOutput {
+	return i.ToFirewallSettingsDefaultFirewallIdsOutputWithContext(context.Background())
+}
+
+func (i FirewallSettingsDefaultFirewallIdsArgs) ToFirewallSettingsDefaultFirewallIdsOutputWithContext(ctx context.Context) FirewallSettingsDefaultFirewallIdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallSettingsDefaultFirewallIdsOutput)
+}
+
+func (i FirewallSettingsDefaultFirewallIdsArgs) ToFirewallSettingsDefaultFirewallIdsPtrOutput() FirewallSettingsDefaultFirewallIdsPtrOutput {
+	return i.ToFirewallSettingsDefaultFirewallIdsPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallSettingsDefaultFirewallIdsArgs) ToFirewallSettingsDefaultFirewallIdsPtrOutputWithContext(ctx context.Context) FirewallSettingsDefaultFirewallIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallSettingsDefaultFirewallIdsOutput).ToFirewallSettingsDefaultFirewallIdsPtrOutputWithContext(ctx)
+}
+
+// FirewallSettingsDefaultFirewallIdsPtrInput is an input type that accepts FirewallSettingsDefaultFirewallIdsArgs, FirewallSettingsDefaultFirewallIdsPtr and FirewallSettingsDefaultFirewallIdsPtrOutput values.
+// You can construct a concrete instance of `FirewallSettingsDefaultFirewallIdsPtrInput` via:
+//
+//	        FirewallSettingsDefaultFirewallIdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirewallSettingsDefaultFirewallIdsPtrInput interface {
+	pulumi.Input
+
+	ToFirewallSettingsDefaultFirewallIdsPtrOutput() FirewallSettingsDefaultFirewallIdsPtrOutput
+	ToFirewallSettingsDefaultFirewallIdsPtrOutputWithContext(context.Context) FirewallSettingsDefaultFirewallIdsPtrOutput
+}
+
+type firewallSettingsDefaultFirewallIdsPtrType FirewallSettingsDefaultFirewallIdsArgs
+
+func FirewallSettingsDefaultFirewallIdsPtr(v *FirewallSettingsDefaultFirewallIdsArgs) FirewallSettingsDefaultFirewallIdsPtrInput {
+	return (*firewallSettingsDefaultFirewallIdsPtrType)(v)
+}
+
+func (*firewallSettingsDefaultFirewallIdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallSettingsDefaultFirewallIds)(nil)).Elem()
+}
+
+func (i *firewallSettingsDefaultFirewallIdsPtrType) ToFirewallSettingsDefaultFirewallIdsPtrOutput() FirewallSettingsDefaultFirewallIdsPtrOutput {
+	return i.ToFirewallSettingsDefaultFirewallIdsPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallSettingsDefaultFirewallIdsPtrType) ToFirewallSettingsDefaultFirewallIdsPtrOutputWithContext(ctx context.Context) FirewallSettingsDefaultFirewallIdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallSettingsDefaultFirewallIdsPtrOutput)
+}
+
+type FirewallSettingsDefaultFirewallIdsOutput struct{ *pulumi.OutputState }
+
+func (FirewallSettingsDefaultFirewallIdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallSettingsDefaultFirewallIds)(nil)).Elem()
+}
+
+func (o FirewallSettingsDefaultFirewallIdsOutput) ToFirewallSettingsDefaultFirewallIdsOutput() FirewallSettingsDefaultFirewallIdsOutput {
+	return o
+}
+
+func (o FirewallSettingsDefaultFirewallIdsOutput) ToFirewallSettingsDefaultFirewallIdsOutputWithContext(ctx context.Context) FirewallSettingsDefaultFirewallIdsOutput {
+	return o
+}
+
+func (o FirewallSettingsDefaultFirewallIdsOutput) ToFirewallSettingsDefaultFirewallIdsPtrOutput() FirewallSettingsDefaultFirewallIdsPtrOutput {
+	return o.ToFirewallSettingsDefaultFirewallIdsPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallSettingsDefaultFirewallIdsOutput) ToFirewallSettingsDefaultFirewallIdsPtrOutputWithContext(ctx context.Context) FirewallSettingsDefaultFirewallIdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallSettingsDefaultFirewallIds) *FirewallSettingsDefaultFirewallIds {
+		return &v
+	}).(FirewallSettingsDefaultFirewallIdsPtrOutput)
+}
+
+// The Linode's default firewall.
+func (o FirewallSettingsDefaultFirewallIdsOutput) Linode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallSettingsDefaultFirewallIds) *int { return v.Linode }).(pulumi.IntPtrOutput)
+}
+
+// The NodeBalancer's default firewall.
+func (o FirewallSettingsDefaultFirewallIdsOutput) Nodebalancer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallSettingsDefaultFirewallIds) *int { return v.Nodebalancer }).(pulumi.IntPtrOutput)
+}
+
+// The public interface's default firewall.
+func (o FirewallSettingsDefaultFirewallIdsOutput) PublicInterface() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallSettingsDefaultFirewallIds) *int { return v.PublicInterface }).(pulumi.IntPtrOutput)
+}
+
+// The VPC interface's default firewall.
+func (o FirewallSettingsDefaultFirewallIdsOutput) VpcInterface() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallSettingsDefaultFirewallIds) *int { return v.VpcInterface }).(pulumi.IntPtrOutput)
+}
+
+type FirewallSettingsDefaultFirewallIdsPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallSettingsDefaultFirewallIdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallSettingsDefaultFirewallIds)(nil)).Elem()
+}
+
+func (o FirewallSettingsDefaultFirewallIdsPtrOutput) ToFirewallSettingsDefaultFirewallIdsPtrOutput() FirewallSettingsDefaultFirewallIdsPtrOutput {
+	return o
+}
+
+func (o FirewallSettingsDefaultFirewallIdsPtrOutput) ToFirewallSettingsDefaultFirewallIdsPtrOutputWithContext(ctx context.Context) FirewallSettingsDefaultFirewallIdsPtrOutput {
+	return o
+}
+
+func (o FirewallSettingsDefaultFirewallIdsPtrOutput) Elem() FirewallSettingsDefaultFirewallIdsOutput {
+	return o.ApplyT(func(v *FirewallSettingsDefaultFirewallIds) FirewallSettingsDefaultFirewallIds {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallSettingsDefaultFirewallIds
+		return ret
+	}).(FirewallSettingsDefaultFirewallIdsOutput)
+}
+
+// The Linode's default firewall.
+func (o FirewallSettingsDefaultFirewallIdsPtrOutput) Linode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FirewallSettingsDefaultFirewallIds) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Linode
+	}).(pulumi.IntPtrOutput)
+}
+
+// The NodeBalancer's default firewall.
+func (o FirewallSettingsDefaultFirewallIdsPtrOutput) Nodebalancer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FirewallSettingsDefaultFirewallIds) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nodebalancer
+	}).(pulumi.IntPtrOutput)
+}
+
+// The public interface's default firewall.
+func (o FirewallSettingsDefaultFirewallIdsPtrOutput) PublicInterface() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FirewallSettingsDefaultFirewallIds) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PublicInterface
+	}).(pulumi.IntPtrOutput)
+}
+
+// The VPC interface's default firewall.
+func (o FirewallSettingsDefaultFirewallIdsPtrOutput) VpcInterface() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FirewallSettingsDefaultFirewallIds) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VpcInterface
+	}).(pulumi.IntPtrOutput)
+}
+
 type ImageReplication struct {
 	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region string `pulumi:"region"`
@@ -7451,6 +7645,2988 @@ func (o InstanceSpecArrayOutput) Index(i pulumi.IntInput) InstanceSpecOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSpec {
 		return vs[0].([]InstanceSpec)[vs[1].(int)]
 	}).(InstanceSpecOutput)
+}
+
+type InterfaceDefaultRoute struct {
+	// If set to true, the interface is used for the IPv4 default route.
+	Ipv4 *bool `pulumi:"ipv4"`
+	// If set to true, the interface is used for the IPv6 default route.
+	Ipv6 *bool `pulumi:"ipv6"`
+}
+
+// InterfaceDefaultRouteInput is an input type that accepts InterfaceDefaultRouteArgs and InterfaceDefaultRouteOutput values.
+// You can construct a concrete instance of `InterfaceDefaultRouteInput` via:
+//
+//	InterfaceDefaultRouteArgs{...}
+type InterfaceDefaultRouteInput interface {
+	pulumi.Input
+
+	ToInterfaceDefaultRouteOutput() InterfaceDefaultRouteOutput
+	ToInterfaceDefaultRouteOutputWithContext(context.Context) InterfaceDefaultRouteOutput
+}
+
+type InterfaceDefaultRouteArgs struct {
+	// If set to true, the interface is used for the IPv4 default route.
+	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
+	// If set to true, the interface is used for the IPv6 default route.
+	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
+}
+
+func (InterfaceDefaultRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceDefaultRoute)(nil)).Elem()
+}
+
+func (i InterfaceDefaultRouteArgs) ToInterfaceDefaultRouteOutput() InterfaceDefaultRouteOutput {
+	return i.ToInterfaceDefaultRouteOutputWithContext(context.Background())
+}
+
+func (i InterfaceDefaultRouteArgs) ToInterfaceDefaultRouteOutputWithContext(ctx context.Context) InterfaceDefaultRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceDefaultRouteOutput)
+}
+
+func (i InterfaceDefaultRouteArgs) ToInterfaceDefaultRoutePtrOutput() InterfaceDefaultRoutePtrOutput {
+	return i.ToInterfaceDefaultRoutePtrOutputWithContext(context.Background())
+}
+
+func (i InterfaceDefaultRouteArgs) ToInterfaceDefaultRoutePtrOutputWithContext(ctx context.Context) InterfaceDefaultRoutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceDefaultRouteOutput).ToInterfaceDefaultRoutePtrOutputWithContext(ctx)
+}
+
+// InterfaceDefaultRoutePtrInput is an input type that accepts InterfaceDefaultRouteArgs, InterfaceDefaultRoutePtr and InterfaceDefaultRoutePtrOutput values.
+// You can construct a concrete instance of `InterfaceDefaultRoutePtrInput` via:
+//
+//	        InterfaceDefaultRouteArgs{...}
+//
+//	or:
+//
+//	        nil
+type InterfaceDefaultRoutePtrInput interface {
+	pulumi.Input
+
+	ToInterfaceDefaultRoutePtrOutput() InterfaceDefaultRoutePtrOutput
+	ToInterfaceDefaultRoutePtrOutputWithContext(context.Context) InterfaceDefaultRoutePtrOutput
+}
+
+type interfaceDefaultRoutePtrType InterfaceDefaultRouteArgs
+
+func InterfaceDefaultRoutePtr(v *InterfaceDefaultRouteArgs) InterfaceDefaultRoutePtrInput {
+	return (*interfaceDefaultRoutePtrType)(v)
+}
+
+func (*interfaceDefaultRoutePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceDefaultRoute)(nil)).Elem()
+}
+
+func (i *interfaceDefaultRoutePtrType) ToInterfaceDefaultRoutePtrOutput() InterfaceDefaultRoutePtrOutput {
+	return i.ToInterfaceDefaultRoutePtrOutputWithContext(context.Background())
+}
+
+func (i *interfaceDefaultRoutePtrType) ToInterfaceDefaultRoutePtrOutputWithContext(ctx context.Context) InterfaceDefaultRoutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceDefaultRoutePtrOutput)
+}
+
+type InterfaceDefaultRouteOutput struct{ *pulumi.OutputState }
+
+func (InterfaceDefaultRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceDefaultRoute)(nil)).Elem()
+}
+
+func (o InterfaceDefaultRouteOutput) ToInterfaceDefaultRouteOutput() InterfaceDefaultRouteOutput {
+	return o
+}
+
+func (o InterfaceDefaultRouteOutput) ToInterfaceDefaultRouteOutputWithContext(ctx context.Context) InterfaceDefaultRouteOutput {
+	return o
+}
+
+func (o InterfaceDefaultRouteOutput) ToInterfaceDefaultRoutePtrOutput() InterfaceDefaultRoutePtrOutput {
+	return o.ToInterfaceDefaultRoutePtrOutputWithContext(context.Background())
+}
+
+func (o InterfaceDefaultRouteOutput) ToInterfaceDefaultRoutePtrOutputWithContext(ctx context.Context) InterfaceDefaultRoutePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterfaceDefaultRoute) *InterfaceDefaultRoute {
+		return &v
+	}).(InterfaceDefaultRoutePtrOutput)
+}
+
+// If set to true, the interface is used for the IPv4 default route.
+func (o InterfaceDefaultRouteOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InterfaceDefaultRoute) *bool { return v.Ipv4 }).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, the interface is used for the IPv6 default route.
+func (o InterfaceDefaultRouteOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InterfaceDefaultRoute) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
+}
+
+type InterfaceDefaultRoutePtrOutput struct{ *pulumi.OutputState }
+
+func (InterfaceDefaultRoutePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceDefaultRoute)(nil)).Elem()
+}
+
+func (o InterfaceDefaultRoutePtrOutput) ToInterfaceDefaultRoutePtrOutput() InterfaceDefaultRoutePtrOutput {
+	return o
+}
+
+func (o InterfaceDefaultRoutePtrOutput) ToInterfaceDefaultRoutePtrOutputWithContext(ctx context.Context) InterfaceDefaultRoutePtrOutput {
+	return o
+}
+
+func (o InterfaceDefaultRoutePtrOutput) Elem() InterfaceDefaultRouteOutput {
+	return o.ApplyT(func(v *InterfaceDefaultRoute) InterfaceDefaultRoute {
+		if v != nil {
+			return *v
+		}
+		var ret InterfaceDefaultRoute
+		return ret
+	}).(InterfaceDefaultRouteOutput)
+}
+
+// If set to true, the interface is used for the IPv4 default route.
+func (o InterfaceDefaultRoutePtrOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InterfaceDefaultRoute) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, the interface is used for the IPv6 default route.
+func (o InterfaceDefaultRoutePtrOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InterfaceDefaultRoute) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+type InterfacePublic struct {
+	// IPv4 addresses for this interface.
+	Ipv4 *InterfacePublicIpv4 `pulumi:"ipv4"`
+	// IPv6 addresses for this interface.
+	Ipv6 *InterfacePublicIpv6 `pulumi:"ipv6"`
+}
+
+// InterfacePublicInput is an input type that accepts InterfacePublicArgs and InterfacePublicOutput values.
+// You can construct a concrete instance of `InterfacePublicInput` via:
+//
+//	InterfacePublicArgs{...}
+type InterfacePublicInput interface {
+	pulumi.Input
+
+	ToInterfacePublicOutput() InterfacePublicOutput
+	ToInterfacePublicOutputWithContext(context.Context) InterfacePublicOutput
+}
+
+type InterfacePublicArgs struct {
+	// IPv4 addresses for this interface.
+	Ipv4 InterfacePublicIpv4PtrInput `pulumi:"ipv4"`
+	// IPv6 addresses for this interface.
+	Ipv6 InterfacePublicIpv6PtrInput `pulumi:"ipv6"`
+}
+
+func (InterfacePublicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublic)(nil)).Elem()
+}
+
+func (i InterfacePublicArgs) ToInterfacePublicOutput() InterfacePublicOutput {
+	return i.ToInterfacePublicOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicArgs) ToInterfacePublicOutputWithContext(ctx context.Context) InterfacePublicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicOutput)
+}
+
+func (i InterfacePublicArgs) ToInterfacePublicPtrOutput() InterfacePublicPtrOutput {
+	return i.ToInterfacePublicPtrOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicArgs) ToInterfacePublicPtrOutputWithContext(ctx context.Context) InterfacePublicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicOutput).ToInterfacePublicPtrOutputWithContext(ctx)
+}
+
+// InterfacePublicPtrInput is an input type that accepts InterfacePublicArgs, InterfacePublicPtr and InterfacePublicPtrOutput values.
+// You can construct a concrete instance of `InterfacePublicPtrInput` via:
+//
+//	        InterfacePublicArgs{...}
+//
+//	or:
+//
+//	        nil
+type InterfacePublicPtrInput interface {
+	pulumi.Input
+
+	ToInterfacePublicPtrOutput() InterfacePublicPtrOutput
+	ToInterfacePublicPtrOutputWithContext(context.Context) InterfacePublicPtrOutput
+}
+
+type interfacePublicPtrType InterfacePublicArgs
+
+func InterfacePublicPtr(v *InterfacePublicArgs) InterfacePublicPtrInput {
+	return (*interfacePublicPtrType)(v)
+}
+
+func (*interfacePublicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfacePublic)(nil)).Elem()
+}
+
+func (i *interfacePublicPtrType) ToInterfacePublicPtrOutput() InterfacePublicPtrOutput {
+	return i.ToInterfacePublicPtrOutputWithContext(context.Background())
+}
+
+func (i *interfacePublicPtrType) ToInterfacePublicPtrOutputWithContext(ctx context.Context) InterfacePublicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicPtrOutput)
+}
+
+type InterfacePublicOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublic)(nil)).Elem()
+}
+
+func (o InterfacePublicOutput) ToInterfacePublicOutput() InterfacePublicOutput {
+	return o
+}
+
+func (o InterfacePublicOutput) ToInterfacePublicOutputWithContext(ctx context.Context) InterfacePublicOutput {
+	return o
+}
+
+func (o InterfacePublicOutput) ToInterfacePublicPtrOutput() InterfacePublicPtrOutput {
+	return o.ToInterfacePublicPtrOutputWithContext(context.Background())
+}
+
+func (o InterfacePublicOutput) ToInterfacePublicPtrOutputWithContext(ctx context.Context) InterfacePublicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterfacePublic) *InterfacePublic {
+		return &v
+	}).(InterfacePublicPtrOutput)
+}
+
+// IPv4 addresses for this interface.
+func (o InterfacePublicOutput) Ipv4() InterfacePublicIpv4PtrOutput {
+	return o.ApplyT(func(v InterfacePublic) *InterfacePublicIpv4 { return v.Ipv4 }).(InterfacePublicIpv4PtrOutput)
+}
+
+// IPv6 addresses for this interface.
+func (o InterfacePublicOutput) Ipv6() InterfacePublicIpv6PtrOutput {
+	return o.ApplyT(func(v InterfacePublic) *InterfacePublicIpv6 { return v.Ipv6 }).(InterfacePublicIpv6PtrOutput)
+}
+
+type InterfacePublicPtrOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfacePublic)(nil)).Elem()
+}
+
+func (o InterfacePublicPtrOutput) ToInterfacePublicPtrOutput() InterfacePublicPtrOutput {
+	return o
+}
+
+func (o InterfacePublicPtrOutput) ToInterfacePublicPtrOutputWithContext(ctx context.Context) InterfacePublicPtrOutput {
+	return o
+}
+
+func (o InterfacePublicPtrOutput) Elem() InterfacePublicOutput {
+	return o.ApplyT(func(v *InterfacePublic) InterfacePublic {
+		if v != nil {
+			return *v
+		}
+		var ret InterfacePublic
+		return ret
+	}).(InterfacePublicOutput)
+}
+
+// IPv4 addresses for this interface.
+func (o InterfacePublicPtrOutput) Ipv4() InterfacePublicIpv4PtrOutput {
+	return o.ApplyT(func(v *InterfacePublic) *InterfacePublicIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(InterfacePublicIpv4PtrOutput)
+}
+
+// IPv6 addresses for this interface.
+func (o InterfacePublicPtrOutput) Ipv6() InterfacePublicIpv6PtrOutput {
+	return o.ApplyT(func(v *InterfacePublic) *InterfacePublicIpv6 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(InterfacePublicIpv6PtrOutput)
+}
+
+type InterfacePublicIpv4 struct {
+	// IPv4 addresses configured for this Linode interface. Each object in this list supports:
+	Addresses []InterfacePublicIpv4Address `pulumi:"addresses"`
+	// (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+	AssignedAddresses []InterfacePublicIpv4AssignedAddress `pulumi:"assignedAddresses"`
+	// (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+	Shareds []InterfacePublicIpv4Shared `pulumi:"shareds"`
+}
+
+// InterfacePublicIpv4Input is an input type that accepts InterfacePublicIpv4Args and InterfacePublicIpv4Output values.
+// You can construct a concrete instance of `InterfacePublicIpv4Input` via:
+//
+//	InterfacePublicIpv4Args{...}
+type InterfacePublicIpv4Input interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv4Output() InterfacePublicIpv4Output
+	ToInterfacePublicIpv4OutputWithContext(context.Context) InterfacePublicIpv4Output
+}
+
+type InterfacePublicIpv4Args struct {
+	// IPv4 addresses configured for this Linode interface. Each object in this list supports:
+	Addresses InterfacePublicIpv4AddressArrayInput `pulumi:"addresses"`
+	// (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+	AssignedAddresses InterfacePublicIpv4AssignedAddressArrayInput `pulumi:"assignedAddresses"`
+	// (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+	Shareds InterfacePublicIpv4SharedArrayInput `pulumi:"shareds"`
+}
+
+func (InterfacePublicIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv4)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv4Args) ToInterfacePublicIpv4Output() InterfacePublicIpv4Output {
+	return i.ToInterfacePublicIpv4OutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv4Args) ToInterfacePublicIpv4OutputWithContext(ctx context.Context) InterfacePublicIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv4Output)
+}
+
+func (i InterfacePublicIpv4Args) ToInterfacePublicIpv4PtrOutput() InterfacePublicIpv4PtrOutput {
+	return i.ToInterfacePublicIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv4Args) ToInterfacePublicIpv4PtrOutputWithContext(ctx context.Context) InterfacePublicIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv4Output).ToInterfacePublicIpv4PtrOutputWithContext(ctx)
+}
+
+// InterfacePublicIpv4PtrInput is an input type that accepts InterfacePublicIpv4Args, InterfacePublicIpv4Ptr and InterfacePublicIpv4PtrOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv4PtrInput` via:
+//
+//	        InterfacePublicIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type InterfacePublicIpv4PtrInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv4PtrOutput() InterfacePublicIpv4PtrOutput
+	ToInterfacePublicIpv4PtrOutputWithContext(context.Context) InterfacePublicIpv4PtrOutput
+}
+
+type interfacePublicIpv4PtrType InterfacePublicIpv4Args
+
+func InterfacePublicIpv4Ptr(v *InterfacePublicIpv4Args) InterfacePublicIpv4PtrInput {
+	return (*interfacePublicIpv4PtrType)(v)
+}
+
+func (*interfacePublicIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfacePublicIpv4)(nil)).Elem()
+}
+
+func (i *interfacePublicIpv4PtrType) ToInterfacePublicIpv4PtrOutput() InterfacePublicIpv4PtrOutput {
+	return i.ToInterfacePublicIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *interfacePublicIpv4PtrType) ToInterfacePublicIpv4PtrOutputWithContext(ctx context.Context) InterfacePublicIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv4PtrOutput)
+}
+
+type InterfacePublicIpv4Output struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv4)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv4Output) ToInterfacePublicIpv4Output() InterfacePublicIpv4Output {
+	return o
+}
+
+func (o InterfacePublicIpv4Output) ToInterfacePublicIpv4OutputWithContext(ctx context.Context) InterfacePublicIpv4Output {
+	return o
+}
+
+func (o InterfacePublicIpv4Output) ToInterfacePublicIpv4PtrOutput() InterfacePublicIpv4PtrOutput {
+	return o.ToInterfacePublicIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o InterfacePublicIpv4Output) ToInterfacePublicIpv4PtrOutputWithContext(ctx context.Context) InterfacePublicIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterfacePublicIpv4) *InterfacePublicIpv4 {
+		return &v
+	}).(InterfacePublicIpv4PtrOutput)
+}
+
+// IPv4 addresses configured for this Linode interface. Each object in this list supports:
+func (o InterfacePublicIpv4Output) Addresses() InterfacePublicIpv4AddressArrayOutput {
+	return o.ApplyT(func(v InterfacePublicIpv4) []InterfacePublicIpv4Address { return v.Addresses }).(InterfacePublicIpv4AddressArrayOutput)
+}
+
+// (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+func (o InterfacePublicIpv4Output) AssignedAddresses() InterfacePublicIpv4AssignedAddressArrayOutput {
+	return o.ApplyT(func(v InterfacePublicIpv4) []InterfacePublicIpv4AssignedAddress { return v.AssignedAddresses }).(InterfacePublicIpv4AssignedAddressArrayOutput)
+}
+
+// (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+func (o InterfacePublicIpv4Output) Shareds() InterfacePublicIpv4SharedArrayOutput {
+	return o.ApplyT(func(v InterfacePublicIpv4) []InterfacePublicIpv4Shared { return v.Shareds }).(InterfacePublicIpv4SharedArrayOutput)
+}
+
+type InterfacePublicIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfacePublicIpv4)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv4PtrOutput) ToInterfacePublicIpv4PtrOutput() InterfacePublicIpv4PtrOutput {
+	return o
+}
+
+func (o InterfacePublicIpv4PtrOutput) ToInterfacePublicIpv4PtrOutputWithContext(ctx context.Context) InterfacePublicIpv4PtrOutput {
+	return o
+}
+
+func (o InterfacePublicIpv4PtrOutput) Elem() InterfacePublicIpv4Output {
+	return o.ApplyT(func(v *InterfacePublicIpv4) InterfacePublicIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret InterfacePublicIpv4
+		return ret
+	}).(InterfacePublicIpv4Output)
+}
+
+// IPv4 addresses configured for this Linode interface. Each object in this list supports:
+func (o InterfacePublicIpv4PtrOutput) Addresses() InterfacePublicIpv4AddressArrayOutput {
+	return o.ApplyT(func(v *InterfacePublicIpv4) []InterfacePublicIpv4Address {
+		if v == nil {
+			return nil
+		}
+		return v.Addresses
+	}).(InterfacePublicIpv4AddressArrayOutput)
+}
+
+// (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+func (o InterfacePublicIpv4PtrOutput) AssignedAddresses() InterfacePublicIpv4AssignedAddressArrayOutput {
+	return o.ApplyT(func(v *InterfacePublicIpv4) []InterfacePublicIpv4AssignedAddress {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedAddresses
+	}).(InterfacePublicIpv4AssignedAddressArrayOutput)
+}
+
+// (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+func (o InterfacePublicIpv4PtrOutput) Shareds() InterfacePublicIpv4SharedArrayOutput {
+	return o.ApplyT(func(v *InterfacePublicIpv4) []InterfacePublicIpv4Shared {
+		if v == nil {
+			return nil
+		}
+		return v.Shareds
+	}).(InterfacePublicIpv4SharedArrayOutput)
+}
+
+type InterfacePublicIpv4Address struct {
+	// The IPv4 address. Defaults to "auto" for automatic assignment.
+	Address *string `pulumi:"address"`
+	// Whether this address is the primary address for the interface.
+	Primary *bool `pulumi:"primary"`
+}
+
+// InterfacePublicIpv4AddressInput is an input type that accepts InterfacePublicIpv4AddressArgs and InterfacePublicIpv4AddressOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv4AddressInput` via:
+//
+//	InterfacePublicIpv4AddressArgs{...}
+type InterfacePublicIpv4AddressInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv4AddressOutput() InterfacePublicIpv4AddressOutput
+	ToInterfacePublicIpv4AddressOutputWithContext(context.Context) InterfacePublicIpv4AddressOutput
+}
+
+type InterfacePublicIpv4AddressArgs struct {
+	// The IPv4 address. Defaults to "auto" for automatic assignment.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Whether this address is the primary address for the interface.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+}
+
+func (InterfacePublicIpv4AddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv4AddressArgs) ToInterfacePublicIpv4AddressOutput() InterfacePublicIpv4AddressOutput {
+	return i.ToInterfacePublicIpv4AddressOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv4AddressArgs) ToInterfacePublicIpv4AddressOutputWithContext(ctx context.Context) InterfacePublicIpv4AddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv4AddressOutput)
+}
+
+// InterfacePublicIpv4AddressArrayInput is an input type that accepts InterfacePublicIpv4AddressArray and InterfacePublicIpv4AddressArrayOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv4AddressArrayInput` via:
+//
+//	InterfacePublicIpv4AddressArray{ InterfacePublicIpv4AddressArgs{...} }
+type InterfacePublicIpv4AddressArrayInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv4AddressArrayOutput() InterfacePublicIpv4AddressArrayOutput
+	ToInterfacePublicIpv4AddressArrayOutputWithContext(context.Context) InterfacePublicIpv4AddressArrayOutput
+}
+
+type InterfacePublicIpv4AddressArray []InterfacePublicIpv4AddressInput
+
+func (InterfacePublicIpv4AddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv4AddressArray) ToInterfacePublicIpv4AddressArrayOutput() InterfacePublicIpv4AddressArrayOutput {
+	return i.ToInterfacePublicIpv4AddressArrayOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv4AddressArray) ToInterfacePublicIpv4AddressArrayOutputWithContext(ctx context.Context) InterfacePublicIpv4AddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv4AddressArrayOutput)
+}
+
+type InterfacePublicIpv4AddressOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv4AddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv4AddressOutput) ToInterfacePublicIpv4AddressOutput() InterfacePublicIpv4AddressOutput {
+	return o
+}
+
+func (o InterfacePublicIpv4AddressOutput) ToInterfacePublicIpv4AddressOutputWithContext(ctx context.Context) InterfacePublicIpv4AddressOutput {
+	return o
+}
+
+// The IPv4 address. Defaults to "auto" for automatic assignment.
+func (o InterfacePublicIpv4AddressOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv4Address) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Whether this address is the primary address for the interface.
+func (o InterfacePublicIpv4AddressOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv4Address) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type InterfacePublicIpv4AddressArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv4AddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv4AddressArrayOutput) ToInterfacePublicIpv4AddressArrayOutput() InterfacePublicIpv4AddressArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv4AddressArrayOutput) ToInterfacePublicIpv4AddressArrayOutputWithContext(ctx context.Context) InterfacePublicIpv4AddressArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv4AddressArrayOutput) Index(i pulumi.IntInput) InterfacePublicIpv4AddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfacePublicIpv4Address {
+		return vs[0].([]InterfacePublicIpv4Address)[vs[1].(int)]
+	}).(InterfacePublicIpv4AddressOutput)
+}
+
+type InterfacePublicIpv4AssignedAddress struct {
+	// The assigned IPv4 address.
+	Address *string `pulumi:"address"`
+	// Whether this address is the primary address for the interface.
+	Primary *bool `pulumi:"primary"`
+}
+
+// InterfacePublicIpv4AssignedAddressInput is an input type that accepts InterfacePublicIpv4AssignedAddressArgs and InterfacePublicIpv4AssignedAddressOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv4AssignedAddressInput` via:
+//
+//	InterfacePublicIpv4AssignedAddressArgs{...}
+type InterfacePublicIpv4AssignedAddressInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv4AssignedAddressOutput() InterfacePublicIpv4AssignedAddressOutput
+	ToInterfacePublicIpv4AssignedAddressOutputWithContext(context.Context) InterfacePublicIpv4AssignedAddressOutput
+}
+
+type InterfacePublicIpv4AssignedAddressArgs struct {
+	// The assigned IPv4 address.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Whether this address is the primary address for the interface.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+}
+
+func (InterfacePublicIpv4AssignedAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv4AssignedAddress)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv4AssignedAddressArgs) ToInterfacePublicIpv4AssignedAddressOutput() InterfacePublicIpv4AssignedAddressOutput {
+	return i.ToInterfacePublicIpv4AssignedAddressOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv4AssignedAddressArgs) ToInterfacePublicIpv4AssignedAddressOutputWithContext(ctx context.Context) InterfacePublicIpv4AssignedAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv4AssignedAddressOutput)
+}
+
+// InterfacePublicIpv4AssignedAddressArrayInput is an input type that accepts InterfacePublicIpv4AssignedAddressArray and InterfacePublicIpv4AssignedAddressArrayOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv4AssignedAddressArrayInput` via:
+//
+//	InterfacePublicIpv4AssignedAddressArray{ InterfacePublicIpv4AssignedAddressArgs{...} }
+type InterfacePublicIpv4AssignedAddressArrayInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv4AssignedAddressArrayOutput() InterfacePublicIpv4AssignedAddressArrayOutput
+	ToInterfacePublicIpv4AssignedAddressArrayOutputWithContext(context.Context) InterfacePublicIpv4AssignedAddressArrayOutput
+}
+
+type InterfacePublicIpv4AssignedAddressArray []InterfacePublicIpv4AssignedAddressInput
+
+func (InterfacePublicIpv4AssignedAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv4AssignedAddress)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv4AssignedAddressArray) ToInterfacePublicIpv4AssignedAddressArrayOutput() InterfacePublicIpv4AssignedAddressArrayOutput {
+	return i.ToInterfacePublicIpv4AssignedAddressArrayOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv4AssignedAddressArray) ToInterfacePublicIpv4AssignedAddressArrayOutputWithContext(ctx context.Context) InterfacePublicIpv4AssignedAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv4AssignedAddressArrayOutput)
+}
+
+type InterfacePublicIpv4AssignedAddressOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv4AssignedAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv4AssignedAddress)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv4AssignedAddressOutput) ToInterfacePublicIpv4AssignedAddressOutput() InterfacePublicIpv4AssignedAddressOutput {
+	return o
+}
+
+func (o InterfacePublicIpv4AssignedAddressOutput) ToInterfacePublicIpv4AssignedAddressOutputWithContext(ctx context.Context) InterfacePublicIpv4AssignedAddressOutput {
+	return o
+}
+
+// The assigned IPv4 address.
+func (o InterfacePublicIpv4AssignedAddressOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv4AssignedAddress) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Whether this address is the primary address for the interface.
+func (o InterfacePublicIpv4AssignedAddressOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv4AssignedAddress) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type InterfacePublicIpv4AssignedAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv4AssignedAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv4AssignedAddress)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv4AssignedAddressArrayOutput) ToInterfacePublicIpv4AssignedAddressArrayOutput() InterfacePublicIpv4AssignedAddressArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv4AssignedAddressArrayOutput) ToInterfacePublicIpv4AssignedAddressArrayOutputWithContext(ctx context.Context) InterfacePublicIpv4AssignedAddressArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv4AssignedAddressArrayOutput) Index(i pulumi.IntInput) InterfacePublicIpv4AssignedAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfacePublicIpv4AssignedAddress {
+		return vs[0].([]InterfacePublicIpv4AssignedAddress)[vs[1].(int)]
+	}).(InterfacePublicIpv4AssignedAddressOutput)
+}
+
+type InterfacePublicIpv4Shared struct {
+	// The assigned IPv4 address.
+	Address *string `pulumi:"address"`
+	// The ID of the Linode to assign this interface to.
+	LinodeId *int `pulumi:"linodeId"`
+}
+
+// InterfacePublicIpv4SharedInput is an input type that accepts InterfacePublicIpv4SharedArgs and InterfacePublicIpv4SharedOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv4SharedInput` via:
+//
+//	InterfacePublicIpv4SharedArgs{...}
+type InterfacePublicIpv4SharedInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv4SharedOutput() InterfacePublicIpv4SharedOutput
+	ToInterfacePublicIpv4SharedOutputWithContext(context.Context) InterfacePublicIpv4SharedOutput
+}
+
+type InterfacePublicIpv4SharedArgs struct {
+	// The assigned IPv4 address.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The ID of the Linode to assign this interface to.
+	LinodeId pulumi.IntPtrInput `pulumi:"linodeId"`
+}
+
+func (InterfacePublicIpv4SharedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv4Shared)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv4SharedArgs) ToInterfacePublicIpv4SharedOutput() InterfacePublicIpv4SharedOutput {
+	return i.ToInterfacePublicIpv4SharedOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv4SharedArgs) ToInterfacePublicIpv4SharedOutputWithContext(ctx context.Context) InterfacePublicIpv4SharedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv4SharedOutput)
+}
+
+// InterfacePublicIpv4SharedArrayInput is an input type that accepts InterfacePublicIpv4SharedArray and InterfacePublicIpv4SharedArrayOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv4SharedArrayInput` via:
+//
+//	InterfacePublicIpv4SharedArray{ InterfacePublicIpv4SharedArgs{...} }
+type InterfacePublicIpv4SharedArrayInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv4SharedArrayOutput() InterfacePublicIpv4SharedArrayOutput
+	ToInterfacePublicIpv4SharedArrayOutputWithContext(context.Context) InterfacePublicIpv4SharedArrayOutput
+}
+
+type InterfacePublicIpv4SharedArray []InterfacePublicIpv4SharedInput
+
+func (InterfacePublicIpv4SharedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv4Shared)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv4SharedArray) ToInterfacePublicIpv4SharedArrayOutput() InterfacePublicIpv4SharedArrayOutput {
+	return i.ToInterfacePublicIpv4SharedArrayOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv4SharedArray) ToInterfacePublicIpv4SharedArrayOutputWithContext(ctx context.Context) InterfacePublicIpv4SharedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv4SharedArrayOutput)
+}
+
+type InterfacePublicIpv4SharedOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv4SharedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv4Shared)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv4SharedOutput) ToInterfacePublicIpv4SharedOutput() InterfacePublicIpv4SharedOutput {
+	return o
+}
+
+func (o InterfacePublicIpv4SharedOutput) ToInterfacePublicIpv4SharedOutputWithContext(ctx context.Context) InterfacePublicIpv4SharedOutput {
+	return o
+}
+
+// The assigned IPv4 address.
+func (o InterfacePublicIpv4SharedOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv4Shared) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Linode to assign this interface to.
+func (o InterfacePublicIpv4SharedOutput) LinodeId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv4Shared) *int { return v.LinodeId }).(pulumi.IntPtrOutput)
+}
+
+type InterfacePublicIpv4SharedArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv4SharedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv4Shared)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv4SharedArrayOutput) ToInterfacePublicIpv4SharedArrayOutput() InterfacePublicIpv4SharedArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv4SharedArrayOutput) ToInterfacePublicIpv4SharedArrayOutputWithContext(ctx context.Context) InterfacePublicIpv4SharedArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv4SharedArrayOutput) Index(i pulumi.IntInput) InterfacePublicIpv4SharedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfacePublicIpv4Shared {
+		return vs[0].([]InterfacePublicIpv4Shared)[vs[1].(int)]
+	}).(InterfacePublicIpv4SharedOutput)
+}
+
+type InterfacePublicIpv6 struct {
+	// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+	AssignedRanges []InterfacePublicIpv6AssignedRange `pulumi:"assignedRanges"`
+	// Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
+	Ranges []InterfacePublicIpv6Range `pulumi:"ranges"`
+	// (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+	Shareds []InterfacePublicIpv6Shared `pulumi:"shareds"`
+	// (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+	Slaacs []InterfacePublicIpv6Slaac `pulumi:"slaacs"`
+}
+
+// InterfacePublicIpv6Input is an input type that accepts InterfacePublicIpv6Args and InterfacePublicIpv6Output values.
+// You can construct a concrete instance of `InterfacePublicIpv6Input` via:
+//
+//	InterfacePublicIpv6Args{...}
+type InterfacePublicIpv6Input interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv6Output() InterfacePublicIpv6Output
+	ToInterfacePublicIpv6OutputWithContext(context.Context) InterfacePublicIpv6Output
+}
+
+type InterfacePublicIpv6Args struct {
+	// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+	AssignedRanges InterfacePublicIpv6AssignedRangeArrayInput `pulumi:"assignedRanges"`
+	// Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
+	Ranges InterfacePublicIpv6RangeArrayInput `pulumi:"ranges"`
+	// (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+	Shareds InterfacePublicIpv6SharedArrayInput `pulumi:"shareds"`
+	// (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+	Slaacs InterfacePublicIpv6SlaacArrayInput `pulumi:"slaacs"`
+}
+
+func (InterfacePublicIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv6)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv6Args) ToInterfacePublicIpv6Output() InterfacePublicIpv6Output {
+	return i.ToInterfacePublicIpv6OutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv6Args) ToInterfacePublicIpv6OutputWithContext(ctx context.Context) InterfacePublicIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv6Output)
+}
+
+func (i InterfacePublicIpv6Args) ToInterfacePublicIpv6PtrOutput() InterfacePublicIpv6PtrOutput {
+	return i.ToInterfacePublicIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv6Args) ToInterfacePublicIpv6PtrOutputWithContext(ctx context.Context) InterfacePublicIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv6Output).ToInterfacePublicIpv6PtrOutputWithContext(ctx)
+}
+
+// InterfacePublicIpv6PtrInput is an input type that accepts InterfacePublicIpv6Args, InterfacePublicIpv6Ptr and InterfacePublicIpv6PtrOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv6PtrInput` via:
+//
+//	        InterfacePublicIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type InterfacePublicIpv6PtrInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv6PtrOutput() InterfacePublicIpv6PtrOutput
+	ToInterfacePublicIpv6PtrOutputWithContext(context.Context) InterfacePublicIpv6PtrOutput
+}
+
+type interfacePublicIpv6PtrType InterfacePublicIpv6Args
+
+func InterfacePublicIpv6Ptr(v *InterfacePublicIpv6Args) InterfacePublicIpv6PtrInput {
+	return (*interfacePublicIpv6PtrType)(v)
+}
+
+func (*interfacePublicIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfacePublicIpv6)(nil)).Elem()
+}
+
+func (i *interfacePublicIpv6PtrType) ToInterfacePublicIpv6PtrOutput() InterfacePublicIpv6PtrOutput {
+	return i.ToInterfacePublicIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *interfacePublicIpv6PtrType) ToInterfacePublicIpv6PtrOutputWithContext(ctx context.Context) InterfacePublicIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv6PtrOutput)
+}
+
+type InterfacePublicIpv6Output struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv6)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv6Output) ToInterfacePublicIpv6Output() InterfacePublicIpv6Output {
+	return o
+}
+
+func (o InterfacePublicIpv6Output) ToInterfacePublicIpv6OutputWithContext(ctx context.Context) InterfacePublicIpv6Output {
+	return o
+}
+
+func (o InterfacePublicIpv6Output) ToInterfacePublicIpv6PtrOutput() InterfacePublicIpv6PtrOutput {
+	return o.ToInterfacePublicIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o InterfacePublicIpv6Output) ToInterfacePublicIpv6PtrOutputWithContext(ctx context.Context) InterfacePublicIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterfacePublicIpv6) *InterfacePublicIpv6 {
+		return &v
+	}).(InterfacePublicIpv6PtrOutput)
+}
+
+// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+func (o InterfacePublicIpv6Output) AssignedRanges() InterfacePublicIpv6AssignedRangeArrayOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6) []InterfacePublicIpv6AssignedRange { return v.AssignedRanges }).(InterfacePublicIpv6AssignedRangeArrayOutput)
+}
+
+// Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
+func (o InterfacePublicIpv6Output) Ranges() InterfacePublicIpv6RangeArrayOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6) []InterfacePublicIpv6Range { return v.Ranges }).(InterfacePublicIpv6RangeArrayOutput)
+}
+
+// (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+func (o InterfacePublicIpv6Output) Shareds() InterfacePublicIpv6SharedArrayOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6) []InterfacePublicIpv6Shared { return v.Shareds }).(InterfacePublicIpv6SharedArrayOutput)
+}
+
+// (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+func (o InterfacePublicIpv6Output) Slaacs() InterfacePublicIpv6SlaacArrayOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6) []InterfacePublicIpv6Slaac { return v.Slaacs }).(InterfacePublicIpv6SlaacArrayOutput)
+}
+
+type InterfacePublicIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfacePublicIpv6)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv6PtrOutput) ToInterfacePublicIpv6PtrOutput() InterfacePublicIpv6PtrOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6PtrOutput) ToInterfacePublicIpv6PtrOutputWithContext(ctx context.Context) InterfacePublicIpv6PtrOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6PtrOutput) Elem() InterfacePublicIpv6Output {
+	return o.ApplyT(func(v *InterfacePublicIpv6) InterfacePublicIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret InterfacePublicIpv6
+		return ret
+	}).(InterfacePublicIpv6Output)
+}
+
+// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+func (o InterfacePublicIpv6PtrOutput) AssignedRanges() InterfacePublicIpv6AssignedRangeArrayOutput {
+	return o.ApplyT(func(v *InterfacePublicIpv6) []InterfacePublicIpv6AssignedRange {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedRanges
+	}).(InterfacePublicIpv6AssignedRangeArrayOutput)
+}
+
+// Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
+func (o InterfacePublicIpv6PtrOutput) Ranges() InterfacePublicIpv6RangeArrayOutput {
+	return o.ApplyT(func(v *InterfacePublicIpv6) []InterfacePublicIpv6Range {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(InterfacePublicIpv6RangeArrayOutput)
+}
+
+// (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+func (o InterfacePublicIpv6PtrOutput) Shareds() InterfacePublicIpv6SharedArrayOutput {
+	return o.ApplyT(func(v *InterfacePublicIpv6) []InterfacePublicIpv6Shared {
+		if v == nil {
+			return nil
+		}
+		return v.Shareds
+	}).(InterfacePublicIpv6SharedArrayOutput)
+}
+
+// (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+func (o InterfacePublicIpv6PtrOutput) Slaacs() InterfacePublicIpv6SlaacArrayOutput {
+	return o.ApplyT(func(v *InterfacePublicIpv6) []InterfacePublicIpv6Slaac {
+		if v == nil {
+			return nil
+		}
+		return v.Slaacs
+	}).(InterfacePublicIpv6SlaacArrayOutput)
+}
+
+type InterfacePublicIpv6AssignedRange struct {
+	// The IPv6 network range in CIDR notation.
+	Range *string `pulumi:"range"`
+	// The public IPv6 address that the range is routed to.
+	RouteTarget *string `pulumi:"routeTarget"`
+}
+
+// InterfacePublicIpv6AssignedRangeInput is an input type that accepts InterfacePublicIpv6AssignedRangeArgs and InterfacePublicIpv6AssignedRangeOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv6AssignedRangeInput` via:
+//
+//	InterfacePublicIpv6AssignedRangeArgs{...}
+type InterfacePublicIpv6AssignedRangeInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv6AssignedRangeOutput() InterfacePublicIpv6AssignedRangeOutput
+	ToInterfacePublicIpv6AssignedRangeOutputWithContext(context.Context) InterfacePublicIpv6AssignedRangeOutput
+}
+
+type InterfacePublicIpv6AssignedRangeArgs struct {
+	// The IPv6 network range in CIDR notation.
+	Range pulumi.StringPtrInput `pulumi:"range"`
+	// The public IPv6 address that the range is routed to.
+	RouteTarget pulumi.StringPtrInput `pulumi:"routeTarget"`
+}
+
+func (InterfacePublicIpv6AssignedRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv6AssignedRange)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv6AssignedRangeArgs) ToInterfacePublicIpv6AssignedRangeOutput() InterfacePublicIpv6AssignedRangeOutput {
+	return i.ToInterfacePublicIpv6AssignedRangeOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv6AssignedRangeArgs) ToInterfacePublicIpv6AssignedRangeOutputWithContext(ctx context.Context) InterfacePublicIpv6AssignedRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv6AssignedRangeOutput)
+}
+
+// InterfacePublicIpv6AssignedRangeArrayInput is an input type that accepts InterfacePublicIpv6AssignedRangeArray and InterfacePublicIpv6AssignedRangeArrayOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv6AssignedRangeArrayInput` via:
+//
+//	InterfacePublicIpv6AssignedRangeArray{ InterfacePublicIpv6AssignedRangeArgs{...} }
+type InterfacePublicIpv6AssignedRangeArrayInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv6AssignedRangeArrayOutput() InterfacePublicIpv6AssignedRangeArrayOutput
+	ToInterfacePublicIpv6AssignedRangeArrayOutputWithContext(context.Context) InterfacePublicIpv6AssignedRangeArrayOutput
+}
+
+type InterfacePublicIpv6AssignedRangeArray []InterfacePublicIpv6AssignedRangeInput
+
+func (InterfacePublicIpv6AssignedRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv6AssignedRange)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv6AssignedRangeArray) ToInterfacePublicIpv6AssignedRangeArrayOutput() InterfacePublicIpv6AssignedRangeArrayOutput {
+	return i.ToInterfacePublicIpv6AssignedRangeArrayOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv6AssignedRangeArray) ToInterfacePublicIpv6AssignedRangeArrayOutputWithContext(ctx context.Context) InterfacePublicIpv6AssignedRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv6AssignedRangeArrayOutput)
+}
+
+type InterfacePublicIpv6AssignedRangeOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv6AssignedRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv6AssignedRange)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv6AssignedRangeOutput) ToInterfacePublicIpv6AssignedRangeOutput() InterfacePublicIpv6AssignedRangeOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6AssignedRangeOutput) ToInterfacePublicIpv6AssignedRangeOutputWithContext(ctx context.Context) InterfacePublicIpv6AssignedRangeOutput {
+	return o
+}
+
+// The IPv6 network range in CIDR notation.
+func (o InterfacePublicIpv6AssignedRangeOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6AssignedRange) *string { return v.Range }).(pulumi.StringPtrOutput)
+}
+
+// The public IPv6 address that the range is routed to.
+func (o InterfacePublicIpv6AssignedRangeOutput) RouteTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6AssignedRange) *string { return v.RouteTarget }).(pulumi.StringPtrOutput)
+}
+
+type InterfacePublicIpv6AssignedRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv6AssignedRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv6AssignedRange)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv6AssignedRangeArrayOutput) ToInterfacePublicIpv6AssignedRangeArrayOutput() InterfacePublicIpv6AssignedRangeArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6AssignedRangeArrayOutput) ToInterfacePublicIpv6AssignedRangeArrayOutputWithContext(ctx context.Context) InterfacePublicIpv6AssignedRangeArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6AssignedRangeArrayOutput) Index(i pulumi.IntInput) InterfacePublicIpv6AssignedRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfacePublicIpv6AssignedRange {
+		return vs[0].([]InterfacePublicIpv6AssignedRange)[vs[1].(int)]
+	}).(InterfacePublicIpv6AssignedRangeOutput)
+}
+
+type InterfacePublicIpv6Range struct {
+	// The IPv6 range.
+	Range string `pulumi:"range"`
+	// The public IPv6 address that the range is routed to.
+	RouteTarget *string `pulumi:"routeTarget"`
+}
+
+// InterfacePublicIpv6RangeInput is an input type that accepts InterfacePublicIpv6RangeArgs and InterfacePublicIpv6RangeOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv6RangeInput` via:
+//
+//	InterfacePublicIpv6RangeArgs{...}
+type InterfacePublicIpv6RangeInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv6RangeOutput() InterfacePublicIpv6RangeOutput
+	ToInterfacePublicIpv6RangeOutputWithContext(context.Context) InterfacePublicIpv6RangeOutput
+}
+
+type InterfacePublicIpv6RangeArgs struct {
+	// The IPv6 range.
+	Range pulumi.StringInput `pulumi:"range"`
+	// The public IPv6 address that the range is routed to.
+	RouteTarget pulumi.StringPtrInput `pulumi:"routeTarget"`
+}
+
+func (InterfacePublicIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv6RangeArgs) ToInterfacePublicIpv6RangeOutput() InterfacePublicIpv6RangeOutput {
+	return i.ToInterfacePublicIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv6RangeArgs) ToInterfacePublicIpv6RangeOutputWithContext(ctx context.Context) InterfacePublicIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv6RangeOutput)
+}
+
+// InterfacePublicIpv6RangeArrayInput is an input type that accepts InterfacePublicIpv6RangeArray and InterfacePublicIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv6RangeArrayInput` via:
+//
+//	InterfacePublicIpv6RangeArray{ InterfacePublicIpv6RangeArgs{...} }
+type InterfacePublicIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv6RangeArrayOutput() InterfacePublicIpv6RangeArrayOutput
+	ToInterfacePublicIpv6RangeArrayOutputWithContext(context.Context) InterfacePublicIpv6RangeArrayOutput
+}
+
+type InterfacePublicIpv6RangeArray []InterfacePublicIpv6RangeInput
+
+func (InterfacePublicIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv6RangeArray) ToInterfacePublicIpv6RangeArrayOutput() InterfacePublicIpv6RangeArrayOutput {
+	return i.ToInterfacePublicIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv6RangeArray) ToInterfacePublicIpv6RangeArrayOutputWithContext(ctx context.Context) InterfacePublicIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv6RangeArrayOutput)
+}
+
+type InterfacePublicIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv6RangeOutput) ToInterfacePublicIpv6RangeOutput() InterfacePublicIpv6RangeOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6RangeOutput) ToInterfacePublicIpv6RangeOutputWithContext(ctx context.Context) InterfacePublicIpv6RangeOutput {
+	return o
+}
+
+// The IPv6 range.
+func (o InterfacePublicIpv6RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+// The public IPv6 address that the range is routed to.
+func (o InterfacePublicIpv6RangeOutput) RouteTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6Range) *string { return v.RouteTarget }).(pulumi.StringPtrOutput)
+}
+
+type InterfacePublicIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv6RangeArrayOutput) ToInterfacePublicIpv6RangeArrayOutput() InterfacePublicIpv6RangeArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6RangeArrayOutput) ToInterfacePublicIpv6RangeArrayOutputWithContext(ctx context.Context) InterfacePublicIpv6RangeArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6RangeArrayOutput) Index(i pulumi.IntInput) InterfacePublicIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfacePublicIpv6Range {
+		return vs[0].([]InterfacePublicIpv6Range)[vs[1].(int)]
+	}).(InterfacePublicIpv6RangeOutput)
+}
+
+type InterfacePublicIpv6Shared struct {
+	// The IPv6 network range in CIDR notation.
+	Range *string `pulumi:"range"`
+	// The public IPv6 address that the range is routed to.
+	RouteTarget *string `pulumi:"routeTarget"`
+}
+
+// InterfacePublicIpv6SharedInput is an input type that accepts InterfacePublicIpv6SharedArgs and InterfacePublicIpv6SharedOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv6SharedInput` via:
+//
+//	InterfacePublicIpv6SharedArgs{...}
+type InterfacePublicIpv6SharedInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv6SharedOutput() InterfacePublicIpv6SharedOutput
+	ToInterfacePublicIpv6SharedOutputWithContext(context.Context) InterfacePublicIpv6SharedOutput
+}
+
+type InterfacePublicIpv6SharedArgs struct {
+	// The IPv6 network range in CIDR notation.
+	Range pulumi.StringPtrInput `pulumi:"range"`
+	// The public IPv6 address that the range is routed to.
+	RouteTarget pulumi.StringPtrInput `pulumi:"routeTarget"`
+}
+
+func (InterfacePublicIpv6SharedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv6Shared)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv6SharedArgs) ToInterfacePublicIpv6SharedOutput() InterfacePublicIpv6SharedOutput {
+	return i.ToInterfacePublicIpv6SharedOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv6SharedArgs) ToInterfacePublicIpv6SharedOutputWithContext(ctx context.Context) InterfacePublicIpv6SharedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv6SharedOutput)
+}
+
+// InterfacePublicIpv6SharedArrayInput is an input type that accepts InterfacePublicIpv6SharedArray and InterfacePublicIpv6SharedArrayOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv6SharedArrayInput` via:
+//
+//	InterfacePublicIpv6SharedArray{ InterfacePublicIpv6SharedArgs{...} }
+type InterfacePublicIpv6SharedArrayInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv6SharedArrayOutput() InterfacePublicIpv6SharedArrayOutput
+	ToInterfacePublicIpv6SharedArrayOutputWithContext(context.Context) InterfacePublicIpv6SharedArrayOutput
+}
+
+type InterfacePublicIpv6SharedArray []InterfacePublicIpv6SharedInput
+
+func (InterfacePublicIpv6SharedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv6Shared)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv6SharedArray) ToInterfacePublicIpv6SharedArrayOutput() InterfacePublicIpv6SharedArrayOutput {
+	return i.ToInterfacePublicIpv6SharedArrayOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv6SharedArray) ToInterfacePublicIpv6SharedArrayOutputWithContext(ctx context.Context) InterfacePublicIpv6SharedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv6SharedArrayOutput)
+}
+
+type InterfacePublicIpv6SharedOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv6SharedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv6Shared)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv6SharedOutput) ToInterfacePublicIpv6SharedOutput() InterfacePublicIpv6SharedOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6SharedOutput) ToInterfacePublicIpv6SharedOutputWithContext(ctx context.Context) InterfacePublicIpv6SharedOutput {
+	return o
+}
+
+// The IPv6 network range in CIDR notation.
+func (o InterfacePublicIpv6SharedOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6Shared) *string { return v.Range }).(pulumi.StringPtrOutput)
+}
+
+// The public IPv6 address that the range is routed to.
+func (o InterfacePublicIpv6SharedOutput) RouteTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6Shared) *string { return v.RouteTarget }).(pulumi.StringPtrOutput)
+}
+
+type InterfacePublicIpv6SharedArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv6SharedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv6Shared)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv6SharedArrayOutput) ToInterfacePublicIpv6SharedArrayOutput() InterfacePublicIpv6SharedArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6SharedArrayOutput) ToInterfacePublicIpv6SharedArrayOutputWithContext(ctx context.Context) InterfacePublicIpv6SharedArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6SharedArrayOutput) Index(i pulumi.IntInput) InterfacePublicIpv6SharedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfacePublicIpv6Shared {
+		return vs[0].([]InterfacePublicIpv6Shared)[vs[1].(int)]
+	}).(InterfacePublicIpv6SharedOutput)
+}
+
+type InterfacePublicIpv6Slaac struct {
+	// The assigned IPv4 address.
+	Address *string `pulumi:"address"`
+	// The subnet prefix length.
+	Prefix *int `pulumi:"prefix"`
+}
+
+// InterfacePublicIpv6SlaacInput is an input type that accepts InterfacePublicIpv6SlaacArgs and InterfacePublicIpv6SlaacOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv6SlaacInput` via:
+//
+//	InterfacePublicIpv6SlaacArgs{...}
+type InterfacePublicIpv6SlaacInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv6SlaacOutput() InterfacePublicIpv6SlaacOutput
+	ToInterfacePublicIpv6SlaacOutputWithContext(context.Context) InterfacePublicIpv6SlaacOutput
+}
+
+type InterfacePublicIpv6SlaacArgs struct {
+	// The assigned IPv4 address.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The subnet prefix length.
+	Prefix pulumi.IntPtrInput `pulumi:"prefix"`
+}
+
+func (InterfacePublicIpv6SlaacArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv6Slaac)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv6SlaacArgs) ToInterfacePublicIpv6SlaacOutput() InterfacePublicIpv6SlaacOutput {
+	return i.ToInterfacePublicIpv6SlaacOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv6SlaacArgs) ToInterfacePublicIpv6SlaacOutputWithContext(ctx context.Context) InterfacePublicIpv6SlaacOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv6SlaacOutput)
+}
+
+// InterfacePublicIpv6SlaacArrayInput is an input type that accepts InterfacePublicIpv6SlaacArray and InterfacePublicIpv6SlaacArrayOutput values.
+// You can construct a concrete instance of `InterfacePublicIpv6SlaacArrayInput` via:
+//
+//	InterfacePublicIpv6SlaacArray{ InterfacePublicIpv6SlaacArgs{...} }
+type InterfacePublicIpv6SlaacArrayInput interface {
+	pulumi.Input
+
+	ToInterfacePublicIpv6SlaacArrayOutput() InterfacePublicIpv6SlaacArrayOutput
+	ToInterfacePublicIpv6SlaacArrayOutputWithContext(context.Context) InterfacePublicIpv6SlaacArrayOutput
+}
+
+type InterfacePublicIpv6SlaacArray []InterfacePublicIpv6SlaacInput
+
+func (InterfacePublicIpv6SlaacArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv6Slaac)(nil)).Elem()
+}
+
+func (i InterfacePublicIpv6SlaacArray) ToInterfacePublicIpv6SlaacArrayOutput() InterfacePublicIpv6SlaacArrayOutput {
+	return i.ToInterfacePublicIpv6SlaacArrayOutputWithContext(context.Background())
+}
+
+func (i InterfacePublicIpv6SlaacArray) ToInterfacePublicIpv6SlaacArrayOutputWithContext(ctx context.Context) InterfacePublicIpv6SlaacArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfacePublicIpv6SlaacArrayOutput)
+}
+
+type InterfacePublicIpv6SlaacOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv6SlaacOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfacePublicIpv6Slaac)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv6SlaacOutput) ToInterfacePublicIpv6SlaacOutput() InterfacePublicIpv6SlaacOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6SlaacOutput) ToInterfacePublicIpv6SlaacOutputWithContext(ctx context.Context) InterfacePublicIpv6SlaacOutput {
+	return o
+}
+
+// The assigned IPv4 address.
+func (o InterfacePublicIpv6SlaacOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6Slaac) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The subnet prefix length.
+func (o InterfacePublicIpv6SlaacOutput) Prefix() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InterfacePublicIpv6Slaac) *int { return v.Prefix }).(pulumi.IntPtrOutput)
+}
+
+type InterfacePublicIpv6SlaacArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfacePublicIpv6SlaacArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfacePublicIpv6Slaac)(nil)).Elem()
+}
+
+func (o InterfacePublicIpv6SlaacArrayOutput) ToInterfacePublicIpv6SlaacArrayOutput() InterfacePublicIpv6SlaacArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6SlaacArrayOutput) ToInterfacePublicIpv6SlaacArrayOutputWithContext(ctx context.Context) InterfacePublicIpv6SlaacArrayOutput {
+	return o
+}
+
+func (o InterfacePublicIpv6SlaacArrayOutput) Index(i pulumi.IntInput) InterfacePublicIpv6SlaacOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfacePublicIpv6Slaac {
+		return vs[0].([]InterfacePublicIpv6Slaac)[vs[1].(int)]
+	}).(InterfacePublicIpv6SlaacOutput)
+}
+
+type InterfaceVlan struct {
+	// The VLAN interface's private IPv4 address in CIDR notation.
+	IpamAddress *string `pulumi:"ipamAddress"`
+	// The VLAN's unique label. Must be between 1 and 64 characters.
+	VlanLabel string `pulumi:"vlanLabel"`
+}
+
+// InterfaceVlanInput is an input type that accepts InterfaceVlanArgs and InterfaceVlanOutput values.
+// You can construct a concrete instance of `InterfaceVlanInput` via:
+//
+//	InterfaceVlanArgs{...}
+type InterfaceVlanInput interface {
+	pulumi.Input
+
+	ToInterfaceVlanOutput() InterfaceVlanOutput
+	ToInterfaceVlanOutputWithContext(context.Context) InterfaceVlanOutput
+}
+
+type InterfaceVlanArgs struct {
+	// The VLAN interface's private IPv4 address in CIDR notation.
+	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
+	// The VLAN's unique label. Must be between 1 and 64 characters.
+	VlanLabel pulumi.StringInput `pulumi:"vlanLabel"`
+}
+
+func (InterfaceVlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVlan)(nil)).Elem()
+}
+
+func (i InterfaceVlanArgs) ToInterfaceVlanOutput() InterfaceVlanOutput {
+	return i.ToInterfaceVlanOutputWithContext(context.Background())
+}
+
+func (i InterfaceVlanArgs) ToInterfaceVlanOutputWithContext(ctx context.Context) InterfaceVlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVlanOutput)
+}
+
+func (i InterfaceVlanArgs) ToInterfaceVlanPtrOutput() InterfaceVlanPtrOutput {
+	return i.ToInterfaceVlanPtrOutputWithContext(context.Background())
+}
+
+func (i InterfaceVlanArgs) ToInterfaceVlanPtrOutputWithContext(ctx context.Context) InterfaceVlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVlanOutput).ToInterfaceVlanPtrOutputWithContext(ctx)
+}
+
+// InterfaceVlanPtrInput is an input type that accepts InterfaceVlanArgs, InterfaceVlanPtr and InterfaceVlanPtrOutput values.
+// You can construct a concrete instance of `InterfaceVlanPtrInput` via:
+//
+//	        InterfaceVlanArgs{...}
+//
+//	or:
+//
+//	        nil
+type InterfaceVlanPtrInput interface {
+	pulumi.Input
+
+	ToInterfaceVlanPtrOutput() InterfaceVlanPtrOutput
+	ToInterfaceVlanPtrOutputWithContext(context.Context) InterfaceVlanPtrOutput
+}
+
+type interfaceVlanPtrType InterfaceVlanArgs
+
+func InterfaceVlanPtr(v *InterfaceVlanArgs) InterfaceVlanPtrInput {
+	return (*interfaceVlanPtrType)(v)
+}
+
+func (*interfaceVlanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceVlan)(nil)).Elem()
+}
+
+func (i *interfaceVlanPtrType) ToInterfaceVlanPtrOutput() InterfaceVlanPtrOutput {
+	return i.ToInterfaceVlanPtrOutputWithContext(context.Background())
+}
+
+func (i *interfaceVlanPtrType) ToInterfaceVlanPtrOutputWithContext(ctx context.Context) InterfaceVlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVlanPtrOutput)
+}
+
+type InterfaceVlanOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVlan)(nil)).Elem()
+}
+
+func (o InterfaceVlanOutput) ToInterfaceVlanOutput() InterfaceVlanOutput {
+	return o
+}
+
+func (o InterfaceVlanOutput) ToInterfaceVlanOutputWithContext(ctx context.Context) InterfaceVlanOutput {
+	return o
+}
+
+func (o InterfaceVlanOutput) ToInterfaceVlanPtrOutput() InterfaceVlanPtrOutput {
+	return o.ToInterfaceVlanPtrOutputWithContext(context.Background())
+}
+
+func (o InterfaceVlanOutput) ToInterfaceVlanPtrOutputWithContext(ctx context.Context) InterfaceVlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterfaceVlan) *InterfaceVlan {
+		return &v
+	}).(InterfaceVlanPtrOutput)
+}
+
+// The VLAN interface's private IPv4 address in CIDR notation.
+func (o InterfaceVlanOutput) IpamAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceVlan) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
+}
+
+// The VLAN's unique label. Must be between 1 and 64 characters.
+func (o InterfaceVlanOutput) VlanLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v InterfaceVlan) string { return v.VlanLabel }).(pulumi.StringOutput)
+}
+
+type InterfaceVlanPtrOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceVlan)(nil)).Elem()
+}
+
+func (o InterfaceVlanPtrOutput) ToInterfaceVlanPtrOutput() InterfaceVlanPtrOutput {
+	return o
+}
+
+func (o InterfaceVlanPtrOutput) ToInterfaceVlanPtrOutputWithContext(ctx context.Context) InterfaceVlanPtrOutput {
+	return o
+}
+
+func (o InterfaceVlanPtrOutput) Elem() InterfaceVlanOutput {
+	return o.ApplyT(func(v *InterfaceVlan) InterfaceVlan {
+		if v != nil {
+			return *v
+		}
+		var ret InterfaceVlan
+		return ret
+	}).(InterfaceVlanOutput)
+}
+
+// The VLAN interface's private IPv4 address in CIDR notation.
+func (o InterfaceVlanPtrOutput) IpamAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InterfaceVlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpamAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VLAN's unique label. Must be between 1 and 64 characters.
+func (o InterfaceVlanPtrOutput) VlanLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InterfaceVlan) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VlanLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+type InterfaceVpc struct {
+	// IPv4 configuration for the VPC interface.
+	Ipv4 *InterfaceVpcIpv4 `pulumi:"ipv4"`
+	// IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+	Ipv6 *InterfaceVpcIpv6 `pulumi:"ipv6"`
+	// The VPC subnet identifier for this interface.
+	SubnetId int `pulumi:"subnetId"`
+}
+
+// InterfaceVpcInput is an input type that accepts InterfaceVpcArgs and InterfaceVpcOutput values.
+// You can construct a concrete instance of `InterfaceVpcInput` via:
+//
+//	InterfaceVpcArgs{...}
+type InterfaceVpcInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcOutput() InterfaceVpcOutput
+	ToInterfaceVpcOutputWithContext(context.Context) InterfaceVpcOutput
+}
+
+type InterfaceVpcArgs struct {
+	// IPv4 configuration for the VPC interface.
+	Ipv4 InterfaceVpcIpv4PtrInput `pulumi:"ipv4"`
+	// IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+	Ipv6 InterfaceVpcIpv6PtrInput `pulumi:"ipv6"`
+	// The VPC subnet identifier for this interface.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+}
+
+func (InterfaceVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpc)(nil)).Elem()
+}
+
+func (i InterfaceVpcArgs) ToInterfaceVpcOutput() InterfaceVpcOutput {
+	return i.ToInterfaceVpcOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcArgs) ToInterfaceVpcOutputWithContext(ctx context.Context) InterfaceVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcOutput)
+}
+
+func (i InterfaceVpcArgs) ToInterfaceVpcPtrOutput() InterfaceVpcPtrOutput {
+	return i.ToInterfaceVpcPtrOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcArgs) ToInterfaceVpcPtrOutputWithContext(ctx context.Context) InterfaceVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcOutput).ToInterfaceVpcPtrOutputWithContext(ctx)
+}
+
+// InterfaceVpcPtrInput is an input type that accepts InterfaceVpcArgs, InterfaceVpcPtr and InterfaceVpcPtrOutput values.
+// You can construct a concrete instance of `InterfaceVpcPtrInput` via:
+//
+//	        InterfaceVpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type InterfaceVpcPtrInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcPtrOutput() InterfaceVpcPtrOutput
+	ToInterfaceVpcPtrOutputWithContext(context.Context) InterfaceVpcPtrOutput
+}
+
+type interfaceVpcPtrType InterfaceVpcArgs
+
+func InterfaceVpcPtr(v *InterfaceVpcArgs) InterfaceVpcPtrInput {
+	return (*interfaceVpcPtrType)(v)
+}
+
+func (*interfaceVpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceVpc)(nil)).Elem()
+}
+
+func (i *interfaceVpcPtrType) ToInterfaceVpcPtrOutput() InterfaceVpcPtrOutput {
+	return i.ToInterfaceVpcPtrOutputWithContext(context.Background())
+}
+
+func (i *interfaceVpcPtrType) ToInterfaceVpcPtrOutputWithContext(ctx context.Context) InterfaceVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcPtrOutput)
+}
+
+type InterfaceVpcOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpc)(nil)).Elem()
+}
+
+func (o InterfaceVpcOutput) ToInterfaceVpcOutput() InterfaceVpcOutput {
+	return o
+}
+
+func (o InterfaceVpcOutput) ToInterfaceVpcOutputWithContext(ctx context.Context) InterfaceVpcOutput {
+	return o
+}
+
+func (o InterfaceVpcOutput) ToInterfaceVpcPtrOutput() InterfaceVpcPtrOutput {
+	return o.ToInterfaceVpcPtrOutputWithContext(context.Background())
+}
+
+func (o InterfaceVpcOutput) ToInterfaceVpcPtrOutputWithContext(ctx context.Context) InterfaceVpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterfaceVpc) *InterfaceVpc {
+		return &v
+	}).(InterfaceVpcPtrOutput)
+}
+
+// IPv4 configuration for the VPC interface.
+func (o InterfaceVpcOutput) Ipv4() InterfaceVpcIpv4PtrOutput {
+	return o.ApplyT(func(v InterfaceVpc) *InterfaceVpcIpv4 { return v.Ipv4 }).(InterfaceVpcIpv4PtrOutput)
+}
+
+// IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+func (o InterfaceVpcOutput) Ipv6() InterfaceVpcIpv6PtrOutput {
+	return o.ApplyT(func(v InterfaceVpc) *InterfaceVpcIpv6 { return v.Ipv6 }).(InterfaceVpcIpv6PtrOutput)
+}
+
+// The VPC subnet identifier for this interface.
+func (o InterfaceVpcOutput) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v InterfaceVpc) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+type InterfaceVpcPtrOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceVpc)(nil)).Elem()
+}
+
+func (o InterfaceVpcPtrOutput) ToInterfaceVpcPtrOutput() InterfaceVpcPtrOutput {
+	return o
+}
+
+func (o InterfaceVpcPtrOutput) ToInterfaceVpcPtrOutputWithContext(ctx context.Context) InterfaceVpcPtrOutput {
+	return o
+}
+
+func (o InterfaceVpcPtrOutput) Elem() InterfaceVpcOutput {
+	return o.ApplyT(func(v *InterfaceVpc) InterfaceVpc {
+		if v != nil {
+			return *v
+		}
+		var ret InterfaceVpc
+		return ret
+	}).(InterfaceVpcOutput)
+}
+
+// IPv4 configuration for the VPC interface.
+func (o InterfaceVpcPtrOutput) Ipv4() InterfaceVpcIpv4PtrOutput {
+	return o.ApplyT(func(v *InterfaceVpc) *InterfaceVpcIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(InterfaceVpcIpv4PtrOutput)
+}
+
+// IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+func (o InterfaceVpcPtrOutput) Ipv6() InterfaceVpcIpv6PtrOutput {
+	return o.ApplyT(func(v *InterfaceVpc) *InterfaceVpcIpv6 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(InterfaceVpcIpv6PtrOutput)
+}
+
+// The VPC subnet identifier for this interface.
+func (o InterfaceVpcPtrOutput) SubnetId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InterfaceVpc) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.IntPtrOutput)
+}
+
+type InterfaceVpcIpv4 struct {
+	// Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
+	Addresses []InterfaceVpcIpv4Address `pulumi:"addresses"`
+	// (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+	AssignedAddresses []InterfaceVpcIpv4AssignedAddress `pulumi:"assignedAddresses"`
+	// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+	AssignedRanges []InterfaceVpcIpv4AssignedRange `pulumi:"assignedRanges"`
+	// IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
+	Ranges []InterfaceVpcIpv4Range `pulumi:"ranges"`
+}
+
+// InterfaceVpcIpv4Input is an input type that accepts InterfaceVpcIpv4Args and InterfaceVpcIpv4Output values.
+// You can construct a concrete instance of `InterfaceVpcIpv4Input` via:
+//
+//	InterfaceVpcIpv4Args{...}
+type InterfaceVpcIpv4Input interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv4Output() InterfaceVpcIpv4Output
+	ToInterfaceVpcIpv4OutputWithContext(context.Context) InterfaceVpcIpv4Output
+}
+
+type InterfaceVpcIpv4Args struct {
+	// Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
+	Addresses InterfaceVpcIpv4AddressArrayInput `pulumi:"addresses"`
+	// (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+	AssignedAddresses InterfaceVpcIpv4AssignedAddressArrayInput `pulumi:"assignedAddresses"`
+	// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+	AssignedRanges InterfaceVpcIpv4AssignedRangeArrayInput `pulumi:"assignedRanges"`
+	// IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
+	Ranges InterfaceVpcIpv4RangeArrayInput `pulumi:"ranges"`
+}
+
+func (InterfaceVpcIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv4)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv4Args) ToInterfaceVpcIpv4Output() InterfaceVpcIpv4Output {
+	return i.ToInterfaceVpcIpv4OutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv4Args) ToInterfaceVpcIpv4OutputWithContext(ctx context.Context) InterfaceVpcIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv4Output)
+}
+
+func (i InterfaceVpcIpv4Args) ToInterfaceVpcIpv4PtrOutput() InterfaceVpcIpv4PtrOutput {
+	return i.ToInterfaceVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv4Args) ToInterfaceVpcIpv4PtrOutputWithContext(ctx context.Context) InterfaceVpcIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv4Output).ToInterfaceVpcIpv4PtrOutputWithContext(ctx)
+}
+
+// InterfaceVpcIpv4PtrInput is an input type that accepts InterfaceVpcIpv4Args, InterfaceVpcIpv4Ptr and InterfaceVpcIpv4PtrOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv4PtrInput` via:
+//
+//	        InterfaceVpcIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type InterfaceVpcIpv4PtrInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv4PtrOutput() InterfaceVpcIpv4PtrOutput
+	ToInterfaceVpcIpv4PtrOutputWithContext(context.Context) InterfaceVpcIpv4PtrOutput
+}
+
+type interfaceVpcIpv4PtrType InterfaceVpcIpv4Args
+
+func InterfaceVpcIpv4Ptr(v *InterfaceVpcIpv4Args) InterfaceVpcIpv4PtrInput {
+	return (*interfaceVpcIpv4PtrType)(v)
+}
+
+func (*interfaceVpcIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceVpcIpv4)(nil)).Elem()
+}
+
+func (i *interfaceVpcIpv4PtrType) ToInterfaceVpcIpv4PtrOutput() InterfaceVpcIpv4PtrOutput {
+	return i.ToInterfaceVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *interfaceVpcIpv4PtrType) ToInterfaceVpcIpv4PtrOutputWithContext(ctx context.Context) InterfaceVpcIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv4PtrOutput)
+}
+
+type InterfaceVpcIpv4Output struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv4)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv4Output) ToInterfaceVpcIpv4Output() InterfaceVpcIpv4Output {
+	return o
+}
+
+func (o InterfaceVpcIpv4Output) ToInterfaceVpcIpv4OutputWithContext(ctx context.Context) InterfaceVpcIpv4Output {
+	return o
+}
+
+func (o InterfaceVpcIpv4Output) ToInterfaceVpcIpv4PtrOutput() InterfaceVpcIpv4PtrOutput {
+	return o.ToInterfaceVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o InterfaceVpcIpv4Output) ToInterfaceVpcIpv4PtrOutputWithContext(ctx context.Context) InterfaceVpcIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterfaceVpcIpv4) *InterfaceVpcIpv4 {
+		return &v
+	}).(InterfaceVpcIpv4PtrOutput)
+}
+
+// Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
+func (o InterfaceVpcIpv4Output) Addresses() InterfaceVpcIpv4AddressArrayOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4) []InterfaceVpcIpv4Address { return v.Addresses }).(InterfaceVpcIpv4AddressArrayOutput)
+}
+
+// (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+func (o InterfaceVpcIpv4Output) AssignedAddresses() InterfaceVpcIpv4AssignedAddressArrayOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4) []InterfaceVpcIpv4AssignedAddress { return v.AssignedAddresses }).(InterfaceVpcIpv4AssignedAddressArrayOutput)
+}
+
+// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+func (o InterfaceVpcIpv4Output) AssignedRanges() InterfaceVpcIpv4AssignedRangeArrayOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4) []InterfaceVpcIpv4AssignedRange { return v.AssignedRanges }).(InterfaceVpcIpv4AssignedRangeArrayOutput)
+}
+
+// IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
+func (o InterfaceVpcIpv4Output) Ranges() InterfaceVpcIpv4RangeArrayOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4) []InterfaceVpcIpv4Range { return v.Ranges }).(InterfaceVpcIpv4RangeArrayOutput)
+}
+
+type InterfaceVpcIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceVpcIpv4)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv4PtrOutput) ToInterfaceVpcIpv4PtrOutput() InterfaceVpcIpv4PtrOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4PtrOutput) ToInterfaceVpcIpv4PtrOutputWithContext(ctx context.Context) InterfaceVpcIpv4PtrOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4PtrOutput) Elem() InterfaceVpcIpv4Output {
+	return o.ApplyT(func(v *InterfaceVpcIpv4) InterfaceVpcIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret InterfaceVpcIpv4
+		return ret
+	}).(InterfaceVpcIpv4Output)
+}
+
+// Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
+func (o InterfaceVpcIpv4PtrOutput) Addresses() InterfaceVpcIpv4AddressArrayOutput {
+	return o.ApplyT(func(v *InterfaceVpcIpv4) []InterfaceVpcIpv4Address {
+		if v == nil {
+			return nil
+		}
+		return v.Addresses
+	}).(InterfaceVpcIpv4AddressArrayOutput)
+}
+
+// (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+func (o InterfaceVpcIpv4PtrOutput) AssignedAddresses() InterfaceVpcIpv4AssignedAddressArrayOutput {
+	return o.ApplyT(func(v *InterfaceVpcIpv4) []InterfaceVpcIpv4AssignedAddress {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedAddresses
+	}).(InterfaceVpcIpv4AssignedAddressArrayOutput)
+}
+
+// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+func (o InterfaceVpcIpv4PtrOutput) AssignedRanges() InterfaceVpcIpv4AssignedRangeArrayOutput {
+	return o.ApplyT(func(v *InterfaceVpcIpv4) []InterfaceVpcIpv4AssignedRange {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedRanges
+	}).(InterfaceVpcIpv4AssignedRangeArrayOutput)
+}
+
+// IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
+func (o InterfaceVpcIpv4PtrOutput) Ranges() InterfaceVpcIpv4RangeArrayOutput {
+	return o.ApplyT(func(v *InterfaceVpcIpv4) []InterfaceVpcIpv4Range {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(InterfaceVpcIpv4RangeArrayOutput)
+}
+
+type InterfaceVpcIpv4Address struct {
+	// The IPv4 address. Defaults to "auto" for automatic assignment.
+	Address *string `pulumi:"address"`
+	// The 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+	Nat11Address *string `pulumi:"nat11Address"`
+	// Whether this address is the primary address for the interface.
+	Primary *bool `pulumi:"primary"`
+}
+
+// InterfaceVpcIpv4AddressInput is an input type that accepts InterfaceVpcIpv4AddressArgs and InterfaceVpcIpv4AddressOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv4AddressInput` via:
+//
+//	InterfaceVpcIpv4AddressArgs{...}
+type InterfaceVpcIpv4AddressInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv4AddressOutput() InterfaceVpcIpv4AddressOutput
+	ToInterfaceVpcIpv4AddressOutputWithContext(context.Context) InterfaceVpcIpv4AddressOutput
+}
+
+type InterfaceVpcIpv4AddressArgs struct {
+	// The IPv4 address. Defaults to "auto" for automatic assignment.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+	Nat11Address pulumi.StringPtrInput `pulumi:"nat11Address"`
+	// Whether this address is the primary address for the interface.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+}
+
+func (InterfaceVpcIpv4AddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv4AddressArgs) ToInterfaceVpcIpv4AddressOutput() InterfaceVpcIpv4AddressOutput {
+	return i.ToInterfaceVpcIpv4AddressOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv4AddressArgs) ToInterfaceVpcIpv4AddressOutputWithContext(ctx context.Context) InterfaceVpcIpv4AddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv4AddressOutput)
+}
+
+// InterfaceVpcIpv4AddressArrayInput is an input type that accepts InterfaceVpcIpv4AddressArray and InterfaceVpcIpv4AddressArrayOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv4AddressArrayInput` via:
+//
+//	InterfaceVpcIpv4AddressArray{ InterfaceVpcIpv4AddressArgs{...} }
+type InterfaceVpcIpv4AddressArrayInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv4AddressArrayOutput() InterfaceVpcIpv4AddressArrayOutput
+	ToInterfaceVpcIpv4AddressArrayOutputWithContext(context.Context) InterfaceVpcIpv4AddressArrayOutput
+}
+
+type InterfaceVpcIpv4AddressArray []InterfaceVpcIpv4AddressInput
+
+func (InterfaceVpcIpv4AddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv4AddressArray) ToInterfaceVpcIpv4AddressArrayOutput() InterfaceVpcIpv4AddressArrayOutput {
+	return i.ToInterfaceVpcIpv4AddressArrayOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv4AddressArray) ToInterfaceVpcIpv4AddressArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv4AddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv4AddressArrayOutput)
+}
+
+type InterfaceVpcIpv4AddressOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv4AddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv4AddressOutput) ToInterfaceVpcIpv4AddressOutput() InterfaceVpcIpv4AddressOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4AddressOutput) ToInterfaceVpcIpv4AddressOutputWithContext(ctx context.Context) InterfaceVpcIpv4AddressOutput {
+	return o
+}
+
+// The IPv4 address. Defaults to "auto" for automatic assignment.
+func (o InterfaceVpcIpv4AddressOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4Address) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+func (o InterfaceVpcIpv4AddressOutput) Nat11Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4Address) *string { return v.Nat11Address }).(pulumi.StringPtrOutput)
+}
+
+// Whether this address is the primary address for the interface.
+func (o InterfaceVpcIpv4AddressOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4Address) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type InterfaceVpcIpv4AddressArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv4AddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv4AddressArrayOutput) ToInterfaceVpcIpv4AddressArrayOutput() InterfaceVpcIpv4AddressArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4AddressArrayOutput) ToInterfaceVpcIpv4AddressArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv4AddressArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4AddressArrayOutput) Index(i pulumi.IntInput) InterfaceVpcIpv4AddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfaceVpcIpv4Address {
+		return vs[0].([]InterfaceVpcIpv4Address)[vs[1].(int)]
+	}).(InterfaceVpcIpv4AddressOutput)
+}
+
+type InterfaceVpcIpv4AssignedAddress struct {
+	// The assigned IPv4 address.
+	Address *string `pulumi:"address"`
+	// The assigned 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+	Nat11Address *string `pulumi:"nat11Address"`
+	// Whether this address is the primary address for the interface.
+	Primary *bool `pulumi:"primary"`
+}
+
+// InterfaceVpcIpv4AssignedAddressInput is an input type that accepts InterfaceVpcIpv4AssignedAddressArgs and InterfaceVpcIpv4AssignedAddressOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv4AssignedAddressInput` via:
+//
+//	InterfaceVpcIpv4AssignedAddressArgs{...}
+type InterfaceVpcIpv4AssignedAddressInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv4AssignedAddressOutput() InterfaceVpcIpv4AssignedAddressOutput
+	ToInterfaceVpcIpv4AssignedAddressOutputWithContext(context.Context) InterfaceVpcIpv4AssignedAddressOutput
+}
+
+type InterfaceVpcIpv4AssignedAddressArgs struct {
+	// The assigned IPv4 address.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The assigned 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+	Nat11Address pulumi.StringPtrInput `pulumi:"nat11Address"`
+	// Whether this address is the primary address for the interface.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+}
+
+func (InterfaceVpcIpv4AssignedAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv4AssignedAddress)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv4AssignedAddressArgs) ToInterfaceVpcIpv4AssignedAddressOutput() InterfaceVpcIpv4AssignedAddressOutput {
+	return i.ToInterfaceVpcIpv4AssignedAddressOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv4AssignedAddressArgs) ToInterfaceVpcIpv4AssignedAddressOutputWithContext(ctx context.Context) InterfaceVpcIpv4AssignedAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv4AssignedAddressOutput)
+}
+
+// InterfaceVpcIpv4AssignedAddressArrayInput is an input type that accepts InterfaceVpcIpv4AssignedAddressArray and InterfaceVpcIpv4AssignedAddressArrayOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv4AssignedAddressArrayInput` via:
+//
+//	InterfaceVpcIpv4AssignedAddressArray{ InterfaceVpcIpv4AssignedAddressArgs{...} }
+type InterfaceVpcIpv4AssignedAddressArrayInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv4AssignedAddressArrayOutput() InterfaceVpcIpv4AssignedAddressArrayOutput
+	ToInterfaceVpcIpv4AssignedAddressArrayOutputWithContext(context.Context) InterfaceVpcIpv4AssignedAddressArrayOutput
+}
+
+type InterfaceVpcIpv4AssignedAddressArray []InterfaceVpcIpv4AssignedAddressInput
+
+func (InterfaceVpcIpv4AssignedAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv4AssignedAddress)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv4AssignedAddressArray) ToInterfaceVpcIpv4AssignedAddressArrayOutput() InterfaceVpcIpv4AssignedAddressArrayOutput {
+	return i.ToInterfaceVpcIpv4AssignedAddressArrayOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv4AssignedAddressArray) ToInterfaceVpcIpv4AssignedAddressArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv4AssignedAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv4AssignedAddressArrayOutput)
+}
+
+type InterfaceVpcIpv4AssignedAddressOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv4AssignedAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv4AssignedAddress)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv4AssignedAddressOutput) ToInterfaceVpcIpv4AssignedAddressOutput() InterfaceVpcIpv4AssignedAddressOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4AssignedAddressOutput) ToInterfaceVpcIpv4AssignedAddressOutputWithContext(ctx context.Context) InterfaceVpcIpv4AssignedAddressOutput {
+	return o
+}
+
+// The assigned IPv4 address.
+func (o InterfaceVpcIpv4AssignedAddressOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4AssignedAddress) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The assigned 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+func (o InterfaceVpcIpv4AssignedAddressOutput) Nat11Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4AssignedAddress) *string { return v.Nat11Address }).(pulumi.StringPtrOutput)
+}
+
+// Whether this address is the primary address for the interface.
+func (o InterfaceVpcIpv4AssignedAddressOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4AssignedAddress) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type InterfaceVpcIpv4AssignedAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv4AssignedAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv4AssignedAddress)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv4AssignedAddressArrayOutput) ToInterfaceVpcIpv4AssignedAddressArrayOutput() InterfaceVpcIpv4AssignedAddressArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4AssignedAddressArrayOutput) ToInterfaceVpcIpv4AssignedAddressArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv4AssignedAddressArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4AssignedAddressArrayOutput) Index(i pulumi.IntInput) InterfaceVpcIpv4AssignedAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfaceVpcIpv4AssignedAddress {
+		return vs[0].([]InterfaceVpcIpv4AssignedAddress)[vs[1].(int)]
+	}).(InterfaceVpcIpv4AssignedAddressOutput)
+}
+
+type InterfaceVpcIpv4AssignedRange struct {
+	// The IPv6 network range in CIDR notation.
+	Range *string `pulumi:"range"`
+}
+
+// InterfaceVpcIpv4AssignedRangeInput is an input type that accepts InterfaceVpcIpv4AssignedRangeArgs and InterfaceVpcIpv4AssignedRangeOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv4AssignedRangeInput` via:
+//
+//	InterfaceVpcIpv4AssignedRangeArgs{...}
+type InterfaceVpcIpv4AssignedRangeInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv4AssignedRangeOutput() InterfaceVpcIpv4AssignedRangeOutput
+	ToInterfaceVpcIpv4AssignedRangeOutputWithContext(context.Context) InterfaceVpcIpv4AssignedRangeOutput
+}
+
+type InterfaceVpcIpv4AssignedRangeArgs struct {
+	// The IPv6 network range in CIDR notation.
+	Range pulumi.StringPtrInput `pulumi:"range"`
+}
+
+func (InterfaceVpcIpv4AssignedRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv4AssignedRange)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv4AssignedRangeArgs) ToInterfaceVpcIpv4AssignedRangeOutput() InterfaceVpcIpv4AssignedRangeOutput {
+	return i.ToInterfaceVpcIpv4AssignedRangeOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv4AssignedRangeArgs) ToInterfaceVpcIpv4AssignedRangeOutputWithContext(ctx context.Context) InterfaceVpcIpv4AssignedRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv4AssignedRangeOutput)
+}
+
+// InterfaceVpcIpv4AssignedRangeArrayInput is an input type that accepts InterfaceVpcIpv4AssignedRangeArray and InterfaceVpcIpv4AssignedRangeArrayOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv4AssignedRangeArrayInput` via:
+//
+//	InterfaceVpcIpv4AssignedRangeArray{ InterfaceVpcIpv4AssignedRangeArgs{...} }
+type InterfaceVpcIpv4AssignedRangeArrayInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv4AssignedRangeArrayOutput() InterfaceVpcIpv4AssignedRangeArrayOutput
+	ToInterfaceVpcIpv4AssignedRangeArrayOutputWithContext(context.Context) InterfaceVpcIpv4AssignedRangeArrayOutput
+}
+
+type InterfaceVpcIpv4AssignedRangeArray []InterfaceVpcIpv4AssignedRangeInput
+
+func (InterfaceVpcIpv4AssignedRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv4AssignedRange)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv4AssignedRangeArray) ToInterfaceVpcIpv4AssignedRangeArrayOutput() InterfaceVpcIpv4AssignedRangeArrayOutput {
+	return i.ToInterfaceVpcIpv4AssignedRangeArrayOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv4AssignedRangeArray) ToInterfaceVpcIpv4AssignedRangeArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv4AssignedRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv4AssignedRangeArrayOutput)
+}
+
+type InterfaceVpcIpv4AssignedRangeOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv4AssignedRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv4AssignedRange)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv4AssignedRangeOutput) ToInterfaceVpcIpv4AssignedRangeOutput() InterfaceVpcIpv4AssignedRangeOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4AssignedRangeOutput) ToInterfaceVpcIpv4AssignedRangeOutputWithContext(ctx context.Context) InterfaceVpcIpv4AssignedRangeOutput {
+	return o
+}
+
+// The IPv6 network range in CIDR notation.
+func (o InterfaceVpcIpv4AssignedRangeOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4AssignedRange) *string { return v.Range }).(pulumi.StringPtrOutput)
+}
+
+type InterfaceVpcIpv4AssignedRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv4AssignedRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv4AssignedRange)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv4AssignedRangeArrayOutput) ToInterfaceVpcIpv4AssignedRangeArrayOutput() InterfaceVpcIpv4AssignedRangeArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4AssignedRangeArrayOutput) ToInterfaceVpcIpv4AssignedRangeArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv4AssignedRangeArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4AssignedRangeArrayOutput) Index(i pulumi.IntInput) InterfaceVpcIpv4AssignedRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfaceVpcIpv4AssignedRange {
+		return vs[0].([]InterfaceVpcIpv4AssignedRange)[vs[1].(int)]
+	}).(InterfaceVpcIpv4AssignedRangeOutput)
+}
+
+type InterfaceVpcIpv4Range struct {
+	// The IPv4 range.
+	Range string `pulumi:"range"`
+}
+
+// InterfaceVpcIpv4RangeInput is an input type that accepts InterfaceVpcIpv4RangeArgs and InterfaceVpcIpv4RangeOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv4RangeInput` via:
+//
+//	InterfaceVpcIpv4RangeArgs{...}
+type InterfaceVpcIpv4RangeInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv4RangeOutput() InterfaceVpcIpv4RangeOutput
+	ToInterfaceVpcIpv4RangeOutputWithContext(context.Context) InterfaceVpcIpv4RangeOutput
+}
+
+type InterfaceVpcIpv4RangeArgs struct {
+	// The IPv4 range.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (InterfaceVpcIpv4RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv4RangeArgs) ToInterfaceVpcIpv4RangeOutput() InterfaceVpcIpv4RangeOutput {
+	return i.ToInterfaceVpcIpv4RangeOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv4RangeArgs) ToInterfaceVpcIpv4RangeOutputWithContext(ctx context.Context) InterfaceVpcIpv4RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv4RangeOutput)
+}
+
+// InterfaceVpcIpv4RangeArrayInput is an input type that accepts InterfaceVpcIpv4RangeArray and InterfaceVpcIpv4RangeArrayOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv4RangeArrayInput` via:
+//
+//	InterfaceVpcIpv4RangeArray{ InterfaceVpcIpv4RangeArgs{...} }
+type InterfaceVpcIpv4RangeArrayInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv4RangeArrayOutput() InterfaceVpcIpv4RangeArrayOutput
+	ToInterfaceVpcIpv4RangeArrayOutputWithContext(context.Context) InterfaceVpcIpv4RangeArrayOutput
+}
+
+type InterfaceVpcIpv4RangeArray []InterfaceVpcIpv4RangeInput
+
+func (InterfaceVpcIpv4RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv4RangeArray) ToInterfaceVpcIpv4RangeArrayOutput() InterfaceVpcIpv4RangeArrayOutput {
+	return i.ToInterfaceVpcIpv4RangeArrayOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv4RangeArray) ToInterfaceVpcIpv4RangeArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv4RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv4RangeArrayOutput)
+}
+
+type InterfaceVpcIpv4RangeOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv4RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv4RangeOutput) ToInterfaceVpcIpv4RangeOutput() InterfaceVpcIpv4RangeOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4RangeOutput) ToInterfaceVpcIpv4RangeOutputWithContext(ctx context.Context) InterfaceVpcIpv4RangeOutput {
+	return o
+}
+
+// The IPv4 range.
+func (o InterfaceVpcIpv4RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv4Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type InterfaceVpcIpv4RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv4RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv4RangeArrayOutput) ToInterfaceVpcIpv4RangeArrayOutput() InterfaceVpcIpv4RangeArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4RangeArrayOutput) ToInterfaceVpcIpv4RangeArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv4RangeArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv4RangeArrayOutput) Index(i pulumi.IntInput) InterfaceVpcIpv4RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfaceVpcIpv4Range {
+		return vs[0].([]InterfaceVpcIpv4Range)[vs[1].(int)]
+	}).(InterfaceVpcIpv4RangeOutput)
+}
+
+type InterfaceVpcIpv6 struct {
+	// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+	AssignedRanges []InterfaceVpcIpv6AssignedRange `pulumi:"assignedRanges"`
+	// Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+	AssignedSlaacs []InterfaceVpcIpv6AssignedSlaac `pulumi:"assignedSlaacs"`
+	// Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
+	IsPublic *bool `pulumi:"isPublic"`
+	// Defines additional IPv6 network ranges.
+	Ranges []InterfaceVpcIpv6Range `pulumi:"ranges"`
+	// Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
+	Slaacs []InterfaceVpcIpv6Slaac `pulumi:"slaacs"`
+}
+
+// InterfaceVpcIpv6Input is an input type that accepts InterfaceVpcIpv6Args and InterfaceVpcIpv6Output values.
+// You can construct a concrete instance of `InterfaceVpcIpv6Input` via:
+//
+//	InterfaceVpcIpv6Args{...}
+type InterfaceVpcIpv6Input interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv6Output() InterfaceVpcIpv6Output
+	ToInterfaceVpcIpv6OutputWithContext(context.Context) InterfaceVpcIpv6Output
+}
+
+type InterfaceVpcIpv6Args struct {
+	// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+	AssignedRanges InterfaceVpcIpv6AssignedRangeArrayInput `pulumi:"assignedRanges"`
+	// Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+	AssignedSlaacs InterfaceVpcIpv6AssignedSlaacArrayInput `pulumi:"assignedSlaacs"`
+	// Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
+	IsPublic pulumi.BoolPtrInput `pulumi:"isPublic"`
+	// Defines additional IPv6 network ranges.
+	Ranges InterfaceVpcIpv6RangeArrayInput `pulumi:"ranges"`
+	// Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
+	Slaacs InterfaceVpcIpv6SlaacArrayInput `pulumi:"slaacs"`
+}
+
+func (InterfaceVpcIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv6)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv6Args) ToInterfaceVpcIpv6Output() InterfaceVpcIpv6Output {
+	return i.ToInterfaceVpcIpv6OutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv6Args) ToInterfaceVpcIpv6OutputWithContext(ctx context.Context) InterfaceVpcIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv6Output)
+}
+
+func (i InterfaceVpcIpv6Args) ToInterfaceVpcIpv6PtrOutput() InterfaceVpcIpv6PtrOutput {
+	return i.ToInterfaceVpcIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv6Args) ToInterfaceVpcIpv6PtrOutputWithContext(ctx context.Context) InterfaceVpcIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv6Output).ToInterfaceVpcIpv6PtrOutputWithContext(ctx)
+}
+
+// InterfaceVpcIpv6PtrInput is an input type that accepts InterfaceVpcIpv6Args, InterfaceVpcIpv6Ptr and InterfaceVpcIpv6PtrOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv6PtrInput` via:
+//
+//	        InterfaceVpcIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type InterfaceVpcIpv6PtrInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv6PtrOutput() InterfaceVpcIpv6PtrOutput
+	ToInterfaceVpcIpv6PtrOutputWithContext(context.Context) InterfaceVpcIpv6PtrOutput
+}
+
+type interfaceVpcIpv6PtrType InterfaceVpcIpv6Args
+
+func InterfaceVpcIpv6Ptr(v *InterfaceVpcIpv6Args) InterfaceVpcIpv6PtrInput {
+	return (*interfaceVpcIpv6PtrType)(v)
+}
+
+func (*interfaceVpcIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceVpcIpv6)(nil)).Elem()
+}
+
+func (i *interfaceVpcIpv6PtrType) ToInterfaceVpcIpv6PtrOutput() InterfaceVpcIpv6PtrOutput {
+	return i.ToInterfaceVpcIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *interfaceVpcIpv6PtrType) ToInterfaceVpcIpv6PtrOutputWithContext(ctx context.Context) InterfaceVpcIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv6PtrOutput)
+}
+
+type InterfaceVpcIpv6Output struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv6)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv6Output) ToInterfaceVpcIpv6Output() InterfaceVpcIpv6Output {
+	return o
+}
+
+func (o InterfaceVpcIpv6Output) ToInterfaceVpcIpv6OutputWithContext(ctx context.Context) InterfaceVpcIpv6Output {
+	return o
+}
+
+func (o InterfaceVpcIpv6Output) ToInterfaceVpcIpv6PtrOutput() InterfaceVpcIpv6PtrOutput {
+	return o.ToInterfaceVpcIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o InterfaceVpcIpv6Output) ToInterfaceVpcIpv6PtrOutputWithContext(ctx context.Context) InterfaceVpcIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterfaceVpcIpv6) *InterfaceVpcIpv6 {
+		return &v
+	}).(InterfaceVpcIpv6PtrOutput)
+}
+
+// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+func (o InterfaceVpcIpv6Output) AssignedRanges() InterfaceVpcIpv6AssignedRangeArrayOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv6) []InterfaceVpcIpv6AssignedRange { return v.AssignedRanges }).(InterfaceVpcIpv6AssignedRangeArrayOutput)
+}
+
+// Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+func (o InterfaceVpcIpv6Output) AssignedSlaacs() InterfaceVpcIpv6AssignedSlaacArrayOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv6) []InterfaceVpcIpv6AssignedSlaac { return v.AssignedSlaacs }).(InterfaceVpcIpv6AssignedSlaacArrayOutput)
+}
+
+// Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
+func (o InterfaceVpcIpv6Output) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv6) *bool { return v.IsPublic }).(pulumi.BoolPtrOutput)
+}
+
+// Defines additional IPv6 network ranges.
+func (o InterfaceVpcIpv6Output) Ranges() InterfaceVpcIpv6RangeArrayOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv6) []InterfaceVpcIpv6Range { return v.Ranges }).(InterfaceVpcIpv6RangeArrayOutput)
+}
+
+// Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
+func (o InterfaceVpcIpv6Output) Slaacs() InterfaceVpcIpv6SlaacArrayOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv6) []InterfaceVpcIpv6Slaac { return v.Slaacs }).(InterfaceVpcIpv6SlaacArrayOutput)
+}
+
+type InterfaceVpcIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceVpcIpv6)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv6PtrOutput) ToInterfaceVpcIpv6PtrOutput() InterfaceVpcIpv6PtrOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6PtrOutput) ToInterfaceVpcIpv6PtrOutputWithContext(ctx context.Context) InterfaceVpcIpv6PtrOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6PtrOutput) Elem() InterfaceVpcIpv6Output {
+	return o.ApplyT(func(v *InterfaceVpcIpv6) InterfaceVpcIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret InterfaceVpcIpv6
+		return ret
+	}).(InterfaceVpcIpv6Output)
+}
+
+// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+func (o InterfaceVpcIpv6PtrOutput) AssignedRanges() InterfaceVpcIpv6AssignedRangeArrayOutput {
+	return o.ApplyT(func(v *InterfaceVpcIpv6) []InterfaceVpcIpv6AssignedRange {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedRanges
+	}).(InterfaceVpcIpv6AssignedRangeArrayOutput)
+}
+
+// Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+func (o InterfaceVpcIpv6PtrOutput) AssignedSlaacs() InterfaceVpcIpv6AssignedSlaacArrayOutput {
+	return o.ApplyT(func(v *InterfaceVpcIpv6) []InterfaceVpcIpv6AssignedSlaac {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedSlaacs
+	}).(InterfaceVpcIpv6AssignedSlaacArrayOutput)
+}
+
+// Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
+func (o InterfaceVpcIpv6PtrOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InterfaceVpcIpv6) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsPublic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines additional IPv6 network ranges.
+func (o InterfaceVpcIpv6PtrOutput) Ranges() InterfaceVpcIpv6RangeArrayOutput {
+	return o.ApplyT(func(v *InterfaceVpcIpv6) []InterfaceVpcIpv6Range {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(InterfaceVpcIpv6RangeArrayOutput)
+}
+
+// Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
+func (o InterfaceVpcIpv6PtrOutput) Slaacs() InterfaceVpcIpv6SlaacArrayOutput {
+	return o.ApplyT(func(v *InterfaceVpcIpv6) []InterfaceVpcIpv6Slaac {
+		if v == nil {
+			return nil
+		}
+		return v.Slaacs
+	}).(InterfaceVpcIpv6SlaacArrayOutput)
+}
+
+type InterfaceVpcIpv6AssignedRange struct {
+	// The IPv6 network range in CIDR notation.
+	Range *string `pulumi:"range"`
+}
+
+// InterfaceVpcIpv6AssignedRangeInput is an input type that accepts InterfaceVpcIpv6AssignedRangeArgs and InterfaceVpcIpv6AssignedRangeOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv6AssignedRangeInput` via:
+//
+//	InterfaceVpcIpv6AssignedRangeArgs{...}
+type InterfaceVpcIpv6AssignedRangeInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv6AssignedRangeOutput() InterfaceVpcIpv6AssignedRangeOutput
+	ToInterfaceVpcIpv6AssignedRangeOutputWithContext(context.Context) InterfaceVpcIpv6AssignedRangeOutput
+}
+
+type InterfaceVpcIpv6AssignedRangeArgs struct {
+	// The IPv6 network range in CIDR notation.
+	Range pulumi.StringPtrInput `pulumi:"range"`
+}
+
+func (InterfaceVpcIpv6AssignedRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv6AssignedRange)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv6AssignedRangeArgs) ToInterfaceVpcIpv6AssignedRangeOutput() InterfaceVpcIpv6AssignedRangeOutput {
+	return i.ToInterfaceVpcIpv6AssignedRangeOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv6AssignedRangeArgs) ToInterfaceVpcIpv6AssignedRangeOutputWithContext(ctx context.Context) InterfaceVpcIpv6AssignedRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv6AssignedRangeOutput)
+}
+
+// InterfaceVpcIpv6AssignedRangeArrayInput is an input type that accepts InterfaceVpcIpv6AssignedRangeArray and InterfaceVpcIpv6AssignedRangeArrayOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv6AssignedRangeArrayInput` via:
+//
+//	InterfaceVpcIpv6AssignedRangeArray{ InterfaceVpcIpv6AssignedRangeArgs{...} }
+type InterfaceVpcIpv6AssignedRangeArrayInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv6AssignedRangeArrayOutput() InterfaceVpcIpv6AssignedRangeArrayOutput
+	ToInterfaceVpcIpv6AssignedRangeArrayOutputWithContext(context.Context) InterfaceVpcIpv6AssignedRangeArrayOutput
+}
+
+type InterfaceVpcIpv6AssignedRangeArray []InterfaceVpcIpv6AssignedRangeInput
+
+func (InterfaceVpcIpv6AssignedRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv6AssignedRange)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv6AssignedRangeArray) ToInterfaceVpcIpv6AssignedRangeArrayOutput() InterfaceVpcIpv6AssignedRangeArrayOutput {
+	return i.ToInterfaceVpcIpv6AssignedRangeArrayOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv6AssignedRangeArray) ToInterfaceVpcIpv6AssignedRangeArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv6AssignedRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv6AssignedRangeArrayOutput)
+}
+
+type InterfaceVpcIpv6AssignedRangeOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv6AssignedRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv6AssignedRange)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv6AssignedRangeOutput) ToInterfaceVpcIpv6AssignedRangeOutput() InterfaceVpcIpv6AssignedRangeOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6AssignedRangeOutput) ToInterfaceVpcIpv6AssignedRangeOutputWithContext(ctx context.Context) InterfaceVpcIpv6AssignedRangeOutput {
+	return o
+}
+
+// The IPv6 network range in CIDR notation.
+func (o InterfaceVpcIpv6AssignedRangeOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv6AssignedRange) *string { return v.Range }).(pulumi.StringPtrOutput)
+}
+
+type InterfaceVpcIpv6AssignedRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv6AssignedRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv6AssignedRange)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv6AssignedRangeArrayOutput) ToInterfaceVpcIpv6AssignedRangeArrayOutput() InterfaceVpcIpv6AssignedRangeArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6AssignedRangeArrayOutput) ToInterfaceVpcIpv6AssignedRangeArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv6AssignedRangeArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6AssignedRangeArrayOutput) Index(i pulumi.IntInput) InterfaceVpcIpv6AssignedRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfaceVpcIpv6AssignedRange {
+		return vs[0].([]InterfaceVpcIpv6AssignedRange)[vs[1].(int)]
+	}).(InterfaceVpcIpv6AssignedRangeOutput)
+}
+
+type InterfaceVpcIpv6AssignedSlaac struct {
+	// The assigned IPv4 address.
+	Address *string `pulumi:"address"`
+	// The IPv6 network range in CIDR notation.
+	Range *string `pulumi:"range"`
+}
+
+// InterfaceVpcIpv6AssignedSlaacInput is an input type that accepts InterfaceVpcIpv6AssignedSlaacArgs and InterfaceVpcIpv6AssignedSlaacOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv6AssignedSlaacInput` via:
+//
+//	InterfaceVpcIpv6AssignedSlaacArgs{...}
+type InterfaceVpcIpv6AssignedSlaacInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv6AssignedSlaacOutput() InterfaceVpcIpv6AssignedSlaacOutput
+	ToInterfaceVpcIpv6AssignedSlaacOutputWithContext(context.Context) InterfaceVpcIpv6AssignedSlaacOutput
+}
+
+type InterfaceVpcIpv6AssignedSlaacArgs struct {
+	// The assigned IPv4 address.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The IPv6 network range in CIDR notation.
+	Range pulumi.StringPtrInput `pulumi:"range"`
+}
+
+func (InterfaceVpcIpv6AssignedSlaacArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv6AssignedSlaac)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv6AssignedSlaacArgs) ToInterfaceVpcIpv6AssignedSlaacOutput() InterfaceVpcIpv6AssignedSlaacOutput {
+	return i.ToInterfaceVpcIpv6AssignedSlaacOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv6AssignedSlaacArgs) ToInterfaceVpcIpv6AssignedSlaacOutputWithContext(ctx context.Context) InterfaceVpcIpv6AssignedSlaacOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv6AssignedSlaacOutput)
+}
+
+// InterfaceVpcIpv6AssignedSlaacArrayInput is an input type that accepts InterfaceVpcIpv6AssignedSlaacArray and InterfaceVpcIpv6AssignedSlaacArrayOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv6AssignedSlaacArrayInput` via:
+//
+//	InterfaceVpcIpv6AssignedSlaacArray{ InterfaceVpcIpv6AssignedSlaacArgs{...} }
+type InterfaceVpcIpv6AssignedSlaacArrayInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv6AssignedSlaacArrayOutput() InterfaceVpcIpv6AssignedSlaacArrayOutput
+	ToInterfaceVpcIpv6AssignedSlaacArrayOutputWithContext(context.Context) InterfaceVpcIpv6AssignedSlaacArrayOutput
+}
+
+type InterfaceVpcIpv6AssignedSlaacArray []InterfaceVpcIpv6AssignedSlaacInput
+
+func (InterfaceVpcIpv6AssignedSlaacArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv6AssignedSlaac)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv6AssignedSlaacArray) ToInterfaceVpcIpv6AssignedSlaacArrayOutput() InterfaceVpcIpv6AssignedSlaacArrayOutput {
+	return i.ToInterfaceVpcIpv6AssignedSlaacArrayOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv6AssignedSlaacArray) ToInterfaceVpcIpv6AssignedSlaacArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv6AssignedSlaacArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv6AssignedSlaacArrayOutput)
+}
+
+type InterfaceVpcIpv6AssignedSlaacOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv6AssignedSlaacOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv6AssignedSlaac)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv6AssignedSlaacOutput) ToInterfaceVpcIpv6AssignedSlaacOutput() InterfaceVpcIpv6AssignedSlaacOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6AssignedSlaacOutput) ToInterfaceVpcIpv6AssignedSlaacOutputWithContext(ctx context.Context) InterfaceVpcIpv6AssignedSlaacOutput {
+	return o
+}
+
+// The assigned IPv4 address.
+func (o InterfaceVpcIpv6AssignedSlaacOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv6AssignedSlaac) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 network range in CIDR notation.
+func (o InterfaceVpcIpv6AssignedSlaacOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv6AssignedSlaac) *string { return v.Range }).(pulumi.StringPtrOutput)
+}
+
+type InterfaceVpcIpv6AssignedSlaacArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv6AssignedSlaacArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv6AssignedSlaac)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv6AssignedSlaacArrayOutput) ToInterfaceVpcIpv6AssignedSlaacArrayOutput() InterfaceVpcIpv6AssignedSlaacArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6AssignedSlaacArrayOutput) ToInterfaceVpcIpv6AssignedSlaacArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv6AssignedSlaacArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6AssignedSlaacArrayOutput) Index(i pulumi.IntInput) InterfaceVpcIpv6AssignedSlaacOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfaceVpcIpv6AssignedSlaac {
+		return vs[0].([]InterfaceVpcIpv6AssignedSlaac)[vs[1].(int)]
+	}).(InterfaceVpcIpv6AssignedSlaacOutput)
+}
+
+type InterfaceVpcIpv6Range struct {
+	// The IPv6 network range in CIDR notation.
+	Range *string `pulumi:"range"`
+}
+
+// InterfaceVpcIpv6RangeInput is an input type that accepts InterfaceVpcIpv6RangeArgs and InterfaceVpcIpv6RangeOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv6RangeInput` via:
+//
+//	InterfaceVpcIpv6RangeArgs{...}
+type InterfaceVpcIpv6RangeInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv6RangeOutput() InterfaceVpcIpv6RangeOutput
+	ToInterfaceVpcIpv6RangeOutputWithContext(context.Context) InterfaceVpcIpv6RangeOutput
+}
+
+type InterfaceVpcIpv6RangeArgs struct {
+	// The IPv6 network range in CIDR notation.
+	Range pulumi.StringPtrInput `pulumi:"range"`
+}
+
+func (InterfaceVpcIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv6Range)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv6RangeArgs) ToInterfaceVpcIpv6RangeOutput() InterfaceVpcIpv6RangeOutput {
+	return i.ToInterfaceVpcIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv6RangeArgs) ToInterfaceVpcIpv6RangeOutputWithContext(ctx context.Context) InterfaceVpcIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv6RangeOutput)
+}
+
+// InterfaceVpcIpv6RangeArrayInput is an input type that accepts InterfaceVpcIpv6RangeArray and InterfaceVpcIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv6RangeArrayInput` via:
+//
+//	InterfaceVpcIpv6RangeArray{ InterfaceVpcIpv6RangeArgs{...} }
+type InterfaceVpcIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv6RangeArrayOutput() InterfaceVpcIpv6RangeArrayOutput
+	ToInterfaceVpcIpv6RangeArrayOutputWithContext(context.Context) InterfaceVpcIpv6RangeArrayOutput
+}
+
+type InterfaceVpcIpv6RangeArray []InterfaceVpcIpv6RangeInput
+
+func (InterfaceVpcIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv6Range)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv6RangeArray) ToInterfaceVpcIpv6RangeArrayOutput() InterfaceVpcIpv6RangeArrayOutput {
+	return i.ToInterfaceVpcIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv6RangeArray) ToInterfaceVpcIpv6RangeArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv6RangeArrayOutput)
+}
+
+type InterfaceVpcIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv6Range)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv6RangeOutput) ToInterfaceVpcIpv6RangeOutput() InterfaceVpcIpv6RangeOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6RangeOutput) ToInterfaceVpcIpv6RangeOutputWithContext(ctx context.Context) InterfaceVpcIpv6RangeOutput {
+	return o
+}
+
+// The IPv6 network range in CIDR notation.
+func (o InterfaceVpcIpv6RangeOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv6Range) *string { return v.Range }).(pulumi.StringPtrOutput)
+}
+
+type InterfaceVpcIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv6Range)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv6RangeArrayOutput) ToInterfaceVpcIpv6RangeArrayOutput() InterfaceVpcIpv6RangeArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6RangeArrayOutput) ToInterfaceVpcIpv6RangeArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv6RangeArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6RangeArrayOutput) Index(i pulumi.IntInput) InterfaceVpcIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfaceVpcIpv6Range {
+		return vs[0].([]InterfaceVpcIpv6Range)[vs[1].(int)]
+	}).(InterfaceVpcIpv6RangeOutput)
+}
+
+type InterfaceVpcIpv6Slaac struct {
+	// The IPv6 network range in CIDR notation.
+	Range *string `pulumi:"range"`
+}
+
+// InterfaceVpcIpv6SlaacInput is an input type that accepts InterfaceVpcIpv6SlaacArgs and InterfaceVpcIpv6SlaacOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv6SlaacInput` via:
+//
+//	InterfaceVpcIpv6SlaacArgs{...}
+type InterfaceVpcIpv6SlaacInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv6SlaacOutput() InterfaceVpcIpv6SlaacOutput
+	ToInterfaceVpcIpv6SlaacOutputWithContext(context.Context) InterfaceVpcIpv6SlaacOutput
+}
+
+type InterfaceVpcIpv6SlaacArgs struct {
+	// The IPv6 network range in CIDR notation.
+	Range pulumi.StringPtrInput `pulumi:"range"`
+}
+
+func (InterfaceVpcIpv6SlaacArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv6Slaac)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv6SlaacArgs) ToInterfaceVpcIpv6SlaacOutput() InterfaceVpcIpv6SlaacOutput {
+	return i.ToInterfaceVpcIpv6SlaacOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv6SlaacArgs) ToInterfaceVpcIpv6SlaacOutputWithContext(ctx context.Context) InterfaceVpcIpv6SlaacOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv6SlaacOutput)
+}
+
+// InterfaceVpcIpv6SlaacArrayInput is an input type that accepts InterfaceVpcIpv6SlaacArray and InterfaceVpcIpv6SlaacArrayOutput values.
+// You can construct a concrete instance of `InterfaceVpcIpv6SlaacArrayInput` via:
+//
+//	InterfaceVpcIpv6SlaacArray{ InterfaceVpcIpv6SlaacArgs{...} }
+type InterfaceVpcIpv6SlaacArrayInput interface {
+	pulumi.Input
+
+	ToInterfaceVpcIpv6SlaacArrayOutput() InterfaceVpcIpv6SlaacArrayOutput
+	ToInterfaceVpcIpv6SlaacArrayOutputWithContext(context.Context) InterfaceVpcIpv6SlaacArrayOutput
+}
+
+type InterfaceVpcIpv6SlaacArray []InterfaceVpcIpv6SlaacInput
+
+func (InterfaceVpcIpv6SlaacArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv6Slaac)(nil)).Elem()
+}
+
+func (i InterfaceVpcIpv6SlaacArray) ToInterfaceVpcIpv6SlaacArrayOutput() InterfaceVpcIpv6SlaacArrayOutput {
+	return i.ToInterfaceVpcIpv6SlaacArrayOutputWithContext(context.Background())
+}
+
+func (i InterfaceVpcIpv6SlaacArray) ToInterfaceVpcIpv6SlaacArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv6SlaacArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceVpcIpv6SlaacArrayOutput)
+}
+
+type InterfaceVpcIpv6SlaacOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv6SlaacOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceVpcIpv6Slaac)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv6SlaacOutput) ToInterfaceVpcIpv6SlaacOutput() InterfaceVpcIpv6SlaacOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6SlaacOutput) ToInterfaceVpcIpv6SlaacOutputWithContext(ctx context.Context) InterfaceVpcIpv6SlaacOutput {
+	return o
+}
+
+// The IPv6 network range in CIDR notation.
+func (o InterfaceVpcIpv6SlaacOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceVpcIpv6Slaac) *string { return v.Range }).(pulumi.StringPtrOutput)
+}
+
+type InterfaceVpcIpv6SlaacArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfaceVpcIpv6SlaacArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceVpcIpv6Slaac)(nil)).Elem()
+}
+
+func (o InterfaceVpcIpv6SlaacArrayOutput) ToInterfaceVpcIpv6SlaacArrayOutput() InterfaceVpcIpv6SlaacArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6SlaacArrayOutput) ToInterfaceVpcIpv6SlaacArrayOutputWithContext(ctx context.Context) InterfaceVpcIpv6SlaacArrayOutput {
+	return o
+}
+
+func (o InterfaceVpcIpv6SlaacArrayOutput) Index(i pulumi.IntInput) InterfaceVpcIpv6SlaacOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfaceVpcIpv6Slaac {
+		return vs[0].([]InterfaceVpcIpv6Slaac)[vs[1].(int)]
+	}).(InterfaceVpcIpv6SlaacOutput)
 }
 
 type LkeClusterControlPlane struct {
@@ -13068,8 +16244,9 @@ func (o VpcSubnetIpv6ArrayOutput) Index(i pulumi.IntInput) VpcSubnetIpv6Output {
 }
 
 type VpcSubnetLinode struct {
-	// The ID of the VPC Subnet.
-	Id         int                        `pulumi:"id"`
+	// ID of the interface.
+	Id int `pulumi:"id"`
+	// A list of networking interfaces objects.
 	Interfaces []VpcSubnetLinodeInterface `pulumi:"interfaces"`
 }
 
@@ -13085,8 +16262,9 @@ type VpcSubnetLinodeInput interface {
 }
 
 type VpcSubnetLinodeArgs struct {
-	// The ID of the VPC Subnet.
-	Id         pulumi.IntInput                    `pulumi:"id"`
+	// ID of the interface.
+	Id pulumi.IntInput `pulumi:"id"`
+	// A list of networking interfaces objects.
 	Interfaces VpcSubnetLinodeInterfaceArrayInput `pulumi:"interfaces"`
 }
 
@@ -13141,11 +16319,12 @@ func (o VpcSubnetLinodeOutput) ToVpcSubnetLinodeOutputWithContext(ctx context.Co
 	return o
 }
 
-// The ID of the VPC Subnet.
+// ID of the interface.
 func (o VpcSubnetLinodeOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v VpcSubnetLinode) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// A list of networking interfaces objects.
 func (o VpcSubnetLinodeOutput) Interfaces() VpcSubnetLinodeInterfaceArrayOutput {
 	return o.ApplyT(func(v VpcSubnetLinode) []VpcSubnetLinodeInterface { return v.Interfaces }).(VpcSubnetLinodeInterfaceArrayOutput)
 }
@@ -13171,8 +16350,11 @@ func (o VpcSubnetLinodeArrayOutput) Index(i pulumi.IntInput) VpcSubnetLinodeOutp
 }
 
 type VpcSubnetLinodeInterface struct {
+	// Whether the Interface is actively in use.
 	Active bool `pulumi:"active"`
-	// The ID of the VPC Subnet.
+	// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+	ConfigId int `pulumi:"configId"`
+	// ID of the interface.
 	Id int `pulumi:"id"`
 }
 
@@ -13188,8 +16370,11 @@ type VpcSubnetLinodeInterfaceInput interface {
 }
 
 type VpcSubnetLinodeInterfaceArgs struct {
+	// Whether the Interface is actively in use.
 	Active pulumi.BoolInput `pulumi:"active"`
-	// The ID of the VPC Subnet.
+	// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+	ConfigId pulumi.IntInput `pulumi:"configId"`
+	// ID of the interface.
 	Id pulumi.IntInput `pulumi:"id"`
 }
 
@@ -13244,11 +16429,17 @@ func (o VpcSubnetLinodeInterfaceOutput) ToVpcSubnetLinodeInterfaceOutputWithCont
 	return o
 }
 
+// Whether the Interface is actively in use.
 func (o VpcSubnetLinodeInterfaceOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v VpcSubnetLinodeInterface) bool { return v.Active }).(pulumi.BoolOutput)
 }
 
-// The ID of the VPC Subnet.
+// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+func (o VpcSubnetLinodeInterfaceOutput) ConfigId() pulumi.IntOutput {
+	return o.ApplyT(func(v VpcSubnetLinodeInterface) int { return v.ConfigId }).(pulumi.IntOutput)
+}
+
+// ID of the interface.
 func (o VpcSubnetLinodeInterfaceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v VpcSubnetLinodeInterface) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -19780,6 +22971,845 @@ func (o GetFirewallOutboundArrayOutput) Index(i pulumi.IntInput) GetFirewallOutb
 	}).(GetFirewallOutboundOutput)
 }
 
+type GetFirewallSettingsDefaultFirewallIds struct {
+	Linode          int `pulumi:"linode"`
+	Nodebalancer    int `pulumi:"nodebalancer"`
+	PublicInterface int `pulumi:"publicInterface"`
+	VpcInterface    int `pulumi:"vpcInterface"`
+}
+
+// GetFirewallSettingsDefaultFirewallIdsInput is an input type that accepts GetFirewallSettingsDefaultFirewallIdsArgs and GetFirewallSettingsDefaultFirewallIdsOutput values.
+// You can construct a concrete instance of `GetFirewallSettingsDefaultFirewallIdsInput` via:
+//
+//	GetFirewallSettingsDefaultFirewallIdsArgs{...}
+type GetFirewallSettingsDefaultFirewallIdsInput interface {
+	pulumi.Input
+
+	ToGetFirewallSettingsDefaultFirewallIdsOutput() GetFirewallSettingsDefaultFirewallIdsOutput
+	ToGetFirewallSettingsDefaultFirewallIdsOutputWithContext(context.Context) GetFirewallSettingsDefaultFirewallIdsOutput
+}
+
+type GetFirewallSettingsDefaultFirewallIdsArgs struct {
+	Linode          pulumi.IntInput `pulumi:"linode"`
+	Nodebalancer    pulumi.IntInput `pulumi:"nodebalancer"`
+	PublicInterface pulumi.IntInput `pulumi:"publicInterface"`
+	VpcInterface    pulumi.IntInput `pulumi:"vpcInterface"`
+}
+
+func (GetFirewallSettingsDefaultFirewallIdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallSettingsDefaultFirewallIds)(nil)).Elem()
+}
+
+func (i GetFirewallSettingsDefaultFirewallIdsArgs) ToGetFirewallSettingsDefaultFirewallIdsOutput() GetFirewallSettingsDefaultFirewallIdsOutput {
+	return i.ToGetFirewallSettingsDefaultFirewallIdsOutputWithContext(context.Background())
+}
+
+func (i GetFirewallSettingsDefaultFirewallIdsArgs) ToGetFirewallSettingsDefaultFirewallIdsOutputWithContext(ctx context.Context) GetFirewallSettingsDefaultFirewallIdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallSettingsDefaultFirewallIdsOutput)
+}
+
+type GetFirewallSettingsDefaultFirewallIdsOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallSettingsDefaultFirewallIdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallSettingsDefaultFirewallIds)(nil)).Elem()
+}
+
+func (o GetFirewallSettingsDefaultFirewallIdsOutput) ToGetFirewallSettingsDefaultFirewallIdsOutput() GetFirewallSettingsDefaultFirewallIdsOutput {
+	return o
+}
+
+func (o GetFirewallSettingsDefaultFirewallIdsOutput) ToGetFirewallSettingsDefaultFirewallIdsOutputWithContext(ctx context.Context) GetFirewallSettingsDefaultFirewallIdsOutput {
+	return o
+}
+
+func (o GetFirewallSettingsDefaultFirewallIdsOutput) Linode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFirewallSettingsDefaultFirewallIds) int { return v.Linode }).(pulumi.IntOutput)
+}
+
+func (o GetFirewallSettingsDefaultFirewallIdsOutput) Nodebalancer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFirewallSettingsDefaultFirewallIds) int { return v.Nodebalancer }).(pulumi.IntOutput)
+}
+
+func (o GetFirewallSettingsDefaultFirewallIdsOutput) PublicInterface() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFirewallSettingsDefaultFirewallIds) int { return v.PublicInterface }).(pulumi.IntOutput)
+}
+
+func (o GetFirewallSettingsDefaultFirewallIdsOutput) VpcInterface() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFirewallSettingsDefaultFirewallIds) int { return v.VpcInterface }).(pulumi.IntOutput)
+}
+
+type GetFirewallTemplateInbound struct {
+	Action      string   `pulumi:"action"`
+	Description string   `pulumi:"description"`
+	Ipv4s       []string `pulumi:"ipv4s"`
+	Ipv6s       []string `pulumi:"ipv6s"`
+	Label       string   `pulumi:"label"`
+	Ports       string   `pulumi:"ports"`
+	Protocol    string   `pulumi:"protocol"`
+}
+
+// GetFirewallTemplateInboundInput is an input type that accepts GetFirewallTemplateInboundArgs and GetFirewallTemplateInboundOutput values.
+// You can construct a concrete instance of `GetFirewallTemplateInboundInput` via:
+//
+//	GetFirewallTemplateInboundArgs{...}
+type GetFirewallTemplateInboundInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplateInboundOutput() GetFirewallTemplateInboundOutput
+	ToGetFirewallTemplateInboundOutputWithContext(context.Context) GetFirewallTemplateInboundOutput
+}
+
+type GetFirewallTemplateInboundArgs struct {
+	Action      pulumi.StringInput      `pulumi:"action"`
+	Description pulumi.StringInput      `pulumi:"description"`
+	Ipv4s       pulumi.StringArrayInput `pulumi:"ipv4s"`
+	Ipv6s       pulumi.StringArrayInput `pulumi:"ipv6s"`
+	Label       pulumi.StringInput      `pulumi:"label"`
+	Ports       pulumi.StringInput      `pulumi:"ports"`
+	Protocol    pulumi.StringInput      `pulumi:"protocol"`
+}
+
+func (GetFirewallTemplateInboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplateInbound)(nil)).Elem()
+}
+
+func (i GetFirewallTemplateInboundArgs) ToGetFirewallTemplateInboundOutput() GetFirewallTemplateInboundOutput {
+	return i.ToGetFirewallTemplateInboundOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplateInboundArgs) ToGetFirewallTemplateInboundOutputWithContext(ctx context.Context) GetFirewallTemplateInboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplateInboundOutput)
+}
+
+// GetFirewallTemplateInboundArrayInput is an input type that accepts GetFirewallTemplateInboundArray and GetFirewallTemplateInboundArrayOutput values.
+// You can construct a concrete instance of `GetFirewallTemplateInboundArrayInput` via:
+//
+//	GetFirewallTemplateInboundArray{ GetFirewallTemplateInboundArgs{...} }
+type GetFirewallTemplateInboundArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplateInboundArrayOutput() GetFirewallTemplateInboundArrayOutput
+	ToGetFirewallTemplateInboundArrayOutputWithContext(context.Context) GetFirewallTemplateInboundArrayOutput
+}
+
+type GetFirewallTemplateInboundArray []GetFirewallTemplateInboundInput
+
+func (GetFirewallTemplateInboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplateInbound)(nil)).Elem()
+}
+
+func (i GetFirewallTemplateInboundArray) ToGetFirewallTemplateInboundArrayOutput() GetFirewallTemplateInboundArrayOutput {
+	return i.ToGetFirewallTemplateInboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplateInboundArray) ToGetFirewallTemplateInboundArrayOutputWithContext(ctx context.Context) GetFirewallTemplateInboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplateInboundArrayOutput)
+}
+
+type GetFirewallTemplateInboundOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplateInboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplateInbound)(nil)).Elem()
+}
+
+func (o GetFirewallTemplateInboundOutput) ToGetFirewallTemplateInboundOutput() GetFirewallTemplateInboundOutput {
+	return o
+}
+
+func (o GetFirewallTemplateInboundOutput) ToGetFirewallTemplateInboundOutputWithContext(ctx context.Context) GetFirewallTemplateInboundOutput {
+	return o
+}
+
+func (o GetFirewallTemplateInboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplateInbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplateInboundOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplateInbound) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplateInboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallTemplateInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFirewallTemplateInboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallTemplateInbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFirewallTemplateInboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplateInbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplateInboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplateInbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplateInboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplateInbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetFirewallTemplateInboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplateInboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplateInbound)(nil)).Elem()
+}
+
+func (o GetFirewallTemplateInboundArrayOutput) ToGetFirewallTemplateInboundArrayOutput() GetFirewallTemplateInboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplateInboundArrayOutput) ToGetFirewallTemplateInboundArrayOutputWithContext(ctx context.Context) GetFirewallTemplateInboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplateInboundArrayOutput) Index(i pulumi.IntInput) GetFirewallTemplateInboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallTemplateInbound {
+		return vs[0].([]GetFirewallTemplateInbound)[vs[1].(int)]
+	}).(GetFirewallTemplateInboundOutput)
+}
+
+type GetFirewallTemplateOutbound struct {
+	Action      string   `pulumi:"action"`
+	Description string   `pulumi:"description"`
+	Ipv4s       []string `pulumi:"ipv4s"`
+	Ipv6s       []string `pulumi:"ipv6s"`
+	Label       string   `pulumi:"label"`
+	Ports       string   `pulumi:"ports"`
+	Protocol    string   `pulumi:"protocol"`
+}
+
+// GetFirewallTemplateOutboundInput is an input type that accepts GetFirewallTemplateOutboundArgs and GetFirewallTemplateOutboundOutput values.
+// You can construct a concrete instance of `GetFirewallTemplateOutboundInput` via:
+//
+//	GetFirewallTemplateOutboundArgs{...}
+type GetFirewallTemplateOutboundInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplateOutboundOutput() GetFirewallTemplateOutboundOutput
+	ToGetFirewallTemplateOutboundOutputWithContext(context.Context) GetFirewallTemplateOutboundOutput
+}
+
+type GetFirewallTemplateOutboundArgs struct {
+	Action      pulumi.StringInput      `pulumi:"action"`
+	Description pulumi.StringInput      `pulumi:"description"`
+	Ipv4s       pulumi.StringArrayInput `pulumi:"ipv4s"`
+	Ipv6s       pulumi.StringArrayInput `pulumi:"ipv6s"`
+	Label       pulumi.StringInput      `pulumi:"label"`
+	Ports       pulumi.StringInput      `pulumi:"ports"`
+	Protocol    pulumi.StringInput      `pulumi:"protocol"`
+}
+
+func (GetFirewallTemplateOutboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplateOutbound)(nil)).Elem()
+}
+
+func (i GetFirewallTemplateOutboundArgs) ToGetFirewallTemplateOutboundOutput() GetFirewallTemplateOutboundOutput {
+	return i.ToGetFirewallTemplateOutboundOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplateOutboundArgs) ToGetFirewallTemplateOutboundOutputWithContext(ctx context.Context) GetFirewallTemplateOutboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplateOutboundOutput)
+}
+
+// GetFirewallTemplateOutboundArrayInput is an input type that accepts GetFirewallTemplateOutboundArray and GetFirewallTemplateOutboundArrayOutput values.
+// You can construct a concrete instance of `GetFirewallTemplateOutboundArrayInput` via:
+//
+//	GetFirewallTemplateOutboundArray{ GetFirewallTemplateOutboundArgs{...} }
+type GetFirewallTemplateOutboundArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplateOutboundArrayOutput() GetFirewallTemplateOutboundArrayOutput
+	ToGetFirewallTemplateOutboundArrayOutputWithContext(context.Context) GetFirewallTemplateOutboundArrayOutput
+}
+
+type GetFirewallTemplateOutboundArray []GetFirewallTemplateOutboundInput
+
+func (GetFirewallTemplateOutboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplateOutbound)(nil)).Elem()
+}
+
+func (i GetFirewallTemplateOutboundArray) ToGetFirewallTemplateOutboundArrayOutput() GetFirewallTemplateOutboundArrayOutput {
+	return i.ToGetFirewallTemplateOutboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplateOutboundArray) ToGetFirewallTemplateOutboundArrayOutputWithContext(ctx context.Context) GetFirewallTemplateOutboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplateOutboundArrayOutput)
+}
+
+type GetFirewallTemplateOutboundOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplateOutboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplateOutbound)(nil)).Elem()
+}
+
+func (o GetFirewallTemplateOutboundOutput) ToGetFirewallTemplateOutboundOutput() GetFirewallTemplateOutboundOutput {
+	return o
+}
+
+func (o GetFirewallTemplateOutboundOutput) ToGetFirewallTemplateOutboundOutputWithContext(ctx context.Context) GetFirewallTemplateOutboundOutput {
+	return o
+}
+
+func (o GetFirewallTemplateOutboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplateOutbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplateOutboundOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplateOutbound) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplateOutboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallTemplateOutbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFirewallTemplateOutboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallTemplateOutbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFirewallTemplateOutboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplateOutbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplateOutboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplateOutbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplateOutboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplateOutbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetFirewallTemplateOutboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplateOutboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplateOutbound)(nil)).Elem()
+}
+
+func (o GetFirewallTemplateOutboundArrayOutput) ToGetFirewallTemplateOutboundArrayOutput() GetFirewallTemplateOutboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplateOutboundArrayOutput) ToGetFirewallTemplateOutboundArrayOutputWithContext(ctx context.Context) GetFirewallTemplateOutboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplateOutboundArrayOutput) Index(i pulumi.IntInput) GetFirewallTemplateOutboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallTemplateOutbound {
+		return vs[0].([]GetFirewallTemplateOutbound)[vs[1].(int)]
+	}).(GetFirewallTemplateOutboundOutput)
+}
+
+type GetFirewallTemplatesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetFirewallTemplatesFilterInput is an input type that accepts GetFirewallTemplatesFilterArgs and GetFirewallTemplatesFilterOutput values.
+// You can construct a concrete instance of `GetFirewallTemplatesFilterInput` via:
+//
+//	GetFirewallTemplatesFilterArgs{...}
+type GetFirewallTemplatesFilterInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplatesFilterOutput() GetFirewallTemplatesFilterOutput
+	ToGetFirewallTemplatesFilterOutputWithContext(context.Context) GetFirewallTemplatesFilterOutput
+}
+
+type GetFirewallTemplatesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetFirewallTemplatesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplatesFilter)(nil)).Elem()
+}
+
+func (i GetFirewallTemplatesFilterArgs) ToGetFirewallTemplatesFilterOutput() GetFirewallTemplatesFilterOutput {
+	return i.ToGetFirewallTemplatesFilterOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplatesFilterArgs) ToGetFirewallTemplatesFilterOutputWithContext(ctx context.Context) GetFirewallTemplatesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplatesFilterOutput)
+}
+
+// GetFirewallTemplatesFilterArrayInput is an input type that accepts GetFirewallTemplatesFilterArray and GetFirewallTemplatesFilterArrayOutput values.
+// You can construct a concrete instance of `GetFirewallTemplatesFilterArrayInput` via:
+//
+//	GetFirewallTemplatesFilterArray{ GetFirewallTemplatesFilterArgs{...} }
+type GetFirewallTemplatesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplatesFilterArrayOutput() GetFirewallTemplatesFilterArrayOutput
+	ToGetFirewallTemplatesFilterArrayOutputWithContext(context.Context) GetFirewallTemplatesFilterArrayOutput
+}
+
+type GetFirewallTemplatesFilterArray []GetFirewallTemplatesFilterInput
+
+func (GetFirewallTemplatesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplatesFilter)(nil)).Elem()
+}
+
+func (i GetFirewallTemplatesFilterArray) ToGetFirewallTemplatesFilterArrayOutput() GetFirewallTemplatesFilterArrayOutput {
+	return i.ToGetFirewallTemplatesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplatesFilterArray) ToGetFirewallTemplatesFilterArrayOutputWithContext(ctx context.Context) GetFirewallTemplatesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplatesFilterArrayOutput)
+}
+
+type GetFirewallTemplatesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplatesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplatesFilter)(nil)).Elem()
+}
+
+func (o GetFirewallTemplatesFilterOutput) ToGetFirewallTemplatesFilterOutput() GetFirewallTemplatesFilterOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFilterOutput) ToGetFirewallTemplatesFilterOutputWithContext(ctx context.Context) GetFirewallTemplatesFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetFirewallTemplatesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetFirewallTemplatesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetFirewallTemplatesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetFirewallTemplatesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplatesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplatesFilter)(nil)).Elem()
+}
+
+func (o GetFirewallTemplatesFilterArrayOutput) ToGetFirewallTemplatesFilterArrayOutput() GetFirewallTemplatesFilterArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFilterArrayOutput) ToGetFirewallTemplatesFilterArrayOutputWithContext(ctx context.Context) GetFirewallTemplatesFilterArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFilterArrayOutput) Index(i pulumi.IntInput) GetFirewallTemplatesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallTemplatesFilter {
+		return vs[0].([]GetFirewallTemplatesFilter)[vs[1].(int)]
+	}).(GetFirewallTemplatesFilterOutput)
+}
+
+type GetFirewallTemplatesFirewallTemplate struct {
+	// The default behavior for inbound traffic.
+	InboundPolicy string `pulumi:"inboundPolicy"`
+	// A list of firewall rules specifying allowed inbound network traffic.
+	Inbounds []GetFirewallTemplatesFirewallTemplateInbound `pulumi:"inbounds"`
+	// The default behavior for outbound traffic.
+	OutboundPolicy string `pulumi:"outboundPolicy"`
+	// A list of firewall rules specifying allowed outbound network traffic.
+	Outbounds []GetFirewallTemplatesFirewallTemplateOutbound `pulumi:"outbounds"`
+	// The slug of the firewall template.
+	Slug string `pulumi:"slug"`
+}
+
+// GetFirewallTemplatesFirewallTemplateInput is an input type that accepts GetFirewallTemplatesFirewallTemplateArgs and GetFirewallTemplatesFirewallTemplateOutput values.
+// You can construct a concrete instance of `GetFirewallTemplatesFirewallTemplateInput` via:
+//
+//	GetFirewallTemplatesFirewallTemplateArgs{...}
+type GetFirewallTemplatesFirewallTemplateInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplatesFirewallTemplateOutput() GetFirewallTemplatesFirewallTemplateOutput
+	ToGetFirewallTemplatesFirewallTemplateOutputWithContext(context.Context) GetFirewallTemplatesFirewallTemplateOutput
+}
+
+type GetFirewallTemplatesFirewallTemplateArgs struct {
+	// The default behavior for inbound traffic.
+	InboundPolicy pulumi.StringInput `pulumi:"inboundPolicy"`
+	// A list of firewall rules specifying allowed inbound network traffic.
+	Inbounds GetFirewallTemplatesFirewallTemplateInboundArrayInput `pulumi:"inbounds"`
+	// The default behavior for outbound traffic.
+	OutboundPolicy pulumi.StringInput `pulumi:"outboundPolicy"`
+	// A list of firewall rules specifying allowed outbound network traffic.
+	Outbounds GetFirewallTemplatesFirewallTemplateOutboundArrayInput `pulumi:"outbounds"`
+	// The slug of the firewall template.
+	Slug pulumi.StringInput `pulumi:"slug"`
+}
+
+func (GetFirewallTemplatesFirewallTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplatesFirewallTemplate)(nil)).Elem()
+}
+
+func (i GetFirewallTemplatesFirewallTemplateArgs) ToGetFirewallTemplatesFirewallTemplateOutput() GetFirewallTemplatesFirewallTemplateOutput {
+	return i.ToGetFirewallTemplatesFirewallTemplateOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplatesFirewallTemplateArgs) ToGetFirewallTemplatesFirewallTemplateOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplatesFirewallTemplateOutput)
+}
+
+// GetFirewallTemplatesFirewallTemplateArrayInput is an input type that accepts GetFirewallTemplatesFirewallTemplateArray and GetFirewallTemplatesFirewallTemplateArrayOutput values.
+// You can construct a concrete instance of `GetFirewallTemplatesFirewallTemplateArrayInput` via:
+//
+//	GetFirewallTemplatesFirewallTemplateArray{ GetFirewallTemplatesFirewallTemplateArgs{...} }
+type GetFirewallTemplatesFirewallTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplatesFirewallTemplateArrayOutput() GetFirewallTemplatesFirewallTemplateArrayOutput
+	ToGetFirewallTemplatesFirewallTemplateArrayOutputWithContext(context.Context) GetFirewallTemplatesFirewallTemplateArrayOutput
+}
+
+type GetFirewallTemplatesFirewallTemplateArray []GetFirewallTemplatesFirewallTemplateInput
+
+func (GetFirewallTemplatesFirewallTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplatesFirewallTemplate)(nil)).Elem()
+}
+
+func (i GetFirewallTemplatesFirewallTemplateArray) ToGetFirewallTemplatesFirewallTemplateArrayOutput() GetFirewallTemplatesFirewallTemplateArrayOutput {
+	return i.ToGetFirewallTemplatesFirewallTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplatesFirewallTemplateArray) ToGetFirewallTemplatesFirewallTemplateArrayOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplatesFirewallTemplateArrayOutput)
+}
+
+type GetFirewallTemplatesFirewallTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplatesFirewallTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplatesFirewallTemplate)(nil)).Elem()
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutput) ToGetFirewallTemplatesFirewallTemplateOutput() GetFirewallTemplatesFirewallTemplateOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutput) ToGetFirewallTemplatesFirewallTemplateOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateOutput {
+	return o
+}
+
+// The default behavior for inbound traffic.
+func (o GetFirewallTemplatesFirewallTemplateOutput) InboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplate) string { return v.InboundPolicy }).(pulumi.StringOutput)
+}
+
+// A list of firewall rules specifying allowed inbound network traffic.
+func (o GetFirewallTemplatesFirewallTemplateOutput) Inbounds() GetFirewallTemplatesFirewallTemplateInboundArrayOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplate) []GetFirewallTemplatesFirewallTemplateInbound {
+		return v.Inbounds
+	}).(GetFirewallTemplatesFirewallTemplateInboundArrayOutput)
+}
+
+// The default behavior for outbound traffic.
+func (o GetFirewallTemplatesFirewallTemplateOutput) OutboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplate) string { return v.OutboundPolicy }).(pulumi.StringOutput)
+}
+
+// A list of firewall rules specifying allowed outbound network traffic.
+func (o GetFirewallTemplatesFirewallTemplateOutput) Outbounds() GetFirewallTemplatesFirewallTemplateOutboundArrayOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplate) []GetFirewallTemplatesFirewallTemplateOutbound {
+		return v.Outbounds
+	}).(GetFirewallTemplatesFirewallTemplateOutboundArrayOutput)
+}
+
+// The slug of the firewall template.
+func (o GetFirewallTemplatesFirewallTemplateOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplate) string { return v.Slug }).(pulumi.StringOutput)
+}
+
+type GetFirewallTemplatesFirewallTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplatesFirewallTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplatesFirewallTemplate)(nil)).Elem()
+}
+
+func (o GetFirewallTemplatesFirewallTemplateArrayOutput) ToGetFirewallTemplatesFirewallTemplateArrayOutput() GetFirewallTemplatesFirewallTemplateArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFirewallTemplateArrayOutput) ToGetFirewallTemplatesFirewallTemplateArrayOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFirewallTemplateArrayOutput) Index(i pulumi.IntInput) GetFirewallTemplatesFirewallTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallTemplatesFirewallTemplate {
+		return vs[0].([]GetFirewallTemplatesFirewallTemplate)[vs[1].(int)]
+	}).(GetFirewallTemplatesFirewallTemplateOutput)
+}
+
+type GetFirewallTemplatesFirewallTemplateInbound struct {
+	Action      string   `pulumi:"action"`
+	Description string   `pulumi:"description"`
+	Ipv4s       []string `pulumi:"ipv4s"`
+	Ipv6s       []string `pulumi:"ipv6s"`
+	Label       string   `pulumi:"label"`
+	Ports       string   `pulumi:"ports"`
+	Protocol    string   `pulumi:"protocol"`
+}
+
+// GetFirewallTemplatesFirewallTemplateInboundInput is an input type that accepts GetFirewallTemplatesFirewallTemplateInboundArgs and GetFirewallTemplatesFirewallTemplateInboundOutput values.
+// You can construct a concrete instance of `GetFirewallTemplatesFirewallTemplateInboundInput` via:
+//
+//	GetFirewallTemplatesFirewallTemplateInboundArgs{...}
+type GetFirewallTemplatesFirewallTemplateInboundInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplatesFirewallTemplateInboundOutput() GetFirewallTemplatesFirewallTemplateInboundOutput
+	ToGetFirewallTemplatesFirewallTemplateInboundOutputWithContext(context.Context) GetFirewallTemplatesFirewallTemplateInboundOutput
+}
+
+type GetFirewallTemplatesFirewallTemplateInboundArgs struct {
+	Action      pulumi.StringInput      `pulumi:"action"`
+	Description pulumi.StringInput      `pulumi:"description"`
+	Ipv4s       pulumi.StringArrayInput `pulumi:"ipv4s"`
+	Ipv6s       pulumi.StringArrayInput `pulumi:"ipv6s"`
+	Label       pulumi.StringInput      `pulumi:"label"`
+	Ports       pulumi.StringInput      `pulumi:"ports"`
+	Protocol    pulumi.StringInput      `pulumi:"protocol"`
+}
+
+func (GetFirewallTemplatesFirewallTemplateInboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplatesFirewallTemplateInbound)(nil)).Elem()
+}
+
+func (i GetFirewallTemplatesFirewallTemplateInboundArgs) ToGetFirewallTemplatesFirewallTemplateInboundOutput() GetFirewallTemplatesFirewallTemplateInboundOutput {
+	return i.ToGetFirewallTemplatesFirewallTemplateInboundOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplatesFirewallTemplateInboundArgs) ToGetFirewallTemplatesFirewallTemplateInboundOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateInboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplatesFirewallTemplateInboundOutput)
+}
+
+// GetFirewallTemplatesFirewallTemplateInboundArrayInput is an input type that accepts GetFirewallTemplatesFirewallTemplateInboundArray and GetFirewallTemplatesFirewallTemplateInboundArrayOutput values.
+// You can construct a concrete instance of `GetFirewallTemplatesFirewallTemplateInboundArrayInput` via:
+//
+//	GetFirewallTemplatesFirewallTemplateInboundArray{ GetFirewallTemplatesFirewallTemplateInboundArgs{...} }
+type GetFirewallTemplatesFirewallTemplateInboundArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplatesFirewallTemplateInboundArrayOutput() GetFirewallTemplatesFirewallTemplateInboundArrayOutput
+	ToGetFirewallTemplatesFirewallTemplateInboundArrayOutputWithContext(context.Context) GetFirewallTemplatesFirewallTemplateInboundArrayOutput
+}
+
+type GetFirewallTemplatesFirewallTemplateInboundArray []GetFirewallTemplatesFirewallTemplateInboundInput
+
+func (GetFirewallTemplatesFirewallTemplateInboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplatesFirewallTemplateInbound)(nil)).Elem()
+}
+
+func (i GetFirewallTemplatesFirewallTemplateInboundArray) ToGetFirewallTemplatesFirewallTemplateInboundArrayOutput() GetFirewallTemplatesFirewallTemplateInboundArrayOutput {
+	return i.ToGetFirewallTemplatesFirewallTemplateInboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplatesFirewallTemplateInboundArray) ToGetFirewallTemplatesFirewallTemplateInboundArrayOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateInboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplatesFirewallTemplateInboundArrayOutput)
+}
+
+type GetFirewallTemplatesFirewallTemplateInboundOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplatesFirewallTemplateInboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplatesFirewallTemplateInbound)(nil)).Elem()
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundOutput) ToGetFirewallTemplatesFirewallTemplateInboundOutput() GetFirewallTemplatesFirewallTemplateInboundOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundOutput) ToGetFirewallTemplatesFirewallTemplateInboundOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateInboundOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateInbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateInbound) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateInbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateInbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateInbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateInbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetFirewallTemplatesFirewallTemplateInboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplatesFirewallTemplateInboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplatesFirewallTemplateInbound)(nil)).Elem()
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundArrayOutput) ToGetFirewallTemplatesFirewallTemplateInboundArrayOutput() GetFirewallTemplatesFirewallTemplateInboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundArrayOutput) ToGetFirewallTemplatesFirewallTemplateInboundArrayOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateInboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFirewallTemplateInboundArrayOutput) Index(i pulumi.IntInput) GetFirewallTemplatesFirewallTemplateInboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallTemplatesFirewallTemplateInbound {
+		return vs[0].([]GetFirewallTemplatesFirewallTemplateInbound)[vs[1].(int)]
+	}).(GetFirewallTemplatesFirewallTemplateInboundOutput)
+}
+
+type GetFirewallTemplatesFirewallTemplateOutbound struct {
+	Action      string   `pulumi:"action"`
+	Description string   `pulumi:"description"`
+	Ipv4s       []string `pulumi:"ipv4s"`
+	Ipv6s       []string `pulumi:"ipv6s"`
+	Label       string   `pulumi:"label"`
+	Ports       string   `pulumi:"ports"`
+	Protocol    string   `pulumi:"protocol"`
+}
+
+// GetFirewallTemplatesFirewallTemplateOutboundInput is an input type that accepts GetFirewallTemplatesFirewallTemplateOutboundArgs and GetFirewallTemplatesFirewallTemplateOutboundOutput values.
+// You can construct a concrete instance of `GetFirewallTemplatesFirewallTemplateOutboundInput` via:
+//
+//	GetFirewallTemplatesFirewallTemplateOutboundArgs{...}
+type GetFirewallTemplatesFirewallTemplateOutboundInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplatesFirewallTemplateOutboundOutput() GetFirewallTemplatesFirewallTemplateOutboundOutput
+	ToGetFirewallTemplatesFirewallTemplateOutboundOutputWithContext(context.Context) GetFirewallTemplatesFirewallTemplateOutboundOutput
+}
+
+type GetFirewallTemplatesFirewallTemplateOutboundArgs struct {
+	Action      pulumi.StringInput      `pulumi:"action"`
+	Description pulumi.StringInput      `pulumi:"description"`
+	Ipv4s       pulumi.StringArrayInput `pulumi:"ipv4s"`
+	Ipv6s       pulumi.StringArrayInput `pulumi:"ipv6s"`
+	Label       pulumi.StringInput      `pulumi:"label"`
+	Ports       pulumi.StringInput      `pulumi:"ports"`
+	Protocol    pulumi.StringInput      `pulumi:"protocol"`
+}
+
+func (GetFirewallTemplatesFirewallTemplateOutboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplatesFirewallTemplateOutbound)(nil)).Elem()
+}
+
+func (i GetFirewallTemplatesFirewallTemplateOutboundArgs) ToGetFirewallTemplatesFirewallTemplateOutboundOutput() GetFirewallTemplatesFirewallTemplateOutboundOutput {
+	return i.ToGetFirewallTemplatesFirewallTemplateOutboundOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplatesFirewallTemplateOutboundArgs) ToGetFirewallTemplatesFirewallTemplateOutboundOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateOutboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplatesFirewallTemplateOutboundOutput)
+}
+
+// GetFirewallTemplatesFirewallTemplateOutboundArrayInput is an input type that accepts GetFirewallTemplatesFirewallTemplateOutboundArray and GetFirewallTemplatesFirewallTemplateOutboundArrayOutput values.
+// You can construct a concrete instance of `GetFirewallTemplatesFirewallTemplateOutboundArrayInput` via:
+//
+//	GetFirewallTemplatesFirewallTemplateOutboundArray{ GetFirewallTemplatesFirewallTemplateOutboundArgs{...} }
+type GetFirewallTemplatesFirewallTemplateOutboundArrayInput interface {
+	pulumi.Input
+
+	ToGetFirewallTemplatesFirewallTemplateOutboundArrayOutput() GetFirewallTemplatesFirewallTemplateOutboundArrayOutput
+	ToGetFirewallTemplatesFirewallTemplateOutboundArrayOutputWithContext(context.Context) GetFirewallTemplatesFirewallTemplateOutboundArrayOutput
+}
+
+type GetFirewallTemplatesFirewallTemplateOutboundArray []GetFirewallTemplatesFirewallTemplateOutboundInput
+
+func (GetFirewallTemplatesFirewallTemplateOutboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplatesFirewallTemplateOutbound)(nil)).Elem()
+}
+
+func (i GetFirewallTemplatesFirewallTemplateOutboundArray) ToGetFirewallTemplatesFirewallTemplateOutboundArrayOutput() GetFirewallTemplatesFirewallTemplateOutboundArrayOutput {
+	return i.ToGetFirewallTemplatesFirewallTemplateOutboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetFirewallTemplatesFirewallTemplateOutboundArray) ToGetFirewallTemplatesFirewallTemplateOutboundArrayOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateOutboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFirewallTemplatesFirewallTemplateOutboundArrayOutput)
+}
+
+type GetFirewallTemplatesFirewallTemplateOutboundOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplatesFirewallTemplateOutboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFirewallTemplatesFirewallTemplateOutbound)(nil)).Elem()
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundOutput) ToGetFirewallTemplatesFirewallTemplateOutboundOutput() GetFirewallTemplatesFirewallTemplateOutboundOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundOutput) ToGetFirewallTemplatesFirewallTemplateOutboundOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateOutboundOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateOutbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateOutbound) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateOutbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateOutbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateOutbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateOutbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFirewallTemplatesFirewallTemplateOutbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetFirewallTemplatesFirewallTemplateOutboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFirewallTemplatesFirewallTemplateOutboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFirewallTemplatesFirewallTemplateOutbound)(nil)).Elem()
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundArrayOutput) ToGetFirewallTemplatesFirewallTemplateOutboundArrayOutput() GetFirewallTemplatesFirewallTemplateOutboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundArrayOutput) ToGetFirewallTemplatesFirewallTemplateOutboundArrayOutputWithContext(ctx context.Context) GetFirewallTemplatesFirewallTemplateOutboundArrayOutput {
+	return o
+}
+
+func (o GetFirewallTemplatesFirewallTemplateOutboundArrayOutput) Index(i pulumi.IntInput) GetFirewallTemplatesFirewallTemplateOutboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFirewallTemplatesFirewallTemplateOutbound {
+		return vs[0].([]GetFirewallTemplatesFirewallTemplateOutbound)[vs[1].(int)]
+	}).(GetFirewallTemplatesFirewallTemplateOutboundOutput)
+}
+
 type GetFirewallsFilter struct {
 	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
@@ -19908,11 +23938,13 @@ type GetFirewallsFirewall struct {
 	InboundPolicy string `pulumi:"inboundPolicy"`
 	// A set of firewall rules that specify what inbound network traffic is allowed.
 	Inbounds []GetFirewallsFirewallInbound `pulumi:"inbounds"`
+	// The IDs of Linode Interfaces this firewall is applied to.
+	Interfaces []int `pulumi:"interfaces"`
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
 	Label string `pulumi:"label"`
 	// The IDs of Linodes this firewall is applied to.
 	Linodes []int `pulumi:"linodes"`
-	// The IDs of NodeBalancers assigned to this Firewall..
+	// The IDs of NodeBalancers this firewall is applied to.
 	Nodebalancers []int `pulumi:"nodebalancers"`
 	// The default behavior for outbound traffic.
 	OutboundPolicy string `pulumi:"outboundPolicy"`
@@ -19950,11 +23982,13 @@ type GetFirewallsFirewallArgs struct {
 	InboundPolicy pulumi.StringInput `pulumi:"inboundPolicy"`
 	// A set of firewall rules that specify what inbound network traffic is allowed.
 	Inbounds GetFirewallsFirewallInboundArrayInput `pulumi:"inbounds"`
+	// The IDs of Linode Interfaces this firewall is applied to.
+	Interfaces pulumi.IntArrayInput `pulumi:"interfaces"`
 	// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
 	Label pulumi.StringInput `pulumi:"label"`
 	// The IDs of Linodes this firewall is applied to.
 	Linodes pulumi.IntArrayInput `pulumi:"linodes"`
-	// The IDs of NodeBalancers assigned to this Firewall..
+	// The IDs of NodeBalancers this firewall is applied to.
 	Nodebalancers pulumi.IntArrayInput `pulumi:"nodebalancers"`
 	// The default behavior for outbound traffic.
 	OutboundPolicy pulumi.StringInput `pulumi:"outboundPolicy"`
@@ -20049,6 +24083,11 @@ func (o GetFirewallsFirewallOutput) Inbounds() GetFirewallsFirewallInboundArrayO
 	return o.ApplyT(func(v GetFirewallsFirewall) []GetFirewallsFirewallInbound { return v.Inbounds }).(GetFirewallsFirewallInboundArrayOutput)
 }
 
+// The IDs of Linode Interfaces this firewall is applied to.
+func (o GetFirewallsFirewallOutput) Interfaces() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetFirewallsFirewall) []int { return v.Interfaces }).(pulumi.IntArrayOutput)
+}
+
 // The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
 func (o GetFirewallsFirewallOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) string { return v.Label }).(pulumi.StringOutput)
@@ -20059,7 +24098,7 @@ func (o GetFirewallsFirewallOutput) Linodes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) []int { return v.Linodes }).(pulumi.IntArrayOutput)
 }
 
-// The IDs of NodeBalancers assigned to this Firewall..
+// The IDs of NodeBalancers this firewall is applied to.
 func (o GetFirewallsFirewallOutput) Nodebalancers() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetFirewallsFirewall) []int { return v.Nodebalancers }).(pulumi.IntArrayOutput)
 }
@@ -22072,6 +26111,8 @@ type GetInstanceNetworkingIpv4Private struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId int `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
@@ -22106,6 +26147,8 @@ type GetInstanceNetworkingIpv4PrivateArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId pulumi.IntInput `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
@@ -22183,6 +26226,11 @@ func (o GetInstanceNetworkingIpv4PrivateOutput) Address() pulumi.StringOutput {
 // The default gateway for this address.
 func (o GetInstanceNetworkingIpv4PrivateOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Private) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The globally general API entity identifier for the Linode interface.
+func (o GetInstanceNetworkingIpv4PrivateOutput) InterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Private) int { return v.InterfaceId }).(pulumi.IntOutput)
 }
 
 // The Linode instance's ID.
@@ -22320,6 +26368,8 @@ type GetInstanceNetworkingIpv4Public struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId int `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
@@ -22354,6 +26404,8 @@ type GetInstanceNetworkingIpv4PublicArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId pulumi.IntInput `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
@@ -22431,6 +26483,11 @@ func (o GetInstanceNetworkingIpv4PublicOutput) Address() pulumi.StringOutput {
 // The default gateway for this address.
 func (o GetInstanceNetworkingIpv4PublicOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Public) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The globally general API entity identifier for the Linode interface.
+func (o GetInstanceNetworkingIpv4PublicOutput) InterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Public) int { return v.InterfaceId }).(pulumi.IntOutput)
 }
 
 // The Linode instance's ID.
@@ -22568,6 +26625,8 @@ type GetInstanceNetworkingIpv4Reserved struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId int `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
@@ -22602,6 +26661,8 @@ type GetInstanceNetworkingIpv4ReservedArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId pulumi.IntInput `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
@@ -22679,6 +26740,11 @@ func (o GetInstanceNetworkingIpv4ReservedOutput) Address() pulumi.StringOutput {
 // The default gateway for this address.
 func (o GetInstanceNetworkingIpv4ReservedOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Reserved) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The globally general API entity identifier for the Linode interface.
+func (o GetInstanceNetworkingIpv4ReservedOutput) InterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Reserved) int { return v.InterfaceId }).(pulumi.IntOutput)
 }
 
 // The Linode instance's ID.
@@ -22816,6 +26882,8 @@ type GetInstanceNetworkingIpv4Shared struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId int `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
@@ -22850,6 +26918,8 @@ type GetInstanceNetworkingIpv4SharedArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId pulumi.IntInput `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
@@ -22927,6 +26997,11 @@ func (o GetInstanceNetworkingIpv4SharedOutput) Address() pulumi.StringOutput {
 // The default gateway for this address.
 func (o GetInstanceNetworkingIpv4SharedOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv4Shared) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The globally general API entity identifier for the Linode interface.
+func (o GetInstanceNetworkingIpv4SharedOutput) InterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv4Shared) int { return v.InterfaceId }).(pulumi.IntOutput)
 }
 
 // The Linode instance's ID.
@@ -23499,6 +27574,8 @@ type GetInstanceNetworkingIpv6LinkLocal struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId int `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
@@ -23533,6 +27610,8 @@ type GetInstanceNetworkingIpv6LinkLocalArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId pulumi.IntInput `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
@@ -23585,6 +27664,11 @@ func (o GetInstanceNetworkingIpv6LinkLocalOutput) Address() pulumi.StringOutput 
 // The default gateway for this address.
 func (o GetInstanceNetworkingIpv6LinkLocalOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocal) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The globally general API entity identifier for the Linode interface.
+func (o GetInstanceNetworkingIpv6LinkLocalOutput) InterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6LinkLocal) int { return v.InterfaceId }).(pulumi.IntOutput)
 }
 
 // The Linode instance's ID.
@@ -23704,6 +27788,8 @@ type GetInstanceNetworkingIpv6Slaac struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId int `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId int `pulumi:"linodeId"`
 	// The network prefix.
@@ -23738,6 +27824,8 @@ type GetInstanceNetworkingIpv6SlaacArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The globally general API entity identifier for the Linode interface.
+	InterfaceId pulumi.IntInput `pulumi:"interfaceId"`
 	// The Linode instance's ID.
 	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The network prefix.
@@ -23790,6 +27878,11 @@ func (o GetInstanceNetworkingIpv6SlaacOutput) Address() pulumi.StringOutput {
 // The default gateway for this address.
 func (o GetInstanceNetworkingIpv6SlaacOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingIpv6Slaac) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The globally general API entity identifier for the Linode interface.
+func (o GetInstanceNetworkingIpv6SlaacOutput) InterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceNetworkingIpv6Slaac) int { return v.InterfaceId }).(pulumi.IntOutput)
 }
 
 // The Linode instance's ID.
@@ -25602,6 +29695,8 @@ type GetInstancesInstance struct {
 	Id int `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 	Image string `pulumi:"image"`
+	// The interface type for this Instance. (`linode`, `legacyConfig`)
+	InterfaceGeneration string `pulumi:"interfaceGeneration"`
 	// (Deprecated) A string containing the Linode's public IP address.
 	IpAddress string `pulumi:"ipAddress"`
 	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
@@ -25667,6 +29762,8 @@ type GetInstancesInstanceArgs struct {
 	Id pulumi.IntInput `pulumi:"id"`
 	// An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 	Image pulumi.StringInput `pulumi:"image"`
+	// The interface type for this Instance. (`linode`, `legacyConfig`)
+	InterfaceGeneration pulumi.StringInput `pulumi:"interfaceGeneration"`
 	// (Deprecated) A string containing the Linode's public IP address.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 	// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
@@ -25805,6 +29902,11 @@ func (o GetInstancesInstanceOutput) Id() pulumi.IntOutput {
 // An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
 func (o GetInstancesInstanceOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The interface type for this Instance. (`linode`, `legacyConfig`)
+func (o GetInstancesInstanceOutput) InterfaceGeneration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.InterfaceGeneration }).(pulumi.StringOutput)
 }
 
 // (Deprecated) A string containing the Linode's public IP address.
@@ -32463,6 +36565,8 @@ type GetNetworkingIpsIpAddress struct {
 	Address string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
+	// The ID of the interface this address is assigned to.
+	InterfaceId int `pulumi:"interfaceId"`
 	// The ID of the Linode this address currently belongs to.
 	LinodeId int `pulumi:"linodeId"`
 	// The number of bits set in the subnet mask.
@@ -32499,6 +36603,8 @@ type GetNetworkingIpsIpAddressArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The ID of the interface this address is assigned to.
+	InterfaceId pulumi.IntInput `pulumi:"interfaceId"`
 	// The ID of the Linode this address currently belongs to.
 	LinodeId pulumi.IntInput `pulumi:"linodeId"`
 	// The number of bits set in the subnet mask.
@@ -32578,6 +36684,11 @@ func (o GetNetworkingIpsIpAddressOutput) Address() pulumi.StringOutput {
 // The default gateway for this address.
 func (o GetNetworkingIpsIpAddressOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The ID of the interface this address is assigned to.
+func (o GetNetworkingIpsIpAddressOutput) InterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) int { return v.InterfaceId }).(pulumi.IntOutput)
 }
 
 // The ID of the Linode this address currently belongs to.
@@ -42030,7 +46141,7 @@ func (o GetVolumesFilterArrayOutput) Index(i pulumi.IntInput) GetVolumesFilterOu
 type GetVolumesVolume struct {
 	// When this Volume was created.
 	Created string `pulumi:"created"`
-	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
 	Encryption string `pulumi:"encryption"`
 	// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
 	FilesystemPath string `pulumi:"filesystemPath"`
@@ -42066,7 +46177,7 @@ type GetVolumesVolumeInput interface {
 type GetVolumesVolumeArgs struct {
 	// When this Volume was created.
 	Created pulumi.StringInput `pulumi:"created"`
-	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
 	Encryption pulumi.StringInput `pulumi:"encryption"`
 	// The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
 	FilesystemPath pulumi.StringInput `pulumi:"filesystemPath"`
@@ -42144,7 +46255,7 @@ func (o GetVolumesVolumeOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
 func (o GetVolumesVolumeOutput) Encryption() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Encryption }).(pulumi.StringOutput)
 }
@@ -42860,7 +46971,8 @@ func (o GetVpcSubnetIpv6ArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetIpv6Ou
 
 type GetVpcSubnetLinode struct {
 	// The unique id of this VPC subnet.
-	Id         int                           `pulumi:"id"`
+	Id int `pulumi:"id"`
+	// A list of networking interfaces objects.
 	Interfaces []GetVpcSubnetLinodeInterface `pulumi:"interfaces"`
 }
 
@@ -42877,7 +46989,8 @@ type GetVpcSubnetLinodeInput interface {
 
 type GetVpcSubnetLinodeArgs struct {
 	// The unique id of this VPC subnet.
-	Id         pulumi.IntInput                       `pulumi:"id"`
+	Id pulumi.IntInput `pulumi:"id"`
+	// A list of networking interfaces objects.
 	Interfaces GetVpcSubnetLinodeInterfaceArrayInput `pulumi:"interfaces"`
 }
 
@@ -42937,6 +47050,7 @@ func (o GetVpcSubnetLinodeOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpcSubnetLinode) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// A list of networking interfaces objects.
 func (o GetVpcSubnetLinodeOutput) Interfaces() GetVpcSubnetLinodeInterfaceArrayOutput {
 	return o.ApplyT(func(v GetVpcSubnetLinode) []GetVpcSubnetLinodeInterface { return v.Interfaces }).(GetVpcSubnetLinodeInterfaceArrayOutput)
 }
@@ -42962,7 +47076,10 @@ func (o GetVpcSubnetLinodeArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetLino
 }
 
 type GetVpcSubnetLinodeInterface struct {
+	// Whether the Interface is actively in use.
 	Active bool `pulumi:"active"`
+	// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+	ConfigId int `pulumi:"configId"`
 	// The unique id of this VPC subnet.
 	Id int `pulumi:"id"`
 }
@@ -42979,7 +47096,10 @@ type GetVpcSubnetLinodeInterfaceInput interface {
 }
 
 type GetVpcSubnetLinodeInterfaceArgs struct {
+	// Whether the Interface is actively in use.
 	Active pulumi.BoolInput `pulumi:"active"`
+	// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+	ConfigId pulumi.IntInput `pulumi:"configId"`
 	// The unique id of this VPC subnet.
 	Id pulumi.IntInput `pulumi:"id"`
 }
@@ -43035,8 +47155,14 @@ func (o GetVpcSubnetLinodeInterfaceOutput) ToGetVpcSubnetLinodeInterfaceOutputWi
 	return o
 }
 
+// Whether the Interface is actively in use.
 func (o GetVpcSubnetLinodeInterfaceOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVpcSubnetLinodeInterface) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+func (o GetVpcSubnetLinodeInterfaceOutput) ConfigId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcSubnetLinodeInterface) int { return v.ConfigId }).(pulumi.IntOutput)
 }
 
 // The unique id of this VPC subnet.
@@ -43182,7 +47308,7 @@ func (o GetVpcSubnetsFilterArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetsFi
 type GetVpcSubnetsVpcSubnet struct {
 	// The date and time when the VPC Subnet was created.
 	Created string `pulumi:"created"`
-	// The unique id of the VPC subnet.
+	// ID of the interface.
 	Id int `pulumi:"id"`
 	// The IPv4 range of this subnet in CIDR format.
 	Ipv4 string `pulumi:"ipv4"`
@@ -43190,7 +47316,7 @@ type GetVpcSubnetsVpcSubnet struct {
 	Ipv6s []GetVpcSubnetsVpcSubnetIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC subnet.
 	Label string `pulumi:"label"`
-	// A list of Linode IDs that added to this subnet.
+	// A list of Linodes added to this subnet.
 	Linodes []GetVpcSubnetsVpcSubnetLinode `pulumi:"linodes"`
 	// The date and time when the VPC Subnet was last updated.
 	Updated string `pulumi:"updated"`
@@ -43210,7 +47336,7 @@ type GetVpcSubnetsVpcSubnetInput interface {
 type GetVpcSubnetsVpcSubnetArgs struct {
 	// The date and time when the VPC Subnet was created.
 	Created pulumi.StringInput `pulumi:"created"`
-	// The unique id of the VPC subnet.
+	// ID of the interface.
 	Id pulumi.IntInput `pulumi:"id"`
 	// The IPv4 range of this subnet in CIDR format.
 	Ipv4 pulumi.StringInput `pulumi:"ipv4"`
@@ -43218,7 +47344,7 @@ type GetVpcSubnetsVpcSubnetArgs struct {
 	Ipv6s GetVpcSubnetsVpcSubnetIpv6ArrayInput `pulumi:"ipv6s"`
 	// The label of the VPC subnet.
 	Label pulumi.StringInput `pulumi:"label"`
-	// A list of Linode IDs that added to this subnet.
+	// A list of Linodes added to this subnet.
 	Linodes GetVpcSubnetsVpcSubnetLinodeArrayInput `pulumi:"linodes"`
 	// The date and time when the VPC Subnet was last updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
@@ -43280,7 +47406,7 @@ func (o GetVpcSubnetsVpcSubnetOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// The unique id of the VPC subnet.
+// ID of the interface.
 func (o GetVpcSubnetsVpcSubnetOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -43300,7 +47426,7 @@ func (o GetVpcSubnetsVpcSubnetOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// A list of Linode IDs that added to this subnet.
+// A list of Linodes added to this subnet.
 func (o GetVpcSubnetsVpcSubnetOutput) Linodes() GetVpcSubnetsVpcSubnetLinodeArrayOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) []GetVpcSubnetsVpcSubnetLinode { return v.Linodes }).(GetVpcSubnetsVpcSubnetLinodeArrayOutput)
 }
@@ -43428,8 +47554,9 @@ func (o GetVpcSubnetsVpcSubnetIpv6ArrayOutput) Index(i pulumi.IntInput) GetVpcSu
 }
 
 type GetVpcSubnetsVpcSubnetLinode struct {
-	// The unique id of the VPC subnet.
-	Id         int                                     `pulumi:"id"`
+	// ID of the interface.
+	Id int `pulumi:"id"`
+	// A list of networking interfaces objects.
 	Interfaces []GetVpcSubnetsVpcSubnetLinodeInterface `pulumi:"interfaces"`
 }
 
@@ -43445,8 +47572,9 @@ type GetVpcSubnetsVpcSubnetLinodeInput interface {
 }
 
 type GetVpcSubnetsVpcSubnetLinodeArgs struct {
-	// The unique id of the VPC subnet.
-	Id         pulumi.IntInput                                 `pulumi:"id"`
+	// ID of the interface.
+	Id pulumi.IntInput `pulumi:"id"`
+	// A list of networking interfaces objects.
 	Interfaces GetVpcSubnetsVpcSubnetLinodeInterfaceArrayInput `pulumi:"interfaces"`
 }
 
@@ -43501,11 +47629,12 @@ func (o GetVpcSubnetsVpcSubnetLinodeOutput) ToGetVpcSubnetsVpcSubnetLinodeOutput
 	return o
 }
 
-// The unique id of the VPC subnet.
+// ID of the interface.
 func (o GetVpcSubnetsVpcSubnetLinodeOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinode) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// A list of networking interfaces objects.
 func (o GetVpcSubnetsVpcSubnetLinodeOutput) Interfaces() GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinode) []GetVpcSubnetsVpcSubnetLinodeInterface { return v.Interfaces }).(GetVpcSubnetsVpcSubnetLinodeInterfaceArrayOutput)
 }
@@ -43531,8 +47660,11 @@ func (o GetVpcSubnetsVpcSubnetLinodeArrayOutput) Index(i pulumi.IntInput) GetVpc
 }
 
 type GetVpcSubnetsVpcSubnetLinodeInterface struct {
+	// Whether the Interface is actively in use.
 	Active bool `pulumi:"active"`
-	// The unique id of the VPC subnet.
+	// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+	ConfigId int `pulumi:"configId"`
+	// ID of the interface.
 	Id int `pulumi:"id"`
 }
 
@@ -43548,8 +47680,11 @@ type GetVpcSubnetsVpcSubnetLinodeInterfaceInput interface {
 }
 
 type GetVpcSubnetsVpcSubnetLinodeInterfaceArgs struct {
+	// Whether the Interface is actively in use.
 	Active pulumi.BoolInput `pulumi:"active"`
-	// The unique id of the VPC subnet.
+	// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+	ConfigId pulumi.IntInput `pulumi:"configId"`
+	// ID of the interface.
 	Id pulumi.IntInput `pulumi:"id"`
 }
 
@@ -43604,11 +47739,17 @@ func (o GetVpcSubnetsVpcSubnetLinodeInterfaceOutput) ToGetVpcSubnetsVpcSubnetLin
 	return o
 }
 
+// Whether the Interface is actively in use.
 func (o GetVpcSubnetsVpcSubnetLinodeInterfaceOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinodeInterface) bool { return v.Active }).(pulumi.BoolOutput)
 }
 
-// The unique id of the VPC subnet.
+// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+func (o GetVpcSubnetsVpcSubnetLinodeInterfaceOutput) ConfigId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinodeInterface) int { return v.ConfigId }).(pulumi.IntOutput)
+}
+
+// ID of the interface.
 func (o GetVpcSubnetsVpcSubnetLinodeInterfaceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinodeInterface) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -44023,6 +48164,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallInboundArrayInput)(nil)).Elem(), FirewallInboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundInput)(nil)).Elem(), FirewallOutboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundArrayInput)(nil)).Elem(), FirewallOutboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallSettingsDefaultFirewallIdsInput)(nil)).Elem(), FirewallSettingsDefaultFirewallIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallSettingsDefaultFirewallIdsPtrInput)(nil)).Elem(), FirewallSettingsDefaultFirewallIdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageReplicationInput)(nil)).Elem(), ImageReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageReplicationArrayInput)(nil)).Elem(), ImageReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageTimeoutsInput)(nil)).Elem(), ImageTimeoutsArgs{})
@@ -44091,6 +48234,52 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePlacementGroupPtrInput)(nil)).Elem(), InstancePlacementGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecInput)(nil)).Elem(), InstanceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceSpecArrayInput)(nil)).Elem(), InstanceSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceDefaultRouteInput)(nil)).Elem(), InterfaceDefaultRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceDefaultRoutePtrInput)(nil)).Elem(), InterfaceDefaultRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicInput)(nil)).Elem(), InterfacePublicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicPtrInput)(nil)).Elem(), InterfacePublicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv4Input)(nil)).Elem(), InterfacePublicIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv4PtrInput)(nil)).Elem(), InterfacePublicIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv4AddressInput)(nil)).Elem(), InterfacePublicIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv4AddressArrayInput)(nil)).Elem(), InterfacePublicIpv4AddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv4AssignedAddressInput)(nil)).Elem(), InterfacePublicIpv4AssignedAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv4AssignedAddressArrayInput)(nil)).Elem(), InterfacePublicIpv4AssignedAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv4SharedInput)(nil)).Elem(), InterfacePublicIpv4SharedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv4SharedArrayInput)(nil)).Elem(), InterfacePublicIpv4SharedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6Input)(nil)).Elem(), InterfacePublicIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6PtrInput)(nil)).Elem(), InterfacePublicIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6AssignedRangeInput)(nil)).Elem(), InterfacePublicIpv6AssignedRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6AssignedRangeArrayInput)(nil)).Elem(), InterfacePublicIpv6AssignedRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6RangeInput)(nil)).Elem(), InterfacePublicIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6RangeArrayInput)(nil)).Elem(), InterfacePublicIpv6RangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6SharedInput)(nil)).Elem(), InterfacePublicIpv6SharedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6SharedArrayInput)(nil)).Elem(), InterfacePublicIpv6SharedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6SlaacInput)(nil)).Elem(), InterfacePublicIpv6SlaacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6SlaacArrayInput)(nil)).Elem(), InterfacePublicIpv6SlaacArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVlanInput)(nil)).Elem(), InterfaceVlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVlanPtrInput)(nil)).Elem(), InterfaceVlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcInput)(nil)).Elem(), InterfaceVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcPtrInput)(nil)).Elem(), InterfaceVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv4Input)(nil)).Elem(), InterfaceVpcIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv4PtrInput)(nil)).Elem(), InterfaceVpcIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv4AddressInput)(nil)).Elem(), InterfaceVpcIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv4AddressArrayInput)(nil)).Elem(), InterfaceVpcIpv4AddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv4AssignedAddressInput)(nil)).Elem(), InterfaceVpcIpv4AssignedAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv4AssignedAddressArrayInput)(nil)).Elem(), InterfaceVpcIpv4AssignedAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv4AssignedRangeInput)(nil)).Elem(), InterfaceVpcIpv4AssignedRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv4AssignedRangeArrayInput)(nil)).Elem(), InterfaceVpcIpv4AssignedRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv4RangeInput)(nil)).Elem(), InterfaceVpcIpv4RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv4RangeArrayInput)(nil)).Elem(), InterfaceVpcIpv4RangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv6Input)(nil)).Elem(), InterfaceVpcIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv6PtrInput)(nil)).Elem(), InterfaceVpcIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv6AssignedRangeInput)(nil)).Elem(), InterfaceVpcIpv6AssignedRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv6AssignedRangeArrayInput)(nil)).Elem(), InterfaceVpcIpv6AssignedRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv6AssignedSlaacInput)(nil)).Elem(), InterfaceVpcIpv6AssignedSlaacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv6AssignedSlaacArrayInput)(nil)).Elem(), InterfaceVpcIpv6AssignedSlaacArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv6RangeInput)(nil)).Elem(), InterfaceVpcIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv6RangeArrayInput)(nil)).Elem(), InterfaceVpcIpv6RangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv6SlaacInput)(nil)).Elem(), InterfaceVpcIpv6SlaacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcIpv6SlaacArrayInput)(nil)).Elem(), InterfaceVpcIpv6SlaacArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneInput)(nil)).Elem(), LkeClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlanePtrInput)(nil)).Elem(), LkeClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneAclInput)(nil)).Elem(), LkeClusterControlPlaneAclArgs{})
@@ -44268,6 +48457,19 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallInboundArrayInput)(nil)).Elem(), GetFirewallInboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallOutboundInput)(nil)).Elem(), GetFirewallOutboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallOutboundArrayInput)(nil)).Elem(), GetFirewallOutboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallSettingsDefaultFirewallIdsInput)(nil)).Elem(), GetFirewallSettingsDefaultFirewallIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplateInboundInput)(nil)).Elem(), GetFirewallTemplateInboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplateInboundArrayInput)(nil)).Elem(), GetFirewallTemplateInboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplateOutboundInput)(nil)).Elem(), GetFirewallTemplateOutboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplateOutboundArrayInput)(nil)).Elem(), GetFirewallTemplateOutboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplatesFilterInput)(nil)).Elem(), GetFirewallTemplatesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplatesFilterArrayInput)(nil)).Elem(), GetFirewallTemplatesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplatesFirewallTemplateInput)(nil)).Elem(), GetFirewallTemplatesFirewallTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplatesFirewallTemplateArrayInput)(nil)).Elem(), GetFirewallTemplatesFirewallTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplatesFirewallTemplateInboundInput)(nil)).Elem(), GetFirewallTemplatesFirewallTemplateInboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplatesFirewallTemplateInboundArrayInput)(nil)).Elem(), GetFirewallTemplatesFirewallTemplateInboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplatesFirewallTemplateOutboundInput)(nil)).Elem(), GetFirewallTemplatesFirewallTemplateOutboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallTemplatesFirewallTemplateOutboundArrayInput)(nil)).Elem(), GetFirewallTemplatesFirewallTemplateOutboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFilterInput)(nil)).Elem(), GetFirewallsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFilterArrayInput)(nil)).Elem(), GetFirewallsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallInput)(nil)).Elem(), GetFirewallsFirewallArgs{})
@@ -44664,6 +48866,8 @@ func init() {
 	pulumi.RegisterOutputType(FirewallInboundArrayOutput{})
 	pulumi.RegisterOutputType(FirewallOutboundOutput{})
 	pulumi.RegisterOutputType(FirewallOutboundArrayOutput{})
+	pulumi.RegisterOutputType(FirewallSettingsDefaultFirewallIdsOutput{})
+	pulumi.RegisterOutputType(FirewallSettingsDefaultFirewallIdsPtrOutput{})
 	pulumi.RegisterOutputType(ImageReplicationOutput{})
 	pulumi.RegisterOutputType(ImageReplicationArrayOutput{})
 	pulumi.RegisterOutputType(ImageTimeoutsOutput{})
@@ -44732,6 +48936,52 @@ func init() {
 	pulumi.RegisterOutputType(InstancePlacementGroupPtrOutput{})
 	pulumi.RegisterOutputType(InstanceSpecOutput{})
 	pulumi.RegisterOutputType(InstanceSpecArrayOutput{})
+	pulumi.RegisterOutputType(InterfaceDefaultRouteOutput{})
+	pulumi.RegisterOutputType(InterfaceDefaultRoutePtrOutput{})
+	pulumi.RegisterOutputType(InterfacePublicOutput{})
+	pulumi.RegisterOutputType(InterfacePublicPtrOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv4Output{})
+	pulumi.RegisterOutputType(InterfacePublicIpv4PtrOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv4AddressOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv4AddressArrayOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv4AssignedAddressOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv4AssignedAddressArrayOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv4SharedOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv4SharedArrayOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv6Output{})
+	pulumi.RegisterOutputType(InterfacePublicIpv6PtrOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv6AssignedRangeOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv6AssignedRangeArrayOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv6RangeOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv6RangeArrayOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv6SharedOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv6SharedArrayOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv6SlaacOutput{})
+	pulumi.RegisterOutputType(InterfacePublicIpv6SlaacArrayOutput{})
+	pulumi.RegisterOutputType(InterfaceVlanOutput{})
+	pulumi.RegisterOutputType(InterfaceVlanPtrOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcPtrOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv4Output{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv4PtrOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv4AddressOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv4AddressArrayOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv4AssignedAddressOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv4AssignedAddressArrayOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv4AssignedRangeOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv4AssignedRangeArrayOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv4RangeOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv4RangeArrayOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv6Output{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv6PtrOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv6AssignedRangeOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv6AssignedRangeArrayOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv6AssignedSlaacOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv6AssignedSlaacArrayOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv6RangeOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv6RangeArrayOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv6SlaacOutput{})
+	pulumi.RegisterOutputType(InterfaceVpcIpv6SlaacArrayOutput{})
 	pulumi.RegisterOutputType(LkeClusterControlPlaneOutput{})
 	pulumi.RegisterOutputType(LkeClusterControlPlanePtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterControlPlaneAclOutput{})
@@ -44909,6 +49159,19 @@ func init() {
 	pulumi.RegisterOutputType(GetFirewallInboundArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallOutboundOutput{})
 	pulumi.RegisterOutputType(GetFirewallOutboundArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallSettingsDefaultFirewallIdsOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplateInboundOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplateInboundArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplateOutboundOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplateOutboundArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplatesFilterOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplatesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplatesFirewallTemplateOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplatesFirewallTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplatesFirewallTemplateInboundOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplatesFirewallTemplateInboundArrayOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplatesFirewallTemplateOutboundOutput{})
+	pulumi.RegisterOutputType(GetFirewallTemplatesFirewallTemplateOutboundArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallsFilterOutput{})
 	pulumi.RegisterOutputType(GetFirewallsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallsFirewallOutput{})

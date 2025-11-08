@@ -78,6 +78,20 @@ public class AccountSettings extends com.pulumi.resources.CustomResource {
         return this.backupsEnabled;
     }
     /**
+     * Type of interfaces for new Linode instances. Available values are `&#34;legacyConfigOnly&#34;`, `&#34;legacyConfigDefaultButLinodeAllowed&#34;`, `&#34;linodeDefaultButLegacyConfigAllowed&#34;`, and `&#34;linodeOnly&#34;`.
+     * 
+     */
+    @Export(name="interfacesForNewLinodes", refs={String.class}, tree="[0]")
+    private Output<String> interfacesForNewLinodes;
+
+    /**
+     * @return Type of interfaces for new Linode instances. Available values are `&#34;legacyConfigOnly&#34;`, `&#34;legacyConfigDefaultButLinodeAllowed&#34;`, `&#34;linodeDefaultButLegacyConfigAllowed&#34;`, and `&#34;linodeOnly&#34;`.
+     * 
+     */
+    public Output<String> interfacesForNewLinodes() {
+        return this.interfacesForNewLinodes;
+    }
+    /**
      * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
      * 
      */

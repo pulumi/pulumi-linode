@@ -32,14 +32,14 @@ public final class GetVolumesVolumeArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      * 
      */
     @Import(name="encryption", required=true)
     private Output<String> encryption;
 
     /**
-     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * @return Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      * 
      */
     public Output<String> encryption() {
@@ -237,7 +237,7 @@ public final class GetVolumesVolumeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class GetVolumesVolumeArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+         * @param encryption Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
          * 
          * @return builder
          * 

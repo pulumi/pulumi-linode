@@ -101,6 +101,9 @@
                             }
                         }
                     },
+                    "interfaces": {
+                        "maxItemsOne": false
+                    },
                     "linodes": {
                         "maxItemsOne": false
                     },
@@ -127,6 +130,10 @@
             },
             "linode_firewall_device": {
                 "current": "linode:index/firewallDevice:FirewallDevice",
+                "majorVersion": 5
+            },
+            "linode_firewall_settings": {
+                "current": "linode:index/firewallSettings:FirewallSettings",
                 "majorVersion": 5
             },
             "linode_image": {
@@ -395,6 +402,81 @@
                 "fields": {
                     "addresses": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_interface": {
+                "current": "linode:index/interface:Interface",
+                "majorVersion": 5,
+                "fields": {
+                    "public": {
+                        "fields": {
+                            "ipv4": {
+                                "fields": {
+                                    "addresses": {
+                                        "maxItemsOne": false
+                                    },
+                                    "assigned_addresses": {
+                                        "maxItemsOne": false
+                                    },
+                                    "shared": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "ipv6": {
+                                "fields": {
+                                    "assigned_ranges": {
+                                        "maxItemsOne": false
+                                    },
+                                    "ranges": {
+                                        "maxItemsOne": false
+                                    },
+                                    "shared": {
+                                        "maxItemsOne": false
+                                    },
+                                    "slaac": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "vpc": {
+                        "fields": {
+                            "ipv4": {
+                                "fields": {
+                                    "addresses": {
+                                        "maxItemsOne": false
+                                    },
+                                    "assigned_addresses": {
+                                        "maxItemsOne": false
+                                    },
+                                    "assigned_ranges": {
+                                        "maxItemsOne": false
+                                    },
+                                    "ranges": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "ipv6": {
+                                "fields": {
+                                    "assigned_ranges": {
+                                        "maxItemsOne": false
+                                    },
+                                    "assigned_slaac": {
+                                        "maxItemsOne": false
+                                    },
+                                    "ranges": {
+                                        "maxItemsOne": false
+                                    },
+                                    "slaac": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1148,6 +1230,9 @@
                             }
                         }
                     },
+                    "interfaces": {
+                        "maxItemsOne": false
+                    },
                     "linodes": {
                         "maxItemsOne": false
                     },
@@ -1169,6 +1254,91 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_firewall_settings": {
+                "current": "linode:index/getFirewallSettings:getFirewallSettings",
+                "majorVersion": 5
+            },
+            "linode_firewall_template": {
+                "current": "linode:index/getFirewallTemplate:getFirewallTemplate",
+                "majorVersion": 5,
+                "fields": {
+                    "inbound": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipv4": {
+                                    "maxItemsOne": false
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "outbound": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipv4": {
+                                    "maxItemsOne": false
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_firewall_templates": {
+                "current": "linode:index/getFirewallTemplates:getFirewallTemplates",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "firewall_templates": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "inbound": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "outbound": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1205,6 +1375,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "interfaces": {
+                                    "maxItemsOne": false
                                 },
                                 "linodes": {
                                     "maxItemsOne": false
@@ -2537,12 +2710,14 @@
             "linode:index/domainRecord:DomainRecord": 0,
             "linode:index/firewall:Firewall": 1,
             "linode:index/firewallDevice:FirewallDevice": 1,
+            "linode:index/firewallSettings:FirewallSettings": 1,
             "linode:index/image:Image": 1,
             "linode:index/instance:Instance": 0,
             "linode:index/instanceConfig:InstanceConfig": 0,
             "linode:index/instanceDisk:InstanceDisk": 1,
             "linode:index/instanceIp:InstanceIp": 1,
             "linode:index/instanceSharedIps:InstanceSharedIps": 1,
+            "linode:index/interface:Interface": 1,
             "linode:index/ipv6Range:Ipv6Range": 1,
             "linode:index/lkeCluster:LkeCluster": 0,
             "linode:index/lkeNodePool:LkeNodePool": 1,
@@ -2590,6 +2765,9 @@
             "linode:index/getDomainZonefile:getDomainZonefile": 1,
             "linode:index/getDomains:getDomains": 1,
             "linode:index/getFirewall:getFirewall": 1,
+            "linode:index/getFirewallSettings:getFirewallSettings": 1,
+            "linode:index/getFirewallTemplate:getFirewallTemplate": 1,
+            "linode:index/getFirewallTemplates:getFirewallTemplates": 1,
             "linode:index/getFirewalls:getFirewalls": 1,
             "linode:index/getImage:getImage": 1,
             "linode:index/getImages:getImages": 1,

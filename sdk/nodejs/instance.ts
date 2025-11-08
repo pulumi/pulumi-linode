@@ -206,6 +206,12 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly image: pulumi.Output<string | undefined>;
     /**
+     * Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+     *
+     * * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+     */
+    declare public readonly interfaceGeneration: pulumi.Output<string>;
+    /**
      * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
      */
     declare public readonly interfaces: pulumi.Output<outputs.InstanceInterface[] | undefined>;
@@ -243,10 +249,14 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly metadatas: pulumi.Output<outputs.InstanceMetadata[] | undefined>;
     /**
      * The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+     */
+    declare public readonly migrationType: pulumi.Output<string | undefined>;
+    /**
+     * Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
      *
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      */
-    declare public readonly migrationType: pulumi.Output<string | undefined>;
+    declare public readonly networkHelper: pulumi.Output<boolean | undefined>;
     /**
      * Information about the Placement Group this Linode is assigned to.
      */
@@ -358,6 +368,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["hasUserData"] = state?.hasUserData;
             resourceInputs["hostUuid"] = state?.hostUuid;
             resourceInputs["image"] = state?.image;
+            resourceInputs["interfaceGeneration"] = state?.interfaceGeneration;
             resourceInputs["interfaces"] = state?.interfaces;
             resourceInputs["ipAddress"] = state?.ipAddress;
             resourceInputs["ipv4s"] = state?.ipv4s;
@@ -367,6 +378,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
             resourceInputs["metadatas"] = state?.metadatas;
             resourceInputs["migrationType"] = state?.migrationType;
+            resourceInputs["networkHelper"] = state?.networkHelper;
             resourceInputs["placementGroup"] = state?.placementGroup;
             resourceInputs["placementGroupExternallyManaged"] = state?.placementGroupExternallyManaged;
             resourceInputs["privateIp"] = state?.privateIp;
@@ -401,12 +413,14 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["firewallId"] = args?.firewallId;
             resourceInputs["group"] = args?.group;
             resourceInputs["image"] = args?.image;
+            resourceInputs["interfaceGeneration"] = args?.interfaceGeneration;
             resourceInputs["interfaces"] = args?.interfaces;
             resourceInputs["ipv4s"] = args?.ipv4s;
             resourceInputs["label"] = args?.label;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["metadatas"] = args?.metadatas;
             resourceInputs["migrationType"] = args?.migrationType;
+            resourceInputs["networkHelper"] = args?.networkHelper;
             resourceInputs["placementGroup"] = args?.placementGroup;
             resourceInputs["placementGroupExternallyManaged"] = args?.placementGroupExternallyManaged;
             resourceInputs["privateIp"] = args?.privateIp;
@@ -517,6 +531,12 @@ export interface InstanceState {
      */
     image?: pulumi.Input<string>;
     /**
+     * Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+     *
+     * * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+     */
+    interfaceGeneration?: pulumi.Input<string>;
+    /**
      * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
@@ -554,10 +574,14 @@ export interface InstanceState {
     metadatas?: pulumi.Input<pulumi.Input<inputs.InstanceMetadata>[]>;
     /**
      * The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+     */
+    migrationType?: pulumi.Input<string>;
+    /**
+     * Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
      *
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      */
-    migrationType?: pulumi.Input<string>;
+    networkHelper?: pulumi.Input<boolean>;
     /**
      * Information about the Placement Group this Linode is assigned to.
      */
@@ -703,6 +727,12 @@ export interface InstanceArgs {
      */
     image?: pulumi.Input<string>;
     /**
+     * Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacyConfig`; default is determined by the account `interfacesForNewLinodes` setting)
+     *
+     * * TODO(Linode Interfaces): Link to a usage example using the `linodeInstanceInterface` resource
+     */
+    interfaceGeneration?: pulumi.Input<string>;
+    /**
      * An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceInterface>[]>;
@@ -726,10 +756,14 @@ export interface InstanceArgs {
     metadatas?: pulumi.Input<pulumi.Input<inputs.InstanceMetadata>[]>;
     /**
      * The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
+     */
+    migrationType?: pulumi.Input<string>;
+    /**
+     * Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
      *
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      */
-    migrationType?: pulumi.Input<string>;
+    networkHelper?: pulumi.Input<boolean>;
     /**
      * Information about the Placement Group this Linode is assigned to.
      */
