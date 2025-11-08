@@ -38,6 +38,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFirewallsFirewallInboundResult> Inbounds;
         /// <summary>
+        /// The IDs of Linode Interfaces this firewall is applied to.
+        /// </summary>
+        public readonly ImmutableArray<int> Interfaces;
+        /// <summary>
         /// The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
         /// </summary>
         public readonly string Label;
@@ -46,7 +50,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<int> Linodes;
         /// <summary>
-        /// The IDs of NodeBalancers assigned to this Firewall..
+        /// The IDs of NodeBalancers this firewall is applied to.
         /// </summary>
         public readonly ImmutableArray<int> Nodebalancers;
         /// <summary>
@@ -84,6 +88,8 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.GetFirewallsFirewallInboundResult> inbounds,
 
+            ImmutableArray<int> interfaces,
+
             string label,
 
             ImmutableArray<int> linodes,
@@ -106,6 +112,7 @@ namespace Pulumi.Linode.Outputs
             Id = id;
             InboundPolicy = inboundPolicy;
             Inbounds = inbounds;
+            Interfaces = interfaces;
             Label = label;
             Linodes = linodes;
             Nodebalancers = nodebalancers;

@@ -83,7 +83,7 @@ export class Volume extends pulumi.CustomResource {
     }
 
     /**
-     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      */
     declare public readonly encryption: pulumi.Output<string>;
     /**
@@ -171,7 +171,7 @@ export class Volume extends pulumi.CustomResource {
  */
 export interface VolumeState {
     /**
-     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      */
     encryption?: pulumi.Input<string>;
     /**
@@ -216,7 +216,7 @@ export interface VolumeState {
  */
 export interface VolumeArgs {
     /**
-     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      */
     encryption?: pulumi.Input<string>;
     /**

@@ -422,6 +422,19 @@ class NodeBalancer(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
 
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # NOTE: VPC-attached NodeBalancers may not currently be available to all users.
+        foobar = linode.NodeBalancer("foobar",
+            label="mynodebalancer",
+            region="us-mia",
+            vpcs=[{
+                "subnet_id": test["id"],
+            }])
+        ```
+
         ## Import
 
         Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -471,6 +484,19 @@ class NodeBalancer(pulumi.CustomResource):
         ```
 
         The following example shows how one might use this resource to configure a NodeBalancer attached to a VPC.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # NOTE: VPC-attached NodeBalancers may not currently be available to all users.
+        foobar = linode.NodeBalancer("foobar",
+            label="mynodebalancer",
+            region="us-mia",
+            vpcs=[{
+                "subnet_id": test["id"],
+            }])
+        ```
 
         ## Import
 

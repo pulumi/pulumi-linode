@@ -63,6 +63,9 @@ export interface GetVpcSubnetResult {
      * The date and time when the VPC Subnet was created.
      */
     readonly created: string;
+    /**
+     * ID of the interface.
+     */
     readonly id: string;
     /**
      * The IPv4 range of this subnet in CIDR format.
@@ -74,7 +77,7 @@ export interface GetVpcSubnetResult {
      */
     readonly label: string;
     /**
-     * A list of Linode IDs that added to this subnet.
+     * A list of Linodes added to this subnet.
      */
     readonly linodes: outputs.GetVpcSubnetLinode[];
     /**

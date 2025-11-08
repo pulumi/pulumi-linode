@@ -110,7 +110,7 @@ class _VpcSubnetState:
                * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]] ipv6s: The IPv6 ranges of this subnet.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. Only contains ASCII letters, digits and dashes.
-        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeArgs']]] linodes: A list of Linode IDs that added to this subnet.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeArgs']]] linodes: A list of Linode that added to this subnet.
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
         :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC subnet.
         """
@@ -183,7 +183,7 @@ class _VpcSubnetState:
     @pulumi.getter
     def linodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeArgs']]]]:
         """
-        A list of Linode IDs that added to this subnet.
+        A list of Linode that added to this subnet.
         """
         return pulumi.get(self, "linodes")
 
@@ -427,7 +427,7 @@ class VpcSubnet(pulumi.CustomResource):
                * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetIpv6Args', 'VpcSubnetIpv6ArgsDict']]]] ipv6s: The IPv6 ranges of this subnet.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. Only contains ASCII letters, digits and dashes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetLinodeArgs', 'VpcSubnetLinodeArgsDict']]]] linodes: A list of Linode IDs that added to this subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetLinodeArgs', 'VpcSubnetLinodeArgsDict']]]] linodes: A list of Linode that added to this subnet.
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
         :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC subnet.
         """
@@ -482,7 +482,7 @@ class VpcSubnet(pulumi.CustomResource):
     @pulumi.getter
     def linodes(self) -> pulumi.Output[Sequence['outputs.VpcSubnetLinode']]:
         """
-        A list of Linode IDs that added to this subnet.
+        A list of Linode that added to this subnet.
         """
         return pulumi.get(self, "linodes")
 

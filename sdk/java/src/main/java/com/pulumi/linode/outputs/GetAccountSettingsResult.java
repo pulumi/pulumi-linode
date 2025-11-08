@@ -18,6 +18,11 @@ public final class GetAccountSettingsResult {
     private Boolean backupsEnabled;
     private String id;
     /**
+     * @return Type of interfaces for new Linode instances.
+     * 
+     */
+    private String interfacesForNewLinodes;
+    /**
      * @return The Longview Pro tier you are currently subscribed to.
      * 
      */
@@ -53,6 +58,13 @@ public final class GetAccountSettingsResult {
     }
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Type of interfaces for new Linode instances.
+     * 
+     */
+    public String interfacesForNewLinodes() {
+        return this.interfacesForNewLinodes;
     }
     /**
      * @return The Longview Pro tier you are currently subscribed to.
@@ -101,6 +113,7 @@ public final class GetAccountSettingsResult {
     public static final class Builder {
         private Boolean backupsEnabled;
         private String id;
+        private String interfacesForNewLinodes;
         private String longviewSubscription;
         private String maintenancePolicy;
         private Boolean managed;
@@ -111,6 +124,7 @@ public final class GetAccountSettingsResult {
     	      Objects.requireNonNull(defaults);
     	      this.backupsEnabled = defaults.backupsEnabled;
     	      this.id = defaults.id;
+    	      this.interfacesForNewLinodes = defaults.interfacesForNewLinodes;
     	      this.longviewSubscription = defaults.longviewSubscription;
     	      this.maintenancePolicy = defaults.maintenancePolicy;
     	      this.managed = defaults.managed;
@@ -132,6 +146,14 @@ public final class GetAccountSettingsResult {
               throw new MissingRequiredPropertyException("GetAccountSettingsResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder interfacesForNewLinodes(String interfacesForNewLinodes) {
+            if (interfacesForNewLinodes == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingsResult", "interfacesForNewLinodes");
+            }
+            this.interfacesForNewLinodes = interfacesForNewLinodes;
             return this;
         }
         @CustomType.Setter
@@ -178,6 +200,7 @@ public final class GetAccountSettingsResult {
             final var _resultValue = new GetAccountSettingsResult();
             _resultValue.backupsEnabled = backupsEnabled;
             _resultValue.id = id;
+            _resultValue.interfacesForNewLinodes = interfacesForNewLinodes;
             _resultValue.longviewSubscription = longviewSubscription;
             _resultValue.maintenancePolicy = maintenancePolicy;
             _resultValue.managed = managed;

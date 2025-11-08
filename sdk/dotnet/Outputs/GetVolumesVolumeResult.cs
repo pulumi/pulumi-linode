@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+        /// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         /// </summary>
         public readonly string Encryption;
         /// <summary>

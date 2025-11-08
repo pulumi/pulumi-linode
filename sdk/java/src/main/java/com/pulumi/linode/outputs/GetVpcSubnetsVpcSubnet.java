@@ -20,7 +20,7 @@ public final class GetVpcSubnetsVpcSubnet {
      */
     private String created;
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of the interface.
      * 
      */
     private Integer id;
@@ -40,7 +40,7 @@ public final class GetVpcSubnetsVpcSubnet {
      */
     private String label;
     /**
-     * @return A list of Linode IDs that added to this subnet.
+     * @return A list of Linodes added to this subnet.
      * 
      */
     private List<GetVpcSubnetsVpcSubnetLinode> linodes;
@@ -59,7 +59,7 @@ public final class GetVpcSubnetsVpcSubnet {
         return this.created;
     }
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of the interface.
      * 
      */
     public Integer id() {
@@ -87,7 +87,7 @@ public final class GetVpcSubnetsVpcSubnet {
         return this.label;
     }
     /**
-     * @return A list of Linode IDs that added to this subnet.
+     * @return A list of Linodes added to this subnet.
      * 
      */
     public List<GetVpcSubnetsVpcSubnetLinode> linodes() {

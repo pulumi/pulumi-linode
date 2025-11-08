@@ -24,6 +24,11 @@ public final class GetNetworkingIpsIpAddress {
      */
     private String gateway;
     /**
+     * @return The ID of the interface this address is assigned to.
+     * 
+     */
+    private Integer interfaceId;
+    /**
      * @return The ID of the Linode this address currently belongs to.
      * 
      */
@@ -83,6 +88,13 @@ public final class GetNetworkingIpsIpAddress {
      */
     public String gateway() {
         return this.gateway;
+    }
+    /**
+     * @return The ID of the interface this address is assigned to.
+     * 
+     */
+    public Integer interfaceId() {
+        return this.interfaceId;
     }
     /**
      * @return The ID of the Linode this address currently belongs to.
@@ -159,6 +171,7 @@ public final class GetNetworkingIpsIpAddress {
     public static final class Builder {
         private String address;
         private String gateway;
+        private Integer interfaceId;
         private Integer linodeId;
         private Integer prefix;
         private Boolean public_;
@@ -173,6 +186,7 @@ public final class GetNetworkingIpsIpAddress {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
     	      this.gateway = defaults.gateway;
+    	      this.interfaceId = defaults.interfaceId;
     	      this.linodeId = defaults.linodeId;
     	      this.prefix = defaults.prefix;
     	      this.public_ = defaults.public_;
@@ -198,6 +212,14 @@ public final class GetNetworkingIpsIpAddress {
               throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddress", "gateway");
             }
             this.gateway = gateway;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder interfaceId(Integer interfaceId) {
+            if (interfaceId == null) {
+              throw new MissingRequiredPropertyException("GetNetworkingIpsIpAddress", "interfaceId");
+            }
+            this.interfaceId = interfaceId;
             return this;
         }
         @CustomType.Setter
@@ -276,6 +298,7 @@ public final class GetNetworkingIpsIpAddress {
             final var _resultValue = new GetNetworkingIpsIpAddress();
             _resultValue.address = address;
             _resultValue.gateway = gateway;
+            _resultValue.interfaceId = interfaceId;
             _resultValue.linodeId = linodeId;
             _resultValue.prefix = prefix;
             _resultValue.public_ = public_;

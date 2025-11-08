@@ -114,7 +114,7 @@ export class VpcSubnet extends pulumi.CustomResource {
      */
     declare public readonly label: pulumi.Output<string>;
     /**
-     * A list of Linode IDs that added to this subnet.
+     * A list of Linode that added to this subnet.
      */
     declare public /*out*/ readonly linodes: pulumi.Output<outputs.VpcSubnetLinode[]>;
     /**
@@ -190,7 +190,7 @@ export interface VpcSubnetState {
      */
     label?: pulumi.Input<string>;
     /**
-     * A list of Linode IDs that added to this subnet.
+     * A list of Linode that added to this subnet.
      */
     linodes?: pulumi.Input<pulumi.Input<inputs.VpcSubnetLinode>[]>;
     /**

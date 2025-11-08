@@ -131,6 +131,10 @@ export class Firewall extends pulumi.CustomResource {
      */
     declare public readonly inbounds: pulumi.Output<outputs.FirewallInbound[] | undefined>;
     /**
+     * A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+     */
+    declare public readonly interfaces: pulumi.Output<number[]>;
+    /**
      * This Firewall's unique label.
      */
     declare public readonly label: pulumi.Output<string>;
@@ -181,6 +185,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["inboundPolicy"] = state?.inboundPolicy;
             resourceInputs["inbounds"] = state?.inbounds;
+            resourceInputs["interfaces"] = state?.interfaces;
             resourceInputs["label"] = state?.label;
             resourceInputs["linodes"] = state?.linodes;
             resourceInputs["nodebalancers"] = state?.nodebalancers;
@@ -203,6 +208,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["inboundPolicy"] = args?.inboundPolicy;
             resourceInputs["inbounds"] = args?.inbounds;
+            resourceInputs["interfaces"] = args?.interfaces;
             resourceInputs["label"] = args?.label;
             resourceInputs["linodes"] = args?.linodes;
             resourceInputs["nodebalancers"] = args?.nodebalancers;
@@ -247,6 +253,10 @@ export interface FirewallState {
      * A firewall rule that specifies what inbound network traffic is allowed.
      */
     inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
+    /**
+     * A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+     */
+    interfaces?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * This Firewall's unique label.
      */
@@ -301,6 +311,10 @@ export interface FirewallArgs {
      * A firewall rule that specifies what inbound network traffic is allowed.
      */
     inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
+    /**
+     * A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
+     */
+    interfaces?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * This Firewall's unique label.
      */

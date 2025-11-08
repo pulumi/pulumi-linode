@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class GetVpcSubnetsResult {
     private @Nullable List<GetVpcSubnetsFilter> filters;
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of the interface.
      * 
      */
     private String id;
@@ -29,7 +29,7 @@ public final class GetVpcSubnetsResult {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return The unique id of the VPC subnet.
+     * @return ID of the interface.
      * 
      */
     public String id() {

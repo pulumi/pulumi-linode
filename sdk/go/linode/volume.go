@@ -96,7 +96,7 @@ import (
 type Volume struct {
 	pulumi.CustomResourceState
 
-	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
 	Encryption pulumi.StringOutput `pulumi:"encryption"`
 	// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 	FilesystemPath pulumi.StringOutput `pulumi:"filesystemPath"`
@@ -152,7 +152,7 @@ func GetVolume(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Volume resources.
 type volumeState struct {
-	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
 	Encryption *string `pulumi:"encryption"`
 	// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 	FilesystemPath *string `pulumi:"filesystemPath"`
@@ -176,7 +176,7 @@ type volumeState struct {
 }
 
 type VolumeState struct {
-	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
 	Encryption pulumi.StringPtrInput
 	// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 	FilesystemPath pulumi.StringPtrInput
@@ -204,7 +204,7 @@ func (VolumeState) ElementType() reflect.Type {
 }
 
 type volumeArgs struct {
-	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
 	Encryption *string `pulumi:"encryption"`
 	// The label of the Linode Volume
 	Label string `pulumi:"label"`
@@ -225,7 +225,7 @@ type volumeArgs struct {
 
 // The set of arguments for constructing a Volume resource.
 type VolumeArgs struct {
-	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+	// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
 	Encryption pulumi.StringPtrInput
 	// The label of the Linode Volume
 	Label pulumi.StringInput
@@ -331,7 +331,7 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 	return o
 }
 
-// Whether Block Storage Disk Encryption is enabled or disabled on this Volume. Note: Block Storage Disk Encryption is not currently available to all users.
+// Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
 func (o VolumeOutput) Encryption() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Encryption }).(pulumi.StringOutput)
 }
