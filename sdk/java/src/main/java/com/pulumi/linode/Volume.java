@@ -70,6 +70,51 @@ import javax.annotation.Nullable;
  * 
  * Volumes can also be attached using the Linode Instance config device map.
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.InstanceConfig;
+ * import com.pulumi.linode.InstanceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new Instance("foo", InstanceArgs.builder()
+ *             .region("us-east")
+ *             .type("g6-nanode-1")
+ *             .build());
+ * 
+ *         var fooInstanceConfig = new InstanceConfig("fooInstanceConfig", InstanceConfigArgs.builder()
+ *             .linodeId(foo.id())
+ *             .label("boot-existing-volume")
+ *             .kernel("linode/grub2")
+ *             .devices(InstanceConfigDevicesArgs.builder()
+ *                 .deviceName("sda")
+ *                 .volumeId(12345)
+ *                 .build())
+ *             .booted(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * Volumes may also be cloned from existing volumes.
  * 
  * <pre>

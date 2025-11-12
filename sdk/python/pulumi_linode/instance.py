@@ -1500,6 +1500,47 @@ class Instance(pulumi.CustomResource):
 
         Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
 
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        me = linode.get_profile()
+        web = linode.Instance("web",
+            label="complex_instance",
+            tags=["foo"],
+            region="us-central",
+            type="g6-nanode-1",
+            private_ip=True)
+        web_volume = linode.Volume("web_volume",
+            label="web_volume",
+            size=20,
+            region="us-central")
+        boot_disk = linode.InstanceDisk("boot_disk",
+            label="boot",
+            linode_id=web.id,
+            size=3000,
+            image="linode/ubuntu22.04",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            authorized_users=[me.username],
+            root_pass="terr4form-test")
+        boot_config = linode.InstanceConfig("boot_config",
+            label="boot_config",
+            linode_id=web.id,
+            devices=[
+                {
+                    "deviceName": "sda",
+                    "diskId": boot_disk.id,
+                },
+                {
+                    "deviceName": "sdb",
+                    "volumeId": web_volume.id,
+                },
+            ],
+            root_device="/dev/sda",
+            kernel="linode/latest-64bit",
+            booted=True)
+        ```
+
         ### Linode Instance Assigned to a Placement Group
 
         The following example shows how one might use this resource to configure a Linode instance assigned to a
@@ -1659,6 +1700,47 @@ class Instance(pulumi.CustomResource):
         ### Linode Instance with Explicit Configs and Disks
 
         Using explicit Instance Configs and Disks it is possible to create a more elaborate Linode instance. This can be used to provision multiple disks and volumes during Instance creation.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        me = linode.get_profile()
+        web = linode.Instance("web",
+            label="complex_instance",
+            tags=["foo"],
+            region="us-central",
+            type="g6-nanode-1",
+            private_ip=True)
+        web_volume = linode.Volume("web_volume",
+            label="web_volume",
+            size=20,
+            region="us-central")
+        boot_disk = linode.InstanceDisk("boot_disk",
+            label="boot",
+            linode_id=web.id,
+            size=3000,
+            image="linode/ubuntu22.04",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            authorized_users=[me.username],
+            root_pass="terr4form-test")
+        boot_config = linode.InstanceConfig("boot_config",
+            label="boot_config",
+            linode_id=web.id,
+            devices=[
+                {
+                    "deviceName": "sda",
+                    "diskId": boot_disk.id,
+                },
+                {
+                    "deviceName": "sdb",
+                    "volumeId": web_volume.id,
+                },
+            ],
+            root_device="/dev/sda",
+            kernel="linode/latest-64bit",
+            booted=True)
+        ```
 
         ### Linode Instance Assigned to a Placement Group
 

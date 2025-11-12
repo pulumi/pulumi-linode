@@ -26,7 +26,171 @@ import javax.annotation.Nullable;
  * 
  * Creating a simple bootable Linode Instance Configuration Profile:
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.InstanceDisk;
+ * import com.pulumi.linode.InstanceDiskArgs;
+ * import com.pulumi.linode.InstanceConfig;
+ * import com.pulumi.linode.InstanceConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_instance = new Instance("my-instance", InstanceArgs.builder()
+ *             .label("my-instance")
+ *             .type("g6-standard-1")
+ *             .region("us-southeast")
+ *             .build());
+ * 
+ *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()
+ *             .label("boot")
+ *             .linodeId(my_instance.id())
+ *             .size(my_instance.specs().applyValue(_specs -> _specs[0].disk()))
+ *             .image("linode/ubuntu22.04")
+ *             .rootPass("myc00lpass!")
+ *             .build());
+ * 
+ *         var my_config = new InstanceConfig("my-config", InstanceConfigArgs.builder()
+ *             .linodeId(my_instance.id())
+ *             .label("my-config")
+ *             .devices(InstanceConfigDevicesArgs.builder()
+ *                 .deviceName("sda")
+ *                 .diskId(boot.id())
+ *                 .build())
+ *             .booted(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * Creating a complex bootable Instance Configuration Profile with a VPC:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Vpc;
+ * import com.pulumi.linode.VpcArgs;
+ * import com.pulumi.linode.VpcSubnet;
+ * import com.pulumi.linode.VpcSubnetArgs;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.InstanceDisk;
+ * import com.pulumi.linode.InstanceDiskArgs;
+ * import com.pulumi.linode.InstanceConfig;
+ * import com.pulumi.linode.InstanceConfigArgs;
+ * import com.pulumi.linode.inputs.InstanceConfigHelperArgs;
+ * import com.pulumi.linode.inputs.InstanceConfigInterfaceArgs;
+ * import com.pulumi.linode.inputs.InstanceConfigInterfaceIpv4Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Create a VPC and a subnet
+ *         var foobar = new Vpc("foobar", VpcArgs.builder()
+ *             .label("my-vpc")
+ *             .region("us-mia")
+ *             .description("test description")
+ *             .build());
+ * 
+ *         var foobarVpcSubnet = new VpcSubnet("foobarVpcSubnet", VpcSubnetArgs.builder()
+ *             .vpcId(foobar.id())
+ *             .label("my-subnet")
+ *             .ipv4("10.0.4.0/24")
+ *             .build());
+ * 
+ *         var my_instance = new Instance("my-instance", InstanceArgs.builder()
+ *             .label("my-instance")
+ *             .type("g6-standard-1")
+ *             .region("us-mia")
+ *             .build());
+ * 
+ *         // Create a boot disk
+ *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()
+ *             .label("boot")
+ *             .linodeId(my_instance.id())
+ *             .size(my_instance.specs().applyValue(_specs -> _specs[0].disk() - 512))
+ *             .image("linode/ubuntu22.04")
+ *             .rootPass("myc00lpass!ciuw23asxbviwuc")
+ *             .build());
+ * 
+ *         // Create a swap disk
+ *         var swap = new InstanceDisk("swap", InstanceDiskArgs.builder()
+ *             .label("swap")
+ *             .linodeId(my_instance.id())
+ *             .size(512)
+ *             .filesystem("swap")
+ *             .build());
+ * 
+ *         var my_config = new InstanceConfig("my-config", InstanceConfigArgs.builder()
+ *             .linodeId(my_instance.id())
+ *             .label("my-config")
+ *             .devices(            
+ *                 InstanceConfigDevicesArgs.builder()
+ *                     .deviceName("sda")
+ *                     .diskId(boot.id())
+ *                     .build(),
+ *                 InstanceConfigDevicesArgs.builder()
+ *                     .deviceName("sdb")
+ *                     .diskId(swap.id())
+ *                     .build())
+ *             .helpers(InstanceConfigHelperArgs.builder()
+ *                 .updatedbDisabled(false)
+ *                 .build())
+ *             .interfaces(            
+ *                 InstanceConfigInterfaceArgs.builder()
+ *                     .purpose("public")
+ *                     .build(),
+ *                 InstanceConfigInterfaceArgs.builder()
+ *                     .purpose("vlan")
+ *                     .label("my-vlan")
+ *                     .ipamAddress("10.0.0.2/24")
+ *                     .build(),
+ *                 InstanceConfigInterfaceArgs.builder()
+ *                     .purpose("vpc")
+ *                     .subnetId(foobarVpcSubnet.id())
+ *                     .ipv4(InstanceConfigInterfaceIpv4Args.builder()
+ *                         .vpc("10.0.4.250")
+ *                         .build())
+ *                     .build())
+ *             .booted(true)
+ *             .build());
+ * 
+ *         // Unsupported provisioner type remote-exec
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

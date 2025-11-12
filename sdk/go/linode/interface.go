@@ -228,6 +228,84 @@ import (
 //
 // ### Complete Example with Linode
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_instance, err := linode.NewInstance(ctx, "my-instance", &linode.InstanceArgs{
+//				Label:               pulumi.String("my-instance"),
+//				Region:              pulumi.String("us-mia"),
+//				Type:                pulumi.String("g6-standard-1"),
+//				InterfaceGeneration: pulumi.String("linode"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			boot, err := linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
+//				Label:    pulumi.String("boot"),
+//				LinodeId: my_instance.ID(),
+//				Size: pulumi.Int(my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (*int, error) {
+//					return &specs[0].Disk, nil
+//				}).(pulumi.IntPtrOutput)),
+//				Image:    pulumi.String("linode/debian12"),
+//				RootPass: pulumi.String("this-is-NOT-a-safe-password"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			public, err := linode.NewInterface(ctx, "public", &linode.InterfaceArgs{
+//				LinodeId: my_instance.ID(),
+//				Public: &linode.InterfacePublicArgs{
+//					Ipv4: &linode.InterfacePublicIpv4Args{
+//						Addresses: linode.InterfacePublicIpv4AddressArray{
+//							&linode.InterfacePublicIpv4AddressArgs{
+//								Address: pulumi.String("auto"),
+//								Primary: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//					Ipv6: &linode.InterfacePublicIpv6Args{
+//						Ranges: linode.InterfacePublicIpv6RangeArray{
+//							&linode.InterfacePublicIpv6RangeArgs{
+//								Range: pulumi.String("/64"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewInstanceConfig(ctx, "my-config", &linode.InstanceConfigArgs{
+//				LinodeId: my_instance.ID(),
+//				Label:    pulumi.String("my-config"),
+//				Devices: linode.InstanceConfigDevicesArgs{
+//					map[string]interface{}{
+//						"deviceName": "sda",
+//						"diskId":     boot.ID(),
+//					},
+//				},
+//				Booted: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				public,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Notes
 //
 // * Each Linode instance can have up to 3 network interfaces.

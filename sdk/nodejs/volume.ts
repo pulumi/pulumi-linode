@@ -34,6 +34,26 @@ import * as utilities from "./utilities";
  *
  * Volumes can also be attached using the Linode Instance config device map.
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foo = new linode.Instance("foo", {
+ *     region: "us-east",
+ *     type: "g6-nanode-1",
+ * });
+ * const fooInstanceConfig = new linode.InstanceConfig("foo", {
+ *     linodeId: foo.id,
+ *     label: "boot-existing-volume",
+ *     kernel: "linode/grub2",
+ *     devices: [{
+ *         deviceName: "sda",
+ *         volumeId: 12345,
+ *     }],
+ *     booted: true,
+ * });
+ * ```
+ *
  * Volumes may also be cloned from existing volumes.
  *
  * ```typescript
