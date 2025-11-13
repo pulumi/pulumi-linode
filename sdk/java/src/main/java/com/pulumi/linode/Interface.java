@@ -267,6 +267,87 @@ import javax.annotation.Nullable;
  * 
  * ### Complete Example with Linode
  * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.InstanceDisk;
+ * import com.pulumi.linode.InstanceDiskArgs;
+ * import com.pulumi.linode.Interface;
+ * import com.pulumi.linode.InterfaceArgs;
+ * import com.pulumi.linode.inputs.InterfacePublicArgs;
+ * import com.pulumi.linode.inputs.InterfacePublicIpv4Args;
+ * import com.pulumi.linode.inputs.InterfacePublicIpv6Args;
+ * import com.pulumi.linode.InstanceConfig;
+ * import com.pulumi.linode.InstanceConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_instance = new Instance("my-instance", InstanceArgs.builder()
+ *             .label("my-instance")
+ *             .region("us-mia")
+ *             .type("g6-standard-1")
+ *             .interfaceGeneration("linode")
+ *             .build());
+ * 
+ *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()
+ *             .label("boot")
+ *             .linodeId(my_instance.id())
+ *             .size(my_instance.specs().applyValue(_specs -> _specs[0].disk()))
+ *             .image("linode/debian12")
+ *             .rootPass("this-is-NOT-a-safe-password")
+ *             .build());
+ * 
+ *         var public_ = new Interface("public", InterfaceArgs.builder()
+ *             .linodeId(my_instance.id())
+ *             .public_(InterfacePublicArgs.builder()
+ *                 .ipv4(InterfacePublicIpv4Args.builder()
+ *                     .addresses(InterfacePublicIpv4AddressArgs.builder()
+ *                         .address("auto")
+ *                         .primary(true)
+ *                         .build())
+ *                     .build())
+ *                 .ipv6(InterfacePublicIpv6Args.builder()
+ *                     .ranges(InterfacePublicIpv6RangeArgs.builder()
+ *                         .range("/64")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var my_config = new InstanceConfig("my-config", InstanceConfigArgs.builder()
+ *             .linodeId(my_instance.id())
+ *             .label("my-config")
+ *             .devices(InstanceConfigDevicesArgs.builder()
+ *                 .deviceName("sda")
+ *                 .diskId(boot.id())
+ *                 .build())
+ *             .booted(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(public_)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Notes
  * 
  * * Each Linode instance can have up to 3 network interfaces.

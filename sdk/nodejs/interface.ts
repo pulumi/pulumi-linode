@@ -134,6 +134,52 @@ import * as utilities from "./utilities";
  *
  * ### Complete Example with Linode
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_instance = new linode.Instance("my-instance", {
+ *     label: "my-instance",
+ *     region: "us-mia",
+ *     type: "g6-standard-1",
+ *     interfaceGeneration: "linode",
+ * });
+ * const boot = new linode.InstanceDisk("boot", {
+ *     label: "boot",
+ *     linodeId: my_instance.id,
+ *     size: my_instance.specs.apply(specs => specs[0].disk),
+ *     image: "linode/debian12",
+ *     rootPass: "this-is-NOT-a-safe-password",
+ * });
+ * const _public = new linode.Interface("public", {
+ *     linodeId: my_instance.id,
+ *     "public": {
+ *         ipv4: {
+ *             addresses: [{
+ *                 address: "auto",
+ *                 primary: true,
+ *             }],
+ *         },
+ *         ipv6: {
+ *             ranges: [{
+ *                 range: "/64",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const my_config = new linode.InstanceConfig("my-config", {
+ *     linodeId: my_instance.id,
+ *     label: "my-config",
+ *     devices: [{
+ *         deviceName: "sda",
+ *         diskId: boot.id,
+ *     }],
+ *     booted: true,
+ * }, {
+ *     dependsOn: [_public],
+ * });
+ * ```
+ *
  * ## Notes
  *
  * * Each Linode instance can have up to 3 network interfaces.
