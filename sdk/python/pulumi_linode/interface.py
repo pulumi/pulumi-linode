@@ -361,6 +361,47 @@ class Interface(pulumi.CustomResource):
 
         ### Complete Example with Linode
 
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            region="us-mia",
+            type="g6-standard-1",
+            interface_generation="linode")
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id,
+            size=my_instance.specs[0].disk,
+            image="linode/debian12",
+            root_pass="this-is-NOT-a-safe-password")
+        public = linode.Interface("public",
+            linode_id=my_instance.id,
+            public={
+                "ipv4": {
+                    "addresses": [{
+                        "address": "auto",
+                        "primary": True,
+                    }],
+                },
+                "ipv6": {
+                    "ranges": [{
+                        "range": "/64",
+                    }],
+                },
+            })
+        my_config = linode.InstanceConfig("my-config",
+            linode_id=my_instance.id,
+            label="my-config",
+            devices=[{
+                "deviceName": "sda",
+                "diskId": boot.id,
+            }],
+            booted=True,
+            opts = pulumi.ResourceOptions(depends_on=[public]))
+        ```
+
         ## Notes
 
         * Each Linode instance can have up to 3 network interfaces.
@@ -514,6 +555,47 @@ class Interface(pulumi.CustomResource):
         ```
 
         ### Complete Example with Linode
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            region="us-mia",
+            type="g6-standard-1",
+            interface_generation="linode")
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id,
+            size=my_instance.specs[0].disk,
+            image="linode/debian12",
+            root_pass="this-is-NOT-a-safe-password")
+        public = linode.Interface("public",
+            linode_id=my_instance.id,
+            public={
+                "ipv4": {
+                    "addresses": [{
+                        "address": "auto",
+                        "primary": True,
+                    }],
+                },
+                "ipv6": {
+                    "ranges": [{
+                        "range": "/64",
+                    }],
+                },
+            })
+        my_config = linode.InstanceConfig("my-config",
+            linode_id=my_instance.id,
+            label="my-config",
+            devices=[{
+                "deviceName": "sda",
+                "diskId": boot.id,
+            }],
+            booted=True,
+            opts = pulumi.ResourceOptions(depends_on=[public]))
+        ```
 
         ## Notes
 

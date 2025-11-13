@@ -513,7 +513,98 @@ class InstanceConfig(pulumi.CustomResource):
 
         Creating a simple bootable Linode Instance Configuration Profile:
 
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            type="g6-standard-1",
+            region="us-southeast")
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id,
+            size=my_instance.specs[0].disk,
+            image="linode/ubuntu22.04",
+            root_pass="myc00lpass!")
+        my_config = linode.InstanceConfig("my-config",
+            linode_id=my_instance.id,
+            label="my-config",
+            devices=[{
+                "deviceName": "sda",
+                "diskId": boot.id,
+            }],
+            booted=True)
+        ```
+
         Creating a complex bootable Instance Configuration Profile with a VPC:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # Create a VPC and a subnet
+        foobar = linode.Vpc("foobar",
+            label="my-vpc",
+            region="us-mia",
+            description="test description")
+        foobar_vpc_subnet = linode.VpcSubnet("foobar",
+            vpc_id=foobar.id,
+            label="my-subnet",
+            ipv4="10.0.4.0/24")
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            type="g6-standard-1",
+            region="us-mia")
+        # Create a boot disk
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id,
+            size=my_instance.specs.apply(lambda specs: specs[0].disk - 512),
+            image="linode/ubuntu22.04",
+            root_pass="myc00lpass!ciuw23asxbviwuc")
+        # Create a swap disk
+        swap = linode.InstanceDisk("swap",
+            label="swap",
+            linode_id=my_instance.id,
+            size=512,
+            filesystem="swap")
+        my_config = linode.InstanceConfig("my-config",
+            linode_id=my_instance.id,
+            label="my-config",
+            devices=[
+                {
+                    "deviceName": "sda",
+                    "diskId": boot.id,
+                },
+                {
+                    "deviceName": "sdb",
+                    "diskId": swap.id,
+                },
+            ],
+            helpers=[{
+                "updatedb_disabled": False,
+            }],
+            interfaces=[
+                {
+                    "purpose": "public",
+                },
+                {
+                    "purpose": "vlan",
+                    "label": "my-vlan",
+                    "ipam_address": "10.0.0.2/24",
+                },
+                {
+                    "purpose": "vpc",
+                    "subnet_id": foobar_vpc_subnet.id,
+                    "ipv4": {
+                        "vpc": "10.0.4.250",
+                    },
+                },
+            ],
+            booted=True)
+        # Unsupported provisioner type remote-exec
+        ```
 
         ## Import
 
@@ -558,7 +649,98 @@ class InstanceConfig(pulumi.CustomResource):
 
         Creating a simple bootable Linode Instance Configuration Profile:
 
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            type="g6-standard-1",
+            region="us-southeast")
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id,
+            size=my_instance.specs[0].disk,
+            image="linode/ubuntu22.04",
+            root_pass="myc00lpass!")
+        my_config = linode.InstanceConfig("my-config",
+            linode_id=my_instance.id,
+            label="my-config",
+            devices=[{
+                "deviceName": "sda",
+                "diskId": boot.id,
+            }],
+            booted=True)
+        ```
+
         Creating a complex bootable Instance Configuration Profile with a VPC:
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # Create a VPC and a subnet
+        foobar = linode.Vpc("foobar",
+            label="my-vpc",
+            region="us-mia",
+            description="test description")
+        foobar_vpc_subnet = linode.VpcSubnet("foobar",
+            vpc_id=foobar.id,
+            label="my-subnet",
+            ipv4="10.0.4.0/24")
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            type="g6-standard-1",
+            region="us-mia")
+        # Create a boot disk
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id,
+            size=my_instance.specs.apply(lambda specs: specs[0].disk - 512),
+            image="linode/ubuntu22.04",
+            root_pass="myc00lpass!ciuw23asxbviwuc")
+        # Create a swap disk
+        swap = linode.InstanceDisk("swap",
+            label="swap",
+            linode_id=my_instance.id,
+            size=512,
+            filesystem="swap")
+        my_config = linode.InstanceConfig("my-config",
+            linode_id=my_instance.id,
+            label="my-config",
+            devices=[
+                {
+                    "deviceName": "sda",
+                    "diskId": boot.id,
+                },
+                {
+                    "deviceName": "sdb",
+                    "diskId": swap.id,
+                },
+            ],
+            helpers=[{
+                "updatedb_disabled": False,
+            }],
+            interfaces=[
+                {
+                    "purpose": "public",
+                },
+                {
+                    "purpose": "vlan",
+                    "label": "my-vlan",
+                    "ipam_address": "10.0.0.2/24",
+                },
+                {
+                    "purpose": "vpc",
+                    "subnet_id": foobar_vpc_subnet.id,
+                    "ipv4": {
+                        "vpc": "10.0.4.250",
+                    },
+                },
+            ],
+            booted=True)
+        # Unsupported provisioner type remote-exec
+        ```
 
         ## Import
 

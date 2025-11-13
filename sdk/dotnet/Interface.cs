@@ -211,6 +211,84 @@ namespace Pulumi.Linode
     /// 
     /// ### Complete Example with Linode
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     {
+    ///         Label = "my-instance",
+    ///         Region = "us-mia",
+    ///         Type = "g6-standard-1",
+    ///         InterfaceGeneration = "linode",
+    ///     });
+    /// 
+    ///     var boot = new Linode.InstanceDisk("boot", new()
+    ///     {
+    ///         Label = "boot",
+    ///         LinodeId = my_instance.Id,
+    ///         Size = my_instance.Specs.Apply(specs =&gt; specs[0].Disk),
+    ///         Image = "linode/debian12",
+    ///         RootPass = "this-is-NOT-a-safe-password",
+    ///     });
+    /// 
+    ///     var @public = new Linode.Interface("public", new()
+    ///     {
+    ///         LinodeId = my_instance.Id,
+    ///         Public = new Linode.Inputs.InterfacePublicArgs
+    ///         {
+    ///             Ipv4 = new Linode.Inputs.InterfacePublicIpv4Args
+    ///             {
+    ///                 Addresses = new[]
+    ///                 {
+    ///                     new Linode.Inputs.InterfacePublicIpv4AddressArgs
+    ///                     {
+    ///                         Address = "auto",
+    ///                         Primary = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Ipv6 = new Linode.Inputs.InterfacePublicIpv6Args
+    ///             {
+    ///                 Ranges = new[]
+    ///                 {
+    ///                     new Linode.Inputs.InterfacePublicIpv6RangeArgs
+    ///                     {
+    ///                         Range = "/64",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var my_config = new Linode.InstanceConfig("my-config", new()
+    ///     {
+    ///         LinodeId = my_instance.Id,
+    ///         Label = "my-config",
+    ///         Devices = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "deviceName", "sda" },
+    ///                 { "diskId", boot.Id },
+    ///             },
+    ///         },
+    ///         Booted = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @public,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Notes
     /// 
     /// * Each Linode instance can have up to 3 network interfaces.

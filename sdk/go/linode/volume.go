@@ -59,6 +59,46 @@ import (
 //
 // Volumes can also be attached using the Linode Instance config device map.
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
+//				Region: pulumi.String("us-east"),
+//				Type:   pulumi.String("g6-nanode-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewInstanceConfig(ctx, "foo", &linode.InstanceConfigArgs{
+//				LinodeId: foo.ID(),
+//				Label:    pulumi.String("boot-existing-volume"),
+//				Kernel:   pulumi.String("linode/grub2"),
+//				Devices: linode.InstanceConfigDevicesArgs{
+//					map[string]interface{}{
+//						"deviceName": "sda",
+//						"volumeId":   12345,
+//					},
+//				},
+//				Booted: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // Volumes may also be cloned from existing volumes.
 //
 // ```go
