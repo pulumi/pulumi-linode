@@ -57,7 +57,6 @@ export function getObjectStorageEndpoints(args?: GetObjectStorageEndpointsArgs, 
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", {
-        "endpoints": args.endpoints,
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
@@ -68,7 +67,6 @@ export function getObjectStorageEndpoints(args?: GetObjectStorageEndpointsArgs, 
  * A collection of arguments for invoking getObjectStorageEndpoints.
  */
 export interface GetObjectStorageEndpointsArgs {
-    endpoints?: inputs.GetObjectStorageEndpointsEndpoint[];
     filters?: inputs.GetObjectStorageEndpointsFilter[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -84,7 +82,7 @@ export interface GetObjectStorageEndpointsArgs {
  * A collection of values returned by getObjectStorageEndpoints.
  */
 export interface GetObjectStorageEndpointsResult {
-    readonly endpoints?: outputs.GetObjectStorageEndpointsEndpoint[];
+    readonly endpoints: outputs.GetObjectStorageEndpointsEndpoint[];
     readonly filters?: outputs.GetObjectStorageEndpointsFilter[];
     readonly id: string;
     readonly order?: string;
@@ -141,7 +139,6 @@ export function getObjectStorageEndpointsOutput(args?: GetObjectStorageEndpoints
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", {
-        "endpoints": args.endpoints,
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
@@ -152,7 +149,6 @@ export function getObjectStorageEndpointsOutput(args?: GetObjectStorageEndpoints
  * A collection of arguments for invoking getObjectStorageEndpoints.
  */
 export interface GetObjectStorageEndpointsOutputArgs {
-    endpoints?: pulumi.Input<pulumi.Input<inputs.GetObjectStorageEndpointsEndpointArgs>[]>;
     filters?: pulumi.Input<pulumi.Input<inputs.GetObjectStorageEndpointsFilterArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)

@@ -21,7 +21,7 @@ public final class GetKernelsResult {
      * 
      */
     private String id;
-    private @Nullable List<GetKernelsKernel> kernels;
+    private List<GetKernelsKernel> kernels;
     private @Nullable String order;
     private @Nullable String orderBy;
 
@@ -37,7 +37,7 @@ public final class GetKernelsResult {
         return this.id;
     }
     public List<GetKernelsKernel> kernels() {
-        return this.kernels == null ? List.of() : this.kernels;
+        return this.kernels;
     }
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
@@ -57,7 +57,7 @@ public final class GetKernelsResult {
     public static final class Builder {
         private @Nullable List<GetKernelsFilter> filters;
         private String id;
-        private @Nullable List<GetKernelsKernel> kernels;
+        private List<GetKernelsKernel> kernels;
         private @Nullable String order;
         private @Nullable String orderBy;
         public Builder() {}
@@ -88,8 +88,10 @@ public final class GetKernelsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder kernels(@Nullable List<GetKernelsKernel> kernels) {
-
+        public Builder kernels(List<GetKernelsKernel> kernels) {
+            if (kernels == null) {
+              throw new MissingRequiredPropertyException("GetKernelsResult", "kernels");
+            }
             this.kernels = kernels;
             return this;
         }

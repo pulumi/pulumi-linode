@@ -13,8 +13,17 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetDatabaseMysqlV2PendingUpdateResult
     {
+        /// <summary>
+        /// The time when a mandatory update needs to be applied.
+        /// </summary>
         public readonly string Deadline;
+        /// <summary>
+        /// A description of the update.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The date and time a maintenance update will be applied.
+        /// </summary>
         public readonly string PlannedFor;
 
         [OutputConstructor]

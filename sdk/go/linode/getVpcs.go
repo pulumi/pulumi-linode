@@ -80,7 +80,6 @@ func GetVpcs(ctx *pulumi.Context, args *GetVpcsArgs, opts ...pulumi.InvokeOption
 // A collection of arguments for invoking getVpcs.
 type GetVpcsArgs struct {
 	Filters []GetVpcsFilter `pulumi:"filters"`
-	Vpcs    []GetVpcsVpc    `pulumi:"vpcs"`
 }
 
 // A collection of values returned by getVpcs.
@@ -103,7 +102,6 @@ func GetVpcsOutput(ctx *pulumi.Context, args GetVpcsOutputArgs, opts ...pulumi.I
 // A collection of arguments for invoking getVpcs.
 type GetVpcsOutputArgs struct {
 	Filters GetVpcsFilterArrayInput `pulumi:"filters"`
-	Vpcs    GetVpcsVpcArrayInput    `pulumi:"vpcs"`
 }
 
 func (GetVpcsOutputArgs) ElementType() reflect.Type {

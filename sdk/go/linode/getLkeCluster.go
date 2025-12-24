@@ -51,12 +51,8 @@ func LookupLkeCluster(ctx *pulumi.Context, args *LookupLkeClusterArgs, opts ...p
 
 // A collection of arguments for invoking getLkeCluster.
 type LookupLkeClusterArgs struct {
-	// The settings for the Kubernetes Control Plane.
-	ControlPlanes []GetLkeClusterControlPlane `pulumi:"controlPlanes"`
 	// The LKE Cluster's ID.
 	Id int `pulumi:"id"`
-	// Node pools associated with this cluster.
-	Pools []GetLkeClusterPool `pulumi:"pools"`
 }
 
 // A collection of values returned by getLkeCluster.
@@ -91,7 +87,7 @@ type LookupLkeClusterResult struct {
 	SubnetId int `pulumi:"subnetId"`
 	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
-	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only populated when apiVersion is set to `v4beta`.**
 	Tier string `pulumi:"tier"`
 	// When this Kubernetes cluster was updated.
 	Updated string `pulumi:"updated"`
@@ -110,12 +106,8 @@ func LookupLkeClusterOutput(ctx *pulumi.Context, args LookupLkeClusterOutputArgs
 
 // A collection of arguments for invoking getLkeCluster.
 type LookupLkeClusterOutputArgs struct {
-	// The settings for the Kubernetes Control Plane.
-	ControlPlanes GetLkeClusterControlPlaneArrayInput `pulumi:"controlPlanes"`
 	// The LKE Cluster's ID.
 	Id pulumi.IntInput `pulumi:"id"`
-	// Node pools associated with this cluster.
-	Pools GetLkeClusterPoolArrayInput `pulumi:"pools"`
 }
 
 func (LookupLkeClusterOutputArgs) ElementType() reflect.Type {
@@ -212,7 +204,7 @@ func (o LookupLkeClusterResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only populated when apiVersion is set to `v4beta`.**
 func (o LookupLkeClusterResultOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Tier }).(pulumi.StringOutput)
 }

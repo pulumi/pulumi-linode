@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.linode.inputs.GetObjectStorageEndpointsEndpointArgs;
 import com.pulumi.linode.inputs.GetObjectStorageEndpointsFilterArgs;
 import java.lang.String;
 import java.util.List;
@@ -17,13 +16,6 @@ import javax.annotation.Nullable;
 public final class GetObjectStorageEndpointsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetObjectStorageEndpointsArgs Empty = new GetObjectStorageEndpointsArgs();
-
-    @Import(name="endpoints")
-    private @Nullable Output<List<GetObjectStorageEndpointsEndpointArgs>> endpoints;
-
-    public Optional<Output<List<GetObjectStorageEndpointsEndpointArgs>>> endpoints() {
-        return Optional.ofNullable(this.endpoints);
-    }
 
     @Import(name="filters")
     private @Nullable Output<List<GetObjectStorageEndpointsFilterArgs>> filters;
@@ -65,7 +57,6 @@ public final class GetObjectStorageEndpointsArgs extends com.pulumi.resources.In
     private GetObjectStorageEndpointsArgs() {}
 
     private GetObjectStorageEndpointsArgs(GetObjectStorageEndpointsArgs $) {
-        this.endpoints = $.endpoints;
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
@@ -87,19 +78,6 @@ public final class GetObjectStorageEndpointsArgs extends com.pulumi.resources.In
 
         public Builder(GetObjectStorageEndpointsArgs defaults) {
             $ = new GetObjectStorageEndpointsArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder endpoints(@Nullable Output<List<GetObjectStorageEndpointsEndpointArgs>> endpoints) {
-            $.endpoints = endpoints;
-            return this;
-        }
-
-        public Builder endpoints(List<GetObjectStorageEndpointsEndpointArgs> endpoints) {
-            return endpoints(Output.of(endpoints));
-        }
-
-        public Builder endpoints(GetObjectStorageEndpointsEndpointArgs... endpoints) {
-            return endpoints(List.of(endpoints));
         }
 
         public Builder filters(@Nullable Output<List<GetObjectStorageEndpointsFilterArgs>> filters) {

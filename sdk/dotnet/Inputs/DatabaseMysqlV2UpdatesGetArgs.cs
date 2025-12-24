@@ -12,17 +12,29 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class DatabaseMysqlV2UpdatesGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("dayOfWeek", required: true)]
-        public Input<int> DayOfWeek { get; set; } = null!;
+        /// <summary>
+        /// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+        /// </summary>
+        [Input("dayOfWeek")]
+        public Input<int>? DayOfWeek { get; set; }
 
-        [Input("duration", required: true)]
-        public Input<int> Duration { get; set; } = null!;
+        /// <summary>
+        /// The maximum maintenance window time in hours.
+        /// </summary>
+        [Input("duration")]
+        public Input<int>? Duration { get; set; }
 
-        [Input("frequency", required: true)]
-        public Input<string> Frequency { get; set; } = null!;
+        /// <summary>
+        /// How frequently maintenance occurs. Currently can only be weekly.
+        /// </summary>
+        [Input("frequency")]
+        public Input<string>? Frequency { get; set; }
 
-        [Input("hourOfDay", required: true)]
-        public Input<int> HourOfDay { get; set; } = null!;
+        /// <summary>
+        /// How frequently maintenance occurs. Currently can only be weekly.
+        /// </summary>
+        [Input("hourOfDay")]
+        public Input<int>? HourOfDay { get; set; }
 
         public DatabaseMysqlV2UpdatesGetArgs()
         {

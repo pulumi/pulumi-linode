@@ -55,7 +55,6 @@ export function getKernels(args?: GetKernelsArgs, opts?: pulumi.InvokeOptions): 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getKernels:getKernels", {
         "filters": args.filters,
-        "kernels": args.kernels,
         "order": args.order,
         "orderBy": args.orderBy,
     }, opts);
@@ -66,7 +65,6 @@ export function getKernels(args?: GetKernelsArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetKernelsArgs {
     filters?: inputs.GetKernelsFilter[];
-    kernels?: inputs.GetKernelsKernel[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
@@ -86,7 +84,7 @@ export interface GetKernelsResult {
      * The unique ID of this Kernel.
      */
     readonly id: string;
-    readonly kernels?: outputs.GetKernelsKernel[];
+    readonly kernels: outputs.GetKernelsKernel[];
     readonly order?: string;
     readonly orderBy?: string;
 }
@@ -139,7 +137,6 @@ export function getKernelsOutput(args?: GetKernelsOutputArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getKernels:getKernels", {
         "filters": args.filters,
-        "kernels": args.kernels,
         "order": args.order,
         "orderBy": args.orderBy,
     }, opts);
@@ -150,7 +147,6 @@ export function getKernelsOutput(args?: GetKernelsOutputArgs, opts?: pulumi.Invo
  */
 export interface GetKernelsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetKernelsFilterArgs>[]>;
-    kernels?: pulumi.Input<pulumi.Input<inputs.GetKernelsKernelArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */

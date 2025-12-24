@@ -67,8 +67,7 @@ type GetVolumesArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy *string            `pulumi:"orderBy"`
-	Volumes []GetVolumesVolume `pulumi:"volumes"`
+	OrderBy *string `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getVolumes.
@@ -96,8 +95,7 @@ type GetVolumesOutputArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy pulumi.StringPtrInput      `pulumi:"orderBy"`
-	Volumes GetVolumesVolumeArrayInput `pulumi:"volumes"`
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
 func (GetVolumesOutputArgs) ElementType() reflect.Type {

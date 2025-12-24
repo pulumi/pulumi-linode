@@ -21,7 +21,7 @@ public final class GetLkeClustersResult {
      * 
      */
     private String id;
-    private @Nullable List<GetLkeClustersLkeCluster> lkeClusters;
+    private List<GetLkeClustersLkeCluster> lkeClusters;
     private @Nullable String order;
     private @Nullable String orderBy;
 
@@ -37,7 +37,7 @@ public final class GetLkeClustersResult {
         return this.id;
     }
     public List<GetLkeClustersLkeCluster> lkeClusters() {
-        return this.lkeClusters == null ? List.of() : this.lkeClusters;
+        return this.lkeClusters;
     }
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
@@ -57,7 +57,7 @@ public final class GetLkeClustersResult {
     public static final class Builder {
         private @Nullable List<GetLkeClustersFilter> filters;
         private String id;
-        private @Nullable List<GetLkeClustersLkeCluster> lkeClusters;
+        private List<GetLkeClustersLkeCluster> lkeClusters;
         private @Nullable String order;
         private @Nullable String orderBy;
         public Builder() {}
@@ -88,8 +88,10 @@ public final class GetLkeClustersResult {
             return this;
         }
         @CustomType.Setter
-        public Builder lkeClusters(@Nullable List<GetLkeClustersLkeCluster> lkeClusters) {
-
+        public Builder lkeClusters(List<GetLkeClustersLkeCluster> lkeClusters) {
+            if (lkeClusters == null) {
+              throw new MissingRequiredPropertyException("GetLkeClustersResult", "lkeClusters");
+            }
             this.lkeClusters = lkeClusters;
             return this;
         }

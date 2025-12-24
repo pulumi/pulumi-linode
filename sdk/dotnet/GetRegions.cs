@@ -188,14 +188,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("regions")]
-        private List<Inputs.GetRegionsRegionArgs>? _regions;
-        public List<Inputs.GetRegionsRegionArgs> Regions
-        {
-            get => _regions ?? (_regions = new List<Inputs.GetRegionsRegionArgs>());
-            set => _regions = value;
-        }
-
         public GetRegionsArgs()
         {
         }
@@ -210,14 +202,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetRegionsFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("regions")]
-        private InputList<Inputs.GetRegionsRegionInputArgs>? _regions;
-        public InputList<Inputs.GetRegionsRegionInputArgs> Regions
-        {
-            get => _regions ?? (_regions = new InputList<Inputs.GetRegionsRegionInputArgs>());
-            set => _regions = value;
         }
 
         public GetRegionsInvokeArgs()

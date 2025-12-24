@@ -12,8 +12,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPlacementGroupsPlacementGroup {
@@ -36,12 +34,12 @@ public final class GetPlacementGroupsPlacementGroup {
      * @return A set of Linodes currently assigned to this Placement Group.
      * 
      */
-    private @Nullable List<GetPlacementGroupsPlacementGroupMember> members;
+    private List<GetPlacementGroupsPlacementGroupMember> members;
     /**
      * @return Any Linodes that are being migrated to or from the placement group.
      * 
      */
-    private @Nullable GetPlacementGroupsPlacementGroupMigrations migrations;
+    private GetPlacementGroupsPlacementGroupMigrations migrations;
     /**
      * @return Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      * 
@@ -85,14 +83,14 @@ public final class GetPlacementGroupsPlacementGroup {
      * 
      */
     public List<GetPlacementGroupsPlacementGroupMember> members() {
-        return this.members == null ? List.of() : this.members;
+        return this.members;
     }
     /**
      * @return Any Linodes that are being migrated to or from the placement group.
      * 
      */
-    public Optional<GetPlacementGroupsPlacementGroupMigrations> migrations() {
-        return Optional.ofNullable(this.migrations);
+    public GetPlacementGroupsPlacementGroupMigrations migrations() {
+        return this.migrations;
     }
     /**
      * @return Whether Linodes must be able to become compliant during assignment. (Default `strict`)
@@ -128,8 +126,8 @@ public final class GetPlacementGroupsPlacementGroup {
         private Integer id;
         private Boolean isCompliant;
         private String label;
-        private @Nullable List<GetPlacementGroupsPlacementGroupMember> members;
-        private @Nullable GetPlacementGroupsPlacementGroupMigrations migrations;
+        private List<GetPlacementGroupsPlacementGroupMember> members;
+        private GetPlacementGroupsPlacementGroupMigrations migrations;
         private String placementGroupPolicy;
         private String placementGroupType;
         private String region;
@@ -171,8 +169,10 @@ public final class GetPlacementGroupsPlacementGroup {
             return this;
         }
         @CustomType.Setter
-        public Builder members(@Nullable List<GetPlacementGroupsPlacementGroupMember> members) {
-
+        public Builder members(List<GetPlacementGroupsPlacementGroupMember> members) {
+            if (members == null) {
+              throw new MissingRequiredPropertyException("GetPlacementGroupsPlacementGroup", "members");
+            }
             this.members = members;
             return this;
         }
@@ -180,8 +180,10 @@ public final class GetPlacementGroupsPlacementGroup {
             return members(List.of(members));
         }
         @CustomType.Setter
-        public Builder migrations(@Nullable GetPlacementGroupsPlacementGroupMigrations migrations) {
-
+        public Builder migrations(GetPlacementGroupsPlacementGroupMigrations migrations) {
+            if (migrations == null) {
+              throw new MissingRequiredPropertyException("GetPlacementGroupsPlacementGroup", "migrations");
+            }
             this.migrations = migrations;
             return this;
         }

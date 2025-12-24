@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 public final class GetObjectStorageQuotasResult {
     private @Nullable List<GetObjectStorageQuotasFilter> filters;
     private String id;
-    private @Nullable List<GetObjectStorageQuotasQuota> quotas;
+    private List<GetObjectStorageQuotasQuota> quotas;
 
     private GetObjectStorageQuotasResult() {}
     public List<GetObjectStorageQuotasFilter> filters() {
@@ -26,7 +26,7 @@ public final class GetObjectStorageQuotasResult {
         return this.id;
     }
     public List<GetObjectStorageQuotasQuota> quotas() {
-        return this.quotas == null ? List.of() : this.quotas;
+        return this.quotas;
     }
 
     public static Builder builder() {
@@ -40,7 +40,7 @@ public final class GetObjectStorageQuotasResult {
     public static final class Builder {
         private @Nullable List<GetObjectStorageQuotasFilter> filters;
         private String id;
-        private @Nullable List<GetObjectStorageQuotasQuota> quotas;
+        private List<GetObjectStorageQuotasQuota> quotas;
         public Builder() {}
         public Builder(GetObjectStorageQuotasResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -67,8 +67,10 @@ public final class GetObjectStorageQuotasResult {
             return this;
         }
         @CustomType.Setter
-        public Builder quotas(@Nullable List<GetObjectStorageQuotasQuota> quotas) {
-
+        public Builder quotas(List<GetObjectStorageQuotasQuota> quotas) {
+            if (quotas == null) {
+              throw new MissingRequiredPropertyException("GetObjectStorageQuotasResult", "quotas");
+            }
             this.quotas = quotas;
             return this;
         }

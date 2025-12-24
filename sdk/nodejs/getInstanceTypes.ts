@@ -62,7 +62,6 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "types": args.types,
     }, opts);
 }
 
@@ -79,7 +78,6 @@ export interface GetInstanceTypesArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: string;
-    types?: inputs.GetInstanceTypesType[];
 }
 
 /**
@@ -93,7 +91,7 @@ export interface GetInstanceTypesResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly types?: outputs.GetInstanceTypesType[];
+    readonly types: outputs.GetInstanceTypesType[];
 }
 /**
  * Provides information about Linode Instance types that match a set of filters.
@@ -151,7 +149,6 @@ export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?:
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "types": args.types,
     }, opts);
 }
 
@@ -168,5 +165,4 @@ export interface GetInstanceTypesOutputArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: pulumi.Input<string>;
-    types?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeArgs>[]>;
 }

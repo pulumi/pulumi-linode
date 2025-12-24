@@ -56,7 +56,7 @@ class GetDatabaseBackupsResult:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[Sequence['outputs.GetDatabaseBackupsBackupResult']]:
+    def backups(self) -> Sequence['outputs.GetDatabaseBackupsBackupResult']:
         return pulumi.get(self, "backups")
 
     @_builtins.property
@@ -114,8 +114,7 @@ class AwaitableGetDatabaseBackupsResult(GetDatabaseBackupsResult):
             order_by=self.order_by)
 
 
-def get_database_backups(backups: Optional[Sequence[Union['GetDatabaseBackupsBackupArgs', 'GetDatabaseBackupsBackupArgsDict']]] = None,
-                         database_id: Optional[_builtins.int] = None,
+def get_database_backups(database_id: Optional[_builtins.int] = None,
                          database_type: Optional[_builtins.str] = None,
                          filters: Optional[Sequence[Union['GetDatabaseBackupsFilterArgs', 'GetDatabaseBackupsFilterArgsDict']]] = None,
                          latest: Optional[_builtins.bool] = None,
@@ -164,7 +163,6 @@ def get_database_backups(backups: Optional[Sequence[Union['GetDatabaseBackupsBac
     :param _builtins.str order_by: The attribute to order the results by. (`created`)
     """
     __args__ = dict()
-    __args__['backups'] = backups
     __args__['databaseId'] = database_id
     __args__['databaseType'] = database_type
     __args__['filters'] = filters
@@ -183,8 +181,7 @@ def get_database_backups(backups: Optional[Sequence[Union['GetDatabaseBackupsBac
         latest=pulumi.get(__ret__, 'latest'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_database_backups_output(backups: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseBackupsBackupArgs', 'GetDatabaseBackupsBackupArgsDict']]]]] = None,
-                                database_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_database_backups_output(database_id: Optional[pulumi.Input[_builtins.int]] = None,
                                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
                                 filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseBackupsFilterArgs', 'GetDatabaseBackupsFilterArgsDict']]]]] = None,
                                 latest: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
@@ -233,7 +230,6 @@ def get_database_backups_output(backups: Optional[pulumi.Input[Optional[Sequence
     :param _builtins.str order_by: The attribute to order the results by. (`created`)
     """
     __args__ = dict()
-    __args__['backups'] = backups
     __args__['databaseId'] = database_id
     __args__['databaseType'] = database_type
     __args__['filters'] = filters

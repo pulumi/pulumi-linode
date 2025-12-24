@@ -45,7 +45,6 @@ import * as utilities from "./utilities";
 export function getDatabaseBackups(args: GetDatabaseBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabaseBackups:getDatabaseBackups", {
-        "backups": args.backups,
         "databaseId": args.databaseId,
         "databaseType": args.databaseType,
         "filters": args.filters,
@@ -59,7 +58,6 @@ export function getDatabaseBackups(args: GetDatabaseBackupsArgs, opts?: pulumi.I
  * A collection of arguments for invoking getDatabaseBackups.
  */
 export interface GetDatabaseBackupsArgs {
-    backups?: inputs.GetDatabaseBackupsBackup[];
     /**
      * The ID of the database to retrieve backups for.
      */
@@ -89,7 +87,7 @@ export interface GetDatabaseBackupsArgs {
  * A collection of values returned by getDatabaseBackups.
  */
 export interface GetDatabaseBackupsResult {
-    readonly backups?: outputs.GetDatabaseBackupsBackup[];
+    readonly backups: outputs.GetDatabaseBackupsBackup[];
     readonly databaseId: number;
     readonly databaseType: string;
     readonly filters?: outputs.GetDatabaseBackupsFilter[];
@@ -140,7 +138,6 @@ export interface GetDatabaseBackupsResult {
 export function getDatabaseBackupsOutput(args: GetDatabaseBackupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDatabaseBackups:getDatabaseBackups", {
-        "backups": args.backups,
         "databaseId": args.databaseId,
         "databaseType": args.databaseType,
         "filters": args.filters,
@@ -154,7 +151,6 @@ export function getDatabaseBackupsOutput(args: GetDatabaseBackupsOutputArgs, opt
  * A collection of arguments for invoking getDatabaseBackups.
  */
 export interface GetDatabaseBackupsOutputArgs {
-    backups?: pulumi.Input<pulumi.Input<inputs.GetDatabaseBackupsBackupArgs>[]>;
     /**
      * The ID of the database to retrieve backups for.
      */

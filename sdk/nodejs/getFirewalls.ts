@@ -84,7 +84,6 @@ export function getFirewalls(args?: GetFirewallsArgs, opts?: pulumi.InvokeOption
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getFirewalls:getFirewalls", {
         "filters": args.filters,
-        "firewalls": args.firewalls,
         "order": args.order,
         "orderBy": args.orderBy,
     }, opts);
@@ -95,7 +94,6 @@ export function getFirewalls(args?: GetFirewallsArgs, opts?: pulumi.InvokeOption
  */
 export interface GetFirewallsArgs {
     filters?: inputs.GetFirewallsFilter[];
-    firewalls?: inputs.GetFirewallsFirewall[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
@@ -111,7 +109,7 @@ export interface GetFirewallsArgs {
  */
 export interface GetFirewallsResult {
     readonly filters?: outputs.GetFirewallsFilter[];
-    readonly firewalls?: outputs.GetFirewallsFirewall[];
+    readonly firewalls: outputs.GetFirewallsFirewall[];
     /**
      * The unique ID assigned to this Firewall.
      */
@@ -197,7 +195,6 @@ export function getFirewallsOutput(args?: GetFirewallsOutputArgs, opts?: pulumi.
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getFirewalls:getFirewalls", {
         "filters": args.filters,
-        "firewalls": args.firewalls,
         "order": args.order,
         "orderBy": args.orderBy,
     }, opts);
@@ -208,7 +205,6 @@ export function getFirewallsOutput(args?: GetFirewallsOutputArgs, opts?: pulumi.
  */
 export interface GetFirewallsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFilterArgs>[]>;
-    firewalls?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFirewallArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */

@@ -54,7 +54,7 @@ class GetVpcsResult:
 
     @_builtins.property
     @pulumi.getter
-    def vpcs(self) -> Optional[Sequence['outputs.GetVpcsVpcResult']]:
+    def vpcs(self) -> Sequence['outputs.GetVpcsVpcResult']:
         return pulumi.get(self, "vpcs")
 
 
@@ -70,7 +70,6 @@ class AwaitableGetVpcsResult(GetVpcsResult):
 
 
 def get_vpcs(filters: Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilterArgsDict']]] = None,
-             vpcs: Optional[Sequence[Union['GetVpcsVpcArgs', 'GetVpcsVpcArgsDict']]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcsResult:
     """
     Provides information about a list of Linode VPCs that match a set of filters.
@@ -111,7 +110,6 @@ def get_vpcs(filters: Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilte
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['vpcs'] = vpcs
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getVpcs:getVpcs', __args__, opts=opts, typ=GetVpcsResult).value
 
@@ -120,7 +118,6 @@ def get_vpcs(filters: Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilte
         id=pulumi.get(__ret__, 'id'),
         vpcs=pulumi.get(__ret__, 'vpcs'))
 def get_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilterArgsDict']]]]] = None,
-                    vpcs: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcsVpcArgs', 'GetVpcsVpcArgsDict']]]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcsResult]:
     """
     Provides information about a list of Linode VPCs that match a set of filters.
@@ -161,7 +158,6 @@ def get_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetV
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['vpcs'] = vpcs
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVpcs:getVpcs', __args__, opts=opts, typ=GetVpcsResult)
     return __ret__.apply(lambda __response__: GetVpcsResult(

@@ -5,33 +5,13 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.linode.inputs.GetLkeClusterControlPlane;
-import com.pulumi.linode.inputs.GetLkeClusterPool;
 import java.lang.Integer;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetLkeClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetLkeClusterPlainArgs Empty = new GetLkeClusterPlainArgs();
-
-    /**
-     * The settings for the Kubernetes Control Plane.
-     * 
-     */
-    @Import(name="controlPlanes")
-    private @Nullable List<GetLkeClusterControlPlane> controlPlanes;
-
-    /**
-     * @return The settings for the Kubernetes Control Plane.
-     * 
-     */
-    public Optional<List<GetLkeClusterControlPlane>> controlPlanes() {
-        return Optional.ofNullable(this.controlPlanes);
-    }
 
     /**
      * The LKE Cluster&#39;s ID.
@@ -48,27 +28,10 @@ public final class GetLkeClusterPlainArgs extends com.pulumi.resources.InvokeArg
         return this.id;
     }
 
-    /**
-     * Node pools associated with this cluster.
-     * 
-     */
-    @Import(name="pools")
-    private @Nullable List<GetLkeClusterPool> pools;
-
-    /**
-     * @return Node pools associated with this cluster.
-     * 
-     */
-    public Optional<List<GetLkeClusterPool>> pools() {
-        return Optional.ofNullable(this.pools);
-    }
-
     private GetLkeClusterPlainArgs() {}
 
     private GetLkeClusterPlainArgs(GetLkeClusterPlainArgs $) {
-        this.controlPlanes = $.controlPlanes;
         this.id = $.id;
-        this.pools = $.pools;
     }
 
     public static Builder builder() {
@@ -90,27 +53,6 @@ public final class GetLkeClusterPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param controlPlanes The settings for the Kubernetes Control Plane.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder controlPlanes(@Nullable List<GetLkeClusterControlPlane> controlPlanes) {
-            $.controlPlanes = controlPlanes;
-            return this;
-        }
-
-        /**
-         * @param controlPlanes The settings for the Kubernetes Control Plane.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder controlPlanes(GetLkeClusterControlPlane... controlPlanes) {
-            return controlPlanes(List.of(controlPlanes));
-        }
-
-        /**
          * @param id The LKE Cluster&#39;s ID.
          * 
          * @return builder
@@ -119,27 +61,6 @@ public final class GetLkeClusterPlainArgs extends com.pulumi.resources.InvokeArg
         public Builder id(Integer id) {
             $.id = id;
             return this;
-        }
-
-        /**
-         * @param pools Node pools associated with this cluster.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder pools(@Nullable List<GetLkeClusterPool> pools) {
-            $.pools = pools;
-            return this;
-        }
-
-        /**
-         * @param pools Node pools associated with this cluster.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder pools(GetLkeClusterPool... pools) {
-            return pools(List.of(pools));
         }
 
         public GetLkeClusterPlainArgs build() {

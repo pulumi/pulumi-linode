@@ -6,24 +6,13 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.linode.inputs.GetNodeBalancerFirewallArgs;
 import java.lang.Integer;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetNodeBalancerArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetNodeBalancerArgs Empty = new GetNodeBalancerArgs();
-
-    @Import(name="firewalls")
-    private @Nullable Output<List<GetNodeBalancerFirewallArgs>> firewalls;
-
-    public Optional<Output<List<GetNodeBalancerFirewallArgs>>> firewalls() {
-        return Optional.ofNullable(this.firewalls);
-    }
 
     /**
      * The NodeBalancer&#39;s ID.
@@ -43,7 +32,6 @@ public final class GetNodeBalancerArgs extends com.pulumi.resources.InvokeArgs {
     private GetNodeBalancerArgs() {}
 
     private GetNodeBalancerArgs(GetNodeBalancerArgs $) {
-        this.firewalls = $.firewalls;
         this.id = $.id;
     }
 
@@ -63,19 +51,6 @@ public final class GetNodeBalancerArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetNodeBalancerArgs defaults) {
             $ = new GetNodeBalancerArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder firewalls(@Nullable Output<List<GetNodeBalancerFirewallArgs>> firewalls) {
-            $.firewalls = firewalls;
-            return this;
-        }
-
-        public Builder firewalls(List<GetNodeBalancerFirewallArgs> firewalls) {
-            return firewalls(Output.of(firewalls));
-        }
-
-        public Builder firewalls(GetNodeBalancerFirewallArgs... firewalls) {
-            return firewalls(List.of(firewalls));
         }
 
         /**

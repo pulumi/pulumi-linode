@@ -227,9 +227,12 @@ func (o DatabaseMysqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
 }
 
 type DatabaseMysqlV2PendingUpdate struct {
-	Deadline    string `pulumi:"deadline"`
-	Description string `pulumi:"description"`
-	PlannedFor  string `pulumi:"plannedFor"`
+	// The time when a mandatory update needs to be applied.
+	Deadline *string `pulumi:"deadline"`
+	// A description of the update.
+	Description *string `pulumi:"description"`
+	// The date and time a maintenance update will be applied.
+	PlannedFor *string `pulumi:"plannedFor"`
 }
 
 // DatabaseMysqlV2PendingUpdateInput is an input type that accepts DatabaseMysqlV2PendingUpdateArgs and DatabaseMysqlV2PendingUpdateOutput values.
@@ -244,9 +247,12 @@ type DatabaseMysqlV2PendingUpdateInput interface {
 }
 
 type DatabaseMysqlV2PendingUpdateArgs struct {
-	Deadline    pulumi.StringInput `pulumi:"deadline"`
-	Description pulumi.StringInput `pulumi:"description"`
-	PlannedFor  pulumi.StringInput `pulumi:"plannedFor"`
+	// The time when a mandatory update needs to be applied.
+	Deadline pulumi.StringPtrInput `pulumi:"deadline"`
+	// A description of the update.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The date and time a maintenance update will be applied.
+	PlannedFor pulumi.StringPtrInput `pulumi:"plannedFor"`
 }
 
 func (DatabaseMysqlV2PendingUpdateArgs) ElementType() reflect.Type {
@@ -300,16 +306,19 @@ func (o DatabaseMysqlV2PendingUpdateOutput) ToDatabaseMysqlV2PendingUpdateOutput
 	return o
 }
 
-func (o DatabaseMysqlV2PendingUpdateOutput) Deadline() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseMysqlV2PendingUpdate) string { return v.Deadline }).(pulumi.StringOutput)
+// The time when a mandatory update needs to be applied.
+func (o DatabaseMysqlV2PendingUpdateOutput) Deadline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2PendingUpdate) *string { return v.Deadline }).(pulumi.StringPtrOutput)
 }
 
-func (o DatabaseMysqlV2PendingUpdateOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseMysqlV2PendingUpdate) string { return v.Description }).(pulumi.StringOutput)
+// A description of the update.
+func (o DatabaseMysqlV2PendingUpdateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2PendingUpdate) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o DatabaseMysqlV2PendingUpdateOutput) PlannedFor() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseMysqlV2PendingUpdate) string { return v.PlannedFor }).(pulumi.StringOutput)
+// The date and time a maintenance update will be applied.
+func (o DatabaseMysqlV2PendingUpdateOutput) PlannedFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2PendingUpdate) *string { return v.PlannedFor }).(pulumi.StringPtrOutput)
 }
 
 type DatabaseMysqlV2PendingUpdateArrayOutput struct{ *pulumi.OutputState }
@@ -683,10 +692,14 @@ func (o DatabaseMysqlV2TimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 }
 
 type DatabaseMysqlV2Updates struct {
-	DayOfWeek int    `pulumi:"dayOfWeek"`
-	Duration  int    `pulumi:"duration"`
-	Frequency string `pulumi:"frequency"`
-	HourOfDay int    `pulumi:"hourOfDay"`
+	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+	DayOfWeek *int `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration *int `pulumi:"duration"`
+	// How frequently maintenance occurs. Currently can only be weekly.
+	Frequency *string `pulumi:"frequency"`
+	// How frequently maintenance occurs. Currently can only be weekly.
+	HourOfDay *int `pulumi:"hourOfDay"`
 }
 
 // DatabaseMysqlV2UpdatesInput is an input type that accepts DatabaseMysqlV2UpdatesArgs and DatabaseMysqlV2UpdatesOutput values.
@@ -701,10 +714,14 @@ type DatabaseMysqlV2UpdatesInput interface {
 }
 
 type DatabaseMysqlV2UpdatesArgs struct {
-	DayOfWeek pulumi.IntInput    `pulumi:"dayOfWeek"`
-	Duration  pulumi.IntInput    `pulumi:"duration"`
-	Frequency pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay pulumi.IntInput    `pulumi:"hourOfDay"`
+	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+	DayOfWeek pulumi.IntPtrInput `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration pulumi.IntPtrInput `pulumi:"duration"`
+	// How frequently maintenance occurs. Currently can only be weekly.
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// How frequently maintenance occurs. Currently can only be weekly.
+	HourOfDay pulumi.IntPtrInput `pulumi:"hourOfDay"`
 }
 
 func (DatabaseMysqlV2UpdatesArgs) ElementType() reflect.Type {
@@ -784,20 +801,24 @@ func (o DatabaseMysqlV2UpdatesOutput) ToDatabaseMysqlV2UpdatesPtrOutputWithConte
 	}).(DatabaseMysqlV2UpdatesPtrOutput)
 }
 
-func (o DatabaseMysqlV2UpdatesOutput) DayOfWeek() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabaseMysqlV2Updates) int { return v.DayOfWeek }).(pulumi.IntOutput)
+// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+func (o DatabaseMysqlV2UpdatesOutput) DayOfWeek() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2Updates) *int { return v.DayOfWeek }).(pulumi.IntPtrOutput)
 }
 
-func (o DatabaseMysqlV2UpdatesOutput) Duration() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabaseMysqlV2Updates) int { return v.Duration }).(pulumi.IntOutput)
+// The maximum maintenance window time in hours.
+func (o DatabaseMysqlV2UpdatesOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2Updates) *int { return v.Duration }).(pulumi.IntPtrOutput)
 }
 
-func (o DatabaseMysqlV2UpdatesOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseMysqlV2Updates) string { return v.Frequency }).(pulumi.StringOutput)
+// How frequently maintenance occurs. Currently can only be weekly.
+func (o DatabaseMysqlV2UpdatesOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2Updates) *string { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
-func (o DatabaseMysqlV2UpdatesOutput) HourOfDay() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabaseMysqlV2Updates) int { return v.HourOfDay }).(pulumi.IntOutput)
+// How frequently maintenance occurs. Currently can only be weekly.
+func (o DatabaseMysqlV2UpdatesOutput) HourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseMysqlV2Updates) *int { return v.HourOfDay }).(pulumi.IntPtrOutput)
 }
 
 type DatabaseMysqlV2UpdatesPtrOutput struct{ *pulumi.OutputState }
@@ -824,39 +845,43 @@ func (o DatabaseMysqlV2UpdatesPtrOutput) Elem() DatabaseMysqlV2UpdatesOutput {
 	}).(DatabaseMysqlV2UpdatesOutput)
 }
 
+// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 func (o DatabaseMysqlV2UpdatesPtrOutput) DayOfWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlV2Updates) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.DayOfWeek
+		return v.DayOfWeek
 	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum maintenance window time in hours.
 func (o DatabaseMysqlV2UpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlV2Updates) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.Duration
+		return v.Duration
 	}).(pulumi.IntPtrOutput)
 }
 
+// How frequently maintenance occurs. Currently can only be weekly.
 func (o DatabaseMysqlV2UpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlV2Updates) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Frequency
+		return v.Frequency
 	}).(pulumi.StringPtrOutput)
 }
 
+// How frequently maintenance occurs. Currently can only be weekly.
 func (o DatabaseMysqlV2UpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlV2Updates) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.HourOfDay
+		return v.HourOfDay
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -1074,9 +1099,12 @@ func (o DatabasePostgresqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
 }
 
 type DatabasePostgresqlV2PendingUpdate struct {
-	Deadline    string `pulumi:"deadline"`
-	Description string `pulumi:"description"`
-	PlannedFor  string `pulumi:"plannedFor"`
+	// The time when a mandatory update needs to be applied.
+	Deadline *string `pulumi:"deadline"`
+	// A description of the update.
+	Description *string `pulumi:"description"`
+	// The date and time a maintenance update will be applied.
+	PlannedFor *string `pulumi:"plannedFor"`
 }
 
 // DatabasePostgresqlV2PendingUpdateInput is an input type that accepts DatabasePostgresqlV2PendingUpdateArgs and DatabasePostgresqlV2PendingUpdateOutput values.
@@ -1091,9 +1119,12 @@ type DatabasePostgresqlV2PendingUpdateInput interface {
 }
 
 type DatabasePostgresqlV2PendingUpdateArgs struct {
-	Deadline    pulumi.StringInput `pulumi:"deadline"`
-	Description pulumi.StringInput `pulumi:"description"`
-	PlannedFor  pulumi.StringInput `pulumi:"plannedFor"`
+	// The time when a mandatory update needs to be applied.
+	Deadline pulumi.StringPtrInput `pulumi:"deadline"`
+	// A description of the update.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The date and time a maintenance update will be applied.
+	PlannedFor pulumi.StringPtrInput `pulumi:"plannedFor"`
 }
 
 func (DatabasePostgresqlV2PendingUpdateArgs) ElementType() reflect.Type {
@@ -1147,16 +1178,19 @@ func (o DatabasePostgresqlV2PendingUpdateOutput) ToDatabasePostgresqlV2PendingUp
 	return o
 }
 
-func (o DatabasePostgresqlV2PendingUpdateOutput) Deadline() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabasePostgresqlV2PendingUpdate) string { return v.Deadline }).(pulumi.StringOutput)
+// The time when a mandatory update needs to be applied.
+func (o DatabasePostgresqlV2PendingUpdateOutput) Deadline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2PendingUpdate) *string { return v.Deadline }).(pulumi.StringPtrOutput)
 }
 
-func (o DatabasePostgresqlV2PendingUpdateOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabasePostgresqlV2PendingUpdate) string { return v.Description }).(pulumi.StringOutput)
+// A description of the update.
+func (o DatabasePostgresqlV2PendingUpdateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2PendingUpdate) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o DatabasePostgresqlV2PendingUpdateOutput) PlannedFor() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabasePostgresqlV2PendingUpdate) string { return v.PlannedFor }).(pulumi.StringOutput)
+// The date and time a maintenance update will be applied.
+func (o DatabasePostgresqlV2PendingUpdateOutput) PlannedFor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2PendingUpdate) *string { return v.PlannedFor }).(pulumi.StringPtrOutput)
 }
 
 type DatabasePostgresqlV2PendingUpdateArrayOutput struct{ *pulumi.OutputState }
@@ -1530,10 +1564,14 @@ func (o DatabasePostgresqlV2TimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 }
 
 type DatabasePostgresqlV2Updates struct {
-	DayOfWeek int    `pulumi:"dayOfWeek"`
-	Duration  int    `pulumi:"duration"`
-	Frequency string `pulumi:"frequency"`
-	HourOfDay int    `pulumi:"hourOfDay"`
+	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+	DayOfWeek *int `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration *int `pulumi:"duration"`
+	// How frequently maintenance occurs. Currently can only be weekly.
+	Frequency *string `pulumi:"frequency"`
+	// How frequently maintenance occurs. Currently can only be weekly.
+	HourOfDay *int `pulumi:"hourOfDay"`
 }
 
 // DatabasePostgresqlV2UpdatesInput is an input type that accepts DatabasePostgresqlV2UpdatesArgs and DatabasePostgresqlV2UpdatesOutput values.
@@ -1548,10 +1586,14 @@ type DatabasePostgresqlV2UpdatesInput interface {
 }
 
 type DatabasePostgresqlV2UpdatesArgs struct {
-	DayOfWeek pulumi.IntInput    `pulumi:"dayOfWeek"`
-	Duration  pulumi.IntInput    `pulumi:"duration"`
-	Frequency pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay pulumi.IntInput    `pulumi:"hourOfDay"`
+	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+	DayOfWeek pulumi.IntPtrInput `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration pulumi.IntPtrInput `pulumi:"duration"`
+	// How frequently maintenance occurs. Currently can only be weekly.
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	// How frequently maintenance occurs. Currently can only be weekly.
+	HourOfDay pulumi.IntPtrInput `pulumi:"hourOfDay"`
 }
 
 func (DatabasePostgresqlV2UpdatesArgs) ElementType() reflect.Type {
@@ -1631,20 +1673,24 @@ func (o DatabasePostgresqlV2UpdatesOutput) ToDatabasePostgresqlV2UpdatesPtrOutpu
 	}).(DatabasePostgresqlV2UpdatesPtrOutput)
 }
 
-func (o DatabasePostgresqlV2UpdatesOutput) DayOfWeek() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabasePostgresqlV2Updates) int { return v.DayOfWeek }).(pulumi.IntOutput)
+// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+func (o DatabasePostgresqlV2UpdatesOutput) DayOfWeek() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2Updates) *int { return v.DayOfWeek }).(pulumi.IntPtrOutput)
 }
 
-func (o DatabasePostgresqlV2UpdatesOutput) Duration() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabasePostgresqlV2Updates) int { return v.Duration }).(pulumi.IntOutput)
+// The maximum maintenance window time in hours.
+func (o DatabasePostgresqlV2UpdatesOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2Updates) *int { return v.Duration }).(pulumi.IntPtrOutput)
 }
 
-func (o DatabasePostgresqlV2UpdatesOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabasePostgresqlV2Updates) string { return v.Frequency }).(pulumi.StringOutput)
+// How frequently maintenance occurs. Currently can only be weekly.
+func (o DatabasePostgresqlV2UpdatesOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2Updates) *string { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
-func (o DatabasePostgresqlV2UpdatesOutput) HourOfDay() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabasePostgresqlV2Updates) int { return v.HourOfDay }).(pulumi.IntOutput)
+// How frequently maintenance occurs. Currently can only be weekly.
+func (o DatabasePostgresqlV2UpdatesOutput) HourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasePostgresqlV2Updates) *int { return v.HourOfDay }).(pulumi.IntPtrOutput)
 }
 
 type DatabasePostgresqlV2UpdatesPtrOutput struct{ *pulumi.OutputState }
@@ -1671,39 +1717,43 @@ func (o DatabasePostgresqlV2UpdatesPtrOutput) Elem() DatabasePostgresqlV2Updates
 	}).(DatabasePostgresqlV2UpdatesOutput)
 }
 
+// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 func (o DatabasePostgresqlV2UpdatesPtrOutput) DayOfWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2Updates) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.DayOfWeek
+		return v.DayOfWeek
 	}).(pulumi.IntPtrOutput)
 }
 
+// The maximum maintenance window time in hours.
 func (o DatabasePostgresqlV2UpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2Updates) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.Duration
+		return v.Duration
 	}).(pulumi.IntPtrOutput)
 }
 
+// How frequently maintenance occurs. Currently can only be weekly.
 func (o DatabasePostgresqlV2UpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2Updates) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Frequency
+		return v.Frequency
 	}).(pulumi.StringPtrOutput)
 }
 
+// How frequently maintenance occurs. Currently can only be weekly.
 func (o DatabasePostgresqlV2UpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2Updates) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.HourOfDay
+		return v.HourOfDay
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -2334,6 +2384,512 @@ func (o FirewallSettingsDefaultFirewallIdsPtrOutput) VpcInterface() pulumi.IntPt
 		}
 		return v.VpcInterface
 	}).(pulumi.IntPtrOutput)
+}
+
+type ImageImageSharing struct {
+	// Details about who the image is shared by.
+	SharedBy *ImageImageSharingSharedBy `pulumi:"sharedBy"`
+	// Details about who the image is shared with.
+	SharedWith *ImageImageSharingSharedWith `pulumi:"sharedWith"`
+}
+
+// ImageImageSharingInput is an input type that accepts ImageImageSharingArgs and ImageImageSharingOutput values.
+// You can construct a concrete instance of `ImageImageSharingInput` via:
+//
+//	ImageImageSharingArgs{...}
+type ImageImageSharingInput interface {
+	pulumi.Input
+
+	ToImageImageSharingOutput() ImageImageSharingOutput
+	ToImageImageSharingOutputWithContext(context.Context) ImageImageSharingOutput
+}
+
+type ImageImageSharingArgs struct {
+	// Details about who the image is shared by.
+	SharedBy ImageImageSharingSharedByPtrInput `pulumi:"sharedBy"`
+	// Details about who the image is shared with.
+	SharedWith ImageImageSharingSharedWithPtrInput `pulumi:"sharedWith"`
+}
+
+func (ImageImageSharingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImageSharing)(nil)).Elem()
+}
+
+func (i ImageImageSharingArgs) ToImageImageSharingOutput() ImageImageSharingOutput {
+	return i.ToImageImageSharingOutputWithContext(context.Background())
+}
+
+func (i ImageImageSharingArgs) ToImageImageSharingOutputWithContext(ctx context.Context) ImageImageSharingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImageSharingOutput)
+}
+
+func (i ImageImageSharingArgs) ToImageImageSharingPtrOutput() ImageImageSharingPtrOutput {
+	return i.ToImageImageSharingPtrOutputWithContext(context.Background())
+}
+
+func (i ImageImageSharingArgs) ToImageImageSharingPtrOutputWithContext(ctx context.Context) ImageImageSharingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImageSharingOutput).ToImageImageSharingPtrOutputWithContext(ctx)
+}
+
+// ImageImageSharingPtrInput is an input type that accepts ImageImageSharingArgs, ImageImageSharingPtr and ImageImageSharingPtrOutput values.
+// You can construct a concrete instance of `ImageImageSharingPtrInput` via:
+//
+//	        ImageImageSharingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageImageSharingPtrInput interface {
+	pulumi.Input
+
+	ToImageImageSharingPtrOutput() ImageImageSharingPtrOutput
+	ToImageImageSharingPtrOutputWithContext(context.Context) ImageImageSharingPtrOutput
+}
+
+type imageImageSharingPtrType ImageImageSharingArgs
+
+func ImageImageSharingPtr(v *ImageImageSharingArgs) ImageImageSharingPtrInput {
+	return (*imageImageSharingPtrType)(v)
+}
+
+func (*imageImageSharingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImageSharing)(nil)).Elem()
+}
+
+func (i *imageImageSharingPtrType) ToImageImageSharingPtrOutput() ImageImageSharingPtrOutput {
+	return i.ToImageImageSharingPtrOutputWithContext(context.Background())
+}
+
+func (i *imageImageSharingPtrType) ToImageImageSharingPtrOutputWithContext(ctx context.Context) ImageImageSharingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImageSharingPtrOutput)
+}
+
+type ImageImageSharingOutput struct{ *pulumi.OutputState }
+
+func (ImageImageSharingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImageSharing)(nil)).Elem()
+}
+
+func (o ImageImageSharingOutput) ToImageImageSharingOutput() ImageImageSharingOutput {
+	return o
+}
+
+func (o ImageImageSharingOutput) ToImageImageSharingOutputWithContext(ctx context.Context) ImageImageSharingOutput {
+	return o
+}
+
+func (o ImageImageSharingOutput) ToImageImageSharingPtrOutput() ImageImageSharingPtrOutput {
+	return o.ToImageImageSharingPtrOutputWithContext(context.Background())
+}
+
+func (o ImageImageSharingOutput) ToImageImageSharingPtrOutputWithContext(ctx context.Context) ImageImageSharingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageImageSharing) *ImageImageSharing {
+		return &v
+	}).(ImageImageSharingPtrOutput)
+}
+
+// Details about who the image is shared by.
+func (o ImageImageSharingOutput) SharedBy() ImageImageSharingSharedByPtrOutput {
+	return o.ApplyT(func(v ImageImageSharing) *ImageImageSharingSharedBy { return v.SharedBy }).(ImageImageSharingSharedByPtrOutput)
+}
+
+// Details about who the image is shared with.
+func (o ImageImageSharingOutput) SharedWith() ImageImageSharingSharedWithPtrOutput {
+	return o.ApplyT(func(v ImageImageSharing) *ImageImageSharingSharedWith { return v.SharedWith }).(ImageImageSharingSharedWithPtrOutput)
+}
+
+type ImageImageSharingPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageImageSharingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImageSharing)(nil)).Elem()
+}
+
+func (o ImageImageSharingPtrOutput) ToImageImageSharingPtrOutput() ImageImageSharingPtrOutput {
+	return o
+}
+
+func (o ImageImageSharingPtrOutput) ToImageImageSharingPtrOutputWithContext(ctx context.Context) ImageImageSharingPtrOutput {
+	return o
+}
+
+func (o ImageImageSharingPtrOutput) Elem() ImageImageSharingOutput {
+	return o.ApplyT(func(v *ImageImageSharing) ImageImageSharing {
+		if v != nil {
+			return *v
+		}
+		var ret ImageImageSharing
+		return ret
+	}).(ImageImageSharingOutput)
+}
+
+// Details about who the image is shared by.
+func (o ImageImageSharingPtrOutput) SharedBy() ImageImageSharingSharedByPtrOutput {
+	return o.ApplyT(func(v *ImageImageSharing) *ImageImageSharingSharedBy {
+		if v == nil {
+			return nil
+		}
+		return v.SharedBy
+	}).(ImageImageSharingSharedByPtrOutput)
+}
+
+// Details about who the image is shared with.
+func (o ImageImageSharingPtrOutput) SharedWith() ImageImageSharingSharedWithPtrOutput {
+	return o.ApplyT(func(v *ImageImageSharing) *ImageImageSharingSharedWith {
+		if v == nil {
+			return nil
+		}
+		return v.SharedWith
+	}).(ImageImageSharingSharedWithPtrOutput)
+}
+
+type ImageImageSharingSharedBy struct {
+	// The sharegroupId from the im_ImageShare row.
+	SharegroupId *int `pulumi:"sharegroupId"`
+	// The label from the associated im_ImageShareGroup row.
+	SharegroupLabel *string `pulumi:"sharegroupLabel"`
+	// The sharegroupUuid from the im_ImageShare row.
+	SharegroupUuid *string `pulumi:"sharegroupUuid"`
+	// The image id of the base image (will only be shown to producers, will be null for consumers).
+	SourceImageId *string `pulumi:"sourceImageId"`
+}
+
+// ImageImageSharingSharedByInput is an input type that accepts ImageImageSharingSharedByArgs and ImageImageSharingSharedByOutput values.
+// You can construct a concrete instance of `ImageImageSharingSharedByInput` via:
+//
+//	ImageImageSharingSharedByArgs{...}
+type ImageImageSharingSharedByInput interface {
+	pulumi.Input
+
+	ToImageImageSharingSharedByOutput() ImageImageSharingSharedByOutput
+	ToImageImageSharingSharedByOutputWithContext(context.Context) ImageImageSharingSharedByOutput
+}
+
+type ImageImageSharingSharedByArgs struct {
+	// The sharegroupId from the im_ImageShare row.
+	SharegroupId pulumi.IntPtrInput `pulumi:"sharegroupId"`
+	// The label from the associated im_ImageShareGroup row.
+	SharegroupLabel pulumi.StringPtrInput `pulumi:"sharegroupLabel"`
+	// The sharegroupUuid from the im_ImageShare row.
+	SharegroupUuid pulumi.StringPtrInput `pulumi:"sharegroupUuid"`
+	// The image id of the base image (will only be shown to producers, will be null for consumers).
+	SourceImageId pulumi.StringPtrInput `pulumi:"sourceImageId"`
+}
+
+func (ImageImageSharingSharedByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImageSharingSharedBy)(nil)).Elem()
+}
+
+func (i ImageImageSharingSharedByArgs) ToImageImageSharingSharedByOutput() ImageImageSharingSharedByOutput {
+	return i.ToImageImageSharingSharedByOutputWithContext(context.Background())
+}
+
+func (i ImageImageSharingSharedByArgs) ToImageImageSharingSharedByOutputWithContext(ctx context.Context) ImageImageSharingSharedByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImageSharingSharedByOutput)
+}
+
+func (i ImageImageSharingSharedByArgs) ToImageImageSharingSharedByPtrOutput() ImageImageSharingSharedByPtrOutput {
+	return i.ToImageImageSharingSharedByPtrOutputWithContext(context.Background())
+}
+
+func (i ImageImageSharingSharedByArgs) ToImageImageSharingSharedByPtrOutputWithContext(ctx context.Context) ImageImageSharingSharedByPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImageSharingSharedByOutput).ToImageImageSharingSharedByPtrOutputWithContext(ctx)
+}
+
+// ImageImageSharingSharedByPtrInput is an input type that accepts ImageImageSharingSharedByArgs, ImageImageSharingSharedByPtr and ImageImageSharingSharedByPtrOutput values.
+// You can construct a concrete instance of `ImageImageSharingSharedByPtrInput` via:
+//
+//	        ImageImageSharingSharedByArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageImageSharingSharedByPtrInput interface {
+	pulumi.Input
+
+	ToImageImageSharingSharedByPtrOutput() ImageImageSharingSharedByPtrOutput
+	ToImageImageSharingSharedByPtrOutputWithContext(context.Context) ImageImageSharingSharedByPtrOutput
+}
+
+type imageImageSharingSharedByPtrType ImageImageSharingSharedByArgs
+
+func ImageImageSharingSharedByPtr(v *ImageImageSharingSharedByArgs) ImageImageSharingSharedByPtrInput {
+	return (*imageImageSharingSharedByPtrType)(v)
+}
+
+func (*imageImageSharingSharedByPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImageSharingSharedBy)(nil)).Elem()
+}
+
+func (i *imageImageSharingSharedByPtrType) ToImageImageSharingSharedByPtrOutput() ImageImageSharingSharedByPtrOutput {
+	return i.ToImageImageSharingSharedByPtrOutputWithContext(context.Background())
+}
+
+func (i *imageImageSharingSharedByPtrType) ToImageImageSharingSharedByPtrOutputWithContext(ctx context.Context) ImageImageSharingSharedByPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImageSharingSharedByPtrOutput)
+}
+
+type ImageImageSharingSharedByOutput struct{ *pulumi.OutputState }
+
+func (ImageImageSharingSharedByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImageSharingSharedBy)(nil)).Elem()
+}
+
+func (o ImageImageSharingSharedByOutput) ToImageImageSharingSharedByOutput() ImageImageSharingSharedByOutput {
+	return o
+}
+
+func (o ImageImageSharingSharedByOutput) ToImageImageSharingSharedByOutputWithContext(ctx context.Context) ImageImageSharingSharedByOutput {
+	return o
+}
+
+func (o ImageImageSharingSharedByOutput) ToImageImageSharingSharedByPtrOutput() ImageImageSharingSharedByPtrOutput {
+	return o.ToImageImageSharingSharedByPtrOutputWithContext(context.Background())
+}
+
+func (o ImageImageSharingSharedByOutput) ToImageImageSharingSharedByPtrOutputWithContext(ctx context.Context) ImageImageSharingSharedByPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageImageSharingSharedBy) *ImageImageSharingSharedBy {
+		return &v
+	}).(ImageImageSharingSharedByPtrOutput)
+}
+
+// The sharegroupId from the im_ImageShare row.
+func (o ImageImageSharingSharedByOutput) SharegroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImageImageSharingSharedBy) *int { return v.SharegroupId }).(pulumi.IntPtrOutput)
+}
+
+// The label from the associated im_ImageShareGroup row.
+func (o ImageImageSharingSharedByOutput) SharegroupLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageImageSharingSharedBy) *string { return v.SharegroupLabel }).(pulumi.StringPtrOutput)
+}
+
+// The sharegroupUuid from the im_ImageShare row.
+func (o ImageImageSharingSharedByOutput) SharegroupUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageImageSharingSharedBy) *string { return v.SharegroupUuid }).(pulumi.StringPtrOutput)
+}
+
+// The image id of the base image (will only be shown to producers, will be null for consumers).
+func (o ImageImageSharingSharedByOutput) SourceImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageImageSharingSharedBy) *string { return v.SourceImageId }).(pulumi.StringPtrOutput)
+}
+
+type ImageImageSharingSharedByPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageImageSharingSharedByPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImageSharingSharedBy)(nil)).Elem()
+}
+
+func (o ImageImageSharingSharedByPtrOutput) ToImageImageSharingSharedByPtrOutput() ImageImageSharingSharedByPtrOutput {
+	return o
+}
+
+func (o ImageImageSharingSharedByPtrOutput) ToImageImageSharingSharedByPtrOutputWithContext(ctx context.Context) ImageImageSharingSharedByPtrOutput {
+	return o
+}
+
+func (o ImageImageSharingSharedByPtrOutput) Elem() ImageImageSharingSharedByOutput {
+	return o.ApplyT(func(v *ImageImageSharingSharedBy) ImageImageSharingSharedBy {
+		if v != nil {
+			return *v
+		}
+		var ret ImageImageSharingSharedBy
+		return ret
+	}).(ImageImageSharingSharedByOutput)
+}
+
+// The sharegroupId from the im_ImageShare row.
+func (o ImageImageSharingSharedByPtrOutput) SharegroupId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ImageImageSharingSharedBy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SharegroupId
+	}).(pulumi.IntPtrOutput)
+}
+
+// The label from the associated im_ImageShareGroup row.
+func (o ImageImageSharingSharedByPtrOutput) SharegroupLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageImageSharingSharedBy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharegroupLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// The sharegroupUuid from the im_ImageShare row.
+func (o ImageImageSharingSharedByPtrOutput) SharegroupUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageImageSharingSharedBy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharegroupUuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// The image id of the base image (will only be shown to producers, will be null for consumers).
+func (o ImageImageSharingSharedByPtrOutput) SourceImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageImageSharingSharedBy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceImageId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImageImageSharingSharedWith struct {
+	// The number of sharegroups the private image is present in.
+	SharegroupCount *int `pulumi:"sharegroupCount"`
+	// The GET api url to view the sharegroups in which the image is shared.
+	SharegroupListUrl *string `pulumi:"sharegroupListUrl"`
+}
+
+// ImageImageSharingSharedWithInput is an input type that accepts ImageImageSharingSharedWithArgs and ImageImageSharingSharedWithOutput values.
+// You can construct a concrete instance of `ImageImageSharingSharedWithInput` via:
+//
+//	ImageImageSharingSharedWithArgs{...}
+type ImageImageSharingSharedWithInput interface {
+	pulumi.Input
+
+	ToImageImageSharingSharedWithOutput() ImageImageSharingSharedWithOutput
+	ToImageImageSharingSharedWithOutputWithContext(context.Context) ImageImageSharingSharedWithOutput
+}
+
+type ImageImageSharingSharedWithArgs struct {
+	// The number of sharegroups the private image is present in.
+	SharegroupCount pulumi.IntPtrInput `pulumi:"sharegroupCount"`
+	// The GET api url to view the sharegroups in which the image is shared.
+	SharegroupListUrl pulumi.StringPtrInput `pulumi:"sharegroupListUrl"`
+}
+
+func (ImageImageSharingSharedWithArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImageSharingSharedWith)(nil)).Elem()
+}
+
+func (i ImageImageSharingSharedWithArgs) ToImageImageSharingSharedWithOutput() ImageImageSharingSharedWithOutput {
+	return i.ToImageImageSharingSharedWithOutputWithContext(context.Background())
+}
+
+func (i ImageImageSharingSharedWithArgs) ToImageImageSharingSharedWithOutputWithContext(ctx context.Context) ImageImageSharingSharedWithOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImageSharingSharedWithOutput)
+}
+
+func (i ImageImageSharingSharedWithArgs) ToImageImageSharingSharedWithPtrOutput() ImageImageSharingSharedWithPtrOutput {
+	return i.ToImageImageSharingSharedWithPtrOutputWithContext(context.Background())
+}
+
+func (i ImageImageSharingSharedWithArgs) ToImageImageSharingSharedWithPtrOutputWithContext(ctx context.Context) ImageImageSharingSharedWithPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImageSharingSharedWithOutput).ToImageImageSharingSharedWithPtrOutputWithContext(ctx)
+}
+
+// ImageImageSharingSharedWithPtrInput is an input type that accepts ImageImageSharingSharedWithArgs, ImageImageSharingSharedWithPtr and ImageImageSharingSharedWithPtrOutput values.
+// You can construct a concrete instance of `ImageImageSharingSharedWithPtrInput` via:
+//
+//	        ImageImageSharingSharedWithArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageImageSharingSharedWithPtrInput interface {
+	pulumi.Input
+
+	ToImageImageSharingSharedWithPtrOutput() ImageImageSharingSharedWithPtrOutput
+	ToImageImageSharingSharedWithPtrOutputWithContext(context.Context) ImageImageSharingSharedWithPtrOutput
+}
+
+type imageImageSharingSharedWithPtrType ImageImageSharingSharedWithArgs
+
+func ImageImageSharingSharedWithPtr(v *ImageImageSharingSharedWithArgs) ImageImageSharingSharedWithPtrInput {
+	return (*imageImageSharingSharedWithPtrType)(v)
+}
+
+func (*imageImageSharingSharedWithPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImageSharingSharedWith)(nil)).Elem()
+}
+
+func (i *imageImageSharingSharedWithPtrType) ToImageImageSharingSharedWithPtrOutput() ImageImageSharingSharedWithPtrOutput {
+	return i.ToImageImageSharingSharedWithPtrOutputWithContext(context.Background())
+}
+
+func (i *imageImageSharingSharedWithPtrType) ToImageImageSharingSharedWithPtrOutputWithContext(ctx context.Context) ImageImageSharingSharedWithPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageImageSharingSharedWithPtrOutput)
+}
+
+type ImageImageSharingSharedWithOutput struct{ *pulumi.OutputState }
+
+func (ImageImageSharingSharedWithOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageImageSharingSharedWith)(nil)).Elem()
+}
+
+func (o ImageImageSharingSharedWithOutput) ToImageImageSharingSharedWithOutput() ImageImageSharingSharedWithOutput {
+	return o
+}
+
+func (o ImageImageSharingSharedWithOutput) ToImageImageSharingSharedWithOutputWithContext(ctx context.Context) ImageImageSharingSharedWithOutput {
+	return o
+}
+
+func (o ImageImageSharingSharedWithOutput) ToImageImageSharingSharedWithPtrOutput() ImageImageSharingSharedWithPtrOutput {
+	return o.ToImageImageSharingSharedWithPtrOutputWithContext(context.Background())
+}
+
+func (o ImageImageSharingSharedWithOutput) ToImageImageSharingSharedWithPtrOutputWithContext(ctx context.Context) ImageImageSharingSharedWithPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageImageSharingSharedWith) *ImageImageSharingSharedWith {
+		return &v
+	}).(ImageImageSharingSharedWithPtrOutput)
+}
+
+// The number of sharegroups the private image is present in.
+func (o ImageImageSharingSharedWithOutput) SharegroupCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ImageImageSharingSharedWith) *int { return v.SharegroupCount }).(pulumi.IntPtrOutput)
+}
+
+// The GET api url to view the sharegroups in which the image is shared.
+func (o ImageImageSharingSharedWithOutput) SharegroupListUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageImageSharingSharedWith) *string { return v.SharegroupListUrl }).(pulumi.StringPtrOutput)
+}
+
+type ImageImageSharingSharedWithPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageImageSharingSharedWithPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageImageSharingSharedWith)(nil)).Elem()
+}
+
+func (o ImageImageSharingSharedWithPtrOutput) ToImageImageSharingSharedWithPtrOutput() ImageImageSharingSharedWithPtrOutput {
+	return o
+}
+
+func (o ImageImageSharingSharedWithPtrOutput) ToImageImageSharingSharedWithPtrOutputWithContext(ctx context.Context) ImageImageSharingSharedWithPtrOutput {
+	return o
+}
+
+func (o ImageImageSharingSharedWithPtrOutput) Elem() ImageImageSharingSharedWithOutput {
+	return o.ApplyT(func(v *ImageImageSharingSharedWith) ImageImageSharingSharedWith {
+		if v != nil {
+			return *v
+		}
+		var ret ImageImageSharingSharedWith
+		return ret
+	}).(ImageImageSharingSharedWithOutput)
+}
+
+// The number of sharegroups the private image is present in.
+func (o ImageImageSharingSharedWithPtrOutput) SharegroupCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ImageImageSharingSharedWith) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SharegroupCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The GET api url to view the sharegroups in which the image is shared.
+func (o ImageImageSharingSharedWithPtrOutput) SharegroupListUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageImageSharingSharedWith) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharegroupListUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type ImageReplication struct {
@@ -8755,8 +9311,6 @@ func (o InterfacePublicIpv6AssignedRangeArrayOutput) Index(i pulumi.IntInput) In
 type InterfacePublicIpv6Range struct {
 	// The IPv6 range.
 	Range string `pulumi:"range"`
-	// The public IPv6 address that the range is routed to.
-	RouteTarget *string `pulumi:"routeTarget"`
 }
 
 // InterfacePublicIpv6RangeInput is an input type that accepts InterfacePublicIpv6RangeArgs and InterfacePublicIpv6RangeOutput values.
@@ -8773,8 +9327,6 @@ type InterfacePublicIpv6RangeInput interface {
 type InterfacePublicIpv6RangeArgs struct {
 	// The IPv6 range.
 	Range pulumi.StringInput `pulumi:"range"`
-	// The public IPv6 address that the range is routed to.
-	RouteTarget pulumi.StringPtrInput `pulumi:"routeTarget"`
 }
 
 func (InterfacePublicIpv6RangeArgs) ElementType() reflect.Type {
@@ -8831,11 +9383,6 @@ func (o InterfacePublicIpv6RangeOutput) ToInterfacePublicIpv6RangeOutputWithCont
 // The IPv6 range.
 func (o InterfacePublicIpv6RangeOutput) Range() pulumi.StringOutput {
 	return o.ApplyT(func(v InterfacePublicIpv6Range) string { return v.Range }).(pulumi.StringOutput)
-}
-
-// The public IPv6 address that the range is routed to.
-func (o InterfacePublicIpv6RangeOutput) RouteTarget() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InterfacePublicIpv6Range) *string { return v.RouteTarget }).(pulumi.StringPtrOutput)
 }
 
 type InterfacePublicIpv6RangeArrayOutput struct{ *pulumi.OutputState }
@@ -14121,6 +14668,127 @@ func (o PlacementGroupMemberArrayOutput) Index(i pulumi.IntInput) PlacementGroup
 	}).(PlacementGroupMemberOutput)
 }
 
+type ProducerImageShareGroupImage struct {
+	// The description of the Image Share Group
+	//
+	// * `images` - (Optional) A list of Images to include in the Image Share Group.
+	Description *string `pulumi:"description"`
+	// (Required) The ID of the Image to share. This must be in the format `private/<image_id>`.
+	Id string `pulumi:"id"`
+	// The label of the Image Share Group.
+	Label *string `pulumi:"label"`
+}
+
+// ProducerImageShareGroupImageInput is an input type that accepts ProducerImageShareGroupImageArgs and ProducerImageShareGroupImageOutput values.
+// You can construct a concrete instance of `ProducerImageShareGroupImageInput` via:
+//
+//	ProducerImageShareGroupImageArgs{...}
+type ProducerImageShareGroupImageInput interface {
+	pulumi.Input
+
+	ToProducerImageShareGroupImageOutput() ProducerImageShareGroupImageOutput
+	ToProducerImageShareGroupImageOutputWithContext(context.Context) ProducerImageShareGroupImageOutput
+}
+
+type ProducerImageShareGroupImageArgs struct {
+	// The description of the Image Share Group
+	//
+	// * `images` - (Optional) A list of Images to include in the Image Share Group.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Required) The ID of the Image to share. This must be in the format `private/<image_id>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The label of the Image Share Group.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+}
+
+func (ProducerImageShareGroupImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProducerImageShareGroupImage)(nil)).Elem()
+}
+
+func (i ProducerImageShareGroupImageArgs) ToProducerImageShareGroupImageOutput() ProducerImageShareGroupImageOutput {
+	return i.ToProducerImageShareGroupImageOutputWithContext(context.Background())
+}
+
+func (i ProducerImageShareGroupImageArgs) ToProducerImageShareGroupImageOutputWithContext(ctx context.Context) ProducerImageShareGroupImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProducerImageShareGroupImageOutput)
+}
+
+// ProducerImageShareGroupImageArrayInput is an input type that accepts ProducerImageShareGroupImageArray and ProducerImageShareGroupImageArrayOutput values.
+// You can construct a concrete instance of `ProducerImageShareGroupImageArrayInput` via:
+//
+//	ProducerImageShareGroupImageArray{ ProducerImageShareGroupImageArgs{...} }
+type ProducerImageShareGroupImageArrayInput interface {
+	pulumi.Input
+
+	ToProducerImageShareGroupImageArrayOutput() ProducerImageShareGroupImageArrayOutput
+	ToProducerImageShareGroupImageArrayOutputWithContext(context.Context) ProducerImageShareGroupImageArrayOutput
+}
+
+type ProducerImageShareGroupImageArray []ProducerImageShareGroupImageInput
+
+func (ProducerImageShareGroupImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProducerImageShareGroupImage)(nil)).Elem()
+}
+
+func (i ProducerImageShareGroupImageArray) ToProducerImageShareGroupImageArrayOutput() ProducerImageShareGroupImageArrayOutput {
+	return i.ToProducerImageShareGroupImageArrayOutputWithContext(context.Background())
+}
+
+func (i ProducerImageShareGroupImageArray) ToProducerImageShareGroupImageArrayOutputWithContext(ctx context.Context) ProducerImageShareGroupImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProducerImageShareGroupImageArrayOutput)
+}
+
+type ProducerImageShareGroupImageOutput struct{ *pulumi.OutputState }
+
+func (ProducerImageShareGroupImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProducerImageShareGroupImage)(nil)).Elem()
+}
+
+func (o ProducerImageShareGroupImageOutput) ToProducerImageShareGroupImageOutput() ProducerImageShareGroupImageOutput {
+	return o
+}
+
+func (o ProducerImageShareGroupImageOutput) ToProducerImageShareGroupImageOutputWithContext(ctx context.Context) ProducerImageShareGroupImageOutput {
+	return o
+}
+
+// The description of the Image Share Group
+//
+// * `images` - (Optional) A list of Images to include in the Image Share Group.
+func (o ProducerImageShareGroupImageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProducerImageShareGroupImage) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Required) The ID of the Image to share. This must be in the format `private/<image_id>`.
+func (o ProducerImageShareGroupImageOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ProducerImageShareGroupImage) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The label of the Image Share Group.
+func (o ProducerImageShareGroupImageOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProducerImageShareGroupImage) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+type ProducerImageShareGroupImageArrayOutput struct{ *pulumi.OutputState }
+
+func (ProducerImageShareGroupImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProducerImageShareGroupImage)(nil)).Elem()
+}
+
+func (o ProducerImageShareGroupImageArrayOutput) ToProducerImageShareGroupImageArrayOutput() ProducerImageShareGroupImageArrayOutput {
+	return o
+}
+
+func (o ProducerImageShareGroupImageArrayOutput) ToProducerImageShareGroupImageArrayOutputWithContext(ctx context.Context) ProducerImageShareGroupImageArrayOutput {
+	return o
+}
+
+func (o ProducerImageShareGroupImageArrayOutput) Index(i pulumi.IntInput) ProducerImageShareGroupImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProducerImageShareGroupImage {
+		return vs[0].([]ProducerImageShareGroupImage)[vs[1].(int)]
+	}).(ProducerImageShareGroupImageOutput)
+}
+
 type RdnsTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Create *string `pulumi:"create"`
@@ -17296,6 +17964,827 @@ func (o GetChildAccountsFilterArrayOutput) Index(i pulumi.IntInput) GetChildAcco
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetChildAccountsFilter {
 		return vs[0].([]GetChildAccountsFilter)[vs[1].(int)]
 	}).(GetChildAccountsFilterOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetConsumerImageShareGroupImageSharesFilterInput is an input type that accepts GetConsumerImageShareGroupImageSharesFilterArgs and GetConsumerImageShareGroupImageSharesFilterOutput values.
+// You can construct a concrete instance of `GetConsumerImageShareGroupImageSharesFilterInput` via:
+//
+//	GetConsumerImageShareGroupImageSharesFilterArgs{...}
+type GetConsumerImageShareGroupImageSharesFilterInput interface {
+	pulumi.Input
+
+	ToGetConsumerImageShareGroupImageSharesFilterOutput() GetConsumerImageShareGroupImageSharesFilterOutput
+	ToGetConsumerImageShareGroupImageSharesFilterOutputWithContext(context.Context) GetConsumerImageShareGroupImageSharesFilterOutput
+}
+
+type GetConsumerImageShareGroupImageSharesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetConsumerImageShareGroupImageSharesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupImageSharesFilter)(nil)).Elem()
+}
+
+func (i GetConsumerImageShareGroupImageSharesFilterArgs) ToGetConsumerImageShareGroupImageSharesFilterOutput() GetConsumerImageShareGroupImageSharesFilterOutput {
+	return i.ToGetConsumerImageShareGroupImageSharesFilterOutputWithContext(context.Background())
+}
+
+func (i GetConsumerImageShareGroupImageSharesFilterArgs) ToGetConsumerImageShareGroupImageSharesFilterOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerImageShareGroupImageSharesFilterOutput)
+}
+
+// GetConsumerImageShareGroupImageSharesFilterArrayInput is an input type that accepts GetConsumerImageShareGroupImageSharesFilterArray and GetConsumerImageShareGroupImageSharesFilterArrayOutput values.
+// You can construct a concrete instance of `GetConsumerImageShareGroupImageSharesFilterArrayInput` via:
+//
+//	GetConsumerImageShareGroupImageSharesFilterArray{ GetConsumerImageShareGroupImageSharesFilterArgs{...} }
+type GetConsumerImageShareGroupImageSharesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetConsumerImageShareGroupImageSharesFilterArrayOutput() GetConsumerImageShareGroupImageSharesFilterArrayOutput
+	ToGetConsumerImageShareGroupImageSharesFilterArrayOutputWithContext(context.Context) GetConsumerImageShareGroupImageSharesFilterArrayOutput
+}
+
+type GetConsumerImageShareGroupImageSharesFilterArray []GetConsumerImageShareGroupImageSharesFilterInput
+
+func (GetConsumerImageShareGroupImageSharesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerImageShareGroupImageSharesFilter)(nil)).Elem()
+}
+
+func (i GetConsumerImageShareGroupImageSharesFilterArray) ToGetConsumerImageShareGroupImageSharesFilterArrayOutput() GetConsumerImageShareGroupImageSharesFilterArrayOutput {
+	return i.ToGetConsumerImageShareGroupImageSharesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetConsumerImageShareGroupImageSharesFilterArray) ToGetConsumerImageShareGroupImageSharesFilterArrayOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerImageShareGroupImageSharesFilterArrayOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerImageShareGroupImageSharesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupImageSharesFilter)(nil)).Elem()
+}
+
+func (o GetConsumerImageShareGroupImageSharesFilterOutput) ToGetConsumerImageShareGroupImageSharesFilterOutput() GetConsumerImageShareGroupImageSharesFilterOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupImageSharesFilterOutput) ToGetConsumerImageShareGroupImageSharesFilterOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetConsumerImageShareGroupImageSharesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetConsumerImageShareGroupImageSharesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetConsumerImageShareGroupImageSharesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerImageShareGroupImageSharesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerImageShareGroupImageSharesFilter)(nil)).Elem()
+}
+
+func (o GetConsumerImageShareGroupImageSharesFilterArrayOutput) ToGetConsumerImageShareGroupImageSharesFilterArrayOutput() GetConsumerImageShareGroupImageSharesFilterArrayOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupImageSharesFilterArrayOutput) ToGetConsumerImageShareGroupImageSharesFilterArrayOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesFilterArrayOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupImageSharesFilterArrayOutput) Index(i pulumi.IntInput) GetConsumerImageShareGroupImageSharesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConsumerImageShareGroupImageSharesFilter {
+		return vs[0].([]GetConsumerImageShareGroupImageSharesFilter)[vs[1].(int)]
+	}).(GetConsumerImageShareGroupImageSharesFilterOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesImageShare struct {
+	// The capabilities of the Image represented by the Image Share.
+	Capabilities []string `pulumi:"capabilities"`
+	// When this Image Share was created.
+	Created string `pulumi:"created"`
+	// Whether this Image is deprecated.
+	Deprecated bool `pulumi:"deprecated"`
+	// A description of the Image Share.
+	Description string `pulumi:"description"`
+	// The unique ID assigned to this Image Share.
+	Id string `pulumi:"id"`
+	// Details about image sharing, including who the image is shared with and by.
+	ImageSharing GetConsumerImageShareGroupImageSharesImageShareImageSharing `pulumi:"imageSharing"`
+	// True if the Image is public.
+	IsPublic bool `pulumi:"isPublic"`
+	// The label of the Image Share.
+	Label string `pulumi:"label"`
+	// The minimum size this Image needs to deploy. Size is in MB. example: 2500
+	Size int `pulumi:"size"`
+	// The current status of this image. (`creating`, `pendingUpload`, `available`)
+	Status string `pulumi:"status"`
+	// A list of customized tags.
+	Tags []string `pulumi:"tags"`
+	// The total size of the image in all available regions.
+	TotalSize int `pulumi:"totalSize"`
+	// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+	Type string `pulumi:"type"`
+}
+
+// GetConsumerImageShareGroupImageSharesImageShareInput is an input type that accepts GetConsumerImageShareGroupImageSharesImageShareArgs and GetConsumerImageShareGroupImageSharesImageShareOutput values.
+// You can construct a concrete instance of `GetConsumerImageShareGroupImageSharesImageShareInput` via:
+//
+//	GetConsumerImageShareGroupImageSharesImageShareArgs{...}
+type GetConsumerImageShareGroupImageSharesImageShareInput interface {
+	pulumi.Input
+
+	ToGetConsumerImageShareGroupImageSharesImageShareOutput() GetConsumerImageShareGroupImageSharesImageShareOutput
+	ToGetConsumerImageShareGroupImageSharesImageShareOutputWithContext(context.Context) GetConsumerImageShareGroupImageSharesImageShareOutput
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareArgs struct {
+	// The capabilities of the Image represented by the Image Share.
+	Capabilities pulumi.StringArrayInput `pulumi:"capabilities"`
+	// When this Image Share was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// Whether this Image is deprecated.
+	Deprecated pulumi.BoolInput `pulumi:"deprecated"`
+	// A description of the Image Share.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The unique ID assigned to this Image Share.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Details about image sharing, including who the image is shared with and by.
+	ImageSharing GetConsumerImageShareGroupImageSharesImageShareImageSharingInput `pulumi:"imageSharing"`
+	// True if the Image is public.
+	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	// The label of the Image Share.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The minimum size this Image needs to deploy. Size is in MB. example: 2500
+	Size pulumi.IntInput `pulumi:"size"`
+	// The current status of this image. (`creating`, `pendingUpload`, `available`)
+	Status pulumi.StringInput `pulumi:"status"`
+	// A list of customized tags.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The total size of the image in all available regions.
+	TotalSize pulumi.IntInput `pulumi:"totalSize"`
+	// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetConsumerImageShareGroupImageSharesImageShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShare)(nil)).Elem()
+}
+
+func (i GetConsumerImageShareGroupImageSharesImageShareArgs) ToGetConsumerImageShareGroupImageSharesImageShareOutput() GetConsumerImageShareGroupImageSharesImageShareOutput {
+	return i.ToGetConsumerImageShareGroupImageSharesImageShareOutputWithContext(context.Background())
+}
+
+func (i GetConsumerImageShareGroupImageSharesImageShareArgs) ToGetConsumerImageShareGroupImageSharesImageShareOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesImageShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerImageShareGroupImageSharesImageShareOutput)
+}
+
+// GetConsumerImageShareGroupImageSharesImageShareArrayInput is an input type that accepts GetConsumerImageShareGroupImageSharesImageShareArray and GetConsumerImageShareGroupImageSharesImageShareArrayOutput values.
+// You can construct a concrete instance of `GetConsumerImageShareGroupImageSharesImageShareArrayInput` via:
+//
+//	GetConsumerImageShareGroupImageSharesImageShareArray{ GetConsumerImageShareGroupImageSharesImageShareArgs{...} }
+type GetConsumerImageShareGroupImageSharesImageShareArrayInput interface {
+	pulumi.Input
+
+	ToGetConsumerImageShareGroupImageSharesImageShareArrayOutput() GetConsumerImageShareGroupImageSharesImageShareArrayOutput
+	ToGetConsumerImageShareGroupImageSharesImageShareArrayOutputWithContext(context.Context) GetConsumerImageShareGroupImageSharesImageShareArrayOutput
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareArray []GetConsumerImageShareGroupImageSharesImageShareInput
+
+func (GetConsumerImageShareGroupImageSharesImageShareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerImageShareGroupImageSharesImageShare)(nil)).Elem()
+}
+
+func (i GetConsumerImageShareGroupImageSharesImageShareArray) ToGetConsumerImageShareGroupImageSharesImageShareArrayOutput() GetConsumerImageShareGroupImageSharesImageShareArrayOutput {
+	return i.ToGetConsumerImageShareGroupImageSharesImageShareArrayOutputWithContext(context.Background())
+}
+
+func (i GetConsumerImageShareGroupImageSharesImageShareArray) ToGetConsumerImageShareGroupImageSharesImageShareArrayOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesImageShareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerImageShareGroupImageSharesImageShareArrayOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerImageShareGroupImageSharesImageShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShare)(nil)).Elem()
+}
+
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) ToGetConsumerImageShareGroupImageSharesImageShareOutput() GetConsumerImageShareGroupImageSharesImageShareOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) ToGetConsumerImageShareGroupImageSharesImageShareOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesImageShareOutput {
+	return o
+}
+
+// The capabilities of the Image represented by the Image Share.
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
+}
+
+// When this Image Share was created.
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// Whether this Image is deprecated.
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) bool { return v.Deprecated }).(pulumi.BoolOutput)
+}
+
+// A description of the Image Share.
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique ID assigned to this Image Share.
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Details about image sharing, including who the image is shared with and by.
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) ImageSharing() GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) GetConsumerImageShareGroupImageSharesImageShareImageSharing {
+		return v.ImageSharing
+	}).(GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput)
+}
+
+// True if the Image is public.
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+// The label of the Image Share.
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The minimum size this Image needs to deploy. Size is in MB. example: 2500
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The current status of this image. (`creating`, `pendingUpload`, `available`)
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A list of customized tags.
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The total size of the image in all available regions.
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) TotalSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) int { return v.TotalSize }).(pulumi.IntOutput)
+}
+
+// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+func (o GetConsumerImageShareGroupImageSharesImageShareOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShare) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerImageShareGroupImageSharesImageShareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerImageShareGroupImageSharesImageShare)(nil)).Elem()
+}
+
+func (o GetConsumerImageShareGroupImageSharesImageShareArrayOutput) ToGetConsumerImageShareGroupImageSharesImageShareArrayOutput() GetConsumerImageShareGroupImageSharesImageShareArrayOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupImageSharesImageShareArrayOutput) ToGetConsumerImageShareGroupImageSharesImageShareArrayOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesImageShareArrayOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupImageSharesImageShareArrayOutput) Index(i pulumi.IntInput) GetConsumerImageShareGroupImageSharesImageShareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConsumerImageShareGroupImageSharesImageShare {
+		return vs[0].([]GetConsumerImageShareGroupImageSharesImageShare)[vs[1].(int)]
+	}).(GetConsumerImageShareGroupImageSharesImageShareOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareImageSharing struct {
+	// Details about who the image is shared by.
+	SharedBy GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy `pulumi:"sharedBy"`
+	// Details about who the image is shared with.
+	SharedWith GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith `pulumi:"sharedWith"`
+}
+
+// GetConsumerImageShareGroupImageSharesImageShareImageSharingInput is an input type that accepts GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs and GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput values.
+// You can construct a concrete instance of `GetConsumerImageShareGroupImageSharesImageShareImageSharingInput` via:
+//
+//	GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs{...}
+type GetConsumerImageShareGroupImageSharesImageShareImageSharingInput interface {
+	pulumi.Input
+
+	ToGetConsumerImageShareGroupImageSharesImageShareImageSharingOutput() GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput
+	ToGetConsumerImageShareGroupImageSharesImageShareImageSharingOutputWithContext(context.Context) GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs struct {
+	// Details about who the image is shared by.
+	SharedBy GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByInput `pulumi:"sharedBy"`
+	// Details about who the image is shared with.
+	SharedWith GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithInput `pulumi:"sharedWith"`
+}
+
+func (GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShareImageSharing)(nil)).Elem()
+}
+
+func (i GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingOutput() GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput {
+	return i.ToGetConsumerImageShareGroupImageSharesImageShareImageSharingOutputWithContext(context.Background())
+}
+
+func (i GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShareImageSharing)(nil)).Elem()
+}
+
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingOutput() GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput {
+	return o
+}
+
+// Details about who the image is shared by.
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput) SharedBy() GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShareImageSharing) GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy {
+		return v.SharedBy
+	}).(GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput)
+}
+
+// Details about who the image is shared with.
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput) SharedWith() GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShareImageSharing) GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith {
+		return v.SharedWith
+	}).(GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy struct {
+	// The sharegroupId from the im_ImageShare row.
+	SharegroupId int `pulumi:"sharegroupId"`
+	// The label from the associated im_ImageShareGroup row.
+	SharegroupLabel string `pulumi:"sharegroupLabel"`
+	// The sharegroupUuid from the im_ImageShare row.
+	SharegroupUuid string `pulumi:"sharegroupUuid"`
+	// The image id of the base image (will only be shown to producers, will be null for consumers).
+	SourceImageId string `pulumi:"sourceImageId"`
+}
+
+// GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByInput is an input type that accepts GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs and GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput values.
+// You can construct a concrete instance of `GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByInput` via:
+//
+//	GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs{...}
+type GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByInput interface {
+	pulumi.Input
+
+	ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput() GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput
+	ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutputWithContext(context.Context) GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs struct {
+	// The sharegroupId from the im_ImageShare row.
+	SharegroupId pulumi.IntInput `pulumi:"sharegroupId"`
+	// The label from the associated im_ImageShareGroup row.
+	SharegroupLabel pulumi.StringInput `pulumi:"sharegroupLabel"`
+	// The sharegroupUuid from the im_ImageShare row.
+	SharegroupUuid pulumi.StringInput `pulumi:"sharegroupUuid"`
+	// The image id of the base image (will only be shown to producers, will be null for consumers).
+	SourceImageId pulumi.StringInput `pulumi:"sourceImageId"`
+}
+
+func (GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy)(nil)).Elem()
+}
+
+func (i GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput() GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput {
+	return i.ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutputWithContext(context.Background())
+}
+
+func (i GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy)(nil)).Elem()
+}
+
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput() GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput {
+	return o
+}
+
+// The sharegroupId from the im_ImageShare row.
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) SharegroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy) int { return v.SharegroupId }).(pulumi.IntOutput)
+}
+
+// The label from the associated im_ImageShareGroup row.
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) SharegroupLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy) string {
+		return v.SharegroupLabel
+	}).(pulumi.StringOutput)
+}
+
+// The sharegroupUuid from the im_ImageShare row.
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) SharegroupUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy) string {
+		return v.SharegroupUuid
+	}).(pulumi.StringOutput)
+}
+
+// The image id of the base image (will only be shown to producers, will be null for consumers).
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) SourceImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy) string {
+		return v.SourceImageId
+	}).(pulumi.StringOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith struct {
+	// The number of sharegroups the private image is present in.
+	SharegroupCount int `pulumi:"sharegroupCount"`
+	// The GET api url to view the sharegroups in which the image is shared.
+	SharegroupListUrl string `pulumi:"sharegroupListUrl"`
+}
+
+// GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithInput is an input type that accepts GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs and GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput values.
+// You can construct a concrete instance of `GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithInput` via:
+//
+//	GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs{...}
+type GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithInput interface {
+	pulumi.Input
+
+	ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput() GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput
+	ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutputWithContext(context.Context) GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs struct {
+	// The number of sharegroups the private image is present in.
+	SharegroupCount pulumi.IntInput `pulumi:"sharegroupCount"`
+	// The GET api url to view the sharegroups in which the image is shared.
+	SharegroupListUrl pulumi.StringInput `pulumi:"sharegroupListUrl"`
+}
+
+func (GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith)(nil)).Elem()
+}
+
+func (i GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput() GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput {
+	return i.ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutputWithContext(context.Background())
+}
+
+func (i GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput)
+}
+
+type GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith)(nil)).Elem()
+}
+
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput() GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput) ToGetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutputWithContext(ctx context.Context) GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput {
+	return o
+}
+
+// The number of sharegroups the private image is present in.
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput) SharegroupCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith) int {
+		return v.SharegroupCount
+	}).(pulumi.IntOutput)
+}
+
+// The GET api url to view the sharegroups in which the image is shared.
+func (o GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput) SharegroupListUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith) string {
+		return v.SharegroupListUrl
+	}).(pulumi.StringOutput)
+}
+
+type GetConsumerImageShareGroupTokensFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetConsumerImageShareGroupTokensFilterInput is an input type that accepts GetConsumerImageShareGroupTokensFilterArgs and GetConsumerImageShareGroupTokensFilterOutput values.
+// You can construct a concrete instance of `GetConsumerImageShareGroupTokensFilterInput` via:
+//
+//	GetConsumerImageShareGroupTokensFilterArgs{...}
+type GetConsumerImageShareGroupTokensFilterInput interface {
+	pulumi.Input
+
+	ToGetConsumerImageShareGroupTokensFilterOutput() GetConsumerImageShareGroupTokensFilterOutput
+	ToGetConsumerImageShareGroupTokensFilterOutputWithContext(context.Context) GetConsumerImageShareGroupTokensFilterOutput
+}
+
+type GetConsumerImageShareGroupTokensFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetConsumerImageShareGroupTokensFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupTokensFilter)(nil)).Elem()
+}
+
+func (i GetConsumerImageShareGroupTokensFilterArgs) ToGetConsumerImageShareGroupTokensFilterOutput() GetConsumerImageShareGroupTokensFilterOutput {
+	return i.ToGetConsumerImageShareGroupTokensFilterOutputWithContext(context.Background())
+}
+
+func (i GetConsumerImageShareGroupTokensFilterArgs) ToGetConsumerImageShareGroupTokensFilterOutputWithContext(ctx context.Context) GetConsumerImageShareGroupTokensFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerImageShareGroupTokensFilterOutput)
+}
+
+// GetConsumerImageShareGroupTokensFilterArrayInput is an input type that accepts GetConsumerImageShareGroupTokensFilterArray and GetConsumerImageShareGroupTokensFilterArrayOutput values.
+// You can construct a concrete instance of `GetConsumerImageShareGroupTokensFilterArrayInput` via:
+//
+//	GetConsumerImageShareGroupTokensFilterArray{ GetConsumerImageShareGroupTokensFilterArgs{...} }
+type GetConsumerImageShareGroupTokensFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetConsumerImageShareGroupTokensFilterArrayOutput() GetConsumerImageShareGroupTokensFilterArrayOutput
+	ToGetConsumerImageShareGroupTokensFilterArrayOutputWithContext(context.Context) GetConsumerImageShareGroupTokensFilterArrayOutput
+}
+
+type GetConsumerImageShareGroupTokensFilterArray []GetConsumerImageShareGroupTokensFilterInput
+
+func (GetConsumerImageShareGroupTokensFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerImageShareGroupTokensFilter)(nil)).Elem()
+}
+
+func (i GetConsumerImageShareGroupTokensFilterArray) ToGetConsumerImageShareGroupTokensFilterArrayOutput() GetConsumerImageShareGroupTokensFilterArrayOutput {
+	return i.ToGetConsumerImageShareGroupTokensFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetConsumerImageShareGroupTokensFilterArray) ToGetConsumerImageShareGroupTokensFilterArrayOutputWithContext(ctx context.Context) GetConsumerImageShareGroupTokensFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerImageShareGroupTokensFilterArrayOutput)
+}
+
+type GetConsumerImageShareGroupTokensFilterOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerImageShareGroupTokensFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupTokensFilter)(nil)).Elem()
+}
+
+func (o GetConsumerImageShareGroupTokensFilterOutput) ToGetConsumerImageShareGroupTokensFilterOutput() GetConsumerImageShareGroupTokensFilterOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupTokensFilterOutput) ToGetConsumerImageShareGroupTokensFilterOutputWithContext(ctx context.Context) GetConsumerImageShareGroupTokensFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetConsumerImageShareGroupTokensFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetConsumerImageShareGroupTokensFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetConsumerImageShareGroupTokensFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetConsumerImageShareGroupTokensFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerImageShareGroupTokensFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerImageShareGroupTokensFilter)(nil)).Elem()
+}
+
+func (o GetConsumerImageShareGroupTokensFilterArrayOutput) ToGetConsumerImageShareGroupTokensFilterArrayOutput() GetConsumerImageShareGroupTokensFilterArrayOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupTokensFilterArrayOutput) ToGetConsumerImageShareGroupTokensFilterArrayOutputWithContext(ctx context.Context) GetConsumerImageShareGroupTokensFilterArrayOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupTokensFilterArrayOutput) Index(i pulumi.IntInput) GetConsumerImageShareGroupTokensFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConsumerImageShareGroupTokensFilter {
+		return vs[0].([]GetConsumerImageShareGroupTokensFilter)[vs[1].(int)]
+	}).(GetConsumerImageShareGroupTokensFilterOutput)
+}
+
+type GetConsumerImageShareGroupTokensToken struct {
+	// When the token was created.
+	Created string `pulumi:"created"`
+	// When the token will expire.
+	Expiry string `pulumi:"expiry"`
+	// A label for the token.
+	Label string `pulumi:"label"`
+	// The label of the Image Share Group that the token is for.
+	SharegroupLabel string `pulumi:"sharegroupLabel"`
+	// The UUID of the Image Share Group that the token is for.
+	SharegroupUuid string `pulumi:"sharegroupUuid"`
+	// The status of the token.
+	Status string `pulumi:"status"`
+	// The UUID of the token.
+	TokenUuid string `pulumi:"tokenUuid"`
+	// When the token was last updated.
+	Updated string `pulumi:"updated"`
+	// The UUID of the Image Share Group for which to create a token.
+	ValidForSharegroupUuid string `pulumi:"validForSharegroupUuid"`
+}
+
+// GetConsumerImageShareGroupTokensTokenInput is an input type that accepts GetConsumerImageShareGroupTokensTokenArgs and GetConsumerImageShareGroupTokensTokenOutput values.
+// You can construct a concrete instance of `GetConsumerImageShareGroupTokensTokenInput` via:
+//
+//	GetConsumerImageShareGroupTokensTokenArgs{...}
+type GetConsumerImageShareGroupTokensTokenInput interface {
+	pulumi.Input
+
+	ToGetConsumerImageShareGroupTokensTokenOutput() GetConsumerImageShareGroupTokensTokenOutput
+	ToGetConsumerImageShareGroupTokensTokenOutputWithContext(context.Context) GetConsumerImageShareGroupTokensTokenOutput
+}
+
+type GetConsumerImageShareGroupTokensTokenArgs struct {
+	// When the token was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// When the token will expire.
+	Expiry pulumi.StringInput `pulumi:"expiry"`
+	// A label for the token.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The label of the Image Share Group that the token is for.
+	SharegroupLabel pulumi.StringInput `pulumi:"sharegroupLabel"`
+	// The UUID of the Image Share Group that the token is for.
+	SharegroupUuid pulumi.StringInput `pulumi:"sharegroupUuid"`
+	// The status of the token.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The UUID of the token.
+	TokenUuid pulumi.StringInput `pulumi:"tokenUuid"`
+	// When the token was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+	// The UUID of the Image Share Group for which to create a token.
+	ValidForSharegroupUuid pulumi.StringInput `pulumi:"validForSharegroupUuid"`
+}
+
+func (GetConsumerImageShareGroupTokensTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupTokensToken)(nil)).Elem()
+}
+
+func (i GetConsumerImageShareGroupTokensTokenArgs) ToGetConsumerImageShareGroupTokensTokenOutput() GetConsumerImageShareGroupTokensTokenOutput {
+	return i.ToGetConsumerImageShareGroupTokensTokenOutputWithContext(context.Background())
+}
+
+func (i GetConsumerImageShareGroupTokensTokenArgs) ToGetConsumerImageShareGroupTokensTokenOutputWithContext(ctx context.Context) GetConsumerImageShareGroupTokensTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerImageShareGroupTokensTokenOutput)
+}
+
+// GetConsumerImageShareGroupTokensTokenArrayInput is an input type that accepts GetConsumerImageShareGroupTokensTokenArray and GetConsumerImageShareGroupTokensTokenArrayOutput values.
+// You can construct a concrete instance of `GetConsumerImageShareGroupTokensTokenArrayInput` via:
+//
+//	GetConsumerImageShareGroupTokensTokenArray{ GetConsumerImageShareGroupTokensTokenArgs{...} }
+type GetConsumerImageShareGroupTokensTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetConsumerImageShareGroupTokensTokenArrayOutput() GetConsumerImageShareGroupTokensTokenArrayOutput
+	ToGetConsumerImageShareGroupTokensTokenArrayOutputWithContext(context.Context) GetConsumerImageShareGroupTokensTokenArrayOutput
+}
+
+type GetConsumerImageShareGroupTokensTokenArray []GetConsumerImageShareGroupTokensTokenInput
+
+func (GetConsumerImageShareGroupTokensTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerImageShareGroupTokensToken)(nil)).Elem()
+}
+
+func (i GetConsumerImageShareGroupTokensTokenArray) ToGetConsumerImageShareGroupTokensTokenArrayOutput() GetConsumerImageShareGroupTokensTokenArrayOutput {
+	return i.ToGetConsumerImageShareGroupTokensTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetConsumerImageShareGroupTokensTokenArray) ToGetConsumerImageShareGroupTokensTokenArrayOutputWithContext(ctx context.Context) GetConsumerImageShareGroupTokensTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConsumerImageShareGroupTokensTokenArrayOutput)
+}
+
+type GetConsumerImageShareGroupTokensTokenOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerImageShareGroupTokensTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConsumerImageShareGroupTokensToken)(nil)).Elem()
+}
+
+func (o GetConsumerImageShareGroupTokensTokenOutput) ToGetConsumerImageShareGroupTokensTokenOutput() GetConsumerImageShareGroupTokensTokenOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupTokensTokenOutput) ToGetConsumerImageShareGroupTokensTokenOutputWithContext(ctx context.Context) GetConsumerImageShareGroupTokensTokenOutput {
+	return o
+}
+
+// When the token was created.
+func (o GetConsumerImageShareGroupTokensTokenOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensToken) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// When the token will expire.
+func (o GetConsumerImageShareGroupTokensTokenOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensToken) string { return v.Expiry }).(pulumi.StringOutput)
+}
+
+// A label for the token.
+func (o GetConsumerImageShareGroupTokensTokenOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensToken) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The label of the Image Share Group that the token is for.
+func (o GetConsumerImageShareGroupTokensTokenOutput) SharegroupLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensToken) string { return v.SharegroupLabel }).(pulumi.StringOutput)
+}
+
+// The UUID of the Image Share Group that the token is for.
+func (o GetConsumerImageShareGroupTokensTokenOutput) SharegroupUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensToken) string { return v.SharegroupUuid }).(pulumi.StringOutput)
+}
+
+// The status of the token.
+func (o GetConsumerImageShareGroupTokensTokenOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensToken) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The UUID of the token.
+func (o GetConsumerImageShareGroupTokensTokenOutput) TokenUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensToken) string { return v.TokenUuid }).(pulumi.StringOutput)
+}
+
+// When the token was last updated.
+func (o GetConsumerImageShareGroupTokensTokenOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensToken) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The UUID of the Image Share Group for which to create a token.
+func (o GetConsumerImageShareGroupTokensTokenOutput) ValidForSharegroupUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConsumerImageShareGroupTokensToken) string { return v.ValidForSharegroupUuid }).(pulumi.StringOutput)
+}
+
+type GetConsumerImageShareGroupTokensTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConsumerImageShareGroupTokensTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConsumerImageShareGroupTokensToken)(nil)).Elem()
+}
+
+func (o GetConsumerImageShareGroupTokensTokenArrayOutput) ToGetConsumerImageShareGroupTokensTokenArrayOutput() GetConsumerImageShareGroupTokensTokenArrayOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupTokensTokenArrayOutput) ToGetConsumerImageShareGroupTokensTokenArrayOutputWithContext(ctx context.Context) GetConsumerImageShareGroupTokensTokenArrayOutput {
+	return o
+}
+
+func (o GetConsumerImageShareGroupTokensTokenArrayOutput) Index(i pulumi.IntInput) GetConsumerImageShareGroupTokensTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConsumerImageShareGroupTokensToken {
+		return vs[0].([]GetConsumerImageShareGroupTokensToken)[vs[1].(int)]
+	}).(GetConsumerImageShareGroupTokensTokenOutput)
 }
 
 type GetDatabaseBackupsBackup struct {
@@ -20650,9 +22139,12 @@ func (o GetDatabaseMysqlUpdateArrayOutput) Index(i pulumi.IntInput) GetDatabaseM
 }
 
 type GetDatabaseMysqlV2PendingUpdate struct {
-	Deadline    string `pulumi:"deadline"`
+	// The time when a mandatory update needs to be applied.
+	Deadline string `pulumi:"deadline"`
+	// A description of the update.
 	Description string `pulumi:"description"`
-	PlannedFor  string `pulumi:"plannedFor"`
+	// The date and time a maintenance update will be applied.
+	PlannedFor string `pulumi:"plannedFor"`
 }
 
 // GetDatabaseMysqlV2PendingUpdateInput is an input type that accepts GetDatabaseMysqlV2PendingUpdateArgs and GetDatabaseMysqlV2PendingUpdateOutput values.
@@ -20667,9 +22159,12 @@ type GetDatabaseMysqlV2PendingUpdateInput interface {
 }
 
 type GetDatabaseMysqlV2PendingUpdateArgs struct {
-	Deadline    pulumi.StringInput `pulumi:"deadline"`
+	// The time when a mandatory update needs to be applied.
+	Deadline pulumi.StringInput `pulumi:"deadline"`
+	// A description of the update.
 	Description pulumi.StringInput `pulumi:"description"`
-	PlannedFor  pulumi.StringInput `pulumi:"plannedFor"`
+	// The date and time a maintenance update will be applied.
+	PlannedFor pulumi.StringInput `pulumi:"plannedFor"`
 }
 
 func (GetDatabaseMysqlV2PendingUpdateArgs) ElementType() reflect.Type {
@@ -20723,14 +22218,17 @@ func (o GetDatabaseMysqlV2PendingUpdateOutput) ToGetDatabaseMysqlV2PendingUpdate
 	return o
 }
 
+// The time when a mandatory update needs to be applied.
 func (o GetDatabaseMysqlV2PendingUpdateOutput) Deadline() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlV2PendingUpdate) string { return v.Deadline }).(pulumi.StringOutput)
 }
 
+// A description of the update.
 func (o GetDatabaseMysqlV2PendingUpdateOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlV2PendingUpdate) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The date and time a maintenance update will be applied.
 func (o GetDatabaseMysqlV2PendingUpdateOutput) PlannedFor() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlV2PendingUpdate) string { return v.PlannedFor }).(pulumi.StringOutput)
 }
@@ -20826,10 +22324,14 @@ func (o GetDatabaseMysqlV2PrivateNetworkOutput) VpcId() pulumi.IntOutput {
 }
 
 type GetDatabaseMysqlV2Updates struct {
-	DayOfWeek int    `pulumi:"dayOfWeek"`
-	Duration  int    `pulumi:"duration"`
+	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+	DayOfWeek int `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration int `pulumi:"duration"`
+	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency string `pulumi:"frequency"`
-	HourOfDay int    `pulumi:"hourOfDay"`
+	// The hour of the day (0-23) when maintenance occurs.
+	HourOfDay int `pulumi:"hourOfDay"`
 }
 
 // GetDatabaseMysqlV2UpdatesInput is an input type that accepts GetDatabaseMysqlV2UpdatesArgs and GetDatabaseMysqlV2UpdatesOutput values.
@@ -20844,10 +22346,14 @@ type GetDatabaseMysqlV2UpdatesInput interface {
 }
 
 type GetDatabaseMysqlV2UpdatesArgs struct {
-	DayOfWeek pulumi.IntInput    `pulumi:"dayOfWeek"`
-	Duration  pulumi.IntInput    `pulumi:"duration"`
+	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+	DayOfWeek pulumi.IntInput `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay pulumi.IntInput    `pulumi:"hourOfDay"`
+	// The hour of the day (0-23) when maintenance occurs.
+	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
 }
 
 func (GetDatabaseMysqlV2UpdatesArgs) ElementType() reflect.Type {
@@ -20876,18 +22382,22 @@ func (o GetDatabaseMysqlV2UpdatesOutput) ToGetDatabaseMysqlV2UpdatesOutputWithCo
 	return o
 }
 
+// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 func (o GetDatabaseMysqlV2UpdatesOutput) DayOfWeek() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlV2Updates) int { return v.DayOfWeek }).(pulumi.IntOutput)
 }
 
+// The maximum maintenance window time in hours.
 func (o GetDatabaseMysqlV2UpdatesOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlV2Updates) int { return v.Duration }).(pulumi.IntOutput)
 }
 
+// How frequently maintenance occurs. Currently can only be weekly.
 func (o GetDatabaseMysqlV2UpdatesOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlV2Updates) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
+// The hour of the day (0-23) when maintenance occurs.
 func (o GetDatabaseMysqlV2UpdatesOutput) HourOfDay() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlV2Updates) int { return v.HourOfDay }).(pulumi.IntOutput)
 }
@@ -21536,9 +23046,12 @@ func (o GetDatabasePostgresqlUpdateArrayOutput) Index(i pulumi.IntInput) GetData
 }
 
 type GetDatabasePostgresqlV2PendingUpdate struct {
-	Deadline    string `pulumi:"deadline"`
+	// The time when a mandatory update needs to be applied.
+	Deadline string `pulumi:"deadline"`
+	// A description of the update.
 	Description string `pulumi:"description"`
-	PlannedFor  string `pulumi:"plannedFor"`
+	// The date and time a maintenance update will be applied.
+	PlannedFor string `pulumi:"plannedFor"`
 }
 
 // GetDatabasePostgresqlV2PendingUpdateInput is an input type that accepts GetDatabasePostgresqlV2PendingUpdateArgs and GetDatabasePostgresqlV2PendingUpdateOutput values.
@@ -21553,9 +23066,12 @@ type GetDatabasePostgresqlV2PendingUpdateInput interface {
 }
 
 type GetDatabasePostgresqlV2PendingUpdateArgs struct {
-	Deadline    pulumi.StringInput `pulumi:"deadline"`
+	// The time when a mandatory update needs to be applied.
+	Deadline pulumi.StringInput `pulumi:"deadline"`
+	// A description of the update.
 	Description pulumi.StringInput `pulumi:"description"`
-	PlannedFor  pulumi.StringInput `pulumi:"plannedFor"`
+	// The date and time a maintenance update will be applied.
+	PlannedFor pulumi.StringInput `pulumi:"plannedFor"`
 }
 
 func (GetDatabasePostgresqlV2PendingUpdateArgs) ElementType() reflect.Type {
@@ -21609,14 +23125,17 @@ func (o GetDatabasePostgresqlV2PendingUpdateOutput) ToGetDatabasePostgresqlV2Pen
 	return o
 }
 
+// The time when a mandatory update needs to be applied.
 func (o GetDatabasePostgresqlV2PendingUpdateOutput) Deadline() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasePostgresqlV2PendingUpdate) string { return v.Deadline }).(pulumi.StringOutput)
 }
 
+// A description of the update.
 func (o GetDatabasePostgresqlV2PendingUpdateOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasePostgresqlV2PendingUpdate) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The date and time a maintenance update will be applied.
 func (o GetDatabasePostgresqlV2PendingUpdateOutput) PlannedFor() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasePostgresqlV2PendingUpdate) string { return v.PlannedFor }).(pulumi.StringOutput)
 }
@@ -21712,10 +23231,14 @@ func (o GetDatabasePostgresqlV2PrivateNetworkOutput) VpcId() pulumi.IntOutput {
 }
 
 type GetDatabasePostgresqlV2Updates struct {
-	DayOfWeek int    `pulumi:"dayOfWeek"`
-	Duration  int    `pulumi:"duration"`
+	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+	DayOfWeek int `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration int `pulumi:"duration"`
+	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency string `pulumi:"frequency"`
-	HourOfDay int    `pulumi:"hourOfDay"`
+	// How frequently maintenance occurs. Currently can only be weekly.
+	HourOfDay int `pulumi:"hourOfDay"`
 }
 
 // GetDatabasePostgresqlV2UpdatesInput is an input type that accepts GetDatabasePostgresqlV2UpdatesArgs and GetDatabasePostgresqlV2UpdatesOutput values.
@@ -21730,10 +23253,14 @@ type GetDatabasePostgresqlV2UpdatesInput interface {
 }
 
 type GetDatabasePostgresqlV2UpdatesArgs struct {
-	DayOfWeek pulumi.IntInput    `pulumi:"dayOfWeek"`
-	Duration  pulumi.IntInput    `pulumi:"duration"`
+	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+	DayOfWeek pulumi.IntInput `pulumi:"dayOfWeek"`
+	// The maximum maintenance window time in hours.
+	Duration pulumi.IntInput `pulumi:"duration"`
+	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay pulumi.IntInput    `pulumi:"hourOfDay"`
+	// How frequently maintenance occurs. Currently can only be weekly.
+	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
 }
 
 func (GetDatabasePostgresqlV2UpdatesArgs) ElementType() reflect.Type {
@@ -21746,6 +23273,47 @@ func (i GetDatabasePostgresqlV2UpdatesArgs) ToGetDatabasePostgresqlV2UpdatesOutp
 
 func (i GetDatabasePostgresqlV2UpdatesArgs) ToGetDatabasePostgresqlV2UpdatesOutputWithContext(ctx context.Context) GetDatabasePostgresqlV2UpdatesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlV2UpdatesOutput)
+}
+
+func (i GetDatabasePostgresqlV2UpdatesArgs) ToGetDatabasePostgresqlV2UpdatesPtrOutput() GetDatabasePostgresqlV2UpdatesPtrOutput {
+	return i.ToGetDatabasePostgresqlV2UpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i GetDatabasePostgresqlV2UpdatesArgs) ToGetDatabasePostgresqlV2UpdatesPtrOutputWithContext(ctx context.Context) GetDatabasePostgresqlV2UpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlV2UpdatesOutput).ToGetDatabasePostgresqlV2UpdatesPtrOutputWithContext(ctx)
+}
+
+// GetDatabasePostgresqlV2UpdatesPtrInput is an input type that accepts GetDatabasePostgresqlV2UpdatesArgs, GetDatabasePostgresqlV2UpdatesPtr and GetDatabasePostgresqlV2UpdatesPtrOutput values.
+// You can construct a concrete instance of `GetDatabasePostgresqlV2UpdatesPtrInput` via:
+//
+//	        GetDatabasePostgresqlV2UpdatesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetDatabasePostgresqlV2UpdatesPtrInput interface {
+	pulumi.Input
+
+	ToGetDatabasePostgresqlV2UpdatesPtrOutput() GetDatabasePostgresqlV2UpdatesPtrOutput
+	ToGetDatabasePostgresqlV2UpdatesPtrOutputWithContext(context.Context) GetDatabasePostgresqlV2UpdatesPtrOutput
+}
+
+type getDatabasePostgresqlV2UpdatesPtrType GetDatabasePostgresqlV2UpdatesArgs
+
+func GetDatabasePostgresqlV2UpdatesPtr(v *GetDatabasePostgresqlV2UpdatesArgs) GetDatabasePostgresqlV2UpdatesPtrInput {
+	return (*getDatabasePostgresqlV2UpdatesPtrType)(v)
+}
+
+func (*getDatabasePostgresqlV2UpdatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatabasePostgresqlV2Updates)(nil)).Elem()
+}
+
+func (i *getDatabasePostgresqlV2UpdatesPtrType) ToGetDatabasePostgresqlV2UpdatesPtrOutput() GetDatabasePostgresqlV2UpdatesPtrOutput {
+	return i.ToGetDatabasePostgresqlV2UpdatesPtrOutputWithContext(context.Background())
+}
+
+func (i *getDatabasePostgresqlV2UpdatesPtrType) ToGetDatabasePostgresqlV2UpdatesPtrOutputWithContext(ctx context.Context) GetDatabasePostgresqlV2UpdatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlV2UpdatesPtrOutput)
 }
 
 type GetDatabasePostgresqlV2UpdatesOutput struct{ *pulumi.OutputState }
@@ -21762,20 +23330,98 @@ func (o GetDatabasePostgresqlV2UpdatesOutput) ToGetDatabasePostgresqlV2UpdatesOu
 	return o
 }
 
+func (o GetDatabasePostgresqlV2UpdatesOutput) ToGetDatabasePostgresqlV2UpdatesPtrOutput() GetDatabasePostgresqlV2UpdatesPtrOutput {
+	return o.ToGetDatabasePostgresqlV2UpdatesPtrOutputWithContext(context.Background())
+}
+
+func (o GetDatabasePostgresqlV2UpdatesOutput) ToGetDatabasePostgresqlV2UpdatesPtrOutputWithContext(ctx context.Context) GetDatabasePostgresqlV2UpdatesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDatabasePostgresqlV2Updates) *GetDatabasePostgresqlV2Updates {
+		return &v
+	}).(GetDatabasePostgresqlV2UpdatesPtrOutput)
+}
+
+// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 func (o GetDatabasePostgresqlV2UpdatesOutput) DayOfWeek() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabasePostgresqlV2Updates) int { return v.DayOfWeek }).(pulumi.IntOutput)
 }
 
+// The maximum maintenance window time in hours.
 func (o GetDatabasePostgresqlV2UpdatesOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabasePostgresqlV2Updates) int { return v.Duration }).(pulumi.IntOutput)
 }
 
+// How frequently maintenance occurs. Currently can only be weekly.
 func (o GetDatabasePostgresqlV2UpdatesOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasePostgresqlV2Updates) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
+// How frequently maintenance occurs. Currently can only be weekly.
 func (o GetDatabasePostgresqlV2UpdatesOutput) HourOfDay() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabasePostgresqlV2Updates) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+type GetDatabasePostgresqlV2UpdatesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetDatabasePostgresqlV2UpdatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatabasePostgresqlV2Updates)(nil)).Elem()
+}
+
+func (o GetDatabasePostgresqlV2UpdatesPtrOutput) ToGetDatabasePostgresqlV2UpdatesPtrOutput() GetDatabasePostgresqlV2UpdatesPtrOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlV2UpdatesPtrOutput) ToGetDatabasePostgresqlV2UpdatesPtrOutputWithContext(ctx context.Context) GetDatabasePostgresqlV2UpdatesPtrOutput {
+	return o
+}
+
+func (o GetDatabasePostgresqlV2UpdatesPtrOutput) Elem() GetDatabasePostgresqlV2UpdatesOutput {
+	return o.ApplyT(func(v *GetDatabasePostgresqlV2Updates) GetDatabasePostgresqlV2Updates {
+		if v != nil {
+			return *v
+		}
+		var ret GetDatabasePostgresqlV2Updates
+		return ret
+	}).(GetDatabasePostgresqlV2UpdatesOutput)
+}
+
+// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+func (o GetDatabasePostgresqlV2UpdatesPtrOutput) DayOfWeek() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetDatabasePostgresqlV2Updates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum maintenance window time in hours.
+func (o GetDatabasePostgresqlV2UpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetDatabasePostgresqlV2Updates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.IntPtrOutput)
+}
+
+// How frequently maintenance occurs. Currently can only be weekly.
+func (o GetDatabasePostgresqlV2UpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDatabasePostgresqlV2Updates) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// How frequently maintenance occurs. Currently can only be weekly.
+func (o GetDatabasePostgresqlV2UpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetDatabasePostgresqlV2Updates) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HourOfDay
+	}).(pulumi.IntPtrOutput)
 }
 
 type GetDatabasesDatabase struct {
@@ -24565,6 +26211,207 @@ func (o GetFirewallsFirewallOutboundArrayOutput) Index(i pulumi.IntInput) GetFir
 	}).(GetFirewallsFirewallOutboundOutput)
 }
 
+type GetImageImageSharing struct {
+	// Details about who the image is shared by.
+	SharedBy GetImageImageSharingSharedBy `pulumi:"sharedBy"`
+	// Details about who the image is shared with.
+	SharedWith GetImageImageSharingSharedWith `pulumi:"sharedWith"`
+}
+
+// GetImageImageSharingInput is an input type that accepts GetImageImageSharingArgs and GetImageImageSharingOutput values.
+// You can construct a concrete instance of `GetImageImageSharingInput` via:
+//
+//	GetImageImageSharingArgs{...}
+type GetImageImageSharingInput interface {
+	pulumi.Input
+
+	ToGetImageImageSharingOutput() GetImageImageSharingOutput
+	ToGetImageImageSharingOutputWithContext(context.Context) GetImageImageSharingOutput
+}
+
+type GetImageImageSharingArgs struct {
+	// Details about who the image is shared by.
+	SharedBy GetImageImageSharingSharedByInput `pulumi:"sharedBy"`
+	// Details about who the image is shared with.
+	SharedWith GetImageImageSharingSharedWithInput `pulumi:"sharedWith"`
+}
+
+func (GetImageImageSharingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageImageSharing)(nil)).Elem()
+}
+
+func (i GetImageImageSharingArgs) ToGetImageImageSharingOutput() GetImageImageSharingOutput {
+	return i.ToGetImageImageSharingOutputWithContext(context.Background())
+}
+
+func (i GetImageImageSharingArgs) ToGetImageImageSharingOutputWithContext(ctx context.Context) GetImageImageSharingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImageImageSharingOutput)
+}
+
+type GetImageImageSharingOutput struct{ *pulumi.OutputState }
+
+func (GetImageImageSharingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageImageSharing)(nil)).Elem()
+}
+
+func (o GetImageImageSharingOutput) ToGetImageImageSharingOutput() GetImageImageSharingOutput {
+	return o
+}
+
+func (o GetImageImageSharingOutput) ToGetImageImageSharingOutputWithContext(ctx context.Context) GetImageImageSharingOutput {
+	return o
+}
+
+// Details about who the image is shared by.
+func (o GetImageImageSharingOutput) SharedBy() GetImageImageSharingSharedByOutput {
+	return o.ApplyT(func(v GetImageImageSharing) GetImageImageSharingSharedBy { return v.SharedBy }).(GetImageImageSharingSharedByOutput)
+}
+
+// Details about who the image is shared with.
+func (o GetImageImageSharingOutput) SharedWith() GetImageImageSharingSharedWithOutput {
+	return o.ApplyT(func(v GetImageImageSharing) GetImageImageSharingSharedWith { return v.SharedWith }).(GetImageImageSharingSharedWithOutput)
+}
+
+type GetImageImageSharingSharedBy struct {
+	// The sharegroupId from the im_ImageShare row.
+	SharegroupId int `pulumi:"sharegroupId"`
+	// The label from the associated im_ImageShareGroup row.
+	SharegroupLabel string `pulumi:"sharegroupLabel"`
+	// The sharegroupUuid from the im_ImageShare row.
+	SharegroupUuid string `pulumi:"sharegroupUuid"`
+	// The image id of the base image (will only be shown to producers, will be null for consumers).
+	SourceImageId string `pulumi:"sourceImageId"`
+}
+
+// GetImageImageSharingSharedByInput is an input type that accepts GetImageImageSharingSharedByArgs and GetImageImageSharingSharedByOutput values.
+// You can construct a concrete instance of `GetImageImageSharingSharedByInput` via:
+//
+//	GetImageImageSharingSharedByArgs{...}
+type GetImageImageSharingSharedByInput interface {
+	pulumi.Input
+
+	ToGetImageImageSharingSharedByOutput() GetImageImageSharingSharedByOutput
+	ToGetImageImageSharingSharedByOutputWithContext(context.Context) GetImageImageSharingSharedByOutput
+}
+
+type GetImageImageSharingSharedByArgs struct {
+	// The sharegroupId from the im_ImageShare row.
+	SharegroupId pulumi.IntInput `pulumi:"sharegroupId"`
+	// The label from the associated im_ImageShareGroup row.
+	SharegroupLabel pulumi.StringInput `pulumi:"sharegroupLabel"`
+	// The sharegroupUuid from the im_ImageShare row.
+	SharegroupUuid pulumi.StringInput `pulumi:"sharegroupUuid"`
+	// The image id of the base image (will only be shown to producers, will be null for consumers).
+	SourceImageId pulumi.StringInput `pulumi:"sourceImageId"`
+}
+
+func (GetImageImageSharingSharedByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageImageSharingSharedBy)(nil)).Elem()
+}
+
+func (i GetImageImageSharingSharedByArgs) ToGetImageImageSharingSharedByOutput() GetImageImageSharingSharedByOutput {
+	return i.ToGetImageImageSharingSharedByOutputWithContext(context.Background())
+}
+
+func (i GetImageImageSharingSharedByArgs) ToGetImageImageSharingSharedByOutputWithContext(ctx context.Context) GetImageImageSharingSharedByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImageImageSharingSharedByOutput)
+}
+
+type GetImageImageSharingSharedByOutput struct{ *pulumi.OutputState }
+
+func (GetImageImageSharingSharedByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageImageSharingSharedBy)(nil)).Elem()
+}
+
+func (o GetImageImageSharingSharedByOutput) ToGetImageImageSharingSharedByOutput() GetImageImageSharingSharedByOutput {
+	return o
+}
+
+func (o GetImageImageSharingSharedByOutput) ToGetImageImageSharingSharedByOutputWithContext(ctx context.Context) GetImageImageSharingSharedByOutput {
+	return o
+}
+
+// The sharegroupId from the im_ImageShare row.
+func (o GetImageImageSharingSharedByOutput) SharegroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImageImageSharingSharedBy) int { return v.SharegroupId }).(pulumi.IntOutput)
+}
+
+// The label from the associated im_ImageShareGroup row.
+func (o GetImageImageSharingSharedByOutput) SharegroupLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageImageSharingSharedBy) string { return v.SharegroupLabel }).(pulumi.StringOutput)
+}
+
+// The sharegroupUuid from the im_ImageShare row.
+func (o GetImageImageSharingSharedByOutput) SharegroupUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageImageSharingSharedBy) string { return v.SharegroupUuid }).(pulumi.StringOutput)
+}
+
+// The image id of the base image (will only be shown to producers, will be null for consumers).
+func (o GetImageImageSharingSharedByOutput) SourceImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageImageSharingSharedBy) string { return v.SourceImageId }).(pulumi.StringOutput)
+}
+
+type GetImageImageSharingSharedWith struct {
+	// The number of sharegroups the private image is present in.
+	SharegroupCount int `pulumi:"sharegroupCount"`
+	// The GET api url to view the sharegroups in which the image is shared.
+	SharegroupListUrl string `pulumi:"sharegroupListUrl"`
+}
+
+// GetImageImageSharingSharedWithInput is an input type that accepts GetImageImageSharingSharedWithArgs and GetImageImageSharingSharedWithOutput values.
+// You can construct a concrete instance of `GetImageImageSharingSharedWithInput` via:
+//
+//	GetImageImageSharingSharedWithArgs{...}
+type GetImageImageSharingSharedWithInput interface {
+	pulumi.Input
+
+	ToGetImageImageSharingSharedWithOutput() GetImageImageSharingSharedWithOutput
+	ToGetImageImageSharingSharedWithOutputWithContext(context.Context) GetImageImageSharingSharedWithOutput
+}
+
+type GetImageImageSharingSharedWithArgs struct {
+	// The number of sharegroups the private image is present in.
+	SharegroupCount pulumi.IntInput `pulumi:"sharegroupCount"`
+	// The GET api url to view the sharegroups in which the image is shared.
+	SharegroupListUrl pulumi.StringInput `pulumi:"sharegroupListUrl"`
+}
+
+func (GetImageImageSharingSharedWithArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageImageSharingSharedWith)(nil)).Elem()
+}
+
+func (i GetImageImageSharingSharedWithArgs) ToGetImageImageSharingSharedWithOutput() GetImageImageSharingSharedWithOutput {
+	return i.ToGetImageImageSharingSharedWithOutputWithContext(context.Background())
+}
+
+func (i GetImageImageSharingSharedWithArgs) ToGetImageImageSharingSharedWithOutputWithContext(ctx context.Context) GetImageImageSharingSharedWithOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImageImageSharingSharedWithOutput)
+}
+
+type GetImageImageSharingSharedWithOutput struct{ *pulumi.OutputState }
+
+func (GetImageImageSharingSharedWithOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImageImageSharingSharedWith)(nil)).Elem()
+}
+
+func (o GetImageImageSharingSharedWithOutput) ToGetImageImageSharingSharedWithOutput() GetImageImageSharingSharedWithOutput {
+	return o
+}
+
+func (o GetImageImageSharingSharedWithOutput) ToGetImageImageSharingSharedWithOutputWithContext(ctx context.Context) GetImageImageSharingSharedWithOutput {
+	return o
+}
+
+// The number of sharegroups the private image is present in.
+func (o GetImageImageSharingSharedWithOutput) SharegroupCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImageImageSharingSharedWith) int { return v.SharegroupCount }).(pulumi.IntOutput)
+}
+
+// The GET api url to view the sharegroups in which the image is shared.
+func (o GetImageImageSharingSharedWithOutput) SharegroupListUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImageImageSharingSharedWith) string { return v.SharegroupListUrl }).(pulumi.StringOutput)
+}
+
 type GetImageReplication struct {
 	// The region of an image replica.
 	Region string `pulumi:"region"`
@@ -24801,8 +26648,12 @@ type GetImagesImage struct {
 	Expiry string `pulumi:"expiry"`
 	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 	Id string `pulumi:"id"`
+	// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+	ImageSharing GetImagesImageImageSharing `pulumi:"imageSharing"`
 	// True if the Image is public.
 	IsPublic bool `pulumi:"isPublic"`
+	// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+	IsShared bool `pulumi:"isShared"`
 	// A short description of the Image.
 	Label string `pulumi:"label"`
 	// A list of image replication regions and corresponding status.
@@ -24847,8 +26698,12 @@ type GetImagesImageArgs struct {
 	Expiry pulumi.StringInput `pulumi:"expiry"`
 	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 	Id pulumi.StringInput `pulumi:"id"`
+	// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+	ImageSharing GetImagesImageImageSharingInput `pulumi:"imageSharing"`
 	// True if the Image is public.
 	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+	IsShared pulumi.BoolInput `pulumi:"isShared"`
 	// A short description of the Image.
 	Label pulumi.StringInput `pulumi:"label"`
 	// A list of image replication regions and corresponding status.
@@ -24953,9 +26808,19 @@ func (o GetImagesImageOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+func (o GetImagesImageOutput) ImageSharing() GetImagesImageImageSharingOutput {
+	return o.ApplyT(func(v GetImagesImage) GetImagesImageImageSharing { return v.ImageSharing }).(GetImagesImageImageSharingOutput)
+}
+
 // True if the Image is public.
 func (o GetImagesImageOutput) IsPublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetImagesImage) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+func (o GetImagesImageOutput) IsShared() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetImagesImage) bool { return v.IsShared }).(pulumi.BoolOutput)
 }
 
 // A short description of the Image.
@@ -25016,6 +26881,207 @@ func (o GetImagesImageArrayOutput) Index(i pulumi.IntInput) GetImagesImageOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesImage {
 		return vs[0].([]GetImagesImage)[vs[1].(int)]
 	}).(GetImagesImageOutput)
+}
+
+type GetImagesImageImageSharing struct {
+	// Details about who the image is shared by.
+	SharedBy GetImagesImageImageSharingSharedBy `pulumi:"sharedBy"`
+	// Details about who the image is shared with.
+	SharedWith GetImagesImageImageSharingSharedWith `pulumi:"sharedWith"`
+}
+
+// GetImagesImageImageSharingInput is an input type that accepts GetImagesImageImageSharingArgs and GetImagesImageImageSharingOutput values.
+// You can construct a concrete instance of `GetImagesImageImageSharingInput` via:
+//
+//	GetImagesImageImageSharingArgs{...}
+type GetImagesImageImageSharingInput interface {
+	pulumi.Input
+
+	ToGetImagesImageImageSharingOutput() GetImagesImageImageSharingOutput
+	ToGetImagesImageImageSharingOutputWithContext(context.Context) GetImagesImageImageSharingOutput
+}
+
+type GetImagesImageImageSharingArgs struct {
+	// Details about who the image is shared by.
+	SharedBy GetImagesImageImageSharingSharedByInput `pulumi:"sharedBy"`
+	// Details about who the image is shared with.
+	SharedWith GetImagesImageImageSharingSharedWithInput `pulumi:"sharedWith"`
+}
+
+func (GetImagesImageImageSharingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImageImageSharing)(nil)).Elem()
+}
+
+func (i GetImagesImageImageSharingArgs) ToGetImagesImageImageSharingOutput() GetImagesImageImageSharingOutput {
+	return i.ToGetImagesImageImageSharingOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageImageSharingArgs) ToGetImagesImageImageSharingOutputWithContext(ctx context.Context) GetImagesImageImageSharingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageImageSharingOutput)
+}
+
+type GetImagesImageImageSharingOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageImageSharingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImageImageSharing)(nil)).Elem()
+}
+
+func (o GetImagesImageImageSharingOutput) ToGetImagesImageImageSharingOutput() GetImagesImageImageSharingOutput {
+	return o
+}
+
+func (o GetImagesImageImageSharingOutput) ToGetImagesImageImageSharingOutputWithContext(ctx context.Context) GetImagesImageImageSharingOutput {
+	return o
+}
+
+// Details about who the image is shared by.
+func (o GetImagesImageImageSharingOutput) SharedBy() GetImagesImageImageSharingSharedByOutput {
+	return o.ApplyT(func(v GetImagesImageImageSharing) GetImagesImageImageSharingSharedBy { return v.SharedBy }).(GetImagesImageImageSharingSharedByOutput)
+}
+
+// Details about who the image is shared with.
+func (o GetImagesImageImageSharingOutput) SharedWith() GetImagesImageImageSharingSharedWithOutput {
+	return o.ApplyT(func(v GetImagesImageImageSharing) GetImagesImageImageSharingSharedWith { return v.SharedWith }).(GetImagesImageImageSharingSharedWithOutput)
+}
+
+type GetImagesImageImageSharingSharedBy struct {
+	// The sharegroupId from the im_ImageShare row.
+	SharegroupId int `pulumi:"sharegroupId"`
+	// The label from the associated im_ImageShareGroup row.
+	SharegroupLabel string `pulumi:"sharegroupLabel"`
+	// The sharegroupUuid from the im_ImageShare row.
+	SharegroupUuid string `pulumi:"sharegroupUuid"`
+	// The image id of the base image (will only be shown to producers, will be null for consumers).
+	SourceImageId string `pulumi:"sourceImageId"`
+}
+
+// GetImagesImageImageSharingSharedByInput is an input type that accepts GetImagesImageImageSharingSharedByArgs and GetImagesImageImageSharingSharedByOutput values.
+// You can construct a concrete instance of `GetImagesImageImageSharingSharedByInput` via:
+//
+//	GetImagesImageImageSharingSharedByArgs{...}
+type GetImagesImageImageSharingSharedByInput interface {
+	pulumi.Input
+
+	ToGetImagesImageImageSharingSharedByOutput() GetImagesImageImageSharingSharedByOutput
+	ToGetImagesImageImageSharingSharedByOutputWithContext(context.Context) GetImagesImageImageSharingSharedByOutput
+}
+
+type GetImagesImageImageSharingSharedByArgs struct {
+	// The sharegroupId from the im_ImageShare row.
+	SharegroupId pulumi.IntInput `pulumi:"sharegroupId"`
+	// The label from the associated im_ImageShareGroup row.
+	SharegroupLabel pulumi.StringInput `pulumi:"sharegroupLabel"`
+	// The sharegroupUuid from the im_ImageShare row.
+	SharegroupUuid pulumi.StringInput `pulumi:"sharegroupUuid"`
+	// The image id of the base image (will only be shown to producers, will be null for consumers).
+	SourceImageId pulumi.StringInput `pulumi:"sourceImageId"`
+}
+
+func (GetImagesImageImageSharingSharedByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImageImageSharingSharedBy)(nil)).Elem()
+}
+
+func (i GetImagesImageImageSharingSharedByArgs) ToGetImagesImageImageSharingSharedByOutput() GetImagesImageImageSharingSharedByOutput {
+	return i.ToGetImagesImageImageSharingSharedByOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageImageSharingSharedByArgs) ToGetImagesImageImageSharingSharedByOutputWithContext(ctx context.Context) GetImagesImageImageSharingSharedByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageImageSharingSharedByOutput)
+}
+
+type GetImagesImageImageSharingSharedByOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageImageSharingSharedByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImageImageSharingSharedBy)(nil)).Elem()
+}
+
+func (o GetImagesImageImageSharingSharedByOutput) ToGetImagesImageImageSharingSharedByOutput() GetImagesImageImageSharingSharedByOutput {
+	return o
+}
+
+func (o GetImagesImageImageSharingSharedByOutput) ToGetImagesImageImageSharingSharedByOutputWithContext(ctx context.Context) GetImagesImageImageSharingSharedByOutput {
+	return o
+}
+
+// The sharegroupId from the im_ImageShare row.
+func (o GetImagesImageImageSharingSharedByOutput) SharegroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesImageImageSharingSharedBy) int { return v.SharegroupId }).(pulumi.IntOutput)
+}
+
+// The label from the associated im_ImageShareGroup row.
+func (o GetImagesImageImageSharingSharedByOutput) SharegroupLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImageImageSharingSharedBy) string { return v.SharegroupLabel }).(pulumi.StringOutput)
+}
+
+// The sharegroupUuid from the im_ImageShare row.
+func (o GetImagesImageImageSharingSharedByOutput) SharegroupUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImageImageSharingSharedBy) string { return v.SharegroupUuid }).(pulumi.StringOutput)
+}
+
+// The image id of the base image (will only be shown to producers, will be null for consumers).
+func (o GetImagesImageImageSharingSharedByOutput) SourceImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImageImageSharingSharedBy) string { return v.SourceImageId }).(pulumi.StringOutput)
+}
+
+type GetImagesImageImageSharingSharedWith struct {
+	// The number of sharegroups the private image is present in.
+	SharegroupCount int `pulumi:"sharegroupCount"`
+	// The GET api url to view the sharegroups in which the image is shared.
+	SharegroupListUrl string `pulumi:"sharegroupListUrl"`
+}
+
+// GetImagesImageImageSharingSharedWithInput is an input type that accepts GetImagesImageImageSharingSharedWithArgs and GetImagesImageImageSharingSharedWithOutput values.
+// You can construct a concrete instance of `GetImagesImageImageSharingSharedWithInput` via:
+//
+//	GetImagesImageImageSharingSharedWithArgs{...}
+type GetImagesImageImageSharingSharedWithInput interface {
+	pulumi.Input
+
+	ToGetImagesImageImageSharingSharedWithOutput() GetImagesImageImageSharingSharedWithOutput
+	ToGetImagesImageImageSharingSharedWithOutputWithContext(context.Context) GetImagesImageImageSharingSharedWithOutput
+}
+
+type GetImagesImageImageSharingSharedWithArgs struct {
+	// The number of sharegroups the private image is present in.
+	SharegroupCount pulumi.IntInput `pulumi:"sharegroupCount"`
+	// The GET api url to view the sharegroups in which the image is shared.
+	SharegroupListUrl pulumi.StringInput `pulumi:"sharegroupListUrl"`
+}
+
+func (GetImagesImageImageSharingSharedWithArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImageImageSharingSharedWith)(nil)).Elem()
+}
+
+func (i GetImagesImageImageSharingSharedWithArgs) ToGetImagesImageImageSharingSharedWithOutput() GetImagesImageImageSharingSharedWithOutput {
+	return i.ToGetImagesImageImageSharingSharedWithOutputWithContext(context.Background())
+}
+
+func (i GetImagesImageImageSharingSharedWithArgs) ToGetImagesImageImageSharingSharedWithOutputWithContext(ctx context.Context) GetImagesImageImageSharingSharedWithOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesImageImageSharingSharedWithOutput)
+}
+
+type GetImagesImageImageSharingSharedWithOutput struct{ *pulumi.OutputState }
+
+func (GetImagesImageImageSharingSharedWithOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesImageImageSharingSharedWith)(nil)).Elem()
+}
+
+func (o GetImagesImageImageSharingSharedWithOutput) ToGetImagesImageImageSharingSharedWithOutput() GetImagesImageImageSharingSharedWithOutput {
+	return o
+}
+
+func (o GetImagesImageImageSharingSharedWithOutput) ToGetImagesImageImageSharingSharedWithOutputWithContext(ctx context.Context) GetImagesImageImageSharingSharedWithOutput {
+	return o
+}
+
+// The number of sharegroups the private image is present in.
+func (o GetImagesImageImageSharingSharedWithOutput) SharegroupCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesImageImageSharingSharedWith) int { return v.SharegroupCount }).(pulumi.IntOutput)
+}
+
+// The GET api url to view the sharegroups in which the image is shared.
+func (o GetImagesImageImageSharingSharedWithOutput) SharegroupListUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesImageImageSharingSharedWith) string { return v.SharegroupListUrl }).(pulumi.StringOutput)
 }
 
 type GetImagesImageReplication struct {
@@ -32641,6 +34707,1466 @@ func (o GetInstancesInstanceSpecArrayOutput) Index(i pulumi.IntInput) GetInstanc
 	}).(GetInstancesInstanceSpecOutput)
 }
 
+type GetInterfaceDefaultRoute struct {
+	// Whether this interface is used for the IPv4 default route.
+	Ipv4 bool `pulumi:"ipv4"`
+	// Whether this interface is used for the IPv6 default route.
+	Ipv6 bool `pulumi:"ipv6"`
+}
+
+// GetInterfaceDefaultRouteInput is an input type that accepts GetInterfaceDefaultRouteArgs and GetInterfaceDefaultRouteOutput values.
+// You can construct a concrete instance of `GetInterfaceDefaultRouteInput` via:
+//
+//	GetInterfaceDefaultRouteArgs{...}
+type GetInterfaceDefaultRouteInput interface {
+	pulumi.Input
+
+	ToGetInterfaceDefaultRouteOutput() GetInterfaceDefaultRouteOutput
+	ToGetInterfaceDefaultRouteOutputWithContext(context.Context) GetInterfaceDefaultRouteOutput
+}
+
+type GetInterfaceDefaultRouteArgs struct {
+	// Whether this interface is used for the IPv4 default route.
+	Ipv4 pulumi.BoolInput `pulumi:"ipv4"`
+	// Whether this interface is used for the IPv6 default route.
+	Ipv6 pulumi.BoolInput `pulumi:"ipv6"`
+}
+
+func (GetInterfaceDefaultRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceDefaultRoute)(nil)).Elem()
+}
+
+func (i GetInterfaceDefaultRouteArgs) ToGetInterfaceDefaultRouteOutput() GetInterfaceDefaultRouteOutput {
+	return i.ToGetInterfaceDefaultRouteOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceDefaultRouteArgs) ToGetInterfaceDefaultRouteOutputWithContext(ctx context.Context) GetInterfaceDefaultRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceDefaultRouteOutput)
+}
+
+type GetInterfaceDefaultRouteOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceDefaultRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceDefaultRoute)(nil)).Elem()
+}
+
+func (o GetInterfaceDefaultRouteOutput) ToGetInterfaceDefaultRouteOutput() GetInterfaceDefaultRouteOutput {
+	return o
+}
+
+func (o GetInterfaceDefaultRouteOutput) ToGetInterfaceDefaultRouteOutputWithContext(ctx context.Context) GetInterfaceDefaultRouteOutput {
+	return o
+}
+
+// Whether this interface is used for the IPv4 default route.
+func (o GetInterfaceDefaultRouteOutput) Ipv4() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInterfaceDefaultRoute) bool { return v.Ipv4 }).(pulumi.BoolOutput)
+}
+
+// Whether this interface is used for the IPv6 default route.
+func (o GetInterfaceDefaultRouteOutput) Ipv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInterfaceDefaultRoute) bool { return v.Ipv6 }).(pulumi.BoolOutput)
+}
+
+type GetInterfacePublic struct {
+	// The public IPv4 configuration for the interface.
+	Ipv4 GetInterfacePublicIpv4 `pulumi:"ipv4"`
+	// The public IPv6 configuration for the interface.
+	Ipv6 GetInterfacePublicIpv6 `pulumi:"ipv6"`
+}
+
+// GetInterfacePublicInput is an input type that accepts GetInterfacePublicArgs and GetInterfacePublicOutput values.
+// You can construct a concrete instance of `GetInterfacePublicInput` via:
+//
+//	GetInterfacePublicArgs{...}
+type GetInterfacePublicInput interface {
+	pulumi.Input
+
+	ToGetInterfacePublicOutput() GetInterfacePublicOutput
+	ToGetInterfacePublicOutputWithContext(context.Context) GetInterfacePublicOutput
+}
+
+type GetInterfacePublicArgs struct {
+	// The public IPv4 configuration for the interface.
+	Ipv4 GetInterfacePublicIpv4Input `pulumi:"ipv4"`
+	// The public IPv6 configuration for the interface.
+	Ipv6 GetInterfacePublicIpv6Input `pulumi:"ipv6"`
+}
+
+func (GetInterfacePublicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublic)(nil)).Elem()
+}
+
+func (i GetInterfacePublicArgs) ToGetInterfacePublicOutput() GetInterfacePublicOutput {
+	return i.ToGetInterfacePublicOutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicArgs) ToGetInterfacePublicOutputWithContext(ctx context.Context) GetInterfacePublicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicOutput)
+}
+
+type GetInterfacePublicOutput struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublic)(nil)).Elem()
+}
+
+func (o GetInterfacePublicOutput) ToGetInterfacePublicOutput() GetInterfacePublicOutput {
+	return o
+}
+
+func (o GetInterfacePublicOutput) ToGetInterfacePublicOutputWithContext(ctx context.Context) GetInterfacePublicOutput {
+	return o
+}
+
+// The public IPv4 configuration for the interface.
+func (o GetInterfacePublicOutput) Ipv4() GetInterfacePublicIpv4Output {
+	return o.ApplyT(func(v GetInterfacePublic) GetInterfacePublicIpv4 { return v.Ipv4 }).(GetInterfacePublicIpv4Output)
+}
+
+// The public IPv6 configuration for the interface.
+func (o GetInterfacePublicOutput) Ipv6() GetInterfacePublicIpv6Output {
+	return o.ApplyT(func(v GetInterfacePublic) GetInterfacePublicIpv6 { return v.Ipv6 }).(GetInterfacePublicIpv6Output)
+}
+
+type GetInterfacePublicIpv4 struct {
+	// IPv4 addresses assigned to this interface.
+	Addresses []GetInterfacePublicIpv4Address `pulumi:"addresses"`
+	// IPv4 addresses shared with other Linodes.
+	Shareds []GetInterfacePublicIpv4Shared `pulumi:"shareds"`
+}
+
+// GetInterfacePublicIpv4Input is an input type that accepts GetInterfacePublicIpv4Args and GetInterfacePublicIpv4Output values.
+// You can construct a concrete instance of `GetInterfacePublicIpv4Input` via:
+//
+//	GetInterfacePublicIpv4Args{...}
+type GetInterfacePublicIpv4Input interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv4Output() GetInterfacePublicIpv4Output
+	ToGetInterfacePublicIpv4OutputWithContext(context.Context) GetInterfacePublicIpv4Output
+}
+
+type GetInterfacePublicIpv4Args struct {
+	// IPv4 addresses assigned to this interface.
+	Addresses GetInterfacePublicIpv4AddressArrayInput `pulumi:"addresses"`
+	// IPv4 addresses shared with other Linodes.
+	Shareds GetInterfacePublicIpv4SharedArrayInput `pulumi:"shareds"`
+}
+
+func (GetInterfacePublicIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv4)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv4Args) ToGetInterfacePublicIpv4Output() GetInterfacePublicIpv4Output {
+	return i.ToGetInterfacePublicIpv4OutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv4Args) ToGetInterfacePublicIpv4OutputWithContext(ctx context.Context) GetInterfacePublicIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv4Output)
+}
+
+type GetInterfacePublicIpv4Output struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv4)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv4Output) ToGetInterfacePublicIpv4Output() GetInterfacePublicIpv4Output {
+	return o
+}
+
+func (o GetInterfacePublicIpv4Output) ToGetInterfacePublicIpv4OutputWithContext(ctx context.Context) GetInterfacePublicIpv4Output {
+	return o
+}
+
+// IPv4 addresses assigned to this interface.
+func (o GetInterfacePublicIpv4Output) Addresses() GetInterfacePublicIpv4AddressArrayOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv4) []GetInterfacePublicIpv4Address { return v.Addresses }).(GetInterfacePublicIpv4AddressArrayOutput)
+}
+
+// IPv4 addresses shared with other Linodes.
+func (o GetInterfacePublicIpv4Output) Shareds() GetInterfacePublicIpv4SharedArrayOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv4) []GetInterfacePublicIpv4Shared { return v.Shareds }).(GetInterfacePublicIpv4SharedArrayOutput)
+}
+
+type GetInterfacePublicIpv4Address struct {
+	// The IPv4 address.
+	Address string `pulumi:"address"`
+	// Whether this is the primary IPv4 address.
+	Primary bool `pulumi:"primary"`
+}
+
+// GetInterfacePublicIpv4AddressInput is an input type that accepts GetInterfacePublicIpv4AddressArgs and GetInterfacePublicIpv4AddressOutput values.
+// You can construct a concrete instance of `GetInterfacePublicIpv4AddressInput` via:
+//
+//	GetInterfacePublicIpv4AddressArgs{...}
+type GetInterfacePublicIpv4AddressInput interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv4AddressOutput() GetInterfacePublicIpv4AddressOutput
+	ToGetInterfacePublicIpv4AddressOutputWithContext(context.Context) GetInterfacePublicIpv4AddressOutput
+}
+
+type GetInterfacePublicIpv4AddressArgs struct {
+	// The IPv4 address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Whether this is the primary IPv4 address.
+	Primary pulumi.BoolInput `pulumi:"primary"`
+}
+
+func (GetInterfacePublicIpv4AddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv4AddressArgs) ToGetInterfacePublicIpv4AddressOutput() GetInterfacePublicIpv4AddressOutput {
+	return i.ToGetInterfacePublicIpv4AddressOutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv4AddressArgs) ToGetInterfacePublicIpv4AddressOutputWithContext(ctx context.Context) GetInterfacePublicIpv4AddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv4AddressOutput)
+}
+
+// GetInterfacePublicIpv4AddressArrayInput is an input type that accepts GetInterfacePublicIpv4AddressArray and GetInterfacePublicIpv4AddressArrayOutput values.
+// You can construct a concrete instance of `GetInterfacePublicIpv4AddressArrayInput` via:
+//
+//	GetInterfacePublicIpv4AddressArray{ GetInterfacePublicIpv4AddressArgs{...} }
+type GetInterfacePublicIpv4AddressArrayInput interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv4AddressArrayOutput() GetInterfacePublicIpv4AddressArrayOutput
+	ToGetInterfacePublicIpv4AddressArrayOutputWithContext(context.Context) GetInterfacePublicIpv4AddressArrayOutput
+}
+
+type GetInterfacePublicIpv4AddressArray []GetInterfacePublicIpv4AddressInput
+
+func (GetInterfacePublicIpv4AddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv4AddressArray) ToGetInterfacePublicIpv4AddressArrayOutput() GetInterfacePublicIpv4AddressArrayOutput {
+	return i.ToGetInterfacePublicIpv4AddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv4AddressArray) ToGetInterfacePublicIpv4AddressArrayOutputWithContext(ctx context.Context) GetInterfacePublicIpv4AddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv4AddressArrayOutput)
+}
+
+type GetInterfacePublicIpv4AddressOutput struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv4AddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv4AddressOutput) ToGetInterfacePublicIpv4AddressOutput() GetInterfacePublicIpv4AddressOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv4AddressOutput) ToGetInterfacePublicIpv4AddressOutputWithContext(ctx context.Context) GetInterfacePublicIpv4AddressOutput {
+	return o
+}
+
+// The IPv4 address.
+func (o GetInterfacePublicIpv4AddressOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv4Address) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Whether this is the primary IPv4 address.
+func (o GetInterfacePublicIpv4AddressOutput) Primary() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv4Address) bool { return v.Primary }).(pulumi.BoolOutput)
+}
+
+type GetInterfacePublicIpv4AddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv4AddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv4AddressArrayOutput) ToGetInterfacePublicIpv4AddressArrayOutput() GetInterfacePublicIpv4AddressArrayOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv4AddressArrayOutput) ToGetInterfacePublicIpv4AddressArrayOutputWithContext(ctx context.Context) GetInterfacePublicIpv4AddressArrayOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv4AddressArrayOutput) Index(i pulumi.IntInput) GetInterfacePublicIpv4AddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterfacePublicIpv4Address {
+		return vs[0].([]GetInterfacePublicIpv4Address)[vs[1].(int)]
+	}).(GetInterfacePublicIpv4AddressOutput)
+}
+
+type GetInterfacePublicIpv4Shared struct {
+	// The shared IPv4 address.
+	Address string `pulumi:"address"`
+	// The ID of the Linode that this shared address belongs to.
+	LinodeId int `pulumi:"linodeId"`
+}
+
+// GetInterfacePublicIpv4SharedInput is an input type that accepts GetInterfacePublicIpv4SharedArgs and GetInterfacePublicIpv4SharedOutput values.
+// You can construct a concrete instance of `GetInterfacePublicIpv4SharedInput` via:
+//
+//	GetInterfacePublicIpv4SharedArgs{...}
+type GetInterfacePublicIpv4SharedInput interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv4SharedOutput() GetInterfacePublicIpv4SharedOutput
+	ToGetInterfacePublicIpv4SharedOutputWithContext(context.Context) GetInterfacePublicIpv4SharedOutput
+}
+
+type GetInterfacePublicIpv4SharedArgs struct {
+	// The shared IPv4 address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The ID of the Linode that this shared address belongs to.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
+}
+
+func (GetInterfacePublicIpv4SharedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv4Shared)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv4SharedArgs) ToGetInterfacePublicIpv4SharedOutput() GetInterfacePublicIpv4SharedOutput {
+	return i.ToGetInterfacePublicIpv4SharedOutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv4SharedArgs) ToGetInterfacePublicIpv4SharedOutputWithContext(ctx context.Context) GetInterfacePublicIpv4SharedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv4SharedOutput)
+}
+
+// GetInterfacePublicIpv4SharedArrayInput is an input type that accepts GetInterfacePublicIpv4SharedArray and GetInterfacePublicIpv4SharedArrayOutput values.
+// You can construct a concrete instance of `GetInterfacePublicIpv4SharedArrayInput` via:
+//
+//	GetInterfacePublicIpv4SharedArray{ GetInterfacePublicIpv4SharedArgs{...} }
+type GetInterfacePublicIpv4SharedArrayInput interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv4SharedArrayOutput() GetInterfacePublicIpv4SharedArrayOutput
+	ToGetInterfacePublicIpv4SharedArrayOutputWithContext(context.Context) GetInterfacePublicIpv4SharedArrayOutput
+}
+
+type GetInterfacePublicIpv4SharedArray []GetInterfacePublicIpv4SharedInput
+
+func (GetInterfacePublicIpv4SharedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfacePublicIpv4Shared)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv4SharedArray) ToGetInterfacePublicIpv4SharedArrayOutput() GetInterfacePublicIpv4SharedArrayOutput {
+	return i.ToGetInterfacePublicIpv4SharedArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv4SharedArray) ToGetInterfacePublicIpv4SharedArrayOutputWithContext(ctx context.Context) GetInterfacePublicIpv4SharedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv4SharedArrayOutput)
+}
+
+type GetInterfacePublicIpv4SharedOutput struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv4SharedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv4Shared)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv4SharedOutput) ToGetInterfacePublicIpv4SharedOutput() GetInterfacePublicIpv4SharedOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv4SharedOutput) ToGetInterfacePublicIpv4SharedOutputWithContext(ctx context.Context) GetInterfacePublicIpv4SharedOutput {
+	return o
+}
+
+// The shared IPv4 address.
+func (o GetInterfacePublicIpv4SharedOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv4Shared) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The ID of the Linode that this shared address belongs to.
+func (o GetInterfacePublicIpv4SharedOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv4Shared) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+type GetInterfacePublicIpv4SharedArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv4SharedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfacePublicIpv4Shared)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv4SharedArrayOutput) ToGetInterfacePublicIpv4SharedArrayOutput() GetInterfacePublicIpv4SharedArrayOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv4SharedArrayOutput) ToGetInterfacePublicIpv4SharedArrayOutputWithContext(ctx context.Context) GetInterfacePublicIpv4SharedArrayOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv4SharedArrayOutput) Index(i pulumi.IntInput) GetInterfacePublicIpv4SharedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterfacePublicIpv4Shared {
+		return vs[0].([]GetInterfacePublicIpv4Shared)[vs[1].(int)]
+	}).(GetInterfacePublicIpv4SharedOutput)
+}
+
+type GetInterfacePublicIpv6 struct {
+	// IPv6 ranges assigned to this interface.
+	Ranges []GetInterfacePublicIpv6Range `pulumi:"ranges"`
+	// IPv6 ranges shared with other Linodes.
+	Shareds []GetInterfacePublicIpv6Shared `pulumi:"shareds"`
+	// IPv6 SLAAC configuration.
+	Slaacs []GetInterfacePublicIpv6Slaac `pulumi:"slaacs"`
+}
+
+// GetInterfacePublicIpv6Input is an input type that accepts GetInterfacePublicIpv6Args and GetInterfacePublicIpv6Output values.
+// You can construct a concrete instance of `GetInterfacePublicIpv6Input` via:
+//
+//	GetInterfacePublicIpv6Args{...}
+type GetInterfacePublicIpv6Input interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv6Output() GetInterfacePublicIpv6Output
+	ToGetInterfacePublicIpv6OutputWithContext(context.Context) GetInterfacePublicIpv6Output
+}
+
+type GetInterfacePublicIpv6Args struct {
+	// IPv6 ranges assigned to this interface.
+	Ranges GetInterfacePublicIpv6RangeArrayInput `pulumi:"ranges"`
+	// IPv6 ranges shared with other Linodes.
+	Shareds GetInterfacePublicIpv6SharedArrayInput `pulumi:"shareds"`
+	// IPv6 SLAAC configuration.
+	Slaacs GetInterfacePublicIpv6SlaacArrayInput `pulumi:"slaacs"`
+}
+
+func (GetInterfacePublicIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv6)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv6Args) ToGetInterfacePublicIpv6Output() GetInterfacePublicIpv6Output {
+	return i.ToGetInterfacePublicIpv6OutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv6Args) ToGetInterfacePublicIpv6OutputWithContext(ctx context.Context) GetInterfacePublicIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv6Output)
+}
+
+type GetInterfacePublicIpv6Output struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv6)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv6Output) ToGetInterfacePublicIpv6Output() GetInterfacePublicIpv6Output {
+	return o
+}
+
+func (o GetInterfacePublicIpv6Output) ToGetInterfacePublicIpv6OutputWithContext(ctx context.Context) GetInterfacePublicIpv6Output {
+	return o
+}
+
+// IPv6 ranges assigned to this interface.
+func (o GetInterfacePublicIpv6Output) Ranges() GetInterfacePublicIpv6RangeArrayOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv6) []GetInterfacePublicIpv6Range { return v.Ranges }).(GetInterfacePublicIpv6RangeArrayOutput)
+}
+
+// IPv6 ranges shared with other Linodes.
+func (o GetInterfacePublicIpv6Output) Shareds() GetInterfacePublicIpv6SharedArrayOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv6) []GetInterfacePublicIpv6Shared { return v.Shareds }).(GetInterfacePublicIpv6SharedArrayOutput)
+}
+
+// IPv6 SLAAC configuration.
+func (o GetInterfacePublicIpv6Output) Slaacs() GetInterfacePublicIpv6SlaacArrayOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv6) []GetInterfacePublicIpv6Slaac { return v.Slaacs }).(GetInterfacePublicIpv6SlaacArrayOutput)
+}
+
+type GetInterfacePublicIpv6Range struct {
+	// The IPv6 range.
+	Range string `pulumi:"range"`
+	// The route target for this IPv6 range.
+	RouteTarget string `pulumi:"routeTarget"`
+}
+
+// GetInterfacePublicIpv6RangeInput is an input type that accepts GetInterfacePublicIpv6RangeArgs and GetInterfacePublicIpv6RangeOutput values.
+// You can construct a concrete instance of `GetInterfacePublicIpv6RangeInput` via:
+//
+//	GetInterfacePublicIpv6RangeArgs{...}
+type GetInterfacePublicIpv6RangeInput interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv6RangeOutput() GetInterfacePublicIpv6RangeOutput
+	ToGetInterfacePublicIpv6RangeOutputWithContext(context.Context) GetInterfacePublicIpv6RangeOutput
+}
+
+type GetInterfacePublicIpv6RangeArgs struct {
+	// The IPv6 range.
+	Range pulumi.StringInput `pulumi:"range"`
+	// The route target for this IPv6 range.
+	RouteTarget pulumi.StringInput `pulumi:"routeTarget"`
+}
+
+func (GetInterfacePublicIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv6RangeArgs) ToGetInterfacePublicIpv6RangeOutput() GetInterfacePublicIpv6RangeOutput {
+	return i.ToGetInterfacePublicIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv6RangeArgs) ToGetInterfacePublicIpv6RangeOutputWithContext(ctx context.Context) GetInterfacePublicIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv6RangeOutput)
+}
+
+// GetInterfacePublicIpv6RangeArrayInput is an input type that accepts GetInterfacePublicIpv6RangeArray and GetInterfacePublicIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `GetInterfacePublicIpv6RangeArrayInput` via:
+//
+//	GetInterfacePublicIpv6RangeArray{ GetInterfacePublicIpv6RangeArgs{...} }
+type GetInterfacePublicIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv6RangeArrayOutput() GetInterfacePublicIpv6RangeArrayOutput
+	ToGetInterfacePublicIpv6RangeArrayOutputWithContext(context.Context) GetInterfacePublicIpv6RangeArrayOutput
+}
+
+type GetInterfacePublicIpv6RangeArray []GetInterfacePublicIpv6RangeInput
+
+func (GetInterfacePublicIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv6RangeArray) ToGetInterfacePublicIpv6RangeArrayOutput() GetInterfacePublicIpv6RangeArrayOutput {
+	return i.ToGetInterfacePublicIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv6RangeArray) ToGetInterfacePublicIpv6RangeArrayOutputWithContext(ctx context.Context) GetInterfacePublicIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv6RangeArrayOutput)
+}
+
+type GetInterfacePublicIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv6RangeOutput) ToGetInterfacePublicIpv6RangeOutput() GetInterfacePublicIpv6RangeOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv6RangeOutput) ToGetInterfacePublicIpv6RangeOutputWithContext(ctx context.Context) GetInterfacePublicIpv6RangeOutput {
+	return o
+}
+
+// The IPv6 range.
+func (o GetInterfacePublicIpv6RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv6Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+// The route target for this IPv6 range.
+func (o GetInterfacePublicIpv6RangeOutput) RouteTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv6Range) string { return v.RouteTarget }).(pulumi.StringOutput)
+}
+
+type GetInterfacePublicIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv6RangeArrayOutput) ToGetInterfacePublicIpv6RangeArrayOutput() GetInterfacePublicIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv6RangeArrayOutput) ToGetInterfacePublicIpv6RangeArrayOutputWithContext(ctx context.Context) GetInterfacePublicIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv6RangeArrayOutput) Index(i pulumi.IntInput) GetInterfacePublicIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterfacePublicIpv6Range {
+		return vs[0].([]GetInterfacePublicIpv6Range)[vs[1].(int)]
+	}).(GetInterfacePublicIpv6RangeOutput)
+}
+
+type GetInterfacePublicIpv6Shared struct {
+	// The IPv6 range.
+	Range string `pulumi:"range"`
+	// The route target for this IPv6 range.
+	RouteTarget string `pulumi:"routeTarget"`
+}
+
+// GetInterfacePublicIpv6SharedInput is an input type that accepts GetInterfacePublicIpv6SharedArgs and GetInterfacePublicIpv6SharedOutput values.
+// You can construct a concrete instance of `GetInterfacePublicIpv6SharedInput` via:
+//
+//	GetInterfacePublicIpv6SharedArgs{...}
+type GetInterfacePublicIpv6SharedInput interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv6SharedOutput() GetInterfacePublicIpv6SharedOutput
+	ToGetInterfacePublicIpv6SharedOutputWithContext(context.Context) GetInterfacePublicIpv6SharedOutput
+}
+
+type GetInterfacePublicIpv6SharedArgs struct {
+	// The IPv6 range.
+	Range pulumi.StringInput `pulumi:"range"`
+	// The route target for this IPv6 range.
+	RouteTarget pulumi.StringInput `pulumi:"routeTarget"`
+}
+
+func (GetInterfacePublicIpv6SharedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv6Shared)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv6SharedArgs) ToGetInterfacePublicIpv6SharedOutput() GetInterfacePublicIpv6SharedOutput {
+	return i.ToGetInterfacePublicIpv6SharedOutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv6SharedArgs) ToGetInterfacePublicIpv6SharedOutputWithContext(ctx context.Context) GetInterfacePublicIpv6SharedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv6SharedOutput)
+}
+
+// GetInterfacePublicIpv6SharedArrayInput is an input type that accepts GetInterfacePublicIpv6SharedArray and GetInterfacePublicIpv6SharedArrayOutput values.
+// You can construct a concrete instance of `GetInterfacePublicIpv6SharedArrayInput` via:
+//
+//	GetInterfacePublicIpv6SharedArray{ GetInterfacePublicIpv6SharedArgs{...} }
+type GetInterfacePublicIpv6SharedArrayInput interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv6SharedArrayOutput() GetInterfacePublicIpv6SharedArrayOutput
+	ToGetInterfacePublicIpv6SharedArrayOutputWithContext(context.Context) GetInterfacePublicIpv6SharedArrayOutput
+}
+
+type GetInterfacePublicIpv6SharedArray []GetInterfacePublicIpv6SharedInput
+
+func (GetInterfacePublicIpv6SharedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfacePublicIpv6Shared)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv6SharedArray) ToGetInterfacePublicIpv6SharedArrayOutput() GetInterfacePublicIpv6SharedArrayOutput {
+	return i.ToGetInterfacePublicIpv6SharedArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv6SharedArray) ToGetInterfacePublicIpv6SharedArrayOutputWithContext(ctx context.Context) GetInterfacePublicIpv6SharedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv6SharedArrayOutput)
+}
+
+type GetInterfacePublicIpv6SharedOutput struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv6SharedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv6Shared)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv6SharedOutput) ToGetInterfacePublicIpv6SharedOutput() GetInterfacePublicIpv6SharedOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv6SharedOutput) ToGetInterfacePublicIpv6SharedOutputWithContext(ctx context.Context) GetInterfacePublicIpv6SharedOutput {
+	return o
+}
+
+// The IPv6 range.
+func (o GetInterfacePublicIpv6SharedOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv6Shared) string { return v.Range }).(pulumi.StringOutput)
+}
+
+// The route target for this IPv6 range.
+func (o GetInterfacePublicIpv6SharedOutput) RouteTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv6Shared) string { return v.RouteTarget }).(pulumi.StringOutput)
+}
+
+type GetInterfacePublicIpv6SharedArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv6SharedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfacePublicIpv6Shared)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv6SharedArrayOutput) ToGetInterfacePublicIpv6SharedArrayOutput() GetInterfacePublicIpv6SharedArrayOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv6SharedArrayOutput) ToGetInterfacePublicIpv6SharedArrayOutputWithContext(ctx context.Context) GetInterfacePublicIpv6SharedArrayOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv6SharedArrayOutput) Index(i pulumi.IntInput) GetInterfacePublicIpv6SharedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterfacePublicIpv6Shared {
+		return vs[0].([]GetInterfacePublicIpv6Shared)[vs[1].(int)]
+	}).(GetInterfacePublicIpv6SharedOutput)
+}
+
+type GetInterfacePublicIpv6Slaac struct {
+	// The IPv6 SLAAC address.
+	Address string `pulumi:"address"`
+	// The prefix length for the IPv6 SLAAC address.
+	Prefix int `pulumi:"prefix"`
+}
+
+// GetInterfacePublicIpv6SlaacInput is an input type that accepts GetInterfacePublicIpv6SlaacArgs and GetInterfacePublicIpv6SlaacOutput values.
+// You can construct a concrete instance of `GetInterfacePublicIpv6SlaacInput` via:
+//
+//	GetInterfacePublicIpv6SlaacArgs{...}
+type GetInterfacePublicIpv6SlaacInput interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv6SlaacOutput() GetInterfacePublicIpv6SlaacOutput
+	ToGetInterfacePublicIpv6SlaacOutputWithContext(context.Context) GetInterfacePublicIpv6SlaacOutput
+}
+
+type GetInterfacePublicIpv6SlaacArgs struct {
+	// The IPv6 SLAAC address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The prefix length for the IPv6 SLAAC address.
+	Prefix pulumi.IntInput `pulumi:"prefix"`
+}
+
+func (GetInterfacePublicIpv6SlaacArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv6Slaac)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv6SlaacArgs) ToGetInterfacePublicIpv6SlaacOutput() GetInterfacePublicIpv6SlaacOutput {
+	return i.ToGetInterfacePublicIpv6SlaacOutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv6SlaacArgs) ToGetInterfacePublicIpv6SlaacOutputWithContext(ctx context.Context) GetInterfacePublicIpv6SlaacOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv6SlaacOutput)
+}
+
+// GetInterfacePublicIpv6SlaacArrayInput is an input type that accepts GetInterfacePublicIpv6SlaacArray and GetInterfacePublicIpv6SlaacArrayOutput values.
+// You can construct a concrete instance of `GetInterfacePublicIpv6SlaacArrayInput` via:
+//
+//	GetInterfacePublicIpv6SlaacArray{ GetInterfacePublicIpv6SlaacArgs{...} }
+type GetInterfacePublicIpv6SlaacArrayInput interface {
+	pulumi.Input
+
+	ToGetInterfacePublicIpv6SlaacArrayOutput() GetInterfacePublicIpv6SlaacArrayOutput
+	ToGetInterfacePublicIpv6SlaacArrayOutputWithContext(context.Context) GetInterfacePublicIpv6SlaacArrayOutput
+}
+
+type GetInterfacePublicIpv6SlaacArray []GetInterfacePublicIpv6SlaacInput
+
+func (GetInterfacePublicIpv6SlaacArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfacePublicIpv6Slaac)(nil)).Elem()
+}
+
+func (i GetInterfacePublicIpv6SlaacArray) ToGetInterfacePublicIpv6SlaacArrayOutput() GetInterfacePublicIpv6SlaacArrayOutput {
+	return i.ToGetInterfacePublicIpv6SlaacArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterfacePublicIpv6SlaacArray) ToGetInterfacePublicIpv6SlaacArrayOutputWithContext(ctx context.Context) GetInterfacePublicIpv6SlaacArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfacePublicIpv6SlaacArrayOutput)
+}
+
+type GetInterfacePublicIpv6SlaacOutput struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv6SlaacOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfacePublicIpv6Slaac)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv6SlaacOutput) ToGetInterfacePublicIpv6SlaacOutput() GetInterfacePublicIpv6SlaacOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv6SlaacOutput) ToGetInterfacePublicIpv6SlaacOutputWithContext(ctx context.Context) GetInterfacePublicIpv6SlaacOutput {
+	return o
+}
+
+// The IPv6 SLAAC address.
+func (o GetInterfacePublicIpv6SlaacOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv6Slaac) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The prefix length for the IPv6 SLAAC address.
+func (o GetInterfacePublicIpv6SlaacOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInterfacePublicIpv6Slaac) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+type GetInterfacePublicIpv6SlaacArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterfacePublicIpv6SlaacArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfacePublicIpv6Slaac)(nil)).Elem()
+}
+
+func (o GetInterfacePublicIpv6SlaacArrayOutput) ToGetInterfacePublicIpv6SlaacArrayOutput() GetInterfacePublicIpv6SlaacArrayOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv6SlaacArrayOutput) ToGetInterfacePublicIpv6SlaacArrayOutputWithContext(ctx context.Context) GetInterfacePublicIpv6SlaacArrayOutput {
+	return o
+}
+
+func (o GetInterfacePublicIpv6SlaacArrayOutput) Index(i pulumi.IntInput) GetInterfacePublicIpv6SlaacOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterfacePublicIpv6Slaac {
+		return vs[0].([]GetInterfacePublicIpv6Slaac)[vs[1].(int)]
+	}).(GetInterfacePublicIpv6SlaacOutput)
+}
+
+type GetInterfaceVlan struct {
+	// The IPAM (IP Address Management) address of the VLAN interface.
+	IpamAddress string `pulumi:"ipamAddress"`
+	// The label of the VLAN.
+	VlanLabel string `pulumi:"vlanLabel"`
+}
+
+// GetInterfaceVlanInput is an input type that accepts GetInterfaceVlanArgs and GetInterfaceVlanOutput values.
+// You can construct a concrete instance of `GetInterfaceVlanInput` via:
+//
+//	GetInterfaceVlanArgs{...}
+type GetInterfaceVlanInput interface {
+	pulumi.Input
+
+	ToGetInterfaceVlanOutput() GetInterfaceVlanOutput
+	ToGetInterfaceVlanOutputWithContext(context.Context) GetInterfaceVlanOutput
+}
+
+type GetInterfaceVlanArgs struct {
+	// The IPAM (IP Address Management) address of the VLAN interface.
+	IpamAddress pulumi.StringInput `pulumi:"ipamAddress"`
+	// The label of the VLAN.
+	VlanLabel pulumi.StringInput `pulumi:"vlanLabel"`
+}
+
+func (GetInterfaceVlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVlan)(nil)).Elem()
+}
+
+func (i GetInterfaceVlanArgs) ToGetInterfaceVlanOutput() GetInterfaceVlanOutput {
+	return i.ToGetInterfaceVlanOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVlanArgs) ToGetInterfaceVlanOutputWithContext(ctx context.Context) GetInterfaceVlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVlanOutput)
+}
+
+type GetInterfaceVlanOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceVlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVlan)(nil)).Elem()
+}
+
+func (o GetInterfaceVlanOutput) ToGetInterfaceVlanOutput() GetInterfaceVlanOutput {
+	return o
+}
+
+func (o GetInterfaceVlanOutput) ToGetInterfaceVlanOutputWithContext(ctx context.Context) GetInterfaceVlanOutput {
+	return o
+}
+
+// The IPAM (IP Address Management) address of the VLAN interface.
+func (o GetInterfaceVlanOutput) IpamAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfaceVlan) string { return v.IpamAddress }).(pulumi.StringOutput)
+}
+
+// The label of the VLAN.
+func (o GetInterfaceVlanOutput) VlanLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfaceVlan) string { return v.VlanLabel }).(pulumi.StringOutput)
+}
+
+type GetInterfaceVpc struct {
+	// The IPv4 configuration for the VPC interface.
+	Ipv4 GetInterfaceVpcIpv4 `pulumi:"ipv4"`
+	// The IPv6 configuration for the VPC interface.
+	Ipv6 GetInterfaceVpcIpv6 `pulumi:"ipv6"`
+	// The ID of the VPC subnet.
+	SubnetId int `pulumi:"subnetId"`
+}
+
+// GetInterfaceVpcInput is an input type that accepts GetInterfaceVpcArgs and GetInterfaceVpcOutput values.
+// You can construct a concrete instance of `GetInterfaceVpcInput` via:
+//
+//	GetInterfaceVpcArgs{...}
+type GetInterfaceVpcInput interface {
+	pulumi.Input
+
+	ToGetInterfaceVpcOutput() GetInterfaceVpcOutput
+	ToGetInterfaceVpcOutputWithContext(context.Context) GetInterfaceVpcOutput
+}
+
+type GetInterfaceVpcArgs struct {
+	// The IPv4 configuration for the VPC interface.
+	Ipv4 GetInterfaceVpcIpv4Input `pulumi:"ipv4"`
+	// The IPv6 configuration for the VPC interface.
+	Ipv6 GetInterfaceVpcIpv6Input `pulumi:"ipv6"`
+	// The ID of the VPC subnet.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+}
+
+func (GetInterfaceVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpc)(nil)).Elem()
+}
+
+func (i GetInterfaceVpcArgs) ToGetInterfaceVpcOutput() GetInterfaceVpcOutput {
+	return i.ToGetInterfaceVpcOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVpcArgs) ToGetInterfaceVpcOutputWithContext(ctx context.Context) GetInterfaceVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVpcOutput)
+}
+
+type GetInterfaceVpcOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpc)(nil)).Elem()
+}
+
+func (o GetInterfaceVpcOutput) ToGetInterfaceVpcOutput() GetInterfaceVpcOutput {
+	return o
+}
+
+func (o GetInterfaceVpcOutput) ToGetInterfaceVpcOutputWithContext(ctx context.Context) GetInterfaceVpcOutput {
+	return o
+}
+
+// The IPv4 configuration for the VPC interface.
+func (o GetInterfaceVpcOutput) Ipv4() GetInterfaceVpcIpv4Output {
+	return o.ApplyT(func(v GetInterfaceVpc) GetInterfaceVpcIpv4 { return v.Ipv4 }).(GetInterfaceVpcIpv4Output)
+}
+
+// The IPv6 configuration for the VPC interface.
+func (o GetInterfaceVpcOutput) Ipv6() GetInterfaceVpcIpv6Output {
+	return o.ApplyT(func(v GetInterfaceVpc) GetInterfaceVpcIpv6 { return v.Ipv6 }).(GetInterfaceVpcIpv6Output)
+}
+
+// The ID of the VPC subnet.
+func (o GetInterfaceVpcOutput) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInterfaceVpc) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+type GetInterfaceVpcIpv4 struct {
+	// IPv4 addresses assigned to this VPC interface.
+	Addresses []GetInterfaceVpcIpv4Address `pulumi:"addresses"`
+	// IPv4 ranges assigned to this VPC interface.
+	Ranges []GetInterfaceVpcIpv4Range `pulumi:"ranges"`
+}
+
+// GetInterfaceVpcIpv4Input is an input type that accepts GetInterfaceVpcIpv4Args and GetInterfaceVpcIpv4Output values.
+// You can construct a concrete instance of `GetInterfaceVpcIpv4Input` via:
+//
+//	GetInterfaceVpcIpv4Args{...}
+type GetInterfaceVpcIpv4Input interface {
+	pulumi.Input
+
+	ToGetInterfaceVpcIpv4Output() GetInterfaceVpcIpv4Output
+	ToGetInterfaceVpcIpv4OutputWithContext(context.Context) GetInterfaceVpcIpv4Output
+}
+
+type GetInterfaceVpcIpv4Args struct {
+	// IPv4 addresses assigned to this VPC interface.
+	Addresses GetInterfaceVpcIpv4AddressArrayInput `pulumi:"addresses"`
+	// IPv4 ranges assigned to this VPC interface.
+	Ranges GetInterfaceVpcIpv4RangeArrayInput `pulumi:"ranges"`
+}
+
+func (GetInterfaceVpcIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv4)(nil)).Elem()
+}
+
+func (i GetInterfaceVpcIpv4Args) ToGetInterfaceVpcIpv4Output() GetInterfaceVpcIpv4Output {
+	return i.ToGetInterfaceVpcIpv4OutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVpcIpv4Args) ToGetInterfaceVpcIpv4OutputWithContext(ctx context.Context) GetInterfaceVpcIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVpcIpv4Output)
+}
+
+type GetInterfaceVpcIpv4Output struct{ *pulumi.OutputState }
+
+func (GetInterfaceVpcIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv4)(nil)).Elem()
+}
+
+func (o GetInterfaceVpcIpv4Output) ToGetInterfaceVpcIpv4Output() GetInterfaceVpcIpv4Output {
+	return o
+}
+
+func (o GetInterfaceVpcIpv4Output) ToGetInterfaceVpcIpv4OutputWithContext(ctx context.Context) GetInterfaceVpcIpv4Output {
+	return o
+}
+
+// IPv4 addresses assigned to this VPC interface.
+func (o GetInterfaceVpcIpv4Output) Addresses() GetInterfaceVpcIpv4AddressArrayOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv4) []GetInterfaceVpcIpv4Address { return v.Addresses }).(GetInterfaceVpcIpv4AddressArrayOutput)
+}
+
+// IPv4 ranges assigned to this VPC interface.
+func (o GetInterfaceVpcIpv4Output) Ranges() GetInterfaceVpcIpv4RangeArrayOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv4) []GetInterfaceVpcIpv4Range { return v.Ranges }).(GetInterfaceVpcIpv4RangeArrayOutput)
+}
+
+type GetInterfaceVpcIpv4Address struct {
+	// The VPC IPv4 address.
+	Address string `pulumi:"address"`
+	// The 1:1 NAT address for this VPC IPv4 address.
+	Nat11Address string `pulumi:"nat11Address"`
+	// Whether this is the primary VPC IPv4 address.
+	Primary bool `pulumi:"primary"`
+}
+
+// GetInterfaceVpcIpv4AddressInput is an input type that accepts GetInterfaceVpcIpv4AddressArgs and GetInterfaceVpcIpv4AddressOutput values.
+// You can construct a concrete instance of `GetInterfaceVpcIpv4AddressInput` via:
+//
+//	GetInterfaceVpcIpv4AddressArgs{...}
+type GetInterfaceVpcIpv4AddressInput interface {
+	pulumi.Input
+
+	ToGetInterfaceVpcIpv4AddressOutput() GetInterfaceVpcIpv4AddressOutput
+	ToGetInterfaceVpcIpv4AddressOutputWithContext(context.Context) GetInterfaceVpcIpv4AddressOutput
+}
+
+type GetInterfaceVpcIpv4AddressArgs struct {
+	// The VPC IPv4 address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The 1:1 NAT address for this VPC IPv4 address.
+	Nat11Address pulumi.StringInput `pulumi:"nat11Address"`
+	// Whether this is the primary VPC IPv4 address.
+	Primary pulumi.BoolInput `pulumi:"primary"`
+}
+
+func (GetInterfaceVpcIpv4AddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (i GetInterfaceVpcIpv4AddressArgs) ToGetInterfaceVpcIpv4AddressOutput() GetInterfaceVpcIpv4AddressOutput {
+	return i.ToGetInterfaceVpcIpv4AddressOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVpcIpv4AddressArgs) ToGetInterfaceVpcIpv4AddressOutputWithContext(ctx context.Context) GetInterfaceVpcIpv4AddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVpcIpv4AddressOutput)
+}
+
+// GetInterfaceVpcIpv4AddressArrayInput is an input type that accepts GetInterfaceVpcIpv4AddressArray and GetInterfaceVpcIpv4AddressArrayOutput values.
+// You can construct a concrete instance of `GetInterfaceVpcIpv4AddressArrayInput` via:
+//
+//	GetInterfaceVpcIpv4AddressArray{ GetInterfaceVpcIpv4AddressArgs{...} }
+type GetInterfaceVpcIpv4AddressArrayInput interface {
+	pulumi.Input
+
+	ToGetInterfaceVpcIpv4AddressArrayOutput() GetInterfaceVpcIpv4AddressArrayOutput
+	ToGetInterfaceVpcIpv4AddressArrayOutputWithContext(context.Context) GetInterfaceVpcIpv4AddressArrayOutput
+}
+
+type GetInterfaceVpcIpv4AddressArray []GetInterfaceVpcIpv4AddressInput
+
+func (GetInterfaceVpcIpv4AddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (i GetInterfaceVpcIpv4AddressArray) ToGetInterfaceVpcIpv4AddressArrayOutput() GetInterfaceVpcIpv4AddressArrayOutput {
+	return i.ToGetInterfaceVpcIpv4AddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVpcIpv4AddressArray) ToGetInterfaceVpcIpv4AddressArrayOutputWithContext(ctx context.Context) GetInterfaceVpcIpv4AddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVpcIpv4AddressArrayOutput)
+}
+
+type GetInterfaceVpcIpv4AddressOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceVpcIpv4AddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (o GetInterfaceVpcIpv4AddressOutput) ToGetInterfaceVpcIpv4AddressOutput() GetInterfaceVpcIpv4AddressOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv4AddressOutput) ToGetInterfaceVpcIpv4AddressOutputWithContext(ctx context.Context) GetInterfaceVpcIpv4AddressOutput {
+	return o
+}
+
+// The VPC IPv4 address.
+func (o GetInterfaceVpcIpv4AddressOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv4Address) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The 1:1 NAT address for this VPC IPv4 address.
+func (o GetInterfaceVpcIpv4AddressOutput) Nat11Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv4Address) string { return v.Nat11Address }).(pulumi.StringOutput)
+}
+
+// Whether this is the primary VPC IPv4 address.
+func (o GetInterfaceVpcIpv4AddressOutput) Primary() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv4Address) bool { return v.Primary }).(pulumi.BoolOutput)
+}
+
+type GetInterfaceVpcIpv4AddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceVpcIpv4AddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (o GetInterfaceVpcIpv4AddressArrayOutput) ToGetInterfaceVpcIpv4AddressArrayOutput() GetInterfaceVpcIpv4AddressArrayOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv4AddressArrayOutput) ToGetInterfaceVpcIpv4AddressArrayOutputWithContext(ctx context.Context) GetInterfaceVpcIpv4AddressArrayOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv4AddressArrayOutput) Index(i pulumi.IntInput) GetInterfaceVpcIpv4AddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterfaceVpcIpv4Address {
+		return vs[0].([]GetInterfaceVpcIpv4Address)[vs[1].(int)]
+	}).(GetInterfaceVpcIpv4AddressOutput)
+}
+
+type GetInterfaceVpcIpv4Range struct {
+	// The VPC IPv4 range.
+	Range string `pulumi:"range"`
+}
+
+// GetInterfaceVpcIpv4RangeInput is an input type that accepts GetInterfaceVpcIpv4RangeArgs and GetInterfaceVpcIpv4RangeOutput values.
+// You can construct a concrete instance of `GetInterfaceVpcIpv4RangeInput` via:
+//
+//	GetInterfaceVpcIpv4RangeArgs{...}
+type GetInterfaceVpcIpv4RangeInput interface {
+	pulumi.Input
+
+	ToGetInterfaceVpcIpv4RangeOutput() GetInterfaceVpcIpv4RangeOutput
+	ToGetInterfaceVpcIpv4RangeOutputWithContext(context.Context) GetInterfaceVpcIpv4RangeOutput
+}
+
+type GetInterfaceVpcIpv4RangeArgs struct {
+	// The VPC IPv4 range.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (GetInterfaceVpcIpv4RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (i GetInterfaceVpcIpv4RangeArgs) ToGetInterfaceVpcIpv4RangeOutput() GetInterfaceVpcIpv4RangeOutput {
+	return i.ToGetInterfaceVpcIpv4RangeOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVpcIpv4RangeArgs) ToGetInterfaceVpcIpv4RangeOutputWithContext(ctx context.Context) GetInterfaceVpcIpv4RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVpcIpv4RangeOutput)
+}
+
+// GetInterfaceVpcIpv4RangeArrayInput is an input type that accepts GetInterfaceVpcIpv4RangeArray and GetInterfaceVpcIpv4RangeArrayOutput values.
+// You can construct a concrete instance of `GetInterfaceVpcIpv4RangeArrayInput` via:
+//
+//	GetInterfaceVpcIpv4RangeArray{ GetInterfaceVpcIpv4RangeArgs{...} }
+type GetInterfaceVpcIpv4RangeArrayInput interface {
+	pulumi.Input
+
+	ToGetInterfaceVpcIpv4RangeArrayOutput() GetInterfaceVpcIpv4RangeArrayOutput
+	ToGetInterfaceVpcIpv4RangeArrayOutputWithContext(context.Context) GetInterfaceVpcIpv4RangeArrayOutput
+}
+
+type GetInterfaceVpcIpv4RangeArray []GetInterfaceVpcIpv4RangeInput
+
+func (GetInterfaceVpcIpv4RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (i GetInterfaceVpcIpv4RangeArray) ToGetInterfaceVpcIpv4RangeArrayOutput() GetInterfaceVpcIpv4RangeArrayOutput {
+	return i.ToGetInterfaceVpcIpv4RangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVpcIpv4RangeArray) ToGetInterfaceVpcIpv4RangeArrayOutputWithContext(ctx context.Context) GetInterfaceVpcIpv4RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVpcIpv4RangeArrayOutput)
+}
+
+type GetInterfaceVpcIpv4RangeOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceVpcIpv4RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (o GetInterfaceVpcIpv4RangeOutput) ToGetInterfaceVpcIpv4RangeOutput() GetInterfaceVpcIpv4RangeOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv4RangeOutput) ToGetInterfaceVpcIpv4RangeOutputWithContext(ctx context.Context) GetInterfaceVpcIpv4RangeOutput {
+	return o
+}
+
+// The VPC IPv4 range.
+func (o GetInterfaceVpcIpv4RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv4Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type GetInterfaceVpcIpv4RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceVpcIpv4RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (o GetInterfaceVpcIpv4RangeArrayOutput) ToGetInterfaceVpcIpv4RangeArrayOutput() GetInterfaceVpcIpv4RangeArrayOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv4RangeArrayOutput) ToGetInterfaceVpcIpv4RangeArrayOutputWithContext(ctx context.Context) GetInterfaceVpcIpv4RangeArrayOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv4RangeArrayOutput) Index(i pulumi.IntInput) GetInterfaceVpcIpv4RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterfaceVpcIpv4Range {
+		return vs[0].([]GetInterfaceVpcIpv4Range)[vs[1].(int)]
+	}).(GetInterfaceVpcIpv4RangeOutput)
+}
+
+type GetInterfaceVpcIpv6 struct {
+	// Indicates whether the IPv6 configuration on the Linode interface is public.
+	IsPublic bool `pulumi:"isPublic"`
+	// IPv6 ranges assigned to this VPC interface.
+	Ranges []GetInterfaceVpcIpv6Range `pulumi:"ranges"`
+	// IPv6 SLAAC address ranges.
+	Slaacs []GetInterfaceVpcIpv6Slaac `pulumi:"slaacs"`
+}
+
+// GetInterfaceVpcIpv6Input is an input type that accepts GetInterfaceVpcIpv6Args and GetInterfaceVpcIpv6Output values.
+// You can construct a concrete instance of `GetInterfaceVpcIpv6Input` via:
+//
+//	GetInterfaceVpcIpv6Args{...}
+type GetInterfaceVpcIpv6Input interface {
+	pulumi.Input
+
+	ToGetInterfaceVpcIpv6Output() GetInterfaceVpcIpv6Output
+	ToGetInterfaceVpcIpv6OutputWithContext(context.Context) GetInterfaceVpcIpv6Output
+}
+
+type GetInterfaceVpcIpv6Args struct {
+	// Indicates whether the IPv6 configuration on the Linode interface is public.
+	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	// IPv6 ranges assigned to this VPC interface.
+	Ranges GetInterfaceVpcIpv6RangeArrayInput `pulumi:"ranges"`
+	// IPv6 SLAAC address ranges.
+	Slaacs GetInterfaceVpcIpv6SlaacArrayInput `pulumi:"slaacs"`
+}
+
+func (GetInterfaceVpcIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv6)(nil)).Elem()
+}
+
+func (i GetInterfaceVpcIpv6Args) ToGetInterfaceVpcIpv6Output() GetInterfaceVpcIpv6Output {
+	return i.ToGetInterfaceVpcIpv6OutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVpcIpv6Args) ToGetInterfaceVpcIpv6OutputWithContext(ctx context.Context) GetInterfaceVpcIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVpcIpv6Output)
+}
+
+type GetInterfaceVpcIpv6Output struct{ *pulumi.OutputState }
+
+func (GetInterfaceVpcIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv6)(nil)).Elem()
+}
+
+func (o GetInterfaceVpcIpv6Output) ToGetInterfaceVpcIpv6Output() GetInterfaceVpcIpv6Output {
+	return o
+}
+
+func (o GetInterfaceVpcIpv6Output) ToGetInterfaceVpcIpv6OutputWithContext(ctx context.Context) GetInterfaceVpcIpv6Output {
+	return o
+}
+
+// Indicates whether the IPv6 configuration on the Linode interface is public.
+func (o GetInterfaceVpcIpv6Output) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv6) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+// IPv6 ranges assigned to this VPC interface.
+func (o GetInterfaceVpcIpv6Output) Ranges() GetInterfaceVpcIpv6RangeArrayOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv6) []GetInterfaceVpcIpv6Range { return v.Ranges }).(GetInterfaceVpcIpv6RangeArrayOutput)
+}
+
+// IPv6 SLAAC address ranges.
+func (o GetInterfaceVpcIpv6Output) Slaacs() GetInterfaceVpcIpv6SlaacArrayOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv6) []GetInterfaceVpcIpv6Slaac { return v.Slaacs }).(GetInterfaceVpcIpv6SlaacArrayOutput)
+}
+
+type GetInterfaceVpcIpv6Range struct {
+	// The IPv6 network range in CIDR notation.
+	Range string `pulumi:"range"`
+}
+
+// GetInterfaceVpcIpv6RangeInput is an input type that accepts GetInterfaceVpcIpv6RangeArgs and GetInterfaceVpcIpv6RangeOutput values.
+// You can construct a concrete instance of `GetInterfaceVpcIpv6RangeInput` via:
+//
+//	GetInterfaceVpcIpv6RangeArgs{...}
+type GetInterfaceVpcIpv6RangeInput interface {
+	pulumi.Input
+
+	ToGetInterfaceVpcIpv6RangeOutput() GetInterfaceVpcIpv6RangeOutput
+	ToGetInterfaceVpcIpv6RangeOutputWithContext(context.Context) GetInterfaceVpcIpv6RangeOutput
+}
+
+type GetInterfaceVpcIpv6RangeArgs struct {
+	// The IPv6 network range in CIDR notation.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (GetInterfaceVpcIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv6Range)(nil)).Elem()
+}
+
+func (i GetInterfaceVpcIpv6RangeArgs) ToGetInterfaceVpcIpv6RangeOutput() GetInterfaceVpcIpv6RangeOutput {
+	return i.ToGetInterfaceVpcIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVpcIpv6RangeArgs) ToGetInterfaceVpcIpv6RangeOutputWithContext(ctx context.Context) GetInterfaceVpcIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVpcIpv6RangeOutput)
+}
+
+// GetInterfaceVpcIpv6RangeArrayInput is an input type that accepts GetInterfaceVpcIpv6RangeArray and GetInterfaceVpcIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `GetInterfaceVpcIpv6RangeArrayInput` via:
+//
+//	GetInterfaceVpcIpv6RangeArray{ GetInterfaceVpcIpv6RangeArgs{...} }
+type GetInterfaceVpcIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToGetInterfaceVpcIpv6RangeArrayOutput() GetInterfaceVpcIpv6RangeArrayOutput
+	ToGetInterfaceVpcIpv6RangeArrayOutputWithContext(context.Context) GetInterfaceVpcIpv6RangeArrayOutput
+}
+
+type GetInterfaceVpcIpv6RangeArray []GetInterfaceVpcIpv6RangeInput
+
+func (GetInterfaceVpcIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfaceVpcIpv6Range)(nil)).Elem()
+}
+
+func (i GetInterfaceVpcIpv6RangeArray) ToGetInterfaceVpcIpv6RangeArrayOutput() GetInterfaceVpcIpv6RangeArrayOutput {
+	return i.ToGetInterfaceVpcIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVpcIpv6RangeArray) ToGetInterfaceVpcIpv6RangeArrayOutputWithContext(ctx context.Context) GetInterfaceVpcIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVpcIpv6RangeArrayOutput)
+}
+
+type GetInterfaceVpcIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceVpcIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv6Range)(nil)).Elem()
+}
+
+func (o GetInterfaceVpcIpv6RangeOutput) ToGetInterfaceVpcIpv6RangeOutput() GetInterfaceVpcIpv6RangeOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv6RangeOutput) ToGetInterfaceVpcIpv6RangeOutputWithContext(ctx context.Context) GetInterfaceVpcIpv6RangeOutput {
+	return o
+}
+
+// The IPv6 network range in CIDR notation.
+func (o GetInterfaceVpcIpv6RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv6Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type GetInterfaceVpcIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceVpcIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfaceVpcIpv6Range)(nil)).Elem()
+}
+
+func (o GetInterfaceVpcIpv6RangeArrayOutput) ToGetInterfaceVpcIpv6RangeArrayOutput() GetInterfaceVpcIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv6RangeArrayOutput) ToGetInterfaceVpcIpv6RangeArrayOutputWithContext(ctx context.Context) GetInterfaceVpcIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv6RangeArrayOutput) Index(i pulumi.IntInput) GetInterfaceVpcIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterfaceVpcIpv6Range {
+		return vs[0].([]GetInterfaceVpcIpv6Range)[vs[1].(int)]
+	}).(GetInterfaceVpcIpv6RangeOutput)
+}
+
+type GetInterfaceVpcIpv6Slaac struct {
+	// The assigned IPv6 address within the range.
+	Address string `pulumi:"address"`
+	// The IPv6 network range in CIDR notation.
+	Range string `pulumi:"range"`
+}
+
+// GetInterfaceVpcIpv6SlaacInput is an input type that accepts GetInterfaceVpcIpv6SlaacArgs and GetInterfaceVpcIpv6SlaacOutput values.
+// You can construct a concrete instance of `GetInterfaceVpcIpv6SlaacInput` via:
+//
+//	GetInterfaceVpcIpv6SlaacArgs{...}
+type GetInterfaceVpcIpv6SlaacInput interface {
+	pulumi.Input
+
+	ToGetInterfaceVpcIpv6SlaacOutput() GetInterfaceVpcIpv6SlaacOutput
+	ToGetInterfaceVpcIpv6SlaacOutputWithContext(context.Context) GetInterfaceVpcIpv6SlaacOutput
+}
+
+type GetInterfaceVpcIpv6SlaacArgs struct {
+	// The assigned IPv6 address within the range.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The IPv6 network range in CIDR notation.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (GetInterfaceVpcIpv6SlaacArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv6Slaac)(nil)).Elem()
+}
+
+func (i GetInterfaceVpcIpv6SlaacArgs) ToGetInterfaceVpcIpv6SlaacOutput() GetInterfaceVpcIpv6SlaacOutput {
+	return i.ToGetInterfaceVpcIpv6SlaacOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVpcIpv6SlaacArgs) ToGetInterfaceVpcIpv6SlaacOutputWithContext(ctx context.Context) GetInterfaceVpcIpv6SlaacOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVpcIpv6SlaacOutput)
+}
+
+// GetInterfaceVpcIpv6SlaacArrayInput is an input type that accepts GetInterfaceVpcIpv6SlaacArray and GetInterfaceVpcIpv6SlaacArrayOutput values.
+// You can construct a concrete instance of `GetInterfaceVpcIpv6SlaacArrayInput` via:
+//
+//	GetInterfaceVpcIpv6SlaacArray{ GetInterfaceVpcIpv6SlaacArgs{...} }
+type GetInterfaceVpcIpv6SlaacArrayInput interface {
+	pulumi.Input
+
+	ToGetInterfaceVpcIpv6SlaacArrayOutput() GetInterfaceVpcIpv6SlaacArrayOutput
+	ToGetInterfaceVpcIpv6SlaacArrayOutputWithContext(context.Context) GetInterfaceVpcIpv6SlaacArrayOutput
+}
+
+type GetInterfaceVpcIpv6SlaacArray []GetInterfaceVpcIpv6SlaacInput
+
+func (GetInterfaceVpcIpv6SlaacArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfaceVpcIpv6Slaac)(nil)).Elem()
+}
+
+func (i GetInterfaceVpcIpv6SlaacArray) ToGetInterfaceVpcIpv6SlaacArrayOutput() GetInterfaceVpcIpv6SlaacArrayOutput {
+	return i.ToGetInterfaceVpcIpv6SlaacArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceVpcIpv6SlaacArray) ToGetInterfaceVpcIpv6SlaacArrayOutputWithContext(ctx context.Context) GetInterfaceVpcIpv6SlaacArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceVpcIpv6SlaacArrayOutput)
+}
+
+type GetInterfaceVpcIpv6SlaacOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceVpcIpv6SlaacOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceVpcIpv6Slaac)(nil)).Elem()
+}
+
+func (o GetInterfaceVpcIpv6SlaacOutput) ToGetInterfaceVpcIpv6SlaacOutput() GetInterfaceVpcIpv6SlaacOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv6SlaacOutput) ToGetInterfaceVpcIpv6SlaacOutputWithContext(ctx context.Context) GetInterfaceVpcIpv6SlaacOutput {
+	return o
+}
+
+// The assigned IPv6 address within the range.
+func (o GetInterfaceVpcIpv6SlaacOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv6Slaac) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The IPv6 network range in CIDR notation.
+func (o GetInterfaceVpcIpv6SlaacOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfaceVpcIpv6Slaac) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type GetInterfaceVpcIpv6SlaacArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceVpcIpv6SlaacArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfaceVpcIpv6Slaac)(nil)).Elem()
+}
+
+func (o GetInterfaceVpcIpv6SlaacArrayOutput) ToGetInterfaceVpcIpv6SlaacArrayOutput() GetInterfaceVpcIpv6SlaacArrayOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv6SlaacArrayOutput) ToGetInterfaceVpcIpv6SlaacArrayOutputWithContext(ctx context.Context) GetInterfaceVpcIpv6SlaacArrayOutput {
+	return o
+}
+
+func (o GetInterfaceVpcIpv6SlaacArrayOutput) Index(i pulumi.IntInput) GetInterfaceVpcIpv6SlaacOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterfaceVpcIpv6Slaac {
+		return vs[0].([]GetInterfaceVpcIpv6Slaac)[vs[1].(int)]
+	}).(GetInterfaceVpcIpv6SlaacOutput)
+}
+
 type GetIpv6RangesFilter struct {
 	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
 	MatchBy *string `pulumi:"matchBy"`
@@ -34266,7 +37792,7 @@ type GetLkeClustersLkeCluster struct {
 	// Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
 	AplEnabled bool `pulumi:"aplEnabled"`
 	// Defines settings for the Kubernetes Control Plane.
-	ControlPlane *GetLkeClustersLkeClusterControlPlane `pulumi:"controlPlane"`
+	ControlPlane GetLkeClustersLkeClusterControlPlane `pulumi:"controlPlane"`
 	// When this Kubernetes cluster was created.
 	Created string `pulumi:"created"`
 	// The LKE Cluster's ID.
@@ -34285,7 +37811,7 @@ type GetLkeClustersLkeCluster struct {
 	SubnetId int `pulumi:"subnetId"`
 	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
-	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	Tier string `pulumi:"tier"`
 	// When this Kubernetes cluster was updated.
 	Updated string `pulumi:"updated"`
@@ -34308,7 +37834,7 @@ type GetLkeClustersLkeClusterArgs struct {
 	// Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
 	AplEnabled pulumi.BoolInput `pulumi:"aplEnabled"`
 	// Defines settings for the Kubernetes Control Plane.
-	ControlPlane GetLkeClustersLkeClusterControlPlanePtrInput `pulumi:"controlPlane"`
+	ControlPlane GetLkeClustersLkeClusterControlPlaneInput `pulumi:"controlPlane"`
 	// When this Kubernetes cluster was created.
 	Created pulumi.StringInput `pulumi:"created"`
 	// The LKE Cluster's ID.
@@ -34327,7 +37853,7 @@ type GetLkeClustersLkeClusterArgs struct {
 	SubnetId pulumi.IntInput `pulumi:"subnetId"`
 	// An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	Tier pulumi.StringInput `pulumi:"tier"`
 	// When this Kubernetes cluster was updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
@@ -34392,8 +37918,8 @@ func (o GetLkeClustersLkeClusterOutput) AplEnabled() pulumi.BoolOutput {
 }
 
 // Defines settings for the Kubernetes Control Plane.
-func (o GetLkeClustersLkeClusterOutput) ControlPlane() GetLkeClustersLkeClusterControlPlanePtrOutput {
-	return o.ApplyT(func(v GetLkeClustersLkeCluster) *GetLkeClustersLkeClusterControlPlane { return v.ControlPlane }).(GetLkeClustersLkeClusterControlPlanePtrOutput)
+func (o GetLkeClustersLkeClusterOutput) ControlPlane() GetLkeClustersLkeClusterControlPlaneOutput {
+	return o.ApplyT(func(v GetLkeClustersLkeCluster) GetLkeClustersLkeClusterControlPlane { return v.ControlPlane }).(GetLkeClustersLkeClusterControlPlaneOutput)
 }
 
 // When this Kubernetes cluster was created.
@@ -34441,7 +37967,7 @@ func (o GetLkeClustersLkeClusterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeCluster) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 func (o GetLkeClustersLkeClusterOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeCluster) string { return v.Tier }).(pulumi.StringOutput)
 }
@@ -34513,47 +38039,6 @@ func (i GetLkeClustersLkeClusterControlPlaneArgs) ToGetLkeClustersLkeClusterCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClustersLkeClusterControlPlaneOutput)
 }
 
-func (i GetLkeClustersLkeClusterControlPlaneArgs) ToGetLkeClustersLkeClusterControlPlanePtrOutput() GetLkeClustersLkeClusterControlPlanePtrOutput {
-	return i.ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(context.Background())
-}
-
-func (i GetLkeClustersLkeClusterControlPlaneArgs) ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterControlPlanePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClustersLkeClusterControlPlaneOutput).ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(ctx)
-}
-
-// GetLkeClustersLkeClusterControlPlanePtrInput is an input type that accepts GetLkeClustersLkeClusterControlPlaneArgs, GetLkeClustersLkeClusterControlPlanePtr and GetLkeClustersLkeClusterControlPlanePtrOutput values.
-// You can construct a concrete instance of `GetLkeClustersLkeClusterControlPlanePtrInput` via:
-//
-//	        GetLkeClustersLkeClusterControlPlaneArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetLkeClustersLkeClusterControlPlanePtrInput interface {
-	pulumi.Input
-
-	ToGetLkeClustersLkeClusterControlPlanePtrOutput() GetLkeClustersLkeClusterControlPlanePtrOutput
-	ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(context.Context) GetLkeClustersLkeClusterControlPlanePtrOutput
-}
-
-type getLkeClustersLkeClusterControlPlanePtrType GetLkeClustersLkeClusterControlPlaneArgs
-
-func GetLkeClustersLkeClusterControlPlanePtr(v *GetLkeClustersLkeClusterControlPlaneArgs) GetLkeClustersLkeClusterControlPlanePtrInput {
-	return (*getLkeClustersLkeClusterControlPlanePtrType)(v)
-}
-
-func (*getLkeClustersLkeClusterControlPlanePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetLkeClustersLkeClusterControlPlane)(nil)).Elem()
-}
-
-func (i *getLkeClustersLkeClusterControlPlanePtrType) ToGetLkeClustersLkeClusterControlPlanePtrOutput() GetLkeClustersLkeClusterControlPlanePtrOutput {
-	return i.ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(context.Background())
-}
-
-func (i *getLkeClustersLkeClusterControlPlanePtrType) ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterControlPlanePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClustersLkeClusterControlPlanePtrOutput)
-}
-
 type GetLkeClustersLkeClusterControlPlaneOutput struct{ *pulumi.OutputState }
 
 func (GetLkeClustersLkeClusterControlPlaneOutput) ElementType() reflect.Type {
@@ -34568,16 +38053,6 @@ func (o GetLkeClustersLkeClusterControlPlaneOutput) ToGetLkeClustersLkeClusterCo
 	return o
 }
 
-func (o GetLkeClustersLkeClusterControlPlaneOutput) ToGetLkeClustersLkeClusterControlPlanePtrOutput() GetLkeClustersLkeClusterControlPlanePtrOutput {
-	return o.ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(context.Background())
-}
-
-func (o GetLkeClustersLkeClusterControlPlaneOutput) ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterControlPlanePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetLkeClustersLkeClusterControlPlane) *GetLkeClustersLkeClusterControlPlane {
-		return &v
-	}).(GetLkeClustersLkeClusterControlPlanePtrOutput)
-}
-
 // Enables audit logs on the cluster's control plane.
 func (o GetLkeClustersLkeClusterControlPlaneOutput) AuditLogsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeClusterControlPlane) bool { return v.AuditLogsEnabled }).(pulumi.BoolOutput)
@@ -34586,50 +38061,6 @@ func (o GetLkeClustersLkeClusterControlPlaneOutput) AuditLogsEnabled() pulumi.Bo
 // Whether High Availability is enabled for the cluster Control Plane.
 func (o GetLkeClustersLkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeClusterControlPlane) bool { return v.HighAvailability }).(pulumi.BoolOutput)
-}
-
-type GetLkeClustersLkeClusterControlPlanePtrOutput struct{ *pulumi.OutputState }
-
-func (GetLkeClustersLkeClusterControlPlanePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetLkeClustersLkeClusterControlPlane)(nil)).Elem()
-}
-
-func (o GetLkeClustersLkeClusterControlPlanePtrOutput) ToGetLkeClustersLkeClusterControlPlanePtrOutput() GetLkeClustersLkeClusterControlPlanePtrOutput {
-	return o
-}
-
-func (o GetLkeClustersLkeClusterControlPlanePtrOutput) ToGetLkeClustersLkeClusterControlPlanePtrOutputWithContext(ctx context.Context) GetLkeClustersLkeClusterControlPlanePtrOutput {
-	return o
-}
-
-func (o GetLkeClustersLkeClusterControlPlanePtrOutput) Elem() GetLkeClustersLkeClusterControlPlaneOutput {
-	return o.ApplyT(func(v *GetLkeClustersLkeClusterControlPlane) GetLkeClustersLkeClusterControlPlane {
-		if v != nil {
-			return *v
-		}
-		var ret GetLkeClustersLkeClusterControlPlane
-		return ret
-	}).(GetLkeClustersLkeClusterControlPlaneOutput)
-}
-
-// Enables audit logs on the cluster's control plane.
-func (o GetLkeClustersLkeClusterControlPlanePtrOutput) AuditLogsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetLkeClustersLkeClusterControlPlane) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.AuditLogsEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether High Availability is enabled for the cluster Control Plane.
-func (o GetLkeClustersLkeClusterControlPlanePtrOutput) HighAvailability() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetLkeClustersLkeClusterControlPlane) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.HighAvailability
-	}).(pulumi.BoolPtrOutput)
 }
 
 type GetLkeTypesFilter struct {
@@ -35199,6 +38630,263 @@ func (o GetLkeVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetLkeVersion
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeVersionsVersion {
 		return vs[0].([]GetLkeVersionsVersion)[vs[1].(int)]
 	}).(GetLkeVersionsVersionOutput)
+}
+
+type GetLocksFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetLocksFilterInput is an input type that accepts GetLocksFilterArgs and GetLocksFilterOutput values.
+// You can construct a concrete instance of `GetLocksFilterInput` via:
+//
+//	GetLocksFilterArgs{...}
+type GetLocksFilterInput interface {
+	pulumi.Input
+
+	ToGetLocksFilterOutput() GetLocksFilterOutput
+	ToGetLocksFilterOutputWithContext(context.Context) GetLocksFilterOutput
+}
+
+type GetLocksFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetLocksFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocksFilter)(nil)).Elem()
+}
+
+func (i GetLocksFilterArgs) ToGetLocksFilterOutput() GetLocksFilterOutput {
+	return i.ToGetLocksFilterOutputWithContext(context.Background())
+}
+
+func (i GetLocksFilterArgs) ToGetLocksFilterOutputWithContext(ctx context.Context) GetLocksFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocksFilterOutput)
+}
+
+// GetLocksFilterArrayInput is an input type that accepts GetLocksFilterArray and GetLocksFilterArrayOutput values.
+// You can construct a concrete instance of `GetLocksFilterArrayInput` via:
+//
+//	GetLocksFilterArray{ GetLocksFilterArgs{...} }
+type GetLocksFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetLocksFilterArrayOutput() GetLocksFilterArrayOutput
+	ToGetLocksFilterArrayOutputWithContext(context.Context) GetLocksFilterArrayOutput
+}
+
+type GetLocksFilterArray []GetLocksFilterInput
+
+func (GetLocksFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocksFilter)(nil)).Elem()
+}
+
+func (i GetLocksFilterArray) ToGetLocksFilterArrayOutput() GetLocksFilterArrayOutput {
+	return i.ToGetLocksFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetLocksFilterArray) ToGetLocksFilterArrayOutputWithContext(ctx context.Context) GetLocksFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocksFilterArrayOutput)
+}
+
+type GetLocksFilterOutput struct{ *pulumi.OutputState }
+
+func (GetLocksFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocksFilter)(nil)).Elem()
+}
+
+func (o GetLocksFilterOutput) ToGetLocksFilterOutput() GetLocksFilterOutput {
+	return o
+}
+
+func (o GetLocksFilterOutput) ToGetLocksFilterOutputWithContext(ctx context.Context) GetLocksFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetLocksFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLocksFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetLocksFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocksFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetLocksFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetLocksFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetLocksFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLocksFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocksFilter)(nil)).Elem()
+}
+
+func (o GetLocksFilterArrayOutput) ToGetLocksFilterArrayOutput() GetLocksFilterArrayOutput {
+	return o
+}
+
+func (o GetLocksFilterArrayOutput) ToGetLocksFilterArrayOutputWithContext(ctx context.Context) GetLocksFilterArrayOutput {
+	return o
+}
+
+func (o GetLocksFilterArrayOutput) Index(i pulumi.IntInput) GetLocksFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLocksFilter {
+		return vs[0].([]GetLocksFilter)[vs[1].(int)]
+	}).(GetLocksFilterOutput)
+}
+
+type GetLocksLock struct {
+	// The ID of the locked entity.
+	EntityId int `pulumi:"entityId"`
+	// The label of the locked entity.
+	EntityLabel string `pulumi:"entityLabel"`
+	// The type of the locked entity.
+	EntityType string `pulumi:"entityType"`
+	// The URL of the locked entity.
+	EntityUrl string `pulumi:"entityUrl"`
+	// The unique ID of the Lock.
+	Id int `pulumi:"id"`
+	// The type of lock.
+	LockType string `pulumi:"lockType"`
+}
+
+// GetLocksLockInput is an input type that accepts GetLocksLockArgs and GetLocksLockOutput values.
+// You can construct a concrete instance of `GetLocksLockInput` via:
+//
+//	GetLocksLockArgs{...}
+type GetLocksLockInput interface {
+	pulumi.Input
+
+	ToGetLocksLockOutput() GetLocksLockOutput
+	ToGetLocksLockOutputWithContext(context.Context) GetLocksLockOutput
+}
+
+type GetLocksLockArgs struct {
+	// The ID of the locked entity.
+	EntityId pulumi.IntInput `pulumi:"entityId"`
+	// The label of the locked entity.
+	EntityLabel pulumi.StringInput `pulumi:"entityLabel"`
+	// The type of the locked entity.
+	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// The URL of the locked entity.
+	EntityUrl pulumi.StringInput `pulumi:"entityUrl"`
+	// The unique ID of the Lock.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The type of lock.
+	LockType pulumi.StringInput `pulumi:"lockType"`
+}
+
+func (GetLocksLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocksLock)(nil)).Elem()
+}
+
+func (i GetLocksLockArgs) ToGetLocksLockOutput() GetLocksLockOutput {
+	return i.ToGetLocksLockOutputWithContext(context.Background())
+}
+
+func (i GetLocksLockArgs) ToGetLocksLockOutputWithContext(ctx context.Context) GetLocksLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocksLockOutput)
+}
+
+// GetLocksLockArrayInput is an input type that accepts GetLocksLockArray and GetLocksLockArrayOutput values.
+// You can construct a concrete instance of `GetLocksLockArrayInput` via:
+//
+//	GetLocksLockArray{ GetLocksLockArgs{...} }
+type GetLocksLockArrayInput interface {
+	pulumi.Input
+
+	ToGetLocksLockArrayOutput() GetLocksLockArrayOutput
+	ToGetLocksLockArrayOutputWithContext(context.Context) GetLocksLockArrayOutput
+}
+
+type GetLocksLockArray []GetLocksLockInput
+
+func (GetLocksLockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocksLock)(nil)).Elem()
+}
+
+func (i GetLocksLockArray) ToGetLocksLockArrayOutput() GetLocksLockArrayOutput {
+	return i.ToGetLocksLockArrayOutputWithContext(context.Background())
+}
+
+func (i GetLocksLockArray) ToGetLocksLockArrayOutputWithContext(ctx context.Context) GetLocksLockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocksLockArrayOutput)
+}
+
+type GetLocksLockOutput struct{ *pulumi.OutputState }
+
+func (GetLocksLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocksLock)(nil)).Elem()
+}
+
+func (o GetLocksLockOutput) ToGetLocksLockOutput() GetLocksLockOutput {
+	return o
+}
+
+func (o GetLocksLockOutput) ToGetLocksLockOutputWithContext(ctx context.Context) GetLocksLockOutput {
+	return o
+}
+
+// The ID of the locked entity.
+func (o GetLocksLockOutput) EntityId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLocksLock) int { return v.EntityId }).(pulumi.IntOutput)
+}
+
+// The label of the locked entity.
+func (o GetLocksLockOutput) EntityLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocksLock) string { return v.EntityLabel }).(pulumi.StringOutput)
+}
+
+// The type of the locked entity.
+func (o GetLocksLockOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocksLock) string { return v.EntityType }).(pulumi.StringOutput)
+}
+
+// The URL of the locked entity.
+func (o GetLocksLockOutput) EntityUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocksLock) string { return v.EntityUrl }).(pulumi.StringOutput)
+}
+
+// The unique ID of the Lock.
+func (o GetLocksLockOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLocksLock) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The type of lock.
+func (o GetLocksLockOutput) LockType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocksLock) string { return v.LockType }).(pulumi.StringOutput)
+}
+
+type GetLocksLockArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLocksLockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocksLock)(nil)).Elem()
+}
+
+func (o GetLocksLockArrayOutput) ToGetLocksLockArrayOutput() GetLocksLockArrayOutput {
+	return o
+}
+
+func (o GetLocksLockArrayOutput) ToGetLocksLockArrayOutputWithContext(ctx context.Context) GetLocksLockArrayOutput {
+	return o
+}
+
+func (o GetLocksLockArrayOutput) Index(i pulumi.IntInput) GetLocksLockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLocksLock {
+		return vs[0].([]GetLocksLock)[vs[1].(int)]
+	}).(GetLocksLockOutput)
 }
 
 type GetMaintenancePoliciesFilter struct {
@@ -39492,47 +43180,6 @@ func (i GetPlacementGroupMigrationsArgs) ToGetPlacementGroupMigrationsOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMigrationsOutput)
 }
 
-func (i GetPlacementGroupMigrationsArgs) ToGetPlacementGroupMigrationsPtrOutput() GetPlacementGroupMigrationsPtrOutput {
-	return i.ToGetPlacementGroupMigrationsPtrOutputWithContext(context.Background())
-}
-
-func (i GetPlacementGroupMigrationsArgs) ToGetPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMigrationsOutput).ToGetPlacementGroupMigrationsPtrOutputWithContext(ctx)
-}
-
-// GetPlacementGroupMigrationsPtrInput is an input type that accepts GetPlacementGroupMigrationsArgs, GetPlacementGroupMigrationsPtr and GetPlacementGroupMigrationsPtrOutput values.
-// You can construct a concrete instance of `GetPlacementGroupMigrationsPtrInput` via:
-//
-//	        GetPlacementGroupMigrationsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetPlacementGroupMigrationsPtrInput interface {
-	pulumi.Input
-
-	ToGetPlacementGroupMigrationsPtrOutput() GetPlacementGroupMigrationsPtrOutput
-	ToGetPlacementGroupMigrationsPtrOutputWithContext(context.Context) GetPlacementGroupMigrationsPtrOutput
-}
-
-type getPlacementGroupMigrationsPtrType GetPlacementGroupMigrationsArgs
-
-func GetPlacementGroupMigrationsPtr(v *GetPlacementGroupMigrationsArgs) GetPlacementGroupMigrationsPtrInput {
-	return (*getPlacementGroupMigrationsPtrType)(v)
-}
-
-func (*getPlacementGroupMigrationsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetPlacementGroupMigrations)(nil)).Elem()
-}
-
-func (i *getPlacementGroupMigrationsPtrType) ToGetPlacementGroupMigrationsPtrOutput() GetPlacementGroupMigrationsPtrOutput {
-	return i.ToGetPlacementGroupMigrationsPtrOutputWithContext(context.Background())
-}
-
-func (i *getPlacementGroupMigrationsPtrType) ToGetPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupMigrationsPtrOutput)
-}
-
 type GetPlacementGroupMigrationsOutput struct{ *pulumi.OutputState }
 
 func (GetPlacementGroupMigrationsOutput) ElementType() reflect.Type {
@@ -39547,16 +43194,6 @@ func (o GetPlacementGroupMigrationsOutput) ToGetPlacementGroupMigrationsOutputWi
 	return o
 }
 
-func (o GetPlacementGroupMigrationsOutput) ToGetPlacementGroupMigrationsPtrOutput() GetPlacementGroupMigrationsPtrOutput {
-	return o.ToGetPlacementGroupMigrationsPtrOutputWithContext(context.Background())
-}
-
-func (o GetPlacementGroupMigrationsOutput) ToGetPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPlacementGroupMigrations) *GetPlacementGroupMigrations {
-		return &v
-	}).(GetPlacementGroupMigrationsPtrOutput)
-}
-
 // A list of the Linodes the system is migrating into the placement group.
 func (o GetPlacementGroupMigrationsOutput) Inbounds() GetPlacementGroupMigrationsInboundArrayOutput {
 	return o.ApplyT(func(v GetPlacementGroupMigrations) []GetPlacementGroupMigrationsInbound { return v.Inbounds }).(GetPlacementGroupMigrationsInboundArrayOutput)
@@ -39565,50 +43202,6 @@ func (o GetPlacementGroupMigrationsOutput) Inbounds() GetPlacementGroupMigration
 // A list of the Linodes the system is migrating out of the placement group.
 func (o GetPlacementGroupMigrationsOutput) Outbounds() GetPlacementGroupMigrationsOutboundArrayOutput {
 	return o.ApplyT(func(v GetPlacementGroupMigrations) []GetPlacementGroupMigrationsOutbound { return v.Outbounds }).(GetPlacementGroupMigrationsOutboundArrayOutput)
-}
-
-type GetPlacementGroupMigrationsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetPlacementGroupMigrationsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetPlacementGroupMigrations)(nil)).Elem()
-}
-
-func (o GetPlacementGroupMigrationsPtrOutput) ToGetPlacementGroupMigrationsPtrOutput() GetPlacementGroupMigrationsPtrOutput {
-	return o
-}
-
-func (o GetPlacementGroupMigrationsPtrOutput) ToGetPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupMigrationsPtrOutput {
-	return o
-}
-
-func (o GetPlacementGroupMigrationsPtrOutput) Elem() GetPlacementGroupMigrationsOutput {
-	return o.ApplyT(func(v *GetPlacementGroupMigrations) GetPlacementGroupMigrations {
-		if v != nil {
-			return *v
-		}
-		var ret GetPlacementGroupMigrations
-		return ret
-	}).(GetPlacementGroupMigrationsOutput)
-}
-
-// A list of the Linodes the system is migrating into the placement group.
-func (o GetPlacementGroupMigrationsPtrOutput) Inbounds() GetPlacementGroupMigrationsInboundArrayOutput {
-	return o.ApplyT(func(v *GetPlacementGroupMigrations) []GetPlacementGroupMigrationsInbound {
-		if v == nil {
-			return nil
-		}
-		return v.Inbounds
-	}).(GetPlacementGroupMigrationsInboundArrayOutput)
-}
-
-// A list of the Linodes the system is migrating out of the placement group.
-func (o GetPlacementGroupMigrationsPtrOutput) Outbounds() GetPlacementGroupMigrationsOutboundArrayOutput {
-	return o.ApplyT(func(v *GetPlacementGroupMigrations) []GetPlacementGroupMigrationsOutbound {
-		if v == nil {
-			return nil
-		}
-		return v.Outbounds
-	}).(GetPlacementGroupMigrationsOutboundArrayOutput)
 }
 
 type GetPlacementGroupMigrationsInbound struct {
@@ -39930,7 +43523,7 @@ type GetPlacementGroupsPlacementGroup struct {
 	// A set of Linodes currently assigned to this Placement Group.
 	Members []GetPlacementGroupsPlacementGroupMember `pulumi:"members"`
 	// Any Linodes that are being migrated to or from the placement group.
-	Migrations *GetPlacementGroupsPlacementGroupMigrations `pulumi:"migrations"`
+	Migrations GetPlacementGroupsPlacementGroupMigrations `pulumi:"migrations"`
 	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
 	PlacementGroupPolicy string `pulumi:"placementGroupPolicy"`
 	// The placement group type to use when placing Linodes in this group.
@@ -39960,7 +43553,7 @@ type GetPlacementGroupsPlacementGroupArgs struct {
 	// A set of Linodes currently assigned to this Placement Group.
 	Members GetPlacementGroupsPlacementGroupMemberArrayInput `pulumi:"members"`
 	// Any Linodes that are being migrated to or from the placement group.
-	Migrations GetPlacementGroupsPlacementGroupMigrationsPtrInput `pulumi:"migrations"`
+	Migrations GetPlacementGroupsPlacementGroupMigrationsInput `pulumi:"migrations"`
 	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
 	PlacementGroupPolicy pulumi.StringInput `pulumi:"placementGroupPolicy"`
 	// The placement group type to use when placing Linodes in this group.
@@ -40041,10 +43634,10 @@ func (o GetPlacementGroupsPlacementGroupOutput) Members() GetPlacementGroupsPlac
 }
 
 // Any Linodes that are being migrated to or from the placement group.
-func (o GetPlacementGroupsPlacementGroupOutput) Migrations() GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
-	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) *GetPlacementGroupsPlacementGroupMigrations {
+func (o GetPlacementGroupsPlacementGroupOutput) Migrations() GetPlacementGroupsPlacementGroupMigrationsOutput {
+	return o.ApplyT(func(v GetPlacementGroupsPlacementGroup) GetPlacementGroupsPlacementGroupMigrations {
 		return v.Migrations
-	}).(GetPlacementGroupsPlacementGroupMigrationsPtrOutput)
+	}).(GetPlacementGroupsPlacementGroupMigrationsOutput)
 }
 
 // Whether Linodes must be able to become compliant during assignment. (Default `strict`)
@@ -40225,47 +43818,6 @@ func (i GetPlacementGroupsPlacementGroupMigrationsArgs) ToGetPlacementGroupsPlac
 	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMigrationsOutput)
 }
 
-func (i GetPlacementGroupsPlacementGroupMigrationsArgs) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutput() GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
-	return i.ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(context.Background())
-}
-
-func (i GetPlacementGroupsPlacementGroupMigrationsArgs) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMigrationsOutput).ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(ctx)
-}
-
-// GetPlacementGroupsPlacementGroupMigrationsPtrInput is an input type that accepts GetPlacementGroupsPlacementGroupMigrationsArgs, GetPlacementGroupsPlacementGroupMigrationsPtr and GetPlacementGroupsPlacementGroupMigrationsPtrOutput values.
-// You can construct a concrete instance of `GetPlacementGroupsPlacementGroupMigrationsPtrInput` via:
-//
-//	        GetPlacementGroupsPlacementGroupMigrationsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetPlacementGroupsPlacementGroupMigrationsPtrInput interface {
-	pulumi.Input
-
-	ToGetPlacementGroupsPlacementGroupMigrationsPtrOutput() GetPlacementGroupsPlacementGroupMigrationsPtrOutput
-	ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(context.Context) GetPlacementGroupsPlacementGroupMigrationsPtrOutput
-}
-
-type getPlacementGroupsPlacementGroupMigrationsPtrType GetPlacementGroupsPlacementGroupMigrationsArgs
-
-func GetPlacementGroupsPlacementGroupMigrationsPtr(v *GetPlacementGroupsPlacementGroupMigrationsArgs) GetPlacementGroupsPlacementGroupMigrationsPtrInput {
-	return (*getPlacementGroupsPlacementGroupMigrationsPtrType)(v)
-}
-
-func (*getPlacementGroupsPlacementGroupMigrationsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetPlacementGroupsPlacementGroupMigrations)(nil)).Elem()
-}
-
-func (i *getPlacementGroupsPlacementGroupMigrationsPtrType) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutput() GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
-	return i.ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(context.Background())
-}
-
-func (i *getPlacementGroupsPlacementGroupMigrationsPtrType) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPlacementGroupsPlacementGroupMigrationsPtrOutput)
-}
-
 type GetPlacementGroupsPlacementGroupMigrationsOutput struct{ *pulumi.OutputState }
 
 func (GetPlacementGroupsPlacementGroupMigrationsOutput) ElementType() reflect.Type {
@@ -40280,16 +43832,6 @@ func (o GetPlacementGroupsPlacementGroupMigrationsOutput) ToGetPlacementGroupsPl
 	return o
 }
 
-func (o GetPlacementGroupsPlacementGroupMigrationsOutput) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutput() GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
-	return o.ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(context.Background())
-}
-
-func (o GetPlacementGroupsPlacementGroupMigrationsOutput) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPlacementGroupsPlacementGroupMigrations) *GetPlacementGroupsPlacementGroupMigrations {
-		return &v
-	}).(GetPlacementGroupsPlacementGroupMigrationsPtrOutput)
-}
-
 // A list of the Linodes the system is migrating into the placement group.
 func (o GetPlacementGroupsPlacementGroupMigrationsOutput) Inbounds() GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput {
 	return o.ApplyT(func(v GetPlacementGroupsPlacementGroupMigrations) []GetPlacementGroupsPlacementGroupMigrationsInbound {
@@ -40300,50 +43842,6 @@ func (o GetPlacementGroupsPlacementGroupMigrationsOutput) Inbounds() GetPlacemen
 // A list of the Linodes the system is migrating out of the placement group.
 func (o GetPlacementGroupsPlacementGroupMigrationsOutput) Outbounds() GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput {
 	return o.ApplyT(func(v GetPlacementGroupsPlacementGroupMigrations) []GetPlacementGroupsPlacementGroupMigrationsOutbound {
-		return v.Outbounds
-	}).(GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput)
-}
-
-type GetPlacementGroupsPlacementGroupMigrationsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetPlacementGroupsPlacementGroupMigrationsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetPlacementGroupsPlacementGroupMigrations)(nil)).Elem()
-}
-
-func (o GetPlacementGroupsPlacementGroupMigrationsPtrOutput) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutput() GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
-	return o
-}
-
-func (o GetPlacementGroupsPlacementGroupMigrationsPtrOutput) ToGetPlacementGroupsPlacementGroupMigrationsPtrOutputWithContext(ctx context.Context) GetPlacementGroupsPlacementGroupMigrationsPtrOutput {
-	return o
-}
-
-func (o GetPlacementGroupsPlacementGroupMigrationsPtrOutput) Elem() GetPlacementGroupsPlacementGroupMigrationsOutput {
-	return o.ApplyT(func(v *GetPlacementGroupsPlacementGroupMigrations) GetPlacementGroupsPlacementGroupMigrations {
-		if v != nil {
-			return *v
-		}
-		var ret GetPlacementGroupsPlacementGroupMigrations
-		return ret
-	}).(GetPlacementGroupsPlacementGroupMigrationsOutput)
-}
-
-// A list of the Linodes the system is migrating into the placement group.
-func (o GetPlacementGroupsPlacementGroupMigrationsPtrOutput) Inbounds() GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput {
-	return o.ApplyT(func(v *GetPlacementGroupsPlacementGroupMigrations) []GetPlacementGroupsPlacementGroupMigrationsInbound {
-		if v == nil {
-			return nil
-		}
-		return v.Inbounds
-	}).(GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput)
-}
-
-// A list of the Linodes the system is migrating out of the placement group.
-func (o GetPlacementGroupsPlacementGroupMigrationsPtrOutput) Outbounds() GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput {
-	return o.ApplyT(func(v *GetPlacementGroupsPlacementGroupMigrations) []GetPlacementGroupsPlacementGroupMigrationsOutbound {
-		if v == nil {
-			return nil
-		}
 		return v.Outbounds
 	}).(GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput)
 }
@@ -40542,6 +44040,1108 @@ func (o GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput) Index(i p
 	}).(GetPlacementGroupsPlacementGroupMigrationsOutboundOutput)
 }
 
+type GetProducerImageShareGroupImageSharesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetProducerImageShareGroupImageSharesFilterInput is an input type that accepts GetProducerImageShareGroupImageSharesFilterArgs and GetProducerImageShareGroupImageSharesFilterOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupImageSharesFilterInput` via:
+//
+//	GetProducerImageShareGroupImageSharesFilterArgs{...}
+type GetProducerImageShareGroupImageSharesFilterInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupImageSharesFilterOutput() GetProducerImageShareGroupImageSharesFilterOutput
+	ToGetProducerImageShareGroupImageSharesFilterOutputWithContext(context.Context) GetProducerImageShareGroupImageSharesFilterOutput
+}
+
+type GetProducerImageShareGroupImageSharesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetProducerImageShareGroupImageSharesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupImageSharesFilter)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupImageSharesFilterArgs) ToGetProducerImageShareGroupImageSharesFilterOutput() GetProducerImageShareGroupImageSharesFilterOutput {
+	return i.ToGetProducerImageShareGroupImageSharesFilterOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupImageSharesFilterArgs) ToGetProducerImageShareGroupImageSharesFilterOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupImageSharesFilterOutput)
+}
+
+// GetProducerImageShareGroupImageSharesFilterArrayInput is an input type that accepts GetProducerImageShareGroupImageSharesFilterArray and GetProducerImageShareGroupImageSharesFilterArrayOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupImageSharesFilterArrayInput` via:
+//
+//	GetProducerImageShareGroupImageSharesFilterArray{ GetProducerImageShareGroupImageSharesFilterArgs{...} }
+type GetProducerImageShareGroupImageSharesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupImageSharesFilterArrayOutput() GetProducerImageShareGroupImageSharesFilterArrayOutput
+	ToGetProducerImageShareGroupImageSharesFilterArrayOutputWithContext(context.Context) GetProducerImageShareGroupImageSharesFilterArrayOutput
+}
+
+type GetProducerImageShareGroupImageSharesFilterArray []GetProducerImageShareGroupImageSharesFilterInput
+
+func (GetProducerImageShareGroupImageSharesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupImageSharesFilter)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupImageSharesFilterArray) ToGetProducerImageShareGroupImageSharesFilterArrayOutput() GetProducerImageShareGroupImageSharesFilterArrayOutput {
+	return i.ToGetProducerImageShareGroupImageSharesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupImageSharesFilterArray) ToGetProducerImageShareGroupImageSharesFilterArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupImageSharesFilterArrayOutput)
+}
+
+type GetProducerImageShareGroupImageSharesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupImageSharesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupImageSharesFilter)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupImageSharesFilterOutput) ToGetProducerImageShareGroupImageSharesFilterOutput() GetProducerImageShareGroupImageSharesFilterOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupImageSharesFilterOutput) ToGetProducerImageShareGroupImageSharesFilterOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetProducerImageShareGroupImageSharesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetProducerImageShareGroupImageSharesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetProducerImageShareGroupImageSharesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetProducerImageShareGroupImageSharesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupImageSharesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupImageSharesFilter)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupImageSharesFilterArrayOutput) ToGetProducerImageShareGroupImageSharesFilterArrayOutput() GetProducerImageShareGroupImageSharesFilterArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupImageSharesFilterArrayOutput) ToGetProducerImageShareGroupImageSharesFilterArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesFilterArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupImageSharesFilterArrayOutput) Index(i pulumi.IntInput) GetProducerImageShareGroupImageSharesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProducerImageShareGroupImageSharesFilter {
+		return vs[0].([]GetProducerImageShareGroupImageSharesFilter)[vs[1].(int)]
+	}).(GetProducerImageShareGroupImageSharesFilterOutput)
+}
+
+type GetProducerImageShareGroupImageSharesImageShare struct {
+	// The capabilities of the Image represented by the Image Share.
+	Capabilities []string `pulumi:"capabilities"`
+	// When this Image Share was created.
+	Created string `pulumi:"created"`
+	// Whether this Image is deprecated.
+	Deprecated bool `pulumi:"deprecated"`
+	// A description of the Image Share.
+	Description string `pulumi:"description"`
+	// The unique ID assigned to this Image Share.
+	Id string `pulumi:"id"`
+	// Details about image sharing, including who the image is shared with and by.
+	ImageSharing GetProducerImageShareGroupImageSharesImageShareImageSharing `pulumi:"imageSharing"`
+	// True if the Image is public.
+	IsPublic bool `pulumi:"isPublic"`
+	// The label of the Image Share.
+	Label string `pulumi:"label"`
+	// The minimum size this Image needs to deploy. Size is in MB. example: 2500
+	Size int `pulumi:"size"`
+	// The current status of this image. (`creating`, `pendingUpload`, `available`)
+	Status string `pulumi:"status"`
+	// A list of customized tags.
+	Tags []string `pulumi:"tags"`
+	// The total size of the image in all available regions.
+	TotalSize int `pulumi:"totalSize"`
+	// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+	Type string `pulumi:"type"`
+}
+
+// GetProducerImageShareGroupImageSharesImageShareInput is an input type that accepts GetProducerImageShareGroupImageSharesImageShareArgs and GetProducerImageShareGroupImageSharesImageShareOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupImageSharesImageShareInput` via:
+//
+//	GetProducerImageShareGroupImageSharesImageShareArgs{...}
+type GetProducerImageShareGroupImageSharesImageShareInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupImageSharesImageShareOutput() GetProducerImageShareGroupImageSharesImageShareOutput
+	ToGetProducerImageShareGroupImageSharesImageShareOutputWithContext(context.Context) GetProducerImageShareGroupImageSharesImageShareOutput
+}
+
+type GetProducerImageShareGroupImageSharesImageShareArgs struct {
+	// The capabilities of the Image represented by the Image Share.
+	Capabilities pulumi.StringArrayInput `pulumi:"capabilities"`
+	// When this Image Share was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// Whether this Image is deprecated.
+	Deprecated pulumi.BoolInput `pulumi:"deprecated"`
+	// A description of the Image Share.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The unique ID assigned to this Image Share.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Details about image sharing, including who the image is shared with and by.
+	ImageSharing GetProducerImageShareGroupImageSharesImageShareImageSharingInput `pulumi:"imageSharing"`
+	// True if the Image is public.
+	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	// The label of the Image Share.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The minimum size this Image needs to deploy. Size is in MB. example: 2500
+	Size pulumi.IntInput `pulumi:"size"`
+	// The current status of this image. (`creating`, `pendingUpload`, `available`)
+	Status pulumi.StringInput `pulumi:"status"`
+	// A list of customized tags.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The total size of the image in all available regions.
+	TotalSize pulumi.IntInput `pulumi:"totalSize"`
+	// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetProducerImageShareGroupImageSharesImageShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShare)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupImageSharesImageShareArgs) ToGetProducerImageShareGroupImageSharesImageShareOutput() GetProducerImageShareGroupImageSharesImageShareOutput {
+	return i.ToGetProducerImageShareGroupImageSharesImageShareOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupImageSharesImageShareArgs) ToGetProducerImageShareGroupImageSharesImageShareOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesImageShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupImageSharesImageShareOutput)
+}
+
+// GetProducerImageShareGroupImageSharesImageShareArrayInput is an input type that accepts GetProducerImageShareGroupImageSharesImageShareArray and GetProducerImageShareGroupImageSharesImageShareArrayOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupImageSharesImageShareArrayInput` via:
+//
+//	GetProducerImageShareGroupImageSharesImageShareArray{ GetProducerImageShareGroupImageSharesImageShareArgs{...} }
+type GetProducerImageShareGroupImageSharesImageShareArrayInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupImageSharesImageShareArrayOutput() GetProducerImageShareGroupImageSharesImageShareArrayOutput
+	ToGetProducerImageShareGroupImageSharesImageShareArrayOutputWithContext(context.Context) GetProducerImageShareGroupImageSharesImageShareArrayOutput
+}
+
+type GetProducerImageShareGroupImageSharesImageShareArray []GetProducerImageShareGroupImageSharesImageShareInput
+
+func (GetProducerImageShareGroupImageSharesImageShareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupImageSharesImageShare)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupImageSharesImageShareArray) ToGetProducerImageShareGroupImageSharesImageShareArrayOutput() GetProducerImageShareGroupImageSharesImageShareArrayOutput {
+	return i.ToGetProducerImageShareGroupImageSharesImageShareArrayOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupImageSharesImageShareArray) ToGetProducerImageShareGroupImageSharesImageShareArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesImageShareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupImageSharesImageShareArrayOutput)
+}
+
+type GetProducerImageShareGroupImageSharesImageShareOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupImageSharesImageShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShare)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) ToGetProducerImageShareGroupImageSharesImageShareOutput() GetProducerImageShareGroupImageSharesImageShareOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) ToGetProducerImageShareGroupImageSharesImageShareOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesImageShareOutput {
+	return o
+}
+
+// The capabilities of the Image represented by the Image Share.
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
+}
+
+// When this Image Share was created.
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// Whether this Image is deprecated.
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) bool { return v.Deprecated }).(pulumi.BoolOutput)
+}
+
+// A description of the Image Share.
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique ID assigned to this Image Share.
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Details about image sharing, including who the image is shared with and by.
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) ImageSharing() GetProducerImageShareGroupImageSharesImageShareImageSharingOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) GetProducerImageShareGroupImageSharesImageShareImageSharing {
+		return v.ImageSharing
+	}).(GetProducerImageShareGroupImageSharesImageShareImageSharingOutput)
+}
+
+// True if the Image is public.
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+// The label of the Image Share.
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The minimum size this Image needs to deploy. Size is in MB. example: 2500
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The current status of this image. (`creating`, `pendingUpload`, `available`)
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// A list of customized tags.
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The total size of the image in all available regions.
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) TotalSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) int { return v.TotalSize }).(pulumi.IntOutput)
+}
+
+// How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+func (o GetProducerImageShareGroupImageSharesImageShareOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShare) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetProducerImageShareGroupImageSharesImageShareArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupImageSharesImageShareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupImageSharesImageShare)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupImageSharesImageShareArrayOutput) ToGetProducerImageShareGroupImageSharesImageShareArrayOutput() GetProducerImageShareGroupImageSharesImageShareArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupImageSharesImageShareArrayOutput) ToGetProducerImageShareGroupImageSharesImageShareArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesImageShareArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupImageSharesImageShareArrayOutput) Index(i pulumi.IntInput) GetProducerImageShareGroupImageSharesImageShareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProducerImageShareGroupImageSharesImageShare {
+		return vs[0].([]GetProducerImageShareGroupImageSharesImageShare)[vs[1].(int)]
+	}).(GetProducerImageShareGroupImageSharesImageShareOutput)
+}
+
+type GetProducerImageShareGroupImageSharesImageShareImageSharing struct {
+	// Details about who the image is shared by.
+	SharedBy GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy `pulumi:"sharedBy"`
+	// Details about who the image is shared with.
+	SharedWith GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith `pulumi:"sharedWith"`
+}
+
+// GetProducerImageShareGroupImageSharesImageShareImageSharingInput is an input type that accepts GetProducerImageShareGroupImageSharesImageShareImageSharingArgs and GetProducerImageShareGroupImageSharesImageShareImageSharingOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupImageSharesImageShareImageSharingInput` via:
+//
+//	GetProducerImageShareGroupImageSharesImageShareImageSharingArgs{...}
+type GetProducerImageShareGroupImageSharesImageShareImageSharingInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupImageSharesImageShareImageSharingOutput() GetProducerImageShareGroupImageSharesImageShareImageSharingOutput
+	ToGetProducerImageShareGroupImageSharesImageShareImageSharingOutputWithContext(context.Context) GetProducerImageShareGroupImageSharesImageShareImageSharingOutput
+}
+
+type GetProducerImageShareGroupImageSharesImageShareImageSharingArgs struct {
+	// Details about who the image is shared by.
+	SharedBy GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByInput `pulumi:"sharedBy"`
+	// Details about who the image is shared with.
+	SharedWith GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithInput `pulumi:"sharedWith"`
+}
+
+func (GetProducerImageShareGroupImageSharesImageShareImageSharingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShareImageSharing)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupImageSharesImageShareImageSharingArgs) ToGetProducerImageShareGroupImageSharesImageShareImageSharingOutput() GetProducerImageShareGroupImageSharesImageShareImageSharingOutput {
+	return i.ToGetProducerImageShareGroupImageSharesImageShareImageSharingOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupImageSharesImageShareImageSharingArgs) ToGetProducerImageShareGroupImageSharesImageShareImageSharingOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesImageShareImageSharingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupImageSharesImageShareImageSharingOutput)
+}
+
+type GetProducerImageShareGroupImageSharesImageShareImageSharingOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupImageSharesImageShareImageSharingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShareImageSharing)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingOutput) ToGetProducerImageShareGroupImageSharesImageShareImageSharingOutput() GetProducerImageShareGroupImageSharesImageShareImageSharingOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingOutput) ToGetProducerImageShareGroupImageSharesImageShareImageSharingOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesImageShareImageSharingOutput {
+	return o
+}
+
+// Details about who the image is shared by.
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingOutput) SharedBy() GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShareImageSharing) GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy {
+		return v.SharedBy
+	}).(GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput)
+}
+
+// Details about who the image is shared with.
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingOutput) SharedWith() GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShareImageSharing) GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith {
+		return v.SharedWith
+	}).(GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput)
+}
+
+type GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy struct {
+	// The ID of the Image Share Group to list shared Images from.
+	//
+	// * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+	SharegroupId int `pulumi:"sharegroupId"`
+	// The label from the associated im_ImageShareGroup row.
+	SharegroupLabel string `pulumi:"sharegroupLabel"`
+	// The sharegroupUuid from the im_ImageShare row.
+	SharegroupUuid string `pulumi:"sharegroupUuid"`
+	// The image id of the base image (will only be shown to producers, will be null for consumers).
+	SourceImageId string `pulumi:"sourceImageId"`
+}
+
+// GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByInput is an input type that accepts GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs and GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByInput` via:
+//
+//	GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs{...}
+type GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput() GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput
+	ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutputWithContext(context.Context) GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput
+}
+
+type GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs struct {
+	// The ID of the Image Share Group to list shared Images from.
+	//
+	// * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+	SharegroupId pulumi.IntInput `pulumi:"sharegroupId"`
+	// The label from the associated im_ImageShareGroup row.
+	SharegroupLabel pulumi.StringInput `pulumi:"sharegroupLabel"`
+	// The sharegroupUuid from the im_ImageShare row.
+	SharegroupUuid pulumi.StringInput `pulumi:"sharegroupUuid"`
+	// The image id of the base image (will only be shown to producers, will be null for consumers).
+	SourceImageId pulumi.StringInput `pulumi:"sourceImageId"`
+}
+
+func (GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs) ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput() GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput {
+	return i.ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs) ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput)
+}
+
+type GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput() GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput {
+	return o
+}
+
+// The ID of the Image Share Group to list shared Images from.
+//
+// * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) SharegroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy) int { return v.SharegroupId }).(pulumi.IntOutput)
+}
+
+// The label from the associated im_ImageShareGroup row.
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) SharegroupLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy) string {
+		return v.SharegroupLabel
+	}).(pulumi.StringOutput)
+}
+
+// The sharegroupUuid from the im_ImageShare row.
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) SharegroupUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy) string {
+		return v.SharegroupUuid
+	}).(pulumi.StringOutput)
+}
+
+// The image id of the base image (will only be shown to producers, will be null for consumers).
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput) SourceImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy) string {
+		return v.SourceImageId
+	}).(pulumi.StringOutput)
+}
+
+type GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith struct {
+	// The number of sharegroups the private image is present in.
+	SharegroupCount int `pulumi:"sharegroupCount"`
+	// The GET api url to view the sharegroups in which the image is shared.
+	SharegroupListUrl string `pulumi:"sharegroupListUrl"`
+}
+
+// GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithInput is an input type that accepts GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs and GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithInput` via:
+//
+//	GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs{...}
+type GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput() GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput
+	ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutputWithContext(context.Context) GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput
+}
+
+type GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs struct {
+	// The number of sharegroups the private image is present in.
+	SharegroupCount pulumi.IntInput `pulumi:"sharegroupCount"`
+	// The GET api url to view the sharegroups in which the image is shared.
+	SharegroupListUrl pulumi.StringInput `pulumi:"sharegroupListUrl"`
+}
+
+func (GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs) ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput() GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput {
+	return i.ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs) ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput)
+}
+
+type GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput) ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput() GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput) ToGetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutputWithContext(ctx context.Context) GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput {
+	return o
+}
+
+// The number of sharegroups the private image is present in.
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput) SharegroupCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith) int {
+		return v.SharegroupCount
+	}).(pulumi.IntOutput)
+}
+
+// The GET api url to view the sharegroups in which the image is shared.
+func (o GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput) SharegroupListUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith) string {
+		return v.SharegroupListUrl
+	}).(pulumi.StringOutput)
+}
+
+type GetProducerImageShareGroupMembersFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetProducerImageShareGroupMembersFilterInput is an input type that accepts GetProducerImageShareGroupMembersFilterArgs and GetProducerImageShareGroupMembersFilterOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupMembersFilterInput` via:
+//
+//	GetProducerImageShareGroupMembersFilterArgs{...}
+type GetProducerImageShareGroupMembersFilterInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupMembersFilterOutput() GetProducerImageShareGroupMembersFilterOutput
+	ToGetProducerImageShareGroupMembersFilterOutputWithContext(context.Context) GetProducerImageShareGroupMembersFilterOutput
+}
+
+type GetProducerImageShareGroupMembersFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetProducerImageShareGroupMembersFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupMembersFilter)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupMembersFilterArgs) ToGetProducerImageShareGroupMembersFilterOutput() GetProducerImageShareGroupMembersFilterOutput {
+	return i.ToGetProducerImageShareGroupMembersFilterOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupMembersFilterArgs) ToGetProducerImageShareGroupMembersFilterOutputWithContext(ctx context.Context) GetProducerImageShareGroupMembersFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupMembersFilterOutput)
+}
+
+// GetProducerImageShareGroupMembersFilterArrayInput is an input type that accepts GetProducerImageShareGroupMembersFilterArray and GetProducerImageShareGroupMembersFilterArrayOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupMembersFilterArrayInput` via:
+//
+//	GetProducerImageShareGroupMembersFilterArray{ GetProducerImageShareGroupMembersFilterArgs{...} }
+type GetProducerImageShareGroupMembersFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupMembersFilterArrayOutput() GetProducerImageShareGroupMembersFilterArrayOutput
+	ToGetProducerImageShareGroupMembersFilterArrayOutputWithContext(context.Context) GetProducerImageShareGroupMembersFilterArrayOutput
+}
+
+type GetProducerImageShareGroupMembersFilterArray []GetProducerImageShareGroupMembersFilterInput
+
+func (GetProducerImageShareGroupMembersFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupMembersFilter)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupMembersFilterArray) ToGetProducerImageShareGroupMembersFilterArrayOutput() GetProducerImageShareGroupMembersFilterArrayOutput {
+	return i.ToGetProducerImageShareGroupMembersFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupMembersFilterArray) ToGetProducerImageShareGroupMembersFilterArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupMembersFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupMembersFilterArrayOutput)
+}
+
+type GetProducerImageShareGroupMembersFilterOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupMembersFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupMembersFilter)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupMembersFilterOutput) ToGetProducerImageShareGroupMembersFilterOutput() GetProducerImageShareGroupMembersFilterOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupMembersFilterOutput) ToGetProducerImageShareGroupMembersFilterOutputWithContext(ctx context.Context) GetProducerImageShareGroupMembersFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetProducerImageShareGroupMembersFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupMembersFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetProducerImageShareGroupMembersFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupMembersFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetProducerImageShareGroupMembersFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupMembersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetProducerImageShareGroupMembersFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupMembersFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupMembersFilter)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupMembersFilterArrayOutput) ToGetProducerImageShareGroupMembersFilterArrayOutput() GetProducerImageShareGroupMembersFilterArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupMembersFilterArrayOutput) ToGetProducerImageShareGroupMembersFilterArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupMembersFilterArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupMembersFilterArrayOutput) Index(i pulumi.IntInput) GetProducerImageShareGroupMembersFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProducerImageShareGroupMembersFilter {
+		return vs[0].([]GetProducerImageShareGroupMembersFilter)[vs[1].(int)]
+	}).(GetProducerImageShareGroupMembersFilterOutput)
+}
+
+type GetProducerImageShareGroupMembersMember struct {
+	// When the member was created.
+	Created string `pulumi:"created"`
+	// When the member will expire.
+	Expiry string `pulumi:"expiry"`
+	// The label of the member.
+	Label string `pulumi:"label"`
+	// The ID of the Image Share Group for which to list members.
+	SharegroupId int `pulumi:"sharegroupId"`
+	// The status of the member.
+	Status string `pulumi:"status"`
+	// The UUID of member's token.
+	TokenUuid string `pulumi:"tokenUuid"`
+	// When the member was last updated.
+	Updated string `pulumi:"updated"`
+}
+
+// GetProducerImageShareGroupMembersMemberInput is an input type that accepts GetProducerImageShareGroupMembersMemberArgs and GetProducerImageShareGroupMembersMemberOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupMembersMemberInput` via:
+//
+//	GetProducerImageShareGroupMembersMemberArgs{...}
+type GetProducerImageShareGroupMembersMemberInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupMembersMemberOutput() GetProducerImageShareGroupMembersMemberOutput
+	ToGetProducerImageShareGroupMembersMemberOutputWithContext(context.Context) GetProducerImageShareGroupMembersMemberOutput
+}
+
+type GetProducerImageShareGroupMembersMemberArgs struct {
+	// When the member was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// When the member will expire.
+	Expiry pulumi.StringInput `pulumi:"expiry"`
+	// The label of the member.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The ID of the Image Share Group for which to list members.
+	SharegroupId pulumi.IntInput `pulumi:"sharegroupId"`
+	// The status of the member.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The UUID of member's token.
+	TokenUuid pulumi.StringInput `pulumi:"tokenUuid"`
+	// When the member was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+}
+
+func (GetProducerImageShareGroupMembersMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupMembersMember)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupMembersMemberArgs) ToGetProducerImageShareGroupMembersMemberOutput() GetProducerImageShareGroupMembersMemberOutput {
+	return i.ToGetProducerImageShareGroupMembersMemberOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupMembersMemberArgs) ToGetProducerImageShareGroupMembersMemberOutputWithContext(ctx context.Context) GetProducerImageShareGroupMembersMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupMembersMemberOutput)
+}
+
+// GetProducerImageShareGroupMembersMemberArrayInput is an input type that accepts GetProducerImageShareGroupMembersMemberArray and GetProducerImageShareGroupMembersMemberArrayOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupMembersMemberArrayInput` via:
+//
+//	GetProducerImageShareGroupMembersMemberArray{ GetProducerImageShareGroupMembersMemberArgs{...} }
+type GetProducerImageShareGroupMembersMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupMembersMemberArrayOutput() GetProducerImageShareGroupMembersMemberArrayOutput
+	ToGetProducerImageShareGroupMembersMemberArrayOutputWithContext(context.Context) GetProducerImageShareGroupMembersMemberArrayOutput
+}
+
+type GetProducerImageShareGroupMembersMemberArray []GetProducerImageShareGroupMembersMemberInput
+
+func (GetProducerImageShareGroupMembersMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupMembersMember)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupMembersMemberArray) ToGetProducerImageShareGroupMembersMemberArrayOutput() GetProducerImageShareGroupMembersMemberArrayOutput {
+	return i.ToGetProducerImageShareGroupMembersMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupMembersMemberArray) ToGetProducerImageShareGroupMembersMemberArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupMembersMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupMembersMemberArrayOutput)
+}
+
+type GetProducerImageShareGroupMembersMemberOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupMembersMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupMembersMember)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupMembersMemberOutput) ToGetProducerImageShareGroupMembersMemberOutput() GetProducerImageShareGroupMembersMemberOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupMembersMemberOutput) ToGetProducerImageShareGroupMembersMemberOutputWithContext(ctx context.Context) GetProducerImageShareGroupMembersMemberOutput {
+	return o
+}
+
+// When the member was created.
+func (o GetProducerImageShareGroupMembersMemberOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupMembersMember) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// When the member will expire.
+func (o GetProducerImageShareGroupMembersMemberOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupMembersMember) string { return v.Expiry }).(pulumi.StringOutput)
+}
+
+// The label of the member.
+func (o GetProducerImageShareGroupMembersMemberOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupMembersMember) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The ID of the Image Share Group for which to list members.
+func (o GetProducerImageShareGroupMembersMemberOutput) SharegroupId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupMembersMember) int { return v.SharegroupId }).(pulumi.IntOutput)
+}
+
+// The status of the member.
+func (o GetProducerImageShareGroupMembersMemberOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupMembersMember) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The UUID of member's token.
+func (o GetProducerImageShareGroupMembersMemberOutput) TokenUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupMembersMember) string { return v.TokenUuid }).(pulumi.StringOutput)
+}
+
+// When the member was last updated.
+func (o GetProducerImageShareGroupMembersMemberOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupMembersMember) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+type GetProducerImageShareGroupMembersMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupMembersMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupMembersMember)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupMembersMemberArrayOutput) ToGetProducerImageShareGroupMembersMemberArrayOutput() GetProducerImageShareGroupMembersMemberArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupMembersMemberArrayOutput) ToGetProducerImageShareGroupMembersMemberArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupMembersMemberArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupMembersMemberArrayOutput) Index(i pulumi.IntInput) GetProducerImageShareGroupMembersMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProducerImageShareGroupMembersMember {
+		return vs[0].([]GetProducerImageShareGroupMembersMember)[vs[1].(int)]
+	}).(GetProducerImageShareGroupMembersMemberOutput)
+}
+
+type GetProducerImageShareGroupsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetProducerImageShareGroupsFilterInput is an input type that accepts GetProducerImageShareGroupsFilterArgs and GetProducerImageShareGroupsFilterOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupsFilterInput` via:
+//
+//	GetProducerImageShareGroupsFilterArgs{...}
+type GetProducerImageShareGroupsFilterInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupsFilterOutput() GetProducerImageShareGroupsFilterOutput
+	ToGetProducerImageShareGroupsFilterOutputWithContext(context.Context) GetProducerImageShareGroupsFilterOutput
+}
+
+type GetProducerImageShareGroupsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetProducerImageShareGroupsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupsFilter)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupsFilterArgs) ToGetProducerImageShareGroupsFilterOutput() GetProducerImageShareGroupsFilterOutput {
+	return i.ToGetProducerImageShareGroupsFilterOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupsFilterArgs) ToGetProducerImageShareGroupsFilterOutputWithContext(ctx context.Context) GetProducerImageShareGroupsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupsFilterOutput)
+}
+
+// GetProducerImageShareGroupsFilterArrayInput is an input type that accepts GetProducerImageShareGroupsFilterArray and GetProducerImageShareGroupsFilterArrayOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupsFilterArrayInput` via:
+//
+//	GetProducerImageShareGroupsFilterArray{ GetProducerImageShareGroupsFilterArgs{...} }
+type GetProducerImageShareGroupsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupsFilterArrayOutput() GetProducerImageShareGroupsFilterArrayOutput
+	ToGetProducerImageShareGroupsFilterArrayOutputWithContext(context.Context) GetProducerImageShareGroupsFilterArrayOutput
+}
+
+type GetProducerImageShareGroupsFilterArray []GetProducerImageShareGroupsFilterInput
+
+func (GetProducerImageShareGroupsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupsFilter)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupsFilterArray) ToGetProducerImageShareGroupsFilterArrayOutput() GetProducerImageShareGroupsFilterArrayOutput {
+	return i.ToGetProducerImageShareGroupsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupsFilterArray) ToGetProducerImageShareGroupsFilterArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupsFilterArrayOutput)
+}
+
+type GetProducerImageShareGroupsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupsFilter)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupsFilterOutput) ToGetProducerImageShareGroupsFilterOutput() GetProducerImageShareGroupsFilterOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupsFilterOutput) ToGetProducerImageShareGroupsFilterOutputWithContext(ctx context.Context) GetProducerImageShareGroupsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetProducerImageShareGroupsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetProducerImageShareGroupsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetProducerImageShareGroupsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetProducerImageShareGroupsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupsFilter)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupsFilterArrayOutput) ToGetProducerImageShareGroupsFilterArrayOutput() GetProducerImageShareGroupsFilterArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupsFilterArrayOutput) ToGetProducerImageShareGroupsFilterArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupsFilterArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupsFilterArrayOutput) Index(i pulumi.IntInput) GetProducerImageShareGroupsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProducerImageShareGroupsFilter {
+		return vs[0].([]GetProducerImageShareGroupsFilter)[vs[1].(int)]
+	}).(GetProducerImageShareGroupsFilterOutput)
+}
+
+type GetProducerImageShareGroupsImageShareGroup struct {
+	// The date and time the Image Share Group was created.
+	Created string `pulumi:"created"`
+	// The description of the Image Share Group.
+	Description string `pulumi:"description"`
+	// The date and time the Image Share Group will expire.
+	Expiry string `pulumi:"expiry"`
+	// The ID of the Image Share Group.
+	Id int `pulumi:"id"`
+	// The number of images in the Image Share Group.
+	ImagesCount int `pulumi:"imagesCount"`
+	// Whether the Image Share Group is suspended.
+	IsSuspended bool `pulumi:"isSuspended"`
+	// The label of the Image Share Group.
+	Label string `pulumi:"label"`
+	// The number of members in the Image Share Group.
+	MembersCount int `pulumi:"membersCount"`
+	// The date and time the Image Share Group was last updated.
+	Updated string `pulumi:"updated"`
+	// The UUID of the Image Share Group.
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetProducerImageShareGroupsImageShareGroupInput is an input type that accepts GetProducerImageShareGroupsImageShareGroupArgs and GetProducerImageShareGroupsImageShareGroupOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupsImageShareGroupInput` via:
+//
+//	GetProducerImageShareGroupsImageShareGroupArgs{...}
+type GetProducerImageShareGroupsImageShareGroupInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupsImageShareGroupOutput() GetProducerImageShareGroupsImageShareGroupOutput
+	ToGetProducerImageShareGroupsImageShareGroupOutputWithContext(context.Context) GetProducerImageShareGroupsImageShareGroupOutput
+}
+
+type GetProducerImageShareGroupsImageShareGroupArgs struct {
+	// The date and time the Image Share Group was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The description of the Image Share Group.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The date and time the Image Share Group will expire.
+	Expiry pulumi.StringInput `pulumi:"expiry"`
+	// The ID of the Image Share Group.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The number of images in the Image Share Group.
+	ImagesCount pulumi.IntInput `pulumi:"imagesCount"`
+	// Whether the Image Share Group is suspended.
+	IsSuspended pulumi.BoolInput `pulumi:"isSuspended"`
+	// The label of the Image Share Group.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The number of members in the Image Share Group.
+	MembersCount pulumi.IntInput `pulumi:"membersCount"`
+	// The date and time the Image Share Group was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+	// The UUID of the Image Share Group.
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetProducerImageShareGroupsImageShareGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupsImageShareGroup)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupsImageShareGroupArgs) ToGetProducerImageShareGroupsImageShareGroupOutput() GetProducerImageShareGroupsImageShareGroupOutput {
+	return i.ToGetProducerImageShareGroupsImageShareGroupOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupsImageShareGroupArgs) ToGetProducerImageShareGroupsImageShareGroupOutputWithContext(ctx context.Context) GetProducerImageShareGroupsImageShareGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupsImageShareGroupOutput)
+}
+
+// GetProducerImageShareGroupsImageShareGroupArrayInput is an input type that accepts GetProducerImageShareGroupsImageShareGroupArray and GetProducerImageShareGroupsImageShareGroupArrayOutput values.
+// You can construct a concrete instance of `GetProducerImageShareGroupsImageShareGroupArrayInput` via:
+//
+//	GetProducerImageShareGroupsImageShareGroupArray{ GetProducerImageShareGroupsImageShareGroupArgs{...} }
+type GetProducerImageShareGroupsImageShareGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetProducerImageShareGroupsImageShareGroupArrayOutput() GetProducerImageShareGroupsImageShareGroupArrayOutput
+	ToGetProducerImageShareGroupsImageShareGroupArrayOutputWithContext(context.Context) GetProducerImageShareGroupsImageShareGroupArrayOutput
+}
+
+type GetProducerImageShareGroupsImageShareGroupArray []GetProducerImageShareGroupsImageShareGroupInput
+
+func (GetProducerImageShareGroupsImageShareGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupsImageShareGroup)(nil)).Elem()
+}
+
+func (i GetProducerImageShareGroupsImageShareGroupArray) ToGetProducerImageShareGroupsImageShareGroupArrayOutput() GetProducerImageShareGroupsImageShareGroupArrayOutput {
+	return i.ToGetProducerImageShareGroupsImageShareGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetProducerImageShareGroupsImageShareGroupArray) ToGetProducerImageShareGroupsImageShareGroupArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupsImageShareGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProducerImageShareGroupsImageShareGroupArrayOutput)
+}
+
+type GetProducerImageShareGroupsImageShareGroupOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupsImageShareGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProducerImageShareGroupsImageShareGroup)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupsImageShareGroupOutput) ToGetProducerImageShareGroupsImageShareGroupOutput() GetProducerImageShareGroupsImageShareGroupOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupsImageShareGroupOutput) ToGetProducerImageShareGroupsImageShareGroupOutputWithContext(ctx context.Context) GetProducerImageShareGroupsImageShareGroupOutput {
+	return o
+}
+
+// The date and time the Image Share Group was created.
+func (o GetProducerImageShareGroupsImageShareGroupOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsImageShareGroup) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The description of the Image Share Group.
+func (o GetProducerImageShareGroupsImageShareGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsImageShareGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The date and time the Image Share Group will expire.
+func (o GetProducerImageShareGroupsImageShareGroupOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsImageShareGroup) string { return v.Expiry }).(pulumi.StringOutput)
+}
+
+// The ID of the Image Share Group.
+func (o GetProducerImageShareGroupsImageShareGroupOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsImageShareGroup) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The number of images in the Image Share Group.
+func (o GetProducerImageShareGroupsImageShareGroupOutput) ImagesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsImageShareGroup) int { return v.ImagesCount }).(pulumi.IntOutput)
+}
+
+// Whether the Image Share Group is suspended.
+func (o GetProducerImageShareGroupsImageShareGroupOutput) IsSuspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsImageShareGroup) bool { return v.IsSuspended }).(pulumi.BoolOutput)
+}
+
+// The label of the Image Share Group.
+func (o GetProducerImageShareGroupsImageShareGroupOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsImageShareGroup) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The number of members in the Image Share Group.
+func (o GetProducerImageShareGroupsImageShareGroupOutput) MembersCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsImageShareGroup) int { return v.MembersCount }).(pulumi.IntOutput)
+}
+
+// The date and time the Image Share Group was last updated.
+func (o GetProducerImageShareGroupsImageShareGroupOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsImageShareGroup) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The UUID of the Image Share Group.
+func (o GetProducerImageShareGroupsImageShareGroupOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProducerImageShareGroupsImageShareGroup) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetProducerImageShareGroupsImageShareGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProducerImageShareGroupsImageShareGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProducerImageShareGroupsImageShareGroup)(nil)).Elem()
+}
+
+func (o GetProducerImageShareGroupsImageShareGroupArrayOutput) ToGetProducerImageShareGroupsImageShareGroupArrayOutput() GetProducerImageShareGroupsImageShareGroupArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupsImageShareGroupArrayOutput) ToGetProducerImageShareGroupsImageShareGroupArrayOutputWithContext(ctx context.Context) GetProducerImageShareGroupsImageShareGroupArrayOutput {
+	return o
+}
+
+func (o GetProducerImageShareGroupsImageShareGroupArrayOutput) Index(i pulumi.IntInput) GetProducerImageShareGroupsImageShareGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProducerImageShareGroupsImageShareGroup {
+		return vs[0].([]GetProducerImageShareGroupsImageShareGroup)[vs[1].(int)]
+	}).(GetProducerImageShareGroupsImageShareGroupOutput)
+}
+
 type GetProfileReferral struct {
 	// The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
 	Code string `pulumi:"code"`
@@ -40682,6 +45282,67 @@ func (o GetProfileReferralArrayOutput) Index(i pulumi.IntInput) GetProfileReferr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProfileReferral {
 		return vs[0].([]GetProfileReferral)[vs[1].(int)]
 	}).(GetProfileReferralOutput)
+}
+
+type GetRegionMonitors struct {
+	// A list of ACLP alerts services supported in the region.
+	Alerts []string `pulumi:"alerts"`
+	// A list of ACLP metrics services supported in the region.
+	Metrics []string `pulumi:"metrics"`
+}
+
+// GetRegionMonitorsInput is an input type that accepts GetRegionMonitorsArgs and GetRegionMonitorsOutput values.
+// You can construct a concrete instance of `GetRegionMonitorsInput` via:
+//
+//	GetRegionMonitorsArgs{...}
+type GetRegionMonitorsInput interface {
+	pulumi.Input
+
+	ToGetRegionMonitorsOutput() GetRegionMonitorsOutput
+	ToGetRegionMonitorsOutputWithContext(context.Context) GetRegionMonitorsOutput
+}
+
+type GetRegionMonitorsArgs struct {
+	// A list of ACLP alerts services supported in the region.
+	Alerts pulumi.StringArrayInput `pulumi:"alerts"`
+	// A list of ACLP metrics services supported in the region.
+	Metrics pulumi.StringArrayInput `pulumi:"metrics"`
+}
+
+func (GetRegionMonitorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionMonitors)(nil)).Elem()
+}
+
+func (i GetRegionMonitorsArgs) ToGetRegionMonitorsOutput() GetRegionMonitorsOutput {
+	return i.ToGetRegionMonitorsOutputWithContext(context.Background())
+}
+
+func (i GetRegionMonitorsArgs) ToGetRegionMonitorsOutputWithContext(ctx context.Context) GetRegionMonitorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionMonitorsOutput)
+}
+
+type GetRegionMonitorsOutput struct{ *pulumi.OutputState }
+
+func (GetRegionMonitorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionMonitors)(nil)).Elem()
+}
+
+func (o GetRegionMonitorsOutput) ToGetRegionMonitorsOutput() GetRegionMonitorsOutput {
+	return o
+}
+
+func (o GetRegionMonitorsOutput) ToGetRegionMonitorsOutputWithContext(ctx context.Context) GetRegionMonitorsOutput {
+	return o
+}
+
+// A list of ACLP alerts services supported in the region.
+func (o GetRegionMonitorsOutput) Alerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionMonitors) []string { return v.Alerts }).(pulumi.StringArrayOutput)
+}
+
+// A list of ACLP metrics services supported in the region.
+func (o GetRegionMonitorsOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionMonitors) []string { return v.Metrics }).(pulumi.StringArrayOutput)
 }
 
 type GetRegionPlacementGroupLimit struct {
@@ -41020,6 +45681,8 @@ type GetRegionsRegion struct {
 	Id string `pulumi:"id"`
 	// Detailed location information for this Region, including city, state or region, and country.
 	Label string `pulumi:"label"`
+	// The monitoring services available in a region.
+	Monitors GetRegionsRegionMonitors `pulumi:"monitors"`
 	// Information about placement groups limits for this region.
 	PlacementGroupLimits []GetRegionsRegionPlacementGroupLimit `pulumi:"placementGroupLimits"`
 	Resolvers            []GetRegionsRegionResolver            `pulumi:"resolvers"`
@@ -41049,6 +45712,8 @@ type GetRegionsRegionArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Detailed location information for this Region, including city, state or region, and country.
 	Label pulumi.StringInput `pulumi:"label"`
+	// The monitoring services available in a region.
+	Monitors GetRegionsRegionMonitorsInput `pulumi:"monitors"`
 	// Information about placement groups limits for this region.
 	PlacementGroupLimits GetRegionsRegionPlacementGroupLimitArrayInput `pulumi:"placementGroupLimits"`
 	Resolvers            GetRegionsRegionResolverArrayInput            `pulumi:"resolvers"`
@@ -41129,6 +45794,11 @@ func (o GetRegionsRegionOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsRegion) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// The monitoring services available in a region.
+func (o GetRegionsRegionOutput) Monitors() GetRegionsRegionMonitorsOutput {
+	return o.ApplyT(func(v GetRegionsRegion) GetRegionsRegionMonitors { return v.Monitors }).(GetRegionsRegionMonitorsOutput)
+}
+
 // Information about placement groups limits for this region.
 func (o GetRegionsRegionOutput) PlacementGroupLimits() GetRegionsRegionPlacementGroupLimitArrayOutput {
 	return o.ApplyT(func(v GetRegionsRegion) []GetRegionsRegionPlacementGroupLimit { return v.PlacementGroupLimits }).(GetRegionsRegionPlacementGroupLimitArrayOutput)
@@ -41166,6 +45836,67 @@ func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsRegion {
 		return vs[0].([]GetRegionsRegion)[vs[1].(int)]
 	}).(GetRegionsRegionOutput)
+}
+
+type GetRegionsRegionMonitors struct {
+	// A list of ACLP alerts services supported in the region.
+	Alerts []string `pulumi:"alerts"`
+	// A list of ACLP metrics services supported in the region.
+	Metrics []string `pulumi:"metrics"`
+}
+
+// GetRegionsRegionMonitorsInput is an input type that accepts GetRegionsRegionMonitorsArgs and GetRegionsRegionMonitorsOutput values.
+// You can construct a concrete instance of `GetRegionsRegionMonitorsInput` via:
+//
+//	GetRegionsRegionMonitorsArgs{...}
+type GetRegionsRegionMonitorsInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionMonitorsOutput() GetRegionsRegionMonitorsOutput
+	ToGetRegionsRegionMonitorsOutputWithContext(context.Context) GetRegionsRegionMonitorsOutput
+}
+
+type GetRegionsRegionMonitorsArgs struct {
+	// A list of ACLP alerts services supported in the region.
+	Alerts pulumi.StringArrayInput `pulumi:"alerts"`
+	// A list of ACLP metrics services supported in the region.
+	Metrics pulumi.StringArrayInput `pulumi:"metrics"`
+}
+
+func (GetRegionsRegionMonitorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegionMonitors)(nil)).Elem()
+}
+
+func (i GetRegionsRegionMonitorsArgs) ToGetRegionsRegionMonitorsOutput() GetRegionsRegionMonitorsOutput {
+	return i.ToGetRegionsRegionMonitorsOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionMonitorsArgs) ToGetRegionsRegionMonitorsOutputWithContext(ctx context.Context) GetRegionsRegionMonitorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionMonitorsOutput)
+}
+
+type GetRegionsRegionMonitorsOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsRegionMonitorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegionMonitors)(nil)).Elem()
+}
+
+func (o GetRegionsRegionMonitorsOutput) ToGetRegionsRegionMonitorsOutput() GetRegionsRegionMonitorsOutput {
+	return o
+}
+
+func (o GetRegionsRegionMonitorsOutput) ToGetRegionsRegionMonitorsOutputWithContext(ctx context.Context) GetRegionsRegionMonitorsOutput {
+	return o
+}
+
+// A list of ACLP alerts services supported in the region.
+func (o GetRegionsRegionMonitorsOutput) Alerts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionsRegionMonitors) []string { return v.Alerts }).(pulumi.StringArrayOutput)
+}
+
+// A list of ACLP metrics services supported in the region.
+func (o GetRegionsRegionMonitorsOutput) Metrics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionsRegionMonitors) []string { return v.Metrics }).(pulumi.StringArrayOutput)
 }
 
 type GetRegionsRegionPlacementGroupLimit struct {
@@ -48166,6 +52897,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundArrayInput)(nil)).Elem(), FirewallOutboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallSettingsDefaultFirewallIdsInput)(nil)).Elem(), FirewallSettingsDefaultFirewallIdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallSettingsDefaultFirewallIdsPtrInput)(nil)).Elem(), FirewallSettingsDefaultFirewallIdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImageSharingInput)(nil)).Elem(), ImageImageSharingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImageSharingPtrInput)(nil)).Elem(), ImageImageSharingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImageSharingSharedByInput)(nil)).Elem(), ImageImageSharingSharedByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImageSharingSharedByPtrInput)(nil)).Elem(), ImageImageSharingSharedByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImageSharingSharedWithInput)(nil)).Elem(), ImageImageSharingSharedWithArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ImageImageSharingSharedWithPtrInput)(nil)).Elem(), ImageImageSharingSharedWithArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageReplicationInput)(nil)).Elem(), ImageReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageReplicationArrayInput)(nil)).Elem(), ImageReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageTimeoutsInput)(nil)).Elem(), ImageTimeoutsArgs{})
@@ -48330,6 +53067,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectStorageKeyRegionsDetailArrayInput)(nil)).Elem(), ObjectStorageKeyRegionsDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementGroupMemberInput)(nil)).Elem(), PlacementGroupMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PlacementGroupMemberArrayInput)(nil)).Elem(), PlacementGroupMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProducerImageShareGroupImageInput)(nil)).Elem(), ProducerImageShareGroupImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProducerImageShareGroupImageArrayInput)(nil)).Elem(), ProducerImageShareGroupImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdnsTimeoutsInput)(nil)).Elem(), RdnsTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RdnsTimeoutsPtrInput)(nil)).Elem(), RdnsTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservedIpAssignmentVpcNat11Input)(nil)).Elem(), ReservedIpAssignmentVpcNat11Args{})
@@ -48378,6 +53117,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChildAccountsChildAccountArrayInput)(nil)).Elem(), GetChildAccountsChildAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChildAccountsFilterInput)(nil)).Elem(), GetChildAccountsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChildAccountsFilterArrayInput)(nil)).Elem(), GetChildAccountsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupImageSharesFilterInput)(nil)).Elem(), GetConsumerImageShareGroupImageSharesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupImageSharesFilterArrayInput)(nil)).Elem(), GetConsumerImageShareGroupImageSharesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShareInput)(nil)).Elem(), GetConsumerImageShareGroupImageSharesImageShareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShareArrayInput)(nil)).Elem(), GetConsumerImageShareGroupImageSharesImageShareArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShareImageSharingInput)(nil)).Elem(), GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByInput)(nil)).Elem(), GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithInput)(nil)).Elem(), GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupTokensFilterInput)(nil)).Elem(), GetConsumerImageShareGroupTokensFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupTokensFilterArrayInput)(nil)).Elem(), GetConsumerImageShareGroupTokensFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupTokensTokenInput)(nil)).Elem(), GetConsumerImageShareGroupTokensTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupTokensTokenArrayInput)(nil)).Elem(), GetConsumerImageShareGroupTokensTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsBackupInput)(nil)).Elem(), GetDatabaseBackupsBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsBackupArrayInput)(nil)).Elem(), GetDatabaseBackupsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsFilterInput)(nil)).Elem(), GetDatabaseBackupsFilterArgs{})
@@ -48442,6 +53192,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlV2PendingUpdateArrayInput)(nil)).Elem(), GetDatabasePostgresqlV2PendingUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlV2PrivateNetworkInput)(nil)).Elem(), GetDatabasePostgresqlV2PrivateNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlV2UpdatesInput)(nil)).Elem(), GetDatabasePostgresqlV2UpdatesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlV2UpdatesPtrInput)(nil)).Elem(), GetDatabasePostgresqlV2UpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseInput)(nil)).Elem(), GetDatabasesDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseArrayInput)(nil)).Elem(), GetDatabasesDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabasePrivateNetworkInput)(nil)).Elem(), GetDatabasesDatabasePrivateNetworkArgs{})
@@ -48480,12 +53231,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallInboundArrayInput)(nil)).Elem(), GetFirewallsFirewallInboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallOutboundInput)(nil)).Elem(), GetFirewallsFirewallOutboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFirewallsFirewallOutboundArrayInput)(nil)).Elem(), GetFirewallsFirewallOutboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageImageSharingInput)(nil)).Elem(), GetImageImageSharingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageImageSharingSharedByInput)(nil)).Elem(), GetImageImageSharingSharedByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImageImageSharingSharedWithInput)(nil)).Elem(), GetImageImageSharingSharedWithArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImageReplicationInput)(nil)).Elem(), GetImageReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImageReplicationArrayInput)(nil)).Elem(), GetImageReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterInput)(nil)).Elem(), GetImagesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterArrayInput)(nil)).Elem(), GetImagesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageImageSharingInput)(nil)).Elem(), GetImagesImageImageSharingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageImageSharingSharedByInput)(nil)).Elem(), GetImagesImageImageSharingSharedByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageImageSharingSharedWithInput)(nil)).Elem(), GetImagesImageImageSharingSharedWithArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageReplicationInput)(nil)).Elem(), GetImagesImageReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageReplicationArrayInput)(nil)).Elem(), GetImagesImageReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceBackupsAutomaticInput)(nil)).Elem(), GetInstanceBackupsAutomaticArgs{})
@@ -48597,6 +53354,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstancePlacementGroupArrayInput)(nil)).Elem(), GetInstancesInstancePlacementGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceSpecInput)(nil)).Elem(), GetInstancesInstanceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceSpecArrayInput)(nil)).Elem(), GetInstancesInstanceSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceDefaultRouteInput)(nil)).Elem(), GetInterfaceDefaultRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicInput)(nil)).Elem(), GetInterfacePublicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv4Input)(nil)).Elem(), GetInterfacePublicIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv4AddressInput)(nil)).Elem(), GetInterfacePublicIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv4AddressArrayInput)(nil)).Elem(), GetInterfacePublicIpv4AddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv4SharedInput)(nil)).Elem(), GetInterfacePublicIpv4SharedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv4SharedArrayInput)(nil)).Elem(), GetInterfacePublicIpv4SharedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv6Input)(nil)).Elem(), GetInterfacePublicIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv6RangeInput)(nil)).Elem(), GetInterfacePublicIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv6RangeArrayInput)(nil)).Elem(), GetInterfacePublicIpv6RangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv6SharedInput)(nil)).Elem(), GetInterfacePublicIpv6SharedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv6SharedArrayInput)(nil)).Elem(), GetInterfacePublicIpv6SharedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv6SlaacInput)(nil)).Elem(), GetInterfacePublicIpv6SlaacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv6SlaacArrayInput)(nil)).Elem(), GetInterfacePublicIpv6SlaacArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVlanInput)(nil)).Elem(), GetInterfaceVlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcInput)(nil)).Elem(), GetInterfaceVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcIpv4Input)(nil)).Elem(), GetInterfaceVpcIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcIpv4AddressInput)(nil)).Elem(), GetInterfaceVpcIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcIpv4AddressArrayInput)(nil)).Elem(), GetInterfaceVpcIpv4AddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcIpv4RangeInput)(nil)).Elem(), GetInterfaceVpcIpv4RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcIpv4RangeArrayInput)(nil)).Elem(), GetInterfaceVpcIpv4RangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcIpv6Input)(nil)).Elem(), GetInterfaceVpcIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcIpv6RangeInput)(nil)).Elem(), GetInterfaceVpcIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcIpv6RangeArrayInput)(nil)).Elem(), GetInterfaceVpcIpv6RangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcIpv6SlaacInput)(nil)).Elem(), GetInterfaceVpcIpv6SlaacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcIpv6SlaacArrayInput)(nil)).Elem(), GetInterfaceVpcIpv6SlaacArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6RangesFilterInput)(nil)).Elem(), GetIpv6RangesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6RangesFilterArrayInput)(nil)).Elem(), GetIpv6RangesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIpv6RangesRangeInput)(nil)).Elem(), GetIpv6RangesRangeArgs{})
@@ -48626,7 +53409,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterInput)(nil)).Elem(), GetLkeClustersLkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterArrayInput)(nil)).Elem(), GetLkeClustersLkeClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterControlPlaneInput)(nil)).Elem(), GetLkeClustersLkeClusterControlPlaneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterControlPlanePtrInput)(nil)).Elem(), GetLkeClustersLkeClusterControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesFilterInput)(nil)).Elem(), GetLkeTypesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesFilterArrayInput)(nil)).Elem(), GetLkeTypesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesTypeInput)(nil)).Elem(), GetLkeTypesTypeArgs{})
@@ -48637,6 +53419,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesTypeRegionPriceArrayInput)(nil)).Elem(), GetLkeTypesTypeRegionPriceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeVersionsVersionInput)(nil)).Elem(), GetLkeVersionsVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeVersionsVersionArrayInput)(nil)).Elem(), GetLkeVersionsVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocksFilterInput)(nil)).Elem(), GetLocksFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocksFilterArrayInput)(nil)).Elem(), GetLocksFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocksLockInput)(nil)).Elem(), GetLocksLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocksLockArrayInput)(nil)).Elem(), GetLocksLockArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMaintenancePoliciesFilterInput)(nil)).Elem(), GetMaintenancePoliciesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMaintenancePoliciesFilterArrayInput)(nil)).Elem(), GetMaintenancePoliciesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMaintenancePoliciesMaintenancePolicyInput)(nil)).Elem(), GetMaintenancePoliciesMaintenancePolicyArgs{})
@@ -48703,7 +53489,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMemberInput)(nil)).Elem(), GetPlacementGroupMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMemberArrayInput)(nil)).Elem(), GetPlacementGroupMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsInput)(nil)).Elem(), GetPlacementGroupMigrationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsPtrInput)(nil)).Elem(), GetPlacementGroupMigrationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsInboundInput)(nil)).Elem(), GetPlacementGroupMigrationsInboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsInboundArrayInput)(nil)).Elem(), GetPlacementGroupMigrationsInboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupMigrationsOutboundInput)(nil)).Elem(), GetPlacementGroupMigrationsOutboundArgs{})
@@ -48715,13 +53500,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMemberInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMemberArrayInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsPtrInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsInboundInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsInboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsInboundArrayInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsInboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsOutboundInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsOutboundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPlacementGroupsPlacementGroupMigrationsOutboundArrayInput)(nil)).Elem(), GetPlacementGroupsPlacementGroupMigrationsOutboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupImageSharesFilterInput)(nil)).Elem(), GetProducerImageShareGroupImageSharesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupImageSharesFilterArrayInput)(nil)).Elem(), GetProducerImageShareGroupImageSharesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShareInput)(nil)).Elem(), GetProducerImageShareGroupImageSharesImageShareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShareArrayInput)(nil)).Elem(), GetProducerImageShareGroupImageSharesImageShareArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShareImageSharingInput)(nil)).Elem(), GetProducerImageShareGroupImageSharesImageShareImageSharingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByInput)(nil)).Elem(), GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithInput)(nil)).Elem(), GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupMembersFilterInput)(nil)).Elem(), GetProducerImageShareGroupMembersFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupMembersFilterArrayInput)(nil)).Elem(), GetProducerImageShareGroupMembersFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupMembersMemberInput)(nil)).Elem(), GetProducerImageShareGroupMembersMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupMembersMemberArrayInput)(nil)).Elem(), GetProducerImageShareGroupMembersMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupsFilterInput)(nil)).Elem(), GetProducerImageShareGroupsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupsFilterArrayInput)(nil)).Elem(), GetProducerImageShareGroupsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupsImageShareGroupInput)(nil)).Elem(), GetProducerImageShareGroupsImageShareGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProducerImageShareGroupsImageShareGroupArrayInput)(nil)).Elem(), GetProducerImageShareGroupsImageShareGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProfileReferralInput)(nil)).Elem(), GetProfileReferralArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProfileReferralArrayInput)(nil)).Elem(), GetProfileReferralArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionMonitorsInput)(nil)).Elem(), GetRegionMonitorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionPlacementGroupLimitInput)(nil)).Elem(), GetRegionPlacementGroupLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionPlacementGroupLimitArrayInput)(nil)).Elem(), GetRegionPlacementGroupLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionResolverInput)(nil)).Elem(), GetRegionResolverArgs{})
@@ -48730,6 +53530,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterArrayInput)(nil)).Elem(), GetRegionsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionMonitorsInput)(nil)).Elem(), GetRegionsRegionMonitorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionPlacementGroupLimitInput)(nil)).Elem(), GetRegionsRegionPlacementGroupLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionPlacementGroupLimitArrayInput)(nil)).Elem(), GetRegionsRegionPlacementGroupLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionResolverInput)(nil)).Elem(), GetRegionsRegionResolverArgs{})
@@ -48868,6 +53669,12 @@ func init() {
 	pulumi.RegisterOutputType(FirewallOutboundArrayOutput{})
 	pulumi.RegisterOutputType(FirewallSettingsDefaultFirewallIdsOutput{})
 	pulumi.RegisterOutputType(FirewallSettingsDefaultFirewallIdsPtrOutput{})
+	pulumi.RegisterOutputType(ImageImageSharingOutput{})
+	pulumi.RegisterOutputType(ImageImageSharingPtrOutput{})
+	pulumi.RegisterOutputType(ImageImageSharingSharedByOutput{})
+	pulumi.RegisterOutputType(ImageImageSharingSharedByPtrOutput{})
+	pulumi.RegisterOutputType(ImageImageSharingSharedWithOutput{})
+	pulumi.RegisterOutputType(ImageImageSharingSharedWithPtrOutput{})
 	pulumi.RegisterOutputType(ImageReplicationOutput{})
 	pulumi.RegisterOutputType(ImageReplicationArrayOutput{})
 	pulumi.RegisterOutputType(ImageTimeoutsOutput{})
@@ -49032,6 +53839,8 @@ func init() {
 	pulumi.RegisterOutputType(ObjectStorageKeyRegionsDetailArrayOutput{})
 	pulumi.RegisterOutputType(PlacementGroupMemberOutput{})
 	pulumi.RegisterOutputType(PlacementGroupMemberArrayOutput{})
+	pulumi.RegisterOutputType(ProducerImageShareGroupImageOutput{})
+	pulumi.RegisterOutputType(ProducerImageShareGroupImageArrayOutput{})
 	pulumi.RegisterOutputType(RdnsTimeoutsOutput{})
 	pulumi.RegisterOutputType(RdnsTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ReservedIpAssignmentVpcNat11Output{})
@@ -49080,6 +53889,17 @@ func init() {
 	pulumi.RegisterOutputType(GetChildAccountsChildAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetChildAccountsFilterOutput{})
 	pulumi.RegisterOutputType(GetChildAccountsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetConsumerImageShareGroupImageSharesFilterOutput{})
+	pulumi.RegisterOutputType(GetConsumerImageShareGroupImageSharesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetConsumerImageShareGroupImageSharesImageShareOutput{})
+	pulumi.RegisterOutputType(GetConsumerImageShareGroupImageSharesImageShareArrayOutput{})
+	pulumi.RegisterOutputType(GetConsumerImageShareGroupImageSharesImageShareImageSharingOutput{})
+	pulumi.RegisterOutputType(GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByOutput{})
+	pulumi.RegisterOutputType(GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput{})
+	pulumi.RegisterOutputType(GetConsumerImageShareGroupTokensFilterOutput{})
+	pulumi.RegisterOutputType(GetConsumerImageShareGroupTokensFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetConsumerImageShareGroupTokensTokenOutput{})
+	pulumi.RegisterOutputType(GetConsumerImageShareGroupTokensTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseBackupsBackupOutput{})
 	pulumi.RegisterOutputType(GetDatabaseBackupsBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseBackupsFilterOutput{})
@@ -49144,6 +53964,7 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabasePostgresqlV2PendingUpdateArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlV2PrivateNetworkOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlV2UpdatesOutput{})
+	pulumi.RegisterOutputType(GetDatabasePostgresqlV2UpdatesPtrOutput{})
 	pulumi.RegisterOutputType(GetDatabasesDatabaseOutput{})
 	pulumi.RegisterOutputType(GetDatabasesDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasesDatabasePrivateNetworkOutput{})
@@ -49182,12 +54003,18 @@ func init() {
 	pulumi.RegisterOutputType(GetFirewallsFirewallInboundArrayOutput{})
 	pulumi.RegisterOutputType(GetFirewallsFirewallOutboundOutput{})
 	pulumi.RegisterOutputType(GetFirewallsFirewallOutboundArrayOutput{})
+	pulumi.RegisterOutputType(GetImageImageSharingOutput{})
+	pulumi.RegisterOutputType(GetImageImageSharingSharedByOutput{})
+	pulumi.RegisterOutputType(GetImageImageSharingSharedWithOutput{})
 	pulumi.RegisterOutputType(GetImageReplicationOutput{})
 	pulumi.RegisterOutputType(GetImageReplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})
 	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
+	pulumi.RegisterOutputType(GetImagesImageImageSharingOutput{})
+	pulumi.RegisterOutputType(GetImagesImageImageSharingSharedByOutput{})
+	pulumi.RegisterOutputType(GetImagesImageImageSharingSharedWithOutput{})
 	pulumi.RegisterOutputType(GetImagesImageReplicationOutput{})
 	pulumi.RegisterOutputType(GetImagesImageReplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceBackupsAutomaticOutput{})
@@ -49299,6 +54126,32 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstancePlacementGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetInterfaceDefaultRouteOutput{})
+	pulumi.RegisterOutputType(GetInterfacePublicOutput{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv4Output{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv4AddressOutput{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv4AddressArrayOutput{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv4SharedOutput{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv4SharedArrayOutput{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv6Output{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv6RangeOutput{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv6RangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv6SharedOutput{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv6SharedArrayOutput{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv6SlaacOutput{})
+	pulumi.RegisterOutputType(GetInterfacePublicIpv6SlaacArrayOutput{})
+	pulumi.RegisterOutputType(GetInterfaceVlanOutput{})
+	pulumi.RegisterOutputType(GetInterfaceVpcOutput{})
+	pulumi.RegisterOutputType(GetInterfaceVpcIpv4Output{})
+	pulumi.RegisterOutputType(GetInterfaceVpcIpv4AddressOutput{})
+	pulumi.RegisterOutputType(GetInterfaceVpcIpv4AddressArrayOutput{})
+	pulumi.RegisterOutputType(GetInterfaceVpcIpv4RangeOutput{})
+	pulumi.RegisterOutputType(GetInterfaceVpcIpv4RangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInterfaceVpcIpv6Output{})
+	pulumi.RegisterOutputType(GetInterfaceVpcIpv6RangeOutput{})
+	pulumi.RegisterOutputType(GetInterfaceVpcIpv6RangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInterfaceVpcIpv6SlaacOutput{})
+	pulumi.RegisterOutputType(GetInterfaceVpcIpv6SlaacArrayOutput{})
 	pulumi.RegisterOutputType(GetIpv6RangesFilterOutput{})
 	pulumi.RegisterOutputType(GetIpv6RangesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetIpv6RangesRangeOutput{})
@@ -49328,7 +54181,6 @@ func init() {
 	pulumi.RegisterOutputType(GetLkeClustersLkeClusterOutput{})
 	pulumi.RegisterOutputType(GetLkeClustersLkeClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClustersLkeClusterControlPlaneOutput{})
-	pulumi.RegisterOutputType(GetLkeClustersLkeClusterControlPlanePtrOutput{})
 	pulumi.RegisterOutputType(GetLkeTypesFilterOutput{})
 	pulumi.RegisterOutputType(GetLkeTypesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeTypesTypeOutput{})
@@ -49339,6 +54191,10 @@ func init() {
 	pulumi.RegisterOutputType(GetLkeTypesTypeRegionPriceArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeVersionsVersionOutput{})
 	pulumi.RegisterOutputType(GetLkeVersionsVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetLocksFilterOutput{})
+	pulumi.RegisterOutputType(GetLocksFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetLocksLockOutput{})
+	pulumi.RegisterOutputType(GetLocksLockArrayOutput{})
 	pulumi.RegisterOutputType(GetMaintenancePoliciesFilterOutput{})
 	pulumi.RegisterOutputType(GetMaintenancePoliciesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetMaintenancePoliciesMaintenancePolicyOutput{})
@@ -49405,7 +54261,6 @@ func init() {
 	pulumi.RegisterOutputType(GetPlacementGroupMemberOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMigrationsOutput{})
-	pulumi.RegisterOutputType(GetPlacementGroupMigrationsPtrOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMigrationsInboundOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMigrationsInboundArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupMigrationsOutboundOutput{})
@@ -49417,13 +54272,28 @@ func init() {
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMemberOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsOutput{})
-	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsPtrOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsInboundOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsInboundArrayOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsOutboundOutput{})
 	pulumi.RegisterOutputType(GetPlacementGroupsPlacementGroupMigrationsOutboundArrayOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupImageSharesFilterOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupImageSharesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupImageSharesImageShareOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupImageSharesImageShareArrayOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupImageSharesImageShareImageSharingOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupMembersFilterOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupMembersFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupMembersMemberOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupMembersMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupsFilterOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupsImageShareGroupOutput{})
+	pulumi.RegisterOutputType(GetProducerImageShareGroupsImageShareGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetProfileReferralOutput{})
 	pulumi.RegisterOutputType(GetProfileReferralArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionMonitorsOutput{})
 	pulumi.RegisterOutputType(GetRegionPlacementGroupLimitOutput{})
 	pulumi.RegisterOutputType(GetRegionPlacementGroupLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionResolverOutput{})
@@ -49432,6 +54302,7 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionMonitorsOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionPlacementGroupLimitOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionPlacementGroupLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionResolverOutput{})

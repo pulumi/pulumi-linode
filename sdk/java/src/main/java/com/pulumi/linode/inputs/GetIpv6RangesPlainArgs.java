@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetIpv6RangesFilter;
-import com.pulumi.linode.inputs.GetIpv6RangesRange;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,18 +22,10 @@ public final class GetIpv6RangesPlainArgs extends com.pulumi.resources.InvokeArg
         return Optional.ofNullable(this.filters);
     }
 
-    @Import(name="ranges")
-    private @Nullable List<GetIpv6RangesRange> ranges;
-
-    public Optional<List<GetIpv6RangesRange>> ranges() {
-        return Optional.ofNullable(this.ranges);
-    }
-
     private GetIpv6RangesPlainArgs() {}
 
     private GetIpv6RangesPlainArgs(GetIpv6RangesPlainArgs $) {
         this.filters = $.filters;
-        this.ranges = $.ranges;
     }
 
     public static Builder builder() {
@@ -62,15 +53,6 @@ public final class GetIpv6RangesPlainArgs extends com.pulumi.resources.InvokeArg
 
         public Builder filters(GetIpv6RangesFilter... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder ranges(@Nullable List<GetIpv6RangesRange> ranges) {
-            $.ranges = ranges;
-            return this;
-        }
-
-        public Builder ranges(GetIpv6RangesRange... ranges) {
-            return ranges(List.of(ranges));
         }
 
         public GetIpv6RangesPlainArgs build() {

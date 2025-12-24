@@ -23,7 +23,7 @@ public final class GetVolumesResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private @Nullable List<GetVolumesVolume> volumes;
+    private List<GetVolumesVolume> volumes;
 
     private GetVolumesResult() {}
     public List<GetVolumesFilter> filters() {
@@ -43,7 +43,7 @@ public final class GetVolumesResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetVolumesVolume> volumes() {
-        return this.volumes == null ? List.of() : this.volumes;
+        return this.volumes;
     }
 
     public static Builder builder() {
@@ -59,7 +59,7 @@ public final class GetVolumesResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private @Nullable List<GetVolumesVolume> volumes;
+        private List<GetVolumesVolume> volumes;
         public Builder() {}
         public Builder(GetVolumesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,8 +100,10 @@ public final class GetVolumesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder volumes(@Nullable List<GetVolumesVolume> volumes) {
-
+        public Builder volumes(List<GetVolumesVolume> volumes) {
+            if (volumes == null) {
+              throw new MissingRequiredPropertyException("GetVolumesResult", "volumes");
+            }
             this.volumes = volumes;
             return this;
         }

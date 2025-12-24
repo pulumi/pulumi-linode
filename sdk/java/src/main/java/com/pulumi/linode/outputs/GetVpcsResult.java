@@ -20,7 +20,7 @@ public final class GetVpcsResult {
      * 
      */
     private String id;
-    private @Nullable List<GetVpcsVpc> vpcs;
+    private List<GetVpcsVpc> vpcs;
 
     private GetVpcsResult() {}
     public List<GetVpcsFilter> filters() {
@@ -34,7 +34,7 @@ public final class GetVpcsResult {
         return this.id;
     }
     public List<GetVpcsVpc> vpcs() {
-        return this.vpcs == null ? List.of() : this.vpcs;
+        return this.vpcs;
     }
 
     public static Builder builder() {
@@ -48,7 +48,7 @@ public final class GetVpcsResult {
     public static final class Builder {
         private @Nullable List<GetVpcsFilter> filters;
         private String id;
-        private @Nullable List<GetVpcsVpc> vpcs;
+        private List<GetVpcsVpc> vpcs;
         public Builder() {}
         public Builder(GetVpcsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -75,8 +75,10 @@ public final class GetVpcsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder vpcs(@Nullable List<GetVpcsVpc> vpcs) {
-
+        public Builder vpcs(List<GetVpcsVpc> vpcs) {
+            if (vpcs == null) {
+              throw new MissingRequiredPropertyException("GetVpcsResult", "vpcs");
+            }
             this.vpcs = vpcs;
             return this;
         }

@@ -47,7 +47,6 @@ export function getObjectStorageQuotas(args?: GetObjectStorageQuotasArgs, opts?:
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", {
         "filters": args.filters,
-        "quotas": args.quotas,
     }, opts);
 }
 
@@ -56,7 +55,6 @@ export function getObjectStorageQuotas(args?: GetObjectStorageQuotasArgs, opts?:
  */
 export interface GetObjectStorageQuotasArgs {
     filters?: inputs.GetObjectStorageQuotasFilter[];
-    quotas?: inputs.GetObjectStorageQuotasQuota[];
 }
 
 /**
@@ -65,7 +63,7 @@ export interface GetObjectStorageQuotasArgs {
 export interface GetObjectStorageQuotasResult {
     readonly filters?: outputs.GetObjectStorageQuotasFilter[];
     readonly id: string;
-    readonly quotas?: outputs.GetObjectStorageQuotasQuota[];
+    readonly quotas: outputs.GetObjectStorageQuotasQuota[];
 }
 /**
  * Provides details about a list of Object Storage quotas information on your account.
@@ -108,7 +106,6 @@ export function getObjectStorageQuotasOutput(args?: GetObjectStorageQuotasOutput
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", {
         "filters": args.filters,
-        "quotas": args.quotas,
     }, opts);
 }
 
@@ -117,5 +114,4 @@ export function getObjectStorageQuotasOutput(args?: GetObjectStorageQuotasOutput
  */
 export interface GetObjectStorageQuotasOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetObjectStorageQuotasFilterArgs>[]>;
-    quotas?: pulumi.Input<pulumi.Input<inputs.GetObjectStorageQuotasQuotaArgs>[]>;
 }

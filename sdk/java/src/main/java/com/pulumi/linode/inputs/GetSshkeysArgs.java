@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetSshkeysFilterArgs;
-import com.pulumi.linode.inputs.GetSshkeysSshkeyArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -55,20 +54,12 @@ public final class GetSshkeysArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.orderBy);
     }
 
-    @Import(name="sshkeys")
-    private @Nullable Output<List<GetSshkeysSshkeyArgs>> sshkeys;
-
-    public Optional<Output<List<GetSshkeysSshkeyArgs>>> sshkeys() {
-        return Optional.ofNullable(this.sshkeys);
-    }
-
     private GetSshkeysArgs() {}
 
     private GetSshkeysArgs(GetSshkeysArgs $) {
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
-        this.sshkeys = $.sshkeys;
     }
 
     public static Builder builder() {
@@ -142,19 +133,6 @@ public final class GetSshkeysArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder orderBy(String orderBy) {
             return orderBy(Output.of(orderBy));
-        }
-
-        public Builder sshkeys(@Nullable Output<List<GetSshkeysSshkeyArgs>> sshkeys) {
-            $.sshkeys = sshkeys;
-            return this;
-        }
-
-        public Builder sshkeys(List<GetSshkeysSshkeyArgs> sshkeys) {
-            return sshkeys(Output.of(sshkeys));
-        }
-
-        public Builder sshkeys(GetSshkeysSshkeyArgs... sshkeys) {
-            return sshkeys(List.of(sshkeys));
         }
 
         public GetSshkeysArgs build() {

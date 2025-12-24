@@ -26,7 +26,6 @@ type GetNbTypesArgs struct {
 	Filters []GetNbTypesFilter `pulumi:"filters"`
 	Order   *string            `pulumi:"order"`
 	OrderBy *string            `pulumi:"orderBy"`
-	Types   []GetNbTypesType   `pulumi:"types"`
 }
 
 // A collection of values returned by getNbTypes.
@@ -52,7 +51,6 @@ type GetNbTypesOutputArgs struct {
 	Filters GetNbTypesFilterArrayInput `pulumi:"filters"`
 	Order   pulumi.StringPtrInput      `pulumi:"order"`
 	OrderBy pulumi.StringPtrInput      `pulumi:"orderBy"`
-	Types   GetNbTypesTypeArrayInput   `pulumi:"types"`
 }
 
 func (GetNbTypesOutputArgs) ElementType() reflect.Type {

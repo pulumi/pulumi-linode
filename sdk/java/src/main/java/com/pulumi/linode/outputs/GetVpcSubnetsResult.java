@@ -22,7 +22,7 @@ public final class GetVpcSubnetsResult {
      */
     private String id;
     private Integer vpcId;
-    private @Nullable List<GetVpcSubnetsVpcSubnet> vpcSubnets;
+    private List<GetVpcSubnetsVpcSubnet> vpcSubnets;
 
     private GetVpcSubnetsResult() {}
     public List<GetVpcSubnetsFilter> filters() {
@@ -39,7 +39,7 @@ public final class GetVpcSubnetsResult {
         return this.vpcId;
     }
     public List<GetVpcSubnetsVpcSubnet> vpcSubnets() {
-        return this.vpcSubnets == null ? List.of() : this.vpcSubnets;
+        return this.vpcSubnets;
     }
 
     public static Builder builder() {
@@ -54,7 +54,7 @@ public final class GetVpcSubnetsResult {
         private @Nullable List<GetVpcSubnetsFilter> filters;
         private String id;
         private Integer vpcId;
-        private @Nullable List<GetVpcSubnetsVpcSubnet> vpcSubnets;
+        private List<GetVpcSubnetsVpcSubnet> vpcSubnets;
         public Builder() {}
         public Builder(GetVpcSubnetsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -90,8 +90,10 @@ public final class GetVpcSubnetsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder vpcSubnets(@Nullable List<GetVpcSubnetsVpcSubnet> vpcSubnets) {
-
+        public Builder vpcSubnets(List<GetVpcSubnetsVpcSubnet> vpcSubnets) {
+            if (vpcSubnets == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetsResult", "vpcSubnets");
+            }
             this.vpcSubnets = vpcSubnets;
             return this;
         }

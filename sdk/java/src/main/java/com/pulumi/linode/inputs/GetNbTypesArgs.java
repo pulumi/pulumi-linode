@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetNbTypesFilterArgs;
-import com.pulumi.linode.inputs.GetNbTypesTypeArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -39,20 +38,12 @@ public final class GetNbTypesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.orderBy);
     }
 
-    @Import(name="types")
-    private @Nullable Output<List<GetNbTypesTypeArgs>> types;
-
-    public Optional<Output<List<GetNbTypesTypeArgs>>> types() {
-        return Optional.ofNullable(this.types);
-    }
-
     private GetNbTypesArgs() {}
 
     private GetNbTypesArgs(GetNbTypesArgs $) {
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
-        this.types = $.types;
     }
 
     public static Builder builder() {
@@ -102,19 +93,6 @@ public final class GetNbTypesArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder orderBy(String orderBy) {
             return orderBy(Output.of(orderBy));
-        }
-
-        public Builder types(@Nullable Output<List<GetNbTypesTypeArgs>> types) {
-            $.types = types;
-            return this;
-        }
-
-        public Builder types(List<GetNbTypesTypeArgs> types) {
-            return types(Output.of(types));
-        }
-
-        public Builder types(GetNbTypesTypeArgs... types) {
-            return types(List.of(types));
         }
 
         public GetNbTypesArgs build() {

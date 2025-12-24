@@ -67,8 +67,7 @@ func GetAccountAvailabilities(ctx *pulumi.Context, args *GetAccountAvailabilitie
 
 // A collection of arguments for invoking getAccountAvailabilities.
 type GetAccountAvailabilitiesArgs struct {
-	Availabilities []GetAccountAvailabilitiesAvailability `pulumi:"availabilities"`
-	Filters        []GetAccountAvailabilitiesFilter       `pulumi:"filters"`
+	Filters []GetAccountAvailabilitiesFilter `pulumi:"filters"`
 }
 
 // A collection of values returned by getAccountAvailabilities.
@@ -89,8 +88,7 @@ func GetAccountAvailabilitiesOutput(ctx *pulumi.Context, args GetAccountAvailabi
 
 // A collection of arguments for invoking getAccountAvailabilities.
 type GetAccountAvailabilitiesOutputArgs struct {
-	Availabilities GetAccountAvailabilitiesAvailabilityArrayInput `pulumi:"availabilities"`
-	Filters        GetAccountAvailabilitiesFilterArrayInput       `pulumi:"filters"`
+	Filters GetAccountAvailabilitiesFilterArrayInput `pulumi:"filters"`
 }
 
 func (GetAccountAvailabilitiesOutputArgs) ElementType() reflect.Type {

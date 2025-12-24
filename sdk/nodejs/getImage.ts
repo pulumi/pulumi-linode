@@ -27,7 +27,6 @@ export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getImage:getImage", {
         "id": args.id,
-        "replications": args.replications,
     }, opts);
 }
 
@@ -39,10 +38,6 @@ export interface GetImageArgs {
      * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
      */
     id: string;
-    /**
-     * A list of image replication regions and corresponding status.
-     */
-    replications?: inputs.GetImageReplication[];
 }
 
 /**
@@ -69,9 +64,17 @@ export interface GetImageResult {
     readonly expiry: string;
     readonly id: string;
     /**
+     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    readonly imageSharing: outputs.GetImageImageSharing;
+    /**
      * True if the Image is public.
      */
     readonly isPublic: boolean;
+    /**
+     * True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    readonly isShared: boolean;
     /**
      * A short description of the Image.
      */
@@ -79,7 +82,7 @@ export interface GetImageResult {
     /**
      * A list of image replication regions and corresponding status.
      */
-    readonly replications?: outputs.GetImageReplication[];
+    readonly replications: outputs.GetImageReplication[];
     /**
      * The minimum size this Image needs to deploy. Size is in MB. example: 2500
      */
@@ -126,7 +129,6 @@ export function getImageOutput(args: GetImageOutputArgs, opts?: pulumi.InvokeOut
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getImage:getImage", {
         "id": args.id,
-        "replications": args.replications,
     }, opts);
 }
 
@@ -138,8 +140,4 @@ export interface GetImageOutputArgs {
      * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
      */
     id: pulumi.Input<string>;
-    /**
-     * A list of image replication regions and corresponding status.
-     */
-    replications?: pulumi.Input<pulumi.Input<inputs.GetImageReplicationArgs>[]>;
 }

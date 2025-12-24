@@ -96,14 +96,14 @@ public class NetworkingIp extends com.pulumi.resources.CustomResource {
         return this.gateway;
     }
     /**
-     * The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+     * The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      * 
      */
     @Export(name="linodeId", refs={Integer.class}, tree="[0]")
     private Output<Integer> linodeId;
 
     /**
-     * @return The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+     * @return The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      * 
      */
     public Output<Integer> linodeId() {

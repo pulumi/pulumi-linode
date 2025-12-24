@@ -12,14 +12,23 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class DatabaseMysqlV2PendingUpdateGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("deadline", required: true)]
-        public Input<string> Deadline { get; set; } = null!;
+        /// <summary>
+        /// The time when a mandatory update needs to be applied.
+        /// </summary>
+        [Input("deadline")]
+        public Input<string>? Deadline { get; set; }
 
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
+        /// <summary>
+        /// A description of the update.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
-        [Input("plannedFor", required: true)]
-        public Input<string> PlannedFor { get; set; } = null!;
+        /// <summary>
+        /// The date and time a maintenance update will be applied.
+        /// </summary>
+        [Input("plannedFor")]
+        public Input<string>? PlannedFor { get; set; }
 
         public DatabaseMysqlV2PendingUpdateGetArgs()
         {

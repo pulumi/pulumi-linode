@@ -53,7 +53,6 @@ export function getVlans(args?: GetVlansArgs, opts?: pulumi.InvokeOptions): Prom
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "vlans": args.vlans,
     }, opts);
 }
 
@@ -70,7 +69,6 @@ export interface GetVlansArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: string;
-    vlans?: inputs.GetVlansVlan[];
 }
 
 /**
@@ -81,7 +79,7 @@ export interface GetVlansResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly vlans?: outputs.GetVlansVlan[];
+    readonly vlans: outputs.GetVlansVlan[];
 }
 /**
  * > **Beta Notice** VLANs are currently available through early access.
@@ -130,7 +128,6 @@ export function getVlansOutput(args?: GetVlansOutputArgs, opts?: pulumi.InvokeOu
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "vlans": args.vlans,
     }, opts);
 }
 
@@ -147,5 +144,4 @@ export interface GetVlansOutputArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: pulumi.Input<string>;
-    vlans?: pulumi.Input<pulumi.Input<inputs.GetVlansVlanArgs>[]>;
 }

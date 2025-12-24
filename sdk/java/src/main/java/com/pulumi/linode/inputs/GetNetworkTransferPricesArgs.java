@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetNetworkTransferPricesFilterArgs;
-import com.pulumi.linode.inputs.GetNetworkTransferPricesTypeArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -55,20 +54,12 @@ public final class GetNetworkTransferPricesArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.orderBy);
     }
 
-    @Import(name="types")
-    private @Nullable Output<List<GetNetworkTransferPricesTypeArgs>> types;
-
-    public Optional<Output<List<GetNetworkTransferPricesTypeArgs>>> types() {
-        return Optional.ofNullable(this.types);
-    }
-
     private GetNetworkTransferPricesArgs() {}
 
     private GetNetworkTransferPricesArgs(GetNetworkTransferPricesArgs $) {
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
-        this.types = $.types;
     }
 
     public static Builder builder() {
@@ -142,19 +133,6 @@ public final class GetNetworkTransferPricesArgs extends com.pulumi.resources.Inv
          */
         public Builder orderBy(String orderBy) {
             return orderBy(Output.of(orderBy));
-        }
-
-        public Builder types(@Nullable Output<List<GetNetworkTransferPricesTypeArgs>> types) {
-            $.types = types;
-            return this;
-        }
-
-        public Builder types(List<GetNetworkTransferPricesTypeArgs> types) {
-            return types(Output.of(types));
-        }
-
-        public Builder types(GetNetworkTransferPricesTypeArgs... types) {
-            return types(List.of(types));
         }
 
         public GetNetworkTransferPricesArgs build() {

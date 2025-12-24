@@ -90,8 +90,7 @@ func GetFirewallTemplates(ctx *pulumi.Context, args *GetFirewallTemplatesArgs, o
 
 // A collection of arguments for invoking getFirewallTemplates.
 type GetFirewallTemplatesArgs struct {
-	Filters           []GetFirewallTemplatesFilter           `pulumi:"filters"`
-	FirewallTemplates []GetFirewallTemplatesFirewallTemplate `pulumi:"firewallTemplates"`
+	Filters []GetFirewallTemplatesFilter `pulumi:"filters"`
 }
 
 // A collection of values returned by getFirewallTemplates.
@@ -112,8 +111,7 @@ func GetFirewallTemplatesOutput(ctx *pulumi.Context, args GetFirewallTemplatesOu
 
 // A collection of arguments for invoking getFirewallTemplates.
 type GetFirewallTemplatesOutputArgs struct {
-	Filters           GetFirewallTemplatesFilterArrayInput           `pulumi:"filters"`
-	FirewallTemplates GetFirewallTemplatesFirewallTemplateArrayInput `pulumi:"firewallTemplates"`
+	Filters GetFirewallTemplatesFilterArrayInput `pulumi:"filters"`
 }
 
 func (GetFirewallTemplatesOutputArgs) ElementType() reflect.Type {

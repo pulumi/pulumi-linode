@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetVolumesFilterArgs;
-import com.pulumi.linode.inputs.GetVolumesVolumeArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -55,20 +54,12 @@ public final class GetVolumesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.orderBy);
     }
 
-    @Import(name="volumes")
-    private @Nullable Output<List<GetVolumesVolumeArgs>> volumes;
-
-    public Optional<Output<List<GetVolumesVolumeArgs>>> volumes() {
-        return Optional.ofNullable(this.volumes);
-    }
-
     private GetVolumesArgs() {}
 
     private GetVolumesArgs(GetVolumesArgs $) {
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
-        this.volumes = $.volumes;
     }
 
     public static Builder builder() {
@@ -142,19 +133,6 @@ public final class GetVolumesArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder orderBy(String orderBy) {
             return orderBy(Output.of(orderBy));
-        }
-
-        public Builder volumes(@Nullable Output<List<GetVolumesVolumeArgs>> volumes) {
-            $.volumes = volumes;
-            return this;
-        }
-
-        public Builder volumes(List<GetVolumesVolumeArgs> volumes) {
-            return volumes(Output.of(volumes));
-        }
-
-        public Builder volumes(GetVolumesVolumeArgs... volumes) {
-            return volumes(List.of(volumes));
         }
 
         public GetVolumesArgs build() {

@@ -80,10 +80,9 @@ func GetPlacementGroups(ctx *pulumi.Context, args *GetPlacementGroupsArgs, opts 
 
 // A collection of arguments for invoking getPlacementGroups.
 type GetPlacementGroupsArgs struct {
-	Filters         []GetPlacementGroupsFilter         `pulumi:"filters"`
-	Order           *string                            `pulumi:"order"`
-	OrderBy         *string                            `pulumi:"orderBy"`
-	PlacementGroups []GetPlacementGroupsPlacementGroup `pulumi:"placementGroups"`
+	Filters []GetPlacementGroupsFilter `pulumi:"filters"`
+	Order   *string                    `pulumi:"order"`
+	OrderBy *string                    `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getPlacementGroups.
@@ -106,10 +105,9 @@ func GetPlacementGroupsOutput(ctx *pulumi.Context, args GetPlacementGroupsOutput
 
 // A collection of arguments for invoking getPlacementGroups.
 type GetPlacementGroupsOutputArgs struct {
-	Filters         GetPlacementGroupsFilterArrayInput         `pulumi:"filters"`
-	Order           pulumi.StringPtrInput                      `pulumi:"order"`
-	OrderBy         pulumi.StringPtrInput                      `pulumi:"orderBy"`
-	PlacementGroups GetPlacementGroupsPlacementGroupArrayInput `pulumi:"placementGroups"`
+	Filters GetPlacementGroupsFilterArrayInput `pulumi:"filters"`
+	Order   pulumi.StringPtrInput              `pulumi:"order"`
+	OrderBy pulumi.StringPtrInput              `pulumi:"orderBy"`
 }
 
 func (GetPlacementGroupsOutputArgs) ElementType() reflect.Type {

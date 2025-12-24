@@ -25,7 +25,7 @@ public final class GetStackScriptsResult {
     private @Nullable Boolean latest;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private @Nullable List<GetStackScriptsStackscript> stackscripts;
+    private List<GetStackScriptsStackscript> stackscripts;
 
     private GetStackScriptsResult() {}
     public List<GetStackScriptsFilter> filters() {
@@ -48,7 +48,7 @@ public final class GetStackScriptsResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetStackScriptsStackscript> stackscripts() {
-        return this.stackscripts == null ? List.of() : this.stackscripts;
+        return this.stackscripts;
     }
 
     public static Builder builder() {
@@ -65,7 +65,7 @@ public final class GetStackScriptsResult {
         private @Nullable Boolean latest;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private @Nullable List<GetStackScriptsStackscript> stackscripts;
+        private List<GetStackScriptsStackscript> stackscripts;
         public Builder() {}
         public Builder(GetStackScriptsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -113,8 +113,10 @@ public final class GetStackScriptsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder stackscripts(@Nullable List<GetStackScriptsStackscript> stackscripts) {
-
+        public Builder stackscripts(List<GetStackScriptsStackscript> stackscripts) {
+            if (stackscripts == null) {
+              throw new MissingRequiredPropertyException("GetStackScriptsResult", "stackscripts");
+            }
             this.stackscripts = stackscripts;
             return this;
         }

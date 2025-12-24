@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.ImageArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.ImageState;
+import com.pulumi.linode.outputs.ImageImageSharing;
 import com.pulumi.linode.outputs.ImageReplication;
 import com.pulumi.linode.outputs.ImageTimeouts;
 import java.lang.Boolean;
@@ -324,6 +325,20 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.filePath);
     }
     /**
+     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    @Export(name="imageSharing", refs={ImageImageSharing.class}, tree="[0]")
+    private Output<ImageImageSharing> imageSharing;
+
+    /**
+     * @return Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public Output<ImageImageSharing> imageSharing() {
+        return this.imageSharing;
+    }
+    /**
      * True if the Image is public.
      * 
      */
@@ -336,6 +351,20 @@ public class Image extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> isPublic() {
         return this.isPublic;
+    }
+    /**
+     * True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    @Export(name="isShared", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isShared;
+
+    /**
+     * @return True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public Output<Boolean> isShared() {
+        return this.isShared;
     }
     /**
      * A short description of the Image. Labels cannot contain special characters.

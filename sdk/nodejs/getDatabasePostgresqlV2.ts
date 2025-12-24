@@ -59,6 +59,7 @@ export function getDatabasePostgresqlV2(args: GetDatabasePostgresqlV2Args, opts?
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", {
         "id": args.id,
+        "updates": args.updates,
     }, opts);
 }
 
@@ -70,6 +71,7 @@ export interface GetDatabasePostgresqlV2Args {
      * The ID of the PostgreSQL database.
      */
     id: string;
+    updates?: inputs.GetDatabasePostgresqlV2Updates;
 }
 
 /**
@@ -416,6 +418,7 @@ export function getDatabasePostgresqlV2Output(args: GetDatabasePostgresqlV2Outpu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", {
         "id": args.id,
+        "updates": args.updates,
     }, opts);
 }
 
@@ -427,4 +430,5 @@ export interface GetDatabasePostgresqlV2OutputArgs {
      * The ID of the PostgreSQL database.
      */
     id: pulumi.Input<string>;
+    updates?: pulumi.Input<inputs.GetDatabasePostgresqlV2UpdatesArgs>;
 }

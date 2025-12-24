@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetFirewallTemplatesFilter;
-import com.pulumi.linode.inputs.GetFirewallTemplatesFirewallTemplate;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,18 +22,10 @@ public final class GetFirewallTemplatesPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.filters);
     }
 
-    @Import(name="firewallTemplates")
-    private @Nullable List<GetFirewallTemplatesFirewallTemplate> firewallTemplates;
-
-    public Optional<List<GetFirewallTemplatesFirewallTemplate>> firewallTemplates() {
-        return Optional.ofNullable(this.firewallTemplates);
-    }
-
     private GetFirewallTemplatesPlainArgs() {}
 
     private GetFirewallTemplatesPlainArgs(GetFirewallTemplatesPlainArgs $) {
         this.filters = $.filters;
-        this.firewallTemplates = $.firewallTemplates;
     }
 
     public static Builder builder() {
@@ -62,15 +53,6 @@ public final class GetFirewallTemplatesPlainArgs extends com.pulumi.resources.In
 
         public Builder filters(GetFirewallTemplatesFilter... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder firewallTemplates(@Nullable List<GetFirewallTemplatesFirewallTemplate> firewallTemplates) {
-            $.firewallTemplates = firewallTemplates;
-            return this;
-        }
-
-        public Builder firewallTemplates(GetFirewallTemplatesFirewallTemplate... firewallTemplates) {
-            return firewallTemplates(List.of(firewallTemplates));
         }
 
         public GetFirewallTemplatesPlainArgs build() {

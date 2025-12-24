@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetVpcsFilter;
-import com.pulumi.linode.inputs.GetVpcsVpc;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,18 +22,10 @@ public final class GetVpcsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.filters);
     }
 
-    @Import(name="vpcs")
-    private @Nullable List<GetVpcsVpc> vpcs;
-
-    public Optional<List<GetVpcsVpc>> vpcs() {
-        return Optional.ofNullable(this.vpcs);
-    }
-
     private GetVpcsPlainArgs() {}
 
     private GetVpcsPlainArgs(GetVpcsPlainArgs $) {
         this.filters = $.filters;
-        this.vpcs = $.vpcs;
     }
 
     public static Builder builder() {
@@ -62,15 +53,6 @@ public final class GetVpcsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder filters(GetVpcsFilter... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder vpcs(@Nullable List<GetVpcsVpc> vpcs) {
-            $.vpcs = vpcs;
-            return this;
-        }
-
-        public Builder vpcs(GetVpcsVpc... vpcs) {
-            return vpcs(List.of(vpcs));
         }
 
         public GetVpcsPlainArgs build() {

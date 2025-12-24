@@ -46,7 +46,6 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "users": args.users,
     }, opts);
 }
 
@@ -63,7 +62,6 @@ export interface GetUsersArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: string;
-    users?: inputs.GetUsersUser[];
 }
 
 /**
@@ -77,7 +75,7 @@ export interface GetUsersResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly users?: outputs.GetUsersUser[];
+    readonly users: outputs.GetUsersUser[];
 }
 /**
  * Provides information about Linode users that match a set of filters.
@@ -119,7 +117,6 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOu
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "users": args.users,
     }, opts);
 }
 
@@ -136,5 +133,4 @@ export interface GetUsersOutputArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: pulumi.Input<string>;
-    users?: pulumi.Input<pulumi.Input<inputs.GetUsersUserArgs>[]>;
 }

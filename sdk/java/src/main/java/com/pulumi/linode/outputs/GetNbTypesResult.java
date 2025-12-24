@@ -19,7 +19,7 @@ public final class GetNbTypesResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private @Nullable List<GetNbTypesType> types;
+    private List<GetNbTypesType> types;
 
     private GetNbTypesResult() {}
     public List<GetNbTypesFilter> filters() {
@@ -35,7 +35,7 @@ public final class GetNbTypesResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetNbTypesType> types() {
-        return this.types == null ? List.of() : this.types;
+        return this.types;
     }
 
     public static Builder builder() {
@@ -51,7 +51,7 @@ public final class GetNbTypesResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private @Nullable List<GetNbTypesType> types;
+        private List<GetNbTypesType> types;
         public Builder() {}
         public Builder(GetNbTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -92,8 +92,10 @@ public final class GetNbTypesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder types(@Nullable List<GetNbTypesType> types) {
-
+        public Builder types(List<GetNbTypesType> types) {
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetNbTypesResult", "types");
+            }
             this.types = types;
             return this;
         }

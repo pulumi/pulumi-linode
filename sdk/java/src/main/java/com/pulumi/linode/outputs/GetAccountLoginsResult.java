@@ -20,7 +20,7 @@ public final class GetAccountLoginsResult {
      * 
      */
     private String id;
-    private @Nullable List<GetAccountLoginsLogin> logins;
+    private List<GetAccountLoginsLogin> logins;
 
     private GetAccountLoginsResult() {}
     public List<GetAccountLoginsFilter> filters() {
@@ -34,7 +34,7 @@ public final class GetAccountLoginsResult {
         return this.id;
     }
     public List<GetAccountLoginsLogin> logins() {
-        return this.logins == null ? List.of() : this.logins;
+        return this.logins;
     }
 
     public static Builder builder() {
@@ -48,7 +48,7 @@ public final class GetAccountLoginsResult {
     public static final class Builder {
         private @Nullable List<GetAccountLoginsFilter> filters;
         private String id;
-        private @Nullable List<GetAccountLoginsLogin> logins;
+        private List<GetAccountLoginsLogin> logins;
         public Builder() {}
         public Builder(GetAccountLoginsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -75,8 +75,10 @@ public final class GetAccountLoginsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder logins(@Nullable List<GetAccountLoginsLogin> logins) {
-
+        public Builder logins(List<GetAccountLoginsLogin> logins) {
+            if (logins == null) {
+              throw new MissingRequiredPropertyException("GetAccountLoginsResult", "logins");
+            }
             this.logins = logins;
             return this;
         }

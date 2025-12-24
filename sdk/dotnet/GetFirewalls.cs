@@ -335,14 +335,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("firewalls")]
-        private List<Inputs.GetFirewallsFirewallArgs>? _firewalls;
-        public List<Inputs.GetFirewallsFirewallArgs> Firewalls
-        {
-            get => _firewalls ?? (_firewalls = new List<Inputs.GetFirewallsFirewallArgs>());
-            set => _firewalls = value;
-        }
-
         /// <summary>
         /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
@@ -369,14 +361,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetFirewallsFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("firewalls")]
-        private InputList<Inputs.GetFirewallsFirewallInputArgs>? _firewalls;
-        public InputList<Inputs.GetFirewallsFirewallInputArgs> Firewalls
-        {
-            get => _firewalls ?? (_firewalls = new InputList<Inputs.GetFirewallsFirewallInputArgs>());
-            set => _firewalls = value;
         }
 
         /// <summary>

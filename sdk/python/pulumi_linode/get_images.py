@@ -63,7 +63,7 @@ class GetImagesResult:
 
     @_builtins.property
     @pulumi.getter
-    def images(self) -> Optional[Sequence['outputs.GetImagesImageResult']]:
+    def images(self) -> Sequence['outputs.GetImagesImageResult']:
         return pulumi.get(self, "images")
 
     @_builtins.property
@@ -97,7 +97,6 @@ class AwaitableGetImagesResult(GetImagesResult):
 
 
 def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]] = None,
-               images: Optional[Sequence[Union['GetImagesImageArgs', 'GetImagesImageArgsDict']]] = None,
                latest: Optional[_builtins.bool] = None,
                order: Optional[_builtins.str] = None,
                order_by: Optional[_builtins.str] = None,
@@ -168,7 +167,6 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['images'] = images
     __args__['latest'] = latest
     __args__['order'] = order
     __args__['orderBy'] = order_by
@@ -183,7 +181,6 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
 def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
-                      images: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesImageArgs', 'GetImagesImageArgsDict']]]]] = None,
                       latest: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                       order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -254,7 +251,6 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Ge
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['images'] = images
     __args__['latest'] = latest
     __args__['order'] = order
     __args__['orderBy'] = order_by

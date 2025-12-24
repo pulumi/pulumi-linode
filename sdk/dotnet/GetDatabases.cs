@@ -225,14 +225,6 @@ namespace Pulumi.Linode
 
     public sealed class GetDatabasesArgs : global::Pulumi.InvokeArgs
     {
-        [Input("databases")]
-        private List<Inputs.GetDatabasesDatabaseArgs>? _databases;
-        public List<Inputs.GetDatabasesDatabaseArgs> Databases
-        {
-            get => _databases ?? (_databases = new List<Inputs.GetDatabasesDatabaseArgs>());
-            set => _databases = value;
-        }
-
         [Input("filters")]
         private List<Inputs.GetDatabasesFilterArgs>? _filters;
         public List<Inputs.GetDatabasesFilterArgs> Filters
@@ -261,14 +253,6 @@ namespace Pulumi.Linode
 
     public sealed class GetDatabasesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("databases")]
-        private InputList<Inputs.GetDatabasesDatabaseInputArgs>? _databases;
-        public InputList<Inputs.GetDatabasesDatabaseInputArgs> Databases
-        {
-            get => _databases ?? (_databases = new InputList<Inputs.GetDatabasesDatabaseInputArgs>());
-            set => _databases = value;
-        }
-
         [Input("filters")]
         private InputList<Inputs.GetDatabasesFilterInputArgs>? _filters;
         public InputList<Inputs.GetDatabasesFilterInputArgs> Filters

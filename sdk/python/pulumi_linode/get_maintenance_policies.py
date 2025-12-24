@@ -51,7 +51,7 @@ class GetMaintenancePoliciesResult:
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicies")
-    def maintenance_policies(self) -> Optional[Sequence['outputs.GetMaintenancePoliciesMaintenancePolicyResult']]:
+    def maintenance_policies(self) -> Sequence['outputs.GetMaintenancePoliciesMaintenancePolicyResult']:
         return pulumi.get(self, "maintenance_policies")
 
 
@@ -67,7 +67,6 @@ class AwaitableGetMaintenancePoliciesResult(GetMaintenancePoliciesResult):
 
 
 def get_maintenance_policies(filters: Optional[Sequence[Union['GetMaintenancePoliciesFilterArgs', 'GetMaintenancePoliciesFilterArgsDict']]] = None,
-                             maintenance_policies: Optional[Sequence[Union['GetMaintenancePoliciesMaintenancePolicyArgs', 'GetMaintenancePoliciesMaintenancePolicyArgsDict']]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMaintenancePoliciesResult:
     """
     Provides details about the Maintenance Policies available to apply to Accounts and Instances.
@@ -89,7 +88,6 @@ def get_maintenance_policies(filters: Optional[Sequence[Union['GetMaintenancePol
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['maintenancePolicies'] = maintenance_policies
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getMaintenancePolicies:getMaintenancePolicies', __args__, opts=opts, typ=GetMaintenancePoliciesResult).value
 
@@ -98,7 +96,6 @@ def get_maintenance_policies(filters: Optional[Sequence[Union['GetMaintenancePol
         id=pulumi.get(__ret__, 'id'),
         maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'))
 def get_maintenance_policies_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetMaintenancePoliciesFilterArgs', 'GetMaintenancePoliciesFilterArgsDict']]]]] = None,
-                                    maintenance_policies: Optional[pulumi.Input[Optional[Sequence[Union['GetMaintenancePoliciesMaintenancePolicyArgs', 'GetMaintenancePoliciesMaintenancePolicyArgsDict']]]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaintenancePoliciesResult]:
     """
     Provides details about the Maintenance Policies available to apply to Accounts and Instances.
@@ -120,7 +117,6 @@ def get_maintenance_policies_output(filters: Optional[pulumi.Input[Optional[Sequ
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['maintenancePolicies'] = maintenance_policies
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getMaintenancePolicies:getMaintenancePolicies', __args__, opts=opts, typ=GetMaintenancePoliciesResult)
     return __ret__.apply(lambda __response__: GetMaintenancePoliciesResult(

@@ -63,7 +63,6 @@ export function getStackScripts(args?: GetStackScriptsArgs, opts?: pulumi.Invoke
         "latest": args.latest,
         "order": args.order,
         "orderBy": args.orderBy,
-        "stackscripts": args.stackscripts,
     }, opts);
 }
 
@@ -86,7 +85,6 @@ export interface GetStackScriptsArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: string;
-    stackscripts?: inputs.GetStackScriptsStackscript[];
 }
 
 /**
@@ -101,7 +99,7 @@ export interface GetStackScriptsResult {
     readonly latest?: boolean;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly stackscripts?: outputs.GetStackScriptsStackscript[];
+    readonly stackscripts: outputs.GetStackScriptsStackscript[];
 }
 /**
  * Provides information about Linode StackScripts that match a set of filters.
@@ -160,7 +158,6 @@ export function getStackScriptsOutput(args?: GetStackScriptsOutputArgs, opts?: p
         "latest": args.latest,
         "order": args.order,
         "orderBy": args.orderBy,
-        "stackscripts": args.stackscripts,
     }, opts);
 }
 
@@ -183,5 +180,4 @@ export interface GetStackScriptsOutputArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: pulumi.Input<string>;
-    stackscripts?: pulumi.Input<pulumi.Input<inputs.GetStackScriptsStackscriptArgs>[]>;
 }

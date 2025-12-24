@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetVolumeTypesFilter;
-import com.pulumi.linode.inputs.GetVolumeTypesType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -54,20 +53,12 @@ public final class GetVolumeTypesPlainArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.orderBy);
     }
 
-    @Import(name="types")
-    private @Nullable List<GetVolumeTypesType> types;
-
-    public Optional<List<GetVolumeTypesType>> types() {
-        return Optional.ofNullable(this.types);
-    }
-
     private GetVolumeTypesPlainArgs() {}
 
     private GetVolumeTypesPlainArgs(GetVolumeTypesPlainArgs $) {
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
-        this.types = $.types;
     }
 
     public static Builder builder() {
@@ -117,15 +108,6 @@ public final class GetVolumeTypesPlainArgs extends com.pulumi.resources.InvokeAr
         public Builder orderBy(@Nullable String orderBy) {
             $.orderBy = orderBy;
             return this;
-        }
-
-        public Builder types(@Nullable List<GetVolumeTypesType> types) {
-            $.types = types;
-            return this;
-        }
-
-        public Builder types(GetVolumeTypesType... types) {
-            return types(List.of(types));
         }
 
         public GetVolumeTypesPlainArgs build() {

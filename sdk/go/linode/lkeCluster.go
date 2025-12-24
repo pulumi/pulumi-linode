@@ -50,11 +50,11 @@ type LkeCluster struct {
 	StackType pulumi.StringOutput `pulumi:"stackType"`
 	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	SubnetId pulumi.IntOutput `pulumi:"subnetId"`
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	Tier pulumi.StringOutput `pulumi:"tier"`
 	// The ID of the VPC to use for the Kubernetes cluster.
 	VpcId pulumi.IntOutput `pulumi:"vpcId"`
@@ -134,11 +134,11 @@ type lkeClusterState struct {
 	StackType *string `pulumi:"stackType"`
 	// The status of the node. (`ready`, `notReady`)
 	Status *string `pulumi:"status"`
-	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	SubnetId *int `pulumi:"subnetId"`
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
-	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	Tier *string `pulumi:"tier"`
 	// The ID of the VPC to use for the Kubernetes cluster.
 	VpcId *int `pulumi:"vpcId"`
@@ -173,11 +173,11 @@ type LkeClusterState struct {
 	StackType pulumi.StringPtrInput
 	// The status of the node. (`ready`, `notReady`)
 	Status pulumi.StringPtrInput
-	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	SubnetId pulumi.IntPtrInput
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
-	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	Tier pulumi.StringPtrInput
 	// The ID of the VPC to use for the Kubernetes cluster.
 	VpcId pulumi.IntPtrInput
@@ -208,11 +208,11 @@ type lkeClusterArgs struct {
 	Region string `pulumi:"region"`
 	// The networking stack type of the Kubernetes cluster.
 	StackType *string `pulumi:"stackType"`
-	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	SubnetId *int `pulumi:"subnetId"`
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
-	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	Tier *string `pulumi:"tier"`
 	// The ID of the VPC to use for the Kubernetes cluster.
 	VpcId *int `pulumi:"vpcId"`
@@ -240,11 +240,11 @@ type LkeClusterArgs struct {
 	Region pulumi.StringInput
 	// The networking stack type of the Kubernetes cluster.
 	StackType pulumi.StringPtrInput
-	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+	// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	SubnetId pulumi.IntPtrInput
 	// An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
-	// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+	// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 	Tier pulumi.StringPtrInput
 	// The ID of the VPC to use for the Kubernetes cluster.
 	VpcId pulumi.IntPtrInput
@@ -401,7 +401,7 @@ func (o LkeClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 func (o LkeClusterOutput) SubnetId() pulumi.IntOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.IntOutput { return v.SubnetId }).(pulumi.IntOutput)
 }
@@ -411,7 +411,7 @@ func (o LkeClusterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
 func (o LkeClusterOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
 }

@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetNbTypesFilter;
-import com.pulumi.linode.inputs.GetNbTypesType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -38,20 +37,12 @@ public final class GetNbTypesPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.orderBy);
     }
 
-    @Import(name="types")
-    private @Nullable List<GetNbTypesType> types;
-
-    public Optional<List<GetNbTypesType>> types() {
-        return Optional.ofNullable(this.types);
-    }
-
     private GetNbTypesPlainArgs() {}
 
     private GetNbTypesPlainArgs(GetNbTypesPlainArgs $) {
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
-        this.types = $.types;
     }
 
     public static Builder builder() {
@@ -89,15 +80,6 @@ public final class GetNbTypesPlainArgs extends com.pulumi.resources.InvokeArgs {
         public Builder orderBy(@Nullable String orderBy) {
             $.orderBy = orderBy;
             return this;
-        }
-
-        public Builder types(@Nullable List<GetNbTypesType> types) {
-            $.types = types;
-            return this;
-        }
-
-        public Builder types(GetNbTypesType... types) {
-            return types(List.of(types));
         }
 
         public GetNbTypesPlainArgs build() {

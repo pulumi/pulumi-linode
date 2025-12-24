@@ -17,7 +17,6 @@ export function getVolumeTypes(args?: GetVolumeTypesArgs, opts?: pulumi.InvokeOp
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "types": args.types,
     }, opts);
 }
 
@@ -34,7 +33,6 @@ export interface GetVolumeTypesArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: string;
-    types?: inputs.GetVolumeTypesType[];
 }
 
 /**
@@ -48,7 +46,7 @@ export interface GetVolumeTypesResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly types?: outputs.GetVolumeTypesType[];
+    readonly types: outputs.GetVolumeTypesType[];
 }
 /**
  * Provides information about Linode Volume types that match a set of filters.
@@ -61,7 +59,6 @@ export function getVolumeTypesOutput(args?: GetVolumeTypesOutputArgs, opts?: pul
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "types": args.types,
     }, opts);
 }
 
@@ -78,5 +75,4 @@ export interface GetVolumeTypesOutputArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: pulumi.Input<string>;
-    types?: pulumi.Input<pulumi.Input<inputs.GetVolumeTypesTypeArgs>[]>;
 }

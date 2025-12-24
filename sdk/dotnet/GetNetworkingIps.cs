@@ -242,14 +242,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("ipAddresses")]
-        private List<Inputs.GetNetworkingIpsIpAddressArgs>? _ipAddresses;
-        public List<Inputs.GetNetworkingIpsIpAddressArgs> IpAddresses
-        {
-            get => _ipAddresses ?? (_ipAddresses = new List<Inputs.GetNetworkingIpsIpAddressArgs>());
-            set => _ipAddresses = value;
-        }
-
         /// <summary>
         /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
@@ -276,14 +268,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetNetworkingIpsFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("ipAddresses")]
-        private InputList<Inputs.GetNetworkingIpsIpAddressInputArgs>? _ipAddresses;
-        public InputList<Inputs.GetNetworkingIpsIpAddressInputArgs> IpAddresses
-        {
-            get => _ipAddresses ?? (_ipAddresses = new InputList<Inputs.GetNetworkingIpsIpAddressInputArgs>());
-            set => _ipAddresses = value;
         }
 
         /// <summary>

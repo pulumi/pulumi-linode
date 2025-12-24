@@ -219,14 +219,6 @@ namespace Pulumi.Linode
 
     public sealed class GetObjectStorageEndpointsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("endpoints")]
-        private List<Inputs.GetObjectStorageEndpointsEndpointArgs>? _endpoints;
-        public List<Inputs.GetObjectStorageEndpointsEndpointArgs> Endpoints
-        {
-            get => _endpoints ?? (_endpoints = new List<Inputs.GetObjectStorageEndpointsEndpointArgs>());
-            set => _endpoints = value;
-        }
-
         [Input("filters")]
         private List<Inputs.GetObjectStorageEndpointsFilterArgs>? _filters;
         public List<Inputs.GetObjectStorageEndpointsFilterArgs> Filters
@@ -255,14 +247,6 @@ namespace Pulumi.Linode
 
     public sealed class GetObjectStorageEndpointsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("endpoints")]
-        private InputList<Inputs.GetObjectStorageEndpointsEndpointInputArgs>? _endpoints;
-        public InputList<Inputs.GetObjectStorageEndpointsEndpointInputArgs> Endpoints
-        {
-            get => _endpoints ?? (_endpoints = new InputList<Inputs.GetObjectStorageEndpointsEndpointInputArgs>());
-            set => _endpoints = value;
-        }
-
         [Input("filters")]
         private InputList<Inputs.GetObjectStorageEndpointsFilterInputArgs>? _filters;
         public InputList<Inputs.GetObjectStorageEndpointsFilterInputArgs> Filters

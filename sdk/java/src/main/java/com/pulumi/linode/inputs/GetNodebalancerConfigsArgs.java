@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetNodebalancerConfigsFilterArgs;
-import com.pulumi.linode.inputs.GetNodebalancerConfigsNodebalancerConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -25,13 +24,6 @@ public final class GetNodebalancerConfigsArgs extends com.pulumi.resources.Invok
 
     public Optional<Output<List<GetNodebalancerConfigsFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
-    }
-
-    @Import(name="nodebalancerConfigs")
-    private @Nullable Output<List<GetNodebalancerConfigsNodebalancerConfigArgs>> nodebalancerConfigs;
-
-    public Optional<Output<List<GetNodebalancerConfigsNodebalancerConfigArgs>>> nodebalancerConfigs() {
-        return Optional.ofNullable(this.nodebalancerConfigs);
     }
 
     /**
@@ -87,7 +79,6 @@ public final class GetNodebalancerConfigsArgs extends com.pulumi.resources.Invok
 
     private GetNodebalancerConfigsArgs(GetNodebalancerConfigsArgs $) {
         this.filters = $.filters;
-        this.nodebalancerConfigs = $.nodebalancerConfigs;
         this.nodebalancerId = $.nodebalancerId;
         this.order = $.order;
         this.orderBy = $.orderBy;
@@ -122,19 +113,6 @@ public final class GetNodebalancerConfigsArgs extends com.pulumi.resources.Invok
 
         public Builder filters(GetNodebalancerConfigsFilterArgs... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder nodebalancerConfigs(@Nullable Output<List<GetNodebalancerConfigsNodebalancerConfigArgs>> nodebalancerConfigs) {
-            $.nodebalancerConfigs = nodebalancerConfigs;
-            return this;
-        }
-
-        public Builder nodebalancerConfigs(List<GetNodebalancerConfigsNodebalancerConfigArgs> nodebalancerConfigs) {
-            return nodebalancerConfigs(Output.of(nodebalancerConfigs));
-        }
-
-        public Builder nodebalancerConfigs(GetNodebalancerConfigsNodebalancerConfigArgs... nodebalancerConfigs) {
-            return nodebalancerConfigs(List.of(nodebalancerConfigs));
         }
 
         /**

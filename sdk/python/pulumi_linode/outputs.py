@@ -30,6 +30,9 @@ __all__ = [
     'FirewallInbound',
     'FirewallOutbound',
     'FirewallSettingsDefaultFirewallIds',
+    'ImageImageSharing',
+    'ImageImageSharingSharedBy',
+    'ImageImageSharingSharedWith',
     'ImageReplication',
     'ImageTimeouts',
     'InstanceAlerts',
@@ -112,6 +115,7 @@ __all__ = [
     'ObjectStorageKeyBucketAccess',
     'ObjectStorageKeyRegionsDetail',
     'PlacementGroupMember',
+    'ProducerImageShareGroupImage',
     'RdnsTimeouts',
     'ReservedIpAssignmentVpcNat11',
     'StackScriptUserDefinedField',
@@ -136,6 +140,13 @@ __all__ = [
     'GetAccountLoginsLoginResult',
     'GetChildAccountsChildAccountResult',
     'GetChildAccountsFilterResult',
+    'GetConsumerImageShareGroupImageSharesFilterResult',
+    'GetConsumerImageShareGroupImageSharesImageShareResult',
+    'GetConsumerImageShareGroupImageSharesImageShareImageSharingResult',
+    'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByResult',
+    'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithResult',
+    'GetConsumerImageShareGroupTokensFilterResult',
+    'GetConsumerImageShareGroupTokensTokenResult',
     'GetDatabaseBackupsBackupResult',
     'GetDatabaseBackupsFilterResult',
     'GetDatabaseEnginesEngineResult',
@@ -204,9 +215,15 @@ __all__ = [
     'GetFirewallsFirewallDeviceResult',
     'GetFirewallsFirewallInboundResult',
     'GetFirewallsFirewallOutboundResult',
+    'GetImageImageSharingResult',
+    'GetImageImageSharingSharedByResult',
+    'GetImageImageSharingSharedWithResult',
     'GetImageReplicationResult',
     'GetImagesFilterResult',
     'GetImagesImageResult',
+    'GetImagesImageImageSharingResult',
+    'GetImagesImageImageSharingSharedByResult',
+    'GetImagesImageImageSharingSharedWithResult',
     'GetImagesImageReplicationResult',
     'GetInstanceBackupsAutomaticResult',
     'GetInstanceBackupsAutomaticDiskResult',
@@ -268,6 +285,23 @@ __all__ = [
     'GetInstancesInstanceDiskResult',
     'GetInstancesInstancePlacementGroupResult',
     'GetInstancesInstanceSpecResult',
+    'GetInterfaceDefaultRouteResult',
+    'GetInterfacePublicResult',
+    'GetInterfacePublicIpv4Result',
+    'GetInterfacePublicIpv4AddressResult',
+    'GetInterfacePublicIpv4SharedResult',
+    'GetInterfacePublicIpv6Result',
+    'GetInterfacePublicIpv6RangeResult',
+    'GetInterfacePublicIpv6SharedResult',
+    'GetInterfacePublicIpv6SlaacResult',
+    'GetInterfaceVlanResult',
+    'GetInterfaceVpcResult',
+    'GetInterfaceVpcIpv4Result',
+    'GetInterfaceVpcIpv4AddressResult',
+    'GetInterfaceVpcIpv4RangeResult',
+    'GetInterfaceVpcIpv6Result',
+    'GetInterfaceVpcIpv6RangeResult',
+    'GetInterfaceVpcIpv6SlaacResult',
     'GetIpv6RangesFilterResult',
     'GetIpv6RangesRangeResult',
     'GetKernelsFilterResult',
@@ -288,6 +322,8 @@ __all__ = [
     'GetLkeTypesTypePriceResult',
     'GetLkeTypesTypeRegionPriceResult',
     'GetLkeVersionsVersionResult',
+    'GetLocksFilterResult',
+    'GetLocksLockResult',
     'GetMaintenancePoliciesFilterResult',
     'GetMaintenancePoliciesMaintenancePolicyResult',
     'GetNbTypesFilterResult',
@@ -331,11 +367,22 @@ __all__ = [
     'GetPlacementGroupsPlacementGroupMigrationsResult',
     'GetPlacementGroupsPlacementGroupMigrationsInboundResult',
     'GetPlacementGroupsPlacementGroupMigrationsOutboundResult',
+    'GetProducerImageShareGroupImageSharesFilterResult',
+    'GetProducerImageShareGroupImageSharesImageShareResult',
+    'GetProducerImageShareGroupImageSharesImageShareImageSharingResult',
+    'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByResult',
+    'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithResult',
+    'GetProducerImageShareGroupMembersFilterResult',
+    'GetProducerImageShareGroupMembersMemberResult',
+    'GetProducerImageShareGroupsFilterResult',
+    'GetProducerImageShareGroupsImageShareGroupResult',
     'GetProfileReferralResult',
+    'GetRegionMonitorsResult',
     'GetRegionPlacementGroupLimitResult',
     'GetRegionResolverResult',
     'GetRegionsFilterResult',
     'GetRegionsRegionResult',
+    'GetRegionsRegionMonitorsResult',
     'GetRegionsRegionPlacementGroupLimitResult',
     'GetRegionsRegionResolverResult',
     'GetSshkeysFilterResult',
@@ -497,26 +544,43 @@ class DatabaseMysqlV2PendingUpdate(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 deadline: _builtins.str,
-                 description: _builtins.str,
-                 planned_for: _builtins.str):
-        pulumi.set(__self__, "deadline", deadline)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "planned_for", planned_for)
+                 deadline: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 planned_for: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str deadline: The time when a mandatory update needs to be applied.
+        :param _builtins.str description: A description of the update.
+        :param _builtins.str planned_for: The date and time a maintenance update will be applied.
+        """
+        if deadline is not None:
+            pulumi.set(__self__, "deadline", deadline)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if planned_for is not None:
+            pulumi.set(__self__, "planned_for", planned_for)
 
     @_builtins.property
     @pulumi.getter
-    def deadline(self) -> _builtins.str:
+    def deadline(self) -> Optional[_builtins.str]:
+        """
+        The time when a mandatory update needs to be applied.
+        """
         return pulumi.get(self, "deadline")
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> _builtins.str:
+    def description(self) -> Optional[_builtins.str]:
+        """
+        A description of the update.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="plannedFor")
-    def planned_for(self) -> _builtins.str:
+    def planned_for(self) -> Optional[_builtins.str]:
+        """
+        The date and time a maintenance update will be applied.
+        """
         return pulumi.get(self, "planned_for")
 
 
@@ -647,33 +711,55 @@ class DatabaseMysqlV2Updates(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 day_of_week: _builtins.int,
-                 duration: _builtins.int,
-                 frequency: _builtins.str,
-                 hour_of_day: _builtins.int):
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
+                 day_of_week: Optional[_builtins.int] = None,
+                 duration: Optional[_builtins.int] = None,
+                 frequency: Optional[_builtins.str] = None,
+                 hour_of_day: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int day_of_week: The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+        :param _builtins.int duration: The maximum maintenance window time in hours.
+        :param _builtins.str frequency: How frequently maintenance occurs. Currently can only be weekly.
+        :param _builtins.int hour_of_day: How frequently maintenance occurs. Currently can only be weekly.
+        """
+        if day_of_week is not None:
+            pulumi.set(__self__, "day_of_week", day_of_week)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if hour_of_day is not None:
+            pulumi.set(__self__, "hour_of_day", hour_of_day)
 
     @_builtins.property
     @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> _builtins.int:
+    def day_of_week(self) -> Optional[_builtins.int]:
+        """
+        The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+        """
         return pulumi.get(self, "day_of_week")
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> _builtins.int:
+    def duration(self) -> Optional[_builtins.int]:
+        """
+        The maximum maintenance window time in hours.
+        """
         return pulumi.get(self, "duration")
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> _builtins.str:
+    def frequency(self) -> Optional[_builtins.str]:
+        """
+        How frequently maintenance occurs. Currently can only be weekly.
+        """
         return pulumi.get(self, "frequency")
 
     @_builtins.property
     @pulumi.getter(name="hourOfDay")
-    def hour_of_day(self) -> _builtins.int:
+    def hour_of_day(self) -> Optional[_builtins.int]:
+        """
+        How frequently maintenance occurs. Currently can only be weekly.
+        """
         return pulumi.get(self, "hour_of_day")
 
 
@@ -781,26 +867,43 @@ class DatabasePostgresqlV2PendingUpdate(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 deadline: _builtins.str,
-                 description: _builtins.str,
-                 planned_for: _builtins.str):
-        pulumi.set(__self__, "deadline", deadline)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "planned_for", planned_for)
+                 deadline: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 planned_for: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str deadline: The time when a mandatory update needs to be applied.
+        :param _builtins.str description: A description of the update.
+        :param _builtins.str planned_for: The date and time a maintenance update will be applied.
+        """
+        if deadline is not None:
+            pulumi.set(__self__, "deadline", deadline)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if planned_for is not None:
+            pulumi.set(__self__, "planned_for", planned_for)
 
     @_builtins.property
     @pulumi.getter
-    def deadline(self) -> _builtins.str:
+    def deadline(self) -> Optional[_builtins.str]:
+        """
+        The time when a mandatory update needs to be applied.
+        """
         return pulumi.get(self, "deadline")
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> _builtins.str:
+    def description(self) -> Optional[_builtins.str]:
+        """
+        A description of the update.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="plannedFor")
-    def planned_for(self) -> _builtins.str:
+    def planned_for(self) -> Optional[_builtins.str]:
+        """
+        The date and time a maintenance update will be applied.
+        """
         return pulumi.get(self, "planned_for")
 
 
@@ -931,33 +1034,55 @@ class DatabasePostgresqlV2Updates(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 day_of_week: _builtins.int,
-                 duration: _builtins.int,
-                 frequency: _builtins.str,
-                 hour_of_day: _builtins.int):
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
+                 day_of_week: Optional[_builtins.int] = None,
+                 duration: Optional[_builtins.int] = None,
+                 frequency: Optional[_builtins.str] = None,
+                 hour_of_day: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int day_of_week: The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+        :param _builtins.int duration: The maximum maintenance window time in hours.
+        :param _builtins.str frequency: How frequently maintenance occurs. Currently can only be weekly.
+        :param _builtins.int hour_of_day: How frequently maintenance occurs. Currently can only be weekly.
+        """
+        if day_of_week is not None:
+            pulumi.set(__self__, "day_of_week", day_of_week)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
+        if hour_of_day is not None:
+            pulumi.set(__self__, "hour_of_day", hour_of_day)
 
     @_builtins.property
     @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> _builtins.int:
+    def day_of_week(self) -> Optional[_builtins.int]:
+        """
+        The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+        """
         return pulumi.get(self, "day_of_week")
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> _builtins.int:
+    def duration(self) -> Optional[_builtins.int]:
+        """
+        The maximum maintenance window time in hours.
+        """
         return pulumi.get(self, "duration")
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> _builtins.str:
+    def frequency(self) -> Optional[_builtins.str]:
+        """
+        How frequently maintenance occurs. Currently can only be weekly.
+        """
         return pulumi.get(self, "frequency")
 
     @_builtins.property
     @pulumi.getter(name="hourOfDay")
-    def hour_of_day(self) -> _builtins.int:
+    def hour_of_day(self) -> Optional[_builtins.int]:
+        """
+        How frequently maintenance occurs. Currently can only be weekly.
+        """
         return pulumi.get(self, "hour_of_day")
 
 
@@ -1288,6 +1413,184 @@ class FirewallSettingsDefaultFirewallIds(dict):
         The VPC interface's default firewall.
         """
         return pulumi.get(self, "vpc_interface")
+
+
+@pulumi.output_type
+class ImageImageSharing(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sharedBy":
+            suggest = "shared_by"
+        elif key == "sharedWith":
+            suggest = "shared_with"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageImageSharing. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageImageSharing.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageImageSharing.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 shared_by: Optional['outputs.ImageImageSharingSharedBy'] = None,
+                 shared_with: Optional['outputs.ImageImageSharingSharedWith'] = None):
+        """
+        :param 'ImageImageSharingSharedByArgs' shared_by: Details about who the image is shared by.
+        :param 'ImageImageSharingSharedWithArgs' shared_with: Details about who the image is shared with.
+        """
+        if shared_by is not None:
+            pulumi.set(__self__, "shared_by", shared_by)
+        if shared_with is not None:
+            pulumi.set(__self__, "shared_with", shared_with)
+
+    @_builtins.property
+    @pulumi.getter(name="sharedBy")
+    def shared_by(self) -> Optional['outputs.ImageImageSharingSharedBy']:
+        """
+        Details about who the image is shared by.
+        """
+        return pulumi.get(self, "shared_by")
+
+    @_builtins.property
+    @pulumi.getter(name="sharedWith")
+    def shared_with(self) -> Optional['outputs.ImageImageSharingSharedWith']:
+        """
+        Details about who the image is shared with.
+        """
+        return pulumi.get(self, "shared_with")
+
+
+@pulumi.output_type
+class ImageImageSharingSharedBy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sharegroupId":
+            suggest = "sharegroup_id"
+        elif key == "sharegroupLabel":
+            suggest = "sharegroup_label"
+        elif key == "sharegroupUuid":
+            suggest = "sharegroup_uuid"
+        elif key == "sourceImageId":
+            suggest = "source_image_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageImageSharingSharedBy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageImageSharingSharedBy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageImageSharingSharedBy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sharegroup_id: Optional[_builtins.int] = None,
+                 sharegroup_label: Optional[_builtins.str] = None,
+                 sharegroup_uuid: Optional[_builtins.str] = None,
+                 source_image_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int sharegroup_id: The sharegroup_id from the im_ImageShare row.
+        :param _builtins.str sharegroup_label: The label from the associated im_ImageShareGroup row.
+        :param _builtins.str sharegroup_uuid: The sharegroup_uuid from the im_ImageShare row.
+        :param _builtins.str source_image_id: The image id of the base image (will only be shown to producers, will be null for consumers).
+        """
+        if sharegroup_id is not None:
+            pulumi.set(__self__, "sharegroup_id", sharegroup_id)
+        if sharegroup_label is not None:
+            pulumi.set(__self__, "sharegroup_label", sharegroup_label)
+        if sharegroup_uuid is not None:
+            pulumi.set(__self__, "sharegroup_uuid", sharegroup_uuid)
+        if source_image_id is not None:
+            pulumi.set(__self__, "source_image_id", source_image_id)
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupId")
+    def sharegroup_id(self) -> Optional[_builtins.int]:
+        """
+        The sharegroup_id from the im_ImageShare row.
+        """
+        return pulumi.get(self, "sharegroup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupLabel")
+    def sharegroup_label(self) -> Optional[_builtins.str]:
+        """
+        The label from the associated im_ImageShareGroup row.
+        """
+        return pulumi.get(self, "sharegroup_label")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupUuid")
+    def sharegroup_uuid(self) -> Optional[_builtins.str]:
+        """
+        The sharegroup_uuid from the im_ImageShare row.
+        """
+        return pulumi.get(self, "sharegroup_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> Optional[_builtins.str]:
+        """
+        The image id of the base image (will only be shown to producers, will be null for consumers).
+        """
+        return pulumi.get(self, "source_image_id")
+
+
+@pulumi.output_type
+class ImageImageSharingSharedWith(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sharegroupCount":
+            suggest = "sharegroup_count"
+        elif key == "sharegroupListUrl":
+            suggest = "sharegroup_list_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageImageSharingSharedWith. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageImageSharingSharedWith.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageImageSharingSharedWith.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sharegroup_count: Optional[_builtins.int] = None,
+                 sharegroup_list_url: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int sharegroup_count: The number of sharegroups the private image is present in.
+        :param _builtins.str sharegroup_list_url: The GET api url to view the sharegroups in which the image is shared.
+        """
+        if sharegroup_count is not None:
+            pulumi.set(__self__, "sharegroup_count", sharegroup_count)
+        if sharegroup_list_url is not None:
+            pulumi.set(__self__, "sharegroup_list_url", sharegroup_list_url)
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupCount")
+    def sharegroup_count(self) -> Optional[_builtins.int]:
+        """
+        The number of sharegroups the private image is present in.
+        """
+        return pulumi.get(self, "sharegroup_count")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupListUrl")
+    def sharegroup_list_url(self) -> Optional[_builtins.str]:
+        """
+        The GET api url to view the sharegroups in which the image is shared.
+        """
+        return pulumi.get(self, "sharegroup_list_url")
 
 
 @pulumi.output_type
@@ -3990,33 +4293,12 @@ class InterfacePublicIpv6AssignedRange(dict):
 
 @pulumi.output_type
 class InterfacePublicIpv6Range(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "routeTarget":
-            suggest = "route_target"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in InterfacePublicIpv6Range. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        InterfacePublicIpv6Range.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        InterfacePublicIpv6Range.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
-                 range: _builtins.str,
-                 route_target: Optional[_builtins.str] = None):
+                 range: _builtins.str):
         """
         :param _builtins.str range: The IPv6 range.
-        :param _builtins.str route_target: The public IPv6 address that the range is routed to.
         """
         pulumi.set(__self__, "range", range)
-        if route_target is not None:
-            pulumi.set(__self__, "route_target", route_target)
 
     @_builtins.property
     @pulumi.getter
@@ -4025,14 +4307,6 @@ class InterfacePublicIpv6Range(dict):
         The IPv6 range.
         """
         return pulumi.get(self, "range")
-
-    @_builtins.property
-    @pulumi.getter(name="routeTarget")
-    def route_target(self) -> Optional[_builtins.str]:
-        """
-        The public IPv6 address that the range is routed to.
-        """
-        return pulumi.get(self, "route_target")
 
 
 @pulumi.output_type
@@ -6145,6 +6419,52 @@ class PlacementGroupMember(dict):
 
 
 @pulumi.output_type
+class ProducerImageShareGroupImage(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 label: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: (Required) The ID of the Image to share. This must be in the format `private/<image_id>`.
+        :param _builtins.str description: The description of the Image Share Group
+               
+               * `images` - (Optional) A list of Images to include in the Image Share Group.
+        :param _builtins.str label: The label of the Image Share Group.
+        """
+        pulumi.set(__self__, "id", id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (Required) The ID of the Image to share. This must be in the format `private/<image_id>`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        The description of the Image Share Group
+
+        * `images` - (Optional) A list of Images to include in the Image Share Group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> Optional[_builtins.str]:
+        """
+        The label of the Image Share Group.
+        """
+        return pulumi.get(self, "label")
+
+
+@pulumi.output_type
 class RdnsTimeouts(dict):
     def __init__(__self__, *,
                  create: Optional[_builtins.str] = None,
@@ -7435,6 +7755,453 @@ class GetChildAccountsFilterResult(dict):
         The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
         """
         return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetConsumerImageShareGroupImageSharesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetConsumerImageShareGroupImageSharesImageShareResult(dict):
+    def __init__(__self__, *,
+                 capabilities: Sequence[_builtins.str],
+                 created: _builtins.str,
+                 deprecated: _builtins.bool,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 image_sharing: 'outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingResult',
+                 is_public: _builtins.bool,
+                 label: _builtins.str,
+                 size: _builtins.int,
+                 status: _builtins.str,
+                 tags: Sequence[_builtins.str],
+                 total_size: _builtins.int,
+                 type: _builtins.str):
+        """
+        :param Sequence[_builtins.str] capabilities: The capabilities of the Image represented by the Image Share.
+        :param _builtins.str created: When this Image Share was created.
+        :param _builtins.bool deprecated: Whether this Image is deprecated.
+        :param _builtins.str description: A description of the Image Share.
+        :param _builtins.str id: The unique ID assigned to this Image Share.
+        :param 'GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs' image_sharing: Details about image sharing, including who the image is shared with and by.
+        :param _builtins.bool is_public: True if the Image is public.
+        :param _builtins.str label: The label of the Image Share.
+        :param _builtins.int size: The minimum size this Image needs to deploy. Size is in MB. example: 2500
+        :param _builtins.str status: The current status of this image. (`creating`, `pending_upload`, `available`)
+        :param Sequence[_builtins.str] tags: A list of customized tags.
+        :param _builtins.int total_size: The total size of the image in all available regions.
+        :param _builtins.str type: How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+        """
+        pulumi.set(__self__, "capabilities", capabilities)
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_sharing", image_sharing)
+        pulumi.set(__self__, "is_public", is_public)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "total_size", total_size)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Sequence[_builtins.str]:
+        """
+        The capabilities of the Image represented by the Image Share.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def created(self) -> _builtins.str:
+        """
+        When this Image Share was created.
+        """
+        return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def deprecated(self) -> _builtins.bool:
+        """
+        Whether this Image is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        A description of the Image Share.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The unique ID assigned to this Image Share.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="imageSharing")
+    def image_sharing(self) -> 'outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingResult':
+        """
+        Details about image sharing, including who the image is shared with and by.
+        """
+        return pulumi.get(self, "image_sharing")
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> _builtins.bool:
+        """
+        True if the Image is public.
+        """
+        return pulumi.get(self, "is_public")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        The label of the Image Share.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        The minimum size this Image needs to deploy. Size is in MB. example: 2500
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The current status of this image. (`creating`, `pending_upload`, `available`)
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        """
+        A list of customized tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="totalSize")
+    def total_size(self) -> _builtins.int:
+        """
+        The total size of the image in all available regions.
+        """
+        return pulumi.get(self, "total_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetConsumerImageShareGroupImageSharesImageShareImageSharingResult(dict):
+    def __init__(__self__, *,
+                 shared_by: 'outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByResult',
+                 shared_with: 'outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithResult'):
+        """
+        :param 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs' shared_by: Details about who the image is shared by.
+        :param 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs' shared_with: Details about who the image is shared with.
+        """
+        pulumi.set(__self__, "shared_by", shared_by)
+        pulumi.set(__self__, "shared_with", shared_with)
+
+    @_builtins.property
+    @pulumi.getter(name="sharedBy")
+    def shared_by(self) -> 'outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByResult':
+        """
+        Details about who the image is shared by.
+        """
+        return pulumi.get(self, "shared_by")
+
+    @_builtins.property
+    @pulumi.getter(name="sharedWith")
+    def shared_with(self) -> 'outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithResult':
+        """
+        Details about who the image is shared with.
+        """
+        return pulumi.get(self, "shared_with")
+
+
+@pulumi.output_type
+class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByResult(dict):
+    def __init__(__self__, *,
+                 sharegroup_id: _builtins.int,
+                 sharegroup_label: _builtins.str,
+                 sharegroup_uuid: _builtins.str,
+                 source_image_id: _builtins.str):
+        """
+        :param _builtins.int sharegroup_id: The sharegroup_id from the im_ImageShare row.
+        :param _builtins.str sharegroup_label: The label from the associated im_ImageShareGroup row.
+        :param _builtins.str sharegroup_uuid: The sharegroup_uuid from the im_ImageShare row.
+        :param _builtins.str source_image_id: The image id of the base image (will only be shown to producers, will be null for consumers).
+        """
+        pulumi.set(__self__, "sharegroup_id", sharegroup_id)
+        pulumi.set(__self__, "sharegroup_label", sharegroup_label)
+        pulumi.set(__self__, "sharegroup_uuid", sharegroup_uuid)
+        pulumi.set(__self__, "source_image_id", source_image_id)
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupId")
+    def sharegroup_id(self) -> _builtins.int:
+        """
+        The sharegroup_id from the im_ImageShare row.
+        """
+        return pulumi.get(self, "sharegroup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupLabel")
+    def sharegroup_label(self) -> _builtins.str:
+        """
+        The label from the associated im_ImageShareGroup row.
+        """
+        return pulumi.get(self, "sharegroup_label")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupUuid")
+    def sharegroup_uuid(self) -> _builtins.str:
+        """
+        The sharegroup_uuid from the im_ImageShare row.
+        """
+        return pulumi.get(self, "sharegroup_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> _builtins.str:
+        """
+        The image id of the base image (will only be shown to producers, will be null for consumers).
+        """
+        return pulumi.get(self, "source_image_id")
+
+
+@pulumi.output_type
+class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithResult(dict):
+    def __init__(__self__, *,
+                 sharegroup_count: _builtins.int,
+                 sharegroup_list_url: _builtins.str):
+        """
+        :param _builtins.int sharegroup_count: The number of sharegroups the private image is present in.
+        :param _builtins.str sharegroup_list_url: The GET api url to view the sharegroups in which the image is shared.
+        """
+        pulumi.set(__self__, "sharegroup_count", sharegroup_count)
+        pulumi.set(__self__, "sharegroup_list_url", sharegroup_list_url)
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupCount")
+    def sharegroup_count(self) -> _builtins.int:
+        """
+        The number of sharegroups the private image is present in.
+        """
+        return pulumi.get(self, "sharegroup_count")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupListUrl")
+    def sharegroup_list_url(self) -> _builtins.str:
+        """
+        The GET api url to view the sharegroups in which the image is shared.
+        """
+        return pulumi.get(self, "sharegroup_list_url")
+
+
+@pulumi.output_type
+class GetConsumerImageShareGroupTokensFilterResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetConsumerImageShareGroupTokensTokenResult(dict):
+    def __init__(__self__, *,
+                 created: _builtins.str,
+                 expiry: _builtins.str,
+                 label: _builtins.str,
+                 sharegroup_label: _builtins.str,
+                 sharegroup_uuid: _builtins.str,
+                 status: _builtins.str,
+                 token_uuid: _builtins.str,
+                 updated: _builtins.str,
+                 valid_for_sharegroup_uuid: _builtins.str):
+        """
+        :param _builtins.str created: When the token was created.
+        :param _builtins.str expiry: When the token will expire.
+        :param _builtins.str label: A label for the token.
+        :param _builtins.str sharegroup_label: The label of the Image Share Group that the token is for.
+        :param _builtins.str sharegroup_uuid: The UUID of the Image Share Group that the token is for.
+        :param _builtins.str status: The status of the token.
+        :param _builtins.str token_uuid: The UUID of the token.
+        :param _builtins.str updated: When the token was last updated.
+        :param _builtins.str valid_for_sharegroup_uuid: The UUID of the Image Share Group for which to create a token.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "expiry", expiry)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "sharegroup_label", sharegroup_label)
+        pulumi.set(__self__, "sharegroup_uuid", sharegroup_uuid)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "token_uuid", token_uuid)
+        pulumi.set(__self__, "updated", updated)
+        pulumi.set(__self__, "valid_for_sharegroup_uuid", valid_for_sharegroup_uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def created(self) -> _builtins.str:
+        """
+        When the token was created.
+        """
+        return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def expiry(self) -> _builtins.str:
+        """
+        When the token will expire.
+        """
+        return pulumi.get(self, "expiry")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        A label for the token.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupLabel")
+    def sharegroup_label(self) -> _builtins.str:
+        """
+        The label of the Image Share Group that the token is for.
+        """
+        return pulumi.get(self, "sharegroup_label")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupUuid")
+    def sharegroup_uuid(self) -> _builtins.str:
+        """
+        The UUID of the Image Share Group that the token is for.
+        """
+        return pulumi.get(self, "sharegroup_uuid")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the token.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenUuid")
+    def token_uuid(self) -> _builtins.str:
+        """
+        The UUID of the token.
+        """
+        return pulumi.get(self, "token_uuid")
+
+    @_builtins.property
+    @pulumi.getter
+    def updated(self) -> _builtins.str:
+        """
+        When the token was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+    @_builtins.property
+    @pulumi.getter(name="validForSharegroupUuid")
+    def valid_for_sharegroup_uuid(self) -> _builtins.str:
+        """
+        The UUID of the Image Share Group for which to create a token.
+        """
+        return pulumi.get(self, "valid_for_sharegroup_uuid")
 
 
 @pulumi.output_type
@@ -9230,6 +9997,11 @@ class GetDatabaseMysqlV2PendingUpdateResult(dict):
                  deadline: _builtins.str,
                  description: _builtins.str,
                  planned_for: _builtins.str):
+        """
+        :param _builtins.str deadline: The time when a mandatory update needs to be applied.
+        :param _builtins.str description: A description of the update.
+        :param _builtins.str planned_for: The date and time a maintenance update will be applied.
+        """
         pulumi.set(__self__, "deadline", deadline)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "planned_for", planned_for)
@@ -9237,16 +10009,25 @@ class GetDatabaseMysqlV2PendingUpdateResult(dict):
     @_builtins.property
     @pulumi.getter
     def deadline(self) -> _builtins.str:
+        """
+        The time when a mandatory update needs to be applied.
+        """
         return pulumi.get(self, "deadline")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        A description of the update.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="plannedFor")
     def planned_for(self) -> _builtins.str:
+        """
+        The date and time a maintenance update will be applied.
+        """
         return pulumi.get(self, "planned_for")
 
 
@@ -9297,6 +10078,12 @@ class GetDatabaseMysqlV2UpdatesResult(dict):
                  duration: _builtins.int,
                  frequency: _builtins.str,
                  hour_of_day: _builtins.int):
+        """
+        :param _builtins.int day_of_week: The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+        :param _builtins.int duration: The maximum maintenance window time in hours.
+        :param _builtins.str frequency: How frequently maintenance occurs. Currently can only be weekly.
+        :param _builtins.int hour_of_day: The hour of the day (0-23) when maintenance occurs.
+        """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "frequency", frequency)
@@ -9305,21 +10092,33 @@ class GetDatabaseMysqlV2UpdatesResult(dict):
     @_builtins.property
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> _builtins.int:
+        """
+        The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+        """
         return pulumi.get(self, "day_of_week")
 
     @_builtins.property
     @pulumi.getter
     def duration(self) -> _builtins.int:
+        """
+        The maximum maintenance window time in hours.
+        """
         return pulumi.get(self, "duration")
 
     @_builtins.property
     @pulumi.getter
     def frequency(self) -> _builtins.str:
+        """
+        How frequently maintenance occurs. Currently can only be weekly.
+        """
         return pulumi.get(self, "frequency")
 
     @_builtins.property
     @pulumi.getter(name="hourOfDay")
     def hour_of_day(self) -> _builtins.int:
+        """
+        The hour of the day (0-23) when maintenance occurs.
+        """
         return pulumi.get(self, "hour_of_day")
 
 
@@ -9541,6 +10340,11 @@ class GetDatabasePostgresqlV2PendingUpdateResult(dict):
                  deadline: _builtins.str,
                  description: _builtins.str,
                  planned_for: _builtins.str):
+        """
+        :param _builtins.str deadline: The time when a mandatory update needs to be applied.
+        :param _builtins.str description: A description of the update.
+        :param _builtins.str planned_for: The date and time a maintenance update will be applied.
+        """
         pulumi.set(__self__, "deadline", deadline)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "planned_for", planned_for)
@@ -9548,16 +10352,25 @@ class GetDatabasePostgresqlV2PendingUpdateResult(dict):
     @_builtins.property
     @pulumi.getter
     def deadline(self) -> _builtins.str:
+        """
+        The time when a mandatory update needs to be applied.
+        """
         return pulumi.get(self, "deadline")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
+        """
+        A description of the update.
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="plannedFor")
     def planned_for(self) -> _builtins.str:
+        """
+        The date and time a maintenance update will be applied.
+        """
         return pulumi.get(self, "planned_for")
 
 
@@ -9608,6 +10421,12 @@ class GetDatabasePostgresqlV2UpdatesResult(dict):
                  duration: _builtins.int,
                  frequency: _builtins.str,
                  hour_of_day: _builtins.int):
+        """
+        :param _builtins.int day_of_week: The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+        :param _builtins.int duration: The maximum maintenance window time in hours.
+        :param _builtins.str frequency: How frequently maintenance occurs. Currently can only be weekly.
+        :param _builtins.int hour_of_day: How frequently maintenance occurs. Currently can only be weekly.
+        """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "frequency", frequency)
@@ -9616,21 +10435,33 @@ class GetDatabasePostgresqlV2UpdatesResult(dict):
     @_builtins.property
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> _builtins.int:
+        """
+        The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+        """
         return pulumi.get(self, "day_of_week")
 
     @_builtins.property
     @pulumi.getter
     def duration(self) -> _builtins.int:
+        """
+        The maximum maintenance window time in hours.
+        """
         return pulumi.get(self, "duration")
 
     @_builtins.property
     @pulumi.getter
     def frequency(self) -> _builtins.str:
+        """
+        How frequently maintenance occurs. Currently can only be weekly.
+        """
         return pulumi.get(self, "frequency")
 
     @_builtins.property
     @pulumi.getter(name="hourOfDay")
     def hour_of_day(self) -> _builtins.int:
+        """
+        How frequently maintenance occurs. Currently can only be weekly.
+        """
         return pulumi.get(self, "hour_of_day")
 
 
@@ -10743,55 +11574,52 @@ class GetFirewallsFilterResult(dict):
 class GetFirewallsFirewallResult(dict):
     def __init__(__self__, *,
                  created: _builtins.str,
+                 devices: Sequence['outputs.GetFirewallsFirewallDeviceResult'],
                  disabled: _builtins.bool,
                  id: _builtins.int,
                  inbound_policy: _builtins.str,
+                 inbounds: Sequence['outputs.GetFirewallsFirewallInboundResult'],
                  interfaces: Sequence[_builtins.int],
                  label: _builtins.str,
                  linodes: Sequence[_builtins.int],
                  nodebalancers: Sequence[_builtins.int],
                  outbound_policy: _builtins.str,
+                 outbounds: Sequence['outputs.GetFirewallsFirewallOutboundResult'],
                  status: _builtins.str,
                  tags: Sequence[_builtins.str],
-                 updated: _builtins.str,
-                 devices: Optional[Sequence['outputs.GetFirewallsFirewallDeviceResult']] = None,
-                 inbounds: Optional[Sequence['outputs.GetFirewallsFirewallInboundResult']] = None,
-                 outbounds: Optional[Sequence['outputs.GetFirewallsFirewallOutboundResult']] = None):
+                 updated: _builtins.str):
         """
         :param _builtins.str created: When this firewall was created.
+        :param Sequence['GetFirewallsFirewallDeviceArgs'] devices: The devices associated with this firewall.
         :param _builtins.bool disabled: If true, the Firewall is inactive.
         :param _builtins.int id: The unique ID assigned to this Firewall.
         :param _builtins.str inbound_policy: The default behavior for inbound traffic.
+        :param Sequence['GetFirewallsFirewallInboundArgs'] inbounds: A set of firewall rules that specify what inbound network traffic is allowed.
         :param Sequence[_builtins.int] interfaces: The IDs of Linode Interfaces this firewall is applied to.
         :param _builtins.str label: The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
         :param Sequence[_builtins.int] linodes: The IDs of Linodes this firewall is applied to.
         :param Sequence[_builtins.int] nodebalancers: The IDs of NodeBalancers this firewall is applied to.
         :param _builtins.str outbound_policy: The default behavior for outbound traffic.
+        :param Sequence['GetFirewallsFirewallOutboundArgs'] outbounds: A set of firewall rules that specify what outbound network traffic is allowed.
         :param _builtins.str status: The status of the firewall.
         :param Sequence[_builtins.str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param _builtins.str updated: When this firewall was last updated.
-        :param Sequence['GetFirewallsFirewallDeviceArgs'] devices: The devices associated with this firewall.
-        :param Sequence['GetFirewallsFirewallInboundArgs'] inbounds: A set of firewall rules that specify what inbound network traffic is allowed.
-        :param Sequence['GetFirewallsFirewallOutboundArgs'] outbounds: A set of firewall rules that specify what outbound network traffic is allowed.
         """
         pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "devices", devices)
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "inbound_policy", inbound_policy)
+        pulumi.set(__self__, "inbounds", inbounds)
         pulumi.set(__self__, "interfaces", interfaces)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "linodes", linodes)
         pulumi.set(__self__, "nodebalancers", nodebalancers)
         pulumi.set(__self__, "outbound_policy", outbound_policy)
+        pulumi.set(__self__, "outbounds", outbounds)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "updated", updated)
-        if devices is not None:
-            pulumi.set(__self__, "devices", devices)
-        if inbounds is not None:
-            pulumi.set(__self__, "inbounds", inbounds)
-        if outbounds is not None:
-            pulumi.set(__self__, "outbounds", outbounds)
 
     @_builtins.property
     @pulumi.getter
@@ -10800,6 +11628,14 @@ class GetFirewallsFirewallResult(dict):
         When this firewall was created.
         """
         return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def devices(self) -> Sequence['outputs.GetFirewallsFirewallDeviceResult']:
+        """
+        The devices associated with this firewall.
+        """
+        return pulumi.get(self, "devices")
 
     @_builtins.property
     @pulumi.getter
@@ -10824,6 +11660,14 @@ class GetFirewallsFirewallResult(dict):
         The default behavior for inbound traffic.
         """
         return pulumi.get(self, "inbound_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def inbounds(self) -> Sequence['outputs.GetFirewallsFirewallInboundResult']:
+        """
+        A set of firewall rules that specify what inbound network traffic is allowed.
+        """
+        return pulumi.get(self, "inbounds")
 
     @_builtins.property
     @pulumi.getter
@@ -10867,6 +11711,14 @@ class GetFirewallsFirewallResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def outbounds(self) -> Sequence['outputs.GetFirewallsFirewallOutboundResult']:
+        """
+        A set of firewall rules that specify what outbound network traffic is allowed.
+        """
+        return pulumi.get(self, "outbounds")
+
+    @_builtins.property
+    @pulumi.getter
     def status(self) -> _builtins.str:
         """
         The status of the firewall.
@@ -10888,30 +11740,6 @@ class GetFirewallsFirewallResult(dict):
         When this firewall was last updated.
         """
         return pulumi.get(self, "updated")
-
-    @_builtins.property
-    @pulumi.getter
-    def devices(self) -> Optional[Sequence['outputs.GetFirewallsFirewallDeviceResult']]:
-        """
-        The devices associated with this firewall.
-        """
-        return pulumi.get(self, "devices")
-
-    @_builtins.property
-    @pulumi.getter
-    def inbounds(self) -> Optional[Sequence['outputs.GetFirewallsFirewallInboundResult']]:
-        """
-        A set of firewall rules that specify what inbound network traffic is allowed.
-        """
-        return pulumi.get(self, "inbounds")
-
-    @_builtins.property
-    @pulumi.getter
-    def outbounds(self) -> Optional[Sequence['outputs.GetFirewallsFirewallOutboundResult']]:
-        """
-        A set of firewall rules that specify what outbound network traffic is allowed.
-        """
-        return pulumi.get(self, "outbounds")
 
 
 @pulumi.output_type
@@ -11123,6 +11951,115 @@ class GetFirewallsFirewallOutboundResult(dict):
 
 
 @pulumi.output_type
+class GetImageImageSharingResult(dict):
+    def __init__(__self__, *,
+                 shared_by: 'outputs.GetImageImageSharingSharedByResult',
+                 shared_with: 'outputs.GetImageImageSharingSharedWithResult'):
+        """
+        :param 'GetImageImageSharingSharedByArgs' shared_by: Details about who the image is shared by.
+        :param 'GetImageImageSharingSharedWithArgs' shared_with: Details about who the image is shared with.
+        """
+        pulumi.set(__self__, "shared_by", shared_by)
+        pulumi.set(__self__, "shared_with", shared_with)
+
+    @_builtins.property
+    @pulumi.getter(name="sharedBy")
+    def shared_by(self) -> 'outputs.GetImageImageSharingSharedByResult':
+        """
+        Details about who the image is shared by.
+        """
+        return pulumi.get(self, "shared_by")
+
+    @_builtins.property
+    @pulumi.getter(name="sharedWith")
+    def shared_with(self) -> 'outputs.GetImageImageSharingSharedWithResult':
+        """
+        Details about who the image is shared with.
+        """
+        return pulumi.get(self, "shared_with")
+
+
+@pulumi.output_type
+class GetImageImageSharingSharedByResult(dict):
+    def __init__(__self__, *,
+                 sharegroup_id: _builtins.int,
+                 sharegroup_label: _builtins.str,
+                 sharegroup_uuid: _builtins.str,
+                 source_image_id: _builtins.str):
+        """
+        :param _builtins.int sharegroup_id: The sharegroup_id from the im_ImageShare row.
+        :param _builtins.str sharegroup_label: The label from the associated im_ImageShareGroup row.
+        :param _builtins.str sharegroup_uuid: The sharegroup_uuid from the im_ImageShare row.
+        :param _builtins.str source_image_id: The image id of the base image (will only be shown to producers, will be null for consumers).
+        """
+        pulumi.set(__self__, "sharegroup_id", sharegroup_id)
+        pulumi.set(__self__, "sharegroup_label", sharegroup_label)
+        pulumi.set(__self__, "sharegroup_uuid", sharegroup_uuid)
+        pulumi.set(__self__, "source_image_id", source_image_id)
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupId")
+    def sharegroup_id(self) -> _builtins.int:
+        """
+        The sharegroup_id from the im_ImageShare row.
+        """
+        return pulumi.get(self, "sharegroup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupLabel")
+    def sharegroup_label(self) -> _builtins.str:
+        """
+        The label from the associated im_ImageShareGroup row.
+        """
+        return pulumi.get(self, "sharegroup_label")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupUuid")
+    def sharegroup_uuid(self) -> _builtins.str:
+        """
+        The sharegroup_uuid from the im_ImageShare row.
+        """
+        return pulumi.get(self, "sharegroup_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> _builtins.str:
+        """
+        The image id of the base image (will only be shown to producers, will be null for consumers).
+        """
+        return pulumi.get(self, "source_image_id")
+
+
+@pulumi.output_type
+class GetImageImageSharingSharedWithResult(dict):
+    def __init__(__self__, *,
+                 sharegroup_count: _builtins.int,
+                 sharegroup_list_url: _builtins.str):
+        """
+        :param _builtins.int sharegroup_count: The number of sharegroups the private image is present in.
+        :param _builtins.str sharegroup_list_url: The GET api url to view the sharegroups in which the image is shared.
+        """
+        pulumi.set(__self__, "sharegroup_count", sharegroup_count)
+        pulumi.set(__self__, "sharegroup_list_url", sharegroup_list_url)
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupCount")
+    def sharegroup_count(self) -> _builtins.int:
+        """
+        The number of sharegroups the private image is present in.
+        """
+        return pulumi.get(self, "sharegroup_count")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupListUrl")
+    def sharegroup_list_url(self) -> _builtins.str:
+        """
+        The GET api url to view the sharegroups in which the image is shared.
+        """
+        return pulumi.get(self, "sharegroup_list_url")
+
+
+@pulumi.output_type
 class GetImageReplicationResult(dict):
     def __init__(__self__, *,
                  region: _builtins.str,
@@ -11202,15 +12139,17 @@ class GetImagesImageResult(dict):
                  description: _builtins.str,
                  expiry: _builtins.str,
                  id: _builtins.str,
+                 image_sharing: 'outputs.GetImagesImageImageSharingResult',
                  is_public: _builtins.bool,
+                 is_shared: _builtins.bool,
                  label: _builtins.str,
+                 replications: Sequence['outputs.GetImagesImageReplicationResult'],
                  size: _builtins.int,
                  status: _builtins.str,
                  tags: Sequence[_builtins.str],
                  total_size: _builtins.int,
                  type: _builtins.str,
-                 vendor: _builtins.str,
-                 replications: Optional[Sequence['outputs.GetImagesImageReplicationResult']] = None):
+                 vendor: _builtins.str):
         """
         :param Sequence[_builtins.str] capabilities: The capabilities of this Image.
         :param _builtins.str created: When this Image was created.
@@ -11219,15 +12158,17 @@ class GetImagesImageResult(dict):
         :param _builtins.str description: A detailed description of this Image.
         :param _builtins.str expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         :param _builtins.str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
+        :param 'GetImagesImageImageSharingArgs' image_sharing: Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
         :param _builtins.bool is_public: True if the Image is public.
+        :param _builtins.bool is_shared: True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
         :param _builtins.str label: A short description of the Image.
+        :param Sequence['GetImagesImageReplicationArgs'] replications: A list of image replication regions and corresponding status.
         :param _builtins.int size: The minimum size this Image needs to deploy. Size is in MB. example: 2500
         :param _builtins.str status: The status of an image replica.
         :param Sequence[_builtins.str] tags: A list of customized tags.
         :param _builtins.int total_size: The total size of the image in all available regions.
         :param _builtins.str type: How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
         :param _builtins.str vendor: The upstream distribution vendor. `None` for private Images.
-        :param Sequence['GetImagesImageReplicationArgs'] replications: A list of image replication regions and corresponding status.
         """
         pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "created", created)
@@ -11236,16 +12177,17 @@ class GetImagesImageResult(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "expiry", expiry)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_sharing", image_sharing)
         pulumi.set(__self__, "is_public", is_public)
+        pulumi.set(__self__, "is_shared", is_shared)
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "replications", replications)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "total_size", total_size)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "vendor", vendor)
-        if replications is not None:
-            pulumi.set(__self__, "replications", replications)
 
     @_builtins.property
     @pulumi.getter
@@ -11304,6 +12246,14 @@ class GetImagesImageResult(dict):
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="imageSharing")
+    def image_sharing(self) -> 'outputs.GetImagesImageImageSharingResult':
+        """
+        Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "image_sharing")
+
+    @_builtins.property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> _builtins.bool:
         """
@@ -11312,12 +12262,28 @@ class GetImagesImageResult(dict):
         return pulumi.get(self, "is_public")
 
     @_builtins.property
+    @pulumi.getter(name="isShared")
+    def is_shared(self) -> _builtins.bool:
+        """
+        True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "is_shared")
+
+    @_builtins.property
     @pulumi.getter
     def label(self) -> _builtins.str:
         """
         A short description of the Image.
         """
         return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def replications(self) -> Sequence['outputs.GetImagesImageReplicationResult']:
+        """
+        A list of image replication regions and corresponding status.
+        """
+        return pulumi.get(self, "replications")
 
     @_builtins.property
     @pulumi.getter
@@ -11367,13 +12333,114 @@ class GetImagesImageResult(dict):
         """
         return pulumi.get(self, "vendor")
 
+
+@pulumi.output_type
+class GetImagesImageImageSharingResult(dict):
+    def __init__(__self__, *,
+                 shared_by: 'outputs.GetImagesImageImageSharingSharedByResult',
+                 shared_with: 'outputs.GetImagesImageImageSharingSharedWithResult'):
+        """
+        :param 'GetImagesImageImageSharingSharedByArgs' shared_by: Details about who the image is shared by.
+        :param 'GetImagesImageImageSharingSharedWithArgs' shared_with: Details about who the image is shared with.
+        """
+        pulumi.set(__self__, "shared_by", shared_by)
+        pulumi.set(__self__, "shared_with", shared_with)
+
     @_builtins.property
-    @pulumi.getter
-    def replications(self) -> Optional[Sequence['outputs.GetImagesImageReplicationResult']]:
+    @pulumi.getter(name="sharedBy")
+    def shared_by(self) -> 'outputs.GetImagesImageImageSharingSharedByResult':
         """
-        A list of image replication regions and corresponding status.
+        Details about who the image is shared by.
         """
-        return pulumi.get(self, "replications")
+        return pulumi.get(self, "shared_by")
+
+    @_builtins.property
+    @pulumi.getter(name="sharedWith")
+    def shared_with(self) -> 'outputs.GetImagesImageImageSharingSharedWithResult':
+        """
+        Details about who the image is shared with.
+        """
+        return pulumi.get(self, "shared_with")
+
+
+@pulumi.output_type
+class GetImagesImageImageSharingSharedByResult(dict):
+    def __init__(__self__, *,
+                 sharegroup_id: _builtins.int,
+                 sharegroup_label: _builtins.str,
+                 sharegroup_uuid: _builtins.str,
+                 source_image_id: _builtins.str):
+        """
+        :param _builtins.int sharegroup_id: The sharegroup_id from the im_ImageShare row.
+        :param _builtins.str sharegroup_label: The label from the associated im_ImageShareGroup row.
+        :param _builtins.str sharegroup_uuid: The sharegroup_uuid from the im_ImageShare row.
+        :param _builtins.str source_image_id: The image id of the base image (will only be shown to producers, will be null for consumers).
+        """
+        pulumi.set(__self__, "sharegroup_id", sharegroup_id)
+        pulumi.set(__self__, "sharegroup_label", sharegroup_label)
+        pulumi.set(__self__, "sharegroup_uuid", sharegroup_uuid)
+        pulumi.set(__self__, "source_image_id", source_image_id)
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupId")
+    def sharegroup_id(self) -> _builtins.int:
+        """
+        The sharegroup_id from the im_ImageShare row.
+        """
+        return pulumi.get(self, "sharegroup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupLabel")
+    def sharegroup_label(self) -> _builtins.str:
+        """
+        The label from the associated im_ImageShareGroup row.
+        """
+        return pulumi.get(self, "sharegroup_label")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupUuid")
+    def sharegroup_uuid(self) -> _builtins.str:
+        """
+        The sharegroup_uuid from the im_ImageShare row.
+        """
+        return pulumi.get(self, "sharegroup_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> _builtins.str:
+        """
+        The image id of the base image (will only be shown to producers, will be null for consumers).
+        """
+        return pulumi.get(self, "source_image_id")
+
+
+@pulumi.output_type
+class GetImagesImageImageSharingSharedWithResult(dict):
+    def __init__(__self__, *,
+                 sharegroup_count: _builtins.int,
+                 sharegroup_list_url: _builtins.str):
+        """
+        :param _builtins.int sharegroup_count: The number of sharegroups the private image is present in.
+        :param _builtins.str sharegroup_list_url: The GET api url to view the sharegroups in which the image is shared.
+        """
+        pulumi.set(__self__, "sharegroup_count", sharegroup_count)
+        pulumi.set(__self__, "sharegroup_list_url", sharegroup_list_url)
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupCount")
+    def sharegroup_count(self) -> _builtins.int:
+        """
+        The number of sharegroups the private image is present in.
+        """
+        return pulumi.get(self, "sharegroup_count")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupListUrl")
+    def sharegroup_list_url(self) -> _builtins.str:
+        """
+        The GET api url to view the sharegroups in which the image is shared.
+        """
+        return pulumi.get(self, "sharegroup_list_url")
 
 
 @pulumi.output_type
@@ -15160,6 +16227,521 @@ class GetInstancesInstanceSpecResult(dict):
 
 
 @pulumi.output_type
+class GetInterfaceDefaultRouteResult(dict):
+    def __init__(__self__, *,
+                 ipv4: _builtins.bool,
+                 ipv6: _builtins.bool):
+        """
+        :param _builtins.bool ipv4: Whether this interface is used for the IPv4 default route.
+        :param _builtins.bool ipv6: Whether this interface is used for the IPv6 default route.
+        """
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> _builtins.bool:
+        """
+        Whether this interface is used for the IPv4 default route.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> _builtins.bool:
+        """
+        Whether this interface is used for the IPv6 default route.
+        """
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class GetInterfacePublicResult(dict):
+    def __init__(__self__, *,
+                 ipv4: 'outputs.GetInterfacePublicIpv4Result',
+                 ipv6: 'outputs.GetInterfacePublicIpv6Result'):
+        """
+        :param 'GetInterfacePublicIpv4Args' ipv4: The public IPv4 configuration for the interface.
+        :param 'GetInterfacePublicIpv6Args' ipv6: The public IPv6 configuration for the interface.
+        """
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> 'outputs.GetInterfacePublicIpv4Result':
+        """
+        The public IPv4 configuration for the interface.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> 'outputs.GetInterfacePublicIpv6Result':
+        """
+        The public IPv6 configuration for the interface.
+        """
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class GetInterfacePublicIpv4Result(dict):
+    def __init__(__self__, *,
+                 addresses: Sequence['outputs.GetInterfacePublicIpv4AddressResult'],
+                 shareds: Sequence['outputs.GetInterfacePublicIpv4SharedResult']):
+        """
+        :param Sequence['GetInterfacePublicIpv4AddressArgs'] addresses: IPv4 addresses assigned to this interface.
+        :param Sequence['GetInterfacePublicIpv4SharedArgs'] shareds: IPv4 addresses shared with other Linodes.
+        """
+        pulumi.set(__self__, "addresses", addresses)
+        pulumi.set(__self__, "shareds", shareds)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Sequence['outputs.GetInterfacePublicIpv4AddressResult']:
+        """
+        IPv4 addresses assigned to this interface.
+        """
+        return pulumi.get(self, "addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def shareds(self) -> Sequence['outputs.GetInterfacePublicIpv4SharedResult']:
+        """
+        IPv4 addresses shared with other Linodes.
+        """
+        return pulumi.get(self, "shareds")
+
+
+@pulumi.output_type
+class GetInterfacePublicIpv4AddressResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 primary: _builtins.bool):
+        """
+        :param _builtins.str address: The IPv4 address.
+        :param _builtins.bool primary: Whether this is the primary IPv4 address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "primary", primary)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The IPv4 address.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> _builtins.bool:
+        """
+        Whether this is the primary IPv4 address.
+        """
+        return pulumi.get(self, "primary")
+
+
+@pulumi.output_type
+class GetInterfacePublicIpv4SharedResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 linode_id: _builtins.int):
+        """
+        :param _builtins.str address: The shared IPv4 address.
+        :param _builtins.int linode_id: The ID of the Linode that this shared address belongs to.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "linode_id", linode_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The shared IPv4 address.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="linodeId")
+    def linode_id(self) -> _builtins.int:
+        """
+        The ID of the Linode that this shared address belongs to.
+        """
+        return pulumi.get(self, "linode_id")
+
+
+@pulumi.output_type
+class GetInterfacePublicIpv6Result(dict):
+    def __init__(__self__, *,
+                 ranges: Sequence['outputs.GetInterfacePublicIpv6RangeResult'],
+                 shareds: Sequence['outputs.GetInterfacePublicIpv6SharedResult'],
+                 slaacs: Sequence['outputs.GetInterfacePublicIpv6SlaacResult']):
+        """
+        :param Sequence['GetInterfacePublicIpv6RangeArgs'] ranges: IPv6 ranges assigned to this interface.
+        :param Sequence['GetInterfacePublicIpv6SharedArgs'] shareds: IPv6 ranges shared with other Linodes.
+        :param Sequence['GetInterfacePublicIpv6SlaacArgs'] slaacs: IPv6 SLAAC configuration.
+        """
+        pulumi.set(__self__, "ranges", ranges)
+        pulumi.set(__self__, "shareds", shareds)
+        pulumi.set(__self__, "slaacs", slaacs)
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Sequence['outputs.GetInterfacePublicIpv6RangeResult']:
+        """
+        IPv6 ranges assigned to this interface.
+        """
+        return pulumi.get(self, "ranges")
+
+    @_builtins.property
+    @pulumi.getter
+    def shareds(self) -> Sequence['outputs.GetInterfacePublicIpv6SharedResult']:
+        """
+        IPv6 ranges shared with other Linodes.
+        """
+        return pulumi.get(self, "shareds")
+
+    @_builtins.property
+    @pulumi.getter
+    def slaacs(self) -> Sequence['outputs.GetInterfacePublicIpv6SlaacResult']:
+        """
+        IPv6 SLAAC configuration.
+        """
+        return pulumi.get(self, "slaacs")
+
+
+@pulumi.output_type
+class GetInterfacePublicIpv6RangeResult(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str,
+                 route_target: _builtins.str):
+        """
+        :param _builtins.str range: The IPv6 range.
+        :param _builtins.str route_target: The route target for this IPv6 range.
+        """
+        pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "route_target", route_target)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        The IPv6 range.
+        """
+        return pulumi.get(self, "range")
+
+    @_builtins.property
+    @pulumi.getter(name="routeTarget")
+    def route_target(self) -> _builtins.str:
+        """
+        The route target for this IPv6 range.
+        """
+        return pulumi.get(self, "route_target")
+
+
+@pulumi.output_type
+class GetInterfacePublicIpv6SharedResult(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str,
+                 route_target: _builtins.str):
+        """
+        :param _builtins.str range: The IPv6 range.
+        :param _builtins.str route_target: The route target for this IPv6 range.
+        """
+        pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "route_target", route_target)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        The IPv6 range.
+        """
+        return pulumi.get(self, "range")
+
+    @_builtins.property
+    @pulumi.getter(name="routeTarget")
+    def route_target(self) -> _builtins.str:
+        """
+        The route target for this IPv6 range.
+        """
+        return pulumi.get(self, "route_target")
+
+
+@pulumi.output_type
+class GetInterfacePublicIpv6SlaacResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 prefix: _builtins.int):
+        """
+        :param _builtins.str address: The IPv6 SLAAC address.
+        :param _builtins.int prefix: The prefix length for the IPv6 SLAAC address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The IPv6 SLAAC address.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.int:
+        """
+        The prefix length for the IPv6 SLAAC address.
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class GetInterfaceVlanResult(dict):
+    def __init__(__self__, *,
+                 ipam_address: _builtins.str,
+                 vlan_label: _builtins.str):
+        """
+        :param _builtins.str ipam_address: The IPAM (IP Address Management) address of the VLAN interface.
+        :param _builtins.str vlan_label: The label of the VLAN.
+        """
+        pulumi.set(__self__, "ipam_address", ipam_address)
+        pulumi.set(__self__, "vlan_label", vlan_label)
+
+    @_builtins.property
+    @pulumi.getter(name="ipamAddress")
+    def ipam_address(self) -> _builtins.str:
+        """
+        The IPAM (IP Address Management) address of the VLAN interface.
+        """
+        return pulumi.get(self, "ipam_address")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanLabel")
+    def vlan_label(self) -> _builtins.str:
+        """
+        The label of the VLAN.
+        """
+        return pulumi.get(self, "vlan_label")
+
+
+@pulumi.output_type
+class GetInterfaceVpcResult(dict):
+    def __init__(__self__, *,
+                 ipv4: 'outputs.GetInterfaceVpcIpv4Result',
+                 ipv6: 'outputs.GetInterfaceVpcIpv6Result',
+                 subnet_id: _builtins.int):
+        """
+        :param 'GetInterfaceVpcIpv4Args' ipv4: The IPv4 configuration for the VPC interface.
+        :param 'GetInterfaceVpcIpv6Args' ipv6: The IPv6 configuration for the VPC interface.
+        :param _builtins.int subnet_id: The ID of the VPC subnet.
+        """
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6", ipv6)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> 'outputs.GetInterfaceVpcIpv4Result':
+        """
+        The IPv4 configuration for the VPC interface.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> 'outputs.GetInterfaceVpcIpv6Result':
+        """
+        The IPv6 configuration for the VPC interface.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the VPC subnet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetInterfaceVpcIpv4Result(dict):
+    def __init__(__self__, *,
+                 addresses: Sequence['outputs.GetInterfaceVpcIpv4AddressResult'],
+                 ranges: Sequence['outputs.GetInterfaceVpcIpv4RangeResult']):
+        """
+        :param Sequence['GetInterfaceVpcIpv4AddressArgs'] addresses: IPv4 addresses assigned to this VPC interface.
+        :param Sequence['GetInterfaceVpcIpv4RangeArgs'] ranges: IPv4 ranges assigned to this VPC interface.
+        """
+        pulumi.set(__self__, "addresses", addresses)
+        pulumi.set(__self__, "ranges", ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Sequence['outputs.GetInterfaceVpcIpv4AddressResult']:
+        """
+        IPv4 addresses assigned to this VPC interface.
+        """
+        return pulumi.get(self, "addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Sequence['outputs.GetInterfaceVpcIpv4RangeResult']:
+        """
+        IPv4 ranges assigned to this VPC interface.
+        """
+        return pulumi.get(self, "ranges")
+
+
+@pulumi.output_type
+class GetInterfaceVpcIpv4AddressResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 nat11_address: _builtins.str,
+                 primary: _builtins.bool):
+        """
+        :param _builtins.str address: The VPC IPv4 address.
+        :param _builtins.str nat11_address: The 1:1 NAT address for this VPC IPv4 address.
+        :param _builtins.bool primary: Whether this is the primary VPC IPv4 address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "nat11_address", nat11_address)
+        pulumi.set(__self__, "primary", primary)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The VPC IPv4 address.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="nat11Address")
+    def nat11_address(self) -> _builtins.str:
+        """
+        The 1:1 NAT address for this VPC IPv4 address.
+        """
+        return pulumi.get(self, "nat11_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> _builtins.bool:
+        """
+        Whether this is the primary VPC IPv4 address.
+        """
+        return pulumi.get(self, "primary")
+
+
+@pulumi.output_type
+class GetInterfaceVpcIpv4RangeResult(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: The VPC IPv4 range.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        The VPC IPv4 range.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetInterfaceVpcIpv6Result(dict):
+    def __init__(__self__, *,
+                 is_public: _builtins.bool,
+                 ranges: Sequence['outputs.GetInterfaceVpcIpv6RangeResult'],
+                 slaacs: Sequence['outputs.GetInterfaceVpcIpv6SlaacResult']):
+        """
+        :param _builtins.bool is_public: Indicates whether the IPv6 configuration on the Linode interface is public.
+        :param Sequence['GetInterfaceVpcIpv6RangeArgs'] ranges: IPv6 ranges assigned to this VPC interface.
+        :param Sequence['GetInterfaceVpcIpv6SlaacArgs'] slaacs: IPv6 SLAAC address ranges.
+        """
+        pulumi.set(__self__, "is_public", is_public)
+        pulumi.set(__self__, "ranges", ranges)
+        pulumi.set(__self__, "slaacs", slaacs)
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> _builtins.bool:
+        """
+        Indicates whether the IPv6 configuration on the Linode interface is public.
+        """
+        return pulumi.get(self, "is_public")
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Sequence['outputs.GetInterfaceVpcIpv6RangeResult']:
+        """
+        IPv6 ranges assigned to this VPC interface.
+        """
+        return pulumi.get(self, "ranges")
+
+    @_builtins.property
+    @pulumi.getter
+    def slaacs(self) -> Sequence['outputs.GetInterfaceVpcIpv6SlaacResult']:
+        """
+        IPv6 SLAAC address ranges.
+        """
+        return pulumi.get(self, "slaacs")
+
+
+@pulumi.output_type
+class GetInterfaceVpcIpv6RangeResult(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: The IPv6 network range in CIDR notation.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        The IPv6 network range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetInterfaceVpcIpv6SlaacResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 range: _builtins.str):
+        """
+        :param _builtins.str address: The assigned IPv6 address within the range.
+        :param _builtins.str range: The IPv6 network range in CIDR notation.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The assigned IPv6 address within the range.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        The IPv6 network range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
 class GetIpv6RangesFilterResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
@@ -15401,18 +16983,25 @@ class GetKernelsKernelResult(dict):
 @pulumi.output_type
 class GetLkeClusterControlPlaneResult(dict):
     def __init__(__self__, *,
+                 acls: Sequence['outputs.GetLkeClusterControlPlaneAclResult'],
                  audit_logs_enabled: _builtins.bool,
-                 high_availability: _builtins.bool,
-                 acls: Optional[Sequence['outputs.GetLkeClusterControlPlaneAclResult']] = None):
+                 high_availability: _builtins.bool):
         """
+        :param Sequence['GetLkeClusterControlPlaneAclArgs'] acls: The ACL configuration for an LKE cluster's control plane.
         :param _builtins.bool audit_logs_enabled: Enables audit logs on the cluster's control plane.
         :param _builtins.bool high_availability: Whether High Availability is enabled for the cluster Control Plane.
-        :param Sequence['GetLkeClusterControlPlaneAclArgs'] acls: The ACL configuration for an LKE cluster's control plane.
         """
+        pulumi.set(__self__, "acls", acls)
         pulumi.set(__self__, "audit_logs_enabled", audit_logs_enabled)
         pulumi.set(__self__, "high_availability", high_availability)
-        if acls is not None:
-            pulumi.set(__self__, "acls", acls)
+
+    @_builtins.property
+    @pulumi.getter
+    def acls(self) -> Sequence['outputs.GetLkeClusterControlPlaneAclResult']:
+        """
+        The ACL configuration for an LKE cluster's control plane.
+        """
+        return pulumi.get(self, "acls")
 
     @_builtins.property
     @pulumi.getter(name="auditLogsEnabled")
@@ -15430,27 +17019,26 @@ class GetLkeClusterControlPlaneResult(dict):
         """
         return pulumi.get(self, "high_availability")
 
-    @_builtins.property
-    @pulumi.getter
-    def acls(self) -> Optional[Sequence['outputs.GetLkeClusterControlPlaneAclResult']]:
-        """
-        The ACL configuration for an LKE cluster's control plane.
-        """
-        return pulumi.get(self, "acls")
-
 
 @pulumi.output_type
 class GetLkeClusterControlPlaneAclResult(dict):
     def __init__(__self__, *,
-                 enabled: _builtins.bool,
-                 addresses: Optional[Sequence['outputs.GetLkeClusterControlPlaneAclAddressResult']] = None):
+                 addresses: Sequence['outputs.GetLkeClusterControlPlaneAclAddressResult'],
+                 enabled: _builtins.bool):
         """
-        :param _builtins.bool enabled: The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
         :param Sequence['GetLkeClusterControlPlaneAclAddressArgs'] addresses: A list of ip addresses to allow.
+        :param _builtins.bool enabled: The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
         """
+        pulumi.set(__self__, "addresses", addresses)
         pulumi.set(__self__, "enabled", enabled)
-        if addresses is not None:
-            pulumi.set(__self__, "addresses", addresses)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Sequence['outputs.GetLkeClusterControlPlaneAclAddressResult']:
+        """
+        A list of ip addresses to allow.
+        """
+        return pulumi.get(self, "addresses")
 
     @_builtins.property
     @pulumi.getter
@@ -15459,14 +17047,6 @@ class GetLkeClusterControlPlaneAclResult(dict):
         The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
         """
         return pulumi.get(self, "enabled")
-
-    @_builtins.property
-    @pulumi.getter
-    def addresses(self) -> Optional[Sequence['outputs.GetLkeClusterControlPlaneAclAddressResult']]:
-        """
-        A list of ip addresses to allow.
-        """
-        return pulumi.get(self, "addresses")
 
 
 @pulumi.output_type
@@ -15501,51 +17081,56 @@ class GetLkeClusterControlPlaneAclAddressResult(dict):
 @pulumi.output_type
 class GetLkeClusterPoolResult(dict):
     def __init__(__self__, *,
+                 autoscalers: Sequence['outputs.GetLkeClusterPoolAutoscalerResult'],
                  count: _builtins.int,
                  disk_encryption: _builtins.str,
+                 disks: Sequence['outputs.GetLkeClusterPoolDiskResult'],
                  id: _builtins.int,
                  k8s_version: _builtins.str,
                  labels: Mapping[str, _builtins.str],
+                 nodes: Sequence['outputs.GetLkeClusterPoolNodeResult'],
                  tags: Sequence[_builtins.str],
                  taints: Sequence['outputs.GetLkeClusterPoolTaintResult'],
                  type: _builtins.str,
                  update_strategy: _builtins.str,
-                 autoscalers: Optional[Sequence['outputs.GetLkeClusterPoolAutoscalerResult']] = None,
-                 disks: Optional[Sequence['outputs.GetLkeClusterPoolDiskResult']] = None,
-                 label: Optional[_builtins.str] = None,
-                 nodes: Optional[Sequence['outputs.GetLkeClusterPoolNodeResult']] = None):
+                 label: Optional[_builtins.str] = None):
         """
+        :param Sequence['GetLkeClusterPoolAutoscalerArgs'] autoscalers: The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
         :param _builtins.int count: The number of nodes in the Node Pool.
         :param _builtins.str disk_encryption: The disk encryption policy for nodes in this pool.
+        :param Sequence['GetLkeClusterPoolDiskArgs'] disks: This Node Pool’s custom disk layout.
         :param _builtins.int id: The LKE Cluster's ID.
         :param _builtins.str k8s_version: The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param Mapping[str, _builtins.str] labels: Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
+        :param Sequence['GetLkeClusterPoolNodeArgs'] nodes: The nodes in the Node Pool.
         :param Sequence[_builtins.str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param Sequence['GetLkeClusterPoolTaintArgs'] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
         :param _builtins.str type: The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param _builtins.str update_strategy: The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
-        :param Sequence['GetLkeClusterPoolAutoscalerArgs'] autoscalers: The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
-        :param Sequence['GetLkeClusterPoolDiskArgs'] disks: This Node Pool’s custom disk layout.
         :param _builtins.str label: The label of the Node Pool.
-        :param Sequence['GetLkeClusterPoolNodeArgs'] nodes: The nodes in the Node Pool.
         """
+        pulumi.set(__self__, "autoscalers", autoscalers)
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "disk_encryption", disk_encryption)
+        pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "k8s_version", k8s_version)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "nodes", nodes)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "update_strategy", update_strategy)
-        if autoscalers is not None:
-            pulumi.set(__self__, "autoscalers", autoscalers)
-        if disks is not None:
-            pulumi.set(__self__, "disks", disks)
         if label is not None:
             pulumi.set(__self__, "label", label)
-        if nodes is not None:
-            pulumi.set(__self__, "nodes", nodes)
+
+    @_builtins.property
+    @pulumi.getter
+    def autoscalers(self) -> Sequence['outputs.GetLkeClusterPoolAutoscalerResult']:
+        """
+        The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+        """
+        return pulumi.get(self, "autoscalers")
 
     @_builtins.property
     @pulumi.getter
@@ -15562,6 +17147,14 @@ class GetLkeClusterPoolResult(dict):
         The disk encryption policy for nodes in this pool.
         """
         return pulumi.get(self, "disk_encryption")
+
+    @_builtins.property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.GetLkeClusterPoolDiskResult']:
+        """
+        This Node Pool’s custom disk layout.
+        """
+        return pulumi.get(self, "disks")
 
     @_builtins.property
     @pulumi.getter
@@ -15586,6 +17179,14 @@ class GetLkeClusterPoolResult(dict):
         Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
         """
         return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def nodes(self) -> Sequence['outputs.GetLkeClusterPoolNodeResult']:
+        """
+        The nodes in the Node Pool.
+        """
+        return pulumi.get(self, "nodes")
 
     @_builtins.property
     @pulumi.getter
@@ -15621,35 +17222,11 @@ class GetLkeClusterPoolResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def autoscalers(self) -> Optional[Sequence['outputs.GetLkeClusterPoolAutoscalerResult']]:
-        """
-        The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
-        """
-        return pulumi.get(self, "autoscalers")
-
-    @_builtins.property
-    @pulumi.getter
-    def disks(self) -> Optional[Sequence['outputs.GetLkeClusterPoolDiskResult']]:
-        """
-        This Node Pool’s custom disk layout.
-        """
-        return pulumi.get(self, "disks")
-
-    @_builtins.property
-    @pulumi.getter
     def label(self) -> Optional[_builtins.str]:
         """
         The label of the Node Pool.
         """
         return pulumi.get(self, "label")
-
-    @_builtins.property
-    @pulumi.getter
-    def nodes(self) -> Optional[Sequence['outputs.GetLkeClusterPoolNodeResult']]:
-        """
-        The nodes in the Node Pool.
-        """
-        return pulumi.get(self, "nodes")
 
 
 @pulumi.output_type
@@ -15846,6 +17423,7 @@ class GetLkeClustersFilterResult(dict):
 class GetLkeClustersLkeClusterResult(dict):
     def __init__(__self__, *,
                  apl_enabled: _builtins.bool,
+                 control_plane: 'outputs.GetLkeClustersLkeClusterControlPlaneResult',
                  created: _builtins.str,
                  id: _builtins.int,
                  k8s_version: _builtins.str,
@@ -15857,10 +17435,10 @@ class GetLkeClustersLkeClusterResult(dict):
                  tags: Sequence[_builtins.str],
                  tier: _builtins.str,
                  updated: _builtins.str,
-                 vpc_id: _builtins.int,
-                 control_plane: Optional['outputs.GetLkeClustersLkeClusterControlPlaneResult'] = None):
+                 vpc_id: _builtins.int):
         """
         :param _builtins.bool apl_enabled: Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
+        :param 'GetLkeClustersLkeClusterControlPlaneArgs' control_plane: Defines settings for the Kubernetes Control Plane.
         :param _builtins.str created: When this Kubernetes cluster was created.
         :param _builtins.int id: The LKE Cluster's ID.
         :param _builtins.str k8s_version: The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
@@ -15870,12 +17448,12 @@ class GetLkeClustersLkeClusterResult(dict):
         :param _builtins.str status: The status of the cluster.
         :param _builtins.int subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
         :param Sequence[_builtins.str] tags: An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-        :param _builtins.str tier: The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        :param _builtins.str tier: The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param _builtins.str updated: When this Kubernetes cluster was updated.
         :param _builtins.int vpc_id: The ID of the VPC to use for the Kubernetes cluster.
-        :param 'GetLkeClustersLkeClusterControlPlaneArgs' control_plane: Defines settings for the Kubernetes Control Plane.
         """
         pulumi.set(__self__, "apl_enabled", apl_enabled)
+        pulumi.set(__self__, "control_plane", control_plane)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "k8s_version", k8s_version)
@@ -15888,8 +17466,6 @@ class GetLkeClustersLkeClusterResult(dict):
         pulumi.set(__self__, "tier", tier)
         pulumi.set(__self__, "updated", updated)
         pulumi.set(__self__, "vpc_id", vpc_id)
-        if control_plane is not None:
-            pulumi.set(__self__, "control_plane", control_plane)
 
     @_builtins.property
     @pulumi.getter(name="aplEnabled")
@@ -15898,6 +17474,14 @@ class GetLkeClustersLkeClusterResult(dict):
         Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
         """
         return pulumi.get(self, "apl_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> 'outputs.GetLkeClustersLkeClusterControlPlaneResult':
+        """
+        Defines settings for the Kubernetes Control Plane.
+        """
+        return pulumi.get(self, "control_plane")
 
     @_builtins.property
     @pulumi.getter
@@ -15975,7 +17559,7 @@ class GetLkeClustersLkeClusterResult(dict):
     @pulumi.getter
     def tier(self) -> _builtins.str:
         """
-        The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "tier")
 
@@ -15994,14 +17578,6 @@ class GetLkeClustersLkeClusterResult(dict):
         The ID of the VPC to use for the Kubernetes cluster.
         """
         return pulumi.get(self, "vpc_id")
-
-    @_builtins.property
-    @pulumi.getter(name="controlPlane")
-    def control_plane(self) -> Optional['outputs.GetLkeClustersLkeClusterControlPlaneResult']:
-        """
-        Defines settings for the Kubernetes Control Plane.
-        """
-        return pulumi.get(self, "control_plane")
 
 
 @pulumi.output_type
@@ -16224,6 +17800,120 @@ class GetLkeVersionsVersionResult(dict):
         The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
         """
         return pulumi.get(self, "tier")
+
+
+@pulumi.output_type
+class GetLocksFilterResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetLocksLockResult(dict):
+    def __init__(__self__, *,
+                 entity_id: _builtins.int,
+                 entity_label: _builtins.str,
+                 entity_type: _builtins.str,
+                 entity_url: _builtins.str,
+                 id: _builtins.int,
+                 lock_type: _builtins.str):
+        """
+        :param _builtins.int entity_id: The ID of the locked entity.
+        :param _builtins.str entity_label: The label of the locked entity.
+        :param _builtins.str entity_type: The type of the locked entity.
+        :param _builtins.str entity_url: The URL of the locked entity.
+        :param _builtins.int id: The unique ID of the Lock.
+        :param _builtins.str lock_type: The type of lock.
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "entity_label", entity_label)
+        pulumi.set(__self__, "entity_type", entity_type)
+        pulumi.set(__self__, "entity_url", entity_url)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "lock_type", lock_type)
+
+    @_builtins.property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> _builtins.int:
+        """
+        The ID of the locked entity.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @_builtins.property
+    @pulumi.getter(name="entityLabel")
+    def entity_label(self) -> _builtins.str:
+        """
+        The label of the locked entity.
+        """
+        return pulumi.get(self, "entity_label")
+
+    @_builtins.property
+    @pulumi.getter(name="entityType")
+    def entity_type(self) -> _builtins.str:
+        """
+        The type of the locked entity.
+        """
+        return pulumi.get(self, "entity_type")
+
+    @_builtins.property
+    @pulumi.getter(name="entityUrl")
+    def entity_url(self) -> _builtins.str:
+        """
+        The URL of the locked entity.
+        """
+        return pulumi.get(self, "entity_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The unique ID of the Lock.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="lockType")
+    def lock_type(self) -> _builtins.str:
+        """
+        The type of lock.
+        """
+        return pulumi.get(self, "lock_type")
 
 
 @pulumi.output_type
@@ -16947,37 +18637,35 @@ class GetNodeBalancerFirewallResult(dict):
                  created: _builtins.str,
                  id: _builtins.int,
                  inbound_policy: _builtins.str,
+                 inbounds: Sequence['outputs.GetNodeBalancerFirewallInboundResult'],
                  label: _builtins.str,
                  outbound_policy: _builtins.str,
+                 outbounds: Sequence['outputs.GetNodeBalancerFirewallOutboundResult'],
                  status: _builtins.str,
                  tags: Sequence[_builtins.str],
-                 updated: _builtins.str,
-                 inbounds: Optional[Sequence['outputs.GetNodeBalancerFirewallInboundResult']] = None,
-                 outbounds: Optional[Sequence['outputs.GetNodeBalancerFirewallOutboundResult']] = None):
+                 updated: _builtins.str):
         """
         :param _builtins.str created: When this firewall was created.
         :param _builtins.int id: The NodeBalancer's ID.
         :param _builtins.str inbound_policy: The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+        :param Sequence['GetNodeBalancerFirewallInboundArgs'] inbounds: A set of firewall rules that specify what inbound network traffic is allowed.
         :param _builtins.str label: Used to identify this rule. For display purposes only.
         :param _builtins.str outbound_policy: The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+        :param Sequence['GetNodeBalancerFirewallOutboundArgs'] outbounds: A set of firewall rules that specify what outbound network traffic is allowed.
         :param _builtins.str status: The status of the firewall. (`enabled`, `disabled`, `deleted`)
         :param Sequence[_builtins.str] tags: The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
         :param _builtins.str updated: When this firewall was last updated.
-        :param Sequence['GetNodeBalancerFirewallInboundArgs'] inbounds: A set of firewall rules that specify what inbound network traffic is allowed.
-        :param Sequence['GetNodeBalancerFirewallOutboundArgs'] outbounds: A set of firewall rules that specify what outbound network traffic is allowed.
         """
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "inbound_policy", inbound_policy)
+        pulumi.set(__self__, "inbounds", inbounds)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "outbound_policy", outbound_policy)
+        pulumi.set(__self__, "outbounds", outbounds)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "updated", updated)
-        if inbounds is not None:
-            pulumi.set(__self__, "inbounds", inbounds)
-        if outbounds is not None:
-            pulumi.set(__self__, "outbounds", outbounds)
 
     @_builtins.property
     @pulumi.getter
@@ -17005,6 +18693,14 @@ class GetNodeBalancerFirewallResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def inbounds(self) -> Sequence['outputs.GetNodeBalancerFirewallInboundResult']:
+        """
+        A set of firewall rules that specify what inbound network traffic is allowed.
+        """
+        return pulumi.get(self, "inbounds")
+
+    @_builtins.property
+    @pulumi.getter
     def label(self) -> _builtins.str:
         """
         Used to identify this rule. For display purposes only.
@@ -17018,6 +18714,14 @@ class GetNodeBalancerFirewallResult(dict):
         The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
         """
         return pulumi.get(self, "outbound_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def outbounds(self) -> Sequence['outputs.GetNodeBalancerFirewallOutboundResult']:
+        """
+        A set of firewall rules that specify what outbound network traffic is allowed.
+        """
+        return pulumi.get(self, "outbounds")
 
     @_builtins.property
     @pulumi.getter
@@ -17042,22 +18746,6 @@ class GetNodeBalancerFirewallResult(dict):
         When this firewall was last updated.
         """
         return pulumi.get(self, "updated")
-
-    @_builtins.property
-    @pulumi.getter
-    def inbounds(self) -> Optional[Sequence['outputs.GetNodeBalancerFirewallInboundResult']]:
-        """
-        A set of firewall rules that specify what inbound network traffic is allowed.
-        """
-        return pulumi.get(self, "inbounds")
-
-    @_builtins.property
-    @pulumi.getter
-    def outbounds(self) -> Optional[Sequence['outputs.GetNodeBalancerFirewallOutboundResult']]:
-        """
-        A set of firewall rules that specify what outbound network traffic is allowed.
-        """
-        return pulumi.get(self, "outbounds")
 
 
 @pulumi.output_type
@@ -18279,31 +19967,29 @@ class GetPlacementGroupsPlacementGroupResult(dict):
                  id: _builtins.int,
                  is_compliant: _builtins.bool,
                  label: _builtins.str,
+                 members: Sequence['outputs.GetPlacementGroupsPlacementGroupMemberResult'],
+                 migrations: 'outputs.GetPlacementGroupsPlacementGroupMigrationsResult',
                  placement_group_policy: _builtins.str,
                  placement_group_type: _builtins.str,
-                 region: _builtins.str,
-                 members: Optional[Sequence['outputs.GetPlacementGroupsPlacementGroupMemberResult']] = None,
-                 migrations: Optional['outputs.GetPlacementGroupsPlacementGroupMigrationsResult'] = None):
+                 region: _builtins.str):
         """
         :param _builtins.int id: The ID of the placement group.
         :param _builtins.bool is_compliant: Whether this Linode is currently compliant with the group's placement group type.
         :param _builtins.str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+        :param Sequence['GetPlacementGroupsPlacementGroupMemberArgs'] members: A set of Linodes currently assigned to this Placement Group.
+        :param 'GetPlacementGroupsPlacementGroupMigrationsArgs' migrations: Any Linodes that are being migrated to or from the placement group.
         :param _builtins.str placement_group_policy: Whether Linodes must be able to become compliant during assignment. (Default `strict`)
         :param _builtins.str placement_group_type: The placement group type to use when placing Linodes in this group.
         :param _builtins.str region: The region of the Placement Group.
-        :param Sequence['GetPlacementGroupsPlacementGroupMemberArgs'] members: A set of Linodes currently assigned to this Placement Group.
-        :param 'GetPlacementGroupsPlacementGroupMigrationsArgs' migrations: Any Linodes that are being migrated to or from the placement group.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "is_compliant", is_compliant)
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "migrations", migrations)
         pulumi.set(__self__, "placement_group_policy", placement_group_policy)
         pulumi.set(__self__, "placement_group_type", placement_group_type)
         pulumi.set(__self__, "region", region)
-        if members is not None:
-            pulumi.set(__self__, "members", members)
-        if migrations is not None:
-            pulumi.set(__self__, "migrations", migrations)
 
     @_builtins.property
     @pulumi.getter
@@ -18330,6 +20016,22 @@ class GetPlacementGroupsPlacementGroupResult(dict):
         return pulumi.get(self, "label")
 
     @_builtins.property
+    @pulumi.getter
+    def members(self) -> Sequence['outputs.GetPlacementGroupsPlacementGroupMemberResult']:
+        """
+        A set of Linodes currently assigned to this Placement Group.
+        """
+        return pulumi.get(self, "members")
+
+    @_builtins.property
+    @pulumi.getter
+    def migrations(self) -> 'outputs.GetPlacementGroupsPlacementGroupMigrationsResult':
+        """
+        Any Linodes that are being migrated to or from the placement group.
+        """
+        return pulumi.get(self, "migrations")
+
+    @_builtins.property
     @pulumi.getter(name="placementGroupPolicy")
     def placement_group_policy(self) -> _builtins.str:
         """
@@ -18352,22 +20054,6 @@ class GetPlacementGroupsPlacementGroupResult(dict):
         The region of the Placement Group.
         """
         return pulumi.get(self, "region")
-
-    @_builtins.property
-    @pulumi.getter
-    def members(self) -> Optional[Sequence['outputs.GetPlacementGroupsPlacementGroupMemberResult']]:
-        """
-        A set of Linodes currently assigned to this Placement Group.
-        """
-        return pulumi.get(self, "members")
-
-    @_builtins.property
-    @pulumi.getter
-    def migrations(self) -> Optional['outputs.GetPlacementGroupsPlacementGroupMigrationsResult']:
-        """
-        Any Linodes that are being migrated to or from the placement group.
-        """
-        return pulumi.get(self, "migrations")
 
 
 @pulumi.output_type
@@ -18465,6 +20151,593 @@ class GetPlacementGroupsPlacementGroupMigrationsOutboundResult(dict):
 
 
 @pulumi.output_type
+class GetProducerImageShareGroupImageSharesFilterResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetProducerImageShareGroupImageSharesImageShareResult(dict):
+    def __init__(__self__, *,
+                 capabilities: Sequence[_builtins.str],
+                 created: _builtins.str,
+                 deprecated: _builtins.bool,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 image_sharing: 'outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingResult',
+                 is_public: _builtins.bool,
+                 label: _builtins.str,
+                 size: _builtins.int,
+                 status: _builtins.str,
+                 tags: Sequence[_builtins.str],
+                 total_size: _builtins.int,
+                 type: _builtins.str):
+        """
+        :param Sequence[_builtins.str] capabilities: The capabilities of the Image represented by the Image Share.
+        :param _builtins.str created: When this Image Share was created.
+        :param _builtins.bool deprecated: Whether this Image is deprecated.
+        :param _builtins.str description: A description of the Image Share.
+        :param _builtins.str id: The unique ID assigned to this Image Share.
+        :param 'GetProducerImageShareGroupImageSharesImageShareImageSharingArgs' image_sharing: Details about image sharing, including who the image is shared with and by.
+        :param _builtins.bool is_public: True if the Image is public.
+        :param _builtins.str label: The label of the Image Share.
+        :param _builtins.int size: The minimum size this Image needs to deploy. Size is in MB. example: 2500
+        :param _builtins.str status: The current status of this image. (`creating`, `pending_upload`, `available`)
+        :param Sequence[_builtins.str] tags: A list of customized tags.
+        :param _builtins.int total_size: The total size of the image in all available regions.
+        :param _builtins.str type: How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+        """
+        pulumi.set(__self__, "capabilities", capabilities)
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_sharing", image_sharing)
+        pulumi.set(__self__, "is_public", is_public)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "total_size", total_size)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Sequence[_builtins.str]:
+        """
+        The capabilities of the Image represented by the Image Share.
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def created(self) -> _builtins.str:
+        """
+        When this Image Share was created.
+        """
+        return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def deprecated(self) -> _builtins.bool:
+        """
+        Whether this Image is deprecated.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        A description of the Image Share.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The unique ID assigned to this Image Share.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="imageSharing")
+    def image_sharing(self) -> 'outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingResult':
+        """
+        Details about image sharing, including who the image is shared with and by.
+        """
+        return pulumi.get(self, "image_sharing")
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> _builtins.bool:
+        """
+        True if the Image is public.
+        """
+        return pulumi.get(self, "is_public")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        The label of the Image Share.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        The minimum size this Image needs to deploy. Size is in MB. example: 2500
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The current status of this image. (`creating`, `pending_upload`, `available`)
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        """
+        A list of customized tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="totalSize")
+    def total_size(self) -> _builtins.int:
+        """
+        The total size of the image in all available regions.
+        """
+        return pulumi.get(self, "total_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetProducerImageShareGroupImageSharesImageShareImageSharingResult(dict):
+    def __init__(__self__, *,
+                 shared_by: 'outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByResult',
+                 shared_with: 'outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithResult'):
+        """
+        :param 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs' shared_by: Details about who the image is shared by.
+        :param 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs' shared_with: Details about who the image is shared with.
+        """
+        pulumi.set(__self__, "shared_by", shared_by)
+        pulumi.set(__self__, "shared_with", shared_with)
+
+    @_builtins.property
+    @pulumi.getter(name="sharedBy")
+    def shared_by(self) -> 'outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByResult':
+        """
+        Details about who the image is shared by.
+        """
+        return pulumi.get(self, "shared_by")
+
+    @_builtins.property
+    @pulumi.getter(name="sharedWith")
+    def shared_with(self) -> 'outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithResult':
+        """
+        Details about who the image is shared with.
+        """
+        return pulumi.get(self, "shared_with")
+
+
+@pulumi.output_type
+class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByResult(dict):
+    def __init__(__self__, *,
+                 sharegroup_id: _builtins.int,
+                 sharegroup_label: _builtins.str,
+                 sharegroup_uuid: _builtins.str,
+                 source_image_id: _builtins.str):
+        """
+        :param _builtins.int sharegroup_id: The ID of the Image Share Group to list shared Images from.
+               
+               * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+        :param _builtins.str sharegroup_label: The label from the associated im_ImageShareGroup row.
+        :param _builtins.str sharegroup_uuid: The sharegroup_uuid from the im_ImageShare row.
+        :param _builtins.str source_image_id: The image id of the base image (will only be shown to producers, will be null for consumers).
+        """
+        pulumi.set(__self__, "sharegroup_id", sharegroup_id)
+        pulumi.set(__self__, "sharegroup_label", sharegroup_label)
+        pulumi.set(__self__, "sharegroup_uuid", sharegroup_uuid)
+        pulumi.set(__self__, "source_image_id", source_image_id)
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupId")
+    def sharegroup_id(self) -> _builtins.int:
+        """
+        The ID of the Image Share Group to list shared Images from.
+
+        * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+        """
+        return pulumi.get(self, "sharegroup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupLabel")
+    def sharegroup_label(self) -> _builtins.str:
+        """
+        The label from the associated im_ImageShareGroup row.
+        """
+        return pulumi.get(self, "sharegroup_label")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupUuid")
+    def sharegroup_uuid(self) -> _builtins.str:
+        """
+        The sharegroup_uuid from the im_ImageShare row.
+        """
+        return pulumi.get(self, "sharegroup_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> _builtins.str:
+        """
+        The image id of the base image (will only be shown to producers, will be null for consumers).
+        """
+        return pulumi.get(self, "source_image_id")
+
+
+@pulumi.output_type
+class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithResult(dict):
+    def __init__(__self__, *,
+                 sharegroup_count: _builtins.int,
+                 sharegroup_list_url: _builtins.str):
+        """
+        :param _builtins.int sharegroup_count: The number of sharegroups the private image is present in.
+        :param _builtins.str sharegroup_list_url: The GET api url to view the sharegroups in which the image is shared.
+        """
+        pulumi.set(__self__, "sharegroup_count", sharegroup_count)
+        pulumi.set(__self__, "sharegroup_list_url", sharegroup_list_url)
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupCount")
+    def sharegroup_count(self) -> _builtins.int:
+        """
+        The number of sharegroups the private image is present in.
+        """
+        return pulumi.get(self, "sharegroup_count")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupListUrl")
+    def sharegroup_list_url(self) -> _builtins.str:
+        """
+        The GET api url to view the sharegroups in which the image is shared.
+        """
+        return pulumi.get(self, "sharegroup_list_url")
+
+
+@pulumi.output_type
+class GetProducerImageShareGroupMembersFilterResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetProducerImageShareGroupMembersMemberResult(dict):
+    def __init__(__self__, *,
+                 created: _builtins.str,
+                 expiry: _builtins.str,
+                 label: _builtins.str,
+                 sharegroup_id: _builtins.int,
+                 status: _builtins.str,
+                 token_uuid: _builtins.str,
+                 updated: _builtins.str):
+        """
+        :param _builtins.str created: When the member was created.
+        :param _builtins.str expiry: When the member will expire.
+        :param _builtins.str label: The label of the member.
+        :param _builtins.int sharegroup_id: The ID of the Image Share Group for which to list members.
+        :param _builtins.str status: The status of the member.
+        :param _builtins.str token_uuid: The UUID of member's token.
+        :param _builtins.str updated: When the member was last updated.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "expiry", expiry)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "sharegroup_id", sharegroup_id)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "token_uuid", token_uuid)
+        pulumi.set(__self__, "updated", updated)
+
+    @_builtins.property
+    @pulumi.getter
+    def created(self) -> _builtins.str:
+        """
+        When the member was created.
+        """
+        return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def expiry(self) -> _builtins.str:
+        """
+        When the member will expire.
+        """
+        return pulumi.get(self, "expiry")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        The label of the member.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter(name="sharegroupId")
+    def sharegroup_id(self) -> _builtins.int:
+        """
+        The ID of the Image Share Group for which to list members.
+        """
+        return pulumi.get(self, "sharegroup_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the member.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenUuid")
+    def token_uuid(self) -> _builtins.str:
+        """
+        The UUID of member's token.
+        """
+        return pulumi.get(self, "token_uuid")
+
+    @_builtins.property
+    @pulumi.getter
+    def updated(self) -> _builtins.str:
+        """
+        When the member was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
+class GetProducerImageShareGroupsFilterResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetProducerImageShareGroupsImageShareGroupResult(dict):
+    def __init__(__self__, *,
+                 created: _builtins.str,
+                 description: _builtins.str,
+                 expiry: _builtins.str,
+                 id: _builtins.int,
+                 images_count: _builtins.int,
+                 is_suspended: _builtins.bool,
+                 label: _builtins.str,
+                 members_count: _builtins.int,
+                 updated: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param _builtins.str created: The date and time the Image Share Group was created.
+        :param _builtins.str description: The description of the Image Share Group.
+        :param _builtins.str expiry: The date and time the Image Share Group will expire.
+        :param _builtins.int id: The ID of the Image Share Group.
+        :param _builtins.int images_count: The number of images in the Image Share Group.
+        :param _builtins.bool is_suspended: Whether the Image Share Group is suspended.
+        :param _builtins.str label: The label of the Image Share Group.
+        :param _builtins.int members_count: The number of members in the Image Share Group.
+        :param _builtins.str updated: The date and time the Image Share Group was last updated.
+        :param _builtins.str uuid: The UUID of the Image Share Group.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expiry", expiry)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "images_count", images_count)
+        pulumi.set(__self__, "is_suspended", is_suspended)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "members_count", members_count)
+        pulumi.set(__self__, "updated", updated)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def created(self) -> _builtins.str:
+        """
+        The date and time the Image Share Group was created.
+        """
+        return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the Image Share Group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def expiry(self) -> _builtins.str:
+        """
+        The date and time the Image Share Group will expire.
+        """
+        return pulumi.get(self, "expiry")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The ID of the Image Share Group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="imagesCount")
+    def images_count(self) -> _builtins.int:
+        """
+        The number of images in the Image Share Group.
+        """
+        return pulumi.get(self, "images_count")
+
+    @_builtins.property
+    @pulumi.getter(name="isSuspended")
+    def is_suspended(self) -> _builtins.bool:
+        """
+        Whether the Image Share Group is suspended.
+        """
+        return pulumi.get(self, "is_suspended")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        The label of the Image Share Group.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter(name="membersCount")
+    def members_count(self) -> _builtins.int:
+        """
+        The number of members in the Image Share Group.
+        """
+        return pulumi.get(self, "members_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def updated(self) -> _builtins.str:
+        """
+        The date and time the Image Share Group was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        The UUID of the Image Share Group.
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
 class GetProfileReferralResult(dict):
     def __init__(__self__, *,
                  code: _builtins.str,
@@ -18535,6 +20808,35 @@ class GetProfileReferralResult(dict):
         The referral URL.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetRegionMonitorsResult(dict):
+    def __init__(__self__, *,
+                 alerts: Sequence[_builtins.str],
+                 metrics: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] alerts: A list of ACLP alerts services supported in the region.
+        :param Sequence[_builtins.str] metrics: A list of ACLP metrics services supported in the region.
+        """
+        pulumi.set(__self__, "alerts", alerts)
+        pulumi.set(__self__, "metrics", metrics)
+
+    @_builtins.property
+    @pulumi.getter
+    def alerts(self) -> Sequence[_builtins.str]:
+        """
+        A list of ACLP alerts services supported in the region.
+        """
+        return pulumi.get(self, "alerts")
+
+    @_builtins.property
+    @pulumi.getter
+    def metrics(self) -> Sequence[_builtins.str]:
+        """
+        A list of ACLP metrics services supported in the region.
+        """
+        return pulumi.get(self, "metrics")
 
 
 @pulumi.output_type
@@ -18643,15 +20945,17 @@ class GetRegionsRegionResult(dict):
                  country: _builtins.str,
                  id: _builtins.str,
                  label: _builtins.str,
+                 monitors: 'outputs.GetRegionsRegionMonitorsResult',
                  placement_group_limits: Sequence['outputs.GetRegionsRegionPlacementGroupLimitResult'],
+                 resolvers: Sequence['outputs.GetRegionsRegionResolverResult'],
                  site_type: _builtins.str,
-                 status: _builtins.str,
-                 resolvers: Optional[Sequence['outputs.GetRegionsRegionResolverResult']] = None):
+                 status: _builtins.str):
         """
         :param Sequence[_builtins.str] capabilities: A list of capabilities of this region.
         :param _builtins.str country: The country the region resides in.
         :param _builtins.str id: The unique ID of this Region.
         :param _builtins.str label: Detailed location information for this Region, including city, state or region, and country.
+        :param 'GetRegionsRegionMonitorsArgs' monitors: The monitoring services available in a region.
         :param Sequence['GetRegionsRegionPlacementGroupLimitArgs'] placement_group_limits: Information about placement groups limits for this region.
         :param _builtins.str site_type: The type of this region.
         :param _builtins.str status: This region’s current operational status (ok or outage).
@@ -18660,11 +20964,11 @@ class GetRegionsRegionResult(dict):
         pulumi.set(__self__, "country", country)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "monitors", monitors)
         pulumi.set(__self__, "placement_group_limits", placement_group_limits)
+        pulumi.set(__self__, "resolvers", resolvers)
         pulumi.set(__self__, "site_type", site_type)
         pulumi.set(__self__, "status", status)
-        if resolvers is not None:
-            pulumi.set(__self__, "resolvers", resolvers)
 
     @_builtins.property
     @pulumi.getter
@@ -18699,12 +21003,25 @@ class GetRegionsRegionResult(dict):
         return pulumi.get(self, "label")
 
     @_builtins.property
+    @pulumi.getter
+    def monitors(self) -> 'outputs.GetRegionsRegionMonitorsResult':
+        """
+        The monitoring services available in a region.
+        """
+        return pulumi.get(self, "monitors")
+
+    @_builtins.property
     @pulumi.getter(name="placementGroupLimits")
     def placement_group_limits(self) -> Sequence['outputs.GetRegionsRegionPlacementGroupLimitResult']:
         """
         Information about placement groups limits for this region.
         """
         return pulumi.get(self, "placement_group_limits")
+
+    @_builtins.property
+    @pulumi.getter
+    def resolvers(self) -> Sequence['outputs.GetRegionsRegionResolverResult']:
+        return pulumi.get(self, "resolvers")
 
     @_builtins.property
     @pulumi.getter(name="siteType")
@@ -18722,10 +21039,34 @@ class GetRegionsRegionResult(dict):
         """
         return pulumi.get(self, "status")
 
+
+@pulumi.output_type
+class GetRegionsRegionMonitorsResult(dict):
+    def __init__(__self__, *,
+                 alerts: Sequence[_builtins.str],
+                 metrics: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] alerts: A list of ACLP alerts services supported in the region.
+        :param Sequence[_builtins.str] metrics: A list of ACLP metrics services supported in the region.
+        """
+        pulumi.set(__self__, "alerts", alerts)
+        pulumi.set(__self__, "metrics", metrics)
+
     @_builtins.property
     @pulumi.getter
-    def resolvers(self) -> Optional[Sequence['outputs.GetRegionsRegionResolverResult']]:
-        return pulumi.get(self, "resolvers")
+    def alerts(self) -> Sequence[_builtins.str]:
+        """
+        A list of ACLP alerts services supported in the region.
+        """
+        return pulumi.get(self, "alerts")
+
+    @_builtins.property
+    @pulumi.getter
+    def metrics(self) -> Sequence[_builtins.str]:
+        """
+        A list of ACLP metrics services supported in the region.
+        """
+        return pulumi.get(self, "metrics")
 
 
 @pulumi.output_type

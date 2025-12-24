@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetNetworkingIpsFilterArgs;
-import com.pulumi.linode.inputs.GetNetworkingIpsIpAddressArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -23,13 +22,6 @@ public final class GetNetworkingIpsArgs extends com.pulumi.resources.InvokeArgs 
 
     public Optional<Output<List<GetNetworkingIpsFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
-    }
-
-    @Import(name="ipAddresses")
-    private @Nullable Output<List<GetNetworkingIpsIpAddressArgs>> ipAddresses;
-
-    public Optional<Output<List<GetNetworkingIpsIpAddressArgs>>> ipAddresses() {
-        return Optional.ofNullable(this.ipAddresses);
     }
 
     /**
@@ -66,7 +58,6 @@ public final class GetNetworkingIpsArgs extends com.pulumi.resources.InvokeArgs 
 
     private GetNetworkingIpsArgs(GetNetworkingIpsArgs $) {
         this.filters = $.filters;
-        this.ipAddresses = $.ipAddresses;
         this.order = $.order;
         this.orderBy = $.orderBy;
     }
@@ -100,19 +91,6 @@ public final class GetNetworkingIpsArgs extends com.pulumi.resources.InvokeArgs 
 
         public Builder filters(GetNetworkingIpsFilterArgs... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder ipAddresses(@Nullable Output<List<GetNetworkingIpsIpAddressArgs>> ipAddresses) {
-            $.ipAddresses = ipAddresses;
-            return this;
-        }
-
-        public Builder ipAddresses(List<GetNetworkingIpsIpAddressArgs> ipAddresses) {
-            return ipAddresses(Output.of(ipAddresses));
-        }
-
-        public Builder ipAddresses(GetNetworkingIpsIpAddressArgs... ipAddresses) {
-            return ipAddresses(List.of(ipAddresses));
         }
 
         /**

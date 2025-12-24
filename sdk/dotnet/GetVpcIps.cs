@@ -313,14 +313,6 @@ namespace Pulumi.Linode
         [Input("vpcId")]
         public int? VpcId { get; set; }
 
-        [Input("vpcIps")]
-        private List<Inputs.GetVpcIpsVpcIpArgs>? _vpcIps;
-        public List<Inputs.GetVpcIpsVpcIpArgs> VpcIps
-        {
-            get => _vpcIps ?? (_vpcIps = new List<Inputs.GetVpcIpsVpcIpArgs>());
-            set => _vpcIps = value;
-        }
-
         public GetVpcIpsArgs()
         {
         }
@@ -347,14 +339,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("vpcId")]
         public Input<int>? VpcId { get; set; }
-
-        [Input("vpcIps")]
-        private InputList<Inputs.GetVpcIpsVpcIpInputArgs>? _vpcIps;
-        public InputList<Inputs.GetVpcIpsVpcIpInputArgs> VpcIps
-        {
-            get => _vpcIps ?? (_vpcIps = new InputList<Inputs.GetVpcIpsVpcIpInputArgs>());
-            set => _vpcIps = value;
-        }
 
         public GetVpcIpsInvokeArgs()
         {

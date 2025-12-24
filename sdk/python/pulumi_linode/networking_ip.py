@@ -28,7 +28,7 @@ class NetworkingIpArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkingIp resource.
-        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         :param pulumi.Input[_builtins.bool] public: Whether the IP address is public. Defaults to true.
         :param pulumi.Input[_builtins.str] region: The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
         :param pulumi.Input[_builtins.bool] reserved: Whether the IPv4 address should be reserved.
@@ -49,7 +49,7 @@ class NetworkingIpArgs:
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+        The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         """
         return pulumi.get(self, "linode_id")
 
@@ -124,7 +124,7 @@ class _NetworkingIpState:
         Input properties used for looking up and filtering NetworkingIp resources.
         :param pulumi.Input[_builtins.str] address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address.
-        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         :param pulumi.Input[_builtins.int] prefix: The number of bits set in the subnet mask.
         :param pulumi.Input[_builtins.bool] public: Whether the IP address is public. Defaults to true.
         :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
@@ -185,7 +185,7 @@ class _NetworkingIpState:
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+        The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         """
         return pulumi.get(self, "linode_id")
 
@@ -329,7 +329,7 @@ class NetworkingIp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         :param pulumi.Input[_builtins.bool] public: Whether the IP address is public. Defaults to true.
         :param pulumi.Input[_builtins.str] region: The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
         :param pulumi.Input[_builtins.bool] reserved: Whether the IPv4 address should be reserved.
@@ -436,7 +436,7 @@ class NetworkingIp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address.
-        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         :param pulumi.Input[_builtins.int] prefix: The number of bits set in the subnet mask.
         :param pulumi.Input[_builtins.bool] public: Whether the IP address is public. Defaults to true.
         :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
@@ -483,7 +483,7 @@ class NetworkingIp(pulumi.CustomResource):
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> pulumi.Output[_builtins.int]:
         """
-        The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+        The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         """
         return pulumi.get(self, "linode_id")
 

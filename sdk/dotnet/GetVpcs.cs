@@ -200,14 +200,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("vpcs")]
-        private List<Inputs.GetVpcsVpcArgs>? _vpcs;
-        public List<Inputs.GetVpcsVpcArgs> Vpcs
-        {
-            get => _vpcs ?? (_vpcs = new List<Inputs.GetVpcsVpcArgs>());
-            set => _vpcs = value;
-        }
-
         public GetVpcsArgs()
         {
         }
@@ -222,14 +214,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetVpcsFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("vpcs")]
-        private InputList<Inputs.GetVpcsVpcInputArgs>? _vpcs;
-        public InputList<Inputs.GetVpcsVpcInputArgs> Vpcs
-        {
-            get => _vpcs ?? (_vpcs = new InputList<Inputs.GetVpcsVpcInputArgs>());
-            set => _vpcs = value;
         }
 
         public GetVpcsInvokeArgs()

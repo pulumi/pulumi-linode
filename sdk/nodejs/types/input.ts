@@ -29,9 +29,18 @@ export interface DatabaseMysqlUpdates {
 }
 
 export interface DatabaseMysqlV2PendingUpdate {
-    deadline: pulumi.Input<string>;
-    description: pulumi.Input<string>;
-    plannedFor: pulumi.Input<string>;
+    /**
+     * The time when a mandatory update needs to be applied.
+     */
+    deadline?: pulumi.Input<string>;
+    /**
+     * A description of the update.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The date and time a maintenance update will be applied.
+     */
+    plannedFor?: pulumi.Input<string>;
 }
 
 export interface DatabaseMysqlV2PrivateNetwork {
@@ -65,10 +74,22 @@ export interface DatabaseMysqlV2Timeouts {
 }
 
 export interface DatabaseMysqlV2Updates {
-    dayOfWeek: pulumi.Input<number>;
-    duration: pulumi.Input<number>;
-    frequency: pulumi.Input<string>;
-    hourOfDay: pulumi.Input<number>;
+    /**
+     * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     */
+    dayOfWeek?: pulumi.Input<number>;
+    /**
+     * The maximum maintenance window time in hours.
+     */
+    duration?: pulumi.Input<number>;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     */
+    frequency?: pulumi.Input<string>;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     */
+    hourOfDay?: pulumi.Input<number>;
 }
 
 export interface DatabasePostgresqlUpdates {
@@ -95,9 +116,18 @@ export interface DatabasePostgresqlUpdates {
 }
 
 export interface DatabasePostgresqlV2PendingUpdate {
-    deadline: pulumi.Input<string>;
-    description: pulumi.Input<string>;
-    plannedFor: pulumi.Input<string>;
+    /**
+     * The time when a mandatory update needs to be applied.
+     */
+    deadline?: pulumi.Input<string>;
+    /**
+     * A description of the update.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The date and time a maintenance update will be applied.
+     */
+    plannedFor?: pulumi.Input<string>;
 }
 
 export interface DatabasePostgresqlV2PrivateNetwork {
@@ -131,10 +161,22 @@ export interface DatabasePostgresqlV2Timeouts {
 }
 
 export interface DatabasePostgresqlV2Updates {
-    dayOfWeek: pulumi.Input<number>;
-    duration: pulumi.Input<number>;
-    frequency: pulumi.Input<string>;
-    hourOfDay: pulumi.Input<number>;
+    /**
+     * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     */
+    dayOfWeek?: pulumi.Input<number>;
+    /**
+     * The maximum maintenance window time in hours.
+     */
+    duration?: pulumi.Input<number>;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     */
+    frequency?: pulumi.Input<string>;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     */
+    hourOfDay?: pulumi.Input<number>;
 }
 
 export interface FirewallDevice {
@@ -241,36 +283,6 @@ export interface FirewallSettingsDefaultFirewallIds {
     vpcInterface?: pulumi.Input<number>;
 }
 
-export interface GetAccountAvailabilitiesAvailability {
-    /**
-     * A set of services which are available for the given region.
-     */
-    availables?: string[];
-    /**
-     * The region this availability entry refers to.
-     */
-    region: string;
-    /**
-     * A set of services that are unavailable for the given region.
-     */
-    unavailables?: string[];
-}
-
-export interface GetAccountAvailabilitiesAvailabilityArgs {
-    /**
-     * A set of services which are available for the given region.
-     */
-    availables?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The region this availability entry refers to.
-     */
-    region: pulumi.Input<string>;
-    /**
-     * A set of services that are unavailable for the given region.
-     */
-    unavailables?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetAccountAvailabilitiesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -331,194 +343,6 @@ export interface GetAccountLoginsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetAccountLoginsLogin {
-    /**
-     * When the login was initiated.
-     */
-    datetime?: string;
-    /**
-     * The unique ID of this login object.
-     */
-    id: number;
-    /**
-     * The remote IP address that requested the login.
-     */
-    ip?: string;
-    /**
-     * True if the User that was logged into was a restricted User, false otherwise.
-     */
-    restricted?: boolean;
-    /**
-     * Whether the login attempt succeeded or failed.
-     */
-    status?: string;
-    /**
-     * The username of the User that was logged into.
-     */
-    username?: string;
-}
-
-export interface GetAccountLoginsLoginArgs {
-    /**
-     * When the login was initiated.
-     */
-    datetime?: pulumi.Input<string>;
-    /**
-     * The unique ID of this login object.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The remote IP address that requested the login.
-     */
-    ip?: pulumi.Input<string>;
-    /**
-     * True if the User that was logged into was a restricted User, false otherwise.
-     */
-    restricted?: pulumi.Input<boolean>;
-    /**
-     * Whether the login attempt succeeded or failed.
-     */
-    status?: pulumi.Input<string>;
-    /**
-     * The username of the User that was logged into.
-     */
-    username?: pulumi.Input<string>;
-}
-
-export interface GetChildAccountsChildAccount {
-    /**
-     * When this account was first activated
-     */
-    activeSince?: string;
-    /**
-     * First line of this Account's billing address.
-     */
-    address1?: string;
-    /**
-     * Second line of this Account's billing address.
-     */
-    address2?: string;
-    /**
-     * This Account's balance, in US dollars.
-     */
-    balance?: number;
-    /**
-     * A set containing all the capabilities of this Account.
-     */
-    capabilities?: string[];
-    /**
-     * The city for this Account's billing address.
-     */
-    city?: string;
-    /**
-     * The company name associated with this Account.
-     */
-    company?: string;
-    /**
-     * The two-letter country code of this Account's billing address.
-     */
-    country?: string;
-    /**
-     * The email address for this Account, for account management communications, and may be used for other communications as configured.
-     */
-    email?: string;
-    /**
-     * The unique ID of this Account.
-     */
-    euuid?: string;
-    /**
-     * The first name of the person associated with this Account.
-     */
-    firstName?: string;
-    /**
-     * The Email of the Account.
-     */
-    id?: string;
-    /**
-     * The last name of the person associated with this Account.
-     */
-    lastName?: string;
-    /**
-     * The phone number associated with this Account.
-     */
-    phone?: string;
-    /**
-     * If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
-     */
-    state?: string;
-    /**
-     * The zip code of this Account's billing address.
-     */
-    zip?: string;
-}
-
-export interface GetChildAccountsChildAccountArgs {
-    /**
-     * When this account was first activated
-     */
-    activeSince?: pulumi.Input<string>;
-    /**
-     * First line of this Account's billing address.
-     */
-    address1?: pulumi.Input<string>;
-    /**
-     * Second line of this Account's billing address.
-     */
-    address2?: pulumi.Input<string>;
-    /**
-     * This Account's balance, in US dollars.
-     */
-    balance?: pulumi.Input<number>;
-    /**
-     * A set containing all the capabilities of this Account.
-     */
-    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The city for this Account's billing address.
-     */
-    city?: pulumi.Input<string>;
-    /**
-     * The company name associated with this Account.
-     */
-    company?: pulumi.Input<string>;
-    /**
-     * The two-letter country code of this Account's billing address.
-     */
-    country?: pulumi.Input<string>;
-    /**
-     * The email address for this Account, for account management communications, and may be used for other communications as configured.
-     */
-    email?: pulumi.Input<string>;
-    /**
-     * The unique ID of this Account.
-     */
-    euuid?: pulumi.Input<string>;
-    /**
-     * The first name of the person associated with this Account.
-     */
-    firstName?: pulumi.Input<string>;
-    /**
-     * The Email of the Account.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The last name of the person associated with this Account.
-     */
-    lastName?: pulumi.Input<string>;
-    /**
-     * The phone number associated with this Account.
-     */
-    phone?: pulumi.Input<string>;
-    /**
-     * If billing address is in the United States, this is the State portion of the Account's billing address. If the address is outside the US, this is the Province associated with the Account's billing address.
-     */
-    state?: pulumi.Input<string>;
-    /**
-     * The zip code of this Account's billing address.
-     */
-    zip?: pulumi.Input<string>;
-}
-
 export interface GetChildAccountsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -549,42 +373,334 @@ export interface GetChildAccountsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetDatabaseBackupsBackup {
+export interface GetConsumerImageShareGroupImageSharesFilter {
     /**
-     * A time value given in a combined date and time format that represents when the database backup was created.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetConsumerImageShareGroupImageSharesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetConsumerImageShareGroupImageSharesImageShare {
+    /**
+     * The capabilities of the Image represented by the Image Share.
+     */
+    capabilities?: string[];
+    /**
+     * When this Image Share was created.
      */
     created?: string;
     /**
-     * The ID of the database backup object.
+     * Whether this Image is deprecated.
      */
-    id?: number;
+    deprecated?: boolean;
     /**
-     * The database backup’s label, for display purposes only.
+     * A description of the Image Share.
+     */
+    description?: string;
+    /**
+     * The unique ID assigned to this Image Share.
+     */
+    id?: string;
+    /**
+     * Details about image sharing, including who the image is shared with and by.
+     */
+    imageSharing?: inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharing;
+    /**
+     * True if the Image is public.
+     */
+    isPublic?: boolean;
+    /**
+     * The label of the Image Share.
      */
     label?: string;
     /**
-     * The type of database backup, determined by how the backup was created.
+     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
+     */
+    size?: number;
+    /**
+     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     */
+    status?: string;
+    /**
+     * A list of customized tags.
+     */
+    tags?: string[];
+    /**
+     * The total size of the image in all available regions.
+     */
+    totalSize?: number;
+    /**
+     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
      */
     type?: string;
 }
 
-export interface GetDatabaseBackupsBackupArgs {
+export interface GetConsumerImageShareGroupImageSharesImageShareArgs {
     /**
-     * A time value given in a combined date and time format that represents when the database backup was created.
+     * The capabilities of the Image represented by the Image Share.
+     */
+    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When this Image Share was created.
      */
     created?: pulumi.Input<string>;
     /**
-     * The ID of the database backup object.
+     * Whether this Image is deprecated.
      */
-    id?: pulumi.Input<number>;
+    deprecated?: pulumi.Input<boolean>;
     /**
-     * The database backup’s label, for display purposes only.
+     * A description of the Image Share.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The unique ID assigned to this Image Share.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Details about image sharing, including who the image is shared with and by.
+     */
+    imageSharing?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs>;
+    /**
+     * True if the Image is public.
+     */
+    isPublic?: pulumi.Input<boolean>;
+    /**
+     * The label of the Image Share.
      */
     label?: pulumi.Input<string>;
     /**
-     * The type of database backup, determined by how the backup was created.
+     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
+     */
+    size?: pulumi.Input<number>;
+    /**
+     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * A list of customized tags.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The total size of the image in all available regions.
+     */
+    totalSize?: pulumi.Input<number>;
+    /**
+     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
      */
     type?: pulumi.Input<string>;
+}
+
+export interface GetConsumerImageShareGroupImageSharesImageShareImageSharing {
+    /**
+     * Details about who the image is shared by.
+     */
+    sharedBy?: inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy;
+    /**
+     * Details about who the image is shared with.
+     */
+    sharedWith?: inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith;
+}
+
+export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs {
+    /**
+     * Details about who the image is shared by.
+     */
+    sharedBy?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs>;
+    /**
+     * Details about who the image is shared with.
+     */
+    sharedWith?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs>;
+}
+
+export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy {
+    /**
+     * The sharegroupId from the im_ImageShare row.
+     */
+    sharegroupId?: number;
+    /**
+     * The label from the associated im_ImageShareGroup row.
+     */
+    sharegroupLabel?: string;
+    /**
+     * The sharegroupUuid from the im_ImageShare row.
+     */
+    sharegroupUuid?: string;
+    /**
+     * The image id of the base image (will only be shown to producers, will be null for consumers).
+     */
+    sourceImageId?: string;
+}
+
+export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs {
+    /**
+     * The sharegroupId from the im_ImageShare row.
+     */
+    sharegroupId?: pulumi.Input<number>;
+    /**
+     * The label from the associated im_ImageShareGroup row.
+     */
+    sharegroupLabel?: pulumi.Input<string>;
+    /**
+     * The sharegroupUuid from the im_ImageShare row.
+     */
+    sharegroupUuid?: pulumi.Input<string>;
+    /**
+     * The image id of the base image (will only be shown to producers, will be null for consumers).
+     */
+    sourceImageId?: pulumi.Input<string>;
+}
+
+export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith {
+    /**
+     * The number of sharegroups the private image is present in.
+     */
+    sharegroupCount?: number;
+    /**
+     * The GET api url to view the sharegroups in which the image is shared.
+     */
+    sharegroupListUrl?: string;
+}
+
+export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs {
+    /**
+     * The number of sharegroups the private image is present in.
+     */
+    sharegroupCount?: pulumi.Input<number>;
+    /**
+     * The GET api url to view the sharegroups in which the image is shared.
+     */
+    sharegroupListUrl?: pulumi.Input<string>;
+}
+
+export interface GetConsumerImageShareGroupTokensFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetConsumerImageShareGroupTokensFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetConsumerImageShareGroupTokensToken {
+    /**
+     * When the token was created.
+     */
+    created?: string;
+    /**
+     * When the token will expire.
+     */
+    expiry?: string;
+    /**
+     * A label for the token.
+     */
+    label?: string;
+    /**
+     * The label of the Image Share Group that the token is for.
+     */
+    sharegroupLabel?: string;
+    /**
+     * The UUID of the Image Share Group that the token is for.
+     */
+    sharegroupUuid?: string;
+    /**
+     * The status of the token.
+     */
+    status?: string;
+    /**
+     * The UUID of the token.
+     */
+    tokenUuid: string;
+    /**
+     * When the token was last updated.
+     */
+    updated?: string;
+    /**
+     * The UUID of the Image Share Group for which to create a token.
+     */
+    validForSharegroupUuid?: string;
+}
+
+export interface GetConsumerImageShareGroupTokensTokenArgs {
+    /**
+     * When the token was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * When the token will expire.
+     */
+    expiry?: pulumi.Input<string>;
+    /**
+     * A label for the token.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The label of the Image Share Group that the token is for.
+     */
+    sharegroupLabel?: pulumi.Input<string>;
+    /**
+     * The UUID of the Image Share Group that the token is for.
+     */
+    sharegroupUuid?: pulumi.Input<string>;
+    /**
+     * The status of the token.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The UUID of the token.
+     */
+    tokenUuid: pulumi.Input<string>;
+    /**
+     * When the token was last updated.
+     */
+    updated?: pulumi.Input<string>;
+    /**
+     * The UUID of the Image Share Group for which to create a token.
+     */
+    validForSharegroupUuid?: pulumi.Input<string>;
 }
 
 export interface GetDatabaseBackupsFilter {
@@ -615,36 +731,6 @@ export interface GetDatabaseBackupsFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetDatabaseEnginesEngine {
-    /**
-     * The Managed Database engine type.
-     */
-    engine?: string;
-    /**
-     * The Managed Database engine ID in engine/version format.
-     */
-    id?: string;
-    /**
-     * The Managed Database engine version.
-     */
-    version?: string;
-}
-
-export interface GetDatabaseEnginesEngineArgs {
-    /**
-     * The Managed Database engine type.
-     */
-    engine?: pulumi.Input<string>;
-    /**
-     * The Managed Database engine ID in engine/version format.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The Managed Database engine version.
-     */
-    version?: pulumi.Input<string>;
 }
 
 export interface GetDatabaseEnginesFilter {
@@ -707,184 +793,42 @@ export interface GetDatabaseMysqlBackupsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetDatabasesDatabase {
+export interface GetDatabasePostgresqlV2Updates {
     /**
-     * A list of IP addresses that can access the Managed Database.
+     * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      */
-    allowLists?: string[];
+    dayOfWeek?: number;
     /**
-     * The number of Linode Instance nodes deployed to the Managed Database.
+     * The maximum maintenance window time in hours.
      */
-    clusterSize?: number;
+    duration?: number;
     /**
-     * When this Managed Database was created.
+     * How frequently maintenance occurs. Currently can only be weekly.
      */
-    created?: string;
+    frequency?: string;
     /**
-     * Whether the Managed Databases is encrypted.
+     * How frequently maintenance occurs. Currently can only be weekly.
      */
-    encrypted?: boolean;
-    /**
-     * The Managed Database engine.
-     */
-    engine?: string;
-    /**
-     * The primary host for the Managed Database.
-     */
-    hostPrimary?: string;
-    /**
-     * The secondary/private network host for the Managed Database.
-     */
-    hostSecondary?: string;
-    /**
-     * The ID of the Managed Database.
-     */
-    id?: number;
-    /**
-     * he API route for the database instance.
-     */
-    instanceUri?: string;
-    /**
-     * A unique, user-defined string referring to the Managed Database.
-     */
-    label?: string;
-    /**
-     * Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
-     */
-    privateNetwork?: inputs.GetDatabasesDatabasePrivateNetwork;
-    /**
-     * The region to use for the Managed Database.
-     */
-    region?: string;
-    /**
-     * The replication method used for the Managed Database.
-     */
-    replicationType?: string;
-    /**
-     * Whether to require SSL credentials to establish a connection to the Managed Database.
-     */
-    sslConnection?: boolean;
-    /**
-     * The operating status of the Managed Database.
-     */
-    status?: string;
-    /**
-     * The Linode Instance type used for the nodes of the  Managed Database instance.
-     */
-    type?: string;
-    /**
-     * When this Managed Database was last updated.
-     */
-    updated?: string;
-    /**
-     * The Managed Database engine version.
-     */
-    version?: string;
+    hourOfDay?: number;
 }
 
-export interface GetDatabasesDatabaseArgs {
+export interface GetDatabasePostgresqlV2UpdatesArgs {
     /**
-     * A list of IP addresses that can access the Managed Database.
+     * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      */
-    allowLists?: pulumi.Input<pulumi.Input<string>[]>;
+    dayOfWeek?: pulumi.Input<number>;
     /**
-     * The number of Linode Instance nodes deployed to the Managed Database.
+     * The maximum maintenance window time in hours.
      */
-    clusterSize?: pulumi.Input<number>;
+    duration?: pulumi.Input<number>;
     /**
-     * When this Managed Database was created.
+     * How frequently maintenance occurs. Currently can only be weekly.
      */
-    created?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string>;
     /**
-     * Whether the Managed Databases is encrypted.
+     * How frequently maintenance occurs. Currently can only be weekly.
      */
-    encrypted?: pulumi.Input<boolean>;
-    /**
-     * The Managed Database engine.
-     */
-    engine?: pulumi.Input<string>;
-    /**
-     * The primary host for the Managed Database.
-     */
-    hostPrimary?: pulumi.Input<string>;
-    /**
-     * The secondary/private network host for the Managed Database.
-     */
-    hostSecondary?: pulumi.Input<string>;
-    /**
-     * The ID of the Managed Database.
-     */
-    id?: pulumi.Input<number>;
-    /**
-     * he API route for the database instance.
-     */
-    instanceUri?: pulumi.Input<string>;
-    /**
-     * A unique, user-defined string referring to the Managed Database.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
-     */
-    privateNetwork?: pulumi.Input<inputs.GetDatabasesDatabasePrivateNetworkArgs>;
-    /**
-     * The region to use for the Managed Database.
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The replication method used for the Managed Database.
-     */
-    replicationType?: pulumi.Input<string>;
-    /**
-     * Whether to require SSL credentials to establish a connection to the Managed Database.
-     */
-    sslConnection?: pulumi.Input<boolean>;
-    /**
-     * The operating status of the Managed Database.
-     */
-    status?: pulumi.Input<string>;
-    /**
-     * The Linode Instance type used for the nodes of the  Managed Database instance.
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * When this Managed Database was last updated.
-     */
-    updated?: pulumi.Input<string>;
-    /**
-     * The Managed Database engine version.
-     */
-    version?: pulumi.Input<string>;
-}
-
-export interface GetDatabasesDatabasePrivateNetwork {
-    /**
-     * If true, clients outside of the VPC can connect to the database using a public IP address.
-     */
-    publicAccess?: boolean;
-    /**
-     * The ID of the VPC subnet to restrict access to this database using.
-     */
-    subnetId?: number;
-    /**
-     * The ID of the virtual private cloud (VPC) to restrict access to this database using.
-     */
-    vpcId?: number;
-}
-
-export interface GetDatabasesDatabasePrivateNetworkArgs {
-    /**
-     * If true, clients outside of the VPC can connect to the database using a public IP address.
-     */
-    publicAccess?: pulumi.Input<boolean>;
-    /**
-     * The ID of the VPC subnet to restrict access to this database using.
-     */
-    subnetId?: pulumi.Input<number>;
-    /**
-     * The ID of the virtual private cloud (VPC) to restrict access to this database using.
-     */
-    vpcId?: pulumi.Input<number>;
+    hourOfDay?: pulumi.Input<number>;
 }
 
 export interface GetDatabasesFilter {
@@ -915,124 +859,6 @@ export interface GetDatabasesFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetDomainsDomain {
-    /**
-     * The list of IPs that may perform a zone transfer for this Domain.
-     */
-    axfrIps?: string[];
-    /**
-     * A description for this Domain.
-     */
-    description?: string;
-    /**
-     * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-     */
-    domain?: string;
-    /**
-     * The amount of time in seconds that may pass before this Domain is no longer authoritative.
-     */
-    expireSec?: number;
-    /**
-     * The group this Domain belongs to.
-     */
-    group?: string;
-    /**
-     * The unique ID of this Domain.
-     */
-    id?: number;
-    /**
-     * The IP addresses representing the master DNS for this Domain.
-     */
-    masterIps?: string[];
-    /**
-     * The amount of time in seconds before this Domain should be refreshed.
-     */
-    refreshSec?: number;
-    /**
-     * The interval, in seconds, at which a failed refresh should be retried.
-     */
-    retrySec?: number;
-    /**
-     * Start of Authority email address.
-     */
-    soaEmail?: string;
-    /**
-     * Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-     */
-    status?: string;
-    /**
-     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: string[];
-    /**
-     * 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-     */
-    ttlSec?: number;
-    /**
-     * If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-     */
-    type?: string;
-}
-
-export interface GetDomainsDomainArgs {
-    /**
-     * The list of IPs that may perform a zone transfer for this Domain.
-     */
-    axfrIps?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A description for this Domain.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain
-     */
-    domain?: pulumi.Input<string>;
-    /**
-     * The amount of time in seconds that may pass before this Domain is no longer authoritative.
-     */
-    expireSec?: pulumi.Input<number>;
-    /**
-     * The group this Domain belongs to.
-     */
-    group?: pulumi.Input<string>;
-    /**
-     * The unique ID of this Domain.
-     */
-    id?: pulumi.Input<number>;
-    /**
-     * The IP addresses representing the master DNS for this Domain.
-     */
-    masterIps?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The amount of time in seconds before this Domain should be refreshed.
-     */
-    refreshSec?: pulumi.Input<number>;
-    /**
-     * The interval, in seconds, at which a failed refresh should be retried.
-     */
-    retrySec?: pulumi.Input<number>;
-    /**
-     * Start of Authority email address.
-     */
-    soaEmail?: pulumi.Input<string>;
-    /**
-     * Used to control whether this Domain is currently being rendered. (`disabled`, `active`)
-     */
-    status?: pulumi.Input<string>;
-    /**
-     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * 'Time to Live'-the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
-     */
-    ttlSec?: pulumi.Input<number>;
-    /**
-     * If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave) (`master`, `slave`)
-     */
-    type?: pulumi.Input<string>;
 }
 
 export interface GetDomainsFilter {
@@ -1095,92 +921,6 @@ export interface GetFirewallTemplatesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetFirewallTemplatesFirewallTemplate {
-    /**
-     * The default behavior for inbound traffic.
-     */
-    inboundPolicy?: string;
-    /**
-     * A list of firewall rules specifying allowed inbound network traffic.
-     */
-    inbounds?: inputs.GetFirewallTemplatesFirewallTemplateInbound[];
-    /**
-     * The default behavior for outbound traffic.
-     */
-    outboundPolicy?: string;
-    /**
-     * A list of firewall rules specifying allowed outbound network traffic.
-     */
-    outbounds?: inputs.GetFirewallTemplatesFirewallTemplateOutbound[];
-    /**
-     * The slug of the firewall template.
-     */
-    slug?: string;
-}
-
-export interface GetFirewallTemplatesFirewallTemplateArgs {
-    /**
-     * The default behavior for inbound traffic.
-     */
-    inboundPolicy?: pulumi.Input<string>;
-    /**
-     * A list of firewall rules specifying allowed inbound network traffic.
-     */
-    inbounds?: pulumi.Input<pulumi.Input<inputs.GetFirewallTemplatesFirewallTemplateInboundArgs>[]>;
-    /**
-     * The default behavior for outbound traffic.
-     */
-    outboundPolicy?: pulumi.Input<string>;
-    /**
-     * A list of firewall rules specifying allowed outbound network traffic.
-     */
-    outbounds?: pulumi.Input<pulumi.Input<inputs.GetFirewallTemplatesFirewallTemplateOutboundArgs>[]>;
-    /**
-     * The slug of the firewall template.
-     */
-    slug?: pulumi.Input<string>;
-}
-
-export interface GetFirewallTemplatesFirewallTemplateInbound {
-    action: string;
-    description: string;
-    ipv4s: string[];
-    ipv6s: string[];
-    label: string;
-    ports: string;
-    protocol: string;
-}
-
-export interface GetFirewallTemplatesFirewallTemplateInboundArgs {
-    action: pulumi.Input<string>;
-    description: pulumi.Input<string>;
-    ipv4s: pulumi.Input<pulumi.Input<string>[]>;
-    ipv6s: pulumi.Input<pulumi.Input<string>[]>;
-    label: pulumi.Input<string>;
-    ports: pulumi.Input<string>;
-    protocol: pulumi.Input<string>;
-}
-
-export interface GetFirewallTemplatesFirewallTemplateOutbound {
-    action: string;
-    description: string;
-    ipv4s: string[];
-    ipv6s: string[];
-    label: string;
-    ports: string;
-    protocol: string;
-}
-
-export interface GetFirewallTemplatesFirewallTemplateOutboundArgs {
-    action: pulumi.Input<string>;
-    description: pulumi.Input<string>;
-    ipv4s: pulumi.Input<pulumi.Input<string>[]>;
-    ipv6s: pulumi.Input<pulumi.Input<string>[]>;
-    label: pulumi.Input<string>;
-    ports: pulumi.Input<string>;
-    protocol: pulumi.Input<string>;
-}
-
 export interface GetFirewallsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -1209,308 +949,6 @@ export interface GetFirewallsFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetFirewallsFirewall {
-    /**
-     * When this firewall was created.
-     */
-    created?: string;
-    /**
-     * The devices associated with this firewall.
-     */
-    devices?: inputs.GetFirewallsFirewallDevice[];
-    /**
-     * If true, the Firewall is inactive.
-     */
-    disabled?: boolean;
-    /**
-     * The unique ID assigned to this Firewall.
-     */
-    id?: number;
-    /**
-     * The default behavior for inbound traffic.
-     */
-    inboundPolicy?: string;
-    /**
-     * A set of firewall rules that specify what inbound network traffic is allowed.
-     */
-    inbounds?: inputs.GetFirewallsFirewallInbound[];
-    /**
-     * The IDs of Linode Interfaces this firewall is applied to.
-     */
-    interfaces?: number[];
-    /**
-     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-     */
-    label?: string;
-    /**
-     * The IDs of Linodes this firewall is applied to.
-     */
-    linodes?: number[];
-    /**
-     * The IDs of NodeBalancers this firewall is applied to.
-     */
-    nodebalancers?: number[];
-    /**
-     * The default behavior for outbound traffic.
-     */
-    outboundPolicy?: string;
-    /**
-     * A set of firewall rules that specify what outbound network traffic is allowed.
-     */
-    outbounds?: inputs.GetFirewallsFirewallOutbound[];
-    /**
-     * The status of the firewall.
-     */
-    status?: string;
-    /**
-     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: string[];
-    /**
-     * When this firewall was last updated.
-     */
-    updated?: string;
-}
-
-export interface GetFirewallsFirewallArgs {
-    /**
-     * When this firewall was created.
-     */
-    created?: pulumi.Input<string>;
-    /**
-     * The devices associated with this firewall.
-     */
-    devices?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFirewallDeviceArgs>[]>;
-    /**
-     * If true, the Firewall is inactive.
-     */
-    disabled?: pulumi.Input<boolean>;
-    /**
-     * The unique ID assigned to this Firewall.
-     */
-    id?: pulumi.Input<number>;
-    /**
-     * The default behavior for inbound traffic.
-     */
-    inboundPolicy?: pulumi.Input<string>;
-    /**
-     * A set of firewall rules that specify what inbound network traffic is allowed.
-     */
-    inbounds?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFirewallInboundArgs>[]>;
-    /**
-     * The IDs of Linode Interfaces this firewall is applied to.
-     */
-    interfaces?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * The IDs of Linodes this firewall is applied to.
-     */
-    linodes?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * The IDs of NodeBalancers this firewall is applied to.
-     */
-    nodebalancers?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * The default behavior for outbound traffic.
-     */
-    outboundPolicy?: pulumi.Input<string>;
-    /**
-     * A set of firewall rules that specify what outbound network traffic is allowed.
-     */
-    outbounds?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFirewallOutboundArgs>[]>;
-    /**
-     * The status of the firewall.
-     */
-    status?: pulumi.Input<string>;
-    /**
-     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * When this firewall was last updated.
-     */
-    updated?: pulumi.Input<string>;
-}
-
-export interface GetFirewallsFirewallDevice {
-    /**
-     * The ID of the underlying entity this device references (i.e. the Linode's ID).
-     */
-    entityId?: number;
-    /**
-     * The unique ID assigned to this Firewall.
-     */
-    id?: number;
-    /**
-     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-     */
-    label?: string;
-    /**
-     * The type of Firewall Device.
-     */
-    type?: string;
-    /**
-     * The URL of the underlying entity this device references.
-     */
-    url?: string;
-}
-
-export interface GetFirewallsFirewallDeviceArgs {
-    /**
-     * The ID of the underlying entity this device references (i.e. the Linode's ID).
-     */
-    entityId?: pulumi.Input<number>;
-    /**
-     * The unique ID assigned to this Firewall.
-     */
-    id?: pulumi.Input<number>;
-    /**
-     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * The type of Firewall Device.
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * The URL of the underlying entity this device references.
-     */
-    url?: pulumi.Input<string>;
-}
-
-export interface GetFirewallsFirewallInbound {
-    /**
-     * Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
-     */
-    action?: string;
-    /**
-     * A list of IPv4 addresses or networks in IP/mask format.
-     */
-    ipv4s?: string[];
-    /**
-     * A list of IPv6 addresses or networks in IP/mask format.
-     */
-    ipv6s?: string[];
-    /**
-     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-     */
-    label?: string;
-    /**
-     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-     */
-    ports?: string;
-    /**
-     * The network protocol this rule controls. (TCP, UDP, ICMP)
-     */
-    protocol?: string;
-}
-
-export interface GetFirewallsFirewallInboundArgs {
-    /**
-     * Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
-     */
-    action?: pulumi.Input<string>;
-    /**
-     * A list of IPv4 addresses or networks in IP/mask format.
-     */
-    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of IPv6 addresses or networks in IP/mask format.
-     */
-    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-     */
-    ports?: pulumi.Input<string>;
-    /**
-     * The network protocol this rule controls. (TCP, UDP, ICMP)
-     */
-    protocol?: pulumi.Input<string>;
-}
-
-export interface GetFirewallsFirewallOutbound {
-    /**
-     * Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
-     */
-    action?: string;
-    /**
-     * A list of IPv4 addresses or networks in IP/mask format.
-     */
-    ipv4s?: string[];
-    /**
-     * A list of IPv6 addresses or networks in IP/mask format.
-     */
-    ipv6s?: string[];
-    /**
-     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-     */
-    label?: string;
-    /**
-     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-     */
-    ports?: string;
-    /**
-     * The network protocol this rule controls. (TCP, UDP, ICMP)
-     */
-    protocol?: string;
-}
-
-export interface GetFirewallsFirewallOutboundArgs {
-    /**
-     * Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
-     */
-    action?: pulumi.Input<string>;
-    /**
-     * A list of IPv4 addresses or networks in IP/mask format.
-     */
-    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of IPv6 addresses or networks in IP/mask format.
-     */
-    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-     */
-    ports?: pulumi.Input<string>;
-    /**
-     * The network protocol this rule controls. (TCP, UDP, ICMP)
-     */
-    protocol?: pulumi.Input<string>;
-}
-
-export interface GetImageReplication {
-    /**
-     * The region of an image replica.
-     */
-    region?: string;
-    /**
-     * The status of an image replica.
-     */
-    status?: string;
-}
-
-export interface GetImageReplicationArgs {
-    /**
-     * The region of an image replica.
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The status of an image replica.
-     */
-    status?: pulumi.Input<string>;
 }
 
 export interface GetImagesFilter {
@@ -1543,162 +981,6 @@ export interface GetImagesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetImagesImage {
-    /**
-     * The capabilities of this Image.
-     */
-    capabilities?: string[];
-    /**
-     * When this Image was created.
-     */
-    created?: string;
-    /**
-     * The name of the User who created this Image, or "linode" for official Images.
-     */
-    createdBy?: string;
-    /**
-     * Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     */
-    deprecated?: boolean;
-    /**
-     * A detailed description of this Image.
-     */
-    description?: string;
-    /**
-     * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
-     */
-    expiry?: string;
-    /**
-     * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-     */
-    id: string;
-    /**
-     * True if the Image is public.
-     */
-    isPublic?: boolean;
-    /**
-     * A short description of the Image.
-     */
-    label?: string;
-    /**
-     * A list of image replication regions and corresponding status.
-     */
-    replications?: inputs.GetImagesImageReplication[];
-    /**
-     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     */
-    size?: number;
-    /**
-     * The status of an image replica.
-     */
-    status?: string;
-    /**
-     * A list of customized tags.
-     */
-    tags?: string[];
-    /**
-     * The total size of the image in all available regions.
-     */
-    totalSize?: number;
-    /**
-     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     */
-    type?: string;
-    /**
-     * The upstream distribution vendor. `None` for private Images.
-     */
-    vendor?: string;
-}
-
-export interface GetImagesImageArgs {
-    /**
-     * The capabilities of this Image.
-     */
-    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * When this Image was created.
-     */
-    created?: pulumi.Input<string>;
-    /**
-     * The name of the User who created this Image, or "linode" for official Images.
-     */
-    createdBy?: pulumi.Input<string>;
-    /**
-     * Whether or not this Image is deprecated. Will only be true for deprecated public Images.
-     */
-    deprecated?: pulumi.Input<boolean>;
-    /**
-     * A detailed description of this Image.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
-     */
-    expiry?: pulumi.Input<string>;
-    /**
-     * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * True if the Image is public.
-     */
-    isPublic?: pulumi.Input<boolean>;
-    /**
-     * A short description of the Image.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * A list of image replication regions and corresponding status.
-     */
-    replications?: pulumi.Input<pulumi.Input<inputs.GetImagesImageReplicationArgs>[]>;
-    /**
-     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
-     */
-    size?: pulumi.Input<number>;
-    /**
-     * The status of an image replica.
-     */
-    status?: pulumi.Input<string>;
-    /**
-     * A list of customized tags.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The total size of the image in all available regions.
-     */
-    totalSize?: pulumi.Input<number>;
-    /**
-     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * The upstream distribution vendor. `None` for private Images.
-     */
-    vendor?: pulumi.Input<string>;
-}
-
-export interface GetImagesImageReplication {
-    /**
-     * The region of an image replica.
-     */
-    region?: string;
-    /**
-     * The status of an image replica.
-     */
-    status?: string;
-}
-
-export interface GetImagesImageReplicationArgs {
-    /**
-     * The region of an image replica.
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The status of an image replica.
-     */
-    status?: pulumi.Input<string>;
-}
-
 export interface GetInstanceTypesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -1727,206 +1009,6 @@ export interface GetInstanceTypesFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetInstanceTypesType {
-    /**
-     * The number of VPUs this Linode Type offers.
-     */
-    acceleratedDevices?: number;
-    /**
-     * Information about the optional Backup service offered for Linodes.
-     */
-    addons?: inputs.GetInstanceTypesTypeAddon[];
-    /**
-     * The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
-     */
-    class?: string;
-    /**
-     * The Disk size, in MB, of the Linode Type.
-     */
-    disk?: number;
-    /**
-     * The ID representing the Linode Type.
-     */
-    id: string;
-    /**
-     * The Linode Type's label is for display purposes only.
-     */
-    label?: string;
-    /**
-     * The amount of RAM included in this Linode Type.
-     */
-    memory?: number;
-    /**
-     * The Mbits outbound bandwidth allocation.
-     */
-    networkOut?: number;
-    /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
-     */
-    prices?: inputs.GetInstanceTypesTypePrice[];
-    /**
-     * A list of region-specific prices for this plan.
-     */
-    regionPrices?: inputs.GetInstanceTypesTypeRegionPrice[];
-    /**
-     * The monthly outbound transfer amount, in MB.
-     */
-    transfer?: number;
-    /**
-     * The number of VCPU cores this Linode Type offers.
-     */
-    vcpus?: number;
-}
-
-export interface GetInstanceTypesTypeArgs {
-    /**
-     * The number of VPUs this Linode Type offers.
-     */
-    acceleratedDevices?: pulumi.Input<number>;
-    /**
-     * Information about the optional Backup service offered for Linodes.
-     */
-    addons?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeAddonArgs>[]>;
-    /**
-     * The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-types).
-     */
-    class?: pulumi.Input<string>;
-    /**
-     * The Disk size, in MB, of the Linode Type.
-     */
-    disk?: pulumi.Input<number>;
-    /**
-     * The ID representing the Linode Type.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * The Linode Type's label is for display purposes only.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * The amount of RAM included in this Linode Type.
-     */
-    memory?: pulumi.Input<number>;
-    /**
-     * The Mbits outbound bandwidth allocation.
-     */
-    networkOut?: pulumi.Input<number>;
-    /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
-     */
-    prices?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypePriceArgs>[]>;
-    /**
-     * A list of region-specific prices for this plan.
-     */
-    regionPrices?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeRegionPriceArgs>[]>;
-    /**
-     * The monthly outbound transfer amount, in MB.
-     */
-    transfer?: pulumi.Input<number>;
-    /**
-     * The number of VCPU cores this Linode Type offers.
-     */
-    vcpus?: pulumi.Input<number>;
-}
-
-export interface GetInstanceTypesTypeAddon {
-    backups: inputs.GetInstanceTypesTypeAddonBackup[];
-}
-
-export interface GetInstanceTypesTypeAddonArgs {
-    backups: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeAddonBackupArgs>[]>;
-}
-
-export interface GetInstanceTypesTypeAddonBackup {
-    prices: inputs.GetInstanceTypesTypeAddonBackupPrice[];
-    regionPrices: inputs.GetInstanceTypesTypeAddonBackupRegionPrice[];
-}
-
-export interface GetInstanceTypesTypeAddonBackupArgs {
-    prices: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeAddonBackupPriceArgs>[]>;
-    regionPrices: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesTypeAddonBackupRegionPriceArgs>[]>;
-}
-
-export interface GetInstanceTypesTypeAddonBackupPrice {
-    /**
-     * The cost (in US dollars) per hour to add Backups service.
-     */
-    hourly: number;
-    /**
-     * The cost (in US dollars) per month to add Backups service.
-     */
-    monthly: number;
-}
-
-export interface GetInstanceTypesTypeAddonBackupPriceArgs {
-    /**
-     * The cost (in US dollars) per hour to add Backups service.
-     */
-    hourly: pulumi.Input<number>;
-    /**
-     * The cost (in US dollars) per month to add Backups service.
-     */
-    monthly: pulumi.Input<number>;
-}
-
-export interface GetInstanceTypesTypeAddonBackupRegionPrice {
-    hourly: number;
-    /**
-     * The ID representing the Linode Type.
-     */
-    id: string;
-    monthly: number;
-}
-
-export interface GetInstanceTypesTypeAddonBackupRegionPriceArgs {
-    hourly: pulumi.Input<number>;
-    /**
-     * The ID representing the Linode Type.
-     */
-    id: pulumi.Input<string>;
-    monthly: pulumi.Input<number>;
-}
-
-export interface GetInstanceTypesTypePrice {
-    /**
-     * Cost (in US dollars) per hour.
-     */
-    hourly: number;
-    /**
-     * Cost (in US dollars) per month.
-     */
-    monthly: number;
-}
-
-export interface GetInstanceTypesTypePriceArgs {
-    /**
-     * Cost (in US dollars) per hour.
-     */
-    hourly: pulumi.Input<number>;
-    /**
-     * Cost (in US dollars) per month.
-     */
-    monthly: pulumi.Input<number>;
-}
-
-export interface GetInstanceTypesTypeRegionPrice {
-    hourly: number;
-    /**
-     * The ID representing the Linode Type.
-     */
-    id: string;
-    monthly: number;
-}
-
-export interface GetInstanceTypesTypeRegionPriceArgs {
-    hourly: pulumi.Input<number>;
-    /**
-     * The ID representing the Linode Type.
-     */
-    id: pulumi.Input<string>;
-    monthly: pulumi.Input<number>;
 }
 
 export interface GetInstancesFilter {
@@ -1989,44 +1071,6 @@ export interface GetIpv6RangesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetIpv6RangesRange {
-    /**
-     * The prefix length of the address, denoting how many addresses can be assigned from this range.
-     */
-    prefix?: number;
-    /**
-     * The IPv6 address of this range.
-     */
-    range?: string;
-    /**
-     * The region for this range of IPv6 addresses.
-     */
-    region?: string;
-    /**
-     * The IPv6 SLAAC address.
-     */
-    routeTarget?: string;
-}
-
-export interface GetIpv6RangesRangeArgs {
-    /**
-     * The prefix length of the address, denoting how many addresses can be assigned from this range.
-     */
-    prefix?: pulumi.Input<number>;
-    /**
-     * The IPv6 address of this range.
-     */
-    range?: pulumi.Input<string>;
-    /**
-     * The region for this range of IPv6 addresses.
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The IPv6 SLAAC address.
-     */
-    routeTarget?: pulumi.Input<string>;
-}
-
 export interface GetKernelsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -2055,380 +1099,6 @@ export interface GetKernelsFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetKernelsKernel {
-    /**
-     * The architecture of this Kernel.
-     */
-    architecture?: string;
-    /**
-     * The date on which this Kernel was built.
-     */
-    built?: string;
-    /**
-     * Whether or not this Kernel is deprecated.
-     */
-    deprecated?: boolean;
-    /**
-     * The unique ID of this Kernel.
-     */
-    id: string;
-    /**
-     * If this Kernel is suitable for KVM Linodes.
-     */
-    kvm?: boolean;
-    /**
-     * The friendly name of this Kernel.
-     */
-    label?: string;
-    /**
-     * If this Kernel is suitable for paravirtualized operations.
-     */
-    pvops?: boolean;
-    /**
-     * Linux Kernel version
-     */
-    version?: string;
-    /**
-     * If this Kernel is suitable for Xen Linodes.
-     */
-    xen?: boolean;
-}
-
-export interface GetKernelsKernelArgs {
-    /**
-     * The architecture of this Kernel.
-     */
-    architecture?: pulumi.Input<string>;
-    /**
-     * The date on which this Kernel was built.
-     */
-    built?: pulumi.Input<string>;
-    /**
-     * Whether or not this Kernel is deprecated.
-     */
-    deprecated?: pulumi.Input<boolean>;
-    /**
-     * The unique ID of this Kernel.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * If this Kernel is suitable for KVM Linodes.
-     */
-    kvm?: pulumi.Input<boolean>;
-    /**
-     * The friendly name of this Kernel.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * If this Kernel is suitable for paravirtualized operations.
-     */
-    pvops?: pulumi.Input<boolean>;
-    /**
-     * Linux Kernel version
-     */
-    version?: pulumi.Input<string>;
-    /**
-     * If this Kernel is suitable for Xen Linodes.
-     */
-    xen?: pulumi.Input<boolean>;
-}
-
-export interface GetLkeClusterControlPlane {
-    /**
-     * The ACL configuration for an LKE cluster's control plane.
-     */
-    acls?: inputs.GetLkeClusterControlPlaneAcl[];
-    /**
-     * Enables audit logs on the cluster's control plane.
-     */
-    auditLogsEnabled?: boolean;
-    /**
-     * Whether High Availability is enabled for the cluster Control Plane.
-     */
-    highAvailability?: boolean;
-}
-
-export interface GetLkeClusterControlPlaneArgs {
-    /**
-     * The ACL configuration for an LKE cluster's control plane.
-     */
-    acls?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterControlPlaneAclArgs>[]>;
-    /**
-     * Enables audit logs on the cluster's control plane.
-     */
-    auditLogsEnabled?: pulumi.Input<boolean>;
-    /**
-     * Whether High Availability is enabled for the cluster Control Plane.
-     */
-    highAvailability?: pulumi.Input<boolean>;
-}
-
-export interface GetLkeClusterControlPlaneAcl {
-    /**
-     * A list of ip addresses to allow.
-     */
-    addresses?: inputs.GetLkeClusterControlPlaneAclAddress[];
-    /**
-     * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
-     */
-    enabled?: boolean;
-}
-
-export interface GetLkeClusterControlPlaneAclArgs {
-    /**
-     * A list of ip addresses to allow.
-     */
-    addresses?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterControlPlaneAclAddressArgs>[]>;
-    /**
-     * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
-     */
-    enabled?: pulumi.Input<boolean>;
-}
-
-export interface GetLkeClusterControlPlaneAclAddress {
-    /**
-     * A set of individual ipv4 addresses or CIDRs to ALLOW.
-     */
-    ipv4s?: string[];
-    /**
-     * A set of individual ipv6 addresses or CIDRs to ALLOW.
-     */
-    ipv6s?: string[];
-}
-
-export interface GetLkeClusterControlPlaneAclAddressArgs {
-    /**
-     * A set of individual ipv4 addresses or CIDRs to ALLOW.
-     */
-    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A set of individual ipv6 addresses or CIDRs to ALLOW.
-     */
-    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetLkeClusterPool {
-    /**
-     * The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
-     */
-    autoscalers?: inputs.GetLkeClusterPoolAutoscaler[];
-    /**
-     * The number of nodes in the Node Pool.
-     */
-    count?: number;
-    /**
-     * The disk encryption policy for nodes in this pool.
-     */
-    diskEncryption?: string;
-    /**
-     * This Node Pool’s custom disk layout.
-     */
-    disks?: inputs.GetLkeClusterPoolDisk[];
-    /**
-     * The LKE Cluster's ID.
-     */
-    id?: number;
-    /**
-     * The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
-     */
-    k8sVersion?: string;
-    /**
-     * The label of the Node Pool.
-     */
-    label?: string;
-    /**
-     * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
-     */
-    labels?: {[key: string]: string};
-    /**
-     * The nodes in the Node Pool.
-     */
-    nodes?: inputs.GetLkeClusterPoolNode[];
-    /**
-     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: string[];
-    /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
-     */
-    taints?: inputs.GetLkeClusterPoolTaint[];
-    /**
-     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
-     */
-    type?: string;
-    /**
-     * The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
-     */
-    updateStrategy?: string;
-}
-
-export interface GetLkeClusterPoolArgs {
-    /**
-     * The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
-     */
-    autoscalers?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolAutoscalerArgs>[]>;
-    /**
-     * The number of nodes in the Node Pool.
-     */
-    count?: pulumi.Input<number>;
-    /**
-     * The disk encryption policy for nodes in this pool.
-     */
-    diskEncryption?: pulumi.Input<string>;
-    /**
-     * This Node Pool’s custom disk layout.
-     */
-    disks?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolDiskArgs>[]>;
-    /**
-     * The LKE Cluster's ID.
-     */
-    id?: pulumi.Input<number>;
-    /**
-     * The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
-     */
-    k8sVersion?: pulumi.Input<string>;
-    /**
-     * The label of the Node Pool.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
-     */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The nodes in the Node Pool.
-     */
-    nodes?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolNodeArgs>[]>;
-    /**
-     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
-     */
-    taints?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolTaintArgs>[]>;
-    /**
-     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
-     */
-    updateStrategy?: pulumi.Input<string>;
-}
-
-export interface GetLkeClusterPoolAutoscaler {
-    /**
-     * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
-     */
-    enabled?: boolean;
-    /**
-     * The maximum number of nodes to autoscale to.
-     */
-    max?: number;
-    /**
-     * The minimum number of nodes to autoscale to.
-     */
-    min?: number;
-}
-
-export interface GetLkeClusterPoolAutoscalerArgs {
-    /**
-     * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
-     * The maximum number of nodes to autoscale to.
-     */
-    max?: pulumi.Input<number>;
-    /**
-     * The minimum number of nodes to autoscale to.
-     */
-    min?: pulumi.Input<number>;
-}
-
-export interface GetLkeClusterPoolDisk {
-    /**
-     * The size of this custom disk partition in MB.
-     */
-    size?: number;
-    /**
-     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
-     */
-    type?: string;
-}
-
-export interface GetLkeClusterPoolDiskArgs {
-    /**
-     * The size of this custom disk partition in MB.
-     */
-    size?: pulumi.Input<number>;
-    /**
-     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
-     */
-    type?: pulumi.Input<string>;
-}
-
-export interface GetLkeClusterPoolNode {
-    /**
-     * The LKE Cluster's ID.
-     */
-    id?: string;
-    /**
-     * The ID of the underlying Linode instance.
-     */
-    instanceId?: number;
-    /**
-     * The status of the node. (`ready`, `notReady`)
-     */
-    status?: string;
-}
-
-export interface GetLkeClusterPoolNodeArgs {
-    /**
-     * The LKE Cluster's ID.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The ID of the underlying Linode instance.
-     */
-    instanceId?: pulumi.Input<number>;
-    /**
-     * The status of the node. (`ready`, `notReady`)
-     */
-    status?: pulumi.Input<string>;
-}
-
-export interface GetLkeClusterPoolTaint {
-    /**
-     * The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
-     */
-    effect: string;
-    /**
-     * The Kubernetes taint key.
-     */
-    key: string;
-    /**
-     * The Kubernetes taint value.
-     */
-    value: string;
-}
-
-export interface GetLkeClusterPoolTaintArgs {
-    /**
-     * The Kubernetes taint effect. The accepted values are `NoSchedule`, `PreferNoSchedule` and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
-     */
-    effect: pulumi.Input<string>;
-    /**
-     * The Kubernetes taint key.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * The Kubernetes taint value.
-     */
-    value: pulumi.Input<string>;
 }
 
 export interface GetLkeClustersFilter {
@@ -2461,146 +1131,6 @@ export interface GetLkeClustersFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetLkeClustersLkeCluster {
-    /**
-     * Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
-     */
-    aplEnabled?: boolean;
-    /**
-     * Defines settings for the Kubernetes Control Plane.
-     */
-    controlPlane?: inputs.GetLkeClustersLkeClusterControlPlane;
-    /**
-     * When this Kubernetes cluster was created.
-     */
-    created?: string;
-    /**
-     * The LKE Cluster's ID.
-     */
-    id?: number;
-    /**
-     * The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
-     */
-    k8sVersion?: string;
-    /**
-     * The unique label for the cluster.
-     */
-    label?: string;
-    /**
-     * This Kubernetes cluster's location.
-     */
-    region?: string;
-    /**
-     * The networking stack type of the Kubernetes cluster.
-     */
-    stackType?: string;
-    /**
-     * The status of the cluster.
-     */
-    status?: string;
-    /**
-     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
-     */
-    subnetId?: number;
-    /**
-     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: string[];
-    /**
-     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
-     */
-    tier?: string;
-    /**
-     * When this Kubernetes cluster was updated.
-     */
-    updated?: string;
-    /**
-     * The ID of the VPC to use for the Kubernetes cluster.
-     */
-    vpcId?: number;
-}
-
-export interface GetLkeClustersLkeClusterArgs {
-    /**
-     * Enables the App Platform Layer for this cluster. Note: v4beta only and may not currently be available to all users.
-     */
-    aplEnabled?: pulumi.Input<boolean>;
-    /**
-     * Defines settings for the Kubernetes Control Plane.
-     */
-    controlPlane?: pulumi.Input<inputs.GetLkeClustersLkeClusterControlPlaneArgs>;
-    /**
-     * When this Kubernetes cluster was created.
-     */
-    created?: pulumi.Input<string>;
-    /**
-     * The LKE Cluster's ID.
-     */
-    id?: pulumi.Input<number>;
-    /**
-     * The Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.17`).
-     */
-    k8sVersion?: pulumi.Input<string>;
-    /**
-     * The unique label for the cluster.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * This Kubernetes cluster's location.
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The networking stack type of the Kubernetes cluster.
-     */
-    stackType?: pulumi.Input<string>;
-    /**
-     * The status of the cluster.
-     */
-    status?: pulumi.Input<string>;
-    /**
-     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled).
-     */
-    subnetId?: pulumi.Input<number>;
-    /**
-     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
-     */
-    tier?: pulumi.Input<string>;
-    /**
-     * When this Kubernetes cluster was updated.
-     */
-    updated?: pulumi.Input<string>;
-    /**
-     * The ID of the VPC to use for the Kubernetes cluster.
-     */
-    vpcId?: pulumi.Input<number>;
-}
-
-export interface GetLkeClustersLkeClusterControlPlane {
-    /**
-     * Enables audit logs on the cluster's control plane.
-     */
-    auditLogsEnabled?: boolean;
-    /**
-     * Whether High Availability is enabled for the cluster Control Plane.
-     */
-    highAvailability?: boolean;
-}
-
-export interface GetLkeClustersLkeClusterControlPlaneArgs {
-    /**
-     * Enables audit logs on the cluster's control plane.
-     */
-    auditLogsEnabled?: pulumi.Input<boolean>;
-    /**
-     * Whether High Availability is enabled for the cluster Control Plane.
-     */
-    highAvailability?: pulumi.Input<boolean>;
-}
-
 export interface GetLkeTypesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -2631,112 +1161,34 @@ export interface GetLkeTypesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetLkeTypesType {
+export interface GetLocksFilter {
     /**
-     * The ID representing the Kubernetes type.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    id: string;
+    matchBy?: string;
     /**
-     * The Kubernetes type label is for display purposes only.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
-    label?: string;
+    name: string;
     /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
+     * A list of values for the filter to allow. These values should all be in string form.
      */
-    prices?: inputs.GetLkeTypesTypePrice[];
-    /**
-     * A list of region-specific prices for this LKE Type.
-     */
-    regionPrices?: inputs.GetLkeTypesTypeRegionPrice[];
-    /**
-     * The monthly outbound transfer amount, in MB.
-     */
-    transfer?: number;
+    values: string[];
 }
 
-export interface GetLkeTypesTypeArgs {
+export interface GetLocksFilterArgs {
     /**
-     * The ID representing the Kubernetes type.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    id: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
     /**
-     * The Kubernetes type label is for display purposes only.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
-    label?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
+     * A list of values for the filter to allow. These values should all be in string form.
      */
-    prices?: pulumi.Input<pulumi.Input<inputs.GetLkeTypesTypePriceArgs>[]>;
-    /**
-     * A list of region-specific prices for this LKE Type.
-     */
-    regionPrices?: pulumi.Input<pulumi.Input<inputs.GetLkeTypesTypeRegionPriceArgs>[]>;
-    /**
-     * The monthly outbound transfer amount, in MB.
-     */
-    transfer?: pulumi.Input<number>;
-}
-
-export interface GetLkeTypesTypePrice {
-    /**
-     * Cost (in US dollars) per hour.
-     */
-    hourly: number;
-    /**
-     * Cost (in US dollars) per month.
-     */
-    monthly: number;
-}
-
-export interface GetLkeTypesTypePriceArgs {
-    /**
-     * Cost (in US dollars) per hour.
-     */
-    hourly: pulumi.Input<number>;
-    /**
-     * Cost (in US dollars) per month.
-     */
-    monthly: pulumi.Input<number>;
-}
-
-export interface GetLkeTypesTypeRegionPrice {
-    hourly: number;
-    /**
-     * The ID representing the Kubernetes type.
-     */
-    id: string;
-    monthly: number;
-}
-
-export interface GetLkeTypesTypeRegionPriceArgs {
-    hourly: pulumi.Input<number>;
-    /**
-     * The ID representing the Kubernetes type.
-     */
-    id: pulumi.Input<string>;
-    monthly: pulumi.Input<number>;
-}
-
-export interface GetLkeVersionsVersion {
-    /**
-     * The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
-     */
-    id: string;
-    /**
-     * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
-     */
-    tier?: string;
-}
-
-export interface GetLkeVersionsVersionArgs {
-    /**
-     * The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
-     */
-    tier?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetMaintenancePoliciesFilter {
@@ -2769,60 +1221,6 @@ export interface GetMaintenancePoliciesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetMaintenancePoliciesMaintenancePolicy {
-    /**
-     * Description of this policy
-     */
-    description?: string;
-    /**
-     * Whether this is the default policy for the account.
-     */
-    isDefault?: boolean;
-    /**
-     * The label for this policy.
-     */
-    label?: string;
-    /**
-     * The notification lead time in seconds.
-     */
-    notificationPeriodSec?: number;
-    /**
-     * Unique identifier for this policy
-     */
-    slug?: string;
-    /**
-     * The type of action taken during maintenance.
-     */
-    type?: string;
-}
-
-export interface GetMaintenancePoliciesMaintenancePolicyArgs {
-    /**
-     * Description of this policy
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Whether this is the default policy for the account.
-     */
-    isDefault?: pulumi.Input<boolean>;
-    /**
-     * The label for this policy.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * The notification lead time in seconds.
-     */
-    notificationPeriodSec?: pulumi.Input<number>;
-    /**
-     * Unique identifier for this policy
-     */
-    slug?: pulumi.Input<string>;
-    /**
-     * The type of action taken during maintenance.
-     */
-    type?: pulumi.Input<string>;
-}
-
 export interface GetNbTypesFilter {
     /**
      * The type of comparison to use for this filter.
@@ -2851,74 +1249,6 @@ export interface GetNbTypesFilterArgs {
      * The value(s) to be used in the filter.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetNbTypesType {
-    /**
-     * The unique ID assigned to this Node Balancer Type.
-     */
-    id: string;
-    /**
-     * The Node Balancer Type's label.
-     */
-    label?: string;
-    /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
-     */
-    prices?: inputs.GetNbTypesTypePrice[];
-    /**
-     * A list of region-specific prices for this Node Balancer Type.
-     */
-    regionPrices?: inputs.GetNbTypesTypeRegionPrice[];
-    /**
-     * The monthly outbound transfer amount, in MB.
-     */
-    transfer?: number;
-}
-
-export interface GetNbTypesTypeArgs {
-    /**
-     * The unique ID assigned to this Node Balancer Type.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * The Node Balancer Type's label.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
-     */
-    prices?: pulumi.Input<pulumi.Input<inputs.GetNbTypesTypePriceArgs>[]>;
-    /**
-     * A list of region-specific prices for this Node Balancer Type.
-     */
-    regionPrices?: pulumi.Input<pulumi.Input<inputs.GetNbTypesTypeRegionPriceArgs>[]>;
-    /**
-     * The monthly outbound transfer amount, in MB.
-     */
-    transfer?: pulumi.Input<number>;
-}
-
-export interface GetNbTypesTypePrice {
-    hourly: number;
-    monthly: number;
-}
-
-export interface GetNbTypesTypePriceArgs {
-    hourly: pulumi.Input<number>;
-    monthly: pulumi.Input<number>;
-}
-
-export interface GetNbTypesTypeRegionPrice {
-    hourly: number;
-    id: string;
-    monthly: number;
-}
-
-export interface GetNbTypesTypeRegionPriceArgs {
-    hourly: pulumi.Input<number>;
-    id: pulumi.Input<string>;
-    monthly: pulumi.Input<number>;
 }
 
 export interface GetNetworkTransferPricesFilter {
@@ -2951,92 +1281,6 @@ export interface GetNetworkTransferPricesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetNetworkTransferPricesType {
-    /**
-     * The ID representing the Network Transfer Price.
-     */
-    id: string;
-    /**
-     * The Network Transfer Price label is for display purposes only.
-     */
-    label?: string;
-    /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
-     */
-    prices?: inputs.GetNetworkTransferPricesTypePrice[];
-    /**
-     * A list of region-specific prices for this Network Transfer Price.
-     */
-    regionPrices?: inputs.GetNetworkTransferPricesTypeRegionPrice[];
-    /**
-     * The monthly outbound transfer amount, in MB.
-     */
-    transfer?: number;
-}
-
-export interface GetNetworkTransferPricesTypeArgs {
-    /**
-     * The ID representing the Network Transfer Price.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * The Network Transfer Price label is for display purposes only.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
-     */
-    prices?: pulumi.Input<pulumi.Input<inputs.GetNetworkTransferPricesTypePriceArgs>[]>;
-    /**
-     * A list of region-specific prices for this Network Transfer Price.
-     */
-    regionPrices?: pulumi.Input<pulumi.Input<inputs.GetNetworkTransferPricesTypeRegionPriceArgs>[]>;
-    /**
-     * The monthly outbound transfer amount, in MB.
-     */
-    transfer?: pulumi.Input<number>;
-}
-
-export interface GetNetworkTransferPricesTypePrice {
-    /**
-     * Cost (in US dollars) per hour.
-     */
-    hourly: number;
-    /**
-     * Cost (in US dollars) per month.
-     */
-    monthly: number;
-}
-
-export interface GetNetworkTransferPricesTypePriceArgs {
-    /**
-     * Cost (in US dollars) per hour.
-     */
-    hourly: pulumi.Input<number>;
-    /**
-     * Cost (in US dollars) per month.
-     */
-    monthly: pulumi.Input<number>;
-}
-
-export interface GetNetworkTransferPricesTypeRegionPrice {
-    hourly: number;
-    /**
-     * The ID representing the Network Transfer Price.
-     */
-    id: string;
-    monthly: number;
-}
-
-export interface GetNetworkTransferPricesTypeRegionPriceArgs {
-    hourly: pulumi.Input<number>;
-    /**
-     * The ID representing the Network Transfer Price.
-     */
-    id: pulumi.Input<string>;
-    monthly: pulumi.Input<number>;
-}
-
 export interface GetNetworkingIpsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -3067,332 +1311,6 @@ export interface GetNetworkingIpsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetNetworkingIpsIpAddress {
-    /**
-     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-     */
-    address?: string;
-    /**
-     * The default gateway for this address.
-     */
-    gateway?: string;
-    /**
-     * The ID of the interface this address is assigned to.
-     */
-    interfaceId?: number;
-    /**
-     * The ID of the Linode this address currently belongs to.
-     */
-    linodeId?: number;
-    /**
-     * The number of bits set in the subnet mask.
-     */
-    prefix?: number;
-    /**
-     * Whether this is a public or private IP address.
-     */
-    public?: boolean;
-    /**
-     * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-     */
-    rdns?: string;
-    /**
-     * The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
-     */
-    region?: string;
-    /**
-     * Whether this IP address is a reserved IP.
-     */
-    reserved?: boolean;
-    /**
-     * The mask that separates host bits from network bits for this address.
-     */
-    subnetMask?: string;
-    /**
-     * The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-     */
-    type?: string;
-    /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
-     */
-    vpcNat11?: inputs.GetNetworkingIpsIpAddressVpcNat11;
-}
-
-export interface GetNetworkingIpsIpAddressArgs {
-    /**
-     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-     */
-    address?: pulumi.Input<string>;
-    /**
-     * The default gateway for this address.
-     */
-    gateway?: pulumi.Input<string>;
-    /**
-     * The ID of the interface this address is assigned to.
-     */
-    interfaceId?: pulumi.Input<number>;
-    /**
-     * The ID of the Linode this address currently belongs to.
-     */
-    linodeId?: pulumi.Input<number>;
-    /**
-     * The number of bits set in the subnet mask.
-     */
-    prefix?: pulumi.Input<number>;
-    /**
-     * Whether this is a public or private IP address.
-     */
-    public?: pulumi.Input<boolean>;
-    /**
-     * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-     */
-    rdns?: pulumi.Input<string>;
-    /**
-     * The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * Whether this IP address is a reserved IP.
-     */
-    reserved?: pulumi.Input<boolean>;
-    /**
-     * The mask that separates host bits from network bits for this address.
-     */
-    subnetMask?: pulumi.Input<string>;
-    /**
-     * The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
-     */
-    vpcNat11?: pulumi.Input<inputs.GetNetworkingIpsIpAddressVpcNat11Args>;
-}
-
-export interface GetNetworkingIpsIpAddressVpcNat11 {
-    /**
-     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-     */
-    address: string;
-    /**
-     * The `id` of the VPC Subnet for this Interface.
-     */
-    subnetId: number;
-    /**
-     * The `id` of the VPC configured for this Interface.
-     */
-    vpcId: number;
-}
-
-export interface GetNetworkingIpsIpAddressVpcNat11Args {
-    /**
-     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-     */
-    address: pulumi.Input<string>;
-    /**
-     * The `id` of the VPC Subnet for this Interface.
-     */
-    subnetId: pulumi.Input<number>;
-    /**
-     * The `id` of the VPC configured for this Interface.
-     */
-    vpcId: pulumi.Input<number>;
-}
-
-export interface GetNodeBalancerFirewall {
-    /**
-     * When this firewall was created.
-     */
-    created?: string;
-    /**
-     * The NodeBalancer's ID.
-     */
-    id?: number;
-    /**
-     * The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
-     */
-    inboundPolicy?: string;
-    /**
-     * A set of firewall rules that specify what inbound network traffic is allowed.
-     */
-    inbounds?: inputs.GetNodeBalancerFirewallInbound[];
-    /**
-     * Used to identify this rule. For display purposes only.
-     */
-    label?: string;
-    /**
-     * The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
-     */
-    outboundPolicy?: string;
-    /**
-     * A set of firewall rules that specify what outbound network traffic is allowed.
-     */
-    outbounds?: inputs.GetNodeBalancerFirewallOutbound[];
-    /**
-     * The status of the firewall. (`enabled`, `disabled`, `deleted`)
-     */
-    status?: string;
-    /**
-     * The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: string[];
-    /**
-     * When this firewall was last updated.
-     */
-    updated?: string;
-}
-
-export interface GetNodeBalancerFirewallArgs {
-    /**
-     * When this firewall was created.
-     */
-    created?: pulumi.Input<string>;
-    /**
-     * The NodeBalancer's ID.
-     */
-    id?: pulumi.Input<number>;
-    /**
-     * The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
-     */
-    inboundPolicy?: pulumi.Input<string>;
-    /**
-     * A set of firewall rules that specify what inbound network traffic is allowed.
-     */
-    inbounds?: pulumi.Input<pulumi.Input<inputs.GetNodeBalancerFirewallInboundArgs>[]>;
-    /**
-     * Used to identify this rule. For display purposes only.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
-     */
-    outboundPolicy?: pulumi.Input<string>;
-    /**
-     * A set of firewall rules that specify what outbound network traffic is allowed.
-     */
-    outbounds?: pulumi.Input<pulumi.Input<inputs.GetNodeBalancerFirewallOutboundArgs>[]>;
-    /**
-     * The status of the firewall. (`enabled`, `disabled`, `deleted`)
-     */
-    status?: pulumi.Input<string>;
-    /**
-     * The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * When this firewall was last updated.
-     */
-    updated?: pulumi.Input<string>;
-}
-
-export interface GetNodeBalancerFirewallInbound {
-    /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-     */
-    action?: string;
-    /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
-     */
-    ipv4s?: string[];
-    /**
-     * A list of IPv6 addresses or networks. Must be in IP/mask format.
-     */
-    ipv6s?: string[];
-    /**
-     * Used to identify this rule. For display purposes only.
-     */
-    label?: string;
-    /**
-     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-     */
-    ports?: string;
-    /**
-     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-     */
-    protocol?: string;
-}
-
-export interface GetNodeBalancerFirewallInboundArgs {
-    /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-     */
-    action?: pulumi.Input<string>;
-    /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
-     */
-    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of IPv6 addresses or networks. Must be in IP/mask format.
-     */
-    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Used to identify this rule. For display purposes only.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-     */
-    ports?: pulumi.Input<string>;
-    /**
-     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-     */
-    protocol?: pulumi.Input<string>;
-}
-
-export interface GetNodeBalancerFirewallOutbound {
-    /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-     */
-    action?: string;
-    /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
-     */
-    ipv4s?: string[];
-    /**
-     * A list of IPv6 addresses or networks. Must be in IP/mask format.
-     */
-    ipv6s?: string[];
-    /**
-     * Used to identify this rule. For display purposes only.
-     */
-    label?: string;
-    /**
-     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-     */
-    ports?: string;
-    /**
-     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-     */
-    protocol?: string;
-}
-
-export interface GetNodeBalancerFirewallOutboundArgs {
-    /**
-     * Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-     */
-    action?: pulumi.Input<string>;
-    /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
-     */
-    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of IPv6 addresses or networks. Must be in IP/mask format.
-     */
-    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Used to identify this rule. For display purposes only.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-     */
-    ports?: pulumi.Input<string>;
-    /**
-     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-     */
-    protocol?: pulumi.Input<string>;
-}
-
 export interface GetNodebalancerConfigsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -3421,198 +1339,6 @@ export interface GetNodebalancerConfigsFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetNodebalancerConfigsNodebalancerConfig {
-    /**
-     * What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
-     */
-    algorithm?: string;
-    /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
-     */
-    check?: string;
-    /**
-     * How many times to attempt a check before considering a backend to be down. (1-30)
-     */
-    checkAttempts?: number;
-    /**
-     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
-     */
-    checkBody?: string;
-    /**
-     * How often, in seconds, to check that backends are up and serving requests.
-     */
-    checkInterval?: number;
-    /**
-     * If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
-     */
-    checkPassive?: boolean;
-    /**
-     * The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
-     */
-    checkPath?: string;
-    /**
-     * How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
-     */
-    checkTimeout?: number;
-    /**
-     * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
-     */
-    cipherSuite?: string;
-    /**
-     * The config's ID.
-     */
-    id: number;
-    /**
-     * A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
-     */
-    nodeStatuses?: inputs.GetNodebalancerConfigsNodebalancerConfigNodeStatus[];
-    /**
-     * The ID of the NodeBalancer to access.
-     *
-     * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
-     */
-    nodebalancerId: number;
-    /**
-     * The TCP port this Config is for.
-     */
-    port?: number;
-    /**
-     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
-     */
-    protocol?: string;
-    /**
-     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
-     */
-    proxyProtocol?: string;
-    /**
-     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-     */
-    sslCommonname?: string;
-    /**
-     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-     */
-    sslFingerprint?: string;
-    /**
-     * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
-     */
-    stickiness?: string;
-    /**
-     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
-     */
-    udpCheckPort?: number;
-    /**
-     * The idle time in seconds after which a session that hasn’t received packets is destroyed.
-     */
-    udpSessionTimeout?: number;
-}
-
-export interface GetNodebalancerConfigsNodebalancerConfigArgs {
-    /**
-     * What algorithm this NodeBalancer should use for routing traffic to backends (`roundrobin`, `leastconn`, `source`)
-     */
-    algorithm?: pulumi.Input<string>;
-    /**
-     * The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and httpBody rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `httpBody`)
-     */
-    check?: pulumi.Input<string>;
-    /**
-     * How many times to attempt a check before considering a backend to be down. (1-30)
-     */
-    checkAttempts?: pulumi.Input<number>;
-    /**
-     * This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
-     */
-    checkBody?: pulumi.Input<string>;
-    /**
-     * How often, in seconds, to check that backends are up and serving requests.
-     */
-    checkInterval?: pulumi.Input<number>;
-    /**
-     * If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
-     */
-    checkPassive?: pulumi.Input<boolean>;
-    /**
-     * The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
-     */
-    checkPath?: pulumi.Input<string>;
-    /**
-     * How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
-     */
-    checkTimeout?: pulumi.Input<number>;
-    /**
-     * What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary. (`recommended`, `legacy`)
-     */
-    cipherSuite?: pulumi.Input<string>;
-    /**
-     * The config's ID.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
-     */
-    nodeStatuses?: pulumi.Input<pulumi.Input<inputs.GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs>[]>;
-    /**
-     * The ID of the NodeBalancer to access.
-     *
-     * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
-     */
-    nodebalancerId: pulumi.Input<number>;
-    /**
-     * The TCP port this Config is for.
-     */
-    port?: pulumi.Input<number>;
-    /**
-     * The protocol this port is configured to serve. If this is set to https you must include an sslCert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
-     */
-    protocol?: pulumi.Input<string>;
-    /**
-     * The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, and `v2`) (Defaults to `none`)
-     */
-    proxyProtocol?: pulumi.Input<string>;
-    /**
-     * The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-     */
-    sslCommonname?: pulumi.Input<string>;
-    /**
-     * The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
-     */
-    sslFingerprint?: pulumi.Input<string>;
-    /**
-     * Controls how session stickiness is handled on this port. (`none`, `table`, `httpCookie`)
-     */
-    stickiness?: pulumi.Input<string>;
-    /**
-     * Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
-     */
-    udpCheckPort?: pulumi.Input<number>;
-    /**
-     * The idle time in seconds after which a session that hasn’t received packets is destroyed.
-     */
-    udpSessionTimeout?: pulumi.Input<number>;
-}
-
-export interface GetNodebalancerConfigsNodebalancerConfigNodeStatus {
-    /**
-     * The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
-     */
-    down: number;
-    /**
-     * The number of backends considered to be 'UP' and healthy, and that are serving requests.
-     */
-    up: number;
-}
-
-export interface GetNodebalancerConfigsNodebalancerConfigNodeStatusArgs {
-    /**
-     * The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
-     */
-    down: pulumi.Input<number>;
-    /**
-     * The number of backends considered to be 'UP' and healthy, and that are serving requests.
-     */
-    up: pulumi.Input<number>;
 }
 
 export interface GetNodebalancerVpcsFilter {
@@ -3675,168 +1401,6 @@ export interface GetNodebalancersFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetNodebalancersNodebalancer {
-    /**
-     * Throttle connections per second (0-20)
-     */
-    clientConnThrottle?: number;
-    /**
-     * Throttle UDP sessions per second (0-20).
-     */
-    clientUdpSessThrottle?: number;
-    /**
-     * When this Linode NodeBalancer was created
-     */
-    created?: string;
-    /**
-     * This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
-     */
-    hostname?: string;
-    /**
-     * The Linode NodeBalancer's unique ID
-     */
-    id: number;
-    /**
-     * The Public IPv4 Address of this NodeBalancer
-     */
-    ipv4?: string;
-    /**
-     * The Public IPv6 Address of this NodeBalancer
-     */
-    ipv6?: string;
-    /**
-     * The label of the Linode NodeBalancer
-     */
-    label?: string;
-    /**
-     * The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
-     */
-    region?: string;
-    /**
-     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: string[];
-    /**
-     * Information about the amount of transfer this NodeBalancer has had so far this month.
-     */
-    transfers?: inputs.GetNodebalancersNodebalancerTransfer[];
-    /**
-     * When this Linode NodeBalancer was last updated
-     */
-    updated?: string;
-}
-
-export interface GetNodebalancersNodebalancerArgs {
-    /**
-     * Throttle connections per second (0-20)
-     */
-    clientConnThrottle?: pulumi.Input<number>;
-    /**
-     * Throttle UDP sessions per second (0-20).
-     */
-    clientUdpSessThrottle?: pulumi.Input<number>;
-    /**
-     * When this Linode NodeBalancer was created
-     */
-    created?: pulumi.Input<string>;
-    /**
-     * This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
-     */
-    hostname?: pulumi.Input<string>;
-    /**
-     * The Linode NodeBalancer's unique ID
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The Public IPv4 Address of this NodeBalancer
-     */
-    ipv4?: pulumi.Input<string>;
-    /**
-     * The Public IPv6 Address of this NodeBalancer
-     */
-    ipv6?: pulumi.Input<string>;
-    /**
-     * The label of the Linode NodeBalancer
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Information about the amount of transfer this NodeBalancer has had so far this month.
-     */
-    transfers?: pulumi.Input<pulumi.Input<inputs.GetNodebalancersNodebalancerTransferArgs>[]>;
-    /**
-     * When this Linode NodeBalancer was last updated
-     */
-    updated?: pulumi.Input<string>;
-}
-
-export interface GetNodebalancersNodebalancerTransfer {
-    /**
-     * The total transfer, in MB, used by this NodeBalancer for the current month
-     */
-    in: number;
-    /**
-     * The total inbound transfer, in MB, used for this NodeBalancer for the current month
-     */
-    out: number;
-    /**
-     * The total outbound transfer, in MB, used for this NodeBalancer for the current month
-     */
-    total: number;
-}
-
-export interface GetNodebalancersNodebalancerTransferArgs {
-    /**
-     * The total transfer, in MB, used by this NodeBalancer for the current month
-     */
-    in: pulumi.Input<number>;
-    /**
-     * The total inbound transfer, in MB, used for this NodeBalancer for the current month
-     */
-    out: pulumi.Input<number>;
-    /**
-     * The total outbound transfer, in MB, used for this NodeBalancer for the current month
-     */
-    total: pulumi.Input<number>;
-}
-
-export interface GetObjectStorageEndpointsEndpoint {
-    /**
-     * The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
-     */
-    endpointType?: string;
-    /**
-     * The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
-     */
-    region?: string;
-    /**
-     * Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
-     */
-    s3Endpoint?: string;
-}
-
-export interface GetObjectStorageEndpointsEndpointArgs {
-    /**
-     * The type of `s3Endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
-     */
-    endpointType?: pulumi.Input<string>;
-    /**
-     * The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * Your s3 endpoint URL, based on the `endpointType` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
-     */
-    s3Endpoint?: pulumi.Input<string>;
-}
-
 export interface GetObjectStorageEndpointsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -3897,140 +1461,6 @@ export interface GetObjectStorageQuotasFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetObjectStorageQuotasQuota {
-    /**
-     * The description of the Object Storage quota.
-     */
-    description?: string;
-    /**
-     * The type of the S3 endpoint of the Object Storage.
-     */
-    endpointType?: string;
-    /**
-     * The ID of the Object Storage quota.
-     */
-    quotaId: string;
-    /**
-     * The maximum quantity of the `resourceMetric` allowed by the quota.
-     */
-    quotaLimit?: number;
-    /**
-     * The name of the Object Storage quota.
-     */
-    quotaName?: string;
-    /**
-     * The specific Object Storage resource for the quota.
-     */
-    resourceMetric?: string;
-    /**
-     * The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
-     */
-    s3Endpoint?: string;
-}
-
-export interface GetObjectStorageQuotasQuotaArgs {
-    /**
-     * The description of the Object Storage quota.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * The type of the S3 endpoint of the Object Storage.
-     */
-    endpointType?: pulumi.Input<string>;
-    /**
-     * The ID of the Object Storage quota.
-     */
-    quotaId: pulumi.Input<string>;
-    /**
-     * The maximum quantity of the `resourceMetric` allowed by the quota.
-     */
-    quotaLimit?: pulumi.Input<number>;
-    /**
-     * The name of the Object Storage quota.
-     */
-    quotaName?: pulumi.Input<string>;
-    /**
-     * The specific Object Storage resource for the quota.
-     */
-    resourceMetric?: pulumi.Input<string>;
-    /**
-     * The S3 endpoint URL of the Object Storage, based on the `endpointType` and `region`.
-     */
-    s3Endpoint?: pulumi.Input<string>;
-}
-
-export interface GetPlacementGroupMember {
-    /**
-     * Whether this Linode is currently compliant with the group's placement group type.
-     */
-    isCompliant?: boolean;
-    /**
-     * The ID of the Linode.
-     */
-    linodeId?: number;
-}
-
-export interface GetPlacementGroupMemberArgs {
-    /**
-     * Whether this Linode is currently compliant with the group's placement group type.
-     */
-    isCompliant?: pulumi.Input<boolean>;
-    /**
-     * The ID of the Linode.
-     */
-    linodeId?: pulumi.Input<number>;
-}
-
-export interface GetPlacementGroupMigrations {
-    /**
-     * A list of the Linodes the system is migrating into the placement group.
-     */
-    inbounds?: inputs.GetPlacementGroupMigrationsInbound[];
-    /**
-     * A list of the Linodes the system is migrating out of the placement group.
-     */
-    outbounds?: inputs.GetPlacementGroupMigrationsOutbound[];
-}
-
-export interface GetPlacementGroupMigrationsArgs {
-    /**
-     * A list of the Linodes the system is migrating into the placement group.
-     */
-    inbounds?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupMigrationsInboundArgs>[]>;
-    /**
-     * A list of the Linodes the system is migrating out of the placement group.
-     */
-    outbounds?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupMigrationsOutboundArgs>[]>;
-}
-
-export interface GetPlacementGroupMigrationsInbound {
-    /**
-     * The ID of the Linode.
-     */
-    linodeId: number;
-}
-
-export interface GetPlacementGroupMigrationsInboundArgs {
-    /**
-     * The ID of the Linode.
-     */
-    linodeId: pulumi.Input<number>;
-}
-
-export interface GetPlacementGroupMigrationsOutbound {
-    /**
-     * The ID of the Linode.
-     */
-    linodeId: number;
-}
-
-export interface GetPlacementGroupMigrationsOutboundArgs {
-    /**
-     * The ID of the Linode.
-     */
-    linodeId: pulumi.Input<number>;
-}
-
 export interface GetPlacementGroupsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -4061,168 +1491,438 @@ export interface GetPlacementGroupsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetPlacementGroupsPlacementGroup {
+export interface GetProducerImageShareGroupImageSharesFilter {
     /**
-     * The ID of the placement group.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    id: number;
+    matchBy?: string;
     /**
-     * Whether this Linode is currently compliant with the group's placement group type.
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
-    isCompliant?: boolean;
+    name: string;
     /**
-     * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetProducerImageShareGroupImageSharesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetProducerImageShareGroupImageSharesImageShare {
+    /**
+     * The capabilities of the Image represented by the Image Share.
+     */
+    capabilities?: string[];
+    /**
+     * When this Image Share was created.
+     */
+    created?: string;
+    /**
+     * Whether this Image is deprecated.
+     */
+    deprecated?: boolean;
+    /**
+     * A description of the Image Share.
+     */
+    description?: string;
+    /**
+     * The unique ID assigned to this Image Share.
+     */
+    id?: string;
+    /**
+     * Details about image sharing, including who the image is shared with and by.
+     */
+    imageSharing?: inputs.GetProducerImageShareGroupImageSharesImageShareImageSharing;
+    /**
+     * True if the Image is public.
+     */
+    isPublic?: boolean;
+    /**
+     * The label of the Image Share.
      */
     label?: string;
     /**
-     * A set of Linodes currently assigned to this Placement Group.
+     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
      */
-    members?: inputs.GetPlacementGroupsPlacementGroupMember[];
+    size?: number;
     /**
-     * Any Linodes that are being migrated to or from the placement group.
+     * The current status of this image. (`creating`, `pendingUpload`, `available`)
      */
-    migrations?: inputs.GetPlacementGroupsPlacementGroupMigrations;
+    status?: string;
     /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * A list of customized tags.
      */
-    placementGroupPolicy?: string;
+    tags?: string[];
     /**
-     * The placement group type to use when placing Linodes in this group.
+     * The total size of the image in all available regions.
      */
-    placementGroupType?: string;
+    totalSize?: number;
     /**
-     * The region of the Placement Group.
+     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
      */
-    region?: string;
+    type?: string;
 }
 
-export interface GetPlacementGroupsPlacementGroupArgs {
+export interface GetProducerImageShareGroupImageSharesImageShareArgs {
     /**
-     * The ID of the placement group.
+     * The capabilities of the Image represented by the Image Share.
      */
-    id: pulumi.Input<number>;
+    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether this Linode is currently compliant with the group's placement group type.
+     * When this Image Share was created.
      */
-    isCompliant?: pulumi.Input<boolean>;
+    created?: pulumi.Input<string>;
     /**
-     * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+     * Whether this Image is deprecated.
+     */
+    deprecated?: pulumi.Input<boolean>;
+    /**
+     * A description of the Image Share.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The unique ID assigned to this Image Share.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Details about image sharing, including who the image is shared with and by.
+     */
+    imageSharing?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingArgs>;
+    /**
+     * True if the Image is public.
+     */
+    isPublic?: pulumi.Input<boolean>;
+    /**
+     * The label of the Image Share.
      */
     label?: pulumi.Input<string>;
     /**
-     * A set of Linodes currently assigned to this Placement Group.
+     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
      */
-    members?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsPlacementGroupMemberArgs>[]>;
+    size?: pulumi.Input<number>;
     /**
-     * Any Linodes that are being migrated to or from the placement group.
+     * The current status of this image. (`creating`, `pendingUpload`, `available`)
      */
-    migrations?: pulumi.Input<inputs.GetPlacementGroupsPlacementGroupMigrationsArgs>;
+    status?: pulumi.Input<string>;
     /**
-     * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
+     * A list of customized tags.
      */
-    placementGroupPolicy?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The placement group type to use when placing Linodes in this group.
+     * The total size of the image in all available regions.
      */
-    placementGroupType?: pulumi.Input<string>;
+    totalSize?: pulumi.Input<number>;
     /**
-     * The region of the Placement Group.
+     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
      */
-    region?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
 }
 
-export interface GetPlacementGroupsPlacementGroupMember {
+export interface GetProducerImageShareGroupImageSharesImageShareImageSharing {
     /**
-     * Whether this Linode is currently compliant with the group's placement group type.
+     * Details about who the image is shared by.
      */
-    isCompliant?: boolean;
+    sharedBy?: inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy;
     /**
-     * The unique identifier for the Linode being migrated out of the placement group.
+     * Details about who the image is shared with.
      */
-    linodeId?: number;
+    sharedWith?: inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith;
 }
 
-export interface GetPlacementGroupsPlacementGroupMemberArgs {
+export interface GetProducerImageShareGroupImageSharesImageShareImageSharingArgs {
     /**
-     * Whether this Linode is currently compliant with the group's placement group type.
+     * Details about who the image is shared by.
      */
-    isCompliant?: pulumi.Input<boolean>;
+    sharedBy?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs>;
     /**
-     * The unique identifier for the Linode being migrated out of the placement group.
+     * Details about who the image is shared with.
      */
-    linodeId?: pulumi.Input<number>;
+    sharedWith?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs>;
 }
 
-export interface GetPlacementGroupsPlacementGroupMigrations {
+export interface GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy {
     /**
-     * A list of the Linodes the system is migrating into the placement group.
+     * The ID of the Image Share Group to list shared Images from.
+     *
+     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
      */
-    inbounds?: inputs.GetPlacementGroupsPlacementGroupMigrationsInbound[];
+    sharegroupId?: number;
     /**
-     * A list of the Linodes the system is migrating out of the placement group.
+     * The label from the associated im_ImageShareGroup row.
      */
-    outbounds?: inputs.GetPlacementGroupsPlacementGroupMigrationsOutbound[];
+    sharegroupLabel?: string;
+    /**
+     * The sharegroupUuid from the im_ImageShare row.
+     */
+    sharegroupUuid?: string;
+    /**
+     * The image id of the base image (will only be shown to producers, will be null for consumers).
+     */
+    sourceImageId?: string;
 }
 
-export interface GetPlacementGroupsPlacementGroupMigrationsArgs {
+export interface GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs {
     /**
-     * A list of the Linodes the system is migrating into the placement group.
+     * The ID of the Image Share Group to list shared Images from.
+     *
+     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
      */
-    inbounds?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsPlacementGroupMigrationsInboundArgs>[]>;
+    sharegroupId?: pulumi.Input<number>;
     /**
-     * A list of the Linodes the system is migrating out of the placement group.
+     * The label from the associated im_ImageShareGroup row.
      */
-    outbounds?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsPlacementGroupMigrationsOutboundArgs>[]>;
+    sharegroupLabel?: pulumi.Input<string>;
+    /**
+     * The sharegroupUuid from the im_ImageShare row.
+     */
+    sharegroupUuid?: pulumi.Input<string>;
+    /**
+     * The image id of the base image (will only be shown to producers, will be null for consumers).
+     */
+    sourceImageId?: pulumi.Input<string>;
 }
 
-export interface GetPlacementGroupsPlacementGroupMigrationsInbound {
+export interface GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith {
     /**
-     * The unique identifier for the Linode being migrated out of the placement group.
+     * The number of sharegroups the private image is present in.
      */
-    linodeId: number;
+    sharegroupCount?: number;
+    /**
+     * The GET api url to view the sharegroups in which the image is shared.
+     */
+    sharegroupListUrl?: string;
 }
 
-export interface GetPlacementGroupsPlacementGroupMigrationsInboundArgs {
+export interface GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs {
     /**
-     * The unique identifier for the Linode being migrated out of the placement group.
+     * The number of sharegroups the private image is present in.
      */
-    linodeId: pulumi.Input<number>;
+    sharegroupCount?: pulumi.Input<number>;
+    /**
+     * The GET api url to view the sharegroups in which the image is shared.
+     */
+    sharegroupListUrl?: pulumi.Input<string>;
 }
 
-export interface GetPlacementGroupsPlacementGroupMigrationsOutbound {
+export interface GetProducerImageShareGroupMembersFilter {
     /**
-     * The unique identifier for the Linode being migrated out of the placement group.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    linodeId: number;
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
 }
 
-export interface GetPlacementGroupsPlacementGroupMigrationsOutboundArgs {
+export interface GetProducerImageShareGroupMembersFilterArgs {
     /**
-     * The unique identifier for the Linode being migrated out of the placement group.
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    linodeId: pulumi.Input<number>;
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetRegionResolver {
+export interface GetProducerImageShareGroupMembersMember {
     /**
-     * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+     * When the member was created.
      */
-    ipv4?: string;
+    created?: string;
     /**
-     * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+     * When the member will expire.
      */
-    ipv6?: string;
+    expiry?: string;
+    /**
+     * The label of the member.
+     */
+    label?: string;
+    /**
+     * The ID of the Image Share Group for which to list members.
+     */
+    sharegroupId: number;
+    /**
+     * The status of the member.
+     */
+    status?: string;
+    /**
+     * The UUID of member's token.
+     */
+    tokenUuid: string;
+    /**
+     * When the member was last updated.
+     */
+    updated?: string;
 }
 
-export interface GetRegionResolverArgs {
+export interface GetProducerImageShareGroupMembersMemberArgs {
     /**
-     * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
+     * When the member was created.
      */
-    ipv4?: pulumi.Input<string>;
+    created?: pulumi.Input<string>;
     /**
-     * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
+     * When the member will expire.
      */
-    ipv6?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string>;
+    /**
+     * The label of the member.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The ID of the Image Share Group for which to list members.
+     */
+    sharegroupId: pulumi.Input<number>;
+    /**
+     * The status of the member.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The UUID of member's token.
+     */
+    tokenUuid: pulumi.Input<string>;
+    /**
+     * When the member was last updated.
+     */
+    updated?: pulumi.Input<string>;
+}
+
+export interface GetProducerImageShareGroupsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetProducerImageShareGroupsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetProducerImageShareGroupsImageShareGroup {
+    /**
+     * The date and time the Image Share Group was created.
+     */
+    created?: string;
+    /**
+     * The description of the Image Share Group.
+     */
+    description?: string;
+    /**
+     * The date and time the Image Share Group will expire.
+     */
+    expiry?: string;
+    /**
+     * The ID of the Image Share Group.
+     */
+    id: number;
+    /**
+     * The number of images in the Image Share Group.
+     */
+    imagesCount?: number;
+    /**
+     * Whether the Image Share Group is suspended.
+     */
+    isSuspended?: boolean;
+    /**
+     * The label of the Image Share Group.
+     */
+    label?: string;
+    /**
+     * The number of members in the Image Share Group.
+     */
+    membersCount?: number;
+    /**
+     * The date and time the Image Share Group was last updated.
+     */
+    updated?: string;
+    /**
+     * The UUID of the Image Share Group.
+     */
+    uuid?: string;
+}
+
+export interface GetProducerImageShareGroupsImageShareGroupArgs {
+    /**
+     * The date and time the Image Share Group was created.
+     */
+    created?: pulumi.Input<string>;
+    /**
+     * The description of the Image Share Group.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The date and time the Image Share Group will expire.
+     */
+    expiry?: pulumi.Input<string>;
+    /**
+     * The ID of the Image Share Group.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The number of images in the Image Share Group.
+     */
+    imagesCount?: pulumi.Input<number>;
+    /**
+     * Whether the Image Share Group is suspended.
+     */
+    isSuspended?: pulumi.Input<boolean>;
+    /**
+     * The label of the Image Share Group.
+     */
+    label?: pulumi.Input<string>;
+    /**
+     * The number of members in the Image Share Group.
+     */
+    membersCount?: pulumi.Input<number>;
+    /**
+     * The date and time the Image Share Group was last updated.
+     */
+    updated?: pulumi.Input<string>;
+    /**
+     * The UUID of the Image Share Group.
+     */
+    uuid?: pulumi.Input<string>;
 }
 
 export interface GetRegionsFilter {
@@ -4255,114 +1955,6 @@ export interface GetRegionsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetRegionsRegion {
-    /**
-     * A list of capabilities of this region.
-     */
-    capabilities?: string[];
-    /**
-     * The country the region resides in.
-     */
-    country?: string;
-    /**
-     * The unique ID of this Region.
-     */
-    id: string;
-    /**
-     * Detailed location information for this Region, including city, state or region, and country.
-     */
-    label?: string;
-    /**
-     * Information about placement groups limits for this region.
-     */
-    placementGroupLimits?: inputs.GetRegionsRegionPlacementGroupLimit[];
-    resolvers?: inputs.GetRegionsRegionResolver[];
-    /**
-     * The type of this region.
-     */
-    siteType?: string;
-    /**
-     * This region’s current operational status (ok or outage).
-     */
-    status?: string;
-}
-
-export interface GetRegionsRegionArgs {
-    /**
-     * A list of capabilities of this region.
-     */
-    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The country the region resides in.
-     */
-    country?: pulumi.Input<string>;
-    /**
-     * The unique ID of this Region.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * Detailed location information for this Region, including city, state or region, and country.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * Information about placement groups limits for this region.
-     */
-    placementGroupLimits?: pulumi.Input<pulumi.Input<inputs.GetRegionsRegionPlacementGroupLimitArgs>[]>;
-    resolvers?: pulumi.Input<pulumi.Input<inputs.GetRegionsRegionResolverArgs>[]>;
-    /**
-     * The type of this region.
-     */
-    siteType?: pulumi.Input<string>;
-    /**
-     * This region’s current operational status (ok or outage).
-     */
-    status?: pulumi.Input<string>;
-}
-
-export interface GetRegionsRegionPlacementGroupLimit {
-    /**
-     * The maximum number of Linodes allowed to be assigned to a placement group in this region.
-     */
-    maximumLinodesPerPg: number;
-    /**
-     * The maximum number of placement groups allowed for the current user in this region.
-     */
-    maximumPgsPerCustomer: number;
-}
-
-export interface GetRegionsRegionPlacementGroupLimitArgs {
-    /**
-     * The maximum number of Linodes allowed to be assigned to a placement group in this region.
-     */
-    maximumLinodesPerPg: pulumi.Input<number>;
-    /**
-     * The maximum number of placement groups allowed for the current user in this region.
-     */
-    maximumPgsPerCustomer: pulumi.Input<number>;
-}
-
-export interface GetRegionsRegionResolver {
-    /**
-     * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
-     */
-    ipv4?: string;
-    /**
-     * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
-     */
-    ipv6?: string;
-}
-
-export interface GetRegionsRegionResolverArgs {
-    /**
-     * The IPv4 addresses for this region’s DNS resolvers, separated by commas.
-     */
-    ipv4?: pulumi.Input<string>;
-    /**
-     * The IPv6 addresses for this region’s DNS resolvers, separated by commas.
-     */
-    ipv6?: pulumi.Input<string>;
-}
-
 export interface GetSshkeysFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -4393,44 +1985,6 @@ export interface GetSshkeysFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetSshkeysSshkey {
-    /**
-     * The date this key was added.
-     */
-    created?: string;
-    /**
-     * The ID of the SSH Key.
-     */
-    id?: string;
-    /**
-     * The label of the SSH Key.
-     */
-    label: string;
-    /**
-     * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-     */
-    sshKey?: string;
-}
-
-export interface GetSshkeysSshkeyArgs {
-    /**
-     * The date this key was added.
-     */
-    created?: pulumi.Input<string>;
-    /**
-     * The ID of the SSH Key.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The label of the SSH Key.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-     */
-    sshKey?: pulumi.Input<string>;
-}
-
 export interface GetStackScriptsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -4459,178 +2013,6 @@ export interface GetStackScriptsFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetStackScriptsStackscript {
-    /**
-     * The date this StackScript was created.
-     */
-    created?: string;
-    /**
-     * Count of currently active, deployed Linodes created from this StackScript.
-     */
-    deploymentsActive?: number;
-    /**
-     * The total number of times this StackScript has been deployed.
-     */
-    deploymentsTotal?: number;
-    /**
-     * A description for the StackScript.
-     */
-    description?: string;
-    /**
-     * The unique ID of the StackScript.
-     */
-    id: string;
-    /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     */
-    images?: string[];
-    /**
-     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     */
-    isPublic?: boolean;
-    /**
-     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     */
-    label?: string;
-    /**
-     * This field allows you to add notes for the set of revisions made to this StackScript.
-     */
-    revNote?: string;
-    /**
-     * The script to execute when provisioning a new Linode with this StackScript.
-     */
-    script?: string;
-    /**
-     * The date this StackScript was updated.
-     */
-    updated?: string;
-    /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     */
-    userDefinedFields?: inputs.GetStackScriptsStackscriptUserDefinedField[];
-    /**
-     * The Gravatar ID for the User who created the StackScript.
-     */
-    userGravatarId?: string;
-    /**
-     * The User who created the StackScript.
-     */
-    username?: string;
-}
-
-export interface GetStackScriptsStackscriptArgs {
-    /**
-     * The date this StackScript was created.
-     */
-    created?: pulumi.Input<string>;
-    /**
-     * Count of currently active, deployed Linodes created from this StackScript.
-     */
-    deploymentsActive?: pulumi.Input<number>;
-    /**
-     * The total number of times this StackScript has been deployed.
-     */
-    deploymentsTotal?: pulumi.Input<number>;
-    /**
-     * A description for the StackScript.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * The unique ID of the StackScript.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * An array of Image IDs representing the Images that this StackScript is compatible for deploying with.
-     */
-    images?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private.
-     */
-    isPublic?: pulumi.Input<boolean>;
-    /**
-     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * This field allows you to add notes for the set of revisions made to this StackScript.
-     */
-    revNote?: pulumi.Input<string>;
-    /**
-     * The script to execute when provisioning a new Linode with this StackScript.
-     */
-    script?: pulumi.Input<string>;
-    /**
-     * The date this StackScript was updated.
-     */
-    updated?: pulumi.Input<string>;
-    /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
-     */
-    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.GetStackScriptsStackscriptUserDefinedFieldArgs>[]>;
-    /**
-     * The Gravatar ID for the User who created the StackScript.
-     */
-    userGravatarId?: pulumi.Input<string>;
-    /**
-     * The User who created the StackScript.
-     */
-    username?: pulumi.Input<string>;
-}
-
-export interface GetStackScriptsStackscriptUserDefinedField {
-    /**
-     * The default value. If not specified, this value will be used.
-     */
-    default: string;
-    /**
-     * An example value for the field.
-     */
-    example: string;
-    /**
-     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     */
-    label: string;
-    /**
-     * A list of acceptable values for the field in any quantity, combination or order.
-     */
-    manyOf: string;
-    /**
-     * The name of the field.
-     */
-    name: string;
-    /**
-     * A list of acceptable single values for the field.
-     */
-    oneOf: string;
-}
-
-export interface GetStackScriptsStackscriptUserDefinedFieldArgs {
-    /**
-     * The default value. If not specified, this value will be used.
-     */
-    default: pulumi.Input<string>;
-    /**
-     * An example value for the field.
-     */
-    example: pulumi.Input<string>;
-    /**
-     * A human-readable label for the field that will serve as the input prompt for entering the value during deployment.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * A list of acceptable values for the field in any quantity, combination or order.
-     */
-    manyOf: pulumi.Input<string>;
-    /**
-     * The name of the field.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * A list of acceptable single values for the field.
-     */
-    oneOf: pulumi.Input<string>;
 }
 
 export interface GetUserDatabaseGrant {
@@ -4963,576 +2345,6 @@ export interface GetUsersFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetUsersUser {
-    /**
-     * A set containing all of the user's active grants.
-     */
-    databaseGrants?: inputs.GetUsersUserDatabaseGrant[];
-    /**
-     * A set containing all of the user's active grants.
-     */
-    domainGrants?: inputs.GetUsersUserDomainGrant[];
-    /**
-     * The email address for this User, for account management communications, and may be used for other communications as configured.
-     */
-    email?: string;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    firewallGrants?: inputs.GetUsersUserFirewallGrant[];
-    /**
-     * A structure containing the Account-level grants a User has.
-     */
-    globalGrants?: inputs.GetUsersUserGlobalGrant[];
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id?: string;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    imageGrants?: inputs.GetUsersUserImageGrant[];
-    /**
-     * A set containing all of the user's active grants.
-     */
-    linodeGrants?: inputs.GetUsersUserLinodeGrant[];
-    /**
-     * A set containing all of the user's active grants.
-     */
-    longviewGrants?: inputs.GetUsersUserLongviewGrant[];
-    /**
-     * A set containing all of the user's active grants.
-     */
-    nodebalancerGrants?: inputs.GetUsersUserNodebalancerGrant[];
-    /**
-     * The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
-     */
-    passwordCreated?: string;
-    /**
-     * If true, this User must be granted access to perform actions or access entities on this Account.
-     */
-    restricted?: boolean;
-    /**
-     * A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
-     */
-    sshKeys?: string[];
-    /**
-     * A set containing all of the user's active grants.
-     */
-    stackscriptGrants?: inputs.GetUsersUserStackscriptGrant[];
-    /**
-     * A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
-     */
-    tfaEnabled?: boolean;
-    /**
-     * The type of this user.
-     */
-    userType?: string;
-    /**
-     * This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
-     */
-    username: string;
-    /**
-     * The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
-     */
-    verifiedPhoneNumber?: string;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    volumeGrants?: inputs.GetUsersUserVolumeGrant[];
-    /**
-     * A set containing all of the user's active grants.
-     */
-    vpcGrants?: inputs.GetUsersUserVpcGrant[];
-}
-
-export interface GetUsersUserArgs {
-    /**
-     * A set containing all of the user's active grants.
-     */
-    databaseGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserDatabaseGrantArgs>[]>;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    domainGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserDomainGrantArgs>[]>;
-    /**
-     * The email address for this User, for account management communications, and may be used for other communications as configured.
-     */
-    email?: pulumi.Input<string>;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    firewallGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserFirewallGrantArgs>[]>;
-    /**
-     * A structure containing the Account-level grants a User has.
-     */
-    globalGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserGlobalGrantArgs>[]>;
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    imageGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserImageGrantArgs>[]>;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    linodeGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserLinodeGrantArgs>[]>;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    longviewGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserLongviewGrantArgs>[]>;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserNodebalancerGrantArgs>[]>;
-    /**
-     * The date and time when this User’s current password was created. User passwords are first created during the Account sign-up process, and updated using the Reset Password webpage. null if this User has not created a password yet.
-     */
-    passwordCreated?: pulumi.Input<string>;
-    /**
-     * If true, this User must be granted access to perform actions or access entities on this Account.
-     */
-    restricted?: pulumi.Input<boolean>;
-    /**
-     * A list of SSH Key labels added by this User. These are the keys that will be deployed if this User is included in the authorizedUsers field of a create Linode, rebuild Linode, or create Disk request.
-     */
-    sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserStackscriptGrantArgs>[]>;
-    /**
-     * A boolean value indicating if the User has Two Factor Authentication (TFA) enabled.
-     */
-    tfaEnabled?: pulumi.Input<boolean>;
-    /**
-     * The type of this user.
-     */
-    userType?: pulumi.Input<string>;
-    /**
-     * This User's username. This is used for logging in, and may also be displayed alongside actions the User performs (for example, in Events or public StackScripts).
-     */
-    username: pulumi.Input<string>;
-    /**
-     * The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
-     */
-    verifiedPhoneNumber?: pulumi.Input<string>;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    volumeGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserVolumeGrantArgs>[]>;
-    /**
-     * A set containing all of the user's active grants.
-     */
-    vpcGrants?: pulumi.Input<pulumi.Input<inputs.GetUsersUserVpcGrantArgs>[]>;
-}
-
-export interface GetUsersUserDatabaseGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
-export interface GetUsersUserDatabaseGrantArgs {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: pulumi.Input<string>;
-}
-
-export interface GetUsersUserDomainGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
-export interface GetUsersUserDomainGrantArgs {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: pulumi.Input<string>;
-}
-
-export interface GetUsersUserFirewallGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
-export interface GetUsersUserFirewallGrantArgs {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: pulumi.Input<string>;
-}
-
-export interface GetUsersUserGlobalGrant {
-    /**
-     * The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
-     */
-    accountAccess: string;
-    /**
-     * If true, this User may add Managed Databases.
-     */
-    addDatabases: boolean;
-    /**
-     * If true, this User may add Domains.
-     */
-    addDomains: boolean;
-    /**
-     * If true, this User may add Firewalls.
-     */
-    addFirewalls: boolean;
-    /**
-     * If true, this User may add Images.
-     */
-    addImages: boolean;
-    /**
-     * If true, this User may create Linodes.
-     */
-    addLinodes: boolean;
-    /**
-     * If true, this User may create Longview clients and view the current plan.
-     */
-    addLongview: boolean;
-    /**
-     * If true, this User may add NodeBalancers.
-     */
-    addNodebalancers: boolean;
-    addStackscripts: boolean;
-    /**
-     * If true, this User may add Volumes.
-     */
-    addVolumes: boolean;
-    /**
-     * If true, this User may add Virtual Private Clouds (VPCs).
-     */
-    addVpcs: boolean;
-    /**
-     * If true, this User may cancel the entire Account.
-     */
-    cancelAccount: boolean;
-    /**
-     * If true, this User may manage the Account’s Longview subscription.
-     */
-    longviewSubscription: boolean;
-}
-
-export interface GetUsersUserGlobalGrantArgs {
-    /**
-     * The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users. (`readOnly`, `readWrite`)
-     */
-    accountAccess: pulumi.Input<string>;
-    /**
-     * If true, this User may add Managed Databases.
-     */
-    addDatabases: pulumi.Input<boolean>;
-    /**
-     * If true, this User may add Domains.
-     */
-    addDomains: pulumi.Input<boolean>;
-    /**
-     * If true, this User may add Firewalls.
-     */
-    addFirewalls: pulumi.Input<boolean>;
-    /**
-     * If true, this User may add Images.
-     */
-    addImages: pulumi.Input<boolean>;
-    /**
-     * If true, this User may create Linodes.
-     */
-    addLinodes: pulumi.Input<boolean>;
-    /**
-     * If true, this User may create Longview clients and view the current plan.
-     */
-    addLongview: pulumi.Input<boolean>;
-    /**
-     * If true, this User may add NodeBalancers.
-     */
-    addNodebalancers: pulumi.Input<boolean>;
-    addStackscripts: pulumi.Input<boolean>;
-    /**
-     * If true, this User may add Volumes.
-     */
-    addVolumes: pulumi.Input<boolean>;
-    /**
-     * If true, this User may add Virtual Private Clouds (VPCs).
-     */
-    addVpcs: pulumi.Input<boolean>;
-    /**
-     * If true, this User may cancel the entire Account.
-     */
-    cancelAccount: pulumi.Input<boolean>;
-    /**
-     * If true, this User may manage the Account’s Longview subscription.
-     */
-    longviewSubscription: pulumi.Input<boolean>;
-}
-
-export interface GetUsersUserImageGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
-export interface GetUsersUserImageGrantArgs {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: pulumi.Input<string>;
-}
-
-export interface GetUsersUserLinodeGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
-export interface GetUsersUserLinodeGrantArgs {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: pulumi.Input<string>;
-}
-
-export interface GetUsersUserLongviewGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
-export interface GetUsersUserLongviewGrantArgs {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: pulumi.Input<string>;
-}
-
-export interface GetUsersUserNodebalancerGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
-export interface GetUsersUserNodebalancerGrantArgs {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: pulumi.Input<string>;
-}
-
-export interface GetUsersUserStackscriptGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
-export interface GetUsersUserStackscriptGrantArgs {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: pulumi.Input<string>;
-}
-
-export interface GetUsersUserVolumeGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
-export interface GetUsersUserVolumeGrantArgs {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: pulumi.Input<string>;
-}
-
-export interface GetUsersUserVpcGrant {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: number;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: string;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: string;
-}
-
-export interface GetUsersUserVpcGrantArgs {
-    /**
-     * The ID of entity this grant applies to.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * The current label of the entity this grant applies to, for display purposes.
-     */
-    label: pulumi.Input<string>;
-    /**
-     * The level of access this User has to this entity. If null, this User has no access.
-     */
-    permissions: pulumi.Input<string>;
-}
-
 export interface GetVlansFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -5561,44 +2373,6 @@ export interface GetVlansFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetVlansVlan {
-    /**
-     * When the VLAN was created.
-     */
-    created?: string;
-    /**
-     * The unique label of the VLAN.
-     */
-    label?: string;
-    /**
-     * The running Linodes currently attached to the VLAN.
-     */
-    linodes?: number[];
-    /**
-     * The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-     */
-    region?: string;
-}
-
-export interface GetVlansVlanArgs {
-    /**
-     * When the VLAN was created.
-     */
-    created?: pulumi.Input<string>;
-    /**
-     * The unique label of the VLAN.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * The running Linodes currently attached to the VLAN.
-     */
-    linodes?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-     */
-    region?: pulumi.Input<string>;
 }
 
 export interface GetVolumeTypesFilter {
@@ -5631,92 +2405,6 @@ export interface GetVolumeTypesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetVolumeTypesType {
-    /**
-     * The ID representing the Volume type.
-     */
-    id: string;
-    /**
-     * The Volume type label is for display purposes only.
-     */
-    label?: string;
-    /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
-     */
-    prices?: inputs.GetVolumeTypesTypePrice[];
-    /**
-     * A list of region-specific prices for this Volume Type.
-     */
-    regionPrices?: inputs.GetVolumeTypesTypeRegionPrice[];
-    /**
-     * The monthly outbound transfer amount, in MB.
-     */
-    transfer?: number;
-}
-
-export interface GetVolumeTypesTypeArgs {
-    /**
-     * The ID representing the Volume type.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * The Volume type label is for display purposes only.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
-     */
-    prices?: pulumi.Input<pulumi.Input<inputs.GetVolumeTypesTypePriceArgs>[]>;
-    /**
-     * A list of region-specific prices for this Volume Type.
-     */
-    regionPrices?: pulumi.Input<pulumi.Input<inputs.GetVolumeTypesTypeRegionPriceArgs>[]>;
-    /**
-     * The monthly outbound transfer amount, in MB.
-     */
-    transfer?: pulumi.Input<number>;
-}
-
-export interface GetVolumeTypesTypePrice {
-    /**
-     * Cost (in US dollars) per hour.
-     */
-    hourly: number;
-    /**
-     * Cost (in US dollars) per month.
-     */
-    monthly: number;
-}
-
-export interface GetVolumeTypesTypePriceArgs {
-    /**
-     * Cost (in US dollars) per hour.
-     */
-    hourly: pulumi.Input<number>;
-    /**
-     * Cost (in US dollars) per month.
-     */
-    monthly: pulumi.Input<number>;
-}
-
-export interface GetVolumeTypesTypeRegionPrice {
-    hourly: number;
-    /**
-     * The ID representing the Volume type.
-     */
-    id: string;
-    monthly: number;
-}
-
-export interface GetVolumeTypesTypeRegionPriceArgs {
-    hourly: pulumi.Input<number>;
-    /**
-     * The ID representing the Volume type.
-     */
-    id: pulumi.Input<string>;
-    monthly: pulumi.Input<number>;
-}
-
 export interface GetVolumesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -5745,100 +2433,6 @@ export interface GetVolumesFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetVolumesVolume {
-    /**
-     * When this Volume was created.
-     */
-    created?: string;
-    /**
-     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
-     */
-    encryption?: string;
-    /**
-     * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
-     */
-    filesystemPath?: string;
-    /**
-     * The unique ID of this Volume.
-     */
-    id: number;
-    /**
-     * This Volume's label is for display purposes only.
-     */
-    label?: string;
-    /**
-     * If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
-     */
-    linodeId?: number;
-    /**
-     * The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
-     */
-    region?: string;
-    /**
-     * The Volume's size, in GiB.
-     */
-    size?: number;
-    /**
-     * The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
-     */
-    status?: string;
-    /**
-     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: string[];
-    /**
-     * When this Volume was last updated.
-     */
-    updated?: string;
-}
-
-export interface GetVolumesVolumeArgs {
-    /**
-     * When this Volume was created.
-     */
-    created?: pulumi.Input<string>;
-    /**
-     * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
-     */
-    encryption?: pulumi.Input<string>;
-    /**
-     * The full filesystem path for the Volume based on the Volume's label. Path is /dev/disk/by-id/scsi-0LinodeVolume + Volume label.
-     */
-    filesystemPath?: pulumi.Input<string>;
-    /**
-     * The unique ID of this Volume.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * This Volume's label is for display purposes only.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
-     */
-    linodeId?: pulumi.Input<number>;
-    /**
-     * The datacenter in which this Volume is located. See all regions [here](https://api.linode.com/v4/regions).
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The Volume's size, in GiB.
-     */
-    size?: pulumi.Input<number>;
-    /**
-     * The current status of the Volume. (`creating`, `active`, `resizing`, `contactSupport`)
-     */
-    status?: pulumi.Input<string>;
-    /**
-     * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * When this Volume was last updated.
-     */
-    updated?: pulumi.Input<string>;
 }
 
 export interface GetVpcIpsFilter {
@@ -5871,158 +2465,6 @@ export interface GetVpcIpsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetVpcIpsVpcIp {
-    /**
-     * True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
-     */
-    active?: boolean;
-    /**
-     * An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.
-     */
-    address?: string;
-    /**
-     * A range of IPv4 addresses configured for this VPC interface. Null if a single address.
-     */
-    addressRange?: string;
-    /**
-     * The globally general entity identifier for the Linode configuration profile where the VPC is included.
-     */
-    configId?: number;
-    /**
-     * The default gateway for the VPC subnet that the IP or IP range belongs to.
-     */
-    gateway?: string;
-    /**
-     * The globally general API entity identifier for the Linode interface.
-     */
-    interfaceId?: number;
-    /**
-     * The addresses within the prefix that the interface is associated with.
-     */
-    ipv6Addresses?: inputs.GetVpcIpsVpcIpIpv6Address[];
-    /**
-     * The isPublic setting for the interface associated with this address.
-     */
-    ipv6IsPublic?: boolean;
-    /**
-     * The /64 prefix, in CIDR notation, assigned to an interface.
-     */
-    ipv6Range?: string;
-    /**
-     * The identifier for the Linode the VPC interface currently belongs to.
-     */
-    linodeId?: number;
-    /**
-     * The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
-     */
-    nat11?: string;
-    /**
-     * The number of bits set in the subnet mask.
-     */
-    prefix?: number;
-    /**
-     * The region of the VPC.
-     */
-    region?: string;
-    /**
-     * The id of the VPC Subnet for this interface.
-     */
-    subnetId?: number;
-    /**
-     * The mask that separates host bits from network bits for the address or address_range.
-     */
-    subnetMask?: string;
-    /**
-     * The id of the parent VPC for the list of VPC IPs.
-     *
-     * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
-     */
-    vpcId?: number;
-}
-
-export interface GetVpcIpsVpcIpArgs {
-    /**
-     * True if the VPC interface is in use, meaning that the Linode was powered on using the configId to which the interface belongs. Otherwise false.
-     */
-    active?: pulumi.Input<boolean>;
-    /**
-     * An IPv4 address configured for this VPC interface. These follow the RFC 1918 private address format. Null if an address_range.
-     */
-    address?: pulumi.Input<string>;
-    /**
-     * A range of IPv4 addresses configured for this VPC interface. Null if a single address.
-     */
-    addressRange?: pulumi.Input<string>;
-    /**
-     * The globally general entity identifier for the Linode configuration profile where the VPC is included.
-     */
-    configId?: pulumi.Input<number>;
-    /**
-     * The default gateway for the VPC subnet that the IP or IP range belongs to.
-     */
-    gateway?: pulumi.Input<string>;
-    /**
-     * The globally general API entity identifier for the Linode interface.
-     */
-    interfaceId?: pulumi.Input<number>;
-    /**
-     * The addresses within the prefix that the interface is associated with.
-     */
-    ipv6Addresses?: pulumi.Input<pulumi.Input<inputs.GetVpcIpsVpcIpIpv6AddressArgs>[]>;
-    /**
-     * The isPublic setting for the interface associated with this address.
-     */
-    ipv6IsPublic?: pulumi.Input<boolean>;
-    /**
-     * The /64 prefix, in CIDR notation, assigned to an interface.
-     */
-    ipv6Range?: pulumi.Input<string>;
-    /**
-     * The identifier for the Linode the VPC interface currently belongs to.
-     */
-    linodeId?: pulumi.Input<number>;
-    /**
-     * The public IP address used for NAT 1:1 with the VPC. This is empty if NAT 1:1 isn't used.
-     */
-    nat11?: pulumi.Input<string>;
-    /**
-     * The number of bits set in the subnet mask.
-     */
-    prefix?: pulumi.Input<number>;
-    /**
-     * The region of the VPC.
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The id of the VPC Subnet for this interface.
-     */
-    subnetId?: pulumi.Input<number>;
-    /**
-     * The mask that separates host bits from network bits for the address or address_range.
-     */
-    subnetMask?: pulumi.Input<string>;
-    /**
-     * The id of the parent VPC for the list of VPC IPs.
-     *
-     * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
-     */
-    vpcId?: pulumi.Input<number>;
-}
-
-export interface GetVpcIpsVpcIpIpv6Address {
-    /**
-     * A specific address within the prefix that the interface is expected to autoconfigure through SLAAC.
-     */
-    slaacAddress?: string;
-}
-
-export interface GetVpcIpsVpcIpIpv6AddressArgs {
-    /**
-     * A specific address within the prefix that the interface is expected to autoconfigure through SLAAC.
-     */
-    slaacAddress?: pulumi.Input<string>;
-}
-
 export interface GetVpcSubnetsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -6051,134 +2493,6 @@ export interface GetVpcSubnetsFilterArgs {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetVpcSubnetsVpcSubnet {
-    /**
-     * The date and time when the VPC Subnet was created.
-     */
-    created?: string;
-    /**
-     * ID of the interface.
-     */
-    id?: number;
-    /**
-     * The IPv4 range of this subnet in CIDR format.
-     */
-    ipv4?: string;
-    /**
-     * The IPv6 ranges of this subnet.
-     */
-    ipv6s?: inputs.GetVpcSubnetsVpcSubnetIpv6[];
-    /**
-     * The label of the VPC subnet.
-     */
-    label?: string;
-    /**
-     * A list of Linodes added to this subnet.
-     */
-    linodes?: inputs.GetVpcSubnetsVpcSubnetLinode[];
-    /**
-     * The date and time when the VPC Subnet was last updated.
-     */
-    updated?: string;
-}
-
-export interface GetVpcSubnetsVpcSubnetArgs {
-    /**
-     * The date and time when the VPC Subnet was created.
-     */
-    created?: pulumi.Input<string>;
-    /**
-     * ID of the interface.
-     */
-    id?: pulumi.Input<number>;
-    /**
-     * The IPv4 range of this subnet in CIDR format.
-     */
-    ipv4?: pulumi.Input<string>;
-    /**
-     * The IPv6 ranges of this subnet.
-     */
-    ipv6s?: pulumi.Input<pulumi.Input<inputs.GetVpcSubnetsVpcSubnetIpv6Args>[]>;
-    /**
-     * The label of the VPC subnet.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * A list of Linodes added to this subnet.
-     */
-    linodes?: pulumi.Input<pulumi.Input<inputs.GetVpcSubnetsVpcSubnetLinodeArgs>[]>;
-    /**
-     * The date and time when the VPC Subnet was last updated.
-     */
-    updated?: pulumi.Input<string>;
-}
-
-export interface GetVpcSubnetsVpcSubnetIpv6 {
-    /**
-     * An IPv6 range allocated to this subnet.
-     */
-    range?: string;
-}
-
-export interface GetVpcSubnetsVpcSubnetIpv6Args {
-    /**
-     * An IPv6 range allocated to this subnet.
-     */
-    range?: pulumi.Input<string>;
-}
-
-export interface GetVpcSubnetsVpcSubnetLinode {
-    /**
-     * ID of the interface.
-     */
-    id: number;
-    /**
-     * A list of networking interfaces objects.
-     */
-    interfaces: inputs.GetVpcSubnetsVpcSubnetLinodeInterface[];
-}
-
-export interface GetVpcSubnetsVpcSubnetLinodeArgs {
-    /**
-     * ID of the interface.
-     */
-    id: pulumi.Input<number>;
-    /**
-     * A list of networking interfaces objects.
-     */
-    interfaces: pulumi.Input<pulumi.Input<inputs.GetVpcSubnetsVpcSubnetLinodeInterfaceArgs>[]>;
-}
-
-export interface GetVpcSubnetsVpcSubnetLinodeInterface {
-    /**
-     * Whether the Interface is actively in use.
-     */
-    active: boolean;
-    /**
-     * ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
-     */
-    configId: number;
-    /**
-     * ID of the interface.
-     */
-    id: number;
-}
-
-export interface GetVpcSubnetsVpcSubnetLinodeInterfaceArgs {
-    /**
-     * Whether the Interface is actively in use.
-     */
-    active: pulumi.Input<boolean>;
-    /**
-     * ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
-     */
-    configId: pulumi.Input<number>;
-    /**
-     * ID of the interface.
-     */
-    id: pulumi.Input<number>;
 }
 
 export interface GetVpcsFilter {
@@ -6211,80 +2525,45 @@ export interface GetVpcsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetVpcsVpc {
+export interface ImageImageSharing {
     /**
-     * The date and time when the VPC was created.
+     * Details about who the image is shared by.
      */
-    created?: string;
+    sharedBy?: pulumi.Input<inputs.ImageImageSharingSharedBy>;
     /**
-     * The user-defined description of this VPC.
+     * Details about who the image is shared with.
      */
-    description?: string;
-    /**
-     * The unique id of this VPC.
-     */
-    id: string;
-    /**
-     * A list of IPv6 allocations under this VPC.
-     */
-    ipv6s?: inputs.GetVpcsVpcIpv6[];
-    /**
-     * The label of the VPC.
-     */
-    label?: string;
-    /**
-     * The region where the VPC is deployed.
-     */
-    region?: string;
-    /**
-     * The date and time when the VPC was last updated.
-     */
-    updated?: string;
+    sharedWith?: pulumi.Input<inputs.ImageImageSharingSharedWith>;
 }
 
-export interface GetVpcsVpcArgs {
+export interface ImageImageSharingSharedBy {
     /**
-     * The date and time when the VPC was created.
+     * The sharegroupId from the im_ImageShare row.
      */
-    created?: pulumi.Input<string>;
+    sharegroupId?: pulumi.Input<number>;
     /**
-     * The user-defined description of this VPC.
+     * The label from the associated im_ImageShareGroup row.
      */
-    description?: pulumi.Input<string>;
+    sharegroupLabel?: pulumi.Input<string>;
     /**
-     * The unique id of this VPC.
+     * The sharegroupUuid from the im_ImageShare row.
      */
-    id: pulumi.Input<string>;
+    sharegroupUuid?: pulumi.Input<string>;
     /**
-     * A list of IPv6 allocations under this VPC.
+     * The image id of the base image (will only be shown to producers, will be null for consumers).
      */
-    ipv6s?: pulumi.Input<pulumi.Input<inputs.GetVpcsVpcIpv6Args>[]>;
-    /**
-     * The label of the VPC.
-     */
-    label?: pulumi.Input<string>;
-    /**
-     * The region where the VPC is deployed.
-     */
-    region?: pulumi.Input<string>;
-    /**
-     * The date and time when the VPC was last updated.
-     */
-    updated?: pulumi.Input<string>;
+    sourceImageId?: pulumi.Input<string>;
 }
 
-export interface GetVpcsVpcIpv6 {
+export interface ImageImageSharingSharedWith {
     /**
-     * The IPv6 range assigned to this VPC.
+     * The number of sharegroups the private image is present in.
      */
-    range?: string;
-}
-
-export interface GetVpcsVpcIpv6Args {
+    sharegroupCount?: pulumi.Input<number>;
     /**
-     * The IPv6 range assigned to this VPC.
+     * The GET api url to view the sharegroups in which the image is shared.
      */
-    range?: pulumi.Input<string>;
+    sharegroupListUrl?: pulumi.Input<string>;
 }
 
 export interface ImageReplication {
@@ -7032,10 +3311,6 @@ export interface InterfacePublicIpv6Range {
      * The IPv6 range.
      */
     range: pulumi.Input<string>;
-    /**
-     * The public IPv6 address that the range is routed to.
-     */
-    routeTarget?: pulumi.Input<string>;
 }
 
 export interface InterfacePublicIpv6Shared {
@@ -7650,6 +3925,23 @@ export interface PlacementGroupMember {
      * The ID of the Linode.
      */
     linodeId: pulumi.Input<number>;
+}
+
+export interface ProducerImageShareGroupImage {
+    /**
+     * The description of the Image Share Group
+     *
+     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * (Required) The ID of the Image to share. This must be in the format `private/<image_id>`.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The label of the Image Share Group.
+     */
+    label?: pulumi.Input<string>;
 }
 
 export interface RdnsTimeouts {

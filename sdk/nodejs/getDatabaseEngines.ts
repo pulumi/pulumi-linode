@@ -62,7 +62,6 @@ export function getDatabaseEngines(args?: GetDatabaseEnginesArgs, opts?: pulumi.
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabaseEngines:getDatabaseEngines", {
-        "engines": args.engines,
         "filters": args.filters,
         "latest": args.latest,
         "order": args.order,
@@ -74,7 +73,6 @@ export function getDatabaseEngines(args?: GetDatabaseEnginesArgs, opts?: pulumi.
  * A collection of arguments for invoking getDatabaseEngines.
  */
 export interface GetDatabaseEnginesArgs {
-    engines?: inputs.GetDatabaseEnginesEngine[];
     filters?: inputs.GetDatabaseEnginesFilter[];
     /**
      * If true, only the latest engine version will be returned.
@@ -96,7 +94,7 @@ export interface GetDatabaseEnginesArgs {
  * A collection of values returned by getDatabaseEngines.
  */
 export interface GetDatabaseEnginesResult {
-    readonly engines?: outputs.GetDatabaseEnginesEngine[];
+    readonly engines: outputs.GetDatabaseEnginesEngine[];
     readonly filters?: outputs.GetDatabaseEnginesFilter[];
     /**
      * The Managed Database engine ID in engine/version format.
@@ -162,7 +160,6 @@ export function getDatabaseEnginesOutput(args?: GetDatabaseEnginesOutputArgs, op
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDatabaseEngines:getDatabaseEngines", {
-        "engines": args.engines,
         "filters": args.filters,
         "latest": args.latest,
         "order": args.order,
@@ -174,7 +171,6 @@ export function getDatabaseEnginesOutput(args?: GetDatabaseEnginesOutputArgs, op
  * A collection of arguments for invoking getDatabaseEngines.
  */
 export interface GetDatabaseEnginesOutputArgs {
-    engines?: pulumi.Input<pulumi.Input<inputs.GetDatabaseEnginesEngineArgs>[]>;
     filters?: pulumi.Input<pulumi.Input<inputs.GetDatabaseEnginesFilterArgs>[]>;
     /**
      * If true, only the latest engine version will be returned.

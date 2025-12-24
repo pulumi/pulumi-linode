@@ -29,8 +29,17 @@ export interface DatabaseMysqlUpdates {
 }
 
 export interface DatabaseMysqlV2PendingUpdate {
+    /**
+     * The time when a mandatory update needs to be applied.
+     */
     deadline: string;
+    /**
+     * A description of the update.
+     */
     description: string;
+    /**
+     * The date and time a maintenance update will be applied.
+     */
     plannedFor: string;
 }
 
@@ -65,9 +74,21 @@ export interface DatabaseMysqlV2Timeouts {
 }
 
 export interface DatabaseMysqlV2Updates {
+    /**
+     * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     */
     dayOfWeek: number;
+    /**
+     * The maximum maintenance window time in hours.
+     */
     duration: number;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     */
     frequency: string;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     */
     hourOfDay: number;
 }
 
@@ -95,8 +116,17 @@ export interface DatabasePostgresqlUpdates {
 }
 
 export interface DatabasePostgresqlV2PendingUpdate {
+    /**
+     * The time when a mandatory update needs to be applied.
+     */
     deadline: string;
+    /**
+     * A description of the update.
+     */
     description: string;
+    /**
+     * The date and time a maintenance update will be applied.
+     */
     plannedFor: string;
 }
 
@@ -131,9 +161,21 @@ export interface DatabasePostgresqlV2Timeouts {
 }
 
 export interface DatabasePostgresqlV2Updates {
+    /**
+     * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     */
     dayOfWeek: number;
+    /**
+     * The maximum maintenance window time in hours.
+     */
     duration: number;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     */
     frequency: string;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     */
     hourOfDay: number;
 }
 
@@ -393,6 +435,171 @@ export interface GetChildAccountsFilter {
      * A list of values for the filter to allow. These values should all be in string form.
      */
     values: string[];
+}
+
+export interface GetConsumerImageShareGroupImageSharesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetConsumerImageShareGroupImageSharesImageShare {
+    /**
+     * The capabilities of the Image represented by the Image Share.
+     */
+    capabilities: string[];
+    /**
+     * When this Image Share was created.
+     */
+    created: string;
+    /**
+     * Whether this Image is deprecated.
+     */
+    deprecated: boolean;
+    /**
+     * A description of the Image Share.
+     */
+    description: string;
+    /**
+     * The unique ID assigned to this Image Share.
+     */
+    id: string;
+    /**
+     * Details about image sharing, including who the image is shared with and by.
+     */
+    imageSharing: outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharing;
+    /**
+     * True if the Image is public.
+     */
+    isPublic: boolean;
+    /**
+     * The label of the Image Share.
+     */
+    label: string;
+    /**
+     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
+     */
+    size: number;
+    /**
+     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     */
+    status: string;
+    /**
+     * A list of customized tags.
+     */
+    tags: string[];
+    /**
+     * The total size of the image in all available regions.
+     */
+    totalSize: number;
+    /**
+     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+     */
+    type: string;
+}
+
+export interface GetConsumerImageShareGroupImageSharesImageShareImageSharing {
+    /**
+     * Details about who the image is shared by.
+     */
+    sharedBy: outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy;
+    /**
+     * Details about who the image is shared with.
+     */
+    sharedWith: outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith;
+}
+
+export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy {
+    /**
+     * The sharegroupId from the im_ImageShare row.
+     */
+    sharegroupId: number;
+    /**
+     * The label from the associated im_ImageShareGroup row.
+     */
+    sharegroupLabel: string;
+    /**
+     * The sharegroupUuid from the im_ImageShare row.
+     */
+    sharegroupUuid: string;
+    /**
+     * The image id of the base image (will only be shown to producers, will be null for consumers).
+     */
+    sourceImageId: string;
+}
+
+export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith {
+    /**
+     * The number of sharegroups the private image is present in.
+     */
+    sharegroupCount: number;
+    /**
+     * The GET api url to view the sharegroups in which the image is shared.
+     */
+    sharegroupListUrl: string;
+}
+
+export interface GetConsumerImageShareGroupTokensFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetConsumerImageShareGroupTokensToken {
+    /**
+     * When the token was created.
+     */
+    created: string;
+    /**
+     * When the token will expire.
+     */
+    expiry: string;
+    /**
+     * A label for the token.
+     */
+    label: string;
+    /**
+     * The label of the Image Share Group that the token is for.
+     */
+    sharegroupLabel: string;
+    /**
+     * The UUID of the Image Share Group that the token is for.
+     */
+    sharegroupUuid: string;
+    /**
+     * The status of the token.
+     */
+    status: string;
+    /**
+     * The UUID of the token.
+     */
+    tokenUuid: string;
+    /**
+     * When the token was last updated.
+     */
+    updated: string;
+    /**
+     * The UUID of the Image Share Group for which to create a token.
+     */
+    validForSharegroupUuid: string;
 }
 
 export interface GetDatabaseBackupsBackup {
@@ -780,8 +987,17 @@ export interface GetDatabaseMysqlUpdate {
 }
 
 export interface GetDatabaseMysqlV2PendingUpdate {
+    /**
+     * The time when a mandatory update needs to be applied.
+     */
     deadline: string;
+    /**
+     * A description of the update.
+     */
     description: string;
+    /**
+     * The date and time a maintenance update will be applied.
+     */
     plannedFor: string;
 }
 
@@ -801,9 +1017,21 @@ export interface GetDatabaseMysqlV2PrivateNetwork {
 }
 
 export interface GetDatabaseMysqlV2Updates {
+    /**
+     * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     */
     dayOfWeek: number;
+    /**
+     * The maximum maintenance window time in hours.
+     */
     duration: number;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     */
     frequency: string;
+    /**
+     * The hour of the day (0-23) when maintenance occurs.
+     */
     hourOfDay: number;
 }
 
@@ -852,8 +1080,17 @@ export interface GetDatabasePostgresqlUpdate {
 }
 
 export interface GetDatabasePostgresqlV2PendingUpdate {
+    /**
+     * The time when a mandatory update needs to be applied.
+     */
     deadline: string;
+    /**
+     * A description of the update.
+     */
     description: string;
+    /**
+     * The date and time a maintenance update will be applied.
+     */
     plannedFor: string;
 }
 
@@ -873,9 +1110,21 @@ export interface GetDatabasePostgresqlV2PrivateNetwork {
 }
 
 export interface GetDatabasePostgresqlV2Updates {
+    /**
+     * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     */
     dayOfWeek: number;
+    /**
+     * The maximum maintenance window time in hours.
+     */
     duration: number;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     */
     frequency: string;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     */
     hourOfDay: number;
 }
 
@@ -1245,7 +1494,7 @@ export interface GetFirewallsFirewall {
     /**
      * The devices associated with this firewall.
      */
-    devices?: outputs.GetFirewallsFirewallDevice[];
+    devices: outputs.GetFirewallsFirewallDevice[];
     /**
      * If true, the Firewall is inactive.
      */
@@ -1261,7 +1510,7 @@ export interface GetFirewallsFirewall {
     /**
      * A set of firewall rules that specify what inbound network traffic is allowed.
      */
-    inbounds?: outputs.GetFirewallsFirewallInbound[];
+    inbounds: outputs.GetFirewallsFirewallInbound[];
     /**
      * The IDs of Linode Interfaces this firewall is applied to.
      */
@@ -1285,7 +1534,7 @@ export interface GetFirewallsFirewall {
     /**
      * A set of firewall rules that specify what outbound network traffic is allowed.
      */
-    outbounds?: outputs.GetFirewallsFirewallOutbound[];
+    outbounds: outputs.GetFirewallsFirewallOutbound[];
     /**
      * The status of the firewall.
      */
@@ -1377,6 +1626,47 @@ export interface GetFirewallsFirewallOutbound {
     protocol: string;
 }
 
+export interface GetImageImageSharing {
+    /**
+     * Details about who the image is shared by.
+     */
+    sharedBy: outputs.GetImageImageSharingSharedBy;
+    /**
+     * Details about who the image is shared with.
+     */
+    sharedWith: outputs.GetImageImageSharingSharedWith;
+}
+
+export interface GetImageImageSharingSharedBy {
+    /**
+     * The sharegroupId from the im_ImageShare row.
+     */
+    sharegroupId: number;
+    /**
+     * The label from the associated im_ImageShareGroup row.
+     */
+    sharegroupLabel: string;
+    /**
+     * The sharegroupUuid from the im_ImageShare row.
+     */
+    sharegroupUuid: string;
+    /**
+     * The image id of the base image (will only be shown to producers, will be null for consumers).
+     */
+    sourceImageId: string;
+}
+
+export interface GetImageImageSharingSharedWith {
+    /**
+     * The number of sharegroups the private image is present in.
+     */
+    sharegroupCount: number;
+    /**
+     * The GET api url to view the sharegroups in which the image is shared.
+     */
+    sharegroupListUrl: string;
+}
+
 export interface GetImageReplication {
     /**
      * The region of an image replica.
@@ -1433,9 +1723,17 @@ export interface GetImagesImage {
      */
     id: string;
     /**
+     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    imageSharing: outputs.GetImagesImageImageSharing;
+    /**
      * True if the Image is public.
      */
     isPublic: boolean;
+    /**
+     * True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    isShared: boolean;
     /**
      * A short description of the Image.
      */
@@ -1443,7 +1741,7 @@ export interface GetImagesImage {
     /**
      * A list of image replication regions and corresponding status.
      */
-    replications?: outputs.GetImagesImageReplication[];
+    replications: outputs.GetImagesImageReplication[];
     /**
      * The minimum size this Image needs to deploy. Size is in MB. example: 2500
      */
@@ -1468,6 +1766,47 @@ export interface GetImagesImage {
      * The upstream distribution vendor. `None` for private Images.
      */
     vendor: string;
+}
+
+export interface GetImagesImageImageSharing {
+    /**
+     * Details about who the image is shared by.
+     */
+    sharedBy: outputs.GetImagesImageImageSharingSharedBy;
+    /**
+     * Details about who the image is shared with.
+     */
+    sharedWith: outputs.GetImagesImageImageSharingSharedWith;
+}
+
+export interface GetImagesImageImageSharingSharedBy {
+    /**
+     * The sharegroupId from the im_ImageShare row.
+     */
+    sharegroupId: number;
+    /**
+     * The label from the associated im_ImageShareGroup row.
+     */
+    sharegroupLabel: string;
+    /**
+     * The sharegroupUuid from the im_ImageShare row.
+     */
+    sharegroupUuid: string;
+    /**
+     * The image id of the base image (will only be shown to producers, will be null for consumers).
+     */
+    sourceImageId: string;
+}
+
+export interface GetImagesImageImageSharingSharedWith {
+    /**
+     * The number of sharegroups the private image is present in.
+     */
+    sharegroupCount: number;
+    /**
+     * The GET api url to view the sharegroups in which the image is shared.
+     */
+    sharegroupListUrl: string;
 }
 
 export interface GetImagesImageReplication {
@@ -2820,6 +3159,201 @@ export interface GetInstancesInstanceSpec {
     vcpus: number;
 }
 
+export interface GetInterfaceDefaultRoute {
+    /**
+     * Whether this interface is used for the IPv4 default route.
+     */
+    ipv4: boolean;
+    /**
+     * Whether this interface is used for the IPv6 default route.
+     */
+    ipv6: boolean;
+}
+
+export interface GetInterfacePublic {
+    /**
+     * The public IPv4 configuration for the interface.
+     */
+    ipv4: outputs.GetInterfacePublicIpv4;
+    /**
+     * The public IPv6 configuration for the interface.
+     */
+    ipv6: outputs.GetInterfacePublicIpv6;
+}
+
+export interface GetInterfacePublicIpv4 {
+    /**
+     * IPv4 addresses assigned to this interface.
+     */
+    addresses: outputs.GetInterfacePublicIpv4Address[];
+    /**
+     * IPv4 addresses shared with other Linodes.
+     */
+    shareds: outputs.GetInterfacePublicIpv4Shared[];
+}
+
+export interface GetInterfacePublicIpv4Address {
+    /**
+     * The IPv4 address.
+     */
+    address: string;
+    /**
+     * Whether this is the primary IPv4 address.
+     */
+    primary: boolean;
+}
+
+export interface GetInterfacePublicIpv4Shared {
+    /**
+     * The shared IPv4 address.
+     */
+    address: string;
+    /**
+     * The ID of the Linode that this shared address belongs to.
+     */
+    linodeId: number;
+}
+
+export interface GetInterfacePublicIpv6 {
+    /**
+     * IPv6 ranges assigned to this interface.
+     */
+    ranges: outputs.GetInterfacePublicIpv6Range[];
+    /**
+     * IPv6 ranges shared with other Linodes.
+     */
+    shareds: outputs.GetInterfacePublicIpv6Shared[];
+    /**
+     * IPv6 SLAAC configuration.
+     */
+    slaacs: outputs.GetInterfacePublicIpv6Slaac[];
+}
+
+export interface GetInterfacePublicIpv6Range {
+    /**
+     * The IPv6 range.
+     */
+    range: string;
+    /**
+     * The route target for this IPv6 range.
+     */
+    routeTarget: string;
+}
+
+export interface GetInterfacePublicIpv6Shared {
+    /**
+     * The IPv6 range.
+     */
+    range: string;
+    /**
+     * The route target for this IPv6 range.
+     */
+    routeTarget: string;
+}
+
+export interface GetInterfacePublicIpv6Slaac {
+    /**
+     * The IPv6 SLAAC address.
+     */
+    address: string;
+    /**
+     * The prefix length for the IPv6 SLAAC address.
+     */
+    prefix: number;
+}
+
+export interface GetInterfaceVlan {
+    /**
+     * The IPAM (IP Address Management) address of the VLAN interface.
+     */
+    ipamAddress: string;
+    /**
+     * The label of the VLAN.
+     */
+    vlanLabel: string;
+}
+
+export interface GetInterfaceVpc {
+    /**
+     * The IPv4 configuration for the VPC interface.
+     */
+    ipv4: outputs.GetInterfaceVpcIpv4;
+    /**
+     * The IPv6 configuration for the VPC interface.
+     */
+    ipv6: outputs.GetInterfaceVpcIpv6;
+    /**
+     * The ID of the VPC subnet.
+     */
+    subnetId: number;
+}
+
+export interface GetInterfaceVpcIpv4 {
+    /**
+     * IPv4 addresses assigned to this VPC interface.
+     */
+    addresses: outputs.GetInterfaceVpcIpv4Address[];
+    /**
+     * IPv4 ranges assigned to this VPC interface.
+     */
+    ranges: outputs.GetInterfaceVpcIpv4Range[];
+}
+
+export interface GetInterfaceVpcIpv4Address {
+    /**
+     * The VPC IPv4 address.
+     */
+    address: string;
+    /**
+     * The 1:1 NAT address for this VPC IPv4 address.
+     */
+    nat11Address: string;
+    /**
+     * Whether this is the primary VPC IPv4 address.
+     */
+    primary: boolean;
+}
+
+export interface GetInterfaceVpcIpv4Range {
+    /**
+     * The VPC IPv4 range.
+     */
+    range: string;
+}
+
+export interface GetInterfaceVpcIpv6 {
+    /**
+     * Indicates whether the IPv6 configuration on the Linode interface is public.
+     */
+    isPublic: boolean;
+    /**
+     * IPv6 ranges assigned to this VPC interface.
+     */
+    ranges: outputs.GetInterfaceVpcIpv6Range[];
+    /**
+     * IPv6 SLAAC address ranges.
+     */
+    slaacs: outputs.GetInterfaceVpcIpv6Slaac[];
+}
+
+export interface GetInterfaceVpcIpv6Range {
+    /**
+     * The IPv6 network range in CIDR notation.
+     */
+    range: string;
+}
+
+export interface GetInterfaceVpcIpv6Slaac {
+    /**
+     * The assigned IPv6 address within the range.
+     */
+    address: string;
+    /**
+     * The IPv6 network range in CIDR notation.
+     */
+    range: string;
+}
+
 export interface GetIpv6RangesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -2912,7 +3446,7 @@ export interface GetLkeClusterControlPlane {
     /**
      * The ACL configuration for an LKE cluster's control plane.
      */
-    acls?: outputs.GetLkeClusterControlPlaneAcl[];
+    acls: outputs.GetLkeClusterControlPlaneAcl[];
     /**
      * Enables audit logs on the cluster's control plane.
      */
@@ -2927,7 +3461,7 @@ export interface GetLkeClusterControlPlaneAcl {
     /**
      * A list of ip addresses to allow.
      */
-    addresses?: outputs.GetLkeClusterControlPlaneAclAddress[];
+    addresses: outputs.GetLkeClusterControlPlaneAclAddress[];
     /**
      * The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
      */
@@ -2949,7 +3483,7 @@ export interface GetLkeClusterPool {
     /**
      * The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
      */
-    autoscalers?: outputs.GetLkeClusterPoolAutoscaler[];
+    autoscalers: outputs.GetLkeClusterPoolAutoscaler[];
     /**
      * The number of nodes in the Node Pool.
      */
@@ -2961,7 +3495,7 @@ export interface GetLkeClusterPool {
     /**
      * This Node Pool’s custom disk layout.
      */
-    disks?: outputs.GetLkeClusterPoolDisk[];
+    disks: outputs.GetLkeClusterPoolDisk[];
     /**
      * The LKE Cluster's ID.
      */
@@ -2981,7 +3515,7 @@ export interface GetLkeClusterPool {
     /**
      * The nodes in the Node Pool.
      */
-    nodes?: outputs.GetLkeClusterPoolNode[];
+    nodes: outputs.GetLkeClusterPoolNode[];
     /**
      * An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
@@ -3079,7 +3613,7 @@ export interface GetLkeClustersLkeCluster {
     /**
      * Defines settings for the Kubernetes Control Plane.
      */
-    controlPlane?: outputs.GetLkeClustersLkeClusterControlPlane;
+    controlPlane: outputs.GetLkeClustersLkeClusterControlPlane;
     /**
      * When this Kubernetes cluster was created.
      */
@@ -3117,7 +3651,7 @@ export interface GetLkeClustersLkeCluster {
      */
     tags: string[];
     /**
-     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
     tier: string;
     /**
@@ -3208,6 +3742,48 @@ export interface GetLkeVersionsVersion {
      * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
      */
     tier: string;
+}
+
+export interface GetLocksFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetLocksLock {
+    /**
+     * The ID of the locked entity.
+     */
+    entityId: number;
+    /**
+     * The label of the locked entity.
+     */
+    entityLabel: string;
+    /**
+     * The type of the locked entity.
+     */
+    entityType: string;
+    /**
+     * The URL of the locked entity.
+     */
+    entityUrl: string;
+    /**
+     * The unique ID of the Lock.
+     */
+    id: number;
+    /**
+     * The type of lock.
+     */
+    lockType: string;
 }
 
 export interface GetMaintenancePoliciesFilter {
@@ -3482,7 +4058,7 @@ export interface GetNodeBalancerFirewall {
     /**
      * A set of firewall rules that specify what inbound network traffic is allowed.
      */
-    inbounds?: outputs.GetNodeBalancerFirewallInbound[];
+    inbounds: outputs.GetNodeBalancerFirewallInbound[];
     /**
      * Used to identify this rule. For display purposes only.
      */
@@ -3494,7 +4070,7 @@ export interface GetNodeBalancerFirewall {
     /**
      * A set of firewall rules that specify what outbound network traffic is allowed.
      */
-    outbounds?: outputs.GetNodeBalancerFirewallOutbound[];
+    outbounds: outputs.GetNodeBalancerFirewallOutbound[];
     /**
      * The status of the firewall. (`enabled`, `disabled`, `deleted`)
      */
@@ -3975,11 +4551,11 @@ export interface GetPlacementGroupsPlacementGroup {
     /**
      * A set of Linodes currently assigned to this Placement Group.
      */
-    members?: outputs.GetPlacementGroupsPlacementGroupMember[];
+    members: outputs.GetPlacementGroupsPlacementGroupMember[];
     /**
      * Any Linodes that are being migrated to or from the placement group.
      */
-    migrations?: outputs.GetPlacementGroupsPlacementGroupMigrations;
+    migrations: outputs.GetPlacementGroupsPlacementGroupMigrations;
     /**
      * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      */
@@ -4030,6 +4606,223 @@ export interface GetPlacementGroupsPlacementGroupMigrationsOutbound {
     linodeId: number;
 }
 
+export interface GetProducerImageShareGroupImageSharesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetProducerImageShareGroupImageSharesImageShare {
+    /**
+     * The capabilities of the Image represented by the Image Share.
+     */
+    capabilities: string[];
+    /**
+     * When this Image Share was created.
+     */
+    created: string;
+    /**
+     * Whether this Image is deprecated.
+     */
+    deprecated: boolean;
+    /**
+     * A description of the Image Share.
+     */
+    description: string;
+    /**
+     * The unique ID assigned to this Image Share.
+     */
+    id: string;
+    /**
+     * Details about image sharing, including who the image is shared with and by.
+     */
+    imageSharing: outputs.GetProducerImageShareGroupImageSharesImageShareImageSharing;
+    /**
+     * True if the Image is public.
+     */
+    isPublic: boolean;
+    /**
+     * The label of the Image Share.
+     */
+    label: string;
+    /**
+     * The minimum size this Image needs to deploy. Size is in MB. example: 2500
+     */
+    size: number;
+    /**
+     * The current status of this image. (`creating`, `pendingUpload`, `available`)
+     */
+    status: string;
+    /**
+     * A list of customized tags.
+     */
+    tags: string[];
+    /**
+     * The total size of the image in all available regions.
+     */
+    totalSize: number;
+    /**
+     * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+     */
+    type: string;
+}
+
+export interface GetProducerImageShareGroupImageSharesImageShareImageSharing {
+    /**
+     * Details about who the image is shared by.
+     */
+    sharedBy: outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy;
+    /**
+     * Details about who the image is shared with.
+     */
+    sharedWith: outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith;
+}
+
+export interface GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy {
+    /**
+     * The ID of the Image Share Group to list shared Images from.
+     *
+     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     */
+    sharegroupId: number;
+    /**
+     * The label from the associated im_ImageShareGroup row.
+     */
+    sharegroupLabel: string;
+    /**
+     * The sharegroupUuid from the im_ImageShare row.
+     */
+    sharegroupUuid: string;
+    /**
+     * The image id of the base image (will only be shown to producers, will be null for consumers).
+     */
+    sourceImageId: string;
+}
+
+export interface GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith {
+    /**
+     * The number of sharegroups the private image is present in.
+     */
+    sharegroupCount: number;
+    /**
+     * The GET api url to view the sharegroups in which the image is shared.
+     */
+    sharegroupListUrl: string;
+}
+
+export interface GetProducerImageShareGroupMembersFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetProducerImageShareGroupMembersMember {
+    /**
+     * When the member was created.
+     */
+    created: string;
+    /**
+     * When the member will expire.
+     */
+    expiry: string;
+    /**
+     * The label of the member.
+     */
+    label: string;
+    /**
+     * The ID of the Image Share Group for which to list members.
+     */
+    sharegroupId: number;
+    /**
+     * The status of the member.
+     */
+    status: string;
+    /**
+     * The UUID of member's token.
+     */
+    tokenUuid: string;
+    /**
+     * When the member was last updated.
+     */
+    updated: string;
+}
+
+export interface GetProducerImageShareGroupsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetProducerImageShareGroupsImageShareGroup {
+    /**
+     * The date and time the Image Share Group was created.
+     */
+    created: string;
+    /**
+     * The description of the Image Share Group.
+     */
+    description: string;
+    /**
+     * The date and time the Image Share Group will expire.
+     */
+    expiry: string;
+    /**
+     * The ID of the Image Share Group.
+     */
+    id: number;
+    /**
+     * The number of images in the Image Share Group.
+     */
+    imagesCount: number;
+    /**
+     * Whether the Image Share Group is suspended.
+     */
+    isSuspended: boolean;
+    /**
+     * The label of the Image Share Group.
+     */
+    label: string;
+    /**
+     * The number of members in the Image Share Group.
+     */
+    membersCount: number;
+    /**
+     * The date and time the Image Share Group was last updated.
+     */
+    updated: string;
+    /**
+     * The UUID of the Image Share Group.
+     */
+    uuid: string;
+}
+
 export interface GetProfileReferral {
     /**
      * The Profile referral code.  If new accounts use this when signing up for Linode, referring account will receive credit.
@@ -4055,6 +4848,17 @@ export interface GetProfileReferral {
      * The referral URL.
      */
     url: string;
+}
+
+export interface GetRegionMonitors {
+    /**
+     * A list of ACLP alerts services supported in the region.
+     */
+    alerts: string[];
+    /**
+     * A list of ACLP metrics services supported in the region.
+     */
+    metrics: string[];
 }
 
 export interface GetRegionPlacementGroupLimit {
@@ -4112,10 +4916,14 @@ export interface GetRegionsRegion {
      */
     label: string;
     /**
+     * The monitoring services available in a region.
+     */
+    monitors: outputs.GetRegionsRegionMonitors;
+    /**
      * Information about placement groups limits for this region.
      */
     placementGroupLimits: outputs.GetRegionsRegionPlacementGroupLimit[];
-    resolvers?: outputs.GetRegionsRegionResolver[];
+    resolvers: outputs.GetRegionsRegionResolver[];
     /**
      * The type of this region.
      */
@@ -4124,6 +4932,17 @@ export interface GetRegionsRegion {
      * This region’s current operational status (ok or outage).
      */
     status: string;
+}
+
+export interface GetRegionsRegionMonitors {
+    /**
+     * A list of ACLP alerts services supported in the region.
+     */
+    alerts: string[];
+    /**
+     * A list of ACLP metrics services supported in the region.
+     */
+    metrics: string[];
 }
 
 export interface GetRegionsRegionPlacementGroupLimit {
@@ -5229,6 +6048,47 @@ export interface GetVpcsVpcIpv6 {
     range: string;
 }
 
+export interface ImageImageSharing {
+    /**
+     * Details about who the image is shared by.
+     */
+    sharedBy: outputs.ImageImageSharingSharedBy;
+    /**
+     * Details about who the image is shared with.
+     */
+    sharedWith: outputs.ImageImageSharingSharedWith;
+}
+
+export interface ImageImageSharingSharedBy {
+    /**
+     * The sharegroupId from the im_ImageShare row.
+     */
+    sharegroupId: number;
+    /**
+     * The label from the associated im_ImageShareGroup row.
+     */
+    sharegroupLabel: string;
+    /**
+     * The sharegroupUuid from the im_ImageShare row.
+     */
+    sharegroupUuid: string;
+    /**
+     * The image id of the base image (will only be shown to producers, will be null for consumers).
+     */
+    sourceImageId: string;
+}
+
+export interface ImageImageSharingSharedWith {
+    /**
+     * The number of sharegroups the private image is present in.
+     */
+    sharegroupCount: number;
+    /**
+     * The GET api url to view the sharegroups in which the image is shared.
+     */
+    sharegroupListUrl: string;
+}
+
 export interface ImageReplication {
     /**
      * The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
@@ -5974,10 +6834,6 @@ export interface InterfacePublicIpv6Range {
      * The IPv6 range.
      */
     range: string;
-    /**
-     * The public IPv6 address that the range is routed to.
-     */
-    routeTarget?: string;
 }
 
 export interface InterfacePublicIpv6Shared {
@@ -6592,6 +7448,23 @@ export interface PlacementGroupMember {
      * The ID of the Linode.
      */
     linodeId: number;
+}
+
+export interface ProducerImageShareGroupImage {
+    /**
+     * The description of the Image Share Group
+     *
+     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     */
+    description?: string;
+    /**
+     * (Required) The ID of the Image to share. This must be in the format `private/<image_id>`.
+     */
+    id: string;
+    /**
+     * The label of the Image Share Group.
+     */
+    label?: string;
 }
 
 export interface RdnsTimeouts {

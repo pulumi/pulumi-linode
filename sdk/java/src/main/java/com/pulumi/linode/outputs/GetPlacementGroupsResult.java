@@ -19,7 +19,7 @@ public final class GetPlacementGroupsResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private @Nullable List<GetPlacementGroupsPlacementGroup> placementGroups;
+    private List<GetPlacementGroupsPlacementGroup> placementGroups;
 
     private GetPlacementGroupsResult() {}
     public List<GetPlacementGroupsFilter> filters() {
@@ -35,7 +35,7 @@ public final class GetPlacementGroupsResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetPlacementGroupsPlacementGroup> placementGroups() {
-        return this.placementGroups == null ? List.of() : this.placementGroups;
+        return this.placementGroups;
     }
 
     public static Builder builder() {
@@ -51,7 +51,7 @@ public final class GetPlacementGroupsResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private @Nullable List<GetPlacementGroupsPlacementGroup> placementGroups;
+        private List<GetPlacementGroupsPlacementGroup> placementGroups;
         public Builder() {}
         public Builder(GetPlacementGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -92,8 +92,10 @@ public final class GetPlacementGroupsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder placementGroups(@Nullable List<GetPlacementGroupsPlacementGroup> placementGroups) {
-
+        public Builder placementGroups(List<GetPlacementGroupsPlacementGroup> placementGroups) {
+            if (placementGroups == null) {
+              throw new MissingRequiredPropertyException("GetPlacementGroupsResult", "placementGroups");
+            }
             this.placementGroups = placementGroups;
             return this;
         }

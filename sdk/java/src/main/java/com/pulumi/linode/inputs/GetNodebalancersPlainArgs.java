@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetNodebalancersFilter;
-import com.pulumi.linode.inputs.GetNodebalancersNodebalancer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,13 +21,6 @@ public final class GetNodebalancersPlainArgs extends com.pulumi.resources.Invoke
 
     public Optional<List<GetNodebalancersFilter>> filters() {
         return Optional.ofNullable(this.filters);
-    }
-
-    @Import(name="nodebalancers")
-    private @Nullable List<GetNodebalancersNodebalancer> nodebalancers;
-
-    public Optional<List<GetNodebalancersNodebalancer>> nodebalancers() {
-        return Optional.ofNullable(this.nodebalancers);
     }
 
     /**
@@ -65,7 +57,6 @@ public final class GetNodebalancersPlainArgs extends com.pulumi.resources.Invoke
 
     private GetNodebalancersPlainArgs(GetNodebalancersPlainArgs $) {
         this.filters = $.filters;
-        this.nodebalancers = $.nodebalancers;
         this.order = $.order;
         this.orderBy = $.orderBy;
     }
@@ -95,15 +86,6 @@ public final class GetNodebalancersPlainArgs extends com.pulumi.resources.Invoke
 
         public Builder filters(GetNodebalancersFilter... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder nodebalancers(@Nullable List<GetNodebalancersNodebalancer> nodebalancers) {
-            $.nodebalancers = nodebalancers;
-            return this;
-        }
-
-        public Builder nodebalancers(GetNodebalancersNodebalancer... nodebalancers) {
-            return nodebalancers(List.of(nodebalancers));
         }
 
         /**

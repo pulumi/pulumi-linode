@@ -77,8 +77,7 @@ type GetUsersArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy *string        `pulumi:"orderBy"`
-	Users   []GetUsersUser `pulumi:"users"`
+	OrderBy *string `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getUsers.
@@ -106,8 +105,7 @@ type GetUsersOutputArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy pulumi.StringPtrInput  `pulumi:"orderBy"`
-	Users   GetUsersUserArrayInput `pulumi:"users"`
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
 func (GetUsersOutputArgs) ElementType() reflect.Type {

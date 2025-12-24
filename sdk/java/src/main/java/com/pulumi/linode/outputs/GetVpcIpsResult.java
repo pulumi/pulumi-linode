@@ -25,7 +25,7 @@ public final class GetVpcIpsResult {
      * 
      */
     private @Nullable Integer vpcId;
-    private @Nullable List<GetVpcIpsVpcIp> vpcIps;
+    private List<GetVpcIpsVpcIp> vpcIps;
 
     private GetVpcIpsResult() {}
     public List<GetVpcIpsFilter> filters() {
@@ -45,7 +45,7 @@ public final class GetVpcIpsResult {
         return Optional.ofNullable(this.vpcId);
     }
     public List<GetVpcIpsVpcIp> vpcIps() {
-        return this.vpcIps == null ? List.of() : this.vpcIps;
+        return this.vpcIps;
     }
 
     public static Builder builder() {
@@ -61,7 +61,7 @@ public final class GetVpcIpsResult {
         private String id;
         private @Nullable Boolean ipv6;
         private @Nullable Integer vpcId;
-        private @Nullable List<GetVpcIpsVpcIp> vpcIps;
+        private List<GetVpcIpsVpcIp> vpcIps;
         public Builder() {}
         public Builder(GetVpcIpsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -102,8 +102,10 @@ public final class GetVpcIpsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder vpcIps(@Nullable List<GetVpcIpsVpcIp> vpcIps) {
-
+        public Builder vpcIps(List<GetVpcIpsVpcIp> vpcIps) {
+            if (vpcIps == null) {
+              throw new MissingRequiredPropertyException("GetVpcIpsResult", "vpcIps");
+            }
             this.vpcIps = vpcIps;
             return this;
         }

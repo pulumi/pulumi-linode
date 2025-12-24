@@ -215,14 +215,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("firewallTemplates")]
-        private List<Inputs.GetFirewallTemplatesFirewallTemplateArgs>? _firewallTemplates;
-        public List<Inputs.GetFirewallTemplatesFirewallTemplateArgs> FirewallTemplates
-        {
-            get => _firewallTemplates ?? (_firewallTemplates = new List<Inputs.GetFirewallTemplatesFirewallTemplateArgs>());
-            set => _firewallTemplates = value;
-        }
-
         public GetFirewallTemplatesArgs()
         {
         }
@@ -237,14 +229,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetFirewallTemplatesFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("firewallTemplates")]
-        private InputList<Inputs.GetFirewallTemplatesFirewallTemplateInputArgs>? _firewallTemplates;
-        public InputList<Inputs.GetFirewallTemplatesFirewallTemplateInputArgs> FirewallTemplates
-        {
-            get => _firewallTemplates ?? (_firewallTemplates = new InputList<Inputs.GetFirewallTemplatesFirewallTemplateInputArgs>());
-            set => _firewallTemplates = value;
         }
 
         public GetFirewallTemplatesInvokeArgs()

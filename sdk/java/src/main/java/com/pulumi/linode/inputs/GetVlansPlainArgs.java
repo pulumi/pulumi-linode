@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetVlansFilter;
-import com.pulumi.linode.inputs.GetVlansVlan;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -54,20 +53,12 @@ public final class GetVlansPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.orderBy);
     }
 
-    @Import(name="vlans")
-    private @Nullable List<GetVlansVlan> vlans;
-
-    public Optional<List<GetVlansVlan>> vlans() {
-        return Optional.ofNullable(this.vlans);
-    }
-
     private GetVlansPlainArgs() {}
 
     private GetVlansPlainArgs(GetVlansPlainArgs $) {
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
-        this.vlans = $.vlans;
     }
 
     public static Builder builder() {
@@ -117,15 +108,6 @@ public final class GetVlansPlainArgs extends com.pulumi.resources.InvokeArgs {
         public Builder orderBy(@Nullable String orderBy) {
             $.orderBy = orderBy;
             return this;
-        }
-
-        public Builder vlans(@Nullable List<GetVlansVlan> vlans) {
-            $.vlans = vlans;
-            return this;
-        }
-
-        public Builder vlans(GetVlansVlan... vlans) {
-            return vlans(List.of(vlans));
         }
 
         public GetVlansPlainArgs build() {

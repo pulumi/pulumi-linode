@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseBackupsResult {
-    private @Nullable List<GetDatabaseBackupsBackup> backups;
+    private List<GetDatabaseBackupsBackup> backups;
     private Integer databaseId;
     private String databaseType;
     private @Nullable List<GetDatabaseBackupsFilter> filters;
@@ -32,7 +32,7 @@ public final class GetDatabaseBackupsResult {
 
     private GetDatabaseBackupsResult() {}
     public List<GetDatabaseBackupsBackup> backups() {
-        return this.backups == null ? List.of() : this.backups;
+        return this.backups;
     }
     public Integer databaseId() {
         return this.databaseId;
@@ -69,7 +69,7 @@ public final class GetDatabaseBackupsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetDatabaseBackupsBackup> backups;
+        private List<GetDatabaseBackupsBackup> backups;
         private Integer databaseId;
         private String databaseType;
         private @Nullable List<GetDatabaseBackupsFilter> filters;
@@ -91,8 +91,10 @@ public final class GetDatabaseBackupsResult {
         }
 
         @CustomType.Setter
-        public Builder backups(@Nullable List<GetDatabaseBackupsBackup> backups) {
-
+        public Builder backups(List<GetDatabaseBackupsBackup> backups) {
+            if (backups == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseBackupsResult", "backups");
+            }
             this.backups = backups;
             return this;
         }

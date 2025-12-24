@@ -194,14 +194,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("lkeClusters")]
-        private List<Inputs.GetLkeClustersLkeClusterArgs>? _lkeClusters;
-        public List<Inputs.GetLkeClustersLkeClusterArgs> LkeClusters
-        {
-            get => _lkeClusters ?? (_lkeClusters = new List<Inputs.GetLkeClustersLkeClusterArgs>());
-            set => _lkeClusters = value;
-        }
-
         /// <summary>
         /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
@@ -228,14 +220,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetLkeClustersFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("lkeClusters")]
-        private InputList<Inputs.GetLkeClustersLkeClusterInputArgs>? _lkeClusters;
-        public InputList<Inputs.GetLkeClustersLkeClusterInputArgs> LkeClusters
-        {
-            get => _lkeClusters ?? (_lkeClusters = new InputList<Inputs.GetLkeClustersLkeClusterInputArgs>());
-            set => _lkeClusters = value;
         }
 
         /// <summary>

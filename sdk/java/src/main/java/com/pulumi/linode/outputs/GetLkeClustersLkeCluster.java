@@ -11,8 +11,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLkeClustersLkeCluster {
@@ -25,7 +23,7 @@ public final class GetLkeClustersLkeCluster {
      * @return Defines settings for the Kubernetes Control Plane.
      * 
      */
-    private @Nullable GetLkeClustersLkeClusterControlPlane controlPlane;
+    private GetLkeClustersLkeClusterControlPlane controlPlane;
     /**
      * @return When this Kubernetes cluster was created.
      * 
@@ -72,7 +70,7 @@ public final class GetLkeClustersLkeCluster {
      */
     private List<String> tags;
     /**
-     * @return The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * @return The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      * 
      */
     private String tier;
@@ -99,8 +97,8 @@ public final class GetLkeClustersLkeCluster {
      * @return Defines settings for the Kubernetes Control Plane.
      * 
      */
-    public Optional<GetLkeClustersLkeClusterControlPlane> controlPlane() {
-        return Optional.ofNullable(this.controlPlane);
+    public GetLkeClustersLkeClusterControlPlane controlPlane() {
+        return this.controlPlane;
     }
     /**
      * @return When this Kubernetes cluster was created.
@@ -166,7 +164,7 @@ public final class GetLkeClustersLkeCluster {
         return this.tags;
     }
     /**
-     * @return The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * @return The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      * 
      */
     public String tier() {
@@ -197,7 +195,7 @@ public final class GetLkeClustersLkeCluster {
     @CustomType.Builder
     public static final class Builder {
         private Boolean aplEnabled;
-        private @Nullable GetLkeClustersLkeClusterControlPlane controlPlane;
+        private GetLkeClustersLkeClusterControlPlane controlPlane;
         private String created;
         private Integer id;
         private String k8sVersion;
@@ -238,8 +236,10 @@ public final class GetLkeClustersLkeCluster {
             return this;
         }
         @CustomType.Setter
-        public Builder controlPlane(@Nullable GetLkeClustersLkeClusterControlPlane controlPlane) {
-
+        public Builder controlPlane(GetLkeClustersLkeClusterControlPlane controlPlane) {
+            if (controlPlane == null) {
+              throw new MissingRequiredPropertyException("GetLkeClustersLkeCluster", "controlPlane");
+            }
             this.controlPlane = controlPlane;
             return this;
         }

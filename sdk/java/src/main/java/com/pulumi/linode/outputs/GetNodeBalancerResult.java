@@ -12,7 +12,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNodeBalancerResult {
@@ -31,7 +30,7 @@ public final class GetNodeBalancerResult {
      * 
      */
     private String created;
-    private @Nullable List<GetNodeBalancerFirewall> firewalls;
+    private List<GetNodeBalancerFirewall> firewalls;
     /**
      * @return This NodeBalancer&#39;s hostname, ending with .ip.linodeusercontent.com
      * 
@@ -98,7 +97,7 @@ public final class GetNodeBalancerResult {
         return this.created;
     }
     public List<GetNodeBalancerFirewall> firewalls() {
-        return this.firewalls == null ? List.of() : this.firewalls;
+        return this.firewalls;
     }
     /**
      * @return This NodeBalancer&#39;s hostname, ending with .ip.linodeusercontent.com
@@ -175,7 +174,7 @@ public final class GetNodeBalancerResult {
         private Integer clientConnThrottle;
         private Integer clientUdpSessThrottle;
         private String created;
-        private @Nullable List<GetNodeBalancerFirewall> firewalls;
+        private List<GetNodeBalancerFirewall> firewalls;
         private String hostname;
         private Integer id;
         private String ipv4;
@@ -230,8 +229,10 @@ public final class GetNodeBalancerResult {
             return this;
         }
         @CustomType.Setter
-        public Builder firewalls(@Nullable List<GetNodeBalancerFirewall> firewalls) {
-
+        public Builder firewalls(List<GetNodeBalancerFirewall> firewalls) {
+            if (firewalls == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "firewalls");
+            }
             this.firewalls = firewalls;
             return this;
         }

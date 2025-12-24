@@ -75,7 +75,6 @@ export function getChildAccounts(args?: GetChildAccountsArgs, opts?: pulumi.Invo
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getChildAccounts:getChildAccounts", {
-        "childAccounts": args.childAccounts,
         "filters": args.filters,
     }, opts);
 }
@@ -84,7 +83,6 @@ export function getChildAccounts(args?: GetChildAccountsArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getChildAccounts.
  */
 export interface GetChildAccountsArgs {
-    childAccounts?: inputs.GetChildAccountsChildAccount[];
     filters?: inputs.GetChildAccountsFilter[];
 }
 
@@ -92,7 +90,7 @@ export interface GetChildAccountsArgs {
  * A collection of values returned by getChildAccounts.
  */
 export interface GetChildAccountsResult {
-    readonly childAccounts?: outputs.GetChildAccountsChildAccount[];
+    readonly childAccounts: outputs.GetChildAccountsChildAccount[];
     readonly filters?: outputs.GetChildAccountsFilter[];
     readonly id: string;
 }
@@ -165,7 +163,6 @@ export function getChildAccountsOutput(args?: GetChildAccountsOutputArgs, opts?:
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getChildAccounts:getChildAccounts", {
-        "childAccounts": args.childAccounts,
         "filters": args.filters,
     }, opts);
 }
@@ -174,6 +171,5 @@ export function getChildAccountsOutput(args?: GetChildAccountsOutputArgs, opts?:
  * A collection of arguments for invoking getChildAccounts.
  */
 export interface GetChildAccountsOutputArgs {
-    childAccounts?: pulumi.Input<pulumi.Input<inputs.GetChildAccountsChildAccountArgs>[]>;
     filters?: pulumi.Input<pulumi.Input<inputs.GetChildAccountsFilterArgs>[]>;
 }

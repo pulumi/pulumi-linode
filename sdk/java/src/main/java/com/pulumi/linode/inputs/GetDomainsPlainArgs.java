@@ -4,7 +4,6 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.linode.inputs.GetDomainsDomain;
 import com.pulumi.linode.inputs.GetDomainsFilter;
 import java.lang.String;
 import java.util.List;
@@ -16,13 +15,6 @@ import javax.annotation.Nullable;
 public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDomainsPlainArgs Empty = new GetDomainsPlainArgs();
-
-    @Import(name="domains")
-    private @Nullable List<GetDomainsDomain> domains;
-
-    public Optional<List<GetDomainsDomain>> domains() {
-        return Optional.ofNullable(this.domains);
-    }
 
     @Import(name="filters")
     private @Nullable List<GetDomainsFilter> filters;
@@ -64,7 +56,6 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetDomainsPlainArgs() {}
 
     private GetDomainsPlainArgs(GetDomainsPlainArgs $) {
-        this.domains = $.domains;
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
@@ -86,15 +77,6 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetDomainsPlainArgs defaults) {
             $ = new GetDomainsPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder domains(@Nullable List<GetDomainsDomain> domains) {
-            $.domains = domains;
-            return this;
-        }
-
-        public Builder domains(GetDomainsDomain... domains) {
-            return domains(List.of(domains));
         }
 
         public Builder filters(@Nullable List<GetDomainsFilter> filters) {

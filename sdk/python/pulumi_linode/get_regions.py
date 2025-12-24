@@ -51,7 +51,7 @@ class GetRegionsResult:
 
     @_builtins.property
     @pulumi.getter
-    def regions(self) -> Optional[Sequence['outputs.GetRegionsRegionResult']]:
+    def regions(self) -> Sequence['outputs.GetRegionsRegionResult']:
         return pulumi.get(self, "regions")
 
 
@@ -67,7 +67,6 @@ class AwaitableGetRegionsResult(GetRegionsResult):
 
 
 def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict']]] = None,
-                regions: Optional[Sequence[Union['GetRegionsRegionArgs', 'GetRegionsRegionArgsDict']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionsResult:
     """
     Provides information about Linode regions that match a set of filters.
@@ -102,7 +101,6 @@ def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetReg
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['regions'] = regions
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult).value
 
@@ -111,7 +109,6 @@ def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetReg
         id=pulumi.get(__ret__, 'id'),
         regions=pulumi.get(__ret__, 'regions'))
 def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict']]]]] = None,
-                       regions: Optional[pulumi.Input[Optional[Sequence[Union['GetRegionsRegionArgs', 'GetRegionsRegionArgsDict']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     Provides information about Linode regions that match a set of filters.
@@ -146,7 +143,6 @@ def get_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['regions'] = regions
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult)
     return __ret__.apply(lambda __response__: GetRegionsResult(

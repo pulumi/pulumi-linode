@@ -4,7 +4,6 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.linode.inputs.GetAccountAvailabilitiesAvailability;
 import com.pulumi.linode.inputs.GetAccountAvailabilitiesFilter;
 import java.util.List;
 import java.util.Objects;
@@ -16,13 +15,6 @@ public final class GetAccountAvailabilitiesPlainArgs extends com.pulumi.resource
 
     public static final GetAccountAvailabilitiesPlainArgs Empty = new GetAccountAvailabilitiesPlainArgs();
 
-    @Import(name="availabilities")
-    private @Nullable List<GetAccountAvailabilitiesAvailability> availabilities;
-
-    public Optional<List<GetAccountAvailabilitiesAvailability>> availabilities() {
-        return Optional.ofNullable(this.availabilities);
-    }
-
     @Import(name="filters")
     private @Nullable List<GetAccountAvailabilitiesFilter> filters;
 
@@ -33,7 +25,6 @@ public final class GetAccountAvailabilitiesPlainArgs extends com.pulumi.resource
     private GetAccountAvailabilitiesPlainArgs() {}
 
     private GetAccountAvailabilitiesPlainArgs(GetAccountAvailabilitiesPlainArgs $) {
-        this.availabilities = $.availabilities;
         this.filters = $.filters;
     }
 
@@ -53,15 +44,6 @@ public final class GetAccountAvailabilitiesPlainArgs extends com.pulumi.resource
 
         public Builder(GetAccountAvailabilitiesPlainArgs defaults) {
             $ = new GetAccountAvailabilitiesPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder availabilities(@Nullable List<GetAccountAvailabilitiesAvailability> availabilities) {
-            $.availabilities = availabilities;
-            return this;
-        }
-
-        public Builder availabilities(GetAccountAvailabilitiesAvailability... availabilities) {
-            return availabilities(List.of(availabilities));
         }
 
         public Builder filters(@Nullable List<GetAccountAvailabilitiesFilter> filters) {

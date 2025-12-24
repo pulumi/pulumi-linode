@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.GetVpcSubnetsFilter;
-import com.pulumi.linode.inputs.GetVpcSubnetsVpcSubnet;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -44,19 +43,11 @@ public final class GetVpcSubnetsPlainArgs extends com.pulumi.resources.InvokeArg
         return this.vpcId;
     }
 
-    @Import(name="vpcSubnets")
-    private @Nullable List<GetVpcSubnetsVpcSubnet> vpcSubnets;
-
-    public Optional<List<GetVpcSubnetsVpcSubnet>> vpcSubnets() {
-        return Optional.ofNullable(this.vpcSubnets);
-    }
-
     private GetVpcSubnetsPlainArgs() {}
 
     private GetVpcSubnetsPlainArgs(GetVpcSubnetsPlainArgs $) {
         this.filters = $.filters;
         this.vpcId = $.vpcId;
-        this.vpcSubnets = $.vpcSubnets;
     }
 
     public static Builder builder() {
@@ -97,15 +88,6 @@ public final class GetVpcSubnetsPlainArgs extends com.pulumi.resources.InvokeArg
         public Builder vpcId(Integer vpcId) {
             $.vpcId = vpcId;
             return this;
-        }
-
-        public Builder vpcSubnets(@Nullable List<GetVpcSubnetsVpcSubnet> vpcSubnets) {
-            $.vpcSubnets = vpcSubnets;
-            return this;
-        }
-
-        public Builder vpcSubnets(GetVpcSubnetsVpcSubnet... vpcSubnets) {
-            return vpcSubnets(List.of(vpcSubnets));
         }
 
         public GetVpcSubnetsPlainArgs build() {

@@ -256,14 +256,6 @@ namespace Pulumi.Linode
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        [Input("stackscripts")]
-        private List<Inputs.GetStackScriptsStackscriptArgs>? _stackscripts;
-        public List<Inputs.GetStackScriptsStackscriptArgs> Stackscripts
-        {
-            get => _stackscripts ?? (_stackscripts = new List<Inputs.GetStackScriptsStackscriptArgs>());
-            set => _stackscripts = value;
-        }
-
         public GetStackScriptsArgs()
         {
         }
@@ -299,14 +291,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
-
-        [Input("stackscripts")]
-        private InputList<Inputs.GetStackScriptsStackscriptInputArgs>? _stackscripts;
-        public InputList<Inputs.GetStackScriptsStackscriptInputArgs> Stackscripts
-        {
-            get => _stackscripts ?? (_stackscripts = new InputList<Inputs.GetStackScriptsStackscriptInputArgs>());
-            set => _stackscripts = value;
-        }
 
         public GetStackScriptsInvokeArgs()
         {

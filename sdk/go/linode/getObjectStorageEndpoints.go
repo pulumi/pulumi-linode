@@ -94,8 +94,7 @@ func GetObjectStorageEndpoints(ctx *pulumi.Context, args *GetObjectStorageEndpoi
 
 // A collection of arguments for invoking getObjectStorageEndpoints.
 type GetObjectStorageEndpointsArgs struct {
-	Endpoints []GetObjectStorageEndpointsEndpoint `pulumi:"endpoints"`
-	Filters   []GetObjectStorageEndpointsFilter   `pulumi:"filters"`
+	Filters []GetObjectStorageEndpointsFilter `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
@@ -122,8 +121,7 @@ func GetObjectStorageEndpointsOutput(ctx *pulumi.Context, args GetObjectStorageE
 
 // A collection of arguments for invoking getObjectStorageEndpoints.
 type GetObjectStorageEndpointsOutputArgs struct {
-	Endpoints GetObjectStorageEndpointsEndpointArrayInput `pulumi:"endpoints"`
-	Filters   GetObjectStorageEndpointsFilterArrayInput   `pulumi:"filters"`
+	Filters GetObjectStorageEndpointsFilterArrayInput `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.

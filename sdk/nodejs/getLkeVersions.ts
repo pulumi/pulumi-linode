@@ -44,7 +44,6 @@ export function getLkeVersions(args?: GetLkeVersionsArgs, opts?: pulumi.InvokeOp
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getLkeVersions:getLkeVersions", {
         "tier": args.tier,
-        "versions": args.versions,
     }, opts);
 }
 
@@ -56,7 +55,6 @@ export interface GetLkeVersionsArgs {
      * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
      */
     tier?: string;
-    versions?: inputs.GetLkeVersionsVersion[];
 }
 
 /**
@@ -71,7 +69,7 @@ export interface GetLkeVersionsResult {
      * The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
      */
     readonly tier?: string;
-    readonly versions?: outputs.GetLkeVersionsVersion[];
+    readonly versions: outputs.GetLkeVersionsVersion[];
 }
 /**
  * Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
@@ -111,7 +109,6 @@ export function getLkeVersionsOutput(args?: GetLkeVersionsOutputArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getLkeVersions:getLkeVersions", {
         "tier": args.tier,
-        "versions": args.versions,
     }, opts);
 }
 
@@ -123,5 +120,4 @@ export interface GetLkeVersionsOutputArgs {
      * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
      */
     tier?: pulumi.Input<string>;
-    versions?: pulumi.Input<pulumi.Input<inputs.GetLkeVersionsVersionArgs>[]>;
 }

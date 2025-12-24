@@ -77,7 +77,6 @@ func GetObjectStorageQuotas(ctx *pulumi.Context, args *GetObjectStorageQuotasArg
 // A collection of arguments for invoking getObjectStorageQuotas.
 type GetObjectStorageQuotasArgs struct {
 	Filters []GetObjectStorageQuotasFilter `pulumi:"filters"`
-	Quotas  []GetObjectStorageQuotasQuota  `pulumi:"quotas"`
 }
 
 // A collection of values returned by getObjectStorageQuotas.
@@ -99,7 +98,6 @@ func GetObjectStorageQuotasOutput(ctx *pulumi.Context, args GetObjectStorageQuot
 // A collection of arguments for invoking getObjectStorageQuotas.
 type GetObjectStorageQuotasOutputArgs struct {
 	Filters GetObjectStorageQuotasFilterArrayInput `pulumi:"filters"`
-	Quotas  GetObjectStorageQuotasQuotaArrayInput  `pulumi:"quotas"`
 }
 
 func (GetObjectStorageQuotasOutputArgs) ElementType() reflect.Type {

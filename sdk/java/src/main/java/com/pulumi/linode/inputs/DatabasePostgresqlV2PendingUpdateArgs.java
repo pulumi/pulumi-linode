@@ -5,34 +5,59 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DatabasePostgresqlV2PendingUpdateArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DatabasePostgresqlV2PendingUpdateArgs Empty = new DatabasePostgresqlV2PendingUpdateArgs();
 
-    @Import(name="deadline", required=true)
-    private Output<String> deadline;
+    /**
+     * The time when a mandatory update needs to be applied.
+     * 
+     */
+    @Import(name="deadline")
+    private @Nullable Output<String> deadline;
 
-    public Output<String> deadline() {
-        return this.deadline;
+    /**
+     * @return The time when a mandatory update needs to be applied.
+     * 
+     */
+    public Optional<Output<String>> deadline() {
+        return Optional.ofNullable(this.deadline);
     }
 
-    @Import(name="description", required=true)
-    private Output<String> description;
+    /**
+     * A description of the update.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
 
-    public Output<String> description() {
-        return this.description;
+    /**
+     * @return A description of the update.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
-    @Import(name="plannedFor", required=true)
-    private Output<String> plannedFor;
+    /**
+     * The date and time a maintenance update will be applied.
+     * 
+     */
+    @Import(name="plannedFor")
+    private @Nullable Output<String> plannedFor;
 
-    public Output<String> plannedFor() {
-        return this.plannedFor;
+    /**
+     * @return The date and time a maintenance update will be applied.
+     * 
+     */
+    public Optional<Output<String>> plannedFor() {
+        return Optional.ofNullable(this.plannedFor);
     }
 
     private DatabasePostgresqlV2PendingUpdateArgs() {}
@@ -61,43 +86,70 @@ public final class DatabasePostgresqlV2PendingUpdateArgs extends com.pulumi.reso
             $ = new DatabasePostgresqlV2PendingUpdateArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder deadline(Output<String> deadline) {
+        /**
+         * @param deadline The time when a mandatory update needs to be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deadline(@Nullable Output<String> deadline) {
             $.deadline = deadline;
             return this;
         }
 
+        /**
+         * @param deadline The time when a mandatory update needs to be applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deadline(String deadline) {
             return deadline(Output.of(deadline));
         }
 
-        public Builder description(Output<String> description) {
+        /**
+         * @param description A description of the update.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description A description of the update.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        public Builder plannedFor(Output<String> plannedFor) {
+        /**
+         * @param plannedFor The date and time a maintenance update will be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder plannedFor(@Nullable Output<String> plannedFor) {
             $.plannedFor = plannedFor;
             return this;
         }
 
+        /**
+         * @param plannedFor The date and time a maintenance update will be applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder plannedFor(String plannedFor) {
             return plannedFor(Output.of(plannedFor));
         }
 
         public DatabasePostgresqlV2PendingUpdateArgs build() {
-            if ($.deadline == null) {
-                throw new MissingRequiredPropertyException("DatabasePostgresqlV2PendingUpdateArgs", "deadline");
-            }
-            if ($.description == null) {
-                throw new MissingRequiredPropertyException("DatabasePostgresqlV2PendingUpdateArgs", "description");
-            }
-            if ($.plannedFor == null) {
-                throw new MissingRequiredPropertyException("DatabasePostgresqlV2PendingUpdateArgs", "plannedFor");
-            }
             return $;
         }
     }

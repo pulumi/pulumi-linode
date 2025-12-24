@@ -90,35 +90,11 @@ namespace Pulumi.Linode
 
     public sealed class GetLkeClusterArgs : global::Pulumi.InvokeArgs
     {
-        [Input("controlPlanes")]
-        private List<Inputs.GetLkeClusterControlPlaneArgs>? _controlPlanes;
-
-        /// <summary>
-        /// The settings for the Kubernetes Control Plane.
-        /// </summary>
-        public List<Inputs.GetLkeClusterControlPlaneArgs> ControlPlanes
-        {
-            get => _controlPlanes ?? (_controlPlanes = new List<Inputs.GetLkeClusterControlPlaneArgs>());
-            set => _controlPlanes = value;
-        }
-
         /// <summary>
         /// The LKE Cluster's ID.
         /// </summary>
         [Input("id", required: true)]
         public int Id { get; set; }
-
-        [Input("pools")]
-        private List<Inputs.GetLkeClusterPoolArgs>? _pools;
-
-        /// <summary>
-        /// Node pools associated with this cluster.
-        /// </summary>
-        public List<Inputs.GetLkeClusterPoolArgs> Pools
-        {
-            get => _pools ?? (_pools = new List<Inputs.GetLkeClusterPoolArgs>());
-            set => _pools = value;
-        }
 
         public GetLkeClusterArgs()
         {
@@ -128,35 +104,11 @@ namespace Pulumi.Linode
 
     public sealed class GetLkeClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("controlPlanes")]
-        private InputList<Inputs.GetLkeClusterControlPlaneInputArgs>? _controlPlanes;
-
-        /// <summary>
-        /// The settings for the Kubernetes Control Plane.
-        /// </summary>
-        public InputList<Inputs.GetLkeClusterControlPlaneInputArgs> ControlPlanes
-        {
-            get => _controlPlanes ?? (_controlPlanes = new InputList<Inputs.GetLkeClusterControlPlaneInputArgs>());
-            set => _controlPlanes = value;
-        }
-
         /// <summary>
         /// The LKE Cluster's ID.
         /// </summary>
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
-
-        [Input("pools")]
-        private InputList<Inputs.GetLkeClusterPoolInputArgs>? _pools;
-
-        /// <summary>
-        /// Node pools associated with this cluster.
-        /// </summary>
-        public InputList<Inputs.GetLkeClusterPoolInputArgs> Pools
-        {
-            get => _pools ?? (_pools = new InputList<Inputs.GetLkeClusterPoolInputArgs>());
-            set => _pools = value;
-        }
 
         public GetLkeClusterInvokeArgs()
         {
@@ -229,7 +181,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        /// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only populated when ApiVersion is set to `V4beta`.**
         /// </summary>
         public readonly string Tier;
         /// <summary>

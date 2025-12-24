@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseEnginesResult {
-    private @Nullable List<GetDatabaseEnginesEngine> engines;
+    private List<GetDatabaseEnginesEngine> engines;
     private @Nullable List<GetDatabaseEnginesFilter> filters;
     /**
      * @return The Managed Database engine ID in engine/version format.
@@ -29,7 +29,7 @@ public final class GetDatabaseEnginesResult {
 
     private GetDatabaseEnginesResult() {}
     public List<GetDatabaseEnginesEngine> engines() {
-        return this.engines == null ? List.of() : this.engines;
+        return this.engines;
     }
     public List<GetDatabaseEnginesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
@@ -60,7 +60,7 @@ public final class GetDatabaseEnginesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetDatabaseEnginesEngine> engines;
+        private List<GetDatabaseEnginesEngine> engines;
         private @Nullable List<GetDatabaseEnginesFilter> filters;
         private String id;
         private @Nullable Boolean latest;
@@ -78,8 +78,10 @@ public final class GetDatabaseEnginesResult {
         }
 
         @CustomType.Setter
-        public Builder engines(@Nullable List<GetDatabaseEnginesEngine> engines) {
-
+        public Builder engines(List<GetDatabaseEnginesEngine> engines) {
+            if (engines == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseEnginesResult", "engines");
+            }
             this.engines = engines;
             return this;
         }

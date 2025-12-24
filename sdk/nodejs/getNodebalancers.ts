@@ -54,7 +54,6 @@ export function getNodebalancers(args?: GetNodebalancersArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getNodebalancers:getNodebalancers", {
         "filters": args.filters,
-        "nodebalancers": args.nodebalancers,
         "order": args.order,
         "orderBy": args.orderBy,
     }, opts);
@@ -65,7 +64,6 @@ export function getNodebalancers(args?: GetNodebalancersArgs, opts?: pulumi.Invo
  */
 export interface GetNodebalancersArgs {
     filters?: inputs.GetNodebalancersFilter[];
-    nodebalancers?: inputs.GetNodebalancersNodebalancer[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
@@ -85,7 +83,7 @@ export interface GetNodebalancersResult {
      * The Linode NodeBalancer's unique ID
      */
     readonly id: string;
-    readonly nodebalancers?: outputs.GetNodebalancersNodebalancer[];
+    readonly nodebalancers: outputs.GetNodebalancersNodebalancer[];
     readonly order?: string;
     readonly orderBy?: string;
 }
@@ -137,7 +135,6 @@ export function getNodebalancersOutput(args?: GetNodebalancersOutputArgs, opts?:
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getNodebalancers:getNodebalancers", {
         "filters": args.filters,
-        "nodebalancers": args.nodebalancers,
         "order": args.order,
         "orderBy": args.orderBy,
     }, opts);
@@ -148,7 +145,6 @@ export function getNodebalancersOutput(args?: GetNodebalancersOutputArgs, opts?:
  */
 export interface GetNodebalancersOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetNodebalancersFilterArgs>[]>;
-    nodebalancers?: pulumi.Input<pulumi.Input<inputs.GetNodebalancersNodebalancerArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */

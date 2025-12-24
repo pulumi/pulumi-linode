@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabasePostgresqlV2Updates {
+    /**
+     * @return The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     * 
+     */
     private Integer dayOfWeek;
+    /**
+     * @return The maximum maintenance window time in hours.
+     * 
+     */
     private Integer duration;
+    /**
+     * @return How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
     private String frequency;
+    /**
+     * @return How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
     private Integer hourOfDay;
 
     private GetDatabasePostgresqlV2Updates() {}
+    /**
+     * @return The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     * 
+     */
     public Integer dayOfWeek() {
         return this.dayOfWeek;
     }
+    /**
+     * @return The maximum maintenance window time in hours.
+     * 
+     */
     public Integer duration() {
         return this.duration;
     }
+    /**
+     * @return How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
     public String frequency() {
         return this.frequency;
     }
+    /**
+     * @return How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
     public Integer hourOfDay() {
         return this.hourOfDay;
     }

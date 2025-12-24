@@ -198,6 +198,9 @@ namespace Pulumi.Linode
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
+        [Input("updates")]
+        public Inputs.GetDatabasePostgresqlV2UpdatesArgs? Updates { get; set; }
+
         public GetDatabasePostgresqlV2Args()
         {
         }
@@ -211,6 +214,9 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
+
+        [Input("updates")]
+        public Input<Inputs.GetDatabasePostgresqlV2UpdatesInputArgs>? Updates { get; set; }
 
         public GetDatabasePostgresqlV2InvokeArgs()
         {

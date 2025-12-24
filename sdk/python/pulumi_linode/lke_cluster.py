@@ -47,9 +47,9 @@ class LkeClusterArgs:
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
-        :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+        :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
-        :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster.
         """
         pulumi.set(__self__, "k8s_version", k8s_version)
@@ -177,7 +177,7 @@ class LkeClusterArgs:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+        The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "subnet_id")
 
@@ -201,7 +201,7 @@ class LkeClusterArgs:
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "tier")
 
@@ -259,9 +259,9 @@ class _LkeClusterState:
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] status: The status of the node. (`ready`, `not_ready`)
-        :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+        :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
-        :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster.
         """
         if api_endpoints is not None:
@@ -449,7 +449,7 @@ class _LkeClusterState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+        The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "subnet_id")
 
@@ -473,7 +473,7 @@ class _LkeClusterState:
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "tier")
 
@@ -536,9 +536,9 @@ class LkeCluster(pulumi.CustomResource):
                
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
-        :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+        :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
-        :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster.
         """
         ...
@@ -667,9 +667,9 @@ class LkeCluster(pulumi.CustomResource):
                * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] status: The status of the node. (`ready`, `not_ready`)
-        :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+        :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
-        :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -798,7 +798,7 @@ class LkeCluster(pulumi.CustomResource):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.int]:
         """
-        The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+        The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "subnet_id")
 
@@ -814,7 +814,7 @@ class LkeCluster(pulumi.CustomResource):
     @pulumi.getter
     def tier(self) -> pulumi.Output[_builtins.str]:
         """
-        The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "tier")
 

@@ -54,7 +54,6 @@ export function getPlacementGroups(args?: GetPlacementGroupsArgs, opts?: pulumi.
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "placementGroups": args.placementGroups,
     }, opts);
 }
 
@@ -65,7 +64,6 @@ export interface GetPlacementGroupsArgs {
     filters?: inputs.GetPlacementGroupsFilter[];
     order?: string;
     orderBy?: string;
-    placementGroups?: inputs.GetPlacementGroupsPlacementGroup[];
 }
 
 /**
@@ -76,7 +74,7 @@ export interface GetPlacementGroupsResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly placementGroups?: outputs.GetPlacementGroupsPlacementGroup[];
+    readonly placementGroups: outputs.GetPlacementGroupsPlacementGroup[];
 }
 /**
  * Provides information about a list of Linode Placement Groups that match a set of filters.
@@ -126,7 +124,6 @@ export function getPlacementGroupsOutput(args?: GetPlacementGroupsOutputArgs, op
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "placementGroups": args.placementGroups,
     }, opts);
 }
 
@@ -137,5 +134,4 @@ export interface GetPlacementGroupsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsFilterArgs>[]>;
     order?: pulumi.Input<string>;
     orderBy?: pulumi.Input<string>;
-    placementGroups?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsPlacementGroupArgs>[]>;
 }

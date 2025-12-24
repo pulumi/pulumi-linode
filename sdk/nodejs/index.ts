@@ -10,6 +10,11 @@ export type AccountSettings = import("./accountSettings").AccountSettings;
 export const AccountSettings: typeof import("./accountSettings").AccountSettings = null as any;
 utilities.lazyLoad(exports, ["AccountSettings"], () => require("./accountSettings"));
 
+export { ConsumerImageShareGroupTokenArgs, ConsumerImageShareGroupTokenState } from "./consumerImageShareGroupToken";
+export type ConsumerImageShareGroupToken = import("./consumerImageShareGroupToken").ConsumerImageShareGroupToken;
+export const ConsumerImageShareGroupToken: typeof import("./consumerImageShareGroupToken").ConsumerImageShareGroupToken = null as any;
+utilities.lazyLoad(exports, ["ConsumerImageShareGroupToken"], () => require("./consumerImageShareGroupToken"));
+
 export { DatabaseAccessControlsArgs, DatabaseAccessControlsState } from "./databaseAccessControls";
 export type DatabaseAccessControls = import("./databaseAccessControls").DatabaseAccessControls;
 export const DatabaseAccessControls: typeof import("./databaseAccessControls").DatabaseAccessControls = null as any;
@@ -99,6 +104,26 @@ export { GetChildAccountsArgs, GetChildAccountsResult, GetChildAccountsOutputArg
 export const getChildAccounts: typeof import("./getChildAccounts").getChildAccounts = null as any;
 export const getChildAccountsOutput: typeof import("./getChildAccounts").getChildAccountsOutput = null as any;
 utilities.lazyLoad(exports, ["getChildAccounts","getChildAccountsOutput"], () => require("./getChildAccounts"));
+
+export { GetConsumerImageShareGroupArgs, GetConsumerImageShareGroupResult, GetConsumerImageShareGroupOutputArgs } from "./getConsumerImageShareGroup";
+export const getConsumerImageShareGroup: typeof import("./getConsumerImageShareGroup").getConsumerImageShareGroup = null as any;
+export const getConsumerImageShareGroupOutput: typeof import("./getConsumerImageShareGroup").getConsumerImageShareGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getConsumerImageShareGroup","getConsumerImageShareGroupOutput"], () => require("./getConsumerImageShareGroup"));
+
+export { GetConsumerImageShareGroupImageSharesArgs, GetConsumerImageShareGroupImageSharesResult, GetConsumerImageShareGroupImageSharesOutputArgs } from "./getConsumerImageShareGroupImageShares";
+export const getConsumerImageShareGroupImageShares: typeof import("./getConsumerImageShareGroupImageShares").getConsumerImageShareGroupImageShares = null as any;
+export const getConsumerImageShareGroupImageSharesOutput: typeof import("./getConsumerImageShareGroupImageShares").getConsumerImageShareGroupImageSharesOutput = null as any;
+utilities.lazyLoad(exports, ["getConsumerImageShareGroupImageShares","getConsumerImageShareGroupImageSharesOutput"], () => require("./getConsumerImageShareGroupImageShares"));
+
+export { GetConsumerImageShareGroupTokenArgs, GetConsumerImageShareGroupTokenResult, GetConsumerImageShareGroupTokenOutputArgs } from "./getConsumerImageShareGroupToken";
+export const getConsumerImageShareGroupToken: typeof import("./getConsumerImageShareGroupToken").getConsumerImageShareGroupToken = null as any;
+export const getConsumerImageShareGroupTokenOutput: typeof import("./getConsumerImageShareGroupToken").getConsumerImageShareGroupTokenOutput = null as any;
+utilities.lazyLoad(exports, ["getConsumerImageShareGroupToken","getConsumerImageShareGroupTokenOutput"], () => require("./getConsumerImageShareGroupToken"));
+
+export { GetConsumerImageShareGroupTokensArgs, GetConsumerImageShareGroupTokensResult, GetConsumerImageShareGroupTokensOutputArgs } from "./getConsumerImageShareGroupTokens";
+export const getConsumerImageShareGroupTokens: typeof import("./getConsumerImageShareGroupTokens").getConsumerImageShareGroupTokens = null as any;
+export const getConsumerImageShareGroupTokensOutput: typeof import("./getConsumerImageShareGroupTokens").getConsumerImageShareGroupTokensOutput = null as any;
+utilities.lazyLoad(exports, ["getConsumerImageShareGroupTokens","getConsumerImageShareGroupTokensOutput"], () => require("./getConsumerImageShareGroupTokens"));
 
 export { GetDatabaseBackupsArgs, GetDatabaseBackupsResult, GetDatabaseBackupsOutputArgs } from "./getDatabaseBackups";
 export const getDatabaseBackups: typeof import("./getDatabaseBackups").getDatabaseBackups = null as any;
@@ -230,6 +255,11 @@ export const getInstances: typeof import("./getInstances").getInstances = null a
 export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
 utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
 
+export { GetInterfaceArgs, GetInterfaceResult, GetInterfaceOutputArgs } from "./getInterface";
+export const getInterface: typeof import("./getInterface").getInterface = null as any;
+export const getInterfaceOutput: typeof import("./getInterface").getInterfaceOutput = null as any;
+utilities.lazyLoad(exports, ["getInterface","getInterfaceOutput"], () => require("./getInterface"));
+
 export { GetIpv6RangeArgs, GetIpv6RangeResult, GetIpv6RangeOutputArgs } from "./getIpv6Range";
 export const getIpv6Range: typeof import("./getIpv6Range").getIpv6Range = null as any;
 export const getIpv6RangeOutput: typeof import("./getIpv6Range").getIpv6RangeOutput = null as any;
@@ -279,6 +309,16 @@ export { GetLkeVersionsArgs, GetLkeVersionsResult, GetLkeVersionsOutputArgs } fr
 export const getLkeVersions: typeof import("./getLkeVersions").getLkeVersions = null as any;
 export const getLkeVersionsOutput: typeof import("./getLkeVersions").getLkeVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getLkeVersions","getLkeVersionsOutput"], () => require("./getLkeVersions"));
+
+export { GetLockArgs, GetLockResult, GetLockOutputArgs } from "./getLock";
+export const getLock: typeof import("./getLock").getLock = null as any;
+export const getLockOutput: typeof import("./getLock").getLockOutput = null as any;
+utilities.lazyLoad(exports, ["getLock","getLockOutput"], () => require("./getLock"));
+
+export { GetLocksArgs, GetLocksResult, GetLocksOutputArgs } from "./getLocks";
+export const getLocks: typeof import("./getLocks").getLocks = null as any;
+export const getLocksOutput: typeof import("./getLocks").getLocksOutput = null as any;
+utilities.lazyLoad(exports, ["getLocks","getLocksOutput"], () => require("./getLocks"));
 
 export { GetMaintenancePoliciesArgs, GetMaintenancePoliciesResult, GetMaintenancePoliciesOutputArgs } from "./getMaintenancePolicies";
 export const getMaintenancePolicies: typeof import("./getMaintenancePolicies").getMaintenancePolicies = null as any;
@@ -369,6 +409,31 @@ export { GetPlacementGroupsArgs, GetPlacementGroupsResult, GetPlacementGroupsOut
 export const getPlacementGroups: typeof import("./getPlacementGroups").getPlacementGroups = null as any;
 export const getPlacementGroupsOutput: typeof import("./getPlacementGroups").getPlacementGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getPlacementGroups","getPlacementGroupsOutput"], () => require("./getPlacementGroups"));
+
+export { GetProducerImageShareGroupArgs, GetProducerImageShareGroupResult, GetProducerImageShareGroupOutputArgs } from "./getProducerImageShareGroup";
+export const getProducerImageShareGroup: typeof import("./getProducerImageShareGroup").getProducerImageShareGroup = null as any;
+export const getProducerImageShareGroupOutput: typeof import("./getProducerImageShareGroup").getProducerImageShareGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getProducerImageShareGroup","getProducerImageShareGroupOutput"], () => require("./getProducerImageShareGroup"));
+
+export { GetProducerImageShareGroupImageSharesArgs, GetProducerImageShareGroupImageSharesResult, GetProducerImageShareGroupImageSharesOutputArgs } from "./getProducerImageShareGroupImageShares";
+export const getProducerImageShareGroupImageShares: typeof import("./getProducerImageShareGroupImageShares").getProducerImageShareGroupImageShares = null as any;
+export const getProducerImageShareGroupImageSharesOutput: typeof import("./getProducerImageShareGroupImageShares").getProducerImageShareGroupImageSharesOutput = null as any;
+utilities.lazyLoad(exports, ["getProducerImageShareGroupImageShares","getProducerImageShareGroupImageSharesOutput"], () => require("./getProducerImageShareGroupImageShares"));
+
+export { GetProducerImageShareGroupMemberArgs, GetProducerImageShareGroupMemberResult, GetProducerImageShareGroupMemberOutputArgs } from "./getProducerImageShareGroupMember";
+export const getProducerImageShareGroupMember: typeof import("./getProducerImageShareGroupMember").getProducerImageShareGroupMember = null as any;
+export const getProducerImageShareGroupMemberOutput: typeof import("./getProducerImageShareGroupMember").getProducerImageShareGroupMemberOutput = null as any;
+utilities.lazyLoad(exports, ["getProducerImageShareGroupMember","getProducerImageShareGroupMemberOutput"], () => require("./getProducerImageShareGroupMember"));
+
+export { GetProducerImageShareGroupMembersArgs, GetProducerImageShareGroupMembersResult, GetProducerImageShareGroupMembersOutputArgs } from "./getProducerImageShareGroupMembers";
+export const getProducerImageShareGroupMembers: typeof import("./getProducerImageShareGroupMembers").getProducerImageShareGroupMembers = null as any;
+export const getProducerImageShareGroupMembersOutput: typeof import("./getProducerImageShareGroupMembers").getProducerImageShareGroupMembersOutput = null as any;
+utilities.lazyLoad(exports, ["getProducerImageShareGroupMembers","getProducerImageShareGroupMembersOutput"], () => require("./getProducerImageShareGroupMembers"));
+
+export { GetProducerImageShareGroupsArgs, GetProducerImageShareGroupsResult, GetProducerImageShareGroupsOutputArgs } from "./getProducerImageShareGroups";
+export const getProducerImageShareGroups: typeof import("./getProducerImageShareGroups").getProducerImageShareGroups = null as any;
+export const getProducerImageShareGroupsOutput: typeof import("./getProducerImageShareGroups").getProducerImageShareGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getProducerImageShareGroups","getProducerImageShareGroupsOutput"], () => require("./getProducerImageShareGroups"));
 
 export { GetProfileResult } from "./getProfile";
 export const getProfile: typeof import("./getProfile").getProfile = null as any;
@@ -510,6 +575,11 @@ export type LkeNodePool = import("./lkeNodePool").LkeNodePool;
 export const LkeNodePool: typeof import("./lkeNodePool").LkeNodePool = null as any;
 utilities.lazyLoad(exports, ["LkeNodePool"], () => require("./lkeNodePool"));
 
+export { LockArgs, LockState } from "./lock";
+export type Lock = import("./lock").Lock;
+export const Lock: typeof import("./lock").Lock = null as any;
+utilities.lazyLoad(exports, ["Lock"], () => require("./lock"));
+
 export { NetworkingIpArgs, NetworkingIpState } from "./networkingIp";
 export type NetworkingIp = import("./networkingIp").NetworkingIp;
 export const NetworkingIp: typeof import("./networkingIp").NetworkingIp = null as any;
@@ -559,6 +629,16 @@ export { PlacementGroupAssignmentArgs, PlacementGroupAssignmentState } from "./p
 export type PlacementGroupAssignment = import("./placementGroupAssignment").PlacementGroupAssignment;
 export const PlacementGroupAssignment: typeof import("./placementGroupAssignment").PlacementGroupAssignment = null as any;
 utilities.lazyLoad(exports, ["PlacementGroupAssignment"], () => require("./placementGroupAssignment"));
+
+export { ProducerImageShareGroupArgs, ProducerImageShareGroupState } from "./producerImageShareGroup";
+export type ProducerImageShareGroup = import("./producerImageShareGroup").ProducerImageShareGroup;
+export const ProducerImageShareGroup: typeof import("./producerImageShareGroup").ProducerImageShareGroup = null as any;
+utilities.lazyLoad(exports, ["ProducerImageShareGroup"], () => require("./producerImageShareGroup"));
+
+export { ProducerImageShareGroupMemberArgs, ProducerImageShareGroupMemberState } from "./producerImageShareGroupMember";
+export type ProducerImageShareGroupMember = import("./producerImageShareGroupMember").ProducerImageShareGroupMember;
+export const ProducerImageShareGroupMember: typeof import("./producerImageShareGroupMember").ProducerImageShareGroupMember = null as any;
+utilities.lazyLoad(exports, ["ProducerImageShareGroupMember"], () => require("./producerImageShareGroupMember"));
 
 export * from "./provider";
 import { Provider } from "./provider";
@@ -624,6 +704,8 @@ const _module = {
         switch (type) {
             case "linode:index/accountSettings:AccountSettings":
                 return new AccountSettings(name, <any>undefined, { urn })
+            case "linode:index/consumerImageShareGroupToken:ConsumerImageShareGroupToken":
+                return new ConsumerImageShareGroupToken(name, <any>undefined, { urn })
             case "linode:index/databaseAccessControls:DatabaseAccessControls":
                 return new DatabaseAccessControls(name, <any>undefined, { urn })
             case "linode:index/databaseMysql:DatabaseMysql":
@@ -664,6 +746,8 @@ const _module = {
                 return new LkeCluster(name, <any>undefined, { urn })
             case "linode:index/lkeNodePool:LkeNodePool":
                 return new LkeNodePool(name, <any>undefined, { urn })
+            case "linode:index/lock:Lock":
+                return new Lock(name, <any>undefined, { urn })
             case "linode:index/networkingIp:NetworkingIp":
                 return new NetworkingIp(name, <any>undefined, { urn })
             case "linode:index/networkingIpAssignment:NetworkingIpAssignment":
@@ -684,6 +768,10 @@ const _module = {
                 return new PlacementGroup(name, <any>undefined, { urn })
             case "linode:index/placementGroupAssignment:PlacementGroupAssignment":
                 return new PlacementGroupAssignment(name, <any>undefined, { urn })
+            case "linode:index/producerImageShareGroup:ProducerImageShareGroup":
+                return new ProducerImageShareGroup(name, <any>undefined, { urn })
+            case "linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember":
+                return new ProducerImageShareGroupMember(name, <any>undefined, { urn })
             case "linode:index/rdns:Rdns":
                 return new Rdns(name, <any>undefined, { urn })
             case "linode:index/reservedIpAssignment:ReservedIpAssignment":
@@ -708,6 +796,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("linode", "index/accountSettings", _module)
+pulumi.runtime.registerResourceModule("linode", "index/consumerImageShareGroupToken", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseAccessControls", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseMysql", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseMysqlV2", _module)
@@ -728,6 +817,7 @@ pulumi.runtime.registerResourceModule("linode", "index/interface", _module)
 pulumi.runtime.registerResourceModule("linode", "index/ipv6Range", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeCluster", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeNodePool", _module)
+pulumi.runtime.registerResourceModule("linode", "index/lock", _module)
 pulumi.runtime.registerResourceModule("linode", "index/networkingIp", _module)
 pulumi.runtime.registerResourceModule("linode", "index/networkingIpAssignment", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancer", _module)
@@ -738,6 +828,8 @@ pulumi.runtime.registerResourceModule("linode", "index/objectStorageKey", _modul
 pulumi.runtime.registerResourceModule("linode", "index/objectStorageObject", _module)
 pulumi.runtime.registerResourceModule("linode", "index/placementGroup", _module)
 pulumi.runtime.registerResourceModule("linode", "index/placementGroupAssignment", _module)
+pulumi.runtime.registerResourceModule("linode", "index/producerImageShareGroup", _module)
+pulumi.runtime.registerResourceModule("linode", "index/producerImageShareGroupMember", _module)
 pulumi.runtime.registerResourceModule("linode", "index/rdns", _module)
 pulumi.runtime.registerResourceModule("linode", "index/reservedIpAssignment", _module)
 pulumi.runtime.registerResourceModule("linode", "index/sshKey", _module)

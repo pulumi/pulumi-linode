@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetFirewallsFilterArgs;
-import com.pulumi.linode.inputs.GetFirewallsFirewallArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -23,13 +22,6 @@ public final class GetFirewallsArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<Output<List<GetFirewallsFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
-    }
-
-    @Import(name="firewalls")
-    private @Nullable Output<List<GetFirewallsFirewallArgs>> firewalls;
-
-    public Optional<Output<List<GetFirewallsFirewallArgs>>> firewalls() {
-        return Optional.ofNullable(this.firewalls);
     }
 
     /**
@@ -66,7 +58,6 @@ public final class GetFirewallsArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetFirewallsArgs(GetFirewallsArgs $) {
         this.filters = $.filters;
-        this.firewalls = $.firewalls;
         this.order = $.order;
         this.orderBy = $.orderBy;
     }
@@ -100,19 +91,6 @@ public final class GetFirewallsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder filters(GetFirewallsFilterArgs... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder firewalls(@Nullable Output<List<GetFirewallsFirewallArgs>> firewalls) {
-            $.firewalls = firewalls;
-            return this;
-        }
-
-        public Builder firewalls(List<GetFirewallsFirewallArgs> firewalls) {
-            return firewalls(Output.of(firewalls));
-        }
-
-        public Builder firewalls(GetFirewallsFirewallArgs... firewalls) {
-            return firewalls(List.of(firewalls));
         }
 
         /**

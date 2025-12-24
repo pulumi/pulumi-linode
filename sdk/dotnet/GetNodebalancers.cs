@@ -218,14 +218,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("nodebalancers")]
-        private List<Inputs.GetNodebalancersNodebalancerArgs>? _nodebalancers;
-        public List<Inputs.GetNodebalancersNodebalancerArgs> Nodebalancers
-        {
-            get => _nodebalancers ?? (_nodebalancers = new List<Inputs.GetNodebalancersNodebalancerArgs>());
-            set => _nodebalancers = value;
-        }
-
         /// <summary>
         /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
@@ -252,14 +244,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetNodebalancersFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("nodebalancers")]
-        private InputList<Inputs.GetNodebalancersNodebalancerInputArgs>? _nodebalancers;
-        public InputList<Inputs.GetNodebalancersNodebalancerInputArgs> Nodebalancers
-        {
-            get => _nodebalancers ?? (_nodebalancers = new InputList<Inputs.GetNodebalancersNodebalancerInputArgs>());
-            set => _nodebalancers = value;
         }
 
         /// <summary>

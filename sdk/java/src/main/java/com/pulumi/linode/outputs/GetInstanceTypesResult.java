@@ -23,7 +23,7 @@ public final class GetInstanceTypesResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private @Nullable List<GetInstanceTypesType> types;
+    private List<GetInstanceTypesType> types;
 
     private GetInstanceTypesResult() {}
     public List<GetInstanceTypesFilter> filters() {
@@ -43,7 +43,7 @@ public final class GetInstanceTypesResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetInstanceTypesType> types() {
-        return this.types == null ? List.of() : this.types;
+        return this.types;
     }
 
     public static Builder builder() {
@@ -59,7 +59,7 @@ public final class GetInstanceTypesResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private @Nullable List<GetInstanceTypesType> types;
+        private List<GetInstanceTypesType> types;
         public Builder() {}
         public Builder(GetInstanceTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,8 +100,10 @@ public final class GetInstanceTypesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder types(@Nullable List<GetInstanceTypesType> types) {
-
+        public Builder types(List<GetInstanceTypesType> types) {
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTypesResult", "types");
+            }
             this.types = types;
             return this;
         }

@@ -36,7 +36,6 @@ export function getVolumes(args?: GetVolumesArgs, opts?: pulumi.InvokeOptions): 
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "volumes": args.volumes,
     }, opts);
 }
 
@@ -53,7 +52,6 @@ export interface GetVolumesArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: string;
-    volumes?: inputs.GetVolumesVolume[];
 }
 
 /**
@@ -67,7 +65,7 @@ export interface GetVolumesResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly volumes?: outputs.GetVolumesVolume[];
+    readonly volumes: outputs.GetVolumesVolume[];
 }
 /**
  * Provides information about Linode volumes that match a set of filters.
@@ -99,7 +97,6 @@ export function getVolumesOutput(args?: GetVolumesOutputArgs, opts?: pulumi.Invo
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "volumes": args.volumes,
     }, opts);
 }
 
@@ -116,5 +113,4 @@ export interface GetVolumesOutputArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: pulumi.Input<string>;
-    volumes?: pulumi.Input<pulumi.Input<inputs.GetVolumesVolumeArgs>[]>;
 }

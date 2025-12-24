@@ -5,12 +5,12 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetRegionMonitors;
 import com.pulumi.linode.outputs.GetRegionPlacementGroupLimit;
 import com.pulumi.linode.outputs.GetRegionResolver;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegionResult {
@@ -30,8 +30,9 @@ public final class GetRegionResult {
      * 
      */
     private String label;
+    private GetRegionMonitors monitors;
     private List<GetRegionPlacementGroupLimit> placementGroupLimits;
-    private @Nullable List<GetRegionResolver> resolvers;
+    private List<GetRegionResolver> resolvers;
     /**
      * @return The type of this region.
      * 
@@ -68,11 +69,14 @@ public final class GetRegionResult {
     public String label() {
         return this.label;
     }
+    public GetRegionMonitors monitors() {
+        return this.monitors;
+    }
     public List<GetRegionPlacementGroupLimit> placementGroupLimits() {
         return this.placementGroupLimits;
     }
     public List<GetRegionResolver> resolvers() {
-        return this.resolvers == null ? List.of() : this.resolvers;
+        return this.resolvers;
     }
     /**
      * @return The type of this region.
@@ -102,8 +106,9 @@ public final class GetRegionResult {
         private String country;
         private String id;
         private String label;
+        private GetRegionMonitors monitors;
         private List<GetRegionPlacementGroupLimit> placementGroupLimits;
-        private @Nullable List<GetRegionResolver> resolvers;
+        private List<GetRegionResolver> resolvers;
         private String siteType;
         private String status;
         public Builder() {}
@@ -113,6 +118,7 @@ public final class GetRegionResult {
     	      this.country = defaults.country;
     	      this.id = defaults.id;
     	      this.label = defaults.label;
+    	      this.monitors = defaults.monitors;
     	      this.placementGroupLimits = defaults.placementGroupLimits;
     	      this.resolvers = defaults.resolvers;
     	      this.siteType = defaults.siteType;
@@ -155,6 +161,14 @@ public final class GetRegionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder monitors(GetRegionMonitors monitors) {
+            if (monitors == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "monitors");
+            }
+            this.monitors = monitors;
+            return this;
+        }
+        @CustomType.Setter
         public Builder placementGroupLimits(List<GetRegionPlacementGroupLimit> placementGroupLimits) {
             if (placementGroupLimits == null) {
               throw new MissingRequiredPropertyException("GetRegionResult", "placementGroupLimits");
@@ -166,8 +180,10 @@ public final class GetRegionResult {
             return placementGroupLimits(List.of(placementGroupLimits));
         }
         @CustomType.Setter
-        public Builder resolvers(@Nullable List<GetRegionResolver> resolvers) {
-
+        public Builder resolvers(List<GetRegionResolver> resolvers) {
+            if (resolvers == null) {
+              throw new MissingRequiredPropertyException("GetRegionResult", "resolvers");
+            }
             this.resolvers = resolvers;
             return this;
         }
@@ -196,6 +212,7 @@ public final class GetRegionResult {
             _resultValue.country = country;
             _resultValue.id = id;
             _resultValue.label = label;
+            _resultValue.monitors = monitors;
             _resultValue.placementGroupLimits = placementGroupLimits;
             _resultValue.resolvers = resolvers;
             _resultValue.siteType = siteType;

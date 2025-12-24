@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetNodeBalancerResult',
@@ -98,7 +97,7 @@ class GetNodeBalancerResult:
 
     @_builtins.property
     @pulumi.getter
-    def firewalls(self) -> Optional[Sequence['outputs.GetNodeBalancerFirewallResult']]:
+    def firewalls(self) -> Sequence['outputs.GetNodeBalancerFirewallResult']:
         return pulumi.get(self, "firewalls")
 
     @_builtins.property
@@ -198,8 +197,7 @@ class AwaitableGetNodeBalancerResult(GetNodeBalancerResult):
             vpcs=self.vpcs)
 
 
-def get_node_balancer(firewalls: Optional[Sequence[Union['GetNodeBalancerFirewallArgs', 'GetNodeBalancerFirewallArgsDict']]] = None,
-                      id: Optional[_builtins.int] = None,
+def get_node_balancer(id: Optional[_builtins.int] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeBalancerResult:
     """
     Provides details about a Linode NodeBalancer.
@@ -218,7 +216,6 @@ def get_node_balancer(firewalls: Optional[Sequence[Union['GetNodeBalancerFirewal
     :param _builtins.int id: The NodeBalancer's ID.
     """
     __args__ = dict()
-    __args__['firewalls'] = firewalls
     __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getNodeBalancer:getNodeBalancer', __args__, opts=opts, typ=GetNodeBalancerResult).value
@@ -238,8 +235,7 @@ def get_node_balancer(firewalls: Optional[Sequence[Union['GetNodeBalancerFirewal
         transfers=pulumi.get(__ret__, 'transfers'),
         updated=pulumi.get(__ret__, 'updated'),
         vpcs=pulumi.get(__ret__, 'vpcs'))
-def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[Union['GetNodeBalancerFirewallArgs', 'GetNodeBalancerFirewallArgsDict']]]]] = None,
-                             id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_node_balancer_output(id: Optional[pulumi.Input[_builtins.int]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeBalancerResult]:
     """
     Provides details about a Linode NodeBalancer.
@@ -258,7 +254,6 @@ def get_node_balancer_output(firewalls: Optional[pulumi.Input[Optional[Sequence[
     :param _builtins.int id: The NodeBalancer's ID.
     """
     __args__ = dict()
-    __args__['firewalls'] = firewalls
     __args__['id'] = id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getNodeBalancer:getNodeBalancer', __args__, opts=opts, typ=GetNodeBalancerResult)

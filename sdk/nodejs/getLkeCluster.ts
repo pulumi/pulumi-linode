@@ -24,9 +24,7 @@ import * as utilities from "./utilities";
 export function getLkeCluster(args: GetLkeClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getLkeCluster:getLkeCluster", {
-        "controlPlanes": args.controlPlanes,
         "id": args.id,
-        "pools": args.pools,
     }, opts);
 }
 
@@ -35,17 +33,9 @@ export function getLkeCluster(args: GetLkeClusterArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetLkeClusterArgs {
     /**
-     * The settings for the Kubernetes Control Plane.
-     */
-    controlPlanes?: inputs.GetLkeClusterControlPlane[];
-    /**
      * The LKE Cluster's ID.
      */
     id: number;
-    /**
-     * Node pools associated with this cluster.
-     */
-    pools?: inputs.GetLkeClusterPool[];
 }
 
 /**
@@ -63,7 +53,7 @@ export interface GetLkeClusterResult {
     /**
      * The settings for the Kubernetes Control Plane.
      */
-    readonly controlPlanes?: outputs.GetLkeClusterControlPlane[];
+    readonly controlPlanes: outputs.GetLkeClusterControlPlane[];
     /**
      * When this Kubernetes cluster was created.
      */
@@ -91,7 +81,7 @@ export interface GetLkeClusterResult {
     /**
      * Node pools associated with this cluster.
      */
-    readonly pools?: outputs.GetLkeClusterPool[];
+    readonly pools: outputs.GetLkeClusterPool[];
     /**
      * This Kubernetes cluster's location.
      */
@@ -113,7 +103,7 @@ export interface GetLkeClusterResult {
      */
     readonly tags: string[];
     /**
-     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only populated when apiVersion is set to `v4beta`.**
      */
     readonly tier: string;
     /**
@@ -143,9 +133,7 @@ export interface GetLkeClusterResult {
 export function getLkeClusterOutput(args: GetLkeClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLkeClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getLkeCluster:getLkeCluster", {
-        "controlPlanes": args.controlPlanes,
         "id": args.id,
-        "pools": args.pools,
     }, opts);
 }
 
@@ -154,15 +142,7 @@ export function getLkeClusterOutput(args: GetLkeClusterOutputArgs, opts?: pulumi
  */
 export interface GetLkeClusterOutputArgs {
     /**
-     * The settings for the Kubernetes Control Plane.
-     */
-    controlPlanes?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterControlPlaneArgs>[]>;
-    /**
      * The LKE Cluster's ID.
      */
     id: pulumi.Input<number>;
-    /**
-     * Node pools associated with this cluster.
-     */
-    pools?: pulumi.Input<pulumi.Input<inputs.GetLkeClusterPoolArgs>[]>;
 }

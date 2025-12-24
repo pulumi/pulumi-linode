@@ -291,14 +291,6 @@ namespace Pulumi.Linode
 
     public sealed class GetChildAccountsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("childAccounts")]
-        private List<Inputs.GetChildAccountsChildAccountArgs>? _childAccounts;
-        public List<Inputs.GetChildAccountsChildAccountArgs> ChildAccounts
-        {
-            get => _childAccounts ?? (_childAccounts = new List<Inputs.GetChildAccountsChildAccountArgs>());
-            set => _childAccounts = value;
-        }
-
         [Input("filters")]
         private List<Inputs.GetChildAccountsFilterArgs>? _filters;
         public List<Inputs.GetChildAccountsFilterArgs> Filters
@@ -315,14 +307,6 @@ namespace Pulumi.Linode
 
     public sealed class GetChildAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("childAccounts")]
-        private InputList<Inputs.GetChildAccountsChildAccountInputArgs>? _childAccounts;
-        public InputList<Inputs.GetChildAccountsChildAccountInputArgs> ChildAccounts
-        {
-            get => _childAccounts ?? (_childAccounts = new InputList<Inputs.GetChildAccountsChildAccountInputArgs>());
-            set => _childAccounts = value;
-        }
-
         [Input("filters")]
         private InputList<Inputs.GetChildAccountsFilterInputArgs>? _filters;
         public InputList<Inputs.GetChildAccountsFilterInputArgs> Filters

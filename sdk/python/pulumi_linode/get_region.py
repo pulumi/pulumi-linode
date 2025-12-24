@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetRegionResult',
@@ -28,7 +27,7 @@ class GetRegionResult:
     """
     A collection of values returned by getRegion.
     """
-    def __init__(__self__, capabilities=None, country=None, id=None, label=None, placement_group_limits=None, resolvers=None, site_type=None, status=None):
+    def __init__(__self__, capabilities=None, country=None, id=None, label=None, monitors=None, placement_group_limits=None, resolvers=None, site_type=None, status=None):
         if capabilities and not isinstance(capabilities, list):
             raise TypeError("Expected argument 'capabilities' to be a list")
         pulumi.set(__self__, "capabilities", capabilities)
@@ -41,6 +40,9 @@ class GetRegionResult:
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
+        if monitors and not isinstance(monitors, dict):
+            raise TypeError("Expected argument 'monitors' to be a dict")
+        pulumi.set(__self__, "monitors", monitors)
         if placement_group_limits and not isinstance(placement_group_limits, list):
             raise TypeError("Expected argument 'placement_group_limits' to be a list")
         pulumi.set(__self__, "placement_group_limits", placement_group_limits)
@@ -84,13 +86,18 @@ class GetRegionResult:
         return pulumi.get(self, "label")
 
     @_builtins.property
+    @pulumi.getter
+    def monitors(self) -> 'outputs.GetRegionMonitorsResult':
+        return pulumi.get(self, "monitors")
+
+    @_builtins.property
     @pulumi.getter(name="placementGroupLimits")
     def placement_group_limits(self) -> Sequence['outputs.GetRegionPlacementGroupLimitResult']:
         return pulumi.get(self, "placement_group_limits")
 
     @_builtins.property
     @pulumi.getter
-    def resolvers(self) -> Optional[Sequence['outputs.GetRegionResolverResult']]:
+    def resolvers(self) -> Sequence['outputs.GetRegionResolverResult']:
         return pulumi.get(self, "resolvers")
 
     @_builtins.property
@@ -120,6 +127,7 @@ class AwaitableGetRegionResult(GetRegionResult):
             country=self.country,
             id=self.id,
             label=self.label,
+            monitors=self.monitors,
             placement_group_limits=self.placement_group_limits,
             resolvers=self.resolvers,
             site_type=self.site_type,
@@ -127,7 +135,6 @@ class AwaitableGetRegionResult(GetRegionResult):
 
 
 def get_region(id: Optional[_builtins.str] = None,
-               resolvers: Optional[Sequence[Union['GetRegionResolverArgs', 'GetRegionResolverArgsDict']]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionResult:
     """
     `get_region` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
@@ -149,7 +156,6 @@ def get_region(id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    __args__['resolvers'] = resolvers
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult).value
 
@@ -158,12 +164,12 @@ def get_region(id: Optional[_builtins.str] = None,
         country=pulumi.get(__ret__, 'country'),
         id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
+        monitors=pulumi.get(__ret__, 'monitors'),
         placement_group_limits=pulumi.get(__ret__, 'placement_group_limits'),
         resolvers=pulumi.get(__ret__, 'resolvers'),
         site_type=pulumi.get(__ret__, 'site_type'),
         status=pulumi.get(__ret__, 'status'))
 def get_region_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                      resolvers: Optional[pulumi.Input[Optional[Sequence[Union['GetRegionResolverArgs', 'GetRegionResolverArgsDict']]]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionResult]:
     """
     `get_region` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).
@@ -185,7 +191,6 @@ def get_region_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     """
     __args__ = dict()
     __args__['id'] = id
-    __args__['resolvers'] = resolvers
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getRegion:getRegion', __args__, opts=opts, typ=GetRegionResult)
     return __ret__.apply(lambda __response__: GetRegionResult(
@@ -193,6 +198,7 @@ def get_region_output(id: Optional[pulumi.Input[_builtins.str]] = None,
         country=pulumi.get(__response__, 'country'),
         id=pulumi.get(__response__, 'id'),
         label=pulumi.get(__response__, 'label'),
+        monitors=pulumi.get(__response__, 'monitors'),
         placement_group_limits=pulumi.get(__response__, 'placement_group_limits'),
         resolvers=pulumi.get(__response__, 'resolvers'),
         site_type=pulumi.get(__response__, 'site_type'),

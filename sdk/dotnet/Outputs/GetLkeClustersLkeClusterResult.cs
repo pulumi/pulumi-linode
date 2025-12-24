@@ -20,7 +20,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// Defines settings for the Kubernetes Control Plane.
         /// </summary>
-        public readonly Outputs.GetLkeClustersLkeClusterControlPlaneResult? ControlPlane;
+        public readonly Outputs.GetLkeClustersLkeClusterControlPlaneResult ControlPlane;
         /// <summary>
         /// When this Kubernetes cluster was created.
         /// </summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        /// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when ApiVersion is set to `V4beta`.**
         /// </summary>
         public readonly string Tier;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.Linode.Outputs
         private GetLkeClustersLkeClusterResult(
             bool aplEnabled,
 
-            Outputs.GetLkeClustersLkeClusterControlPlaneResult? controlPlane,
+            Outputs.GetLkeClustersLkeClusterControlPlaneResult controlPlane,
 
             string created,
 

@@ -42,9 +42,17 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        public readonly Outputs.GetImagesImageImageSharingResult ImageSharing;
+        /// <summary>
         /// True if the Image is public.
         /// </summary>
         public readonly bool IsPublic;
+        /// <summary>
+        /// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        public readonly bool IsShared;
         /// <summary>
         /// A short description of the Image.
         /// </summary>
@@ -94,7 +102,11 @@ namespace Pulumi.Linode.Outputs
 
             string id,
 
+            Outputs.GetImagesImageImageSharingResult imageSharing,
+
             bool isPublic,
+
+            bool isShared,
 
             string label,
 
@@ -119,7 +131,9 @@ namespace Pulumi.Linode.Outputs
             Description = description;
             Expiry = expiry;
             Id = id;
+            ImageSharing = imageSharing;
             IsPublic = isPublic;
+            IsShared = isShared;
             Label = label;
             Replications = replications;
             Size = size;

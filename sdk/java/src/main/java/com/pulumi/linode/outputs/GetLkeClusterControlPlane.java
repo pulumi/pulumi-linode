@@ -9,7 +9,6 @@ import com.pulumi.linode.outputs.GetLkeClusterControlPlaneAcl;
 import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLkeClusterControlPlane {
@@ -17,7 +16,7 @@ public final class GetLkeClusterControlPlane {
      * @return The ACL configuration for an LKE cluster&#39;s control plane.
      * 
      */
-    private @Nullable List<GetLkeClusterControlPlaneAcl> acls;
+    private List<GetLkeClusterControlPlaneAcl> acls;
     /**
      * @return Enables audit logs on the cluster&#39;s control plane.
      * 
@@ -35,7 +34,7 @@ public final class GetLkeClusterControlPlane {
      * 
      */
     public List<GetLkeClusterControlPlaneAcl> acls() {
-        return this.acls == null ? List.of() : this.acls;
+        return this.acls;
     }
     /**
      * @return Enables audit logs on the cluster&#39;s control plane.
@@ -61,7 +60,7 @@ public final class GetLkeClusterControlPlane {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetLkeClusterControlPlaneAcl> acls;
+        private List<GetLkeClusterControlPlaneAcl> acls;
         private Boolean auditLogsEnabled;
         private Boolean highAvailability;
         public Builder() {}
@@ -73,8 +72,10 @@ public final class GetLkeClusterControlPlane {
         }
 
         @CustomType.Setter
-        public Builder acls(@Nullable List<GetLkeClusterControlPlaneAcl> acls) {
-
+        public Builder acls(List<GetLkeClusterControlPlaneAcl> acls) {
+            if (acls == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterControlPlane", "acls");
+            }
             this.acls = acls;
             return this;
         }

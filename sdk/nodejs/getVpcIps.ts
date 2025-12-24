@@ -69,7 +69,6 @@ export function getVpcIps(args?: GetVpcIpsArgs, opts?: pulumi.InvokeOptions): Pr
         "filters": args.filters,
         "ipv6": args.ipv6,
         "vpcId": args.vpcId,
-        "vpcIps": args.vpcIps,
     }, opts);
 }
 
@@ -85,7 +84,6 @@ export interface GetVpcIpsArgs {
      * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
      */
     vpcId?: number;
-    vpcIps?: inputs.GetVpcIpsVpcIp[];
 }
 
 /**
@@ -99,7 +97,7 @@ export interface GetVpcIpsResult {
      * The unique globally general API entity identifier for the VPC.
      */
     readonly vpcId?: number;
-    readonly vpcIps?: outputs.GetVpcIpsVpcIp[];
+    readonly vpcIps: outputs.GetVpcIpsVpcIp[];
 }
 /**
  * Provides information about a list of Linode VPC IPs that match a set of filters.
@@ -164,7 +162,6 @@ export function getVpcIpsOutput(args?: GetVpcIpsOutputArgs, opts?: pulumi.Invoke
         "filters": args.filters,
         "ipv6": args.ipv6,
         "vpcId": args.vpcId,
-        "vpcIps": args.vpcIps,
     }, opts);
 }
 
@@ -180,5 +177,4 @@ export interface GetVpcIpsOutputArgs {
      * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
      */
     vpcId?: pulumi.Input<number>;
-    vpcIps?: pulumi.Input<pulumi.Input<inputs.GetVpcIpsVpcIpArgs>[]>;
 }

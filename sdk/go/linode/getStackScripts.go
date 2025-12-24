@@ -97,8 +97,7 @@ type GetStackScriptsArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy      *string                      `pulumi:"orderBy"`
-	Stackscripts []GetStackScriptsStackscript `pulumi:"stackscripts"`
+	OrderBy *string `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getStackScripts.
@@ -131,8 +130,7 @@ type GetStackScriptsOutputArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy      pulumi.StringPtrInput                `pulumi:"orderBy"`
-	Stackscripts GetStackScriptsStackscriptArrayInput `pulumi:"stackscripts"`
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
 func (GetStackScriptsOutputArgs) ElementType() reflect.Type {

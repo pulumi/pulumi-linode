@@ -85,7 +85,6 @@ func GetKernels(ctx *pulumi.Context, args *GetKernelsArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getKernels.
 type GetKernelsArgs struct {
 	Filters []GetKernelsFilter `pulumi:"filters"`
-	Kernels []GetKernelsKernel `pulumi:"kernels"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
@@ -114,7 +113,6 @@ func GetKernelsOutput(ctx *pulumi.Context, args GetKernelsOutputArgs, opts ...pu
 // A collection of arguments for invoking getKernels.
 type GetKernelsOutputArgs struct {
 	Filters GetKernelsFilterArrayInput `pulumi:"filters"`
-	Kernels GetKernelsKernelArrayInput `pulumi:"kernels"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.

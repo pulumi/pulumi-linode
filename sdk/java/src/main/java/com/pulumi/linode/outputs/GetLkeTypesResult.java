@@ -23,7 +23,7 @@ public final class GetLkeTypesResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private @Nullable List<GetLkeTypesType> types;
+    private List<GetLkeTypesType> types;
 
     private GetLkeTypesResult() {}
     public List<GetLkeTypesFilter> filters() {
@@ -43,7 +43,7 @@ public final class GetLkeTypesResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetLkeTypesType> types() {
-        return this.types == null ? List.of() : this.types;
+        return this.types;
     }
 
     public static Builder builder() {
@@ -59,7 +59,7 @@ public final class GetLkeTypesResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private @Nullable List<GetLkeTypesType> types;
+        private List<GetLkeTypesType> types;
         public Builder() {}
         public Builder(GetLkeTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,8 +100,10 @@ public final class GetLkeTypesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder types(@Nullable List<GetLkeTypesType> types) {
-
+        public Builder types(List<GetLkeTypesType> types) {
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetLkeTypesResult", "types");
+            }
             this.types = types;
             return this;
         }

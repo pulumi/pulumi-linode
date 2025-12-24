@@ -13,20 +13,32 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class DatabaseMysqlV2Updates
     {
-        public readonly int DayOfWeek;
-        public readonly int Duration;
-        public readonly string Frequency;
-        public readonly int HourOfDay;
+        /// <summary>
+        /// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+        /// </summary>
+        public readonly int? DayOfWeek;
+        /// <summary>
+        /// The maximum maintenance window time in hours.
+        /// </summary>
+        public readonly int? Duration;
+        /// <summary>
+        /// How frequently maintenance occurs. Currently can only be weekly.
+        /// </summary>
+        public readonly string? Frequency;
+        /// <summary>
+        /// How frequently maintenance occurs. Currently can only be weekly.
+        /// </summary>
+        public readonly int? HourOfDay;
 
         [OutputConstructor]
         private DatabaseMysqlV2Updates(
-            int dayOfWeek,
+            int? dayOfWeek,
 
-            int duration,
+            int? duration,
 
-            string frequency,
+            string? frequency,
 
-            int hourOfDay)
+            int? hourOfDay)
         {
             DayOfWeek = dayOfWeek;
             Duration = duration;

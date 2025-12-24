@@ -43,7 +43,6 @@ export function getAccountAvailabilities(args?: GetAccountAvailabilitiesArgs, op
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getAccountAvailabilities:getAccountAvailabilities", {
-        "availabilities": args.availabilities,
         "filters": args.filters,
     }, opts);
 }
@@ -52,7 +51,6 @@ export function getAccountAvailabilities(args?: GetAccountAvailabilitiesArgs, op
  * A collection of arguments for invoking getAccountAvailabilities.
  */
 export interface GetAccountAvailabilitiesArgs {
-    availabilities?: inputs.GetAccountAvailabilitiesAvailability[];
     filters?: inputs.GetAccountAvailabilitiesFilter[];
 }
 
@@ -60,7 +58,7 @@ export interface GetAccountAvailabilitiesArgs {
  * A collection of values returned by getAccountAvailabilities.
  */
 export interface GetAccountAvailabilitiesResult {
-    readonly availabilities?: outputs.GetAccountAvailabilitiesAvailability[];
+    readonly availabilities: outputs.GetAccountAvailabilitiesAvailability[];
     readonly filters?: outputs.GetAccountAvailabilitiesFilter[];
     readonly id: string;
 }
@@ -101,7 +99,6 @@ export function getAccountAvailabilitiesOutput(args?: GetAccountAvailabilitiesOu
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getAccountAvailabilities:getAccountAvailabilities", {
-        "availabilities": args.availabilities,
         "filters": args.filters,
     }, opts);
 }
@@ -110,6 +107,5 @@ export function getAccountAvailabilitiesOutput(args?: GetAccountAvailabilitiesOu
  * A collection of arguments for invoking getAccountAvailabilities.
  */
 export interface GetAccountAvailabilitiesOutputArgs {
-    availabilities?: pulumi.Input<pulumi.Input<inputs.GetAccountAvailabilitiesAvailabilityArgs>[]>;
     filters?: pulumi.Input<pulumi.Input<inputs.GetAccountAvailabilitiesFilterArgs>[]>;
 }

@@ -227,14 +227,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("nodebalancerConfigs")]
-        private List<Inputs.GetNodebalancerConfigsNodebalancerConfigArgs>? _nodebalancerConfigs;
-        public List<Inputs.GetNodebalancerConfigsNodebalancerConfigArgs> NodebalancerConfigs
-        {
-            get => _nodebalancerConfigs ?? (_nodebalancerConfigs = new List<Inputs.GetNodebalancerConfigsNodebalancerConfigArgs>());
-            set => _nodebalancerConfigs = value;
-        }
-
         /// <summary>
         /// The ID of the NodeBalancer to access.
         /// 
@@ -269,14 +261,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetNodebalancerConfigsFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("nodebalancerConfigs")]
-        private InputList<Inputs.GetNodebalancerConfigsNodebalancerConfigInputArgs>? _nodebalancerConfigs;
-        public InputList<Inputs.GetNodebalancerConfigsNodebalancerConfigInputArgs> NodebalancerConfigs
-        {
-            get => _nodebalancerConfigs ?? (_nodebalancerConfigs = new InputList<Inputs.GetNodebalancerConfigsNodebalancerConfigInputArgs>());
-            set => _nodebalancerConfigs = value;
         }
 
         /// <summary>

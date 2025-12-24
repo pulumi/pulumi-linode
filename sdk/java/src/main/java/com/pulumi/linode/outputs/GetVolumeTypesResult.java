@@ -23,7 +23,7 @@ public final class GetVolumeTypesResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private @Nullable List<GetVolumeTypesType> types;
+    private List<GetVolumeTypesType> types;
 
     private GetVolumeTypesResult() {}
     public List<GetVolumeTypesFilter> filters() {
@@ -43,7 +43,7 @@ public final class GetVolumeTypesResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetVolumeTypesType> types() {
-        return this.types == null ? List.of() : this.types;
+        return this.types;
     }
 
     public static Builder builder() {
@@ -59,7 +59,7 @@ public final class GetVolumeTypesResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private @Nullable List<GetVolumeTypesType> types;
+        private List<GetVolumeTypesType> types;
         public Builder() {}
         public Builder(GetVolumeTypesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,8 +100,10 @@ public final class GetVolumeTypesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder types(@Nullable List<GetVolumeTypesType> types) {
-
+        public Builder types(List<GetVolumeTypesType> types) {
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetVolumeTypesResult", "types");
+            }
             this.types = types;
             return this;
         }

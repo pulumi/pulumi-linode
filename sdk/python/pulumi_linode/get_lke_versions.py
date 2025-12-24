@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetLkeVersionsResult',
@@ -57,7 +56,7 @@ class GetLkeVersionsResult:
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[Sequence['outputs.GetLkeVersionsVersionResult']]:
+    def versions(self) -> Sequence['outputs.GetLkeVersionsVersionResult']:
         return pulumi.get(self, "versions")
 
 
@@ -73,7 +72,6 @@ class AwaitableGetLkeVersionsResult(GetLkeVersionsResult):
 
 
 def get_lke_versions(tier: Optional[_builtins.str] = None,
-                     versions: Optional[Sequence[Union['GetLkeVersionsVersionArgs', 'GetLkeVersionsVersionArgsDict']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeVersionsResult:
     """
     Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
@@ -111,7 +109,6 @@ def get_lke_versions(tier: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['tier'] = tier
-    __args__['versions'] = versions
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getLkeVersions:getLkeVersions', __args__, opts=opts, typ=GetLkeVersionsResult).value
 
@@ -120,7 +117,6 @@ def get_lke_versions(tier: Optional[_builtins.str] = None,
         tier=pulumi.get(__ret__, 'tier'),
         versions=pulumi.get(__ret__, 'versions'))
 def get_lke_versions_output(tier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            versions: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeVersionsVersionArgs', 'GetLkeVersionsVersionArgsDict']]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeVersionsResult]:
     """
     Provides details about the Kubernetes versions available for deployment to a Kubernetes cluster.
@@ -158,7 +154,6 @@ def get_lke_versions_output(tier: Optional[pulumi.Input[Optional[_builtins.str]]
     """
     __args__ = dict()
     __args__['tier'] = tier
-    __args__['versions'] = versions
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getLkeVersions:getLkeVersions', __args__, opts=opts, typ=GetLkeVersionsResult)
     return __ret__.apply(lambda __response__: GetLkeVersionsResult(

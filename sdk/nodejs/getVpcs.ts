@@ -50,7 +50,6 @@ export function getVpcs(args?: GetVpcsArgs, opts?: pulumi.InvokeOptions): Promis
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getVpcs:getVpcs", {
         "filters": args.filters,
-        "vpcs": args.vpcs,
     }, opts);
 }
 
@@ -59,7 +58,6 @@ export function getVpcs(args?: GetVpcsArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetVpcsArgs {
     filters?: inputs.GetVpcsFilter[];
-    vpcs?: inputs.GetVpcsVpc[];
 }
 
 /**
@@ -71,7 +69,7 @@ export interface GetVpcsResult {
      * The unique id of this VPC.
      */
     readonly id: string;
-    readonly vpcs?: outputs.GetVpcsVpc[];
+    readonly vpcs: outputs.GetVpcsVpc[];
 }
 /**
  * Provides information about a list of Linode VPCs that match a set of filters.
@@ -117,7 +115,6 @@ export function getVpcsOutput(args?: GetVpcsOutputArgs, opts?: pulumi.InvokeOutp
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getVpcs:getVpcs", {
         "filters": args.filters,
-        "vpcs": args.vpcs,
     }, opts);
 }
 
@@ -126,5 +123,4 @@ export function getVpcsOutput(args?: GetVpcsOutputArgs, opts?: pulumi.InvokeOutp
  */
 export interface GetVpcsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetVpcsFilterArgs>[]>;
-    vpcs?: pulumi.Input<pulumi.Input<inputs.GetVpcsVpcArgs>[]>;
 }

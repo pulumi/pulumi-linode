@@ -56,14 +56,6 @@ namespace Pulumi.Linode
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        [Input("types")]
-        private List<Inputs.GetVolumeTypesTypeArgs>? _types;
-        public List<Inputs.GetVolumeTypesTypeArgs> Types
-        {
-            get => _types ?? (_types = new List<Inputs.GetVolumeTypesTypeArgs>());
-            set => _types = value;
-        }
-
         public GetVolumeTypesArgs()
         {
         }
@@ -91,14 +83,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
-
-        [Input("types")]
-        private InputList<Inputs.GetVolumeTypesTypeInputArgs>? _types;
-        public InputList<Inputs.GetVolumeTypesTypeInputArgs> Types
-        {
-            get => _types ?? (_types = new InputList<Inputs.GetVolumeTypesTypeInputArgs>());
-            set => _types = value;
-        }
 
         public GetVolumeTypesInvokeArgs()
         {

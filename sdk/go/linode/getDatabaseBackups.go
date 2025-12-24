@@ -91,7 +91,6 @@ func GetDatabaseBackups(ctx *pulumi.Context, args *GetDatabaseBackupsArgs, opts 
 
 // A collection of arguments for invoking getDatabaseBackups.
 type GetDatabaseBackupsArgs struct {
-	Backups []GetDatabaseBackupsBackup `pulumi:"backups"`
 	// The ID of the database to retrieve backups for.
 	DatabaseId int `pulumi:"databaseId"`
 	// The type of the database to retrieve backups for. (`mysql`, `postgresql`)
@@ -131,7 +130,6 @@ func GetDatabaseBackupsOutput(ctx *pulumi.Context, args GetDatabaseBackupsOutput
 
 // A collection of arguments for invoking getDatabaseBackups.
 type GetDatabaseBackupsOutputArgs struct {
-	Backups GetDatabaseBackupsBackupArrayInput `pulumi:"backups"`
 	// The ID of the database to retrieve backups for.
 	DatabaseId pulumi.IntInput `pulumi:"databaseId"`
 	// The type of the database to retrieve backups for. (`mysql`, `postgresql`)

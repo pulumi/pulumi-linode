@@ -4,30 +4,63 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DatabasePostgresqlV2Updates {
-    private Integer dayOfWeek;
-    private Integer duration;
-    private String frequency;
-    private Integer hourOfDay;
+    /**
+     * @return The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     * 
+     */
+    private @Nullable Integer dayOfWeek;
+    /**
+     * @return The maximum maintenance window time in hours.
+     * 
+     */
+    private @Nullable Integer duration;
+    /**
+     * @return How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
+    private @Nullable String frequency;
+    /**
+     * @return How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
+    private @Nullable Integer hourOfDay;
 
     private DatabasePostgresqlV2Updates() {}
-    public Integer dayOfWeek() {
-        return this.dayOfWeek;
+    /**
+     * @return The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     * 
+     */
+    public Optional<Integer> dayOfWeek() {
+        return Optional.ofNullable(this.dayOfWeek);
     }
-    public Integer duration() {
-        return this.duration;
+    /**
+     * @return The maximum maintenance window time in hours.
+     * 
+     */
+    public Optional<Integer> duration() {
+        return Optional.ofNullable(this.duration);
     }
-    public String frequency() {
-        return this.frequency;
+    /**
+     * @return How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
+    public Optional<String> frequency() {
+        return Optional.ofNullable(this.frequency);
     }
-    public Integer hourOfDay() {
-        return this.hourOfDay;
+    /**
+     * @return How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
+    public Optional<Integer> hourOfDay() {
+        return Optional.ofNullable(this.hourOfDay);
     }
 
     public static Builder builder() {
@@ -39,10 +72,10 @@ public final class DatabasePostgresqlV2Updates {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer dayOfWeek;
-        private Integer duration;
-        private String frequency;
-        private Integer hourOfDay;
+        private @Nullable Integer dayOfWeek;
+        private @Nullable Integer duration;
+        private @Nullable String frequency;
+        private @Nullable Integer hourOfDay;
         public Builder() {}
         public Builder(DatabasePostgresqlV2Updates defaults) {
     	      Objects.requireNonNull(defaults);
@@ -53,34 +86,26 @@ public final class DatabasePostgresqlV2Updates {
         }
 
         @CustomType.Setter
-        public Builder dayOfWeek(Integer dayOfWeek) {
-            if (dayOfWeek == null) {
-              throw new MissingRequiredPropertyException("DatabasePostgresqlV2Updates", "dayOfWeek");
-            }
+        public Builder dayOfWeek(@Nullable Integer dayOfWeek) {
+
             this.dayOfWeek = dayOfWeek;
             return this;
         }
         @CustomType.Setter
-        public Builder duration(Integer duration) {
-            if (duration == null) {
-              throw new MissingRequiredPropertyException("DatabasePostgresqlV2Updates", "duration");
-            }
+        public Builder duration(@Nullable Integer duration) {
+
             this.duration = duration;
             return this;
         }
         @CustomType.Setter
-        public Builder frequency(String frequency) {
-            if (frequency == null) {
-              throw new MissingRequiredPropertyException("DatabasePostgresqlV2Updates", "frequency");
-            }
+        public Builder frequency(@Nullable String frequency) {
+
             this.frequency = frequency;
             return this;
         }
         @CustomType.Setter
-        public Builder hourOfDay(Integer hourOfDay) {
-            if (hourOfDay == null) {
-              throw new MissingRequiredPropertyException("DatabasePostgresqlV2Updates", "hourOfDay");
-            }
+        public Builder hourOfDay(@Nullable Integer hourOfDay) {
+
             this.hourOfDay = hourOfDay;
             return this;
         }

@@ -74,7 +74,6 @@ func GetAccountLogins(ctx *pulumi.Context, args *GetAccountLoginsArgs, opts ...p
 // A collection of arguments for invoking getAccountLogins.
 type GetAccountLoginsArgs struct {
 	Filters []GetAccountLoginsFilter `pulumi:"filters"`
-	Logins  []GetAccountLoginsLogin  `pulumi:"logins"`
 }
 
 // A collection of values returned by getAccountLogins.
@@ -97,7 +96,6 @@ func GetAccountLoginsOutput(ctx *pulumi.Context, args GetAccountLoginsOutputArgs
 // A collection of arguments for invoking getAccountLogins.
 type GetAccountLoginsOutputArgs struct {
 	Filters GetAccountLoginsFilterArrayInput `pulumi:"filters"`
-	Logins  GetAccountLoginsLoginArrayInput  `pulumi:"logins"`
 }
 
 func (GetAccountLoginsOutputArgs) ElementType() reflect.Type {

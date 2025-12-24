@@ -14,13 +14,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountAvailabilitiesResult {
-    private @Nullable List<GetAccountAvailabilitiesAvailability> availabilities;
+    private List<GetAccountAvailabilitiesAvailability> availabilities;
     private @Nullable List<GetAccountAvailabilitiesFilter> filters;
     private String id;
 
     private GetAccountAvailabilitiesResult() {}
     public List<GetAccountAvailabilitiesAvailability> availabilities() {
-        return this.availabilities == null ? List.of() : this.availabilities;
+        return this.availabilities;
     }
     public List<GetAccountAvailabilitiesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
@@ -38,7 +38,7 @@ public final class GetAccountAvailabilitiesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetAccountAvailabilitiesAvailability> availabilities;
+        private List<GetAccountAvailabilitiesAvailability> availabilities;
         private @Nullable List<GetAccountAvailabilitiesFilter> filters;
         private String id;
         public Builder() {}
@@ -50,8 +50,10 @@ public final class GetAccountAvailabilitiesResult {
         }
 
         @CustomType.Setter
-        public Builder availabilities(@Nullable List<GetAccountAvailabilitiesAvailability> availabilities) {
-
+        public Builder availabilities(List<GetAccountAvailabilitiesAvailability> availabilities) {
+            if (availabilities == null) {
+              throw new MissingRequiredPropertyException("GetAccountAvailabilitiesResult", "availabilities");
+            }
             this.availabilities = availabilities;
             return this;
         }

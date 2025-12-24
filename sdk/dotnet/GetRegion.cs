@@ -102,14 +102,6 @@ namespace Pulumi.Linode
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        [Input("resolvers")]
-        private List<Inputs.GetRegionResolverArgs>? _resolvers;
-        public List<Inputs.GetRegionResolverArgs> Resolvers
-        {
-            get => _resolvers ?? (_resolvers = new List<Inputs.GetRegionResolverArgs>());
-            set => _resolvers = value;
-        }
-
         public GetRegionArgs()
         {
         }
@@ -123,14 +115,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
-
-        [Input("resolvers")]
-        private InputList<Inputs.GetRegionResolverInputArgs>? _resolvers;
-        public InputList<Inputs.GetRegionResolverInputArgs> Resolvers
-        {
-            get => _resolvers ?? (_resolvers = new InputList<Inputs.GetRegionResolverInputArgs>());
-            set => _resolvers = value;
-        }
 
         public GetRegionInvokeArgs()
         {
@@ -155,6 +139,7 @@ namespace Pulumi.Linode
         /// Detailed location information for this Region, including city, state or region, and country.
         /// </summary>
         public readonly string Label;
+        public readonly Outputs.GetRegionMonitorsResult Monitors;
         public readonly ImmutableArray<Outputs.GetRegionPlacementGroupLimitResult> PlacementGroupLimits;
         public readonly ImmutableArray<Outputs.GetRegionResolverResult> Resolvers;
         /// <summary>
@@ -176,6 +161,8 @@ namespace Pulumi.Linode
 
             string label,
 
+            Outputs.GetRegionMonitorsResult monitors,
+
             ImmutableArray<Outputs.GetRegionPlacementGroupLimitResult> placementGroupLimits,
 
             ImmutableArray<Outputs.GetRegionResolverResult> resolvers,
@@ -188,6 +175,7 @@ namespace Pulumi.Linode
             Country = country;
             Id = id;
             Label = label;
+            Monitors = monitors;
             PlacementGroupLimits = placementGroupLimits;
             Resolvers = resolvers;
             SiteType = siteType;

@@ -50,7 +50,7 @@ class GetDatabaseEnginesResult:
 
     @_builtins.property
     @pulumi.getter
-    def engines(self) -> Optional[Sequence['outputs.GetDatabaseEnginesEngineResult']]:
+    def engines(self) -> Sequence['outputs.GetDatabaseEnginesEngineResult']:
         return pulumi.get(self, "engines")
 
     @_builtins.property
@@ -96,8 +96,7 @@ class AwaitableGetDatabaseEnginesResult(GetDatabaseEnginesResult):
             order_by=self.order_by)
 
 
-def get_database_engines(engines: Optional[Sequence[Union['GetDatabaseEnginesEngineArgs', 'GetDatabaseEnginesEngineArgsDict']]] = None,
-                         filters: Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict']]] = None,
+def get_database_engines(filters: Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict']]] = None,
                          latest: Optional[_builtins.bool] = None,
                          order: Optional[_builtins.str] = None,
                          order_by: Optional[_builtins.str] = None,
@@ -157,7 +156,6 @@ def get_database_engines(engines: Optional[Sequence[Union['GetDatabaseEnginesEng
     :param _builtins.str order_by: The attribute to order the results by. (`version`)
     """
     __args__ = dict()
-    __args__['engines'] = engines
     __args__['filters'] = filters
     __args__['latest'] = latest
     __args__['order'] = order
@@ -172,8 +170,7 @@ def get_database_engines(engines: Optional[Sequence[Union['GetDatabaseEnginesEng
         latest=pulumi.get(__ret__, 'latest'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseEnginesEngineArgs', 'GetDatabaseEnginesEngineArgsDict']]]]] = None,
-                                filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict']]]]] = None,
+def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict']]]]] = None,
                                 latest: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                 order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -233,7 +230,6 @@ def get_database_engines_output(engines: Optional[pulumi.Input[Optional[Sequence
     :param _builtins.str order_by: The attribute to order the results by. (`version`)
     """
     __args__ = dict()
-    __args__['engines'] = engines
     __args__['filters'] = filters
     __args__['latest'] = latest
     __args__['order'] = order

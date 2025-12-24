@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetRegionsFilterArgs;
-import com.pulumi.linode.inputs.GetRegionsRegionArgs;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,18 +23,10 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.filters);
     }
 
-    @Import(name="regions")
-    private @Nullable Output<List<GetRegionsRegionArgs>> regions;
-
-    public Optional<Output<List<GetRegionsRegionArgs>>> regions() {
-        return Optional.ofNullable(this.regions);
-    }
-
     private GetRegionsArgs() {}
 
     private GetRegionsArgs(GetRegionsArgs $) {
         this.filters = $.filters;
-        this.regions = $.regions;
     }
 
     public static Builder builder() {
@@ -67,19 +58,6 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder filters(GetRegionsFilterArgs... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder regions(@Nullable Output<List<GetRegionsRegionArgs>> regions) {
-            $.regions = regions;
-            return this;
-        }
-
-        public Builder regions(List<GetRegionsRegionArgs> regions) {
-            return regions(Output.of(regions));
-        }
-
-        public Builder regions(GetRegionsRegionArgs... regions) {
-            return regions(List.of(regions));
         }
 
         public GetRegionsArgs build() {

@@ -67,7 +67,7 @@ class GetVlansResult:
 
     @_builtins.property
     @pulumi.getter
-    def vlans(self) -> Optional[Sequence['outputs.GetVlansVlanResult']]:
+    def vlans(self) -> Sequence['outputs.GetVlansVlanResult']:
         return pulumi.get(self, "vlans")
 
 
@@ -87,7 +87,6 @@ class AwaitableGetVlansResult(GetVlansResult):
 def get_vlans(filters: Optional[Sequence[Union['GetVlansFilterArgs', 'GetVlansFilterArgsDict']]] = None,
               order: Optional[_builtins.str] = None,
               order_by: Optional[_builtins.str] = None,
-              vlans: Optional[Sequence[Union['GetVlansVlanArgs', 'GetVlansVlanArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVlansResult:
     """
     > **Beta Notice** VLANs are currently available through early access.
@@ -134,7 +133,6 @@ def get_vlans(filters: Optional[Sequence[Union['GetVlansFilterArgs', 'GetVlansFi
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    __args__['vlans'] = vlans
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getVlans:getVlans', __args__, opts=opts, typ=GetVlansResult).value
 
@@ -147,7 +145,6 @@ def get_vlans(filters: Optional[Sequence[Union['GetVlansFilterArgs', 'GetVlansFi
 def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVlansFilterArgs', 'GetVlansFilterArgsDict']]]]] = None,
                      order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     vlans: Optional[pulumi.Input[Optional[Sequence[Union['GetVlansVlanArgs', 'GetVlansVlanArgsDict']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVlansResult]:
     """
     > **Beta Notice** VLANs are currently available through early access.
@@ -194,7 +191,6 @@ def get_vlans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    __args__['vlans'] = vlans
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVlans:getVlans', __args__, opts=opts, typ=GetVlansResult)
     return __ret__.apply(lambda __response__: GetVlansResult(

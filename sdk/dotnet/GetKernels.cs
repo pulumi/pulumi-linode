@@ -212,14 +212,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("kernels")]
-        private List<Inputs.GetKernelsKernelArgs>? _kernels;
-        public List<Inputs.GetKernelsKernelArgs> Kernels
-        {
-            get => _kernels ?? (_kernels = new List<Inputs.GetKernelsKernelArgs>());
-            set => _kernels = value;
-        }
-
         /// <summary>
         /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
         /// </summary>
@@ -246,14 +238,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetKernelsFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("kernels")]
-        private InputList<Inputs.GetKernelsKernelInputArgs>? _kernels;
-        public InputList<Inputs.GetKernelsKernelInputArgs> Kernels
-        {
-            get => _kernels ?? (_kernels = new InputList<Inputs.GetKernelsKernelInputArgs>());
-            set => _kernels = value;
         }
 
         /// <summary>

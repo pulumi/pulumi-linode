@@ -7,6 +7,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .account_settings import *
+from .consumer_image_share_group_token import *
 from .database_access_controls import *
 from .database_mysql import *
 from .database_mysql_v2 import *
@@ -25,6 +26,10 @@ from .get_account_logins import *
 from .get_account_settings import *
 from .get_child_account import *
 from .get_child_accounts import *
+from .get_consumer_image_share_group import *
+from .get_consumer_image_share_group_image_shares import *
+from .get_consumer_image_share_group_token import *
+from .get_consumer_image_share_group_tokens import *
 from .get_database_backups import *
 from .get_database_engines import *
 from .get_database_mysql import *
@@ -51,6 +56,7 @@ from .get_instance_networking import *
 from .get_instance_type import *
 from .get_instance_types import *
 from .get_instances import *
+from .get_interface import *
 from .get_ipv6_range import *
 from .get_ipv6_ranges import *
 from .get_kernel import *
@@ -61,6 +67,8 @@ from .get_lke_clusters import *
 from .get_lke_types import *
 from .get_lke_version import *
 from .get_lke_versions import *
+from .get_lock import *
+from .get_locks import *
 from .get_maintenance_policies import *
 from .get_nb_types import *
 from .get_network_transfer_prices import *
@@ -79,6 +87,11 @@ from .get_object_storage_quota import *
 from .get_object_storage_quotas import *
 from .get_placement_group import *
 from .get_placement_groups import *
+from .get_producer_image_share_group import *
+from .get_producer_image_share_group_image_shares import *
+from .get_producer_image_share_group_member import *
+from .get_producer_image_share_group_members import *
+from .get_producer_image_share_groups import *
 from .get_profile import *
 from .get_region import *
 from .get_regions import *
@@ -107,6 +120,7 @@ from .interface import *
 from .ipv6_range import *
 from .lke_cluster import *
 from .lke_node_pool import *
+from .lock import *
 from .networking_ip import *
 from .networking_ip_assignment import *
 from .node_balancer import *
@@ -117,6 +131,8 @@ from .object_storage_key import *
 from .object_storage_object import *
 from .placement_group import *
 from .placement_group_assignment import *
+from .producer_image_share_group import *
+from .producer_image_share_group_member import *
 from .provider import *
 from .rdns import *
 from .reserved_ip_assignment import *
@@ -146,6 +162,14 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/accountSettings:AccountSettings": "AccountSettings"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/consumerImageShareGroupToken",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/consumerImageShareGroupToken:ConsumerImageShareGroupToken": "ConsumerImageShareGroupToken"
   }
  },
  {
@@ -310,6 +334,14 @@ _utilities.register(
  },
  {
   "pkg": "linode",
+  "mod": "index/lock",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/lock:Lock": "Lock"
+  }
+ },
+ {
+  "pkg": "linode",
   "mod": "index/networkingIp",
   "fqn": "pulumi_linode",
   "classes": {
@@ -386,6 +418,22 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/placementGroupAssignment:PlacementGroupAssignment": "PlacementGroupAssignment"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/producerImageShareGroup",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/producerImageShareGroup:ProducerImageShareGroup": "ProducerImageShareGroup"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/producerImageShareGroupMember",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember": "ProducerImageShareGroupMember"
   }
  },
  {

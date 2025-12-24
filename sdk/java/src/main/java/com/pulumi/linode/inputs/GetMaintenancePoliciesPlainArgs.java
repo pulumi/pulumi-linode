@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetMaintenancePoliciesFilter;
-import com.pulumi.linode.inputs.GetMaintenancePoliciesMaintenancePolicy;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,18 +22,10 @@ public final class GetMaintenancePoliciesPlainArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.filters);
     }
 
-    @Import(name="maintenancePolicies")
-    private @Nullable List<GetMaintenancePoliciesMaintenancePolicy> maintenancePolicies;
-
-    public Optional<List<GetMaintenancePoliciesMaintenancePolicy>> maintenancePolicies() {
-        return Optional.ofNullable(this.maintenancePolicies);
-    }
-
     private GetMaintenancePoliciesPlainArgs() {}
 
     private GetMaintenancePoliciesPlainArgs(GetMaintenancePoliciesPlainArgs $) {
         this.filters = $.filters;
-        this.maintenancePolicies = $.maintenancePolicies;
     }
 
     public static Builder builder() {
@@ -62,15 +53,6 @@ public final class GetMaintenancePoliciesPlainArgs extends com.pulumi.resources.
 
         public Builder filters(GetMaintenancePoliciesFilter... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder maintenancePolicies(@Nullable List<GetMaintenancePoliciesMaintenancePolicy> maintenancePolicies) {
-            $.maintenancePolicies = maintenancePolicies;
-            return this;
-        }
-
-        public Builder maintenancePolicies(GetMaintenancePoliciesMaintenancePolicy... maintenancePolicies) {
-            return maintenancePolicies(List.of(maintenancePolicies));
         }
 
         public GetMaintenancePoliciesPlainArgs build() {

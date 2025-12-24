@@ -203,14 +203,6 @@ namespace Pulumi.Linode
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        [Input("placementGroups")]
-        private List<Inputs.GetPlacementGroupsPlacementGroupArgs>? _placementGroups;
-        public List<Inputs.GetPlacementGroupsPlacementGroupArgs> PlacementGroups
-        {
-            get => _placementGroups ?? (_placementGroups = new List<Inputs.GetPlacementGroupsPlacementGroupArgs>());
-            set => _placementGroups = value;
-        }
-
         public GetPlacementGroupsArgs()
         {
         }
@@ -232,14 +224,6 @@ namespace Pulumi.Linode
 
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
-
-        [Input("placementGroups")]
-        private InputList<Inputs.GetPlacementGroupsPlacementGroupInputArgs>? _placementGroups;
-        public InputList<Inputs.GetPlacementGroupsPlacementGroupInputArgs> PlacementGroups
-        {
-            get => _placementGroups ?? (_placementGroups = new InputList<Inputs.GetPlacementGroupsPlacementGroupInputArgs>());
-            set => _placementGroups = value;
-        }
 
         public GetPlacementGroupsInvokeArgs()
         {

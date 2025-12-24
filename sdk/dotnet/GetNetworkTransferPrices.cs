@@ -56,14 +56,6 @@ namespace Pulumi.Linode
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        [Input("types")]
-        private List<Inputs.GetNetworkTransferPricesTypeArgs>? _types;
-        public List<Inputs.GetNetworkTransferPricesTypeArgs> Types
-        {
-            get => _types ?? (_types = new List<Inputs.GetNetworkTransferPricesTypeArgs>());
-            set => _types = value;
-        }
-
         public GetNetworkTransferPricesArgs()
         {
         }
@@ -91,14 +83,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
-
-        [Input("types")]
-        private InputList<Inputs.GetNetworkTransferPricesTypeInputArgs>? _types;
-        public InputList<Inputs.GetNetworkTransferPricesTypeInputArgs> Types
-        {
-            get => _types ?? (_types = new InputList<Inputs.GetNetworkTransferPricesTypeInputArgs>());
-            set => _types = value;
-        }
 
         public GetNetworkTransferPricesInvokeArgs()
         {

@@ -13,7 +13,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFirewallsFirewall {
@@ -26,7 +25,7 @@ public final class GetFirewallsFirewall {
      * @return The devices associated with this firewall.
      * 
      */
-    private @Nullable List<GetFirewallsFirewallDevice> devices;
+    private List<GetFirewallsFirewallDevice> devices;
     /**
      * @return If true, the Firewall is inactive.
      * 
@@ -46,7 +45,7 @@ public final class GetFirewallsFirewall {
      * @return A set of firewall rules that specify what inbound network traffic is allowed.
      * 
      */
-    private @Nullable List<GetFirewallsFirewallInbound> inbounds;
+    private List<GetFirewallsFirewallInbound> inbounds;
     /**
      * @return The IDs of Linode Interfaces this firewall is applied to.
      * 
@@ -76,7 +75,7 @@ public final class GetFirewallsFirewall {
      * @return A set of firewall rules that specify what outbound network traffic is allowed.
      * 
      */
-    private @Nullable List<GetFirewallsFirewallOutbound> outbounds;
+    private List<GetFirewallsFirewallOutbound> outbounds;
     /**
      * @return The status of the firewall.
      * 
@@ -106,7 +105,7 @@ public final class GetFirewallsFirewall {
      * 
      */
     public List<GetFirewallsFirewallDevice> devices() {
-        return this.devices == null ? List.of() : this.devices;
+        return this.devices;
     }
     /**
      * @return If true, the Firewall is inactive.
@@ -134,7 +133,7 @@ public final class GetFirewallsFirewall {
      * 
      */
     public List<GetFirewallsFirewallInbound> inbounds() {
-        return this.inbounds == null ? List.of() : this.inbounds;
+        return this.inbounds;
     }
     /**
      * @return The IDs of Linode Interfaces this firewall is applied to.
@@ -176,7 +175,7 @@ public final class GetFirewallsFirewall {
      * 
      */
     public List<GetFirewallsFirewallOutbound> outbounds() {
-        return this.outbounds == null ? List.of() : this.outbounds;
+        return this.outbounds;
     }
     /**
      * @return The status of the firewall.
@@ -210,17 +209,17 @@ public final class GetFirewallsFirewall {
     @CustomType.Builder
     public static final class Builder {
         private String created;
-        private @Nullable List<GetFirewallsFirewallDevice> devices;
+        private List<GetFirewallsFirewallDevice> devices;
         private Boolean disabled;
         private Integer id;
         private String inboundPolicy;
-        private @Nullable List<GetFirewallsFirewallInbound> inbounds;
+        private List<GetFirewallsFirewallInbound> inbounds;
         private List<Integer> interfaces;
         private String label;
         private List<Integer> linodes;
         private List<Integer> nodebalancers;
         private String outboundPolicy;
-        private @Nullable List<GetFirewallsFirewallOutbound> outbounds;
+        private List<GetFirewallsFirewallOutbound> outbounds;
         private String status;
         private List<String> tags;
         private String updated;
@@ -253,8 +252,10 @@ public final class GetFirewallsFirewall {
             return this;
         }
         @CustomType.Setter
-        public Builder devices(@Nullable List<GetFirewallsFirewallDevice> devices) {
-
+        public Builder devices(List<GetFirewallsFirewallDevice> devices) {
+            if (devices == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewall", "devices");
+            }
             this.devices = devices;
             return this;
         }
@@ -286,8 +287,10 @@ public final class GetFirewallsFirewall {
             return this;
         }
         @CustomType.Setter
-        public Builder inbounds(@Nullable List<GetFirewallsFirewallInbound> inbounds) {
-
+        public Builder inbounds(List<GetFirewallsFirewallInbound> inbounds) {
+            if (inbounds == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewall", "inbounds");
+            }
             this.inbounds = inbounds;
             return this;
         }
@@ -344,8 +347,10 @@ public final class GetFirewallsFirewall {
             return this;
         }
         @CustomType.Setter
-        public Builder outbounds(@Nullable List<GetFirewallsFirewallOutbound> outbounds) {
-
+        public Builder outbounds(List<GetFirewallsFirewallOutbound> outbounds) {
+            if (outbounds == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewall", "outbounds");
+            }
             this.outbounds = outbounds;
             return this;
         }

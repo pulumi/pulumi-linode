@@ -6,8 +6,11 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.GetDatabasePostgresqlV2UpdatesArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetDatabasePostgresqlV2Args extends com.pulumi.resources.InvokeArgs {
@@ -29,10 +32,18 @@ public final class GetDatabasePostgresqlV2Args extends com.pulumi.resources.Invo
         return this.id;
     }
 
+    @Import(name="updates")
+    private @Nullable Output<GetDatabasePostgresqlV2UpdatesArgs> updates;
+
+    public Optional<Output<GetDatabasePostgresqlV2UpdatesArgs>> updates() {
+        return Optional.ofNullable(this.updates);
+    }
+
     private GetDatabasePostgresqlV2Args() {}
 
     private GetDatabasePostgresqlV2Args(GetDatabasePostgresqlV2Args $) {
         this.id = $.id;
+        this.updates = $.updates;
     }
 
     public static Builder builder() {
@@ -72,6 +83,15 @@ public final class GetDatabasePostgresqlV2Args extends com.pulumi.resources.Invo
          */
         public Builder id(String id) {
             return id(Output.of(id));
+        }
+
+        public Builder updates(@Nullable Output<GetDatabasePostgresqlV2UpdatesArgs> updates) {
+            $.updates = updates;
+            return this;
+        }
+
+        public Builder updates(GetDatabasePostgresqlV2UpdatesArgs updates) {
+            return updates(Output.of(updates));
         }
 
         public GetDatabasePostgresqlV2Args build() {

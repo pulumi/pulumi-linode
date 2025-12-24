@@ -47,7 +47,7 @@ class GetObjectStorageEndpointsResult:
 
     @_builtins.property
     @pulumi.getter
-    def endpoints(self) -> Optional[Sequence['outputs.GetObjectStorageEndpointsEndpointResult']]:
+    def endpoints(self) -> Sequence['outputs.GetObjectStorageEndpointsEndpointResult']:
         return pulumi.get(self, "endpoints")
 
     @_builtins.property
@@ -84,8 +84,7 @@ class AwaitableGetObjectStorageEndpointsResult(GetObjectStorageEndpointsResult):
             order_by=self.order_by)
 
 
-def get_object_storage_endpoints(endpoints: Optional[Sequence[Union['GetObjectStorageEndpointsEndpointArgs', 'GetObjectStorageEndpointsEndpointArgsDict']]] = None,
-                                 filters: Optional[Sequence[Union['GetObjectStorageEndpointsFilterArgs', 'GetObjectStorageEndpointsFilterArgsDict']]] = None,
+def get_object_storage_endpoints(filters: Optional[Sequence[Union['GetObjectStorageEndpointsFilterArgs', 'GetObjectStorageEndpointsFilterArgsDict']]] = None,
                                  order: Optional[_builtins.str] = None,
                                  order_by: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectStorageEndpointsResult:
@@ -131,7 +130,6 @@ def get_object_storage_endpoints(endpoints: Optional[Sequence[Union['GetObjectSt
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
-    __args__['endpoints'] = endpoints
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
@@ -144,8 +142,7 @@ def get_object_storage_endpoints(endpoints: Optional[Sequence[Union['GetObjectSt
         id=pulumi.get(__ret__, 'id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_object_storage_endpoints_output(endpoints: Optional[pulumi.Input[Optional[Sequence[Union['GetObjectStorageEndpointsEndpointArgs', 'GetObjectStorageEndpointsEndpointArgsDict']]]]] = None,
-                                        filters: Optional[pulumi.Input[Optional[Sequence[Union['GetObjectStorageEndpointsFilterArgs', 'GetObjectStorageEndpointsFilterArgsDict']]]]] = None,
+def get_object_storage_endpoints_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetObjectStorageEndpointsFilterArgs', 'GetObjectStorageEndpointsFilterArgsDict']]]]] = None,
                                         order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                         order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageEndpointsResult]:
@@ -191,7 +188,6 @@ def get_object_storage_endpoints_output(endpoints: Optional[pulumi.Input[Optiona
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
-    __args__['endpoints'] = endpoints
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by

@@ -9,7 +9,6 @@ import com.pulumi.linode.outputs.GetLkeClusterControlPlaneAclAddress;
 import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLkeClusterControlPlaneAcl {
@@ -17,7 +16,7 @@ public final class GetLkeClusterControlPlaneAcl {
      * @return A list of ip addresses to allow.
      * 
      */
-    private @Nullable List<GetLkeClusterControlPlaneAclAddress> addresses;
+    private List<GetLkeClusterControlPlaneAclAddress> addresses;
     /**
      * @return The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
      * 
@@ -30,7 +29,7 @@ public final class GetLkeClusterControlPlaneAcl {
      * 
      */
     public List<GetLkeClusterControlPlaneAclAddress> addresses() {
-        return this.addresses == null ? List.of() : this.addresses;
+        return this.addresses;
     }
     /**
      * @return The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
@@ -49,7 +48,7 @@ public final class GetLkeClusterControlPlaneAcl {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetLkeClusterControlPlaneAclAddress> addresses;
+        private List<GetLkeClusterControlPlaneAclAddress> addresses;
         private Boolean enabled;
         public Builder() {}
         public Builder(GetLkeClusterControlPlaneAcl defaults) {
@@ -59,8 +58,10 @@ public final class GetLkeClusterControlPlaneAcl {
         }
 
         @CustomType.Setter
-        public Builder addresses(@Nullable List<GetLkeClusterControlPlaneAclAddress> addresses) {
-
+        public Builder addresses(List<GetLkeClusterControlPlaneAclAddress> addresses) {
+            if (addresses == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterControlPlaneAcl", "addresses");
+            }
             this.addresses = addresses;
             return this;
         }
