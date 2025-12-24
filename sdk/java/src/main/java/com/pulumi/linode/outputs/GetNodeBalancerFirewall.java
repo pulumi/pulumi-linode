@@ -11,7 +11,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNodeBalancerFirewall {
@@ -34,7 +33,7 @@ public final class GetNodeBalancerFirewall {
      * @return A set of firewall rules that specify what inbound network traffic is allowed.
      * 
      */
-    private @Nullable List<GetNodeBalancerFirewallInbound> inbounds;
+    private List<GetNodeBalancerFirewallInbound> inbounds;
     /**
      * @return Used to identify this rule. For display purposes only.
      * 
@@ -49,7 +48,7 @@ public final class GetNodeBalancerFirewall {
      * @return A set of firewall rules that specify what outbound network traffic is allowed.
      * 
      */
-    private @Nullable List<GetNodeBalancerFirewallOutbound> outbounds;
+    private List<GetNodeBalancerFirewallOutbound> outbounds;
     /**
      * @return The status of the firewall. (`enabled`, `disabled`, `deleted`)
      * 
@@ -93,7 +92,7 @@ public final class GetNodeBalancerFirewall {
      * 
      */
     public List<GetNodeBalancerFirewallInbound> inbounds() {
-        return this.inbounds == null ? List.of() : this.inbounds;
+        return this.inbounds;
     }
     /**
      * @return Used to identify this rule. For display purposes only.
@@ -114,7 +113,7 @@ public final class GetNodeBalancerFirewall {
      * 
      */
     public List<GetNodeBalancerFirewallOutbound> outbounds() {
-        return this.outbounds == null ? List.of() : this.outbounds;
+        return this.outbounds;
     }
     /**
      * @return The status of the firewall. (`enabled`, `disabled`, `deleted`)
@@ -150,10 +149,10 @@ public final class GetNodeBalancerFirewall {
         private String created;
         private Integer id;
         private String inboundPolicy;
-        private @Nullable List<GetNodeBalancerFirewallInbound> inbounds;
+        private List<GetNodeBalancerFirewallInbound> inbounds;
         private String label;
         private String outboundPolicy;
-        private @Nullable List<GetNodeBalancerFirewallOutbound> outbounds;
+        private List<GetNodeBalancerFirewallOutbound> outbounds;
         private String status;
         private List<String> tags;
         private String updated;
@@ -197,8 +196,10 @@ public final class GetNodeBalancerFirewall {
             return this;
         }
         @CustomType.Setter
-        public Builder inbounds(@Nullable List<GetNodeBalancerFirewallInbound> inbounds) {
-
+        public Builder inbounds(List<GetNodeBalancerFirewallInbound> inbounds) {
+            if (inbounds == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerFirewall", "inbounds");
+            }
             this.inbounds = inbounds;
             return this;
         }
@@ -222,8 +223,10 @@ public final class GetNodeBalancerFirewall {
             return this;
         }
         @CustomType.Setter
-        public Builder outbounds(@Nullable List<GetNodeBalancerFirewallOutbound> outbounds) {
-
+        public Builder outbounds(List<GetNodeBalancerFirewallOutbound> outbounds) {
+            if (outbounds == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerFirewall", "outbounds");
+            }
             this.outbounds = outbounds;
             return this;
         }

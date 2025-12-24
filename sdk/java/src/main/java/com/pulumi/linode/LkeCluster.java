@@ -208,14 +208,14 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      * 
      */
     @Export(name="subnetId", refs={Integer.class}, tree="[0]")
     private Output<Integer> subnetId;
 
     /**
-     * @return The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     * @return The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      * 
      */
     public Output<Integer> subnetId() {
@@ -236,14 +236,14 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.tags;
     }
     /**
-     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      * 
      */
     @Export(name="tier", refs={String.class}, tree="[0]")
     private Output<String> tier;
 
     /**
-     * @return The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * @return The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      * 
      */
     public Output<String> tier() {

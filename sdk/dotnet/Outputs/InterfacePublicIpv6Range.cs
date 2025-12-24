@@ -17,19 +17,11 @@ namespace Pulumi.Linode.Outputs
         /// The IPv6 range.
         /// </summary>
         public readonly string Range;
-        /// <summary>
-        /// The public IPv6 address that the range is routed to.
-        /// </summary>
-        public readonly string? RouteTarget;
 
         [OutputConstructor]
-        private InterfacePublicIpv6Range(
-            string range,
-
-            string? routeTarget)
+        private InterfacePublicIpv6Range(string range)
         {
             Range = range;
-            RouteTarget = routeTarget;
         }
     }
 }

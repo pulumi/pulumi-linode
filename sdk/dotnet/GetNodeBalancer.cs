@@ -90,14 +90,6 @@ namespace Pulumi.Linode
 
     public sealed class GetNodeBalancerArgs : global::Pulumi.InvokeArgs
     {
-        [Input("firewalls")]
-        private List<Inputs.GetNodeBalancerFirewallArgs>? _firewalls;
-        public List<Inputs.GetNodeBalancerFirewallArgs> Firewalls
-        {
-            get => _firewalls ?? (_firewalls = new List<Inputs.GetNodeBalancerFirewallArgs>());
-            set => _firewalls = value;
-        }
-
         /// <summary>
         /// The NodeBalancer's ID.
         /// </summary>
@@ -112,14 +104,6 @@ namespace Pulumi.Linode
 
     public sealed class GetNodeBalancerInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("firewalls")]
-        private InputList<Inputs.GetNodeBalancerFirewallInputArgs>? _firewalls;
-        public InputList<Inputs.GetNodeBalancerFirewallInputArgs> Firewalls
-        {
-            get => _firewalls ?? (_firewalls = new InputList<Inputs.GetNodeBalancerFirewallInputArgs>());
-            set => _firewalls = value;
-        }
-
         /// <summary>
         /// The NodeBalancer's ID.
         /// </summary>

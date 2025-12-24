@@ -30,6 +30,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
+        /// The monitoring services available in a region.
+        /// </summary>
+        public readonly Outputs.GetRegionsRegionMonitorsResult Monitors;
+        /// <summary>
         /// Information about placement groups limits for this region.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionsRegionPlacementGroupLimitResult> PlacementGroupLimits;
@@ -53,6 +57,8 @@ namespace Pulumi.Linode.Outputs
 
             string label,
 
+            Outputs.GetRegionsRegionMonitorsResult monitors,
+
             ImmutableArray<Outputs.GetRegionsRegionPlacementGroupLimitResult> placementGroupLimits,
 
             ImmutableArray<Outputs.GetRegionsRegionResolverResult> resolvers,
@@ -65,6 +71,7 @@ namespace Pulumi.Linode.Outputs
             Country = country;
             Id = id;
             Label = label;
+            Monitors = monitors;
             PlacementGroupLimits = placementGroupLimits;
             Resolvers = resolvers;
             SiteType = siteType;

@@ -14,13 +14,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetChildAccountsResult {
-    private @Nullable List<GetChildAccountsChildAccount> childAccounts;
+    private List<GetChildAccountsChildAccount> childAccounts;
     private @Nullable List<GetChildAccountsFilter> filters;
     private String id;
 
     private GetChildAccountsResult() {}
     public List<GetChildAccountsChildAccount> childAccounts() {
-        return this.childAccounts == null ? List.of() : this.childAccounts;
+        return this.childAccounts;
     }
     public List<GetChildAccountsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
@@ -38,7 +38,7 @@ public final class GetChildAccountsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetChildAccountsChildAccount> childAccounts;
+        private List<GetChildAccountsChildAccount> childAccounts;
         private @Nullable List<GetChildAccountsFilter> filters;
         private String id;
         public Builder() {}
@@ -50,8 +50,10 @@ public final class GetChildAccountsResult {
         }
 
         @CustomType.Setter
-        public Builder childAccounts(@Nullable List<GetChildAccountsChildAccount> childAccounts) {
-
+        public Builder childAccounts(List<GetChildAccountsChildAccount> childAccounts) {
+            if (childAccounts == null) {
+              throw new MissingRequiredPropertyException("GetChildAccountsResult", "childAccounts");
+            }
             this.childAccounts = childAccounts;
             return this;
         }

@@ -23,7 +23,7 @@ public final class GetLkeClusterPool {
      * @return The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
      * 
      */
-    private @Nullable List<GetLkeClusterPoolAutoscaler> autoscalers;
+    private List<GetLkeClusterPoolAutoscaler> autoscalers;
     /**
      * @return The number of nodes in the Node Pool.
      * 
@@ -38,7 +38,7 @@ public final class GetLkeClusterPool {
      * @return This Node Pool’s custom disk layout.
      * 
      */
-    private @Nullable List<GetLkeClusterPoolDisk> disks;
+    private List<GetLkeClusterPoolDisk> disks;
     /**
      * @return The LKE Cluster&#39;s ID.
      * 
@@ -63,7 +63,7 @@ public final class GetLkeClusterPool {
      * @return The nodes in the Node Pool.
      * 
      */
-    private @Nullable List<GetLkeClusterPoolNode> nodes;
+    private List<GetLkeClusterPoolNode> nodes;
     /**
      * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      * 
@@ -91,7 +91,7 @@ public final class GetLkeClusterPool {
      * 
      */
     public List<GetLkeClusterPoolAutoscaler> autoscalers() {
-        return this.autoscalers == null ? List.of() : this.autoscalers;
+        return this.autoscalers;
     }
     /**
      * @return The number of nodes in the Node Pool.
@@ -112,7 +112,7 @@ public final class GetLkeClusterPool {
      * 
      */
     public List<GetLkeClusterPoolDisk> disks() {
-        return this.disks == null ? List.of() : this.disks;
+        return this.disks;
     }
     /**
      * @return The LKE Cluster&#39;s ID.
@@ -147,7 +147,7 @@ public final class GetLkeClusterPool {
      * 
      */
     public List<GetLkeClusterPoolNode> nodes() {
-        return this.nodes == null ? List.of() : this.nodes;
+        return this.nodes;
     }
     /**
      * @return An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
@@ -187,15 +187,15 @@ public final class GetLkeClusterPool {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetLkeClusterPoolAutoscaler> autoscalers;
+        private List<GetLkeClusterPoolAutoscaler> autoscalers;
         private Integer count;
         private String diskEncryption;
-        private @Nullable List<GetLkeClusterPoolDisk> disks;
+        private List<GetLkeClusterPoolDisk> disks;
         private Integer id;
         private String k8sVersion;
         private @Nullable String label;
         private Map<String,String> labels;
-        private @Nullable List<GetLkeClusterPoolNode> nodes;
+        private List<GetLkeClusterPoolNode> nodes;
         private List<String> tags;
         private List<GetLkeClusterPoolTaint> taints;
         private String type;
@@ -219,8 +219,10 @@ public final class GetLkeClusterPool {
         }
 
         @CustomType.Setter
-        public Builder autoscalers(@Nullable List<GetLkeClusterPoolAutoscaler> autoscalers) {
-
+        public Builder autoscalers(List<GetLkeClusterPoolAutoscaler> autoscalers) {
+            if (autoscalers == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "autoscalers");
+            }
             this.autoscalers = autoscalers;
             return this;
         }
@@ -244,8 +246,10 @@ public final class GetLkeClusterPool {
             return this;
         }
         @CustomType.Setter
-        public Builder disks(@Nullable List<GetLkeClusterPoolDisk> disks) {
-
+        public Builder disks(List<GetLkeClusterPoolDisk> disks) {
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "disks");
+            }
             this.disks = disks;
             return this;
         }
@@ -283,8 +287,10 @@ public final class GetLkeClusterPool {
             return this;
         }
         @CustomType.Setter
-        public Builder nodes(@Nullable List<GetLkeClusterPoolNode> nodes) {
-
+        public Builder nodes(List<GetLkeClusterPoolNode> nodes) {
+            if (nodes == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "nodes");
+            }
             this.nodes = nodes;
             return this;
         }

@@ -23,7 +23,7 @@ public final class GetUsersResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private @Nullable List<GetUsersUser> users;
+    private List<GetUsersUser> users;
 
     private GetUsersResult() {}
     public List<GetUsersFilter> filters() {
@@ -43,7 +43,7 @@ public final class GetUsersResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetUsersUser> users() {
-        return this.users == null ? List.of() : this.users;
+        return this.users;
     }
 
     public static Builder builder() {
@@ -59,7 +59,7 @@ public final class GetUsersResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private @Nullable List<GetUsersUser> users;
+        private List<GetUsersUser> users;
         public Builder() {}
         public Builder(GetUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,8 +100,10 @@ public final class GetUsersResult {
             return this;
         }
         @CustomType.Setter
-        public Builder users(@Nullable List<GetUsersUser> users) {
-
+        public Builder users(List<GetUsersUser> users) {
+            if (users == null) {
+              throw new MissingRequiredPropertyException("GetUsersResult", "users");
+            }
             this.users = users;
             return this;
         }

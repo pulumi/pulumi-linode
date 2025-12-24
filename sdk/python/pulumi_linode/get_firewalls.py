@@ -52,7 +52,7 @@ class GetFirewallsResult:
 
     @_builtins.property
     @pulumi.getter
-    def firewalls(self) -> Optional[Sequence['outputs.GetFirewallsFirewallResult']]:
+    def firewalls(self) -> Sequence['outputs.GetFirewallsFirewallResult']:
         return pulumi.get(self, "firewalls")
 
     @_builtins.property
@@ -88,7 +88,6 @@ class AwaitableGetFirewallsResult(GetFirewallsResult):
 
 
 def get_firewalls(filters: Optional[Sequence[Union['GetFirewallsFilterArgs', 'GetFirewallsFilterArgsDict']]] = None,
-                  firewalls: Optional[Sequence[Union['GetFirewallsFirewallArgs', 'GetFirewallsFirewallArgsDict']]] = None,
                   order: Optional[_builtins.str] = None,
                   order_by: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallsResult:
@@ -169,7 +168,6 @@ def get_firewalls(filters: Optional[Sequence[Union['GetFirewallsFilterArgs', 'Ge
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['firewalls'] = firewalls
     __args__['order'] = order
     __args__['orderBy'] = order_by
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -182,7 +180,6 @@ def get_firewalls(filters: Optional[Sequence[Union['GetFirewallsFilterArgs', 'Ge
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
 def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallsFilterArgs', 'GetFirewallsFilterArgsDict']]]]] = None,
-                         firewalls: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallsFirewallArgs', 'GetFirewallsFirewallArgsDict']]]]] = None,
                          order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallsResult]:
@@ -263,7 +260,6 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['firewalls'] = firewalls
     __args__['order'] = order
     __args__['orderBy'] = order_by
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

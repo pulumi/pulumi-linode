@@ -113,14 +113,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("maintenancePolicies")]
-        private List<Inputs.GetMaintenancePoliciesMaintenancePolicyArgs>? _maintenancePolicies;
-        public List<Inputs.GetMaintenancePoliciesMaintenancePolicyArgs> MaintenancePolicies
-        {
-            get => _maintenancePolicies ?? (_maintenancePolicies = new List<Inputs.GetMaintenancePoliciesMaintenancePolicyArgs>());
-            set => _maintenancePolicies = value;
-        }
-
         public GetMaintenancePoliciesArgs()
         {
         }
@@ -135,14 +127,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetMaintenancePoliciesFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("maintenancePolicies")]
-        private InputList<Inputs.GetMaintenancePoliciesMaintenancePolicyInputArgs>? _maintenancePolicies;
-        public InputList<Inputs.GetMaintenancePoliciesMaintenancePolicyInputArgs> MaintenancePolicies
-        {
-            get => _maintenancePolicies ?? (_maintenancePolicies = new InputList<Inputs.GetMaintenancePoliciesMaintenancePolicyInputArgs>());
-            set => _maintenancePolicies = value;
         }
 
         public GetMaintenancePoliciesInvokeArgs()

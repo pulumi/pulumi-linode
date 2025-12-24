@@ -42,7 +42,6 @@ export function getIpv6Ranges(args?: GetIpv6RangesArgs, opts?: pulumi.InvokeOpti
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getIpv6Ranges:getIpv6Ranges", {
         "filters": args.filters,
-        "ranges": args.ranges,
     }, opts);
 }
 
@@ -51,7 +50,6 @@ export function getIpv6Ranges(args?: GetIpv6RangesArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetIpv6RangesArgs {
     filters?: inputs.GetIpv6RangesFilter[];
-    ranges?: inputs.GetIpv6RangesRange[];
 }
 
 /**
@@ -60,7 +58,7 @@ export interface GetIpv6RangesArgs {
 export interface GetIpv6RangesResult {
     readonly filters?: outputs.GetIpv6RangesFilter[];
     readonly id: string;
-    readonly ranges?: outputs.GetIpv6RangesRange[];
+    readonly ranges: outputs.GetIpv6RangesRange[];
 }
 /**
  * Provides information about Linode IPv6 ranges that match a set of filters.
@@ -98,7 +96,6 @@ export function getIpv6RangesOutput(args?: GetIpv6RangesOutputArgs, opts?: pulum
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getIpv6Ranges:getIpv6Ranges", {
         "filters": args.filters,
-        "ranges": args.ranges,
     }, opts);
 }
 
@@ -107,5 +104,4 @@ export function getIpv6RangesOutput(args?: GetIpv6RangesOutputArgs, opts?: pulum
  */
 export interface GetIpv6RangesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetIpv6RangesFilterArgs>[]>;
-    ranges?: pulumi.Input<pulumi.Input<inputs.GetIpv6RangesRangeArgs>[]>;
 }

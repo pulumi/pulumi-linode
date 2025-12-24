@@ -55,8 +55,6 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 type LookupImageArgs struct {
 	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 	Id string `pulumi:"id"`
-	// A list of image replication regions and corresponding status.
-	Replications []GetImageReplication `pulumi:"replications"`
 }
 
 // A collection of values returned by getImage.
@@ -72,8 +70,12 @@ type LookupImageResult struct {
 	Description string `pulumi:"description"`
 	Expiry      string `pulumi:"expiry"`
 	Id          string `pulumi:"id"`
+	// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+	ImageSharing GetImageImageSharing `pulumi:"imageSharing"`
 	// True if the Image is public.
 	IsPublic bool `pulumi:"isPublic"`
+	// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+	IsShared bool `pulumi:"isShared"`
 	// A short description of the Image.
 	Label string `pulumi:"label"`
 	// A list of image replication regions and corresponding status.
@@ -105,8 +107,6 @@ func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...
 type LookupImageOutputArgs struct {
 	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// A list of image replication regions and corresponding status.
-	Replications GetImageReplicationArrayInput `pulumi:"replications"`
 }
 
 func (LookupImageOutputArgs) ElementType() reflect.Type {
@@ -160,9 +160,19 @@ func (o LookupImageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+func (o LookupImageResultOutput) ImageSharing() GetImageImageSharingOutput {
+	return o.ApplyT(func(v LookupImageResult) GetImageImageSharing { return v.ImageSharing }).(GetImageImageSharingOutput)
+}
+
 // True if the Image is public.
 func (o LookupImageResultOutput) IsPublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupImageResult) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+func (o LookupImageResultOutput) IsShared() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupImageResult) bool { return v.IsShared }).(pulumi.BoolOutput)
 }
 
 // A short description of the Image.

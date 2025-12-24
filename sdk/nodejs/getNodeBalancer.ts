@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
 export function getNodeBalancer(args: GetNodeBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeBalancerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getNodeBalancer:getNodeBalancer", {
-        "firewalls": args.firewalls,
         "id": args.id,
     }, opts);
 }
@@ -33,7 +32,6 @@ export function getNodeBalancer(args: GetNodeBalancerArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getNodeBalancer.
  */
 export interface GetNodeBalancerArgs {
-    firewalls?: inputs.GetNodeBalancerFirewall[];
     /**
      * The NodeBalancer's ID.
      */
@@ -56,7 +54,7 @@ export interface GetNodeBalancerResult {
      * When this firewall was created.
      */
     readonly created: string;
-    readonly firewalls?: outputs.GetNodeBalancerFirewall[];
+    readonly firewalls: outputs.GetNodeBalancerFirewall[];
     /**
      * This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
      */
@@ -110,7 +108,6 @@ export interface GetNodeBalancerResult {
 export function getNodeBalancerOutput(args: GetNodeBalancerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeBalancerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getNodeBalancer:getNodeBalancer", {
-        "firewalls": args.firewalls,
         "id": args.id,
     }, opts);
 }
@@ -119,7 +116,6 @@ export function getNodeBalancerOutput(args: GetNodeBalancerOutputArgs, opts?: pu
  * A collection of arguments for invoking getNodeBalancer.
  */
 export interface GetNodeBalancerOutputArgs {
-    firewalls?: pulumi.Input<pulumi.Input<inputs.GetNodeBalancerFirewallArgs>[]>;
     /**
      * The NodeBalancer's ID.
      */

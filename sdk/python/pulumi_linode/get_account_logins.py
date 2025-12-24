@@ -54,7 +54,7 @@ class GetAccountLoginsResult:
 
     @_builtins.property
     @pulumi.getter
-    def logins(self) -> Optional[Sequence['outputs.GetAccountLoginsLoginResult']]:
+    def logins(self) -> Sequence['outputs.GetAccountLoginsLoginResult']:
         return pulumi.get(self, "logins")
 
 
@@ -70,7 +70,6 @@ class AwaitableGetAccountLoginsResult(GetAccountLoginsResult):
 
 
 def get_account_logins(filters: Optional[Sequence[Union['GetAccountLoginsFilterArgs', 'GetAccountLoginsFilterArgsDict']]] = None,
-                       logins: Optional[Sequence[Union['GetAccountLoginsLoginArgs', 'GetAccountLoginsLoginArgsDict']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountLoginsResult:
     """
     Provides information about Linode account logins that match a set of filters.
@@ -107,7 +106,6 @@ def get_account_logins(filters: Optional[Sequence[Union['GetAccountLoginsFilterA
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['logins'] = logins
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getAccountLogins:getAccountLogins', __args__, opts=opts, typ=GetAccountLoginsResult).value
 
@@ -116,7 +114,6 @@ def get_account_logins(filters: Optional[Sequence[Union['GetAccountLoginsFilterA
         id=pulumi.get(__ret__, 'id'),
         logins=pulumi.get(__ret__, 'logins'))
 def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountLoginsFilterArgs', 'GetAccountLoginsFilterArgsDict']]]]] = None,
-                              logins: Optional[pulumi.Input[Optional[Sequence[Union['GetAccountLoginsLoginArgs', 'GetAccountLoginsLoginArgsDict']]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountLoginsResult]:
     """
     Provides information about Linode account logins that match a set of filters.
@@ -153,7 +150,6 @@ def get_account_logins_output(filters: Optional[pulumi.Input[Optional[Sequence[U
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['logins'] = logins
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getAccountLogins:getAccountLogins', __args__, opts=opts, typ=GetAccountLoginsResult)
     return __ret__.apply(lambda __response__: GetAccountLoginsResult(

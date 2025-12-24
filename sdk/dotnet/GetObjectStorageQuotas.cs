@@ -182,14 +182,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("quotas")]
-        private List<Inputs.GetObjectStorageQuotasQuotaArgs>? _quotas;
-        public List<Inputs.GetObjectStorageQuotasQuotaArgs> Quotas
-        {
-            get => _quotas ?? (_quotas = new List<Inputs.GetObjectStorageQuotasQuotaArgs>());
-            set => _quotas = value;
-        }
-
         public GetObjectStorageQuotasArgs()
         {
         }
@@ -204,14 +196,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetObjectStorageQuotasFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("quotas")]
-        private InputList<Inputs.GetObjectStorageQuotasQuotaInputArgs>? _quotas;
-        public InputList<Inputs.GetObjectStorageQuotasQuotaInputArgs> Quotas
-        {
-            get => _quotas ?? (_quotas = new InputList<Inputs.GetObjectStorageQuotasQuotaInputArgs>());
-            set => _quotas = value;
         }
 
         public GetObjectStorageQuotasInvokeArgs()

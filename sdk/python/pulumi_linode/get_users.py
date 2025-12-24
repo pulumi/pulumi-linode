@@ -70,7 +70,7 @@ class GetUsersResult:
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[Sequence['outputs.GetUsersUserResult']]:
+    def users(self) -> Sequence['outputs.GetUsersUserResult']:
         return pulumi.get(self, "users")
 
 
@@ -90,7 +90,6 @@ class AwaitableGetUsersResult(GetUsersResult):
 def get_users(filters: Optional[Sequence[Union['GetUsersFilterArgs', 'GetUsersFilterArgsDict']]] = None,
               order: Optional[_builtins.str] = None,
               order_by: Optional[_builtins.str] = None,
-              users: Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
     Provides information about Linode users that match a set of filters.
@@ -131,7 +130,6 @@ def get_users(filters: Optional[Sequence[Union['GetUsersFilterArgs', 'GetUsersFi
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    __args__['users'] = users
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
@@ -144,7 +142,6 @@ def get_users(filters: Optional[Sequence[Union['GetUsersFilterArgs', 'GetUsersFi
 def get_users_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetUsersFilterArgs', 'GetUsersFilterArgsDict']]]]] = None,
                      order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     users: Optional[pulumi.Input[Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     Provides information about Linode users that match a set of filters.
@@ -185,7 +182,6 @@ def get_users_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    __args__['users'] = users
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
     return __ret__.apply(lambda __response__: GetUsersResult(

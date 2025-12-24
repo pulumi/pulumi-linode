@@ -96,7 +96,7 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
     declare public readonly subnetId: pulumi.Output<number>;
     /**
@@ -104,7 +104,7 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<string[]>;
     /**
-     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
     declare public readonly tier: pulumi.Output<string>;
     /**
@@ -236,7 +236,7 @@ export interface LkeClusterState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
     subnetId?: pulumi.Input<number>;
     /**
@@ -244,7 +244,7 @@ export interface LkeClusterState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
     tier?: pulumi.Input<string>;
     /**
@@ -294,7 +294,7 @@ export interface LkeClusterArgs {
      */
     stackType?: pulumi.Input<string>;
     /**
-     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+     * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
     subnetId?: pulumi.Input<number>;
     /**
@@ -302,7 +302,7 @@ export interface LkeClusterArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
     tier?: pulumi.Input<string>;
     /**

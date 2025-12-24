@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetVolumesFilter;
-import com.pulumi.linode.inputs.GetVolumesVolume;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -54,20 +53,12 @@ public final class GetVolumesPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.orderBy);
     }
 
-    @Import(name="volumes")
-    private @Nullable List<GetVolumesVolume> volumes;
-
-    public Optional<List<GetVolumesVolume>> volumes() {
-        return Optional.ofNullable(this.volumes);
-    }
-
     private GetVolumesPlainArgs() {}
 
     private GetVolumesPlainArgs(GetVolumesPlainArgs $) {
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
-        this.volumes = $.volumes;
     }
 
     public static Builder builder() {
@@ -117,15 +108,6 @@ public final class GetVolumesPlainArgs extends com.pulumi.resources.InvokeArgs {
         public Builder orderBy(@Nullable String orderBy) {
             $.orderBy = orderBy;
             return this;
-        }
-
-        public Builder volumes(@Nullable List<GetVolumesVolume> volumes) {
-            $.volumes = volumes;
-            return this;
-        }
-
-        public Builder volumes(GetVolumesVolume... volumes) {
-            return volumes(List.of(volumes));
         }
 
         public GetVolumesPlainArgs build() {

@@ -194,14 +194,6 @@ namespace Pulumi.Linode
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        [Input("users")]
-        private List<Inputs.GetUsersUserArgs>? _users;
-        public List<Inputs.GetUsersUserArgs> Users
-        {
-            get => _users ?? (_users = new List<Inputs.GetUsersUserArgs>());
-            set => _users = value;
-        }
-
         public GetUsersArgs()
         {
         }
@@ -229,14 +221,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
-
-        [Input("users")]
-        private InputList<Inputs.GetUsersUserInputArgs>? _users;
-        public InputList<Inputs.GetUsersUserInputArgs> Users
-        {
-            get => _users ?? (_users = new InputList<Inputs.GetUsersUserInputArgs>());
-            set => _users = value;
-        }
 
         public GetUsersInvokeArgs()
         {

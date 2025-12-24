@@ -51,7 +51,7 @@ class GetObjectStorageQuotasResult:
 
     @_builtins.property
     @pulumi.getter
-    def quotas(self) -> Optional[Sequence['outputs.GetObjectStorageQuotasQuotaResult']]:
+    def quotas(self) -> Sequence['outputs.GetObjectStorageQuotasQuotaResult']:
         return pulumi.get(self, "quotas")
 
 
@@ -67,7 +67,6 @@ class AwaitableGetObjectStorageQuotasResult(GetObjectStorageQuotasResult):
 
 
 def get_object_storage_quotas(filters: Optional[Sequence[Union['GetObjectStorageQuotasFilterArgs', 'GetObjectStorageQuotasFilterArgsDict']]] = None,
-                              quotas: Optional[Sequence[Union['GetObjectStorageQuotasQuotaArgs', 'GetObjectStorageQuotasQuotaArgsDict']]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectStorageQuotasResult:
     """
     Provides details about a list of Object Storage quotas information on your account.
@@ -105,7 +104,6 @@ def get_object_storage_quotas(filters: Optional[Sequence[Union['GetObjectStorage
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['quotas'] = quotas
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getObjectStorageQuotas:getObjectStorageQuotas', __args__, opts=opts, typ=GetObjectStorageQuotasResult).value
 
@@ -114,7 +112,6 @@ def get_object_storage_quotas(filters: Optional[Sequence[Union['GetObjectStorage
         id=pulumi.get(__ret__, 'id'),
         quotas=pulumi.get(__ret__, 'quotas'))
 def get_object_storage_quotas_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetObjectStorageQuotasFilterArgs', 'GetObjectStorageQuotasFilterArgsDict']]]]] = None,
-                                     quotas: Optional[pulumi.Input[Optional[Sequence[Union['GetObjectStorageQuotasQuotaArgs', 'GetObjectStorageQuotasQuotaArgsDict']]]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageQuotasResult]:
     """
     Provides details about a list of Object Storage quotas information on your account.
@@ -152,7 +149,6 @@ def get_object_storage_quotas_output(filters: Optional[pulumi.Input[Optional[Seq
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['quotas'] = quotas
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getObjectStorageQuotas:getObjectStorageQuotas', __args__, opts=opts, typ=GetObjectStorageQuotasResult)
     return __ret__.apply(lambda __response__: GetObjectStorageQuotasResult(

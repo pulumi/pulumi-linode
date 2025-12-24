@@ -164,14 +164,6 @@ namespace Pulumi.Linode
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        [Input("volumes")]
-        private List<Inputs.GetVolumesVolumeArgs>? _volumes;
-        public List<Inputs.GetVolumesVolumeArgs> Volumes
-        {
-            get => _volumes ?? (_volumes = new List<Inputs.GetVolumesVolumeArgs>());
-            set => _volumes = value;
-        }
-
         public GetVolumesArgs()
         {
         }
@@ -199,14 +191,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
-
-        [Input("volumes")]
-        private InputList<Inputs.GetVolumesVolumeInputArgs>? _volumes;
-        public InputList<Inputs.GetVolumesVolumeInputArgs> Volumes
-        {
-            get => _volumes ?? (_volumes = new InputList<Inputs.GetVolumesVolumeInputArgs>());
-            set => _volumes = value;
-        }
 
         public GetVolumesInvokeArgs()
         {

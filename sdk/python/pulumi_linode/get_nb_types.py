@@ -67,7 +67,7 @@ class GetNbTypesResult:
 
     @_builtins.property
     @pulumi.getter
-    def types(self) -> Optional[Sequence['outputs.GetNbTypesTypeResult']]:
+    def types(self) -> Sequence['outputs.GetNbTypesTypeResult']:
         return pulumi.get(self, "types")
 
 
@@ -87,7 +87,6 @@ class AwaitableGetNbTypesResult(GetNbTypesResult):
 def get_nb_types(filters: Optional[Sequence[Union['GetNbTypesFilterArgs', 'GetNbTypesFilterArgsDict']]] = None,
                  order: Optional[_builtins.str] = None,
                  order_by: Optional[_builtins.str] = None,
-                 types: Optional[Sequence[Union['GetNbTypesTypeArgs', 'GetNbTypesTypeArgsDict']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNbTypesResult:
     """
     Use this data source to access information about an existing resource.
@@ -96,7 +95,6 @@ def get_nb_types(filters: Optional[Sequence[Union['GetNbTypesFilterArgs', 'GetNb
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    __args__['types'] = types
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getNbTypes:getNbTypes', __args__, opts=opts, typ=GetNbTypesResult).value
 
@@ -109,7 +107,6 @@ def get_nb_types(filters: Optional[Sequence[Union['GetNbTypesFilterArgs', 'GetNb
 def get_nb_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNbTypesFilterArgs', 'GetNbTypesFilterArgsDict']]]]] = None,
                         order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        types: Optional[pulumi.Input[Optional[Sequence[Union['GetNbTypesTypeArgs', 'GetNbTypesTypeArgsDict']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNbTypesResult]:
     """
     Use this data source to access information about an existing resource.
@@ -118,7 +115,6 @@ def get_nb_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    __args__['types'] = types
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getNbTypes:getNbTypes', __args__, opts=opts, typ=GetNbTypesResult)
     return __ret__.apply(lambda __response__: GetNbTypesResult(

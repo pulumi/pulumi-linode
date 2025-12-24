@@ -57,7 +57,7 @@ type NetworkingIp struct {
 	Address pulumi.StringOutput `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway pulumi.StringOutput `pulumi:"gateway"`
-	// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+	// The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 	LinodeId pulumi.IntOutput `pulumi:"linodeId"`
 	// The number of bits set in the subnet mask.
 	Prefix pulumi.IntOutput `pulumi:"prefix"`
@@ -111,7 +111,7 @@ type networkingIpState struct {
 	Address *string `pulumi:"address"`
 	// The default gateway for this address.
 	Gateway *string `pulumi:"gateway"`
-	// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+	// The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 	LinodeId *int `pulumi:"linodeId"`
 	// The number of bits set in the subnet mask.
 	Prefix *int `pulumi:"prefix"`
@@ -136,7 +136,7 @@ type NetworkingIpState struct {
 	Address pulumi.StringPtrInput
 	// The default gateway for this address.
 	Gateway pulumi.StringPtrInput
-	// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+	// The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 	LinodeId pulumi.IntPtrInput
 	// The number of bits set in the subnet mask.
 	Prefix pulumi.IntPtrInput
@@ -161,7 +161,7 @@ func (NetworkingIpState) ElementType() reflect.Type {
 }
 
 type networkingIpArgs struct {
-	// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+	// The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 	LinodeId *int `pulumi:"linodeId"`
 	// Whether the IP address is public. Defaults to true.
 	Public *bool `pulumi:"public"`
@@ -175,7 +175,7 @@ type networkingIpArgs struct {
 
 // The set of arguments for constructing a NetworkingIp resource.
 type NetworkingIpArgs struct {
-	// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+	// The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 	LinodeId pulumi.IntPtrInput
 	// Whether the IP address is public. Defaults to true.
 	Public pulumi.BoolPtrInput
@@ -284,7 +284,7 @@ func (o NetworkingIpOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.StringOutput { return v.Gateway }).(pulumi.StringOutput)
 }
 
-// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+// The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 func (o NetworkingIpOutput) LinodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkingIp) pulumi.IntOutput { return v.LinodeId }).(pulumi.IntOutput)
 }

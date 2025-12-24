@@ -57,7 +57,7 @@ class GetNetworkingIpsResult:
 
     @_builtins.property
     @pulumi.getter(name="ipAddresses")
-    def ip_addresses(self) -> Optional[Sequence['outputs.GetNetworkingIpsIpAddressResult']]:
+    def ip_addresses(self) -> Sequence['outputs.GetNetworkingIpsIpAddressResult']:
         return pulumi.get(self, "ip_addresses")
 
     @_builtins.property
@@ -85,7 +85,6 @@ class AwaitableGetNetworkingIpsResult(GetNetworkingIpsResult):
 
 
 def get_networking_ips(filters: Optional[Sequence[Union['GetNetworkingIpsFilterArgs', 'GetNetworkingIpsFilterArgsDict']]] = None,
-                       ip_addresses: Optional[Sequence[Union['GetNetworkingIpsIpAddressArgs', 'GetNetworkingIpsIpAddressArgsDict']]] = None,
                        order: Optional[_builtins.str] = None,
                        order_by: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkingIpsResult:
@@ -143,7 +142,6 @@ def get_networking_ips(filters: Optional[Sequence[Union['GetNetworkingIpsFilterA
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['ipAddresses'] = ip_addresses
     __args__['order'] = order
     __args__['orderBy'] = order_by
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -156,7 +154,6 @@ def get_networking_ips(filters: Optional[Sequence[Union['GetNetworkingIpsFilterA
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
 def get_networking_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNetworkingIpsFilterArgs', 'GetNetworkingIpsFilterArgsDict']]]]] = None,
-                              ip_addresses: Optional[pulumi.Input[Optional[Sequence[Union['GetNetworkingIpsIpAddressArgs', 'GetNetworkingIpsIpAddressArgsDict']]]]] = None,
                               order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkingIpsResult]:
@@ -214,7 +211,6 @@ def get_networking_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[U
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['ipAddresses'] = ip_addresses
     __args__['order'] = order
     __args__['orderBy'] = order_by
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

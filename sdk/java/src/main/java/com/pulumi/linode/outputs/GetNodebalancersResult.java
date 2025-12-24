@@ -21,7 +21,7 @@ public final class GetNodebalancersResult {
      * 
      */
     private String id;
-    private @Nullable List<GetNodebalancersNodebalancer> nodebalancers;
+    private List<GetNodebalancersNodebalancer> nodebalancers;
     private @Nullable String order;
     private @Nullable String orderBy;
 
@@ -37,7 +37,7 @@ public final class GetNodebalancersResult {
         return this.id;
     }
     public List<GetNodebalancersNodebalancer> nodebalancers() {
-        return this.nodebalancers == null ? List.of() : this.nodebalancers;
+        return this.nodebalancers;
     }
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
@@ -57,7 +57,7 @@ public final class GetNodebalancersResult {
     public static final class Builder {
         private @Nullable List<GetNodebalancersFilter> filters;
         private String id;
-        private @Nullable List<GetNodebalancersNodebalancer> nodebalancers;
+        private List<GetNodebalancersNodebalancer> nodebalancers;
         private @Nullable String order;
         private @Nullable String orderBy;
         public Builder() {}
@@ -88,8 +88,10 @@ public final class GetNodebalancersResult {
             return this;
         }
         @CustomType.Setter
-        public Builder nodebalancers(@Nullable List<GetNodebalancersNodebalancer> nodebalancers) {
-
+        public Builder nodebalancers(List<GetNodebalancersNodebalancer> nodebalancers) {
+            if (nodebalancers == null) {
+              throw new MissingRequiredPropertyException("GetNodebalancersResult", "nodebalancers");
+            }
             this.nodebalancers = nodebalancers;
             return this;
         }

@@ -19,7 +19,7 @@ public final class GetVlansResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private @Nullable List<GetVlansVlan> vlans;
+    private List<GetVlansVlan> vlans;
 
     private GetVlansResult() {}
     public List<GetVlansFilter> filters() {
@@ -35,7 +35,7 @@ public final class GetVlansResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetVlansVlan> vlans() {
-        return this.vlans == null ? List.of() : this.vlans;
+        return this.vlans;
     }
 
     public static Builder builder() {
@@ -51,7 +51,7 @@ public final class GetVlansResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private @Nullable List<GetVlansVlan> vlans;
+        private List<GetVlansVlan> vlans;
         public Builder() {}
         public Builder(GetVlansResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -92,8 +92,10 @@ public final class GetVlansResult {
             return this;
         }
         @CustomType.Setter
-        public Builder vlans(@Nullable List<GetVlansVlan> vlans) {
-
+        public Builder vlans(List<GetVlansVlan> vlans) {
+            if (vlans == null) {
+              throw new MissingRequiredPropertyException("GetVlansResult", "vlans");
+            }
             this.vlans = vlans;
             return this;
         }

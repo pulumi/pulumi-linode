@@ -69,7 +69,7 @@ export class NetworkingIp extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly gateway: pulumi.Output<string>;
     /**
-     * The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+     * The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      */
     declare public readonly linodeId: pulumi.Output<number>;
     /**
@@ -161,7 +161,7 @@ export interface NetworkingIpState {
      */
     gateway?: pulumi.Input<string>;
     /**
-     * The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+     * The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      */
     linodeId?: pulumi.Input<number>;
     /**
@@ -203,7 +203,7 @@ export interface NetworkingIpState {
  */
 export interface NetworkingIpArgs {
     /**
-     * The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+     * The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      */
     linodeId?: pulumi.Input<number>;
     /**

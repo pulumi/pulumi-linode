@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 public final class GetMaintenancePoliciesResult {
     private @Nullable List<GetMaintenancePoliciesFilter> filters;
     private String id;
-    private @Nullable List<GetMaintenancePoliciesMaintenancePolicy> maintenancePolicies;
+    private List<GetMaintenancePoliciesMaintenancePolicy> maintenancePolicies;
 
     private GetMaintenancePoliciesResult() {}
     public List<GetMaintenancePoliciesFilter> filters() {
@@ -26,7 +26,7 @@ public final class GetMaintenancePoliciesResult {
         return this.id;
     }
     public List<GetMaintenancePoliciesMaintenancePolicy> maintenancePolicies() {
-        return this.maintenancePolicies == null ? List.of() : this.maintenancePolicies;
+        return this.maintenancePolicies;
     }
 
     public static Builder builder() {
@@ -40,7 +40,7 @@ public final class GetMaintenancePoliciesResult {
     public static final class Builder {
         private @Nullable List<GetMaintenancePoliciesFilter> filters;
         private String id;
-        private @Nullable List<GetMaintenancePoliciesMaintenancePolicy> maintenancePolicies;
+        private List<GetMaintenancePoliciesMaintenancePolicy> maintenancePolicies;
         public Builder() {}
         public Builder(GetMaintenancePoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -67,8 +67,10 @@ public final class GetMaintenancePoliciesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder maintenancePolicies(@Nullable List<GetMaintenancePoliciesMaintenancePolicy> maintenancePolicies) {
-
+        public Builder maintenancePolicies(List<GetMaintenancePoliciesMaintenancePolicy> maintenancePolicies) {
+            if (maintenancePolicies == null) {
+              throw new MissingRequiredPropertyException("GetMaintenancePoliciesResult", "maintenancePolicies");
+            }
             this.maintenancePolicies = maintenancePolicies;
             return this;
         }

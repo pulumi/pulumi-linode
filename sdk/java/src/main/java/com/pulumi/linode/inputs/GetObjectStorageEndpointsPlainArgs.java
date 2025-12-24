@@ -4,7 +4,6 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.linode.inputs.GetObjectStorageEndpointsEndpoint;
 import com.pulumi.linode.inputs.GetObjectStorageEndpointsFilter;
 import java.lang.String;
 import java.util.List;
@@ -16,13 +15,6 @@ import javax.annotation.Nullable;
 public final class GetObjectStorageEndpointsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetObjectStorageEndpointsPlainArgs Empty = new GetObjectStorageEndpointsPlainArgs();
-
-    @Import(name="endpoints")
-    private @Nullable List<GetObjectStorageEndpointsEndpoint> endpoints;
-
-    public Optional<List<GetObjectStorageEndpointsEndpoint>> endpoints() {
-        return Optional.ofNullable(this.endpoints);
-    }
 
     @Import(name="filters")
     private @Nullable List<GetObjectStorageEndpointsFilter> filters;
@@ -64,7 +56,6 @@ public final class GetObjectStorageEndpointsPlainArgs extends com.pulumi.resourc
     private GetObjectStorageEndpointsPlainArgs() {}
 
     private GetObjectStorageEndpointsPlainArgs(GetObjectStorageEndpointsPlainArgs $) {
-        this.endpoints = $.endpoints;
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
@@ -86,15 +77,6 @@ public final class GetObjectStorageEndpointsPlainArgs extends com.pulumi.resourc
 
         public Builder(GetObjectStorageEndpointsPlainArgs defaults) {
             $ = new GetObjectStorageEndpointsPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder endpoints(@Nullable List<GetObjectStorageEndpointsEndpoint> endpoints) {
-            $.endpoints = endpoints;
-            return this;
-        }
-
-        public Builder endpoints(GetObjectStorageEndpointsEndpoint... endpoints) {
-            return endpoints(List.of(endpoints));
         }
 
         public Builder filters(@Nullable List<GetObjectStorageEndpointsFilter> filters) {

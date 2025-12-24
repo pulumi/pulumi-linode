@@ -61,7 +61,6 @@ export function getNetworkingIps(args?: GetNetworkingIpsArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getNetworkingIps:getNetworkingIps", {
         "filters": args.filters,
-        "ipAddresses": args.ipAddresses,
         "order": args.order,
         "orderBy": args.orderBy,
     }, opts);
@@ -72,7 +71,6 @@ export function getNetworkingIps(args?: GetNetworkingIpsArgs, opts?: pulumi.Invo
  */
 export interface GetNetworkingIpsArgs {
     filters?: inputs.GetNetworkingIpsFilter[];
-    ipAddresses?: inputs.GetNetworkingIpsIpAddress[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
@@ -89,7 +87,7 @@ export interface GetNetworkingIpsArgs {
 export interface GetNetworkingIpsResult {
     readonly filters?: outputs.GetNetworkingIpsFilter[];
     readonly id: string;
-    readonly ipAddresses?: outputs.GetNetworkingIpsIpAddress[];
+    readonly ipAddresses: outputs.GetNetworkingIpsIpAddress[];
     readonly order?: string;
     readonly orderBy?: string;
 }
@@ -148,7 +146,6 @@ export function getNetworkingIpsOutput(args?: GetNetworkingIpsOutputArgs, opts?:
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getNetworkingIps:getNetworkingIps", {
         "filters": args.filters,
-        "ipAddresses": args.ipAddresses,
         "order": args.order,
         "orderBy": args.orderBy,
     }, opts);
@@ -159,7 +156,6 @@ export function getNetworkingIpsOutput(args?: GetNetworkingIpsOutputArgs, opts?:
  */
 export interface GetNetworkingIpsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetNetworkingIpsFilterArgs>[]>;
-    ipAddresses?: pulumi.Input<pulumi.Input<inputs.GetNetworkingIpsIpAddressArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */

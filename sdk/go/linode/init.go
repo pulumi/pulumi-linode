@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "linode:index/accountSettings:AccountSettings":
 		r = &AccountSettings{}
+	case "linode:index/consumerImageShareGroupToken:ConsumerImageShareGroupToken":
+		r = &ConsumerImageShareGroupToken{}
 	case "linode:index/databaseAccessControls:DatabaseAccessControls":
 		r = &DatabaseAccessControls{}
 	case "linode:index/databaseMysql:DatabaseMysql":
@@ -63,6 +65,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LkeCluster{}
 	case "linode:index/lkeNodePool:LkeNodePool":
 		r = &LkeNodePool{}
+	case "linode:index/lock:Lock":
+		r = &Lock{}
 	case "linode:index/networkingIp:NetworkingIp":
 		r = &NetworkingIp{}
 	case "linode:index/networkingIpAssignment:NetworkingIpAssignment":
@@ -83,6 +87,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PlacementGroup{}
 	case "linode:index/placementGroupAssignment:PlacementGroupAssignment":
 		r = &PlacementGroupAssignment{}
+	case "linode:index/producerImageShareGroup:ProducerImageShareGroup":
+		r = &ProducerImageShareGroup{}
+	case "linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember":
+		r = &ProducerImageShareGroupMember{}
 	case "linode:index/rdns:Rdns":
 		r = &Rdns{}
 	case "linode:index/reservedIpAssignment:ReservedIpAssignment":
@@ -135,6 +143,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/accountSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/consumerImageShareGroupToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -239,6 +252,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"linode",
+		"index/lock",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
 		"index/networkingIp",
 		&module{version},
 	)
@@ -285,6 +303,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/placementGroupAssignment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/producerImageShareGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/producerImageShareGroupMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

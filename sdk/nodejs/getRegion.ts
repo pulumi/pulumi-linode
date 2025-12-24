@@ -27,7 +27,6 @@ export function getRegion(args: GetRegionArgs, opts?: pulumi.InvokeOptions): Pro
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getRegion:getRegion", {
         "id": args.id,
-        "resolvers": args.resolvers,
     }, opts);
 }
 
@@ -39,7 +38,6 @@ export interface GetRegionArgs {
      * The code name of the region to select.
      */
     id: string;
-    resolvers?: inputs.GetRegionResolver[];
 }
 
 /**
@@ -59,8 +57,9 @@ export interface GetRegionResult {
      * Detailed location information for this Region, including city, state or region, and country.
      */
     readonly label: string;
+    readonly monitors: outputs.GetRegionMonitors;
     readonly placementGroupLimits: outputs.GetRegionPlacementGroupLimit[];
-    readonly resolvers?: outputs.GetRegionResolver[];
+    readonly resolvers: outputs.GetRegionResolver[];
     /**
      * The type of this region.
      */
@@ -91,7 +90,6 @@ export function getRegionOutput(args: GetRegionOutputArgs, opts?: pulumi.InvokeO
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getRegion:getRegion", {
         "id": args.id,
-        "resolvers": args.resolvers,
     }, opts);
 }
 
@@ -103,5 +101,4 @@ export interface GetRegionOutputArgs {
      * The code name of the region to select.
      */
     id: pulumi.Input<string>;
-    resolvers?: pulumi.Input<pulumi.Input<inputs.GetRegionResolverArgs>[]>;
 }

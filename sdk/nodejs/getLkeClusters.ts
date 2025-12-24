@@ -48,7 +48,6 @@ export function getLkeClusters(args?: GetLkeClustersArgs, opts?: pulumi.InvokeOp
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getLkeClusters:getLkeClusters", {
         "filters": args.filters,
-        "lkeClusters": args.lkeClusters,
         "order": args.order,
         "orderBy": args.orderBy,
     }, opts);
@@ -59,7 +58,6 @@ export function getLkeClusters(args?: GetLkeClustersArgs, opts?: pulumi.InvokeOp
  */
 export interface GetLkeClustersArgs {
     filters?: inputs.GetLkeClustersFilter[];
-    lkeClusters?: inputs.GetLkeClustersLkeCluster[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
@@ -79,7 +77,7 @@ export interface GetLkeClustersResult {
      * The LKE Cluster's ID.
      */
     readonly id: string;
-    readonly lkeClusters?: outputs.GetLkeClustersLkeCluster[];
+    readonly lkeClusters: outputs.GetLkeClustersLkeCluster[];
     readonly order?: string;
     readonly orderBy?: string;
 }
@@ -125,7 +123,6 @@ export function getLkeClustersOutput(args?: GetLkeClustersOutputArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getLkeClusters:getLkeClusters", {
         "filters": args.filters,
-        "lkeClusters": args.lkeClusters,
         "order": args.order,
         "orderBy": args.orderBy,
     }, opts);
@@ -136,7 +133,6 @@ export function getLkeClustersOutput(args?: GetLkeClustersOutputArgs, opts?: pul
  */
 export interface GetLkeClustersOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetLkeClustersFilterArgs>[]>;
-    lkeClusters?: pulumi.Input<pulumi.Input<inputs.GetLkeClustersLkeClusterArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */

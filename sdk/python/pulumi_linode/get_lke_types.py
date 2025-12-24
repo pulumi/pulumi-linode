@@ -70,7 +70,7 @@ class GetLkeTypesResult:
 
     @_builtins.property
     @pulumi.getter
-    def types(self) -> Optional[Sequence['outputs.GetLkeTypesTypeResult']]:
+    def types(self) -> Sequence['outputs.GetLkeTypesTypeResult']:
         return pulumi.get(self, "types")
 
 
@@ -90,7 +90,6 @@ class AwaitableGetLkeTypesResult(GetLkeTypesResult):
 def get_lke_types(filters: Optional[Sequence[Union['GetLkeTypesFilterArgs', 'GetLkeTypesFilterArgsDict']]] = None,
                   order: Optional[_builtins.str] = None,
                   order_by: Optional[_builtins.str] = None,
-                  types: Optional[Sequence[Union['GetLkeTypesTypeArgs', 'GetLkeTypesTypeArgsDict']]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeTypesResult:
     """
     Provides information about Linode LKE types that match a set of filters.
@@ -104,7 +103,6 @@ def get_lke_types(filters: Optional[Sequence[Union['GetLkeTypesFilterArgs', 'Get
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    __args__['types'] = types
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getLkeTypes:getLkeTypes', __args__, opts=opts, typ=GetLkeTypesResult).value
 
@@ -117,7 +115,6 @@ def get_lke_types(filters: Optional[Sequence[Union['GetLkeTypesFilterArgs', 'Get
 def get_lke_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeTypesFilterArgs', 'GetLkeTypesFilterArgsDict']]]]] = None,
                          order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         types: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeTypesTypeArgs', 'GetLkeTypesTypeArgsDict']]]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeTypesResult]:
     """
     Provides information about Linode LKE types that match a set of filters.
@@ -131,7 +128,6 @@ def get_lke_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    __args__['types'] = types
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getLkeTypes:getLkeTypes', __args__, opts=opts, typ=GetLkeTypesResult)
     return __ret__.apply(lambda __response__: GetLkeTypesResult(

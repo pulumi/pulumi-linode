@@ -187,8 +187,12 @@ type Image struct {
 	FileHash pulumi.StringPtrOutput `pulumi:"fileHash"`
 	// The path of the image file to be uploaded.
 	FilePath pulumi.StringPtrOutput `pulumi:"filePath"`
+	// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+	ImageSharing ImageImageSharingOutput `pulumi:"imageSharing"`
 	// True if the Image is public.
 	IsPublic pulumi.BoolOutput `pulumi:"isPublic"`
+	// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+	IsShared pulumi.BoolOutput `pulumi:"isShared"`
 	// A short description of the Image. Labels cannot contain special characters.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The ID of the Linode that this Image will be created from.
@@ -279,8 +283,12 @@ type imageState struct {
 	FileHash *string `pulumi:"fileHash"`
 	// The path of the image file to be uploaded.
 	FilePath *string `pulumi:"filePath"`
+	// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+	ImageSharing *ImageImageSharing `pulumi:"imageSharing"`
 	// True if the Image is public.
 	IsPublic *bool `pulumi:"isPublic"`
+	// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+	IsShared *bool `pulumi:"isShared"`
 	// A short description of the Image. Labels cannot contain special characters.
 	Label *string `pulumi:"label"`
 	// The ID of the Linode that this Image will be created from.
@@ -339,8 +347,12 @@ type ImageState struct {
 	FileHash pulumi.StringPtrInput
 	// The path of the image file to be uploaded.
 	FilePath pulumi.StringPtrInput
+	// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+	ImageSharing ImageImageSharingPtrInput
 	// True if the Image is public.
 	IsPublic pulumi.BoolPtrInput
+	// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+	IsShared pulumi.BoolPtrInput
 	// A short description of the Image. Labels cannot contain special characters.
 	Label pulumi.StringPtrInput
 	// The ID of the Linode that this Image will be created from.
@@ -592,9 +604,19 @@ func (o ImageOutput) FilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.FilePath }).(pulumi.StringPtrOutput)
 }
 
+// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+func (o ImageOutput) ImageSharing() ImageImageSharingOutput {
+	return o.ApplyT(func(v *Image) ImageImageSharingOutput { return v.ImageSharing }).(ImageImageSharingOutput)
+}
+
 // True if the Image is public.
 func (o ImageOutput) IsPublic() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+func (o ImageOutput) IsShared() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.IsShared }).(pulumi.BoolOutput)
 }
 
 // A short description of the Image. Labels cannot contain special characters.

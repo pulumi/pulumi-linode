@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFirewallsResult {
     private @Nullable List<GetFirewallsFilter> filters;
-    private @Nullable List<GetFirewallsFirewall> firewalls;
+    private List<GetFirewallsFirewall> firewalls;
     /**
      * @return The unique ID assigned to this Firewall.
      * 
@@ -30,7 +30,7 @@ public final class GetFirewallsResult {
         return this.filters == null ? List.of() : this.filters;
     }
     public List<GetFirewallsFirewall> firewalls() {
-        return this.firewalls == null ? List.of() : this.firewalls;
+        return this.firewalls;
     }
     /**
      * @return The unique ID assigned to this Firewall.
@@ -56,7 +56,7 @@ public final class GetFirewallsResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetFirewallsFilter> filters;
-        private @Nullable List<GetFirewallsFirewall> firewalls;
+        private List<GetFirewallsFirewall> firewalls;
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
@@ -80,8 +80,10 @@ public final class GetFirewallsResult {
             return filters(List.of(filters));
         }
         @CustomType.Setter
-        public Builder firewalls(@Nullable List<GetFirewallsFirewall> firewalls) {
-
+        public Builder firewalls(List<GetFirewallsFirewall> firewalls) {
+            if (firewalls == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsResult", "firewalls");
+            }
             this.firewalls = firewalls;
             return this;
         }

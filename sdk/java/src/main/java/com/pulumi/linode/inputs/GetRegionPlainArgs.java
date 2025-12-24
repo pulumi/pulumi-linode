@@ -5,12 +5,8 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.linode.inputs.GetRegionResolver;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetRegionPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -32,18 +28,10 @@ public final class GetRegionPlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.id;
     }
 
-    @Import(name="resolvers")
-    private @Nullable List<GetRegionResolver> resolvers;
-
-    public Optional<List<GetRegionResolver>> resolvers() {
-        return Optional.ofNullable(this.resolvers);
-    }
-
     private GetRegionPlainArgs() {}
 
     private GetRegionPlainArgs(GetRegionPlainArgs $) {
         this.id = $.id;
-        this.resolvers = $.resolvers;
     }
 
     public static Builder builder() {
@@ -73,15 +61,6 @@ public final class GetRegionPlainArgs extends com.pulumi.resources.InvokeArgs {
         public Builder id(String id) {
             $.id = id;
             return this;
-        }
-
-        public Builder resolvers(@Nullable List<GetRegionResolver> resolvers) {
-            $.resolvers = resolvers;
-            return this;
-        }
-
-        public Builder resolvers(GetRegionResolver... resolvers) {
-            return resolvers(List.of(resolvers));
         }
 
         public GetRegionPlainArgs build() {

@@ -60,7 +60,7 @@ class GetKernelsResult:
 
     @_builtins.property
     @pulumi.getter
-    def kernels(self) -> Optional[Sequence['outputs.GetKernelsKernelResult']]:
+    def kernels(self) -> Sequence['outputs.GetKernelsKernelResult']:
         return pulumi.get(self, "kernels")
 
     @_builtins.property
@@ -88,7 +88,6 @@ class AwaitableGetKernelsResult(GetKernelsResult):
 
 
 def get_kernels(filters: Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKernelsFilterArgsDict']]] = None,
-                kernels: Optional[Sequence[Union['GetKernelsKernelArgs', 'GetKernelsKernelArgsDict']]] = None,
                 order: Optional[_builtins.str] = None,
                 order_by: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKernelsResult:
@@ -140,7 +139,6 @@ def get_kernels(filters: Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKer
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['kernels'] = kernels
     __args__['order'] = order
     __args__['orderBy'] = order_by
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -153,7 +151,6 @@ def get_kernels(filters: Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKer
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
 def get_kernels_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKernelsFilterArgsDict']]]]] = None,
-                       kernels: Optional[pulumi.Input[Optional[Sequence[Union['GetKernelsKernelArgs', 'GetKernelsKernelArgsDict']]]]] = None,
                        order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKernelsResult]:
@@ -205,7 +202,6 @@ def get_kernels_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['kernels'] = kernels
     __args__['order'] = order
     __args__['orderBy'] = order_by
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

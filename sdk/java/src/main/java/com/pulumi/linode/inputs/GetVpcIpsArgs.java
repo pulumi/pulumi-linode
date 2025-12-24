@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetVpcIpsFilterArgs;
-import com.pulumi.linode.inputs.GetVpcIpsVpcIpArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
@@ -52,20 +51,12 @@ public final class GetVpcIpsArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.vpcId);
     }
 
-    @Import(name="vpcIps")
-    private @Nullable Output<List<GetVpcIpsVpcIpArgs>> vpcIps;
-
-    public Optional<Output<List<GetVpcIpsVpcIpArgs>>> vpcIps() {
-        return Optional.ofNullable(this.vpcIps);
-    }
-
     private GetVpcIpsArgs() {}
 
     private GetVpcIpsArgs(GetVpcIpsArgs $) {
         this.filters = $.filters;
         this.ipv6 = $.ipv6;
         this.vpcId = $.vpcId;
-        this.vpcIps = $.vpcIps;
     }
 
     public static Builder builder() {
@@ -131,19 +122,6 @@ public final class GetVpcIpsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder vpcId(Integer vpcId) {
             return vpcId(Output.of(vpcId));
-        }
-
-        public Builder vpcIps(@Nullable Output<List<GetVpcIpsVpcIpArgs>> vpcIps) {
-            $.vpcIps = vpcIps;
-            return this;
-        }
-
-        public Builder vpcIps(List<GetVpcIpsVpcIpArgs> vpcIps) {
-            return vpcIps(Output.of(vpcIps));
-        }
-
-        public Builder vpcIps(GetVpcIpsVpcIpArgs... vpcIps) {
-            return vpcIps(List.of(vpcIps));
         }
 
         public GetVpcIpsArgs build() {

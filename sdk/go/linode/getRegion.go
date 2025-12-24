@@ -54,8 +54,7 @@ func GetRegion(ctx *pulumi.Context, args *GetRegionArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getRegion.
 type GetRegionArgs struct {
 	// The code name of the region to select.
-	Id        string              `pulumi:"id"`
-	Resolvers []GetRegionResolver `pulumi:"resolvers"`
+	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getRegion.
@@ -67,6 +66,7 @@ type GetRegionResult struct {
 	Id      string `pulumi:"id"`
 	// Detailed location information for this Region, including city, state or region, and country.
 	Label                string                         `pulumi:"label"`
+	Monitors             GetRegionMonitors              `pulumi:"monitors"`
 	PlacementGroupLimits []GetRegionPlacementGroupLimit `pulumi:"placementGroupLimits"`
 	Resolvers            []GetRegionResolver            `pulumi:"resolvers"`
 	// The type of this region.
@@ -87,8 +87,7 @@ func GetRegionOutput(ctx *pulumi.Context, args GetRegionOutputArgs, opts ...pulu
 // A collection of arguments for invoking getRegion.
 type GetRegionOutputArgs struct {
 	// The code name of the region to select.
-	Id        pulumi.StringInput          `pulumi:"id"`
-	Resolvers GetRegionResolverArrayInput `pulumi:"resolvers"`
+	Id pulumi.StringInput `pulumi:"id"`
 }
 
 func (GetRegionOutputArgs) ElementType() reflect.Type {
@@ -127,6 +126,10 @@ func (o GetRegionResultOutput) Id() pulumi.StringOutput {
 // Detailed location information for this Region, including city, state or region, and country.
 func (o GetRegionResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o GetRegionResultOutput) Monitors() GetRegionMonitorsOutput {
+	return o.ApplyT(func(v GetRegionResult) GetRegionMonitors { return v.Monitors }).(GetRegionMonitorsOutput)
 }
 
 func (o GetRegionResultOutput) PlacementGroupLimits() GetRegionPlacementGroupLimitArrayOutput {

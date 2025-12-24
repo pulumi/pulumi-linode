@@ -102,18 +102,6 @@ namespace Pulumi.Linode
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
-        [Input("replications")]
-        private List<Inputs.GetImageReplicationArgs>? _replications;
-
-        /// <summary>
-        /// A list of image replication regions and corresponding status.
-        /// </summary>
-        public List<Inputs.GetImageReplicationArgs> Replications
-        {
-            get => _replications ?? (_replications = new List<Inputs.GetImageReplicationArgs>());
-            set => _replications = value;
-        }
-
         public GetImageArgs()
         {
         }
@@ -127,18 +115,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
-
-        [Input("replications")]
-        private InputList<Inputs.GetImageReplicationInputArgs>? _replications;
-
-        /// <summary>
-        /// A list of image replication regions and corresponding status.
-        /// </summary>
-        public InputList<Inputs.GetImageReplicationInputArgs> Replications
-        {
-            get => _replications ?? (_replications = new InputList<Inputs.GetImageReplicationInputArgs>());
-            set => _replications = value;
-        }
 
         public GetImageInvokeArgs()
         {
@@ -170,9 +146,17 @@ namespace Pulumi.Linode
         public readonly string Expiry;
         public readonly string Id;
         /// <summary>
+        /// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        public readonly Outputs.GetImageImageSharingResult ImageSharing;
+        /// <summary>
         /// True if the Image is public.
         /// </summary>
         public readonly bool IsPublic;
+        /// <summary>
+        /// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        public readonly bool IsShared;
         /// <summary>
         /// A short description of the Image.
         /// </summary>
@@ -222,7 +206,11 @@ namespace Pulumi.Linode
 
             string id,
 
+            Outputs.GetImageImageSharingResult imageSharing,
+
             bool isPublic,
+
+            bool isShared,
 
             string label,
 
@@ -247,7 +235,9 @@ namespace Pulumi.Linode
             Description = description;
             Expiry = expiry;
             Id = id;
+            ImageSharing = imageSharing;
             IsPublic = isPublic;
+            IsShared = isShared;
             Label = label;
             Replications = replications;
             Size = size;

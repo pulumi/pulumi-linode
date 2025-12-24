@@ -4,9 +4,7 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.linode.inputs.GetLkeVersionsVersion;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,18 +29,10 @@ public final class GetLkeVersionsPlainArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.tier);
     }
 
-    @Import(name="versions")
-    private @Nullable List<GetLkeVersionsVersion> versions;
-
-    public Optional<List<GetLkeVersionsVersion>> versions() {
-        return Optional.ofNullable(this.versions);
-    }
-
     private GetLkeVersionsPlainArgs() {}
 
     private GetLkeVersionsPlainArgs(GetLkeVersionsPlainArgs $) {
         this.tier = $.tier;
-        this.versions = $.versions;
     }
 
     public static Builder builder() {
@@ -72,15 +62,6 @@ public final class GetLkeVersionsPlainArgs extends com.pulumi.resources.InvokeAr
         public Builder tier(@Nullable String tier) {
             $.tier = tier;
             return this;
-        }
-
-        public Builder versions(@Nullable List<GetLkeVersionsVersion> versions) {
-            $.versions = versions;
-            return this;
-        }
-
-        public Builder versions(GetLkeVersionsVersion... versions) {
-            return versions(List.of(versions));
         }
 
         public GetLkeVersionsPlainArgs build() {

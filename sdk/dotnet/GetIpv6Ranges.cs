@@ -176,14 +176,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("ranges")]
-        private List<Inputs.GetIpv6RangesRangeArgs>? _ranges;
-        public List<Inputs.GetIpv6RangesRangeArgs> Ranges
-        {
-            get => _ranges ?? (_ranges = new List<Inputs.GetIpv6RangesRangeArgs>());
-            set => _ranges = value;
-        }
-
         public GetIpv6RangesArgs()
         {
         }
@@ -198,14 +190,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetIpv6RangesFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("ranges")]
-        private InputList<Inputs.GetIpv6RangesRangeInputArgs>? _ranges;
-        public InputList<Inputs.GetIpv6RangesRangeInputArgs> Ranges
-        {
-            get => _ranges ?? (_ranges = new InputList<Inputs.GetIpv6RangesRangeInputArgs>());
-            set => _ranges = value;
         }
 
         public GetIpv6RangesInvokeArgs()

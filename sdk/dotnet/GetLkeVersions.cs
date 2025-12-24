@@ -186,14 +186,6 @@ namespace Pulumi.Linode
         [Input("tier")]
         public string? Tier { get; set; }
 
-        [Input("versions")]
-        private List<Inputs.GetLkeVersionsVersionArgs>? _versions;
-        public List<Inputs.GetLkeVersionsVersionArgs> Versions
-        {
-            get => _versions ?? (_versions = new List<Inputs.GetLkeVersionsVersionArgs>());
-            set => _versions = value;
-        }
-
         public GetLkeVersionsArgs()
         {
         }
@@ -207,14 +199,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
-
-        [Input("versions")]
-        private InputList<Inputs.GetLkeVersionsVersionInputArgs>? _versions;
-        public InputList<Inputs.GetLkeVersionsVersionInputArgs> Versions
-        {
-            get => _versions ?? (_versions = new InputList<Inputs.GetLkeVersionsVersionInputArgs>());
-            set => _versions = value;
-        }
 
         public GetLkeVersionsInvokeArgs()
         {

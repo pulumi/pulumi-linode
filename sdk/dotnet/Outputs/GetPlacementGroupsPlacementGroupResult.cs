@@ -32,7 +32,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// Any Linodes that are being migrated to or from the placement group.
         /// </summary>
-        public readonly Outputs.GetPlacementGroupsPlacementGroupMigrationsResult? Migrations;
+        public readonly Outputs.GetPlacementGroupsPlacementGroupMigrationsResult Migrations;
         /// <summary>
         /// Whether Linodes must be able to become compliant during assignment. (Default `Strict`)
         /// </summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.GetPlacementGroupsPlacementGroupMemberResult> members,
 
-            Outputs.GetPlacementGroupsPlacementGroupMigrationsResult? migrations,
+            Outputs.GetPlacementGroupsPlacementGroupMigrationsResult migrations,
 
             string placementGroupPolicy,
 

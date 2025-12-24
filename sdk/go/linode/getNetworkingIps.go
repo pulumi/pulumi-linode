@@ -105,8 +105,7 @@ func GetNetworkingIps(ctx *pulumi.Context, args *GetNetworkingIpsArgs, opts ...p
 
 // A collection of arguments for invoking getNetworkingIps.
 type GetNetworkingIpsArgs struct {
-	Filters     []GetNetworkingIpsFilter    `pulumi:"filters"`
-	IpAddresses []GetNetworkingIpsIpAddress `pulumi:"ipAddresses"`
+	Filters []GetNetworkingIpsFilter `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
@@ -133,8 +132,7 @@ func GetNetworkingIpsOutput(ctx *pulumi.Context, args GetNetworkingIpsOutputArgs
 
 // A collection of arguments for invoking getNetworkingIps.
 type GetNetworkingIpsOutputArgs struct {
-	Filters     GetNetworkingIpsFilterArrayInput    `pulumi:"filters"`
-	IpAddresses GetNetworkingIpsIpAddressArrayInput `pulumi:"ipAddresses"`
+	Filters GetNetworkingIpsFilterArrayInput `pulumi:"filters"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDomainsResult {
-    private @Nullable List<GetDomainsDomain> domains;
+    private List<GetDomainsDomain> domains;
     private @Nullable List<GetDomainsFilter> filters;
     /**
      * @return The unique ID of this Domain.
@@ -27,7 +27,7 @@ public final class GetDomainsResult {
 
     private GetDomainsResult() {}
     public List<GetDomainsDomain> domains() {
-        return this.domains == null ? List.of() : this.domains;
+        return this.domains;
     }
     public List<GetDomainsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
@@ -55,7 +55,7 @@ public final class GetDomainsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetDomainsDomain> domains;
+        private List<GetDomainsDomain> domains;
         private @Nullable List<GetDomainsFilter> filters;
         private String id;
         private @Nullable String order;
@@ -71,8 +71,10 @@ public final class GetDomainsResult {
         }
 
         @CustomType.Setter
-        public Builder domains(@Nullable List<GetDomainsDomain> domains) {
-
+        public Builder domains(List<GetDomainsDomain> domains) {
+            if (domains == null) {
+              throw new MissingRequiredPropertyException("GetDomainsResult", "domains");
+            }
             this.domains = domains;
             return this;
         }

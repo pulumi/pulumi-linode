@@ -82,8 +82,7 @@ type GetVpcSubnetsArgs struct {
 	// The id of the parent VPC for the list of VPCs.
 	//
 	// * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
-	VpcId      int                      `pulumi:"vpcId"`
-	VpcSubnets []GetVpcSubnetsVpcSubnet `pulumi:"vpcSubnets"`
+	VpcId int `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getVpcSubnets.
@@ -110,8 +109,7 @@ type GetVpcSubnetsOutputArgs struct {
 	// The id of the parent VPC for the list of VPCs.
 	//
 	// * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
-	VpcId      pulumi.IntInput                  `pulumi:"vpcId"`
-	VpcSubnets GetVpcSubnetsVpcSubnetArrayInput `pulumi:"vpcSubnets"`
+	VpcId pulumi.IntInput `pulumi:"vpcId"`
 }
 
 func (GetVpcSubnetsOutputArgs) ElementType() reflect.Type {

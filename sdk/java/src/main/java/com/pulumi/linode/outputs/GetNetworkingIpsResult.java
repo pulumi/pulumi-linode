@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class GetNetworkingIpsResult {
     private @Nullable List<GetNetworkingIpsFilter> filters;
     private String id;
-    private @Nullable List<GetNetworkingIpsIpAddress> ipAddresses;
+    private List<GetNetworkingIpsIpAddress> ipAddresses;
     private @Nullable String order;
     private @Nullable String orderBy;
 
@@ -29,7 +29,7 @@ public final class GetNetworkingIpsResult {
         return this.id;
     }
     public List<GetNetworkingIpsIpAddress> ipAddresses() {
-        return this.ipAddresses == null ? List.of() : this.ipAddresses;
+        return this.ipAddresses;
     }
     public Optional<String> order() {
         return Optional.ofNullable(this.order);
@@ -49,7 +49,7 @@ public final class GetNetworkingIpsResult {
     public static final class Builder {
         private @Nullable List<GetNetworkingIpsFilter> filters;
         private String id;
-        private @Nullable List<GetNetworkingIpsIpAddress> ipAddresses;
+        private List<GetNetworkingIpsIpAddress> ipAddresses;
         private @Nullable String order;
         private @Nullable String orderBy;
         public Builder() {}
@@ -80,8 +80,10 @@ public final class GetNetworkingIpsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder ipAddresses(@Nullable List<GetNetworkingIpsIpAddress> ipAddresses) {
-
+        public Builder ipAddresses(List<GetNetworkingIpsIpAddress> ipAddresses) {
+            if (ipAddresses == null) {
+              throw new MissingRequiredPropertyException("GetNetworkingIpsResult", "ipAddresses");
+            }
             this.ipAddresses = ipAddresses;
             return this;
         }

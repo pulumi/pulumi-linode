@@ -86,7 +86,8 @@ func LookupDatabasePostgresqlV2(ctx *pulumi.Context, args *LookupDatabasePostgre
 // A collection of arguments for invoking getDatabasePostgresqlV2.
 type LookupDatabasePostgresqlV2Args struct {
 	// The ID of the PostgreSQL database.
-	Id string `pulumi:"id"`
+	Id      string                          `pulumi:"id"`
+	Updates *GetDatabasePostgresqlV2Updates `pulumi:"updates"`
 }
 
 // A collection of values returned by getDatabasePostgresqlV2.
@@ -251,7 +252,8 @@ func LookupDatabasePostgresqlV2Output(ctx *pulumi.Context, args LookupDatabasePo
 // A collection of arguments for invoking getDatabasePostgresqlV2.
 type LookupDatabasePostgresqlV2OutputArgs struct {
 	// The ID of the PostgreSQL database.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id      pulumi.StringInput                     `pulumi:"id"`
+	Updates GetDatabasePostgresqlV2UpdatesPtrInput `pulumi:"updates"`
 }
 
 func (LookupDatabasePostgresqlV2OutputArgs) ElementType() reflect.Type {

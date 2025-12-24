@@ -4,25 +4,50 @@
 package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DatabasePostgresqlV2PendingUpdate {
-    private String deadline;
-    private String description;
-    private String plannedFor;
+    /**
+     * @return The time when a mandatory update needs to be applied.
+     * 
+     */
+    private @Nullable String deadline;
+    /**
+     * @return A description of the update.
+     * 
+     */
+    private @Nullable String description;
+    /**
+     * @return The date and time a maintenance update will be applied.
+     * 
+     */
+    private @Nullable String plannedFor;
 
     private DatabasePostgresqlV2PendingUpdate() {}
-    public String deadline() {
-        return this.deadline;
+    /**
+     * @return The time when a mandatory update needs to be applied.
+     * 
+     */
+    public Optional<String> deadline() {
+        return Optional.ofNullable(this.deadline);
     }
-    public String description() {
-        return this.description;
+    /**
+     * @return A description of the update.
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
-    public String plannedFor() {
-        return this.plannedFor;
+    /**
+     * @return The date and time a maintenance update will be applied.
+     * 
+     */
+    public Optional<String> plannedFor() {
+        return Optional.ofNullable(this.plannedFor);
     }
 
     public static Builder builder() {
@@ -34,9 +59,9 @@ public final class DatabasePostgresqlV2PendingUpdate {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String deadline;
-        private String description;
-        private String plannedFor;
+        private @Nullable String deadline;
+        private @Nullable String description;
+        private @Nullable String plannedFor;
         public Builder() {}
         public Builder(DatabasePostgresqlV2PendingUpdate defaults) {
     	      Objects.requireNonNull(defaults);
@@ -46,26 +71,20 @@ public final class DatabasePostgresqlV2PendingUpdate {
         }
 
         @CustomType.Setter
-        public Builder deadline(String deadline) {
-            if (deadline == null) {
-              throw new MissingRequiredPropertyException("DatabasePostgresqlV2PendingUpdate", "deadline");
-            }
+        public Builder deadline(@Nullable String deadline) {
+
             this.deadline = deadline;
             return this;
         }
         @CustomType.Setter
-        public Builder description(String description) {
-            if (description == null) {
-              throw new MissingRequiredPropertyException("DatabasePostgresqlV2PendingUpdate", "description");
-            }
+        public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
-        public Builder plannedFor(String plannedFor) {
-            if (plannedFor == null) {
-              throw new MissingRequiredPropertyException("DatabasePostgresqlV2PendingUpdate", "plannedFor");
-            }
+        public Builder plannedFor(@Nullable String plannedFor) {
+
             this.plannedFor = plannedFor;
             return this;
         }

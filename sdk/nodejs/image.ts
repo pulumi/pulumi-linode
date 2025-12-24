@@ -168,9 +168,17 @@ export class Image extends pulumi.CustomResource {
      */
     declare public readonly filePath: pulumi.Output<string | undefined>;
     /**
+     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    declare public /*out*/ readonly imageSharing: pulumi.Output<outputs.ImageImageSharing>;
+    /**
      * True if the Image is public.
      */
     declare public /*out*/ readonly isPublic: pulumi.Output<boolean>;
+    /**
+     * True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    declare public /*out*/ readonly isShared: pulumi.Output<boolean>;
     /**
      * A short description of the Image. Labels cannot contain special characters.
      */
@@ -254,7 +262,9 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["expiry"] = state?.expiry;
             resourceInputs["fileHash"] = state?.fileHash;
             resourceInputs["filePath"] = state?.filePath;
+            resourceInputs["imageSharing"] = state?.imageSharing;
             resourceInputs["isPublic"] = state?.isPublic;
+            resourceInputs["isShared"] = state?.isShared;
             resourceInputs["label"] = state?.label;
             resourceInputs["linodeId"] = state?.linodeId;
             resourceInputs["region"] = state?.region;
@@ -290,7 +300,9 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["deprecated"] = undefined /*out*/;
             resourceInputs["expiry"] = undefined /*out*/;
+            resourceInputs["imageSharing"] = undefined /*out*/;
             resourceInputs["isPublic"] = undefined /*out*/;
+            resourceInputs["isShared"] = undefined /*out*/;
             resourceInputs["replications"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -348,9 +360,17 @@ export interface ImageState {
      */
     filePath?: pulumi.Input<string>;
     /**
+     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    imageSharing?: pulumi.Input<inputs.ImageImageSharing>;
+    /**
      * True if the Image is public.
      */
     isPublic?: pulumi.Input<boolean>;
+    /**
+     * True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    isShared?: pulumi.Input<boolean>;
     /**
      * A short description of the Image. Labels cannot contain special characters.
      */

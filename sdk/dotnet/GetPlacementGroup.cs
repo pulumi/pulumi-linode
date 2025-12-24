@@ -102,24 +102,6 @@ namespace Pulumi.Linode
         [Input("id", required: true)]
         public int Id { get; set; }
 
-        [Input("members")]
-        private List<Inputs.GetPlacementGroupMemberArgs>? _members;
-
-        /// <summary>
-        /// A set of Linodes currently assigned to this Placement Group.
-        /// </summary>
-        public List<Inputs.GetPlacementGroupMemberArgs> Members
-        {
-            get => _members ?? (_members = new List<Inputs.GetPlacementGroupMemberArgs>());
-            set => _members = value;
-        }
-
-        /// <summary>
-        /// Any Linodes that are being migrated to or from the placement group.
-        /// </summary>
-        [Input("migrations")]
-        public Inputs.GetPlacementGroupMigrationsArgs? Migrations { get; set; }
-
         public GetPlacementGroupArgs()
         {
         }
@@ -133,24 +115,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
-
-        [Input("members")]
-        private InputList<Inputs.GetPlacementGroupMemberInputArgs>? _members;
-
-        /// <summary>
-        /// A set of Linodes currently assigned to this Placement Group.
-        /// </summary>
-        public InputList<Inputs.GetPlacementGroupMemberInputArgs> Members
-        {
-            get => _members ?? (_members = new InputList<Inputs.GetPlacementGroupMemberInputArgs>());
-            set => _members = value;
-        }
-
-        /// <summary>
-        /// Any Linodes that are being migrated to or from the placement group.
-        /// </summary>
-        [Input("migrations")]
-        public Input<Inputs.GetPlacementGroupMigrationsInputArgs>? Migrations { get; set; }
 
         public GetPlacementGroupInvokeArgs()
         {
@@ -178,7 +142,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// Any Linodes that are being migrated to or from the placement group.
         /// </summary>
-        public readonly Outputs.GetPlacementGroupMigrationsResult? Migrations;
+        public readonly Outputs.GetPlacementGroupMigrationsResult Migrations;
         /// <summary>
         /// Whether Linodes must be able to become compliant during assignment. (Default `Strict`)
         /// </summary>
@@ -202,7 +166,7 @@ namespace Pulumi.Linode
 
             ImmutableArray<Outputs.GetPlacementGroupMemberResult> members,
 
-            Outputs.GetPlacementGroupMigrationsResult? migrations,
+            Outputs.GetPlacementGroupMigrationsResult migrations,
 
             string placementGroupPolicy,
 

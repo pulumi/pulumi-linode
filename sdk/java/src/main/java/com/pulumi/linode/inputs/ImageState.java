@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.ImageImageSharingArgs;
 import com.pulumi.linode.inputs.ImageReplicationArgs;
 import com.pulumi.linode.inputs.ImageTimeoutsArgs;
 import java.lang.Boolean;
@@ -171,6 +172,21 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    @Import(name="imageSharing")
+    private @Nullable Output<ImageImageSharingArgs> imageSharing;
+
+    /**
+     * @return Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public Optional<Output<ImageImageSharingArgs>> imageSharing() {
+        return Optional.ofNullable(this.imageSharing);
+    }
+
+    /**
      * True if the Image is public.
      * 
      */
@@ -183,6 +199,21 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> isPublic() {
         return Optional.ofNullable(this.isPublic);
+    }
+
+    /**
+     * True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    @Import(name="isShared")
+    private @Nullable Output<Boolean> isShared;
+
+    /**
+     * @return True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public Optional<Output<Boolean>> isShared() {
+        return Optional.ofNullable(this.isShared);
     }
 
     /**
@@ -405,7 +436,9 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         this.expiry = $.expiry;
         this.fileHash = $.fileHash;
         this.filePath = $.filePath;
+        this.imageSharing = $.imageSharing;
         this.isPublic = $.isPublic;
+        this.isShared = $.isShared;
         this.label = $.label;
         this.linodeId = $.linodeId;
         this.region = $.region;
@@ -660,6 +693,27 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param imageSharing Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageSharing(@Nullable Output<ImageImageSharingArgs> imageSharing) {
+            $.imageSharing = imageSharing;
+            return this;
+        }
+
+        /**
+         * @param imageSharing Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageSharing(ImageImageSharingArgs imageSharing) {
+            return imageSharing(Output.of(imageSharing));
+        }
+
+        /**
          * @param isPublic True if the Image is public.
          * 
          * @return builder
@@ -678,6 +732,27 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder isPublic(Boolean isPublic) {
             return isPublic(Output.of(isPublic));
+        }
+
+        /**
+         * @param isShared True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isShared(@Nullable Output<Boolean> isShared) {
+            $.isShared = isShared;
+            return this;
+        }
+
+        /**
+         * @param isShared True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isShared(Boolean isShared) {
+            return isShared(Output.of(isShared));
         }
 
         /**

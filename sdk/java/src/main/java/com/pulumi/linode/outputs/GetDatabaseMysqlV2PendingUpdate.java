@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseMysqlV2PendingUpdate {
+    /**
+     * @return The time when a mandatory update needs to be applied.
+     * 
+     */
     private String deadline;
+    /**
+     * @return A description of the update.
+     * 
+     */
     private String description;
+    /**
+     * @return The date and time a maintenance update will be applied.
+     * 
+     */
     private String plannedFor;
 
     private GetDatabaseMysqlV2PendingUpdate() {}
+    /**
+     * @return The time when a mandatory update needs to be applied.
+     * 
+     */
     public String deadline() {
         return this.deadline;
     }
+    /**
+     * @return A description of the update.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The date and time a maintenance update will be applied.
+     * 
+     */
     public String plannedFor() {
         return this.plannedFor;
     }

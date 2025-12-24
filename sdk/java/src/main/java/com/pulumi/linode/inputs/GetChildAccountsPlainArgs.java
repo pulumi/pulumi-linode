@@ -4,7 +4,6 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.linode.inputs.GetChildAccountsChildAccount;
 import com.pulumi.linode.inputs.GetChildAccountsFilter;
 import java.util.List;
 import java.util.Objects;
@@ -16,13 +15,6 @@ public final class GetChildAccountsPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetChildAccountsPlainArgs Empty = new GetChildAccountsPlainArgs();
 
-    @Import(name="childAccounts")
-    private @Nullable List<GetChildAccountsChildAccount> childAccounts;
-
-    public Optional<List<GetChildAccountsChildAccount>> childAccounts() {
-        return Optional.ofNullable(this.childAccounts);
-    }
-
     @Import(name="filters")
     private @Nullable List<GetChildAccountsFilter> filters;
 
@@ -33,7 +25,6 @@ public final class GetChildAccountsPlainArgs extends com.pulumi.resources.Invoke
     private GetChildAccountsPlainArgs() {}
 
     private GetChildAccountsPlainArgs(GetChildAccountsPlainArgs $) {
-        this.childAccounts = $.childAccounts;
         this.filters = $.filters;
     }
 
@@ -53,15 +44,6 @@ public final class GetChildAccountsPlainArgs extends com.pulumi.resources.Invoke
 
         public Builder(GetChildAccountsPlainArgs defaults) {
             $ = new GetChildAccountsPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder childAccounts(@Nullable List<GetChildAccountsChildAccount> childAccounts) {
-            $.childAccounts = childAccounts;
-            return this;
-        }
-
-        public Builder childAccounts(GetChildAccountsChildAccount... childAccounts) {
-            return childAccounts(List.of(childAccounts));
         }
 
         public Builder filters(@Nullable List<GetChildAccountsFilter> filters) {

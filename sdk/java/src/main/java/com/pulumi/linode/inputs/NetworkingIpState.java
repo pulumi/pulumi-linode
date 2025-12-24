@@ -49,14 +49,14 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+     * The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      * 
      */
     @Import(name="linodeId")
     private @Nullable Output<Integer> linodeId;
 
     /**
-     * @return The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+     * @return The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      * 
      */
     public Optional<Output<Integer>> linodeId() {
@@ -260,7 +260,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodeId The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+         * @param linodeId The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodeId The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
+         * @param linodeId The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
          * 
          * @return builder
          * 

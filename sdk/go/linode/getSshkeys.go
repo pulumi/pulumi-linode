@@ -80,8 +80,7 @@ type GetSshkeysArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy *string            `pulumi:"orderBy"`
-	Sshkeys []GetSshkeysSshkey `pulumi:"sshkeys"`
+	OrderBy *string `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getSshkeys.
@@ -109,8 +108,7 @@ type GetSshkeysOutputArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy pulumi.StringPtrInput      `pulumi:"orderBy"`
-	Sshkeys GetSshkeysSshkeyArrayInput `pulumi:"sshkeys"`
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
 func (GetSshkeysOutputArgs) ElementType() reflect.Type {

@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetImageResult',
@@ -28,7 +27,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, capabilities=None, created=None, created_by=None, deprecated=None, description=None, expiry=None, id=None, is_public=None, label=None, replications=None, size=None, status=None, tags=None, total_size=None, type=None, vendor=None):
+    def __init__(__self__, capabilities=None, created=None, created_by=None, deprecated=None, description=None, expiry=None, id=None, image_sharing=None, is_public=None, is_shared=None, label=None, replications=None, size=None, status=None, tags=None, total_size=None, type=None, vendor=None):
         if capabilities and not isinstance(capabilities, list):
             raise TypeError("Expected argument 'capabilities' to be a list")
         pulumi.set(__self__, "capabilities", capabilities)
@@ -50,9 +49,15 @@ class GetImageResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if image_sharing and not isinstance(image_sharing, dict):
+            raise TypeError("Expected argument 'image_sharing' to be a dict")
+        pulumi.set(__self__, "image_sharing", image_sharing)
         if is_public and not isinstance(is_public, bool):
             raise TypeError("Expected argument 'is_public' to be a bool")
         pulumi.set(__self__, "is_public", is_public)
+        if is_shared and not isinstance(is_shared, bool):
+            raise TypeError("Expected argument 'is_shared' to be a bool")
+        pulumi.set(__self__, "is_shared", is_shared)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
@@ -126,12 +131,28 @@ class GetImageResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="imageSharing")
+    def image_sharing(self) -> 'outputs.GetImageImageSharingResult':
+        """
+        Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "image_sharing")
+
+    @_builtins.property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> _builtins.bool:
         """
         True if the Image is public.
         """
         return pulumi.get(self, "is_public")
+
+    @_builtins.property
+    @pulumi.getter(name="isShared")
+    def is_shared(self) -> _builtins.bool:
+        """
+        True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "is_shared")
 
     @_builtins.property
     @pulumi.getter
@@ -143,7 +164,7 @@ class GetImageResult:
 
     @_builtins.property
     @pulumi.getter
-    def replications(self) -> Optional[Sequence['outputs.GetImageReplicationResult']]:
+    def replications(self) -> Sequence['outputs.GetImageReplicationResult']:
         """
         A list of image replication regions and corresponding status.
         """
@@ -211,7 +232,9 @@ class AwaitableGetImageResult(GetImageResult):
             description=self.description,
             expiry=self.expiry,
             id=self.id,
+            image_sharing=self.image_sharing,
             is_public=self.is_public,
+            is_shared=self.is_shared,
             label=self.label,
             replications=self.replications,
             size=self.size,
@@ -223,7 +246,6 @@ class AwaitableGetImageResult(GetImageResult):
 
 
 def get_image(id: Optional[_builtins.str] = None,
-              replications: Optional[Sequence[Union['GetImageReplicationArgs', 'GetImageReplicationArgsDict']]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
     Provides information about a Linode image
@@ -242,11 +264,9 @@ def get_image(id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-    :param Sequence[Union['GetImageReplicationArgs', 'GetImageReplicationArgsDict']] replications: A list of image replication regions and corresponding status.
     """
     __args__ = dict()
     __args__['id'] = id
-    __args__['replications'] = replications
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
 
@@ -258,7 +278,9 @@ def get_image(id: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         expiry=pulumi.get(__ret__, 'expiry'),
         id=pulumi.get(__ret__, 'id'),
+        image_sharing=pulumi.get(__ret__, 'image_sharing'),
         is_public=pulumi.get(__ret__, 'is_public'),
+        is_shared=pulumi.get(__ret__, 'is_shared'),
         label=pulumi.get(__ret__, 'label'),
         replications=pulumi.get(__ret__, 'replications'),
         size=pulumi.get(__ret__, 'size'),
@@ -268,7 +290,6 @@ def get_image(id: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'),
         vendor=pulumi.get(__ret__, 'vendor'))
 def get_image_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                     replications: Optional[pulumi.Input[Optional[Sequence[Union['GetImageReplicationArgs', 'GetImageReplicationArgsDict']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
     Provides information about a Linode image
@@ -287,11 +308,9 @@ def get_image_output(id: Optional[pulumi.Input[_builtins.str]] = None,
 
 
     :param _builtins.str id: The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-    :param Sequence[Union['GetImageReplicationArgs', 'GetImageReplicationArgsDict']] replications: A list of image replication regions and corresponding status.
     """
     __args__ = dict()
     __args__['id'] = id
-    __args__['replications'] = replications
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
     return __ret__.apply(lambda __response__: GetImageResult(
@@ -302,7 +321,9 @@ def get_image_output(id: Optional[pulumi.Input[_builtins.str]] = None,
         description=pulumi.get(__response__, 'description'),
         expiry=pulumi.get(__response__, 'expiry'),
         id=pulumi.get(__response__, 'id'),
+        image_sharing=pulumi.get(__response__, 'image_sharing'),
         is_public=pulumi.get(__response__, 'is_public'),
+        is_shared=pulumi.get(__response__, 'is_shared'),
         label=pulumi.get(__response__, 'label'),
         replications=pulumi.get(__response__, 'replications'),
         size=pulumi.get(__response__, 'size'),

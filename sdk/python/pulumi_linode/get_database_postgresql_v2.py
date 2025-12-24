@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDatabasePostgresqlV2Result',
@@ -933,6 +934,7 @@ class AwaitableGetDatabasePostgresqlV2Result(GetDatabasePostgresqlV2Result):
 
 
 def get_database_postgresql_v2(id: Optional[_builtins.str] = None,
+                               updates: Optional[Union['GetDatabasePostgresqlV2UpdatesArgs', 'GetDatabasePostgresqlV2UpdatesArgsDict']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasePostgresqlV2Result:
     """
     Provides information about a Linode PostgreSQL Database.
@@ -986,6 +988,7 @@ def get_database_postgresql_v2(id: Optional[_builtins.str] = None,
     """
     __args__ = dict()
     __args__['id'] = id
+    __args__['updates'] = updates
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2', __args__, opts=opts, typ=GetDatabasePostgresqlV2Result).value
 
@@ -1067,6 +1070,7 @@ def get_database_postgresql_v2(id: Optional[_builtins.str] = None,
         updates=pulumi.get(__ret__, 'updates'),
         version=pulumi.get(__ret__, 'version'))
 def get_database_postgresql_v2_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+                                      updates: Optional[pulumi.Input[Optional[Union['GetDatabasePostgresqlV2UpdatesArgs', 'GetDatabasePostgresqlV2UpdatesArgsDict']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabasePostgresqlV2Result]:
     """
     Provides information about a Linode PostgreSQL Database.
@@ -1120,6 +1124,7 @@ def get_database_postgresql_v2_output(id: Optional[pulumi.Input[_builtins.str]] 
     """
     __args__ = dict()
     __args__['id'] = id
+    __args__['updates'] = updates
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2', __args__, opts=opts, typ=GetDatabasePostgresqlV2Result)
     return __ret__.apply(lambda __response__: GetDatabasePostgresqlV2Result(

@@ -58,7 +58,6 @@ export function getNodebalancerConfigs(args: GetNodebalancerConfigsArgs, opts?: 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", {
         "filters": args.filters,
-        "nodebalancerConfigs": args.nodebalancerConfigs,
         "nodebalancerId": args.nodebalancerId,
         "order": args.order,
         "orderBy": args.orderBy,
@@ -70,7 +69,6 @@ export function getNodebalancerConfigs(args: GetNodebalancerConfigsArgs, opts?: 
  */
 export interface GetNodebalancerConfigsArgs {
     filters?: inputs.GetNodebalancerConfigsFilter[];
-    nodebalancerConfigs?: inputs.GetNodebalancerConfigsNodebalancerConfig[];
     /**
      * The ID of the NodeBalancer to access.
      *
@@ -96,7 +94,7 @@ export interface GetNodebalancerConfigsResult {
      * The config's ID.
      */
     readonly id: string;
-    readonly nodebalancerConfigs?: outputs.GetNodebalancerConfigsNodebalancerConfig[];
+    readonly nodebalancerConfigs: outputs.GetNodebalancerConfigsNodebalancerConfig[];
     /**
      * The ID of the NodeBalancer that contains the config.
      */
@@ -156,7 +154,6 @@ export function getNodebalancerConfigsOutput(args: GetNodebalancerConfigsOutputA
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", {
         "filters": args.filters,
-        "nodebalancerConfigs": args.nodebalancerConfigs,
         "nodebalancerId": args.nodebalancerId,
         "order": args.order,
         "orderBy": args.orderBy,
@@ -168,7 +165,6 @@ export function getNodebalancerConfigsOutput(args: GetNodebalancerConfigsOutputA
  */
 export interface GetNodebalancerConfigsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetNodebalancerConfigsFilterArgs>[]>;
-    nodebalancerConfigs?: pulumi.Input<pulumi.Input<inputs.GetNodebalancerConfigsNodebalancerConfigArgs>[]>;
     /**
      * The ID of the NodeBalancer to access.
      *

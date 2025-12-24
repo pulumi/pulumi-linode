@@ -98,7 +98,7 @@ namespace Pulumi.Linode
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+        /// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when ApiVersion is set to `V4beta`.**
         /// </summary>
         [Output("subnetId")]
         public Output<int> SubnetId { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        /// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when ApiVersion is set to `V4beta`.**
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
@@ -236,7 +236,7 @@ namespace Pulumi.Linode
         public Input<string>? StackType { get; set; }
 
         /// <summary>
-        /// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+        /// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when ApiVersion is set to `V4beta`.**
         /// </summary>
         [Input("subnetId")]
         public Input<int>? SubnetId { get; set; }
@@ -254,7 +254,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        /// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when ApiVersion is set to `V4beta`.**
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
@@ -378,7 +378,7 @@ namespace Pulumi.Linode
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). (**Note: v4beta only and may not currently be available to all users.**)
+        /// The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when ApiVersion is set to `V4beta`.**
         /// </summary>
         [Input("subnetId")]
         public Input<int>? SubnetId { get; set; }
@@ -396,7 +396,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        /// The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when ApiVersion is set to `V4beta`.**
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

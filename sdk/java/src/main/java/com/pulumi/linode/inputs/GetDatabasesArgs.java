@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.linode.inputs.GetDatabasesDatabaseArgs;
 import com.pulumi.linode.inputs.GetDatabasesFilterArgs;
 import java.lang.String;
 import java.util.List;
@@ -17,13 +16,6 @@ import javax.annotation.Nullable;
 public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDatabasesArgs Empty = new GetDatabasesArgs();
-
-    @Import(name="databases")
-    private @Nullable Output<List<GetDatabasesDatabaseArgs>> databases;
-
-    public Optional<Output<List<GetDatabasesDatabaseArgs>>> databases() {
-        return Optional.ofNullable(this.databases);
-    }
 
     @Import(name="filters")
     private @Nullable Output<List<GetDatabasesFilterArgs>> filters;
@@ -65,7 +57,6 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
     private GetDatabasesArgs() {}
 
     private GetDatabasesArgs(GetDatabasesArgs $) {
-        this.databases = $.databases;
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
@@ -87,19 +78,6 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetDatabasesArgs defaults) {
             $ = new GetDatabasesArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder databases(@Nullable Output<List<GetDatabasesDatabaseArgs>> databases) {
-            $.databases = databases;
-            return this;
-        }
-
-        public Builder databases(List<GetDatabasesDatabaseArgs> databases) {
-            return databases(Output.of(databases));
-        }
-
-        public Builder databases(GetDatabasesDatabaseArgs... databases) {
-            return databases(List.of(databases));
         }
 
         public Builder filters(@Nullable Output<List<GetDatabasesFilterArgs>> filters) {

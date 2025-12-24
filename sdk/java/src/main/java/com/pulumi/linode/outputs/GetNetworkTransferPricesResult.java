@@ -23,7 +23,7 @@ public final class GetNetworkTransferPricesResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private @Nullable List<GetNetworkTransferPricesType> types;
+    private List<GetNetworkTransferPricesType> types;
 
     private GetNetworkTransferPricesResult() {}
     public List<GetNetworkTransferPricesFilter> filters() {
@@ -43,7 +43,7 @@ public final class GetNetworkTransferPricesResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetNetworkTransferPricesType> types() {
-        return this.types == null ? List.of() : this.types;
+        return this.types;
     }
 
     public static Builder builder() {
@@ -59,7 +59,7 @@ public final class GetNetworkTransferPricesResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private @Nullable List<GetNetworkTransferPricesType> types;
+        private List<GetNetworkTransferPricesType> types;
         public Builder() {}
         public Builder(GetNetworkTransferPricesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,8 +100,10 @@ public final class GetNetworkTransferPricesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder types(@Nullable List<GetNetworkTransferPricesType> types) {
-
+        public Builder types(List<GetNetworkTransferPricesType> types) {
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetNetworkTransferPricesResult", "types");
+            }
             this.types = types;
             return this;
         }

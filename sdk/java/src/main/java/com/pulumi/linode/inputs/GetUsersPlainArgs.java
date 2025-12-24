@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetUsersFilter;
-import com.pulumi.linode.inputs.GetUsersUser;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -54,20 +53,12 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.orderBy);
     }
 
-    @Import(name="users")
-    private @Nullable List<GetUsersUser> users;
-
-    public Optional<List<GetUsersUser>> users() {
-        return Optional.ofNullable(this.users);
-    }
-
     private GetUsersPlainArgs() {}
 
     private GetUsersPlainArgs(GetUsersPlainArgs $) {
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
-        this.users = $.users;
     }
 
     public static Builder builder() {
@@ -117,15 +108,6 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         public Builder orderBy(@Nullable String orderBy) {
             $.orderBy = orderBy;
             return this;
-        }
-
-        public Builder users(@Nullable List<GetUsersUser> users) {
-            $.users = users;
-            return this;
-        }
-
-        public Builder users(GetUsersUser... users) {
-            return users(List.of(users));
         }
 
         public GetUsersPlainArgs build() {

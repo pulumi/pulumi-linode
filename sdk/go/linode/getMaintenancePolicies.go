@@ -54,8 +54,7 @@ func GetMaintenancePolicies(ctx *pulumi.Context, args *GetMaintenancePoliciesArg
 
 // A collection of arguments for invoking getMaintenancePolicies.
 type GetMaintenancePoliciesArgs struct {
-	Filters             []GetMaintenancePoliciesFilter            `pulumi:"filters"`
-	MaintenancePolicies []GetMaintenancePoliciesMaintenancePolicy `pulumi:"maintenancePolicies"`
+	Filters []GetMaintenancePoliciesFilter `pulumi:"filters"`
 }
 
 // A collection of values returned by getMaintenancePolicies.
@@ -76,8 +75,7 @@ func GetMaintenancePoliciesOutput(ctx *pulumi.Context, args GetMaintenancePolici
 
 // A collection of arguments for invoking getMaintenancePolicies.
 type GetMaintenancePoliciesOutputArgs struct {
-	Filters             GetMaintenancePoliciesFilterArrayInput            `pulumi:"filters"`
-	MaintenancePolicies GetMaintenancePoliciesMaintenancePolicyArrayInput `pulumi:"maintenancePolicies"`
+	Filters GetMaintenancePoliciesFilterArrayInput `pulumi:"filters"`
 }
 
 func (GetMaintenancePoliciesOutputArgs) ElementType() reflect.Type {

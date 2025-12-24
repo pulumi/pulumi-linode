@@ -44,7 +44,6 @@ export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getRegions:getRegions", {
         "filters": args.filters,
-        "regions": args.regions,
     }, opts);
 }
 
@@ -53,7 +52,6 @@ export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetRegionsArgs {
     filters?: inputs.GetRegionsFilter[];
-    regions?: inputs.GetRegionsRegion[];
 }
 
 /**
@@ -62,7 +60,7 @@ export interface GetRegionsArgs {
 export interface GetRegionsResult {
     readonly filters?: outputs.GetRegionsFilter[];
     readonly id: string;
-    readonly regions?: outputs.GetRegionsRegion[];
+    readonly regions: outputs.GetRegionsRegion[];
 }
 /**
  * Provides information about Linode regions that match a set of filters.
@@ -102,7 +100,6 @@ export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.Invo
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getRegions:getRegions", {
         "filters": args.filters,
-        "regions": args.regions,
     }, opts);
 }
 
@@ -111,5 +108,4 @@ export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.Invo
  */
 export interface GetRegionsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetRegionsFilterArgs>[]>;
-    regions?: pulumi.Input<pulumi.Input<inputs.GetRegionsRegionArgs>[]>;
 }

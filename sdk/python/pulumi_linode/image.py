@@ -246,7 +246,9 @@ class _ImageState:
                  expiry: Optional[pulumi.Input[_builtins.str]] = None,
                  file_hash: Optional[pulumi.Input[_builtins.str]] = None,
                  file_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 image_sharing: Optional[pulumi.Input['ImageImageSharingArgs']] = None,
                  is_public: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_shared: Optional[pulumi.Input[_builtins.bool]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  linode_id: Optional[pulumi.Input[_builtins.int]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -272,7 +274,9 @@ class _ImageState:
         :param pulumi.Input[_builtins.str] expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         :param pulumi.Input[_builtins.str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
         :param pulumi.Input[_builtins.str] file_path: The path of the image file to be uploaded.
+        :param pulumi.Input['ImageImageSharingArgs'] image_sharing: Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
         :param pulumi.Input[_builtins.bool] is_public: True if the Image is public.
+        :param pulumi.Input[_builtins.bool] is_shared: True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
         :param pulumi.Input[_builtins.str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode that this Image will be created from.
                
@@ -316,8 +320,12 @@ class _ImageState:
             pulumi.set(__self__, "file_hash", file_hash)
         if file_path is not None:
             pulumi.set(__self__, "file_path", file_path)
+        if image_sharing is not None:
+            pulumi.set(__self__, "image_sharing", image_sharing)
         if is_public is not None:
             pulumi.set(__self__, "is_public", is_public)
+        if is_shared is not None:
+            pulumi.set(__self__, "is_shared", is_shared)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if linode_id is not None:
@@ -466,6 +474,18 @@ class _ImageState:
         pulumi.set(self, "file_path", value)
 
     @_builtins.property
+    @pulumi.getter(name="imageSharing")
+    def image_sharing(self) -> Optional[pulumi.Input['ImageImageSharingArgs']]:
+        """
+        Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "image_sharing")
+
+    @image_sharing.setter
+    def image_sharing(self, value: Optional[pulumi.Input['ImageImageSharingArgs']]):
+        pulumi.set(self, "image_sharing", value)
+
+    @_builtins.property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -476,6 +496,18 @@ class _ImageState:
     @is_public.setter
     def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "is_public", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isShared")
+    def is_shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "is_shared")
+
+    @is_shared.setter
+    def is_shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_shared", value)
 
     @_builtins.property
     @pulumi.getter
@@ -913,7 +945,9 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["created_by"] = None
             __props__.__dict__["deprecated"] = None
             __props__.__dict__["expiry"] = None
+            __props__.__dict__["image_sharing"] = None
             __props__.__dict__["is_public"] = None
+            __props__.__dict__["is_shared"] = None
             __props__.__dict__["replications"] = None
             __props__.__dict__["size"] = None
             __props__.__dict__["status"] = None
@@ -940,7 +974,9 @@ class Image(pulumi.CustomResource):
             expiry: Optional[pulumi.Input[_builtins.str]] = None,
             file_hash: Optional[pulumi.Input[_builtins.str]] = None,
             file_path: Optional[pulumi.Input[_builtins.str]] = None,
+            image_sharing: Optional[pulumi.Input[Union['ImageImageSharingArgs', 'ImageImageSharingArgsDict']]] = None,
             is_public: Optional[pulumi.Input[_builtins.bool]] = None,
+            is_shared: Optional[pulumi.Input[_builtins.bool]] = None,
             label: Optional[pulumi.Input[_builtins.str]] = None,
             linode_id: Optional[pulumi.Input[_builtins.int]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -971,7 +1007,9 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         :param pulumi.Input[_builtins.str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
         :param pulumi.Input[_builtins.str] file_path: The path of the image file to be uploaded.
+        :param pulumi.Input[Union['ImageImageSharingArgs', 'ImageImageSharingArgsDict']] image_sharing: Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
         :param pulumi.Input[_builtins.bool] is_public: True if the Image is public.
+        :param pulumi.Input[_builtins.bool] is_shared: True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
         :param pulumi.Input[_builtins.str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode that this Image will be created from.
                
@@ -1009,7 +1047,9 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["expiry"] = expiry
         __props__.__dict__["file_hash"] = file_hash
         __props__.__dict__["file_path"] = file_path
+        __props__.__dict__["image_sharing"] = image_sharing
         __props__.__dict__["is_public"] = is_public
+        __props__.__dict__["is_shared"] = is_shared
         __props__.__dict__["label"] = label
         __props__.__dict__["linode_id"] = linode_id
         __props__.__dict__["region"] = region
@@ -1106,12 +1146,28 @@ class Image(pulumi.CustomResource):
         return pulumi.get(self, "file_path")
 
     @_builtins.property
+    @pulumi.getter(name="imageSharing")
+    def image_sharing(self) -> pulumi.Output['outputs.ImageImageSharing']:
+        """
+        Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "image_sharing")
+
+    @_builtins.property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> pulumi.Output[_builtins.bool]:
         """
         True if the Image is public.
         """
         return pulumi.get(self, "is_public")
+
+    @_builtins.property
+    @pulumi.getter(name="isShared")
+    def is_shared(self) -> pulumi.Output[_builtins.bool]:
+        """
+        True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+        """
+        return pulumi.get(self, "is_shared")
 
     @_builtins.property
     @pulumi.getter

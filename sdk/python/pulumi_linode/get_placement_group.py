@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetPlacementGroupResult',
@@ -77,7 +76,7 @@ class GetPlacementGroupResult:
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[Sequence['outputs.GetPlacementGroupMemberResult']]:
+    def members(self) -> Sequence['outputs.GetPlacementGroupMemberResult']:
         """
         A set of Linodes currently assigned to this Placement Group.
         """
@@ -85,7 +84,7 @@ class GetPlacementGroupResult:
 
     @_builtins.property
     @pulumi.getter
-    def migrations(self) -> Optional['outputs.GetPlacementGroupMigrationsResult']:
+    def migrations(self) -> 'outputs.GetPlacementGroupMigrationsResult':
         """
         Any Linodes that are being migrated to or from the placement group.
         """
@@ -133,8 +132,6 @@ class AwaitableGetPlacementGroupResult(GetPlacementGroupResult):
 
 
 def get_placement_group(id: Optional[_builtins.int] = None,
-                        members: Optional[Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']]] = None,
-                        migrations: Optional[Union['GetPlacementGroupMigrationsArgs', 'GetPlacementGroupMigrationsArgsDict']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlacementGroupResult:
     """
     `PlacementGroup` provides details about a Linode placement group.
@@ -153,13 +150,9 @@ def get_placement_group(id: Optional[_builtins.int] = None,
 
 
     :param _builtins.int id: The ID of the Placement Group.
-    :param Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']] members: A set of Linodes currently assigned to this Placement Group.
-    :param Union['GetPlacementGroupMigrationsArgs', 'GetPlacementGroupMigrationsArgsDict'] migrations: Any Linodes that are being migrated to or from the placement group.
     """
     __args__ = dict()
     __args__['id'] = id
-    __args__['members'] = members
-    __args__['migrations'] = migrations
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getPlacementGroup:getPlacementGroup', __args__, opts=opts, typ=GetPlacementGroupResult).value
 
@@ -173,8 +166,6 @@ def get_placement_group(id: Optional[_builtins.int] = None,
         placement_group_type=pulumi.get(__ret__, 'placement_group_type'),
         region=pulumi.get(__ret__, 'region'))
 def get_placement_group_output(id: Optional[pulumi.Input[_builtins.int]] = None,
-                               members: Optional[pulumi.Input[Optional[Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']]]]] = None,
-                               migrations: Optional[pulumi.Input[Optional[Union['GetPlacementGroupMigrationsArgs', 'GetPlacementGroupMigrationsArgsDict']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPlacementGroupResult]:
     """
     `PlacementGroup` provides details about a Linode placement group.
@@ -193,13 +184,9 @@ def get_placement_group_output(id: Optional[pulumi.Input[_builtins.int]] = None,
 
 
     :param _builtins.int id: The ID of the Placement Group.
-    :param Sequence[Union['GetPlacementGroupMemberArgs', 'GetPlacementGroupMemberArgsDict']] members: A set of Linodes currently assigned to this Placement Group.
-    :param Union['GetPlacementGroupMigrationsArgs', 'GetPlacementGroupMigrationsArgsDict'] migrations: Any Linodes that are being migrated to or from the placement group.
     """
     __args__ = dict()
     __args__['id'] = id
-    __args__['members'] = members
-    __args__['migrations'] = migrations
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getPlacementGroup:getPlacementGroup', __args__, opts=opts, typ=GetPlacementGroupResult)
     return __ret__.apply(lambda __response__: GetPlacementGroupResult(

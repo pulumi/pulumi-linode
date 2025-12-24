@@ -33,6 +33,7 @@ name: configuration-example
 runtime: nodejs
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as linode from "@pulumi/linode";
@@ -40,6 +41,7 @@ import * as linode from "@pulumi/linode";
 // Create a Linode
 const foobar = new linode.Instance("foobar", {});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -48,6 +50,7 @@ name: configuration-example
 runtime: python
 
 ```
+
 ```python
 import pulumi
 import pulumi_linode as linode
@@ -55,6 +58,7 @@ import pulumi_linode as linode
 # Create a Linode
 foobar = linode.Instance("foobar")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -63,6 +67,7 @@ name: configuration-example
 runtime: dotnet
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -77,6 +82,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -85,6 +91,7 @@ name: configuration-example
 runtime: go
 
 ```
+
 ```go
 package main
 
@@ -104,6 +111,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -112,12 +120,14 @@ name: configuration-example
 runtime: yaml
 
 ```
+
 ```yaml
 resources:
   # Create a Linode
   foobar:
     type: linode:Instance
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -126,6 +136,7 @@ name: configuration-example
 runtime: java
 
 ```
+
 ```java
 package generated_program;
 
@@ -152,6 +163,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 
@@ -165,6 +177,7 @@ name: configuration-example
 runtime: nodejs
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as linode from "@pulumi/linode";
@@ -172,6 +185,7 @@ import * as linode from "@pulumi/linode";
 // Create a Linode
 const foobar = new linode.Instance("foobar", {});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -180,6 +194,7 @@ name: configuration-example
 runtime: python
 
 ```
+
 ```python
 import pulumi
 import pulumi_linode as linode
@@ -187,6 +202,7 @@ import pulumi_linode as linode
 # Create a Linode
 foobar = linode.Instance("foobar")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -195,6 +211,7 @@ name: configuration-example
 runtime: dotnet
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -209,6 +226,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -217,6 +235,7 @@ name: configuration-example
 runtime: go
 
 ```
+
 ```go
 package main
 
@@ -236,6 +255,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -244,12 +264,14 @@ name: configuration-example
 runtime: yaml
 
 ```
+
 ```yaml
 resources:
   # Create a Linode
   foobar:
     type: linode:Instance
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -258,6 +280,7 @@ name: configuration-example
 runtime: java
 
 ```
+
 ```java
 package generated_program;
 
@@ -284,6 +307,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## Configuration Reference

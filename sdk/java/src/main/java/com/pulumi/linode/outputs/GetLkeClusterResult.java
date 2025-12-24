@@ -12,7 +12,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLkeClusterResult {
@@ -30,7 +29,7 @@ public final class GetLkeClusterResult {
      * @return The settings for the Kubernetes Control Plane.
      * 
      */
-    private @Nullable List<GetLkeClusterControlPlane> controlPlanes;
+    private List<GetLkeClusterControlPlane> controlPlanes;
     /**
      * @return When this Kubernetes cluster was created.
      * 
@@ -65,7 +64,7 @@ public final class GetLkeClusterResult {
      * @return Node pools associated with this cluster.
      * 
      */
-    private @Nullable List<GetLkeClusterPool> pools;
+    private List<GetLkeClusterPool> pools;
     /**
      * @return This Kubernetes cluster&#39;s location.
      * 
@@ -92,7 +91,7 @@ public final class GetLkeClusterResult {
      */
     private List<String> tags;
     /**
-     * @return The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * @return The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only populated when apiVersion is set to `v4beta`.**
      * 
      */
     private String tier;
@@ -127,7 +126,7 @@ public final class GetLkeClusterResult {
      * 
      */
     public List<GetLkeClusterControlPlane> controlPlanes() {
-        return this.controlPlanes == null ? List.of() : this.controlPlanes;
+        return this.controlPlanes;
     }
     /**
      * @return When this Kubernetes cluster was created.
@@ -176,7 +175,7 @@ public final class GetLkeClusterResult {
      * 
      */
     public List<GetLkeClusterPool> pools() {
-        return this.pools == null ? List.of() : this.pools;
+        return this.pools;
     }
     /**
      * @return This Kubernetes cluster&#39;s location.
@@ -214,7 +213,7 @@ public final class GetLkeClusterResult {
         return this.tags;
     }
     /**
-     * @return The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+     * @return The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only populated when apiVersion is set to `v4beta`.**
      * 
      */
     public String tier() {
@@ -246,14 +245,14 @@ public final class GetLkeClusterResult {
     public static final class Builder {
         private List<String> apiEndpoints;
         private Boolean aplEnabled;
-        private @Nullable List<GetLkeClusterControlPlane> controlPlanes;
+        private List<GetLkeClusterControlPlane> controlPlanes;
         private String created;
         private String dashboardUrl;
         private Integer id;
         private String k8sVersion;
         private String kubeconfig;
         private String label;
-        private @Nullable List<GetLkeClusterPool> pools;
+        private List<GetLkeClusterPool> pools;
         private String region;
         private String stackType;
         private String status;
@@ -305,8 +304,10 @@ public final class GetLkeClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder controlPlanes(@Nullable List<GetLkeClusterControlPlane> controlPlanes) {
-
+        public Builder controlPlanes(List<GetLkeClusterControlPlane> controlPlanes) {
+            if (controlPlanes == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "controlPlanes");
+            }
             this.controlPlanes = controlPlanes;
             return this;
         }
@@ -362,8 +363,10 @@ public final class GetLkeClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder pools(@Nullable List<GetLkeClusterPool> pools) {
-
+        public Builder pools(List<GetLkeClusterPool> pools) {
+            if (pools == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "pools");
+            }
             this.pools = pools;
             return this;
         }

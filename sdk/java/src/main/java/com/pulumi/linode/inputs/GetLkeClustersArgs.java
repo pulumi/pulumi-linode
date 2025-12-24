@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetLkeClustersFilterArgs;
-import com.pulumi.linode.inputs.GetLkeClustersLkeClusterArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -23,13 +22,6 @@ public final class GetLkeClustersArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<Output<List<GetLkeClustersFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
-    }
-
-    @Import(name="lkeClusters")
-    private @Nullable Output<List<GetLkeClustersLkeClusterArgs>> lkeClusters;
-
-    public Optional<Output<List<GetLkeClustersLkeClusterArgs>>> lkeClusters() {
-        return Optional.ofNullable(this.lkeClusters);
     }
 
     /**
@@ -66,7 +58,6 @@ public final class GetLkeClustersArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetLkeClustersArgs(GetLkeClustersArgs $) {
         this.filters = $.filters;
-        this.lkeClusters = $.lkeClusters;
         this.order = $.order;
         this.orderBy = $.orderBy;
     }
@@ -100,19 +91,6 @@ public final class GetLkeClustersArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder filters(GetLkeClustersFilterArgs... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder lkeClusters(@Nullable Output<List<GetLkeClustersLkeClusterArgs>> lkeClusters) {
-            $.lkeClusters = lkeClusters;
-            return this;
-        }
-
-        public Builder lkeClusters(List<GetLkeClustersLkeClusterArgs> lkeClusters) {
-            return lkeClusters(Output.of(lkeClusters));
-        }
-
-        public Builder lkeClusters(GetLkeClustersLkeClusterArgs... lkeClusters) {
-            return lkeClusters(List.of(lkeClusters));
         }
 
         /**

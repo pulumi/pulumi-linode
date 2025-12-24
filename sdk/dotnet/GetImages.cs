@@ -293,14 +293,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("images")]
-        private List<Inputs.GetImagesImageArgs>? _images;
-        public List<Inputs.GetImagesImageArgs> Images
-        {
-            get => _images ?? (_images = new List<Inputs.GetImagesImageArgs>());
-            set => _images = value;
-        }
-
         /// <summary>
         /// If true, only the latest image will be returned. Images without a valid `Created` field are not included in the result.
         /// 
@@ -335,14 +327,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetImagesFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("images")]
-        private InputList<Inputs.GetImagesImageInputArgs>? _images;
-        public InputList<Inputs.GetImagesImageInputArgs> Images
-        {
-            get => _images ?? (_images = new InputList<Inputs.GetImagesImageInputArgs>());
-            set => _images = value;
         }
 
         /// <summary>

@@ -205,14 +205,6 @@ namespace Pulumi.Linode
         [Input("vpcId", required: true)]
         public int VpcId { get; set; }
 
-        [Input("vpcSubnets")]
-        private List<Inputs.GetVpcSubnetsVpcSubnetArgs>? _vpcSubnets;
-        public List<Inputs.GetVpcSubnetsVpcSubnetArgs> VpcSubnets
-        {
-            get => _vpcSubnets ?? (_vpcSubnets = new List<Inputs.GetVpcSubnetsVpcSubnetArgs>());
-            set => _vpcSubnets = value;
-        }
-
         public GetVpcSubnetsArgs()
         {
         }
@@ -236,14 +228,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<int> VpcId { get; set; } = null!;
-
-        [Input("vpcSubnets")]
-        private InputList<Inputs.GetVpcSubnetsVpcSubnetInputArgs>? _vpcSubnets;
-        public InputList<Inputs.GetVpcSubnetsVpcSubnetInputArgs> VpcSubnets
-        {
-            get => _vpcSubnets ?? (_vpcSubnets = new InputList<Inputs.GetVpcSubnetsVpcSubnetInputArgs>());
-            set => _vpcSubnets = value;
-        }
 
         public GetVpcSubnetsInvokeArgs()
         {

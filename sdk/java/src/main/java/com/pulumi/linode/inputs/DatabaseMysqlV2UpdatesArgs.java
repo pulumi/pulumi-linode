@@ -5,42 +5,75 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DatabaseMysqlV2UpdatesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DatabaseMysqlV2UpdatesArgs Empty = new DatabaseMysqlV2UpdatesArgs();
 
-    @Import(name="dayOfWeek", required=true)
-    private Output<Integer> dayOfWeek;
+    /**
+     * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     * 
+     */
+    @Import(name="dayOfWeek")
+    private @Nullable Output<Integer> dayOfWeek;
 
-    public Output<Integer> dayOfWeek() {
-        return this.dayOfWeek;
+    /**
+     * @return The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+     * 
+     */
+    public Optional<Output<Integer>> dayOfWeek() {
+        return Optional.ofNullable(this.dayOfWeek);
     }
 
-    @Import(name="duration", required=true)
-    private Output<Integer> duration;
+    /**
+     * The maximum maintenance window time in hours.
+     * 
+     */
+    @Import(name="duration")
+    private @Nullable Output<Integer> duration;
 
-    public Output<Integer> duration() {
-        return this.duration;
+    /**
+     * @return The maximum maintenance window time in hours.
+     * 
+     */
+    public Optional<Output<Integer>> duration() {
+        return Optional.ofNullable(this.duration);
     }
 
-    @Import(name="frequency", required=true)
-    private Output<String> frequency;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
+    @Import(name="frequency")
+    private @Nullable Output<String> frequency;
 
-    public Output<String> frequency() {
-        return this.frequency;
+    /**
+     * @return How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
+    public Optional<Output<String>> frequency() {
+        return Optional.ofNullable(this.frequency);
     }
 
-    @Import(name="hourOfDay", required=true)
-    private Output<Integer> hourOfDay;
+    /**
+     * How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
+    @Import(name="hourOfDay")
+    private @Nullable Output<Integer> hourOfDay;
 
-    public Output<Integer> hourOfDay() {
-        return this.hourOfDay;
+    /**
+     * @return How frequently maintenance occurs. Currently can only be weekly.
+     * 
+     */
+    public Optional<Output<Integer>> hourOfDay() {
+        return Optional.ofNullable(this.hourOfDay);
     }
 
     private DatabaseMysqlV2UpdatesArgs() {}
@@ -70,55 +103,91 @@ public final class DatabaseMysqlV2UpdatesArgs extends com.pulumi.resources.Resou
             $ = new DatabaseMysqlV2UpdatesArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder dayOfWeek(Output<Integer> dayOfWeek) {
+        /**
+         * @param dayOfWeek The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dayOfWeek(@Nullable Output<Integer> dayOfWeek) {
             $.dayOfWeek = dayOfWeek;
             return this;
         }
 
+        /**
+         * @param dayOfWeek The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dayOfWeek(Integer dayOfWeek) {
             return dayOfWeek(Output.of(dayOfWeek));
         }
 
-        public Builder duration(Output<Integer> duration) {
+        /**
+         * @param duration The maximum maintenance window time in hours.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder duration(@Nullable Output<Integer> duration) {
             $.duration = duration;
             return this;
         }
 
+        /**
+         * @param duration The maximum maintenance window time in hours.
+         * 
+         * @return builder
+         * 
+         */
         public Builder duration(Integer duration) {
             return duration(Output.of(duration));
         }
 
-        public Builder frequency(Output<String> frequency) {
+        /**
+         * @param frequency How frequently maintenance occurs. Currently can only be weekly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder frequency(@Nullable Output<String> frequency) {
             $.frequency = frequency;
             return this;
         }
 
+        /**
+         * @param frequency How frequently maintenance occurs. Currently can only be weekly.
+         * 
+         * @return builder
+         * 
+         */
         public Builder frequency(String frequency) {
             return frequency(Output.of(frequency));
         }
 
-        public Builder hourOfDay(Output<Integer> hourOfDay) {
+        /**
+         * @param hourOfDay How frequently maintenance occurs. Currently can only be weekly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hourOfDay(@Nullable Output<Integer> hourOfDay) {
             $.hourOfDay = hourOfDay;
             return this;
         }
 
+        /**
+         * @param hourOfDay How frequently maintenance occurs. Currently can only be weekly.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hourOfDay(Integer hourOfDay) {
             return hourOfDay(Output.of(hourOfDay));
         }
 
         public DatabaseMysqlV2UpdatesArgs build() {
-            if ($.dayOfWeek == null) {
-                throw new MissingRequiredPropertyException("DatabaseMysqlV2UpdatesArgs", "dayOfWeek");
-            }
-            if ($.duration == null) {
-                throw new MissingRequiredPropertyException("DatabaseMysqlV2UpdatesArgs", "duration");
-            }
-            if ($.frequency == null) {
-                throw new MissingRequiredPropertyException("DatabaseMysqlV2UpdatesArgs", "frequency");
-            }
-            if ($.hourOfDay == null) {
-                throw new MissingRequiredPropertyException("DatabaseMysqlV2UpdatesArgs", "hourOfDay");
-            }
             return $;
         }
     }

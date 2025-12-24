@@ -22,7 +22,7 @@ public final class GetImagesResult {
      * 
      */
     private String id;
-    private @Nullable List<GetImagesImage> images;
+    private List<GetImagesImage> images;
     private @Nullable Boolean latest;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -39,7 +39,7 @@ public final class GetImagesResult {
         return this.id;
     }
     public List<GetImagesImage> images() {
-        return this.images == null ? List.of() : this.images;
+        return this.images;
     }
     public Optional<Boolean> latest() {
         return Optional.ofNullable(this.latest);
@@ -62,7 +62,7 @@ public final class GetImagesResult {
     public static final class Builder {
         private @Nullable List<GetImagesFilter> filters;
         private String id;
-        private @Nullable List<GetImagesImage> images;
+        private List<GetImagesImage> images;
         private @Nullable Boolean latest;
         private @Nullable String order;
         private @Nullable String orderBy;
@@ -95,8 +95,10 @@ public final class GetImagesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder images(@Nullable List<GetImagesImage> images) {
-
+        public Builder images(List<GetImagesImage> images) {
+            if (images == null) {
+              throw new MissingRequiredPropertyException("GetImagesResult", "images");
+            }
             this.images = images;
             return this;
         }

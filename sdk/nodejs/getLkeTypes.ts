@@ -17,7 +17,6 @@ export function getLkeTypes(args?: GetLkeTypesArgs, opts?: pulumi.InvokeOptions)
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "types": args.types,
     }, opts);
 }
 
@@ -34,7 +33,6 @@ export interface GetLkeTypesArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: string;
-    types?: inputs.GetLkeTypesType[];
 }
 
 /**
@@ -48,7 +46,7 @@ export interface GetLkeTypesResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly types?: outputs.GetLkeTypesType[];
+    readonly types: outputs.GetLkeTypesType[];
 }
 /**
  * Provides information about Linode LKE types that match a set of filters.
@@ -61,7 +59,6 @@ export function getLkeTypesOutput(args?: GetLkeTypesOutputArgs, opts?: pulumi.In
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "types": args.types,
     }, opts);
 }
 
@@ -78,5 +75,4 @@ export interface GetLkeTypesOutputArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: pulumi.Input<string>;
-    types?: pulumi.Input<pulumi.Input<inputs.GetLkeTypesTypeArgs>[]>;
 }

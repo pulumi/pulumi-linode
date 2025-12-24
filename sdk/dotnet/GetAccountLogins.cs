@@ -194,14 +194,6 @@ namespace Pulumi.Linode
             set => _filters = value;
         }
 
-        [Input("logins")]
-        private List<Inputs.GetAccountLoginsLoginArgs>? _logins;
-        public List<Inputs.GetAccountLoginsLoginArgs> Logins
-        {
-            get => _logins ?? (_logins = new List<Inputs.GetAccountLoginsLoginArgs>());
-            set => _logins = value;
-        }
-
         public GetAccountLoginsArgs()
         {
         }
@@ -216,14 +208,6 @@ namespace Pulumi.Linode
         {
             get => _filters ?? (_filters = new InputList<Inputs.GetAccountLoginsFilterInputArgs>());
             set => _filters = value;
-        }
-
-        [Input("logins")]
-        private InputList<Inputs.GetAccountLoginsLoginInputArgs>? _logins;
-        public InputList<Inputs.GetAccountLoginsLoginInputArgs> Logins
-        {
-            get => _logins ?? (_logins = new InputList<Inputs.GetAccountLoginsLoginInputArgs>());
-            set => _logins = value;
         }
 
         public GetAccountLoginsInvokeArgs()

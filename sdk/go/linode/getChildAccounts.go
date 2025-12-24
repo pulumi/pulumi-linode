@@ -109,8 +109,7 @@ func GetChildAccounts(ctx *pulumi.Context, args *GetChildAccountsArgs, opts ...p
 
 // A collection of arguments for invoking getChildAccounts.
 type GetChildAccountsArgs struct {
-	ChildAccounts []GetChildAccountsChildAccount `pulumi:"childAccounts"`
-	Filters       []GetChildAccountsFilter       `pulumi:"filters"`
+	Filters []GetChildAccountsFilter `pulumi:"filters"`
 }
 
 // A collection of values returned by getChildAccounts.
@@ -131,8 +130,7 @@ func GetChildAccountsOutput(ctx *pulumi.Context, args GetChildAccountsOutputArgs
 
 // A collection of arguments for invoking getChildAccounts.
 type GetChildAccountsOutputArgs struct {
-	ChildAccounts GetChildAccountsChildAccountArrayInput `pulumi:"childAccounts"`
-	Filters       GetChildAccountsFilterArrayInput       `pulumi:"filters"`
+	Filters GetChildAccountsFilterArrayInput `pulumi:"filters"`
 }
 
 func (GetChildAccountsOutputArgs) ElementType() reflect.Type {

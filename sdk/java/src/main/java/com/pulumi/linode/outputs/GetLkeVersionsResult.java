@@ -24,7 +24,7 @@ public final class GetLkeVersionsResult {
      * 
      */
     private @Nullable String tier;
-    private @Nullable List<GetLkeVersionsVersion> versions;
+    private List<GetLkeVersionsVersion> versions;
 
     private GetLkeVersionsResult() {}
     /**
@@ -42,7 +42,7 @@ public final class GetLkeVersionsResult {
         return Optional.ofNullable(this.tier);
     }
     public List<GetLkeVersionsVersion> versions() {
-        return this.versions == null ? List.of() : this.versions;
+        return this.versions;
     }
 
     public static Builder builder() {
@@ -56,7 +56,7 @@ public final class GetLkeVersionsResult {
     public static final class Builder {
         private String id;
         private @Nullable String tier;
-        private @Nullable List<GetLkeVersionsVersion> versions;
+        private List<GetLkeVersionsVersion> versions;
         public Builder() {}
         public Builder(GetLkeVersionsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -80,8 +80,10 @@ public final class GetLkeVersionsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder versions(@Nullable List<GetLkeVersionsVersion> versions) {
-
+        public Builder versions(List<GetLkeVersionsVersion> versions) {
+            if (versions == null) {
+              throw new MissingRequiredPropertyException("GetLkeVersionsResult", "versions");
+            }
             this.versions = versions;
             return this;
         }

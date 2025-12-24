@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabasesResult {
-    private @Nullable List<GetDatabasesDatabase> databases;
+    private List<GetDatabasesDatabase> databases;
     private @Nullable List<GetDatabasesFilter> filters;
     /**
      * @return The ID of the Managed Database.
@@ -27,7 +27,7 @@ public final class GetDatabasesResult {
 
     private GetDatabasesResult() {}
     public List<GetDatabasesDatabase> databases() {
-        return this.databases == null ? List.of() : this.databases;
+        return this.databases;
     }
     public List<GetDatabasesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
@@ -55,7 +55,7 @@ public final class GetDatabasesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetDatabasesDatabase> databases;
+        private List<GetDatabasesDatabase> databases;
         private @Nullable List<GetDatabasesFilter> filters;
         private String id;
         private @Nullable String order;
@@ -71,8 +71,10 @@ public final class GetDatabasesResult {
         }
 
         @CustomType.Setter
-        public Builder databases(@Nullable List<GetDatabasesDatabase> databases) {
-
+        public Builder databases(List<GetDatabasesDatabase> databases) {
+            if (databases == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesResult", "databases");
+            }
             this.databases = databases;
             return this;
         }

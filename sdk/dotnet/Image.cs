@@ -197,10 +197,22 @@ namespace Pulumi.Linode
         public Output<string?> FilePath { get; private set; } = null!;
 
         /// <summary>
+        /// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        [Output("imageSharing")]
+        public Output<Outputs.ImageImageSharing> ImageSharing { get; private set; } = null!;
+
+        /// <summary>
         /// True if the Image is public.
         /// </summary>
         [Output("isPublic")]
         public Output<bool> IsPublic { get; private set; } = null!;
+
+        /// <summary>
+        /// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        [Output("isShared")]
+        public Output<bool> IsShared { get; private set; } = null!;
 
         /// <summary>
         /// A short description of the Image. Labels cannot contain special characters.
@@ -499,10 +511,22 @@ namespace Pulumi.Linode
         public Input<string>? FilePath { get; set; }
 
         /// <summary>
+        /// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        [Input("imageSharing")]
+        public Input<Inputs.ImageImageSharingGetArgs>? ImageSharing { get; set; }
+
+        /// <summary>
         /// True if the Image is public.
         /// </summary>
         [Input("isPublic")]
         public Input<bool>? IsPublic { get; set; }
+
+        /// <summary>
+        /// True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        [Input("isShared")]
+        public Input<bool>? IsShared { get; set; }
 
         /// <summary>
         /// A short description of the Image. Labels cannot contain special characters.

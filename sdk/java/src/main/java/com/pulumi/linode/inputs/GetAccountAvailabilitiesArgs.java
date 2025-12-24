@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.linode.inputs.GetAccountAvailabilitiesAvailabilityArgs;
 import com.pulumi.linode.inputs.GetAccountAvailabilitiesFilterArgs;
 import java.util.List;
 import java.util.Objects;
@@ -17,13 +16,6 @@ public final class GetAccountAvailabilitiesArgs extends com.pulumi.resources.Inv
 
     public static final GetAccountAvailabilitiesArgs Empty = new GetAccountAvailabilitiesArgs();
 
-    @Import(name="availabilities")
-    private @Nullable Output<List<GetAccountAvailabilitiesAvailabilityArgs>> availabilities;
-
-    public Optional<Output<List<GetAccountAvailabilitiesAvailabilityArgs>>> availabilities() {
-        return Optional.ofNullable(this.availabilities);
-    }
-
     @Import(name="filters")
     private @Nullable Output<List<GetAccountAvailabilitiesFilterArgs>> filters;
 
@@ -34,7 +26,6 @@ public final class GetAccountAvailabilitiesArgs extends com.pulumi.resources.Inv
     private GetAccountAvailabilitiesArgs() {}
 
     private GetAccountAvailabilitiesArgs(GetAccountAvailabilitiesArgs $) {
-        this.availabilities = $.availabilities;
         this.filters = $.filters;
     }
 
@@ -54,19 +45,6 @@ public final class GetAccountAvailabilitiesArgs extends com.pulumi.resources.Inv
 
         public Builder(GetAccountAvailabilitiesArgs defaults) {
             $ = new GetAccountAvailabilitiesArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder availabilities(@Nullable Output<List<GetAccountAvailabilitiesAvailabilityArgs>> availabilities) {
-            $.availabilities = availabilities;
-            return this;
-        }
-
-        public Builder availabilities(List<GetAccountAvailabilitiesAvailabilityArgs> availabilities) {
-            return availabilities(Output.of(availabilities));
-        }
-
-        public Builder availabilities(GetAccountAvailabilitiesAvailabilityArgs... availabilities) {
-            return availabilities(List.of(availabilities));
         }
 
         public Builder filters(@Nullable Output<List<GetAccountAvailabilitiesFilterArgs>> filters) {

@@ -21,6 +21,14 @@ import com.pulumi.linode.inputs.GetChildAccountArgs;
 import com.pulumi.linode.inputs.GetChildAccountPlainArgs;
 import com.pulumi.linode.inputs.GetChildAccountsArgs;
 import com.pulumi.linode.inputs.GetChildAccountsPlainArgs;
+import com.pulumi.linode.inputs.GetConsumerImageShareGroupArgs;
+import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesArgs;
+import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesPlainArgs;
+import com.pulumi.linode.inputs.GetConsumerImageShareGroupPlainArgs;
+import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
+import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenPlainArgs;
+import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
+import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensPlainArgs;
 import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
 import com.pulumi.linode.inputs.GetDatabaseBackupsPlainArgs;
 import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
@@ -67,6 +75,8 @@ import com.pulumi.linode.inputs.GetInstanceTypesArgs;
 import com.pulumi.linode.inputs.GetInstanceTypesPlainArgs;
 import com.pulumi.linode.inputs.GetInstancesArgs;
 import com.pulumi.linode.inputs.GetInstancesPlainArgs;
+import com.pulumi.linode.inputs.GetInterfaceArgs;
+import com.pulumi.linode.inputs.GetInterfacePlainArgs;
 import com.pulumi.linode.inputs.GetIpv6RangeArgs;
 import com.pulumi.linode.inputs.GetIpv6RangePlainArgs;
 import com.pulumi.linode.inputs.GetIpv6RangesArgs;
@@ -87,6 +97,10 @@ import com.pulumi.linode.inputs.GetLkeVersionArgs;
 import com.pulumi.linode.inputs.GetLkeVersionPlainArgs;
 import com.pulumi.linode.inputs.GetLkeVersionsArgs;
 import com.pulumi.linode.inputs.GetLkeVersionsPlainArgs;
+import com.pulumi.linode.inputs.GetLockArgs;
+import com.pulumi.linode.inputs.GetLockPlainArgs;
+import com.pulumi.linode.inputs.GetLocksArgs;
+import com.pulumi.linode.inputs.GetLocksPlainArgs;
 import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
 import com.pulumi.linode.inputs.GetMaintenancePoliciesPlainArgs;
 import com.pulumi.linode.inputs.GetNbTypesArgs;
@@ -123,6 +137,16 @@ import com.pulumi.linode.inputs.GetPlacementGroupArgs;
 import com.pulumi.linode.inputs.GetPlacementGroupPlainArgs;
 import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
 import com.pulumi.linode.inputs.GetPlacementGroupsPlainArgs;
+import com.pulumi.linode.inputs.GetProducerImageShareGroupArgs;
+import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesArgs;
+import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesPlainArgs;
+import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberArgs;
+import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberPlainArgs;
+import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersArgs;
+import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersPlainArgs;
+import com.pulumi.linode.inputs.GetProducerImageShareGroupPlainArgs;
+import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
+import com.pulumi.linode.inputs.GetProducerImageShareGroupsPlainArgs;
 import com.pulumi.linode.inputs.GetRegionArgs;
 import com.pulumi.linode.inputs.GetRegionPlainArgs;
 import com.pulumi.linode.inputs.GetRegionsArgs;
@@ -165,6 +189,10 @@ import com.pulumi.linode.outputs.GetAccountResult;
 import com.pulumi.linode.outputs.GetAccountSettingsResult;
 import com.pulumi.linode.outputs.GetChildAccountResult;
 import com.pulumi.linode.outputs.GetChildAccountsResult;
+import com.pulumi.linode.outputs.GetConsumerImageShareGroupImageSharesResult;
+import com.pulumi.linode.outputs.GetConsumerImageShareGroupResult;
+import com.pulumi.linode.outputs.GetConsumerImageShareGroupTokenResult;
+import com.pulumi.linode.outputs.GetConsumerImageShareGroupTokensResult;
 import com.pulumi.linode.outputs.GetDatabaseBackupsResult;
 import com.pulumi.linode.outputs.GetDatabaseEnginesResult;
 import com.pulumi.linode.outputs.GetDatabaseMysqlBackupsResult;
@@ -191,6 +219,7 @@ import com.pulumi.linode.outputs.GetInstanceNetworkingResult;
 import com.pulumi.linode.outputs.GetInstanceTypeResult;
 import com.pulumi.linode.outputs.GetInstanceTypesResult;
 import com.pulumi.linode.outputs.GetInstancesResult;
+import com.pulumi.linode.outputs.GetInterfaceResult;
 import com.pulumi.linode.outputs.GetIpv6RangeResult;
 import com.pulumi.linode.outputs.GetIpv6RangesResult;
 import com.pulumi.linode.outputs.GetKernelResult;
@@ -201,6 +230,8 @@ import com.pulumi.linode.outputs.GetLkeClustersResult;
 import com.pulumi.linode.outputs.GetLkeTypesResult;
 import com.pulumi.linode.outputs.GetLkeVersionResult;
 import com.pulumi.linode.outputs.GetLkeVersionsResult;
+import com.pulumi.linode.outputs.GetLockResult;
+import com.pulumi.linode.outputs.GetLocksResult;
 import com.pulumi.linode.outputs.GetMaintenancePoliciesResult;
 import com.pulumi.linode.outputs.GetNbTypesResult;
 import com.pulumi.linode.outputs.GetNetworkTransferPricesResult;
@@ -219,6 +250,11 @@ import com.pulumi.linode.outputs.GetObjectStorageQuotaResult;
 import com.pulumi.linode.outputs.GetObjectStorageQuotasResult;
 import com.pulumi.linode.outputs.GetPlacementGroupResult;
 import com.pulumi.linode.outputs.GetPlacementGroupsResult;
+import com.pulumi.linode.outputs.GetProducerImageShareGroupImageSharesResult;
+import com.pulumi.linode.outputs.GetProducerImageShareGroupMemberResult;
+import com.pulumi.linode.outputs.GetProducerImageShareGroupMembersResult;
+import com.pulumi.linode.outputs.GetProducerImageShareGroupResult;
+import com.pulumi.linode.outputs.GetProducerImageShareGroupsResult;
 import com.pulumi.linode.outputs.GetProfileResult;
 import com.pulumi.linode.outputs.GetRegionResult;
 import com.pulumi.linode.outputs.GetRegionsResult;
@@ -2928,6 +2964,1186 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetChildAccountsResult> getChildAccountsPlain(GetChildAccountsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getChildAccounts:getChildAccounts", TypeShape.of(GetChildAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.getConsumerImageShareGroup` provides details about an Image Share Group that the user&#39;s token has been accepted into.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-by-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = LinodeFunctions.getConsumerImageShareGroup(GetConsumerImageShareGroupArgs.builder()
+     *             .tokenUuid("7548d17e-8db4-4a91-b47c-a8e1203063d9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupResult> getConsumerImageShareGroup(GetConsumerImageShareGroupArgs args) {
+        return getConsumerImageShareGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.getConsumerImageShareGroup` provides details about an Image Share Group that the user&#39;s token has been accepted into.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-by-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = LinodeFunctions.getConsumerImageShareGroup(GetConsumerImageShareGroupArgs.builder()
+     *             .tokenUuid("7548d17e-8db4-4a91-b47c-a8e1203063d9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConsumerImageShareGroupResult> getConsumerImageShareGroupPlain(GetConsumerImageShareGroupPlainArgs args) {
+        return getConsumerImageShareGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.getConsumerImageShareGroup` provides details about an Image Share Group that the user&#39;s token has been accepted into.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-by-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = LinodeFunctions.getConsumerImageShareGroup(GetConsumerImageShareGroupArgs.builder()
+     *             .tokenUuid("7548d17e-8db4-4a91-b47c-a8e1203063d9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupResult> getConsumerImageShareGroup(GetConsumerImageShareGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getConsumerImageShareGroup:getConsumerImageShareGroup", TypeShape.of(GetConsumerImageShareGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.getConsumerImageShareGroup` provides details about an Image Share Group that the user&#39;s token has been accepted into.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-by-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = LinodeFunctions.getConsumerImageShareGroup(GetConsumerImageShareGroupArgs.builder()
+     *             .tokenUuid("7548d17e-8db4-4a91-b47c-a8e1203063d9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupResult> getConsumerImageShareGroup(GetConsumerImageShareGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getConsumerImageShareGroup:getConsumerImageShareGroup", TypeShape.of(GetConsumerImageShareGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.getConsumerImageShareGroup` provides details about an Image Share Group that the user&#39;s token has been accepted into.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-by-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = LinodeFunctions.getConsumerImageShareGroup(GetConsumerImageShareGroupArgs.builder()
+     *             .tokenUuid("7548d17e-8db4-4a91-b47c-a8e1203063d9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConsumerImageShareGroupResult> getConsumerImageShareGroupPlain(GetConsumerImageShareGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getConsumerImageShareGroup:getConsumerImageShareGroup", TypeShape.of(GetConsumerImageShareGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Images that match a set of filters that have been
+     * shared in the Image Share Group that the provided Token has been accepted into.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-images-by-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Images shared in an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs.builder()
+     *             .tokenUuid("54e1adf3-e499-4685-82be-10d29d4e8fae")
+     *             .filters(GetConsumerImageShareGroupImageSharesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-shared-images", all.imageShares());
+     *         ctx.export("filtered-shared-images", filtered.imageShares());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupImageSharesResult> getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs args) {
+        return getConsumerImageShareGroupImageShares(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Images that match a set of filters that have been
+     * shared in the Image Share Group that the provided Token has been accepted into.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-images-by-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Images shared in an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs.builder()
+     *             .tokenUuid("54e1adf3-e499-4685-82be-10d29d4e8fae")
+     *             .filters(GetConsumerImageShareGroupImageSharesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-shared-images", all.imageShares());
+     *         ctx.export("filtered-shared-images", filtered.imageShares());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     */
+    public static CompletableFuture<GetConsumerImageShareGroupImageSharesResult> getConsumerImageShareGroupImageSharesPlain(GetConsumerImageShareGroupImageSharesPlainArgs args) {
+        return getConsumerImageShareGroupImageSharesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Images that match a set of filters that have been
+     * shared in the Image Share Group that the provided Token has been accepted into.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-images-by-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Images shared in an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs.builder()
+     *             .tokenUuid("54e1adf3-e499-4685-82be-10d29d4e8fae")
+     *             .filters(GetConsumerImageShareGroupImageSharesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-shared-images", all.imageShares());
+     *         ctx.export("filtered-shared-images", filtered.imageShares());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupImageSharesResult> getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getConsumerImageShareGroupImageShares:getConsumerImageShareGroupImageShares", TypeShape.of(GetConsumerImageShareGroupImageSharesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Images that match a set of filters that have been
+     * shared in the Image Share Group that the provided Token has been accepted into.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-images-by-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Images shared in an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs.builder()
+     *             .tokenUuid("54e1adf3-e499-4685-82be-10d29d4e8fae")
+     *             .filters(GetConsumerImageShareGroupImageSharesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-shared-images", all.imageShares());
+     *         ctx.export("filtered-shared-images", filtered.imageShares());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupImageSharesResult> getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getConsumerImageShareGroupImageShares:getConsumerImageShareGroupImageShares", TypeShape.of(GetConsumerImageShareGroupImageSharesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Images that match a set of filters that have been
+     * shared in the Image Share Group that the provided Token has been accepted into.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-images-by-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Images shared in an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupImageShares(GetConsumerImageShareGroupImageSharesArgs.builder()
+     *             .tokenUuid("54e1adf3-e499-4685-82be-10d29d4e8fae")
+     *             .filters(GetConsumerImageShareGroupImageSharesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-shared-images", all.imageShares());
+     *         ctx.export("filtered-shared-images", filtered.imageShares());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     */
+    public static CompletableFuture<GetConsumerImageShareGroupImageSharesResult> getConsumerImageShareGroupImageSharesPlain(GetConsumerImageShareGroupImageSharesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getConsumerImageShareGroupImageShares:getConsumerImageShareGroupImageShares", TypeShape.of(GetConsumerImageShareGroupImageSharesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.ConsumerImageShareGroupToken` provides details about a Token for an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about a Token for an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var token = LinodeFunctions.getConsumerImageShareGroupToken(GetConsumerImageShareGroupTokenArgs.builder()
+     *             .tokenUuid("db58ab2e-3021-4b08-9426-8e456f6dd268")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupTokenResult> getConsumerImageShareGroupToken(GetConsumerImageShareGroupTokenArgs args) {
+        return getConsumerImageShareGroupToken(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.ConsumerImageShareGroupToken` provides details about a Token for an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about a Token for an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var token = LinodeFunctions.getConsumerImageShareGroupToken(GetConsumerImageShareGroupTokenArgs.builder()
+     *             .tokenUuid("db58ab2e-3021-4b08-9426-8e456f6dd268")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConsumerImageShareGroupTokenResult> getConsumerImageShareGroupTokenPlain(GetConsumerImageShareGroupTokenPlainArgs args) {
+        return getConsumerImageShareGroupTokenPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.ConsumerImageShareGroupToken` provides details about a Token for an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about a Token for an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var token = LinodeFunctions.getConsumerImageShareGroupToken(GetConsumerImageShareGroupTokenArgs.builder()
+     *             .tokenUuid("db58ab2e-3021-4b08-9426-8e456f6dd268")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupTokenResult> getConsumerImageShareGroupToken(GetConsumerImageShareGroupTokenArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getConsumerImageShareGroupToken:getConsumerImageShareGroupToken", TypeShape.of(GetConsumerImageShareGroupTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.ConsumerImageShareGroupToken` provides details about a Token for an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about a Token for an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var token = LinodeFunctions.getConsumerImageShareGroupToken(GetConsumerImageShareGroupTokenArgs.builder()
+     *             .tokenUuid("db58ab2e-3021-4b08-9426-8e456f6dd268")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupTokenResult> getConsumerImageShareGroupToken(GetConsumerImageShareGroupTokenArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getConsumerImageShareGroupToken:getConsumerImageShareGroupToken", TypeShape.of(GetConsumerImageShareGroupTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.ConsumerImageShareGroupToken` provides details about a Token for an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about a Token for an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var token = LinodeFunctions.getConsumerImageShareGroupToken(GetConsumerImageShareGroupTokenArgs.builder()
+     *             .tokenUuid("db58ab2e-3021-4b08-9426-8e456f6dd268")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConsumerImageShareGroupTokenResult> getConsumerImageShareGroupTokenPlain(GetConsumerImageShareGroupTokenPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getConsumerImageShareGroupToken:getConsumerImageShareGroupToken", TypeShape.of(GetConsumerImageShareGroupTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Image Share Group Tokens that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user-tokens). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .filters(GetConsumerImageShareGroupTokensFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-tokens", all.tokens());
+     *         ctx.export("filtered-share-group-tokens", filtered.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `validForSharegroupUuid`
+     * 
+     * * `sharegroupUuid`
+     * 
+     * * `sharegroupLabel`
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupTokensResult> getConsumerImageShareGroupTokens() {
+        return getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Image Share Group Tokens that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user-tokens). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .filters(GetConsumerImageShareGroupTokensFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-tokens", all.tokens());
+     *         ctx.export("filtered-share-group-tokens", filtered.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `validForSharegroupUuid`
+     * 
+     * * `sharegroupUuid`
+     * 
+     * * `sharegroupLabel`
+     * 
+     */
+    public static CompletableFuture<GetConsumerImageShareGroupTokensResult> getConsumerImageShareGroupTokensPlain() {
+        return getConsumerImageShareGroupTokensPlain(GetConsumerImageShareGroupTokensPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Image Share Group Tokens that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user-tokens). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .filters(GetConsumerImageShareGroupTokensFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-tokens", all.tokens());
+     *         ctx.export("filtered-share-group-tokens", filtered.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `validForSharegroupUuid`
+     * 
+     * * `sharegroupUuid`
+     * 
+     * * `sharegroupLabel`
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupTokensResult> getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs args) {
+        return getConsumerImageShareGroupTokens(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Image Share Group Tokens that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user-tokens). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .filters(GetConsumerImageShareGroupTokensFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-tokens", all.tokens());
+     *         ctx.export("filtered-share-group-tokens", filtered.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `validForSharegroupUuid`
+     * 
+     * * `sharegroupUuid`
+     * 
+     * * `sharegroupLabel`
+     * 
+     */
+    public static CompletableFuture<GetConsumerImageShareGroupTokensResult> getConsumerImageShareGroupTokensPlain(GetConsumerImageShareGroupTokensPlainArgs args) {
+        return getConsumerImageShareGroupTokensPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Image Share Group Tokens that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user-tokens). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .filters(GetConsumerImageShareGroupTokensFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-tokens", all.tokens());
+     *         ctx.export("filtered-share-group-tokens", filtered.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `validForSharegroupUuid`
+     * 
+     * * `sharegroupUuid`
+     * 
+     * * `sharegroupLabel`
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupTokensResult> getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getConsumerImageShareGroupTokens:getConsumerImageShareGroupTokens", TypeShape.of(GetConsumerImageShareGroupTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Image Share Group Tokens that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user-tokens). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .filters(GetConsumerImageShareGroupTokensFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-tokens", all.tokens());
+     *         ctx.export("filtered-share-group-tokens", filtered.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `validForSharegroupUuid`
+     * 
+     * * `sharegroupUuid`
+     * 
+     * * `sharegroupLabel`
+     * 
+     */
+    public static Output<GetConsumerImageShareGroupTokensResult> getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getConsumerImageShareGroupTokens:getConsumerImageShareGroupTokens", TypeShape.of(GetConsumerImageShareGroupTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Image Share Group Tokens that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-user-tokens). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getConsumerImageShareGroupTokens(GetConsumerImageShareGroupTokensArgs.builder()
+     *             .filters(GetConsumerImageShareGroupTokensFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-tokens", all.tokens());
+     *         ctx.export("filtered-share-group-tokens", filtered.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     * * `validForSharegroupUuid`
+     * 
+     * * `sharegroupUuid`
+     * 
+     * * `sharegroupLabel`
+     * 
+     */
+    public static CompletableFuture<GetConsumerImageShareGroupTokensResult> getConsumerImageShareGroupTokensPlain(GetConsumerImageShareGroupTokensPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getConsumerImageShareGroupTokens:getConsumerImageShareGroupTokens", TypeShape.of(GetConsumerImageShareGroupTokensResult.class), args, Utilities.withVersion(options));
     }
     /**
      * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
@@ -22483,6 +23699,21 @@ public final class LinodeFunctions {
     public static CompletableFuture<GetInstancesResult> getInstancesPlain(GetInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetInterfaceResult> getInterface(GetInterfaceArgs args) {
+        return getInterface(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetInterfaceResult> getInterfacePlain(GetInterfacePlainArgs args) {
+        return getInterfacePlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetInterfaceResult> getInterface(GetInterfaceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getInterface:getInterface", TypeShape.of(GetInterfaceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetInterfaceResult> getInterface(GetInterfaceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getInterface:getInterface", TypeShape.of(GetInterfaceResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetInterfaceResult> getInterfacePlain(GetInterfacePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getInterface:getInterface", TypeShape.of(GetInterfaceResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Provides information about a Linode IPv6 Range.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
@@ -25690,6 +26921,866 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetLkeVersionsResult> getLkeVersionsPlain(GetLkeVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeVersions:getLkeVersions", TypeShape.of(GetLkeVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
+     * 
+     * Provides information about a Linode Lock. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myLock = LinodeFunctions.getLock(GetLockArgs.builder()
+     *             .id(123456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLockResult> getLock(GetLockArgs args) {
+        return getLock(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
+     * 
+     * Provides information about a Linode Lock. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myLock = LinodeFunctions.getLock(GetLockArgs.builder()
+     *             .id(123456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLockResult> getLockPlain(GetLockPlainArgs args) {
+        return getLockPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
+     * 
+     * Provides information about a Linode Lock. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myLock = LinodeFunctions.getLock(GetLockArgs.builder()
+     *             .id(123456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLockResult> getLock(GetLockArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLock:getLock", TypeShape.of(GetLockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
+     * 
+     * Provides information about a Linode Lock. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myLock = LinodeFunctions.getLock(GetLockArgs.builder()
+     *             .id(123456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLockResult> getLock(GetLockArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLock:getLock", TypeShape.of(GetLockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
+     * 
+     * Provides information about a Linode Lock. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLockArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myLock = LinodeFunctions.getLock(GetLockArgs.builder()
+     *             .id(123456)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLockResult> getLockPlain(GetLockPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getLock:getLock", TypeShape.of(GetLockResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
+     * 
+     * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * Get all locks in a type:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstanceLocks = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .filters(GetLocksFilterArgs.builder()
+     *                 .name("lock_type")
+     *                 .values("cannot_delete")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get information about all locks:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allLockIds", all.locks().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `lockType`
+     * 
+     */
+    public static Output<GetLocksResult> getLocks() {
+        return getLocks(GetLocksArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
+     * 
+     * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * Get all locks in a type:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstanceLocks = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .filters(GetLocksFilterArgs.builder()
+     *                 .name("lock_type")
+     *                 .values("cannot_delete")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get information about all locks:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allLockIds", all.locks().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `lockType`
+     * 
+     */
+    public static CompletableFuture<GetLocksResult> getLocksPlain() {
+        return getLocksPlain(GetLocksPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
+     * 
+     * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * Get all locks in a type:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstanceLocks = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .filters(GetLocksFilterArgs.builder()
+     *                 .name("lock_type")
+     *                 .values("cannot_delete")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get information about all locks:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allLockIds", all.locks().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `lockType`
+     * 
+     */
+    public static Output<GetLocksResult> getLocks(GetLocksArgs args) {
+        return getLocks(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
+     * 
+     * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * Get all locks in a type:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstanceLocks = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .filters(GetLocksFilterArgs.builder()
+     *                 .name("lock_type")
+     *                 .values("cannot_delete")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get information about all locks:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allLockIds", all.locks().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `lockType`
+     * 
+     */
+    public static CompletableFuture<GetLocksResult> getLocksPlain(GetLocksPlainArgs args) {
+        return getLocksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
+     * 
+     * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * Get all locks in a type:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstanceLocks = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .filters(GetLocksFilterArgs.builder()
+     *                 .name("lock_type")
+     *                 .values("cannot_delete")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get information about all locks:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allLockIds", all.locks().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `lockType`
+     * 
+     */
+    public static Output<GetLocksResult> getLocks(GetLocksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLocks:getLocks", TypeShape.of(GetLocksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
+     * 
+     * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * Get all locks in a type:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstanceLocks = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .filters(GetLocksFilterArgs.builder()
+     *                 .name("lock_type")
+     *                 .values("cannot_delete")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get information about all locks:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allLockIds", all.locks().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `lockType`
+     * 
+     */
+    public static Output<GetLocksResult> getLocks(GetLocksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLocks:getLocks", TypeShape.of(GetLocksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
+     * 
+     * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
+     * 
+     * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
+     * 
+     * For more information, see the Linode APIv4 docs (TBD).
+     * 
+     * ## Example Usage
+     * 
+     * Get all locks in a type:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstanceLocks = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .filters(GetLocksFilterArgs.builder()
+     *                 .name("lock_type")
+     *                 .values("cannot_delete")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * Get information about all locks:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLocksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getLocks(GetLocksArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allLockIds", all.locks().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `lockType`
+     * 
+     */
+    public static CompletableFuture<GetLocksResult> getLocksPlain(GetLocksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getLocks:getLocks", TypeShape.of(GetLocksResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
@@ -31316,6 +33407,1454 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetPlacementGroupsResult> getPlacementGroupsPlain(GetPlacementGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getPlacementGroups:getPlacementGroups", TypeShape.of(GetPlacementGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.ProducerImageShareGroup` provides details about an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = LinodeFunctions.getProducerImageShareGroup(GetProducerImageShareGroupArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProducerImageShareGroupResult> getProducerImageShareGroup(GetProducerImageShareGroupArgs args) {
+        return getProducerImageShareGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.ProducerImageShareGroup` provides details about an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = LinodeFunctions.getProducerImageShareGroup(GetProducerImageShareGroupArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProducerImageShareGroupResult> getProducerImageShareGroupPlain(GetProducerImageShareGroupPlainArgs args) {
+        return getProducerImageShareGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.ProducerImageShareGroup` provides details about an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = LinodeFunctions.getProducerImageShareGroup(GetProducerImageShareGroupArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProducerImageShareGroupResult> getProducerImageShareGroup(GetProducerImageShareGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getProducerImageShareGroup:getProducerImageShareGroup", TypeShape.of(GetProducerImageShareGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.ProducerImageShareGroup` provides details about an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = LinodeFunctions.getProducerImageShareGroup(GetProducerImageShareGroupArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProducerImageShareGroupResult> getProducerImageShareGroup(GetProducerImageShareGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getProducerImageShareGroup:getProducerImageShareGroup", TypeShape.of(GetProducerImageShareGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.ProducerImageShareGroup` provides details about an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = LinodeFunctions.getProducerImageShareGroup(GetProducerImageShareGroupArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProducerImageShareGroupResult> getProducerImageShareGroupPlain(GetProducerImageShareGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getProducerImageShareGroup:getProducerImageShareGroup", TypeShape.of(GetProducerImageShareGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Images shared in the specified Image Share Group that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-images). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Images shared in an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs.builder()
+     *             .sharegroupId(123)
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs.builder()
+     *             .sharegroupId(123)
+     *             .filters(GetProducerImageShareGroupImageSharesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-shared-images", all.imageShares());
+     *         ctx.export("filtered-shared-images", filtered.imageShares());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     */
+    public static Output<GetProducerImageShareGroupImageSharesResult> getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs args) {
+        return getProducerImageShareGroupImageShares(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Images shared in the specified Image Share Group that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-images). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Images shared in an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs.builder()
+     *             .sharegroupId(123)
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs.builder()
+     *             .sharegroupId(123)
+     *             .filters(GetProducerImageShareGroupImageSharesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-shared-images", all.imageShares());
+     *         ctx.export("filtered-shared-images", filtered.imageShares());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     */
+    public static CompletableFuture<GetProducerImageShareGroupImageSharesResult> getProducerImageShareGroupImageSharesPlain(GetProducerImageShareGroupImageSharesPlainArgs args) {
+        return getProducerImageShareGroupImageSharesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Images shared in the specified Image Share Group that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-images). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Images shared in an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs.builder()
+     *             .sharegroupId(123)
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs.builder()
+     *             .sharegroupId(123)
+     *             .filters(GetProducerImageShareGroupImageSharesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-shared-images", all.imageShares());
+     *         ctx.export("filtered-shared-images", filtered.imageShares());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     */
+    public static Output<GetProducerImageShareGroupImageSharesResult> getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getProducerImageShareGroupImageShares:getProducerImageShareGroupImageShares", TypeShape.of(GetProducerImageShareGroupImageSharesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Images shared in the specified Image Share Group that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-images). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Images shared in an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs.builder()
+     *             .sharegroupId(123)
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs.builder()
+     *             .sharegroupId(123)
+     *             .filters(GetProducerImageShareGroupImageSharesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-shared-images", all.imageShares());
+     *         ctx.export("filtered-shared-images", filtered.imageShares());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     */
+    public static Output<GetProducerImageShareGroupImageSharesResult> getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getProducerImageShareGroupImageShares:getProducerImageShareGroupImageShares", TypeShape.of(GetProducerImageShareGroupImageSharesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Images shared in the specified Image Share Group that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-images). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Images shared in an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs.builder()
+     *             .sharegroupId(123)
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroupImageShares(GetProducerImageShareGroupImageSharesArgs.builder()
+     *             .sharegroupId(123)
+     *             .filters(GetProducerImageShareGroupImageSharesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-shared-images", all.imageShares());
+     *         ctx.export("filtered-shared-images", filtered.imageShares());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     */
+    public static CompletableFuture<GetProducerImageShareGroupImageSharesResult> getProducerImageShareGroupImageSharesPlain(GetProducerImageShareGroupImageSharesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getProducerImageShareGroupImageShares:getProducerImageShareGroupImageShares", TypeShape.of(GetProducerImageShareGroupImageSharesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.ProducerImageShareGroupMember` provides details about a Member of an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-member-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about a member of an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var member = LinodeFunctions.getProducerImageShareGroupMember(GetProducerImageShareGroupMemberArgs.builder()
+     *             .sharegroupId(12345)
+     *             .tokenUuid("db58ab2e-3021-4b08-9426-8e456f6dd268")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProducerImageShareGroupMemberResult> getProducerImageShareGroupMember(GetProducerImageShareGroupMemberArgs args) {
+        return getProducerImageShareGroupMember(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.ProducerImageShareGroupMember` provides details about a Member of an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-member-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about a member of an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var member = LinodeFunctions.getProducerImageShareGroupMember(GetProducerImageShareGroupMemberArgs.builder()
+     *             .sharegroupId(12345)
+     *             .tokenUuid("db58ab2e-3021-4b08-9426-8e456f6dd268")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProducerImageShareGroupMemberResult> getProducerImageShareGroupMemberPlain(GetProducerImageShareGroupMemberPlainArgs args) {
+        return getProducerImageShareGroupMemberPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.ProducerImageShareGroupMember` provides details about a Member of an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-member-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about a member of an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var member = LinodeFunctions.getProducerImageShareGroupMember(GetProducerImageShareGroupMemberArgs.builder()
+     *             .sharegroupId(12345)
+     *             .tokenUuid("db58ab2e-3021-4b08-9426-8e456f6dd268")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProducerImageShareGroupMemberResult> getProducerImageShareGroupMember(GetProducerImageShareGroupMemberArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getProducerImageShareGroupMember:getProducerImageShareGroupMember", TypeShape.of(GetProducerImageShareGroupMemberResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.ProducerImageShareGroupMember` provides details about a Member of an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-member-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about a member of an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var member = LinodeFunctions.getProducerImageShareGroupMember(GetProducerImageShareGroupMemberArgs.builder()
+     *             .sharegroupId(12345)
+     *             .tokenUuid("db58ab2e-3021-4b08-9426-8e456f6dd268")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetProducerImageShareGroupMemberResult> getProducerImageShareGroupMember(GetProducerImageShareGroupMemberArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getProducerImageShareGroupMember:getProducerImageShareGroupMember", TypeShape.of(GetProducerImageShareGroupMemberResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.ProducerImageShareGroupMember` provides details about a Member of an Image Share Group.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-member-token). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the datasource might be used to obtain additional information about a member of an Image Share Group.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var member = LinodeFunctions.getProducerImageShareGroupMember(GetProducerImageShareGroupMemberArgs.builder()
+     *             .sharegroupId(12345)
+     *             .tokenUuid("db58ab2e-3021-4b08-9426-8e456f6dd268")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetProducerImageShareGroupMemberResult> getProducerImageShareGroupMemberPlain(GetProducerImageShareGroupMemberPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getProducerImageShareGroupMember:getProducerImageShareGroupMember", TypeShape.of(GetProducerImageShareGroupMemberResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Members of an Image Share Group that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-members). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Group Members.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs.builder()
+     *             .sharegroupId(12345)
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs.builder()
+     *             .sharegroupId(12345)
+     *             .filters(GetProducerImageShareGroupMembersFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-members", all.members());
+     *         ctx.export("filtered-share-group-members", filtered.members());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     */
+    public static Output<GetProducerImageShareGroupMembersResult> getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs args) {
+        return getProducerImageShareGroupMembers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Members of an Image Share Group that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-members). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Group Members.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs.builder()
+     *             .sharegroupId(12345)
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs.builder()
+     *             .sharegroupId(12345)
+     *             .filters(GetProducerImageShareGroupMembersFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-members", all.members());
+     *         ctx.export("filtered-share-group-members", filtered.members());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     */
+    public static CompletableFuture<GetProducerImageShareGroupMembersResult> getProducerImageShareGroupMembersPlain(GetProducerImageShareGroupMembersPlainArgs args) {
+        return getProducerImageShareGroupMembersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Members of an Image Share Group that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-members). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Group Members.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs.builder()
+     *             .sharegroupId(12345)
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs.builder()
+     *             .sharegroupId(12345)
+     *             .filters(GetProducerImageShareGroupMembersFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-members", all.members());
+     *         ctx.export("filtered-share-group-members", filtered.members());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     */
+    public static Output<GetProducerImageShareGroupMembersResult> getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getProducerImageShareGroupMembers:getProducerImageShareGroupMembers", TypeShape.of(GetProducerImageShareGroupMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Members of an Image Share Group that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-members). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Group Members.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs.builder()
+     *             .sharegroupId(12345)
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs.builder()
+     *             .sharegroupId(12345)
+     *             .filters(GetProducerImageShareGroupMembersFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-members", all.members());
+     *         ctx.export("filtered-share-group-members", filtered.members());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     */
+    public static Output<GetProducerImageShareGroupMembersResult> getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getProducerImageShareGroupMembers:getProducerImageShareGroupMembers", TypeShape.of(GetProducerImageShareGroupMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Members of an Image Share Group that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroup-members). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Group Members.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs.builder()
+     *             .sharegroupId(12345)
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroupMembers(GetProducerImageShareGroupMembersArgs.builder()
+     *             .sharegroupId(12345)
+     *             .filters(GetProducerImageShareGroupMembersFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-group-members", all.members());
+     *         ctx.export("filtered-share-group-members", filtered.members());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `tokenUuid`
+     * 
+     * * `label`
+     * 
+     * * `status`
+     * 
+     */
+    public static CompletableFuture<GetProducerImageShareGroupMembersResult> getProducerImageShareGroupMembersPlain(GetProducerImageShareGroupMembersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getProducerImageShareGroupMembers:getProducerImageShareGroupMembers", TypeShape.of(GetProducerImageShareGroupMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Image Share Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroups). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .filters(GetProducerImageShareGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-groups", all.imageShareGroups());
+     *         ctx.export("filtered-share-groups", filtered.imageShareGroups());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `isSuspended`
+     * 
+     */
+    public static Output<GetProducerImageShareGroupsResult> getProducerImageShareGroups() {
+        return getProducerImageShareGroups(GetProducerImageShareGroupsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Image Share Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroups). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .filters(GetProducerImageShareGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-groups", all.imageShareGroups());
+     *         ctx.export("filtered-share-groups", filtered.imageShareGroups());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `isSuspended`
+     * 
+     */
+    public static CompletableFuture<GetProducerImageShareGroupsResult> getProducerImageShareGroupsPlain() {
+        return getProducerImageShareGroupsPlain(GetProducerImageShareGroupsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Image Share Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroups). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .filters(GetProducerImageShareGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-groups", all.imageShareGroups());
+     *         ctx.export("filtered-share-groups", filtered.imageShareGroups());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `isSuspended`
+     * 
+     */
+    public static Output<GetProducerImageShareGroupsResult> getProducerImageShareGroups(GetProducerImageShareGroupsArgs args) {
+        return getProducerImageShareGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Image Share Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroups). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .filters(GetProducerImageShareGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-groups", all.imageShareGroups());
+     *         ctx.export("filtered-share-groups", filtered.imageShareGroups());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `isSuspended`
+     * 
+     */
+    public static CompletableFuture<GetProducerImageShareGroupsResult> getProducerImageShareGroupsPlain(GetProducerImageShareGroupsPlainArgs args) {
+        return getProducerImageShareGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a list of Image Share Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroups). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .filters(GetProducerImageShareGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-groups", all.imageShareGroups());
+     *         ctx.export("filtered-share-groups", filtered.imageShareGroups());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `isSuspended`
+     * 
+     */
+    public static Output<GetProducerImageShareGroupsResult> getProducerImageShareGroups(GetProducerImageShareGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getProducerImageShareGroups:getProducerImageShareGroups", TypeShape.of(GetProducerImageShareGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Image Share Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroups). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .filters(GetProducerImageShareGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-groups", all.imageShareGroups());
+     *         ctx.export("filtered-share-groups", filtered.imageShareGroups());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `isSuspended`
+     * 
+     */
+    public static Output<GetProducerImageShareGroupsResult> getProducerImageShareGroups(GetProducerImageShareGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getProducerImageShareGroups:getProducerImageShareGroups", TypeShape.of(GetProducerImageShareGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a list of Image Share Groups that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-sharegroups). May not be currently available to all users even under v4beta.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list Image Share Groups.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .build());
+     * 
+     *         final var filtered = LinodeFunctions.getProducerImageShareGroups(GetProducerImageShareGroupsArgs.builder()
+     *             .filters(GetProducerImageShareGroupsFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("my-label")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("all-share-groups", all.imageShareGroups());
+     *         ctx.export("filtered-share-groups", filtered.imageShareGroups());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `isSuspended`
+     * 
+     */
+    public static CompletableFuture<GetProducerImageShareGroupsResult> getProducerImageShareGroupsPlain(GetProducerImageShareGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getProducerImageShareGroups:getProducerImageShareGroups", TypeShape.of(GetProducerImageShareGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode profile.

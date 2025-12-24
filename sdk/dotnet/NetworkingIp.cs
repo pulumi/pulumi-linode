@@ -58,7 +58,7 @@ namespace Pulumi.Linode
         public Output<string> Gateway { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `Region`.
+        /// The ID of the Linode to allocate an IPv4 address for. **Required** when `Reserved` is `False` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `Region`.
         /// </summary>
         [Output("linodeId")]
         public Output<int> LinodeId { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Linode
     public sealed class NetworkingIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `Region`.
+        /// The ID of the Linode to allocate an IPv4 address for. **Required** when `Reserved` is `False` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `Region`.
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.Linode
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// The ID of the Linode to which the IP address will be assigned. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `Region`.
+        /// The ID of the Linode to allocate an IPv4 address for. **Required** when `Reserved` is `False` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `Region`.
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }

@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class InterfacePublicIpv6RangeArgs extends com.pulumi.resources.ResourceArgs {
@@ -31,26 +29,10 @@ public final class InterfacePublicIpv6RangeArgs extends com.pulumi.resources.Res
         return this.range;
     }
 
-    /**
-     * The public IPv6 address that the range is routed to.
-     * 
-     */
-    @Import(name="routeTarget")
-    private @Nullable Output<String> routeTarget;
-
-    /**
-     * @return The public IPv6 address that the range is routed to.
-     * 
-     */
-    public Optional<Output<String>> routeTarget() {
-        return Optional.ofNullable(this.routeTarget);
-    }
-
     private InterfacePublicIpv6RangeArgs() {}
 
     private InterfacePublicIpv6RangeArgs(InterfacePublicIpv6RangeArgs $) {
         this.range = $.range;
-        this.routeTarget = $.routeTarget;
     }
 
     public static Builder builder() {
@@ -90,27 +72,6 @@ public final class InterfacePublicIpv6RangeArgs extends com.pulumi.resources.Res
          */
         public Builder range(String range) {
             return range(Output.of(range));
-        }
-
-        /**
-         * @param routeTarget The public IPv6 address that the range is routed to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeTarget(@Nullable Output<String> routeTarget) {
-            $.routeTarget = routeTarget;
-            return this;
-        }
-
-        /**
-         * @param routeTarget The public IPv6 address that the range is routed to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeTarget(String routeTarget) {
-            return routeTarget(Output.of(routeTarget));
         }
 
         public InterfacePublicIpv6RangeArgs build() {

@@ -47,7 +47,7 @@ class GetDomainsResult:
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[Sequence['outputs.GetDomainsDomainResult']]:
+    def domains(self) -> Sequence['outputs.GetDomainsDomainResult']:
         return pulumi.get(self, "domains")
 
     @_builtins.property
@@ -87,8 +87,7 @@ class AwaitableGetDomainsResult(GetDomainsResult):
             order_by=self.order_by)
 
 
-def get_domains(domains: Optional[Sequence[Union['GetDomainsDomainArgs', 'GetDomainsDomainArgsDict']]] = None,
-                filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]] = None,
+def get_domains(filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]] = None,
                 order: Optional[_builtins.str] = None,
                 order_by: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
@@ -144,7 +143,6 @@ def get_domains(domains: Optional[Sequence[Union['GetDomainsDomainArgs', 'GetDom
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
-    __args__['domains'] = domains
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
@@ -157,8 +155,7 @@ def get_domains(domains: Optional[Sequence[Union['GetDomainsDomainArgs', 'GetDom
         id=pulumi.get(__ret__, 'id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_domains_output(domains: Optional[pulumi.Input[Optional[Sequence[Union['GetDomainsDomainArgs', 'GetDomainsDomainArgsDict']]]]] = None,
-                       filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]]]] = None,
+def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]]]] = None,
                        order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
@@ -214,7 +211,6 @@ def get_domains_output(domains: Optional[pulumi.Input[Optional[Sequence[Union['G
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
-    __args__['domains'] = domains
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by

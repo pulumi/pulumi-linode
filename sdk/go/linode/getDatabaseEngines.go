@@ -126,7 +126,6 @@ func GetDatabaseEngines(ctx *pulumi.Context, args *GetDatabaseEnginesArgs, opts 
 
 // A collection of arguments for invoking getDatabaseEngines.
 type GetDatabaseEnginesArgs struct {
-	Engines []GetDatabaseEnginesEngine `pulumi:"engines"`
 	Filters []GetDatabaseEnginesFilter `pulumi:"filters"`
 	// If true, only the latest engine version will be returned.
 	//
@@ -160,7 +159,6 @@ func GetDatabaseEnginesOutput(ctx *pulumi.Context, args GetDatabaseEnginesOutput
 
 // A collection of arguments for invoking getDatabaseEngines.
 type GetDatabaseEnginesOutputArgs struct {
-	Engines GetDatabaseEnginesEngineArrayInput `pulumi:"engines"`
 	Filters GetDatabaseEnginesFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest engine version will be returned.
 	//

@@ -18,12 +18,6 @@ namespace Pulumi.Linode.Inputs
         [Input("range", required: true)]
         public Input<string> Range { get; set; } = null!;
 
-        /// <summary>
-        /// The public IPv6 address that the range is routed to.
-        /// </summary>
-        [Input("routeTarget")]
-        public Input<string>? RouteTarget { get; set; }
-
         public InterfacePublicIpv6RangeGetArgs()
         {
         }

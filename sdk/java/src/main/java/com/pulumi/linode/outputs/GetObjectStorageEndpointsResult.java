@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetObjectStorageEndpointsResult {
-    private @Nullable List<GetObjectStorageEndpointsEndpoint> endpoints;
+    private List<GetObjectStorageEndpointsEndpoint> endpoints;
     private @Nullable List<GetObjectStorageEndpointsFilter> filters;
     private String id;
     private @Nullable String order;
@@ -23,7 +23,7 @@ public final class GetObjectStorageEndpointsResult {
 
     private GetObjectStorageEndpointsResult() {}
     public List<GetObjectStorageEndpointsEndpoint> endpoints() {
-        return this.endpoints == null ? List.of() : this.endpoints;
+        return this.endpoints;
     }
     public List<GetObjectStorageEndpointsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
@@ -47,7 +47,7 @@ public final class GetObjectStorageEndpointsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetObjectStorageEndpointsEndpoint> endpoints;
+        private List<GetObjectStorageEndpointsEndpoint> endpoints;
         private @Nullable List<GetObjectStorageEndpointsFilter> filters;
         private String id;
         private @Nullable String order;
@@ -63,8 +63,10 @@ public final class GetObjectStorageEndpointsResult {
         }
 
         @CustomType.Setter
-        public Builder endpoints(@Nullable List<GetObjectStorageEndpointsEndpoint> endpoints) {
-
+        public Builder endpoints(List<GetObjectStorageEndpointsEndpoint> endpoints) {
+            if (endpoints == null) {
+              throw new MissingRequiredPropertyException("GetObjectStorageEndpointsResult", "endpoints");
+            }
             this.endpoints = endpoints;
             return this;
         }

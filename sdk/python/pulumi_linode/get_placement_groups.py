@@ -67,7 +67,7 @@ class GetPlacementGroupsResult:
 
     @_builtins.property
     @pulumi.getter(name="placementGroups")
-    def placement_groups(self) -> Optional[Sequence['outputs.GetPlacementGroupsPlacementGroupResult']]:
+    def placement_groups(self) -> Sequence['outputs.GetPlacementGroupsPlacementGroupResult']:
         return pulumi.get(self, "placement_groups")
 
 
@@ -87,7 +87,6 @@ class AwaitableGetPlacementGroupsResult(GetPlacementGroupsResult):
 def get_placement_groups(filters: Optional[Sequence[Union['GetPlacementGroupsFilterArgs', 'GetPlacementGroupsFilterArgsDict']]] = None,
                          order: Optional[_builtins.str] = None,
                          order_by: Optional[_builtins.str] = None,
-                         placement_groups: Optional[Sequence[Union['GetPlacementGroupsPlacementGroupArgs', 'GetPlacementGroupsPlacementGroupArgsDict']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlacementGroupsResult:
     """
     Provides information about a list of Linode Placement Groups that match a set of filters.
@@ -128,7 +127,6 @@ def get_placement_groups(filters: Optional[Sequence[Union['GetPlacementGroupsFil
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    __args__['placementGroups'] = placement_groups
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getPlacementGroups:getPlacementGroups', __args__, opts=opts, typ=GetPlacementGroupsResult).value
 
@@ -141,7 +139,6 @@ def get_placement_groups(filters: Optional[Sequence[Union['GetPlacementGroupsFil
 def get_placement_groups_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetPlacementGroupsFilterArgs', 'GetPlacementGroupsFilterArgsDict']]]]] = None,
                                 order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                placement_groups: Optional[pulumi.Input[Optional[Sequence[Union['GetPlacementGroupsPlacementGroupArgs', 'GetPlacementGroupsPlacementGroupArgsDict']]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPlacementGroupsResult]:
     """
     Provides information about a list of Linode Placement Groups that match a set of filters.
@@ -182,7 +179,6 @@ def get_placement_groups_output(filters: Optional[pulumi.Input[Optional[Sequence
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
-    __args__['placementGroups'] = placement_groups
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getPlacementGroups:getPlacementGroups', __args__, opts=opts, typ=GetPlacementGroupsResult)
     return __ret__.apply(lambda __response__: GetPlacementGroupsResult(

@@ -22,7 +22,7 @@ public final class GetNodebalancerConfigsResult {
      * 
      */
     private String id;
-    private @Nullable List<GetNodebalancerConfigsNodebalancerConfig> nodebalancerConfigs;
+    private List<GetNodebalancerConfigsNodebalancerConfig> nodebalancerConfigs;
     /**
      * @return The ID of the NodeBalancer that contains the config.
      * 
@@ -43,7 +43,7 @@ public final class GetNodebalancerConfigsResult {
         return this.id;
     }
     public List<GetNodebalancerConfigsNodebalancerConfig> nodebalancerConfigs() {
-        return this.nodebalancerConfigs == null ? List.of() : this.nodebalancerConfigs;
+        return this.nodebalancerConfigs;
     }
     /**
      * @return The ID of the NodeBalancer that contains the config.
@@ -70,7 +70,7 @@ public final class GetNodebalancerConfigsResult {
     public static final class Builder {
         private @Nullable List<GetNodebalancerConfigsFilter> filters;
         private String id;
-        private @Nullable List<GetNodebalancerConfigsNodebalancerConfig> nodebalancerConfigs;
+        private List<GetNodebalancerConfigsNodebalancerConfig> nodebalancerConfigs;
         private Integer nodebalancerId;
         private @Nullable String order;
         private @Nullable String orderBy;
@@ -103,8 +103,10 @@ public final class GetNodebalancerConfigsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder nodebalancerConfigs(@Nullable List<GetNodebalancerConfigsNodebalancerConfig> nodebalancerConfigs) {
-
+        public Builder nodebalancerConfigs(List<GetNodebalancerConfigsNodebalancerConfig> nodebalancerConfigs) {
+            if (nodebalancerConfigs == null) {
+              throw new MissingRequiredPropertyException("GetNodebalancerConfigsResult", "nodebalancerConfigs");
+            }
             this.nodebalancerConfigs = nodebalancerConfigs;
             return this;
         }

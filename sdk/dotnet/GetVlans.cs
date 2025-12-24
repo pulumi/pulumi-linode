@@ -233,14 +233,6 @@ namespace Pulumi.Linode
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        [Input("vlans")]
-        private List<Inputs.GetVlansVlanArgs>? _vlans;
-        public List<Inputs.GetVlansVlanArgs> Vlans
-        {
-            get => _vlans ?? (_vlans = new List<Inputs.GetVlansVlanArgs>());
-            set => _vlans = value;
-        }
-
         public GetVlansArgs()
         {
         }
@@ -268,14 +260,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
-
-        [Input("vlans")]
-        private InputList<Inputs.GetVlansVlanInputArgs>? _vlans;
-        public InputList<Inputs.GetVlansVlanInputArgs> Vlans
-        {
-            get => _vlans ?? (_vlans = new InputList<Inputs.GetVlansVlanInputArgs>());
-            set => _vlans = value;
-        }
 
         public GetVlansInvokeArgs()
         {

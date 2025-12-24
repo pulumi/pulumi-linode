@@ -162,14 +162,6 @@ namespace Pulumi.Linode
 
     public sealed class GetAccountAvailabilitiesArgs : global::Pulumi.InvokeArgs
     {
-        [Input("availabilities")]
-        private List<Inputs.GetAccountAvailabilitiesAvailabilityArgs>? _availabilities;
-        public List<Inputs.GetAccountAvailabilitiesAvailabilityArgs> Availabilities
-        {
-            get => _availabilities ?? (_availabilities = new List<Inputs.GetAccountAvailabilitiesAvailabilityArgs>());
-            set => _availabilities = value;
-        }
-
         [Input("filters")]
         private List<Inputs.GetAccountAvailabilitiesFilterArgs>? _filters;
         public List<Inputs.GetAccountAvailabilitiesFilterArgs> Filters
@@ -186,14 +178,6 @@ namespace Pulumi.Linode
 
     public sealed class GetAccountAvailabilitiesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("availabilities")]
-        private InputList<Inputs.GetAccountAvailabilitiesAvailabilityInputArgs>? _availabilities;
-        public InputList<Inputs.GetAccountAvailabilitiesAvailabilityInputArgs> Availabilities
-        {
-            get => _availabilities ?? (_availabilities = new InputList<Inputs.GetAccountAvailabilitiesAvailabilityInputArgs>());
-            set => _availabilities = value;
-        }
-
         [Input("filters")]
         private InputList<Inputs.GetAccountAvailabilitiesFilterInputArgs>? _filters;
         public InputList<Inputs.GetAccountAvailabilitiesFilterInputArgs> Filters

@@ -59,7 +59,6 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDomains:getDomains", {
-        "domains": args.domains,
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
@@ -70,7 +69,6 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getDomains.
  */
 export interface GetDomainsArgs {
-    domains?: inputs.GetDomainsDomain[];
     filters?: inputs.GetDomainsFilter[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -86,7 +84,7 @@ export interface GetDomainsArgs {
  * A collection of values returned by getDomains.
  */
 export interface GetDomainsResult {
-    readonly domains?: outputs.GetDomainsDomain[];
+    readonly domains: outputs.GetDomainsDomain[];
     readonly filters?: outputs.GetDomainsFilter[];
     /**
      * The unique ID of this Domain.
@@ -148,7 +146,6 @@ export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.Invo
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDomains:getDomains", {
-        "domains": args.domains,
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
@@ -159,7 +156,6 @@ export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getDomains.
  */
 export interface GetDomainsOutputArgs {
-    domains?: pulumi.Input<pulumi.Input<inputs.GetDomainsDomainArgs>[]>;
     filters?: pulumi.Input<pulumi.Input<inputs.GetDomainsFilterArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)

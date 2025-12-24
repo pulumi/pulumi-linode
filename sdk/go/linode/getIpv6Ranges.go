@@ -72,7 +72,6 @@ func GetIpv6Ranges(ctx *pulumi.Context, args *GetIpv6RangesArgs, opts ...pulumi.
 // A collection of arguments for invoking getIpv6Ranges.
 type GetIpv6RangesArgs struct {
 	Filters []GetIpv6RangesFilter `pulumi:"filters"`
-	Ranges  []GetIpv6RangesRange  `pulumi:"ranges"`
 }
 
 // A collection of values returned by getIpv6Ranges.
@@ -94,7 +93,6 @@ func GetIpv6RangesOutput(ctx *pulumi.Context, args GetIpv6RangesOutputArgs, opts
 // A collection of arguments for invoking getIpv6Ranges.
 type GetIpv6RangesOutputArgs struct {
 	Filters GetIpv6RangesFilterArrayInput `pulumi:"filters"`
-	Ranges  GetIpv6RangesRangeArrayInput  `pulumi:"ranges"`
 }
 
 func (GetIpv6RangesOutputArgs) ElementType() reflect.Type {

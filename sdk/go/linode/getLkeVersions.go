@@ -85,8 +85,7 @@ func GetLkeVersions(ctx *pulumi.Context, args *GetLkeVersionsArgs, opts ...pulum
 // A collection of arguments for invoking getLkeVersions.
 type GetLkeVersionsArgs struct {
 	// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
-	Tier     *string                 `pulumi:"tier"`
-	Versions []GetLkeVersionsVersion `pulumi:"versions"`
+	Tier *string `pulumi:"tier"`
 }
 
 // A collection of values returned by getLkeVersions.
@@ -110,8 +109,7 @@ func GetLkeVersionsOutput(ctx *pulumi.Context, args GetLkeVersionsOutputArgs, op
 // A collection of arguments for invoking getLkeVersions.
 type GetLkeVersionsOutputArgs struct {
 	// The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
-	Tier     pulumi.StringPtrInput           `pulumi:"tier"`
-	Versions GetLkeVersionsVersionArrayInput `pulumi:"versions"`
+	Tier pulumi.StringPtrInput `pulumi:"tier"`
 }
 
 func (GetLkeVersionsOutputArgs) ElementType() reflect.Type {

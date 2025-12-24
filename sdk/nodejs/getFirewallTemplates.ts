@@ -46,7 +46,6 @@ export function getFirewallTemplates(args?: GetFirewallTemplatesArgs, opts?: pul
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getFirewallTemplates:getFirewallTemplates", {
         "filters": args.filters,
-        "firewallTemplates": args.firewallTemplates,
     }, opts);
 }
 
@@ -55,7 +54,6 @@ export function getFirewallTemplates(args?: GetFirewallTemplatesArgs, opts?: pul
  */
 export interface GetFirewallTemplatesArgs {
     filters?: inputs.GetFirewallTemplatesFilter[];
-    firewallTemplates?: inputs.GetFirewallTemplatesFirewallTemplate[];
 }
 
 /**
@@ -63,7 +61,7 @@ export interface GetFirewallTemplatesArgs {
  */
 export interface GetFirewallTemplatesResult {
     readonly filters?: outputs.GetFirewallTemplatesFilter[];
-    readonly firewallTemplates?: outputs.GetFirewallTemplatesFirewallTemplate[];
+    readonly firewallTemplates: outputs.GetFirewallTemplatesFirewallTemplate[];
     readonly id: string;
 }
 /**
@@ -106,7 +104,6 @@ export function getFirewallTemplatesOutput(args?: GetFirewallTemplatesOutputArgs
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getFirewallTemplates:getFirewallTemplates", {
         "filters": args.filters,
-        "firewallTemplates": args.firewallTemplates,
     }, opts);
 }
 
@@ -115,5 +112,4 @@ export function getFirewallTemplatesOutput(args?: GetFirewallTemplatesOutputArgs
  */
 export interface GetFirewallTemplatesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetFirewallTemplatesFilterArgs>[]>;
-    firewallTemplates?: pulumi.Input<pulumi.Input<inputs.GetFirewallTemplatesFirewallTemplateArgs>[]>;
 }

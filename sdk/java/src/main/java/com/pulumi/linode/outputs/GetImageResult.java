@@ -5,13 +5,13 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetImageImageSharing;
 import com.pulumi.linode.outputs.GetImageReplication;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetImageResult {
@@ -39,10 +39,20 @@ public final class GetImageResult {
     private String expiry;
     private String id;
     /**
+     * @return Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    private GetImageImageSharing imageSharing;
+    /**
      * @return True if the Image is public.
      * 
      */
     private Boolean isPublic;
+    /**
+     * @return True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    private Boolean isShared;
     /**
      * @return A short description of the Image.
      * 
@@ -52,7 +62,7 @@ public final class GetImageResult {
      * @return A list of image replication regions and corresponding status.
      * 
      */
-    private @Nullable List<GetImageReplication> replications;
+    private List<GetImageReplication> replications;
     /**
      * @return The minimum size this Image needs to deploy. Size is in MB. example: 2500
      * 
@@ -123,11 +133,25 @@ public final class GetImageResult {
         return this.id;
     }
     /**
+     * @return Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public GetImageImageSharing imageSharing() {
+        return this.imageSharing;
+    }
+    /**
      * @return True if the Image is public.
      * 
      */
     public Boolean isPublic() {
         return this.isPublic;
+    }
+    /**
+     * @return True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public Boolean isShared() {
+        return this.isShared;
     }
     /**
      * @return A short description of the Image.
@@ -141,7 +165,7 @@ public final class GetImageResult {
      * 
      */
     public List<GetImageReplication> replications() {
-        return this.replications == null ? List.of() : this.replications;
+        return this.replications;
     }
     /**
      * @return The minimum size this Image needs to deploy. Size is in MB. example: 2500
@@ -202,9 +226,11 @@ public final class GetImageResult {
         private String description;
         private String expiry;
         private String id;
+        private GetImageImageSharing imageSharing;
         private Boolean isPublic;
+        private Boolean isShared;
         private String label;
-        private @Nullable List<GetImageReplication> replications;
+        private List<GetImageReplication> replications;
         private Integer size;
         private String status;
         private List<String> tags;
@@ -221,7 +247,9 @@ public final class GetImageResult {
     	      this.description = defaults.description;
     	      this.expiry = defaults.expiry;
     	      this.id = defaults.id;
+    	      this.imageSharing = defaults.imageSharing;
     	      this.isPublic = defaults.isPublic;
+    	      this.isShared = defaults.isShared;
     	      this.label = defaults.label;
     	      this.replications = defaults.replications;
     	      this.size = defaults.size;
@@ -292,11 +320,27 @@ public final class GetImageResult {
             return this;
         }
         @CustomType.Setter
+        public Builder imageSharing(GetImageImageSharing imageSharing) {
+            if (imageSharing == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "imageSharing");
+            }
+            this.imageSharing = imageSharing;
+            return this;
+        }
+        @CustomType.Setter
         public Builder isPublic(Boolean isPublic) {
             if (isPublic == null) {
               throw new MissingRequiredPropertyException("GetImageResult", "isPublic");
             }
             this.isPublic = isPublic;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isShared(Boolean isShared) {
+            if (isShared == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "isShared");
+            }
+            this.isShared = isShared;
             return this;
         }
         @CustomType.Setter
@@ -308,8 +352,10 @@ public final class GetImageResult {
             return this;
         }
         @CustomType.Setter
-        public Builder replications(@Nullable List<GetImageReplication> replications) {
-
+        public Builder replications(List<GetImageReplication> replications) {
+            if (replications == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "replications");
+            }
             this.replications = replications;
             return this;
         }
@@ -376,7 +422,9 @@ public final class GetImageResult {
             _resultValue.description = description;
             _resultValue.expiry = expiry;
             _resultValue.id = id;
+            _resultValue.imageSharing = imageSharing;
             _resultValue.isPublic = isPublic;
+            _resultValue.isShared = isShared;
             _resultValue.label = label;
             _resultValue.replications = replications;
             _resultValue.size = size;

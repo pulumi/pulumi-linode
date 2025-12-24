@@ -47,7 +47,7 @@ class GetDatabasesResult:
 
     @_builtins.property
     @pulumi.getter
-    def databases(self) -> Optional[Sequence['outputs.GetDatabasesDatabaseResult']]:
+    def databases(self) -> Sequence['outputs.GetDatabasesDatabaseResult']:
         return pulumi.get(self, "databases")
 
     @_builtins.property
@@ -87,8 +87,7 @@ class AwaitableGetDatabasesResult(GetDatabasesResult):
             order_by=self.order_by)
 
 
-def get_databases(databases: Optional[Sequence[Union['GetDatabasesDatabaseArgs', 'GetDatabasesDatabaseArgsDict']]] = None,
-                  filters: Optional[Sequence[Union['GetDatabasesFilterArgs', 'GetDatabasesFilterArgsDict']]] = None,
+def get_databases(filters: Optional[Sequence[Union['GetDatabasesFilterArgs', 'GetDatabasesFilterArgsDict']]] = None,
                   order: Optional[_builtins.str] = None,
                   order_by: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasesResult:
@@ -136,7 +135,6 @@ def get_databases(databases: Optional[Sequence[Union['GetDatabasesDatabaseArgs',
     :param _builtins.str order_by: The attribute to order the results by. (`version`)
     """
     __args__ = dict()
-    __args__['databases'] = databases
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by
@@ -149,8 +147,7 @@ def get_databases(databases: Optional[Sequence[Union['GetDatabasesDatabaseArgs',
         id=pulumi.get(__ret__, 'id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabasesDatabaseArgs', 'GetDatabasesDatabaseArgsDict']]]]] = None,
-                         filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabasesFilterArgs', 'GetDatabasesFilterArgsDict']]]]] = None,
+def get_databases_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabasesFilterArgs', 'GetDatabasesFilterArgsDict']]]]] = None,
                          order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabasesResult]:
@@ -198,7 +195,6 @@ def get_databases_output(databases: Optional[pulumi.Input[Optional[Sequence[Unio
     :param _builtins.str order_by: The attribute to order the results by. (`version`)
     """
     __args__ = dict()
-    __args__['databases'] = databases
     __args__['filters'] = filters
     __args__['order'] = order
     __args__['orderBy'] = order_by

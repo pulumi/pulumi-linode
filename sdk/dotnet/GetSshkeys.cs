@@ -200,14 +200,6 @@ namespace Pulumi.Linode
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        [Input("sshkeys")]
-        private List<Inputs.GetSshkeysSshkeyArgs>? _sshkeys;
-        public List<Inputs.GetSshkeysSshkeyArgs> Sshkeys
-        {
-            get => _sshkeys ?? (_sshkeys = new List<Inputs.GetSshkeysSshkeyArgs>());
-            set => _sshkeys = value;
-        }
-
         public GetSshkeysArgs()
         {
         }
@@ -235,14 +227,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
-
-        [Input("sshkeys")]
-        private InputList<Inputs.GetSshkeysSshkeyInputArgs>? _sshkeys;
-        public InputList<Inputs.GetSshkeysSshkeyInputArgs> Sshkeys
-        {
-            get => _sshkeys ?? (_sshkeys = new InputList<Inputs.GetSshkeysSshkeyInputArgs>());
-            set => _sshkeys = value;
-        }
 
         public GetSshkeysInvokeArgs()
         {

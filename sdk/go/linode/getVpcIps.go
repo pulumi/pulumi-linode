@@ -131,8 +131,7 @@ type GetVpcIpsArgs struct {
 	// The id of the parent VPC for the list of VPC IPs.
 	//
 	// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
-	VpcId  *int             `pulumi:"vpcId"`
-	VpcIps []GetVpcIpsVpcIp `pulumi:"vpcIps"`
+	VpcId *int `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getVpcIps.
@@ -161,8 +160,7 @@ type GetVpcIpsOutputArgs struct {
 	// The id of the parent VPC for the list of VPC IPs.
 	//
 	// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
-	VpcId  pulumi.IntPtrInput       `pulumi:"vpcId"`
-	VpcIps GetVpcIpsVpcIpArrayInput `pulumi:"vpcIps"`
+	VpcId pulumi.IntPtrInput `pulumi:"vpcId"`
 }
 
 func (GetVpcIpsOutputArgs) ElementType() reflect.Type {

@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetObjectStorageQuotasFilter;
-import com.pulumi.linode.inputs.GetObjectStorageQuotasQuota;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,18 +22,10 @@ public final class GetObjectStorageQuotasPlainArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.filters);
     }
 
-    @Import(name="quotas")
-    private @Nullable List<GetObjectStorageQuotasQuota> quotas;
-
-    public Optional<List<GetObjectStorageQuotasQuota>> quotas() {
-        return Optional.ofNullable(this.quotas);
-    }
-
     private GetObjectStorageQuotasPlainArgs() {}
 
     private GetObjectStorageQuotasPlainArgs(GetObjectStorageQuotasPlainArgs $) {
         this.filters = $.filters;
-        this.quotas = $.quotas;
     }
 
     public static Builder builder() {
@@ -62,15 +53,6 @@ public final class GetObjectStorageQuotasPlainArgs extends com.pulumi.resources.
 
         public Builder filters(GetObjectStorageQuotasFilter... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder quotas(@Nullable List<GetObjectStorageQuotasQuota> quotas) {
-            $.quotas = quotas;
-            return this;
-        }
-
-        public Builder quotas(GetObjectStorageQuotasQuota... quotas) {
-            return quotas(List.of(quotas));
         }
 
         public GetObjectStorageQuotasPlainArgs build() {

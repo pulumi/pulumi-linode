@@ -13,7 +13,6 @@ export function getNbTypes(args?: GetNbTypesArgs, opts?: pulumi.InvokeOptions): 
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "types": args.types,
     }, opts);
 }
 
@@ -24,7 +23,6 @@ export interface GetNbTypesArgs {
     filters?: inputs.GetNbTypesFilter[];
     order?: string;
     orderBy?: string;
-    types?: inputs.GetNbTypesType[];
 }
 
 /**
@@ -35,7 +33,7 @@ export interface GetNbTypesResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly types?: outputs.GetNbTypesType[];
+    readonly types: outputs.GetNbTypesType[];
 }
 export function getNbTypesOutput(args?: GetNbTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNbTypesResult> {
     args = args || {};
@@ -44,7 +42,6 @@ export function getNbTypesOutput(args?: GetNbTypesOutputArgs, opts?: pulumi.Invo
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "types": args.types,
     }, opts);
 }
 
@@ -55,5 +52,4 @@ export interface GetNbTypesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetNbTypesFilterArgs>[]>;
     order?: pulumi.Input<string>;
     orderBy?: pulumi.Input<string>;
-    types?: pulumi.Input<pulumi.Input<inputs.GetNbTypesTypeArgs>[]>;
 }

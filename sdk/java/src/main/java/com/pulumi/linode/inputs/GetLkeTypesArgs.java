@@ -6,7 +6,6 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetLkeTypesFilterArgs;
-import com.pulumi.linode.inputs.GetLkeTypesTypeArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -55,20 +54,12 @@ public final class GetLkeTypesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.orderBy);
     }
 
-    @Import(name="types")
-    private @Nullable Output<List<GetLkeTypesTypeArgs>> types;
-
-    public Optional<Output<List<GetLkeTypesTypeArgs>>> types() {
-        return Optional.ofNullable(this.types);
-    }
-
     private GetLkeTypesArgs() {}
 
     private GetLkeTypesArgs(GetLkeTypesArgs $) {
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
-        this.types = $.types;
     }
 
     public static Builder builder() {
@@ -142,19 +133,6 @@ public final class GetLkeTypesArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder orderBy(String orderBy) {
             return orderBy(Output.of(orderBy));
-        }
-
-        public Builder types(@Nullable Output<List<GetLkeTypesTypeArgs>> types) {
-            $.types = types;
-            return this;
-        }
-
-        public Builder types(List<GetLkeTypesTypeArgs> types) {
-            return types(Output.of(types));
-        }
-
-        public Builder types(GetLkeTypesTypeArgs... types) {
-            return types(List.of(types));
         }
 
         public GetLkeTypesArgs build() {

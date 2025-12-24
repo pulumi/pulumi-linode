@@ -70,7 +70,7 @@ class GetVpcIpsResult:
 
     @_builtins.property
     @pulumi.getter(name="vpcIps")
-    def vpc_ips(self) -> Optional[Sequence['outputs.GetVpcIpsVpcIpResult']]:
+    def vpc_ips(self) -> Sequence['outputs.GetVpcIpsVpcIpResult']:
         return pulumi.get(self, "vpc_ips")
 
 
@@ -90,7 +90,6 @@ class AwaitableGetVpcIpsResult(GetVpcIpsResult):
 def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcIpsFilterArgsDict']]] = None,
                 ipv6: Optional[_builtins.bool] = None,
                 vpc_id: Optional[_builtins.int] = None,
-                vpc_ips: Optional[Sequence[Union['GetVpcIpsVpcIpArgs', 'GetVpcIpsVpcIpArgsDict']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcIpsResult:
     """
     Provides information about a list of Linode VPC IPs that match a set of filters.
@@ -151,7 +150,6 @@ def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcI
     __args__['filters'] = filters
     __args__['ipv6'] = ipv6
     __args__['vpcId'] = vpc_id
-    __args__['vpcIps'] = vpc_ips
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getVpcIps:getVpcIps', __args__, opts=opts, typ=GetVpcIpsResult).value
 
@@ -164,7 +162,6 @@ def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcI
 def get_vpc_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcIpsFilterArgsDict']]]]] = None,
                        ipv6: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                        vpc_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                       vpc_ips: Optional[pulumi.Input[Optional[Sequence[Union['GetVpcIpsVpcIpArgs', 'GetVpcIpsVpcIpArgsDict']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcIpsResult]:
     """
     Provides information about a list of Linode VPC IPs that match a set of filters.
@@ -225,7 +222,6 @@ def get_vpc_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     __args__['filters'] = filters
     __args__['ipv6'] = ipv6
     __args__['vpcId'] = vpc_id
-    __args__['vpcIps'] = vpc_ips
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVpcIps:getVpcIps', __args__, opts=opts, typ=GetVpcIpsResult)
     return __ret__.apply(lambda __response__: GetVpcIpsResult(

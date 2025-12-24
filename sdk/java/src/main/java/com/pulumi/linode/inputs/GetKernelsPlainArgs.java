@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetKernelsFilter;
-import com.pulumi.linode.inputs.GetKernelsKernel;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,13 +21,6 @@ public final class GetKernelsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<List<GetKernelsFilter>> filters() {
         return Optional.ofNullable(this.filters);
-    }
-
-    @Import(name="kernels")
-    private @Nullable List<GetKernelsKernel> kernels;
-
-    public Optional<List<GetKernelsKernel>> kernels() {
-        return Optional.ofNullable(this.kernels);
     }
 
     /**
@@ -65,7 +57,6 @@ public final class GetKernelsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetKernelsPlainArgs(GetKernelsPlainArgs $) {
         this.filters = $.filters;
-        this.kernels = $.kernels;
         this.order = $.order;
         this.orderBy = $.orderBy;
     }
@@ -95,15 +86,6 @@ public final class GetKernelsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder filters(GetKernelsFilter... filters) {
             return filters(List.of(filters));
-        }
-
-        public Builder kernels(@Nullable List<GetKernelsKernel> kernels) {
-            $.kernels = kernels;
-            return this;
-        }
-
-        public Builder kernels(GetKernelsKernel... kernels) {
-            return kernels(List.of(kernels));
         }
 
         /**

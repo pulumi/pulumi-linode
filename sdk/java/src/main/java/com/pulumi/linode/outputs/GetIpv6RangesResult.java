@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 public final class GetIpv6RangesResult {
     private @Nullable List<GetIpv6RangesFilter> filters;
     private String id;
-    private @Nullable List<GetIpv6RangesRange> ranges;
+    private List<GetIpv6RangesRange> ranges;
 
     private GetIpv6RangesResult() {}
     public List<GetIpv6RangesFilter> filters() {
@@ -26,7 +26,7 @@ public final class GetIpv6RangesResult {
         return this.id;
     }
     public List<GetIpv6RangesRange> ranges() {
-        return this.ranges == null ? List.of() : this.ranges;
+        return this.ranges;
     }
 
     public static Builder builder() {
@@ -40,7 +40,7 @@ public final class GetIpv6RangesResult {
     public static final class Builder {
         private @Nullable List<GetIpv6RangesFilter> filters;
         private String id;
-        private @Nullable List<GetIpv6RangesRange> ranges;
+        private List<GetIpv6RangesRange> ranges;
         public Builder() {}
         public Builder(GetIpv6RangesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -67,8 +67,10 @@ public final class GetIpv6RangesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder ranges(@Nullable List<GetIpv6RangesRange> ranges) {
-
+        public Builder ranges(List<GetIpv6RangesRange> ranges) {
+            if (ranges == null) {
+              throw new MissingRequiredPropertyException("GetIpv6RangesResult", "ranges");
+            }
             this.ranges = ranges;
             return this;
         }

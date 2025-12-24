@@ -29,7 +29,6 @@ export function getMaintenancePolicies(args?: GetMaintenancePoliciesArgs, opts?:
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getMaintenancePolicies:getMaintenancePolicies", {
         "filters": args.filters,
-        "maintenancePolicies": args.maintenancePolicies,
     }, opts);
 }
 
@@ -38,7 +37,6 @@ export function getMaintenancePolicies(args?: GetMaintenancePoliciesArgs, opts?:
  */
 export interface GetMaintenancePoliciesArgs {
     filters?: inputs.GetMaintenancePoliciesFilter[];
-    maintenancePolicies?: inputs.GetMaintenancePoliciesMaintenancePolicy[];
 }
 
 /**
@@ -47,7 +45,7 @@ export interface GetMaintenancePoliciesArgs {
 export interface GetMaintenancePoliciesResult {
     readonly filters?: outputs.GetMaintenancePoliciesFilter[];
     readonly id: string;
-    readonly maintenancePolicies?: outputs.GetMaintenancePoliciesMaintenancePolicy[];
+    readonly maintenancePolicies: outputs.GetMaintenancePoliciesMaintenancePolicy[];
 }
 /**
  * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
@@ -72,7 +70,6 @@ export function getMaintenancePoliciesOutput(args?: GetMaintenancePoliciesOutput
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getMaintenancePolicies:getMaintenancePolicies", {
         "filters": args.filters,
-        "maintenancePolicies": args.maintenancePolicies,
     }, opts);
 }
 
@@ -81,5 +78,4 @@ export function getMaintenancePoliciesOutput(args?: GetMaintenancePoliciesOutput
  */
 export interface GetMaintenancePoliciesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetMaintenancePoliciesFilterArgs>[]>;
-    maintenancePolicies?: pulumi.Input<pulumi.Input<inputs.GetMaintenancePoliciesMaintenancePolicyArgs>[]>;
 }

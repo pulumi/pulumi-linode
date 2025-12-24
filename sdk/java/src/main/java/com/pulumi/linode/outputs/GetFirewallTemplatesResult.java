@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFirewallTemplatesResult {
     private @Nullable List<GetFirewallTemplatesFilter> filters;
-    private @Nullable List<GetFirewallTemplatesFirewallTemplate> firewallTemplates;
+    private List<GetFirewallTemplatesFirewallTemplate> firewallTemplates;
     private String id;
 
     private GetFirewallTemplatesResult() {}
@@ -23,7 +23,7 @@ public final class GetFirewallTemplatesResult {
         return this.filters == null ? List.of() : this.filters;
     }
     public List<GetFirewallTemplatesFirewallTemplate> firewallTemplates() {
-        return this.firewallTemplates == null ? List.of() : this.firewallTemplates;
+        return this.firewallTemplates;
     }
     public String id() {
         return this.id;
@@ -39,7 +39,7 @@ public final class GetFirewallTemplatesResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetFirewallTemplatesFilter> filters;
-        private @Nullable List<GetFirewallTemplatesFirewallTemplate> firewallTemplates;
+        private List<GetFirewallTemplatesFirewallTemplate> firewallTemplates;
         private String id;
         public Builder() {}
         public Builder(GetFirewallTemplatesResult defaults) {
@@ -59,8 +59,10 @@ public final class GetFirewallTemplatesResult {
             return filters(List.of(filters));
         }
         @CustomType.Setter
-        public Builder firewallTemplates(@Nullable List<GetFirewallTemplatesFirewallTemplate> firewallTemplates) {
-
+        public Builder firewallTemplates(List<GetFirewallTemplatesFirewallTemplate> firewallTemplates) {
+            if (firewallTemplates == null) {
+              throw new MissingRequiredPropertyException("GetFirewallTemplatesResult", "firewallTemplates");
+            }
             this.firewallTemplates = firewallTemplates;
             return this;
         }

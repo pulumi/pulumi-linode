@@ -51,7 +51,6 @@ export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOption
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getDatabases:getDatabases", {
-        "databases": args.databases,
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
@@ -62,7 +61,6 @@ export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getDatabases.
  */
 export interface GetDatabasesArgs {
-    databases?: inputs.GetDatabasesDatabase[];
     filters?: inputs.GetDatabasesFilter[];
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -78,7 +76,7 @@ export interface GetDatabasesArgs {
  * A collection of values returned by getDatabases.
  */
 export interface GetDatabasesResult {
-    readonly databases?: outputs.GetDatabasesDatabase[];
+    readonly databases: outputs.GetDatabasesDatabase[];
     readonly filters?: outputs.GetDatabasesFilter[];
     /**
      * The ID of the Managed Database.
@@ -132,7 +130,6 @@ export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getDatabases:getDatabases", {
-        "databases": args.databases,
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
@@ -143,7 +140,6 @@ export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getDatabases.
  */
 export interface GetDatabasesOutputArgs {
-    databases?: pulumi.Input<pulumi.Input<inputs.GetDatabasesDatabaseArgs>[]>;
     filters?: pulumi.Input<pulumi.Input<inputs.GetDatabasesFilterArgs>[]>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)

@@ -49,7 +49,6 @@ export function getSshkeys(args?: GetSshkeysArgs, opts?: pulumi.InvokeOptions): 
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "sshkeys": args.sshkeys,
     }, opts);
 }
 
@@ -66,7 +65,6 @@ export interface GetSshkeysArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: string;
-    sshkeys?: inputs.GetSshkeysSshkey[];
 }
 
 /**
@@ -80,7 +78,7 @@ export interface GetSshkeysResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
-    readonly sshkeys?: outputs.GetSshkeysSshkey[];
+    readonly sshkeys: outputs.GetSshkeysSshkey[];
 }
 /**
  * `linode.SshKey` provides access to a filtered list of SSH Keys in the Profile of the User identified by the access token.
@@ -125,7 +123,6 @@ export function getSshkeysOutput(args?: GetSshkeysOutputArgs, opts?: pulumi.Invo
         "filters": args.filters,
         "order": args.order,
         "orderBy": args.orderBy,
-        "sshkeys": args.sshkeys,
     }, opts);
 }
 
@@ -142,5 +139,4 @@ export interface GetSshkeysOutputArgs {
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
     orderBy?: pulumi.Input<string>;
-    sshkeys?: pulumi.Input<pulumi.Input<inputs.GetSshkeysSshkeyArgs>[]>;
 }

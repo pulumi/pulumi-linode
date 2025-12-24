@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetLkeClusterResult',
@@ -102,7 +101,7 @@ class GetLkeClusterResult:
 
     @_builtins.property
     @pulumi.getter(name="controlPlanes")
-    def control_planes(self) -> Optional[Sequence['outputs.GetLkeClusterControlPlaneResult']]:
+    def control_planes(self) -> Sequence['outputs.GetLkeClusterControlPlaneResult']:
         """
         The settings for the Kubernetes Control Plane.
         """
@@ -158,7 +157,7 @@ class GetLkeClusterResult:
 
     @_builtins.property
     @pulumi.getter
-    def pools(self) -> Optional[Sequence['outputs.GetLkeClusterPoolResult']]:
+    def pools(self) -> Sequence['outputs.GetLkeClusterPoolResult']:
         """
         Node pools associated with this cluster.
         """
@@ -208,7 +207,7 @@ class GetLkeClusterResult:
     @pulumi.getter
     def tier(self) -> _builtins.str:
         """
-        The desired Kubernetes tier. (**Note: v4beta only and may not currently be available to all users.**)
+        The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "tier")
 
@@ -255,9 +254,7 @@ class AwaitableGetLkeClusterResult(GetLkeClusterResult):
             vpc_id=self.vpc_id)
 
 
-def get_lke_cluster(control_planes: Optional[Sequence[Union['GetLkeClusterControlPlaneArgs', 'GetLkeClusterControlPlaneArgsDict']]] = None,
-                    id: Optional[_builtins.int] = None,
-                    pools: Optional[Sequence[Union['GetLkeClusterPoolArgs', 'GetLkeClusterPoolArgsDict']]] = None,
+def get_lke_cluster(id: Optional[_builtins.int] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeClusterResult:
     """
     Provides details about an LKE Cluster.
@@ -273,14 +270,10 @@ def get_lke_cluster(control_planes: Optional[Sequence[Union['GetLkeClusterContro
     ```
 
 
-    :param Sequence[Union['GetLkeClusterControlPlaneArgs', 'GetLkeClusterControlPlaneArgsDict']] control_planes: The settings for the Kubernetes Control Plane.
     :param _builtins.int id: The LKE Cluster's ID.
-    :param Sequence[Union['GetLkeClusterPoolArgs', 'GetLkeClusterPoolArgsDict']] pools: Node pools associated with this cluster.
     """
     __args__ = dict()
-    __args__['controlPlanes'] = control_planes
     __args__['id'] = id
-    __args__['pools'] = pools
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getLkeCluster:getLkeCluster', __args__, opts=opts, typ=GetLkeClusterResult).value
 
@@ -303,9 +296,7 @@ def get_lke_cluster(control_planes: Optional[Sequence[Union['GetLkeClusterContro
         tier=pulumi.get(__ret__, 'tier'),
         updated=pulumi.get(__ret__, 'updated'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClusterControlPlaneArgs', 'GetLkeClusterControlPlaneArgsDict']]]]] = None,
-                           id: Optional[pulumi.Input[_builtins.int]] = None,
-                           pools: Optional[pulumi.Input[Optional[Sequence[Union['GetLkeClusterPoolArgs', 'GetLkeClusterPoolArgsDict']]]]] = None,
+def get_lke_cluster_output(id: Optional[pulumi.Input[_builtins.int]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeClusterResult]:
     """
     Provides details about an LKE Cluster.
@@ -321,14 +312,10 @@ def get_lke_cluster_output(control_planes: Optional[pulumi.Input[Optional[Sequen
     ```
 
 
-    :param Sequence[Union['GetLkeClusterControlPlaneArgs', 'GetLkeClusterControlPlaneArgsDict']] control_planes: The settings for the Kubernetes Control Plane.
     :param _builtins.int id: The LKE Cluster's ID.
-    :param Sequence[Union['GetLkeClusterPoolArgs', 'GetLkeClusterPoolArgsDict']] pools: Node pools associated with this cluster.
     """
     __args__ = dict()
-    __args__['controlPlanes'] = control_planes
     __args__['id'] = id
-    __args__['pools'] = pools
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getLkeCluster:getLkeCluster', __args__, opts=opts, typ=GetLkeClusterResult)
     return __ret__.apply(lambda __response__: GetLkeClusterResult(

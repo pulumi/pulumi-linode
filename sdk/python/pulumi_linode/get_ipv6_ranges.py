@@ -51,7 +51,7 @@ class GetIpv6RangesResult:
 
     @_builtins.property
     @pulumi.getter
-    def ranges(self) -> Optional[Sequence['outputs.GetIpv6RangesRangeResult']]:
+    def ranges(self) -> Sequence['outputs.GetIpv6RangesRangeResult']:
         return pulumi.get(self, "ranges")
 
 
@@ -67,7 +67,6 @@ class AwaitableGetIpv6RangesResult(GetIpv6RangesResult):
 
 
 def get_ipv6_ranges(filters: Optional[Sequence[Union['GetIpv6RangesFilterArgs', 'GetIpv6RangesFilterArgsDict']]] = None,
-                    ranges: Optional[Sequence[Union['GetIpv6RangesRangeArgs', 'GetIpv6RangesRangeArgsDict']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpv6RangesResult:
     """
     Provides information about Linode IPv6 ranges that match a set of filters.
@@ -100,7 +99,6 @@ def get_ipv6_ranges(filters: Optional[Sequence[Union['GetIpv6RangesFilterArgs', 
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['ranges'] = ranges
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getIpv6Ranges:getIpv6Ranges', __args__, opts=opts, typ=GetIpv6RangesResult).value
 
@@ -109,7 +107,6 @@ def get_ipv6_ranges(filters: Optional[Sequence[Union['GetIpv6RangesFilterArgs', 
         id=pulumi.get(__ret__, 'id'),
         ranges=pulumi.get(__ret__, 'ranges'))
 def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetIpv6RangesFilterArgs', 'GetIpv6RangesFilterArgsDict']]]]] = None,
-                           ranges: Optional[pulumi.Input[Optional[Sequence[Union['GetIpv6RangesRangeArgs', 'GetIpv6RangesRangeArgsDict']]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpv6RangesResult]:
     """
     Provides information about Linode IPv6 ranges that match a set of filters.
@@ -142,7 +139,6 @@ def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[Unio
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['ranges'] = ranges
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getIpv6Ranges:getIpv6Ranges', __args__, opts=opts, typ=GetIpv6RangesResult)
     return __ret__.apply(lambda __response__: GetIpv6RangesResult(

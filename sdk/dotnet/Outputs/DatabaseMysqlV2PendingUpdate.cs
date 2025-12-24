@@ -13,17 +13,26 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class DatabaseMysqlV2PendingUpdate
     {
-        public readonly string Deadline;
-        public readonly string Description;
-        public readonly string PlannedFor;
+        /// <summary>
+        /// The time when a mandatory update needs to be applied.
+        /// </summary>
+        public readonly string? Deadline;
+        /// <summary>
+        /// A description of the update.
+        /// </summary>
+        public readonly string? Description;
+        /// <summary>
+        /// The date and time a maintenance update will be applied.
+        /// </summary>
+        public readonly string? PlannedFor;
 
         [OutputConstructor]
         private DatabaseMysqlV2PendingUpdate(
-            string deadline,
+            string? deadline,
 
-            string description,
+            string? description,
 
-            string plannedFor)
+            string? plannedFor)
         {
             Deadline = deadline;
             Description = description;

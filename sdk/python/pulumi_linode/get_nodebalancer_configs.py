@@ -63,7 +63,7 @@ class GetNodebalancerConfigsResult:
 
     @_builtins.property
     @pulumi.getter(name="nodebalancerConfigs")
-    def nodebalancer_configs(self) -> Optional[Sequence['outputs.GetNodebalancerConfigsNodebalancerConfigResult']]:
+    def nodebalancer_configs(self) -> Sequence['outputs.GetNodebalancerConfigsNodebalancerConfigResult']:
         return pulumi.get(self, "nodebalancer_configs")
 
     @_builtins.property
@@ -100,7 +100,6 @@ class AwaitableGetNodebalancerConfigsResult(GetNodebalancerConfigsResult):
 
 
 def get_nodebalancer_configs(filters: Optional[Sequence[Union['GetNodebalancerConfigsFilterArgs', 'GetNodebalancerConfigsFilterArgsDict']]] = None,
-                             nodebalancer_configs: Optional[Sequence[Union['GetNodebalancerConfigsNodebalancerConfigArgs', 'GetNodebalancerConfigsNodebalancerConfigArgsDict']]] = None,
                              nodebalancer_id: Optional[_builtins.int] = None,
                              order: Optional[_builtins.str] = None,
                              order_by: Optional[_builtins.str] = None,
@@ -160,7 +159,6 @@ def get_nodebalancer_configs(filters: Optional[Sequence[Union['GetNodebalancerCo
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['nodebalancerConfigs'] = nodebalancer_configs
     __args__['nodebalancerId'] = nodebalancer_id
     __args__['order'] = order
     __args__['orderBy'] = order_by
@@ -175,7 +173,6 @@ def get_nodebalancer_configs(filters: Optional[Sequence[Union['GetNodebalancerCo
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
 def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNodebalancerConfigsFilterArgs', 'GetNodebalancerConfigsFilterArgsDict']]]]] = None,
-                                    nodebalancer_configs: Optional[pulumi.Input[Optional[Sequence[Union['GetNodebalancerConfigsNodebalancerConfigArgs', 'GetNodebalancerConfigsNodebalancerConfigArgsDict']]]]] = None,
                                     nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
                                     order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -235,7 +232,6 @@ def get_nodebalancer_configs_output(filters: Optional[pulumi.Input[Optional[Sequ
     """
     __args__ = dict()
     __args__['filters'] = filters
-    __args__['nodebalancerConfigs'] = nodebalancer_configs
     __args__['nodebalancerId'] = nodebalancer_id
     __args__['order'] = order
     __args__['orderBy'] = order_by

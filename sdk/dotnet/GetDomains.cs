@@ -222,14 +222,6 @@ namespace Pulumi.Linode
 
     public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("domains")]
-        private List<Inputs.GetDomainsDomainArgs>? _domains;
-        public List<Inputs.GetDomainsDomainArgs> Domains
-        {
-            get => _domains ?? (_domains = new List<Inputs.GetDomainsDomainArgs>());
-            set => _domains = value;
-        }
-
         [Input("filters")]
         private List<Inputs.GetDomainsFilterArgs>? _filters;
         public List<Inputs.GetDomainsFilterArgs> Filters
@@ -258,14 +250,6 @@ namespace Pulumi.Linode
 
     public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("domains")]
-        private InputList<Inputs.GetDomainsDomainInputArgs>? _domains;
-        public InputList<Inputs.GetDomainsDomainInputArgs> Domains
-        {
-            get => _domains ?? (_domains = new InputList<Inputs.GetDomainsDomainInputArgs>());
-            set => _domains = value;
-        }
-
         [Input("filters")]
         private InputList<Inputs.GetDomainsFilterInputArgs>? _filters;
         public InputList<Inputs.GetDomainsFilterInputArgs> Filters

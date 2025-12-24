@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class InterfacePublicIpv6Range {
@@ -17,11 +15,6 @@ public final class InterfacePublicIpv6Range {
      * 
      */
     private String range;
-    /**
-     * @return The public IPv6 address that the range is routed to.
-     * 
-     */
-    private @Nullable String routeTarget;
 
     private InterfacePublicIpv6Range() {}
     /**
@@ -30,13 +23,6 @@ public final class InterfacePublicIpv6Range {
      */
     public String range() {
         return this.range;
-    }
-    /**
-     * @return The public IPv6 address that the range is routed to.
-     * 
-     */
-    public Optional<String> routeTarget() {
-        return Optional.ofNullable(this.routeTarget);
     }
 
     public static Builder builder() {
@@ -49,12 +35,10 @@ public final class InterfacePublicIpv6Range {
     @CustomType.Builder
     public static final class Builder {
         private String range;
-        private @Nullable String routeTarget;
         public Builder() {}
         public Builder(InterfacePublicIpv6Range defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.range = defaults.range;
-    	      this.routeTarget = defaults.routeTarget;
         }
 
         @CustomType.Setter
@@ -65,16 +49,9 @@ public final class InterfacePublicIpv6Range {
             this.range = range;
             return this;
         }
-        @CustomType.Setter
-        public Builder routeTarget(@Nullable String routeTarget) {
-
-            this.routeTarget = routeTarget;
-            return this;
-        }
         public InterfacePublicIpv6Range build() {
             final var _resultValue = new InterfacePublicIpv6Range();
             _resultValue.range = range;
-            _resultValue.routeTarget = routeTarget;
             return _resultValue;
         }
     }

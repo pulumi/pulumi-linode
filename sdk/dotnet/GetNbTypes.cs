@@ -38,14 +38,6 @@ namespace Pulumi.Linode
         [Input("orderBy")]
         public string? OrderBy { get; set; }
 
-        [Input("types")]
-        private List<Inputs.GetNbTypesTypeArgs>? _types;
-        public List<Inputs.GetNbTypesTypeArgs> Types
-        {
-            get => _types ?? (_types = new List<Inputs.GetNbTypesTypeArgs>());
-            set => _types = value;
-        }
-
         public GetNbTypesArgs()
         {
         }
@@ -67,14 +59,6 @@ namespace Pulumi.Linode
 
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
-
-        [Input("types")]
-        private InputList<Inputs.GetNbTypesTypeInputArgs>? _types;
-        public InputList<Inputs.GetNbTypesTypeInputArgs> Types
-        {
-            get => _types ?? (_types = new InputList<Inputs.GetNbTypesTypeInputArgs>());
-            set => _types = value;
-        }
 
         public GetNbTypesInvokeArgs()
         {

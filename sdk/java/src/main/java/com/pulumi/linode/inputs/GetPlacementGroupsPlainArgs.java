@@ -5,7 +5,6 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.GetPlacementGroupsFilter;
-import com.pulumi.linode.inputs.GetPlacementGroupsPlacementGroup;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -38,20 +37,12 @@ public final class GetPlacementGroupsPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.orderBy);
     }
 
-    @Import(name="placementGroups")
-    private @Nullable List<GetPlacementGroupsPlacementGroup> placementGroups;
-
-    public Optional<List<GetPlacementGroupsPlacementGroup>> placementGroups() {
-        return Optional.ofNullable(this.placementGroups);
-    }
-
     private GetPlacementGroupsPlainArgs() {}
 
     private GetPlacementGroupsPlainArgs(GetPlacementGroupsPlainArgs $) {
         this.filters = $.filters;
         this.order = $.order;
         this.orderBy = $.orderBy;
-        this.placementGroups = $.placementGroups;
     }
 
     public static Builder builder() {
@@ -89,15 +80,6 @@ public final class GetPlacementGroupsPlainArgs extends com.pulumi.resources.Invo
         public Builder orderBy(@Nullable String orderBy) {
             $.orderBy = orderBy;
             return this;
-        }
-
-        public Builder placementGroups(@Nullable List<GetPlacementGroupsPlacementGroup> placementGroups) {
-            $.placementGroups = placementGroups;
-            return this;
-        }
-
-        public Builder placementGroups(GetPlacementGroupsPlacementGroup... placementGroups) {
-            return placementGroups(List.of(placementGroups));
         }
 
         public GetPlacementGroupsPlainArgs build() {

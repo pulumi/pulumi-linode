@@ -23,7 +23,7 @@ public final class GetSshkeysResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
-    private @Nullable List<GetSshkeysSshkey> sshkeys;
+    private List<GetSshkeysSshkey> sshkeys;
 
     private GetSshkeysResult() {}
     public List<GetSshkeysFilter> filters() {
@@ -43,7 +43,7 @@ public final class GetSshkeysResult {
         return Optional.ofNullable(this.orderBy);
     }
     public List<GetSshkeysSshkey> sshkeys() {
-        return this.sshkeys == null ? List.of() : this.sshkeys;
+        return this.sshkeys;
     }
 
     public static Builder builder() {
@@ -59,7 +59,7 @@ public final class GetSshkeysResult {
         private String id;
         private @Nullable String order;
         private @Nullable String orderBy;
-        private @Nullable List<GetSshkeysSshkey> sshkeys;
+        private List<GetSshkeysSshkey> sshkeys;
         public Builder() {}
         public Builder(GetSshkeysResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,8 +100,10 @@ public final class GetSshkeysResult {
             return this;
         }
         @CustomType.Setter
-        public Builder sshkeys(@Nullable List<GetSshkeysSshkey> sshkeys) {
-
+        public Builder sshkeys(List<GetSshkeysSshkey> sshkeys) {
+            if (sshkeys == null) {
+              throw new MissingRequiredPropertyException("GetSshkeysResult", "sshkeys");
+            }
             this.sshkeys = sshkeys;
             return this;
         }

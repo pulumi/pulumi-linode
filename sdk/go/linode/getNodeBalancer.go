@@ -51,7 +51,6 @@ func LookupNodeBalancer(ctx *pulumi.Context, args *LookupNodeBalancerArgs, opts 
 
 // A collection of arguments for invoking getNodeBalancer.
 type LookupNodeBalancerArgs struct {
-	Firewalls []GetNodeBalancerFirewall `pulumi:"firewalls"`
 	// The NodeBalancer's ID.
 	Id int `pulumi:"id"`
 }
@@ -96,7 +95,6 @@ func LookupNodeBalancerOutput(ctx *pulumi.Context, args LookupNodeBalancerOutput
 
 // A collection of arguments for invoking getNodeBalancer.
 type LookupNodeBalancerOutputArgs struct {
-	Firewalls GetNodeBalancerFirewallArrayInput `pulumi:"firewalls"`
 	// The NodeBalancer's ID.
 	Id pulumi.IntInput `pulumi:"id"`
 }

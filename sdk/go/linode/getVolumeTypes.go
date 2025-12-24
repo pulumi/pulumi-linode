@@ -29,8 +29,7 @@ type GetVolumeTypesArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy *string              `pulumi:"orderBy"`
-	Types   []GetVolumeTypesType `pulumi:"types"`
+	OrderBy *string `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getVolumeTypes.
@@ -58,8 +57,7 @@ type GetVolumeTypesOutputArgs struct {
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-	OrderBy pulumi.StringPtrInput        `pulumi:"orderBy"`
-	Types   GetVolumeTypesTypeArrayInput `pulumi:"types"`
+	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
 func (GetVolumeTypesOutputArgs) ElementType() reflect.Type {
