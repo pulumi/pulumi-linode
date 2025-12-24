@@ -5,6 +5,10 @@
                 "current": "linode:index/accountSettings:AccountSettings",
                 "majorVersion": 5
             },
+            "linode_consumer_image_share_group_token": {
+                "current": "linode:index/consumerImageShareGroupToken:ConsumerImageShareGroupToken",
+                "majorVersion": 5
+            },
             "linode_database_access_controls": {
                 "current": "linode:index/databaseAccessControls:DatabaseAccessControls",
                 "majorVersion": 5,
@@ -568,6 +572,10 @@
                     }
                 }
             },
+            "linode_lock": {
+                "current": "linode:index/lock:Lock",
+                "majorVersion": 5
+            },
             "linode_networking_ip": {
                 "current": "linode:index/networkingIp:NetworkingIp",
                 "majorVersion": 5
@@ -697,6 +705,19 @@
             },
             "linode_placement_group_assignment": {
                 "current": "linode:index/placementGroupAssignment:PlacementGroupAssignment",
+                "majorVersion": 5
+            },
+            "linode_producer_image_share_group": {
+                "current": "linode:index/producerImageShareGroup:ProducerImageShareGroup",
+                "majorVersion": 5,
+                "fields": {
+                    "images": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_producer_image_share_group_member": {
+                "current": "linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember",
                 "majorVersion": 5
             },
             "linode_rdns": {
@@ -919,6 +940,62 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "linode_consumer_image_share_group": {
+                "current": "linode:index/getConsumerImageShareGroup:getConsumerImageShareGroup",
+                "majorVersion": 5
+            },
+            "linode_consumer_image_share_group_image_shares": {
+                "current": "linode:index/getConsumerImageShareGroupImageShares:getConsumerImageShareGroupImageShares",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "image_shares": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "capabilities": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_consumer_image_share_group_token": {
+                "current": "linode:index/getConsumerImageShareGroupToken:getConsumerImageShareGroupToken",
+                "majorVersion": 5
+            },
+            "linode_consumer_image_share_group_tokens": {
+                "current": "linode:index/getConsumerImageShareGroupTokens:getConsumerImageShareGroupTokens",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tokens": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1738,6 +1815,63 @@
                     }
                 }
             },
+            "linode_interface": {
+                "current": "linode:index/getInterface:getInterface",
+                "majorVersion": 5,
+                "fields": {
+                    "public": {
+                        "fields": {
+                            "ipv4": {
+                                "fields": {
+                                    "addresses": {
+                                        "maxItemsOne": false
+                                    },
+                                    "shared": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "ipv6": {
+                                "fields": {
+                                    "ranges": {
+                                        "maxItemsOne": false
+                                    },
+                                    "shared": {
+                                        "maxItemsOne": false
+                                    },
+                                    "slaac": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "vpc": {
+                        "fields": {
+                            "ipv4": {
+                                "fields": {
+                                    "addresses": {
+                                        "maxItemsOne": false
+                                    },
+                                    "ranges": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "ipv6": {
+                                "fields": {
+                                    "ranges": {
+                                        "maxItemsOne": false
+                                    },
+                                    "slaac": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_ipv6_range": {
                 "current": "linode:index/getIpv6Range:getIpv6Range",
                 "majorVersion": 5,
@@ -1914,6 +2048,29 @@
                 "majorVersion": 5,
                 "fields": {
                     "versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_lock": {
+                "current": "linode:index/getLock:getLock",
+                "majorVersion": 5
+            },
+            "linode_locks": {
+                "current": "linode:index/getLocks:getLocks",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "locks": {
                         "maxItemsOne": false
                     }
                 }
@@ -2265,6 +2422,81 @@
                     }
                 }
             },
+            "linode_producer_image_share_group": {
+                "current": "linode:index/getProducerImageShareGroup:getProducerImageShareGroup",
+                "majorVersion": 5
+            },
+            "linode_producer_image_share_group_image_shares": {
+                "current": "linode:index/getProducerImageShareGroupImageShares:getProducerImageShareGroupImageShares",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "image_shares": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "capabilities": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_producer_image_share_group_member": {
+                "current": "linode:index/getProducerImageShareGroupMember:getProducerImageShareGroupMember",
+                "majorVersion": 5
+            },
+            "linode_producer_image_share_group_members": {
+                "current": "linode:index/getProducerImageShareGroupMembers:getProducerImageShareGroupMembers",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_producer_image_share_groups": {
+                "current": "linode:index/getProducerImageShareGroups:getProducerImageShareGroups",
+                "majorVersion": 5,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "image_share_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_profile": {
                 "current": "linode:index/getProfile:getProfile",
                 "majorVersion": 5,
@@ -2283,6 +2515,16 @@
                 "fields": {
                     "capabilities": {
                         "maxItemsOne": false
+                    },
+                    "monitors": {
+                        "fields": {
+                            "alerts": {
+                                "maxItemsOne": false
+                            },
+                            "metrics": {
+                                "maxItemsOne": false
+                            }
+                        }
                     },
                     "placement_group_limits": {
                         "maxItemsOne": false
@@ -2312,6 +2554,16 @@
                             "fields": {
                                 "capabilities": {
                                     "maxItemsOne": false
+                                },
+                                "monitors": {
+                                    "fields": {
+                                        "alerts": {
+                                            "maxItemsOne": false
+                                        },
+                                        "metrics": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
                                 },
                                 "placement_group_limits": {
                                     "maxItemsOne": false
@@ -2701,6 +2953,7 @@
     "mux": {
         "resources": {
             "linode:index/accountSettings:AccountSettings": 1,
+            "linode:index/consumerImageShareGroupToken:ConsumerImageShareGroupToken": 1,
             "linode:index/databaseAccessControls:DatabaseAccessControls": 0,
             "linode:index/databaseMysql:DatabaseMysql": 0,
             "linode:index/databaseMysqlV2:DatabaseMysqlV2": 1,
@@ -2721,6 +2974,7 @@
             "linode:index/ipv6Range:Ipv6Range": 1,
             "linode:index/lkeCluster:LkeCluster": 0,
             "linode:index/lkeNodePool:LkeNodePool": 1,
+            "linode:index/lock:Lock": 1,
             "linode:index/networkingIp:NetworkingIp": 1,
             "linode:index/networkingIpAssignment:NetworkingIpAssignment": 1,
             "linode:index/nodeBalancer:NodeBalancer": 1,
@@ -2731,6 +2985,8 @@
             "linode:index/objectStorageObject:ObjectStorageObject": 1,
             "linode:index/placementGroup:PlacementGroup": 1,
             "linode:index/placementGroupAssignment:PlacementGroupAssignment": 1,
+            "linode:index/producerImageShareGroup:ProducerImageShareGroup": 1,
+            "linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember": 1,
             "linode:index/rdns:Rdns": 1,
             "linode:index/reservedIpAssignment:ReservedIpAssignment": 1,
             "linode:index/sshKey:SshKey": 1,
@@ -2750,6 +3006,10 @@
             "linode:index/getAccountSettings:getAccountSettings": 1,
             "linode:index/getChildAccount:getChildAccount": 1,
             "linode:index/getChildAccounts:getChildAccounts": 1,
+            "linode:index/getConsumerImageShareGroup:getConsumerImageShareGroup": 1,
+            "linode:index/getConsumerImageShareGroupImageShares:getConsumerImageShareGroupImageShares": 1,
+            "linode:index/getConsumerImageShareGroupToken:getConsumerImageShareGroupToken": 1,
+            "linode:index/getConsumerImageShareGroupTokens:getConsumerImageShareGroupTokens": 1,
             "linode:index/getDatabaseBackups:getDatabaseBackups": 1,
             "linode:index/getDatabaseEngines:getDatabaseEngines": 1,
             "linode:index/getDatabaseMysql:getDatabaseMysql": 1,
@@ -2776,6 +3036,7 @@
             "linode:index/getInstanceType:getInstanceType": 1,
             "linode:index/getInstanceTypes:getInstanceTypes": 1,
             "linode:index/getInstances:getInstances": 0,
+            "linode:index/getInterface:getInterface": 1,
             "linode:index/getIpv6Range:getIpv6Range": 1,
             "linode:index/getIpv6Ranges:getIpv6Ranges": 1,
             "linode:index/getKernel:getKernel": 1,
@@ -2786,6 +3047,8 @@
             "linode:index/getLkeTypes:getLkeTypes": 1,
             "linode:index/getLkeVersion:getLkeVersion": 1,
             "linode:index/getLkeVersions:getLkeVersions": 1,
+            "linode:index/getLock:getLock": 1,
+            "linode:index/getLocks:getLocks": 1,
             "linode:index/getMaintenancePolicies:getMaintenancePolicies": 1,
             "linode:index/getNbTypes:getNbTypes": 1,
             "linode:index/getNetworkTransferPrices:getNetworkTransferPrices": 1,
@@ -2804,6 +3067,11 @@
             "linode:index/getObjectStorageQuotas:getObjectStorageQuotas": 1,
             "linode:index/getPlacementGroup:getPlacementGroup": 1,
             "linode:index/getPlacementGroups:getPlacementGroups": 1,
+            "linode:index/getProducerImageShareGroup:getProducerImageShareGroup": 1,
+            "linode:index/getProducerImageShareGroupImageShares:getProducerImageShareGroupImageShares": 1,
+            "linode:index/getProducerImageShareGroupMember:getProducerImageShareGroupMember": 1,
+            "linode:index/getProducerImageShareGroupMembers:getProducerImageShareGroupMembers": 1,
+            "linode:index/getProducerImageShareGroups:getProducerImageShareGroups": 1,
             "linode:index/getProfile:getProfile": 1,
             "linode:index/getRegion:getRegion": 1,
             "linode:index/getRegions:getRegions": 1,

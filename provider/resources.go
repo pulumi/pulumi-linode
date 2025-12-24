@@ -144,6 +144,11 @@ func Provider() tfbridge.ProviderInfo {
 					"domain": {CSharpName: "DomainName"},
 				},
 			},
+			"linode_producer_image_share_group": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {Type: "string"},
+				},
+			},
 			"linode_nodebalancer":        {Tok: makeResource("NodeBalancer")},
 			"linode_nodebalancer_config": {Tok: makeResource("NodeBalancerConfig")},
 			"linode_nodebalancer_node":   {Tok: makeResource("NodeBalancerNode")},
