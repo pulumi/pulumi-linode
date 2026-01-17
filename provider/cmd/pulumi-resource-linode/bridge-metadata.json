@@ -293,6 +293,9 @@
                     "ipv4": {
                         "maxItemsOne": false
                     },
+                    "locks": {
+                        "maxItemsOne": false
+                    },
                     "metadata": {
                         "maxItemsOne": false
                     },
@@ -1799,6 +1802,9 @@
                                     "maxItemsOne": false
                                 },
                                 "ipv4": {
+                                    "maxItemsOne": false
+                                },
+                                "locks": {
                                     "maxItemsOne": false
                                 },
                                 "placement_group": {
