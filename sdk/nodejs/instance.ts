@@ -285,6 +285,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lkeClusterId: pulumi.Output<number>;
     /**
+     * A list of locks applied to this Linode.
+     */
+    declare public /*out*/ readonly locks: pulumi.Output<string[]>;
+    /**
      * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
      */
     declare public readonly maintenancePolicy: pulumi.Output<string>;
@@ -420,6 +424,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipv6"] = state?.ipv6;
             resourceInputs["label"] = state?.label;
             resourceInputs["lkeClusterId"] = state?.lkeClusterId;
+            resourceInputs["locks"] = state?.locks;
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
             resourceInputs["metadatas"] = state?.metadatas;
             resourceInputs["migrationType"] = state?.migrationType;
@@ -486,6 +491,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["ipv6"] = undefined /*out*/;
             resourceInputs["lkeClusterId"] = undefined /*out*/;
+            resourceInputs["locks"] = undefined /*out*/;
             resourceInputs["privateIpAddress"] = undefined /*out*/;
             resourceInputs["specs"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -609,6 +615,10 @@ export interface InstanceState {
      * If applicable, the ID of the LKE cluster this instance is a part of.
      */
     lkeClusterId?: pulumi.Input<number>;
+    /**
+     * A list of locks applied to this Linode.
+     */
+    locks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
      */

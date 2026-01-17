@@ -83,6 +83,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int LkeClusterId;
         /// <summary>
+        /// A list of locks applied to this Linode.
+        /// </summary>
+        public readonly ImmutableArray<string> Locks;
+        /// <summary>
         /// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
         /// </summary>
         public readonly string MaintenancePolicy;
@@ -155,6 +159,8 @@ namespace Pulumi.Linode.Outputs
 
             int lkeClusterId,
 
+            ImmutableArray<string> locks,
+
             string maintenancePolicy,
 
             ImmutableArray<Outputs.GetInstancesInstancePlacementGroupResult> placementGroups,
@@ -193,6 +199,7 @@ namespace Pulumi.Linode.Outputs
             Ipv6 = ipv6;
             Label = label;
             LkeClusterId = lkeClusterId;
+            Locks = locks;
             MaintenancePolicy = maintenancePolicy;
             PlacementGroups = placementGroups;
             PrivateIpAddress = privateIpAddress;

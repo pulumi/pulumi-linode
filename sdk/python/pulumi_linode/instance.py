@@ -652,6 +652,7 @@ class _InstanceState:
                  ipv6: Optional[pulumi.Input[_builtins.str]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  lke_cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 locks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]]] = None,
                  migration_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -703,6 +704,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[_builtins.int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] locks: A list of locks applied to this Linode.
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -802,6 +804,8 @@ class _InstanceState:
             pulumi.set(__self__, "label", label)
         if lke_cluster_id is not None:
             pulumi.set(__self__, "lke_cluster_id", lke_cluster_id)
+        if locks is not None:
+            pulumi.set(__self__, "locks", locks)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if metadatas is not None:
@@ -1137,6 +1141,18 @@ class _InstanceState:
     @lke_cluster_id.setter
     def lke_cluster_id(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "lke_cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def locks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of locks applied to this Linode.
+        """
+        return pulumi.get(self, "locks")
+
+    @locks.setter
+    def locks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "locks", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
@@ -1875,6 +1891,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["ipv6"] = None
             __props__.__dict__["lke_cluster_id"] = None
+            __props__.__dict__["locks"] = None
             __props__.__dict__["private_ip_address"] = None
             __props__.__dict__["specs"] = None
             __props__.__dict__["status"] = None
@@ -1914,6 +1931,7 @@ class Instance(pulumi.CustomResource):
             ipv6: Optional[pulumi.Input[_builtins.str]] = None,
             label: Optional[pulumi.Input[_builtins.str]] = None,
             lke_cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
+            locks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
             metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]]] = None,
             migration_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1970,6 +1988,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[_builtins.int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] locks: A list of locks applied to this Linode.
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -2037,6 +2056,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["ipv6"] = ipv6
         __props__.__dict__["label"] = label
         __props__.__dict__["lke_cluster_id"] = lke_cluster_id
+        __props__.__dict__["locks"] = locks
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["metadatas"] = metadatas
         __props__.__dict__["migration_type"] = migration_type
@@ -2257,6 +2277,14 @@ class Instance(pulumi.CustomResource):
         If applicable, the ID of the LKE cluster this instance is a part of.
         """
         return pulumi.get(self, "lke_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def locks(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        A list of locks applied to this Linode.
+        """
+        return pulumi.get(self, "locks")
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")

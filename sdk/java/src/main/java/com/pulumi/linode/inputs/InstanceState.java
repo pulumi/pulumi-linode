@@ -428,6 +428,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of locks applied to this Linode.
+     * 
+     */
+    @Import(name="locks")
+    private @Nullable Output<List<String>> locks;
+
+    /**
+     * @return A list of locks applied to this Linode.
+     * 
+     */
+    public Optional<Output<List<String>>> locks() {
+        return Optional.ofNullable(this.locks);
+    }
+
+    /**
      * The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
      * 
      */
@@ -790,6 +805,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.ipv6 = $.ipv6;
         this.label = $.label;
         this.lkeClusterId = $.lkeClusterId;
+        this.locks = $.locks;
         this.maintenancePolicy = $.maintenancePolicy;
         this.metadatas = $.metadatas;
         this.migrationType = $.migrationType;
@@ -1460,6 +1476,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lkeClusterId(Integer lkeClusterId) {
             return lkeClusterId(Output.of(lkeClusterId));
+        }
+
+        /**
+         * @param locks A list of locks applied to this Linode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locks(@Nullable Output<List<String>> locks) {
+            $.locks = locks;
+            return this;
+        }
+
+        /**
+         * @param locks A list of locks applied to this Linode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locks(List<String> locks) {
+            return locks(Output.of(locks));
+        }
+
+        /**
+         * @param locks A list of locks applied to this Linode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locks(String... locks) {
+            return locks(List.of(locks));
         }
 
         /**

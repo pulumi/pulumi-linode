@@ -2219,6 +2219,10 @@
                     "type": "string",
                     "description": "The disk encryption policy for nodes in this pool.\n"
                 },
+                "firewallId": {
+                    "type": "integer",
+                    "description": "The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.\n"
+                },
                 "id": {
                     "type": "integer",
                     "description": "The ID of the node.\n"
@@ -8216,6 +8220,13 @@
                     "type": "integer",
                     "description": "If applicable, the ID of the LKE cluster this instance is a part of.\n"
                 },
+                "locks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of locks applied to this Linode.\n"
+                },
                 "maintenancePolicy": {
                     "type": "string",
                     "description": "The maintenance policy of this Linode instance. (**Note: v4beta only.**)\n"
@@ -8284,6 +8295,7 @@
                 "ipv6",
                 "label",
                 "lkeClusterId",
+                "locks",
                 "maintenancePolicy",
                 "placementGroups",
                 "privateIpAddress",
@@ -9706,6 +9718,10 @@
                     },
                     "description": "This Node Pool’s custom disk layout.\n"
                 },
+                "firewallId": {
+                    "type": "integer",
+                    "description": "The ID of the firewall associated with the Node Pool.\n"
+                },
                 "id": {
                     "type": "integer",
                     "description": "The LKE Cluster's ID.\n"
@@ -9761,6 +9777,7 @@
                 "count",
                 "diskEncryption",
                 "disks",
+                "firewallId",
                 "id",
                 "k8sVersion",
                 "labels",
@@ -17924,6 +17941,13 @@
                     "type": "integer",
                     "description": "If applicable, the ID of the LKE cluster this instance is a part of.\n"
                 },
+                "locks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of locks applied to this Linode.\n"
+                },
                 "maintenancePolicy": {
                     "type": "string",
                     "description": "The maintenance policy of this Linode instance. Examples are `\"linode/migrate\"` and `\"linode/power_off_on\"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)\n"
@@ -18040,6 +18064,7 @@
                 "ipv6",
                 "label",
                 "lkeClusterId",
+                "locks",
                 "maintenancePolicy",
                 "privateIpAddress",
                 "region",
@@ -18369,6 +18394,13 @@
                     "lkeClusterId": {
                         "type": "integer",
                         "description": "If applicable, the ID of the LKE cluster this instance is a part of.\n"
+                    },
+                    "locks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of locks applied to this Linode.\n"
                     },
                     "maintenancePolicy": {
                         "type": "string",
@@ -19561,6 +19593,10 @@
                     "type": "string",
                     "description": "The disk encryption policy for nodes in this pool.\n"
                 },
+                "firewallId": {
+                    "type": "integer",
+                    "description": "The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.\n"
+                },
                 "k8sVersion": {
                     "type": "string",
                     "description": "The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.\n"
@@ -19613,6 +19649,7 @@
             "required": [
                 "clusterId",
                 "diskEncryption",
+                "firewallId",
                 "k8sVersion",
                 "label",
                 "labels",
@@ -19629,6 +19666,10 @@
                 "clusterId": {
                     "type": "integer",
                     "description": "ID of the LKE Cluster where to create the current Node Pool.\n"
+                },
+                "firewallId": {
+                    "type": "integer",
+                    "description": "The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.\n"
                 },
                 "k8sVersion": {
                     "type": "string",
@@ -19689,6 +19730,10 @@
                     "diskEncryption": {
                         "type": "string",
                         "description": "The disk encryption policy for nodes in this pool.\n"
+                    },
+                    "firewallId": {
+                        "type": "integer",
+                        "description": "The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.\n"
                     },
                     "k8sVersion": {
                         "type": "string",

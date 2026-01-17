@@ -30,6 +30,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterPoolDiskResult> Disks;
         /// <summary>
+        /// The ID of the firewall associated with the Node Pool.
+        /// </summary>
+        public readonly int FirewallId;
+        /// <summary>
         /// The LKE Cluster's ID.
         /// </summary>
         public readonly int Id;
@@ -76,6 +80,8 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.GetLkeClusterPoolDiskResult> disks,
 
+            int firewallId,
+
             int id,
 
             string k8sVersion,
@@ -98,6 +104,7 @@ namespace Pulumi.Linode.Outputs
             Count = count;
             DiskEncryption = diskEncryption;
             Disks = disks;
+            FirewallId = firewallId;
             Id = id;
             K8sVersion = k8sVersion;
             Label = label;

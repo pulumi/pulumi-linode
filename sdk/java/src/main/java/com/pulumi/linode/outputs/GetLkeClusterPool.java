@@ -40,6 +40,11 @@ public final class GetLkeClusterPool {
      */
     private List<GetLkeClusterPoolDisk> disks;
     /**
+     * @return The ID of the firewall associated with the Node Pool.
+     * 
+     */
+    private Integer firewallId;
+    /**
      * @return The LKE Cluster&#39;s ID.
      * 
      */
@@ -113,6 +118,13 @@ public final class GetLkeClusterPool {
      */
     public List<GetLkeClusterPoolDisk> disks() {
         return this.disks;
+    }
+    /**
+     * @return The ID of the firewall associated with the Node Pool.
+     * 
+     */
+    public Integer firewallId() {
+        return this.firewallId;
     }
     /**
      * @return The LKE Cluster&#39;s ID.
@@ -191,6 +203,7 @@ public final class GetLkeClusterPool {
         private Integer count;
         private String diskEncryption;
         private List<GetLkeClusterPoolDisk> disks;
+        private Integer firewallId;
         private Integer id;
         private String k8sVersion;
         private @Nullable String label;
@@ -207,6 +220,7 @@ public final class GetLkeClusterPool {
     	      this.count = defaults.count;
     	      this.diskEncryption = defaults.diskEncryption;
     	      this.disks = defaults.disks;
+    	      this.firewallId = defaults.firewallId;
     	      this.id = defaults.id;
     	      this.k8sVersion = defaults.k8sVersion;
     	      this.label = defaults.label;
@@ -255,6 +269,14 @@ public final class GetLkeClusterPool {
         }
         public Builder disks(GetLkeClusterPoolDisk... disks) {
             return disks(List.of(disks));
+        }
+        @CustomType.Setter
+        public Builder firewallId(Integer firewallId) {
+            if (firewallId == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterPool", "firewallId");
+            }
+            this.firewallId = firewallId;
+            return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
@@ -341,6 +363,7 @@ public final class GetLkeClusterPool {
             _resultValue.count = count;
             _resultValue.diskEncryption = diskEncryption;
             _resultValue.disks = disks;
+            _resultValue.firewallId = firewallId;
             _resultValue.id = id;
             _resultValue.k8sVersion = k8sVersion;
             _resultValue.label = label;

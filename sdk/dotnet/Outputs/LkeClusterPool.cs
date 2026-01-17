@@ -26,6 +26,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? DiskEncryption;
         /// <summary>
+        /// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        /// </summary>
+        public readonly int? FirewallId;
+        /// <summary>
         /// The ID of the node.
         /// </summary>
         public readonly int? Id;
@@ -70,6 +74,8 @@ namespace Pulumi.Linode.Outputs
 
             string? diskEncryption,
 
+            int? firewallId,
+
             int? id,
 
             string? k8sVersion,
@@ -91,6 +97,7 @@ namespace Pulumi.Linode.Outputs
             Autoscaler = autoscaler;
             Count = count;
             DiskEncryption = diskEncryption;
+            FirewallId = firewallId;
             Id = id;
             K8sVersion = k8sVersion;
             Label = label;

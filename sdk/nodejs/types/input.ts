@@ -3534,6 +3534,10 @@ export interface LkeClusterPool {
      */
     diskEncryption?: pulumi.Input<string>;
     /**
+     * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     */
+    firewallId?: pulumi.Input<number>;
+    /**
      * The ID of the node.
      */
     id?: pulumi.Input<number>;

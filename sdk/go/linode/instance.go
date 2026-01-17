@@ -301,6 +301,8 @@ type Instance struct {
 	Label pulumi.StringOutput `pulumi:"label"`
 	// If applicable, the ID of the LKE cluster this instance is a part of.
 	LkeClusterId pulumi.IntOutput `pulumi:"lkeClusterId"`
+	// A list of locks applied to this Linode.
+	Locks pulumi.StringArrayOutput `pulumi:"locks"`
 	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
 	MaintenancePolicy pulumi.StringOutput `pulumi:"maintenancePolicy"`
 	// Various fields related to the Linode Metadata service.
@@ -465,6 +467,8 @@ type instanceState struct {
 	Label *string `pulumi:"label"`
 	// If applicable, the ID of the LKE cluster this instance is a part of.
 	LkeClusterId *int `pulumi:"lkeClusterId"`
+	// A list of locks applied to this Linode.
+	Locks []string `pulumi:"locks"`
 	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// Various fields related to the Linode Metadata service.
@@ -586,6 +590,8 @@ type InstanceState struct {
 	Label pulumi.StringPtrInput
 	// If applicable, the ID of the LKE cluster this instance is a part of.
 	LkeClusterId pulumi.IntPtrInput
+	// A list of locks applied to this Linode.
+	Locks pulumi.StringArrayInput
 	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
 	MaintenancePolicy pulumi.StringPtrInput
 	// Various fields related to the Linode Metadata service.
@@ -1066,6 +1072,11 @@ func (o InstanceOutput) Label() pulumi.StringOutput {
 // If applicable, the ID of the LKE cluster this instance is a part of.
 func (o InstanceOutput) LkeClusterId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.LkeClusterId }).(pulumi.IntOutput)
+}
+
+// A list of locks applied to this Linode.
+func (o InstanceOutput) Locks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Locks }).(pulumi.StringArrayOutput)
 }
 
 // The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)

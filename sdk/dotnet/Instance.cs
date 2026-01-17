@@ -366,6 +366,12 @@ namespace Pulumi.Linode
         public Output<int> LkeClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// A list of locks applied to this Linode.
+        /// </summary>
+        [Output("locks")]
+        public Output<ImmutableArray<string>> Locks { get; private set; } = null!;
+
+        /// <summary>
         /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
         /// </summary>
         [Output("maintenancePolicy")]
@@ -1057,6 +1063,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("lkeClusterId")]
         public Input<int>? LkeClusterId { get; set; }
+
+        [Input("locks")]
+        private InputList<string>? _locks;
+
+        /// <summary>
+        /// A list of locks applied to this Linode.
+        /// </summary>
+        public InputList<string> Locks
+        {
+            get => _locks ?? (_locks = new InputList<string>());
+            set => _locks = value;
+        }
 
         /// <summary>
         /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
