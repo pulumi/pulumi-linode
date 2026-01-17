@@ -31,6 +31,12 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? DiskEncryption { get; set; }
 
         /// <summary>
+        /// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        /// </summary>
+        [Input("firewallId")]
+        public Input<int>? FirewallId { get; set; }
+
+        /// <summary>
         /// The ID of the node.
         /// </summary>
         [Input("id")]

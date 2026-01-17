@@ -6478,6 +6478,10 @@ if not MYPY:
         """
         The disk encryption policy for nodes in this pool.
         """
+        firewall_id: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        """
         id: NotRequired[pulumi.Input[_builtins.int]]
         """
         The ID of the node.
@@ -6520,6 +6524,7 @@ class LkeClusterPoolArgs:
                  autoscaler: Optional[pulumi.Input['LkeClusterPoolAutoscalerArgs']] = None,
                  count: Optional[pulumi.Input[_builtins.int]] = None,
                  disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
+                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
                  id: Optional[pulumi.Input[_builtins.int]] = None,
                  k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
@@ -6533,6 +6538,7 @@ class LkeClusterPoolArgs:
         :param pulumi.Input['LkeClusterPoolAutoscalerArgs'] autoscaler: When specified, the number of nodes autoscales within the defined minimum and maximum values.
         :param pulumi.Input[_builtins.int] count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
+        :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
         :param pulumi.Input[_builtins.int] id: The ID of the node.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
@@ -6549,6 +6555,8 @@ class LkeClusterPoolArgs:
             pulumi.set(__self__, "count", count)
         if disk_encryption is not None:
             pulumi.set(__self__, "disk_encryption", disk_encryption)
+        if firewall_id is not None:
+            pulumi.set(__self__, "firewall_id", firewall_id)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if k8s_version is not None:
@@ -6613,6 +6621,18 @@ class LkeClusterPoolArgs:
     @disk_encryption.setter
     def disk_encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "disk_encryption", value)
+
+    @_builtins.property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @firewall_id.setter
+    def firewall_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter

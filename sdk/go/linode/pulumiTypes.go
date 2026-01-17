@@ -11636,6 +11636,8 @@ type LkeClusterPool struct {
 	Count *int `pulumi:"count"`
 	// The disk encryption policy for nodes in this pool.
 	DiskEncryption *string `pulumi:"diskEncryption"`
+	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+	FirewallId *int `pulumi:"firewallId"`
 	// The ID of the node.
 	Id *int `pulumi:"id"`
 	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
@@ -11674,6 +11676,8 @@ type LkeClusterPoolArgs struct {
 	Count pulumi.IntPtrInput `pulumi:"count"`
 	// The disk encryption policy for nodes in this pool.
 	DiskEncryption pulumi.StringPtrInput `pulumi:"diskEncryption"`
+	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+	FirewallId pulumi.IntPtrInput `pulumi:"firewallId"`
 	// The ID of the node.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
@@ -11758,6 +11762,11 @@ func (o LkeClusterPoolOutput) Count() pulumi.IntPtrOutput {
 // The disk encryption policy for nodes in this pool.
 func (o LkeClusterPoolOutput) DiskEncryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LkeClusterPool) *string { return v.DiskEncryption }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+func (o LkeClusterPoolOutput) FirewallId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LkeClusterPool) *int { return v.FirewallId }).(pulumi.IntPtrOutput)
 }
 
 // The ID of the node.
@@ -31773,6 +31782,8 @@ type GetInstancesInstance struct {
 	Label string `pulumi:"label"`
 	// If applicable, the ID of the LKE cluster this instance is a part of.
 	LkeClusterId int `pulumi:"lkeClusterId"`
+	// A list of locks applied to this Linode.
+	Locks []string `pulumi:"locks"`
 	// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
 	MaintenancePolicy string                               `pulumi:"maintenancePolicy"`
 	PlacementGroups   []GetInstancesInstancePlacementGroup `pulumi:"placementGroups"`
@@ -31840,6 +31851,8 @@ type GetInstancesInstanceArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// If applicable, the ID of the LKE cluster this instance is a part of.
 	LkeClusterId pulumi.IntInput `pulumi:"lkeClusterId"`
+	// A list of locks applied to this Linode.
+	Locks pulumi.StringArrayInput `pulumi:"locks"`
 	// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
 	MaintenancePolicy pulumi.StringInput                           `pulumi:"maintenancePolicy"`
 	PlacementGroups   GetInstancesInstancePlacementGroupArrayInput `pulumi:"placementGroups"`
@@ -31998,6 +32011,11 @@ func (o GetInstancesInstanceOutput) Label() pulumi.StringOutput {
 // If applicable, the ID of the LKE cluster this instance is a part of.
 func (o GetInstancesInstanceOutput) LkeClusterId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.LkeClusterId }).(pulumi.IntOutput)
+}
+
+// A list of locks applied to this Linode.
+func (o GetInstancesInstanceOutput) Locks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.Locks }).(pulumi.StringArrayOutput)
 }
 
 // The maintenance policy of this Linode instance. (**Note: v4beta only.**)
@@ -37026,6 +37044,8 @@ type GetLkeClusterPool struct {
 	DiskEncryption string `pulumi:"diskEncryption"`
 	// This Node Pool’s custom disk layout.
 	Disks []GetLkeClusterPoolDisk `pulumi:"disks"`
+	// The ID of the firewall associated with the Node Pool.
+	FirewallId int `pulumi:"firewallId"`
 	// The LKE Cluster's ID.
 	Id int `pulumi:"id"`
 	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
@@ -37066,6 +37086,8 @@ type GetLkeClusterPoolArgs struct {
 	DiskEncryption pulumi.StringInput `pulumi:"diskEncryption"`
 	// This Node Pool’s custom disk layout.
 	Disks GetLkeClusterPoolDiskArrayInput `pulumi:"disks"`
+	// The ID of the firewall associated with the Node Pool.
+	FirewallId pulumi.IntInput `pulumi:"firewallId"`
 	// The LKE Cluster's ID.
 	Id pulumi.IntInput `pulumi:"id"`
 	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
@@ -37155,6 +37177,11 @@ func (o GetLkeClusterPoolOutput) DiskEncryption() pulumi.StringOutput {
 // This Node Pool’s custom disk layout.
 func (o GetLkeClusterPoolOutput) Disks() GetLkeClusterPoolDiskArrayOutput {
 	return o.ApplyT(func(v GetLkeClusterPool) []GetLkeClusterPoolDisk { return v.Disks }).(GetLkeClusterPoolDiskArrayOutput)
+}
+
+// The ID of the firewall associated with the Node Pool.
+func (o GetLkeClusterPoolOutput) FirewallId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClusterPool) int { return v.FirewallId }).(pulumi.IntOutput)
 }
 
 // The LKE Cluster's ID.

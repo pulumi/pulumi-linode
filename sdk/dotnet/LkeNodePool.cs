@@ -37,6 +37,12 @@ namespace Pulumi.Linode
         public Output<string> DiskEncryption { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        /// </summary>
+        [Output("firewallId")]
+        public Output<int> FirewallId { get; private set; } = null!;
+
+        /// <summary>
         /// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         /// </summary>
         [Output("k8sVersion")]
@@ -150,6 +156,12 @@ namespace Pulumi.Linode
         public Input<int> ClusterId { get; set; } = null!;
 
         /// <summary>
+        /// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        /// </summary>
+        [Input("firewallId")]
+        public Input<int>? FirewallId { get; set; }
+
+        /// <summary>
         /// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         /// </summary>
         [Input("k8sVersion")]
@@ -241,6 +253,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("diskEncryption")]
         public Input<string>? DiskEncryption { get; set; }
+
+        /// <summary>
+        /// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        /// </summary>
+        [Input("firewallId")]
+        public Input<int>? FirewallId { get; set; }
 
         /// <summary>
         /// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.

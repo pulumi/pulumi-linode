@@ -59,6 +59,21 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     * 
+     */
+    @Import(name="firewallId")
+    private @Nullable Output<Integer> firewallId;
+
+    /**
+     * @return The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     * 
+     */
+    public Optional<Output<Integer>> firewallId() {
+        return Optional.ofNullable(this.firewallId);
+    }
+
+    /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      * 
      */
@@ -207,6 +222,7 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
         this.autoscaler = $.autoscaler;
         this.clusterId = $.clusterId;
         this.diskEncryption = $.diskEncryption;
+        this.firewallId = $.firewallId;
         this.k8sVersion = $.k8sVersion;
         this.label = $.label;
         this.labels = $.labels;
@@ -285,6 +301,27 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder diskEncryption(String diskEncryption) {
             return diskEncryption(Output.of(diskEncryption));
+        }
+
+        /**
+         * @param firewallId The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(@Nullable Output<Integer> firewallId) {
+            $.firewallId = firewallId;
+            return this;
+        }
+
+        /**
+         * @param firewallId The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(Integer firewallId) {
+            return firewallId(Output.of(firewallId));
         }
 
         /**

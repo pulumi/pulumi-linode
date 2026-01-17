@@ -68,6 +68,21 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     * 
+     */
+    @Import(name="firewallId")
+    private @Nullable Output<Integer> firewallId;
+
+    /**
+     * @return The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     * 
+     */
+    public Optional<Output<Integer>> firewallId() {
+        return Optional.ofNullable(this.firewallId);
+    }
+
+    /**
      * The ID of the node.
      * 
      */
@@ -208,6 +223,7 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
         this.autoscaler = $.autoscaler;
         this.count = $.count;
         this.diskEncryption = $.diskEncryption;
+        this.firewallId = $.firewallId;
         this.id = $.id;
         this.k8sVersion = $.k8sVersion;
         this.label = $.label;
@@ -298,6 +314,27 @@ public final class LkeClusterPoolArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder diskEncryption(String diskEncryption) {
             return diskEncryption(Output.of(diskEncryption));
+        }
+
+        /**
+         * @param firewallId The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(@Nullable Output<Integer> firewallId) {
+            $.firewallId = firewallId;
+            return this;
+        }
+
+        /**
+         * @param firewallId The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallId(Integer firewallId) {
+            return firewallId(Output.of(firewallId));
         }
 
         /**

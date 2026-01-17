@@ -630,6 +630,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.lkeClusterId;
     }
     /**
+     * A list of locks applied to this Linode.
+     * 
+     */
+    @Export(name="locks", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> locks;
+
+    /**
+     * @return A list of locks applied to this Linode.
+     * 
+     */
+    public Output<List<String>> locks() {
+        return this.locks;
+    }
+    /**
      * The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
      * 
      */

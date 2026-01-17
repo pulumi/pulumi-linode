@@ -5042,6 +5042,8 @@ class LkeClusterPool(dict):
         suggest = None
         if key == "diskEncryption":
             suggest = "disk_encryption"
+        elif key == "firewallId":
+            suggest = "firewall_id"
         elif key == "k8sVersion":
             suggest = "k8s_version"
         elif key == "updateStrategy":
@@ -5063,6 +5065,7 @@ class LkeClusterPool(dict):
                  autoscaler: Optional['outputs.LkeClusterPoolAutoscaler'] = None,
                  count: Optional[_builtins.int] = None,
                  disk_encryption: Optional[_builtins.str] = None,
+                 firewall_id: Optional[_builtins.int] = None,
                  id: Optional[_builtins.int] = None,
                  k8s_version: Optional[_builtins.str] = None,
                  label: Optional[_builtins.str] = None,
@@ -5076,6 +5079,7 @@ class LkeClusterPool(dict):
         :param 'LkeClusterPoolAutoscalerArgs' autoscaler: When specified, the number of nodes autoscales within the defined minimum and maximum values.
         :param _builtins.int count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param _builtins.str disk_encryption: The disk encryption policy for nodes in this pool.
+        :param _builtins.int firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
         :param _builtins.int id: The ID of the node.
         :param _builtins.str k8s_version: The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param _builtins.str label: A label for the Node Pool. If not provided, it defaults to empty string.
@@ -5092,6 +5096,8 @@ class LkeClusterPool(dict):
             pulumi.set(__self__, "count", count)
         if disk_encryption is not None:
             pulumi.set(__self__, "disk_encryption", disk_encryption)
+        if firewall_id is not None:
+            pulumi.set(__self__, "firewall_id", firewall_id)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if k8s_version is not None:
@@ -5140,6 +5146,14 @@ class LkeClusterPool(dict):
         The disk encryption policy for nodes in this pool.
         """
         return pulumi.get(self, "disk_encryption")
+
+    @_builtins.property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        """
+        return pulumi.get(self, "firewall_id")
 
     @_builtins.property
     @pulumi.getter
@@ -14748,6 +14762,7 @@ class GetInstancesInstanceResult(dict):
                  ipv6: _builtins.str,
                  label: _builtins.str,
                  lke_cluster_id: _builtins.int,
+                 locks: Sequence[_builtins.str],
                  maintenance_policy: _builtins.str,
                  placement_groups: Sequence['outputs.GetInstancesInstancePlacementGroupResult'],
                  private_ip_address: _builtins.str,
@@ -14776,6 +14791,7 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param _builtins.str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         :param _builtins.int lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
+        :param Sequence[_builtins.str] locks: A list of locks applied to this Linode.
         :param _builtins.str maintenance_policy: The maintenance policy of this Linode instance. (**Note: v4beta only.**)
         :param _builtins.str private_ip_address: This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         :param _builtins.str region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
@@ -14803,6 +14819,7 @@ class GetInstancesInstanceResult(dict):
         pulumi.set(__self__, "ipv6", ipv6)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "lke_cluster_id", lke_cluster_id)
+        pulumi.set(__self__, "locks", locks)
         pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         pulumi.set(__self__, "placement_groups", placement_groups)
         pulumi.set(__self__, "private_ip_address", private_ip_address)
@@ -14954,6 +14971,14 @@ class GetInstancesInstanceResult(dict):
         If applicable, the ID of the LKE cluster this instance is a part of.
         """
         return pulumi.get(self, "lke_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def locks(self) -> Sequence[_builtins.str]:
+        """
+        A list of locks applied to this Linode.
+        """
+        return pulumi.get(self, "locks")
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
@@ -17085,6 +17110,7 @@ class GetLkeClusterPoolResult(dict):
                  count: _builtins.int,
                  disk_encryption: _builtins.str,
                  disks: Sequence['outputs.GetLkeClusterPoolDiskResult'],
+                 firewall_id: _builtins.int,
                  id: _builtins.int,
                  k8s_version: _builtins.str,
                  labels: Mapping[str, _builtins.str],
@@ -17099,6 +17125,7 @@ class GetLkeClusterPoolResult(dict):
         :param _builtins.int count: The number of nodes in the Node Pool.
         :param _builtins.str disk_encryption: The disk encryption policy for nodes in this pool.
         :param Sequence['GetLkeClusterPoolDiskArgs'] disks: This Node Pool’s custom disk layout.
+        :param _builtins.int firewall_id: The ID of the firewall associated with the Node Pool.
         :param _builtins.int id: The LKE Cluster's ID.
         :param _builtins.str k8s_version: The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param Mapping[str, _builtins.str] labels: Key-value pairs added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects.
@@ -17113,6 +17140,7 @@ class GetLkeClusterPoolResult(dict):
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "disk_encryption", disk_encryption)
         pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "firewall_id", firewall_id)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "k8s_version", k8s_version)
         pulumi.set(__self__, "labels", labels)
@@ -17155,6 +17183,14 @@ class GetLkeClusterPoolResult(dict):
         This Node Pool’s custom disk layout.
         """
         return pulumi.get(self, "disks")
+
+    @_builtins.property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> _builtins.int:
+        """
+        The ID of the firewall associated with the Node Pool.
+        """
+        return pulumi.get(self, "firewall_id")
 
     @_builtins.property
     @pulumi.getter

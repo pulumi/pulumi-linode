@@ -34,6 +34,11 @@ public final class LkeClusterPool {
      */
     private @Nullable String diskEncryption;
     /**
+     * @return The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     * 
+     */
+    private @Nullable Integer firewallId;
+    /**
      * @return The ID of the node.
      * 
      */
@@ -100,6 +105,13 @@ public final class LkeClusterPool {
      */
     public Optional<String> diskEncryption() {
         return Optional.ofNullable(this.diskEncryption);
+    }
+    /**
+     * @return The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     * 
+     */
+    public Optional<Integer> firewallId() {
+        return Optional.ofNullable(this.firewallId);
     }
     /**
      * @return The ID of the node.
@@ -177,6 +189,7 @@ public final class LkeClusterPool {
         private @Nullable LkeClusterPoolAutoscaler autoscaler;
         private @Nullable Integer count;
         private @Nullable String diskEncryption;
+        private @Nullable Integer firewallId;
         private @Nullable Integer id;
         private @Nullable String k8sVersion;
         private @Nullable String label;
@@ -192,6 +205,7 @@ public final class LkeClusterPool {
     	      this.autoscaler = defaults.autoscaler;
     	      this.count = defaults.count;
     	      this.diskEncryption = defaults.diskEncryption;
+    	      this.firewallId = defaults.firewallId;
     	      this.id = defaults.id;
     	      this.k8sVersion = defaults.k8sVersion;
     	      this.label = defaults.label;
@@ -219,6 +233,12 @@ public final class LkeClusterPool {
         public Builder diskEncryption(@Nullable String diskEncryption) {
 
             this.diskEncryption = diskEncryption;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder firewallId(@Nullable Integer firewallId) {
+
+            this.firewallId = firewallId;
             return this;
         }
         @CustomType.Setter
@@ -291,6 +311,7 @@ public final class LkeClusterPool {
             _resultValue.autoscaler = autoscaler;
             _resultValue.count = count;
             _resultValue.diskEncryption = diskEncryption;
+            _resultValue.firewallId = firewallId;
             _resultValue.id = id;
             _resultValue.k8sVersion = k8sVersion;
             _resultValue.label = label;

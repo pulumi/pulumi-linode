@@ -53,6 +53,10 @@ export class LkeNodePool extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly diskEncryption: pulumi.Output<string>;
     /**
+     * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     */
+    declare public readonly firewallId: pulumi.Output<number>;
+    /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
     declare public readonly k8sVersion: pulumi.Output<string>;
@@ -109,6 +113,7 @@ export class LkeNodePool extends pulumi.CustomResource {
             resourceInputs["autoscaler"] = state?.autoscaler;
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["diskEncryption"] = state?.diskEncryption;
+            resourceInputs["firewallId"] = state?.firewallId;
             resourceInputs["k8sVersion"] = state?.k8sVersion;
             resourceInputs["label"] = state?.label;
             resourceInputs["labels"] = state?.labels;
@@ -128,6 +133,7 @@ export class LkeNodePool extends pulumi.CustomResource {
             }
             resourceInputs["autoscaler"] = args?.autoscaler;
             resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["firewallId"] = args?.firewallId;
             resourceInputs["k8sVersion"] = args?.k8sVersion;
             resourceInputs["label"] = args?.label;
             resourceInputs["labels"] = args?.labels;
@@ -157,6 +163,10 @@ export interface LkeNodePoolState {
      * The disk encryption policy for nodes in this pool.
      */
     diskEncryption?: pulumi.Input<string>;
+    /**
+     * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     */
+    firewallId?: pulumi.Input<number>;
     /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
@@ -208,6 +218,10 @@ export interface LkeNodePoolArgs {
      * ID of the LKE Cluster where to create the current Node Pool.
      */
     clusterId: pulumi.Input<number>;
+    /**
+     * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     */
+    firewallId?: pulumi.Input<number>;
     /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */

@@ -2689,6 +2689,10 @@ export interface GetInstancesInstance {
      */
     lkeClusterId: number;
     /**
+     * A list of locks applied to this Linode.
+     */
+    locks: string[];
+    /**
      * The maintenance policy of this Linode instance. (**Note: v4beta only.**)
      */
     maintenancePolicy: string;
@@ -3496,6 +3500,10 @@ export interface GetLkeClusterPool {
      * This Node Pool’s custom disk layout.
      */
     disks: outputs.GetLkeClusterPoolDisk[];
+    /**
+     * The ID of the firewall associated with the Node Pool.
+     */
+    firewallId: number;
     /**
      * The LKE Cluster's ID.
      */
@@ -7056,6 +7064,10 @@ export interface LkeClusterPool {
      * The disk encryption policy for nodes in this pool.
      */
     diskEncryption: string;
+    /**
+     * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     */
+    firewallId?: number;
     /**
      * The ID of the node.
      */

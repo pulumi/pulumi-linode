@@ -106,6 +106,11 @@ public final class GetInstancesInstance {
      */
     private Integer lkeClusterId;
     /**
+     * @return A list of locks applied to this Linode.
+     * 
+     */
+    private List<String> locks;
+    /**
      * @return The maintenance policy of this Linode instance. (**Note: v4beta only.**)
      * 
      */
@@ -272,6 +277,13 @@ public final class GetInstancesInstance {
         return this.lkeClusterId;
     }
     /**
+     * @return A list of locks applied to this Linode.
+     * 
+     */
+    public List<String> locks() {
+        return this.locks;
+    }
+    /**
      * @return The maintenance policy of this Linode instance. (**Note: v4beta only.**)
      * 
      */
@@ -361,6 +373,7 @@ public final class GetInstancesInstance {
         private String ipv6;
         private String label;
         private Integer lkeClusterId;
+        private List<String> locks;
         private String maintenancePolicy;
         private List<GetInstancesInstancePlacementGroup> placementGroups;
         private String privateIpAddress;
@@ -392,6 +405,7 @@ public final class GetInstancesInstance {
     	      this.ipv6 = defaults.ipv6;
     	      this.label = defaults.label;
     	      this.lkeClusterId = defaults.lkeClusterId;
+    	      this.locks = defaults.locks;
     	      this.maintenancePolicy = defaults.maintenancePolicy;
     	      this.placementGroups = defaults.placementGroups;
     	      this.privateIpAddress = defaults.privateIpAddress;
@@ -564,6 +578,17 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
+        public Builder locks(List<String> locks) {
+            if (locks == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "locks");
+            }
+            this.locks = locks;
+            return this;
+        }
+        public Builder locks(String... locks) {
+            return locks(List.of(locks));
+        }
+        @CustomType.Setter
         public Builder maintenancePolicy(String maintenancePolicy) {
             if (maintenancePolicy == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "maintenancePolicy");
@@ -672,6 +697,7 @@ public final class GetInstancesInstance {
             _resultValue.ipv6 = ipv6;
             _resultValue.label = label;
             _resultValue.lkeClusterId = lkeClusterId;
+            _resultValue.locks = locks;
             _resultValue.maintenancePolicy = maintenancePolicy;
             _resultValue.placementGroups = placementGroups;
             _resultValue.privateIpAddress = privateIpAddress;

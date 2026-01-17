@@ -67,6 +67,20 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
         return this.diskEncryption;
     }
     /**
+     * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     * 
+     */
+    @Export(name="firewallId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> firewallId;
+
+    /**
+     * @return The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+     * 
+     */
+    public Output<Integer> firewallId() {
+        return this.firewallId;
+    }
+    /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      * 
      */
