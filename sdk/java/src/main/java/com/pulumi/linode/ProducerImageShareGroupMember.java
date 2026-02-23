@@ -21,8 +21,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Accept a member into an Image Share Group:
- * 
  * <pre>
  * {@code
  * package generated_program;

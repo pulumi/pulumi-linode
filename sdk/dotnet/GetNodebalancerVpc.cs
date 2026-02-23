@@ -19,8 +19,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Retrieve information about a NodeBalancer VPC configuration:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,8 +47,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Retrieve information about a NodeBalancer VPC configuration:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,8 +74,6 @@ namespace Pulumi.Linode
         /// For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
         /// 
         /// ## Example Usage
-        /// 
-        /// Retrieve information about a NodeBalancer VPC configuration:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

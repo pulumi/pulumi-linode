@@ -14,8 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Retrieve all VPC configurations under a NodeBalancer:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -24,9 +22,6 @@ import * as utilities from "./utilities";
  *     nodebalancerId: 12345,
  * });
  * ```
- *
- * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of "10.0.0.4/30":
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -108,8 +103,6 @@ export interface GetNodebalancerVpcsResult {
  *
  * ## Example Usage
  *
- * Retrieve all VPC configurations under a NodeBalancer:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -118,9 +111,6 @@ export interface GetNodebalancerVpcsResult {
  *     nodebalancerId: 12345,
  * });
  * ```
- *
- * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of "10.0.0.4/30":
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

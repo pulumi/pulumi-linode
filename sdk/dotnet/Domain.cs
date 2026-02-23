@@ -50,7 +50,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linodes Domains can be imported using the Linode Domain `id`, e.g.
+    /// Linodes Domains can be imported using the Linode Domain `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/domain:Domain foobar 1234567

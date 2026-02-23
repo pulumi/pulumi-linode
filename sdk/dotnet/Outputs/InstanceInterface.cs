@@ -49,8 +49,6 @@ namespace Pulumi.Linode.Outputs
         /// * `Ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `Vpc` purpose.
         /// 
         /// * `Ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `Vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-        /// 
-        /// The following computed attribute is available in a VPC interface:
         /// </summary>
         public readonly bool? Primary;
         /// <summary>

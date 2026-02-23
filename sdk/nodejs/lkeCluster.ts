@@ -7,6 +7,216 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Manages an LKE cluster.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     label: "my-cluster",
+ *     k8sVersion: "1.32",
+ *     region: "us-central",
+ *     tags: ["prod"],
+ *     pools: [{
+ *         type: "g6-standard-2",
+ *         count: 3,
+ *     }],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const test = new linode.LkeCluster("test", {
+ *     label: "lke-e-cluster",
+ *     region: "us-lax",
+ *     k8sVersion: "v1.31.8+lke5",
+ *     tags: ["test"],
+ *     tier: "enterprise",
+ *     pools: [{
+ *         type: "g7-premium-2",
+ *         count: 3,
+ *         tags: ["test"],
+ *     }],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     label: "my-cluster",
+ *     k8sVersion: "1.32",
+ *     region: "us-central",
+ *     tags: ["prod"],
+ *     pools: [{
+ *         type: "g6-standard-2",
+ *         autoscaler: {
+ *             min: 3,
+ *             max: 10,
+ *         },
+ *     }],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const test = new linode.LkeCluster("test", {
+ *     label: "my-cluster",
+ *     k8sVersion: "1.32",
+ *     region: "us-central",
+ *     tags: ["prod"],
+ *     controlPlane: {
+ *         highAvailability: true,
+ *         acl: {
+ *             enabled: true,
+ *             addresses: [{
+ *                 ipv4s: ["0.0.0.0/0"],
+ *                 ipv6s: ["2001:db8::/32"],
+ *             }],
+ *         },
+ *     },
+ *     pools: [{
+ *         type: "g6-standard-2",
+ *         count: 1,
+ *     }],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     label: "my-cluster",
+ *     k8sVersion: "1.32",
+ *     region: "us-central",
+ *     tags: ["prod"],
+ *     pools: [
+ *         {
+ *             type: "g6-standard-2",
+ *             count: 2,
+ *             label: "db-pool",
+ *         },
+ *         {
+ *             type: "g6-standard-1",
+ *             count: 3,
+ *             label: "app-pool",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     label: "my-cluster",
+ *     k8sVersion: "1.32",
+ *     region: "us-central",
+ *     tags: ["prod"],
+ *     pools: [{
+ *         type: "g6-standard-2",
+ *         count: 2,
+ *         label: "db-pool",
+ *         firewallId: 12345,
+ *     }],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     label: "my-cluster",
+ *     k8sVersion: "1.32",
+ *     region: "us-central",
+ *     tags: ["prod"],
+ *     pools: [
+ *         {
+ *             type: "g6-standard-2",
+ *             count: 2,
+ *             labels: {
+ *                 role: "database",
+ *                 environment: "production",
+ *             },
+ *         },
+ *         {
+ *             type: "g6-standard-1",
+ *             count: 3,
+ *             labels: {
+ *                 role: "application",
+ *                 environment: "production",
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Nested Node Pool Caveats
+ *
+ * Due to limitations in the provider there are some minor caveats that may cause unexpected behavior when updating
+ * nested `pool` blocks in this resource.
+ * Primarily, the order of `pool` blocks is significant because the ID of each pool is resolved from
+ * the Terraform state.
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_cluster = new linode.LkeCluster("my-cluster", {pools: [
+ *     {
+ *         type: "g6-standard-1",
+ *         count: 2,
+ *     },
+ *     {
+ *         type: "g6-standard-2",
+ *         count: 3,
+ *     },
+ * ]});
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_cluster = new linode.LkeCluster("my-cluster", {pools: [{
+ *     type: "g6-standard-2",
+ *     count: 3,
+ * }]});
+ * ```
+ * ## Externally Managed Node Pools
+ *
+ * By default, the `linode.LkeCluster` resource will account for all node pools under the corresponding cluster, meaning
+ * any node pools created externally or managed by other resources will be removed on subsequent applies.
+ *
+ * To signal the provider to ignore externally managed node pools, the `externalPoolTags` attribute can be defined with
+ * tags matching a tag on an externally managed node pool.
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const externalPoolTag = "external";
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     label: "my-cluster",
+ *     k8sVersion: "1.32",
+ *     region: "us-mia",
+ *     externalPoolTags: [externalPoolTag],
+ *     pools: [{
+ *         type: "g6-standard-1",
+ *         count: 1,
+ *     }],
+ * });
+ * const my_pool = new linode.LkeNodePool("my-pool", {
+ *     clusterId: my_cluster.id,
+ *     type: "g6-standard-2",
+ *     nodeCount: 3,
+ *     tags: [externalPoolTag],
+ * });
+ * ```
+ *
  * ## Import
  *
  * LKE Clusters can be imported using the `id`, e.g.

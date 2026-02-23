@@ -538,8 +538,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create an unrestricted user:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -548,9 +546,6 @@ class User(pulumi.CustomResource):
             username="john123",
             email="john@acme.io")
         ```
-
-        Create a restricted user with grants:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -633,8 +628,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create an unrestricted user:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -643,9 +636,6 @@ class User(pulumi.CustomResource):
             username="john123",
             email="john@acme.io")
         ```
-
-        Create a restricted user with grants:
-
         ```python
         import pulumi
         import pulumi_linode as linode

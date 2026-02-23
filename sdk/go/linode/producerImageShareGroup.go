@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// Create an Image Share Group without any Images:
-//
 // ```go
 // package main
 //
@@ -43,9 +41,6 @@ import (
 //	}
 //
 // ```
-//
-// Create an Image Share Group with one Image:
-//
 // ```go
 // package main
 //

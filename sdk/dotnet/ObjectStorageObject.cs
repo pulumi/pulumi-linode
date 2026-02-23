@@ -169,7 +169,7 @@ namespace Pulumi.Linode
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The specific version of this object.
+        /// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -349,7 +349,7 @@ namespace Pulumi.Linode
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// The specific version of this object.
+        /// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
@@ -497,7 +497,7 @@ namespace Pulumi.Linode
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// The specific version of this object.
+        /// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

@@ -17,8 +17,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about a PostgreSQL database:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,8 +74,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about a PostgreSQL database:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -134,8 +130,6 @@ namespace Pulumi.Linode
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
         /// 
         /// ## Example Usage
-        /// 
-        /// Get information about a PostgreSQL database:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

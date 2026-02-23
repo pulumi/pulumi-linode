@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about all Linode Managed Database engines:
-//
 // ```go
 // package main
 //
@@ -39,9 +37,6 @@ import (
 // })
 // }
 // ```
-//
-// Get information about all Linode MySQL Database engines:
-//
 // ```go
 // package main
 //
@@ -71,9 +66,6 @@ import (
 // })
 // }
 // ```
-//
-// Create a Linode MySQL Database using the latest support MySQL version:
-//
 // ```go
 // package main
 //

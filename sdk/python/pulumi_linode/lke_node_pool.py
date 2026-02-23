@@ -443,6 +443,82 @@ class LkeNodePool(pulumi.CustomResource):
                  update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Manages an LKE Node Pool.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster-pools).
+
+        > **Notice** To prevent LKE node pools managed by this resource from being
+        recreated by the LkeCluster resource, the cluster's external_pool_tags
+         attribute must match the tags attribute of this resource. Please review the
+        Externally Managed Node Pools
+        section for more information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=150003,
+            type="g6-standard-2",
+            node_count=3)
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=150003,
+            type="g6-standard-2",
+            node_count=3,
+            label="app-pool")
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=150003,
+            type="g6-standard-2",
+            firewall_id=12345,
+            node_count=3)
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=150003,
+            type="g6-standard-2",
+            autoscaler={
+                "min": 3,
+                "max": 10,
+            })
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        external_pool_tag = "external"
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-mia",
+            labels={
+                "key": "value",
+            },
+            external_pool_tags=[external_pool_tag],
+            pools=[{
+                "type": "g6-standard-1",
+                "count": 1,
+            }])
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=my_cluster.id,
+            type="g6-standard-2",
+            node_count=3,
+            tags=[external_pool_tag])
+        ```
+
         ## Import
 
         LKE Node Pools can be imported using the `cluster_id,id`, e.g.
@@ -475,6 +551,82 @@ class LkeNodePool(pulumi.CustomResource):
                  args: LkeNodePoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages an LKE Node Pool.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster-pools).
+
+        > **Notice** To prevent LKE node pools managed by this resource from being
+        recreated by the LkeCluster resource, the cluster's external_pool_tags
+         attribute must match the tags attribute of this resource. Please review the
+        Externally Managed Node Pools
+        section for more information.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=150003,
+            type="g6-standard-2",
+            node_count=3)
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=150003,
+            type="g6-standard-2",
+            node_count=3,
+            label="app-pool")
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=150003,
+            type="g6-standard-2",
+            firewall_id=12345,
+            node_count=3)
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=150003,
+            type="g6-standard-2",
+            autoscaler={
+                "min": 3,
+                "max": 10,
+            })
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        external_pool_tag = "external"
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-mia",
+            labels={
+                "key": "value",
+            },
+            external_pool_tags=[external_pool_tag],
+            pools=[{
+                "type": "g6-standard-1",
+                "count": 1,
+            }])
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=my_cluster.id,
+            type="g6-standard-2",
+            node_count=3,
+            tags=[external_pool_tag])
+        ```
+
         ## Import
 
         LKE Node Pools can be imported using the `cluster_id,id`, e.g.

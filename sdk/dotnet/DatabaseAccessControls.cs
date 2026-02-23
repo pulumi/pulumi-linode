@@ -15,8 +15,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Grant a Linode access to a database:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

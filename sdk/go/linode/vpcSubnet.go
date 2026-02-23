@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// Create a VPC subnet:
-//
 // ```go
 // package main
 //
@@ -44,9 +42,6 @@ import (
 //	}
 //
 // ```
-//
-// Create a VPC subnet with an implicitly determined IPv6 range:
-//
 // ```go
 // package main
 //
@@ -103,7 +98,7 @@ import (
 //
 // ## Import
 //
-// Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpc_id` followed by the subnet `id` separated by a comma, e.g.
+// Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpcId` followed by the subnet `id` separated by a comma, e.g.
 //
 // ```sh
 // $ pulumi import linode:index/vpcSubnet:VpcSubnet my_subnet_duplicated 1234567,7654321

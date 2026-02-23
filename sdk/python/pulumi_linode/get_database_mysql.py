@@ -305,8 +305,6 @@ def get_database_mysql(database_id: Optional[_builtins.int] = None,
 
     ## Example Usage
 
-    Get information about a MySQL database:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -371,8 +369,6 @@ def get_database_mysql_output(database_id: Optional[pulumi.Input[Optional[_built
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
 
     ## Example Usage
-
-    Get information about a MySQL database:
 
     ```python
     import pulumi

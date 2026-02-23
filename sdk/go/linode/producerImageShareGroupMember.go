@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// Accept a member into an Image Share Group:
-//
 // ```go
 // package main
 //

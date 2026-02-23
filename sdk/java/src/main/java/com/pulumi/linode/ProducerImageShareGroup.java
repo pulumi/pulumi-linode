@@ -24,8 +24,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Create an Image Share Group without any Images:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -57,9 +55,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Create an Image Share Group with one Image:
- * 
  * <pre>
  * {@code
  * package generated_program;

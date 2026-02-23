@@ -17,8 +17,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode Managed Databases:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,9 +33,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode MySQL Databases:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,8 +82,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode Managed Databases:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -105,9 +98,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode MySQL Databases:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -157,8 +147,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode Managed Databases:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -175,9 +163,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode MySQL Databases:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

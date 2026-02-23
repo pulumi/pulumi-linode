@@ -69,55 +69,6 @@ import javax.annotation.Nullable;
  * 
  * The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
  * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.linode.Instance;
- * import com.pulumi.linode.InstanceArgs;
- * import com.pulumi.linode.Rdns;
- * import com.pulumi.linode.RdnsArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         for (var i = 0; i < 3; i++) {
- *             new Instance("myInstance-" + i, InstanceArgs.builder()
- *                 .label(String.format("simple_instance-%s", range.value() + 1))
- *                 .image("linode/ubuntu22.04")
- *                 .region("us-central")
- *                 .type("g6-standard-1")
- *                 .rootPass("terr4form-test")
- *                 .build());
- * 
- *         
- * }
- *         for (var i = 0; i < myInstance.length(); i++) {
- *             new Rdns("myRdns-" + i, RdnsArgs.builder()
- *                 .address(myInstance[range.value()].ipAddress())
- *                 .rdns(myInstance[range.value()].ipAddress().applyValue(_ipAddress -> String.format("%s.nip.io", _ipAddress)))
- *                 .build());
- * 
- *         
- * }
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
  * Linodes RDNS resources can be imported using the address as the `id`.

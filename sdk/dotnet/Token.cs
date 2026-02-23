@@ -42,7 +42,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linodes Tokens can be imported using the Linode Token `id`, e.g.  The secret token will not be imported.
+    /// Linodes Tokens can be imported using the Linode Token `Id`, e.g.  The secret token will not be imported.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/token:Token mytoken 1234567

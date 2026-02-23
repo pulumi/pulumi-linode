@@ -114,8 +114,6 @@ def get_firewall_template(slug: Optional[_builtins.str] = None,
 
     ## Example Usage
 
-    The following example shows how one might use this data source to access information about a specific Firewall Template:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -145,8 +143,6 @@ def get_firewall_template_output(slug: Optional[pulumi.Input[_builtins.str]] = N
     Provides information about a Linode Firewall Template.
 
     ## Example Usage
-
-    The following example shows how one might use this data source to access information about a specific Firewall Template:
 
     ```python
     import pulumi

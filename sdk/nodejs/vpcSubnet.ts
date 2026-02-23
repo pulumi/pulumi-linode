@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Create a VPC subnet:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -24,9 +22,6 @@ import * as utilities from "./utilities";
  *     ipv4: "10.0.0.0/24",
  * });
  * ```
- *
- * Create a VPC subnet with an implicitly determined IPv6 range:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -61,7 +56,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpc_id` followed by the subnet `id` separated by a comma, e.g.
+ * Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpcId` followed by the subnet `id` separated by a comma, e.g.
  *
  * ```sh
  * $ pulumi import linode:index/vpcSubnet:VpcSubnet my_subnet_duplicated 1234567,7654321

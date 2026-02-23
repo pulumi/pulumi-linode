@@ -28,8 +28,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Creating a simple MySQL database instance:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -63,9 +61,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a complex MySQL database instance:
- * 
  * <pre>
  * {@code
  * package generated_program;

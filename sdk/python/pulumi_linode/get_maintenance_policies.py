@@ -74,8 +74,6 @@ def get_maintenance_policies(filters: Optional[Sequence[Union['GetMaintenancePol
 
     ## Example Usage
 
-    The following example shows how one might use this data source to access information about Maintenance Policies:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -83,8 +81,6 @@ def get_maintenance_policies(filters: Optional[Sequence[Union['GetMaintenancePol
     example = linode.get_maintenance_policies()
     pulumi.export("exampleOutput", example)
     ```
-
-    The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -103,8 +99,6 @@ def get_maintenance_policies_output(filters: Optional[pulumi.Input[Optional[Sequ
 
     ## Example Usage
 
-    The following example shows how one might use this data source to access information about Maintenance Policies:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -112,8 +106,6 @@ def get_maintenance_policies_output(filters: Optional[pulumi.Input[Optional[Sequ
     example = linode.get_maintenance_policies()
     pulumi.export("exampleOutput", example)
     ```
-
-    The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
     """
     __args__ = dict()
     __args__['filters'] = filters

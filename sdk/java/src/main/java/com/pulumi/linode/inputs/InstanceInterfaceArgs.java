@@ -137,8 +137,6 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
      * 
      * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      * 
-     * The following computed attribute is available in a VPC interface:
-     * 
      */
     @Import(name="primary")
     private @Nullable Output<Boolean> primary;
@@ -149,8 +147,6 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
      * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
      * 
      * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-     * 
-     * The following computed attribute is available in a VPC interface:
      * 
      */
     public Optional<Output<Boolean>> primary() {
@@ -404,8 +400,6 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
          * 
          * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
          * 
-         * The following computed attribute is available in a VPC interface:
-         * 
          * @return builder
          * 
          */
@@ -420,8 +414,6 @@ public final class InstanceInterfaceArgs extends com.pulumi.resources.ResourceAr
          * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
          * 
          * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-         * 
-         * The following computed attribute is available in a VPC interface:
          * 
          * @return builder
          * 

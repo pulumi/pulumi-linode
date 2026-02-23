@@ -22,8 +22,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get all locks in a type:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,9 +47,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Get information about all locks:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -89,8 +84,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get all locks in a type:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -116,9 +109,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Get information about all locks:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -156,8 +146,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get all locks in a type:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -183,9 +171,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Get information about all locks:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

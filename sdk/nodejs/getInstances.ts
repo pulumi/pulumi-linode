@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about all Linode instances with a certain label and tag:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -35,9 +33,6 @@ import * as utilities from "./utilities";
  * });
  * export const instanceId = my_instances.then(my_instances => my_instances.instances?.[0]?.id);
  * ```
- *
- * Get information about all Linode instances associated with the current token:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -110,8 +105,6 @@ export interface GetInstancesResult {
  *
  * ## Example Usage
  *
- * Get information about all Linode instances with a certain label and tag:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -133,9 +126,6 @@ export interface GetInstancesResult {
  * });
  * export const instanceId = my_instances.then(my_instances => my_instances.instances?.[0]?.id);
  * ```
- *
- * Get information about all Linode instances associated with the current token:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

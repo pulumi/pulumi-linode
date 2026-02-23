@@ -22,8 +22,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Create a Placement Group with the local anti-affinity policy:
- * 
  * <pre>
  * {@code
  * package generated_program;

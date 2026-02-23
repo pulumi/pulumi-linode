@@ -72,8 +72,6 @@ def get_database_mysql_config(opts: Optional[pulumi.InvokeOptions] = None) -> Aw
 
     ## Example Usage
 
-    Get information about a MySQL database's configuration options:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -593,8 +591,6 @@ def get_database_mysql_config_output(opts: Optional[Union[pulumi.InvokeOptions, 
     For more information, see the Linode APIv4 docs.
 
     ## Example Usage
-
-    Get information about a MySQL database's configuration options:
 
     ```python
     import pulumi

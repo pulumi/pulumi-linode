@@ -19,8 +19,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all backups for a MySQL database:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,9 +34,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Get information about all automatic MySQL Database Backups:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,8 +72,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all backups for a MySQL database:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -94,9 +87,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Get information about all automatic MySQL Database Backups:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -135,8 +125,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all backups for a MySQL database:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -152,9 +140,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Get information about all automatic MySQL Database Backups:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

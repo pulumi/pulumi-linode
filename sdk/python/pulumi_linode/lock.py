@@ -180,8 +180,6 @@ class Lock(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create a basic lock that prevents a Linode from being deleted:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -195,9 +193,6 @@ class Lock(pulumi.CustomResource):
             entity_type="linode",
             lock_type="cannot_delete")
         ```
-
-        Create a lock that prevents a Linode and its subresources (disks, configs, etc.) from being deleted:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -245,8 +240,6 @@ class Lock(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create a basic lock that prevents a Linode from being deleted:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -260,9 +253,6 @@ class Lock(pulumi.CustomResource):
             entity_type="linode",
             lock_type="cannot_delete")
         ```
-
-        Create a lock that prevents a Linode and its subresources (disks, configs, etc.) from being deleted:
-
         ```python
         import pulumi
         import pulumi_linode as linode

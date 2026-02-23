@@ -1653,8 +1653,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        Creating a simple MySQL database that does not allow connections:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1665,9 +1663,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             region="us-mia",
             type="g6-nanode-1")
         ```
-
-        Creating a simple MySQL database that allows connections from all IPv4 addresses:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1679,9 +1674,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             type="g6-nanode-1",
             allow_lists=["0.0.0.0/0"])
         ```
-
-        Creating a complex MySQL database:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1700,9 +1692,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
                 "day_of_week": 3,
             })
         ```
-
-        Creating a MySQL database with engine config fields specified:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1741,9 +1730,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             engine_config_mysql_tmp_table_size=16777216,
             engine_config_mysql_wait_timeout=28800)
         ```
-
-        Creating a forked MySQL database:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1755,9 +1741,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             type="g6-nanode-1",
             fork_source=12345)
         ```
-
-        Creating a MySQL database hidden behind a VPC:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1878,8 +1861,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        Creating a simple MySQL database that does not allow connections:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1890,9 +1871,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             region="us-mia",
             type="g6-nanode-1")
         ```
-
-        Creating a simple MySQL database that allows connections from all IPv4 addresses:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1904,9 +1882,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             type="g6-nanode-1",
             allow_lists=["0.0.0.0/0"])
         ```
-
-        Creating a complex MySQL database:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1925,9 +1900,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
                 "day_of_week": 3,
             })
         ```
-
-        Creating a MySQL database with engine config fields specified:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1966,9 +1938,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             engine_config_mysql_tmp_table_size=16777216,
             engine_config_mysql_wait_timeout=28800)
         ```
-
-        Creating a forked MySQL database:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1980,9 +1949,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             type="g6-nanode-1",
             fork_source=12345)
         ```
-
-        Creating a MySQL database hidden behind a VPC:
-
         ```python
         import pulumi
         import pulumi_linode as linode

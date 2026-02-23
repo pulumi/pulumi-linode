@@ -17,8 +17,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode Managed Database engines:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,9 +33,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode MySQL Database engines:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,9 +62,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Create a Linode MySQL Database using the latest support MySQL version:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -114,8 +106,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode Managed Database engines:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -132,9 +122,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode MySQL Database engines:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -164,9 +151,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Create a Linode MySQL Database using the latest support MySQL version:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -211,8 +195,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode Managed Database engines:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -229,9 +211,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode MySQL Database engines:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -261,9 +240,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Create a Linode MySQL Database using the latest support MySQL version:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

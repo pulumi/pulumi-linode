@@ -15,8 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// Retrieve all IPs under the current account:
-//
 // ```go
 // package main
 //
@@ -38,9 +36,6 @@ import (
 //	}
 //
 // ```
-//
-// Retrieve all IPs under the current account in a specific region:
-//
 // ```go
 // package main
 //

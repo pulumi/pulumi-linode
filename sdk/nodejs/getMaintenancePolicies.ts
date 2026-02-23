@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * The following example shows how one might use this data source to access information about Maintenance Policies:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -21,8 +19,6 @@ import * as utilities from "./utilities";
  * const example = linode.getMaintenancePolicies({});
  * export const exampleOutput = example;
  * ```
- *
- * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
  */
 export function getMaintenancePolicies(args?: GetMaintenancePoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetMaintenancePoliciesResult> {
     args = args || {};
@@ -53,8 +49,6 @@ export interface GetMaintenancePoliciesResult {
  *
  * ## Example Usage
  *
- * The following example shows how one might use this data source to access information about Maintenance Policies:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -62,8 +56,6 @@ export interface GetMaintenancePoliciesResult {
  * const example = linode.getMaintenancePolicies({});
  * export const exampleOutput = example;
  * ```
- *
- * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
  */
 export function getMaintenancePoliciesOutput(args?: GetMaintenancePoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMaintenancePoliciesResult> {
     args = args || {};

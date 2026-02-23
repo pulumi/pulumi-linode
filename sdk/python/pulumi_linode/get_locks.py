@@ -105,8 +105,6 @@ def get_locks(filters: Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFi
 
     ## Example Usage
 
-    Get all locks in a type:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -116,9 +114,6 @@ def get_locks(filters: Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFi
         "values": ["cannot_delete"],
     }])
     ```
-
-    Get information about all locks:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -165,8 +160,6 @@ def get_locks_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
 
     ## Example Usage
 
-    Get all locks in a type:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -176,9 +169,6 @@ def get_locks_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
         "values": ["cannot_delete"],
     }])
     ```
-
-    Get information about all locks:
-
     ```python
     import pulumi
     import pulumi_linode as linode

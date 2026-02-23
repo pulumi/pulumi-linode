@@ -13,8 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Creating an image from an existing Linode Instance and deploying another instance with that image:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -41,9 +39,6 @@ import * as utilities from "./utilities";
  *     image: bar.id,
  * });
  * ```
- *
- * Creating and uploading an image from a local file:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -63,9 +58,6 @@ import * as utilities from "./utilities";
  *     }).then(invoke => invoke.result),
  * });
  * ```
- *
- * Upload and replicate an image from a local file:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -189,8 +181,6 @@ export class Image extends pulumi.CustomResource {
      * - - -
      *
      * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-     *
-     * The following arguments apply to uploading an image:
      */
     declare public readonly linodeId: pulumi.Output<number | undefined>;
     /**
@@ -234,8 +224,6 @@ export class Image extends pulumi.CustomResource {
      * Whether to wait for all image replications become `available`. Default to false.
      *
      * - - -
-     *
-     * The following arguments apply to creating an image from an existing Linode Instance:
      */
     declare public readonly waitForReplications: pulumi.Output<boolean>;
 
@@ -381,8 +369,6 @@ export interface ImageState {
      * - - -
      *
      * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-     *
-     * The following arguments apply to uploading an image:
      */
     linodeId?: pulumi.Input<number>;
     /**
@@ -426,8 +412,6 @@ export interface ImageState {
      * Whether to wait for all image replications become `available`. Default to false.
      *
      * - - -
-     *
-     * The following arguments apply to creating an image from an existing Linode Instance:
      */
     waitForReplications?: pulumi.Input<boolean>;
 }
@@ -466,8 +450,6 @@ export interface ImageArgs {
      * - - -
      *
      * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-     *
-     * The following arguments apply to uploading an image:
      */
     linodeId?: pulumi.Input<number>;
     /**
@@ -487,8 +469,6 @@ export interface ImageArgs {
      * Whether to wait for all image replications become `available`. Default to false.
      *
      * - - -
-     *
-     * The following arguments apply to creating an image from an existing Linode Instance:
      */
     waitForReplications?: pulumi.Input<boolean>;
 }

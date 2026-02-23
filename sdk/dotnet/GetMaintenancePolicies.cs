@@ -17,8 +17,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// The following example shows how one might use this data source to access information about Maintenance Policies:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +33,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
         /// </summary>
         public static Task<GetMaintenancePoliciesResult> InvokeAsync(GetMaintenancePoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMaintenancePoliciesResult>("linode:index/getMaintenancePolicies:getMaintenancePolicies", args ?? new GetMaintenancePoliciesArgs(), options.WithDefaults());
@@ -47,8 +43,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// The following example shows how one might use this data source to access information about Maintenance Policies:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +59,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
         /// </summary>
         public static Output<GetMaintenancePoliciesResult> Invoke(GetMaintenancePoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMaintenancePoliciesResult>("linode:index/getMaintenancePolicies:getMaintenancePolicies", args ?? new GetMaintenancePoliciesInvokeArgs(), options.WithDefaults());
@@ -77,8 +69,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// The following example shows how one might use this data source to access information about Maintenance Policies:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +85,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
         /// </summary>
         public static Output<GetMaintenancePoliciesResult> Invoke(GetMaintenancePoliciesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetMaintenancePoliciesResult>("linode:index/getMaintenancePolicies:getMaintenancePolicies", args ?? new GetMaintenancePoliciesInvokeArgs(), options.WithDefaults());

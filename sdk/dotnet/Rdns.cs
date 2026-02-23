@@ -46,43 +46,9 @@ namespace Pulumi.Linode
     /// 
     /// The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myInstance = new List&lt;Linode.Instance&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; 3; rangeIndex++)
-    ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         myInstance.Add(new Linode.Instance($"my_instance-{range.Value}", new()
-    ///         {
-    ///             Label = $"simple_instance-{range.Value + 1}",
-    ///             Image = "linode/ubuntu22.04",
-    ///             Region = "us-central",
-    ///             Type = "g6-standard-1",
-    ///             RootPass = "terr4form-test",
-    ///         }));
-    ///     }
-    ///     var myRdns = new List&lt;Linode.Rdns&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; myInstance.Length; rangeIndex++)
-    ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         myRdns.Add(new Linode.Rdns($"my_rdns-{range.Value}", new()
-    ///         {
-    ///             Address = myInstance[range.Value].IpAddress,
-    ///             RdnsName = myInstance[range.Value].IpAddress.Apply(ipAddress =&gt; $"{ipAddress}.nip.io"),
-    ///         }));
-    ///     }
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Linodes RDNS resources can be imported using the address as the `id`.
+    /// Linodes RDNS resources can be imported using the address as the `Id`.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123

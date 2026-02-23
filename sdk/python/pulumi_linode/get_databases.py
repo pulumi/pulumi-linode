@@ -97,8 +97,6 @@ def get_databases(filters: Optional[Sequence[Union['GetDatabasesFilterArgs', 'Ge
 
     ## Example Usage
 
-    Get information about all Linode Managed Databases:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -106,9 +104,6 @@ def get_databases(filters: Optional[Sequence[Union['GetDatabasesFilterArgs', 'Ge
     all = linode.get_databases()
     pulumi.export("databaseIds", [__item.id for __item in all.databases])
     ```
-
-    Get information about all Linode MySQL Databases:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -157,8 +152,6 @@ def get_databases_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
 
     ## Example Usage
 
-    Get information about all Linode Managed Databases:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -166,9 +159,6 @@ def get_databases_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
     all = linode.get_databases()
     pulumi.export("databaseIds", [__item.id for __item in all.databases])
     ```
-
-    Get information about all Linode MySQL Databases:
-
     ```python
     import pulumi
     import pulumi_linode as linode

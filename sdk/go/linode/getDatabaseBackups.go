@@ -18,8 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about all backups for a MySQL database:
-//
 // ```go
 // package main
 //
@@ -44,9 +42,6 @@ import (
 //	}
 //
 // ```
-//
-// Get information about all automatic PostgreSQL Database Backups:
-//
 // ```go
 // package main
 //

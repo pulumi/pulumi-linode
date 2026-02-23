@@ -18,8 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// Retrieve all VPC configurations under a NodeBalancer:
-//
 // ```go
 // package main
 //
@@ -43,9 +41,6 @@ import (
 //	}
 //
 // ```
-//
-// Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of "10.0.0.4/30":
-//
 // ```go
 // package main
 //

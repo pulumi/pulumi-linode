@@ -97,8 +97,6 @@ def get_instances(filters: Optional[Sequence[Union['GetInstancesFilterArgs', 'Ge
 
     ## Example Usage
 
-    Get information about all Linode instances with a certain label and tag:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -118,9 +116,6 @@ def get_instances(filters: Optional[Sequence[Union['GetInstancesFilterArgs', 'Ge
     ])
     pulumi.export("instanceId", my_instances.instances[0].id)
     ```
-
-    Get information about all Linode instances associated with the current token:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -176,8 +171,6 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
 
     ## Example Usage
 
-    Get information about all Linode instances with a certain label and tag:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -197,9 +190,6 @@ def get_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
     ])
     pulumi.export("instanceId", my_instances.instances[0].id)
     ```
-
-    Get information about all Linode instances associated with the current token:
-
     ```python
     import pulumi
     import pulumi_linode as linode

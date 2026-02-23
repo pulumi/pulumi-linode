@@ -21,8 +21,6 @@ import (
 //
 // ## Example Usage
 //
-// Creating a simple MySQL database instance:
-//
 // ```go
 // package main
 //
@@ -49,9 +47,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a complex MySQL database instance:
-//
 // ```go
 // package main
 //

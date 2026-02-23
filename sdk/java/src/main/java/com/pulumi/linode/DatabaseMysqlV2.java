@@ -31,8 +31,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Creating a simple MySQL database that does not allow connections:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -66,9 +64,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a simple MySQL database that allows connections from all IPv4 addresses:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -103,9 +98,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a complex MySQL database:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -148,9 +140,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a MySQL database with engine config fields specified:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -212,9 +201,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a forked MySQL database:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -249,9 +235,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a MySQL database hidden behind a VPC:
- * 
  * <pre>
  * {@code
  * package generated_program;

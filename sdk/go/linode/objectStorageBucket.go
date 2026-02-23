@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// The following example shows how one might use this resource to create an Object Storage Bucket:
-//
 // ```go
 // package main
 //
@@ -43,9 +41,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating an Object Storage Bucket with Lifecycle rules:
-//
 // ```go
 // package main
 //

@@ -15,8 +15,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Create an unrestricted user:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,9 +31,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Create a restricted user with grants:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about all Linode Cloud Domains with a specific tag:
-//
 // ```go
 // package main
 //

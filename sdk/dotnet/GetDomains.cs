@@ -17,8 +17,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode Cloud Domains with a specific tag:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -86,8 +84,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode Cloud Domains with a specific tag:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -154,8 +150,6 @@ namespace Pulumi.Linode
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
         /// 
         /// ## Example Usage
-        /// 
-        /// Get information about all Linode Cloud Domains with a specific tag:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

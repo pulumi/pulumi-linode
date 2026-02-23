@@ -23,8 +23,6 @@ import (
 //
 // ## Example Usage
 //
-// Share in IPv4 address between two instances:
-//
 // ```go
 // package main
 //
@@ -71,94 +69,6 @@ import (
 //			})
 //			if err != nil {
 //				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Share an IPv6 address among a primary node and its replicas:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a single primary node
-//			primary, err := linode.NewInstance(ctx, "primary", &linode.InstanceArgs{
-//				Label:  pulumi.String("node-primary"),
-//				Type:   pulumi.String("g6-nanode-1"),
-//				Region: pulumi.String("eu-central"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Allocate an IPv6 range pointing at the primary node
-//			rangeIpv6Range, err := linode.NewIpv6Range(ctx, "range", &linode.Ipv6RangeArgs{
-//				PrefixLength: pulumi.Int(64),
-//				LinodeId:     primary.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Share with primary node
-//			share_primary, err := linode.NewInstanceSharedIps(ctx, "share-primary", &linode.InstanceSharedIpsArgs{
-//				LinodeId: primary.ID(),
-//				Addresses: pulumi.StringArray{
-//					rangeIpv6Range.Range,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cfg := config.New(ctx, "")
-//			numberReplicas := float64(2)
-//			if param := cfg.GetFloat64("numberReplicas"); param != 0 {
-//				numberReplicas = param
-//			}
-//			// Create two secondary nodes
-//			var secondary []*linode.Instance
-//			for index := 0; index < numberReplicas; index++ {
-//				key0 := index
-//				val0 := index
-//				__res, err := linode.NewInstance(ctx, fmt.Sprintf("secondary-%v", key0), &linode.InstanceArgs{
-//					Label:  pulumi.Sprintf("node-secondary-%v", val0),
-//					Type:   pulumi.String("g6-nanode-1"),
-//					Region: pulumi.String("eu-central"),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				secondary = append(secondary, __res)
-//			}
-//			// Share with secondary nodes
-//			var share_secondary []*linode.InstanceSharedIps
-//			for index := 0; index < numberReplicas; index++ {
-//				key0 := index
-//				val0 := index
-//				__res, err := linode.NewInstanceSharedIps(ctx, fmt.Sprintf("share-secondary-%v", key0), &linode.InstanceSharedIpsArgs{
-//					LinodeId: pulumi.Int(secondary[val0].ID()),
-//					Addresses: pulumi.StringArray{
-//						rangeIpv6Range.Range,
-//					},
-//				}, pulumi.DependsOn([]pulumi.Resource{
-//					share_primary,
-//				}))
-//				if err != nil {
-//					return err
-//				}
-//				share_secondary = append(share_secondary, __res)
 //			}
 //			return nil
 //		})

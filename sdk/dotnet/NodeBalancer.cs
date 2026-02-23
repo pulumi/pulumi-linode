@@ -69,7 +69,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
+    /// Linodes NodeBalancers can be imported using the Linode NodeBalancer `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567

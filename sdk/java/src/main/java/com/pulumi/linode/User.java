@@ -32,8 +32,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Create an unrestricted user:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -65,9 +63,6 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
- * 
- * Create a restricted user with grants:
- * 
  * <pre>
  * {@code
  * package generated_program;

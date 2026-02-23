@@ -14,8 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Creating a simple MySQL database that does not allow connections:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -27,9 +25,6 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * ```
- *
- * Creating a simple MySQL database that allows connections from all IPv4 addresses:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -42,9 +37,6 @@ import * as utilities from "./utilities";
  *     allowLists: ["0.0.0.0/0"],
  * });
  * ```
- *
- * Creating a complex MySQL database:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -64,9 +56,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- *
- * Creating a MySQL database with engine config fields specified:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -106,9 +95,6 @@ import * as utilities from "./utilities";
  *     engineConfigMysqlWaitTimeout: 28800,
  * });
  * ```
- *
- * Creating a forked MySQL database:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -121,9 +107,6 @@ import * as utilities from "./utilities";
  *     forkSource: 12345,
  * });
  * ```
- *
- * Creating a MySQL database hidden behind a VPC:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

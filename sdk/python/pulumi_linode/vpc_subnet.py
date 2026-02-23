@@ -233,8 +233,6 @@ class VpcSubnet(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create a VPC subnet:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -244,9 +242,6 @@ class VpcSubnet(pulumi.CustomResource):
             label="test-subnet",
             ipv4="10.0.0.0/24")
         ```
-
-        Create a VPC subnet with an implicitly determined IPv6 range:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -306,8 +301,6 @@ class VpcSubnet(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create a VPC subnet:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -317,9 +310,6 @@ class VpcSubnet(pulumi.CustomResource):
             label="test-subnet",
             ipv4="10.0.0.0/24")
         ```
-
-        Create a VPC subnet with an implicitly determined IPv6 range:
-
         ```python
         import pulumi
         import pulumi_linode as linode

@@ -141,8 +141,6 @@ class DatabaseAccessControls(pulumi.CustomResource):
 
         ## Example Usage
 
-        Grant a Linode access to a database:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -180,8 +178,6 @@ class DatabaseAccessControls(pulumi.CustomResource):
         For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/put-databases-mysql-instance) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/put-databases-postgre-sql-instance).
 
         ## Example Usage
-
-        Grant a Linode access to a database:
 
         ```python
         import pulumi

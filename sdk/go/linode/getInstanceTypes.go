@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about all Linode Instance types with a certain number of VCPUs:
-//
 // ```go
 // package main
 //
@@ -47,9 +45,6 @@ import (
 // })
 // }
 // ```
-//
-// Get information about all Linode Instance types:
-//
 // ```go
 // package main
 //

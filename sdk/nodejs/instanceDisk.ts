@@ -14,8 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Creating a simple 512 MB Linode Instance Disk:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -32,9 +30,6 @@ import * as utilities from "./utilities";
  *     filesystem: "ext4",
  * });
  * ```
- *
- * Creating a complex bootable Instance Disk:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -60,7 +55,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Instance Disks can be imported using the `linode_id` followed by the Instance Disk `id` separated by a comma, e.g.
+ * Instance Disks can be imported using the `linodeId` followed by the Instance Disk `id` separated by a comma, e.g.
  *
  * ```sh
  * $ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321

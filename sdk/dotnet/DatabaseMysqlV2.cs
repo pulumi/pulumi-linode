@@ -17,8 +17,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Creating a simple MySQL database that does not allow connections:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,9 +35,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a simple MySQL database that allows connections from all IPv4 addresses:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -62,9 +57,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a complex MySQL database:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,9 +87,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a MySQL database with engine config fields specified:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -144,9 +133,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a forked MySQL database:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -166,9 +152,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a MySQL database hidden behind a VPC:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -230,7 +213,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linode MySQL Databases can be imported using the `id`, e.g.
+    /// Linode MySQL Databases can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/databaseMysqlV2:DatabaseMysqlV2 foobar 1234567

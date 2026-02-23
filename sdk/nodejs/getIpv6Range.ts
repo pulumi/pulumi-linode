@@ -10,8 +10,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about an IPv6 range assigned to a Linode:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -63,8 +61,6 @@ export interface GetIpv6RangeResult {
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
  *
  * ## Example Usage
- *
- * Get information about an IPv6 range assigned to a Linode:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

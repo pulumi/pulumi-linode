@@ -27,8 +27,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Share in IPv4 address between two instances:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -80,83 +78,6 @@ import javax.annotation.Nullable;
  *             .addresses(primary.address())
  *             .build());
  * 
- *     }
- * }
- * }
- * </pre>
- * 
- * Share an IPv6 address among a primary node and its replicas:
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.linode.Instance;
- * import com.pulumi.linode.InstanceArgs;
- * import com.pulumi.linode.Ipv6Range;
- * import com.pulumi.linode.Ipv6RangeArgs;
- * import com.pulumi.linode.InstanceSharedIps;
- * import com.pulumi.linode.InstanceSharedIpsArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         // Create a single primary node
- *         var primary = new Instance("primary", InstanceArgs.builder()
- *             .label("node-primary")
- *             .type("g6-nanode-1")
- *             .region("eu-central")
- *             .build());
- * 
- *         // Allocate an IPv6 range pointing at the primary node
- *         var rangeIpv6Range = new Ipv6Range("rangeIpv6Range", Ipv6RangeArgs.builder()
- *             .prefixLength(64)
- *             .linodeId(primary.id())
- *             .build());
- * 
- *         // Share with primary node
- *         var share_primary = new InstanceSharedIps("share-primary", InstanceSharedIpsArgs.builder()
- *             .linodeId(primary.id())
- *             .addresses(rangeIpv6Range.range())
- *             .build());
- * 
- *         final var numberReplicas = config.get("numberReplicas").orElse(2);
- *         // Create two secondary nodes
- *         for (var i = 0; i < numberReplicas; i++) {
- *             new Instance("secondary-" + i, InstanceArgs.builder()
- *                 .label(String.format("node-secondary-%s", range.value()))
- *                 .type("g6-nanode-1")
- *                 .region("eu-central")
- *                 .build());
- * 
- *         
- * }
- *         // Share with secondary nodes
- *         for (var i = 0; i < numberReplicas; i++) {
- *             new InstanceSharedIps("share-secondary-" + i, InstanceSharedIpsArgs.builder()
- *                 .linodeId(secondary[range.value()].id())
- *                 .addresses(rangeIpv6Range.range())
- *                 .build(), CustomResourceOptions.builder()
- *                     .dependsOn(share_primary)
- *                     .build());
- * 
- *         
- * }
  *     }
  * }
  * }

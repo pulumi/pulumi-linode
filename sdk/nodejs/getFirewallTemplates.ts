@@ -11,8 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * The following example shows how one might use this data source to list all available Firewall Templates:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -68,8 +66,6 @@ export interface GetFirewallTemplatesResult {
  * Provides information about all Linode Firewall Templates.
  *
  * ## Example Usage
- *
- * The following example shows how one might use this data source to list all available Firewall Templates:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

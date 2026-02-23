@@ -17,8 +17,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Create a VPC:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

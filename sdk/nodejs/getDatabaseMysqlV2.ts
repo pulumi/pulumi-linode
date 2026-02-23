@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about a MySQL database:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -292,8 +290,6 @@ export interface GetDatabaseMysqlV2Result {
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance).
  *
  * ## Example Usage
- *
- * Get information about a MySQL database:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

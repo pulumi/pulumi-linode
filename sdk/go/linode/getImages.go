@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about all Linode images with a certain label and visibility:
-//
 // ```go
 // package main
 //
@@ -55,9 +53,6 @@ import (
 //	}
 //
 // ```
-//
-// Get information about all Linode images associated with the current token:
-//
 // ```go
 // package main
 //

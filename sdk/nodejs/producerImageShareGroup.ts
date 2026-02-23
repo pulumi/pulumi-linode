@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Create an Image Share Group without any Images:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -23,9 +21,6 @@ import * as utilities from "./utilities";
  *     description: "My description.",
  * });
  * ```
- *
- * Create an Image Share Group with one Image:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

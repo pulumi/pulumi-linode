@@ -10,9 +10,378 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode
 {
     /// <summary>
+    /// Manages an LKE cluster.
+    /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 3,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Linode.LkeCluster("test", new()
+    ///     {
+    ///         Label = "lke-e-cluster",
+    ///         Region = "us-lax",
+    ///         K8sVersion = "v1.31.8+lke5",
+    ///         Tags = new[]
+    ///         {
+    ///             "test",
+    ///         },
+    ///         Tier = "enterprise",
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g7-premium-2",
+    ///                 Count = 3,
+    ///                 Tags = new[]
+    ///                 {
+    ///                     "test",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs
+    ///                 {
+    ///                     Min = 3,
+    ///                     Max = 10,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new Linode.LkeCluster("test", new()
+    ///     {
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///         ControlPlane = new Linode.Inputs.LkeClusterControlPlaneArgs
+    ///         {
+    ///             HighAvailability = true,
+    ///             Acl = new Linode.Inputs.LkeClusterControlPlaneAclArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Addresses = new[]
+    ///                 {
+    ///                     new Linode.Inputs.LkeClusterControlPlaneAclAddressArgs
+    ///                     {
+    ///                         Ipv4s = new[]
+    ///                         {
+    ///                             "0.0.0.0/0",
+    ///                         },
+    ///                         Ipv6s = new[]
+    ///                         {
+    ///                             "2001:db8::/32",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 2,
+    ///                 Label = "db-pool",
+    ///             },
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-1",
+    ///                 Count = 3,
+    ///                 Label = "app-pool",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 2,
+    ///                 Label = "db-pool",
+    ///                 FirewallId = 12345,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 2,
+    ///                 Labels = 
+    ///                 {
+    ///                     { "role", "database" },
+    ///                     { "environment", "production" },
+    ///                 },
+    ///             },
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-1",
+    ///                 Count = 3,
+    ///                 Labels = 
+    ///                 {
+    ///                     { "role", "application" },
+    ///                     { "environment", "production" },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Nested Node Pool Caveats
+    /// 
+    /// Due to limitations in the provider there are some minor caveats that may cause unexpected behavior when updating
+    /// nested `Pool` blocks in this resource.
+    /// Primarily, the order of `Pool` blocks is significant because the ID of each pool is resolved from
+    /// the Terraform state.
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-1",
+    ///                 Count = 2,
+    ///             },
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 3,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 3,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ## Externally Managed Node Pools
+    /// 
+    /// By default, the `linode.LkeCluster` resource will account for all node pools under the corresponding cluster, meaning
+    /// any node pools created externally or managed by other resources will be removed on subsequent applies.
+    /// 
+    /// To signal the provider to ignore externally managed node pools, the `ExternalPoolTags` attribute can be defined with
+    /// tags matching a tag on an externally managed node pool.
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var externalPoolTag = "external";
+    /// 
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-mia",
+    ///         ExternalPoolTags = new[]
+    ///         {
+    ///             externalPoolTag,
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-1",
+    ///                 Count = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
+    ///     {
+    ///         ClusterId = my_cluster.Id,
+    ///         Type = "g6-standard-2",
+    ///         NodeCount = 3,
+    ///         Tags = new[]
+    ///         {
+    ///             externalPoolTag,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// LKE Clusters can be imported using the `id`, e.g.
+    /// LKE Clusters can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345

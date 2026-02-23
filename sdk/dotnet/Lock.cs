@@ -22,8 +22,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Create a basic lock that prevents a Linode from being deleted:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,9 +46,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Create a lock that prevents a Linode and its subresources (disks, configs, etc.) from being deleted:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

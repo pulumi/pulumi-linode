@@ -144,7 +144,7 @@ export class ObjectStorageObject extends pulumi.CustomResource {
      */
     declare public readonly endpoint: pulumi.Output<string>;
     /**
-     * The specific version of this object.
+     * Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
      */
     declare public readonly etag: pulumi.Output<string>;
     /**
@@ -310,7 +310,7 @@ export interface ObjectStorageObjectState {
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * The specific version of this object.
+     * Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
      */
     etag?: pulumi.Input<string>;
     /**
@@ -406,7 +406,7 @@ export interface ObjectStorageObjectArgs {
      */
     endpoint?: pulumi.Input<string>;
     /**
-     * The specific version of this object.
+     * Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
      */
     etag?: pulumi.Input<string>;
     /**

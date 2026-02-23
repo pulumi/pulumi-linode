@@ -16,8 +16,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Retrieve all IPs under the current account:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,9 +28,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Retrieve all IPs under the current account in a specific region:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -89,8 +84,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Retrieve all IPs under the current account:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -103,9 +96,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Retrieve all IPs under the current account in a specific region:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -162,8 +152,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Retrieve all IPs under the current account:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -176,9 +164,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Retrieve all IPs under the current account in a specific region:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

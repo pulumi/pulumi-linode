@@ -112,17 +112,12 @@ def get_nodebalancer_vpcs(filters: Optional[Sequence[Union['GetNodebalancerVpcsF
 
     ## Example Usage
 
-    Retrieve all VPC configurations under a NodeBalancer:
-
     ```python
     import pulumi
     import pulumi_linode as linode
 
     vpc_configs = linode.get_nodebalancer_vpcs(nodebalancer_id=12345)
     ```
-
-    Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of "10.0.0.4/30":
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -181,17 +176,12 @@ def get_nodebalancer_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequenc
 
     ## Example Usage
 
-    Retrieve all VPC configurations under a NodeBalancer:
-
     ```python
     import pulumi
     import pulumi_linode as linode
 
     vpc_configs = linode.get_nodebalancer_vpcs(nodebalancer_id=12345)
     ```
-
-    Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of "10.0.0.4/30":
-
     ```python
     import pulumi
     import pulumi_linode as linode

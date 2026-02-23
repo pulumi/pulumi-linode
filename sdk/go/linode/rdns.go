@@ -61,57 +61,6 @@ import (
 //
 // The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			var myInstance []*linode.Instance
-//			for index := 0; index < 3; index++ {
-//				key0 := index
-//				val0 := index
-//				__res, err := linode.NewInstance(ctx, fmt.Sprintf("my_instance-%v", key0), &linode.InstanceArgs{
-//					Label:    pulumi.Sprintf("simple_instance-%v", val0+1),
-//					Image:    pulumi.String("linode/ubuntu22.04"),
-//					Region:   pulumi.String("us-central"),
-//					Type:     pulumi.String("g6-standard-1"),
-//					RootPass: pulumi.String("terr4form-test"),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				myInstance = append(myInstance, __res)
-//			}
-//			var myRdns []*linode.Rdns
-//			for index := 0; index < int(len(myInstance)); index++ {
-//				key0 := index
-//				val0 := index
-//				__res, err := linode.NewRdns(ctx, fmt.Sprintf("my_rdns-%v", key0), &linode.RdnsArgs{
-//					Address: myInstance[val0].IpAddress,
-//					Rdns: pulumi.String(myInstance[val0].IpAddress.ApplyT(func(ipAddress string) (string, error) {
-//						return fmt.Sprintf("%v.nip.io", ipAddress), nil
-//					}).(pulumi.StringOutput)),
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				myRdns = append(myRdns, __res)
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Linodes RDNS resources can be imported using the address as the `id`.

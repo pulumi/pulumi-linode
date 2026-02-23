@@ -15,8 +15,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// The following example shows how one might use this resource to create an Object Storage Bucket:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,9 +31,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating an Object Storage Bucket with Lifecycle rules:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -77,7 +72,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.
+    /// Linodes Object Storage Buckets can be imported using the resource `Id` which is made of `cluster:label`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar

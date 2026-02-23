@@ -24,8 +24,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Create a VPC:
- * 
  * <pre>
  * {@code
  * package generated_program;

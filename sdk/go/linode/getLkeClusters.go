@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about all LKE clusters with a specific tag:
-//
 // ```go
 // package main
 //

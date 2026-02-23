@@ -21,8 +21,6 @@ import (
 //
 // ## Example Usage
 //
-// Creating a simple PostgreSQL database instance:
-//
 // ```go
 // package main
 //
@@ -49,9 +47,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a complex PostgreSQL database instance:
-//
 // ```go
 // package main
 //

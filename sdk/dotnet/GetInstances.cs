@@ -17,8 +17,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode instances with a certain label and tag:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -57,9 +55,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode instances associated with the current token:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -106,8 +101,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode instances with a certain label and tag:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -146,9 +139,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode instances associated with the current token:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -195,8 +185,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode instances with a certain label and tag:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -235,9 +223,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode instances associated with the current token:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

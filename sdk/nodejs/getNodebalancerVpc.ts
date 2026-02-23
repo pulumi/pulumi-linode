@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Retrieve information about a NodeBalancer VPC configuration:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -72,8 +70,6 @@ export interface GetNodebalancerVpcResult {
  * For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
  *
  * ## Example Usage
- *
- * Retrieve information about a NodeBalancer VPC configuration:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

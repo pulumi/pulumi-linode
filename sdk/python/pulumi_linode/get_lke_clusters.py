@@ -97,8 +97,6 @@ def get_lke_clusters(filters: Optional[Sequence[Union['GetLkeClustersFilterArgs'
 
     ## Example Usage
 
-    Get information about all LKE clusters with a specific tag:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -152,8 +150,6 @@ def get_lke_clusters_output(filters: Optional[pulumi.Input[Optional[Sequence[Uni
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
 
     ## Example Usage
-
-    Get information about all LKE clusters with a specific tag:
 
     ```python
     import pulumi

@@ -21,8 +21,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Create a token for an Image Share Group:
- * 
  * <pre>
  * {@code
  * package generated_program;

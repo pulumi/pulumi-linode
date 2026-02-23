@@ -942,8 +942,6 @@ def get_database_postgresql_v2(id: Optional[_builtins.str] = None,
 
     ## Example Usage
 
-    Get information about a PostgreSQL database:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -1077,8 +1075,6 @@ def get_database_postgresql_v2_output(id: Optional[pulumi.Input[_builtins.str]] 
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
 
     ## Example Usage
-
-    Get information about a PostgreSQL database:
 
     ```python
     import pulumi

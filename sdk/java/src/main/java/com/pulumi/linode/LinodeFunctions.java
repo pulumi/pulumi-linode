@@ -4153,8 +4153,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all backups for a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4186,9 +4184,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all automatic PostgreSQL Database Backups:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4237,8 +4232,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all backups for a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4270,9 +4263,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all automatic PostgreSQL Database Backups:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4321,8 +4311,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all backups for a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4354,9 +4342,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all automatic PostgreSQL Database Backups:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4405,8 +4390,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all backups for a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4438,9 +4421,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all automatic PostgreSQL Database Backups:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4489,8 +4469,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all backups for a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4522,9 +4500,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all automatic PostgreSQL Database Backups:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4571,8 +4546,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4603,9 +4576,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4640,9 +4610,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Create a Linode MySQL Database using the latest support MySQL version:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4697,8 +4664,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4729,9 +4694,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4766,9 +4728,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Create a Linode MySQL Database using the latest support MySQL version:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4823,8 +4782,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4855,9 +4812,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4892,9 +4846,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Create a Linode MySQL Database using the latest support MySQL version:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4949,8 +4900,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -4981,9 +4930,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5018,9 +4964,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Create a Linode MySQL Database using the latest support MySQL version:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5075,8 +5018,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5107,9 +5048,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5144,9 +5082,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Create a Linode MySQL Database using the latest support MySQL version:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5201,8 +5136,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5233,9 +5166,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5270,9 +5200,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Create a Linode MySQL Database using the latest support MySQL version:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5327,8 +5254,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5359,9 +5284,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Database engines:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5396,9 +5318,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Create a Linode MySQL Database using the latest support MySQL version:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5454,8 +5373,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
-     * 
-     * Get information about a MySQL database:
      * 
      * <pre>
      * {@code
@@ -5514,8 +5431,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5572,8 +5487,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
-     * 
-     * Get information about a MySQL database:
      * 
      * <pre>
      * {@code
@@ -5632,8 +5545,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5690,8 +5601,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
-     * 
-     * Get information about a MySQL database:
      * 
      * <pre>
      * {@code
@@ -5750,8 +5659,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5808,8 +5715,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
      * 
      * ## Example Usage
-     * 
-     * Get information about a MySQL database:
      * 
      * <pre>
      * {@code
@@ -5868,8 +5773,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all backups for a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5900,9 +5803,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all automatic MySQL Database Backups:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5950,8 +5850,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all backups for a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -5982,9 +5880,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all automatic MySQL Database Backups:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -6032,8 +5927,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all backups for a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -6064,9 +5957,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all automatic MySQL Database Backups:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -6114,8 +6004,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all backups for a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -6146,9 +6034,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all automatic MySQL Database Backups:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -6196,8 +6081,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all backups for a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -6228,9 +6111,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all automatic MySQL Database Backups:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -6275,8 +6155,6 @@ public final class LinodeFunctions {
      * For more information, see the Linode APIv4 docs.
      * 
      * ## Example Usage
-     * 
-     * Get information about a MySQL database&#39;s configuration options:
      * 
      * <pre>
      * {@code
@@ -6814,8 +6692,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a MySQL database&#39;s configuration options:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -7351,8 +7227,6 @@ public final class LinodeFunctions {
      * For more information, see the Linode APIv4 docs.
      * 
      * ## Example Usage
-     * 
-     * Get information about a MySQL database&#39;s configuration options:
      * 
      * <pre>
      * {@code
@@ -7890,8 +7764,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a MySQL database&#39;s configuration options:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -8427,8 +8299,6 @@ public final class LinodeFunctions {
      * For more information, see the Linode APIv4 docs.
      * 
      * ## Example Usage
-     * 
-     * Get information about a MySQL database&#39;s configuration options:
      * 
      * <pre>
      * {@code
@@ -8966,8 +8836,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a MySQL database&#39;s configuration options:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -9503,8 +9371,6 @@ public final class LinodeFunctions {
      * For more information, see the Linode APIv4 docs.
      * 
      * ## Example Usage
-     * 
-     * Get information about a MySQL database&#39;s configuration options:
      * 
      * <pre>
      * {@code
@@ -10042,8 +9908,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -10116,8 +9980,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance).
      * 
      * ## Example Usage
-     * 
-     * Get information about a MySQL database:
      * 
      * <pre>
      * {@code
@@ -10192,8 +10054,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -10267,8 +10127,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a MySQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -10341,8 +10199,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance).
      * 
      * ## Example Usage
-     * 
-     * Get information about a MySQL database:
      * 
      * <pre>
      * {@code
@@ -10419,8 +10275,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a PostgreSQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -10477,8 +10331,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
-     * 
-     * Get information about a PostgreSQL database:
      * 
      * <pre>
      * {@code
@@ -10537,8 +10389,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a PostgreSQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -10595,8 +10445,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
-     * 
-     * Get information about a PostgreSQL database:
      * 
      * <pre>
      * {@code
@@ -10655,8 +10503,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a PostgreSQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -10713,8 +10559,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
-     * 
-     * Get information about a PostgreSQL database:
      * 
      * <pre>
      * {@code
@@ -10773,8 +10617,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a PostgreSQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -10829,8 +10671,6 @@ public final class LinodeFunctions {
      * For more information, see the Linode APIv4 docs.
      * 
      * ## Example Usage
-     * 
-     * Get information about a PostgreSQL database&#39;s configuration options:
      * 
      * <pre>
      * {@code
@@ -11638,8 +11478,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a PostgreSQL database&#39;s configuration options:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -12445,8 +12283,6 @@ public final class LinodeFunctions {
      * For more information, see the Linode APIv4 docs.
      * 
      * ## Example Usage
-     * 
-     * Get information about a PostgreSQL database&#39;s configuration options:
      * 
      * <pre>
      * {@code
@@ -13254,8 +13090,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a PostgreSQL database&#39;s configuration options:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -14061,8 +13895,6 @@ public final class LinodeFunctions {
      * For more information, see the Linode APIv4 docs.
      * 
      * ## Example Usage
-     * 
-     * Get information about a PostgreSQL database&#39;s configuration options:
      * 
      * <pre>
      * {@code
@@ -14870,8 +14702,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a PostgreSQL database&#39;s configuration options:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -15677,8 +15507,6 @@ public final class LinodeFunctions {
      * For more information, see the Linode APIv4 docs.
      * 
      * ## Example Usage
-     * 
-     * Get information about a PostgreSQL database&#39;s configuration options:
      * 
      * <pre>
      * {@code
@@ -16486,8 +16314,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a PostgreSQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -16560,8 +16386,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
-     * 
-     * Get information about a PostgreSQL database:
      * 
      * <pre>
      * {@code
@@ -16636,8 +16460,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a PostgreSQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -16710,8 +16532,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
      * 
      * ## Example Usage
-     * 
-     * Get information about a PostgreSQL database:
      * 
      * <pre>
      * {@code
@@ -16786,8 +16606,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about a PostgreSQL database:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -16861,8 +16679,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -16893,9 +16709,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -16951,8 +16764,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -16983,9 +16794,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -17041,8 +16849,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -17073,9 +16879,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -17131,8 +16934,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -17163,9 +16964,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -17221,8 +17019,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -17253,9 +17049,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -17311,8 +17104,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -17343,9 +17134,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -17401,8 +17189,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Managed Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -17433,9 +17219,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode MySQL Databases:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -18280,8 +18063,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Cloud Domains with a specific tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -18354,8 +18135,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
      * 
      * ## Example Usage
-     * 
-     * Get information about all Linode Cloud Domains with a specific tag:
      * 
      * <pre>
      * {@code
@@ -18430,8 +18209,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Cloud Domains with a specific tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -18504,8 +18281,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
      * 
      * ## Example Usage
-     * 
-     * Get information about all Linode Cloud Domains with a specific tag:
      * 
      * <pre>
      * {@code
@@ -18580,8 +18355,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Cloud Domains with a specific tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -18655,8 +18428,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Cloud Domains with a specific tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -18729,8 +18500,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
      * 
      * ## Example Usage
-     * 
-     * Get information about all Linode Cloud Domains with a specific tag:
      * 
      * <pre>
      * {@code
@@ -19030,8 +18799,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to access information about a specific Firewall Template:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -19072,8 +18839,6 @@ public final class LinodeFunctions {
      * Provides information about a Linode Firewall Template.
      * 
      * ## Example Usage
-     * 
-     * The following example shows how one might use this data source to access information about a specific Firewall Template:
      * 
      * <pre>
      * {@code
@@ -19116,8 +18881,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to access information about a specific Firewall Template:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -19158,8 +18921,6 @@ public final class LinodeFunctions {
      * Provides information about a Linode Firewall Template.
      * 
      * ## Example Usage
-     * 
-     * The following example shows how one might use this data source to access information about a specific Firewall Template:
      * 
      * <pre>
      * {@code
@@ -19202,8 +18963,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to access information about a specific Firewall Template:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -19244,8 +19003,6 @@ public final class LinodeFunctions {
      * Provides information about all Linode Firewall Templates.
      * 
      * ## Example Usage
-     * 
-     * The following example shows how one might use this data source to list all available Firewall Templates:
      * 
      * <pre>
      * {@code
@@ -19329,8 +19086,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to list all available Firewall Templates:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -19412,8 +19167,6 @@ public final class LinodeFunctions {
      * Provides information about all Linode Firewall Templates.
      * 
      * ## Example Usage
-     * 
-     * The following example shows how one might use this data source to list all available Firewall Templates:
      * 
      * <pre>
      * {@code
@@ -19497,8 +19250,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to list all available Firewall Templates:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -19580,8 +19331,6 @@ public final class LinodeFunctions {
      * Provides information about all Linode Firewall Templates.
      * 
      * ## Example Usage
-     * 
-     * The following example shows how one might use this data source to list all available Firewall Templates:
      * 
      * <pre>
      * {@code
@@ -19665,8 +19414,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to list all available Firewall Templates:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -19748,8 +19495,6 @@ public final class LinodeFunctions {
      * Provides information about all Linode Firewall Templates.
      * 
      * ## Example Usage
-     * 
-     * The following example shows how one might use this data source to list all available Firewall Templates:
      * 
      * <pre>
      * {@code
@@ -19834,8 +19579,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -19875,9 +19618,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -19955,8 +19695,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -19996,9 +19734,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20076,8 +19811,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20117,9 +19850,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20197,8 +19927,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20238,9 +19966,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20318,8 +20043,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20359,9 +20082,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20439,8 +20159,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20480,9 +20198,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20560,8 +20275,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Cloud Firewalls with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20601,9 +20314,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20896,8 +20606,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode images with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -20937,9 +20645,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21003,8 +20708,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode images with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21044,9 +20747,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21110,8 +20810,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode images with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21151,9 +20849,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21217,8 +20912,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode images with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21258,9 +20951,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21324,8 +21014,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode images with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21365,9 +21053,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21431,8 +21116,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode images with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21472,9 +21155,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21538,8 +21218,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode images with a certain label and visibility:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -21579,9 +21257,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode images associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22270,8 +21945,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Instance types with a certain number of VCPUs:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22306,9 +21979,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode Instance types:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22368,8 +22038,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Instance types with a certain number of VCPUs:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22404,9 +22072,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode Instance types:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22466,8 +22131,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Instance types with a certain number of VCPUs:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22502,9 +22165,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode Instance types:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22564,8 +22224,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Instance types with a certain number of VCPUs:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22600,9 +22258,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode Instance types:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22662,8 +22317,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Instance types with a certain number of VCPUs:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22698,9 +22351,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode Instance types:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22760,8 +22410,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Instance types with a certain number of VCPUs:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22796,9 +22444,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode Instance types:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22858,8 +22503,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode Instance types with a certain number of VCPUs:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22894,9 +22537,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode Instance types:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22956,8 +22596,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode instances with a certain label and tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -22999,9 +22637,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode instances associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23063,8 +22698,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode instances with a certain label and tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23106,9 +22739,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode instances associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23170,8 +22800,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode instances with a certain label and tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23213,9 +22841,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode instances associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23277,8 +22902,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode instances with a certain label and tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23320,9 +22943,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode instances associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23384,8 +23004,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode instances with a certain label and tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23427,9 +23045,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode instances associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23491,8 +23106,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode instances with a certain label and tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23534,9 +23147,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode instances associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23598,8 +23208,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all Linode instances with a certain label and tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23641,9 +23249,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all Linode instances associated with the current token:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23720,8 +23325,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about an IPv6 range assigned to a Linode:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23762,8 +23365,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
      * 
      * ## Example Usage
-     * 
-     * Get information about an IPv6 range assigned to a Linode:
      * 
      * <pre>
      * {@code
@@ -23806,8 +23407,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about an IPv6 range assigned to a Linode:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23849,8 +23448,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about an IPv6 range assigned to a Linode:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -23891,8 +23488,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
      * 
      * ## Example Usage
-     * 
-     * Get information about an IPv6 range assigned to a Linode:
      * 
      * <pre>
      * {@code
@@ -25457,8 +25052,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all LKE clusters with a specific tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -25519,8 +25112,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
      * 
      * ## Example Usage
-     * 
-     * Get information about all LKE clusters with a specific tag:
      * 
      * <pre>
      * {@code
@@ -25583,8 +25174,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all LKE clusters with a specific tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -25645,8 +25234,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
      * 
      * ## Example Usage
-     * 
-     * Get information about all LKE clusters with a specific tag:
      * 
      * <pre>
      * {@code
@@ -25709,8 +25296,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all LKE clusters with a specific tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -25772,8 +25357,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get information about all LKE clusters with a specific tag:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -25834,8 +25417,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
      * 
      * ## Example Usage
-     * 
-     * Get information about all LKE clusters with a specific tag:
      * 
      * <pre>
      * {@code
@@ -27163,8 +26744,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get all locks in a type:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27198,9 +26777,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all locks:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27253,8 +26829,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get all locks in a type:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27288,9 +26862,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all locks:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27343,8 +26914,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get all locks in a type:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27378,9 +26947,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all locks:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27433,8 +26999,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get all locks in a type:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27468,9 +27032,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all locks:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27523,8 +27084,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get all locks in a type:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27558,9 +27117,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all locks:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27613,8 +27169,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get all locks in a type:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27648,9 +27202,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all locks:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27703,8 +27254,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get all locks in a type:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27738,9 +27287,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Get information about all locks:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27788,8 +27334,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27820,8 +27364,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
      * 
      */
     public static Output<GetMaintenancePoliciesResult> getMaintenancePolicies() {
@@ -27833,8 +27375,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27865,8 +27405,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
      * 
      */
     public static CompletableFuture<GetMaintenancePoliciesResult> getMaintenancePoliciesPlain() {
@@ -27878,8 +27416,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27910,8 +27446,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
      * 
      */
     public static Output<GetMaintenancePoliciesResult> getMaintenancePolicies(GetMaintenancePoliciesArgs args) {
@@ -27923,8 +27457,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -27955,8 +27487,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
      * 
      */
     public static CompletableFuture<GetMaintenancePoliciesResult> getMaintenancePoliciesPlain(GetMaintenancePoliciesPlainArgs args) {
@@ -27968,8 +27498,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28000,8 +27528,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
      * 
      */
     public static Output<GetMaintenancePoliciesResult> getMaintenancePolicies(GetMaintenancePoliciesArgs args, InvokeOptions options) {
@@ -28013,8 +27539,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28045,8 +27569,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
      * 
      */
     public static Output<GetMaintenancePoliciesResult> getMaintenancePolicies(GetMaintenancePoliciesArgs args, InvokeOutputOptions options) {
@@ -28058,8 +27580,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28090,8 +27610,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
      * 
      */
     public static CompletableFuture<GetMaintenancePoliciesResult> getMaintenancePoliciesPlain(GetMaintenancePoliciesPlainArgs args, InvokeOptions options) {
@@ -28394,8 +27912,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all IPs under the current account:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28425,9 +27941,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all IPs under the current account in a specific region:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28493,8 +28006,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all IPs under the current account:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28524,9 +28035,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all IPs under the current account in a specific region:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28592,8 +28100,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all IPs under the current account:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28623,9 +28129,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all IPs under the current account in a specific region:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28691,8 +28194,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all IPs under the current account:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28722,9 +28223,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all IPs under the current account in a specific region:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28790,8 +28288,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all IPs under the current account:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28821,9 +28317,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all IPs under the current account in a specific region:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28889,8 +28382,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all IPs under the current account:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28920,9 +28411,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all IPs under the current account in a specific region:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -28988,8 +28476,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all IPs under the current account:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -29019,9 +28505,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all IPs under the current account in a specific region:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30090,8 +29573,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve information about a NodeBalancer VPC configuration:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30135,8 +29616,6 @@ public final class LinodeFunctions {
      * For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
      * 
      * ## Example Usage
-     * 
-     * Retrieve information about a NodeBalancer VPC configuration:
      * 
      * <pre>
      * {@code
@@ -30182,8 +29661,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve information about a NodeBalancer VPC configuration:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30227,8 +29704,6 @@ public final class LinodeFunctions {
      * For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
      * 
      * ## Example Usage
-     * 
-     * Retrieve information about a NodeBalancer VPC configuration:
      * 
      * <pre>
      * {@code
@@ -30274,8 +29749,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve information about a NodeBalancer VPC configuration:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30320,8 +29793,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all VPC configurations under a NodeBalancer:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30352,9 +29823,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of &#34;10.0.0.4/30&#34;:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30414,8 +29882,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all VPC configurations under a NodeBalancer:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30446,9 +29912,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of &#34;10.0.0.4/30&#34;:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30508,8 +29971,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all VPC configurations under a NodeBalancer:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30540,9 +30001,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of &#34;10.0.0.4/30&#34;:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30602,8 +30060,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all VPC configurations under a NodeBalancer:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30634,9 +30090,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of &#34;10.0.0.4/30&#34;:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30696,8 +30149,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Retrieve all VPC configurations under a NodeBalancer:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -30728,9 +30179,6 @@ public final class LinodeFunctions {
      * }
      * }
      * </pre>
-     * 
-     * Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of &#34;10.0.0.4/30&#34;:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -31479,8 +30927,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -31566,8 +31012,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).
      * 
      * ## Example Usage
-     * 
-     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
      * 
      * <pre>
      * {@code
@@ -31655,8 +31099,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -31742,8 +31184,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).
      * 
      * ## Example Usage
-     * 
-     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
      * 
      * <pre>
      * {@code
@@ -31831,8 +31271,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -31919,8 +31357,6 @@ public final class LinodeFunctions {
      * 
      * ## Example Usage
      * 
-     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
-     * 
      * <pre>
      * {@code
      * package generated_program;
@@ -32006,8 +31442,6 @@ public final class LinodeFunctions {
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).
      * 
      * ## Example Usage
-     * 
-     * Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
      * 
      * <pre>
      * {@code

@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about all Linode Cloud Firewalls with a certain label and visibility:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -32,9 +30,6 @@ import * as utilities from "./utilities";
  * });
  * export const firewallId = specific.then(specific => specific.firewalls?.[0]?.id);
  * ```
- *
- * Get information about all Linode images associated with the current token:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -123,8 +118,6 @@ export interface GetFirewallsResult {
  *
  * ## Example Usage
  *
- * Get information about all Linode Cloud Firewalls with a certain label and visibility:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -143,9 +136,6 @@ export interface GetFirewallsResult {
  * });
  * export const firewallId = specific.then(specific => specific.firewalls?.[0]?.id);
  * ```
- *
- * Get information about all Linode images associated with the current token:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

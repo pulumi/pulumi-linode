@@ -58,7 +58,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
+    /// Linodes SSH Keys can be imported using the Linode SSH Key `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/sshKey:SshKey mysshkey 1234567

@@ -238,8 +238,6 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      * 
      * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
      * 
-     * The following arguments apply to uploading an image:
-     * 
      */
     @Import(name="linodeId")
     private @Nullable Output<Integer> linodeId;
@@ -250,8 +248,6 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      * ***
      * 
      * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-     * 
-     * The following arguments apply to uploading an image:
      * 
      */
     public Optional<Output<Integer>> linodeId() {
@@ -405,8 +401,6 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      * 
      * ***
      * 
-     * The following arguments apply to creating an image from an existing Linode Instance:
-     * 
      */
     @Import(name="waitForReplications")
     private @Nullable Output<Boolean> waitForReplications;
@@ -415,8 +409,6 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
      * @return Whether to wait for all image replications become `available`. Default to false.
      * 
      * ***
-     * 
-     * The following arguments apply to creating an image from an existing Linode Instance:
      * 
      */
     public Optional<Output<Boolean>> waitForReplications() {
@@ -783,8 +775,6 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          * 
          * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
          * 
-         * The following arguments apply to uploading an image:
-         * 
          * @return builder
          * 
          */
@@ -799,8 +789,6 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          * ***
          * 
          * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-         * 
-         * The following arguments apply to uploading an image:
          * 
          * @return builder
          * 
@@ -1042,8 +1030,6 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          * 
          * ***
          * 
-         * The following arguments apply to creating an image from an existing Linode Instance:
-         * 
          * @return builder
          * 
          */
@@ -1056,8 +1042,6 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          * @param waitForReplications Whether to wait for all image replications become `available`. Default to false.
          * 
          * ***
-         * 
-         * The following arguments apply to creating an image from an existing Linode Instance:
          * 
          * @return builder
          * 

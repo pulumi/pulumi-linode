@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// Create a Placement Group with the local anti-affinity policy:
-//
 // ```go
 // package main
 //

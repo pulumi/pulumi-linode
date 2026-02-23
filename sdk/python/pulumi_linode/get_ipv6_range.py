@@ -108,8 +108,6 @@ def get_ipv6_range(range: Optional[_builtins.str] = None,
 
     ## Example Usage
 
-    Get information about an IPv6 range assigned to a Linode:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -139,8 +137,6 @@ def get_ipv6_range_output(range: Optional[pulumi.Input[_builtins.str]] = None,
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
 
     ## Example Usage
-
-    Get information about an IPv6 range assigned to a Linode:
 
     ```python
     import pulumi

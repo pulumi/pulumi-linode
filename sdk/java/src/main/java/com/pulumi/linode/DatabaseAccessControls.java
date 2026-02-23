@@ -21,8 +21,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Grant a Linode access to a database:
- * 
  * <pre>
  * {@code
  * package generated_program;

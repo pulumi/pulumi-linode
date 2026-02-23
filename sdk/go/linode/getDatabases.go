@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about all Linode Managed Databases:
-//
 // ```go
 // package main
 //
@@ -39,9 +37,6 @@ import (
 // })
 // }
 // ```
-//
-// Get information about all Linode MySQL Databases:
-//
 // ```go
 // package main
 //

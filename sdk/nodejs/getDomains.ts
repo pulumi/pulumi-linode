@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about all Linode Cloud Domains with a specific tag:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -98,8 +96,6 @@ export interface GetDomainsResult {
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
  *
  * ## Example Usage
- *
- * Get information about all Linode Cloud Domains with a specific tag:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

@@ -15,8 +15,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -117,7 +115,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Firewalls can be imported using the `id`, e.g.
+    /// Firewalls can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/firewall:Firewall my_firewall 12345
