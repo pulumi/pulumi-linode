@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about an IPv6 range assigned to a Linode:
-//
 // ```go
 // package main
 //

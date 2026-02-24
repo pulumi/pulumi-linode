@@ -17,8 +17,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about an IPv6 range assigned to a Linode:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,8 +42,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about an IPv6 range assigned to a Linode:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,8 +66,6 @@ namespace Pulumi.Linode
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ipv6-range).
         /// 
         /// ## Example Usage
-        /// 
-        /// Get information about an IPv6 range assigned to a Linode:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

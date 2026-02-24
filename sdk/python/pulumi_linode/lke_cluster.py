@@ -514,6 +514,207 @@ class LkeCluster(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
+        Manages an LKE cluster.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            pools=[{
+                "type": "g6-standard-2",
+                "count": 3,
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        test = linode.LkeCluster("test",
+            label="lke-e-cluster",
+            region="us-lax",
+            k8s_version="v1.31.8+lke5",
+            tags=["test"],
+            tier="enterprise",
+            pools=[{
+                "type": "g7-premium-2",
+                "count": 3,
+                "tags": ["test"],
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            pools=[{
+                "type": "g6-standard-2",
+                "autoscaler": {
+                    "min": 3,
+                    "max": 10,
+                },
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        test = linode.LkeCluster("test",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            control_plane={
+                "high_availability": True,
+                "acl": {
+                    "enabled": True,
+                    "addresses": [{
+                        "ipv4s": ["0.0.0.0/0"],
+                        "ipv6s": ["2001:db8::/32"],
+                    }],
+                },
+            },
+            pools=[{
+                "type": "g6-standard-2",
+                "count": 1,
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            pools=[
+                {
+                    "type": "g6-standard-2",
+                    "count": 2,
+                    "label": "db-pool",
+                },
+                {
+                    "type": "g6-standard-1",
+                    "count": 3,
+                    "label": "app-pool",
+                },
+            ])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            pools=[{
+                "type": "g6-standard-2",
+                "count": 2,
+                "label": "db-pool",
+                "firewall_id": 12345,
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            pools=[
+                {
+                    "type": "g6-standard-2",
+                    "count": 2,
+                    "labels": {
+                        "role": "database",
+                        "environment": "production",
+                    },
+                },
+                {
+                    "type": "g6-standard-1",
+                    "count": 3,
+                    "labels": {
+                        "role": "application",
+                        "environment": "production",
+                    },
+                },
+            ])
+        ```
+
+        ## Nested Node Pool Caveats
+
+        Due to limitations in the provider there are some minor caveats that may cause unexpected behavior when updating
+        nested `pool` blocks in this resource.
+        Primarily, the order of `pool` blocks is significant because the ID of each pool is resolved from
+        the Terraform state.
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster", pools=[
+            {
+                "type": "g6-standard-1",
+                "count": 2,
+            },
+            {
+                "type": "g6-standard-2",
+                "count": 3,
+            },
+        ])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster", pools=[{
+            "type": "g6-standard-2",
+            "count": 3,
+        }])
+        ```
+        ## Externally Managed Node Pools
+
+        By default, the `LkeCluster` resource will account for all node pools under the corresponding cluster, meaning
+        any node pools created externally or managed by other resources will be removed on subsequent applies.
+
+        To signal the provider to ignore externally managed node pools, the `external_pool_tags` attribute can be defined with
+        tags matching a tag on an externally managed node pool.
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        external_pool_tag = "external"
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-mia",
+            external_pool_tags=[external_pool_tag],
+            pools=[{
+                "type": "g6-standard-1",
+                "count": 1,
+            }])
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=my_cluster.id,
+            type="g6-standard-2",
+            node_count=3,
+            tags=[external_pool_tag])
+        ```
+
         ## Import
 
         LKE Clusters can be imported using the `id`, e.g.
@@ -548,6 +749,207 @@ class LkeCluster(pulumi.CustomResource):
                  args: LkeClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages an LKE cluster.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            pools=[{
+                "type": "g6-standard-2",
+                "count": 3,
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        test = linode.LkeCluster("test",
+            label="lke-e-cluster",
+            region="us-lax",
+            k8s_version="v1.31.8+lke5",
+            tags=["test"],
+            tier="enterprise",
+            pools=[{
+                "type": "g7-premium-2",
+                "count": 3,
+                "tags": ["test"],
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            pools=[{
+                "type": "g6-standard-2",
+                "autoscaler": {
+                    "min": 3,
+                    "max": 10,
+                },
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        test = linode.LkeCluster("test",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            control_plane={
+                "high_availability": True,
+                "acl": {
+                    "enabled": True,
+                    "addresses": [{
+                        "ipv4s": ["0.0.0.0/0"],
+                        "ipv6s": ["2001:db8::/32"],
+                    }],
+                },
+            },
+            pools=[{
+                "type": "g6-standard-2",
+                "count": 1,
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            pools=[
+                {
+                    "type": "g6-standard-2",
+                    "count": 2,
+                    "label": "db-pool",
+                },
+                {
+                    "type": "g6-standard-1",
+                    "count": 3,
+                    "label": "app-pool",
+                },
+            ])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            pools=[{
+                "type": "g6-standard-2",
+                "count": 2,
+                "label": "db-pool",
+                "firewall_id": 12345,
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
+            pools=[
+                {
+                    "type": "g6-standard-2",
+                    "count": 2,
+                    "labels": {
+                        "role": "database",
+                        "environment": "production",
+                    },
+                },
+                {
+                    "type": "g6-standard-1",
+                    "count": 3,
+                    "labels": {
+                        "role": "application",
+                        "environment": "production",
+                    },
+                },
+            ])
+        ```
+
+        ## Nested Node Pool Caveats
+
+        Due to limitations in the provider there are some minor caveats that may cause unexpected behavior when updating
+        nested `pool` blocks in this resource.
+        Primarily, the order of `pool` blocks is significant because the ID of each pool is resolved from
+        the Terraform state.
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster", pools=[
+            {
+                "type": "g6-standard-1",
+                "count": 2,
+            },
+            {
+                "type": "g6-standard-2",
+                "count": 3,
+            },
+        ])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster", pools=[{
+            "type": "g6-standard-2",
+            "count": 3,
+        }])
+        ```
+        ## Externally Managed Node Pools
+
+        By default, the `LkeCluster` resource will account for all node pools under the corresponding cluster, meaning
+        any node pools created externally or managed by other resources will be removed on subsequent applies.
+
+        To signal the provider to ignore externally managed node pools, the `external_pool_tags` attribute can be defined with
+        tags matching a tag on an externally managed node pool.
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        external_pool_tag = "external"
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="my-cluster",
+            k8s_version="1.32",
+            region="us-mia",
+            external_pool_tags=[external_pool_tag],
+            pools=[{
+                "type": "g6-standard-1",
+                "count": 1,
+            }])
+        my_pool = linode.LkeNodePool("my-pool",
+            cluster_id=my_cluster.id,
+            type="g6-standard-2",
+            node_count=3,
+            tags=[external_pool_tag])
+        ```
+
         ## Import
 
         LKE Clusters can be imported using the `id`, e.g.

@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about all LKE clusters with a specific tag:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -86,8 +84,6 @@ export interface GetLkeClustersResult {
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-clusters).
  *
  * ## Example Usage
- *
- * Get information about all LKE clusters with a specific tag:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

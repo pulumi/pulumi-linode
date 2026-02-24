@@ -19,8 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// Creating a simple MySQL database that does not allow connections:
-//
 // ```go
 // package main
 //
@@ -47,9 +45,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a simple MySQL database that allows connections from all IPv4 addresses:
-//
 // ```go
 // package main
 //
@@ -79,9 +74,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a complex MySQL database:
-//
 // ```go
 // package main
 //
@@ -118,9 +110,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a MySQL database with engine config fields specified:
-//
 // ```go
 // package main
 //
@@ -175,9 +164,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a forked MySQL database:
-//
 // ```go
 // package main
 //
@@ -205,9 +191,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a MySQL database hidden behind a VPC:
-//
 // ```go
 // package main
 //

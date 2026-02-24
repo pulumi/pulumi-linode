@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about a MySQL database's configuration options:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -538,8 +536,6 @@ export interface GetDatabaseMysqlConfigResult {
  * For more information, see the Linode APIv4 docs.
  *
  * ## Example Usage
- *
- * Get information about a MySQL database's configuration options:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

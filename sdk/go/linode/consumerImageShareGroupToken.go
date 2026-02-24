@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// Create a token for an Image Share Group:
-//
 // ```go
 // package main
 //

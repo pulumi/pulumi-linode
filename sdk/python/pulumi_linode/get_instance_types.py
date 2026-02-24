@@ -97,8 +97,6 @@ def get_instance_types(filters: Optional[Sequence[Union['GetInstanceTypesFilterA
 
     ## Example Usage
 
-    Get information about all Linode Instance types with a certain number of VCPUs:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -109,9 +107,6 @@ def get_instance_types(filters: Optional[Sequence[Union['GetInstanceTypesFilterA
     }])
     pulumi.export("typeIds", [__item.id for __item in specific_types.types])
     ```
-
-    Get information about all Linode Instance types:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -165,8 +160,6 @@ def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[U
 
     ## Example Usage
 
-    Get information about all Linode Instance types with a certain number of VCPUs:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -177,9 +170,6 @@ def get_instance_types_output(filters: Optional[pulumi.Input[Optional[Sequence[U
     }])
     pulumi.export("typeIds", [__item.id for __item in specific_types.types])
     ```
-
-    Get information about all Linode Instance types:
-
     ```python
     import pulumi
     import pulumi_linode as linode

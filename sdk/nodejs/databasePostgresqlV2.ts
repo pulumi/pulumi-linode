@@ -14,8 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Creating a simple PostgreSQL database that does not allow connections:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -27,9 +25,6 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * ```
- *
- * Creating a simple PostgreSQL database that allows connections from all IPv4 addresses:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -42,9 +37,6 @@ import * as utilities from "./utilities";
  *     allowLists: ["0.0.0.0/0"],
  * });
  * ```
- *
- * Creating a complex PostgreSQL database:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -64,9 +56,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- *
- * Creating a PostgreSQL database with engine config fields specified:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -125,9 +114,6 @@ import * as utilities from "./utilities";
  *     engineConfigWorkMem: 400,
  * });
  * ```
- *
- * Creating a forked PostgreSQL database:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -140,9 +126,6 @@ import * as utilities from "./utilities";
  *     forkSource: 12345,
  * });
  * ```
- *
- * Creating a PostgreSQL database hidden behind a VPC:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

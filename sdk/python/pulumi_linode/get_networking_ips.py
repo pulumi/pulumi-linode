@@ -93,17 +93,12 @@ def get_networking_ips(filters: Optional[Sequence[Union['GetNetworkingIpsFilterA
 
     ## Example Usage
 
-    Retrieve all IPs under the current account:
-
     ```python
     import pulumi
     import pulumi_linode as linode
 
     all = linode.get_networking_ips()
     ```
-
-    Retrieve all IPs under the current account in a specific region:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -162,17 +157,12 @@ def get_networking_ips_output(filters: Optional[pulumi.Input[Optional[Sequence[U
 
     ## Example Usage
 
-    Retrieve all IPs under the current account:
-
     ```python
     import pulumi
     import pulumi_linode as linode
 
     all = linode.get_networking_ips()
     ```
-
-    Retrieve all IPs under the current account in a specific region:
-
     ```python
     import pulumi
     import pulumi_linode as linode

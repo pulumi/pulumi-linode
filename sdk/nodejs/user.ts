@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Create an unrestricted user:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -23,9 +21,6 @@ import * as utilities from "./utilities";
  *     email: "john@acme.io",
  * });
  * ```
- *
- * Create a restricted user with grants:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

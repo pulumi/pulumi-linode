@@ -16,8 +16,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// The following example shows how one might use this data source to list all available Firewall Templates:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,8 +78,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// The following example shows how one might use this data source to list all available Firewall Templates:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -143,8 +139,6 @@ namespace Pulumi.Linode
         /// Provides information about all Linode Firewall Templates.
         /// 
         /// ## Example Usage
-        /// 
-        /// The following example shows how one might use this data source to list all available Firewall Templates:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

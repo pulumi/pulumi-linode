@@ -19,8 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// Creating a simple PostgreSQL database that does not allow connections:
-//
 // ```go
 // package main
 //
@@ -47,9 +45,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a simple PostgreSQL database that allows connections from all IPv4 addresses:
-//
 // ```go
 // package main
 //
@@ -79,9 +74,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a complex PostgreSQL database:
-//
 // ```go
 // package main
 //
@@ -118,9 +110,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a PostgreSQL database with engine config fields specified:
-//
 // ```go
 // package main
 //
@@ -194,9 +183,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a forked PostgreSQL database:
-//
 // ```go
 // package main
 //
@@ -224,9 +210,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a PostgreSQL database hidden behind a VPC:
-//
 // ```go
 // package main
 //

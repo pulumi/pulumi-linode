@@ -153,7 +153,7 @@ type ObjectStorageObject struct {
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
-	// The specific version of this object.
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
 	ForceDestroy pulumi.BoolOutput `pulumi:"forceDestroy"`
@@ -246,7 +246,7 @@ type objectStorageObjectState struct {
 	ContentType *string `pulumi:"contentType"`
 	// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
 	Endpoint *string `pulumi:"endpoint"`
-	// The specific version of this object.
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
 	Etag *string `pulumi:"etag"`
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -297,7 +297,7 @@ type ObjectStorageObjectState struct {
 	ContentType pulumi.StringPtrInput
 	// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
 	Endpoint pulumi.StringPtrInput
-	// The specific version of this object.
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
 	Etag pulumi.StringPtrInput
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
 	ForceDestroy pulumi.BoolPtrInput
@@ -352,7 +352,7 @@ type objectStorageObjectArgs struct {
 	ContentType *string `pulumi:"contentType"`
 	// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
 	Endpoint *string `pulumi:"endpoint"`
-	// The specific version of this object.
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
 	Etag *string `pulumi:"etag"`
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -402,7 +402,7 @@ type ObjectStorageObjectArgs struct {
 	ContentType pulumi.StringPtrInput
 	// Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
 	Endpoint pulumi.StringPtrInput
-	// The specific version of this object.
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
 	Etag pulumi.StringPtrInput
 	// Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
 	ForceDestroy pulumi.BoolPtrInput
@@ -573,7 +573,7 @@ func (o ObjectStorageObjectOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// The specific version of this object.
+// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
 func (o ObjectStorageObjectOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }

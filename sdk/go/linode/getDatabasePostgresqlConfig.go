@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about a PostgreSQL database's configuration options:
-//
 // ```go
 // package main
 //

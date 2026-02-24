@@ -238,8 +238,6 @@ class ConsumerImageShareGroupToken(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create a token for an Image Share Group:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -265,8 +263,6 @@ class ConsumerImageShareGroupToken(pulumi.CustomResource):
         For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-sharegroup-tokens). May not be currently available to all users even under v4beta.
 
         ## Example Usage
-
-        Create a token for an Image Share Group:
 
         ```python
         import pulumi

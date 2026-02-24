@@ -17,8 +17,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get all locks in a type:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -30,9 +28,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- *
- * Get information about all locks:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -99,8 +94,6 @@ export interface GetLocksResult {
  *
  * ## Example Usage
  *
- * Get all locks in a type:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -112,9 +105,6 @@ export interface GetLocksResult {
  *     }],
  * });
  * ```
- *
- * Get information about all locks:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

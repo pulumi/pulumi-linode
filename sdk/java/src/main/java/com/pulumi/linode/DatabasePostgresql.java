@@ -28,8 +28,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Creating a simple PostgreSQL database instance:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -63,9 +61,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a complex PostgreSQL database instance:
- * 
  * <pre>
  * {@code
  * package generated_program;

@@ -15,8 +15,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Create an Image Share Group without any Images:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,9 +31,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Create an Image Share Group with one Image:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

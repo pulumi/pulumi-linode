@@ -97,8 +97,6 @@ def get_firewalls(filters: Optional[Sequence[Union['GetFirewallsFilterArgs', 'Ge
 
     ## Example Usage
 
-    Get information about all Linode Cloud Firewalls with a certain label and visibility:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -115,9 +113,6 @@ def get_firewalls(filters: Optional[Sequence[Union['GetFirewallsFilterArgs', 'Ge
     ])
     pulumi.export("firewallId", specific.firewalls[0].id)
     ```
-
-    Get information about all Linode images associated with the current token:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -189,8 +184,6 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
 
     ## Example Usage
 
-    Get information about all Linode Cloud Firewalls with a certain label and visibility:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -207,9 +200,6 @@ def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[Union[
     ])
     pulumi.export("firewallId", specific.firewalls[0].id)
     ```
-
-    Get information about all Linode images associated with the current token:
-
     ```python
     import pulumi
     import pulumi_linode as linode

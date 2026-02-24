@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about all Linode images with a certain label and visibility:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -32,9 +30,6 @@ import * as utilities from "./utilities";
  * });
  * export const imageId = specific_images.then(specific_images => specific_images.images?.[0]?.id);
  * ```
- *
- * Get information about all Linode images associated with the current token:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -117,8 +112,6 @@ export interface GetImagesResult {
  *
  * ## Example Usage
  *
- * Get information about all Linode images with a certain label and visibility:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -137,9 +130,6 @@ export interface GetImagesResult {
  * });
  * export const imageId = specific_images.then(specific_images => specific_images.images?.[0]?.id);
  * ```
- *
- * Get information about all Linode images associated with the current token:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about all Linode Managed Databases:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -21,9 +19,6 @@ import * as utilities from "./utilities";
  * const all = linode.getDatabases({});
  * export const databaseIds = all.then(all => all.databases.map(__item => __item.id));
  * ```
- *
- * Get information about all Linode MySQL Databases:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -91,8 +86,6 @@ export interface GetDatabasesResult {
  *
  * ## Example Usage
  *
- * Get information about all Linode Managed Databases:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -100,9 +93,6 @@ export interface GetDatabasesResult {
  * const all = linode.getDatabases({});
  * export const databaseIds = all.then(all => all.databases.map(__item => __item.id));
  * ```
- *
- * Get information about all Linode MySQL Databases:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

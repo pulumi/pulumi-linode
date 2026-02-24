@@ -211,14 +211,14 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The specific version of this object.
+     * Used to trigger updates. The only meaningful value is `${filemd5(&#34;path/to/file&#34;)}` (Terraform 0.11.12 or later) or `${md5(file(&#34;path/to/file&#34;))}` (Terraform 0.11.11 or earlier).
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return The specific version of this object.
+     * @return Used to trigger updates. The only meaningful value is `${filemd5(&#34;path/to/file&#34;)}` (Terraform 0.11.12 or later) or `${md5(file(&#34;path/to/file&#34;))}` (Terraform 0.11.11 or earlier).
      * 
      */
     public Optional<Output<String>> etag() {
@@ -642,7 +642,7 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param etag The specific version of this object.
+         * @param etag Used to trigger updates. The only meaningful value is `${filemd5(&#34;path/to/file&#34;)}` (Terraform 0.11.12 or later) or `${md5(file(&#34;path/to/file&#34;))}` (Terraform 0.11.11 or earlier).
          * 
          * @return builder
          * 
@@ -653,7 +653,7 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param etag The specific version of this object.
+         * @param etag Used to trigger updates. The only meaningful value is `${filemd5(&#34;path/to/file&#34;)}` (Terraform 0.11.12 or later) or `${md5(file(&#34;path/to/file&#34;))}` (Terraform 0.11.11 or earlier).
          * 
          * @return builder
          * 

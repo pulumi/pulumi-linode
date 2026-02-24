@@ -73,8 +73,6 @@ def get_firewall_templates(filters: Optional[Sequence[Union['GetFirewallTemplate
 
     ## Example Usage
 
-    The following example shows how one might use this data source to list all available Firewall Templates:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -116,8 +114,6 @@ def get_firewall_templates_output(filters: Optional[pulumi.Input[Optional[Sequen
     Provides information about all Linode Firewall Templates.
 
     ## Example Usage
-
-    The following example shows how one might use this data source to list all available Firewall Templates:
 
     ```python
     import pulumi

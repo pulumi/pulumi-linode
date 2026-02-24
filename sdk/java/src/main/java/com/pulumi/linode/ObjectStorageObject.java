@@ -324,14 +324,14 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
         return this.endpoint;
     }
     /**
-     * The specific version of this object.
+     * Used to trigger updates. The only meaningful value is `${filemd5(&#34;path/to/file&#34;)}` (Terraform 0.11.12 or later) or `${md5(file(&#34;path/to/file&#34;))}` (Terraform 0.11.11 or earlier).
      * 
      */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
-     * @return The specific version of this object.
+     * @return Used to trigger updates. The only meaningful value is `${filemd5(&#34;path/to/file&#34;)}` (Terraform 0.11.12 or later) or `${md5(file(&#34;path/to/file&#34;))}` (Terraform 0.11.11 or earlier).
      * 
      */
     public Output<String> etag() {

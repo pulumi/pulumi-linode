@@ -2280,8 +2280,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        Creating a simple PostgreSQL database that does not allow connections:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -2292,9 +2290,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             region="us-mia",
             type="g6-nanode-1")
         ```
-
-        Creating a simple PostgreSQL database that allows connections from all IPv4 addresses:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -2306,9 +2301,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             type="g6-nanode-1",
             allow_lists=["0.0.0.0/0"])
         ```
-
-        Creating a complex PostgreSQL database:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -2327,9 +2319,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
                 "day_of_week": 2,
             })
         ```
-
-        Creating a PostgreSQL database with engine config fields specified:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -2387,9 +2376,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_shared_buffers_percentage=25,
             engine_config_work_mem=400)
         ```
-
-        Creating a forked PostgreSQL database:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -2401,9 +2387,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             type="g6-nanode-1",
             fork_source=12345)
         ```
-
-        Creating a PostgreSQL database hidden behind a VPC:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -2543,8 +2526,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        Creating a simple PostgreSQL database that does not allow connections:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -2555,9 +2536,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             region="us-mia",
             type="g6-nanode-1")
         ```
-
-        Creating a simple PostgreSQL database that allows connections from all IPv4 addresses:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -2569,9 +2547,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             type="g6-nanode-1",
             allow_lists=["0.0.0.0/0"])
         ```
-
-        Creating a complex PostgreSQL database:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -2590,9 +2565,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
                 "day_of_week": 2,
             })
         ```
-
-        Creating a PostgreSQL database with engine config fields specified:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -2650,9 +2622,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_shared_buffers_percentage=25,
             engine_config_work_mem=400)
         ```
-
-        Creating a forked PostgreSQL database:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -2664,9 +2633,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             type="g6-nanode-1",
             fork_source=12345)
         ```
-
-        Creating a PostgreSQL database hidden behind a VPC:
-
         ```python
         import pulumi
         import pulumi_linode as linode

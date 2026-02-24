@@ -17,8 +17,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode Instance types with a certain number of VCPUs:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,9 +46,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode Instance types:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -95,8 +90,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode Instance types with a certain number of VCPUs:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -126,9 +119,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode Instance types:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -173,8 +163,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about all Linode Instance types with a certain number of VCPUs:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -204,9 +192,6 @@ namespace Pulumi.Linode
         ///     };
         /// });
         /// ```
-        /// 
-        /// Get information about all Linode Instance types:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

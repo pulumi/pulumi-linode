@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about a MySQL database:
-//
 // ```go
 // package main
 //

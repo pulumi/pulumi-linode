@@ -22,9 +22,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
+ * Provides a Linode Instance Config resource. This can be used to create, modify, and delete Linode Instance Configs.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-add-linode-config).
  * 
- * Creating a simple bootable Linode Instance Configuration Profile:
+ * &gt; **NOTICE:** If a VPC interface is defined in your `linode.InstanceConfig` resource and the config is currently booted with the Linode, then the Linode is required to be powered off during the update operation. The Terraform provider will try to implicitly shutdown you Linode instance during the update and restart it when it&#39;s finished. Unless you explicitly config the `booted` attribute in the resource or explicitly set `skipImplicitReboots` to `false` in the Terraform provider config.
+ * 
+ * **NOTE:** Changes to a config that is currently booted will trigger a reboot, in order to skip this explicitly set `skipImplicitReboots` to `true` in the Terraform provider config.
+ * 
+ * **NOTE:** Deleting a config will shut down the attached instance if the config is in use.
+ * 
+ * ## Example Usage
  * 
  * <pre>
  * {@code
@@ -80,9 +87,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a complex bootable Instance Configuration Profile with a VPC:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -194,7 +198,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance Configs can be imported using the `linode_id` followed by the Instance Config `id` separated by a comma, e.g.
+ * Instance Configs can be imported using the `linodeId` followed by the Instance Config `id` separated by a comma, e.g.
  * 
  * ```sh
  * $ pulumi import linode:index/instanceConfig:InstanceConfig my-config 1234567,7654321

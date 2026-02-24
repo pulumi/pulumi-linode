@@ -15,8 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// The following example shows how one might use this data source to access information about a specific Firewall Template:
-//
 // ```go
 // package main
 //

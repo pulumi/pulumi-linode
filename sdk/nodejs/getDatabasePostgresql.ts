@@ -14,8 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about a PostgreSQL database:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -163,8 +161,6 @@ export interface GetDatabasePostgresqlResult {
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
  *
  * ## Example Usage
- *
- * Get information about a PostgreSQL database:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

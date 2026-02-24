@@ -265,8 +265,6 @@ class ProducerImageShareGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create an Image Share Group without any Images:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -275,9 +273,6 @@ class ProducerImageShareGroup(pulumi.CustomResource):
             label="my-image-share-group",
             description="My description.")
         ```
-
-        Create an Image Share Group with one Image:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -312,8 +307,6 @@ class ProducerImageShareGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create an Image Share Group without any Images:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -322,9 +315,6 @@ class ProducerImageShareGroup(pulumi.CustomResource):
             label="my-image-share-group",
             description="My description.")
         ```
-
-        Create an Image Share Group with one Image:
-
         ```python
         import pulumi
         import pulumi_linode as linode

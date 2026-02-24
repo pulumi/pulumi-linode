@@ -18,8 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// Retrieve information about a NodeBalancer VPC configuration:
-//
 // ```go
 // package main
 //

@@ -27,8 +27,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Creating an image from an existing Linode Instance and deploying another instance with that image:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -80,9 +78,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating and uploading an image from a local file:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -124,9 +119,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Upload and replicate an image from a local file:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -387,8 +379,6 @@ public class Image extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
      * 
-     * The following arguments apply to uploading an image:
-     * 
      */
     @Export(name="linodeId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> linodeId;
@@ -399,8 +389,6 @@ public class Image extends com.pulumi.resources.CustomResource {
      * ***
      * 
      * &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-     * 
-     * The following arguments apply to uploading an image:
      * 
      */
     public Output<Optional<Integer>> linodeId() {
@@ -543,8 +531,6 @@ public class Image extends com.pulumi.resources.CustomResource {
      * 
      * ***
      * 
-     * The following arguments apply to creating an image from an existing Linode Instance:
-     * 
      */
     @Export(name="waitForReplications", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> waitForReplications;
@@ -553,8 +539,6 @@ public class Image extends com.pulumi.resources.CustomResource {
      * @return Whether to wait for all image replications become `available`. Default to false.
      * 
      * ***
-     * 
-     * The following arguments apply to creating an image from an existing Linode Instance:
      * 
      */
     public Output<Boolean> waitForReplications() {

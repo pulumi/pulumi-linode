@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about all Linode instances with a certain label and tag:
-//
 // ```go
 // package main
 //
@@ -56,9 +54,6 @@ import (
 //	}
 //
 // ```
-//
-// Get information about all Linode instances associated with the current token:
-//
 // ```go
 // package main
 //

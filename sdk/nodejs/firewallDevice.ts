@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Firewall Device can be imported using the `firewall_id` followed by the Firewall Device `id` separated by a comma, e.g.
+ * Firewall Device can be imported using the `firewallId` followed by the Firewall Device `id` separated by a comma, e.g.
  *
  * ```sh
  * $ pulumi import linode:index/firewallDevice:FirewallDevice my_device_duplicated 1234567,7654321

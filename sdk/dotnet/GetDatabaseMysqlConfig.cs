@@ -17,8 +17,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about a MySQL database's configuration options:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -539,8 +537,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get information about a MySQL database's configuration options:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -1060,8 +1056,6 @@ namespace Pulumi.Linode
         /// For more information, see the Linode APIv4 docs.
         /// 
         /// ## Example Usage
-        /// 
-        /// Get information about a MySQL database's configuration options:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

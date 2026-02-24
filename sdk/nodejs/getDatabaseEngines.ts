@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about all Linode Managed Database engines:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -21,9 +19,6 @@ import * as utilities from "./utilities";
  * const all = linode.getDatabaseEngines({});
  * export const engineIds = all.then(all => all.engines.map(__item => __item.id));
  * ```
- *
- * Get information about all Linode MySQL Database engines:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -36,9 +31,6 @@ import * as utilities from "./utilities";
  * });
  * export const engineIds = mysql.then(mysql => mysql.engines.map(__item => __item.id));
  * ```
- *
- * Create a Linode MySQL Database using the latest support MySQL version:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -110,8 +102,6 @@ export interface GetDatabaseEnginesResult {
  *
  * ## Example Usage
  *
- * Get information about all Linode Managed Database engines:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -119,9 +109,6 @@ export interface GetDatabaseEnginesResult {
  * const all = linode.getDatabaseEngines({});
  * export const engineIds = all.then(all => all.engines.map(__item => __item.id));
  * ```
- *
- * Get information about all Linode MySQL Database engines:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -134,9 +121,6 @@ export interface GetDatabaseEnginesResult {
  * });
  * export const engineIds = mysql.then(mysql => mysql.engines.map(__item => __item.id));
  * ```
- *
- * Create a Linode MySQL Database using the latest support MySQL version:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

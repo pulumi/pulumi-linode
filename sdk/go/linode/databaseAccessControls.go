@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// Grant a Linode access to a database:
-//
 // ```go
 // package main
 //

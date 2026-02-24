@@ -19,8 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// Create a VPC:
-//
 // ```go
 // package main
 //

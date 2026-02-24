@@ -11,17 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Retrieve all IPs under the current account:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const all = linode.getNetworkingIps({});
  * ```
- *
- * Retrieve all IPs under the current account in a specific region:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -96,17 +91,12 @@ export interface GetNetworkingIpsResult {
  *
  * ## Example Usage
  *
- * Retrieve all IPs under the current account:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
  * const all = linode.getNetworkingIps({});
  * ```
- *
- * Retrieve all IPs under the current account in a specific region:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

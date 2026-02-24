@@ -10,6 +10,138 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode
 {
     /// <summary>
+    /// Manages an LKE Node Pool.
+    /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster-pools).
+    /// 
+    /// &gt; **Notice** To prevent LKE node pools managed by this resource from being
+    /// recreated by the linode.LkeCluster resource, the cluster's ExternalPoolTags
+    ///  attribute must match the tags attribute of this resource. Please review the
+    /// Externally Managed Node Pools
+    /// section for more information.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
+    ///     {
+    ///         ClusterId = 150003,
+    ///         Type = "g6-standard-2",
+    ///         NodeCount = 3,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
+    ///     {
+    ///         ClusterId = 150003,
+    ///         Type = "g6-standard-2",
+    ///         NodeCount = 3,
+    ///         Label = "app-pool",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
+    ///     {
+    ///         ClusterId = 150003,
+    ///         Type = "g6-standard-2",
+    ///         FirewallId = 12345,
+    ///         NodeCount = 3,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
+    ///     {
+    ///         ClusterId = 150003,
+    ///         Type = "g6-standard-2",
+    ///         Autoscaler = new Linode.Inputs.LkeNodePoolAutoscalerArgs
+    ///         {
+    ///             Min = 3,
+    ///             Max = 10,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var externalPoolTag = "external";
+    /// 
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-mia",
+    ///         Labels = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///         ExternalPoolTags = new[]
+    ///         {
+    ///             externalPoolTag,
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-1",
+    ///                 Count = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
+    ///     {
+    ///         ClusterId = my_cluster.Id,
+    ///         Type = "g6-standard-2",
+    ///         NodeCount = 3,
+    ///         Tags = new[]
+    ///         {
+    ///             externalPoolTag,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// LKE Node Pools can be imported using the `cluster_id,id`, e.g.

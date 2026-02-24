@@ -19,8 +19,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Creating a simple MySQL database instance:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,9 +37,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a complex MySQL database instance:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -93,7 +88,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linode MySQL Databases can be imported using the `id`, e.g.
+    /// Linode MySQL Databases can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/databaseMysql:DatabaseMysql foobar 1234567

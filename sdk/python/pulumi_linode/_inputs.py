@@ -383,32 +383,27 @@ __all__ = [
     'GetVpcsFilterArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DatabaseMysqlUpdatesArgsDict(TypedDict):
-        day_of_week: pulumi.Input[_builtins.str]
-        """
-        The day to perform maintenance.
-        """
-        duration: pulumi.Input[_builtins.int]
-        """
-        The maximum maintenance window time in hours.
-        """
-        frequency: pulumi.Input[_builtins.str]
-        """
-        Whether maintenance occurs on a weekly or monthly basis.
-        """
-        hour_of_day: pulumi.Input[_builtins.int]
-        """
-        The hour to begin maintenance based in UTC time.
-        """
-        week_of_month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-        """
-elif False:
-    DatabaseMysqlUpdatesArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseMysqlUpdatesArgsDict(TypedDict):
+    day_of_week: pulumi.Input[_builtins.str]
+    """
+    The day to perform maintenance.
+    """
+    duration: pulumi.Input[_builtins.int]
+    """
+    The maximum maintenance window time in hours.
+    """
+    frequency: pulumi.Input[_builtins.str]
+    """
+    Whether maintenance occurs on a weekly or monthly basis.
+    """
+    hour_of_day: pulumi.Input[_builtins.int]
+    """
+    The hour to begin maintenance based in UTC time.
+    """
+    week_of_month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+    """
 
 @pulumi.input_type
 class DatabaseMysqlUpdatesArgs:
@@ -493,22 +488,19 @@ class DatabaseMysqlUpdatesArgs:
         pulumi.set(self, "week_of_month", value)
 
 
-if not MYPY:
-    class DatabaseMysqlV2PendingUpdateArgsDict(TypedDict):
-        deadline: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time when a mandatory update needs to be applied.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A description of the update.
-        """
-        planned_for: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time a maintenance update will be applied.
-        """
-elif False:
-    DatabaseMysqlV2PendingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseMysqlV2PendingUpdateArgsDict(TypedDict):
+    deadline: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time when a mandatory update needs to be applied.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A description of the update.
+    """
+    planned_for: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date and time a maintenance update will be applied.
+    """
 
 @pulumi.input_type
 class DatabaseMysqlV2PendingUpdateArgs:
@@ -565,22 +557,19 @@ class DatabaseMysqlV2PendingUpdateArgs:
         pulumi.set(self, "planned_for", value)
 
 
-if not MYPY:
-    class DatabaseMysqlV2PrivateNetworkArgsDict(TypedDict):
-        subnet_id: pulumi.Input[_builtins.int]
-        """
-        The ID of the VPC subnet to restrict access to this database using.
-        """
-        vpc_id: pulumi.Input[_builtins.int]
-        """
-        The ID of the virtual private cloud (VPC) to restrict access to this database using.
-        """
-        public_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
-        """
-elif False:
-    DatabaseMysqlV2PrivateNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseMysqlV2PrivateNetworkArgsDict(TypedDict):
+    subnet_id: pulumi.Input[_builtins.int]
+    """
+    The ID of the VPC subnet to restrict access to this database using.
+    """
+    vpc_id: pulumi.Input[_builtins.int]
+    """
+    The ID of the virtual private cloud (VPC) to restrict access to this database using.
+    """
+    public_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
+    """
 
 @pulumi.input_type
 class DatabaseMysqlV2PrivateNetworkArgs:
@@ -635,22 +624,19 @@ class DatabaseMysqlV2PrivateNetworkArgs:
         pulumi.set(self, "public_access", value)
 
 
-if not MYPY:
-    class DatabaseMysqlV2TimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    DatabaseMysqlV2TimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseMysqlV2TimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class DatabaseMysqlV2TimeoutsArgs:
@@ -707,26 +693,23 @@ class DatabaseMysqlV2TimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class DatabaseMysqlV2UpdatesArgsDict(TypedDict):
-        day_of_week: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
-        """
-        duration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum maintenance window time in hours.
-        """
-        frequency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How frequently maintenance occurs. Currently can only be weekly.
-        """
-        hour_of_day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How frequently maintenance occurs. Currently can only be weekly.
-        """
-elif False:
-    DatabaseMysqlV2UpdatesArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseMysqlV2UpdatesArgsDict(TypedDict):
+    day_of_week: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum maintenance window time in hours.
+    """
+    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How frequently maintenance occurs. Currently can only be weekly.
+    """
+    hour_of_day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How frequently maintenance occurs. Currently can only be weekly.
+    """
 
 @pulumi.input_type
 class DatabaseMysqlV2UpdatesArgs:
@@ -799,30 +782,27 @@ class DatabaseMysqlV2UpdatesArgs:
         pulumi.set(self, "hour_of_day", value)
 
 
-if not MYPY:
-    class DatabasePostgresqlUpdatesArgsDict(TypedDict):
-        day_of_week: pulumi.Input[_builtins.str]
-        """
-        The day to perform maintenance.
-        """
-        duration: pulumi.Input[_builtins.int]
-        """
-        The maximum maintenance window time in hours.
-        """
-        frequency: pulumi.Input[_builtins.str]
-        """
-        Whether maintenance occurs on a weekly or monthly basis.
-        """
-        hour_of_day: pulumi.Input[_builtins.int]
-        """
-        The hour to begin maintenance based in UTC time.
-        """
-        week_of_month: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-        """
-elif False:
-    DatabasePostgresqlUpdatesArgsDict: TypeAlias = Mapping[str, Any]
+class DatabasePostgresqlUpdatesArgsDict(TypedDict):
+    day_of_week: pulumi.Input[_builtins.str]
+    """
+    The day to perform maintenance.
+    """
+    duration: pulumi.Input[_builtins.int]
+    """
+    The maximum maintenance window time in hours.
+    """
+    frequency: pulumi.Input[_builtins.str]
+    """
+    Whether maintenance occurs on a weekly or monthly basis.
+    """
+    hour_of_day: pulumi.Input[_builtins.int]
+    """
+    The hour to begin maintenance based in UTC time.
+    """
+    week_of_month: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
+    """
 
 @pulumi.input_type
 class DatabasePostgresqlUpdatesArgs:
@@ -907,22 +887,19 @@ class DatabasePostgresqlUpdatesArgs:
         pulumi.set(self, "week_of_month", value)
 
 
-if not MYPY:
-    class DatabasePostgresqlV2PendingUpdateArgsDict(TypedDict):
-        deadline: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The time when a mandatory update needs to be applied.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A description of the update.
-        """
-        planned_for: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time a maintenance update will be applied.
-        """
-elif False:
-    DatabasePostgresqlV2PendingUpdateArgsDict: TypeAlias = Mapping[str, Any]
+class DatabasePostgresqlV2PendingUpdateArgsDict(TypedDict):
+    deadline: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The time when a mandatory update needs to be applied.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A description of the update.
+    """
+    planned_for: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date and time a maintenance update will be applied.
+    """
 
 @pulumi.input_type
 class DatabasePostgresqlV2PendingUpdateArgs:
@@ -979,22 +956,19 @@ class DatabasePostgresqlV2PendingUpdateArgs:
         pulumi.set(self, "planned_for", value)
 
 
-if not MYPY:
-    class DatabasePostgresqlV2PrivateNetworkArgsDict(TypedDict):
-        subnet_id: pulumi.Input[_builtins.int]
-        """
-        The ID of the VPC subnet to restrict access to this database using.
-        """
-        vpc_id: pulumi.Input[_builtins.int]
-        """
-        The ID of the virtual private cloud (VPC) to restrict access to this database using.
-        """
-        public_access: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
-        """
-elif False:
-    DatabasePostgresqlV2PrivateNetworkArgsDict: TypeAlias = Mapping[str, Any]
+class DatabasePostgresqlV2PrivateNetworkArgsDict(TypedDict):
+    subnet_id: pulumi.Input[_builtins.int]
+    """
+    The ID of the VPC subnet to restrict access to this database using.
+    """
+    vpc_id: pulumi.Input[_builtins.int]
+    """
+    The ID of the virtual private cloud (VPC) to restrict access to this database using.
+    """
+    public_access: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
+    """
 
 @pulumi.input_type
 class DatabasePostgresqlV2PrivateNetworkArgs:
@@ -1049,22 +1023,19 @@ class DatabasePostgresqlV2PrivateNetworkArgs:
         pulumi.set(self, "public_access", value)
 
 
-if not MYPY:
-    class DatabasePostgresqlV2TimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    DatabasePostgresqlV2TimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class DatabasePostgresqlV2TimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class DatabasePostgresqlV2TimeoutsArgs:
@@ -1121,26 +1092,23 @@ class DatabasePostgresqlV2TimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class DatabasePostgresqlV2UpdatesArgsDict(TypedDict):
-        day_of_week: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
-        """
-        duration: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum maintenance window time in hours.
-        """
-        frequency: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        How frequently maintenance occurs. Currently can only be weekly.
-        """
-        hour_of_day: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        How frequently maintenance occurs. Currently can only be weekly.
-        """
-elif False:
-    DatabasePostgresqlV2UpdatesArgsDict: TypeAlias = Mapping[str, Any]
+class DatabasePostgresqlV2UpdatesArgsDict(TypedDict):
+    day_of_week: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum maintenance window time in hours.
+    """
+    frequency: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    How frequently maintenance occurs. Currently can only be weekly.
+    """
+    hour_of_day: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    How frequently maintenance occurs. Currently can only be weekly.
+    """
 
 @pulumi.input_type
 class DatabasePostgresqlV2UpdatesArgs:
@@ -1213,30 +1181,27 @@ class DatabasePostgresqlV2UpdatesArgs:
         pulumi.set(self, "hour_of_day", value)
 
 
-if not MYPY:
-    class FirewallDeviceArgsDict(TypedDict):
-        entity_id: pulumi.Input[_builtins.int]
-        """
-        The ID of the underlying entity this device references (i.e. the Linode's ID).
-        """
-        id: pulumi.Input[_builtins.int]
-        """
-        The ID of the Firewall Device.
-        """
-        label: pulumi.Input[_builtins.str]
-        """
-        This Firewall's unique label.
-        """
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of Firewall Device.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The URL of the underlying entity this device references.
-        """
-elif False:
-    FirewallDeviceArgsDict: TypeAlias = Mapping[str, Any]
+class FirewallDeviceArgsDict(TypedDict):
+    entity_id: pulumi.Input[_builtins.int]
+    """
+    The ID of the underlying entity this device references (i.e. the Linode's ID).
+    """
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the Firewall Device.
+    """
+    label: pulumi.Input[_builtins.str]
+    """
+    This Firewall's unique label.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of Firewall Device.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The URL of the underlying entity this device references.
+    """
 
 @pulumi.input_type
 class FirewallDeviceArgs:
@@ -1320,38 +1285,35 @@ class FirewallDeviceArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class FirewallInboundArgsDict(TypedDict):
-        action: pulumi.Input[_builtins.str]
-        """
-        Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
-        """
-        label: pulumi.Input[_builtins.str]
-        """
-        Used to identify this rule. For display purposes only.
-        """
-        protocol: pulumi.Input[_builtins.str]
-        """
-        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Used to describe this rule. For display purposes only.
-        """
-        ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
-        """
-        ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
-        """
-        ports: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-        """
-elif False:
-    FirewallInboundArgsDict: TypeAlias = Mapping[str, Any]
+class FirewallInboundArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    """
+    Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+    """
+    label: pulumi.Input[_builtins.str]
+    """
+    Used to identify this rule. For display purposes only.
+    """
+    protocol: pulumi.Input[_builtins.str]
+    """
+    The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Used to describe this rule. For display purposes only.
+    """
+    ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
+    """
+    ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
+    """
+    ports: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+    """
 
 @pulumi.input_type
 class FirewallInboundArgs:
@@ -1469,38 +1431,35 @@ class FirewallInboundArgs:
         pulumi.set(self, "ports", value)
 
 
-if not MYPY:
-    class FirewallOutboundArgsDict(TypedDict):
-        action: pulumi.Input[_builtins.str]
-        """
-        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
-        """
-        label: pulumi.Input[_builtins.str]
-        """
-        This Firewall's unique label.
-        """
-        protocol: pulumi.Input[_builtins.str]
-        """
-        The network protocol this rule controls.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Used to describe this rule. For display purposes only.
-        """
-        ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
-        """
-        ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of IPv6 addresses or networks this rule applies to.
-        """
-        ports: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-        """
-elif False:
-    FirewallOutboundArgsDict: TypeAlias = Mapping[str, Any]
+class FirewallOutboundArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    """
+    Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+    """
+    label: pulumi.Input[_builtins.str]
+    """
+    This Firewall's unique label.
+    """
+    protocol: pulumi.Input[_builtins.str]
+    """
+    The network protocol this rule controls.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Used to describe this rule. For display purposes only.
+    """
+    ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
+    """
+    ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of IPv6 addresses or networks this rule applies to.
+    """
+    ports: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+    """
 
 @pulumi.input_type
 class FirewallOutboundArgs:
@@ -1618,26 +1577,23 @@ class FirewallOutboundArgs:
         pulumi.set(self, "ports", value)
 
 
-if not MYPY:
-    class FirewallSettingsDefaultFirewallIdsArgsDict(TypedDict):
-        linode: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Linode's default firewall.
-        """
-        nodebalancer: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The NodeBalancer's default firewall.
-        """
-        public_interface: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The public interface's default firewall.
-        """
-        vpc_interface: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The VPC interface's default firewall.
-        """
-elif False:
-    FirewallSettingsDefaultFirewallIdsArgsDict: TypeAlias = Mapping[str, Any]
+class FirewallSettingsDefaultFirewallIdsArgsDict(TypedDict):
+    linode: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Linode's default firewall.
+    """
+    nodebalancer: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The NodeBalancer's default firewall.
+    """
+    public_interface: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The public interface's default firewall.
+    """
+    vpc_interface: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The VPC interface's default firewall.
+    """
 
 @pulumi.input_type
 class FirewallSettingsDefaultFirewallIdsArgs:
@@ -1710,18 +1666,15 @@ class FirewallSettingsDefaultFirewallIdsArgs:
         pulumi.set(self, "vpc_interface", value)
 
 
-if not MYPY:
-    class ImageImageSharingArgsDict(TypedDict):
-        shared_by: NotRequired[pulumi.Input['ImageImageSharingSharedByArgsDict']]
-        """
-        Details about who the image is shared by.
-        """
-        shared_with: NotRequired[pulumi.Input['ImageImageSharingSharedWithArgsDict']]
-        """
-        Details about who the image is shared with.
-        """
-elif False:
-    ImageImageSharingArgsDict: TypeAlias = Mapping[str, Any]
+class ImageImageSharingArgsDict(TypedDict):
+    shared_by: NotRequired[pulumi.Input['ImageImageSharingSharedByArgsDict']]
+    """
+    Details about who the image is shared by.
+    """
+    shared_with: NotRequired[pulumi.Input['ImageImageSharingSharedWithArgsDict']]
+    """
+    Details about who the image is shared with.
+    """
 
 @pulumi.input_type
 class ImageImageSharingArgs:
@@ -1762,26 +1715,23 @@ class ImageImageSharingArgs:
         pulumi.set(self, "shared_with", value)
 
 
-if not MYPY:
-    class ImageImageSharingSharedByArgsDict(TypedDict):
-        sharegroup_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The sharegroup_id from the im_ImageShare row.
-        """
-        sharegroup_label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The label from the associated im_ImageShareGroup row.
-        """
-        sharegroup_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The sharegroup_uuid from the im_ImageShare row.
-        """
-        source_image_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The image id of the base image (will only be shown to producers, will be null for consumers).
-        """
-elif False:
-    ImageImageSharingSharedByArgsDict: TypeAlias = Mapping[str, Any]
+class ImageImageSharingSharedByArgsDict(TypedDict):
+    sharegroup_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The sharegroup_id from the im_ImageShare row.
+    """
+    sharegroup_label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The label from the associated im_ImageShareGroup row.
+    """
+    sharegroup_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The sharegroup_uuid from the im_ImageShare row.
+    """
+    source_image_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The image id of the base image (will only be shown to producers, will be null for consumers).
+    """
 
 @pulumi.input_type
 class ImageImageSharingSharedByArgs:
@@ -1854,18 +1804,15 @@ class ImageImageSharingSharedByArgs:
         pulumi.set(self, "source_image_id", value)
 
 
-if not MYPY:
-    class ImageImageSharingSharedWithArgsDict(TypedDict):
-        sharegroup_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of sharegroups the private image is present in.
-        """
-        sharegroup_list_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The GET api url to view the sharegroups in which the image is shared.
-        """
-elif False:
-    ImageImageSharingSharedWithArgsDict: TypeAlias = Mapping[str, Any]
+class ImageImageSharingSharedWithArgsDict(TypedDict):
+    sharegroup_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of sharegroups the private image is present in.
+    """
+    sharegroup_list_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The GET api url to view the sharegroups in which the image is shared.
+    """
 
 @pulumi.input_type
 class ImageImageSharingSharedWithArgs:
@@ -1906,18 +1853,15 @@ class ImageImageSharingSharedWithArgs:
         pulumi.set(self, "sharegroup_list_url", value)
 
 
-if not MYPY:
-    class ImageReplicationArgsDict(TypedDict):
-        region: pulumi.Input[_builtins.str]
-        """
-        The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
-        """
-        status: pulumi.Input[_builtins.str]
-        """
-        The status of an image replica.
-        """
-elif False:
-    ImageReplicationArgsDict: TypeAlias = Mapping[str, Any]
+class ImageReplicationArgsDict(TypedDict):
+    region: pulumi.Input[_builtins.str]
+    """
+    The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
+    """
+    status: pulumi.Input[_builtins.str]
+    """
+    The status of an image replica.
+    """
 
 @pulumi.input_type
 class ImageReplicationArgs:
@@ -1956,14 +1900,11 @@ class ImageReplicationArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class ImageTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Used when creating the instance image (until the instance is available)
-        """
-elif False:
-    ImageTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class ImageTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Used when creating the instance image (until the instance is available)
+    """
 
 @pulumi.input_type
 class ImageTimeoutsArgs:
@@ -1988,30 +1929,27 @@ class ImageTimeoutsArgs:
         pulumi.set(self, "create", value)
 
 
-if not MYPY:
-    class InstanceAlertsArgsDict(TypedDict):
-        cpu: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-        """
-        io: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
-        """
-        network_in: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-        """
-        network_out: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-        """
-        transfer_quota: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-        """
-elif False:
-    InstanceAlertsArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceAlertsArgsDict(TypedDict):
+    cpu: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+    """
+    io: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
+    """
+    network_in: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+    """
+    network_out: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+    """
+    transfer_quota: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+    """
 
 @pulumi.input_type
 class InstanceAlertsArgs:
@@ -2100,19 +2038,16 @@ class InstanceAlertsArgs:
         pulumi.set(self, "transfer_quota", value)
 
 
-if not MYPY:
-    class InstanceBackupArgsDict(TypedDict):
-        available: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this Backup is available for restoration.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If this Linode has the Backup service enabled.
-        """
-        schedules: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceBackupScheduleArgsDict']]]]
-elif False:
-    InstanceBackupArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceBackupArgsDict(TypedDict):
+    available: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this Backup is available for restoration.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If this Linode has the Backup service enabled.
+    """
+    schedules: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceBackupScheduleArgsDict']]]]
 
 @pulumi.input_type
 class InstanceBackupArgs:
@@ -2165,18 +2100,15 @@ class InstanceBackupArgs:
         pulumi.set(self, "schedules", value)
 
 
-if not MYPY:
-    class InstanceBackupScheduleArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
-        """
-        window: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
-        """
-elif False:
-    InstanceBackupScheduleArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceBackupScheduleArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
+    """
+    window: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
+    """
 
 @pulumi.input_type
 class InstanceBackupScheduleArgs:
@@ -2217,54 +2149,51 @@ class InstanceBackupScheduleArgs:
         pulumi.set(self, "window", value)
 
 
-if not MYPY:
-    class InstanceConfigArgsDict(TypedDict):
-        label: pulumi.Input[_builtins.str]
-        """
-        The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
-        """
-        comments: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Optional field for arbitrary User comments on this Config.
-        """
-        devices: NotRequired[pulumi.Input['InstanceConfigDevicesArgsDict']]
-        """
-        Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
-        """
-        helpers: NotRequired[pulumi.Input['InstanceConfigHelpersArgsDict']]
-        """
-        Helpers enabled when booting to this Linode Config.
-        """
-        id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the Placement Group.
-        """
-        interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgsDict']]]]
-        """
-        An array of Network Interfaces for this Linode’s Configuration Profile.
-        """
-        kernel: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
-        """
-        memory_limit: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Defaults to the total RAM of the Linode
-        """
-        root_device: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The root device to boot. The corresponding disk must be attached.
-        """
-        run_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Defines the state of your Linode after booting. Defaults to default.
-        """
-        virt_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Controls the virtualization mode. Defaults to paravirt.
-        """
-elif False:
-    InstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigArgsDict(TypedDict):
+    label: pulumi.Input[_builtins.str]
+    """
+    The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+    """
+    comments: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Optional field for arbitrary User comments on this Config.
+    """
+    devices: NotRequired[pulumi.Input['InstanceConfigDevicesArgsDict']]
+    """
+    Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+    """
+    helpers: NotRequired[pulumi.Input['InstanceConfigHelpersArgsDict']]
+    """
+    Helpers enabled when booting to this Linode Config.
+    """
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the Placement Group.
+    """
+    interfaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgsDict']]]]
+    """
+    An array of Network Interfaces for this Linode’s Configuration Profile.
+    """
+    kernel: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
+    """
+    memory_limit: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Defaults to the total RAM of the Linode
+    """
+    root_device: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The root device to boot. The corresponding disk must be attached.
+    """
+    run_level: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Defines the state of your Linode after booting. Defaults to default.
+    """
+    virt_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Controls the virtualization mode. Defaults to paravirt.
+    """
 
 @pulumi.input_type
 class InstanceConfigArgs:
@@ -2448,22 +2377,19 @@ class InstanceConfigArgs:
         pulumi.set(self, "virt_mode", value)
 
 
-if not MYPY:
-    class InstanceConfigDeviceArgsDict(TypedDict):
-        device_name: pulumi.Input[_builtins.str]
-        """
-        The Disk ID to map to this disk slot
-        """
-        disk_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Disk ID to map to this disk slot
-        """
-        volume_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Block Storage volume ID to map to this disk slot
-        """
-elif False:
-    InstanceConfigDeviceArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigDeviceArgsDict(TypedDict):
+    device_name: pulumi.Input[_builtins.str]
+    """
+    The Disk ID to map to this disk slot
+    """
+    disk_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
 
 @pulumi.input_type
 class InstanceConfigDeviceArgs:
@@ -2519,42 +2445,39 @@ class InstanceConfigDeviceArgs:
         pulumi.set(self, "volume_id", value)
 
 
-if not MYPY:
-    class InstanceConfigDevicesArgsDict(TypedDict):
-        sda: NotRequired[pulumi.Input['InstanceConfigDevicesSdaArgsDict']]
-        """
-        ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
-        """
-        sdb: NotRequired[pulumi.Input['InstanceConfigDevicesSdbArgsDict']]
-        """
-        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-        """
-        sdc: NotRequired[pulumi.Input['InstanceConfigDevicesSdcArgsDict']]
-        """
-        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-        """
-        sdd: NotRequired[pulumi.Input['InstanceConfigDevicesSddArgsDict']]
-        """
-        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-        """
-        sde: NotRequired[pulumi.Input['InstanceConfigDevicesSdeArgsDict']]
-        """
-        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-        """
-        sdf: NotRequired[pulumi.Input['InstanceConfigDevicesSdfArgsDict']]
-        """
-        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-        """
-        sdg: NotRequired[pulumi.Input['InstanceConfigDevicesSdgArgsDict']]
-        """
-        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-        """
-        sdh: NotRequired[pulumi.Input['InstanceConfigDevicesSdhArgsDict']]
-        """
-        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-        """
-elif False:
-    InstanceConfigDevicesArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigDevicesArgsDict(TypedDict):
+    sda: NotRequired[pulumi.Input['InstanceConfigDevicesSdaArgsDict']]
+    """
+    ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
+    """
+    sdb: NotRequired[pulumi.Input['InstanceConfigDevicesSdbArgsDict']]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdc: NotRequired[pulumi.Input['InstanceConfigDevicesSdcArgsDict']]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdd: NotRequired[pulumi.Input['InstanceConfigDevicesSddArgsDict']]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sde: NotRequired[pulumi.Input['InstanceConfigDevicesSdeArgsDict']]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdf: NotRequired[pulumi.Input['InstanceConfigDevicesSdfArgsDict']]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdg: NotRequired[pulumi.Input['InstanceConfigDevicesSdgArgsDict']]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdh: NotRequired[pulumi.Input['InstanceConfigDevicesSdhArgsDict']]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
 
 @pulumi.input_type
 class InstanceConfigDevicesArgs:
@@ -2691,18 +2614,15 @@ class InstanceConfigDevicesArgs:
         pulumi.set(self, "sdh", value)
 
 
-if not MYPY:
-    class InstanceConfigDevicesSdaArgsDict(TypedDict):
-        disk_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Disk ID to map to this `device` slot
-        """
-        volume_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Volume ID to map to this `device` slot.
-        """
-elif False:
-    InstanceConfigDevicesSdaArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigDevicesSdaArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Disk ID to map to this `device` slot
+    """
+    volume_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Volume ID to map to this `device` slot.
+    """
 
 @pulumi.input_type
 class InstanceConfigDevicesSdaArgs:
@@ -2743,18 +2663,15 @@ class InstanceConfigDevicesSdaArgs:
         pulumi.set(self, "volume_id", value)
 
 
-if not MYPY:
-    class InstanceConfigDevicesSdbArgsDict(TypedDict):
-        disk_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Disk ID to map to this disk slot
-        """
-        volume_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Block Storage volume ID to map to this disk slot
-        """
-elif False:
-    InstanceConfigDevicesSdbArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigDevicesSdbArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
 
 @pulumi.input_type
 class InstanceConfigDevicesSdbArgs:
@@ -2795,18 +2712,15 @@ class InstanceConfigDevicesSdbArgs:
         pulumi.set(self, "volume_id", value)
 
 
-if not MYPY:
-    class InstanceConfigDevicesSdcArgsDict(TypedDict):
-        disk_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Disk ID to map to this disk slot
-        """
-        volume_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Block Storage volume ID to map to this disk slot
-        """
-elif False:
-    InstanceConfigDevicesSdcArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigDevicesSdcArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
 
 @pulumi.input_type
 class InstanceConfigDevicesSdcArgs:
@@ -2847,18 +2761,15 @@ class InstanceConfigDevicesSdcArgs:
         pulumi.set(self, "volume_id", value)
 
 
-if not MYPY:
-    class InstanceConfigDevicesSddArgsDict(TypedDict):
-        disk_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Disk ID to map to this disk slot
-        """
-        volume_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Block Storage volume ID to map to this disk slot
-        """
-elif False:
-    InstanceConfigDevicesSddArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigDevicesSddArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
 
 @pulumi.input_type
 class InstanceConfigDevicesSddArgs:
@@ -2899,18 +2810,15 @@ class InstanceConfigDevicesSddArgs:
         pulumi.set(self, "volume_id", value)
 
 
-if not MYPY:
-    class InstanceConfigDevicesSdeArgsDict(TypedDict):
-        disk_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Disk ID to map to this disk slot
-        """
-        volume_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Block Storage volume ID to map to this disk slot
-        """
-elif False:
-    InstanceConfigDevicesSdeArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigDevicesSdeArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
 
 @pulumi.input_type
 class InstanceConfigDevicesSdeArgs:
@@ -2951,18 +2859,15 @@ class InstanceConfigDevicesSdeArgs:
         pulumi.set(self, "volume_id", value)
 
 
-if not MYPY:
-    class InstanceConfigDevicesSdfArgsDict(TypedDict):
-        disk_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Disk ID to map to this disk slot
-        """
-        volume_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Block Storage volume ID to map to this disk slot
-        """
-elif False:
-    InstanceConfigDevicesSdfArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigDevicesSdfArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
 
 @pulumi.input_type
 class InstanceConfigDevicesSdfArgs:
@@ -3003,18 +2908,15 @@ class InstanceConfigDevicesSdfArgs:
         pulumi.set(self, "volume_id", value)
 
 
-if not MYPY:
-    class InstanceConfigDevicesSdgArgsDict(TypedDict):
-        disk_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Disk ID to map to this disk slot
-        """
-        volume_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Block Storage volume ID to map to this disk slot
-        """
-elif False:
-    InstanceConfigDevicesSdgArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigDevicesSdgArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
 
 @pulumi.input_type
 class InstanceConfigDevicesSdgArgs:
@@ -3055,18 +2957,15 @@ class InstanceConfigDevicesSdgArgs:
         pulumi.set(self, "volume_id", value)
 
 
-if not MYPY:
-    class InstanceConfigDevicesSdhArgsDict(TypedDict):
-        disk_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Disk ID to map to this disk slot
-        """
-        volume_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The Block Storage volume ID to map to this disk slot
-        """
-elif False:
-    InstanceConfigDevicesSdhArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigDevicesSdhArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
 
 @pulumi.input_type
 class InstanceConfigDevicesSdhArgs:
@@ -3107,30 +3006,27 @@ class InstanceConfigDevicesSdhArgs:
         pulumi.set(self, "volume_id", value)
 
 
-if not MYPY:
-    class InstanceConfigHelperArgsDict(TypedDict):
-        devtmpfs_automount: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Populates the /dev directory early during boot without udev. (default `true`)
-        """
-        distro: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Helps maintain correct inittab/upstart console device. (default `true`)
-        """
-        modules_dep: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Creates a modules dependency file for the Kernel you run. (default `true`)
-        """
-        network: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Automatically configures static networking. (default `true`)
-        """
-        updatedb_disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Disables updatedb cron job to avoid disk thrashing. (default `true`)
-        """
-elif False:
-    InstanceConfigHelperArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigHelperArgsDict(TypedDict):
+    devtmpfs_automount: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Populates the /dev directory early during boot without udev. (default `true`)
+    """
+    distro: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Helps maintain correct inittab/upstart console device. (default `true`)
+    """
+    modules_dep: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Creates a modules dependency file for the Kernel you run. (default `true`)
+    """
+    network: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Automatically configures static networking. (default `true`)
+    """
+    updatedb_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disables updatedb cron job to avoid disk thrashing. (default `true`)
+    """
 
 @pulumi.input_type
 class InstanceConfigHelperArgs:
@@ -3219,30 +3115,27 @@ class InstanceConfigHelperArgs:
         pulumi.set(self, "updatedb_disabled", value)
 
 
-if not MYPY:
-    class InstanceConfigHelpersArgsDict(TypedDict):
-        devtmpfs_automount: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Populates the /dev directory early during boot without udev. Defaults to false.
-        """
-        distro: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Controls the behavior of the Linode Config's Distribution Helper setting.
-        """
-        modules_dep: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Creates a modules dependency file for the Kernel you run.
-        """
-        network: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
-        """
-        updatedb_disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Disables updatedb cron job to avoid disk thrashing.
-        """
-elif False:
-    InstanceConfigHelpersArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigHelpersArgsDict(TypedDict):
+    devtmpfs_automount: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Populates the /dev directory early during boot without udev. Defaults to false.
+    """
+    distro: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Controls the behavior of the Linode Config's Distribution Helper setting.
+    """
+    modules_dep: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Creates a modules dependency file for the Kernel you run.
+    """
+    network: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
+    """
+    updatedb_disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Disables updatedb cron job to avoid disk thrashing.
+    """
 
 @pulumi.input_type
 class InstanceConfigHelpersArgs:
@@ -3331,60 +3224,55 @@ class InstanceConfigHelpersArgs:
         pulumi.set(self, "updatedb_disabled", value)
 
 
-if not MYPY:
-    class InstanceConfigInterfaceArgsDict(TypedDict):
-        purpose: pulumi.Input[_builtins.str]
-        """
-        The type of interface. (`public`, `vlan`, `vpc`)
-        """
-        active: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this interface is currently booted and active.
-        """
-        id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the interface.
-        """
-        ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
-        """
-        ipam_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
-        """
-        ipv4: NotRequired[pulumi.Input['InstanceConfigInterfaceIpv4ArgsDict']]
-        """
-        The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
-        """
-        ipv6: NotRequired[pulumi.Input['InstanceConfigInterfaceIpv6ArgsDict']]
-        """
-        The IPv6 configuration of the VPC interface. This attribute is only allowed for VPC interfaces.
-        """
-        label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
-        """
-        primary: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+class InstanceConfigInterfaceArgsDict(TypedDict):
+    purpose: pulumi.Input[_builtins.str]
+    """
+    The type of interface. (`public`, `vlan`, `vpc`)
+    """
+    active: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this interface is currently booted and active.
+    """
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the interface.
+    """
+    ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+    """
+    ipam_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
+    """
+    ipv4: NotRequired[pulumi.Input['InstanceConfigInterfaceIpv4ArgsDict']]
+    """
+    The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
+    """
+    ipv6: NotRequired[pulumi.Input['InstanceConfigInterfaceIpv6ArgsDict']]
+    """
+    The IPv6 configuration of the VPC interface. This attribute is only allowed for VPC interfaces.
+    """
+    label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+    """
+    primary: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
 
-        * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+    * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 
-        * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-
-        The following computed attribute is available in a VPC interface:
-        """
-        subnet_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of VPC which this interface is attached to.
-        """
-elif False:
-    InstanceConfigInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+    * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+    """
+    subnet_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of VPC which this interface is attached to.
+    """
 
 @pulumi.input_type
 class InstanceConfigInterfaceArgs:
@@ -3414,8 +3302,6 @@ class InstanceConfigInterfaceArgs:
                * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
                
                * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-               
-               The following computed attribute is available in a VPC interface:
         :param pulumi.Input[_builtins.int] subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
         :param pulumi.Input[_builtins.int] vpc_id: The ID of VPC which this interface is attached to.
         """
@@ -3546,8 +3432,6 @@ class InstanceConfigInterfaceArgs:
         * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 
         * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-
-        The following computed attribute is available in a VPC interface:
         """
         return pulumi.get(self, "primary")
 
@@ -3580,18 +3464,15 @@ class InstanceConfigInterfaceArgs:
         pulumi.set(self, "vpc_id", value)
 
 
-if not MYPY:
-    class InstanceConfigInterfaceIpv4ArgsDict(TypedDict):
-        nat11: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
-        """
-        vpc: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
-        """
-elif False:
-    InstanceConfigInterfaceIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigInterfaceIpv4ArgsDict(TypedDict):
+    nat11: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+    """
+    vpc: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+    """
 
 @pulumi.input_type
 class InstanceConfigInterfaceIpv4Args:
@@ -3632,26 +3513,23 @@ class InstanceConfigInterfaceIpv4Args:
         pulumi.set(self, "vpc", value)
 
 
-if not MYPY:
-    class InstanceConfigInterfaceIpv6ArgsDict(TypedDict):
-        is_public: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+class InstanceConfigInterfaceIpv6ArgsDict(TypedDict):
+    is_public: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
 
-        * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+    * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
 
-        * `range` - (Optional) An array of IPv6 ranges to use for this interface.
-        """
-        ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceIpv6RangeArgsDict']]]]
-        """
-        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
-        """
-        slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceIpv6SlaacArgsDict']]]]
-        """
-        An array of SLAAC prefixes to use for this interface.
-        """
-elif False:
-    InstanceConfigInterfaceIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+    * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+    """
+    ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceIpv6RangeArgsDict']]]]
+    """
+    A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+    """
+    slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceIpv6SlaacArgsDict']]]]
+    """
+    An array of SLAAC prefixes to use for this interface.
+    """
 
 @pulumi.input_type
 class InstanceConfigInterfaceIpv6Args:
@@ -3716,18 +3594,15 @@ class InstanceConfigInterfaceIpv6Args:
         pulumi.set(self, "slaacs", value)
 
 
-if not MYPY:
-    class InstanceConfigInterfaceIpv6RangeArgsDict(TypedDict):
-        assigned_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
-        """
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
-        """
-elif False:
-    InstanceConfigInterfaceIpv6RangeArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigInterfaceIpv6RangeArgsDict(TypedDict):
+    assigned_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+    """
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+    """
 
 @pulumi.input_type
 class InstanceConfigInterfaceIpv6RangeArgs:
@@ -3768,22 +3643,19 @@ class InstanceConfigInterfaceIpv6RangeArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class InstanceConfigInterfaceIpv6SlaacArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SLAAC address chosen for this interface.
-        """
-        assigned_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
-        """
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
-        """
-elif False:
-    InstanceConfigInterfaceIpv6SlaacArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceConfigInterfaceIpv6SlaacArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SLAAC address chosen for this interface.
+    """
+    assigned_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+    """
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+    """
 
 @pulumi.input_type
 class InstanceConfigInterfaceIpv6SlaacArgs:
@@ -3840,54 +3712,51 @@ class InstanceConfigInterfaceIpv6SlaacArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class InstanceDiskArgsDict(TypedDict):
-        label: pulumi.Input[_builtins.str]
-        """
-        The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
-        """
-        size: pulumi.Input[_builtins.int]
-        """
-        The size of the Disk in MB.
-        """
-        authorized_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
-        """
-        authorized_users: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
-        """
-        filesystem: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
-        """
-        id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the Placement Group.
-        """
-        image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
-        """
-        read_only: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this Disk is read-only.
-        """
-        root_pass: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The password that will be initialially assigned to the 'root' user account.
-        """
-        stackscript_data: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-        """
-        stackscript_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
-        """
-elif False:
-    InstanceDiskArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDiskArgsDict(TypedDict):
+    label: pulumi.Input[_builtins.str]
+    """
+    The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+    """
+    size: pulumi.Input[_builtins.int]
+    """
+    The size of the Disk in MB.
+    """
+    authorized_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
+    """
+    authorized_users: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+    """
+    filesystem: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
+    """
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the Placement Group.
+    """
+    image: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
+    """
+    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this Disk is read-only.
+    """
+    root_pass: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The password that will be initialially assigned to the 'root' user account.
+    """
+    stackscript_data: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+    """
+    stackscript_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+    """
 
 @pulumi.input_type
 class InstanceDiskArgs:
@@ -4070,22 +3939,19 @@ class InstanceDiskArgs:
         pulumi.set(self, "stackscript_id", value)
 
 
-if not MYPY:
-    class InstanceDiskTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    InstanceDiskTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceDiskTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class InstanceDiskTimeoutsArgs:
@@ -4142,62 +4008,57 @@ class InstanceDiskTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class InstanceInterfaceArgsDict(TypedDict):
-        purpose: pulumi.Input[_builtins.str]
-        """
-        The type of interface. (`public`, `vlan`, `vpc`)
-        """
-        active: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this interface is currently booted and active.
-        """
-        id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the Placement Group.
-        """
-        ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
-        """
-        ipam_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
-        """
-        ipv4: NotRequired[pulumi.Input['InstanceInterfaceIpv4ArgsDict']]
-        """
-        A set of reserved IPv4 addresses to assign to this Linode on creation.
+class InstanceInterfaceArgsDict(TypedDict):
+    purpose: pulumi.Input[_builtins.str]
+    """
+    The type of interface. (`public`, `vlan`, `vpc`)
+    """
+    active: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this interface is currently booted and active.
+    """
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the Placement Group.
+    """
+    ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
+    """
+    ipam_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
+    """
+    ipv4: NotRequired[pulumi.Input['InstanceInterfaceIpv4ArgsDict']]
+    """
+    A set of reserved IPv4 addresses to assign to this Linode on creation.
 
-        * **NOTE: IP reservation is not currently available to all users.**
-        """
-        ipv6: NotRequired[pulumi.Input['InstanceInterfaceIpv6ArgsDict']]
-        """
-        This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
-        """
-        label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
-        """
-        primary: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+    * **NOTE: IP reservation is not currently available to all users.**
+    """
+    ipv6: NotRequired[pulumi.Input['InstanceInterfaceIpv6ArgsDict']]
+    """
+    This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+    """
+    label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
+    """
+    primary: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
 
-        * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+    * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 
-        * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-
-        The following computed attribute is available in a VPC interface:
-        """
-        subnet_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
-        """
-        vpc_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of VPC which this interface is attached to.
-        """
-elif False:
-    InstanceInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+    * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+    """
+    subnet_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+    """
+    vpc_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of VPC which this interface is attached to.
+    """
 
 @pulumi.input_type
 class InstanceInterfaceArgs:
@@ -4229,8 +4090,6 @@ class InstanceInterfaceArgs:
                * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
                
                * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-               
-               The following computed attribute is available in a VPC interface:
         :param pulumi.Input[_builtins.int] subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
         :param pulumi.Input[_builtins.int] vpc_id: The ID of VPC which this interface is attached to.
         """
@@ -4363,8 +4222,6 @@ class InstanceInterfaceArgs:
         * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 
         * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-
-        The following computed attribute is available in a VPC interface:
         """
         return pulumi.get(self, "primary")
 
@@ -4397,18 +4254,15 @@ class InstanceInterfaceArgs:
         pulumi.set(self, "vpc_id", value)
 
 
-if not MYPY:
-    class InstanceInterfaceIpv4ArgsDict(TypedDict):
-        nat11: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
-        """
-        vpc: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
-        """
-elif False:
-    InstanceInterfaceIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceInterfaceIpv4ArgsDict(TypedDict):
+    nat11: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+    """
+    vpc: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
+    """
 
 @pulumi.input_type
 class InstanceInterfaceIpv4Args:
@@ -4449,26 +4303,23 @@ class InstanceInterfaceIpv4Args:
         pulumi.set(self, "vpc", value)
 
 
-if not MYPY:
-    class InstanceInterfaceIpv6ArgsDict(TypedDict):
-        is_public: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
+class InstanceInterfaceIpv6ArgsDict(TypedDict):
+    is_public: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
 
-        * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+    * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
 
-        * `range` - (Optional) An array of IPv6 ranges to use for this interface.
-        """
-        ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceIpv6RangeArgsDict']]]]
-        """
-        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
-        """
-        slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceIpv6SlaacArgsDict']]]]
-        """
-        An array of SLAAC prefixes to use for this interface.
-        """
-elif False:
-    InstanceInterfaceIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+    * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+    """
+    ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceIpv6RangeArgsDict']]]]
+    """
+    A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+    """
+    slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceIpv6SlaacArgsDict']]]]
+    """
+    An array of SLAAC prefixes to use for this interface.
+    """
 
 @pulumi.input_type
 class InstanceInterfaceIpv6Args:
@@ -4533,18 +4384,15 @@ class InstanceInterfaceIpv6Args:
         pulumi.set(self, "slaacs", value)
 
 
-if not MYPY:
-    class InstanceInterfaceIpv6RangeArgsDict(TypedDict):
-        assigned_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
-        """
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
-        """
-elif False:
-    InstanceInterfaceIpv6RangeArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceInterfaceIpv6RangeArgsDict(TypedDict):
+    assigned_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+    """
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+    """
 
 @pulumi.input_type
 class InstanceInterfaceIpv6RangeArgs:
@@ -4585,22 +4433,19 @@ class InstanceInterfaceIpv6RangeArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class InstanceInterfaceIpv6SlaacArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The SLAAC address chosen for this interface.
-        """
-        assigned_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
-        """
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
-        """
-elif False:
-    InstanceInterfaceIpv6SlaacArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceInterfaceIpv6SlaacArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The SLAAC address chosen for this interface.
+    """
+    assigned_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+    """
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+    """
 
 @pulumi.input_type
 class InstanceInterfaceIpv6SlaacArgs:
@@ -4657,16 +4502,13 @@ class InstanceInterfaceIpv6SlaacArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class InstanceIpVpcNat11ArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        The resulting IPv4 address.
-        """
-        subnet_id: pulumi.Input[_builtins.int]
-        vpc_id: pulumi.Input[_builtins.int]
-elif False:
-    InstanceIpVpcNat11ArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceIpVpcNat11ArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The resulting IPv4 address.
+    """
+    subnet_id: pulumi.Input[_builtins.int]
+    vpc_id: pulumi.Input[_builtins.int]
 
 @pulumi.input_type
 class InstanceIpVpcNat11Args:
@@ -4712,14 +4554,11 @@ class InstanceIpVpcNat11Args:
         pulumi.set(self, "vpc_id", value)
 
 
-if not MYPY:
-    class InstanceMetadataArgsDict(TypedDict):
-        user_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-        """
-elif False:
-    InstanceMetadataArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceMetadataArgsDict(TypedDict):
+    user_data: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
+    """
 
 @pulumi.input_type
 class InstanceMetadataArgs:
@@ -4744,27 +4583,24 @@ class InstanceMetadataArgs:
         pulumi.set(self, "user_data", value)
 
 
-if not MYPY:
-    class InstancePlacementGroupArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.int]
-        """
-        The ID of the Placement Group.
-        """
-        compliant_only: NotRequired[pulumi.Input[_builtins.bool]]
-        label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
-        """
-        placement_group_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Whether the Placement Group enforces strict compliance.
-        """
-        placement_group_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The placement group type enforced by the Placement Group.
-        """
-elif False:
-    InstancePlacementGroupArgsDict: TypeAlias = Mapping[str, Any]
+class InstancePlacementGroupArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the Placement Group.
+    """
+    compliant_only: NotRequired[pulumi.Input[_builtins.bool]]
+    label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+    """
+    placement_group_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Whether the Placement Group enforces strict compliance.
+    """
+    placement_group_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The placement group type enforced by the Placement Group.
+    """
 
 @pulumi.input_type
 class InstancePlacementGroupArgs:
@@ -4848,34 +4684,31 @@ class InstancePlacementGroupArgs:
         pulumi.set(self, "placement_group_type", value)
 
 
-if not MYPY:
-    class InstanceSpecArgsDict(TypedDict):
-        accelerated_devices: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of VPUs this Linode has access to.
-        """
-        disk: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
-        """
-        gpus: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of GPUs this Linode has access to.
-        """
-        memory: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
-        """
-        transfer: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of network transfer this Linode is allotted each month.
-        """
-        vcpus: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
-        """
-elif False:
-    InstanceSpecArgsDict: TypeAlias = Mapping[str, Any]
+class InstanceSpecArgsDict(TypedDict):
+    accelerated_devices: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of VPUs this Linode has access to.
+    """
+    disk: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
+    """
+    gpus: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of GPUs this Linode has access to.
+    """
+    memory: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
+    """
+    transfer: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of network transfer this Linode is allotted each month.
+    """
+    vcpus: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
+    """
 
 @pulumi.input_type
 class InstanceSpecArgs:
@@ -4980,18 +4813,15 @@ class InstanceSpecArgs:
         pulumi.set(self, "vcpus", value)
 
 
-if not MYPY:
-    class InterfaceDefaultRouteArgsDict(TypedDict):
-        ipv4: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the interface is used for the IPv4 default route.
-        """
-        ipv6: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If set to true, the interface is used for the IPv6 default route.
-        """
-elif False:
-    InterfaceDefaultRouteArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceDefaultRouteArgsDict(TypedDict):
+    ipv4: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the interface is used for the IPv4 default route.
+    """
+    ipv6: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If set to true, the interface is used for the IPv6 default route.
+    """
 
 @pulumi.input_type
 class InterfaceDefaultRouteArgs:
@@ -5032,18 +4862,15 @@ class InterfaceDefaultRouteArgs:
         pulumi.set(self, "ipv6", value)
 
 
-if not MYPY:
-    class InterfacePublicArgsDict(TypedDict):
-        ipv4: NotRequired[pulumi.Input['InterfacePublicIpv4ArgsDict']]
-        """
-        IPv4 addresses for this interface.
-        """
-        ipv6: NotRequired[pulumi.Input['InterfacePublicIpv6ArgsDict']]
-        """
-        IPv6 addresses for this interface.
-        """
-elif False:
-    InterfacePublicArgsDict: TypeAlias = Mapping[str, Any]
+class InterfacePublicArgsDict(TypedDict):
+    ipv4: NotRequired[pulumi.Input['InterfacePublicIpv4ArgsDict']]
+    """
+    IPv4 addresses for this interface.
+    """
+    ipv6: NotRequired[pulumi.Input['InterfacePublicIpv6ArgsDict']]
+    """
+    IPv6 addresses for this interface.
+    """
 
 @pulumi.input_type
 class InterfacePublicArgs:
@@ -5084,22 +4911,19 @@ class InterfacePublicArgs:
         pulumi.set(self, "ipv6", value)
 
 
-if not MYPY:
-    class InterfacePublicIpv4ArgsDict(TypedDict):
-        addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AddressArgsDict']]]]
-        """
-        IPv4 addresses configured for this Linode interface. Each object in this list supports:
-        """
-        assigned_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgsDict']]]]
-        """
-        (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
-        """
-        shareds: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgsDict']]]]
-        """
-        (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
-        """
-elif False:
-    InterfacePublicIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+class InterfacePublicIpv4ArgsDict(TypedDict):
+    addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AddressArgsDict']]]]
+    """
+    IPv4 addresses configured for this Linode interface. Each object in this list supports:
+    """
+    assigned_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgsDict']]]]
+    """
+    (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+    """
+    shareds: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgsDict']]]]
+    """
+    (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+    """
 
 @pulumi.input_type
 class InterfacePublicIpv4Args:
@@ -5156,18 +4980,15 @@ class InterfacePublicIpv4Args:
         pulumi.set(self, "shareds", value)
 
 
-if not MYPY:
-    class InterfacePublicIpv4AddressArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv4 address. Defaults to "auto" for automatic assignment.
-        """
-        primary: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this address is the primary address for the interface.
-        """
-elif False:
-    InterfacePublicIpv4AddressArgsDict: TypeAlias = Mapping[str, Any]
+class InterfacePublicIpv4AddressArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv4 address. Defaults to "auto" for automatic assignment.
+    """
+    primary: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this address is the primary address for the interface.
+    """
 
 @pulumi.input_type
 class InterfacePublicIpv4AddressArgs:
@@ -5208,18 +5029,15 @@ class InterfacePublicIpv4AddressArgs:
         pulumi.set(self, "primary", value)
 
 
-if not MYPY:
-    class InterfacePublicIpv4AssignedAddressArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The assigned IPv4 address.
-        """
-        primary: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this address is the primary address for the interface.
-        """
-elif False:
-    InterfacePublicIpv4AssignedAddressArgsDict: TypeAlias = Mapping[str, Any]
+class InterfacePublicIpv4AssignedAddressArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The assigned IPv4 address.
+    """
+    primary: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this address is the primary address for the interface.
+    """
 
 @pulumi.input_type
 class InterfacePublicIpv4AssignedAddressArgs:
@@ -5260,18 +5078,15 @@ class InterfacePublicIpv4AssignedAddressArgs:
         pulumi.set(self, "primary", value)
 
 
-if not MYPY:
-    class InterfacePublicIpv4SharedArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The assigned IPv4 address.
-        """
-        linode_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the Linode to assign this interface to.
-        """
-elif False:
-    InterfacePublicIpv4SharedArgsDict: TypeAlias = Mapping[str, Any]
+class InterfacePublicIpv4SharedArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The assigned IPv4 address.
+    """
+    linode_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the Linode to assign this interface to.
+    """
 
 @pulumi.input_type
 class InterfacePublicIpv4SharedArgs:
@@ -5312,26 +5127,23 @@ class InterfacePublicIpv4SharedArgs:
         pulumi.set(self, "linode_id", value)
 
 
-if not MYPY:
-    class InterfacePublicIpv6ArgsDict(TypedDict):
-        assigned_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgsDict']]]]
-        """
-        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
-        """
-        ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6RangeArgsDict']]]]
-        """
-        Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
-        """
-        shareds: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgsDict']]]]
-        """
-        (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
-        """
-        slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgsDict']]]]
-        """
-        (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
-        """
-elif False:
-    InterfacePublicIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+class InterfacePublicIpv6ArgsDict(TypedDict):
+    assigned_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgsDict']]]]
+    """
+    Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+    """
+    ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6RangeArgsDict']]]]
+    """
+    Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
+    """
+    shareds: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgsDict']]]]
+    """
+    (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+    """
+    slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgsDict']]]]
+    """
+    (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+    """
 
 @pulumi.input_type
 class InterfacePublicIpv6Args:
@@ -5404,18 +5216,15 @@ class InterfacePublicIpv6Args:
         pulumi.set(self, "slaacs", value)
 
 
-if not MYPY:
-    class InterfacePublicIpv6AssignedRangeArgsDict(TypedDict):
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 network range in CIDR notation.
-        """
-        route_target: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The public IPv6 address that the range is routed to.
-        """
-elif False:
-    InterfacePublicIpv6AssignedRangeArgsDict: TypeAlias = Mapping[str, Any]
+class InterfacePublicIpv6AssignedRangeArgsDict(TypedDict):
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 network range in CIDR notation.
+    """
+    route_target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The public IPv6 address that the range is routed to.
+    """
 
 @pulumi.input_type
 class InterfacePublicIpv6AssignedRangeArgs:
@@ -5456,14 +5265,11 @@ class InterfacePublicIpv6AssignedRangeArgs:
         pulumi.set(self, "route_target", value)
 
 
-if not MYPY:
-    class InterfacePublicIpv6RangeArgsDict(TypedDict):
-        range: pulumi.Input[_builtins.str]
-        """
-        The IPv6 range.
-        """
-elif False:
-    InterfacePublicIpv6RangeArgsDict: TypeAlias = Mapping[str, Any]
+class InterfacePublicIpv6RangeArgsDict(TypedDict):
+    range: pulumi.Input[_builtins.str]
+    """
+    The IPv6 range.
+    """
 
 @pulumi.input_type
 class InterfacePublicIpv6RangeArgs:
@@ -5487,18 +5293,15 @@ class InterfacePublicIpv6RangeArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class InterfacePublicIpv6SharedArgsDict(TypedDict):
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 network range in CIDR notation.
-        """
-        route_target: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The public IPv6 address that the range is routed to.
-        """
-elif False:
-    InterfacePublicIpv6SharedArgsDict: TypeAlias = Mapping[str, Any]
+class InterfacePublicIpv6SharedArgsDict(TypedDict):
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 network range in CIDR notation.
+    """
+    route_target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The public IPv6 address that the range is routed to.
+    """
 
 @pulumi.input_type
 class InterfacePublicIpv6SharedArgs:
@@ -5539,18 +5342,15 @@ class InterfacePublicIpv6SharedArgs:
         pulumi.set(self, "route_target", value)
 
 
-if not MYPY:
-    class InterfacePublicIpv6SlaacArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The assigned IPv4 address.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The subnet prefix length.
-        """
-elif False:
-    InterfacePublicIpv6SlaacArgsDict: TypeAlias = Mapping[str, Any]
+class InterfacePublicIpv6SlaacArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The assigned IPv4 address.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The subnet prefix length.
+    """
 
 @pulumi.input_type
 class InterfacePublicIpv6SlaacArgs:
@@ -5591,18 +5391,15 @@ class InterfacePublicIpv6SlaacArgs:
         pulumi.set(self, "prefix", value)
 
 
-if not MYPY:
-    class InterfaceVlanArgsDict(TypedDict):
-        vlan_label: pulumi.Input[_builtins.str]
-        """
-        The VLAN's unique label. Must be between 1 and 64 characters.
-        """
-        ipam_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The VLAN interface's private IPv4 address in CIDR notation.
-        """
-elif False:
-    InterfaceVlanArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVlanArgsDict(TypedDict):
+    vlan_label: pulumi.Input[_builtins.str]
+    """
+    The VLAN's unique label. Must be between 1 and 64 characters.
+    """
+    ipam_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The VLAN interface's private IPv4 address in CIDR notation.
+    """
 
 @pulumi.input_type
 class InterfaceVlanArgs:
@@ -5642,22 +5439,19 @@ class InterfaceVlanArgs:
         pulumi.set(self, "ipam_address", value)
 
 
-if not MYPY:
-    class InterfaceVpcArgsDict(TypedDict):
-        subnet_id: pulumi.Input[_builtins.int]
-        """
-        The VPC subnet identifier for this interface.
-        """
-        ipv4: NotRequired[pulumi.Input['InterfaceVpcIpv4ArgsDict']]
-        """
-        IPv4 configuration for the VPC interface.
-        """
-        ipv6: NotRequired[pulumi.Input['InterfaceVpcIpv6ArgsDict']]
-        """
-        IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
-        """
-elif False:
-    InterfaceVpcArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVpcArgsDict(TypedDict):
+    subnet_id: pulumi.Input[_builtins.int]
+    """
+    The VPC subnet identifier for this interface.
+    """
+    ipv4: NotRequired[pulumi.Input['InterfaceVpcIpv4ArgsDict']]
+    """
+    IPv4 configuration for the VPC interface.
+    """
+    ipv6: NotRequired[pulumi.Input['InterfaceVpcIpv6ArgsDict']]
+    """
+    IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+    """
 
 @pulumi.input_type
 class InterfaceVpcArgs:
@@ -5713,26 +5507,23 @@ class InterfaceVpcArgs:
         pulumi.set(self, "ipv6", value)
 
 
-if not MYPY:
-    class InterfaceVpcIpv4ArgsDict(TypedDict):
-        addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AddressArgsDict']]]]
-        """
-        Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
-        """
-        assigned_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgsDict']]]]
-        """
-        (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
-        """
-        assigned_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgsDict']]]]
-        """
-        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
-        """
-        ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgsDict']]]]
-        """
-        IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
-        """
-elif False:
-    InterfaceVpcIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVpcIpv4ArgsDict(TypedDict):
+    addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AddressArgsDict']]]]
+    """
+    Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
+    """
+    assigned_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgsDict']]]]
+    """
+    (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+    """
+    assigned_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgsDict']]]]
+    """
+    Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+    """
+    ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgsDict']]]]
+    """
+    IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
+    """
 
 @pulumi.input_type
 class InterfaceVpcIpv4Args:
@@ -5805,22 +5596,19 @@ class InterfaceVpcIpv4Args:
         pulumi.set(self, "ranges", value)
 
 
-if not MYPY:
-    class InterfaceVpcIpv4AddressArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv4 address. Defaults to "auto" for automatic assignment.
-        """
-        nat11_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
-        """
-        primary: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this address is the primary address for the interface.
-        """
-elif False:
-    InterfaceVpcIpv4AddressArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVpcIpv4AddressArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv4 address. Defaults to "auto" for automatic assignment.
+    """
+    nat11_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+    """
+    primary: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this address is the primary address for the interface.
+    """
 
 @pulumi.input_type
 class InterfaceVpcIpv4AddressArgs:
@@ -5877,22 +5665,19 @@ class InterfaceVpcIpv4AddressArgs:
         pulumi.set(self, "primary", value)
 
 
-if not MYPY:
-    class InterfaceVpcIpv4AssignedAddressArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The assigned IPv4 address.
-        """
-        nat11_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The assigned 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
-        """
-        primary: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this address is the primary address for the interface.
-        """
-elif False:
-    InterfaceVpcIpv4AssignedAddressArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVpcIpv4AssignedAddressArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The assigned IPv4 address.
+    """
+    nat11_address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The assigned 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
+    """
+    primary: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this address is the primary address for the interface.
+    """
 
 @pulumi.input_type
 class InterfaceVpcIpv4AssignedAddressArgs:
@@ -5949,14 +5734,11 @@ class InterfaceVpcIpv4AssignedAddressArgs:
         pulumi.set(self, "primary", value)
 
 
-if not MYPY:
-    class InterfaceVpcIpv4AssignedRangeArgsDict(TypedDict):
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 network range in CIDR notation.
-        """
-elif False:
-    InterfaceVpcIpv4AssignedRangeArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVpcIpv4AssignedRangeArgsDict(TypedDict):
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 network range in CIDR notation.
+    """
 
 @pulumi.input_type
 class InterfaceVpcIpv4AssignedRangeArgs:
@@ -5981,14 +5763,11 @@ class InterfaceVpcIpv4AssignedRangeArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class InterfaceVpcIpv4RangeArgsDict(TypedDict):
-        range: pulumi.Input[_builtins.str]
-        """
-        The IPv4 range.
-        """
-elif False:
-    InterfaceVpcIpv4RangeArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVpcIpv4RangeArgsDict(TypedDict):
+    range: pulumi.Input[_builtins.str]
+    """
+    The IPv4 range.
+    """
 
 @pulumi.input_type
 class InterfaceVpcIpv4RangeArgs:
@@ -6012,30 +5791,27 @@ class InterfaceVpcIpv4RangeArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class InterfaceVpcIpv6ArgsDict(TypedDict):
-        assigned_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgsDict']]]]
-        """
-        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
-        """
-        assigned_slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgsDict']]]]
-        """
-        Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
-        """
-        is_public: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
-        """
-        ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6RangeArgsDict']]]]
-        """
-        Defines additional IPv6 network ranges.
-        """
-        slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6SlaacArgsDict']]]]
-        """
-        Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
-        """
-elif False:
-    InterfaceVpcIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVpcIpv6ArgsDict(TypedDict):
+    assigned_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgsDict']]]]
+    """
+    Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+    """
+    assigned_slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgsDict']]]]
+    """
+    Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+    """
+    is_public: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
+    """
+    ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6RangeArgsDict']]]]
+    """
+    Defines additional IPv6 network ranges.
+    """
+    slaacs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6SlaacArgsDict']]]]
+    """
+    Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
+    """
 
 @pulumi.input_type
 class InterfaceVpcIpv6Args:
@@ -6124,14 +5900,11 @@ class InterfaceVpcIpv6Args:
         pulumi.set(self, "slaacs", value)
 
 
-if not MYPY:
-    class InterfaceVpcIpv6AssignedRangeArgsDict(TypedDict):
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 network range in CIDR notation.
-        """
-elif False:
-    InterfaceVpcIpv6AssignedRangeArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVpcIpv6AssignedRangeArgsDict(TypedDict):
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 network range in CIDR notation.
+    """
 
 @pulumi.input_type
 class InterfaceVpcIpv6AssignedRangeArgs:
@@ -6156,18 +5929,15 @@ class InterfaceVpcIpv6AssignedRangeArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class InterfaceVpcIpv6AssignedSlaacArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The assigned IPv4 address.
-        """
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 network range in CIDR notation.
-        """
-elif False:
-    InterfaceVpcIpv6AssignedSlaacArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVpcIpv6AssignedSlaacArgsDict(TypedDict):
+    address: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The assigned IPv4 address.
+    """
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 network range in CIDR notation.
+    """
 
 @pulumi.input_type
 class InterfaceVpcIpv6AssignedSlaacArgs:
@@ -6208,14 +5978,11 @@ class InterfaceVpcIpv6AssignedSlaacArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class InterfaceVpcIpv6RangeArgsDict(TypedDict):
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 network range in CIDR notation.
-        """
-elif False:
-    InterfaceVpcIpv6RangeArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVpcIpv6RangeArgsDict(TypedDict):
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 network range in CIDR notation.
+    """
 
 @pulumi.input_type
 class InterfaceVpcIpv6RangeArgs:
@@ -6240,14 +6007,11 @@ class InterfaceVpcIpv6RangeArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class InterfaceVpcIpv6SlaacArgsDict(TypedDict):
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 network range in CIDR notation.
-        """
-elif False:
-    InterfaceVpcIpv6SlaacArgsDict: TypeAlias = Mapping[str, Any]
+class InterfaceVpcIpv6SlaacArgsDict(TypedDict):
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 network range in CIDR notation.
+    """
 
 @pulumi.input_type
 class InterfaceVpcIpv6SlaacArgs:
@@ -6272,24 +6036,21 @@ class InterfaceVpcIpv6SlaacArgs:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class LkeClusterControlPlaneArgsDict(TypedDict):
-        acl: NotRequired[pulumi.Input['LkeClusterControlPlaneAclArgsDict']]
-        """
-        Defines the ACL configuration for an LKE cluster's control plane.
-        """
-        audit_logs_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enables audit logs on the cluster's control plane.
+class LkeClusterControlPlaneArgsDict(TypedDict):
+    acl: NotRequired[pulumi.Input['LkeClusterControlPlaneAclArgsDict']]
+    """
+    Defines the ACL configuration for an LKE cluster's control plane.
+    """
+    audit_logs_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enables audit logs on the cluster's control plane.
 
-        * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
-        """
-        high_availability: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
-        """
-elif False:
-    LkeClusterControlPlaneArgsDict: TypeAlias = Mapping[str, Any]
+    * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+    """
+    high_availability: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
+    """
 
 @pulumi.input_type
 class LkeClusterControlPlaneArgs:
@@ -6350,20 +6111,17 @@ class LkeClusterControlPlaneArgs:
         pulumi.set(self, "high_availability", value)
 
 
-if not MYPY:
-    class LkeClusterControlPlaneAclArgsDict(TypedDict):
-        addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['LkeClusterControlPlaneAclAddressArgsDict']]]]
-        """
-        A list of ip addresses to allow.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
+class LkeClusterControlPlaneAclArgsDict(TypedDict):
+    addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['LkeClusterControlPlaneAclAddressArgsDict']]]]
+    """
+    A list of ip addresses to allow.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
 
-        * `addresses` - (Optional) A list of ip addresses to allow.
-        """
-elif False:
-    LkeClusterControlPlaneAclArgsDict: TypeAlias = Mapping[str, Any]
+    * `addresses` - (Optional) A list of ip addresses to allow.
+    """
 
 @pulumi.input_type
 class LkeClusterControlPlaneAclArgs:
@@ -6408,18 +6166,15 @@ class LkeClusterControlPlaneAclArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class LkeClusterControlPlaneAclAddressArgsDict(TypedDict):
-        ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of individual ipv4 addresses or CIDRs to ALLOW.
-        """
-        ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of individual ipv6 addresses or CIDRs to ALLOW.
-        """
-elif False:
-    LkeClusterControlPlaneAclAddressArgsDict: TypeAlias = Mapping[str, Any]
+class LkeClusterControlPlaneAclAddressArgsDict(TypedDict):
+    ipv4s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of individual ipv4 addresses or CIDRs to ALLOW.
+    """
+    ipv6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of individual ipv6 addresses or CIDRs to ALLOW.
+    """
 
 @pulumi.input_type
 class LkeClusterControlPlaneAclAddressArgs:
@@ -6460,62 +6215,59 @@ class LkeClusterControlPlaneAclAddressArgs:
         pulumi.set(self, "ipv6s", value)
 
 
-if not MYPY:
-    class LkeClusterPoolArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
-        """
-        autoscaler: NotRequired[pulumi.Input['LkeClusterPoolAutoscalerArgsDict']]
-        """
-        When specified, the number of nodes autoscales within the defined minimum and maximum values.
-        """
-        count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-        """
-        disk_encryption: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The disk encryption policy for nodes in this pool.
-        """
-        firewall_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
-        """
-        id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the node.
-        """
-        k8s_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
-        """
-        label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A label for the Node Pool. If not provided, it defaults to empty string.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
-        """
-        nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgsDict']]]]
-        """
-        The nodes in the node pool.
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
-        """
-        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolTaintArgsDict']]]]
-        """
-        Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
-        """
-        update_strategy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
-        """
-elif False:
-    LkeClusterPoolArgsDict: TypeAlias = Mapping[str, Any]
+class LkeClusterPoolArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+    """
+    autoscaler: NotRequired[pulumi.Input['LkeClusterPoolAutoscalerArgsDict']]
+    """
+    When specified, the number of nodes autoscales within the defined minimum and maximum values.
+    """
+    count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
+    """
+    disk_encryption: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The disk encryption policy for nodes in this pool.
+    """
+    firewall_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+    """
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the node.
+    """
+    k8s_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
+    """
+    label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A label for the Node Pool. If not provided, it defaults to empty string.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
+    """
+    nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgsDict']]]]
+    """
+    The nodes in the node pool.
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
+    """
+    taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolTaintArgsDict']]]]
+    """
+    Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+    """
+    update_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
+    """
 
 @pulumi.input_type
 class LkeClusterPoolArgs:
@@ -6731,18 +6483,15 @@ class LkeClusterPoolArgs:
         pulumi.set(self, "update_strategy", value)
 
 
-if not MYPY:
-    class LkeClusterPoolAutoscalerArgsDict(TypedDict):
-        max: pulumi.Input[_builtins.int]
-        """
-        The maximum number of nodes to autoscale to.
-        """
-        min: pulumi.Input[_builtins.int]
-        """
-        The minimum number of nodes to autoscale to.
-        """
-elif False:
-    LkeClusterPoolAutoscalerArgsDict: TypeAlias = Mapping[str, Any]
+class LkeClusterPoolAutoscalerArgsDict(TypedDict):
+    max: pulumi.Input[_builtins.int]
+    """
+    The maximum number of nodes to autoscale to.
+    """
+    min: pulumi.Input[_builtins.int]
+    """
+    The minimum number of nodes to autoscale to.
+    """
 
 @pulumi.input_type
 class LkeClusterPoolAutoscalerArgs:
@@ -6781,22 +6530,19 @@ class LkeClusterPoolAutoscalerArgs:
         pulumi.set(self, "min", value)
 
 
-if not MYPY:
-    class LkeClusterPoolNodeArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the node.
-        """
-        instance_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the underlying Linode instance.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the node. (`ready`, `not_ready`)
-        """
-elif False:
-    LkeClusterPoolNodeArgsDict: TypeAlias = Mapping[str, Any]
+class LkeClusterPoolNodeArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the node.
+    """
+    instance_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the underlying Linode instance.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the node. (`ready`, `not_ready`)
+    """
 
 @pulumi.input_type
 class LkeClusterPoolNodeArgs:
@@ -6853,24 +6599,21 @@ class LkeClusterPoolNodeArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class LkeClusterPoolTaintArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
-        """
-        key: pulumi.Input[_builtins.str]
-        """
-        The Kubernetes taint key.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The Kubernetes taint value.
+class LkeClusterPoolTaintArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+    """
+    key: pulumi.Input[_builtins.str]
+    """
+    The Kubernetes taint key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The Kubernetes taint value.
 
-        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
-        """
-elif False:
-    LkeClusterPoolTaintArgsDict: TypeAlias = Mapping[str, Any]
+    * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+    """
 
 @pulumi.input_type
 class LkeClusterPoolTaintArgs:
@@ -6928,18 +6671,15 @@ class LkeClusterPoolTaintArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class LkeNodePoolAutoscalerArgsDict(TypedDict):
-        max: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of nodes to autoscale to.
-        """
-        min: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum number of nodes to autoscale to.
-        """
-elif False:
-    LkeNodePoolAutoscalerArgsDict: TypeAlias = Mapping[str, Any]
+class LkeNodePoolAutoscalerArgsDict(TypedDict):
+    max: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of nodes to autoscale to.
+    """
+    min: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum number of nodes to autoscale to.
+    """
 
 @pulumi.input_type
 class LkeNodePoolAutoscalerArgs:
@@ -6980,22 +6720,19 @@ class LkeNodePoolAutoscalerArgs:
         pulumi.set(self, "min", value)
 
 
-if not MYPY:
-    class LkeNodePoolNodeArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        The ID of the node.
-        """
-        instance_id: pulumi.Input[_builtins.int]
-        """
-        The ID of the underlying Linode instance.
-        """
-        status: pulumi.Input[_builtins.str]
-        """
-        The status of the node. (`ready`, `not_ready`)
-        """
-elif False:
-    LkeNodePoolNodeArgsDict: TypeAlias = Mapping[str, Any]
+class LkeNodePoolNodeArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The ID of the node.
+    """
+    instance_id: pulumi.Input[_builtins.int]
+    """
+    The ID of the underlying Linode instance.
+    """
+    status: pulumi.Input[_builtins.str]
+    """
+    The status of the node. (`ready`, `not_ready`)
+    """
 
 @pulumi.input_type
 class LkeNodePoolNodeArgs:
@@ -7049,22 +6786,19 @@ class LkeNodePoolNodeArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class LkeNodePoolTaintArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
-        """
-        key: pulumi.Input[_builtins.str]
-        """
-        The Kubernetes taint key.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The Kubernetes taint value.
-        """
-elif False:
-    LkeNodePoolTaintArgsDict: TypeAlias = Mapping[str, Any]
+class LkeNodePoolTaintArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+    """
+    key: pulumi.Input[_builtins.str]
+    """
+    The Kubernetes taint key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The Kubernetes taint value.
+    """
 
 @pulumi.input_type
 class LkeNodePoolTaintArgs:
@@ -7118,18 +6852,15 @@ class LkeNodePoolTaintArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class NetworkingIpAssignmentAssignmentArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        The IPv4 address or IPv6 range to assign.
-        """
-        linode_id: pulumi.Input[_builtins.int]
-        """
-        The ID of the Linode to which the IP address will be assigned.
-        """
-elif False:
-    NetworkingIpAssignmentAssignmentArgsDict: TypeAlias = Mapping[str, Any]
+class NetworkingIpAssignmentAssignmentArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The IPv4 address or IPv6 range to assign.
+    """
+    linode_id: pulumi.Input[_builtins.int]
+    """
+    The ID of the Linode to which the IP address will be assigned.
+    """
 
 @pulumi.input_type
 class NetworkingIpAssignmentAssignmentArgs:
@@ -7168,22 +6899,19 @@ class NetworkingIpAssignmentAssignmentArgs:
         pulumi.set(self, "linode_id", value)
 
 
-if not MYPY:
-    class NetworkingIpVpcNat11ArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        """
-        The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-        """
-        subnet_id: pulumi.Input[_builtins.int]
-        """
-        The `id` of the VPC Subnet for this Interface.
-        """
-        vpc_id: pulumi.Input[_builtins.int]
-        """
-        The `id` of the VPC configured for this Interface.
-        """
-elif False:
-    NetworkingIpVpcNat11ArgsDict: TypeAlias = Mapping[str, Any]
+class NetworkingIpVpcNat11ArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+    """
+    subnet_id: pulumi.Input[_builtins.int]
+    """
+    The `id` of the VPC Subnet for this Interface.
+    """
+    vpc_id: pulumi.Input[_builtins.int]
+    """
+    The `id` of the VPC configured for this Interface.
+    """
 
 @pulumi.input_type
 class NetworkingIpVpcNat11Args:
@@ -7237,18 +6965,15 @@ class NetworkingIpVpcNat11Args:
         pulumi.set(self, "vpc_id", value)
 
 
-if not MYPY:
-    class NodeBalancerConfigNodeStatusArgsDict(TypedDict):
-        down: pulumi.Input[_builtins.int]
-        """
-        The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
-        """
-        up: pulumi.Input[_builtins.int]
-        """
-        The number of backends considered to be 'UP' and healthy, and that are serving requests.
-        """
-elif False:
-    NodeBalancerConfigNodeStatusArgsDict: TypeAlias = Mapping[str, Any]
+class NodeBalancerConfigNodeStatusArgsDict(TypedDict):
+    down: pulumi.Input[_builtins.int]
+    """
+    The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+    """
+    up: pulumi.Input[_builtins.int]
+    """
+    The number of backends considered to be 'UP' and healthy, and that are serving requests.
+    """
 
 @pulumi.input_type
 class NodeBalancerConfigNodeStatusArgs:
@@ -7287,44 +7012,41 @@ class NodeBalancerConfigNodeStatusArgs:
         pulumi.set(self, "up", value)
 
 
-if not MYPY:
-    class NodeBalancerFirewallArgsDict(TypedDict):
-        created: pulumi.Input[_builtins.str]
-        """
-        When this firewall was created.
-        """
-        id: pulumi.Input[_builtins.int]
-        """
-        (Required) The Firewall's ID.
-        """
-        inbound_policy: pulumi.Input[_builtins.str]
-        """
-        The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
-        """
-        inbounds: pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallInboundArgsDict']]]
-        label: pulumi.Input[_builtins.str]
-        """
-        The label of the Linode NodeBalancer
-        """
-        outbound_policy: pulumi.Input[_builtins.str]
-        """
-        The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
-        """
-        outbounds: pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallOutboundArgsDict']]]
-        status: pulumi.Input[_builtins.str]
-        """
-        The status of the firewall. (`enabled`, `disabled`, `deleted`)
-        """
-        tags: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-        """
-        updated: pulumi.Input[_builtins.str]
-        """
-        When this firewall was last updated.
-        """
-elif False:
-    NodeBalancerFirewallArgsDict: TypeAlias = Mapping[str, Any]
+class NodeBalancerFirewallArgsDict(TypedDict):
+    created: pulumi.Input[_builtins.str]
+    """
+    When this firewall was created.
+    """
+    id: pulumi.Input[_builtins.int]
+    """
+    (Required) The Firewall's ID.
+    """
+    inbound_policy: pulumi.Input[_builtins.str]
+    """
+    The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+    """
+    inbounds: pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallInboundArgsDict']]]
+    label: pulumi.Input[_builtins.str]
+    """
+    The label of the Linode NodeBalancer
+    """
+    outbound_policy: pulumi.Input[_builtins.str]
+    """
+    The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+    """
+    outbounds: pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallOutboundArgsDict']]]
+    status: pulumi.Input[_builtins.str]
+    """
+    The status of the firewall. (`enabled`, `disabled`, `deleted`)
+    """
+    tags: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+    """
+    updated: pulumi.Input[_builtins.str]
+    """
+    When this firewall was last updated.
+    """
 
 @pulumi.input_type
 class NodeBalancerFirewallArgs:
@@ -7475,35 +7197,32 @@ class NodeBalancerFirewallArgs:
         pulumi.set(self, "updated", value)
 
 
-if not MYPY:
-    class NodeBalancerFirewallInboundArgsDict(TypedDict):
-        action: pulumi.Input[_builtins.str]
-        """
-        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
-        """
-        description: pulumi.Input[_builtins.str]
-        ipv4s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of IPv4 addresses or networks. Must be in IP/mask format.
-        """
-        ipv6s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of IPv6 addresses or networks. Must be in IP/mask format.
-        """
-        label: pulumi.Input[_builtins.str]
-        """
-        The label of the Linode NodeBalancer
-        """
-        ports: pulumi.Input[_builtins.str]
-        """
-        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-        """
-        protocol: pulumi.Input[_builtins.str]
-        """
-        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-        """
-elif False:
-    NodeBalancerFirewallInboundArgsDict: TypeAlias = Mapping[str, Any]
+class NodeBalancerFirewallInboundArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    """
+    Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+    """
+    description: pulumi.Input[_builtins.str]
+    ipv4s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of IPv4 addresses or networks. Must be in IP/mask format.
+    """
+    ipv6s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of IPv6 addresses or networks. Must be in IP/mask format.
+    """
+    label: pulumi.Input[_builtins.str]
+    """
+    The label of the Linode NodeBalancer
+    """
+    ports: pulumi.Input[_builtins.str]
+    """
+    A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+    """
+    protocol: pulumi.Input[_builtins.str]
+    """
+    The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+    """
 
 @pulumi.input_type
 class NodeBalancerFirewallInboundArgs:
@@ -7613,35 +7332,32 @@ class NodeBalancerFirewallInboundArgs:
         pulumi.set(self, "protocol", value)
 
 
-if not MYPY:
-    class NodeBalancerFirewallOutboundArgsDict(TypedDict):
-        action: pulumi.Input[_builtins.str]
-        """
-        Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
-        """
-        description: pulumi.Input[_builtins.str]
-        ipv4s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of IPv4 addresses or networks. Must be in IP/mask format.
-        """
-        ipv6s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of IPv6 addresses or networks. Must be in IP/mask format.
-        """
-        label: pulumi.Input[_builtins.str]
-        """
-        The label of the Linode NodeBalancer
-        """
-        ports: pulumi.Input[_builtins.str]
-        """
-        A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-        """
-        protocol: pulumi.Input[_builtins.str]
-        """
-        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-        """
-elif False:
-    NodeBalancerFirewallOutboundArgsDict: TypeAlias = Mapping[str, Any]
+class NodeBalancerFirewallOutboundArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    """
+    Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
+    """
+    description: pulumi.Input[_builtins.str]
+    ipv4s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of IPv4 addresses or networks. Must be in IP/mask format.
+    """
+    ipv6s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of IPv6 addresses or networks. Must be in IP/mask format.
+    """
+    label: pulumi.Input[_builtins.str]
+    """
+    The label of the Linode NodeBalancer
+    """
+    ports: pulumi.Input[_builtins.str]
+    """
+    A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+    """
+    protocol: pulumi.Input[_builtins.str]
+    """
+    The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+    """
 
 @pulumi.input_type
 class NodeBalancerFirewallOutboundArgs:
@@ -7751,22 +7467,19 @@ class NodeBalancerFirewallOutboundArgs:
         pulumi.set(self, "protocol", value)
 
 
-if not MYPY:
-    class NodeBalancerTransferArgsDict(TypedDict):
-        in_: pulumi.Input[_builtins.float]
-        """
-        The total transfer, in MB, used by this NodeBalancer for the current month
-        """
-        out: pulumi.Input[_builtins.float]
-        """
-        The total inbound transfer, in MB, used for this NodeBalancer for the current month
-        """
-        total: pulumi.Input[_builtins.float]
-        """
-        The total outbound transfer, in MB, used for this NodeBalancer for the current month
-        """
-elif False:
-    NodeBalancerTransferArgsDict: TypeAlias = Mapping[str, Any]
+class NodeBalancerTransferArgsDict(TypedDict):
+    in_: pulumi.Input[_builtins.float]
+    """
+    The total transfer, in MB, used by this NodeBalancer for the current month
+    """
+    out: pulumi.Input[_builtins.float]
+    """
+    The total inbound transfer, in MB, used for this NodeBalancer for the current month
+    """
+    total: pulumi.Input[_builtins.float]
+    """
+    The total outbound transfer, in MB, used for this NodeBalancer for the current month
+    """
 
 @pulumi.input_type
 class NodeBalancerTransferArgs:
@@ -7820,23 +7533,20 @@ class NodeBalancerTransferArgs:
         pulumi.set(self, "total", value)
 
 
-if not MYPY:
-    class NodeBalancerVpcArgsDict(TypedDict):
-        subnet_id: pulumi.Input[_builtins.int]
-        """
-        (Required) The ID of a subnet to assign to this NodeBalancer.
-        """
-        ipv4_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
-        """
-        ipv4_range_auto_assign: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        (Optional, Write-Only) Enables the use of a larger ipv4_range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
-        """
-elif False:
-    NodeBalancerVpcArgsDict: TypeAlias = Mapping[str, Any]
+class NodeBalancerVpcArgsDict(TypedDict):
+    subnet_id: pulumi.Input[_builtins.int]
+    """
+    (Required) The ID of a subnet to assign to this NodeBalancer.
+    """
+    ipv4_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+    """
+    ipv4_range_auto_assign: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only) Enables the use of a larger ipv4_range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
+    """
 
 @pulumi.input_type
 class NodeBalancerVpcArgs:
@@ -7894,18 +7604,15 @@ class NodeBalancerVpcArgs:
         pulumi.set(self, "ipv4_range_auto_assign", value)
 
 
-if not MYPY:
-    class ObjectStorageBucketCertArgsDict(TypedDict):
-        certificate: pulumi.Input[_builtins.str]
-        """
-        The Base64 encoded and PEM formatted SSL certificate.
-        """
-        private_key: pulumi.Input[_builtins.str]
-        """
-        The private key associated with the TLS/SSL certificate.
-        """
-elif False:
-    ObjectStorageBucketCertArgsDict: TypeAlias = Mapping[str, Any]
+class ObjectStorageBucketCertArgsDict(TypedDict):
+    certificate: pulumi.Input[_builtins.str]
+    """
+    The Base64 encoded and PEM formatted SSL certificate.
+    """
+    private_key: pulumi.Input[_builtins.str]
+    """
+    The private key associated with the TLS/SSL certificate.
+    """
 
 @pulumi.input_type
 class ObjectStorageBucketCertArgs:
@@ -7944,38 +7651,35 @@ class ObjectStorageBucketCertArgs:
         pulumi.set(self, "private_key", value)
 
 
-if not MYPY:
-    class ObjectStorageBucketLifecycleRuleArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Specifies whether the lifecycle rule is active.
-        """
-        abort_incomplete_multipart_upload_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
+class ObjectStorageBucketLifecycleRuleArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Specifies whether the lifecycle rule is active.
+    """
+    abort_incomplete_multipart_upload_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
 
-        * `expiration` - (Optional) Specifies a period in the object's expire.
+    * `expiration` - (Optional) Specifies a period in the object's expire.
 
-        * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
-        """
-        expiration: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleRuleExpirationArgsDict']]
-        """
-        Specifies a period in the object's expire.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique identifier for the rule.
-        """
-        noncurrent_version_expiration: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]
-        """
-        Specifies when non-current object versions expire.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The object key prefix identifying one or more objects to which the rule applies.
-        """
-elif False:
-    ObjectStorageBucketLifecycleRuleArgsDict: TypeAlias = Mapping[str, Any]
+    * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+    """
+    expiration: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleRuleExpirationArgsDict']]
+    """
+    Specifies a period in the object's expire.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique identifier for the rule.
+    """
+    noncurrent_version_expiration: NotRequired[pulumi.Input['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]
+    """
+    Specifies when non-current object versions expire.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The object key prefix identifying one or more objects to which the rule applies.
+    """
 
 @pulumi.input_type
 class ObjectStorageBucketLifecycleRuleArgs:
@@ -8087,22 +7791,19 @@ class ObjectStorageBucketLifecycleRuleArgs:
         pulumi.set(self, "prefix", value)
 
 
-if not MYPY:
-    class ObjectStorageBucketLifecycleRuleExpirationArgsDict(TypedDict):
-        date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the date after which you want the corresponding action to take effect.
-        """
-        days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of days after object creation when the specific rule action takes effect.
-        """
-        expired_object_delete_marker: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
-        """
-elif False:
-    ObjectStorageBucketLifecycleRuleExpirationArgsDict: TypeAlias = Mapping[str, Any]
+class ObjectStorageBucketLifecycleRuleExpirationArgsDict(TypedDict):
+    date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the date after which you want the corresponding action to take effect.
+    """
+    days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of days after object creation when the specific rule action takes effect.
+    """
+    expired_object_delete_marker: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+    """
 
 @pulumi.input_type
 class ObjectStorageBucketLifecycleRuleExpirationArgs:
@@ -8159,14 +7860,11 @@ class ObjectStorageBucketLifecycleRuleExpirationArgs:
         pulumi.set(self, "expired_object_delete_marker", value)
 
 
-if not MYPY:
-    class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgsDict(TypedDict):
-        days: pulumi.Input[_builtins.int]
-        """
-        Specifies the number of days non-current object versions expire.
-        """
-elif False:
-    ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgsDict: TypeAlias = Mapping[str, Any]
+class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgsDict(TypedDict):
+    days: pulumi.Input[_builtins.int]
+    """
+    Specifies the number of days non-current object versions expire.
+    """
 
 @pulumi.input_type
 class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs:
@@ -8190,26 +7888,23 @@ class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs:
         pulumi.set(self, "days", value)
 
 
-if not MYPY:
-    class ObjectStorageKeyBucketAccessArgsDict(TypedDict):
-        bucket_name: pulumi.Input[_builtins.str]
-        """
-        The unique label of the bucket to which the key will grant limited access.
-        """
-        permissions: pulumi.Input[_builtins.str]
-        """
-        This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
-        """
-        cluster: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region where the bucket resides.
-        """
-elif False:
-    ObjectStorageKeyBucketAccessArgsDict: TypeAlias = Mapping[str, Any]
+class ObjectStorageKeyBucketAccessArgsDict(TypedDict):
+    bucket_name: pulumi.Input[_builtins.str]
+    """
+    The unique label of the bucket to which the key will grant limited access.
+    """
+    permissions: pulumi.Input[_builtins.str]
+    """
+    This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
+    """
+    cluster: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region where the bucket resides.
+    """
 
 @pulumi.input_type
 class ObjectStorageKeyBucketAccessArgs:
@@ -8284,22 +7979,19 @@ class ObjectStorageKeyBucketAccessArgs:
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class ObjectStorageKeyRegionsDetailArgsDict(TypedDict):
-        endpoint_type: pulumi.Input[_builtins.str]
-        """
-        The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
-        """
-        id: pulumi.Input[_builtins.str]
-        """
-        The ID of the region.
-        """
-        s3_endpoint: pulumi.Input[_builtins.str]
-        """
-        The S3-compatible hostname you can use to access the Object Storage buckets in this region.
-        """
-elif False:
-    ObjectStorageKeyRegionsDetailArgsDict: TypeAlias = Mapping[str, Any]
+class ObjectStorageKeyRegionsDetailArgsDict(TypedDict):
+    endpoint_type: pulumi.Input[_builtins.str]
+    """
+    The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
+    """
+    id: pulumi.Input[_builtins.str]
+    """
+    The ID of the region.
+    """
+    s3_endpoint: pulumi.Input[_builtins.str]
+    """
+    The S3-compatible hostname you can use to access the Object Storage buckets in this region.
+    """
 
 @pulumi.input_type
 class ObjectStorageKeyRegionsDetailArgs:
@@ -8353,18 +8045,15 @@ class ObjectStorageKeyRegionsDetailArgs:
         pulumi.set(self, "s3_endpoint", value)
 
 
-if not MYPY:
-    class PlacementGroupMemberArgsDict(TypedDict):
-        is_compliant: pulumi.Input[_builtins.bool]
-        """
-        Whether this Linode is currently compliant with the group's placement group type.
-        """
-        linode_id: pulumi.Input[_builtins.int]
-        """
-        The ID of the Linode.
-        """
-elif False:
-    PlacementGroupMemberArgsDict: TypeAlias = Mapping[str, Any]
+class PlacementGroupMemberArgsDict(TypedDict):
+    is_compliant: pulumi.Input[_builtins.bool]
+    """
+    Whether this Linode is currently compliant with the group's placement group type.
+    """
+    linode_id: pulumi.Input[_builtins.int]
+    """
+    The ID of the Linode.
+    """
 
 @pulumi.input_type
 class PlacementGroupMemberArgs:
@@ -8403,24 +8092,21 @@ class PlacementGroupMemberArgs:
         pulumi.set(self, "linode_id", value)
 
 
-if not MYPY:
-    class ProducerImageShareGroupImageArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        (Required) The ID of the Image to share. This must be in the format `private/<image_id>`.
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The description of the Image Share Group
+class ProducerImageShareGroupImageArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    (Required) The ID of the Image to share. This must be in the format `private/<image_id>`.
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The description of the Image Share Group
 
-        * `images` - (Optional) A list of Images to include in the Image Share Group.
-        """
-        label: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The label of the Image Share Group.
-        """
-elif False:
-    ProducerImageShareGroupImageArgsDict: TypeAlias = Mapping[str, Any]
+    * `images` - (Optional) A list of Images to include in the Image Share Group.
+    """
+    label: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The label of the Image Share Group.
+    """
 
 @pulumi.input_type
 class ProducerImageShareGroupImageArgs:
@@ -8480,18 +8166,15 @@ class ProducerImageShareGroupImageArgs:
         pulumi.set(self, "label", value)
 
 
-if not MYPY:
-    class RdnsTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-elif False:
-    RdnsTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class RdnsTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
 
 @pulumi.input_type
 class RdnsTimeoutsArgs:
@@ -8532,13 +8215,10 @@ class RdnsTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class ReservedIpAssignmentVpcNat11ArgsDict(TypedDict):
-        address: pulumi.Input[_builtins.str]
-        subnet_id: pulumi.Input[_builtins.int]
-        vpc_id: pulumi.Input[_builtins.int]
-elif False:
-    ReservedIpAssignmentVpcNat11ArgsDict: TypeAlias = Mapping[str, Any]
+class ReservedIpAssignmentVpcNat11ArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    subnet_id: pulumi.Input[_builtins.int]
+    vpc_id: pulumi.Input[_builtins.int]
 
 @pulumi.input_type
 class ReservedIpAssignmentVpcNat11Args:
@@ -8578,34 +8258,31 @@ class ReservedIpAssignmentVpcNat11Args:
         pulumi.set(self, "vpc_id", value)
 
 
-if not MYPY:
-    class StackScriptUserDefinedFieldArgsDict(TypedDict):
-        default: pulumi.Input[_builtins.str]
-        """
-        The default value. If not specified, this value will be used.
-        """
-        example: pulumi.Input[_builtins.str]
-        """
-        An example value for the field.
-        """
-        label: pulumi.Input[_builtins.str]
-        """
-        The StackScript's label is for display purposes only.
-        """
-        many_of: pulumi.Input[_builtins.str]
-        """
-        A list of acceptable values for the field in any quantity, combination or order.
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the field.
-        """
-        one_of: pulumi.Input[_builtins.str]
-        """
-        A list of acceptable single values for the field.
-        """
-elif False:
-    StackScriptUserDefinedFieldArgsDict: TypeAlias = Mapping[str, Any]
+class StackScriptUserDefinedFieldArgsDict(TypedDict):
+    default: pulumi.Input[_builtins.str]
+    """
+    The default value. If not specified, this value will be used.
+    """
+    example: pulumi.Input[_builtins.str]
+    """
+    An example value for the field.
+    """
+    label: pulumi.Input[_builtins.str]
+    """
+    The StackScript's label is for display purposes only.
+    """
+    many_of: pulumi.Input[_builtins.str]
+    """
+    A list of acceptable values for the field in any quantity, combination or order.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the field.
+    """
+    one_of: pulumi.Input[_builtins.str]
+    """
+    A list of acceptable single values for the field.
+    """
 
 @pulumi.input_type
 class StackScriptUserDefinedFieldArgs:
@@ -8704,18 +8381,15 @@ class StackScriptUserDefinedFieldArgs:
         pulumi.set(self, "one_of", value)
 
 
-if not MYPY:
-    class UserDomainGrantArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.int]
-        """
-        The ID of the entity this grant applies to.
-        """
-        permissions: pulumi.Input[_builtins.str]
-        """
-        The level of access this User has to this entity. If null, this User has no access.
-        """
-elif False:
-    UserDomainGrantArgsDict: TypeAlias = Mapping[str, Any]
+class UserDomainGrantArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity this grant applies to.
+    """
+    permissions: pulumi.Input[_builtins.str]
+    """
+    The level of access this User has to this entity. If null, this User has no access.
+    """
 
 @pulumi.input_type
 class UserDomainGrantArgs:
@@ -8754,18 +8428,15 @@ class UserDomainGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class UserFirewallGrantArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.int]
-        """
-        The ID of the entity this grant applies to.
-        """
-        permissions: pulumi.Input[_builtins.str]
-        """
-        The level of access this User has to this entity. If null, this User has no access.
-        """
-elif False:
-    UserFirewallGrantArgsDict: TypeAlias = Mapping[str, Any]
+class UserFirewallGrantArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity this grant applies to.
+    """
+    permissions: pulumi.Input[_builtins.str]
+    """
+    The level of access this User has to this entity. If null, this User has no access.
+    """
 
 @pulumi.input_type
 class UserFirewallGrantArgs:
@@ -8804,62 +8475,59 @@ class UserFirewallGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class UserGlobalGrantsArgsDict(TypedDict):
-        account_access: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
-        """
-        add_databases: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may add Databases.
-        """
-        add_domains: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may add Domains.
-        """
-        add_firewalls: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may add Firewalls.
-        """
-        add_images: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may add Images.
-        """
-        add_linodes: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may create Linodes.
-        """
-        add_longview: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may create Longview clients and view the current plan.
-        """
-        add_nodebalancers: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may add NodeBalancers.
-        """
-        add_stackscripts: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may add StackScripts.
-        """
-        add_volumes: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may add Volumes.
-        """
-        add_vpcs: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may add Virtual Private Clouds (VPCs).
-        """
-        cancel_account: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may cancel the entire Account.
-        """
-        longview_subscription: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        If true, this User may manage the Account’s Longview subscription.
-        """
-elif False:
-    UserGlobalGrantsArgsDict: TypeAlias = Mapping[str, Any]
+class UserGlobalGrantsArgsDict(TypedDict):
+    account_access: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
+    """
+    add_databases: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may add Databases.
+    """
+    add_domains: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may add Domains.
+    """
+    add_firewalls: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may add Firewalls.
+    """
+    add_images: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may add Images.
+    """
+    add_linodes: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may create Linodes.
+    """
+    add_longview: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may create Longview clients and view the current plan.
+    """
+    add_nodebalancers: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may add NodeBalancers.
+    """
+    add_stackscripts: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may add StackScripts.
+    """
+    add_volumes: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may add Volumes.
+    """
+    add_vpcs: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may add Virtual Private Clouds (VPCs).
+    """
+    cancel_account: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may cancel the entire Account.
+    """
+    longview_subscription: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If true, this User may manage the Account’s Longview subscription.
+    """
 
 @pulumi.input_type
 class UserGlobalGrantsArgs:
@@ -9076,18 +8744,15 @@ class UserGlobalGrantsArgs:
         pulumi.set(self, "longview_subscription", value)
 
 
-if not MYPY:
-    class UserImageGrantArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.int]
-        """
-        The ID of the entity this grant applies to.
-        """
-        permissions: pulumi.Input[_builtins.str]
-        """
-        The level of access this User has to this entity. If null, this User has no access.
-        """
-elif False:
-    UserImageGrantArgsDict: TypeAlias = Mapping[str, Any]
+class UserImageGrantArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity this grant applies to.
+    """
+    permissions: pulumi.Input[_builtins.str]
+    """
+    The level of access this User has to this entity. If null, this User has no access.
+    """
 
 @pulumi.input_type
 class UserImageGrantArgs:
@@ -9126,18 +8791,15 @@ class UserImageGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class UserLinodeGrantArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.int]
-        """
-        The ID of the entity this grant applies to.
-        """
-        permissions: pulumi.Input[_builtins.str]
-        """
-        The level of access this User has to this entity. If null, this User has no access.
-        """
-elif False:
-    UserLinodeGrantArgsDict: TypeAlias = Mapping[str, Any]
+class UserLinodeGrantArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity this grant applies to.
+    """
+    permissions: pulumi.Input[_builtins.str]
+    """
+    The level of access this User has to this entity. If null, this User has no access.
+    """
 
 @pulumi.input_type
 class UserLinodeGrantArgs:
@@ -9176,18 +8838,15 @@ class UserLinodeGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class UserLongviewGrantArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.int]
-        """
-        The ID of the entity this grant applies to.
-        """
-        permissions: pulumi.Input[_builtins.str]
-        """
-        The level of access this User has to this entity. If null, this User has no access.
-        """
-elif False:
-    UserLongviewGrantArgsDict: TypeAlias = Mapping[str, Any]
+class UserLongviewGrantArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity this grant applies to.
+    """
+    permissions: pulumi.Input[_builtins.str]
+    """
+    The level of access this User has to this entity. If null, this User has no access.
+    """
 
 @pulumi.input_type
 class UserLongviewGrantArgs:
@@ -9226,18 +8885,15 @@ class UserLongviewGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class UserNodebalancerGrantArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.int]
-        """
-        The ID of the entity this grant applies to.
-        """
-        permissions: pulumi.Input[_builtins.str]
-        """
-        The level of access this User has to this entity. If null, this User has no access.
-        """
-elif False:
-    UserNodebalancerGrantArgsDict: TypeAlias = Mapping[str, Any]
+class UserNodebalancerGrantArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity this grant applies to.
+    """
+    permissions: pulumi.Input[_builtins.str]
+    """
+    The level of access this User has to this entity. If null, this User has no access.
+    """
 
 @pulumi.input_type
 class UserNodebalancerGrantArgs:
@@ -9276,18 +8932,15 @@ class UserNodebalancerGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class UserStackscriptGrantArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.int]
-        """
-        The ID of the entity this grant applies to.
-        """
-        permissions: pulumi.Input[_builtins.str]
-        """
-        The level of access this User has to this entity. If null, this User has no access.
-        """
-elif False:
-    UserStackscriptGrantArgsDict: TypeAlias = Mapping[str, Any]
+class UserStackscriptGrantArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity this grant applies to.
+    """
+    permissions: pulumi.Input[_builtins.str]
+    """
+    The level of access this User has to this entity. If null, this User has no access.
+    """
 
 @pulumi.input_type
 class UserStackscriptGrantArgs:
@@ -9326,18 +8979,15 @@ class UserStackscriptGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class UserVolumeGrantArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.int]
-        """
-        The ID of the entity this grant applies to.
-        """
-        permissions: pulumi.Input[_builtins.str]
-        """
-        The level of access this User has to this entity. If null, this User has no access.
-        """
-elif False:
-    UserVolumeGrantArgsDict: TypeAlias = Mapping[str, Any]
+class UserVolumeGrantArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity this grant applies to.
+    """
+    permissions: pulumi.Input[_builtins.str]
+    """
+    The level of access this User has to this entity. If null, this User has no access.
+    """
 
 @pulumi.input_type
 class UserVolumeGrantArgs:
@@ -9376,18 +9026,15 @@ class UserVolumeGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class UserVpcGrantArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.int]
-        """
-        The ID of the entity this grant applies to.
-        """
-        permissions: pulumi.Input[_builtins.str]
-        """
-        The level of access this User has to this entity. If null, this User has no access.
-        """
-elif False:
-    UserVpcGrantArgsDict: TypeAlias = Mapping[str, Any]
+class UserVpcGrantArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity this grant applies to.
+    """
+    permissions: pulumi.Input[_builtins.str]
+    """
+    The level of access this User has to this entity. If null, this User has no access.
+    """
 
 @pulumi.input_type
 class UserVpcGrantArgs:
@@ -9426,22 +9073,19 @@ class UserVpcGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class VolumeTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Used when creating the volume (until the volume is reaches the initial `active` state)
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Used when deleting the volume
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Used when updating the volume when necessary during update - e.g. when resizing the volume
-        """
-elif False:
-    VolumeTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class VolumeTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Used when creating the volume (until the volume is reaches the initial `active` state)
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Used when deleting the volume
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Used when updating the volume when necessary during update - e.g. when resizing the volume
+    """
 
 @pulumi.input_type
 class VolumeTimeoutsArgs:
@@ -9498,23 +9142,20 @@ class VolumeTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class VpcIpv6ArgsDict(TypedDict):
-        allocated_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 range assigned to this VPC.
-        """
-        allocation_class: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
-        """
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 range assigned to this VPC.
-        """
-elif False:
-    VpcIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+class VpcIpv6ArgsDict(TypedDict):
+    allocated_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 range assigned to this VPC.
+    """
+    allocation_class: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
+    """
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 range assigned to this VPC.
+    """
 
 @pulumi.input_type
 class VpcIpv6Args:
@@ -9573,18 +9214,15 @@ class VpcIpv6Args:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class VpcSubnetIpv6ArgsDict(TypedDict):
-        allocated_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv6 range assigned to this subnet.
-        """
-        range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
-        """
-elif False:
-    VpcSubnetIpv6ArgsDict: TypeAlias = Mapping[str, Any]
+class VpcSubnetIpv6ArgsDict(TypedDict):
+    allocated_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IPv6 range assigned to this subnet.
+    """
+    range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+    """
 
 @pulumi.input_type
 class VpcSubnetIpv6Args:
@@ -9625,18 +9263,15 @@ class VpcSubnetIpv6Args:
         pulumi.set(self, "range", value)
 
 
-if not MYPY:
-    class VpcSubnetLinodeArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.int]
-        """
-        ID of the interface.
-        """
-        interfaces: pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgsDict']]]
-        """
-        A list of networking interfaces objects.
-        """
-elif False:
-    VpcSubnetLinodeArgsDict: TypeAlias = Mapping[str, Any]
+class VpcSubnetLinodeArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    ID of the interface.
+    """
+    interfaces: pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgsDict']]]
+    """
+    A list of networking interfaces objects.
+    """
 
 @pulumi.input_type
 class VpcSubnetLinodeArgs:
@@ -9675,22 +9310,19 @@ class VpcSubnetLinodeArgs:
         pulumi.set(self, "interfaces", value)
 
 
-if not MYPY:
-    class VpcSubnetLinodeInterfaceArgsDict(TypedDict):
-        active: pulumi.Input[_builtins.bool]
-        """
-        Whether the Interface is actively in use.
-        """
-        config_id: pulumi.Input[_builtins.int]
-        """
-        ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
-        """
-        id: pulumi.Input[_builtins.int]
-        """
-        ID of the interface.
-        """
-elif False:
-    VpcSubnetLinodeInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+class VpcSubnetLinodeInterfaceArgsDict(TypedDict):
+    active: pulumi.Input[_builtins.bool]
+    """
+    Whether the Interface is actively in use.
+    """
+    config_id: pulumi.Input[_builtins.int]
+    """
+    ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+    """
+    id: pulumi.Input[_builtins.int]
+    """
+    ID of the interface.
+    """
 
 @pulumi.input_type
 class VpcSubnetLinodeInterfaceArgs:
@@ -9744,22 +9376,19 @@ class VpcSubnetLinodeInterfaceArgs:
         pulumi.set(self, "id", value)
 
 
-if not MYPY:
-    class GetAccountAvailabilitiesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetAccountAvailabilitiesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetAccountAvailabilitiesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetAccountAvailabilitiesFilterArgs:
@@ -9814,22 +9443,19 @@ class GetAccountAvailabilitiesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetAccountLoginsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetAccountLoginsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetAccountLoginsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetAccountLoginsFilterArgs:
@@ -9884,22 +9510,19 @@ class GetAccountLoginsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetChildAccountsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetChildAccountsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetChildAccountsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetChildAccountsFilterArgs:
@@ -9954,22 +9577,19 @@ class GetChildAccountsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetConsumerImageShareGroupImageSharesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetConsumerImageShareGroupImageSharesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetConsumerImageShareGroupImageSharesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetConsumerImageShareGroupImageSharesFilterArgs:
@@ -10024,62 +9644,59 @@ class GetConsumerImageShareGroupImageSharesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetConsumerImageShareGroupImageSharesImageShareArgsDict(TypedDict):
-        capabilities: Sequence[_builtins.str]
-        """
-        The capabilities of the Image represented by the Image Share.
-        """
-        created: _builtins.str
-        """
-        When this Image Share was created.
-        """
-        deprecated: _builtins.bool
-        """
-        Whether this Image is deprecated.
-        """
-        description: _builtins.str
-        """
-        A description of the Image Share.
-        """
-        id: _builtins.str
-        """
-        The unique ID assigned to this Image Share.
-        """
-        image_sharing: 'GetConsumerImageShareGroupImageSharesImageShareImageSharingArgsDict'
-        """
-        Details about image sharing, including who the image is shared with and by.
-        """
-        is_public: _builtins.bool
-        """
-        True if the Image is public.
-        """
-        label: _builtins.str
-        """
-        The label of the Image Share.
-        """
-        size: _builtins.int
-        """
-        The minimum size this Image needs to deploy. Size is in MB. example: 2500
-        """
-        status: _builtins.str
-        """
-        The current status of this image. (`creating`, `pending_upload`, `available`)
-        """
-        tags: Sequence[_builtins.str]
-        """
-        A list of customized tags.
-        """
-        total_size: _builtins.int
-        """
-        The total size of the image in all available regions.
-        """
-        type: _builtins.str
-        """
-        How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-        """
-elif False:
-    GetConsumerImageShareGroupImageSharesImageShareArgsDict: TypeAlias = Mapping[str, Any]
+class GetConsumerImageShareGroupImageSharesImageShareArgsDict(TypedDict):
+    capabilities: Sequence[_builtins.str]
+    """
+    The capabilities of the Image represented by the Image Share.
+    """
+    created: _builtins.str
+    """
+    When this Image Share was created.
+    """
+    deprecated: _builtins.bool
+    """
+    Whether this Image is deprecated.
+    """
+    description: _builtins.str
+    """
+    A description of the Image Share.
+    """
+    id: _builtins.str
+    """
+    The unique ID assigned to this Image Share.
+    """
+    image_sharing: 'GetConsumerImageShareGroupImageSharesImageShareImageSharingArgsDict'
+    """
+    Details about image sharing, including who the image is shared with and by.
+    """
+    is_public: _builtins.bool
+    """
+    True if the Image is public.
+    """
+    label: _builtins.str
+    """
+    The label of the Image Share.
+    """
+    size: _builtins.int
+    """
+    The minimum size this Image needs to deploy. Size is in MB. example: 2500
+    """
+    status: _builtins.str
+    """
+    The current status of this image. (`creating`, `pending_upload`, `available`)
+    """
+    tags: Sequence[_builtins.str]
+    """
+    A list of customized tags.
+    """
+    total_size: _builtins.int
+    """
+    The total size of the image in all available regions.
+    """
+    type: _builtins.str
+    """
+    How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+    """
 
 @pulumi.input_type
 class GetConsumerImageShareGroupImageSharesImageShareArgs:
@@ -10283,18 +9900,15 @@ class GetConsumerImageShareGroupImageSharesImageShareArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class GetConsumerImageShareGroupImageSharesImageShareImageSharingArgsDict(TypedDict):
-        shared_by: 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict'
-        """
-        Details about who the image is shared by.
-        """
-        shared_with: 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict'
-        """
-        Details about who the image is shared with.
-        """
-elif False:
-    GetConsumerImageShareGroupImageSharesImageShareImageSharingArgsDict: TypeAlias = Mapping[str, Any]
+class GetConsumerImageShareGroupImageSharesImageShareImageSharingArgsDict(TypedDict):
+    shared_by: 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict'
+    """
+    Details about who the image is shared by.
+    """
+    shared_with: 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict'
+    """
+    Details about who the image is shared with.
+    """
 
 @pulumi.input_type
 class GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs:
@@ -10333,26 +9947,23 @@ class GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs:
         pulumi.set(self, "shared_with", value)
 
 
-if not MYPY:
-    class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict(TypedDict):
-        sharegroup_id: _builtins.int
-        """
-        The sharegroup_id from the im_ImageShare row.
-        """
-        sharegroup_label: _builtins.str
-        """
-        The label from the associated im_ImageShareGroup row.
-        """
-        sharegroup_uuid: _builtins.str
-        """
-        The sharegroup_uuid from the im_ImageShare row.
-        """
-        source_image_id: _builtins.str
-        """
-        The image id of the base image (will only be shown to producers, will be null for consumers).
-        """
-elif False:
-    GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict: TypeAlias = Mapping[str, Any]
+class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict(TypedDict):
+    sharegroup_id: _builtins.int
+    """
+    The sharegroup_id from the im_ImageShare row.
+    """
+    sharegroup_label: _builtins.str
+    """
+    The label from the associated im_ImageShareGroup row.
+    """
+    sharegroup_uuid: _builtins.str
+    """
+    The sharegroup_uuid from the im_ImageShare row.
+    """
+    source_image_id: _builtins.str
+    """
+    The image id of the base image (will only be shown to producers, will be null for consumers).
+    """
 
 @pulumi.input_type
 class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs:
@@ -10421,18 +10032,15 @@ class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs:
         pulumi.set(self, "source_image_id", value)
 
 
-if not MYPY:
-    class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict(TypedDict):
-        sharegroup_count: _builtins.int
-        """
-        The number of sharegroups the private image is present in.
-        """
-        sharegroup_list_url: _builtins.str
-        """
-        The GET api url to view the sharegroups in which the image is shared.
-        """
-elif False:
-    GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict: TypeAlias = Mapping[str, Any]
+class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict(TypedDict):
+    sharegroup_count: _builtins.int
+    """
+    The number of sharegroups the private image is present in.
+    """
+    sharegroup_list_url: _builtins.str
+    """
+    The GET api url to view the sharegroups in which the image is shared.
+    """
 
 @pulumi.input_type
 class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs:
@@ -10471,22 +10079,19 @@ class GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs:
         pulumi.set(self, "sharegroup_list_url", value)
 
 
-if not MYPY:
-    class GetConsumerImageShareGroupTokensFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetConsumerImageShareGroupTokensFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetConsumerImageShareGroupTokensFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetConsumerImageShareGroupTokensFilterArgs:
@@ -10541,46 +10146,43 @@ class GetConsumerImageShareGroupTokensFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetConsumerImageShareGroupTokensTokenArgsDict(TypedDict):
-        created: _builtins.str
-        """
-        When the token was created.
-        """
-        expiry: _builtins.str
-        """
-        When the token will expire.
-        """
-        label: _builtins.str
-        """
-        A label for the token.
-        """
-        sharegroup_label: _builtins.str
-        """
-        The label of the Image Share Group that the token is for.
-        """
-        sharegroup_uuid: _builtins.str
-        """
-        The UUID of the Image Share Group that the token is for.
-        """
-        status: _builtins.str
-        """
-        The status of the token.
-        """
-        token_uuid: _builtins.str
-        """
-        The UUID of the token.
-        """
-        updated: _builtins.str
-        """
-        When the token was last updated.
-        """
-        valid_for_sharegroup_uuid: _builtins.str
-        """
-        The UUID of the Image Share Group for which to create a token.
-        """
-elif False:
-    GetConsumerImageShareGroupTokensTokenArgsDict: TypeAlias = Mapping[str, Any]
+class GetConsumerImageShareGroupTokensTokenArgsDict(TypedDict):
+    created: _builtins.str
+    """
+    When the token was created.
+    """
+    expiry: _builtins.str
+    """
+    When the token will expire.
+    """
+    label: _builtins.str
+    """
+    A label for the token.
+    """
+    sharegroup_label: _builtins.str
+    """
+    The label of the Image Share Group that the token is for.
+    """
+    sharegroup_uuid: _builtins.str
+    """
+    The UUID of the Image Share Group that the token is for.
+    """
+    status: _builtins.str
+    """
+    The status of the token.
+    """
+    token_uuid: _builtins.str
+    """
+    The UUID of the token.
+    """
+    updated: _builtins.str
+    """
+    When the token was last updated.
+    """
+    valid_for_sharegroup_uuid: _builtins.str
+    """
+    The UUID of the Image Share Group for which to create a token.
+    """
 
 @pulumi.input_type
 class GetConsumerImageShareGroupTokensTokenArgs:
@@ -10724,22 +10326,19 @@ class GetConsumerImageShareGroupTokensTokenArgs:
         pulumi.set(self, "valid_for_sharegroup_uuid", value)
 
 
-if not MYPY:
-    class GetDatabaseBackupsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetDatabaseBackupsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetDatabaseBackupsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetDatabaseBackupsFilterArgs:
@@ -10794,22 +10393,19 @@ class GetDatabaseBackupsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetDatabaseEnginesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetDatabaseEnginesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetDatabaseEnginesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetDatabaseEnginesFilterArgs:
@@ -10864,22 +10460,19 @@ class GetDatabaseEnginesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetDatabaseMysqlBackupsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetDatabaseMysqlBackupsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetDatabaseMysqlBackupsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetDatabaseMysqlBackupsFilterArgs:
@@ -10934,26 +10527,23 @@ class GetDatabaseMysqlBackupsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetDatabasePostgresqlV2UpdatesArgsDict(TypedDict):
-        day_of_week: _builtins.int
-        """
-        The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
-        """
-        duration: _builtins.int
-        """
-        The maximum maintenance window time in hours.
-        """
-        frequency: _builtins.str
-        """
-        How frequently maintenance occurs. Currently can only be weekly.
-        """
-        hour_of_day: _builtins.int
-        """
-        How frequently maintenance occurs. Currently can only be weekly.
-        """
-elif False:
-    GetDatabasePostgresqlV2UpdatesArgsDict: TypeAlias = Mapping[str, Any]
+class GetDatabasePostgresqlV2UpdatesArgsDict(TypedDict):
+    day_of_week: _builtins.int
+    """
+    The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
+    """
+    duration: _builtins.int
+    """
+    The maximum maintenance window time in hours.
+    """
+    frequency: _builtins.str
+    """
+    How frequently maintenance occurs. Currently can only be weekly.
+    """
+    hour_of_day: _builtins.int
+    """
+    How frequently maintenance occurs. Currently can only be weekly.
+    """
 
 @pulumi.input_type
 class GetDatabasePostgresqlV2UpdatesArgs:
@@ -11022,22 +10612,19 @@ class GetDatabasePostgresqlV2UpdatesArgs:
         pulumi.set(self, "hour_of_day", value)
 
 
-if not MYPY:
-    class GetDatabasesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetDatabasesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetDatabasesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetDatabasesFilterArgs:
@@ -11092,22 +10679,19 @@ class GetDatabasesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetDomainsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetDomainsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetDomainsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetDomainsFilterArgs:
@@ -11162,22 +10746,19 @@ class GetDomainsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetFirewallTemplatesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetFirewallTemplatesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetFirewallTemplatesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetFirewallTemplatesFilterArgs:
@@ -11232,22 +10813,19 @@ class GetFirewallTemplatesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetFirewallsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetFirewallsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetFirewallsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetFirewallsFilterArgs:
@@ -11302,22 +10880,19 @@ class GetFirewallsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetImagesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetImagesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetImagesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetImagesFilterArgs:
@@ -11372,22 +10947,19 @@ class GetImagesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetInstanceTypesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetInstanceTypesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetInstanceTypesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetInstanceTypesFilterArgs:
@@ -11442,22 +11014,19 @@ class GetInstanceTypesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetInstancesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetInstancesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetInstancesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetInstancesFilterArgs:
@@ -11512,22 +11081,19 @@ class GetInstancesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetIpv6RangesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetIpv6RangesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetIpv6RangesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetIpv6RangesFilterArgs:
@@ -11582,22 +11148,19 @@ class GetIpv6RangesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetKernelsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetKernelsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetKernelsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetKernelsFilterArgs:
@@ -11652,22 +11215,19 @@ class GetKernelsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetLkeClustersFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetLkeClustersFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetLkeClustersFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetLkeClustersFilterArgs:
@@ -11722,22 +11282,19 @@ class GetLkeClustersFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetLkeTypesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetLkeTypesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetLkeTypesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetLkeTypesFilterArgs:
@@ -11792,22 +11349,19 @@ class GetLkeTypesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetLocksFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetLocksFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetLocksFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetLocksFilterArgs:
@@ -11862,22 +11416,19 @@ class GetLocksFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetMaintenancePoliciesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetMaintenancePoliciesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetMaintenancePoliciesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetMaintenancePoliciesFilterArgs:
@@ -11932,22 +11483,19 @@ class GetMaintenancePoliciesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetNbTypesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the attribute to filter on.
-        """
-        values: Sequence[_builtins.str]
-        """
-        The value(s) to be used in the filter.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The type of comparison to use for this filter.
-        """
-elif False:
-    GetNbTypesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetNbTypesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the attribute to filter on.
+    """
+    values: Sequence[_builtins.str]
+    """
+    The value(s) to be used in the filter.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The type of comparison to use for this filter.
+    """
 
 @pulumi.input_type
 class GetNbTypesFilterArgs:
@@ -12002,22 +11550,19 @@ class GetNbTypesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetNetworkTransferPricesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetNetworkTransferPricesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetNetworkTransferPricesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetNetworkTransferPricesFilterArgs:
@@ -12072,22 +11617,19 @@ class GetNetworkTransferPricesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetNetworkingIpsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetNetworkingIpsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetNetworkingIpsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetNetworkingIpsFilterArgs:
@@ -12142,22 +11684,19 @@ class GetNetworkingIpsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetNodebalancerConfigsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetNodebalancerConfigsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetNodebalancerConfigsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetNodebalancerConfigsFilterArgs:
@@ -12212,22 +11751,19 @@ class GetNodebalancerConfigsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetNodebalancerVpcsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetNodebalancerVpcsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetNodebalancerVpcsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetNodebalancerVpcsFilterArgs:
@@ -12282,22 +11818,19 @@ class GetNodebalancerVpcsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetNodebalancersFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetNodebalancersFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetNodebalancersFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetNodebalancersFilterArgs:
@@ -12352,22 +11885,19 @@ class GetNodebalancersFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetObjectStorageEndpointsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetObjectStorageEndpointsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetObjectStorageEndpointsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetObjectStorageEndpointsFilterArgs:
@@ -12422,22 +11952,19 @@ class GetObjectStorageEndpointsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetObjectStorageQuotasFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetObjectStorageQuotasFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetObjectStorageQuotasFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetObjectStorageQuotasFilterArgs:
@@ -12492,22 +12019,19 @@ class GetObjectStorageQuotasFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetPlacementGroupsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetPlacementGroupsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetPlacementGroupsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetPlacementGroupsFilterArgs:
@@ -12562,22 +12086,19 @@ class GetPlacementGroupsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetProducerImageShareGroupImageSharesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetProducerImageShareGroupImageSharesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetProducerImageShareGroupImageSharesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetProducerImageShareGroupImageSharesFilterArgs:
@@ -12632,62 +12153,59 @@ class GetProducerImageShareGroupImageSharesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetProducerImageShareGroupImageSharesImageShareArgsDict(TypedDict):
-        capabilities: Sequence[_builtins.str]
-        """
-        The capabilities of the Image represented by the Image Share.
-        """
-        created: _builtins.str
-        """
-        When this Image Share was created.
-        """
-        deprecated: _builtins.bool
-        """
-        Whether this Image is deprecated.
-        """
-        description: _builtins.str
-        """
-        A description of the Image Share.
-        """
-        id: _builtins.str
-        """
-        The unique ID assigned to this Image Share.
-        """
-        image_sharing: 'GetProducerImageShareGroupImageSharesImageShareImageSharingArgsDict'
-        """
-        Details about image sharing, including who the image is shared with and by.
-        """
-        is_public: _builtins.bool
-        """
-        True if the Image is public.
-        """
-        label: _builtins.str
-        """
-        The label of the Image Share.
-        """
-        size: _builtins.int
-        """
-        The minimum size this Image needs to deploy. Size is in MB. example: 2500
-        """
-        status: _builtins.str
-        """
-        The current status of this image. (`creating`, `pending_upload`, `available`)
-        """
-        tags: Sequence[_builtins.str]
-        """
-        A list of customized tags.
-        """
-        total_size: _builtins.int
-        """
-        The total size of the image in all available regions.
-        """
-        type: _builtins.str
-        """
-        How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
-        """
-elif False:
-    GetProducerImageShareGroupImageSharesImageShareArgsDict: TypeAlias = Mapping[str, Any]
+class GetProducerImageShareGroupImageSharesImageShareArgsDict(TypedDict):
+    capabilities: Sequence[_builtins.str]
+    """
+    The capabilities of the Image represented by the Image Share.
+    """
+    created: _builtins.str
+    """
+    When this Image Share was created.
+    """
+    deprecated: _builtins.bool
+    """
+    Whether this Image is deprecated.
+    """
+    description: _builtins.str
+    """
+    A description of the Image Share.
+    """
+    id: _builtins.str
+    """
+    The unique ID assigned to this Image Share.
+    """
+    image_sharing: 'GetProducerImageShareGroupImageSharesImageShareImageSharingArgsDict'
+    """
+    Details about image sharing, including who the image is shared with and by.
+    """
+    is_public: _builtins.bool
+    """
+    True if the Image is public.
+    """
+    label: _builtins.str
+    """
+    The label of the Image Share.
+    """
+    size: _builtins.int
+    """
+    The minimum size this Image needs to deploy. Size is in MB. example: 2500
+    """
+    status: _builtins.str
+    """
+    The current status of this image. (`creating`, `pending_upload`, `available`)
+    """
+    tags: Sequence[_builtins.str]
+    """
+    A list of customized tags.
+    """
+    total_size: _builtins.int
+    """
+    The total size of the image in all available regions.
+    """
+    type: _builtins.str
+    """
+    How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
+    """
 
 @pulumi.input_type
 class GetProducerImageShareGroupImageSharesImageShareArgs:
@@ -12891,18 +12409,15 @@ class GetProducerImageShareGroupImageSharesImageShareArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class GetProducerImageShareGroupImageSharesImageShareImageSharingArgsDict(TypedDict):
-        shared_by: 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict'
-        """
-        Details about who the image is shared by.
-        """
-        shared_with: 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict'
-        """
-        Details about who the image is shared with.
-        """
-elif False:
-    GetProducerImageShareGroupImageSharesImageShareImageSharingArgsDict: TypeAlias = Mapping[str, Any]
+class GetProducerImageShareGroupImageSharesImageShareImageSharingArgsDict(TypedDict):
+    shared_by: 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict'
+    """
+    Details about who the image is shared by.
+    """
+    shared_with: 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict'
+    """
+    Details about who the image is shared with.
+    """
 
 @pulumi.input_type
 class GetProducerImageShareGroupImageSharesImageShareImageSharingArgs:
@@ -12941,28 +12456,25 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingArgs:
         pulumi.set(self, "shared_with", value)
 
 
-if not MYPY:
-    class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict(TypedDict):
-        sharegroup_id: _builtins.int
-        """
-        The ID of the Image Share Group to list shared Images from.
+class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict(TypedDict):
+    sharegroup_id: _builtins.int
+    """
+    The ID of the Image Share Group to list shared Images from.
 
-        * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
-        """
-        sharegroup_label: _builtins.str
-        """
-        The label from the associated im_ImageShareGroup row.
-        """
-        sharegroup_uuid: _builtins.str
-        """
-        The sharegroup_uuid from the im_ImageShare row.
-        """
-        source_image_id: _builtins.str
-        """
-        The image id of the base image (will only be shown to producers, will be null for consumers).
-        """
-elif False:
-    GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict: TypeAlias = Mapping[str, Any]
+    * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+    """
+    sharegroup_label: _builtins.str
+    """
+    The label from the associated im_ImageShareGroup row.
+    """
+    sharegroup_uuid: _builtins.str
+    """
+    The sharegroup_uuid from the im_ImageShare row.
+    """
+    source_image_id: _builtins.str
+    """
+    The image id of the base image (will only be shown to producers, will be null for consumers).
+    """
 
 @pulumi.input_type
 class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs:
@@ -13035,18 +12547,15 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs:
         pulumi.set(self, "source_image_id", value)
 
 
-if not MYPY:
-    class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict(TypedDict):
-        sharegroup_count: _builtins.int
-        """
-        The number of sharegroups the private image is present in.
-        """
-        sharegroup_list_url: _builtins.str
-        """
-        The GET api url to view the sharegroups in which the image is shared.
-        """
-elif False:
-    GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict: TypeAlias = Mapping[str, Any]
+class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict(TypedDict):
+    sharegroup_count: _builtins.int
+    """
+    The number of sharegroups the private image is present in.
+    """
+    sharegroup_list_url: _builtins.str
+    """
+    The GET api url to view the sharegroups in which the image is shared.
+    """
 
 @pulumi.input_type
 class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs:
@@ -13085,22 +12594,19 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs:
         pulumi.set(self, "sharegroup_list_url", value)
 
 
-if not MYPY:
-    class GetProducerImageShareGroupMembersFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetProducerImageShareGroupMembersFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetProducerImageShareGroupMembersFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetProducerImageShareGroupMembersFilterArgs:
@@ -13155,38 +12661,35 @@ class GetProducerImageShareGroupMembersFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetProducerImageShareGroupMembersMemberArgsDict(TypedDict):
-        created: _builtins.str
-        """
-        When the member was created.
-        """
-        expiry: _builtins.str
-        """
-        When the member will expire.
-        """
-        label: _builtins.str
-        """
-        The label of the member.
-        """
-        sharegroup_id: _builtins.int
-        """
-        The ID of the Image Share Group for which to list members.
-        """
-        status: _builtins.str
-        """
-        The status of the member.
-        """
-        token_uuid: _builtins.str
-        """
-        The UUID of member's token.
-        """
-        updated: _builtins.str
-        """
-        When the member was last updated.
-        """
-elif False:
-    GetProducerImageShareGroupMembersMemberArgsDict: TypeAlias = Mapping[str, Any]
+class GetProducerImageShareGroupMembersMemberArgsDict(TypedDict):
+    created: _builtins.str
+    """
+    When the member was created.
+    """
+    expiry: _builtins.str
+    """
+    When the member will expire.
+    """
+    label: _builtins.str
+    """
+    The label of the member.
+    """
+    sharegroup_id: _builtins.int
+    """
+    The ID of the Image Share Group for which to list members.
+    """
+    status: _builtins.str
+    """
+    The status of the member.
+    """
+    token_uuid: _builtins.str
+    """
+    The UUID of member's token.
+    """
+    updated: _builtins.str
+    """
+    When the member was last updated.
+    """
 
 @pulumi.input_type
 class GetProducerImageShareGroupMembersMemberArgs:
@@ -13300,22 +12803,19 @@ class GetProducerImageShareGroupMembersMemberArgs:
         pulumi.set(self, "updated", value)
 
 
-if not MYPY:
-    class GetProducerImageShareGroupsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetProducerImageShareGroupsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetProducerImageShareGroupsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetProducerImageShareGroupsFilterArgs:
@@ -13370,50 +12870,47 @@ class GetProducerImageShareGroupsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetProducerImageShareGroupsImageShareGroupArgsDict(TypedDict):
-        created: _builtins.str
-        """
-        The date and time the Image Share Group was created.
-        """
-        description: _builtins.str
-        """
-        The description of the Image Share Group.
-        """
-        expiry: _builtins.str
-        """
-        The date and time the Image Share Group will expire.
-        """
-        id: _builtins.int
-        """
-        The ID of the Image Share Group.
-        """
-        images_count: _builtins.int
-        """
-        The number of images in the Image Share Group.
-        """
-        is_suspended: _builtins.bool
-        """
-        Whether the Image Share Group is suspended.
-        """
-        label: _builtins.str
-        """
-        The label of the Image Share Group.
-        """
-        members_count: _builtins.int
-        """
-        The number of members in the Image Share Group.
-        """
-        updated: _builtins.str
-        """
-        The date and time the Image Share Group was last updated.
-        """
-        uuid: _builtins.str
-        """
-        The UUID of the Image Share Group.
-        """
-elif False:
-    GetProducerImageShareGroupsImageShareGroupArgsDict: TypeAlias = Mapping[str, Any]
+class GetProducerImageShareGroupsImageShareGroupArgsDict(TypedDict):
+    created: _builtins.str
+    """
+    The date and time the Image Share Group was created.
+    """
+    description: _builtins.str
+    """
+    The description of the Image Share Group.
+    """
+    expiry: _builtins.str
+    """
+    The date and time the Image Share Group will expire.
+    """
+    id: _builtins.int
+    """
+    The ID of the Image Share Group.
+    """
+    images_count: _builtins.int
+    """
+    The number of images in the Image Share Group.
+    """
+    is_suspended: _builtins.bool
+    """
+    Whether the Image Share Group is suspended.
+    """
+    label: _builtins.str
+    """
+    The label of the Image Share Group.
+    """
+    members_count: _builtins.int
+    """
+    The number of members in the Image Share Group.
+    """
+    updated: _builtins.str
+    """
+    The date and time the Image Share Group was last updated.
+    """
+    uuid: _builtins.str
+    """
+    The UUID of the Image Share Group.
+    """
 
 @pulumi.input_type
 class GetProducerImageShareGroupsImageShareGroupArgs:
@@ -13572,22 +13069,19 @@ class GetProducerImageShareGroupsImageShareGroupArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetRegionsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetRegionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetRegionsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetRegionsFilterArgs:
@@ -13642,22 +13136,19 @@ class GetRegionsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetSshkeysFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetSshkeysFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetSshkeysFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetSshkeysFilterArgs:
@@ -13712,22 +13203,19 @@ class GetSshkeysFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetStackScriptsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetStackScriptsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetStackScriptsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetStackScriptsFilterArgs:
@@ -13782,22 +13270,19 @@ class GetStackScriptsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetUserDatabaseGrantArgsDict(TypedDict):
-        id: _builtins.int
-        """
-        The ID of entity this grant applies to.
-        """
-        label: _builtins.str
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        permissions: _builtins.str
-        """
-        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-elif False:
-    GetUserDatabaseGrantArgsDict: TypeAlias = Mapping[str, Any]
+class GetUserDatabaseGrantArgsDict(TypedDict):
+    id: _builtins.int
+    """
+    The ID of entity this grant applies to.
+    """
+    label: _builtins.str
+    """
+    The current label of the entity this grant applies to, for display purposes.
+    """
+    permissions: _builtins.str
+    """
+    The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+    """
 
 @pulumi.input_type
 class GetUserDatabaseGrantArgs:
@@ -13851,22 +13336,19 @@ class GetUserDatabaseGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class GetUserDomainGrantArgsDict(TypedDict):
-        id: _builtins.int
-        """
-        The ID of entity this grant applies to.
-        """
-        label: _builtins.str
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        permissions: _builtins.str
-        """
-        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-elif False:
-    GetUserDomainGrantArgsDict: TypeAlias = Mapping[str, Any]
+class GetUserDomainGrantArgsDict(TypedDict):
+    id: _builtins.int
+    """
+    The ID of entity this grant applies to.
+    """
+    label: _builtins.str
+    """
+    The current label of the entity this grant applies to, for display purposes.
+    """
+    permissions: _builtins.str
+    """
+    The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+    """
 
 @pulumi.input_type
 class GetUserDomainGrantArgs:
@@ -13920,22 +13402,19 @@ class GetUserDomainGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class GetUserFirewallGrantArgsDict(TypedDict):
-        id: _builtins.int
-        """
-        The ID of entity this grant applies to.
-        """
-        label: _builtins.str
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        permissions: _builtins.str
-        """
-        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-elif False:
-    GetUserFirewallGrantArgsDict: TypeAlias = Mapping[str, Any]
+class GetUserFirewallGrantArgsDict(TypedDict):
+    id: _builtins.int
+    """
+    The ID of entity this grant applies to.
+    """
+    label: _builtins.str
+    """
+    The current label of the entity this grant applies to, for display purposes.
+    """
+    permissions: _builtins.str
+    """
+    The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+    """
 
 @pulumi.input_type
 class GetUserFirewallGrantArgs:
@@ -13989,22 +13468,19 @@ class GetUserFirewallGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class GetUserImageGrantArgsDict(TypedDict):
-        id: _builtins.int
-        """
-        The ID of entity this grant applies to.
-        """
-        label: _builtins.str
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        permissions: _builtins.str
-        """
-        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-elif False:
-    GetUserImageGrantArgsDict: TypeAlias = Mapping[str, Any]
+class GetUserImageGrantArgsDict(TypedDict):
+    id: _builtins.int
+    """
+    The ID of entity this grant applies to.
+    """
+    label: _builtins.str
+    """
+    The current label of the entity this grant applies to, for display purposes.
+    """
+    permissions: _builtins.str
+    """
+    The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+    """
 
 @pulumi.input_type
 class GetUserImageGrantArgs:
@@ -14058,22 +13534,19 @@ class GetUserImageGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class GetUserLinodeGrantArgsDict(TypedDict):
-        id: _builtins.int
-        """
-        The ID of entity this grant applies to.
-        """
-        label: _builtins.str
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        permissions: _builtins.str
-        """
-        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-elif False:
-    GetUserLinodeGrantArgsDict: TypeAlias = Mapping[str, Any]
+class GetUserLinodeGrantArgsDict(TypedDict):
+    id: _builtins.int
+    """
+    The ID of entity this grant applies to.
+    """
+    label: _builtins.str
+    """
+    The current label of the entity this grant applies to, for display purposes.
+    """
+    permissions: _builtins.str
+    """
+    The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+    """
 
 @pulumi.input_type
 class GetUserLinodeGrantArgs:
@@ -14127,22 +13600,19 @@ class GetUserLinodeGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class GetUserLongviewGrantArgsDict(TypedDict):
-        id: _builtins.int
-        """
-        The ID of entity this grant applies to.
-        """
-        label: _builtins.str
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        permissions: _builtins.str
-        """
-        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-elif False:
-    GetUserLongviewGrantArgsDict: TypeAlias = Mapping[str, Any]
+class GetUserLongviewGrantArgsDict(TypedDict):
+    id: _builtins.int
+    """
+    The ID of entity this grant applies to.
+    """
+    label: _builtins.str
+    """
+    The current label of the entity this grant applies to, for display purposes.
+    """
+    permissions: _builtins.str
+    """
+    The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+    """
 
 @pulumi.input_type
 class GetUserLongviewGrantArgs:
@@ -14196,22 +13666,19 @@ class GetUserLongviewGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class GetUserNodebalancerGrantArgsDict(TypedDict):
-        id: _builtins.int
-        """
-        The ID of entity this grant applies to.
-        """
-        label: _builtins.str
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        permissions: _builtins.str
-        """
-        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-elif False:
-    GetUserNodebalancerGrantArgsDict: TypeAlias = Mapping[str, Any]
+class GetUserNodebalancerGrantArgsDict(TypedDict):
+    id: _builtins.int
+    """
+    The ID of entity this grant applies to.
+    """
+    label: _builtins.str
+    """
+    The current label of the entity this grant applies to, for display purposes.
+    """
+    permissions: _builtins.str
+    """
+    The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+    """
 
 @pulumi.input_type
 class GetUserNodebalancerGrantArgs:
@@ -14265,22 +13732,19 @@ class GetUserNodebalancerGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class GetUserStackscriptGrantArgsDict(TypedDict):
-        id: _builtins.int
-        """
-        The ID of entity this grant applies to.
-        """
-        label: _builtins.str
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        permissions: _builtins.str
-        """
-        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-elif False:
-    GetUserStackscriptGrantArgsDict: TypeAlias = Mapping[str, Any]
+class GetUserStackscriptGrantArgsDict(TypedDict):
+    id: _builtins.int
+    """
+    The ID of entity this grant applies to.
+    """
+    label: _builtins.str
+    """
+    The current label of the entity this grant applies to, for display purposes.
+    """
+    permissions: _builtins.str
+    """
+    The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+    """
 
 @pulumi.input_type
 class GetUserStackscriptGrantArgs:
@@ -14334,22 +13798,19 @@ class GetUserStackscriptGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class GetUserVolumeGrantArgsDict(TypedDict):
-        id: _builtins.int
-        """
-        The ID of entity this grant applies to.
-        """
-        label: _builtins.str
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        permissions: _builtins.str
-        """
-        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-elif False:
-    GetUserVolumeGrantArgsDict: TypeAlias = Mapping[str, Any]
+class GetUserVolumeGrantArgsDict(TypedDict):
+    id: _builtins.int
+    """
+    The ID of entity this grant applies to.
+    """
+    label: _builtins.str
+    """
+    The current label of the entity this grant applies to, for display purposes.
+    """
+    permissions: _builtins.str
+    """
+    The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+    """
 
 @pulumi.input_type
 class GetUserVolumeGrantArgs:
@@ -14403,22 +13864,19 @@ class GetUserVolumeGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class GetUserVpcGrantArgsDict(TypedDict):
-        id: _builtins.int
-        """
-        The ID of entity this grant applies to.
-        """
-        label: _builtins.str
-        """
-        The current label of the entity this grant applies to, for display purposes.
-        """
-        permissions: _builtins.str
-        """
-        The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-        """
-elif False:
-    GetUserVpcGrantArgsDict: TypeAlias = Mapping[str, Any]
+class GetUserVpcGrantArgsDict(TypedDict):
+    id: _builtins.int
+    """
+    The ID of entity this grant applies to.
+    """
+    label: _builtins.str
+    """
+    The current label of the entity this grant applies to, for display purposes.
+    """
+    permissions: _builtins.str
+    """
+    The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
+    """
 
 @pulumi.input_type
 class GetUserVpcGrantArgs:
@@ -14472,22 +13930,19 @@ class GetUserVpcGrantArgs:
         pulumi.set(self, "permissions", value)
 
 
-if not MYPY:
-    class GetUsersFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetUsersFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetUsersFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetUsersFilterArgs:
@@ -14542,22 +13997,19 @@ class GetUsersFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetVlansFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetVlansFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetVlansFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetVlansFilterArgs:
@@ -14612,22 +14064,19 @@ class GetVlansFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetVolumeTypesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetVolumeTypesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetVolumeTypesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetVolumeTypesFilterArgs:
@@ -14682,22 +14131,19 @@ class GetVolumeTypesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetVolumesFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetVolumesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetVolumesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetVolumesFilterArgs:
@@ -14752,22 +14198,19 @@ class GetVolumesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetVpcIpsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetVpcIpsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetVpcIpsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetVpcIpsFilterArgs:
@@ -14822,22 +14265,19 @@ class GetVpcIpsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetVpcSubnetsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetVpcSubnetsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetVpcSubnetsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetVpcSubnetsFilterArgs:
@@ -14892,22 +14332,19 @@ class GetVpcSubnetsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetVpcsFilterArgsDict(TypedDict):
-        name: _builtins.str
-        """
-        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-elif False:
-    GetVpcsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetVpcsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
 
 @pulumi.input_type
 class GetVpcsFilterArgs:

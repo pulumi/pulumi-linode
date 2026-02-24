@@ -509,9 +509,16 @@ class InstanceConfig(pulumi.CustomResource):
                  virt_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## Example Usage
+        Provides a Linode Instance Config resource. This can be used to create, modify, and delete Linode Instance Configs.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-add-linode-config).
 
-        Creating a simple bootable Linode Instance Configuration Profile:
+        > **NOTICE:** If a VPC interface is defined in your `InstanceConfig` resource and the config is currently booted with the Linode, then the Linode is required to be powered off during the update operation. The Terraform provider will try to implicitly shutdown you Linode instance during the update and restart it when it's finished. Unless you explicitly config the `booted` attribute in the resource or explicitly set `skip_implicit_reboots` to `false` in the Terraform provider config.
+
+        **NOTE:** Changes to a config that is currently booted will trigger a reboot, in order to skip this explicitly set `skip_implicit_reboots` to `true` in the Terraform provider config.
+
+        **NOTE:** Deleting a config will shut down the attached instance if the config is in use.
+
+        ## Example Usage
 
         ```python
         import pulumi
@@ -536,9 +543,6 @@ class InstanceConfig(pulumi.CustomResource):
             }],
             booted=True)
         ```
-
-        Creating a complex bootable Instance Configuration Profile with a VPC:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -645,9 +649,16 @@ class InstanceConfig(pulumi.CustomResource):
                  args: InstanceConfigInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
+        Provides a Linode Instance Config resource. This can be used to create, modify, and delete Linode Instance Configs.
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-add-linode-config).
 
-        Creating a simple bootable Linode Instance Configuration Profile:
+        > **NOTICE:** If a VPC interface is defined in your `InstanceConfig` resource and the config is currently booted with the Linode, then the Linode is required to be powered off during the update operation. The Terraform provider will try to implicitly shutdown you Linode instance during the update and restart it when it's finished. Unless you explicitly config the `booted` attribute in the resource or explicitly set `skip_implicit_reboots` to `false` in the Terraform provider config.
+
+        **NOTE:** Changes to a config that is currently booted will trigger a reboot, in order to skip this explicitly set `skip_implicit_reboots` to `true` in the Terraform provider config.
+
+        **NOTE:** Deleting a config will shut down the attached instance if the config is in use.
+
+        ## Example Usage
 
         ```python
         import pulumi
@@ -672,9 +683,6 @@ class InstanceConfig(pulumi.CustomResource):
             }],
             booted=True)
         ```
-
-        Creating a complex bootable Instance Configuration Profile with a VPC:
-
         ```python
         import pulumi
         import pulumi_linode as linode

@@ -21,6 +21,202 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages an LKE Node Pool.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster-pools).
+ * 
+ * &gt; **Notice** To prevent LKE node pools managed by this resource from being
+ * recreated by the linode.LkeCluster resource, the cluster&#39;s externalPoolTags
+ *  attribute must match the tags attribute of this resource. Please review the
+ * Externally Managed Node Pools
+ * section for more information.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.LkeNodePool;
+ * import com.pulumi.linode.LkeNodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
+ *             .clusterId(150003)
+ *             .type("g6-standard-2")
+ *             .nodeCount(3)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.LkeNodePool;
+ * import com.pulumi.linode.LkeNodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
+ *             .clusterId(150003)
+ *             .type("g6-standard-2")
+ *             .nodeCount(3)
+ *             .label("app-pool")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.LkeNodePool;
+ * import com.pulumi.linode.LkeNodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
+ *             .clusterId(150003)
+ *             .type("g6-standard-2")
+ *             .firewallId(12345)
+ *             .nodeCount(3)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.LkeNodePool;
+ * import com.pulumi.linode.LkeNodePoolArgs;
+ * import com.pulumi.linode.inputs.LkeNodePoolAutoscalerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
+ *             .clusterId(150003)
+ *             .type("g6-standard-2")
+ *             .autoscaler(LkeNodePoolAutoscalerArgs.builder()
+ *                 .min(3)
+ *                 .max(10)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.LkeCluster;
+ * import com.pulumi.linode.LkeClusterArgs;
+ * import com.pulumi.linode.inputs.LkeClusterPoolArgs;
+ * import com.pulumi.linode.LkeNodePool;
+ * import com.pulumi.linode.LkeNodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var externalPoolTag = "external";
+ * 
+ *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
+ *             .label("my-cluster")
+ *             .k8sVersion("1.32")
+ *             .region("us-mia")
+ *             .labels(Map.of("key", "value"))
+ *             .externalPoolTags(externalPoolTag)
+ *             .pools(LkeClusterPoolArgs.builder()
+ *                 .type("g6-standard-1")
+ *                 .count(1)
+ *                 .build())
+ *             .build());
+ * 
+ *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
+ *             .clusterId(my_cluster.id())
+ *             .type("g6-standard-2")
+ *             .nodeCount(3)
+ *             .tags(externalPoolTag)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * LKE Node Pools can be imported using the `cluster_id,id`, e.g.

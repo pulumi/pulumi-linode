@@ -90,8 +90,6 @@ def get_database_postgresql_config(opts: Optional[pulumi.InvokeOptions] = None) 
 
     ## Example Usage
 
-    Get information about a PostgreSQL database's configuration options:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -883,8 +881,6 @@ def get_database_postgresql_config_output(opts: Optional[Union[pulumi.InvokeOpti
     For more information, see the Linode APIv4 docs.
 
     ## Example Usage
-
-    Get information about a PostgreSQL database's configuration options:
 
     ```python
     import pulumi

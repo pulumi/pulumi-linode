@@ -7,6 +7,88 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Manages an LKE Node Pool.
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster-pools).
+ *
+ * > **Notice** To prevent LKE node pools managed by this resource from being
+ * recreated by the linode.LkeCluster resource, the cluster's externalPoolTags
+ *  attribute must match the tags attribute of this resource. Please review the
+ * Externally Managed Node Pools
+ * section for more information.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_pool = new linode.LkeNodePool("my-pool", {
+ *     clusterId: 150003,
+ *     type: "g6-standard-2",
+ *     nodeCount: 3,
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_pool = new linode.LkeNodePool("my-pool", {
+ *     clusterId: 150003,
+ *     type: "g6-standard-2",
+ *     nodeCount: 3,
+ *     label: "app-pool",
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_pool = new linode.LkeNodePool("my-pool", {
+ *     clusterId: 150003,
+ *     type: "g6-standard-2",
+ *     firewallId: 12345,
+ *     nodeCount: 3,
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_pool = new linode.LkeNodePool("my-pool", {
+ *     clusterId: 150003,
+ *     type: "g6-standard-2",
+ *     autoscaler: {
+ *         min: 3,
+ *         max: 10,
+ *     },
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const externalPoolTag = "external";
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     label: "my-cluster",
+ *     k8sVersion: "1.32",
+ *     region: "us-mia",
+ *     labels: {
+ *         key: "value",
+ *     },
+ *     externalPoolTags: [externalPoolTag],
+ *     pools: [{
+ *         type: "g6-standard-1",
+ *         count: 1,
+ *     }],
+ * });
+ * const my_pool = new linode.LkeNodePool("my-pool", {
+ *     clusterId: my_cluster.id,
+ *     type: "g6-standard-2",
+ *     nodeCount: 3,
+ *     tags: [externalPoolTag],
+ * });
+ * ```
+ *
  * ## Import
  *
  * LKE Node Pools can be imported using the `cluster_id,id`, e.g.

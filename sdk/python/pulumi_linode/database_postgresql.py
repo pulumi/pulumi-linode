@@ -634,8 +634,6 @@ class DatabasePostgresql(pulumi.CustomResource):
 
         ## Example Usage
 
-        Creating a simple PostgreSQL database instance:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -646,9 +644,6 @@ class DatabasePostgresql(pulumi.CustomResource):
             region="us-southeast",
             type="g6-nanode-1")
         ```
-
-        Creating a complex PostgreSQL database instance:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -737,8 +732,6 @@ class DatabasePostgresql(pulumi.CustomResource):
 
         ## Example Usage
 
-        Creating a simple PostgreSQL database instance:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -749,9 +742,6 @@ class DatabasePostgresql(pulumi.CustomResource):
             region="us-southeast",
             type="g6-nanode-1")
         ```
-
-        Creating a complex PostgreSQL database instance:
-
         ```python
         import pulumi
         import pulumi_linode as linode

@@ -5752,8 +5752,6 @@ type InstanceConfigInterface struct {
 	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 	//
 	// * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-	//
-	// The following computed attribute is available in a VPC interface:
 	Primary *bool `pulumi:"primary"`
 	// The type of interface. (`public`, `vlan`, `vpc`)
 	Purpose string `pulumi:"purpose"`
@@ -5794,8 +5792,6 @@ type InstanceConfigInterfaceArgs struct {
 	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 	//
 	// * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-	//
-	// The following computed attribute is available in a VPC interface:
 	Primary pulumi.BoolPtrInput `pulumi:"primary"`
 	// The type of interface. (`public`, `vlan`, `vpc`)
 	Purpose pulumi.StringInput `pulumi:"purpose"`
@@ -5896,8 +5892,6 @@ func (o InstanceConfigInterfaceOutput) Label() pulumi.StringPtrOutput {
 // * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 //
 // * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-//
-// The following computed attribute is available in a VPC interface:
 func (o InstanceConfigInterfaceOutput) Primary() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceConfigInterface) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
 }
@@ -6889,8 +6883,6 @@ type InstanceInterface struct {
 	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 	//
 	// * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-	//
-	// The following computed attribute is available in a VPC interface:
 	Primary *bool `pulumi:"primary"`
 	// The type of interface. (`public`, `vlan`, `vpc`)
 	Purpose string `pulumi:"purpose"`
@@ -6933,8 +6925,6 @@ type InstanceInterfaceArgs struct {
 	// * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 	//
 	// * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-	//
-	// The following computed attribute is available in a VPC interface:
 	Primary pulumi.BoolPtrInput `pulumi:"primary"`
 	// The type of interface. (`public`, `vlan`, `vpc`)
 	Purpose pulumi.StringInput `pulumi:"purpose"`
@@ -7037,8 +7027,6 @@ func (o InstanceInterfaceOutput) Label() pulumi.StringPtrOutput {
 // * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 //
 // * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-//
-// The following computed attribute is available in a VPC interface:
 func (o InstanceInterfaceOutput) Primary() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceInterface) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
 }

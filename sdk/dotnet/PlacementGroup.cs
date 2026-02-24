@@ -15,8 +15,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Create a Placement Group with the local anti-affinity policy:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,7 +35,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Placement Groups be imported using their unique `id`, e.g.
+    /// Placement Groups be imported using their unique `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/placementGroup:PlacementGroup mygroup 1234567

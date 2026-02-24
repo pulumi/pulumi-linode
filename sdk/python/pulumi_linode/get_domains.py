@@ -97,8 +97,6 @@ def get_domains(filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDom
 
     ## Example Usage
 
-    Get information about all Linode Cloud Domains with a specific tag:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -164,8 +162,6 @@ def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-domains).
 
     ## Example Usage
-
-    Get information about all Linode Cloud Domains with a specific tag:
 
     ```python
     import pulumi

@@ -102,8 +102,6 @@ def get_nodebalancer_vpc(id: Optional[_builtins.int] = None,
 
     ## Example Usage
 
-    Retrieve information about a NodeBalancer VPC configuration:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -138,8 +136,6 @@ def get_nodebalancer_vpc_output(id: Optional[pulumi.Input[_builtins.int]] = None
     For more information, see the corresponding [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-node-balancer-vpc-config).
 
     ## Example Usage
-
-    Retrieve information about a NodeBalancer VPC configuration:
 
     ```python
     import pulumi

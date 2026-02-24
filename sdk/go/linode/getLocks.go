@@ -21,8 +21,6 @@ import (
 //
 // ## Example Usage
 //
-// Get all locks in a type:
-//
 // ```go
 // package main
 //
@@ -53,9 +51,6 @@ import (
 //	}
 //
 // ```
-//
-// Get information about all locks:
-//
 // ```go
 // package main
 //

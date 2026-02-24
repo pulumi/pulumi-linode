@@ -203,17 +203,17 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linodes Instances can be imported using the Linode `id`, e.g.
+    /// Linodes Instances can be imported using the Linode `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/instance:Instance mylinode 1234567
     /// ```
     /// 
-    /// When importing an instance, all `disk` and `config` values must be represented.
+    /// When importing an instance, all `Disk` and `Config` values must be represented.
     /// 
-    /// Imported disks must include their `label` value.  **Any disk that is not precisely represented may be removed resulting in data loss.**
+    /// Imported disks must include their `Label` value.  **Any disk that is not precisely represented may be removed resulting in data loss.**
     /// 
-    /// Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.  The instance must include a `boot_config_label` referring to the correct configuration profile.
+    /// Imported configs should include all `Devices`, and must include `Label`, `Kernel`, and the `RootDevice`.  The instance must include a `BootConfigLabel` referring to the correct configuration profile.
     /// </summary>
     [LinodeResourceType("linode:index/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource

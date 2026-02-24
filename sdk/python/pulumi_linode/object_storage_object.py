@@ -56,7 +56,7 @@ class ObjectStorageObjectArgs:
         :param pulumi.Input[_builtins.str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         :param pulumi.Input[_builtins.str] endpoint: Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
-        :param pulumi.Input[_builtins.str] etag: The specific version of this object.
+        :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
         :param pulumi.Input[_builtins.bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A map of keys/values to provision metadata.
         :param pulumi.Input[_builtins.str] region: The cluster the bucket is in. Required if `cluster` is not configured.
@@ -271,7 +271,7 @@ class ObjectStorageObjectArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The specific version of this object.
+        Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
         """
         return pulumi.get(self, "etag")
 
@@ -394,7 +394,7 @@ class _ObjectStorageObjectState:
         :param pulumi.Input[_builtins.str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         :param pulumi.Input[_builtins.str] endpoint: Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
-        :param pulumi.Input[_builtins.str] etag: The specific version of this object.
+        :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
         :param pulumi.Input[_builtins.bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[_builtins.str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A map of keys/values to provision metadata.
@@ -603,7 +603,7 @@ class _ObjectStorageObjectState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The specific version of this object.
+        Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
         """
         return pulumi.get(self, "etag")
 
@@ -805,7 +805,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         :param pulumi.Input[_builtins.str] endpoint: Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
-        :param pulumi.Input[_builtins.str] etag: The specific version of this object.
+        :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
         :param pulumi.Input[_builtins.bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[_builtins.str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A map of keys/values to provision metadata.
@@ -997,7 +997,7 @@ class ObjectStorageObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
         :param pulumi.Input[_builtins.str] endpoint: Used with the s3 client to make bucket changes and will be computed automatically if left blank, override for testing/debug purposes.
-        :param pulumi.Input[_builtins.str] etag: The specific version of this object.
+        :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
         :param pulumi.Input[_builtins.bool] force_destroy: Allow the object to be deleted regardless of any legal hold or object lock (defaults to `false`).
         :param pulumi.Input[_builtins.str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A map of keys/values to provision metadata.
@@ -1139,7 +1139,7 @@ class ObjectStorageObject(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
         """
-        The specific version of this object.
+        Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
         """
         return pulumi.get(self, "etag")
 

@@ -46,16 +46,12 @@ class ImageArgs:
                - - -
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-               
-               The following arguments apply to uploading an image:
         :param pulumi.Input[_builtins.str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of customized tags.
         :param pulumi.Input[_builtins.bool] wait_for_replications: Whether to wait for all image replications become `available`. Default to false.
                
                - - -
-               
-               The following arguments apply to creating an image from an existing Linode Instance:
         """
         pulumi.set(__self__, "label", label)
         if cloud_init is not None:
@@ -162,8 +158,6 @@ class ImageArgs:
         - - -
 
         > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-
-        The following arguments apply to uploading an image:
         """
         return pulumi.get(self, "linode_id")
 
@@ -223,8 +217,6 @@ class ImageArgs:
         Whether to wait for all image replications become `available`. Default to false.
 
         - - -
-
-        The following arguments apply to creating an image from an existing Linode Instance:
         """
         return pulumi.get(self, "wait_for_replications")
 
@@ -283,8 +275,6 @@ class _ImageState:
                - - -
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-               
-               The following arguments apply to uploading an image:
         :param pulumi.Input[_builtins.str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         :param pulumi.Input[Sequence[pulumi.Input['ImageReplicationArgs']]] replications: A list of image replications region and corresponding status.
@@ -297,8 +287,6 @@ class _ImageState:
         :param pulumi.Input[_builtins.bool] wait_for_replications: Whether to wait for all image replications become `available`. Default to false.
                
                - - -
-               
-               The following arguments apply to creating an image from an existing Linode Instance:
         """
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
@@ -530,8 +518,6 @@ class _ImageState:
         - - -
 
         > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-
-        The following arguments apply to uploading an image:
         """
         return pulumi.get(self, "linode_id")
 
@@ -663,8 +649,6 @@ class _ImageState:
         Whether to wait for all image replications become `available`. Default to false.
 
         - - -
-
-        The following arguments apply to creating an image from an existing Linode Instance:
         """
         return pulumi.get(self, "wait_for_replications")
 
@@ -699,8 +683,6 @@ class Image(pulumi.CustomResource):
 
         ## Example Usage
 
-        Creating an image from an existing Linode Instance and deploying another instance with that image:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -724,9 +706,6 @@ class Image(pulumi.CustomResource):
             region="eu-west",
             image=bar.id)
         ```
-
-        Creating and uploading an image from a local file:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -743,9 +722,6 @@ class Image(pulumi.CustomResource):
             file_path="path/to/image.img.gz",
             file_hash=std.filemd5(input="path/to/image.img.gz").result)
         ```
-
-        Upload and replicate an image from a local file:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -789,16 +765,12 @@ class Image(pulumi.CustomResource):
                - - -
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-               
-               The following arguments apply to uploading an image:
         :param pulumi.Input[_builtins.str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of customized tags.
         :param pulumi.Input[_builtins.bool] wait_for_replications: Whether to wait for all image replications become `available`. Default to false.
                
                - - -
-               
-               The following arguments apply to creating an image from an existing Linode Instance:
         """
         ...
     @overload
@@ -812,8 +784,6 @@ class Image(pulumi.CustomResource):
         For more information, see [Linode's documentation on Images](https://www.linode.com/docs/platform/disk-images/linode-images/) and the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-image).
 
         ## Example Usage
-
-        Creating an image from an existing Linode Instance and deploying another instance with that image:
 
         ```python
         import pulumi
@@ -838,9 +808,6 @@ class Image(pulumi.CustomResource):
             region="eu-west",
             image=bar.id)
         ```
-
-        Creating and uploading an image from a local file:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -857,9 +824,6 @@ class Image(pulumi.CustomResource):
             file_path="path/to/image.img.gz",
             file_hash=std.filemd5(input="path/to/image.img.gz").result)
         ```
-
-        Upload and replicate an image from a local file:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -1016,8 +980,6 @@ class Image(pulumi.CustomResource):
                - - -
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-               
-               The following arguments apply to uploading an image:
         :param pulumi.Input[_builtins.str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ImageReplicationArgs', 'ImageReplicationArgsDict']]]] replications: A list of image replications region and corresponding status.
@@ -1030,8 +992,6 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] wait_for_replications: Whether to wait for all image replications become `available`. Default to false.
                
                - - -
-               
-               The following arguments apply to creating an image from an existing Linode Instance:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1186,8 +1146,6 @@ class Image(pulumi.CustomResource):
         - - -
 
         > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-
-        The following arguments apply to uploading an image:
         """
         return pulumi.get(self, "linode_id")
 
@@ -1275,8 +1233,6 @@ class Image(pulumi.CustomResource):
         Whether to wait for all image replications become `available`. Default to false.
 
         - - -
-
-        The following arguments apply to creating an image from an existing Linode Instance:
         """
         return pulumi.get(self, "wait_for_replications")
 

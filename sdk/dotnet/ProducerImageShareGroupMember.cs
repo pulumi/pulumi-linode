@@ -15,8 +15,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Accept a member into an Image Share Group:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;

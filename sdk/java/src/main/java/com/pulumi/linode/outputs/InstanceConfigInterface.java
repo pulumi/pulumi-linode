@@ -59,8 +59,6 @@ public final class InstanceConfigInterface {
      * 
      * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      * 
-     * The following computed attribute is available in a VPC interface:
-     * 
      */
     private @Nullable Boolean primary;
     /**
@@ -135,8 +133,6 @@ public final class InstanceConfigInterface {
      * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
      * 
      * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-     * 
-     * The following computed attribute is available in a VPC interface:
      * 
      */
     public Optional<Boolean> primary() {

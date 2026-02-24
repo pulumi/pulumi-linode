@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
-//
 // ```go
 // package main
 //

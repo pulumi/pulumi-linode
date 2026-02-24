@@ -107,8 +107,6 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
 
     ## Example Usage
 
-    Get information about all Linode images with a certain label and visibility:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -125,9 +123,6 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
     ])
     pulumi.export("imageId", specific_images.images[0].id)
     ```
-
-    Get information about all Linode images associated with the current token:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -191,8 +186,6 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Ge
 
     ## Example Usage
 
-    Get information about all Linode images with a certain label and visibility:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -209,9 +202,6 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Ge
     ])
     pulumi.export("imageId", specific_images.images[0].id)
     ```
-
-    Get information about all Linode images associated with the current token:
-
     ```python
     import pulumi
     import pulumi_linode as linode

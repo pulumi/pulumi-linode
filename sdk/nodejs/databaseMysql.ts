@@ -16,8 +16,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Creating a simple MySQL database instance:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -29,9 +27,6 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * ```
- *
- * Creating a complex MySQL database instance:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

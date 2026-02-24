@@ -90,6 +90,20 @@ var skipGuidesSection = tfbridge.DocsEdit{
 	},
 }
 
+// Removes HCL examples containing count.index traversals that trigger a
+// Python codegen panic in pulumi/pkg/v3 (rewriteTraversal index out of range).
+var removeCountIndexExamples = tfbridge.DocsEdit{
+	Path: "*",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		// Remove HCL code blocks that contain [count.index] expressions
+		re := regexp.MustCompile("(?s)```(?:hcl|terraform)\n[^`]*\\[count\\.index\\][^`]*```")
+		result := re.ReplaceAll(content, nil)
+		// Clean up any orphaned description text before removed blocks
+		cleanup := regexp.MustCompile("\n\n[^\n#`]+:\n+\n")
+		return cleanup.ReplaceAll(result, []byte("\n")), nil
+	},
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
@@ -117,6 +131,7 @@ func Provider() tfbridge.ProviderInfo {
 					defaults,
 					stripTfFromDocs(),
 					skipGuidesSection,
+					removeCountIndexExamples,
 				)
 			},
 		},

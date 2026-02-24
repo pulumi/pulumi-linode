@@ -14,8 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about all backups for a MySQL database:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -24,9 +22,6 @@ import * as utilities from "./utilities";
  *     databaseId: 12345,
  * });
  * ```
- *
- * Get information about all automatic MySQL Database Backups:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -99,8 +94,6 @@ export interface GetDatabaseMysqlBackupsResult {
  *
  * ## Example Usage
  *
- * Get information about all backups for a MySQL database:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -109,9 +102,6 @@ export interface GetDatabaseMysqlBackupsResult {
  *     databaseId: 12345,
  * });
  * ```
- *
- * Get information about all automatic MySQL Database Backups:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

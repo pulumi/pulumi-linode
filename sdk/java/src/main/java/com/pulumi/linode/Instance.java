@@ -266,7 +266,7 @@ import javax.annotation.Nullable;
  * 
  * Imported disks must include their `label` value.  **Any disk that is not precisely represented may be removed resulting in data loss.**
  * 
- * Imported configs should include all `devices`, and must include `label`, `kernel`, and the `root_device`.  The instance must include a `boot_config_label` referring to the correct configuration profile.
+ * Imported configs should include all `devices`, and must include `label`, `kernel`, and the `rootDevice`.  The instance must include a `bootConfigLabel` referring to the correct configuration profile.
  * 
  */
 @ResourceType(type="linode:index/instance:Instance")

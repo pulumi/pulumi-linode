@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
-//
 // ```go
 // package main
 //

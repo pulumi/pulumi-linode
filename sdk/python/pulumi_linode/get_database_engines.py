@@ -107,8 +107,6 @@ def get_database_engines(filters: Optional[Sequence[Union['GetDatabaseEnginesFil
 
     ## Example Usage
 
-    Get information about all Linode Managed Database engines:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -116,9 +114,6 @@ def get_database_engines(filters: Optional[Sequence[Union['GetDatabaseEnginesFil
     all = linode.get_database_engines()
     pulumi.export("engineIds", [__item.id for __item in all.engines])
     ```
-
-    Get information about all Linode MySQL Database engines:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -129,9 +124,6 @@ def get_database_engines(filters: Optional[Sequence[Union['GetDatabaseEnginesFil
     }])
     pulumi.export("engineIds", [__item.id for __item in mysql.engines])
     ```
-
-    Create a Linode MySQL Database using the latest support MySQL version:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -181,8 +173,6 @@ def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence
 
     ## Example Usage
 
-    Get information about all Linode Managed Database engines:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -190,9 +180,6 @@ def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence
     all = linode.get_database_engines()
     pulumi.export("engineIds", [__item.id for __item in all.engines])
     ```
-
-    Get information about all Linode MySQL Database engines:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -203,9 +190,6 @@ def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence
     }])
     pulumi.export("engineIds", [__item.id for __item in mysql.engines])
     ```
-
-    Create a Linode MySQL Database using the latest support MySQL version:
-
     ```python
     import pulumi
     import pulumi_linode as linode

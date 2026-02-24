@@ -17,8 +17,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Creating a simple 512 MB Linode Instance Disk:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,9 +42,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a complex bootable Instance Disk:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -85,7 +80,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Instance Disks can be imported using the `linode_id` followed by the Instance Disk `id` separated by a comma, e.g.
+    /// Instance Disks can be imported using the `LinodeId` followed by the Instance Disk `Id` separated by a comma, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321

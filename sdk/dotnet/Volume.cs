@@ -103,7 +103,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linodes Volumes can be imported using the Linode Volume `id`, e.g.
+    /// Linodes Volumes can be imported using the Linode Volume `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/volume:Volume myvolume 1234567

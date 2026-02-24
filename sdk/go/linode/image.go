@@ -18,8 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// Creating an image from an existing Linode Instance and deploying another instance with that image:
-//
 // ```go
 // package main
 //
@@ -69,9 +67,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating and uploading an image from a local file:
-//
 // ```go
 // package main
 //
@@ -110,9 +105,6 @@ import (
 //	}
 //
 // ```
-//
-// Upload and replicate an image from a local file:
-//
 // ```go
 // package main
 //
@@ -200,8 +192,6 @@ type Image struct {
 	// ***
 	//
 	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-	//
-	// The following arguments apply to uploading an image:
 	LinodeId pulumi.IntPtrOutput `pulumi:"linodeId"`
 	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -225,8 +215,6 @@ type Image struct {
 	// Whether to wait for all image replications become `available`. Default to false.
 	//
 	// ***
-	//
-	// The following arguments apply to creating an image from an existing Linode Instance:
 	WaitForReplications pulumi.BoolOutput `pulumi:"waitForReplications"`
 }
 
@@ -296,8 +284,6 @@ type imageState struct {
 	// ***
 	//
 	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-	//
-	// The following arguments apply to uploading an image:
 	LinodeId *int `pulumi:"linodeId"`
 	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region *string `pulumi:"region"`
@@ -321,8 +307,6 @@ type imageState struct {
 	// Whether to wait for all image replications become `available`. Default to false.
 	//
 	// ***
-	//
-	// The following arguments apply to creating an image from an existing Linode Instance:
 	WaitForReplications *bool `pulumi:"waitForReplications"`
 }
 
@@ -360,8 +344,6 @@ type ImageState struct {
 	// ***
 	//
 	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-	//
-	// The following arguments apply to uploading an image:
 	LinodeId pulumi.IntPtrInput
 	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region pulumi.StringPtrInput
@@ -385,8 +367,6 @@ type ImageState struct {
 	// Whether to wait for all image replications become `available`. Default to false.
 	//
 	// ***
-	//
-	// The following arguments apply to creating an image from an existing Linode Instance:
 	WaitForReplications pulumi.BoolPtrInput
 }
 
@@ -412,8 +392,6 @@ type imageArgs struct {
 	// ***
 	//
 	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-	//
-	// The following arguments apply to uploading an image:
 	LinodeId *int `pulumi:"linodeId"`
 	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region *string `pulumi:"region"`
@@ -425,8 +403,6 @@ type imageArgs struct {
 	// Whether to wait for all image replications become `available`. Default to false.
 	//
 	// ***
-	//
-	// The following arguments apply to creating an image from an existing Linode Instance:
 	WaitForReplications *bool `pulumi:"waitForReplications"`
 }
 
@@ -449,8 +425,6 @@ type ImageArgs struct {
 	// ***
 	//
 	// > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-	//
-	// The following arguments apply to uploading an image:
 	LinodeId pulumi.IntPtrInput
 	// The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
 	Region pulumi.StringPtrInput
@@ -462,8 +436,6 @@ type ImageArgs struct {
 	// Whether to wait for all image replications become `available`. Default to false.
 	//
 	// ***
-	//
-	// The following arguments apply to creating an image from an existing Linode Instance:
 	WaitForReplications pulumi.BoolPtrInput
 }
 
@@ -629,8 +601,6 @@ func (o ImageOutput) Label() pulumi.StringOutput {
 // ***
 //
 // > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
-//
-// The following arguments apply to uploading an image:
 func (o ImageOutput) LinodeId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.IntPtrOutput { return v.LinodeId }).(pulumi.IntPtrOutput)
 }
@@ -687,8 +657,6 @@ func (o ImageOutput) Vendor() pulumi.StringOutput {
 // Whether to wait for all image replications become `available`. Default to false.
 //
 // ***
-//
-// The following arguments apply to creating an image from an existing Linode Instance:
 func (o ImageOutput) WaitForReplications() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.WaitForReplications }).(pulumi.BoolOutput)
 }

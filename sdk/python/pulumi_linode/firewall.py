@@ -454,8 +454,6 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
-        Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -546,8 +544,6 @@ class Firewall(pulumi.CustomResource):
         For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-firewalls).
 
         ## Example Usage
-
-        Accept only inbound HTTP(s) requests and drop outbound HTTP(s) requests:
 
         ```python
         import pulumi

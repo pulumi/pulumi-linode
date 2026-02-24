@@ -16,8 +16,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Creating an image from an existing Linode Instance and deploying another instance with that image:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,9 +54,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating and uploading an image from a local file:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -87,9 +82,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Upload and replicate an image from a local file:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -127,7 +119,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linodes Images can be imported using the Linode Image `id`, e.g.
+    /// Linodes Images can be imported using the Linode Image `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/image:Image myimage 1234567
@@ -226,8 +218,6 @@ namespace Pulumi.Linode
         /// - - -
         /// 
         /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `V4beta` in order to use this functionality.
-        /// 
-        /// The following arguments apply to uploading an image:
         /// </summary>
         [Output("linodeId")]
         public Output<int?> LinodeId { get; private set; } = null!;
@@ -293,8 +283,6 @@ namespace Pulumi.Linode
         /// Whether to wait for all image replications become `Available`. Default to false.
         /// 
         /// - - -
-        /// 
-        /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
         [Output("waitForReplications")]
         public Output<bool> WaitForReplications { get; private set; } = null!;
@@ -387,8 +375,6 @@ namespace Pulumi.Linode
         /// - - -
         /// 
         /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `V4beta` in order to use this functionality.
-        /// 
-        /// The following arguments apply to uploading an image:
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
@@ -430,8 +416,6 @@ namespace Pulumi.Linode
         /// Whether to wait for all image replications become `Available`. Default to false.
         /// 
         /// - - -
-        /// 
-        /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
         [Input("waitForReplications")]
         public Input<bool>? WaitForReplications { get; set; }
@@ -540,8 +524,6 @@ namespace Pulumi.Linode
         /// - - -
         /// 
         /// &gt; **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `V4beta` in order to use this functionality.
-        /// 
-        /// The following arguments apply to uploading an image:
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
@@ -625,8 +607,6 @@ namespace Pulumi.Linode
         /// Whether to wait for all image replications become `Available`. Default to false.
         /// 
         /// - - -
-        /// 
-        /// The following arguments apply to creating an image from an existing Linode Instance:
         /// </summary>
         [Input("waitForReplications")]
         public Input<bool>? WaitForReplications { get; set; }

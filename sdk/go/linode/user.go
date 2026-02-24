@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// Create an unrestricted user:
-//
 // ```go
 // package main
 //
@@ -43,9 +41,6 @@ import (
 //	}
 //
 // ```
-//
-// Create a restricted user with grants:
-//
 // ```go
 // package main
 //

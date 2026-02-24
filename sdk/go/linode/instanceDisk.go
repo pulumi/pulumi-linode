@@ -19,8 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// Creating a simple 512 MB Linode Instance Disk:
-//
 // ```go
 // package main
 //
@@ -55,9 +53,6 @@ import (
 //	}
 //
 // ```
-//
-// Creating a complex bootable Instance Disk:
-//
 // ```go
 // package main
 //
@@ -105,7 +100,7 @@ import (
 //
 // ## Import
 //
-// Instance Disks can be imported using the `linode_id` followed by the Instance Disk `id` separated by a comma, e.g.
+// Instance Disks can be imported using the `linodeId` followed by the Instance Disk `id` separated by a comma, e.g.
 //
 // ```sh
 // $ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321

@@ -17,8 +17,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Create a basic lock that prevents a Linode from being deleted:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -34,9 +32,6 @@ import * as utilities from "./utilities";
  *     lockType: "cannot_delete",
  * });
  * ```
- *
- * Create a lock that prevents a Linode and its subresources (disks, configs, etc.) from being deleted:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

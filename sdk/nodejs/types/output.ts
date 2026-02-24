@@ -6427,8 +6427,6 @@ export interface InstanceConfigInterface {
      * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
      *
      * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-     *
-     * The following computed attribute is available in a VPC interface:
      */
     primary?: boolean;
     /**
@@ -6600,8 +6598,6 @@ export interface InstanceInterface {
      * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
      *
      * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-     *
-     * The following computed attribute is available in a VPC interface:
      */
     primary?: boolean;
     /**

@@ -31,8 +31,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Creating a simple PostgreSQL database that does not allow connections:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -66,9 +64,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a simple PostgreSQL database that allows connections from all IPv4 addresses:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -103,9 +98,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a complex PostgreSQL database:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -148,9 +140,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a PostgreSQL database with engine config fields specified:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -231,9 +220,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a forked PostgreSQL database:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -268,9 +254,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating a PostgreSQL database hidden behind a VPC:
- * 
  * <pre>
  * {@code
  * package generated_program;

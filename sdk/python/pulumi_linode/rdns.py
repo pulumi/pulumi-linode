@@ -189,28 +189,6 @@ class Rdns(pulumi.CustomResource):
 
         The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
 
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_instance = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            my_instance.append(linode.Instance(f"my_instance-{range['value']}",
-                label=f"simple_instance-{range['value'] + 1}",
-                image="linode/ubuntu22.04",
-                region="us-central",
-                type="g6-standard-1",
-                root_pass="terr4form-test"))
-        my_rdns = []
-        def create_my_rdns(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                my_rdns.append(linode.Rdns(f"my_rdns-{range['value']}",
-                    address=my_instance[range["value"]].ip_address.apply(lambda ip_address: ip_address),
-                    rdns=my_instance[range["value"]].ip_address.apply(lambda ip_address: f"{ip_address}.nip.io")))
-
-        (len(my_instance)).apply(create_my_rdns)
-        ```
-
         ## Import
 
         Linodes RDNS resources can be imported using the address as the `id`.
@@ -256,28 +234,6 @@ class Rdns(pulumi.CustomResource):
         ```
 
         The following example shows how one might use this resource to configure RDNS for multiple IP addresses.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        my_instance = []
-        for range in [{"value": i} for i in range(0, 3)]:
-            my_instance.append(linode.Instance(f"my_instance-{range['value']}",
-                label=f"simple_instance-{range['value'] + 1}",
-                image="linode/ubuntu22.04",
-                region="us-central",
-                type="g6-standard-1",
-                root_pass="terr4form-test"))
-        my_rdns = []
-        def create_my_rdns(range_body):
-            for range in [{"value": i} for i in range(0, range_body)]:
-                my_rdns.append(linode.Rdns(f"my_rdns-{range['value']}",
-                    address=my_instance[range["value"]].ip_address.apply(lambda ip_address: ip_address),
-                    rdns=my_instance[range["value"]].ip_address.apply(lambda ip_address: f"{ip_address}.nip.io")))
-
-        (len(my_instance)).apply(create_my_rdns)
-        ```
 
         ## Import
 

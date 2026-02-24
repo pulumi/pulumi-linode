@@ -12,8 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Get information about all Linode Instance types with a certain number of VCPUs:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -26,9 +24,6 @@ import * as utilities from "./utilities";
  * });
  * export const typeIds = specific_types.then(specific_types => specific_types.types.map(__item => __item.id));
  * ```
- *
- * Get information about all Linode Instance types:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -99,8 +94,6 @@ export interface GetInstanceTypesResult {
  *
  * ## Example Usage
  *
- * Get information about all Linode Instance types with a certain number of VCPUs:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
@@ -113,9 +106,6 @@ export interface GetInstanceTypesResult {
  * });
  * export const typeIds = specific_types.then(specific_types => specific_types.types.map(__item => __item.id));
  * ```
- *
- * Get information about all Linode Instance types:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

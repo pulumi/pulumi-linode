@@ -15,8 +15,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Create a VPC subnet:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,9 +32,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Create a VPC subnet with an implicitly determined IPv6 range:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,7 +83,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linode Virtual Private Cloud (VPC) Subnet can be imported using the `vpc_id` followed by the subnet `id` separated by a comma, e.g.
+    /// Linode Virtual Private Cloud (VPC) Subnet can be imported using the `VpcId` followed by the subnet `Id` separated by a comma, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/vpcSubnet:VpcSubnet my_subnet_duplicated 1234567,7654321

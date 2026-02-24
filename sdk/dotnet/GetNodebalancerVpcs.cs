@@ -19,8 +19,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Retrieve all VPC configurations under a NodeBalancer:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,9 +34,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of "10.0.0.4/30":
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -89,8 +84,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Retrieve all VPC configurations under a NodeBalancer:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -106,9 +99,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of "10.0.0.4/30":
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -159,8 +149,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Retrieve all VPC configurations under a NodeBalancer:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -176,9 +164,6 @@ namespace Pulumi.Linode
         /// 
         /// });
         /// ```
-        /// 
-        /// Retrieve all VPC configurations under a NodeBalancer with an IPv4 range of "10.0.0.4/30":
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

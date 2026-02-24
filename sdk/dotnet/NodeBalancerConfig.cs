@@ -51,7 +51,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// NodeBalancer Configs can be imported using the NodeBalancer `nodebalancer_id` followed by the NodeBalancer Config `id` separated by a comma, e.g.
+    /// NodeBalancer Configs can be imported using the NodeBalancer `NodebalancerId` followed by the NodeBalancer Config `Id` separated by a comma, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321

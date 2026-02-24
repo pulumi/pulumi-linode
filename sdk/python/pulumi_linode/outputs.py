@@ -2753,8 +2753,6 @@ class InstanceConfigInterface(dict):
                * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
                
                * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-               
-               The following computed attribute is available in a VPC interface:
         :param _builtins.int subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
         :param _builtins.int vpc_id: The ID of VPC which this interface is attached to.
         """
@@ -2853,8 +2851,6 @@ class InstanceConfigInterface(dict):
         * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 
         * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-
-        The following computed attribute is available in a VPC interface:
         """
         return pulumi.get(self, "primary")
 
@@ -3342,8 +3338,6 @@ class InstanceInterface(dict):
                * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
                
                * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-               
-               The following computed attribute is available in a VPC interface:
         :param _builtins.int subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
         :param _builtins.int vpc_id: The ID of VPC which this interface is attached to.
         """
@@ -3444,8 +3438,6 @@ class InstanceInterface(dict):
         * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
 
         * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
-
-        The following computed attribute is available in a VPC interface:
         """
         return pulumi.get(self, "primary")
 

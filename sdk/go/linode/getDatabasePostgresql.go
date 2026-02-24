@@ -18,8 +18,6 @@ import (
 //
 // ## Example Usage
 //
-// Get information about a PostgreSQL database:
-//
 // ```go
 // package main
 //

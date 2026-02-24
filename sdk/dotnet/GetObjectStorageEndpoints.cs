@@ -17,8 +17,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,8 +83,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Example Usage
         /// 
-        /// Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
-        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -152,8 +148,6 @@ namespace Pulumi.Linode
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-endpoints).
         /// 
         /// ## Example Usage
-        /// 
-        /// Get an endpoint of E3 type (highest performance and capacity) of Linode Object Storage services:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

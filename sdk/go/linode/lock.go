@@ -24,8 +24,6 @@ import (
 //
 // ## Example Usage
 //
-// Create a basic lock that prevents a Linode from being deleted:
-//
 // ```go
 // package main
 //
@@ -59,9 +57,6 @@ import (
 //	}
 //
 // ```
-//
-// Create a lock that prevents a Linode and its subresources (disks, configs, etc.) from being deleted:
-//
 // ```go
 // package main
 //

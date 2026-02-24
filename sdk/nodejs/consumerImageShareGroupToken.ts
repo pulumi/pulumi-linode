@@ -10,8 +10,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * Create a token for an Image Share Group:
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";

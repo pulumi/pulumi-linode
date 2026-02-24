@@ -219,8 +219,6 @@ class Vpc(pulumi.CustomResource):
 
         ## Example Usage
 
-        Create a VPC:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -280,8 +278,6 @@ class Vpc(pulumi.CustomResource):
         Please refer to VpcSubnet to manage the subnets under a Linode VPC.
 
         ## Example Usage
-
-        Create a VPC:
 
         ```python
         import pulumi

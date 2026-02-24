@@ -522,8 +522,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
         ## Example Usage
 
-        The following example shows how one might use this resource to create an Object Storage Bucket:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -532,9 +530,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
             region="us-mia",
             label="mybucket")
         ```
-
-        Creating an Object Storage Bucket with Lifecycle rules:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -601,8 +596,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
         ## Example Usage
 
-        The following example shows how one might use this resource to create an Object Storage Bucket:
-
         ```python
         import pulumi
         import pulumi_linode as linode
@@ -611,9 +604,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
             region="us-mia",
             label="mybucket")
         ```
-
-        Creating an Object Storage Bucket with Lifecycle rules:
-
         ```python
         import pulumi
         import pulumi_linode as linode

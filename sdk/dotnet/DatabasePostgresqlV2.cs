@@ -17,8 +17,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// Creating a simple PostgreSQL database that does not allow connections:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,9 +35,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a simple PostgreSQL database that allows connections from all IPv4 addresses:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -62,9 +57,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a complex PostgreSQL database:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,9 +87,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a PostgreSQL database with engine config fields specified:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -163,9 +152,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a forked PostgreSQL database:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -185,9 +171,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// 
-    /// Creating a PostgreSQL database hidden behind a VPC:
-    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -249,7 +232,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linode PostgreSQL Databases can be imported using the `id`, e.g.
+    /// Linode PostgreSQL Databases can be imported using the `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/databasePostgresqlV2:DatabasePostgresqlV2 foobar 1234567

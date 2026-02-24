@@ -16,8 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// The following example shows how one might use this data source to access information about Maintenance Policies:
-//
 // ```go
 // package main
 //
@@ -40,8 +38,6 @@ import (
 //	}
 //
 // ```
-//
-// The following example shows how one might use this data source to access information about Maintenance Policies with a certain slug:
 func GetMaintenancePolicies(ctx *pulumi.Context, args *GetMaintenancePoliciesArgs, opts ...pulumi.InvokeOption) (*GetMaintenancePoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMaintenancePoliciesResult

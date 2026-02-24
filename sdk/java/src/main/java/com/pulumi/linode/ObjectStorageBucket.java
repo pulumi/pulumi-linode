@@ -24,8 +24,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * The following example shows how one might use this resource to create an Object Storage Bucket:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -57,9 +55,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Creating an Object Storage Bucket with Lifecycle rules:
- * 
  * <pre>
  * {@code
  * package generated_program;

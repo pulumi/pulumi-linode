@@ -27,8 +27,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * Create a basic lock that prevents a Linode from being deleted:
- * 
  * <pre>
  * {@code
  * package generated_program;
@@ -69,9 +67,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * 
- * Create a lock that prevents a Linode and its subresources (disks, configs, etc.) from being deleted:
- * 
  * <pre>
  * {@code
  * package generated_program;

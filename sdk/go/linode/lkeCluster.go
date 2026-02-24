@@ -12,6 +12,413 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages an LKE cluster.
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(3),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "test", &linode.LkeClusterArgs{
+//				Label:      pulumi.String("lke-e-cluster"),
+//				Region:     pulumi.String("us-lax"),
+//				K8sVersion: pulumi.String("v1.31.8+lke5"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("test"),
+//				},
+//				Tier: pulumi.String("enterprise"),
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g7-premium-2"),
+//						Count: pulumi.Int(3),
+//						Tags: pulumi.StringArray{
+//							pulumi.String("test"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type: pulumi.String("g6-standard-2"),
+//						Autoscaler: &linode.LkeClusterPoolAutoscalerArgs{
+//							Min: pulumi.Int(3),
+//							Max: pulumi.Int(10),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "test", &linode.LkeClusterArgs{
+//				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//				ControlPlane: &linode.LkeClusterControlPlaneArgs{
+//					HighAvailability: pulumi.Bool(true),
+//					Acl: &linode.LkeClusterControlPlaneAclArgs{
+//						Enabled: pulumi.Bool(true),
+//						Addresses: linode.LkeClusterControlPlaneAclAddressArray{
+//							&linode.LkeClusterControlPlaneAclAddressArgs{
+//								Ipv4s: pulumi.StringArray{
+//									pulumi.String("0.0.0.0/0"),
+//								},
+//								Ipv6s: pulumi.StringArray{
+//									pulumi.String("2001:db8::/32"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(2),
+//						Label: pulumi.String("db-pool"),
+//					},
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-1"),
+//						Count: pulumi.Int(3),
+//						Label: pulumi.String("app-pool"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:       pulumi.String("g6-standard-2"),
+//						Count:      pulumi.Int(2),
+//						Label:      pulumi.String("db-pool"),
+//						FirewallId: pulumi.Int(12345),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(2),
+//						Labels: pulumi.StringMap{
+//							"role":        pulumi.String("database"),
+//							"environment": pulumi.String("production"),
+//						},
+//					},
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-1"),
+//						Count: pulumi.Int(3),
+//						Labels: pulumi.StringMap{
+//							"role":        pulumi.String("application"),
+//							"environment": pulumi.String("production"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Nested Node Pool Caveats
+//
+// Due to limitations in the provider there are some minor caveats that may cause unexpected behavior when updating
+// nested `pool` blocks in this resource.
+// Primarily, the order of `pool` blocks is significant because the ID of each pool is resolved from
+// the Terraform state.
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-1"),
+//						Count: pulumi.Int(2),
+//					},
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(3),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(3),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Externally Managed Node Pools
+//
+// By default, the `LkeCluster` resource will account for all node pools under the corresponding cluster, meaning
+// any node pools created externally or managed by other resources will be removed on subsequent applies.
+//
+// To signal the provider to ignore externally managed node pools, the `externalPoolTags` attribute can be defined with
+// tags matching a tag on an externally managed node pool.
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			externalPoolTag := "external"
+//			my_cluster, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-mia"),
+//				ExternalPoolTags: pulumi.StringArray{
+//					pulumi.String(externalPoolTag),
+//				},
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-1"),
+//						Count: pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewLkeNodePool(ctx, "my-pool", &linode.LkeNodePoolArgs{
+//				ClusterId: my_cluster.ID(),
+//				Type:      pulumi.String("g6-standard-2"),
+//				NodeCount: pulumi.Int(3),
+//				Tags: pulumi.StringArray{
+//					pulumi.String(externalPoolTag),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // LKE Clusters can be imported using the `id`, e.g.

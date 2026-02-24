@@ -119,17 +119,12 @@ def get_database_mysql_backups(database_id: Optional[_builtins.int] = None,
 
     ## Example Usage
 
-    Get information about all backups for a MySQL database:
-
     ```python
     import pulumi
     import pulumi_linode as linode
 
     all_backups = linode.get_database_mysql_backups(database_id=12345)
     ```
-
-    Get information about all automatic MySQL Database Backups:
-
     ```python
     import pulumi
     import pulumi_linode as linode
@@ -180,17 +175,12 @@ def get_database_mysql_backups_output(database_id: Optional[pulumi.Input[_builti
 
     ## Example Usage
 
-    Get information about all backups for a MySQL database:
-
     ```python
     import pulumi
     import pulumi_linode as linode
 
     all_backups = linode.get_database_mysql_backups(database_id=12345)
     ```
-
-    Get information about all automatic MySQL Database Backups:
-
     ```python
     import pulumi
     import pulumi_linode as linode
