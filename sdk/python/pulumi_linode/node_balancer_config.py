@@ -40,6 +40,7 @@ class NodeBalancerConfigArgs:
                  udp_check_port: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a NodeBalancerConfig resource.
+
         :param pulumi.Input[_builtins.int] nodebalancer_id: The ID of the NodeBalancer to access.
                
                - - -
@@ -331,6 +332,7 @@ class _NodeBalancerConfigState:
                  udp_session_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering NodeBalancerConfig resources.
+
         :param pulumi.Input[_builtins.str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         :param pulumi.Input[_builtins.str] check: The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         :param pulumi.Input[_builtins.int] check_attempts: How many times to attempt a check before considering a backend to be down. (1-30)
@@ -718,6 +720,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
         $ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] algorithm: What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
@@ -784,6 +787,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/nodeBalancerConfig:NodeBalancerConfig http-foobar 1234567,7654321
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeBalancerConfigArgs args: The arguments to use to populate this resource's properties.

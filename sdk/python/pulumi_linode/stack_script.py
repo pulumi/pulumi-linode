@@ -29,6 +29,7 @@ class StackScriptArgs:
                  rev_note: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StackScript resource.
+
         :param pulumi.Input[_builtins.str] description: A description for the StackScript.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] images: A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
                
@@ -140,6 +141,7 @@ class _StackScriptState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StackScript resources.
+
         :param pulumi.Input[_builtins.str] created: The date this StackScript was created.
         :param pulumi.Input[_builtins.int] deployments_active: Count of currently active, deployed Linodes created from this StackScript.
         :param pulumi.Input[_builtins.int] deployments_total: The total number of times this StackScript has been deployed.
@@ -401,6 +403,7 @@ class StackScript(pulumi.CustomResource):
         $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description for the StackScript.
@@ -463,6 +466,7 @@ class StackScript(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/stackScript:StackScript mystackscript 1234567
         ```
+
 
         :param str resource_name: The name of the resource.
         :param StackScriptArgs args: The arguments to use to populate this resource's properties.

@@ -82,6 +82,7 @@ class DatabasePostgresqlV2Args:
                  updates: Optional[pulumi.Input['DatabasePostgresqlV2UpdatesArgs']] = None):
         """
         The set of arguments for constructing a DatabasePostgresqlV2 resource.
+
         :param pulumi.Input[_builtins.str] engine_id: The Managed Database engine in engine/version format. (e.g. `postgresql/16`)
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[_builtins.str] region: The region to use for the Managed Database.
@@ -1055,6 +1056,7 @@ class _DatabasePostgresqlV2State:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabasePostgresqlV2 resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[_builtins.str] ca_cert: The base64-encoded SSL CA certificate for the Managed Database.
         :param pulumi.Input[_builtins.int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
@@ -2445,6 +2447,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         $ pulumi import linode:index/databasePostgresqlV2:DatabasePostgresqlV2 foobar 1234567
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
@@ -2690,6 +2693,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/databasePostgresqlV2:DatabasePostgresqlV2 foobar 1234567
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabasePostgresqlV2Args args: The arguments to use to populate this resource's properties.

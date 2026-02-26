@@ -33,6 +33,7 @@ class DatabaseMysqlArgs:
                  updates: Optional[pulumi.Input['DatabaseMysqlUpdatesArgs']] = None):
         """
         The set of arguments for constructing a DatabaseMysql resource.
+
         :param pulumi.Input[_builtins.str] engine_id: The Managed Database engine in engine/version format. (e.g. `mysql/8.0.30`)
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[_builtins.str] region: The region to use for the Managed Database.
@@ -223,6 +224,7 @@ class _DatabaseMysqlState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseMysql resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[_builtins.str] ca_cert: The base64-encoded SSL CA certificate for the Managed Database instance.
         :param pulumi.Input[_builtins.int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
@@ -624,6 +626,7 @@ class DatabaseMysql(pulumi.CustomResource):
         $ pulumi import linode:index/databaseMysql:DatabaseMysql foobar 1234567
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
@@ -715,6 +718,7 @@ class DatabaseMysql(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/databaseMysql:DatabaseMysql foobar 1234567
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseMysqlArgs args: The arguments to use to populate this resource's properties.

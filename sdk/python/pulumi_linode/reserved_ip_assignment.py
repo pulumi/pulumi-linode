@@ -28,6 +28,7 @@ class ReservedIpAssignmentArgs:
                  rdns: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReservedIpAssignment resource.
+
         :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
         :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
@@ -121,6 +122,7 @@ class _ReservedIpAssignmentState:
                  vpc_nat11s: Optional[pulumi.Input[Sequence[pulumi.Input['ReservedIpAssignmentVpcNat11Args']]]] = None):
         """
         Input properties used for looking up and filtering ReservedIpAssignment resources.
+
         :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
         :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address
@@ -318,6 +320,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
                  __props__=None):
         """
         Create a ReservedIpAssignment resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
@@ -334,6 +337,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a ReservedIpAssignment resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param ReservedIpAssignmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

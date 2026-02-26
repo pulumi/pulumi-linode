@@ -26,6 +26,7 @@ class ObjectStorageKeyArgs:
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ObjectStorageKey resource.
+
         :param pulumi.Input[_builtins.str] label: The label given to this key. For display purposes only.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A set of regions where the key will grant access to create buckets.
@@ -89,6 +90,7 @@ class _ObjectStorageKeyState:
                  secret_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObjectStorageKey resources.
+
         :param pulumi.Input[_builtins.str] access_key: This keypair's access key. This is not secret.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         :param pulumi.Input[_builtins.str] label: The label given to this key. For display purposes only.
@@ -263,6 +265,7 @@ class ObjectStorageKey(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
@@ -328,6 +331,7 @@ class ObjectStorageKey(pulumi.CustomResource):
                 },
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageKeyArgs args: The arguments to use to populate this resource's properties.

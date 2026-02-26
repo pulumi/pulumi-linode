@@ -23,6 +23,7 @@ class SshKeyArgs:
                  ssh_key: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SshKey resource.
+
         :param pulumi.Input[_builtins.str] label: A label for the SSH Key.
         :param pulumi.Input[_builtins.str] ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
         """
@@ -62,6 +63,7 @@ class _SshKeyState:
                  ssh_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SshKey resources.
+
         :param pulumi.Input[_builtins.str] created: The date this SSH Key was created.
         :param pulumi.Input[_builtins.str] label: A label for the SSH Key.
         :param pulumi.Input[_builtins.str] ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
@@ -154,6 +156,7 @@ class SshKey(pulumi.CustomResource):
         $ pulumi import linode:index/sshKey:SshKey mysshkey 1234567
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] label: A label for the SSH Key.
@@ -199,6 +202,7 @@ class SshKey(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/sshKey:SshKey mysshkey 1234567
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SshKeyArgs args: The arguments to use to populate this resource's properties.

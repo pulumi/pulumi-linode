@@ -24,6 +24,7 @@ class FirewallDeviceInitArgs:
                  entity_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallDevice resource.
+
         :param pulumi.Input[_builtins.int] entity_id: The unique ID of the entity to attach.
         :param pulumi.Input[_builtins.int] firewall_id: The unique ID of the target Firewall.
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to attach. (default: `linode`)
@@ -80,6 +81,7 @@ class _FirewallDeviceState:
                  updated: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallDevice resources.
+
         :param pulumi.Input[_builtins.str] created: When the Firewall Device was last created.
         :param pulumi.Input[_builtins.int] entity_id: The unique ID of the entity to attach.
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to attach. (default: `linode`)
@@ -209,6 +211,7 @@ class FirewallDevice(pulumi.CustomResource):
         $ pulumi import linode:index/firewallDevice:FirewallDevice my_device_duplicated 1234567,7654321
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] entity_id: The unique ID of the entity to attach.
@@ -261,6 +264,7 @@ class FirewallDevice(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/firewallDevice:FirewallDevice my_device_duplicated 1234567,7654321
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallDeviceInitArgs args: The arguments to use to populate this resource's properties.

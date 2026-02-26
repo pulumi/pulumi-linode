@@ -24,6 +24,7 @@ class LockArgs:
                  lock_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Lock resource.
+
         :param pulumi.Input[_builtins.int] entity_id: The ID of the entity to lock.
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
         :param pulumi.Input[_builtins.str] lock_type: The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
@@ -79,6 +80,7 @@ class _LockState:
                  lock_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Lock resources.
+
         :param pulumi.Input[_builtins.int] entity_id: The ID of the entity to lock.
         :param pulumi.Input[_builtins.str] entity_label: The label of the locked entity.
         :param pulumi.Input[_builtins.str] entity_type: The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
@@ -215,6 +217,7 @@ class Lock(pulumi.CustomResource):
         $ pulumi import linode:index/lock:Lock my-lock 1234567
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] entity_id: The ID of the entity to lock.
@@ -274,6 +277,7 @@ class Lock(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/lock:Lock my-lock 1234567
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LockArgs args: The arguments to use to populate this resource's properties.

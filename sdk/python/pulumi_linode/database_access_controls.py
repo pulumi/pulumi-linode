@@ -24,6 +24,7 @@ class DatabaseAccessControlsArgs:
                  database_type: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DatabaseAccessControls resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
         :param pulumi.Input[_builtins.int] database_id: The unique ID of the target database.
         :param pulumi.Input[_builtins.str] database_type: The unique type of the target database. (`mysql`, `postgresql`)
@@ -77,6 +78,7 @@ class _DatabaseAccessControlsState:
                  database_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseAccessControls resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
         :param pulumi.Input[_builtins.int] database_id: The unique ID of the target database.
         :param pulumi.Input[_builtins.str] database_type: The unique type of the target database. (`mysql`, `postgresql`)
@@ -161,6 +163,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             allow_lists=[my_instance.ip_address])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
@@ -198,6 +201,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             database_type="mysql",
             allow_lists=[my_instance.ip_address])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseAccessControlsArgs args: The arguments to use to populate this resource's properties.

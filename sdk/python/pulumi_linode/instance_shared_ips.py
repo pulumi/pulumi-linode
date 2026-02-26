@@ -23,6 +23,7 @@ class InstanceSharedIpsArgs:
                  linode_id: pulumi.Input[_builtins.int]):
         """
         The set of arguments for constructing a InstanceSharedIps resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: The set of IPs to share with the Linode.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to share the IPs to.
         """
@@ -61,6 +62,7 @@ class _InstanceSharedIpsState:
                  linode_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering InstanceSharedIps resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: The set of IPs to share with the Linode.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to share the IPs to.
         """
@@ -137,6 +139,7 @@ class InstanceSharedIps(pulumi.CustomResource):
             addresses=[primary.address])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: The set of IPs to share with the Linode.
@@ -181,6 +184,7 @@ class InstanceSharedIps(pulumi.CustomResource):
             linode_id=secondary.id,
             addresses=[primary.address])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceSharedIpsArgs args: The arguments to use to populate this resource's properties.

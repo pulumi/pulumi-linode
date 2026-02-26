@@ -36,6 +36,7 @@ class InstanceConfigInitArgs:
                  virt_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceConfig resource.
+
         :param pulumi.Input[_builtins.str] label: The Config’s label for display purposes only.
                
                - - -
@@ -270,6 +271,7 @@ class _InstanceConfigState:
                  virt_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceConfig resources.
+
         :param pulumi.Input[_builtins.bool] booted: If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
         :param pulumi.Input[_builtins.str] comments: Optional field for arbitrary User comments on this Config.
                
@@ -618,6 +620,7 @@ class InstanceConfig(pulumi.CustomResource):
         $ pulumi import linode:index/instanceConfig:InstanceConfig my-config 1234567,7654321
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] booted: If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
@@ -757,6 +760,7 @@ class InstanceConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/instanceConfig:InstanceConfig my-config 1234567,7654321
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceConfigInitArgs args: The arguments to use to populate this resource's properties.

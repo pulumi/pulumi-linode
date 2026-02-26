@@ -41,6 +41,7 @@ class ObjectStorageObjectArgs:
                  website_redirect: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObjectStorageObject resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to put the object in.
         :param pulumi.Input[_builtins.str] key: They name of the object once it is in the bucket.
         :param pulumi.Input[_builtins.str] access_key: The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
@@ -380,6 +381,7 @@ class _ObjectStorageObjectState:
                  website_redirect: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObjectStorageObject resources.
+
         :param pulumi.Input[_builtins.str] access_key: The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
                * configuring the `obj_access_key` in the provider configuration;
                * or, opting-in generating it implicitly at apply-time using `obj_use_temp_keys` at provider-level.
@@ -789,6 +791,7 @@ class ObjectStorageObject(pulumi.CustomResource):
             source=std.pathexpand(input="~/files/log.txt").result)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_key: The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
@@ -873,6 +876,7 @@ class ObjectStorageObject(pulumi.CustomResource):
             key="my-object",
             source=std.pathexpand(input="~/files/log.txt").result)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageObjectArgs args: The arguments to use to populate this resource's properties.

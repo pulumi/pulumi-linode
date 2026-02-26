@@ -33,6 +33,7 @@ class FirewallArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Firewall resource.
+
         :param pulumi.Input[_builtins.str] inbound_policy: The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
                
                * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
@@ -210,6 +211,7 @@ class _FirewallState:
                  updated: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
+
         :param pulumi.Input[_builtins.str] created: When this firewall was created
         :param pulumi.Input[Sequence[pulumi.Input['FirewallDeviceArgs']]] devices: The devices associated with this firewall.
         :param pulumi.Input[_builtins.bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
@@ -516,6 +518,7 @@ class Firewall(pulumi.CustomResource):
         $ pulumi import linode:index/firewall:Firewall my_firewall 12345
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
@@ -606,6 +609,7 @@ class Firewall(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/firewall:Firewall my_firewall 12345
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallArgs args: The arguments to use to populate this resource's properties.

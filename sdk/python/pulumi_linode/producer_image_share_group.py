@@ -26,6 +26,7 @@ class ProducerImageShareGroupArgs:
                  images: Optional[pulumi.Input[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]] = None):
         """
         The set of arguments for constructing a ProducerImageShareGroup resource.
+
         :param pulumi.Input[_builtins.str] label: The label of the Image Share Group.
         :param pulumi.Input[_builtins.str] description: The description of the Image Share Group
                
@@ -92,6 +93,7 @@ class _ProducerImageShareGroupState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProducerImageShareGroup resources.
+
         :param pulumi.Input[_builtins.str] created: The date and time the Image Share Group was created.
         :param pulumi.Input[_builtins.str] description: The description of the Image Share Group
                
@@ -287,6 +289,7 @@ class ProducerImageShareGroup(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the Image Share Group
@@ -328,6 +331,7 @@ class ProducerImageShareGroup(pulumi.CustomResource):
                 "description": "My image description.",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProducerImageShareGroupArgs args: The arguments to use to populate this resource's properties.

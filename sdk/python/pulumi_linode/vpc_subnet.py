@@ -27,6 +27,7 @@ class VpcSubnetArgs:
                  ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]]] = None):
         """
         The set of arguments for constructing a VpcSubnet resource.
+
         :param pulumi.Input[_builtins.str] label: The label of the VPC. Only contains ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC subnet.
         :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
@@ -104,6 +105,7 @@ class _VpcSubnetState:
                  vpc_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering VpcSubnet resources.
+
         :param pulumi.Input[_builtins.str] created: The date and time when the VPC was created.
         :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
                
@@ -280,6 +282,7 @@ class VpcSubnet(pulumi.CustomResource):
         $ pulumi import linode:index/vpcSubnet:VpcSubnet my_subnet_duplicated 1234567,7654321
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
@@ -347,6 +350,7 @@ class VpcSubnet(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/vpcSubnet:VpcSubnet my_subnet_duplicated 1234567,7654321
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcSubnetArgs args: The arguments to use to populate this resource's properties.

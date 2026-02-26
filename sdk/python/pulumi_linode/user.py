@@ -36,6 +36,7 @@ class UserArgs:
                  vpc_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]]] = None):
         """
         The set of arguments for constructing a User resource.
+
         :param pulumi.Input[_builtins.str] email: The email address of the user.
         :param pulumi.Input[_builtins.str] username: The username of the user.
         :param pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]] domain_grants: The domains the user has permissions access to.
@@ -261,6 +262,7 @@ class _UserState:
                  vpc_grants: Optional[pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]]] = None):
         """
         Input properties used for looking up and filtering User resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]] domain_grants: The domains the user has permissions access to.
         :param pulumi.Input[_builtins.str] email: The email address of the user.
         :param pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]] firewall_grants: The firewalls the user has permissions access to.
@@ -596,6 +598,7 @@ class User(pulumi.CustomResource):
 
         * `permissions` - (required) The level of access this User has to this entity. (`read_only`, `read_write`)
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UserDomainGrantArgs', 'UserDomainGrantArgsDict']]]] domain_grants: The domains the user has permissions access to.
@@ -685,6 +688,7 @@ class User(pulumi.CustomResource):
         * `id` - (required) The ID of the entity this grant applies to.
 
         * `permissions` - (required) The level of access this User has to this entity. (`read_only`, `read_write`)
+
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

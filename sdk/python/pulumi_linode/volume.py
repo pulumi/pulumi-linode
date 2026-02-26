@@ -31,6 +31,7 @@ class VolumeArgs:
                  timeouts: Optional[pulumi.Input['VolumeTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Volume resource.
+
         :param pulumi.Input[_builtins.str] label: The label of the Linode Volume
         :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         :param pulumi.Input[_builtins.int] linode_id: The ID of a Linode Instance where the Volume should be attached.
@@ -168,6 +169,7 @@ class _VolumeState:
                  timeouts: Optional[pulumi.Input['VolumeTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering Volume resources.
+
         :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         :param pulumi.Input[_builtins.str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         :param pulumi.Input[_builtins.str] label: The label of the Linode Volume
@@ -399,6 +401,7 @@ class Volume(pulumi.CustomResource):
         $ pulumi import linode:index/volume:Volume myvolume 1234567
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
@@ -479,6 +482,7 @@ class Volume(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/volume:Volume myvolume 1234567
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.

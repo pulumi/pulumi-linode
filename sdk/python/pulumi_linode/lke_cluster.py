@@ -35,6 +35,7 @@ class LkeClusterArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a LkeCluster resource.
+
         :param pulumi.Input[_builtins.str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[_builtins.str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
@@ -243,6 +244,7 @@ class _LkeClusterState:
                  vpc_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering LkeCluster resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input[_builtins.bool] apl_enabled: Enables the App Platform Layer
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
@@ -723,6 +725,7 @@ class LkeCluster(pulumi.CustomResource):
         $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] apl_enabled: Enables the App Platform Layer
@@ -957,6 +960,7 @@ class LkeCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/lkeCluster:LkeCluster my_cluster 12345
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LkeClusterArgs args: The arguments to use to populate this resource's properties.

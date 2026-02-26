@@ -25,6 +25,7 @@ class NetworkingIpAssignmentArgs:
                  assignments: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkingIpAssignmentAssignmentArgs']]]] = None):
         """
         The set of arguments for constructing a NetworkingIpAssignment resource.
+
         :param pulumi.Input[_builtins.str] region: The region where the IP addresses will be assigned.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkingIpAssignmentAssignmentArgs']]] assignments: A list of IP/Linode assignments to apply.
         """
@@ -64,6 +65,7 @@ class _NetworkingIpAssignmentState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkingIpAssignment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['NetworkingIpAssignmentAssignmentArgs']]] assignments: A list of IP/Linode assignments to apply.
         :param pulumi.Input[_builtins.str] region: The region where the IP addresses will be assigned.
         """
@@ -135,6 +137,7 @@ class NetworkingIpAssignment(pulumi.CustomResource):
 
         Network IP assignments cannot be imported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict']]]] assignments: A list of IP/Linode assignments to apply.
@@ -174,6 +177,7 @@ class NetworkingIpAssignment(pulumi.CustomResource):
         ## Import
 
         Network IP assignments cannot be imported.
+
 
         :param str resource_name: The name of the resource.
         :param NetworkingIpAssignmentArgs args: The arguments to use to populate this resource's properties.

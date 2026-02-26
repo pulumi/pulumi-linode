@@ -27,6 +27,7 @@ class PlacementGroupArgs:
                  placement_group_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PlacementGroup resource.
+
         :param pulumi.Input[_builtins.str] label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] placement_group_type: The placement group type to use when placing Linodes in this group.
         :param pulumi.Input[_builtins.str] region: The region of the Placement Group.
@@ -98,6 +99,7 @@ class _PlacementGroupState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PlacementGroup resources.
+
         :param pulumi.Input[_builtins.bool] is_compliant: Whether this Linode is currently compliant with the group's placement group type.
         :param pulumi.Input[_builtins.str] label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[Sequence[pulumi.Input['PlacementGroupMemberArgs']]] members: A set of Linodes currently assigned to this Placement Group.
@@ -226,6 +228,7 @@ class PlacementGroup(pulumi.CustomResource):
         $ pulumi import linode:index/placementGroup:PlacementGroup mygroup 1234567
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
@@ -262,6 +265,7 @@ class PlacementGroup(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/placementGroup:PlacementGroup mygroup 1234567
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PlacementGroupArgs args: The arguments to use to populate this resource's properties.

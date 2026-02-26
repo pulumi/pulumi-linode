@@ -30,6 +30,7 @@ class NodeBalancerArgs:
                  vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]]] = None):
         """
         The set of arguments for constructing a NodeBalancer resource.
+
         :param pulumi.Input[_builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[_builtins.int] client_udp_sess_throttle: Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
                
@@ -165,6 +166,7 @@ class _NodeBalancerState:
                  vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]]] = None):
         """
         Input properties used for looking up and filtering NodeBalancer resources.
+
         :param pulumi.Input[_builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[_builtins.int] client_udp_sess_throttle: Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
                
@@ -443,6 +445,7 @@ class NodeBalancer(pulumi.CustomResource):
         $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
@@ -505,6 +508,7 @@ class NodeBalancer(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/nodeBalancer:NodeBalancer mynodebalancer 1234567
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeBalancerArgs args: The arguments to use to populate this resource's properties.
