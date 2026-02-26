@@ -28,6 +28,7 @@ class NetworkingIpArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkingIp resource.
+
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         :param pulumi.Input[_builtins.bool] public: Whether the IP address is public. Defaults to true.
         :param pulumi.Input[_builtins.str] region: The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
@@ -122,6 +123,7 @@ class _NetworkingIpState:
                  vpc_nat11: Optional[pulumi.Input['NetworkingIpVpcNat11Args']] = None):
         """
         Input properties used for looking up and filtering NetworkingIp resources.
+
         :param pulumi.Input[_builtins.str] address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
@@ -327,6 +329,7 @@ class NetworkingIp(pulumi.CustomResource):
         $ pulumi import linode:index/networkingIp:NetworkingIp example_ip 172.104.30.209
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
@@ -365,6 +368,7 @@ class NetworkingIp(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/networkingIp:NetworkingIp example_ip 172.104.30.209
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NetworkingIpArgs args: The arguments to use to populate this resource's properties.

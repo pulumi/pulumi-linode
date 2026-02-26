@@ -34,6 +34,7 @@ class DomainArgs:
                  ttl_sec: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.str] domain: The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
         :param pulumi.Input[_builtins.str] type: If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
@@ -252,6 +253,7 @@ class _DomainState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
         :param pulumi.Input[_builtins.str] description: A description for this Domain. This is for display purposes only.
         :param pulumi.Input[_builtins.str] domain: The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
@@ -509,6 +511,7 @@ class Domain(pulumi.CustomResource):
         $ pulumi import linode:index/domain:Domain foobar 1234567
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
@@ -567,6 +570,7 @@ class Domain(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/domain:Domain foobar 1234567
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

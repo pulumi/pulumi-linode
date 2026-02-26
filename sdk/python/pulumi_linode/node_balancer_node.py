@@ -28,6 +28,7 @@ class NodeBalancerNodeArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a NodeBalancerNode resource.
+
         :param pulumi.Input[_builtins.str] address: The private IP Address where this backend can be reached. This must be a private IP address.
                
                - - -
@@ -150,6 +151,7 @@ class _NodeBalancerNodeState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering NodeBalancerNode resources.
+
         :param pulumi.Input[_builtins.str] address: The private IP Address where this backend can be reached. This must be a private IP address.
                
                - - -
@@ -318,6 +320,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         $ pulumi import linode:index/nodeBalancerNode:NodeBalancerNode https-foobar-1 1234567,7654321,9999999
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The private IP Address where this backend can be reached. This must be a private IP address.
@@ -347,6 +350,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/nodeBalancerNode:NodeBalancerNode https-foobar-1 1234567,7654321,9999999
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NodeBalancerNodeArgs args: The arguments to use to populate this resource's properties.

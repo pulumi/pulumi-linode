@@ -35,6 +35,7 @@ class ObjectStorageBucketArgs:
                  versioning: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ObjectStorageBucket resource.
+
         :param pulumi.Input[_builtins.str] label: The label of the Linode Object Storage Bucket.
         :param pulumi.Input[_builtins.str] access_key: The access key to authenticate with. If not specified with the resource, its value can be
                * configured by `obj_access_key` in the provider configuration;
@@ -258,6 +259,7 @@ class _ObjectStorageBucketState:
                  versioning: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ObjectStorageBucket resources.
+
         :param pulumi.Input[_builtins.str] access_key: The access key to authenticate with. If not specified with the resource, its value can be
                * configured by `obj_access_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
@@ -560,6 +562,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
         $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_key: The access key to authenticate with. If not specified with the resource, its value can be
@@ -633,6 +636,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ObjectStorageBucketArgs args: The arguments to use to populate this resource's properties.

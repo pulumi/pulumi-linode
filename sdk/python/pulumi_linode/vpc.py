@@ -27,6 +27,7 @@ class VpcArgs:
                  ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]] = None):
         """
         The set of arguments for constructing a Vpc resource.
+
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
@@ -103,6 +104,7 @@ class _VpcState:
                  updated: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vpc resources.
+
         :param pulumi.Input[_builtins.str] created: The date and time when the VPC was created.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
                
@@ -256,6 +258,7 @@ class Vpc(pulumi.CustomResource):
 
         * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
@@ -315,6 +318,7 @@ class Vpc(pulumi.CustomResource):
         * `allocation_class` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
 
         * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+
 
         :param str resource_name: The name of the resource.
         :param VpcArgs args: The arguments to use to populate this resource's properties.

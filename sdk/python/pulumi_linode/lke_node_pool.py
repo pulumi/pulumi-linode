@@ -34,6 +34,7 @@ class LkeNodePoolArgs:
                  update_strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LkeNodePool resource.
+
         :param pulumi.Input[_builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[_builtins.str] type: A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
@@ -222,6 +223,7 @@ class _LkeNodePoolState:
                  update_strategy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LkeNodePool resources.
+
         :param pulumi.Input[_builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
@@ -527,6 +529,7 @@ class LkeNodePool(pulumi.CustomResource):
         $ pulumi import linode:index/lkeNodePool:LkeNodePool my_pool 150003,12345
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
@@ -634,6 +637,7 @@ class LkeNodePool(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/lkeNodePool:LkeNodePool my_pool 150003,12345
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LkeNodePoolArgs args: The arguments to use to populate this resource's properties.

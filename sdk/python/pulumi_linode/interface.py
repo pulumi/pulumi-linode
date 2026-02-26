@@ -29,6 +29,7 @@ class InterfaceArgs:
                  vpc: Optional[pulumi.Input['InterfaceVpcArgs']] = None):
         """
         The set of arguments for constructing a Interface resource.
+
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to assign this interface to.
         :param pulumi.Input['InterfaceDefaultRouteArgs'] default_route: Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
         :param pulumi.Input[_builtins.int] firewall_id: The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
@@ -132,6 +133,7 @@ class _InterfaceState:
                  vpc: Optional[pulumi.Input['InterfaceVpcArgs']] = None):
         """
         Input properties used for looking up and filtering Interface resources.
+
         :param pulumi.Input['InterfaceDefaultRouteArgs'] default_route: Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
         :param pulumi.Input[_builtins.int] firewall_id: The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to assign this interface to.
@@ -418,6 +420,7 @@ class Interface(pulumi.CustomResource):
         $ pulumi import linode:index/interface:Interface example 12345,67890
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict']] default_route: Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
@@ -612,6 +615,7 @@ class Interface(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/interface:Interface example 12345,67890
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InterfaceArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class InstanceIpArgs:
                  rdns: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceIp resource.
+
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
         :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces.
         :param pulumi.Input[_builtins.bool] public: Whether the IPv4 address is public or private. Defaults to true.
@@ -105,6 +106,7 @@ class _InstanceIpState:
                  vpc_nat11s: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]]] = None):
         """
         Input properties used for looking up and filtering InstanceIp resources.
+
         :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
         :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces.
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address
@@ -308,6 +310,7 @@ class InstanceIp(pulumi.CustomResource):
             public=True)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces.
@@ -344,6 +347,7 @@ class InstanceIp(pulumi.CustomResource):
             linode_id=foo.id,
             public=True)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceIpArgs args: The arguments to use to populate this resource's properties.

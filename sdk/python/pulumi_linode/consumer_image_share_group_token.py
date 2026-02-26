@@ -23,6 +23,7 @@ class ConsumerImageShareGroupTokenArgs:
                  label: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConsumerImageShareGroupToken resource.
+
         :param pulumi.Input[_builtins.str] valid_for_sharegroup_uuid: The UUID of the Image Share Group for which to create a token.
         :param pulumi.Input[_builtins.str] label: A label for the token.
         """
@@ -70,6 +71,7 @@ class _ConsumerImageShareGroupTokenState:
                  valid_for_sharegroup_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConsumerImageShareGroupToken resources.
+
         :param pulumi.Input[_builtins.str] created: When the token was created.
         :param pulumi.Input[_builtins.str] expiry: When the token will expire.
         :param pulumi.Input[_builtins.str] label: A label for the token.
@@ -247,6 +249,7 @@ class ConsumerImageShareGroupToken(pulumi.CustomResource):
             label="example-token")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] label: A label for the token.
@@ -272,6 +275,7 @@ class ConsumerImageShareGroupToken(pulumi.CustomResource):
             valid_for_sharegroup_uuid="03fbb93e-c27d-4c4a-9180-67f6e0cd74ca",
             label="example-token")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ConsumerImageShareGroupTokenArgs args: The arguments to use to populate this resource's properties.

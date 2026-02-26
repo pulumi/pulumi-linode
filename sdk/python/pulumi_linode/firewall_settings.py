@@ -24,6 +24,7 @@ class FirewallSettingsArgs:
                  default_firewall_ids: Optional[pulumi.Input['FirewallSettingsDefaultFirewallIdsArgs']] = None):
         """
         The set of arguments for constructing a FirewallSettings resource.
+
         :param pulumi.Input['FirewallSettingsDefaultFirewallIdsArgs'] default_firewall_ids: A map of default firewall IDs for various interfaces.
         """
         if default_firewall_ids is not None:
@@ -48,6 +49,7 @@ class _FirewallSettingsState:
                  default_firewall_ids: Optional[pulumi.Input['FirewallSettingsDefaultFirewallIdsArgs']] = None):
         """
         Input properties used for looking up and filtering FirewallSettings resources.
+
         :param pulumi.Input['FirewallSettingsDefaultFirewallIdsArgs'] default_firewall_ids: A map of default firewall IDs for various interfaces.
         """
         if default_firewall_ids is not None:
@@ -96,6 +98,7 @@ class FirewallSettings(pulumi.CustomResource):
 
         See the [Linode API documentation](https://techdocs.akamai.com/linode-api/reference/put-firewall-settings) for more details.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict']] default_firewall_ids: A map of default firewall IDs for various interfaces.
@@ -127,6 +130,7 @@ class FirewallSettings(pulumi.CustomResource):
         ## API Reference
 
         See the [Linode API documentation](https://techdocs.akamai.com/linode-api/reference/put-firewall-settings) for more details.
+
 
         :param str resource_name: The name of the resource.
         :param FirewallSettingsArgs args: The arguments to use to populate this resource's properties.

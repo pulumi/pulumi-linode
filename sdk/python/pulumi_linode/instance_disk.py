@@ -34,6 +34,7 @@ class InstanceDiskInitArgs:
                  timeouts: Optional[pulumi.Input['InstanceDiskTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a InstanceDisk resource.
+
         :param pulumi.Input[_builtins.str] label: The Disk's label for display purposes only.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to create this Disk under.
         :param pulumi.Input[_builtins.int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
@@ -219,6 +220,7 @@ class _InstanceDiskState:
                  updated: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceDisk resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         :param pulumi.Input[_builtins.str] created: When this disk was created.
@@ -516,6 +518,7 @@ class InstanceDisk(pulumi.CustomResource):
         $ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
@@ -587,6 +590,7 @@ class InstanceDisk(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/instanceDisk:InstanceDisk my-disk 1234567,7654321
         ```
+
 
         :param str resource_name: The name of the resource.
         :param InstanceDiskInitArgs args: The arguments to use to populate this resource's properties.

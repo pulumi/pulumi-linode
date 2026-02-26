@@ -24,6 +24,7 @@ class ProducerImageShareGroupMemberArgs:
                  token: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ProducerImageShareGroupMember resource.
+
         :param pulumi.Input[_builtins.str] label: A label for the member.
         :param pulumi.Input[_builtins.int] sharegroup_id: The ID of the Image Share Group to which the member will be added.
         :param pulumi.Input[_builtins.str] token: The token of the prospective member.
@@ -82,6 +83,7 @@ class _ProducerImageShareGroupMemberState:
                  updated: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProducerImageShareGroupMember resources.
+
         :param pulumi.Input[_builtins.str] created: When the member was created.
         :param pulumi.Input[_builtins.str] expiry: When the member will expire.
         :param pulumi.Input[_builtins.str] label: A label for the member.
@@ -231,6 +233,7 @@ class ProducerImageShareGroupMember(pulumi.CustomResource):
             label="example-member")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] label: A label for the member.
@@ -258,6 +261,7 @@ class ProducerImageShareGroupMember(pulumi.CustomResource):
             token="abcdefghijklmnopqrstuvwxyz0123456789",
             label="example-member")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProducerImageShareGroupMemberArgs args: The arguments to use to populate this resource's properties.

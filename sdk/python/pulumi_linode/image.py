@@ -35,6 +35,7 @@ class ImageArgs:
                  wait_for_replications: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Image resource.
+
         :param pulumi.Input[_builtins.str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[_builtins.bool] cloud_init: Whether this image supports cloud-init.
         :param pulumi.Input[_builtins.str] description: A detailed description of this Image.
@@ -256,6 +257,7 @@ class _ImageState:
                  wait_for_replications: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] capabilities: The capabilities of this Image.
         :param pulumi.Input[_builtins.bool] cloud_init: Whether this image supports cloud-init.
         :param pulumi.Input[_builtins.str] created: When this Image was created.
@@ -752,6 +754,7 @@ class Image(pulumi.CustomResource):
         $ pulumi import linode:index/image:Image myimage 1234567
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] cloud_init: Whether this image supports cloud-init.
@@ -853,6 +856,7 @@ class Image(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/image:Image myimage 1234567
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.

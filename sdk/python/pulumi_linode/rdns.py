@@ -27,6 +27,7 @@ class RdnsArgs:
                  wait_for_available: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Rdns resource.
+
         :param pulumi.Input[_builtins.str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
         :param pulumi.Input[_builtins.str] rdns: The name of the RDNS address.
         :param pulumi.Input[_builtins.bool] wait_for_available: If true, the RDNS assignment will be retried within the operation timeout period.
@@ -93,6 +94,7 @@ class _RdnsState:
                  wait_for_available: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Rdns resources.
+
         :param pulumi.Input[_builtins.str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
         :param pulumi.Input[_builtins.str] rdns: The name of the RDNS address.
         :param pulumi.Input[_builtins.bool] wait_for_available: If true, the RDNS assignment will be retried within the operation timeout period.
@@ -197,6 +199,7 @@ class Rdns(pulumi.CustomResource):
         $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
@@ -242,6 +245,7 @@ class Rdns(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/rdns:Rdns foo 123.123.123.123
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RdnsArgs args: The arguments to use to populate this resource's properties.

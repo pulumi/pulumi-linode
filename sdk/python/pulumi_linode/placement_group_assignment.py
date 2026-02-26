@@ -24,6 +24,7 @@ class PlacementGroupAssignmentArgs:
                  compliant_only: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PlacementGroupAssignment resource.
+
         :param pulumi.Input[_builtins.int] linode_id: The unique ID of the Linode to assign.
         :param pulumi.Input[_builtins.int] placement_group_id: The unique ID of the target Placement Group.
         """
@@ -74,6 +75,7 @@ class _PlacementGroupAssignmentState:
                  placement_group_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering PlacementGroupAssignment resources.
+
         :param pulumi.Input[_builtins.int] linode_id: The unique ID of the Linode to assign.
         :param pulumi.Input[_builtins.int] placement_group_id: The unique ID of the target Placement Group.
         """
@@ -169,6 +171,7 @@ class PlacementGroupAssignment(pulumi.CustomResource):
         $ pulumi import linode:index/placementGroupAssignment:PlacementGroupAssignment my-assignment 1234567,7654321
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] linode_id: The unique ID of the Linode to assign.
@@ -220,6 +223,7 @@ class PlacementGroupAssignment(pulumi.CustomResource):
         ```sh
         $ pulumi import linode:index/placementGroupAssignment:PlacementGroupAssignment my-assignment 1234567,7654321
         ```
+
 
         :param str resource_name: The name of the resource.
         :param PlacementGroupAssignmentArgs args: The arguments to use to populate this resource's properties.

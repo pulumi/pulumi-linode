@@ -26,6 +26,7 @@ class AccountSettingsArgs:
                  network_helper: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AccountSettings resource.
+
         :param pulumi.Input[_builtins.bool] backups_enabled: The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
         :param pulumi.Input[_builtins.str] interfaces_for_new_linodes: Type of interfaces for new Linode instances. Available values are `"legacy_config_only"`, `"legacy_config_default_but_linode_allowed"`, `"linode_default_but_legacy_config_allowed"`, and `"linode_only"`.
         :param pulumi.Input[_builtins.str] longview_subscription: The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
@@ -116,6 +117,7 @@ class _AccountSettingsState:
                  object_storage: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountSettings resources.
+
         :param pulumi.Input[_builtins.bool] backups_enabled: The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
         :param pulumi.Input[_builtins.str] interfaces_for_new_linodes: Type of interfaces for new Linode instances. Available values are `"legacy_config_only"`, `"legacy_config_default_but_linode_allowed"`, `"linode_default_but_legacy_config_allowed"`, and `"linode_only"`.
         :param pulumi.Input[_builtins.str] longview_subscription: The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
@@ -259,6 +261,7 @@ class AccountSettings(pulumi.CustomResource):
 
         * `object_storage` - A string describing the status of this account’s Object Storage service enrollment.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] backups_enabled: The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
@@ -295,6 +298,7 @@ class AccountSettings(pulumi.CustomResource):
         * `managed` - Enables monitoring for connectivity, response, and total request time.
 
         * `object_storage` - A string describing the status of this account’s Object Storage service enrollment.
+
 
         :param str resource_name: The name of the resource.
         :param AccountSettingsArgs args: The arguments to use to populate this resource's properties.
