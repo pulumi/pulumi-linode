@@ -112,7 +112,7 @@ export class InstanceDisk extends pulumi.CustomResource {
     /**
      * An Image ID to deploy the Linode Disk from.
      */
-    declare public readonly image: pulumi.Output<string | undefined>;
+    declare public readonly image: pulumi.Output<string>;
     /**
      * The Disk's label for display purposes only.
      */

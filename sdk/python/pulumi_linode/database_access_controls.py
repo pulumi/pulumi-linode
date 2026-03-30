@@ -152,7 +152,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             region="us-southeast",
             type="g6-nanode-1",
             image="linode/alpine3.19")
-        my_db = linode.DatabaseMysql("my-db",
+        my_db = linode.DatabaseMysqlV2("my-db",
             label="mydatabase",
             engine_id="mysql/8.0.30",
             region="us-southeast",
@@ -191,7 +191,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             region="us-southeast",
             type="g6-nanode-1",
             image="linode/alpine3.19")
-        my_db = linode.DatabaseMysql("my-db",
+        my_db = linode.DatabaseMysqlV2("my-db",
             label="mydatabase",
             engine_id="mysql/8.0.30",
             region="us-southeast",

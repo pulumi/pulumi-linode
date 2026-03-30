@@ -15,8 +15,6 @@ else:
 from . import _utilities
 
 __all__ = [
-    'DatabaseMysqlUpdatesArgs',
-    'DatabaseMysqlUpdatesArgsDict',
     'DatabaseMysqlV2PendingUpdateArgs',
     'DatabaseMysqlV2PendingUpdateArgsDict',
     'DatabaseMysqlV2PrivateNetworkArgs',
@@ -25,8 +23,6 @@ __all__ = [
     'DatabaseMysqlV2TimeoutsArgsDict',
     'DatabaseMysqlV2UpdatesArgs',
     'DatabaseMysqlV2UpdatesArgsDict',
-    'DatabasePostgresqlUpdatesArgs',
-    'DatabasePostgresqlUpdatesArgsDict',
     'DatabasePostgresqlV2PendingUpdateArgs',
     'DatabasePostgresqlV2PendingUpdateArgsDict',
     'DatabasePostgresqlV2PrivateNetworkArgs',
@@ -245,6 +241,10 @@ __all__ = [
     'VolumeTimeoutsArgsDict',
     'VpcIpv6Args',
     'VpcIpv6ArgsDict',
+    'VpcSubnetDatabaseArgs',
+    'VpcSubnetDatabaseArgsDict',
+    'VpcSubnetDatabaseIpv6RangeArgs',
+    'VpcSubnetDatabaseIpv6RangeArgsDict',
     'VpcSubnetIpv6Args',
     'VpcSubnetIpv6ArgsDict',
     'VpcSubnetLinodeArgs',
@@ -271,12 +271,8 @@ __all__ = [
     'GetConsumerImageShareGroupTokensFilterArgsDict',
     'GetConsumerImageShareGroupTokensTokenArgs',
     'GetConsumerImageShareGroupTokensTokenArgsDict',
-    'GetDatabaseBackupsFilterArgs',
-    'GetDatabaseBackupsFilterArgsDict',
     'GetDatabaseEnginesFilterArgs',
     'GetDatabaseEnginesFilterArgsDict',
-    'GetDatabaseMysqlBackupsFilterArgs',
-    'GetDatabaseMysqlBackupsFilterArgsDict',
     'GetDatabasePostgresqlV2UpdatesArgs',
     'GetDatabasePostgresqlV2UpdatesArgsDict',
     'GetDatabasesFilterArgs',
@@ -382,111 +378,6 @@ __all__ = [
     'GetVpcsFilterArgs',
     'GetVpcsFilterArgsDict',
 ]
-
-class DatabaseMysqlUpdatesArgsDict(TypedDict):
-    day_of_week: pulumi.Input[_builtins.str]
-    """
-    The day to perform maintenance.
-    """
-    duration: pulumi.Input[_builtins.int]
-    """
-    The maximum maintenance window time in hours.
-    """
-    frequency: pulumi.Input[_builtins.str]
-    """
-    Whether maintenance occurs on a weekly or monthly basis.
-    """
-    hour_of_day: pulumi.Input[_builtins.int]
-    """
-    The hour to begin maintenance based in UTC time.
-    """
-    week_of_month: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-    """
-
-@pulumi.input_type
-class DatabaseMysqlUpdatesArgs:
-    def __init__(__self__, *,
-                 day_of_week: pulumi.Input[_builtins.str],
-                 duration: pulumi.Input[_builtins.int],
-                 frequency: pulumi.Input[_builtins.str],
-                 hour_of_day: pulumi.Input[_builtins.int],
-                 week_of_month: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] day_of_week: The day to perform maintenance.
-        :param pulumi.Input[_builtins.int] duration: The maximum maintenance window time in hours.
-        :param pulumi.Input[_builtins.str] frequency: Whether maintenance occurs on a weekly or monthly basis.
-        :param pulumi.Input[_builtins.int] hour_of_day: The hour to begin maintenance based in UTC time.
-        :param pulumi.Input[_builtins.int] week_of_month: The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-        """
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
-        if week_of_month is not None:
-            pulumi.set(__self__, "week_of_month", week_of_month)
-
-    @_builtins.property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> pulumi.Input[_builtins.str]:
-        """
-        The day to perform maintenance.
-        """
-        return pulumi.get(self, "day_of_week")
-
-    @day_of_week.setter
-    def day_of_week(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "day_of_week", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def duration(self) -> pulumi.Input[_builtins.int]:
-        """
-        The maximum maintenance window time in hours.
-        """
-        return pulumi.get(self, "duration")
-
-    @duration.setter
-    def duration(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "duration", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def frequency(self) -> pulumi.Input[_builtins.str]:
-        """
-        Whether maintenance occurs on a weekly or monthly basis.
-        """
-        return pulumi.get(self, "frequency")
-
-    @frequency.setter
-    def frequency(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "frequency", value)
-
-    @_builtins.property
-    @pulumi.getter(name="hourOfDay")
-    def hour_of_day(self) -> pulumi.Input[_builtins.int]:
-        """
-        The hour to begin maintenance based in UTC time.
-        """
-        return pulumi.get(self, "hour_of_day")
-
-    @hour_of_day.setter
-    def hour_of_day(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "hour_of_day", value)
-
-    @_builtins.property
-    @pulumi.getter(name="weekOfMonth")
-    def week_of_month(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-        """
-        return pulumi.get(self, "week_of_month")
-
-    @week_of_month.setter
-    def week_of_month(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "week_of_month", value)
-
 
 class DatabaseMysqlV2PendingUpdateArgsDict(TypedDict):
     deadline: NotRequired[pulumi.Input[_builtins.str]]
@@ -780,111 +671,6 @@ class DatabaseMysqlV2UpdatesArgs:
     @hour_of_day.setter
     def hour_of_day(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "hour_of_day", value)
-
-
-class DatabasePostgresqlUpdatesArgsDict(TypedDict):
-    day_of_week: pulumi.Input[_builtins.str]
-    """
-    The day to perform maintenance.
-    """
-    duration: pulumi.Input[_builtins.int]
-    """
-    The maximum maintenance window time in hours.
-    """
-    frequency: pulumi.Input[_builtins.str]
-    """
-    Whether maintenance occurs on a weekly or monthly basis.
-    """
-    hour_of_day: pulumi.Input[_builtins.int]
-    """
-    The hour to begin maintenance based in UTC time.
-    """
-    week_of_month: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-    """
-
-@pulumi.input_type
-class DatabasePostgresqlUpdatesArgs:
-    def __init__(__self__, *,
-                 day_of_week: pulumi.Input[_builtins.str],
-                 duration: pulumi.Input[_builtins.int],
-                 frequency: pulumi.Input[_builtins.str],
-                 hour_of_day: pulumi.Input[_builtins.int],
-                 week_of_month: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] day_of_week: The day to perform maintenance.
-        :param pulumi.Input[_builtins.int] duration: The maximum maintenance window time in hours.
-        :param pulumi.Input[_builtins.str] frequency: Whether maintenance occurs on a weekly or monthly basis.
-        :param pulumi.Input[_builtins.int] hour_of_day: The hour to begin maintenance based in UTC time.
-        :param pulumi.Input[_builtins.int] week_of_month: The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-        """
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
-        if week_of_month is not None:
-            pulumi.set(__self__, "week_of_month", week_of_month)
-
-    @_builtins.property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> pulumi.Input[_builtins.str]:
-        """
-        The day to perform maintenance.
-        """
-        return pulumi.get(self, "day_of_week")
-
-    @day_of_week.setter
-    def day_of_week(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "day_of_week", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def duration(self) -> pulumi.Input[_builtins.int]:
-        """
-        The maximum maintenance window time in hours.
-        """
-        return pulumi.get(self, "duration")
-
-    @duration.setter
-    def duration(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "duration", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def frequency(self) -> pulumi.Input[_builtins.str]:
-        """
-        Whether maintenance occurs on a weekly or monthly basis.
-        """
-        return pulumi.get(self, "frequency")
-
-    @frequency.setter
-    def frequency(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "frequency", value)
-
-    @_builtins.property
-    @pulumi.getter(name="hourOfDay")
-    def hour_of_day(self) -> pulumi.Input[_builtins.int]:
-        """
-        The hour to begin maintenance based in UTC time.
-        """
-        return pulumi.get(self, "hour_of_day")
-
-    @hour_of_day.setter
-    def hour_of_day(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "hour_of_day", value)
-
-    @_builtins.property
-    @pulumi.getter(name="weekOfMonth")
-    def week_of_month(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-        """
-        return pulumi.get(self, "week_of_month")
-
-    @week_of_month.setter
-    def week_of_month(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "week_of_month", value)
 
 
 class DatabasePostgresqlV2PendingUpdateArgsDict(TypedDict):
@@ -9214,6 +9000,100 @@ class VpcIpv6Args:
         pulumi.set(self, "range", value)
 
 
+class VpcSubnetDatabaseArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    ID of a managed database assigned to the VPC Subnet.
+    """
+    ipv4_range: pulumi.Input[_builtins.str]
+    """
+    IPv4 range assigned to the database.
+    """
+    ipv6_ranges: pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseIpv6RangeArgsDict']]]
+    """
+    A list of IPv6 ranges assigned to the database.
+    """
+
+@pulumi.input_type
+class VpcSubnetDatabaseArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.int],
+                 ipv4_range: pulumi.Input[_builtins.str],
+                 ipv6_ranges: pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseIpv6RangeArgs']]]):
+        """
+        :param pulumi.Input[_builtins.int] id: ID of a managed database assigned to the VPC Subnet.
+        :param pulumi.Input[_builtins.str] ipv4_range: IPv4 range assigned to the database.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseIpv6RangeArgs']]] ipv6_ranges: A list of IPv6 ranges assigned to the database.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4_range", ipv4_range)
+        pulumi.set(__self__, "ipv6_ranges", ipv6_ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.int]:
+        """
+        ID of a managed database assigned to the VPC Subnet.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> pulumi.Input[_builtins.str]:
+        """
+        IPv4 range assigned to the database.
+        """
+        return pulumi.get(self, "ipv4_range")
+
+    @ipv4_range.setter
+    def ipv4_range(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ipv4_range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Ranges")
+    def ipv6_ranges(self) -> pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseIpv6RangeArgs']]]:
+        """
+        A list of IPv6 ranges assigned to the database.
+        """
+        return pulumi.get(self, "ipv6_ranges")
+
+    @ipv6_ranges.setter
+    def ipv6_ranges(self, value: pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseIpv6RangeArgs']]]):
+        pulumi.set(self, "ipv6_ranges", value)
+
+
+class VpcSubnetDatabaseIpv6RangeArgsDict(TypedDict):
+    range: pulumi.Input[_builtins.str]
+    """
+    An IPv6 address range in CIDR notation.
+    """
+
+@pulumi.input_type
+class VpcSubnetDatabaseIpv6RangeArgs:
+    def __init__(__self__, *,
+                 range: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] range: An IPv6 address range in CIDR notation.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> pulumi.Input[_builtins.str]:
+        """
+        An IPv6 address range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "range", value)
+
+
 class VpcSubnetIpv6ArgsDict(TypedDict):
     allocated_range: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -9221,7 +9101,7 @@ class VpcSubnetIpv6ArgsDict(TypedDict):
     """
     range: NotRequired[pulumi.Input[_builtins.str]]
     """
-    An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+    An IPv6 address range in CIDR notation.
     """
 
 @pulumi.input_type
@@ -9231,7 +9111,7 @@ class VpcSubnetIpv6Args:
                  range: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] allocated_range: The IPv6 range assigned to this subnet.
-        :param pulumi.Input[_builtins.str] range: An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+        :param pulumi.Input[_builtins.str] range: An IPv6 address range in CIDR notation.
         """
         if allocated_range is not None:
             pulumi.set(__self__, "allocated_range", allocated_range)
@@ -9254,7 +9134,7 @@ class VpcSubnetIpv6Args:
     @pulumi.getter
     def range(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+        An IPv6 address range in CIDR notation.
         """
         return pulumi.get(self, "range")
 
@@ -9266,7 +9146,7 @@ class VpcSubnetIpv6Args:
 class VpcSubnetLinodeArgsDict(TypedDict):
     id: pulumi.Input[_builtins.int]
     """
-    ID of the interface.
+    ID of a managed database assigned to the VPC Subnet.
     """
     interfaces: pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgsDict']]]
     """
@@ -9279,7 +9159,7 @@ class VpcSubnetLinodeArgs:
                  id: pulumi.Input[_builtins.int],
                  interfaces: pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgs']]]):
         """
-        :param pulumi.Input[_builtins.int] id: ID of the interface.
+        :param pulumi.Input[_builtins.int] id: ID of a managed database assigned to the VPC Subnet.
         :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgs']]] interfaces: A list of networking interfaces objects.
         """
         pulumi.set(__self__, "id", id)
@@ -9289,7 +9169,7 @@ class VpcSubnetLinodeArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.int]:
         """
-        ID of the interface.
+        ID of a managed database assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
@@ -9321,7 +9201,7 @@ class VpcSubnetLinodeInterfaceArgsDict(TypedDict):
     """
     id: pulumi.Input[_builtins.int]
     """
-    ID of the interface.
+    ID of a managed database assigned to the VPC Subnet.
     """
 
 @pulumi.input_type
@@ -9333,7 +9213,7 @@ class VpcSubnetLinodeInterfaceArgs:
         """
         :param pulumi.Input[_builtins.bool] active: Whether the Interface is actively in use.
         :param pulumi.Input[_builtins.int] config_id: ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
-        :param pulumi.Input[_builtins.int] id: ID of the interface.
+        :param pulumi.Input[_builtins.int] id: ID of a managed database assigned to the VPC Subnet.
         """
         pulumi.set(__self__, "active", active)
         pulumi.set(__self__, "config_id", config_id)
@@ -9367,7 +9247,7 @@ class VpcSubnetLinodeInterfaceArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.int]:
         """
-        ID of the interface.
+        ID of a managed database assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
@@ -10326,73 +10206,6 @@ class GetConsumerImageShareGroupTokensTokenArgs:
         pulumi.set(self, "valid_for_sharegroup_uuid", value)
 
 
-class GetDatabaseBackupsFilterArgsDict(TypedDict):
-    name: _builtins.str
-    """
-    The name of the field to filter by.
-    """
-    values: Sequence[_builtins.str]
-    """
-    A list of values for the filter to allow. These values should all be in string form.
-    """
-    match_by: NotRequired[_builtins.str]
-    """
-    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-    """
-
-@pulumi.input_type
-class GetDatabaseBackupsFilterArgs:
-    def __init__(__self__, *,
-                 name: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 match_by: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: The name of the field to filter by.
-        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
-        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        The name of the field to filter by.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: _builtins.str):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Sequence[_builtins.str]):
-        pulumi.set(self, "values", value)
-
-    @_builtins.property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[_builtins.str]:
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-        return pulumi.get(self, "match_by")
-
-    @match_by.setter
-    def match_by(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "match_by", value)
-
-
 class GetDatabaseEnginesFilterArgsDict(TypedDict):
     name: _builtins.str
     """
@@ -10409,73 +10222,6 @@ class GetDatabaseEnginesFilterArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetDatabaseEnginesFilterArgs:
-    def __init__(__self__, *,
-                 name: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 match_by: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: The name of the field to filter by.
-        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
-        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        The name of the field to filter by.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: _builtins.str):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        return pulumi.get(self, "values")
-
-    @values.setter
-    def values(self, value: Sequence[_builtins.str]):
-        pulumi.set(self, "values", value)
-
-    @_builtins.property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[_builtins.str]:
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-        return pulumi.get(self, "match_by")
-
-    @match_by.setter
-    def match_by(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "match_by", value)
-
-
-class GetDatabaseMysqlBackupsFilterArgsDict(TypedDict):
-    name: _builtins.str
-    """
-    The name of the field to filter by.
-    """
-    values: Sequence[_builtins.str]
-    """
-    A list of values for the filter to allow. These values should all be in string form.
-    """
-    match_by: NotRequired[_builtins.str]
-    """
-    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-    """
-
-@pulumi.input_type
-class GetDatabaseMysqlBackupsFilterArgs:
     def __init__(__self__, *,
                  name: _builtins.str,
                  values: Sequence[_builtins.str],

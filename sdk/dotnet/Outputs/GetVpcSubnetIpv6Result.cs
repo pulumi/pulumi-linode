@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetVpcSubnetIpv6Result
     {
         /// <summary>
-        /// An IPv6 range allocated to this subnet.
+        /// An IPv6 address range in CIDR notation.
         /// </summary>
         public readonly string Range;
 

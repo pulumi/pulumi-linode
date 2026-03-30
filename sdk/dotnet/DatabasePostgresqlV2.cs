@@ -594,6 +594,12 @@ namespace Pulumi.Linode
         public Output<string> HostSecondary { get; private set; } = null!;
 
         /// <summary>
+        /// The standby host for the Managed Database.
+        /// </summary>
+        [Output("hostStandby")]
+        public Output<string> HostStandby { get; private set; } = null!;
+
+        /// <summary>
         /// A unique, user-defined string referring to the Managed Database.
         /// </summary>
         [Output("label")]
@@ -1490,6 +1496,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("hostSecondary")]
         public Input<string>? HostSecondary { get; set; }
+
+        /// <summary>
+        /// The standby host for the Managed Database.
+        /// </summary>
+        [Input("hostStandby")]
+        public Input<string>? HostStandby { get; set; }
 
         /// <summary>
         /// A unique, user-defined string referring to the Managed Database.

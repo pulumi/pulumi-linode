@@ -166,7 +166,10 @@ type LookupDatabaseMysqlV2Result struct {
 	// The primary host for the Managed Database.
 	HostPrimary string `pulumi:"hostPrimary"`
 	// The secondary/private host for the managed database.
+	//
+	// Deprecated: Use hostStandby instead.
 	HostSecondary string `pulumi:"hostSecondary"`
+	HostStandby   string `pulumi:"hostStandby"`
 	Id            string `pulumi:"id"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label             string                            `pulumi:"label"`
@@ -424,8 +427,14 @@ func (o LookupDatabaseMysqlV2ResultOutput) HostPrimary() pulumi.StringOutput {
 }
 
 // The secondary/private host for the managed database.
+//
+// Deprecated: Use hostStandby instead.
 func (o LookupDatabaseMysqlV2ResultOutput) HostSecondary() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) string { return v.HostSecondary }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseMysqlV2ResultOutput) HostStandby() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseMysqlV2Result) string { return v.HostStandby }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseMysqlV2ResultOutput) Id() pulumi.StringOutput {

@@ -372,7 +372,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> Locks { get; private set; } = null!;
 
         /// <summary>
-        /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         /// </summary>
         [Output("maintenancePolicy")]
         public Output<string> MaintenancePolicy { get; private set; } = null!;
@@ -703,7 +703,7 @@ namespace Pulumi.Linode
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<string>? MaintenancePolicy { get; set; }
@@ -1077,7 +1077,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<string>? MaintenancePolicy { get; set; }

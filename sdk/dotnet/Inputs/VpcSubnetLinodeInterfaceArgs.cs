@@ -25,7 +25,7 @@ namespace Pulumi.Linode.Inputs
         public Input<int> ConfigId { get; set; } = null!;
 
         /// <summary>
-        /// ID of the interface.
+        /// ID of a managed database assigned to the VPC Subnet.
         /// </summary>
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;

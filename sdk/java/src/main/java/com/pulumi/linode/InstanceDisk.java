@@ -199,14 +199,14 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="image", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> image;
+    private Output<String> image;
 
     /**
      * @return An Image ID to deploy the Linode Disk from.
      * 
      */
-    public Output<Optional<String>> image() {
-        return Codegen.optional(this.image);
+    public Output<String> image() {
+        return this.image;
     }
     /**
      * The Disk&#39;s label for display purposes only.

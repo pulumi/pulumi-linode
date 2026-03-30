@@ -158,7 +158,7 @@ import (
 //					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
 //				},
 //				AuthorizedUsers: pulumi.StringArray{
-//					pulumi.String(me.Username),
+//					pulumi.String(pulumi.String(me.Username)),
 //				},
 //				RootPass: pulumi.String("terr4form-test"),
 //			})
@@ -303,7 +303,7 @@ type Instance struct {
 	LkeClusterId pulumi.IntOutput `pulumi:"lkeClusterId"`
 	// A list of locks applied to this Linode.
 	Locks pulumi.StringArrayOutput `pulumi:"locks"`
-	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
 	MaintenancePolicy pulumi.StringOutput `pulumi:"maintenancePolicy"`
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayOutput `pulumi:"metadatas"`
@@ -469,7 +469,7 @@ type instanceState struct {
 	LkeClusterId *int `pulumi:"lkeClusterId"`
 	// A list of locks applied to this Linode.
 	Locks []string `pulumi:"locks"`
-	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// Various fields related to the Linode Metadata service.
 	Metadatas []InstanceMetadata `pulumi:"metadatas"`
@@ -592,7 +592,7 @@ type InstanceState struct {
 	LkeClusterId pulumi.IntPtrInput
 	// A list of locks applied to this Linode.
 	Locks pulumi.StringArrayInput
-	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
 	MaintenancePolicy pulumi.StringPtrInput
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayInput
@@ -701,7 +701,7 @@ type instanceArgs struct {
 	Ipv4s []string `pulumi:"ipv4s"`
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label *string `pulumi:"label"`
-	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// Various fields related to the Linode Metadata service.
 	Metadatas []InstanceMetadata `pulumi:"metadatas"`
@@ -801,7 +801,7 @@ type InstanceArgs struct {
 	Ipv4s pulumi.StringArrayInput
 	// The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
 	Label pulumi.StringPtrInput
-	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+	// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
 	MaintenancePolicy pulumi.StringPtrInput
 	// Various fields related to the Linode Metadata service.
 	Metadatas InstanceMetadataArrayInput
@@ -1079,7 +1079,7 @@ func (o InstanceOutput) Locks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Locks }).(pulumi.StringArrayOutput)
 }
 
-// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
 func (o InstanceOutput) MaintenancePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintenancePolicy }).(pulumi.StringOutput)
 }

@@ -100,15 +100,15 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
      * Additional nested attributes:
      * 
      */
-    @Import(name="pools", required=true)
-    private Output<List<LkeClusterPoolArgs>> pools;
+    @Import(name="pools")
+    private @Nullable Output<List<LkeClusterPoolArgs>> pools;
 
     /**
      * @return Additional nested attributes:
      * 
      */
-    public Output<List<LkeClusterPoolArgs>> pools() {
-        return this.pools;
+    public Optional<Output<List<LkeClusterPoolArgs>>> pools() {
+        return Optional.ofNullable(this.pools);
     }
 
     /**
@@ -365,7 +365,7 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder pools(Output<List<LkeClusterPoolArgs>> pools) {
+        public Builder pools(@Nullable Output<List<LkeClusterPoolArgs>> pools) {
             $.pools = pools;
             return this;
         }
@@ -540,9 +540,6 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.label == null) {
                 throw new MissingRequiredPropertyException("LkeClusterArgs", "label");
-            }
-            if ($.pools == null) {
-                throw new MissingRequiredPropertyException("LkeClusterArgs", "pools");
             }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("LkeClusterArgs", "region");

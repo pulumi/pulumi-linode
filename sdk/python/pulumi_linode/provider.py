@@ -36,6 +36,7 @@ class ProviderArgs:
                  skip_implicit_reboots: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_instance_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_instance_ready_poll: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_lke_cluster_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
                  ua_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None):
@@ -59,6 +60,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.bool] skip_implicit_reboots: If true, Linode Instances will not be rebooted on config and interface changes.
         :param pulumi.Input[_builtins.bool] skip_instance_delete_poll: Skip waiting for a Instance resource to finish deleting.
         :param pulumi.Input[_builtins.bool] skip_instance_ready_poll: Skip waiting for a Instance resource to be running.
+        :param pulumi.Input[_builtins.bool] skip_lke_cluster_delete_poll: Skip waiting for all Linode instances in an LKE cluster to be deleted.
         :param pulumi.Input[_builtins.str] token: The token that allows you access to your Linode account
         :param pulumi.Input[_builtins.str] ua_prefix: An HTTP User-Agent Prefix to prepend in API requests.
         :param pulumi.Input[_builtins.str] url: The HTTP(S) API address of the Linode API to use.
@@ -99,6 +101,8 @@ class ProviderArgs:
             pulumi.set(__self__, "skip_instance_delete_poll", skip_instance_delete_poll)
         if skip_instance_ready_poll is not None:
             pulumi.set(__self__, "skip_instance_ready_poll", skip_instance_ready_poll)
+        if skip_lke_cluster_delete_poll is not None:
+            pulumi.set(__self__, "skip_lke_cluster_delete_poll", skip_lke_cluster_delete_poll)
         if token is not None:
             pulumi.set(__self__, "token", token)
         if ua_prefix is None:
@@ -315,6 +319,18 @@ class ProviderArgs:
         pulumi.set(self, "skip_instance_ready_poll", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipLkeClusterDeletePoll")
+    def skip_lke_cluster_delete_poll(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Skip waiting for all Linode instances in an LKE cluster to be deleted.
+        """
+        return pulumi.get(self, "skip_lke_cluster_delete_poll")
+
+    @skip_lke_cluster_delete_poll.setter
+    def skip_lke_cluster_delete_poll(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_lke_cluster_delete_poll", value)
+
+    @_builtins.property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -374,6 +390,7 @@ class Provider(pulumi.ProviderResource):
                  skip_implicit_reboots: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_instance_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_instance_ready_poll: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_lke_cluster_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
                  ua_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -404,6 +421,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.bool] skip_implicit_reboots: If true, Linode Instances will not be rebooted on config and interface changes.
         :param pulumi.Input[_builtins.bool] skip_instance_delete_poll: Skip waiting for a Instance resource to finish deleting.
         :param pulumi.Input[_builtins.bool] skip_instance_ready_poll: Skip waiting for a Instance resource to be running.
+        :param pulumi.Input[_builtins.bool] skip_lke_cluster_delete_poll: Skip waiting for all Linode instances in an LKE cluster to be deleted.
         :param pulumi.Input[_builtins.str] token: The token that allows you access to your Linode account
         :param pulumi.Input[_builtins.str] ua_prefix: An HTTP User-Agent Prefix to prepend in API requests.
         :param pulumi.Input[_builtins.str] url: The HTTP(S) API address of the Linode API to use.
@@ -453,6 +471,7 @@ class Provider(pulumi.ProviderResource):
                  skip_implicit_reboots: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_instance_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
                  skip_instance_ready_poll: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_lke_cluster_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
                  ua_prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
@@ -484,6 +503,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["skip_implicit_reboots"] = pulumi.Output.from_input(skip_implicit_reboots).apply(pulumi.runtime.to_json) if skip_implicit_reboots is not None else None
             __props__.__dict__["skip_instance_delete_poll"] = pulumi.Output.from_input(skip_instance_delete_poll).apply(pulumi.runtime.to_json) if skip_instance_delete_poll is not None else None
             __props__.__dict__["skip_instance_ready_poll"] = pulumi.Output.from_input(skip_instance_ready_poll).apply(pulumi.runtime.to_json) if skip_instance_ready_poll is not None else None
+            __props__.__dict__["skip_lke_cluster_delete_poll"] = pulumi.Output.from_input(skip_lke_cluster_delete_poll).apply(pulumi.runtime.to_json) if skip_lke_cluster_delete_poll is not None else None
             __props__.__dict__["token"] = token
             if ua_prefix is None:
                 ua_prefix = _utilities.get_env('LINODE_UA_PREFIX')

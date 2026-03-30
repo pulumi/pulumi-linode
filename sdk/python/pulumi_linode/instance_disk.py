@@ -762,7 +762,7 @@ class InstanceDisk(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def image(self) -> pulumi.Output[_builtins.str]:
         """
         An Image ID to deploy the Linode Disk from.
         """

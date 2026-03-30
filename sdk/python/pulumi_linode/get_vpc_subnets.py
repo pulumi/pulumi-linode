@@ -51,7 +51,7 @@ class GetVpcSubnetsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of the interface.
+        ID of a managed database assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 

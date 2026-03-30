@@ -27,10 +27,13 @@ class GetVpcSubnetResult:
     """
     A collection of values returned by getVpcSubnet.
     """
-    def __init__(__self__, created=None, id=None, ipv4=None, ipv6s=None, label=None, linodes=None, updated=None, vpc_id=None):
+    def __init__(__self__, created=None, databases=None, id=None, ipv4=None, ipv6s=None, label=None, linodes=None, updated=None, vpc_id=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
+        if databases and not isinstance(databases, list):
+            raise TypeError("Expected argument 'databases' to be a list")
+        pulumi.set(__self__, "databases", databases)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -63,9 +66,17 @@ class GetVpcSubnetResult:
 
     @_builtins.property
     @pulumi.getter
+    def databases(self) -> Sequence['outputs.GetVpcSubnetDatabaseResult']:
+        """
+        A list of Managed databases assigned to the VPC Subnet.
+        """
+        return pulumi.get(self, "databases")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of the interface.
+        ID of a managed database assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
@@ -119,6 +130,7 @@ class AwaitableGetVpcSubnetResult(GetVpcSubnetResult):
             yield self
         return GetVpcSubnetResult(
             created=self.created,
+            databases=self.databases,
             id=self.id,
             ipv4=self.ipv4,
             ipv6s=self.ipv6s,
@@ -168,6 +180,7 @@ def get_vpc_subnet(id: Optional[_builtins.str] = None,
 
     return AwaitableGetVpcSubnetResult(
         created=pulumi.get(__ret__, 'created'),
+        databases=pulumi.get(__ret__, 'databases'),
         id=pulumi.get(__ret__, 'id'),
         ipv4=pulumi.get(__ret__, 'ipv4'),
         ipv6s=pulumi.get(__ret__, 'ipv6s'),
@@ -214,6 +227,7 @@ def get_vpc_subnet_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('linode:index/getVpcSubnet:getVpcSubnet', __args__, opts=opts, typ=GetVpcSubnetResult)
     return __ret__.apply(lambda __response__: GetVpcSubnetResult(
         created=pulumi.get(__response__, 'created'),
+        databases=pulumi.get(__response__, 'databases'),
         id=pulumi.get(__response__, 'id'),
         ipv4=pulumi.get(__response__, 'ipv4'),
         ipv6s=pulumi.get(__response__, 'ipv6s'),

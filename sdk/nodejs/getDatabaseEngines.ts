@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  *         values: ["mysql"],
  *     }],
  * });
- * const myDb = new linode.DatabaseMysql("my_db", {
+ * const myDb = new linode.DatabaseMysqlV2("my_db", {
  *     label: "mydb",
  *     engineId: mysql.then(mysql => mysql.engines?.[0]?.id),
  *     region: "us-southeast",
@@ -132,7 +132,7 @@ export interface GetDatabaseEnginesResult {
  *         values: ["mysql"],
  *     }],
  * });
- * const myDb = new linode.DatabaseMysql("my_db", {
+ * const myDb = new linode.DatabaseMysqlV2("my_db", {
  *     label: "mydb",
  *     engineId: mysql.then(mysql => mysql.engines?.[0]?.id),
  *     region: "us-southeast",

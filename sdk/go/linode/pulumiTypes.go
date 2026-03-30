@@ -13,219 +13,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type DatabaseMysqlUpdates struct {
-	// The day to perform maintenance.
-	DayOfWeek string `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
-	Duration int `pulumi:"duration"`
-	// Whether maintenance occurs on a weekly or monthly basis.
-	Frequency string `pulumi:"frequency"`
-	// The hour to begin maintenance based in UTC time.
-	HourOfDay int `pulumi:"hourOfDay"`
-	// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-	WeekOfMonth *int `pulumi:"weekOfMonth"`
-}
-
-// DatabaseMysqlUpdatesInput is an input type that accepts DatabaseMysqlUpdatesArgs and DatabaseMysqlUpdatesOutput values.
-// You can construct a concrete instance of `DatabaseMysqlUpdatesInput` via:
-//
-//	DatabaseMysqlUpdatesArgs{...}
-type DatabaseMysqlUpdatesInput interface {
-	pulumi.Input
-
-	ToDatabaseMysqlUpdatesOutput() DatabaseMysqlUpdatesOutput
-	ToDatabaseMysqlUpdatesOutputWithContext(context.Context) DatabaseMysqlUpdatesOutput
-}
-
-type DatabaseMysqlUpdatesArgs struct {
-	// The day to perform maintenance.
-	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
-	Duration pulumi.IntInput `pulumi:"duration"`
-	// Whether maintenance occurs on a weekly or monthly basis.
-	Frequency pulumi.StringInput `pulumi:"frequency"`
-	// The hour to begin maintenance based in UTC time.
-	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
-	// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-	WeekOfMonth pulumi.IntPtrInput `pulumi:"weekOfMonth"`
-}
-
-func (DatabaseMysqlUpdatesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseMysqlUpdates)(nil)).Elem()
-}
-
-func (i DatabaseMysqlUpdatesArgs) ToDatabaseMysqlUpdatesOutput() DatabaseMysqlUpdatesOutput {
-	return i.ToDatabaseMysqlUpdatesOutputWithContext(context.Background())
-}
-
-func (i DatabaseMysqlUpdatesArgs) ToDatabaseMysqlUpdatesOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlUpdatesOutput)
-}
-
-func (i DatabaseMysqlUpdatesArgs) ToDatabaseMysqlUpdatesPtrOutput() DatabaseMysqlUpdatesPtrOutput {
-	return i.ToDatabaseMysqlUpdatesPtrOutputWithContext(context.Background())
-}
-
-func (i DatabaseMysqlUpdatesArgs) ToDatabaseMysqlUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlUpdatesOutput).ToDatabaseMysqlUpdatesPtrOutputWithContext(ctx)
-}
-
-// DatabaseMysqlUpdatesPtrInput is an input type that accepts DatabaseMysqlUpdatesArgs, DatabaseMysqlUpdatesPtr and DatabaseMysqlUpdatesPtrOutput values.
-// You can construct a concrete instance of `DatabaseMysqlUpdatesPtrInput` via:
-//
-//	        DatabaseMysqlUpdatesArgs{...}
-//
-//	or:
-//
-//	        nil
-type DatabaseMysqlUpdatesPtrInput interface {
-	pulumi.Input
-
-	ToDatabaseMysqlUpdatesPtrOutput() DatabaseMysqlUpdatesPtrOutput
-	ToDatabaseMysqlUpdatesPtrOutputWithContext(context.Context) DatabaseMysqlUpdatesPtrOutput
-}
-
-type databaseMysqlUpdatesPtrType DatabaseMysqlUpdatesArgs
-
-func DatabaseMysqlUpdatesPtr(v *DatabaseMysqlUpdatesArgs) DatabaseMysqlUpdatesPtrInput {
-	return (*databaseMysqlUpdatesPtrType)(v)
-}
-
-func (*databaseMysqlUpdatesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseMysqlUpdates)(nil)).Elem()
-}
-
-func (i *databaseMysqlUpdatesPtrType) ToDatabaseMysqlUpdatesPtrOutput() DatabaseMysqlUpdatesPtrOutput {
-	return i.ToDatabaseMysqlUpdatesPtrOutputWithContext(context.Background())
-}
-
-func (i *databaseMysqlUpdatesPtrType) ToDatabaseMysqlUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMysqlUpdatesPtrOutput)
-}
-
-type DatabaseMysqlUpdatesOutput struct{ *pulumi.OutputState }
-
-func (DatabaseMysqlUpdatesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseMysqlUpdates)(nil)).Elem()
-}
-
-func (o DatabaseMysqlUpdatesOutput) ToDatabaseMysqlUpdatesOutput() DatabaseMysqlUpdatesOutput {
-	return o
-}
-
-func (o DatabaseMysqlUpdatesOutput) ToDatabaseMysqlUpdatesOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesOutput {
-	return o
-}
-
-func (o DatabaseMysqlUpdatesOutput) ToDatabaseMysqlUpdatesPtrOutput() DatabaseMysqlUpdatesPtrOutput {
-	return o.ToDatabaseMysqlUpdatesPtrOutputWithContext(context.Background())
-}
-
-func (o DatabaseMysqlUpdatesOutput) ToDatabaseMysqlUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseMysqlUpdates) *DatabaseMysqlUpdates {
-		return &v
-	}).(DatabaseMysqlUpdatesPtrOutput)
-}
-
-// The day to perform maintenance.
-func (o DatabaseMysqlUpdatesOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseMysqlUpdates) string { return v.DayOfWeek }).(pulumi.StringOutput)
-}
-
-// The maximum maintenance window time in hours.
-func (o DatabaseMysqlUpdatesOutput) Duration() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabaseMysqlUpdates) int { return v.Duration }).(pulumi.IntOutput)
-}
-
-// Whether maintenance occurs on a weekly or monthly basis.
-func (o DatabaseMysqlUpdatesOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseMysqlUpdates) string { return v.Frequency }).(pulumi.StringOutput)
-}
-
-// The hour to begin maintenance based in UTC time.
-func (o DatabaseMysqlUpdatesOutput) HourOfDay() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabaseMysqlUpdates) int { return v.HourOfDay }).(pulumi.IntOutput)
-}
-
-// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-func (o DatabaseMysqlUpdatesOutput) WeekOfMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabaseMysqlUpdates) *int { return v.WeekOfMonth }).(pulumi.IntPtrOutput)
-}
-
-type DatabaseMysqlUpdatesPtrOutput struct{ *pulumi.OutputState }
-
-func (DatabaseMysqlUpdatesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseMysqlUpdates)(nil)).Elem()
-}
-
-func (o DatabaseMysqlUpdatesPtrOutput) ToDatabaseMysqlUpdatesPtrOutput() DatabaseMysqlUpdatesPtrOutput {
-	return o
-}
-
-func (o DatabaseMysqlUpdatesPtrOutput) ToDatabaseMysqlUpdatesPtrOutputWithContext(ctx context.Context) DatabaseMysqlUpdatesPtrOutput {
-	return o
-}
-
-func (o DatabaseMysqlUpdatesPtrOutput) Elem() DatabaseMysqlUpdatesOutput {
-	return o.ApplyT(func(v *DatabaseMysqlUpdates) DatabaseMysqlUpdates {
-		if v != nil {
-			return *v
-		}
-		var ret DatabaseMysqlUpdates
-		return ret
-	}).(DatabaseMysqlUpdatesOutput)
-}
-
-// The day to perform maintenance.
-func (o DatabaseMysqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseMysqlUpdates) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
-}
-
-// The maximum maintenance window time in hours.
-func (o DatabaseMysqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Duration
-	}).(pulumi.IntPtrOutput)
-}
-
-// Whether maintenance occurs on a weekly or monthly basis.
-func (o DatabaseMysqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseMysqlUpdates) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Frequency
-	}).(pulumi.StringPtrOutput)
-}
-
-// The hour to begin maintenance based in UTC time.
-func (o DatabaseMysqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.HourOfDay
-	}).(pulumi.IntPtrOutput)
-}
-
-// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-func (o DatabaseMysqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DatabaseMysqlUpdates) *int {
-		if v == nil {
-			return nil
-		}
-		return v.WeekOfMonth
-	}).(pulumi.IntPtrOutput)
-}
-
 type DatabaseMysqlV2PendingUpdate struct {
 	// The time when a mandatory update needs to be applied.
 	Deadline *string `pulumi:"deadline"`
@@ -882,219 +669,6 @@ func (o DatabaseMysqlV2UpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.HourOfDay
-	}).(pulumi.IntPtrOutput)
-}
-
-type DatabasePostgresqlUpdates struct {
-	// The day to perform maintenance.
-	DayOfWeek string `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
-	Duration int `pulumi:"duration"`
-	// Whether maintenance occurs on a weekly or monthly basis.
-	Frequency string `pulumi:"frequency"`
-	// The hour to begin maintenance based in UTC time.
-	HourOfDay int `pulumi:"hourOfDay"`
-	// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-	WeekOfMonth *int `pulumi:"weekOfMonth"`
-}
-
-// DatabasePostgresqlUpdatesInput is an input type that accepts DatabasePostgresqlUpdatesArgs and DatabasePostgresqlUpdatesOutput values.
-// You can construct a concrete instance of `DatabasePostgresqlUpdatesInput` via:
-//
-//	DatabasePostgresqlUpdatesArgs{...}
-type DatabasePostgresqlUpdatesInput interface {
-	pulumi.Input
-
-	ToDatabasePostgresqlUpdatesOutput() DatabasePostgresqlUpdatesOutput
-	ToDatabasePostgresqlUpdatesOutputWithContext(context.Context) DatabasePostgresqlUpdatesOutput
-}
-
-type DatabasePostgresqlUpdatesArgs struct {
-	// The day to perform maintenance.
-	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
-	Duration pulumi.IntInput `pulumi:"duration"`
-	// Whether maintenance occurs on a weekly or monthly basis.
-	Frequency pulumi.StringInput `pulumi:"frequency"`
-	// The hour to begin maintenance based in UTC time.
-	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
-	// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-	WeekOfMonth pulumi.IntPtrInput `pulumi:"weekOfMonth"`
-}
-
-func (DatabasePostgresqlUpdatesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabasePostgresqlUpdates)(nil)).Elem()
-}
-
-func (i DatabasePostgresqlUpdatesArgs) ToDatabasePostgresqlUpdatesOutput() DatabasePostgresqlUpdatesOutput {
-	return i.ToDatabasePostgresqlUpdatesOutputWithContext(context.Background())
-}
-
-func (i DatabasePostgresqlUpdatesArgs) ToDatabasePostgresqlUpdatesOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlUpdatesOutput)
-}
-
-func (i DatabasePostgresqlUpdatesArgs) ToDatabasePostgresqlUpdatesPtrOutput() DatabasePostgresqlUpdatesPtrOutput {
-	return i.ToDatabasePostgresqlUpdatesPtrOutputWithContext(context.Background())
-}
-
-func (i DatabasePostgresqlUpdatesArgs) ToDatabasePostgresqlUpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlUpdatesOutput).ToDatabasePostgresqlUpdatesPtrOutputWithContext(ctx)
-}
-
-// DatabasePostgresqlUpdatesPtrInput is an input type that accepts DatabasePostgresqlUpdatesArgs, DatabasePostgresqlUpdatesPtr and DatabasePostgresqlUpdatesPtrOutput values.
-// You can construct a concrete instance of `DatabasePostgresqlUpdatesPtrInput` via:
-//
-//	        DatabasePostgresqlUpdatesArgs{...}
-//
-//	or:
-//
-//	        nil
-type DatabasePostgresqlUpdatesPtrInput interface {
-	pulumi.Input
-
-	ToDatabasePostgresqlUpdatesPtrOutput() DatabasePostgresqlUpdatesPtrOutput
-	ToDatabasePostgresqlUpdatesPtrOutputWithContext(context.Context) DatabasePostgresqlUpdatesPtrOutput
-}
-
-type databasePostgresqlUpdatesPtrType DatabasePostgresqlUpdatesArgs
-
-func DatabasePostgresqlUpdatesPtr(v *DatabasePostgresqlUpdatesArgs) DatabasePostgresqlUpdatesPtrInput {
-	return (*databasePostgresqlUpdatesPtrType)(v)
-}
-
-func (*databasePostgresqlUpdatesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabasePostgresqlUpdates)(nil)).Elem()
-}
-
-func (i *databasePostgresqlUpdatesPtrType) ToDatabasePostgresqlUpdatesPtrOutput() DatabasePostgresqlUpdatesPtrOutput {
-	return i.ToDatabasePostgresqlUpdatesPtrOutputWithContext(context.Background())
-}
-
-func (i *databasePostgresqlUpdatesPtrType) ToDatabasePostgresqlUpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabasePostgresqlUpdatesPtrOutput)
-}
-
-type DatabasePostgresqlUpdatesOutput struct{ *pulumi.OutputState }
-
-func (DatabasePostgresqlUpdatesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabasePostgresqlUpdates)(nil)).Elem()
-}
-
-func (o DatabasePostgresqlUpdatesOutput) ToDatabasePostgresqlUpdatesOutput() DatabasePostgresqlUpdatesOutput {
-	return o
-}
-
-func (o DatabasePostgresqlUpdatesOutput) ToDatabasePostgresqlUpdatesOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesOutput {
-	return o
-}
-
-func (o DatabasePostgresqlUpdatesOutput) ToDatabasePostgresqlUpdatesPtrOutput() DatabasePostgresqlUpdatesPtrOutput {
-	return o.ToDatabasePostgresqlUpdatesPtrOutputWithContext(context.Background())
-}
-
-func (o DatabasePostgresqlUpdatesOutput) ToDatabasePostgresqlUpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabasePostgresqlUpdates) *DatabasePostgresqlUpdates {
-		return &v
-	}).(DatabasePostgresqlUpdatesPtrOutput)
-}
-
-// The day to perform maintenance.
-func (o DatabasePostgresqlUpdatesOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabasePostgresqlUpdates) string { return v.DayOfWeek }).(pulumi.StringOutput)
-}
-
-// The maximum maintenance window time in hours.
-func (o DatabasePostgresqlUpdatesOutput) Duration() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabasePostgresqlUpdates) int { return v.Duration }).(pulumi.IntOutput)
-}
-
-// Whether maintenance occurs on a weekly or monthly basis.
-func (o DatabasePostgresqlUpdatesOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabasePostgresqlUpdates) string { return v.Frequency }).(pulumi.StringOutput)
-}
-
-// The hour to begin maintenance based in UTC time.
-func (o DatabasePostgresqlUpdatesOutput) HourOfDay() pulumi.IntOutput {
-	return o.ApplyT(func(v DatabasePostgresqlUpdates) int { return v.HourOfDay }).(pulumi.IntOutput)
-}
-
-// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-func (o DatabasePostgresqlUpdatesOutput) WeekOfMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DatabasePostgresqlUpdates) *int { return v.WeekOfMonth }).(pulumi.IntPtrOutput)
-}
-
-type DatabasePostgresqlUpdatesPtrOutput struct{ *pulumi.OutputState }
-
-func (DatabasePostgresqlUpdatesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabasePostgresqlUpdates)(nil)).Elem()
-}
-
-func (o DatabasePostgresqlUpdatesPtrOutput) ToDatabasePostgresqlUpdatesPtrOutput() DatabasePostgresqlUpdatesPtrOutput {
-	return o
-}
-
-func (o DatabasePostgresqlUpdatesPtrOutput) ToDatabasePostgresqlUpdatesPtrOutputWithContext(ctx context.Context) DatabasePostgresqlUpdatesPtrOutput {
-	return o
-}
-
-func (o DatabasePostgresqlUpdatesPtrOutput) Elem() DatabasePostgresqlUpdatesOutput {
-	return o.ApplyT(func(v *DatabasePostgresqlUpdates) DatabasePostgresqlUpdates {
-		if v != nil {
-			return *v
-		}
-		var ret DatabasePostgresqlUpdates
-		return ret
-	}).(DatabasePostgresqlUpdatesOutput)
-}
-
-// The day to perform maintenance.
-func (o DatabasePostgresqlUpdatesPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
-}
-
-// The maximum maintenance window time in hours.
-func (o DatabasePostgresqlUpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Duration
-	}).(pulumi.IntPtrOutput)
-}
-
-// Whether maintenance occurs on a weekly or monthly basis.
-func (o DatabasePostgresqlUpdatesPtrOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Frequency
-	}).(pulumi.StringPtrOutput)
-}
-
-// The hour to begin maintenance based in UTC time.
-func (o DatabasePostgresqlUpdatesPtrOutput) HourOfDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.HourOfDay
-	}).(pulumi.IntPtrOutput)
-}
-
-// The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-func (o DatabasePostgresqlUpdatesPtrOutput) WeekOfMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DatabasePostgresqlUpdates) *int {
-		if v == nil {
-			return nil
-		}
-		return v.WeekOfMonth
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -16802,10 +16376,222 @@ func (o VpcIpv6ArrayOutput) Index(i pulumi.IntInput) VpcIpv6Output {
 	}).(VpcIpv6Output)
 }
 
+type VpcSubnetDatabase struct {
+	// ID of a managed database assigned to the VPC Subnet.
+	Id int `pulumi:"id"`
+	// IPv4 range assigned to the database.
+	Ipv4Range string `pulumi:"ipv4Range"`
+	// A list of IPv6 ranges assigned to the database.
+	Ipv6Ranges []VpcSubnetDatabaseIpv6Range `pulumi:"ipv6Ranges"`
+}
+
+// VpcSubnetDatabaseInput is an input type that accepts VpcSubnetDatabaseArgs and VpcSubnetDatabaseOutput values.
+// You can construct a concrete instance of `VpcSubnetDatabaseInput` via:
+//
+//	VpcSubnetDatabaseArgs{...}
+type VpcSubnetDatabaseInput interface {
+	pulumi.Input
+
+	ToVpcSubnetDatabaseOutput() VpcSubnetDatabaseOutput
+	ToVpcSubnetDatabaseOutputWithContext(context.Context) VpcSubnetDatabaseOutput
+}
+
+type VpcSubnetDatabaseArgs struct {
+	// ID of a managed database assigned to the VPC Subnet.
+	Id pulumi.IntInput `pulumi:"id"`
+	// IPv4 range assigned to the database.
+	Ipv4Range pulumi.StringInput `pulumi:"ipv4Range"`
+	// A list of IPv6 ranges assigned to the database.
+	Ipv6Ranges VpcSubnetDatabaseIpv6RangeArrayInput `pulumi:"ipv6Ranges"`
+}
+
+func (VpcSubnetDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubnetDatabase)(nil)).Elem()
+}
+
+func (i VpcSubnetDatabaseArgs) ToVpcSubnetDatabaseOutput() VpcSubnetDatabaseOutput {
+	return i.ToVpcSubnetDatabaseOutputWithContext(context.Background())
+}
+
+func (i VpcSubnetDatabaseArgs) ToVpcSubnetDatabaseOutputWithContext(ctx context.Context) VpcSubnetDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetDatabaseOutput)
+}
+
+// VpcSubnetDatabaseArrayInput is an input type that accepts VpcSubnetDatabaseArray and VpcSubnetDatabaseArrayOutput values.
+// You can construct a concrete instance of `VpcSubnetDatabaseArrayInput` via:
+//
+//	VpcSubnetDatabaseArray{ VpcSubnetDatabaseArgs{...} }
+type VpcSubnetDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToVpcSubnetDatabaseArrayOutput() VpcSubnetDatabaseArrayOutput
+	ToVpcSubnetDatabaseArrayOutputWithContext(context.Context) VpcSubnetDatabaseArrayOutput
+}
+
+type VpcSubnetDatabaseArray []VpcSubnetDatabaseInput
+
+func (VpcSubnetDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcSubnetDatabase)(nil)).Elem()
+}
+
+func (i VpcSubnetDatabaseArray) ToVpcSubnetDatabaseArrayOutput() VpcSubnetDatabaseArrayOutput {
+	return i.ToVpcSubnetDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i VpcSubnetDatabaseArray) ToVpcSubnetDatabaseArrayOutputWithContext(ctx context.Context) VpcSubnetDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetDatabaseArrayOutput)
+}
+
+type VpcSubnetDatabaseOutput struct{ *pulumi.OutputState }
+
+func (VpcSubnetDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubnetDatabase)(nil)).Elem()
+}
+
+func (o VpcSubnetDatabaseOutput) ToVpcSubnetDatabaseOutput() VpcSubnetDatabaseOutput {
+	return o
+}
+
+func (o VpcSubnetDatabaseOutput) ToVpcSubnetDatabaseOutputWithContext(ctx context.Context) VpcSubnetDatabaseOutput {
+	return o
+}
+
+// ID of a managed database assigned to the VPC Subnet.
+func (o VpcSubnetDatabaseOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v VpcSubnetDatabase) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// IPv4 range assigned to the database.
+func (o VpcSubnetDatabaseOutput) Ipv4Range() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcSubnetDatabase) string { return v.Ipv4Range }).(pulumi.StringOutput)
+}
+
+// A list of IPv6 ranges assigned to the database.
+func (o VpcSubnetDatabaseOutput) Ipv6Ranges() VpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o.ApplyT(func(v VpcSubnetDatabase) []VpcSubnetDatabaseIpv6Range { return v.Ipv6Ranges }).(VpcSubnetDatabaseIpv6RangeArrayOutput)
+}
+
+type VpcSubnetDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcSubnetDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcSubnetDatabase)(nil)).Elem()
+}
+
+func (o VpcSubnetDatabaseArrayOutput) ToVpcSubnetDatabaseArrayOutput() VpcSubnetDatabaseArrayOutput {
+	return o
+}
+
+func (o VpcSubnetDatabaseArrayOutput) ToVpcSubnetDatabaseArrayOutputWithContext(ctx context.Context) VpcSubnetDatabaseArrayOutput {
+	return o
+}
+
+func (o VpcSubnetDatabaseArrayOutput) Index(i pulumi.IntInput) VpcSubnetDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcSubnetDatabase {
+		return vs[0].([]VpcSubnetDatabase)[vs[1].(int)]
+	}).(VpcSubnetDatabaseOutput)
+}
+
+type VpcSubnetDatabaseIpv6Range struct {
+	// An IPv6 address range in CIDR notation.
+	Range string `pulumi:"range"`
+}
+
+// VpcSubnetDatabaseIpv6RangeInput is an input type that accepts VpcSubnetDatabaseIpv6RangeArgs and VpcSubnetDatabaseIpv6RangeOutput values.
+// You can construct a concrete instance of `VpcSubnetDatabaseIpv6RangeInput` via:
+//
+//	VpcSubnetDatabaseIpv6RangeArgs{...}
+type VpcSubnetDatabaseIpv6RangeInput interface {
+	pulumi.Input
+
+	ToVpcSubnetDatabaseIpv6RangeOutput() VpcSubnetDatabaseIpv6RangeOutput
+	ToVpcSubnetDatabaseIpv6RangeOutputWithContext(context.Context) VpcSubnetDatabaseIpv6RangeOutput
+}
+
+type VpcSubnetDatabaseIpv6RangeArgs struct {
+	// An IPv6 address range in CIDR notation.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (VpcSubnetDatabaseIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (i VpcSubnetDatabaseIpv6RangeArgs) ToVpcSubnetDatabaseIpv6RangeOutput() VpcSubnetDatabaseIpv6RangeOutput {
+	return i.ToVpcSubnetDatabaseIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i VpcSubnetDatabaseIpv6RangeArgs) ToVpcSubnetDatabaseIpv6RangeOutputWithContext(ctx context.Context) VpcSubnetDatabaseIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetDatabaseIpv6RangeOutput)
+}
+
+// VpcSubnetDatabaseIpv6RangeArrayInput is an input type that accepts VpcSubnetDatabaseIpv6RangeArray and VpcSubnetDatabaseIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `VpcSubnetDatabaseIpv6RangeArrayInput` via:
+//
+//	VpcSubnetDatabaseIpv6RangeArray{ VpcSubnetDatabaseIpv6RangeArgs{...} }
+type VpcSubnetDatabaseIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToVpcSubnetDatabaseIpv6RangeArrayOutput() VpcSubnetDatabaseIpv6RangeArrayOutput
+	ToVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(context.Context) VpcSubnetDatabaseIpv6RangeArrayOutput
+}
+
+type VpcSubnetDatabaseIpv6RangeArray []VpcSubnetDatabaseIpv6RangeInput
+
+func (VpcSubnetDatabaseIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (i VpcSubnetDatabaseIpv6RangeArray) ToVpcSubnetDatabaseIpv6RangeArrayOutput() VpcSubnetDatabaseIpv6RangeArrayOutput {
+	return i.ToVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i VpcSubnetDatabaseIpv6RangeArray) ToVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(ctx context.Context) VpcSubnetDatabaseIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetDatabaseIpv6RangeArrayOutput)
+}
+
+type VpcSubnetDatabaseIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (VpcSubnetDatabaseIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (o VpcSubnetDatabaseIpv6RangeOutput) ToVpcSubnetDatabaseIpv6RangeOutput() VpcSubnetDatabaseIpv6RangeOutput {
+	return o
+}
+
+func (o VpcSubnetDatabaseIpv6RangeOutput) ToVpcSubnetDatabaseIpv6RangeOutputWithContext(ctx context.Context) VpcSubnetDatabaseIpv6RangeOutput {
+	return o
+}
+
+// An IPv6 address range in CIDR notation.
+func (o VpcSubnetDatabaseIpv6RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcSubnetDatabaseIpv6Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type VpcSubnetDatabaseIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcSubnetDatabaseIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (o VpcSubnetDatabaseIpv6RangeArrayOutput) ToVpcSubnetDatabaseIpv6RangeArrayOutput() VpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o
+}
+
+func (o VpcSubnetDatabaseIpv6RangeArrayOutput) ToVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(ctx context.Context) VpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o
+}
+
+func (o VpcSubnetDatabaseIpv6RangeArrayOutput) Index(i pulumi.IntInput) VpcSubnetDatabaseIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcSubnetDatabaseIpv6Range {
+		return vs[0].([]VpcSubnetDatabaseIpv6Range)[vs[1].(int)]
+	}).(VpcSubnetDatabaseIpv6RangeOutput)
+}
+
 type VpcSubnetIpv6 struct {
 	// The IPv6 range assigned to this subnet.
 	AllocatedRange *string `pulumi:"allocatedRange"`
-	// An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+	// An IPv6 address range in CIDR notation.
 	Range *string `pulumi:"range"`
 }
 
@@ -16823,7 +16609,7 @@ type VpcSubnetIpv6Input interface {
 type VpcSubnetIpv6Args struct {
 	// The IPv6 range assigned to this subnet.
 	AllocatedRange pulumi.StringPtrInput `pulumi:"allocatedRange"`
-	// An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+	// An IPv6 address range in CIDR notation.
 	Range pulumi.StringPtrInput `pulumi:"range"`
 }
 
@@ -16883,7 +16669,7 @@ func (o VpcSubnetIpv6Output) AllocatedRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpcSubnetIpv6) *string { return v.AllocatedRange }).(pulumi.StringPtrOutput)
 }
 
-// An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+// An IPv6 address range in CIDR notation.
 func (o VpcSubnetIpv6Output) Range() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpcSubnetIpv6) *string { return v.Range }).(pulumi.StringPtrOutput)
 }
@@ -16909,7 +16695,7 @@ func (o VpcSubnetIpv6ArrayOutput) Index(i pulumi.IntInput) VpcSubnetIpv6Output {
 }
 
 type VpcSubnetLinode struct {
-	// ID of the interface.
+	// ID of a managed database assigned to the VPC Subnet.
 	Id int `pulumi:"id"`
 	// A list of networking interfaces objects.
 	Interfaces []VpcSubnetLinodeInterface `pulumi:"interfaces"`
@@ -16927,7 +16713,7 @@ type VpcSubnetLinodeInput interface {
 }
 
 type VpcSubnetLinodeArgs struct {
-	// ID of the interface.
+	// ID of a managed database assigned to the VPC Subnet.
 	Id pulumi.IntInput `pulumi:"id"`
 	// A list of networking interfaces objects.
 	Interfaces VpcSubnetLinodeInterfaceArrayInput `pulumi:"interfaces"`
@@ -16984,7 +16770,7 @@ func (o VpcSubnetLinodeOutput) ToVpcSubnetLinodeOutputWithContext(ctx context.Co
 	return o
 }
 
-// ID of the interface.
+// ID of a managed database assigned to the VPC Subnet.
 func (o VpcSubnetLinodeOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v VpcSubnetLinode) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -17019,7 +16805,7 @@ type VpcSubnetLinodeInterface struct {
 	Active bool `pulumi:"active"`
 	// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
 	ConfigId int `pulumi:"configId"`
-	// ID of the interface.
+	// ID of a managed database assigned to the VPC Subnet.
 	Id int `pulumi:"id"`
 }
 
@@ -17039,7 +16825,7 @@ type VpcSubnetLinodeInterfaceArgs struct {
 	Active pulumi.BoolInput `pulumi:"active"`
 	// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
 	ConfigId pulumi.IntInput `pulumi:"configId"`
-	// ID of the interface.
+	// ID of a managed database assigned to the VPC Subnet.
 	Id pulumi.IntInput `pulumi:"id"`
 }
 
@@ -17104,7 +16890,7 @@ func (o VpcSubnetLinodeInterfaceOutput) ConfigId() pulumi.IntOutput {
 	return o.ApplyT(func(v VpcSubnetLinodeInterface) int { return v.ConfigId }).(pulumi.IntOutput)
 }
 
-// ID of the interface.
+// ID of a managed database assigned to the VPC Subnet.
 func (o VpcSubnetLinodeInterfaceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v VpcSubnetLinodeInterface) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -18784,245 +18570,6 @@ func (o GetConsumerImageShareGroupTokensTokenArrayOutput) Index(i pulumi.IntInpu
 	}).(GetConsumerImageShareGroupTokensTokenOutput)
 }
 
-type GetDatabaseBackupsBackup struct {
-	// A time value given in a combined date and time format that represents when the database backup was created.
-	Created string `pulumi:"created"`
-	// The ID of the database backup object.
-	Id int `pulumi:"id"`
-	// The database backup’s label, for display purposes only.
-	Label string `pulumi:"label"`
-	// The type of database backup, determined by how the backup was created.
-	Type string `pulumi:"type"`
-}
-
-// GetDatabaseBackupsBackupInput is an input type that accepts GetDatabaseBackupsBackupArgs and GetDatabaseBackupsBackupOutput values.
-// You can construct a concrete instance of `GetDatabaseBackupsBackupInput` via:
-//
-//	GetDatabaseBackupsBackupArgs{...}
-type GetDatabaseBackupsBackupInput interface {
-	pulumi.Input
-
-	ToGetDatabaseBackupsBackupOutput() GetDatabaseBackupsBackupOutput
-	ToGetDatabaseBackupsBackupOutputWithContext(context.Context) GetDatabaseBackupsBackupOutput
-}
-
-type GetDatabaseBackupsBackupArgs struct {
-	// A time value given in a combined date and time format that represents when the database backup was created.
-	Created pulumi.StringInput `pulumi:"created"`
-	// The ID of the database backup object.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The database backup’s label, for display purposes only.
-	Label pulumi.StringInput `pulumi:"label"`
-	// The type of database backup, determined by how the backup was created.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetDatabaseBackupsBackupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseBackupsBackup)(nil)).Elem()
-}
-
-func (i GetDatabaseBackupsBackupArgs) ToGetDatabaseBackupsBackupOutput() GetDatabaseBackupsBackupOutput {
-	return i.ToGetDatabaseBackupsBackupOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseBackupsBackupArgs) ToGetDatabaseBackupsBackupOutputWithContext(ctx context.Context) GetDatabaseBackupsBackupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseBackupsBackupOutput)
-}
-
-// GetDatabaseBackupsBackupArrayInput is an input type that accepts GetDatabaseBackupsBackupArray and GetDatabaseBackupsBackupArrayOutput values.
-// You can construct a concrete instance of `GetDatabaseBackupsBackupArrayInput` via:
-//
-//	GetDatabaseBackupsBackupArray{ GetDatabaseBackupsBackupArgs{...} }
-type GetDatabaseBackupsBackupArrayInput interface {
-	pulumi.Input
-
-	ToGetDatabaseBackupsBackupArrayOutput() GetDatabaseBackupsBackupArrayOutput
-	ToGetDatabaseBackupsBackupArrayOutputWithContext(context.Context) GetDatabaseBackupsBackupArrayOutput
-}
-
-type GetDatabaseBackupsBackupArray []GetDatabaseBackupsBackupInput
-
-func (GetDatabaseBackupsBackupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseBackupsBackup)(nil)).Elem()
-}
-
-func (i GetDatabaseBackupsBackupArray) ToGetDatabaseBackupsBackupArrayOutput() GetDatabaseBackupsBackupArrayOutput {
-	return i.ToGetDatabaseBackupsBackupArrayOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseBackupsBackupArray) ToGetDatabaseBackupsBackupArrayOutputWithContext(ctx context.Context) GetDatabaseBackupsBackupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseBackupsBackupArrayOutput)
-}
-
-type GetDatabaseBackupsBackupOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseBackupsBackupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseBackupsBackup)(nil)).Elem()
-}
-
-func (o GetDatabaseBackupsBackupOutput) ToGetDatabaseBackupsBackupOutput() GetDatabaseBackupsBackupOutput {
-	return o
-}
-
-func (o GetDatabaseBackupsBackupOutput) ToGetDatabaseBackupsBackupOutputWithContext(ctx context.Context) GetDatabaseBackupsBackupOutput {
-	return o
-}
-
-// A time value given in a combined date and time format that represents when the database backup was created.
-func (o GetDatabaseBackupsBackupOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseBackupsBackup) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// The ID of the database backup object.
-func (o GetDatabaseBackupsBackupOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDatabaseBackupsBackup) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The database backup’s label, for display purposes only.
-func (o GetDatabaseBackupsBackupOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseBackupsBackup) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// The type of database backup, determined by how the backup was created.
-func (o GetDatabaseBackupsBackupOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseBackupsBackup) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetDatabaseBackupsBackupArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseBackupsBackupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseBackupsBackup)(nil)).Elem()
-}
-
-func (o GetDatabaseBackupsBackupArrayOutput) ToGetDatabaseBackupsBackupArrayOutput() GetDatabaseBackupsBackupArrayOutput {
-	return o
-}
-
-func (o GetDatabaseBackupsBackupArrayOutput) ToGetDatabaseBackupsBackupArrayOutputWithContext(ctx context.Context) GetDatabaseBackupsBackupArrayOutput {
-	return o
-}
-
-func (o GetDatabaseBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetDatabaseBackupsBackupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseBackupsBackup {
-		return vs[0].([]GetDatabaseBackupsBackup)[vs[1].(int)]
-	}).(GetDatabaseBackupsBackupOutput)
-}
-
-type GetDatabaseBackupsFilter struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy *string `pulumi:"matchBy"`
-	// The name of the field to filter by.
-	Name string `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values []string `pulumi:"values"`
-}
-
-// GetDatabaseBackupsFilterInput is an input type that accepts GetDatabaseBackupsFilterArgs and GetDatabaseBackupsFilterOutput values.
-// You can construct a concrete instance of `GetDatabaseBackupsFilterInput` via:
-//
-//	GetDatabaseBackupsFilterArgs{...}
-type GetDatabaseBackupsFilterInput interface {
-	pulumi.Input
-
-	ToGetDatabaseBackupsFilterOutput() GetDatabaseBackupsFilterOutput
-	ToGetDatabaseBackupsFilterOutputWithContext(context.Context) GetDatabaseBackupsFilterOutput
-}
-
-type GetDatabaseBackupsFilterArgs struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// The name of the field to filter by.
-	Name pulumi.StringInput `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetDatabaseBackupsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseBackupsFilter)(nil)).Elem()
-}
-
-func (i GetDatabaseBackupsFilterArgs) ToGetDatabaseBackupsFilterOutput() GetDatabaseBackupsFilterOutput {
-	return i.ToGetDatabaseBackupsFilterOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseBackupsFilterArgs) ToGetDatabaseBackupsFilterOutputWithContext(ctx context.Context) GetDatabaseBackupsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseBackupsFilterOutput)
-}
-
-// GetDatabaseBackupsFilterArrayInput is an input type that accepts GetDatabaseBackupsFilterArray and GetDatabaseBackupsFilterArrayOutput values.
-// You can construct a concrete instance of `GetDatabaseBackupsFilterArrayInput` via:
-//
-//	GetDatabaseBackupsFilterArray{ GetDatabaseBackupsFilterArgs{...} }
-type GetDatabaseBackupsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetDatabaseBackupsFilterArrayOutput() GetDatabaseBackupsFilterArrayOutput
-	ToGetDatabaseBackupsFilterArrayOutputWithContext(context.Context) GetDatabaseBackupsFilterArrayOutput
-}
-
-type GetDatabaseBackupsFilterArray []GetDatabaseBackupsFilterInput
-
-func (GetDatabaseBackupsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseBackupsFilter)(nil)).Elem()
-}
-
-func (i GetDatabaseBackupsFilterArray) ToGetDatabaseBackupsFilterArrayOutput() GetDatabaseBackupsFilterArrayOutput {
-	return i.ToGetDatabaseBackupsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseBackupsFilterArray) ToGetDatabaseBackupsFilterArrayOutputWithContext(ctx context.Context) GetDatabaseBackupsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseBackupsFilterArrayOutput)
-}
-
-type GetDatabaseBackupsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseBackupsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseBackupsFilter)(nil)).Elem()
-}
-
-func (o GetDatabaseBackupsFilterOutput) ToGetDatabaseBackupsFilterOutput() GetDatabaseBackupsFilterOutput {
-	return o
-}
-
-func (o GetDatabaseBackupsFilterOutput) ToGetDatabaseBackupsFilterOutputWithContext(ctx context.Context) GetDatabaseBackupsFilterOutput {
-	return o
-}
-
-// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-func (o GetDatabaseBackupsFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDatabaseBackupsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// The name of the field to filter by.
-func (o GetDatabaseBackupsFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseBackupsFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// A list of values for the filter to allow. These values should all be in string form.
-func (o GetDatabaseBackupsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDatabaseBackupsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetDatabaseBackupsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseBackupsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseBackupsFilter)(nil)).Elem()
-}
-
-func (o GetDatabaseBackupsFilterArrayOutput) ToGetDatabaseBackupsFilterArrayOutput() GetDatabaseBackupsFilterArrayOutput {
-	return o
-}
-
-func (o GetDatabaseBackupsFilterArrayOutput) ToGetDatabaseBackupsFilterArrayOutputWithContext(ctx context.Context) GetDatabaseBackupsFilterArrayOutput {
-	return o
-}
-
-func (o GetDatabaseBackupsFilterArrayOutput) Index(i pulumi.IntInput) GetDatabaseBackupsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseBackupsFilter {
-		return vs[0].([]GetDatabaseBackupsFilter)[vs[1].(int)]
-	}).(GetDatabaseBackupsFilterOutput)
-}
-
 type GetDatabaseEnginesEngine struct {
 	// The Managed Database engine type.
 	Engine string `pulumi:"engine"`
@@ -19251,245 +18798,6 @@ func (o GetDatabaseEnginesFilterArrayOutput) Index(i pulumi.IntInput) GetDatabas
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseEnginesFilter {
 		return vs[0].([]GetDatabaseEnginesFilter)[vs[1].(int)]
 	}).(GetDatabaseEnginesFilterOutput)
-}
-
-type GetDatabaseMysqlBackupsBackup struct {
-	// A time value given in a combined date and time format that represents when the database backup was created.
-	Created string `pulumi:"created"`
-	// The ID of the database backup object.
-	Id int `pulumi:"id"`
-	// The database backup’s label, for display purposes only.
-	Label string `pulumi:"label"`
-	// The type of database backup, determined by how the backup was created.
-	Type string `pulumi:"type"`
-}
-
-// GetDatabaseMysqlBackupsBackupInput is an input type that accepts GetDatabaseMysqlBackupsBackupArgs and GetDatabaseMysqlBackupsBackupOutput values.
-// You can construct a concrete instance of `GetDatabaseMysqlBackupsBackupInput` via:
-//
-//	GetDatabaseMysqlBackupsBackupArgs{...}
-type GetDatabaseMysqlBackupsBackupInput interface {
-	pulumi.Input
-
-	ToGetDatabaseMysqlBackupsBackupOutput() GetDatabaseMysqlBackupsBackupOutput
-	ToGetDatabaseMysqlBackupsBackupOutputWithContext(context.Context) GetDatabaseMysqlBackupsBackupOutput
-}
-
-type GetDatabaseMysqlBackupsBackupArgs struct {
-	// A time value given in a combined date and time format that represents when the database backup was created.
-	Created pulumi.StringInput `pulumi:"created"`
-	// The ID of the database backup object.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The database backup’s label, for display purposes only.
-	Label pulumi.StringInput `pulumi:"label"`
-	// The type of database backup, determined by how the backup was created.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetDatabaseMysqlBackupsBackupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseMysqlBackupsBackup)(nil)).Elem()
-}
-
-func (i GetDatabaseMysqlBackupsBackupArgs) ToGetDatabaseMysqlBackupsBackupOutput() GetDatabaseMysqlBackupsBackupOutput {
-	return i.ToGetDatabaseMysqlBackupsBackupOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseMysqlBackupsBackupArgs) ToGetDatabaseMysqlBackupsBackupOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsBackupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlBackupsBackupOutput)
-}
-
-// GetDatabaseMysqlBackupsBackupArrayInput is an input type that accepts GetDatabaseMysqlBackupsBackupArray and GetDatabaseMysqlBackupsBackupArrayOutput values.
-// You can construct a concrete instance of `GetDatabaseMysqlBackupsBackupArrayInput` via:
-//
-//	GetDatabaseMysqlBackupsBackupArray{ GetDatabaseMysqlBackupsBackupArgs{...} }
-type GetDatabaseMysqlBackupsBackupArrayInput interface {
-	pulumi.Input
-
-	ToGetDatabaseMysqlBackupsBackupArrayOutput() GetDatabaseMysqlBackupsBackupArrayOutput
-	ToGetDatabaseMysqlBackupsBackupArrayOutputWithContext(context.Context) GetDatabaseMysqlBackupsBackupArrayOutput
-}
-
-type GetDatabaseMysqlBackupsBackupArray []GetDatabaseMysqlBackupsBackupInput
-
-func (GetDatabaseMysqlBackupsBackupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseMysqlBackupsBackup)(nil)).Elem()
-}
-
-func (i GetDatabaseMysqlBackupsBackupArray) ToGetDatabaseMysqlBackupsBackupArrayOutput() GetDatabaseMysqlBackupsBackupArrayOutput {
-	return i.ToGetDatabaseMysqlBackupsBackupArrayOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseMysqlBackupsBackupArray) ToGetDatabaseMysqlBackupsBackupArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsBackupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlBackupsBackupArrayOutput)
-}
-
-type GetDatabaseMysqlBackupsBackupOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseMysqlBackupsBackupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseMysqlBackupsBackup)(nil)).Elem()
-}
-
-func (o GetDatabaseMysqlBackupsBackupOutput) ToGetDatabaseMysqlBackupsBackupOutput() GetDatabaseMysqlBackupsBackupOutput {
-	return o
-}
-
-func (o GetDatabaseMysqlBackupsBackupOutput) ToGetDatabaseMysqlBackupsBackupOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsBackupOutput {
-	return o
-}
-
-// A time value given in a combined date and time format that represents when the database backup was created.
-func (o GetDatabaseMysqlBackupsBackupOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// The ID of the database backup object.
-func (o GetDatabaseMysqlBackupsBackupOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The database backup’s label, for display purposes only.
-func (o GetDatabaseMysqlBackupsBackupOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// The type of database backup, determined by how the backup was created.
-func (o GetDatabaseMysqlBackupsBackupOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlBackupsBackup) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetDatabaseMysqlBackupsBackupArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseMysqlBackupsBackupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseMysqlBackupsBackup)(nil)).Elem()
-}
-
-func (o GetDatabaseMysqlBackupsBackupArrayOutput) ToGetDatabaseMysqlBackupsBackupArrayOutput() GetDatabaseMysqlBackupsBackupArrayOutput {
-	return o
-}
-
-func (o GetDatabaseMysqlBackupsBackupArrayOutput) ToGetDatabaseMysqlBackupsBackupArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsBackupArrayOutput {
-	return o
-}
-
-func (o GetDatabaseMysqlBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetDatabaseMysqlBackupsBackupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMysqlBackupsBackup {
-		return vs[0].([]GetDatabaseMysqlBackupsBackup)[vs[1].(int)]
-	}).(GetDatabaseMysqlBackupsBackupOutput)
-}
-
-type GetDatabaseMysqlBackupsFilter struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy *string `pulumi:"matchBy"`
-	// The name of the field to filter by.
-	Name string `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values []string `pulumi:"values"`
-}
-
-// GetDatabaseMysqlBackupsFilterInput is an input type that accepts GetDatabaseMysqlBackupsFilterArgs and GetDatabaseMysqlBackupsFilterOutput values.
-// You can construct a concrete instance of `GetDatabaseMysqlBackupsFilterInput` via:
-//
-//	GetDatabaseMysqlBackupsFilterArgs{...}
-type GetDatabaseMysqlBackupsFilterInput interface {
-	pulumi.Input
-
-	ToGetDatabaseMysqlBackupsFilterOutput() GetDatabaseMysqlBackupsFilterOutput
-	ToGetDatabaseMysqlBackupsFilterOutputWithContext(context.Context) GetDatabaseMysqlBackupsFilterOutput
-}
-
-type GetDatabaseMysqlBackupsFilterArgs struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// The name of the field to filter by.
-	Name pulumi.StringInput `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetDatabaseMysqlBackupsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseMysqlBackupsFilter)(nil)).Elem()
-}
-
-func (i GetDatabaseMysqlBackupsFilterArgs) ToGetDatabaseMysqlBackupsFilterOutput() GetDatabaseMysqlBackupsFilterOutput {
-	return i.ToGetDatabaseMysqlBackupsFilterOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseMysqlBackupsFilterArgs) ToGetDatabaseMysqlBackupsFilterOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlBackupsFilterOutput)
-}
-
-// GetDatabaseMysqlBackupsFilterArrayInput is an input type that accepts GetDatabaseMysqlBackupsFilterArray and GetDatabaseMysqlBackupsFilterArrayOutput values.
-// You can construct a concrete instance of `GetDatabaseMysqlBackupsFilterArrayInput` via:
-//
-//	GetDatabaseMysqlBackupsFilterArray{ GetDatabaseMysqlBackupsFilterArgs{...} }
-type GetDatabaseMysqlBackupsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetDatabaseMysqlBackupsFilterArrayOutput() GetDatabaseMysqlBackupsFilterArrayOutput
-	ToGetDatabaseMysqlBackupsFilterArrayOutputWithContext(context.Context) GetDatabaseMysqlBackupsFilterArrayOutput
-}
-
-type GetDatabaseMysqlBackupsFilterArray []GetDatabaseMysqlBackupsFilterInput
-
-func (GetDatabaseMysqlBackupsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseMysqlBackupsFilter)(nil)).Elem()
-}
-
-func (i GetDatabaseMysqlBackupsFilterArray) ToGetDatabaseMysqlBackupsFilterArrayOutput() GetDatabaseMysqlBackupsFilterArrayOutput {
-	return i.ToGetDatabaseMysqlBackupsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseMysqlBackupsFilterArray) ToGetDatabaseMysqlBackupsFilterArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlBackupsFilterArrayOutput)
-}
-
-type GetDatabaseMysqlBackupsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseMysqlBackupsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseMysqlBackupsFilter)(nil)).Elem()
-}
-
-func (o GetDatabaseMysqlBackupsFilterOutput) ToGetDatabaseMysqlBackupsFilterOutput() GetDatabaseMysqlBackupsFilterOutput {
-	return o
-}
-
-func (o GetDatabaseMysqlBackupsFilterOutput) ToGetDatabaseMysqlBackupsFilterOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsFilterOutput {
-	return o
-}
-
-// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-func (o GetDatabaseMysqlBackupsFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlBackupsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// The name of the field to filter by.
-func (o GetDatabaseMysqlBackupsFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlBackupsFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// A list of values for the filter to allow. These values should all be in string form.
-func (o GetDatabaseMysqlBackupsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlBackupsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetDatabaseMysqlBackupsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseMysqlBackupsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseMysqlBackupsFilter)(nil)).Elem()
-}
-
-func (o GetDatabaseMysqlBackupsFilterArrayOutput) ToGetDatabaseMysqlBackupsFilterArrayOutput() GetDatabaseMysqlBackupsFilterArrayOutput {
-	return o
-}
-
-func (o GetDatabaseMysqlBackupsFilterArrayOutput) ToGetDatabaseMysqlBackupsFilterArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlBackupsFilterArrayOutput {
-	return o
-}
-
-func (o GetDatabaseMysqlBackupsFilterArrayOutput) Index(i pulumi.IntInput) GetDatabaseMysqlBackupsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMysqlBackupsFilter {
-		return vs[0].([]GetDatabaseMysqlBackupsFilter)[vs[1].(int)]
-	}).(GetDatabaseMysqlBackupsFilterOutput)
 }
 
 type GetDatabaseMysqlConfigBinlogRetentionPeriod struct {
@@ -22017,124 +21325,6 @@ func (o GetDatabaseMysqlConfigMysqlWaitTimeoutOutput) Type() pulumi.StringOutput
 	return o.ApplyT(func(v GetDatabaseMysqlConfigMysqlWaitTimeout) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetDatabaseMysqlUpdate struct {
-	DayOfWeek   string `pulumi:"dayOfWeek"`
-	Duration    int    `pulumi:"duration"`
-	Frequency   string `pulumi:"frequency"`
-	HourOfDay   int    `pulumi:"hourOfDay"`
-	WeekOfMonth int    `pulumi:"weekOfMonth"`
-}
-
-// GetDatabaseMysqlUpdateInput is an input type that accepts GetDatabaseMysqlUpdateArgs and GetDatabaseMysqlUpdateOutput values.
-// You can construct a concrete instance of `GetDatabaseMysqlUpdateInput` via:
-//
-//	GetDatabaseMysqlUpdateArgs{...}
-type GetDatabaseMysqlUpdateInput interface {
-	pulumi.Input
-
-	ToGetDatabaseMysqlUpdateOutput() GetDatabaseMysqlUpdateOutput
-	ToGetDatabaseMysqlUpdateOutputWithContext(context.Context) GetDatabaseMysqlUpdateOutput
-}
-
-type GetDatabaseMysqlUpdateArgs struct {
-	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
-	Duration    pulumi.IntInput    `pulumi:"duration"`
-	Frequency   pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
-	WeekOfMonth pulumi.IntInput    `pulumi:"weekOfMonth"`
-}
-
-func (GetDatabaseMysqlUpdateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseMysqlUpdate)(nil)).Elem()
-}
-
-func (i GetDatabaseMysqlUpdateArgs) ToGetDatabaseMysqlUpdateOutput() GetDatabaseMysqlUpdateOutput {
-	return i.ToGetDatabaseMysqlUpdateOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseMysqlUpdateArgs) ToGetDatabaseMysqlUpdateOutputWithContext(ctx context.Context) GetDatabaseMysqlUpdateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlUpdateOutput)
-}
-
-// GetDatabaseMysqlUpdateArrayInput is an input type that accepts GetDatabaseMysqlUpdateArray and GetDatabaseMysqlUpdateArrayOutput values.
-// You can construct a concrete instance of `GetDatabaseMysqlUpdateArrayInput` via:
-//
-//	GetDatabaseMysqlUpdateArray{ GetDatabaseMysqlUpdateArgs{...} }
-type GetDatabaseMysqlUpdateArrayInput interface {
-	pulumi.Input
-
-	ToGetDatabaseMysqlUpdateArrayOutput() GetDatabaseMysqlUpdateArrayOutput
-	ToGetDatabaseMysqlUpdateArrayOutputWithContext(context.Context) GetDatabaseMysqlUpdateArrayOutput
-}
-
-type GetDatabaseMysqlUpdateArray []GetDatabaseMysqlUpdateInput
-
-func (GetDatabaseMysqlUpdateArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseMysqlUpdate)(nil)).Elem()
-}
-
-func (i GetDatabaseMysqlUpdateArray) ToGetDatabaseMysqlUpdateArrayOutput() GetDatabaseMysqlUpdateArrayOutput {
-	return i.ToGetDatabaseMysqlUpdateArrayOutputWithContext(context.Background())
-}
-
-func (i GetDatabaseMysqlUpdateArray) ToGetDatabaseMysqlUpdateArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlUpdateArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseMysqlUpdateArrayOutput)
-}
-
-type GetDatabaseMysqlUpdateOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseMysqlUpdateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseMysqlUpdate)(nil)).Elem()
-}
-
-func (o GetDatabaseMysqlUpdateOutput) ToGetDatabaseMysqlUpdateOutput() GetDatabaseMysqlUpdateOutput {
-	return o
-}
-
-func (o GetDatabaseMysqlUpdateOutput) ToGetDatabaseMysqlUpdateOutputWithContext(ctx context.Context) GetDatabaseMysqlUpdateOutput {
-	return o
-}
-
-func (o GetDatabaseMysqlUpdateOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlUpdate) string { return v.DayOfWeek }).(pulumi.StringOutput)
-}
-
-func (o GetDatabaseMysqlUpdateOutput) Duration() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlUpdate) int { return v.Duration }).(pulumi.IntOutput)
-}
-
-func (o GetDatabaseMysqlUpdateOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlUpdate) string { return v.Frequency }).(pulumi.StringOutput)
-}
-
-func (o GetDatabaseMysqlUpdateOutput) HourOfDay() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlUpdate) int { return v.HourOfDay }).(pulumi.IntOutput)
-}
-
-func (o GetDatabaseMysqlUpdateOutput) WeekOfMonth() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDatabaseMysqlUpdate) int { return v.WeekOfMonth }).(pulumi.IntOutput)
-}
-
-type GetDatabaseMysqlUpdateArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDatabaseMysqlUpdateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabaseMysqlUpdate)(nil)).Elem()
-}
-
-func (o GetDatabaseMysqlUpdateArrayOutput) ToGetDatabaseMysqlUpdateArrayOutput() GetDatabaseMysqlUpdateArrayOutput {
-	return o
-}
-
-func (o GetDatabaseMysqlUpdateArrayOutput) ToGetDatabaseMysqlUpdateArrayOutputWithContext(ctx context.Context) GetDatabaseMysqlUpdateArrayOutput {
-	return o
-}
-
-func (o GetDatabaseMysqlUpdateArrayOutput) Index(i pulumi.IntInput) GetDatabaseMysqlUpdateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseMysqlUpdate {
-		return vs[0].([]GetDatabaseMysqlUpdate)[vs[1].(int)]
-	}).(GetDatabaseMysqlUpdateOutput)
-}
-
 type GetDatabaseMysqlV2PendingUpdate struct {
 	// The time when a mandatory update needs to be applied.
 	Deadline string `pulumi:"deadline"`
@@ -22924,124 +22114,6 @@ func (o GetDatabasePostgresqlConfigWorkMemArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetDatabasePostgresqlConfigWorkMemOutput)
 }
 
-type GetDatabasePostgresqlUpdate struct {
-	DayOfWeek   string `pulumi:"dayOfWeek"`
-	Duration    int    `pulumi:"duration"`
-	Frequency   string `pulumi:"frequency"`
-	HourOfDay   int    `pulumi:"hourOfDay"`
-	WeekOfMonth int    `pulumi:"weekOfMonth"`
-}
-
-// GetDatabasePostgresqlUpdateInput is an input type that accepts GetDatabasePostgresqlUpdateArgs and GetDatabasePostgresqlUpdateOutput values.
-// You can construct a concrete instance of `GetDatabasePostgresqlUpdateInput` via:
-//
-//	GetDatabasePostgresqlUpdateArgs{...}
-type GetDatabasePostgresqlUpdateInput interface {
-	pulumi.Input
-
-	ToGetDatabasePostgresqlUpdateOutput() GetDatabasePostgresqlUpdateOutput
-	ToGetDatabasePostgresqlUpdateOutputWithContext(context.Context) GetDatabasePostgresqlUpdateOutput
-}
-
-type GetDatabasePostgresqlUpdateArgs struct {
-	DayOfWeek   pulumi.StringInput `pulumi:"dayOfWeek"`
-	Duration    pulumi.IntInput    `pulumi:"duration"`
-	Frequency   pulumi.StringInput `pulumi:"frequency"`
-	HourOfDay   pulumi.IntInput    `pulumi:"hourOfDay"`
-	WeekOfMonth pulumi.IntInput    `pulumi:"weekOfMonth"`
-}
-
-func (GetDatabasePostgresqlUpdateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabasePostgresqlUpdate)(nil)).Elem()
-}
-
-func (i GetDatabasePostgresqlUpdateArgs) ToGetDatabasePostgresqlUpdateOutput() GetDatabasePostgresqlUpdateOutput {
-	return i.ToGetDatabasePostgresqlUpdateOutputWithContext(context.Background())
-}
-
-func (i GetDatabasePostgresqlUpdateArgs) ToGetDatabasePostgresqlUpdateOutputWithContext(ctx context.Context) GetDatabasePostgresqlUpdateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlUpdateOutput)
-}
-
-// GetDatabasePostgresqlUpdateArrayInput is an input type that accepts GetDatabasePostgresqlUpdateArray and GetDatabasePostgresqlUpdateArrayOutput values.
-// You can construct a concrete instance of `GetDatabasePostgresqlUpdateArrayInput` via:
-//
-//	GetDatabasePostgresqlUpdateArray{ GetDatabasePostgresqlUpdateArgs{...} }
-type GetDatabasePostgresqlUpdateArrayInput interface {
-	pulumi.Input
-
-	ToGetDatabasePostgresqlUpdateArrayOutput() GetDatabasePostgresqlUpdateArrayOutput
-	ToGetDatabasePostgresqlUpdateArrayOutputWithContext(context.Context) GetDatabasePostgresqlUpdateArrayOutput
-}
-
-type GetDatabasePostgresqlUpdateArray []GetDatabasePostgresqlUpdateInput
-
-func (GetDatabasePostgresqlUpdateArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabasePostgresqlUpdate)(nil)).Elem()
-}
-
-func (i GetDatabasePostgresqlUpdateArray) ToGetDatabasePostgresqlUpdateArrayOutput() GetDatabasePostgresqlUpdateArrayOutput {
-	return i.ToGetDatabasePostgresqlUpdateArrayOutputWithContext(context.Background())
-}
-
-func (i GetDatabasePostgresqlUpdateArray) ToGetDatabasePostgresqlUpdateArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlUpdateArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatabasePostgresqlUpdateArrayOutput)
-}
-
-type GetDatabasePostgresqlUpdateOutput struct{ *pulumi.OutputState }
-
-func (GetDatabasePostgresqlUpdateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabasePostgresqlUpdate)(nil)).Elem()
-}
-
-func (o GetDatabasePostgresqlUpdateOutput) ToGetDatabasePostgresqlUpdateOutput() GetDatabasePostgresqlUpdateOutput {
-	return o
-}
-
-func (o GetDatabasePostgresqlUpdateOutput) ToGetDatabasePostgresqlUpdateOutputWithContext(ctx context.Context) GetDatabasePostgresqlUpdateOutput {
-	return o
-}
-
-func (o GetDatabasePostgresqlUpdateOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabasePostgresqlUpdate) string { return v.DayOfWeek }).(pulumi.StringOutput)
-}
-
-func (o GetDatabasePostgresqlUpdateOutput) Duration() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDatabasePostgresqlUpdate) int { return v.Duration }).(pulumi.IntOutput)
-}
-
-func (o GetDatabasePostgresqlUpdateOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabasePostgresqlUpdate) string { return v.Frequency }).(pulumi.StringOutput)
-}
-
-func (o GetDatabasePostgresqlUpdateOutput) HourOfDay() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDatabasePostgresqlUpdate) int { return v.HourOfDay }).(pulumi.IntOutput)
-}
-
-func (o GetDatabasePostgresqlUpdateOutput) WeekOfMonth() pulumi.IntOutput {
-	return o.ApplyT(func(v GetDatabasePostgresqlUpdate) int { return v.WeekOfMonth }).(pulumi.IntOutput)
-}
-
-type GetDatabasePostgresqlUpdateArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDatabasePostgresqlUpdateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatabasePostgresqlUpdate)(nil)).Elem()
-}
-
-func (o GetDatabasePostgresqlUpdateArrayOutput) ToGetDatabasePostgresqlUpdateArrayOutput() GetDatabasePostgresqlUpdateArrayOutput {
-	return o
-}
-
-func (o GetDatabasePostgresqlUpdateArrayOutput) ToGetDatabasePostgresqlUpdateArrayOutputWithContext(ctx context.Context) GetDatabasePostgresqlUpdateArrayOutput {
-	return o
-}
-
-func (o GetDatabasePostgresqlUpdateArrayOutput) Index(i pulumi.IntInput) GetDatabasePostgresqlUpdateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabasePostgresqlUpdate {
-		return vs[0].([]GetDatabasePostgresqlUpdate)[vs[1].(int)]
-	}).(GetDatabasePostgresqlUpdateOutput)
-}
-
 type GetDatabasePostgresqlV2PendingUpdate struct {
 	// The time when a mandatory update needs to be applied.
 	Deadline string `pulumi:"deadline"`
@@ -23435,10 +22507,14 @@ type GetDatabasesDatabase struct {
 	// The primary host for the Managed Database.
 	HostPrimary string `pulumi:"hostPrimary"`
 	// The secondary/private network host for the Managed Database.
+	//
+	// Deprecated: Use hostStandby instead.
 	HostSecondary string `pulumi:"hostSecondary"`
+	// The standby host for the Managed Database.
+	HostStandby string `pulumi:"hostStandby"`
 	// The ID of the Managed Database.
 	Id int `pulumi:"id"`
-	// he API route for the database instance.
+	// The API route for the database instance.
 	InstanceUri string `pulumi:"instanceUri"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label string `pulumi:"label"`
@@ -23446,10 +22522,6 @@ type GetDatabasesDatabase struct {
 	PrivateNetwork GetDatabasesDatabasePrivateNetwork `pulumi:"privateNetwork"`
 	// The region to use for the Managed Database.
 	Region string `pulumi:"region"`
-	// The replication method used for the Managed Database.
-	ReplicationType string `pulumi:"replicationType"`
-	// Whether to require SSL credentials to establish a connection to the Managed Database.
-	SslConnection bool `pulumi:"sslConnection"`
 	// The operating status of the Managed Database.
 	Status string `pulumi:"status"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
@@ -23485,10 +22557,14 @@ type GetDatabasesDatabaseArgs struct {
 	// The primary host for the Managed Database.
 	HostPrimary pulumi.StringInput `pulumi:"hostPrimary"`
 	// The secondary/private network host for the Managed Database.
+	//
+	// Deprecated: Use hostStandby instead.
 	HostSecondary pulumi.StringInput `pulumi:"hostSecondary"`
+	// The standby host for the Managed Database.
+	HostStandby pulumi.StringInput `pulumi:"hostStandby"`
 	// The ID of the Managed Database.
 	Id pulumi.IntInput `pulumi:"id"`
-	// he API route for the database instance.
+	// The API route for the database instance.
 	InstanceUri pulumi.StringInput `pulumi:"instanceUri"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringInput `pulumi:"label"`
@@ -23496,10 +22572,6 @@ type GetDatabasesDatabaseArgs struct {
 	PrivateNetwork GetDatabasesDatabasePrivateNetworkInput `pulumi:"privateNetwork"`
 	// The region to use for the Managed Database.
 	Region pulumi.StringInput `pulumi:"region"`
-	// The replication method used for the Managed Database.
-	ReplicationType pulumi.StringInput `pulumi:"replicationType"`
-	// Whether to require SSL credentials to establish a connection to the Managed Database.
-	SslConnection pulumi.BoolInput `pulumi:"sslConnection"`
 	// The operating status of the Managed Database.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The Linode Instance type used for the nodes of the  Managed Database instance.
@@ -23592,8 +22664,15 @@ func (o GetDatabasesDatabaseOutput) HostPrimary() pulumi.StringOutput {
 }
 
 // The secondary/private network host for the Managed Database.
+//
+// Deprecated: Use hostStandby instead.
 func (o GetDatabasesDatabaseOutput) HostSecondary() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.HostSecondary }).(pulumi.StringOutput)
+}
+
+// The standby host for the Managed Database.
+func (o GetDatabasesDatabaseOutput) HostStandby() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.HostStandby }).(pulumi.StringOutput)
 }
 
 // The ID of the Managed Database.
@@ -23601,7 +22680,7 @@ func (o GetDatabasesDatabaseOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// he API route for the database instance.
+// The API route for the database instance.
 func (o GetDatabasesDatabaseOutput) InstanceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.InstanceUri }).(pulumi.StringOutput)
 }
@@ -23619,16 +22698,6 @@ func (o GetDatabasesDatabaseOutput) PrivateNetwork() GetDatabasesDatabasePrivate
 // The region to use for the Managed Database.
 func (o GetDatabasesDatabaseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// The replication method used for the Managed Database.
-func (o GetDatabasesDatabaseOutput) ReplicationType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.ReplicationType }).(pulumi.StringOutput)
-}
-
-// Whether to require SSL credentials to establish a connection to the Managed Database.
-func (o GetDatabasesDatabaseOutput) SslConnection() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetDatabasesDatabase) bool { return v.SslConnection }).(pulumi.BoolOutput)
 }
 
 // The operating status of the Managed Database.
@@ -31772,7 +30841,7 @@ type GetInstancesInstance struct {
 	LkeClusterId int `pulumi:"lkeClusterId"`
 	// A list of locks applied to this Linode.
 	Locks []string `pulumi:"locks"`
-	// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+	// The maintenance policy of this Linode instance.
 	MaintenancePolicy string                               `pulumi:"maintenancePolicy"`
 	PlacementGroups   []GetInstancesInstancePlacementGroup `pulumi:"placementGroups"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -31841,7 +30910,7 @@ type GetInstancesInstanceArgs struct {
 	LkeClusterId pulumi.IntInput `pulumi:"lkeClusterId"`
 	// A list of locks applied to this Linode.
 	Locks pulumi.StringArrayInput `pulumi:"locks"`
-	// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+	// The maintenance policy of this Linode instance.
 	MaintenancePolicy pulumi.StringInput                           `pulumi:"maintenancePolicy"`
 	PlacementGroups   GetInstancesInstancePlacementGroupArrayInput `pulumi:"placementGroups"`
 	// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -32006,7 +31075,7 @@ func (o GetInstancesInstanceOutput) Locks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.Locks }).(pulumi.StringArrayOutput)
 }
 
-// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+// The maintenance policy of this Linode instance.
 func (o GetInstancesInstanceOutput) MaintenancePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.MaintenancePolicy }).(pulumi.StringOutput)
 }
@@ -38076,6 +37145,412 @@ func (o GetLkeClustersLkeClusterControlPlaneOutput) AuditLogsEnabled() pulumi.Bo
 // Whether High Availability is enabled for the cluster Control Plane.
 func (o GetLkeClustersLkeClusterControlPlaneOutput) HighAvailability() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLkeClustersLkeClusterControlPlane) bool { return v.HighAvailability }).(pulumi.BoolOutput)
+}
+
+type GetLkeNodePoolAutoscaler struct {
+	// Whether autoscaling is enabled for this node pool.
+	Enabled bool `pulumi:"enabled"`
+	// The maximum number of nodes to autoscale to.
+	Max int `pulumi:"max"`
+	// The minimum number of nodes to autoscale to.
+	Min int `pulumi:"min"`
+}
+
+// GetLkeNodePoolAutoscalerInput is an input type that accepts GetLkeNodePoolAutoscalerArgs and GetLkeNodePoolAutoscalerOutput values.
+// You can construct a concrete instance of `GetLkeNodePoolAutoscalerInput` via:
+//
+//	GetLkeNodePoolAutoscalerArgs{...}
+type GetLkeNodePoolAutoscalerInput interface {
+	pulumi.Input
+
+	ToGetLkeNodePoolAutoscalerOutput() GetLkeNodePoolAutoscalerOutput
+	ToGetLkeNodePoolAutoscalerOutputWithContext(context.Context) GetLkeNodePoolAutoscalerOutput
+}
+
+type GetLkeNodePoolAutoscalerArgs struct {
+	// Whether autoscaling is enabled for this node pool.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The maximum number of nodes to autoscale to.
+	Max pulumi.IntInput `pulumi:"max"`
+	// The minimum number of nodes to autoscale to.
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetLkeNodePoolAutoscalerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeNodePoolAutoscaler)(nil)).Elem()
+}
+
+func (i GetLkeNodePoolAutoscalerArgs) ToGetLkeNodePoolAutoscalerOutput() GetLkeNodePoolAutoscalerOutput {
+	return i.ToGetLkeNodePoolAutoscalerOutputWithContext(context.Background())
+}
+
+func (i GetLkeNodePoolAutoscalerArgs) ToGetLkeNodePoolAutoscalerOutputWithContext(ctx context.Context) GetLkeNodePoolAutoscalerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeNodePoolAutoscalerOutput)
+}
+
+type GetLkeNodePoolAutoscalerOutput struct{ *pulumi.OutputState }
+
+func (GetLkeNodePoolAutoscalerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeNodePoolAutoscaler)(nil)).Elem()
+}
+
+func (o GetLkeNodePoolAutoscalerOutput) ToGetLkeNodePoolAutoscalerOutput() GetLkeNodePoolAutoscalerOutput {
+	return o
+}
+
+func (o GetLkeNodePoolAutoscalerOutput) ToGetLkeNodePoolAutoscalerOutputWithContext(ctx context.Context) GetLkeNodePoolAutoscalerOutput {
+	return o
+}
+
+// Whether autoscaling is enabled for this node pool.
+func (o GetLkeNodePoolAutoscalerOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLkeNodePoolAutoscaler) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The maximum number of nodes to autoscale to.
+func (o GetLkeNodePoolAutoscalerOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeNodePoolAutoscaler) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// The minimum number of nodes to autoscale to.
+func (o GetLkeNodePoolAutoscalerOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeNodePoolAutoscaler) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetLkeNodePoolDisk struct {
+	// The size of this custom disk partition in MB.
+	Size int `pulumi:"size"`
+	// The Linode type for all of the nodes in the node pool.
+	Type string `pulumi:"type"`
+}
+
+// GetLkeNodePoolDiskInput is an input type that accepts GetLkeNodePoolDiskArgs and GetLkeNodePoolDiskOutput values.
+// You can construct a concrete instance of `GetLkeNodePoolDiskInput` via:
+//
+//	GetLkeNodePoolDiskArgs{...}
+type GetLkeNodePoolDiskInput interface {
+	pulumi.Input
+
+	ToGetLkeNodePoolDiskOutput() GetLkeNodePoolDiskOutput
+	ToGetLkeNodePoolDiskOutputWithContext(context.Context) GetLkeNodePoolDiskOutput
+}
+
+type GetLkeNodePoolDiskArgs struct {
+	// The size of this custom disk partition in MB.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The Linode type for all of the nodes in the node pool.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetLkeNodePoolDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeNodePoolDisk)(nil)).Elem()
+}
+
+func (i GetLkeNodePoolDiskArgs) ToGetLkeNodePoolDiskOutput() GetLkeNodePoolDiskOutput {
+	return i.ToGetLkeNodePoolDiskOutputWithContext(context.Background())
+}
+
+func (i GetLkeNodePoolDiskArgs) ToGetLkeNodePoolDiskOutputWithContext(ctx context.Context) GetLkeNodePoolDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeNodePoolDiskOutput)
+}
+
+// GetLkeNodePoolDiskArrayInput is an input type that accepts GetLkeNodePoolDiskArray and GetLkeNodePoolDiskArrayOutput values.
+// You can construct a concrete instance of `GetLkeNodePoolDiskArrayInput` via:
+//
+//	GetLkeNodePoolDiskArray{ GetLkeNodePoolDiskArgs{...} }
+type GetLkeNodePoolDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeNodePoolDiskArrayOutput() GetLkeNodePoolDiskArrayOutput
+	ToGetLkeNodePoolDiskArrayOutputWithContext(context.Context) GetLkeNodePoolDiskArrayOutput
+}
+
+type GetLkeNodePoolDiskArray []GetLkeNodePoolDiskInput
+
+func (GetLkeNodePoolDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeNodePoolDisk)(nil)).Elem()
+}
+
+func (i GetLkeNodePoolDiskArray) ToGetLkeNodePoolDiskArrayOutput() GetLkeNodePoolDiskArrayOutput {
+	return i.ToGetLkeNodePoolDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeNodePoolDiskArray) ToGetLkeNodePoolDiskArrayOutputWithContext(ctx context.Context) GetLkeNodePoolDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeNodePoolDiskArrayOutput)
+}
+
+type GetLkeNodePoolDiskOutput struct{ *pulumi.OutputState }
+
+func (GetLkeNodePoolDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeNodePoolDisk)(nil)).Elem()
+}
+
+func (o GetLkeNodePoolDiskOutput) ToGetLkeNodePoolDiskOutput() GetLkeNodePoolDiskOutput {
+	return o
+}
+
+func (o GetLkeNodePoolDiskOutput) ToGetLkeNodePoolDiskOutputWithContext(ctx context.Context) GetLkeNodePoolDiskOutput {
+	return o
+}
+
+// The size of this custom disk partition in MB.
+func (o GetLkeNodePoolDiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeNodePoolDisk) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The Linode type for all of the nodes in the node pool.
+func (o GetLkeNodePoolDiskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeNodePoolDisk) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetLkeNodePoolDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeNodePoolDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeNodePoolDisk)(nil)).Elem()
+}
+
+func (o GetLkeNodePoolDiskArrayOutput) ToGetLkeNodePoolDiskArrayOutput() GetLkeNodePoolDiskArrayOutput {
+	return o
+}
+
+func (o GetLkeNodePoolDiskArrayOutput) ToGetLkeNodePoolDiskArrayOutputWithContext(ctx context.Context) GetLkeNodePoolDiskArrayOutput {
+	return o
+}
+
+func (o GetLkeNodePoolDiskArrayOutput) Index(i pulumi.IntInput) GetLkeNodePoolDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeNodePoolDisk {
+		return vs[0].([]GetLkeNodePoolDisk)[vs[1].(int)]
+	}).(GetLkeNodePoolDiskOutput)
+}
+
+type GetLkeNodePoolNode struct {
+	// The LKE Cluster's Node Pool ID.
+	Id string `pulumi:"id"`
+	// The Linode's ID. When no Linode is currently provisioned for this node, this is null.
+	InstanceId int `pulumi:"instanceId"`
+	// The creation status of this node.
+	Status string `pulumi:"status"`
+}
+
+// GetLkeNodePoolNodeInput is an input type that accepts GetLkeNodePoolNodeArgs and GetLkeNodePoolNodeOutput values.
+// You can construct a concrete instance of `GetLkeNodePoolNodeInput` via:
+//
+//	GetLkeNodePoolNodeArgs{...}
+type GetLkeNodePoolNodeInput interface {
+	pulumi.Input
+
+	ToGetLkeNodePoolNodeOutput() GetLkeNodePoolNodeOutput
+	ToGetLkeNodePoolNodeOutputWithContext(context.Context) GetLkeNodePoolNodeOutput
+}
+
+type GetLkeNodePoolNodeArgs struct {
+	// The LKE Cluster's Node Pool ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Linode's ID. When no Linode is currently provisioned for this node, this is null.
+	InstanceId pulumi.IntInput `pulumi:"instanceId"`
+	// The creation status of this node.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetLkeNodePoolNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeNodePoolNode)(nil)).Elem()
+}
+
+func (i GetLkeNodePoolNodeArgs) ToGetLkeNodePoolNodeOutput() GetLkeNodePoolNodeOutput {
+	return i.ToGetLkeNodePoolNodeOutputWithContext(context.Background())
+}
+
+func (i GetLkeNodePoolNodeArgs) ToGetLkeNodePoolNodeOutputWithContext(ctx context.Context) GetLkeNodePoolNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeNodePoolNodeOutput)
+}
+
+// GetLkeNodePoolNodeArrayInput is an input type that accepts GetLkeNodePoolNodeArray and GetLkeNodePoolNodeArrayOutput values.
+// You can construct a concrete instance of `GetLkeNodePoolNodeArrayInput` via:
+//
+//	GetLkeNodePoolNodeArray{ GetLkeNodePoolNodeArgs{...} }
+type GetLkeNodePoolNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeNodePoolNodeArrayOutput() GetLkeNodePoolNodeArrayOutput
+	ToGetLkeNodePoolNodeArrayOutputWithContext(context.Context) GetLkeNodePoolNodeArrayOutput
+}
+
+type GetLkeNodePoolNodeArray []GetLkeNodePoolNodeInput
+
+func (GetLkeNodePoolNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeNodePoolNode)(nil)).Elem()
+}
+
+func (i GetLkeNodePoolNodeArray) ToGetLkeNodePoolNodeArrayOutput() GetLkeNodePoolNodeArrayOutput {
+	return i.ToGetLkeNodePoolNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeNodePoolNodeArray) ToGetLkeNodePoolNodeArrayOutputWithContext(ctx context.Context) GetLkeNodePoolNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeNodePoolNodeArrayOutput)
+}
+
+type GetLkeNodePoolNodeOutput struct{ *pulumi.OutputState }
+
+func (GetLkeNodePoolNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeNodePoolNode)(nil)).Elem()
+}
+
+func (o GetLkeNodePoolNodeOutput) ToGetLkeNodePoolNodeOutput() GetLkeNodePoolNodeOutput {
+	return o
+}
+
+func (o GetLkeNodePoolNodeOutput) ToGetLkeNodePoolNodeOutputWithContext(ctx context.Context) GetLkeNodePoolNodeOutput {
+	return o
+}
+
+// The LKE Cluster's Node Pool ID.
+func (o GetLkeNodePoolNodeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeNodePoolNode) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Linode's ID. When no Linode is currently provisioned for this node, this is null.
+func (o GetLkeNodePoolNodeOutput) InstanceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeNodePoolNode) int { return v.InstanceId }).(pulumi.IntOutput)
+}
+
+// The creation status of this node.
+func (o GetLkeNodePoolNodeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeNodePoolNode) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetLkeNodePoolNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeNodePoolNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeNodePoolNode)(nil)).Elem()
+}
+
+func (o GetLkeNodePoolNodeArrayOutput) ToGetLkeNodePoolNodeArrayOutput() GetLkeNodePoolNodeArrayOutput {
+	return o
+}
+
+func (o GetLkeNodePoolNodeArrayOutput) ToGetLkeNodePoolNodeArrayOutputWithContext(ctx context.Context) GetLkeNodePoolNodeArrayOutput {
+	return o
+}
+
+func (o GetLkeNodePoolNodeArrayOutput) Index(i pulumi.IntInput) GetLkeNodePoolNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeNodePoolNode {
+		return vs[0].([]GetLkeNodePoolNode)[vs[1].(int)]
+	}).(GetLkeNodePoolNodeOutput)
+}
+
+type GetLkeNodePoolTaint struct {
+	// The Kubernetes taint effect.
+	Effect string `pulumi:"effect"`
+	// The Kubernetes taint key.
+	Key string `pulumi:"key"`
+	// The Kubernetes taint value.
+	Value string `pulumi:"value"`
+}
+
+// GetLkeNodePoolTaintInput is an input type that accepts GetLkeNodePoolTaintArgs and GetLkeNodePoolTaintOutput values.
+// You can construct a concrete instance of `GetLkeNodePoolTaintInput` via:
+//
+//	GetLkeNodePoolTaintArgs{...}
+type GetLkeNodePoolTaintInput interface {
+	pulumi.Input
+
+	ToGetLkeNodePoolTaintOutput() GetLkeNodePoolTaintOutput
+	ToGetLkeNodePoolTaintOutputWithContext(context.Context) GetLkeNodePoolTaintOutput
+}
+
+type GetLkeNodePoolTaintArgs struct {
+	// The Kubernetes taint effect.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The Kubernetes taint key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The Kubernetes taint value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetLkeNodePoolTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeNodePoolTaint)(nil)).Elem()
+}
+
+func (i GetLkeNodePoolTaintArgs) ToGetLkeNodePoolTaintOutput() GetLkeNodePoolTaintOutput {
+	return i.ToGetLkeNodePoolTaintOutputWithContext(context.Background())
+}
+
+func (i GetLkeNodePoolTaintArgs) ToGetLkeNodePoolTaintOutputWithContext(ctx context.Context) GetLkeNodePoolTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeNodePoolTaintOutput)
+}
+
+// GetLkeNodePoolTaintArrayInput is an input type that accepts GetLkeNodePoolTaintArray and GetLkeNodePoolTaintArrayOutput values.
+// You can construct a concrete instance of `GetLkeNodePoolTaintArrayInput` via:
+//
+//	GetLkeNodePoolTaintArray{ GetLkeNodePoolTaintArgs{...} }
+type GetLkeNodePoolTaintArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeNodePoolTaintArrayOutput() GetLkeNodePoolTaintArrayOutput
+	ToGetLkeNodePoolTaintArrayOutputWithContext(context.Context) GetLkeNodePoolTaintArrayOutput
+}
+
+type GetLkeNodePoolTaintArray []GetLkeNodePoolTaintInput
+
+func (GetLkeNodePoolTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeNodePoolTaint)(nil)).Elem()
+}
+
+func (i GetLkeNodePoolTaintArray) ToGetLkeNodePoolTaintArrayOutput() GetLkeNodePoolTaintArrayOutput {
+	return i.ToGetLkeNodePoolTaintArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeNodePoolTaintArray) ToGetLkeNodePoolTaintArrayOutputWithContext(ctx context.Context) GetLkeNodePoolTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeNodePoolTaintArrayOutput)
+}
+
+type GetLkeNodePoolTaintOutput struct{ *pulumi.OutputState }
+
+func (GetLkeNodePoolTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeNodePoolTaint)(nil)).Elem()
+}
+
+func (o GetLkeNodePoolTaintOutput) ToGetLkeNodePoolTaintOutput() GetLkeNodePoolTaintOutput {
+	return o
+}
+
+func (o GetLkeNodePoolTaintOutput) ToGetLkeNodePoolTaintOutputWithContext(ctx context.Context) GetLkeNodePoolTaintOutput {
+	return o
+}
+
+// The Kubernetes taint effect.
+func (o GetLkeNodePoolTaintOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeNodePoolTaint) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The Kubernetes taint key.
+func (o GetLkeNodePoolTaintOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeNodePoolTaint) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The Kubernetes taint value.
+func (o GetLkeNodePoolTaintOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeNodePoolTaint) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetLkeNodePoolTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeNodePoolTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeNodePoolTaint)(nil)).Elem()
+}
+
+func (o GetLkeNodePoolTaintArrayOutput) ToGetLkeNodePoolTaintArrayOutput() GetLkeNodePoolTaintArrayOutput {
+	return o
+}
+
+func (o GetLkeNodePoolTaintArrayOutput) ToGetLkeNodePoolTaintArrayOutputWithContext(ctx context.Context) GetLkeNodePoolTaintArrayOutput {
+	return o
+}
+
+func (o GetLkeNodePoolTaintArrayOutput) Index(i pulumi.IntInput) GetLkeNodePoolTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeNodePoolTaint {
+		return vs[0].([]GetLkeNodePoolTaint)[vs[1].(int)]
+	}).(GetLkeNodePoolTaintOutput)
 }
 
 type GetLkeTypesFilter struct {
@@ -51618,8 +51093,220 @@ func (o GetVpcIpv6ArrayOutput) Index(i pulumi.IntInput) GetVpcIpv6Output {
 	}).(GetVpcIpv6Output)
 }
 
+type GetVpcSubnetDatabase struct {
+	// The unique id of this VPC subnet.
+	Id int `pulumi:"id"`
+	// IPv4 range assigned to the database.
+	Ipv4Range string `pulumi:"ipv4Range"`
+	// A list of IPv6 ranges assigned to the database.
+	Ipv6Ranges []GetVpcSubnetDatabaseIpv6Range `pulumi:"ipv6Ranges"`
+}
+
+// GetVpcSubnetDatabaseInput is an input type that accepts GetVpcSubnetDatabaseArgs and GetVpcSubnetDatabaseOutput values.
+// You can construct a concrete instance of `GetVpcSubnetDatabaseInput` via:
+//
+//	GetVpcSubnetDatabaseArgs{...}
+type GetVpcSubnetDatabaseInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetDatabaseOutput() GetVpcSubnetDatabaseOutput
+	ToGetVpcSubnetDatabaseOutputWithContext(context.Context) GetVpcSubnetDatabaseOutput
+}
+
+type GetVpcSubnetDatabaseArgs struct {
+	// The unique id of this VPC subnet.
+	Id pulumi.IntInput `pulumi:"id"`
+	// IPv4 range assigned to the database.
+	Ipv4Range pulumi.StringInput `pulumi:"ipv4Range"`
+	// A list of IPv6 ranges assigned to the database.
+	Ipv6Ranges GetVpcSubnetDatabaseIpv6RangeArrayInput `pulumi:"ipv6Ranges"`
+}
+
+func (GetVpcSubnetDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (i GetVpcSubnetDatabaseArgs) ToGetVpcSubnetDatabaseOutput() GetVpcSubnetDatabaseOutput {
+	return i.ToGetVpcSubnetDatabaseOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetDatabaseArgs) ToGetVpcSubnetDatabaseOutputWithContext(ctx context.Context) GetVpcSubnetDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetDatabaseOutput)
+}
+
+// GetVpcSubnetDatabaseArrayInput is an input type that accepts GetVpcSubnetDatabaseArray and GetVpcSubnetDatabaseArrayOutput values.
+// You can construct a concrete instance of `GetVpcSubnetDatabaseArrayInput` via:
+//
+//	GetVpcSubnetDatabaseArray{ GetVpcSubnetDatabaseArgs{...} }
+type GetVpcSubnetDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetDatabaseArrayOutput() GetVpcSubnetDatabaseArrayOutput
+	ToGetVpcSubnetDatabaseArrayOutputWithContext(context.Context) GetVpcSubnetDatabaseArrayOutput
+}
+
+type GetVpcSubnetDatabaseArray []GetVpcSubnetDatabaseInput
+
+func (GetVpcSubnetDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (i GetVpcSubnetDatabaseArray) ToGetVpcSubnetDatabaseArrayOutput() GetVpcSubnetDatabaseArrayOutput {
+	return i.ToGetVpcSubnetDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetDatabaseArray) ToGetVpcSubnetDatabaseArrayOutputWithContext(ctx context.Context) GetVpcSubnetDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetDatabaseArrayOutput)
+}
+
+type GetVpcSubnetDatabaseOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (o GetVpcSubnetDatabaseOutput) ToGetVpcSubnetDatabaseOutput() GetVpcSubnetDatabaseOutput {
+	return o
+}
+
+func (o GetVpcSubnetDatabaseOutput) ToGetVpcSubnetDatabaseOutputWithContext(ctx context.Context) GetVpcSubnetDatabaseOutput {
+	return o
+}
+
+// The unique id of this VPC subnet.
+func (o GetVpcSubnetDatabaseOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcSubnetDatabase) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// IPv4 range assigned to the database.
+func (o GetVpcSubnetDatabaseOutput) Ipv4Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetDatabase) string { return v.Ipv4Range }).(pulumi.StringOutput)
+}
+
+// A list of IPv6 ranges assigned to the database.
+func (o GetVpcSubnetDatabaseOutput) Ipv6Ranges() GetVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o.ApplyT(func(v GetVpcSubnetDatabase) []GetVpcSubnetDatabaseIpv6Range { return v.Ipv6Ranges }).(GetVpcSubnetDatabaseIpv6RangeArrayOutput)
+}
+
+type GetVpcSubnetDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (o GetVpcSubnetDatabaseArrayOutput) ToGetVpcSubnetDatabaseArrayOutput() GetVpcSubnetDatabaseArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetDatabaseArrayOutput) ToGetVpcSubnetDatabaseArrayOutputWithContext(ctx context.Context) GetVpcSubnetDatabaseArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetDatabaseArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcSubnetDatabase {
+		return vs[0].([]GetVpcSubnetDatabase)[vs[1].(int)]
+	}).(GetVpcSubnetDatabaseOutput)
+}
+
+type GetVpcSubnetDatabaseIpv6Range struct {
+	// An IPv6 address range in CIDR notation.
+	Range string `pulumi:"range"`
+}
+
+// GetVpcSubnetDatabaseIpv6RangeInput is an input type that accepts GetVpcSubnetDatabaseIpv6RangeArgs and GetVpcSubnetDatabaseIpv6RangeOutput values.
+// You can construct a concrete instance of `GetVpcSubnetDatabaseIpv6RangeInput` via:
+//
+//	GetVpcSubnetDatabaseIpv6RangeArgs{...}
+type GetVpcSubnetDatabaseIpv6RangeInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetDatabaseIpv6RangeOutput() GetVpcSubnetDatabaseIpv6RangeOutput
+	ToGetVpcSubnetDatabaseIpv6RangeOutputWithContext(context.Context) GetVpcSubnetDatabaseIpv6RangeOutput
+}
+
+type GetVpcSubnetDatabaseIpv6RangeArgs struct {
+	// An IPv6 address range in CIDR notation.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (GetVpcSubnetDatabaseIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (i GetVpcSubnetDatabaseIpv6RangeArgs) ToGetVpcSubnetDatabaseIpv6RangeOutput() GetVpcSubnetDatabaseIpv6RangeOutput {
+	return i.ToGetVpcSubnetDatabaseIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetDatabaseIpv6RangeArgs) ToGetVpcSubnetDatabaseIpv6RangeOutputWithContext(ctx context.Context) GetVpcSubnetDatabaseIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetDatabaseIpv6RangeOutput)
+}
+
+// GetVpcSubnetDatabaseIpv6RangeArrayInput is an input type that accepts GetVpcSubnetDatabaseIpv6RangeArray and GetVpcSubnetDatabaseIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `GetVpcSubnetDatabaseIpv6RangeArrayInput` via:
+//
+//	GetVpcSubnetDatabaseIpv6RangeArray{ GetVpcSubnetDatabaseIpv6RangeArgs{...} }
+type GetVpcSubnetDatabaseIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetDatabaseIpv6RangeArrayOutput() GetVpcSubnetDatabaseIpv6RangeArrayOutput
+	ToGetVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(context.Context) GetVpcSubnetDatabaseIpv6RangeArrayOutput
+}
+
+type GetVpcSubnetDatabaseIpv6RangeArray []GetVpcSubnetDatabaseIpv6RangeInput
+
+func (GetVpcSubnetDatabaseIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (i GetVpcSubnetDatabaseIpv6RangeArray) ToGetVpcSubnetDatabaseIpv6RangeArrayOutput() GetVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return i.ToGetVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetDatabaseIpv6RangeArray) ToGetVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(ctx context.Context) GetVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetDatabaseIpv6RangeArrayOutput)
+}
+
+type GetVpcSubnetDatabaseIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetDatabaseIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (o GetVpcSubnetDatabaseIpv6RangeOutput) ToGetVpcSubnetDatabaseIpv6RangeOutput() GetVpcSubnetDatabaseIpv6RangeOutput {
+	return o
+}
+
+func (o GetVpcSubnetDatabaseIpv6RangeOutput) ToGetVpcSubnetDatabaseIpv6RangeOutputWithContext(ctx context.Context) GetVpcSubnetDatabaseIpv6RangeOutput {
+	return o
+}
+
+// An IPv6 address range in CIDR notation.
+func (o GetVpcSubnetDatabaseIpv6RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetDatabaseIpv6Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type GetVpcSubnetDatabaseIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetDatabaseIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (o GetVpcSubnetDatabaseIpv6RangeArrayOutput) ToGetVpcSubnetDatabaseIpv6RangeArrayOutput() GetVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetDatabaseIpv6RangeArrayOutput) ToGetVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(ctx context.Context) GetVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetDatabaseIpv6RangeArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetDatabaseIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcSubnetDatabaseIpv6Range {
+		return vs[0].([]GetVpcSubnetDatabaseIpv6Range)[vs[1].(int)]
+	}).(GetVpcSubnetDatabaseIpv6RangeOutput)
+}
+
 type GetVpcSubnetIpv6 struct {
-	// An IPv6 range allocated to this subnet.
+	// An IPv6 address range in CIDR notation.
 	Range string `pulumi:"range"`
 }
 
@@ -51635,7 +51322,7 @@ type GetVpcSubnetIpv6Input interface {
 }
 
 type GetVpcSubnetIpv6Args struct {
-	// An IPv6 range allocated to this subnet.
+	// An IPv6 address range in CIDR notation.
 	Range pulumi.StringInput `pulumi:"range"`
 }
 
@@ -51690,7 +51377,7 @@ func (o GetVpcSubnetIpv6Output) ToGetVpcSubnetIpv6OutputWithContext(ctx context.
 	return o
 }
 
-// An IPv6 range allocated to this subnet.
+// An IPv6 address range in CIDR notation.
 func (o GetVpcSubnetIpv6Output) Range() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcSubnetIpv6) string { return v.Range }).(pulumi.StringOutput)
 }
@@ -52054,7 +51741,9 @@ func (o GetVpcSubnetsFilterArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetsFi
 type GetVpcSubnetsVpcSubnet struct {
 	// The date and time when the VPC Subnet was created.
 	Created string `pulumi:"created"`
-	// ID of the interface.
+	// A list of Managed databases assigned to the VPC Subnet.
+	Databases []GetVpcSubnetsVpcSubnetDatabase `pulumi:"databases"`
+	// ID of a managed database assigned to the VPC Subnet.
 	Id int `pulumi:"id"`
 	// The IPv4 range of this subnet in CIDR format.
 	Ipv4 string `pulumi:"ipv4"`
@@ -52082,7 +51771,9 @@ type GetVpcSubnetsVpcSubnetInput interface {
 type GetVpcSubnetsVpcSubnetArgs struct {
 	// The date and time when the VPC Subnet was created.
 	Created pulumi.StringInput `pulumi:"created"`
-	// ID of the interface.
+	// A list of Managed databases assigned to the VPC Subnet.
+	Databases GetVpcSubnetsVpcSubnetDatabaseArrayInput `pulumi:"databases"`
+	// ID of a managed database assigned to the VPC Subnet.
 	Id pulumi.IntInput `pulumi:"id"`
 	// The IPv4 range of this subnet in CIDR format.
 	Ipv4 pulumi.StringInput `pulumi:"ipv4"`
@@ -52152,7 +51843,12 @@ func (o GetVpcSubnetsVpcSubnetOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// ID of the interface.
+// A list of Managed databases assigned to the VPC Subnet.
+func (o GetVpcSubnetsVpcSubnetOutput) Databases() GetVpcSubnetsVpcSubnetDatabaseArrayOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) []GetVpcSubnetsVpcSubnetDatabase { return v.Databases }).(GetVpcSubnetsVpcSubnetDatabaseArrayOutput)
+}
+
+// ID of a managed database assigned to the VPC Subnet.
 func (o GetVpcSubnetsVpcSubnetOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnet) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -52202,8 +51898,220 @@ func (o GetVpcSubnetsVpcSubnetArrayOutput) Index(i pulumi.IntInput) GetVpcSubnet
 	}).(GetVpcSubnetsVpcSubnetOutput)
 }
 
+type GetVpcSubnetsVpcSubnetDatabase struct {
+	// ID of a managed database assigned to the VPC Subnet.
+	Id int `pulumi:"id"`
+	// IPv4 range assigned to the database.
+	Ipv4Range string `pulumi:"ipv4Range"`
+	// A list of IPv6 ranges assigned to the database.
+	Ipv6Ranges []GetVpcSubnetsVpcSubnetDatabaseIpv6Range `pulumi:"ipv6Ranges"`
+}
+
+// GetVpcSubnetsVpcSubnetDatabaseInput is an input type that accepts GetVpcSubnetsVpcSubnetDatabaseArgs and GetVpcSubnetsVpcSubnetDatabaseOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsVpcSubnetDatabaseInput` via:
+//
+//	GetVpcSubnetsVpcSubnetDatabaseArgs{...}
+type GetVpcSubnetsVpcSubnetDatabaseInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsVpcSubnetDatabaseOutput() GetVpcSubnetsVpcSubnetDatabaseOutput
+	ToGetVpcSubnetsVpcSubnetDatabaseOutputWithContext(context.Context) GetVpcSubnetsVpcSubnetDatabaseOutput
+}
+
+type GetVpcSubnetsVpcSubnetDatabaseArgs struct {
+	// ID of a managed database assigned to the VPC Subnet.
+	Id pulumi.IntInput `pulumi:"id"`
+	// IPv4 range assigned to the database.
+	Ipv4Range pulumi.StringInput `pulumi:"ipv4Range"`
+	// A list of IPv6 ranges assigned to the database.
+	Ipv6Ranges GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayInput `pulumi:"ipv6Ranges"`
+}
+
+func (GetVpcSubnetsVpcSubnetDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsVpcSubnetDatabaseArgs) ToGetVpcSubnetsVpcSubnetDatabaseOutput() GetVpcSubnetsVpcSubnetDatabaseOutput {
+	return i.ToGetVpcSubnetsVpcSubnetDatabaseOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsVpcSubnetDatabaseArgs) ToGetVpcSubnetsVpcSubnetDatabaseOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsVpcSubnetDatabaseOutput)
+}
+
+// GetVpcSubnetsVpcSubnetDatabaseArrayInput is an input type that accepts GetVpcSubnetsVpcSubnetDatabaseArray and GetVpcSubnetsVpcSubnetDatabaseArrayOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsVpcSubnetDatabaseArrayInput` via:
+//
+//	GetVpcSubnetsVpcSubnetDatabaseArray{ GetVpcSubnetsVpcSubnetDatabaseArgs{...} }
+type GetVpcSubnetsVpcSubnetDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsVpcSubnetDatabaseArrayOutput() GetVpcSubnetsVpcSubnetDatabaseArrayOutput
+	ToGetVpcSubnetsVpcSubnetDatabaseArrayOutputWithContext(context.Context) GetVpcSubnetsVpcSubnetDatabaseArrayOutput
+}
+
+type GetVpcSubnetsVpcSubnetDatabaseArray []GetVpcSubnetsVpcSubnetDatabaseInput
+
+func (GetVpcSubnetsVpcSubnetDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsVpcSubnetDatabaseArray) ToGetVpcSubnetsVpcSubnetDatabaseArrayOutput() GetVpcSubnetsVpcSubnetDatabaseArrayOutput {
+	return i.ToGetVpcSubnetsVpcSubnetDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsVpcSubnetDatabaseArray) ToGetVpcSubnetsVpcSubnetDatabaseArrayOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsVpcSubnetDatabaseArrayOutput)
+}
+
+type GetVpcSubnetsVpcSubnetDatabaseOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsVpcSubnetDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsVpcSubnetDatabaseOutput) ToGetVpcSubnetsVpcSubnetDatabaseOutput() GetVpcSubnetsVpcSubnetDatabaseOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetDatabaseOutput) ToGetVpcSubnetsVpcSubnetDatabaseOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetDatabaseOutput {
+	return o
+}
+
+// ID of a managed database assigned to the VPC Subnet.
+func (o GetVpcSubnetsVpcSubnetDatabaseOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetDatabase) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// IPv4 range assigned to the database.
+func (o GetVpcSubnetsVpcSubnetDatabaseOutput) Ipv4Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetDatabase) string { return v.Ipv4Range }).(pulumi.StringOutput)
+}
+
+// A list of IPv6 ranges assigned to the database.
+func (o GetVpcSubnetsVpcSubnetDatabaseOutput) Ipv6Ranges() GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetDatabase) []GetVpcSubnetsVpcSubnetDatabaseIpv6Range { return v.Ipv6Ranges }).(GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput)
+}
+
+type GetVpcSubnetsVpcSubnetDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsVpcSubnetDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsVpcSubnetDatabaseArrayOutput) ToGetVpcSubnetsVpcSubnetDatabaseArrayOutput() GetVpcSubnetsVpcSubnetDatabaseArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetDatabaseArrayOutput) ToGetVpcSubnetsVpcSubnetDatabaseArrayOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetDatabaseArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetDatabaseArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetsVpcSubnetDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcSubnetsVpcSubnetDatabase {
+		return vs[0].([]GetVpcSubnetsVpcSubnetDatabase)[vs[1].(int)]
+	}).(GetVpcSubnetsVpcSubnetDatabaseOutput)
+}
+
+type GetVpcSubnetsVpcSubnetDatabaseIpv6Range struct {
+	// An IPv6 address range in CIDR notation.
+	Range string `pulumi:"range"`
+}
+
+// GetVpcSubnetsVpcSubnetDatabaseIpv6RangeInput is an input type that accepts GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArgs and GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsVpcSubnetDatabaseIpv6RangeInput` via:
+//
+//	GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArgs{...}
+type GetVpcSubnetsVpcSubnetDatabaseIpv6RangeInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput() GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput
+	ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutputWithContext(context.Context) GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput
+}
+
+type GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArgs struct {
+	// An IPv6 address range in CIDR notation.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArgs) ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput() GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput {
+	return i.ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArgs) ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput)
+}
+
+// GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayInput is an input type that accepts GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArray and GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayInput` via:
+//
+//	GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArray{ GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArgs{...} }
+type GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput() GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput
+	ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(context.Context) GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput
+}
+
+type GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArray []GetVpcSubnetsVpcSubnetDatabaseIpv6RangeInput
+
+func (GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (i GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArray) ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput() GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return i.ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArray) ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput)
+}
+
+type GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetsVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput) ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput() GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput) ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput {
+	return o
+}
+
+// An IPv6 address range in CIDR notation.
+func (o GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetDatabaseIpv6Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetsVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (o GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput) ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput() GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput) ToGetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(ctx context.Context) GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcSubnetsVpcSubnetDatabaseIpv6Range {
+		return vs[0].([]GetVpcSubnetsVpcSubnetDatabaseIpv6Range)[vs[1].(int)]
+	}).(GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput)
+}
+
 type GetVpcSubnetsVpcSubnetIpv6 struct {
-	// An IPv6 range allocated to this subnet.
+	// An IPv6 address range in CIDR notation.
 	Range string `pulumi:"range"`
 }
 
@@ -52219,7 +52127,7 @@ type GetVpcSubnetsVpcSubnetIpv6Input interface {
 }
 
 type GetVpcSubnetsVpcSubnetIpv6Args struct {
-	// An IPv6 range allocated to this subnet.
+	// An IPv6 address range in CIDR notation.
 	Range pulumi.StringInput `pulumi:"range"`
 }
 
@@ -52274,7 +52182,7 @@ func (o GetVpcSubnetsVpcSubnetIpv6Output) ToGetVpcSubnetsVpcSubnetIpv6OutputWith
 	return o
 }
 
-// An IPv6 range allocated to this subnet.
+// An IPv6 address range in CIDR notation.
 func (o GetVpcSubnetsVpcSubnetIpv6Output) Range() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetIpv6) string { return v.Range }).(pulumi.StringOutput)
 }
@@ -52300,7 +52208,7 @@ func (o GetVpcSubnetsVpcSubnetIpv6ArrayOutput) Index(i pulumi.IntInput) GetVpcSu
 }
 
 type GetVpcSubnetsVpcSubnetLinode struct {
-	// ID of the interface.
+	// ID of a managed database assigned to the VPC Subnet.
 	Id int `pulumi:"id"`
 	// A list of networking interfaces objects.
 	Interfaces []GetVpcSubnetsVpcSubnetLinodeInterface `pulumi:"interfaces"`
@@ -52318,7 +52226,7 @@ type GetVpcSubnetsVpcSubnetLinodeInput interface {
 }
 
 type GetVpcSubnetsVpcSubnetLinodeArgs struct {
-	// ID of the interface.
+	// ID of a managed database assigned to the VPC Subnet.
 	Id pulumi.IntInput `pulumi:"id"`
 	// A list of networking interfaces objects.
 	Interfaces GetVpcSubnetsVpcSubnetLinodeInterfaceArrayInput `pulumi:"interfaces"`
@@ -52375,7 +52283,7 @@ func (o GetVpcSubnetsVpcSubnetLinodeOutput) ToGetVpcSubnetsVpcSubnetLinodeOutput
 	return o
 }
 
-// ID of the interface.
+// ID of a managed database assigned to the VPC Subnet.
 func (o GetVpcSubnetsVpcSubnetLinodeOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinode) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -52410,7 +52318,7 @@ type GetVpcSubnetsVpcSubnetLinodeInterface struct {
 	Active bool `pulumi:"active"`
 	// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
 	ConfigId int `pulumi:"configId"`
-	// ID of the interface.
+	// ID of a managed database assigned to the VPC Subnet.
 	Id int `pulumi:"id"`
 }
 
@@ -52430,7 +52338,7 @@ type GetVpcSubnetsVpcSubnetLinodeInterfaceArgs struct {
 	Active pulumi.BoolInput `pulumi:"active"`
 	// ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
 	ConfigId pulumi.IntInput `pulumi:"configId"`
-	// ID of the interface.
+	// ID of a managed database assigned to the VPC Subnet.
 	Id pulumi.IntInput `pulumi:"id"`
 }
 
@@ -52495,7 +52403,7 @@ func (o GetVpcSubnetsVpcSubnetLinodeInterfaceOutput) ConfigId() pulumi.IntOutput
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinodeInterface) int { return v.ConfigId }).(pulumi.IntOutput)
 }
 
-// ID of the interface.
+// ID of a managed database assigned to the VPC Subnet.
 func (o GetVpcSubnetsVpcSubnetLinodeInterfaceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpcSubnetsVpcSubnetLinodeInterface) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -52884,8 +52792,6 @@ func (o GetVpcsVpcIpv6ArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcIpv6Output
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlUpdatesInput)(nil)).Elem(), DatabaseMysqlUpdatesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlUpdatesPtrInput)(nil)).Elem(), DatabaseMysqlUpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2PendingUpdateInput)(nil)).Elem(), DatabaseMysqlV2PendingUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2PendingUpdateArrayInput)(nil)).Elem(), DatabaseMysqlV2PendingUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2PrivateNetworkInput)(nil)).Elem(), DatabaseMysqlV2PrivateNetworkArgs{})
@@ -52894,8 +52800,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2TimeoutsPtrInput)(nil)).Elem(), DatabaseMysqlV2TimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2UpdatesInput)(nil)).Elem(), DatabaseMysqlV2UpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2UpdatesPtrInput)(nil)).Elem(), DatabaseMysqlV2UpdatesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlUpdatesInput)(nil)).Elem(), DatabasePostgresqlUpdatesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlUpdatesPtrInput)(nil)).Elem(), DatabasePostgresqlUpdatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlV2PendingUpdateInput)(nil)).Elem(), DatabasePostgresqlV2PendingUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlV2PendingUpdateArrayInput)(nil)).Elem(), DatabasePostgresqlV2PendingUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabasePostgresqlV2PrivateNetworkInput)(nil)).Elem(), DatabasePostgresqlV2PrivateNetworkArgs{})
@@ -53114,6 +53018,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeTimeoutsPtrInput)(nil)).Elem(), VolumeTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcIpv6Input)(nil)).Elem(), VpcIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcIpv6ArrayInput)(nil)).Elem(), VpcIpv6Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetDatabaseInput)(nil)).Elem(), VpcSubnetDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetDatabaseArrayInput)(nil)).Elem(), VpcSubnetDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetDatabaseIpv6RangeInput)(nil)).Elem(), VpcSubnetDatabaseIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetDatabaseIpv6RangeArrayInput)(nil)).Elem(), VpcSubnetDatabaseIpv6RangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetIpv6Input)(nil)).Elem(), VpcSubnetIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetIpv6ArrayInput)(nil)).Elem(), VpcSubnetIpv6Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetLinodeInput)(nil)).Elem(), VpcSubnetLinodeArgs{})
@@ -53143,18 +53051,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupTokensFilterArrayInput)(nil)).Elem(), GetConsumerImageShareGroupTokensFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupTokensTokenInput)(nil)).Elem(), GetConsumerImageShareGroupTokensTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConsumerImageShareGroupTokensTokenArrayInput)(nil)).Elem(), GetConsumerImageShareGroupTokensTokenArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsBackupInput)(nil)).Elem(), GetDatabaseBackupsBackupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsBackupArrayInput)(nil)).Elem(), GetDatabaseBackupsBackupArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsFilterInput)(nil)).Elem(), GetDatabaseBackupsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseBackupsFilterArrayInput)(nil)).Elem(), GetDatabaseBackupsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesEngineInput)(nil)).Elem(), GetDatabaseEnginesEngineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesEngineArrayInput)(nil)).Elem(), GetDatabaseEnginesEngineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesFilterInput)(nil)).Elem(), GetDatabaseEnginesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEnginesFilterArrayInput)(nil)).Elem(), GetDatabaseEnginesFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsBackupInput)(nil)).Elem(), GetDatabaseMysqlBackupsBackupArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsBackupArrayInput)(nil)).Elem(), GetDatabaseMysqlBackupsBackupArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsFilterInput)(nil)).Elem(), GetDatabaseMysqlBackupsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlBackupsFilterArrayInput)(nil)).Elem(), GetDatabaseMysqlBackupsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigBinlogRetentionPeriodInput)(nil)).Elem(), GetDatabaseMysqlConfigBinlogRetentionPeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigBinlogRetentionPeriodArrayInput)(nil)).Elem(), GetDatabaseMysqlConfigBinlogRetentionPeriodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlArgs{})
@@ -53186,8 +53086,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlTmpTableSizeInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlTmpTableSizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlConfigMysqlWaitTimeoutInput)(nil)).Elem(), GetDatabaseMysqlConfigMysqlWaitTimeoutArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlUpdateInput)(nil)).Elem(), GetDatabaseMysqlUpdateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlUpdateArrayInput)(nil)).Elem(), GetDatabaseMysqlUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlV2PendingUpdateInput)(nil)).Elem(), GetDatabaseMysqlV2PendingUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlV2PendingUpdateArrayInput)(nil)).Elem(), GetDatabaseMysqlV2PendingUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseMysqlV2PrivateNetworkInput)(nil)).Elem(), GetDatabaseMysqlV2PrivateNetworkArgs{})
@@ -53201,8 +53099,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigSharedBuffersPercentageArrayInput)(nil)).Elem(), GetDatabasePostgresqlConfigSharedBuffersPercentageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigWorkMemInput)(nil)).Elem(), GetDatabasePostgresqlConfigWorkMemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlConfigWorkMemArrayInput)(nil)).Elem(), GetDatabasePostgresqlConfigWorkMemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlUpdateInput)(nil)).Elem(), GetDatabasePostgresqlUpdateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlUpdateArrayInput)(nil)).Elem(), GetDatabasePostgresqlUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlV2PendingUpdateInput)(nil)).Elem(), GetDatabasePostgresqlV2PendingUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlV2PendingUpdateArrayInput)(nil)).Elem(), GetDatabasePostgresqlV2PendingUpdateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasePostgresqlV2PrivateNetworkInput)(nil)).Elem(), GetDatabasePostgresqlV2PrivateNetworkArgs{})
@@ -53424,6 +53320,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterInput)(nil)).Elem(), GetLkeClustersLkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterArrayInput)(nil)).Elem(), GetLkeClustersLkeClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClustersLkeClusterControlPlaneInput)(nil)).Elem(), GetLkeClustersLkeClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeNodePoolAutoscalerInput)(nil)).Elem(), GetLkeNodePoolAutoscalerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeNodePoolDiskInput)(nil)).Elem(), GetLkeNodePoolDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeNodePoolDiskArrayInput)(nil)).Elem(), GetLkeNodePoolDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeNodePoolNodeInput)(nil)).Elem(), GetLkeNodePoolNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeNodePoolNodeArrayInput)(nil)).Elem(), GetLkeNodePoolNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeNodePoolTaintInput)(nil)).Elem(), GetLkeNodePoolTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeNodePoolTaintArrayInput)(nil)).Elem(), GetLkeNodePoolTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesFilterInput)(nil)).Elem(), GetLkeTypesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesFilterArrayInput)(nil)).Elem(), GetLkeTypesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeTypesTypeInput)(nil)).Elem(), GetLkeTypesTypeArgs{})
@@ -53634,6 +53537,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcIpsVpcIpIpv6AddressArrayInput)(nil)).Elem(), GetVpcIpsVpcIpIpv6AddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcIpv6Input)(nil)).Elem(), GetVpcIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcIpv6ArrayInput)(nil)).Elem(), GetVpcIpv6Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetDatabaseInput)(nil)).Elem(), GetVpcSubnetDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetDatabaseArrayInput)(nil)).Elem(), GetVpcSubnetDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetDatabaseIpv6RangeInput)(nil)).Elem(), GetVpcSubnetDatabaseIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetDatabaseIpv6RangeArrayInput)(nil)).Elem(), GetVpcSubnetDatabaseIpv6RangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetIpv6Input)(nil)).Elem(), GetVpcSubnetIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetIpv6ArrayInput)(nil)).Elem(), GetVpcSubnetIpv6Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetLinodeInput)(nil)).Elem(), GetVpcSubnetLinodeArgs{})
@@ -53644,6 +53551,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsFilterArrayInput)(nil)).Elem(), GetVpcSubnetsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetArrayInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetDatabaseInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetDatabaseArrayInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetDatabaseIpv6RangeInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetIpv6Input)(nil)).Elem(), GetVpcSubnetsVpcSubnetIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetIpv6ArrayInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetIpv6Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetsVpcSubnetLinodeInput)(nil)).Elem(), GetVpcSubnetsVpcSubnetLinodeArgs{})
@@ -53656,8 +53567,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcArrayInput)(nil)).Elem(), GetVpcsVpcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcIpv6Input)(nil)).Elem(), GetVpcsVpcIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcIpv6ArrayInput)(nil)).Elem(), GetVpcsVpcIpv6Array{})
-	pulumi.RegisterOutputType(DatabaseMysqlUpdatesOutput{})
-	pulumi.RegisterOutputType(DatabaseMysqlUpdatesPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PendingUpdateOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PendingUpdateArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PrivateNetworkOutput{})
@@ -53666,8 +53575,6 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseMysqlV2TimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2UpdatesOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2UpdatesPtrOutput{})
-	pulumi.RegisterOutputType(DatabasePostgresqlUpdatesOutput{})
-	pulumi.RegisterOutputType(DatabasePostgresqlUpdatesPtrOutput{})
 	pulumi.RegisterOutputType(DatabasePostgresqlV2PendingUpdateOutput{})
 	pulumi.RegisterOutputType(DatabasePostgresqlV2PendingUpdateArrayOutput{})
 	pulumi.RegisterOutputType(DatabasePostgresqlV2PrivateNetworkOutput{})
@@ -53886,6 +53793,10 @@ func init() {
 	pulumi.RegisterOutputType(VolumeTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VpcIpv6Output{})
 	pulumi.RegisterOutputType(VpcIpv6ArrayOutput{})
+	pulumi.RegisterOutputType(VpcSubnetDatabaseOutput{})
+	pulumi.RegisterOutputType(VpcSubnetDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(VpcSubnetDatabaseIpv6RangeOutput{})
+	pulumi.RegisterOutputType(VpcSubnetDatabaseIpv6RangeArrayOutput{})
 	pulumi.RegisterOutputType(VpcSubnetIpv6Output{})
 	pulumi.RegisterOutputType(VpcSubnetIpv6ArrayOutput{})
 	pulumi.RegisterOutputType(VpcSubnetLinodeOutput{})
@@ -53915,18 +53826,10 @@ func init() {
 	pulumi.RegisterOutputType(GetConsumerImageShareGroupTokensFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetConsumerImageShareGroupTokensTokenOutput{})
 	pulumi.RegisterOutputType(GetConsumerImageShareGroupTokensTokenArrayOutput{})
-	pulumi.RegisterOutputType(GetDatabaseBackupsBackupOutput{})
-	pulumi.RegisterOutputType(GetDatabaseBackupsBackupArrayOutput{})
-	pulumi.RegisterOutputType(GetDatabaseBackupsFilterOutput{})
-	pulumi.RegisterOutputType(GetDatabaseBackupsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEnginesEngineOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEnginesEngineArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEnginesFilterOutput{})
 	pulumi.RegisterOutputType(GetDatabaseEnginesFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsBackupOutput{})
-	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsBackupArrayOutput{})
-	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsFilterOutput{})
-	pulumi.RegisterOutputType(GetDatabaseMysqlBackupsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlConfigBinlogRetentionPeriodOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlConfigBinlogRetentionPeriodArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlOutput{})
@@ -53958,8 +53861,6 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlTmpTableSizeOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlConfigMysqlWaitTimeoutOutput{})
-	pulumi.RegisterOutputType(GetDatabaseMysqlUpdateOutput{})
-	pulumi.RegisterOutputType(GetDatabaseMysqlUpdateArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlV2PendingUpdateOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlV2PendingUpdateArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseMysqlV2PrivateNetworkOutput{})
@@ -53973,8 +53874,6 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigSharedBuffersPercentageArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigWorkMemOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlConfigWorkMemArrayOutput{})
-	pulumi.RegisterOutputType(GetDatabasePostgresqlUpdateOutput{})
-	pulumi.RegisterOutputType(GetDatabasePostgresqlUpdateArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlV2PendingUpdateOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlV2PendingUpdateArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasePostgresqlV2PrivateNetworkOutput{})
@@ -54196,6 +54095,13 @@ func init() {
 	pulumi.RegisterOutputType(GetLkeClustersLkeClusterOutput{})
 	pulumi.RegisterOutputType(GetLkeClustersLkeClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClustersLkeClusterControlPlaneOutput{})
+	pulumi.RegisterOutputType(GetLkeNodePoolAutoscalerOutput{})
+	pulumi.RegisterOutputType(GetLkeNodePoolDiskOutput{})
+	pulumi.RegisterOutputType(GetLkeNodePoolDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeNodePoolNodeOutput{})
+	pulumi.RegisterOutputType(GetLkeNodePoolNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeNodePoolTaintOutput{})
+	pulumi.RegisterOutputType(GetLkeNodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeTypesFilterOutput{})
 	pulumi.RegisterOutputType(GetLkeTypesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeTypesTypeOutput{})
@@ -54406,6 +54312,10 @@ func init() {
 	pulumi.RegisterOutputType(GetVpcIpsVpcIpIpv6AddressArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcIpv6Output{})
 	pulumi.RegisterOutputType(GetVpcIpv6ArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetDatabaseOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetDatabaseIpv6RangeOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetDatabaseIpv6RangeArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetIpv6Output{})
 	pulumi.RegisterOutputType(GetVpcSubnetIpv6ArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetLinodeOutput{})
@@ -54416,6 +54326,10 @@ func init() {
 	pulumi.RegisterOutputType(GetVpcSubnetsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetDatabaseOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetDatabaseIpv6RangeOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetIpv6Output{})
 	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetIpv6ArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetsVpcSubnetLinodeOutput{})

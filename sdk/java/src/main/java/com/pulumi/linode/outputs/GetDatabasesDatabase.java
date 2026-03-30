@@ -47,15 +47,24 @@ public final class GetDatabasesDatabase {
     /**
      * @return The secondary/private network host for the Managed Database.
      * 
+     * @deprecated
+     * Use hostStandby instead.
+     * 
      */
+    @Deprecated /* Use hostStandby instead. */
     private String hostSecondary;
+    /**
+     * @return The standby host for the Managed Database.
+     * 
+     */
+    private String hostStandby;
     /**
      * @return The ID of the Managed Database.
      * 
      */
     private Integer id;
     /**
-     * @return he API route for the database instance.
+     * @return The API route for the database instance.
      * 
      */
     private String instanceUri;
@@ -74,16 +83,6 @@ public final class GetDatabasesDatabase {
      * 
      */
     private String region;
-    /**
-     * @return The replication method used for the Managed Database.
-     * 
-     */
-    private String replicationType;
-    /**
-     * @return Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     */
-    private Boolean sslConnection;
     /**
      * @return The operating status of the Managed Database.
      * 
@@ -151,9 +150,20 @@ public final class GetDatabasesDatabase {
     /**
      * @return The secondary/private network host for the Managed Database.
      * 
+     * @deprecated
+     * Use hostStandby instead.
+     * 
      */
+    @Deprecated /* Use hostStandby instead. */
     public String hostSecondary() {
         return this.hostSecondary;
+    }
+    /**
+     * @return The standby host for the Managed Database.
+     * 
+     */
+    public String hostStandby() {
+        return this.hostStandby;
     }
     /**
      * @return The ID of the Managed Database.
@@ -163,7 +173,7 @@ public final class GetDatabasesDatabase {
         return this.id;
     }
     /**
-     * @return he API route for the database instance.
+     * @return The API route for the database instance.
      * 
      */
     public String instanceUri() {
@@ -189,20 +199,6 @@ public final class GetDatabasesDatabase {
      */
     public String region() {
         return this.region;
-    }
-    /**
-     * @return The replication method used for the Managed Database.
-     * 
-     */
-    public String replicationType() {
-        return this.replicationType;
-    }
-    /**
-     * @return Whether to require SSL credentials to establish a connection to the Managed Database.
-     * 
-     */
-    public Boolean sslConnection() {
-        return this.sslConnection;
     }
     /**
      * @return The operating status of the Managed Database.
@@ -249,13 +245,12 @@ public final class GetDatabasesDatabase {
         private String engine;
         private String hostPrimary;
         private String hostSecondary;
+        private String hostStandby;
         private Integer id;
         private String instanceUri;
         private String label;
         private GetDatabasesDatabasePrivateNetwork privateNetwork;
         private String region;
-        private String replicationType;
-        private Boolean sslConnection;
         private String status;
         private String type;
         private String updated;
@@ -270,13 +265,12 @@ public final class GetDatabasesDatabase {
     	      this.engine = defaults.engine;
     	      this.hostPrimary = defaults.hostPrimary;
     	      this.hostSecondary = defaults.hostSecondary;
+    	      this.hostStandby = defaults.hostStandby;
     	      this.id = defaults.id;
     	      this.instanceUri = defaults.instanceUri;
     	      this.label = defaults.label;
     	      this.privateNetwork = defaults.privateNetwork;
     	      this.region = defaults.region;
-    	      this.replicationType = defaults.replicationType;
-    	      this.sslConnection = defaults.sslConnection;
     	      this.status = defaults.status;
     	      this.type = defaults.type;
     	      this.updated = defaults.updated;
@@ -343,6 +337,14 @@ public final class GetDatabasesDatabase {
             return this;
         }
         @CustomType.Setter
+        public Builder hostStandby(String hostStandby) {
+            if (hostStandby == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "hostStandby");
+            }
+            this.hostStandby = hostStandby;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(Integer id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetDatabasesDatabase", "id");
@@ -380,22 +382,6 @@ public final class GetDatabasesDatabase {
               throw new MissingRequiredPropertyException("GetDatabasesDatabase", "region");
             }
             this.region = region;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder replicationType(String replicationType) {
-            if (replicationType == null) {
-              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "replicationType");
-            }
-            this.replicationType = replicationType;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder sslConnection(Boolean sslConnection) {
-            if (sslConnection == null) {
-              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "sslConnection");
-            }
-            this.sslConnection = sslConnection;
             return this;
         }
         @CustomType.Setter
@@ -439,13 +425,12 @@ public final class GetDatabasesDatabase {
             _resultValue.engine = engine;
             _resultValue.hostPrimary = hostPrimary;
             _resultValue.hostSecondary = hostSecondary;
+            _resultValue.hostStandby = hostStandby;
             _resultValue.id = id;
             _resultValue.instanceUri = instanceUri;
             _resultValue.label = label;
             _resultValue.privateNetwork = privateNetwork;
             _resultValue.region = region;
-            _resultValue.replicationType = replicationType;
-            _resultValue.sslConnection = sslConnection;
             _resultValue.status = status;
             _resultValue.type = type;
             _resultValue.updated = updated;

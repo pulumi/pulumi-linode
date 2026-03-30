@@ -43,7 +43,7 @@ export interface GetAccountSettingsResult {
      */
     readonly longviewSubscription: string;
     /**
-     * The default maintenance policy for this account. (**Note: v4beta only.**)
+     * The default maintenance policy for this account.
      */
     readonly maintenancePolicy: string;
     /**

@@ -99,6 +99,11 @@ skipInstanceReadyPoll: Optional[bool]
 Skip waiting for a Instance resource to be running.
 """
 
+skipLkeClusterDeletePoll: Optional[bool]
+"""
+Skip waiting for all Linode instances in an LKE cluster to be deleted.
+"""
+
 token: Optional[str]
 """
 The token that allows you access to your Linode account

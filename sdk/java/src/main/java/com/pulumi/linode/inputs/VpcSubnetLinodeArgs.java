@@ -17,14 +17,14 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
     public static final VpcSubnetLinodeArgs Empty = new VpcSubnetLinodeArgs();
 
     /**
-     * ID of the interface.
+     * ID of a managed database assigned to the VPC Subnet.
      * 
      */
     @Import(name="id", required=true)
     private Output<Integer> id;
 
     /**
-     * @return ID of the interface.
+     * @return ID of a managed database assigned to the VPC Subnet.
      * 
      */
     public Output<Integer> id() {
@@ -72,7 +72,7 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id ID of the interface.
+         * @param id ID of a managed database assigned to the VPC Subnet.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id ID of the interface.
+         * @param id ID of a managed database assigned to the VPC Subnet.
          * 
          * @return builder
          * 

@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetVpcSubnetDatabase;
 import com.pulumi.linode.outputs.GetVpcSubnetIpv6;
 import com.pulumi.linode.outputs.GetVpcSubnetLinode;
 import java.lang.Integer;
@@ -20,7 +21,12 @@ public final class GetVpcSubnetResult {
      */
     private String created;
     /**
-     * @return ID of the interface.
+     * @return A list of Managed databases assigned to the VPC Subnet.
+     * 
+     */
+    private List<GetVpcSubnetDatabase> databases;
+    /**
+     * @return ID of a managed database assigned to the VPC Subnet.
      * 
      */
     private String id;
@@ -56,7 +62,14 @@ public final class GetVpcSubnetResult {
         return this.created;
     }
     /**
-     * @return ID of the interface.
+     * @return A list of Managed databases assigned to the VPC Subnet.
+     * 
+     */
+    public List<GetVpcSubnetDatabase> databases() {
+        return this.databases;
+    }
+    /**
+     * @return ID of a managed database assigned to the VPC Subnet.
      * 
      */
     public String id() {
@@ -107,6 +120,7 @@ public final class GetVpcSubnetResult {
     @CustomType.Builder
     public static final class Builder {
         private String created;
+        private List<GetVpcSubnetDatabase> databases;
         private String id;
         private String ipv4;
         private List<GetVpcSubnetIpv6> ipv6s;
@@ -118,6 +132,7 @@ public final class GetVpcSubnetResult {
         public Builder(GetVpcSubnetResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
+    	      this.databases = defaults.databases;
     	      this.id = defaults.id;
     	      this.ipv4 = defaults.ipv4;
     	      this.ipv6s = defaults.ipv6s;
@@ -134,6 +149,17 @@ public final class GetVpcSubnetResult {
             }
             this.created = created;
             return this;
+        }
+        @CustomType.Setter
+        public Builder databases(List<GetVpcSubnetDatabase> databases) {
+            if (databases == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetResult", "databases");
+            }
+            this.databases = databases;
+            return this;
+        }
+        public Builder databases(GetVpcSubnetDatabase... databases) {
+            return databases(List.of(databases));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -200,6 +226,7 @@ public final class GetVpcSubnetResult {
         public GetVpcSubnetResult build() {
             final var _resultValue = new GetVpcSubnetResult();
             _resultValue.created = created;
+            _resultValue.databases = databases;
             _resultValue.id = id;
             _resultValue.ipv4 = ipv4;
             _resultValue.ipv6s = ipv6s;

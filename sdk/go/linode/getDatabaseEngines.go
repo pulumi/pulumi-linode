@@ -92,9 +92,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewDatabaseMysql(ctx, "my_db", &linode.DatabaseMysqlArgs{
+//			_, err = linode.NewDatabaseMysqlV2(ctx, "my_db", &linode.DatabaseMysqlV2Args{
 //				Label:    pulumi.String("mydb"),
-//				EngineId: pulumi.String(mysql.Engines[0].Id),
+//				EngineId: pulumi.String(pulumi.String(mysql.Engines[0].Id)),
 //				Region:   pulumi.String("us-southeast"),
 //				Type:     pulumi.String("g6-nanode-1"),
 //			})

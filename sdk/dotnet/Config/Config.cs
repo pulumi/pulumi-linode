@@ -202,6 +202,16 @@ namespace Pulumi.Linode
             set => _skipInstanceReadyPoll.Set(value);
         }
 
+        private static readonly __Value<bool?> _skipLkeClusterDeletePoll = new __Value<bool?>(() => __config.GetBoolean("skipLkeClusterDeletePoll"));
+        /// <summary>
+        /// Skip waiting for all Linode instances in an LKE cluster to be deleted.
+        /// </summary>
+        public static bool? SkipLkeClusterDeletePoll
+        {
+            get => _skipLkeClusterDeletePoll.Get();
+            set => _skipLkeClusterDeletePoll.Set(value);
+        }
+
         private static readonly __Value<string?> _token = new __Value<string?>(() => __config.Get("token"));
         /// <summary>
         /// The token that allows you access to your Linode account

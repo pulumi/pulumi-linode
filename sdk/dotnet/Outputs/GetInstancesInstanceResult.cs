@@ -87,7 +87,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Locks;
         /// <summary>
-        /// The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+        /// The maintenance policy of this Linode instance.
         /// </summary>
         public readonly string MaintenancePolicy;
         public readonly ImmutableArray<Outputs.GetInstancesInstancePlacementGroupResult> PlacementGroups;

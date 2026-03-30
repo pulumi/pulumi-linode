@@ -390,7 +390,7 @@ import (
 //				K8sVersion: pulumi.String("1.32"),
 //				Region:     pulumi.String("us-mia"),
 //				ExternalPoolTags: pulumi.StringArray{
-//					pulumi.String(externalPoolTag),
+//					pulumi.String(pulumi.String(externalPoolTag)),
 //				},
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
@@ -407,7 +407,7 @@ import (
 //				Type:      pulumi.String("g6-standard-2"),
 //				NodeCount: pulumi.Int(3),
 //				Tags: pulumi.StringArray{
-//					pulumi.String(externalPoolTag),
+//					pulumi.String(pulumi.String(externalPoolTag)),
 //				},
 //			})
 //			if err != nil {
@@ -479,9 +479,6 @@ func NewLkeCluster(ctx *pulumi.Context,
 	}
 	if args.Label == nil {
 		return nil, errors.New("invalid value for required argument 'Label'")
-	}
-	if args.Pools == nil {
-		return nil, errors.New("invalid value for required argument 'Pools'")
 	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")

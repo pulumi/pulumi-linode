@@ -132,6 +132,13 @@ public final class Config {
         return Codegen.booleanProp("skipInstanceReadyPoll").config(config).get();
     }
 /**
+ * Skip waiting for all Linode instances in an LKE cluster to be deleted.
+ * 
+ */
+    public Optional<Boolean> skipLkeClusterDeletePoll() {
+        return Codegen.booleanProp("skipLkeClusterDeletePoll").config(config).get();
+    }
+/**
  * The token that allows you access to your Linode account
  * 
  */

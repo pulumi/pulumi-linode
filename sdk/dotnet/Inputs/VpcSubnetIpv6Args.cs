@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? AllocatedRange { get; set; }
 
         /// <summary>
-        /// An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+        /// An IPv6 address range in CIDR notation.
         /// </summary>
         [Input("range")]
         public Input<string>? Range { get; set; }

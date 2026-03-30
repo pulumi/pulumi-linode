@@ -28,7 +28,7 @@ public final class GetAccountSettingsResult {
      */
     private String longviewSubscription;
     /**
-     * @return The default maintenance policy for this account. (**Note: v4beta only.**)
+     * @return The default maintenance policy for this account.
      * 
      */
     private String maintenancePolicy;
@@ -74,7 +74,7 @@ public final class GetAccountSettingsResult {
         return this.longviewSubscription;
     }
     /**
-     * @return The default maintenance policy for this account. (**Note: v4beta only.**)
+     * @return The default maintenance policy for this account.
      * 
      */
     public String maintenancePolicy() {

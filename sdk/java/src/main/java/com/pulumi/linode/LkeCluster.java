@@ -596,14 +596,14 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="pools", refs={List.class,LkeClusterPool.class}, tree="[0,1]")
-    private Output<List<LkeClusterPool>> pools;
+    private Output</* @Nullable */ List<LkeClusterPool>> pools;
 
     /**
      * @return Additional nested attributes:
      * 
      */
-    public Output<List<LkeClusterPool>> pools() {
-        return this.pools;
+    public Output<Optional<List<LkeClusterPool>>> pools() {
+        return Codegen.optional(this.pools);
     }
     /**
      * This Kubernetes cluster&#39;s location.

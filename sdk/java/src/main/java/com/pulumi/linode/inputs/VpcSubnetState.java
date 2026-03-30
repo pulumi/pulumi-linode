@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.VpcSubnetDatabaseArgs;
 import com.pulumi.linode.inputs.VpcSubnetIpv6Args;
 import com.pulumi.linode.inputs.VpcSubnetLinodeArgs;
 import java.lang.Integer;
@@ -32,6 +33,21 @@ public final class VpcSubnetState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> created() {
         return Optional.ofNullable(this.created);
+    }
+
+    /**
+     * A list of Managed databases assigned to the VPC Subnet.
+     * 
+     */
+    @Import(name="databases")
+    private @Nullable Output<List<VpcSubnetDatabaseArgs>> databases;
+
+    /**
+     * @return A list of Managed databases assigned to the VPC Subnet.
+     * 
+     */
+    public Optional<Output<List<VpcSubnetDatabaseArgs>>> databases() {
+        return Optional.ofNullable(this.databases);
     }
 
     /**
@@ -84,14 +100,14 @@ public final class VpcSubnetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of Linode that added to this subnet.
+     * A list of Linodes added to this subnet.
      * 
      */
     @Import(name="linodes")
     private @Nullable Output<List<VpcSubnetLinodeArgs>> linodes;
 
     /**
-     * @return A list of Linode that added to this subnet.
+     * @return A list of Linodes added to this subnet.
      * 
      */
     public Optional<Output<List<VpcSubnetLinodeArgs>>> linodes() {
@@ -132,6 +148,7 @@ public final class VpcSubnetState extends com.pulumi.resources.ResourceArgs {
 
     private VpcSubnetState(VpcSubnetState $) {
         this.created = $.created;
+        this.databases = $.databases;
         this.ipv4 = $.ipv4;
         this.ipv6s = $.ipv6s;
         this.label = $.label;
@@ -177,6 +194,37 @@ public final class VpcSubnetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder created(String created) {
             return created(Output.of(created));
+        }
+
+        /**
+         * @param databases A list of Managed databases assigned to the VPC Subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databases(@Nullable Output<List<VpcSubnetDatabaseArgs>> databases) {
+            $.databases = databases;
+            return this;
+        }
+
+        /**
+         * @param databases A list of Managed databases assigned to the VPC Subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databases(List<VpcSubnetDatabaseArgs> databases) {
+            return databases(Output.of(databases));
+        }
+
+        /**
+         * @param databases A list of Managed databases assigned to the VPC Subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databases(VpcSubnetDatabaseArgs... databases) {
+            return databases(List.of(databases));
         }
 
         /**
@@ -257,7 +305,7 @@ public final class VpcSubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodes A list of Linode that added to this subnet.
+         * @param linodes A list of Linodes added to this subnet.
          * 
          * @return builder
          * 
@@ -268,7 +316,7 @@ public final class VpcSubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodes A list of Linode that added to this subnet.
+         * @param linodes A list of Linodes added to this subnet.
          * 
          * @return builder
          * 
@@ -278,7 +326,7 @@ public final class VpcSubnetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodes A list of Linode that added to this subnet.
+         * @param linodes A list of Linodes added to this subnet.
          * 
          * @return builder
          * 

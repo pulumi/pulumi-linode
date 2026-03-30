@@ -16,12 +16,10 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
-    'DatabaseMysqlUpdates',
     'DatabaseMysqlV2PendingUpdate',
     'DatabaseMysqlV2PrivateNetwork',
     'DatabaseMysqlV2Timeouts',
     'DatabaseMysqlV2Updates',
-    'DatabasePostgresqlUpdates',
     'DatabasePostgresqlV2PendingUpdate',
     'DatabasePostgresqlV2PrivateNetwork',
     'DatabasePostgresqlV2Timeouts',
@@ -131,6 +129,8 @@ __all__ = [
     'UserVpcGrant',
     'VolumeTimeouts',
     'VpcIpv6',
+    'VpcSubnetDatabase',
+    'VpcSubnetDatabaseIpv6Range',
     'VpcSubnetIpv6',
     'VpcSubnetLinode',
     'VpcSubnetLinodeInterface',
@@ -147,12 +147,8 @@ __all__ = [
     'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithResult',
     'GetConsumerImageShareGroupTokensFilterResult',
     'GetConsumerImageShareGroupTokensTokenResult',
-    'GetDatabaseBackupsBackupResult',
-    'GetDatabaseBackupsFilterResult',
     'GetDatabaseEnginesEngineResult',
     'GetDatabaseEnginesFilterResult',
-    'GetDatabaseMysqlBackupsBackupResult',
-    'GetDatabaseMysqlBackupsFilterResult',
     'GetDatabaseMysqlConfigBinlogRetentionPeriodResult',
     'GetDatabaseMysqlConfigMysqlResult',
     'GetDatabaseMysqlConfigMysqlConnectTimeoutResult',
@@ -182,7 +178,6 @@ __all__ = [
     'GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKeyResult',
     'GetDatabaseMysqlConfigMysqlTmpTableSizeResult',
     'GetDatabaseMysqlConfigMysqlWaitTimeoutResult',
-    'GetDatabaseMysqlUpdateResult',
     'GetDatabaseMysqlV2PendingUpdateResult',
     'GetDatabaseMysqlV2PrivateNetworkResult',
     'GetDatabaseMysqlV2UpdatesResult',
@@ -191,7 +186,6 @@ __all__ = [
     'GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLagResult',
     'GetDatabasePostgresqlConfigSharedBuffersPercentageResult',
     'GetDatabasePostgresqlConfigWorkMemResult',
-    'GetDatabasePostgresqlUpdateResult',
     'GetDatabasePostgresqlV2PendingUpdateResult',
     'GetDatabasePostgresqlV2PrivateNetworkResult',
     'GetDatabasePostgresqlV2UpdatesResult',
@@ -317,6 +311,10 @@ __all__ = [
     'GetLkeClustersFilterResult',
     'GetLkeClustersLkeClusterResult',
     'GetLkeClustersLkeClusterControlPlaneResult',
+    'GetLkeNodePoolAutoscalerResult',
+    'GetLkeNodePoolDiskResult',
+    'GetLkeNodePoolNodeResult',
+    'GetLkeNodePoolTaintResult',
     'GetLkeTypesFilterResult',
     'GetLkeTypesTypeResult',
     'GetLkeTypesTypePriceResult',
@@ -427,11 +425,15 @@ __all__ = [
     'GetVpcIpsVpcIpResult',
     'GetVpcIpsVpcIpIpv6AddressResult',
     'GetVpcIpv6Result',
+    'GetVpcSubnetDatabaseResult',
+    'GetVpcSubnetDatabaseIpv6RangeResult',
     'GetVpcSubnetIpv6Result',
     'GetVpcSubnetLinodeResult',
     'GetVpcSubnetLinodeInterfaceResult',
     'GetVpcSubnetsFilterResult',
     'GetVpcSubnetsVpcSubnetResult',
+    'GetVpcSubnetsVpcSubnetDatabaseResult',
+    'GetVpcSubnetsVpcSubnetDatabaseIpv6RangeResult',
     'GetVpcSubnetsVpcSubnetIpv6Result',
     'GetVpcSubnetsVpcSubnetLinodeResult',
     'GetVpcSubnetsVpcSubnetLinodeInterfaceResult',
@@ -439,90 +441,6 @@ __all__ = [
     'GetVpcsVpcResult',
     'GetVpcsVpcIpv6Result',
 ]
-
-@pulumi.output_type
-class DatabaseMysqlUpdates(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dayOfWeek":
-            suggest = "day_of_week"
-        elif key == "hourOfDay":
-            suggest = "hour_of_day"
-        elif key == "weekOfMonth":
-            suggest = "week_of_month"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabaseMysqlUpdates. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabaseMysqlUpdates.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabaseMysqlUpdates.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 day_of_week: _builtins.str,
-                 duration: _builtins.int,
-                 frequency: _builtins.str,
-                 hour_of_day: _builtins.int,
-                 week_of_month: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str day_of_week: The day to perform maintenance.
-        :param _builtins.int duration: The maximum maintenance window time in hours.
-        :param _builtins.str frequency: Whether maintenance occurs on a weekly or monthly basis.
-        :param _builtins.int hour_of_day: The hour to begin maintenance based in UTC time.
-        :param _builtins.int week_of_month: The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-        """
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
-        if week_of_month is not None:
-            pulumi.set(__self__, "week_of_month", week_of_month)
-
-    @_builtins.property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> _builtins.str:
-        """
-        The day to perform maintenance.
-        """
-        return pulumi.get(self, "day_of_week")
-
-    @_builtins.property
-    @pulumi.getter
-    def duration(self) -> _builtins.int:
-        """
-        The maximum maintenance window time in hours.
-        """
-        return pulumi.get(self, "duration")
-
-    @_builtins.property
-    @pulumi.getter
-    def frequency(self) -> _builtins.str:
-        """
-        Whether maintenance occurs on a weekly or monthly basis.
-        """
-        return pulumi.get(self, "frequency")
-
-    @_builtins.property
-    @pulumi.getter(name="hourOfDay")
-    def hour_of_day(self) -> _builtins.int:
-        """
-        The hour to begin maintenance based in UTC time.
-        """
-        return pulumi.get(self, "hour_of_day")
-
-    @_builtins.property
-    @pulumi.getter(name="weekOfMonth")
-    def week_of_month(self) -> Optional[_builtins.int]:
-        """
-        The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-        """
-        return pulumi.get(self, "week_of_month")
-
 
 @pulumi.output_type
 class DatabaseMysqlV2PendingUpdate(dict):
@@ -761,90 +679,6 @@ class DatabaseMysqlV2Updates(dict):
         How frequently maintenance occurs. Currently can only be weekly.
         """
         return pulumi.get(self, "hour_of_day")
-
-
-@pulumi.output_type
-class DatabasePostgresqlUpdates(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "dayOfWeek":
-            suggest = "day_of_week"
-        elif key == "hourOfDay":
-            suggest = "hour_of_day"
-        elif key == "weekOfMonth":
-            suggest = "week_of_month"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatabasePostgresqlUpdates. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DatabasePostgresqlUpdates.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DatabasePostgresqlUpdates.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 day_of_week: _builtins.str,
-                 duration: _builtins.int,
-                 frequency: _builtins.str,
-                 hour_of_day: _builtins.int,
-                 week_of_month: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str day_of_week: The day to perform maintenance.
-        :param _builtins.int duration: The maximum maintenance window time in hours.
-        :param _builtins.str frequency: Whether maintenance occurs on a weekly or monthly basis.
-        :param _builtins.int hour_of_day: The hour to begin maintenance based in UTC time.
-        :param _builtins.int week_of_month: The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-        """
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
-        if week_of_month is not None:
-            pulumi.set(__self__, "week_of_month", week_of_month)
-
-    @_builtins.property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> _builtins.str:
-        """
-        The day to perform maintenance.
-        """
-        return pulumi.get(self, "day_of_week")
-
-    @_builtins.property
-    @pulumi.getter
-    def duration(self) -> _builtins.int:
-        """
-        The maximum maintenance window time in hours.
-        """
-        return pulumi.get(self, "duration")
-
-    @_builtins.property
-    @pulumi.getter
-    def frequency(self) -> _builtins.str:
-        """
-        Whether maintenance occurs on a weekly or monthly basis.
-        """
-        return pulumi.get(self, "frequency")
-
-    @_builtins.property
-    @pulumi.getter(name="hourOfDay")
-    def hour_of_day(self) -> _builtins.int:
-        """
-        The hour to begin maintenance based in UTC time.
-        """
-        return pulumi.get(self, "hour_of_day")
-
-    @_builtins.property
-    @pulumi.getter(name="weekOfMonth")
-    def week_of_month(self) -> Optional[_builtins.int]:
-        """
-        The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-        """
-        return pulumi.get(self, "week_of_month")
 
 
 @pulumi.output_type
@@ -7211,6 +7045,83 @@ class VpcIpv6(dict):
 
 
 @pulumi.output_type
+class VpcSubnetDatabase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipv4Range":
+            suggest = "ipv4_range"
+        elif key == "ipv6Ranges":
+            suggest = "ipv6_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpcSubnetDatabase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpcSubnetDatabase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpcSubnetDatabase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.int,
+                 ipv4_range: _builtins.str,
+                 ipv6_ranges: Sequence['outputs.VpcSubnetDatabaseIpv6Range']):
+        """
+        :param _builtins.int id: ID of a managed database assigned to the VPC Subnet.
+        :param _builtins.str ipv4_range: IPv4 range assigned to the database.
+        :param Sequence['VpcSubnetDatabaseIpv6RangeArgs'] ipv6_ranges: A list of IPv6 ranges assigned to the database.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4_range", ipv4_range)
+        pulumi.set(__self__, "ipv6_ranges", ipv6_ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        ID of a managed database assigned to the VPC Subnet.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> _builtins.str:
+        """
+        IPv4 range assigned to the database.
+        """
+        return pulumi.get(self, "ipv4_range")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Ranges")
+    def ipv6_ranges(self) -> Sequence['outputs.VpcSubnetDatabaseIpv6Range']:
+        """
+        A list of IPv6 ranges assigned to the database.
+        """
+        return pulumi.get(self, "ipv6_ranges")
+
+
+@pulumi.output_type
+class VpcSubnetDatabaseIpv6Range(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: An IPv6 address range in CIDR notation.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        An IPv6 address range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
 class VpcSubnetIpv6(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7234,7 +7145,7 @@ class VpcSubnetIpv6(dict):
                  range: Optional[_builtins.str] = None):
         """
         :param _builtins.str allocated_range: The IPv6 range assigned to this subnet.
-        :param _builtins.str range: An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+        :param _builtins.str range: An IPv6 address range in CIDR notation.
         """
         if allocated_range is not None:
             pulumi.set(__self__, "allocated_range", allocated_range)
@@ -7253,7 +7164,7 @@ class VpcSubnetIpv6(dict):
     @pulumi.getter
     def range(self) -> Optional[_builtins.str]:
         """
-        An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+        An IPv6 address range in CIDR notation.
         """
         return pulumi.get(self, "range")
 
@@ -7264,7 +7175,7 @@ class VpcSubnetLinode(dict):
                  id: _builtins.int,
                  interfaces: Sequence['outputs.VpcSubnetLinodeInterface']):
         """
-        :param _builtins.int id: ID of the interface.
+        :param _builtins.int id: ID of a managed database assigned to the VPC Subnet.
         :param Sequence['VpcSubnetLinodeInterfaceArgs'] interfaces: A list of networking interfaces objects.
         """
         pulumi.set(__self__, "id", id)
@@ -7274,7 +7185,7 @@ class VpcSubnetLinode(dict):
     @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        ID of the interface.
+        ID of a managed database assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
@@ -7313,7 +7224,7 @@ class VpcSubnetLinodeInterface(dict):
         """
         :param _builtins.bool active: Whether the Interface is actively in use.
         :param _builtins.int config_id: ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
-        :param _builtins.int id: ID of the interface.
+        :param _builtins.int id: ID of a managed database assigned to the VPC Subnet.
         """
         pulumi.set(__self__, "active", active)
         pulumi.set(__self__, "config_id", config_id)
@@ -7339,7 +7250,7 @@ class VpcSubnetLinodeInterface(dict):
     @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        ID of the interface.
+        ID of a managed database assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
@@ -8211,98 +8122,6 @@ class GetConsumerImageShareGroupTokensTokenResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseBackupsBackupResult(dict):
-    def __init__(__self__, *,
-                 created: _builtins.str,
-                 id: _builtins.int,
-                 label: _builtins.str,
-                 type: _builtins.str):
-        """
-        :param _builtins.str created: A time value given in a combined date and time format that represents when the database backup was created.
-        :param _builtins.int id: The ID of the database backup object.
-        :param _builtins.str label: The database backup’s label, for display purposes only.
-        :param _builtins.str type: The type of database backup, determined by how the backup was created.
-        """
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def created(self) -> _builtins.str:
-        """
-        A time value given in a combined date and time format that represents when the database backup was created.
-        """
-        return pulumi.get(self, "created")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.int:
-        """
-        The ID of the database backup object.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def label(self) -> _builtins.str:
-        """
-        The database backup’s label, for display purposes only.
-        """
-        return pulumi.get(self, "label")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        The type of database backup, determined by how the backup was created.
-        """
-        return pulumi.get(self, "type")
-
-
-@pulumi.output_type
-class GetDatabaseBackupsFilterResult(dict):
-    def __init__(__self__, *,
-                 name: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 match_by: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: The name of the field to filter by.
-        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
-        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        The name of the field to filter by.
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        return pulumi.get(self, "values")
-
-    @_builtins.property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[_builtins.str]:
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-        return pulumi.get(self, "match_by")
-
-
-@pulumi.output_type
 class GetDatabaseEnginesEngineResult(dict):
     def __init__(__self__, *,
                  engine: _builtins.str,
@@ -8344,98 +8163,6 @@ class GetDatabaseEnginesEngineResult(dict):
 
 @pulumi.output_type
 class GetDatabaseEnginesFilterResult(dict):
-    def __init__(__self__, *,
-                 name: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 match_by: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: The name of the field to filter by.
-        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
-        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
-        if match_by is not None:
-            pulumi.set(__self__, "match_by", match_by)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        The name of the field to filter by.
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
-        """
-        A list of values for the filter to allow. These values should all be in string form.
-        """
-        return pulumi.get(self, "values")
-
-    @_builtins.property
-    @pulumi.getter(name="matchBy")
-    def match_by(self) -> Optional[_builtins.str]:
-        """
-        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-        """
-        return pulumi.get(self, "match_by")
-
-
-@pulumi.output_type
-class GetDatabaseMysqlBackupsBackupResult(dict):
-    def __init__(__self__, *,
-                 created: _builtins.str,
-                 id: _builtins.int,
-                 label: _builtins.str,
-                 type: _builtins.str):
-        """
-        :param _builtins.str created: A time value given in a combined date and time format that represents when the database backup was created.
-        :param _builtins.int id: The ID of the database backup object.
-        :param _builtins.str label: The database backup’s label, for display purposes only.
-        :param _builtins.str type: The type of database backup, determined by how the backup was created.
-        """
-        pulumi.set(__self__, "created", created)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter
-    def created(self) -> _builtins.str:
-        """
-        A time value given in a combined date and time format that represents when the database backup was created.
-        """
-        return pulumi.get(self, "created")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.int:
-        """
-        The ID of the database backup object.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def label(self) -> _builtins.str:
-        """
-        The database backup’s label, for display purposes only.
-        """
-        return pulumi.get(self, "label")
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
-        """
-        The type of database backup, determined by how the backup was created.
-        """
-        return pulumi.get(self, "type")
-
-
-@pulumi.output_type
-class GetDatabaseMysqlBackupsFilterResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  values: Sequence[_builtins.str],
@@ -9958,46 +9685,6 @@ class GetDatabaseMysqlConfigMysqlWaitTimeoutResult(dict):
 
 
 @pulumi.output_type
-class GetDatabaseMysqlUpdateResult(dict):
-    def __init__(__self__, *,
-                 day_of_week: _builtins.str,
-                 duration: _builtins.int,
-                 frequency: _builtins.str,
-                 hour_of_day: _builtins.int,
-                 week_of_month: _builtins.int):
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
-        pulumi.set(__self__, "week_of_month", week_of_month)
-
-    @_builtins.property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> _builtins.str:
-        return pulumi.get(self, "day_of_week")
-
-    @_builtins.property
-    @pulumi.getter
-    def duration(self) -> _builtins.int:
-        return pulumi.get(self, "duration")
-
-    @_builtins.property
-    @pulumi.getter
-    def frequency(self) -> _builtins.str:
-        return pulumi.get(self, "frequency")
-
-    @_builtins.property
-    @pulumi.getter(name="hourOfDay")
-    def hour_of_day(self) -> _builtins.int:
-        return pulumi.get(self, "hour_of_day")
-
-    @_builtins.property
-    @pulumi.getter(name="weekOfMonth")
-    def week_of_month(self) -> _builtins.int:
-        return pulumi.get(self, "week_of_month")
-
-
-@pulumi.output_type
 class GetDatabaseMysqlV2PendingUpdateResult(dict):
     def __init__(__self__, *,
                  deadline: _builtins.str,
@@ -10301,46 +9988,6 @@ class GetDatabasePostgresqlConfigWorkMemResult(dict):
 
 
 @pulumi.output_type
-class GetDatabasePostgresqlUpdateResult(dict):
-    def __init__(__self__, *,
-                 day_of_week: _builtins.str,
-                 duration: _builtins.int,
-                 frequency: _builtins.str,
-                 hour_of_day: _builtins.int,
-                 week_of_month: _builtins.int):
-        pulumi.set(__self__, "day_of_week", day_of_week)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "hour_of_day", hour_of_day)
-        pulumi.set(__self__, "week_of_month", week_of_month)
-
-    @_builtins.property
-    @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> _builtins.str:
-        return pulumi.get(self, "day_of_week")
-
-    @_builtins.property
-    @pulumi.getter
-    def duration(self) -> _builtins.int:
-        return pulumi.get(self, "duration")
-
-    @_builtins.property
-    @pulumi.getter
-    def frequency(self) -> _builtins.str:
-        return pulumi.get(self, "frequency")
-
-    @_builtins.property
-    @pulumi.getter(name="hourOfDay")
-    def hour_of_day(self) -> _builtins.int:
-        return pulumi.get(self, "hour_of_day")
-
-    @_builtins.property
-    @pulumi.getter(name="weekOfMonth")
-    def week_of_month(self) -> _builtins.int:
-        return pulumi.get(self, "week_of_month")
-
-
-@pulumi.output_type
 class GetDatabasePostgresqlV2PendingUpdateResult(dict):
     def __init__(__self__, *,
                  deadline: _builtins.str,
@@ -10481,13 +10128,12 @@ class GetDatabasesDatabaseResult(dict):
                  engine: _builtins.str,
                  host_primary: _builtins.str,
                  host_secondary: _builtins.str,
+                 host_standby: _builtins.str,
                  id: _builtins.int,
                  instance_uri: _builtins.str,
                  label: _builtins.str,
                  private_network: 'outputs.GetDatabasesDatabasePrivateNetworkResult',
                  region: _builtins.str,
-                 replication_type: _builtins.str,
-                 ssl_connection: _builtins.bool,
                  status: _builtins.str,
                  type: _builtins.str,
                  updated: _builtins.str,
@@ -10500,13 +10146,12 @@ class GetDatabasesDatabaseResult(dict):
         :param _builtins.str engine: The Managed Database engine.
         :param _builtins.str host_primary: The primary host for the Managed Database.
         :param _builtins.str host_secondary: The secondary/private network host for the Managed Database.
+        :param _builtins.str host_standby: The standby host for the Managed Database.
         :param _builtins.int id: The ID of the Managed Database.
-        :param _builtins.str instance_uri: he API route for the database instance.
+        :param _builtins.str instance_uri: The API route for the database instance.
         :param _builtins.str label: A unique, user-defined string referring to the Managed Database.
         :param 'GetDatabasesDatabasePrivateNetworkArgs' private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param _builtins.str region: The region to use for the Managed Database.
-        :param _builtins.str replication_type: The replication method used for the Managed Database.
-        :param _builtins.bool ssl_connection: Whether to require SSL credentials to establish a connection to the Managed Database.
         :param _builtins.str status: The operating status of the Managed Database.
         :param _builtins.str type: The Linode Instance type used for the nodes of the  Managed Database instance.
         :param _builtins.str updated: When this Managed Database was last updated.
@@ -10519,13 +10164,12 @@ class GetDatabasesDatabaseResult(dict):
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "host_primary", host_primary)
         pulumi.set(__self__, "host_secondary", host_secondary)
+        pulumi.set(__self__, "host_standby", host_standby)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "instance_uri", instance_uri)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "replication_type", replication_type)
-        pulumi.set(__self__, "ssl_connection", ssl_connection)
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "updated", updated)
@@ -10581,11 +10225,20 @@ class GetDatabasesDatabaseResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="hostSecondary")
+    @_utilities.deprecated("""Use host_standby instead.""")
     def host_secondary(self) -> _builtins.str:
         """
         The secondary/private network host for the Managed Database.
         """
         return pulumi.get(self, "host_secondary")
+
+    @_builtins.property
+    @pulumi.getter(name="hostStandby")
+    def host_standby(self) -> _builtins.str:
+        """
+        The standby host for the Managed Database.
+        """
+        return pulumi.get(self, "host_standby")
 
     @_builtins.property
     @pulumi.getter
@@ -10599,7 +10252,7 @@ class GetDatabasesDatabaseResult(dict):
     @pulumi.getter(name="instanceUri")
     def instance_uri(self) -> _builtins.str:
         """
-        he API route for the database instance.
+        The API route for the database instance.
         """
         return pulumi.get(self, "instance_uri")
 
@@ -10626,22 +10279,6 @@ class GetDatabasesDatabaseResult(dict):
         The region to use for the Managed Database.
         """
         return pulumi.get(self, "region")
-
-    @_builtins.property
-    @pulumi.getter(name="replicationType")
-    def replication_type(self) -> _builtins.str:
-        """
-        The replication method used for the Managed Database.
-        """
-        return pulumi.get(self, "replication_type")
-
-    @_builtins.property
-    @pulumi.getter(name="sslConnection")
-    def ssl_connection(self) -> _builtins.bool:
-        """
-        Whether to require SSL credentials to establish a connection to the Managed Database.
-        """
-        return pulumi.get(self, "ssl_connection")
 
     @_builtins.property
     @pulumi.getter
@@ -14784,7 +14421,7 @@ class GetInstancesInstanceResult(dict):
         :param _builtins.str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         :param _builtins.int lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
         :param Sequence[_builtins.str] locks: A list of locks applied to this Linode.
-        :param _builtins.str maintenance_policy: The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+        :param _builtins.str maintenance_policy: The maintenance policy of this Linode instance.
         :param _builtins.str private_ip_address: This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
         :param _builtins.str region: This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
         :param _builtins.str status: The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
@@ -14976,7 +14613,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="maintenancePolicy")
     def maintenance_policy(self) -> _builtins.str:
         """
-        The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+        The maintenance policy of this Linode instance.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -17635,6 +17272,155 @@ class GetLkeClustersLkeClusterControlPlaneResult(dict):
         Whether High Availability is enabled for the cluster Control Plane.
         """
         return pulumi.get(self, "high_availability")
+
+
+@pulumi.output_type
+class GetLkeNodePoolAutoscalerResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 max: _builtins.int,
+                 min: _builtins.int):
+        """
+        :param _builtins.bool enabled: Whether autoscaling is enabled for this node pool.
+        :param _builtins.int max: The maximum number of nodes to autoscale to.
+        :param _builtins.int min: The minimum number of nodes to autoscale to.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether autoscaling is enabled for this node pool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def max(self) -> _builtins.int:
+        """
+        The maximum number of nodes to autoscale to.
+        """
+        return pulumi.get(self, "max")
+
+    @_builtins.property
+    @pulumi.getter
+    def min(self) -> _builtins.int:
+        """
+        The minimum number of nodes to autoscale to.
+        """
+        return pulumi.get(self, "min")
+
+
+@pulumi.output_type
+class GetLkeNodePoolDiskResult(dict):
+    def __init__(__self__, *,
+                 size: _builtins.int,
+                 type: _builtins.str):
+        """
+        :param _builtins.int size: The size of this custom disk partition in MB.
+        :param _builtins.str type: The Linode type for all of the nodes in the node pool.
+        """
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        The size of this custom disk partition in MB.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The Linode type for all of the nodes in the node pool.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetLkeNodePoolNodeResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 instance_id: _builtins.int,
+                 status: _builtins.str):
+        """
+        :param _builtins.str id: The LKE Cluster's Node Pool ID.
+        :param _builtins.int instance_id: The Linode's ID. When no Linode is currently provisioned for this node, this is null.
+        :param _builtins.str status: The creation status of this node.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The LKE Cluster's Node Pool ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.int:
+        """
+        The Linode's ID. When no Linode is currently provisioned for this node, this is null.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The creation status of this node.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetLkeNodePoolTaintResult(dict):
+    def __init__(__self__, *,
+                 effect: _builtins.str,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str effect: The Kubernetes taint effect.
+        :param _builtins.str key: The Kubernetes taint key.
+        :param _builtins.str value: The Kubernetes taint value.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def effect(self) -> _builtins.str:
+        """
+        The Kubernetes taint effect.
+        """
+        return pulumi.get(self, "effect")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The Kubernetes taint key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The Kubernetes taint value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -23646,11 +23432,51 @@ class GetVpcIpv6Result(dict):
 
 
 @pulumi.output_type
-class GetVpcSubnetIpv6Result(dict):
+class GetVpcSubnetDatabaseResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.int,
+                 ipv4_range: _builtins.str,
+                 ipv6_ranges: Sequence['outputs.GetVpcSubnetDatabaseIpv6RangeResult']):
+        """
+        :param _builtins.int id: The unique id of this VPC subnet.
+        :param _builtins.str ipv4_range: IPv4 range assigned to the database.
+        :param Sequence['GetVpcSubnetDatabaseIpv6RangeArgs'] ipv6_ranges: A list of IPv6 ranges assigned to the database.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4_range", ipv4_range)
+        pulumi.set(__self__, "ipv6_ranges", ipv6_ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The unique id of this VPC subnet.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> _builtins.str:
+        """
+        IPv4 range assigned to the database.
+        """
+        return pulumi.get(self, "ipv4_range")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Ranges")
+    def ipv6_ranges(self) -> Sequence['outputs.GetVpcSubnetDatabaseIpv6RangeResult']:
+        """
+        A list of IPv6 ranges assigned to the database.
+        """
+        return pulumi.get(self, "ipv6_ranges")
+
+
+@pulumi.output_type
+class GetVpcSubnetDatabaseIpv6RangeResult(dict):
     def __init__(__self__, *,
                  range: _builtins.str):
         """
-        :param _builtins.str range: An IPv6 range allocated to this subnet.
+        :param _builtins.str range: An IPv6 address range in CIDR notation.
         """
         pulumi.set(__self__, "range", range)
 
@@ -23658,7 +23484,25 @@ class GetVpcSubnetIpv6Result(dict):
     @pulumi.getter
     def range(self) -> _builtins.str:
         """
-        An IPv6 range allocated to this subnet.
+        An IPv6 address range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetVpcSubnetIpv6Result(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: An IPv6 address range in CIDR notation.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        An IPv6 address range in CIDR notation.
         """
         return pulumi.get(self, "range")
 
@@ -23777,6 +23621,7 @@ class GetVpcSubnetsFilterResult(dict):
 class GetVpcSubnetsVpcSubnetResult(dict):
     def __init__(__self__, *,
                  created: _builtins.str,
+                 databases: Sequence['outputs.GetVpcSubnetsVpcSubnetDatabaseResult'],
                  id: _builtins.int,
                  ipv4: _builtins.str,
                  ipv6s: Sequence['outputs.GetVpcSubnetsVpcSubnetIpv6Result'],
@@ -23785,7 +23630,8 @@ class GetVpcSubnetsVpcSubnetResult(dict):
                  updated: _builtins.str):
         """
         :param _builtins.str created: The date and time when the VPC Subnet was created.
-        :param _builtins.int id: ID of the interface.
+        :param Sequence['GetVpcSubnetsVpcSubnetDatabaseArgs'] databases: A list of Managed databases assigned to the VPC Subnet.
+        :param _builtins.int id: ID of a managed database assigned to the VPC Subnet.
         :param _builtins.str ipv4: The IPv4 range of this subnet in CIDR format.
         :param Sequence['GetVpcSubnetsVpcSubnetIpv6Args'] ipv6s: The IPv6 ranges of this subnet.
         :param _builtins.str label: The label of the VPC subnet.
@@ -23793,6 +23639,7 @@ class GetVpcSubnetsVpcSubnetResult(dict):
         :param _builtins.str updated: The date and time when the VPC Subnet was last updated.
         """
         pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "databases", databases)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ipv4", ipv4)
         pulumi.set(__self__, "ipv6s", ipv6s)
@@ -23810,9 +23657,17 @@ class GetVpcSubnetsVpcSubnetResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def databases(self) -> Sequence['outputs.GetVpcSubnetsVpcSubnetDatabaseResult']:
+        """
+        A list of Managed databases assigned to the VPC Subnet.
+        """
+        return pulumi.get(self, "databases")
+
+    @_builtins.property
+    @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        ID of the interface.
+        ID of a managed database assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
@@ -23858,11 +23713,51 @@ class GetVpcSubnetsVpcSubnetResult(dict):
 
 
 @pulumi.output_type
-class GetVpcSubnetsVpcSubnetIpv6Result(dict):
+class GetVpcSubnetsVpcSubnetDatabaseResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.int,
+                 ipv4_range: _builtins.str,
+                 ipv6_ranges: Sequence['outputs.GetVpcSubnetsVpcSubnetDatabaseIpv6RangeResult']):
+        """
+        :param _builtins.int id: ID of a managed database assigned to the VPC Subnet.
+        :param _builtins.str ipv4_range: IPv4 range assigned to the database.
+        :param Sequence['GetVpcSubnetsVpcSubnetDatabaseIpv6RangeArgs'] ipv6_ranges: A list of IPv6 ranges assigned to the database.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4_range", ipv4_range)
+        pulumi.set(__self__, "ipv6_ranges", ipv6_ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        ID of a managed database assigned to the VPC Subnet.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> _builtins.str:
+        """
+        IPv4 range assigned to the database.
+        """
+        return pulumi.get(self, "ipv4_range")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Ranges")
+    def ipv6_ranges(self) -> Sequence['outputs.GetVpcSubnetsVpcSubnetDatabaseIpv6RangeResult']:
+        """
+        A list of IPv6 ranges assigned to the database.
+        """
+        return pulumi.get(self, "ipv6_ranges")
+
+
+@pulumi.output_type
+class GetVpcSubnetsVpcSubnetDatabaseIpv6RangeResult(dict):
     def __init__(__self__, *,
                  range: _builtins.str):
         """
-        :param _builtins.str range: An IPv6 range allocated to this subnet.
+        :param _builtins.str range: An IPv6 address range in CIDR notation.
         """
         pulumi.set(__self__, "range", range)
 
@@ -23870,7 +23765,25 @@ class GetVpcSubnetsVpcSubnetIpv6Result(dict):
     @pulumi.getter
     def range(self) -> _builtins.str:
         """
-        An IPv6 range allocated to this subnet.
+        An IPv6 address range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetVpcSubnetsVpcSubnetIpv6Result(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: An IPv6 address range in CIDR notation.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        An IPv6 address range in CIDR notation.
         """
         return pulumi.get(self, "range")
 
@@ -23881,7 +23794,7 @@ class GetVpcSubnetsVpcSubnetLinodeResult(dict):
                  id: _builtins.int,
                  interfaces: Sequence['outputs.GetVpcSubnetsVpcSubnetLinodeInterfaceResult']):
         """
-        :param _builtins.int id: ID of the interface.
+        :param _builtins.int id: ID of a managed database assigned to the VPC Subnet.
         :param Sequence['GetVpcSubnetsVpcSubnetLinodeInterfaceArgs'] interfaces: A list of networking interfaces objects.
         """
         pulumi.set(__self__, "id", id)
@@ -23891,7 +23804,7 @@ class GetVpcSubnetsVpcSubnetLinodeResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        ID of the interface.
+        ID of a managed database assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
@@ -23913,7 +23826,7 @@ class GetVpcSubnetsVpcSubnetLinodeInterfaceResult(dict):
         """
         :param _builtins.bool active: Whether the Interface is actively in use.
         :param _builtins.int config_id: ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
-        :param _builtins.int id: ID of the interface.
+        :param _builtins.int id: ID of a managed database assigned to the VPC Subnet.
         """
         pulumi.set(__self__, "active", active)
         pulumi.set(__self__, "config_id", config_id)
@@ -23939,7 +23852,7 @@ class GetVpcSubnetsVpcSubnetLinodeInterfaceResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        ID of the interface.
+        ID of a managed database assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 

@@ -289,7 +289,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly locks: pulumi.Output<string[]>;
     /**
-     * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+     * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
      */
     declare public readonly maintenancePolicy: pulumi.Output<string>;
     /**
@@ -620,7 +620,7 @@ export interface InstanceState {
      */
     locks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+     * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
      */
     maintenancePolicy?: pulumi.Input<string>;
     /**
@@ -802,7 +802,7 @@ export interface InstanceArgs {
      */
     label?: pulumi.Input<string>;
     /**
-     * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+     * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
      */
     maintenancePolicy?: pulumi.Input<string>;
     /**

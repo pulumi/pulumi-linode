@@ -274,6 +274,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Skip waiting for all Linode instances in an LKE cluster to be deleted.
+     * 
+     */
+    @Import(name="skipLkeClusterDeletePoll", json=true)
+    private @Nullable Output<Boolean> skipLkeClusterDeletePoll;
+
+    /**
+     * @return Skip waiting for all Linode instances in an LKE cluster to be deleted.
+     * 
+     */
+    public Optional<Output<Boolean>> skipLkeClusterDeletePoll() {
+        return Optional.ofNullable(this.skipLkeClusterDeletePoll);
+    }
+
+    /**
      * The token that allows you access to your Linode account
      * 
      */
@@ -338,6 +353,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.skipImplicitReboots = $.skipImplicitReboots;
         this.skipInstanceDeletePoll = $.skipInstanceDeletePoll;
         this.skipInstanceReadyPoll = $.skipInstanceReadyPoll;
+        this.skipLkeClusterDeletePoll = $.skipLkeClusterDeletePoll;
         this.token = $.token;
         this.uaPrefix = $.uaPrefix;
         this.url = $.url;
@@ -716,6 +732,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder skipInstanceReadyPoll(Boolean skipInstanceReadyPoll) {
             return skipInstanceReadyPoll(Output.of(skipInstanceReadyPoll));
+        }
+
+        /**
+         * @param skipLkeClusterDeletePoll Skip waiting for all Linode instances in an LKE cluster to be deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipLkeClusterDeletePoll(@Nullable Output<Boolean> skipLkeClusterDeletePoll) {
+            $.skipLkeClusterDeletePoll = skipLkeClusterDeletePoll;
+            return this;
+        }
+
+        /**
+         * @param skipLkeClusterDeletePoll Skip waiting for all Linode instances in an LKE cluster to be deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipLkeClusterDeletePoll(Boolean skipLkeClusterDeletePoll) {
+            return skipLkeClusterDeletePoll(Output.of(skipLkeClusterDeletePoll));
         }
 
         /**

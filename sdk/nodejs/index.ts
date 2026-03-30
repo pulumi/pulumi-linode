@@ -20,20 +20,10 @@ export type DatabaseAccessControls = import("./databaseAccessControls").Database
 export const DatabaseAccessControls: typeof import("./databaseAccessControls").DatabaseAccessControls = null as any;
 utilities.lazyLoad(exports, ["DatabaseAccessControls"], () => require("./databaseAccessControls"));
 
-export { DatabaseMysqlArgs, DatabaseMysqlState } from "./databaseMysql";
-export type DatabaseMysql = import("./databaseMysql").DatabaseMysql;
-export const DatabaseMysql: typeof import("./databaseMysql").DatabaseMysql = null as any;
-utilities.lazyLoad(exports, ["DatabaseMysql"], () => require("./databaseMysql"));
-
 export { DatabaseMysqlV2Args, DatabaseMysqlV2State } from "./databaseMysqlV2";
 export type DatabaseMysqlV2 = import("./databaseMysqlV2").DatabaseMysqlV2;
 export const DatabaseMysqlV2: typeof import("./databaseMysqlV2").DatabaseMysqlV2 = null as any;
 utilities.lazyLoad(exports, ["DatabaseMysqlV2"], () => require("./databaseMysqlV2"));
-
-export { DatabasePostgresqlArgs, DatabasePostgresqlState } from "./databasePostgresql";
-export type DatabasePostgresql = import("./databasePostgresql").DatabasePostgresql;
-export const DatabasePostgresql: typeof import("./databasePostgresql").DatabasePostgresql = null as any;
-utilities.lazyLoad(exports, ["DatabasePostgresql"], () => require("./databasePostgresql"));
 
 export { DatabasePostgresqlV2Args, DatabasePostgresqlV2State } from "./databasePostgresqlV2";
 export type DatabasePostgresqlV2 = import("./databasePostgresqlV2").DatabasePostgresqlV2;
@@ -125,25 +115,10 @@ export const getConsumerImageShareGroupTokens: typeof import("./getConsumerImage
 export const getConsumerImageShareGroupTokensOutput: typeof import("./getConsumerImageShareGroupTokens").getConsumerImageShareGroupTokensOutput = null as any;
 utilities.lazyLoad(exports, ["getConsumerImageShareGroupTokens","getConsumerImageShareGroupTokensOutput"], () => require("./getConsumerImageShareGroupTokens"));
 
-export { GetDatabaseBackupsArgs, GetDatabaseBackupsResult, GetDatabaseBackupsOutputArgs } from "./getDatabaseBackups";
-export const getDatabaseBackups: typeof import("./getDatabaseBackups").getDatabaseBackups = null as any;
-export const getDatabaseBackupsOutput: typeof import("./getDatabaseBackups").getDatabaseBackupsOutput = null as any;
-utilities.lazyLoad(exports, ["getDatabaseBackups","getDatabaseBackupsOutput"], () => require("./getDatabaseBackups"));
-
 export { GetDatabaseEnginesArgs, GetDatabaseEnginesResult, GetDatabaseEnginesOutputArgs } from "./getDatabaseEngines";
 export const getDatabaseEngines: typeof import("./getDatabaseEngines").getDatabaseEngines = null as any;
 export const getDatabaseEnginesOutput: typeof import("./getDatabaseEngines").getDatabaseEnginesOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseEngines","getDatabaseEnginesOutput"], () => require("./getDatabaseEngines"));
-
-export { GetDatabaseMysqlArgs, GetDatabaseMysqlResult, GetDatabaseMysqlOutputArgs } from "./getDatabaseMysql";
-export const getDatabaseMysql: typeof import("./getDatabaseMysql").getDatabaseMysql = null as any;
-export const getDatabaseMysqlOutput: typeof import("./getDatabaseMysql").getDatabaseMysqlOutput = null as any;
-utilities.lazyLoad(exports, ["getDatabaseMysql","getDatabaseMysqlOutput"], () => require("./getDatabaseMysql"));
-
-export { GetDatabaseMysqlBackupsArgs, GetDatabaseMysqlBackupsResult, GetDatabaseMysqlBackupsOutputArgs } from "./getDatabaseMysqlBackups";
-export const getDatabaseMysqlBackups: typeof import("./getDatabaseMysqlBackups").getDatabaseMysqlBackups = null as any;
-export const getDatabaseMysqlBackupsOutput: typeof import("./getDatabaseMysqlBackups").getDatabaseMysqlBackupsOutput = null as any;
-utilities.lazyLoad(exports, ["getDatabaseMysqlBackups","getDatabaseMysqlBackupsOutput"], () => require("./getDatabaseMysqlBackups"));
 
 export { GetDatabaseMysqlConfigResult } from "./getDatabaseMysqlConfig";
 export const getDatabaseMysqlConfig: typeof import("./getDatabaseMysqlConfig").getDatabaseMysqlConfig = null as any;
@@ -154,11 +129,6 @@ export { GetDatabaseMysqlV2Args, GetDatabaseMysqlV2Result, GetDatabaseMysqlV2Out
 export const getDatabaseMysqlV2: typeof import("./getDatabaseMysqlV2").getDatabaseMysqlV2 = null as any;
 export const getDatabaseMysqlV2Output: typeof import("./getDatabaseMysqlV2").getDatabaseMysqlV2Output = null as any;
 utilities.lazyLoad(exports, ["getDatabaseMysqlV2","getDatabaseMysqlV2Output"], () => require("./getDatabaseMysqlV2"));
-
-export { GetDatabasePostgresqlArgs, GetDatabasePostgresqlResult, GetDatabasePostgresqlOutputArgs } from "./getDatabasePostgresql";
-export const getDatabasePostgresql: typeof import("./getDatabasePostgresql").getDatabasePostgresql = null as any;
-export const getDatabasePostgresqlOutput: typeof import("./getDatabasePostgresql").getDatabasePostgresqlOutput = null as any;
-utilities.lazyLoad(exports, ["getDatabasePostgresql","getDatabasePostgresqlOutput"], () => require("./getDatabasePostgresql"));
 
 export { GetDatabasePostgresqlConfigResult } from "./getDatabasePostgresqlConfig";
 export const getDatabasePostgresqlConfig: typeof import("./getDatabasePostgresqlConfig").getDatabasePostgresqlConfig = null as any;
@@ -294,6 +264,11 @@ export { GetLkeClustersArgs, GetLkeClustersResult, GetLkeClustersOutputArgs } fr
 export const getLkeClusters: typeof import("./getLkeClusters").getLkeClusters = null as any;
 export const getLkeClustersOutput: typeof import("./getLkeClusters").getLkeClustersOutput = null as any;
 utilities.lazyLoad(exports, ["getLkeClusters","getLkeClustersOutput"], () => require("./getLkeClusters"));
+
+export { GetLkeNodePoolArgs, GetLkeNodePoolResult, GetLkeNodePoolOutputArgs } from "./getLkeNodePool";
+export const getLkeNodePool: typeof import("./getLkeNodePool").getLkeNodePool = null as any;
+export const getLkeNodePoolOutput: typeof import("./getLkeNodePool").getLkeNodePoolOutput = null as any;
+utilities.lazyLoad(exports, ["getLkeNodePool","getLkeNodePoolOutput"], () => require("./getLkeNodePool"));
 
 export { GetLkeTypesArgs, GetLkeTypesResult, GetLkeTypesOutputArgs } from "./getLkeTypes";
 export const getLkeTypes: typeof import("./getLkeTypes").getLkeTypes = null as any;
@@ -708,12 +683,8 @@ const _module = {
                 return new ConsumerImageShareGroupToken(name, <any>undefined, { urn })
             case "linode:index/databaseAccessControls:DatabaseAccessControls":
                 return new DatabaseAccessControls(name, <any>undefined, { urn })
-            case "linode:index/databaseMysql:DatabaseMysql":
-                return new DatabaseMysql(name, <any>undefined, { urn })
             case "linode:index/databaseMysqlV2:DatabaseMysqlV2":
                 return new DatabaseMysqlV2(name, <any>undefined, { urn })
-            case "linode:index/databasePostgresql:DatabasePostgresql":
-                return new DatabasePostgresql(name, <any>undefined, { urn })
             case "linode:index/databasePostgresqlV2:DatabasePostgresqlV2":
                 return new DatabasePostgresqlV2(name, <any>undefined, { urn })
             case "linode:index/domain:Domain":
@@ -798,9 +769,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("linode", "index/accountSettings", _module)
 pulumi.runtime.registerResourceModule("linode", "index/consumerImageShareGroupToken", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseAccessControls", _module)
-pulumi.runtime.registerResourceModule("linode", "index/databaseMysql", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databaseMysqlV2", _module)
-pulumi.runtime.registerResourceModule("linode", "index/databasePostgresql", _module)
 pulumi.runtime.registerResourceModule("linode", "index/databasePostgresqlV2", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domain", _module)
 pulumi.runtime.registerResourceModule("linode", "index/domainRecord", _module)

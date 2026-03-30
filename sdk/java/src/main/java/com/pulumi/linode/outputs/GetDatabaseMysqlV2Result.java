@@ -211,8 +211,13 @@ public final class GetDatabaseMysqlV2Result {
     /**
      * @return The secondary/private host for the managed database.
      * 
+     * @deprecated
+     * Use hostStandby instead.
+     * 
      */
+    @Deprecated /* Use hostStandby instead. */
     private String hostSecondary;
+    private String hostStandby;
     private String id;
     /**
      * @return A unique, user-defined string referring to the Managed Database.
@@ -550,9 +555,16 @@ public final class GetDatabaseMysqlV2Result {
     /**
      * @return The secondary/private host for the managed database.
      * 
+     * @deprecated
+     * Use hostStandby instead.
+     * 
      */
+    @Deprecated /* Use hostStandby instead. */
     public String hostSecondary() {
         return this.hostSecondary;
+    }
+    public String hostStandby() {
+        return this.hostStandby;
     }
     public String id() {
         return this.id;
@@ -705,6 +717,7 @@ public final class GetDatabaseMysqlV2Result {
         private Integer forkSource;
         private String hostPrimary;
         private String hostSecondary;
+        private String hostStandby;
         private String id;
         private String label;
         private Map<String,String> members;
@@ -765,6 +778,7 @@ public final class GetDatabaseMysqlV2Result {
     	      this.forkSource = defaults.forkSource;
     	      this.hostPrimary = defaults.hostPrimary;
     	      this.hostSecondary = defaults.hostSecondary;
+    	      this.hostStandby = defaults.hostStandby;
     	      this.id = defaults.id;
     	      this.label = defaults.label;
     	      this.members = defaults.members;
@@ -1101,6 +1115,14 @@ public final class GetDatabaseMysqlV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder hostStandby(String hostStandby) {
+            if (hostStandby == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseMysqlV2Result", "hostStandby");
+            }
+            this.hostStandby = hostStandby;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetDatabaseMysqlV2Result", "id");
@@ -1288,6 +1310,7 @@ public final class GetDatabaseMysqlV2Result {
             _resultValue.forkSource = forkSource;
             _resultValue.hostPrimary = hostPrimary;
             _resultValue.hostSecondary = hostSecondary;
+            _resultValue.hostStandby = hostStandby;
             _resultValue.id = id;
             _resultValue.label = label;
             _resultValue.members = members;

@@ -288,7 +288,7 @@ export class LkeCluster extends pulumi.CustomResource {
     /**
      * Additional nested attributes:
      */
-    declare public readonly pools: pulumi.Output<outputs.LkeClusterPool[]>;
+    declare public readonly pools: pulumi.Output<outputs.LkeClusterPool[] | undefined>;
     /**
      * This Kubernetes cluster's location.
      *
@@ -358,9 +358,6 @@ export class LkeCluster extends pulumi.CustomResource {
             }
             if (args?.label === undefined && !opts.urn) {
                 throw new Error("Missing required property 'label'");
-            }
-            if (args?.pools === undefined && !opts.urn) {
-                throw new Error("Missing required property 'pools'");
             }
             if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
@@ -490,7 +487,7 @@ export interface LkeClusterArgs {
     /**
      * Additional nested attributes:
      */
-    pools: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[]>;
+    pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[]>;
     /**
      * This Kubernetes cluster's location.
      *

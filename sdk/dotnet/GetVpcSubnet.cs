@@ -182,7 +182,11 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// ID of the interface.
+        /// A list of Managed databases assigned to the VPC Subnet.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVpcSubnetDatabaseResult> Databases;
+        /// <summary>
+        /// ID of a managed database assigned to the VPC Subnet.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -208,6 +212,8 @@ namespace Pulumi.Linode
         private GetVpcSubnetResult(
             string created,
 
+            ImmutableArray<Outputs.GetVpcSubnetDatabaseResult> databases,
+
             string id,
 
             string ipv4,
@@ -223,6 +229,7 @@ namespace Pulumi.Linode
             int vpcId)
         {
             Created = created;
+            Databases = databases;
             Id = id;
             Ipv4 = ipv4;
             Ipv6s = ipv6s;

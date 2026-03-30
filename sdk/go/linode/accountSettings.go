@@ -57,7 +57,7 @@ type AccountSettings struct {
 	InterfacesForNewLinodes pulumi.StringOutput `pulumi:"interfacesForNewLinodes"`
 	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
 	LongviewSubscription pulumi.StringOutput `pulumi:"longviewSubscription"`
-	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
 	MaintenancePolicy pulumi.StringOutput `pulumi:"maintenancePolicy"`
 	// Enables monitoring for connectivity, response, and total request time.
 	Managed pulumi.BoolOutput `pulumi:"managed"`
@@ -103,7 +103,7 @@ type accountSettingsState struct {
 	InterfacesForNewLinodes *string `pulumi:"interfacesForNewLinodes"`
 	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
 	LongviewSubscription *string `pulumi:"longviewSubscription"`
-	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// Enables monitoring for connectivity, response, and total request time.
 	Managed *bool `pulumi:"managed"`
@@ -120,7 +120,7 @@ type AccountSettingsState struct {
 	InterfacesForNewLinodes pulumi.StringPtrInput
 	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
 	LongviewSubscription pulumi.StringPtrInput
-	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
 	MaintenancePolicy pulumi.StringPtrInput
 	// Enables monitoring for connectivity, response, and total request time.
 	Managed pulumi.BoolPtrInput
@@ -141,7 +141,7 @@ type accountSettingsArgs struct {
 	InterfacesForNewLinodes *string `pulumi:"interfacesForNewLinodes"`
 	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
 	LongviewSubscription *string `pulumi:"longviewSubscription"`
-	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// Enables network helper across all users by default for new Linodes and Linode Configs.
 	NetworkHelper *bool `pulumi:"networkHelper"`
@@ -155,7 +155,7 @@ type AccountSettingsArgs struct {
 	InterfacesForNewLinodes pulumi.StringPtrInput
 	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
 	LongviewSubscription pulumi.StringPtrInput
-	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
 	MaintenancePolicy pulumi.StringPtrInput
 	// Enables network helper across all users by default for new Linodes and Linode Configs.
 	NetworkHelper pulumi.BoolPtrInput
@@ -263,7 +263,7 @@ func (o AccountSettingsOutput) LongviewSubscription() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountSettings) pulumi.StringOutput { return v.LongviewSubscription }).(pulumi.StringOutput)
 }
 
-// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
 func (o AccountSettingsOutput) MaintenancePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountSettings) pulumi.StringOutput { return v.MaintenancePolicy }).(pulumi.StringOutput)
 }

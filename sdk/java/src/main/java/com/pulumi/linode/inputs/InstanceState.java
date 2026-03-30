@@ -443,14 +443,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+     * The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account.
      * 
      */
     @Import(name="maintenancePolicy")
     private @Nullable Output<String> maintenancePolicy;
 
     /**
-     * @return The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+     * @return The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account.
      * 
      */
     public Optional<Output<String>> maintenancePolicy() {
@@ -1510,7 +1510,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintenancePolicy The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+         * @param maintenancePolicy The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account.
          * 
          * @return builder
          * 
@@ -1521,7 +1521,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maintenancePolicy The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+         * @param maintenancePolicy The maintenance policy of this Linode instance. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to the default maintenance policy of the account.
          * 
          * @return builder
          * 

@@ -108,6 +108,8 @@ type VpcSubnet struct {
 
 	// The date and time when the VPC was created.
 	Created pulumi.StringOutput `pulumi:"created"`
+	// A list of Managed databases assigned to the VPC Subnet.
+	Databases VpcSubnetDatabaseArrayOutput `pulumi:"databases"`
 	// The IPv4 range of this subnet in CIDR format.
 	//
 	// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
@@ -116,7 +118,7 @@ type VpcSubnet struct {
 	Ipv6s VpcSubnetIpv6ArrayOutput `pulumi:"ipv6s"`
 	// The label of the VPC. Only contains ASCII letters, digits and dashes.
 	Label pulumi.StringOutput `pulumi:"label"`
-	// A list of Linode that added to this subnet.
+	// A list of Linodes added to this subnet.
 	Linodes VpcSubnetLinodeArrayOutput `pulumi:"linodes"`
 	// The date and time when the VPC was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
@@ -162,6 +164,8 @@ func GetVpcSubnet(ctx *pulumi.Context,
 type vpcSubnetState struct {
 	// The date and time when the VPC was created.
 	Created *string `pulumi:"created"`
+	// A list of Managed databases assigned to the VPC Subnet.
+	Databases []VpcSubnetDatabase `pulumi:"databases"`
 	// The IPv4 range of this subnet in CIDR format.
 	//
 	// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
@@ -170,7 +174,7 @@ type vpcSubnetState struct {
 	Ipv6s []VpcSubnetIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC. Only contains ASCII letters, digits and dashes.
 	Label *string `pulumi:"label"`
-	// A list of Linode that added to this subnet.
+	// A list of Linodes added to this subnet.
 	Linodes []VpcSubnetLinode `pulumi:"linodes"`
 	// The date and time when the VPC was last updated.
 	Updated *string `pulumi:"updated"`
@@ -181,6 +185,8 @@ type vpcSubnetState struct {
 type VpcSubnetState struct {
 	// The date and time when the VPC was created.
 	Created pulumi.StringPtrInput
+	// A list of Managed databases assigned to the VPC Subnet.
+	Databases VpcSubnetDatabaseArrayInput
 	// The IPv4 range of this subnet in CIDR format.
 	//
 	// * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
@@ -189,7 +195,7 @@ type VpcSubnetState struct {
 	Ipv6s VpcSubnetIpv6ArrayInput
 	// The label of the VPC. Only contains ASCII letters, digits and dashes.
 	Label pulumi.StringPtrInput
-	// A list of Linode that added to this subnet.
+	// A list of Linodes added to this subnet.
 	Linodes VpcSubnetLinodeArrayInput
 	// The date and time when the VPC was last updated.
 	Updated pulumi.StringPtrInput
@@ -320,6 +326,11 @@ func (o VpcSubnetOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcSubnet) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
+// A list of Managed databases assigned to the VPC Subnet.
+func (o VpcSubnetOutput) Databases() VpcSubnetDatabaseArrayOutput {
+	return o.ApplyT(func(v *VpcSubnet) VpcSubnetDatabaseArrayOutput { return v.Databases }).(VpcSubnetDatabaseArrayOutput)
+}
+
 // The IPv4 range of this subnet in CIDR format.
 //
 // * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
@@ -337,7 +348,7 @@ func (o VpcSubnetOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcSubnet) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }
 
-// A list of Linode that added to this subnet.
+// A list of Linodes added to this subnet.
 func (o VpcSubnetOutput) Linodes() VpcSubnetLinodeArrayOutput {
 	return o.ApplyT(func(v *VpcSubnet) VpcSubnetLinodeArrayOutput { return v.Linodes }).(VpcSubnetLinodeArrayOutput)
 }

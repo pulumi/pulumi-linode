@@ -195,6 +195,17 @@ Object.defineProperty(exports, "skipInstanceReadyPoll", {
 });
 
 /**
+ * Skip waiting for all Linode instances in an LKE cluster to be deleted.
+ */
+export declare const skipLkeClusterDeletePoll: boolean | undefined;
+Object.defineProperty(exports, "skipLkeClusterDeletePoll", {
+    get() {
+        return __config.getObject<boolean>("skipLkeClusterDeletePoll");
+    },
+    enumerable: true,
+});
+
+/**
  * The token that allows you access to your Linode account
  */
 export declare const token: string | undefined;

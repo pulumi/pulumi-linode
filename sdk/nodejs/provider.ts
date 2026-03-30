@@ -90,6 +90,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["skipImplicitReboots"] = pulumi.output(args?.skipImplicitReboots).apply(JSON.stringify);
             resourceInputs["skipInstanceDeletePoll"] = pulumi.output(args?.skipInstanceDeletePoll).apply(JSON.stringify);
             resourceInputs["skipInstanceReadyPoll"] = pulumi.output(args?.skipInstanceReadyPoll).apply(JSON.stringify);
+            resourceInputs["skipLkeClusterDeletePoll"] = pulumi.output(args?.skipLkeClusterDeletePoll).apply(JSON.stringify);
             resourceInputs["token"] = args?.token;
             resourceInputs["uaPrefix"] = (args?.uaPrefix) ?? utilities.getEnv("LINODE_UA_PREFIX");
             resourceInputs["url"] = (args?.url) ?? utilities.getEnv("LINODE_URL");
@@ -182,6 +183,10 @@ export interface ProviderArgs {
      * Skip waiting for a linode.Instance resource to be running.
      */
     skipInstanceReadyPoll?: pulumi.Input<boolean>;
+    /**
+     * Skip waiting for all Linode instances in an LKE cluster to be deleted.
+     */
+    skipLkeClusterDeletePoll?: pulumi.Input<boolean>;
     /**
      * The token that allows you access to your Linode account
      */

@@ -5,29 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface DatabaseMysqlUpdates {
-    /**
-     * The day to perform maintenance.
-     */
-    dayOfWeek: string;
-    /**
-     * The maximum maintenance window time in hours.
-     */
-    duration: number;
-    /**
-     * Whether maintenance occurs on a weekly or monthly basis.
-     */
-    frequency: string;
-    /**
-     * The hour to begin maintenance based in UTC time.
-     */
-    hourOfDay: number;
-    /**
-     * The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-     */
-    weekOfMonth?: number;
-}
-
 export interface DatabaseMysqlV2PendingUpdate {
     /**
      * The time when a mandatory update needs to be applied.
@@ -90,29 +67,6 @@ export interface DatabaseMysqlV2Updates {
      * How frequently maintenance occurs. Currently can only be weekly.
      */
     hourOfDay: number;
-}
-
-export interface DatabasePostgresqlUpdates {
-    /**
-     * The day to perform maintenance.
-     */
-    dayOfWeek: string;
-    /**
-     * The maximum maintenance window time in hours.
-     */
-    duration: number;
-    /**
-     * Whether maintenance occurs on a weekly or monthly basis.
-     */
-    frequency: string;
-    /**
-     * The hour to begin maintenance based in UTC time.
-     */
-    hourOfDay: number;
-    /**
-     * The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-     */
-    weekOfMonth?: number;
 }
 
 export interface DatabasePostgresqlV2PendingUpdate {
@@ -602,40 +556,6 @@ export interface GetConsumerImageShareGroupTokensToken {
     validForSharegroupUuid: string;
 }
 
-export interface GetDatabaseBackupsBackup {
-    /**
-     * A time value given in a combined date and time format that represents when the database backup was created.
-     */
-    created: string;
-    /**
-     * The ID of the database backup object.
-     */
-    id: number;
-    /**
-     * The database backup’s label, for display purposes only.
-     */
-    label: string;
-    /**
-     * The type of database backup, determined by how the backup was created.
-     */
-    type: string;
-}
-
-export interface GetDatabaseBackupsFilter {
-    /**
-     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-     */
-    matchBy?: string;
-    /**
-     * The name of the field to filter by.
-     */
-    name: string;
-    /**
-     * A list of values for the filter to allow. These values should all be in string form.
-     */
-    values: string[];
-}
-
 export interface GetDatabaseEnginesEngine {
     /**
      * The Managed Database engine type.
@@ -652,40 +572,6 @@ export interface GetDatabaseEnginesEngine {
 }
 
 export interface GetDatabaseEnginesFilter {
-    /**
-     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-     */
-    matchBy?: string;
-    /**
-     * The name of the field to filter by.
-     */
-    name: string;
-    /**
-     * A list of values for the filter to allow. These values should all be in string form.
-     */
-    values: string[];
-}
-
-export interface GetDatabaseMysqlBackupsBackup {
-    /**
-     * A time value given in a combined date and time format that represents when the database backup was created.
-     */
-    created: string;
-    /**
-     * The ID of the database backup object.
-     */
-    id: number;
-    /**
-     * The database backup’s label, for display purposes only.
-     */
-    label: string;
-    /**
-     * The type of database backup, determined by how the backup was created.
-     */
-    type: string;
-}
-
-export interface GetDatabaseMysqlBackupsFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
@@ -978,14 +864,6 @@ export interface GetDatabaseMysqlConfigMysqlWaitTimeout {
     type: string;
 }
 
-export interface GetDatabaseMysqlUpdate {
-    dayOfWeek: string;
-    duration: number;
-    frequency: string;
-    hourOfDay: number;
-    weekOfMonth: number;
-}
-
 export interface GetDatabaseMysqlV2PendingUpdate {
     /**
      * The time when a mandatory update needs to be applied.
@@ -1071,14 +949,6 @@ export interface GetDatabasePostgresqlConfigWorkMem {
     type: string;
 }
 
-export interface GetDatabasePostgresqlUpdate {
-    dayOfWeek: string;
-    duration: number;
-    frequency: string;
-    hourOfDay: number;
-    weekOfMonth: number;
-}
-
 export interface GetDatabasePostgresqlV2PendingUpdate {
     /**
      * The time when a mandatory update needs to be applied.
@@ -1155,14 +1025,20 @@ export interface GetDatabasesDatabase {
     hostPrimary: string;
     /**
      * The secondary/private network host for the Managed Database.
+     *
+     * @deprecated Use hostStandby instead.
      */
     hostSecondary: string;
+    /**
+     * The standby host for the Managed Database.
+     */
+    hostStandby: string;
     /**
      * The ID of the Managed Database.
      */
     id: number;
     /**
-     * he API route for the database instance.
+     * The API route for the database instance.
      */
     instanceUri: string;
     /**
@@ -1177,14 +1053,6 @@ export interface GetDatabasesDatabase {
      * The region to use for the Managed Database.
      */
     region: string;
-    /**
-     * The replication method used for the Managed Database.
-     */
-    replicationType: string;
-    /**
-     * Whether to require SSL credentials to establish a connection to the Managed Database.
-     */
-    sslConnection: boolean;
     /**
      * The operating status of the Managed Database.
      */
@@ -2693,7 +2561,7 @@ export interface GetInstancesInstance {
      */
     locks: string[];
     /**
-     * The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+     * The maintenance policy of this Linode instance.
      */
     maintenancePolicy: string;
     placementGroups: outputs.GetInstancesInstancePlacementGroup[];
@@ -3681,6 +3549,62 @@ export interface GetLkeClustersLkeClusterControlPlane {
      * Whether High Availability is enabled for the cluster Control Plane.
      */
     highAvailability: boolean;
+}
+
+export interface GetLkeNodePoolAutoscaler {
+    /**
+     * Whether autoscaling is enabled for this node pool.
+     */
+    enabled: boolean;
+    /**
+     * The maximum number of nodes to autoscale to.
+     */
+    max: number;
+    /**
+     * The minimum number of nodes to autoscale to.
+     */
+    min: number;
+}
+
+export interface GetLkeNodePoolDisk {
+    /**
+     * The size of this custom disk partition in MB.
+     */
+    size: number;
+    /**
+     * The Linode type for all of the nodes in the node pool.
+     */
+    type: string;
+}
+
+export interface GetLkeNodePoolNode {
+    /**
+     * The LKE Cluster's Node Pool ID.
+     */
+    id: string;
+    /**
+     * The Linode's ID. When no Linode is currently provisioned for this node, this is null.
+     */
+    instanceId: number;
+    /**
+     * The creation status of this node.
+     */
+    status: string;
+}
+
+export interface GetLkeNodePoolTaint {
+    /**
+     * The Kubernetes taint effect.
+     */
+    effect: string;
+    /**
+     * The Kubernetes taint key.
+     */
+    key: string;
+    /**
+     * The Kubernetes taint value.
+     */
+    value: string;
 }
 
 export interface GetLkeTypesFilter {
@@ -5891,9 +5815,31 @@ export interface GetVpcIpv6 {
     range: string;
 }
 
+export interface GetVpcSubnetDatabase {
+    /**
+     * The unique id of this VPC subnet.
+     */
+    id: number;
+    /**
+     * IPv4 range assigned to the database.
+     */
+    ipv4Range: string;
+    /**
+     * A list of IPv6 ranges assigned to the database.
+     */
+    ipv6Ranges: outputs.GetVpcSubnetDatabaseIpv6Range[];
+}
+
+export interface GetVpcSubnetDatabaseIpv6Range {
+    /**
+     * An IPv6 address range in CIDR notation.
+     */
+    range: string;
+}
+
 export interface GetVpcSubnetIpv6 {
     /**
-     * An IPv6 range allocated to this subnet.
+     * An IPv6 address range in CIDR notation.
      */
     range: string;
 }
@@ -5945,7 +5891,11 @@ export interface GetVpcSubnetsVpcSubnet {
      */
     created: string;
     /**
-     * ID of the interface.
+     * A list of Managed databases assigned to the VPC Subnet.
+     */
+    databases: outputs.GetVpcSubnetsVpcSubnetDatabase[];
+    /**
+     * ID of a managed database assigned to the VPC Subnet.
      */
     id: number;
     /**
@@ -5970,16 +5920,38 @@ export interface GetVpcSubnetsVpcSubnet {
     updated: string;
 }
 
+export interface GetVpcSubnetsVpcSubnetDatabase {
+    /**
+     * ID of a managed database assigned to the VPC Subnet.
+     */
+    id: number;
+    /**
+     * IPv4 range assigned to the database.
+     */
+    ipv4Range: string;
+    /**
+     * A list of IPv6 ranges assigned to the database.
+     */
+    ipv6Ranges: outputs.GetVpcSubnetsVpcSubnetDatabaseIpv6Range[];
+}
+
+export interface GetVpcSubnetsVpcSubnetDatabaseIpv6Range {
+    /**
+     * An IPv6 address range in CIDR notation.
+     */
+    range: string;
+}
+
 export interface GetVpcSubnetsVpcSubnetIpv6 {
     /**
-     * An IPv6 range allocated to this subnet.
+     * An IPv6 address range in CIDR notation.
      */
     range: string;
 }
 
 export interface GetVpcSubnetsVpcSubnetLinode {
     /**
-     * ID of the interface.
+     * ID of a managed database assigned to the VPC Subnet.
      */
     id: number;
     /**
@@ -5998,7 +5970,7 @@ export interface GetVpcSubnetsVpcSubnetLinodeInterface {
      */
     configId: number;
     /**
-     * ID of the interface.
+     * ID of a managed database assigned to the VPC Subnet.
      */
     id: number;
 }
@@ -7063,7 +7035,7 @@ export interface LkeClusterPool {
     /**
      * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
      */
-    firewallId?: number;
+    firewallId: number;
     /**
      * The ID of the node.
      */
@@ -7704,20 +7676,42 @@ export interface VpcIpv6 {
     range?: string;
 }
 
+export interface VpcSubnetDatabase {
+    /**
+     * ID of a managed database assigned to the VPC Subnet.
+     */
+    id: number;
+    /**
+     * IPv4 range assigned to the database.
+     */
+    ipv4Range: string;
+    /**
+     * A list of IPv6 ranges assigned to the database.
+     */
+    ipv6Ranges: outputs.VpcSubnetDatabaseIpv6Range[];
+}
+
+export interface VpcSubnetDatabaseIpv6Range {
+    /**
+     * An IPv6 address range in CIDR notation.
+     */
+    range: string;
+}
+
 export interface VpcSubnetIpv6 {
     /**
      * The IPv6 range assigned to this subnet.
      */
     allocatedRange: string;
     /**
-     * An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+     * An IPv6 address range in CIDR notation.
      */
     range: string;
 }
 
 export interface VpcSubnetLinode {
     /**
-     * ID of the interface.
+     * ID of a managed database assigned to the VPC Subnet.
      */
     id: number;
     /**
@@ -7736,7 +7730,7 @@ export interface VpcSubnetLinodeInterface {
      */
     configId: number;
     /**
-     * ID of the interface.
+     * ID of a managed database assigned to the VPC Subnet.
      */
     id: number;
 }
