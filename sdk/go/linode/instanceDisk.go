@@ -119,7 +119,7 @@ type InstanceDisk struct {
 	// The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
 	Filesystem pulumi.StringOutput `pulumi:"filesystem"`
 	// An Image ID to deploy the Linode Disk from.
-	Image pulumi.StringPtrOutput `pulumi:"image"`
+	Image pulumi.StringOutput `pulumi:"image"`
 	// The Disk's label for display purposes only.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The ID of the Linode to create this Disk under.
@@ -428,8 +428,8 @@ func (o InstanceDiskOutput) Filesystem() pulumi.StringOutput {
 }
 
 // An Image ID to deploy the Linode Disk from.
-func (o InstanceDiskOutput) Image() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InstanceDisk) pulumi.StringPtrOutput { return v.Image }).(pulumi.StringPtrOutput)
+func (o InstanceDiskOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceDisk) pulumi.StringOutput { return v.Image }).(pulumi.StringOutput)
 }
 
 // The Disk's label for display purposes only.

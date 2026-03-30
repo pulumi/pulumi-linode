@@ -27,12 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConsumerImageShareGroupToken{}
 	case "linode:index/databaseAccessControls:DatabaseAccessControls":
 		r = &DatabaseAccessControls{}
-	case "linode:index/databaseMysql:DatabaseMysql":
-		r = &DatabaseMysql{}
 	case "linode:index/databaseMysqlV2:DatabaseMysqlV2":
 		r = &DatabaseMysqlV2{}
-	case "linode:index/databasePostgresql:DatabasePostgresql":
-		r = &DatabasePostgresql{}
 	case "linode:index/databasePostgresqlV2:DatabasePostgresqlV2":
 		r = &DatabasePostgresqlV2{}
 	case "linode:index/domain:Domain":
@@ -157,17 +153,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"linode",
-		"index/databaseMysql",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"linode",
 		"index/databaseMysqlV2",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"linode",
-		"index/databasePostgresql",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

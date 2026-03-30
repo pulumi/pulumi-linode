@@ -38,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			my_db, err := linode.NewDatabaseMysql(ctx, "my-db", &linode.DatabaseMysqlArgs{
+//			my_db, err := linode.NewDatabaseMysqlV2(ctx, "my-db", &linode.DatabaseMysqlV2Args{
 //				Label:    pulumi.String("mydatabase"),
 //				EngineId: pulumi.String("mysql/8.0.30"),
 //				Region:   pulumi.String("us-southeast"),

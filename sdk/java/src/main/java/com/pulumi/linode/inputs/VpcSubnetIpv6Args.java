@@ -31,14 +31,14 @@ public final class VpcSubnetIpv6Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+     * An IPv6 address range in CIDR notation.
      * 
      */
     @Import(name="range")
     private @Nullable Output<String> range;
 
     /**
-     * @return An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+     * @return An IPv6 address range in CIDR notation.
      * 
      */
     public Optional<Output<String>> range() {
@@ -92,7 +92,7 @@ public final class VpcSubnetIpv6Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param range An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+         * @param range An IPv6 address range in CIDR notation.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class VpcSubnetIpv6Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param range An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+         * @param range An IPv6 address range in CIDR notation.
          * 
          * @return builder
          * 

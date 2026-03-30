@@ -46,14 +46,14 @@ public final class VpcSubnetLinodeInterfaceArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * ID of the interface.
+     * ID of a managed database assigned to the VPC Subnet.
      * 
      */
     @Import(name="id", required=true)
     private Output<Integer> id;
 
     /**
-     * @return ID of the interface.
+     * @return ID of a managed database assigned to the VPC Subnet.
      * 
      */
     public Output<Integer> id() {
@@ -129,7 +129,7 @@ public final class VpcSubnetLinodeInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param id ID of the interface.
+         * @param id ID of a managed database assigned to the VPC Subnet.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class VpcSubnetLinodeInterfaceArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param id ID of the interface.
+         * @param id ID of a managed database assigned to the VPC Subnet.
          * 
          * @return builder
          * 

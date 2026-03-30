@@ -22,7 +22,7 @@ public final class VpcSubnetLinodeInterface {
      */
     private Integer configId;
     /**
-     * @return ID of the interface.
+     * @return ID of a managed database assigned to the VPC Subnet.
      * 
      */
     private Integer id;
@@ -43,7 +43,7 @@ public final class VpcSubnetLinodeInterface {
         return this.configId;
     }
     /**
-     * @return ID of the interface.
+     * @return ID of a managed database assigned to the VPC Subnet.
      * 
      */
     public Integer id() {

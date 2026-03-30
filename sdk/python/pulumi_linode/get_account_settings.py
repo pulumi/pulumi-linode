@@ -85,7 +85,7 @@ class GetAccountSettingsResult:
     @pulumi.getter(name="maintenancePolicy")
     def maintenance_policy(self) -> _builtins.str:
         """
-        The default maintenance policy for this account. (**Note: v4beta only.**)
+        The default maintenance policy for this account.
         """
         return pulumi.get(self, "maintenance_policy")
 

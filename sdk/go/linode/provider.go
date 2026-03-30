@@ -111,6 +111,8 @@ type providerArgs struct {
 	SkipInstanceDeletePoll *bool `pulumi:"skipInstanceDeletePoll"`
 	// Skip waiting for a Instance resource to be running.
 	SkipInstanceReadyPoll *bool `pulumi:"skipInstanceReadyPoll"`
+	// Skip waiting for all Linode instances in an LKE cluster to be deleted.
+	SkipLkeClusterDeletePoll *bool `pulumi:"skipLkeClusterDeletePoll"`
 	// The token that allows you access to your Linode account
 	Token *string `pulumi:"token"`
 	// An HTTP User-Agent Prefix to prepend in API requests.
@@ -155,6 +157,8 @@ type ProviderArgs struct {
 	SkipInstanceDeletePoll pulumi.BoolPtrInput
 	// Skip waiting for a Instance resource to be running.
 	SkipInstanceReadyPoll pulumi.BoolPtrInput
+	// Skip waiting for all Linode instances in an LKE cluster to be deleted.
+	SkipLkeClusterDeletePoll pulumi.BoolPtrInput
 	// The token that allows you access to your Linode account
 	Token pulumi.StringPtrInput
 	// An HTTP User-Agent Prefix to prepend in API requests.

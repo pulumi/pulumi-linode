@@ -9,9 +9,7 @@ import typing
 from .account_settings import *
 from .consumer_image_share_group_token import *
 from .database_access_controls import *
-from .database_mysql import *
 from .database_mysql_v2 import *
-from .database_postgresql import *
 from .database_postgresql_v2 import *
 from .domain import *
 from .domain_record import *
@@ -30,13 +28,9 @@ from .get_consumer_image_share_group import *
 from .get_consumer_image_share_group_image_shares import *
 from .get_consumer_image_share_group_token import *
 from .get_consumer_image_share_group_tokens import *
-from .get_database_backups import *
 from .get_database_engines import *
-from .get_database_mysql import *
-from .get_database_mysql_backups import *
 from .get_database_mysql_config import *
 from .get_database_mysql_v2 import *
-from .get_database_postgresql import *
 from .get_database_postgresql_config import *
 from .get_database_postgresql_v2 import *
 from .get_databases import *
@@ -64,6 +58,7 @@ from .get_kernels import *
 from .get_linode_object_storage_bucket import *
 from .get_lke_cluster import *
 from .get_lke_clusters import *
+from .get_lke_node_pool import *
 from .get_lke_types import *
 from .get_lke_version import *
 from .get_lke_versions import *
@@ -182,26 +177,10 @@ _utilities.register(
  },
  {
   "pkg": "linode",
-  "mod": "index/databaseMysql",
-  "fqn": "pulumi_linode",
-  "classes": {
-   "linode:index/databaseMysql:DatabaseMysql": "DatabaseMysql"
-  }
- },
- {
-  "pkg": "linode",
   "mod": "index/databaseMysqlV2",
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/databaseMysqlV2:DatabaseMysqlV2": "DatabaseMysqlV2"
-  }
- },
- {
-  "pkg": "linode",
-  "mod": "index/databasePostgresql",
-  "fqn": "pulumi_linode",
-  "classes": {
-   "linode:index/databasePostgresql:DatabasePostgresql": "DatabasePostgresql"
   }
  },
  {

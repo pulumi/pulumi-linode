@@ -73,7 +73,9 @@ type LookupVpcSubnetArgs struct {
 type LookupVpcSubnetResult struct {
 	// The date and time when the VPC Subnet was created.
 	Created string `pulumi:"created"`
-	// ID of the interface.
+	// A list of Managed databases assigned to the VPC Subnet.
+	Databases []GetVpcSubnetDatabase `pulumi:"databases"`
+	// ID of a managed database assigned to the VPC Subnet.
 	Id string `pulumi:"id"`
 	// The IPv4 range of this subnet in CIDR format.
 	Ipv4  string             `pulumi:"ipv4"`
@@ -128,7 +130,12 @@ func (o LookupVpcSubnetResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// ID of the interface.
+// A list of Managed databases assigned to the VPC Subnet.
+func (o LookupVpcSubnetResultOutput) Databases() GetVpcSubnetDatabaseArrayOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) []GetVpcSubnetDatabase { return v.Databases }).(GetVpcSubnetDatabaseArrayOutput)
+}
+
+// ID of a managed database assigned to the VPC Subnet.
 func (o LookupVpcSubnetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Id }).(pulumi.StringOutput)
 }

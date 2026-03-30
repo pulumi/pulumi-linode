@@ -62,7 +62,7 @@ namespace Pulumi.Linode
         public Output<string> LongviewSubscription { get; private set; } = null!;
 
         /// <summary>
-        /// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+        /// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
         /// </summary>
         [Output("maintenancePolicy")]
         public Output<string> MaintenancePolicy { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Linode
         public Input<string>? LongviewSubscription { get; set; }
 
         /// <summary>
-        /// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+        /// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<string>? MaintenancePolicy { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.Linode
         public Input<string>? LongviewSubscription { get; set; }
 
         /// <summary>
-        /// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+        /// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<string>? MaintenancePolicy { get; set; }

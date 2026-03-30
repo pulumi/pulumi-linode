@@ -890,16 +890,39 @@ public final class DatabasePostgresqlV2State extends com.pulumi.resources.Resour
     /**
      * The secondary/private host for the managed database.
      * 
+     * @deprecated
+     * Use hostStandby instead.
+     * 
      */
+    @Deprecated /* Use hostStandby instead. */
     @Import(name="hostSecondary")
     private @Nullable Output<String> hostSecondary;
 
     /**
      * @return The secondary/private host for the managed database.
      * 
+     * @deprecated
+     * Use hostStandby instead.
+     * 
      */
+    @Deprecated /* Use hostStandby instead. */
     public Optional<Output<String>> hostSecondary() {
         return Optional.ofNullable(this.hostSecondary);
+    }
+
+    /**
+     * The standby host for the Managed Database.
+     * 
+     */
+    @Import(name="hostStandby")
+    private @Nullable Output<String> hostStandby;
+
+    /**
+     * @return The standby host for the Managed Database.
+     * 
+     */
+    public Optional<Output<String>> hostStandby() {
+        return Optional.ofNullable(this.hostStandby);
     }
 
     /**
@@ -1229,6 +1252,7 @@ public final class DatabasePostgresqlV2State extends com.pulumi.resources.Resour
         this.forkSource = $.forkSource;
         this.hostPrimary = $.hostPrimary;
         this.hostSecondary = $.hostSecondary;
+        this.hostStandby = $.hostStandby;
         this.label = $.label;
         this.members = $.members;
         this.oldestRestoreTime = $.oldestRestoreTime;
@@ -2487,7 +2511,11 @@ public final class DatabasePostgresqlV2State extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use hostStandby instead.
+         * 
          */
+        @Deprecated /* Use hostStandby instead. */
         public Builder hostSecondary(@Nullable Output<String> hostSecondary) {
             $.hostSecondary = hostSecondary;
             return this;
@@ -2498,9 +2526,34 @@ public final class DatabasePostgresqlV2State extends com.pulumi.resources.Resour
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use hostStandby instead.
+         * 
          */
+        @Deprecated /* Use hostStandby instead. */
         public Builder hostSecondary(String hostSecondary) {
             return hostSecondary(Output.of(hostSecondary));
+        }
+
+        /**
+         * @param hostStandby The standby host for the Managed Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostStandby(@Nullable Output<String> hostStandby) {
+            $.hostStandby = hostStandby;
+            return this;
+        }
+
+        /**
+         * @param hostStandby The standby host for the Managed Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostStandby(String hostStandby) {
+            return hostStandby(Output.of(hostStandby));
         }
 
         /**

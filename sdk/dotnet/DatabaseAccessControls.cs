@@ -31,7 +31,7 @@ namespace Pulumi.Linode
     ///         Image = "linode/alpine3.19",
     ///     });
     /// 
-    ///     var my_db = new Linode.DatabaseMysql("my-db", new()
+    ///     var my_db = new Linode.DatabaseMysqlV2("my-db", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "mysql/8.0.30",

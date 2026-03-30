@@ -23,11 +23,11 @@ class LkeClusterArgs:
     def __init__(__self__, *,
                  k8s_version: pulumi.Input[_builtins.str],
                  label: pulumi.Input[_builtins.str],
-                 pools: pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]],
                  region: pulumi.Input[_builtins.str],
                  apl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
                  external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pools: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]] = None,
                  stack_type: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -38,7 +38,6 @@ class LkeClusterArgs:
 
         :param pulumi.Input[_builtins.str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[_builtins.str] label: This Kubernetes cluster's unique label.
-        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
         :param pulumi.Input[_builtins.str] region: This Kubernetes cluster's location.
                
                * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
@@ -47,6 +46,7 @@ class LkeClusterArgs:
         :param pulumi.Input[_builtins.bool] apl_enabled: Enables the App Platform Layer
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
+        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
         :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
@@ -55,7 +55,6 @@ class LkeClusterArgs:
         """
         pulumi.set(__self__, "k8s_version", k8s_version)
         pulumi.set(__self__, "label", label)
-        pulumi.set(__self__, "pools", pools)
         pulumi.set(__self__, "region", region)
         if apl_enabled is not None:
             pulumi.set(__self__, "apl_enabled", apl_enabled)
@@ -63,6 +62,8 @@ class LkeClusterArgs:
             pulumi.set(__self__, "control_plane", control_plane)
         if external_pool_tags is not None:
             pulumi.set(__self__, "external_pool_tags", external_pool_tags)
+        if pools is not None:
+            pulumi.set(__self__, "pools", pools)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
         if subnet_id is not None:
@@ -97,18 +98,6 @@ class LkeClusterArgs:
     @label.setter
     def label(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "label", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def pools(self) -> pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]:
-        """
-        Additional nested attributes:
-        """
-        return pulumi.get(self, "pools")
-
-    @pools.setter
-    def pools(self, value: pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]):
-        pulumi.set(self, "pools", value)
 
     @_builtins.property
     @pulumi.getter
@@ -161,6 +150,18 @@ class LkeClusterArgs:
     @external_pool_tags.setter
     def external_pool_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "external_pool_tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]:
+        """
+        Additional nested attributes:
+        """
+        return pulumi.get(self, "pools")
+
+    @pools.setter
+    def pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]):
+        pulumi.set(self, "pools", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
@@ -1007,8 +1008,6 @@ class LkeCluster(pulumi.CustomResource):
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__.__dict__["label"] = label
-            if pools is None and not opts.urn:
-                raise TypeError("Missing required property 'pools'")
             __props__.__dict__["pools"] = pools
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
@@ -1166,7 +1165,7 @@ class LkeCluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def pools(self) -> pulumi.Output[Sequence['outputs.LkeClusterPool']]:
+    def pools(self) -> pulumi.Output[Optional[Sequence['outputs.LkeClusterPool']]]:
         """
         Additional nested attributes:
         """

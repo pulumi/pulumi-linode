@@ -69,7 +69,7 @@ export class AccountSettings extends pulumi.CustomResource {
      */
     declare public readonly longviewSubscription: pulumi.Output<string>;
     /**
-     * The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+     * The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
      */
     declare public readonly maintenancePolicy: pulumi.Output<string>;
     /**
@@ -137,7 +137,7 @@ export interface AccountSettingsState {
      */
     longviewSubscription?: pulumi.Input<string>;
     /**
-     * The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+     * The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
      */
     maintenancePolicy?: pulumi.Input<string>;
     /**
@@ -171,7 +171,7 @@ export interface AccountSettingsArgs {
      */
     longviewSubscription?: pulumi.Input<string>;
     /**
-     * The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
+     * The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
      */
     maintenancePolicy?: pulumi.Input<string>;
     /**

@@ -140,6 +140,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('skipInstanceReadyPoll')
 
     @_builtins.property
+    def skip_lke_cluster_delete_poll(self) -> Optional[bool]:
+        """
+        Skip waiting for all Linode instances in an LKE cluster to be deleted.
+        """
+        return __config__.get_bool('skipLkeClusterDeletePoll')
+
+    @_builtins.property
     def token(self) -> Optional[str]:
         """
         The token that allows you access to your Linode account

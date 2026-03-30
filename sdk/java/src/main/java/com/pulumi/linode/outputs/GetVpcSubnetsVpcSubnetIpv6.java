@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetVpcSubnetsVpcSubnetIpv6 {
     /**
-     * @return An IPv6 range allocated to this subnet.
+     * @return An IPv6 address range in CIDR notation.
      * 
      */
     private String range;
 
     private GetVpcSubnetsVpcSubnetIpv6() {}
     /**
-     * @return An IPv6 range allocated to this subnet.
+     * @return An IPv6 address range in CIDR notation.
      * 
      */
     public String range() {

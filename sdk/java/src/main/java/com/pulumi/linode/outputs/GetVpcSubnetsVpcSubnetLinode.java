@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetVpcSubnetsVpcSubnetLinode {
     /**
-     * @return ID of the interface.
+     * @return ID of a managed database assigned to the VPC Subnet.
      * 
      */
     private Integer id;
@@ -25,7 +25,7 @@ public final class GetVpcSubnetsVpcSubnetLinode {
 
     private GetVpcSubnetsVpcSubnetLinode() {}
     /**
-     * @return ID of the interface.
+     * @return ID of a managed database assigned to the VPC Subnet.
      * 
      */
     public Integer id() {

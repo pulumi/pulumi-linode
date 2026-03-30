@@ -306,8 +306,11 @@ export interface GetDatabasePostgresqlV2Result {
     readonly hostPrimary: string;
     /**
      * The secondary/private host for the managed database.
+     *
+     * @deprecated Use hostStandby instead.
      */
     readonly hostSecondary: string;
+    readonly hostStandby: string;
     readonly id: string;
     /**
      * A unique, user-defined string referring to the Managed Database.

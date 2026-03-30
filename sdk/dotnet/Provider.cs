@@ -223,6 +223,12 @@ namespace Pulumi.Linode
         public Input<bool>? SkipInstanceReadyPoll { get; set; }
 
         /// <summary>
+        /// Skip waiting for all Linode instances in an LKE cluster to be deleted.
+        /// </summary>
+        [Input("skipLkeClusterDeletePoll", json: true)]
+        public Input<bool>? SkipLkeClusterDeletePoll { get; set; }
+
+        /// <summary>
         /// The token that allows you access to your Linode account
         /// </summary>
         [Input("token")]

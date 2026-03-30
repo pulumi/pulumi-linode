@@ -102,7 +102,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string LongviewSubscription;
         /// <summary>
-        /// The default maintenance policy for this account. (**Note: v4beta only.**)
+        /// The default maintenance policy for this account.
         /// </summary>
         public readonly string MaintenancePolicy;
         /// <summary>

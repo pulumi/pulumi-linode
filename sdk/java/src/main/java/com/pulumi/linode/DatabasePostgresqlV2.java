@@ -1148,7 +1148,11 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * The secondary/private host for the managed database.
      * 
+     * @deprecated
+     * Use hostStandby instead.
+     * 
      */
+    @Deprecated /* Use hostStandby instead. */
     @Export(name="hostSecondary", refs={String.class}, tree="[0]")
     private Output<String> hostSecondary;
 
@@ -1158,6 +1162,20 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> hostSecondary() {
         return this.hostSecondary;
+    }
+    /**
+     * The standby host for the Managed Database.
+     * 
+     */
+    @Export(name="hostStandby", refs={String.class}, tree="[0]")
+    private Output<String> hostStandby;
+
+    /**
+     * @return The standby host for the Managed Database.
+     * 
+     */
+    public Output<String> hostStandby() {
+        return this.hostStandby;
     }
     /**
      * A unique, user-defined string referring to the Managed Database.

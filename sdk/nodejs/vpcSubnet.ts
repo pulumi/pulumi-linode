@@ -95,6 +95,10 @@ export class VpcSubnet extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
+     * A list of Managed databases assigned to the VPC Subnet.
+     */
+    declare public /*out*/ readonly databases: pulumi.Output<outputs.VpcSubnetDatabase[]>;
+    /**
      * The IPv4 range of this subnet in CIDR format.
      *
      * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
@@ -109,7 +113,7 @@ export class VpcSubnet extends pulumi.CustomResource {
      */
     declare public readonly label: pulumi.Output<string>;
     /**
-     * A list of Linode that added to this subnet.
+     * A list of Linodes added to this subnet.
      */
     declare public /*out*/ readonly linodes: pulumi.Output<outputs.VpcSubnetLinode[]>;
     /**
@@ -135,6 +139,7 @@ export class VpcSubnet extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as VpcSubnetState | undefined;
             resourceInputs["created"] = state?.created;
+            resourceInputs["databases"] = state?.databases;
             resourceInputs["ipv4"] = state?.ipv4;
             resourceInputs["ipv6s"] = state?.ipv6s;
             resourceInputs["label"] = state?.label;
@@ -154,6 +159,7 @@ export class VpcSubnet extends pulumi.CustomResource {
             resourceInputs["label"] = args?.label;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["databases"] = undefined /*out*/;
             resourceInputs["linodes"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
         }
@@ -171,6 +177,10 @@ export interface VpcSubnetState {
      */
     created?: pulumi.Input<string>;
     /**
+     * A list of Managed databases assigned to the VPC Subnet.
+     */
+    databases?: pulumi.Input<pulumi.Input<inputs.VpcSubnetDatabase>[]>;
+    /**
      * The IPv4 range of this subnet in CIDR format.
      *
      * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
@@ -185,7 +195,7 @@ export interface VpcSubnetState {
      */
     label?: pulumi.Input<string>;
     /**
-     * A list of Linode that added to this subnet.
+     * A list of Linodes added to this subnet.
      */
     linodes?: pulumi.Input<pulumi.Input<inputs.VpcSubnetLinode>[]>;
     /**

@@ -70,7 +70,7 @@ def get_maintenance_policies(filters: Optional[Sequence[Union['GetMaintenancePol
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMaintenancePoliciesResult:
     """
     Provides details about the Maintenance Policies available to apply to Accounts and Instances.
-    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies).
 
     ## Example Usage
 
@@ -95,7 +95,7 @@ def get_maintenance_policies_output(filters: Optional[pulumi.Input[Optional[Sequ
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaintenancePoliciesResult]:
     """
     Provides details about the Maintenance Policies available to apply to Accounts and Instances.
-    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies).
 
     ## Example Usage
 

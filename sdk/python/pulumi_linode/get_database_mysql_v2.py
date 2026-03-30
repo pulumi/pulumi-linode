@@ -27,7 +27,7 @@ class GetDatabaseMysqlV2Result:
     """
     A collection of values returned by getDatabaseMysqlV2.
     """
-    def __init__(__self__, allow_lists=None, ca_cert=None, cluster_size=None, created=None, encrypted=None, engine=None, engine_config_binlog_retention_period=None, engine_config_mysql_connect_timeout=None, engine_config_mysql_default_time_zone=None, engine_config_mysql_group_concat_max_len=None, engine_config_mysql_information_schema_stats_expiry=None, engine_config_mysql_innodb_change_buffer_max_size=None, engine_config_mysql_innodb_flush_neighbors=None, engine_config_mysql_innodb_ft_min_token_size=None, engine_config_mysql_innodb_ft_server_stopword_table=None, engine_config_mysql_innodb_lock_wait_timeout=None, engine_config_mysql_innodb_log_buffer_size=None, engine_config_mysql_innodb_online_alter_log_max_size=None, engine_config_mysql_innodb_read_io_threads=None, engine_config_mysql_innodb_rollback_on_timeout=None, engine_config_mysql_innodb_thread_concurrency=None, engine_config_mysql_innodb_write_io_threads=None, engine_config_mysql_interactive_timeout=None, engine_config_mysql_internal_tmp_mem_storage_engine=None, engine_config_mysql_max_allowed_packet=None, engine_config_mysql_max_heap_table_size=None, engine_config_mysql_net_buffer_length=None, engine_config_mysql_net_read_timeout=None, engine_config_mysql_net_write_timeout=None, engine_config_mysql_sort_buffer_size=None, engine_config_mysql_sql_mode=None, engine_config_mysql_sql_require_primary_key=None, engine_config_mysql_tmp_table_size=None, engine_config_mysql_wait_timeout=None, engine_id=None, fork_restore_time=None, fork_source=None, host_primary=None, host_secondary=None, id=None, label=None, members=None, oldest_restore_time=None, pending_updates=None, platform=None, port=None, private_network=None, region=None, root_password=None, root_username=None, ssl_connection=None, status=None, suspended=None, type=None, updated=None, updates=None, version=None):
+    def __init__(__self__, allow_lists=None, ca_cert=None, cluster_size=None, created=None, encrypted=None, engine=None, engine_config_binlog_retention_period=None, engine_config_mysql_connect_timeout=None, engine_config_mysql_default_time_zone=None, engine_config_mysql_group_concat_max_len=None, engine_config_mysql_information_schema_stats_expiry=None, engine_config_mysql_innodb_change_buffer_max_size=None, engine_config_mysql_innodb_flush_neighbors=None, engine_config_mysql_innodb_ft_min_token_size=None, engine_config_mysql_innodb_ft_server_stopword_table=None, engine_config_mysql_innodb_lock_wait_timeout=None, engine_config_mysql_innodb_log_buffer_size=None, engine_config_mysql_innodb_online_alter_log_max_size=None, engine_config_mysql_innodb_read_io_threads=None, engine_config_mysql_innodb_rollback_on_timeout=None, engine_config_mysql_innodb_thread_concurrency=None, engine_config_mysql_innodb_write_io_threads=None, engine_config_mysql_interactive_timeout=None, engine_config_mysql_internal_tmp_mem_storage_engine=None, engine_config_mysql_max_allowed_packet=None, engine_config_mysql_max_heap_table_size=None, engine_config_mysql_net_buffer_length=None, engine_config_mysql_net_read_timeout=None, engine_config_mysql_net_write_timeout=None, engine_config_mysql_sort_buffer_size=None, engine_config_mysql_sql_mode=None, engine_config_mysql_sql_require_primary_key=None, engine_config_mysql_tmp_table_size=None, engine_config_mysql_wait_timeout=None, engine_id=None, fork_restore_time=None, fork_source=None, host_primary=None, host_secondary=None, host_standby=None, id=None, label=None, members=None, oldest_restore_time=None, pending_updates=None, platform=None, port=None, private_network=None, region=None, root_password=None, root_username=None, ssl_connection=None, status=None, suspended=None, type=None, updated=None, updates=None, version=None):
         if allow_lists and not isinstance(allow_lists, list):
             raise TypeError("Expected argument 'allow_lists' to be a list")
         pulumi.set(__self__, "allow_lists", allow_lists)
@@ -145,6 +145,9 @@ class GetDatabaseMysqlV2Result:
         if host_secondary and not isinstance(host_secondary, str):
             raise TypeError("Expected argument 'host_secondary' to be a str")
         pulumi.set(__self__, "host_secondary", host_secondary)
+        if host_standby and not isinstance(host_standby, str):
+            raise TypeError("Expected argument 'host_standby' to be a str")
+        pulumi.set(__self__, "host_standby", host_standby)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -506,11 +509,17 @@ class GetDatabaseMysqlV2Result:
 
     @_builtins.property
     @pulumi.getter(name="hostSecondary")
+    @_utilities.deprecated("""Use host_standby instead.""")
     def host_secondary(self) -> _builtins.str:
         """
         The secondary/private host for the managed database.
         """
         return pulumi.get(self, "host_secondary")
+
+    @_builtins.property
+    @pulumi.getter(name="hostStandby")
+    def host_standby(self) -> _builtins.str:
+        return pulumi.get(self, "host_standby")
 
     @_builtins.property
     @pulumi.getter
@@ -684,6 +693,7 @@ class AwaitableGetDatabaseMysqlV2Result(GetDatabaseMysqlV2Result):
             fork_source=self.fork_source,
             host_primary=self.host_primary,
             host_secondary=self.host_secondary,
+            host_standby=self.host_standby,
             id=self.id,
             label=self.label,
             members=self.members,
@@ -799,6 +809,7 @@ def get_database_mysql_v2(id: Optional[_builtins.str] = None,
         fork_source=pulumi.get(__ret__, 'fork_source'),
         host_primary=pulumi.get(__ret__, 'host_primary'),
         host_secondary=pulumi.get(__ret__, 'host_secondary'),
+        host_standby=pulumi.get(__ret__, 'host_standby'),
         id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
         members=pulumi.get(__ret__, 'members'),
@@ -911,6 +922,7 @@ def get_database_mysql_v2_output(id: Optional[pulumi.Input[_builtins.str]] = Non
         fork_source=pulumi.get(__response__, 'fork_source'),
         host_primary=pulumi.get(__response__, 'host_primary'),
         host_secondary=pulumi.get(__response__, 'host_secondary'),
+        host_standby=pulumi.get(__response__, 'host_standby'),
         id=pulumi.get(__response__, 'id'),
         label=pulumi.get(__response__, 'label'),
         members=pulumi.get(__response__, 'members'),

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class GetVpcSubnetsResult {
     private @Nullable List<GetVpcSubnetsFilter> filters;
     /**
-     * @return ID of the interface.
+     * @return ID of a managed database assigned to the VPC Subnet.
      * 
      */
     private String id;
@@ -29,7 +29,7 @@ public final class GetVpcSubnetsResult {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return ID of the interface.
+     * @return ID of a managed database assigned to the VPC Subnet.
      * 
      */
     public String id() {

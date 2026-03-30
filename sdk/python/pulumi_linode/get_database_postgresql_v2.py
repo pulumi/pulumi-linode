@@ -28,7 +28,7 @@ class GetDatabasePostgresqlV2Result:
     """
     A collection of values returned by getDatabasePostgresqlV2.
     """
-    def __init__(__self__, allow_lists=None, ca_cert=None, cluster_size=None, created=None, encrypted=None, engine=None, engine_config_pg_autovacuum_analyze_scale_factor=None, engine_config_pg_autovacuum_analyze_threshold=None, engine_config_pg_autovacuum_max_workers=None, engine_config_pg_autovacuum_naptime=None, engine_config_pg_autovacuum_vacuum_cost_delay=None, engine_config_pg_autovacuum_vacuum_cost_limit=None, engine_config_pg_autovacuum_vacuum_scale_factor=None, engine_config_pg_autovacuum_vacuum_threshold=None, engine_config_pg_bgwriter_delay=None, engine_config_pg_bgwriter_flush_after=None, engine_config_pg_bgwriter_lru_maxpages=None, engine_config_pg_bgwriter_lru_multiplier=None, engine_config_pg_deadlock_timeout=None, engine_config_pg_default_toast_compression=None, engine_config_pg_idle_in_transaction_session_timeout=None, engine_config_pg_jit=None, engine_config_pg_max_files_per_process=None, engine_config_pg_max_locks_per_transaction=None, engine_config_pg_max_logical_replication_workers=None, engine_config_pg_max_parallel_workers=None, engine_config_pg_max_parallel_workers_per_gather=None, engine_config_pg_max_pred_locks_per_transaction=None, engine_config_pg_max_replication_slots=None, engine_config_pg_max_slot_wal_keep_size=None, engine_config_pg_max_stack_depth=None, engine_config_pg_max_standby_archive_delay=None, engine_config_pg_max_standby_streaming_delay=None, engine_config_pg_max_wal_senders=None, engine_config_pg_max_worker_processes=None, engine_config_pg_password_encryption=None, engine_config_pg_pg_partman_bgw_interval=None, engine_config_pg_pg_partman_bgw_role=None, engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan=None, engine_config_pg_pg_stat_monitor_pgsm_max_buckets=None, engine_config_pg_pg_stat_statements_track=None, engine_config_pg_stat_monitor_enable=None, engine_config_pg_temp_file_limit=None, engine_config_pg_timezone=None, engine_config_pg_track_activity_query_size=None, engine_config_pg_track_commit_timestamp=None, engine_config_pg_track_functions=None, engine_config_pg_track_io_timing=None, engine_config_pg_wal_sender_timeout=None, engine_config_pg_wal_writer_delay=None, engine_config_pglookout_max_failover_replication_time_lag=None, engine_config_shared_buffers_percentage=None, engine_config_work_mem=None, engine_id=None, fork_restore_time=None, fork_source=None, host_primary=None, host_secondary=None, id=None, label=None, members=None, oldest_restore_time=None, pending_updates=None, platform=None, port=None, private_network=None, region=None, root_password=None, root_username=None, ssl_connection=None, status=None, suspended=None, type=None, updated=None, updates=None, version=None):
+    def __init__(__self__, allow_lists=None, ca_cert=None, cluster_size=None, created=None, encrypted=None, engine=None, engine_config_pg_autovacuum_analyze_scale_factor=None, engine_config_pg_autovacuum_analyze_threshold=None, engine_config_pg_autovacuum_max_workers=None, engine_config_pg_autovacuum_naptime=None, engine_config_pg_autovacuum_vacuum_cost_delay=None, engine_config_pg_autovacuum_vacuum_cost_limit=None, engine_config_pg_autovacuum_vacuum_scale_factor=None, engine_config_pg_autovacuum_vacuum_threshold=None, engine_config_pg_bgwriter_delay=None, engine_config_pg_bgwriter_flush_after=None, engine_config_pg_bgwriter_lru_maxpages=None, engine_config_pg_bgwriter_lru_multiplier=None, engine_config_pg_deadlock_timeout=None, engine_config_pg_default_toast_compression=None, engine_config_pg_idle_in_transaction_session_timeout=None, engine_config_pg_jit=None, engine_config_pg_max_files_per_process=None, engine_config_pg_max_locks_per_transaction=None, engine_config_pg_max_logical_replication_workers=None, engine_config_pg_max_parallel_workers=None, engine_config_pg_max_parallel_workers_per_gather=None, engine_config_pg_max_pred_locks_per_transaction=None, engine_config_pg_max_replication_slots=None, engine_config_pg_max_slot_wal_keep_size=None, engine_config_pg_max_stack_depth=None, engine_config_pg_max_standby_archive_delay=None, engine_config_pg_max_standby_streaming_delay=None, engine_config_pg_max_wal_senders=None, engine_config_pg_max_worker_processes=None, engine_config_pg_password_encryption=None, engine_config_pg_pg_partman_bgw_interval=None, engine_config_pg_pg_partman_bgw_role=None, engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan=None, engine_config_pg_pg_stat_monitor_pgsm_max_buckets=None, engine_config_pg_pg_stat_statements_track=None, engine_config_pg_stat_monitor_enable=None, engine_config_pg_temp_file_limit=None, engine_config_pg_timezone=None, engine_config_pg_track_activity_query_size=None, engine_config_pg_track_commit_timestamp=None, engine_config_pg_track_functions=None, engine_config_pg_track_io_timing=None, engine_config_pg_wal_sender_timeout=None, engine_config_pg_wal_writer_delay=None, engine_config_pglookout_max_failover_replication_time_lag=None, engine_config_shared_buffers_percentage=None, engine_config_work_mem=None, engine_id=None, fork_restore_time=None, fork_source=None, host_primary=None, host_secondary=None, host_standby=None, id=None, label=None, members=None, oldest_restore_time=None, pending_updates=None, platform=None, port=None, private_network=None, region=None, root_password=None, root_username=None, ssl_connection=None, status=None, suspended=None, type=None, updated=None, updates=None, version=None):
         if allow_lists and not isinstance(allow_lists, list):
             raise TypeError("Expected argument 'allow_lists' to be a list")
         pulumi.set(__self__, "allow_lists", allow_lists)
@@ -203,6 +203,9 @@ class GetDatabasePostgresqlV2Result:
         if host_secondary and not isinstance(host_secondary, str):
             raise TypeError("Expected argument 'host_secondary' to be a str")
         pulumi.set(__self__, "host_secondary", host_secondary)
+        if host_standby and not isinstance(host_standby, str):
+            raise TypeError("Expected argument 'host_standby' to be a str")
+        pulumi.set(__self__, "host_standby", host_standby)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -716,11 +719,17 @@ class GetDatabasePostgresqlV2Result:
 
     @_builtins.property
     @pulumi.getter(name="hostSecondary")
+    @_utilities.deprecated("""Use host_standby instead.""")
     def host_secondary(self) -> _builtins.str:
         """
         The secondary/private host for the managed database.
         """
         return pulumi.get(self, "host_secondary")
+
+    @_builtins.property
+    @pulumi.getter(name="hostStandby")
+    def host_standby(self) -> _builtins.str:
+        return pulumi.get(self, "host_standby")
 
     @_builtins.property
     @pulumi.getter
@@ -913,6 +922,7 @@ class AwaitableGetDatabasePostgresqlV2Result(GetDatabasePostgresqlV2Result):
             fork_source=self.fork_source,
             host_primary=self.host_primary,
             host_secondary=self.host_secondary,
+            host_standby=self.host_standby,
             id=self.id,
             label=self.label,
             members=self.members,
@@ -1049,6 +1059,7 @@ def get_database_postgresql_v2(id: Optional[_builtins.str] = None,
         fork_source=pulumi.get(__ret__, 'fork_source'),
         host_primary=pulumi.get(__ret__, 'host_primary'),
         host_secondary=pulumi.get(__ret__, 'host_secondary'),
+        host_standby=pulumi.get(__ret__, 'host_standby'),
         id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
         members=pulumi.get(__ret__, 'members'),
@@ -1182,6 +1193,7 @@ def get_database_postgresql_v2_output(id: Optional[pulumi.Input[_builtins.str]] 
         fork_source=pulumi.get(__response__, 'fork_source'),
         host_primary=pulumi.get(__response__, 'host_primary'),
         host_secondary=pulumi.get(__response__, 'host_secondary'),
+        host_standby=pulumi.get(__response__, 'host_standby'),
         id=pulumi.get(__response__, 'id'),
         label=pulumi.get(__response__, 'label'),
         members=pulumi.get(__response__, 'members'),

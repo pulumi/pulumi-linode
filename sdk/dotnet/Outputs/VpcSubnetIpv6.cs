@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? AllocatedRange;
         /// <summary>
-        /// An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+        /// An IPv6 address range in CIDR notation.
         /// </summary>
         public readonly string? Range;
 

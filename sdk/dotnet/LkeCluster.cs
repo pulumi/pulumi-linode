@@ -576,7 +576,7 @@ namespace Pulumi.Linode
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
-        [Input("pools", required: true)]
+        [Input("pools")]
         private InputList<Inputs.LkeClusterPoolArgs>? _pools;
 
         /// <summary>

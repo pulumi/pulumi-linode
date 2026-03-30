@@ -372,6 +372,7 @@ namespace Pulumi.Linode
         /// The secondary/private host for the managed database.
         /// </summary>
         public readonly string HostSecondary;
+        public readonly string HostStandby;
         public readonly string Id;
         /// <summary>
         /// A unique, user-defined string referring to the Managed Database.
@@ -507,6 +508,8 @@ namespace Pulumi.Linode
 
             string hostSecondary,
 
+            string hostStandby,
+
             string id,
 
             string label,
@@ -582,6 +585,7 @@ namespace Pulumi.Linode
             ForkSource = forkSource;
             HostPrimary = hostPrimary;
             HostSecondary = hostSecondary;
+            HostStandby = hostStandby;
             Id = id;
             Label = label;
             Members = members;

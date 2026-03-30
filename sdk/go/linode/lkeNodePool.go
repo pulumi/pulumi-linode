@@ -151,7 +151,7 @@ import (
 //					"key": "value",
 //				},
 //				ExternalPoolTags: pulumi.StringArray{
-//					pulumi.String(externalPoolTag),
+//					pulumi.String(pulumi.String(externalPoolTag)),
 //				},
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
@@ -168,7 +168,7 @@ import (
 //				Type:      pulumi.String("g6-standard-2"),
 //				NodeCount: pulumi.Int(3),
 //				Tags: pulumi.StringArray{
-//					pulumi.String(externalPoolTag),
+//					pulumi.String(pulumi.String(externalPoolTag)),
 //				},
 //			})
 //			if err != nil {

@@ -713,6 +713,7 @@ class _DatabaseMysqlV2State:
                  fork_source: Optional[pulumi.Input[_builtins.int]] = None,
                  host_primary: Optional[pulumi.Input[_builtins.str]] = None,
                  host_secondary: Optional[pulumi.Input[_builtins.str]] = None,
+                 host_standby: Optional[pulumi.Input[_builtins.str]] = None,
                  label: Optional[pulumi.Input[_builtins.str]] = None,
                  members: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  oldest_restore_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -777,6 +778,7 @@ class _DatabaseMysqlV2State:
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[_builtins.str] host_primary: The primary host for the Managed Database.
         :param pulumi.Input[_builtins.str] host_secondary: The secondary/private host for the managed database.
+        :param pulumi.Input[_builtins.str] host_standby: The standby host for the Managed Database.
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] members: A mapping between IP addresses and strings designating them as primary or failover.
         :param pulumi.Input[_builtins.str] oldest_restore_time: The oldest time to which a database can be restored.
@@ -874,7 +876,12 @@ class _DatabaseMysqlV2State:
         if host_primary is not None:
             pulumi.set(__self__, "host_primary", host_primary)
         if host_secondary is not None:
+            warnings.warn("""Use host_standby instead.""", DeprecationWarning)
+            pulumi.log.warn("""host_secondary is deprecated: Use host_standby instead.""")
+        if host_secondary is not None:
             pulumi.set(__self__, "host_secondary", host_secondary)
+        if host_standby is not None:
+            pulumi.set(__self__, "host_standby", host_standby)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if members is not None:
@@ -1374,6 +1381,7 @@ class _DatabaseMysqlV2State:
 
     @_builtins.property
     @pulumi.getter(name="hostSecondary")
+    @_utilities.deprecated("""Use host_standby instead.""")
     def host_secondary(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The secondary/private host for the managed database.
@@ -1383,6 +1391,18 @@ class _DatabaseMysqlV2State:
     @host_secondary.setter
     def host_secondary(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "host_secondary", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hostStandby")
+    def host_standby(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The standby host for the Managed Database.
+        """
+        return pulumi.get(self, "host_standby")
+
+    @host_standby.setter
+    def host_standby(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host_standby", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2129,6 +2149,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             __props__.__dict__["engine"] = None
             __props__.__dict__["host_primary"] = None
             __props__.__dict__["host_secondary"] = None
+            __props__.__dict__["host_standby"] = None
             __props__.__dict__["members"] = None
             __props__.__dict__["oldest_restore_time"] = None
             __props__.__dict__["pending_updates"] = None
@@ -2191,6 +2212,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             fork_source: Optional[pulumi.Input[_builtins.int]] = None,
             host_primary: Optional[pulumi.Input[_builtins.str]] = None,
             host_secondary: Optional[pulumi.Input[_builtins.str]] = None,
+            host_standby: Optional[pulumi.Input[_builtins.str]] = None,
             label: Optional[pulumi.Input[_builtins.str]] = None,
             members: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             oldest_restore_time: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2259,6 +2281,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
                * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[_builtins.str] host_primary: The primary host for the Managed Database.
         :param pulumi.Input[_builtins.str] host_secondary: The secondary/private host for the managed database.
+        :param pulumi.Input[_builtins.str] host_standby: The standby host for the Managed Database.
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] members: A mapping between IP addresses and strings designating them as primary or failover.
         :param pulumi.Input[_builtins.str] oldest_restore_time: The oldest time to which a database can be restored.
@@ -2322,6 +2345,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         __props__.__dict__["fork_source"] = fork_source
         __props__.__dict__["host_primary"] = host_primary
         __props__.__dict__["host_secondary"] = host_secondary
+        __props__.__dict__["host_standby"] = host_standby
         __props__.__dict__["label"] = label
         __props__.__dict__["members"] = members
         __props__.__dict__["oldest_restore_time"] = oldest_restore_time
@@ -2652,11 +2676,20 @@ class DatabaseMysqlV2(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="hostSecondary")
+    @_utilities.deprecated("""Use host_standby instead.""")
     def host_secondary(self) -> pulumi.Output[_builtins.str]:
         """
         The secondary/private host for the managed database.
         """
         return pulumi.get(self, "host_secondary")
+
+    @_builtins.property
+    @pulumi.getter(name="hostStandby")
+    def host_standby(self) -> pulumi.Output[_builtins.str]:
+        """
+        The standby host for the Managed Database.
+        """
+        return pulumi.get(self, "host_standby")
 
     @_builtins.property
     @pulumi.getter

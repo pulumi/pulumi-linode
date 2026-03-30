@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetVpcSubnetsVpcSubnetLinodeResult
     {
         /// <summary>
-        /// ID of the interface.
+        /// ID of a managed database assigned to the VPC Subnet.
         /// </summary>
         public readonly int Id;
         /// <summary>

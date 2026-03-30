@@ -447,8 +447,14 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
     declare public /*out*/ readonly hostPrimary: pulumi.Output<string>;
     /**
      * The secondary/private host for the managed database.
+     *
+     * @deprecated Use hostStandby instead.
      */
     declare public /*out*/ readonly hostSecondary: pulumi.Output<string>;
+    /**
+     * The standby host for the Managed Database.
+     */
+    declare public /*out*/ readonly hostStandby: pulumi.Output<string>;
     /**
      * A unique, user-defined string referring to the Managed Database.
      */
@@ -592,6 +598,7 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
             resourceInputs["forkSource"] = state?.forkSource;
             resourceInputs["hostPrimary"] = state?.hostPrimary;
             resourceInputs["hostSecondary"] = state?.hostSecondary;
+            resourceInputs["hostStandby"] = state?.hostStandby;
             resourceInputs["label"] = state?.label;
             resourceInputs["members"] = state?.members;
             resourceInputs["oldestRestoreTime"] = state?.oldestRestoreTime;
@@ -689,6 +696,7 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
             resourceInputs["engine"] = undefined /*out*/;
             resourceInputs["hostPrimary"] = undefined /*out*/;
             resourceInputs["hostSecondary"] = undefined /*out*/;
+            resourceInputs["hostStandby"] = undefined /*out*/;
             resourceInputs["members"] = undefined /*out*/;
             resourceInputs["oldestRestoreTime"] = undefined /*out*/;
             resourceInputs["pendingUpdates"] = undefined /*out*/;
@@ -946,8 +954,14 @@ export interface DatabasePostgresqlV2State {
     hostPrimary?: pulumi.Input<string>;
     /**
      * The secondary/private host for the managed database.
+     *
+     * @deprecated Use hostStandby instead.
      */
     hostSecondary?: pulumi.Input<string>;
+    /**
+     * The standby host for the Managed Database.
+     */
+    hostStandby?: pulumi.Input<string>;
     /**
      * A unique, user-defined string referring to the Managed Database.
      */

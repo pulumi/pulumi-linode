@@ -64,7 +64,11 @@ export interface GetVpcSubnetResult {
      */
     readonly created: string;
     /**
-     * ID of the interface.
+     * A list of Managed databases assigned to the VPC Subnet.
+     */
+    readonly databases: outputs.GetVpcSubnetDatabase[];
+    /**
+     * ID of a managed database assigned to the VPC Subnet.
      */
     readonly id: string;
     /**

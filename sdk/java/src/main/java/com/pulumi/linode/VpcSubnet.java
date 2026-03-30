@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.VpcSubnetArgs;
 import com.pulumi.linode.inputs.VpcSubnetState;
+import com.pulumi.linode.outputs.VpcSubnetDatabase;
 import com.pulumi.linode.outputs.VpcSubnetIpv6;
 import com.pulumi.linode.outputs.VpcSubnetLinode;
 import java.lang.Integer;
@@ -141,6 +142,20 @@ public class VpcSubnet extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
+     * A list of Managed databases assigned to the VPC Subnet.
+     * 
+     */
+    @Export(name="databases", refs={List.class,VpcSubnetDatabase.class}, tree="[0,1]")
+    private Output<List<VpcSubnetDatabase>> databases;
+
+    /**
+     * @return A list of Managed databases assigned to the VPC Subnet.
+     * 
+     */
+    public Output<List<VpcSubnetDatabase>> databases() {
+        return this.databases;
+    }
+    /**
      * The IPv4 range of this subnet in CIDR format.
      * 
      * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
@@ -187,14 +202,14 @@ public class VpcSubnet extends com.pulumi.resources.CustomResource {
         return this.label;
     }
     /**
-     * A list of Linode that added to this subnet.
+     * A list of Linodes added to this subnet.
      * 
      */
     @Export(name="linodes", refs={List.class,VpcSubnetLinode.class}, tree="[0,1]")
     private Output<List<VpcSubnetLinode>> linodes;
 
     /**
-     * @return A list of Linode that added to this subnet.
+     * @return A list of Linodes added to this subnet.
      * 
      */
     public Output<List<VpcSubnetLinode>> linodes() {

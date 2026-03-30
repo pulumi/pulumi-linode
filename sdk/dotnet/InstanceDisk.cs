@@ -123,7 +123,7 @@ namespace Pulumi.Linode
         /// An Image ID to deploy the Linode Disk from.
         /// </summary>
         [Output("image")]
-        public Output<string?> Image { get; private set; } = null!;
+        public Output<string> Image { get; private set; } = null!;
 
         /// <summary>
         /// The Disk's label for display purposes only.

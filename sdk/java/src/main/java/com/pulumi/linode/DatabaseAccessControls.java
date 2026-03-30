@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.linode.Instance;
  * import com.pulumi.linode.InstanceArgs;
- * import com.pulumi.linode.DatabaseMysql;
- * import com.pulumi.linode.DatabaseMysqlArgs;
+ * import com.pulumi.linode.DatabaseMysqlV2;
+ * import com.pulumi.linode.DatabaseMysqlV2Args;
  * import com.pulumi.linode.DatabaseAccessControls;
  * import com.pulumi.linode.DatabaseAccessControlsArgs;
  * import java.util.List;
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .image("linode/alpine3.19")
  *             .build());
  * 
- *         var my_db = new DatabaseMysql("my-db", DatabaseMysqlArgs.builder()
+ *         var my_db = new DatabaseMysqlV2("my-db", DatabaseMysqlV2Args.builder()
  *             .label("mydatabase")
  *             .engineId("mysql/8.0.30")
  *             .region("us-southeast")

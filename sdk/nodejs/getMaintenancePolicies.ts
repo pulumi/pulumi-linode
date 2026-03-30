@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
- * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies).
  *
  * ## Example Usage
  *
@@ -45,7 +45,7 @@ export interface GetMaintenancePoliciesResult {
 }
 /**
  * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
- * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies).
  *
  * ## Example Usage
  *

@@ -42,11 +42,15 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string HostSecondary;
         /// <summary>
+        /// The standby host for the Managed Database.
+        /// </summary>
+        public readonly string HostStandby;
+        /// <summary>
         /// The ID of the Managed Database.
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// he API route for the database instance.
+        /// The API route for the database instance.
         /// </summary>
         public readonly string InstanceUri;
         /// <summary>
@@ -61,14 +65,6 @@ namespace Pulumi.Linode.Outputs
         /// The region to use for the Managed Database.
         /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// The replication method used for the Managed Database.
-        /// </summary>
-        public readonly string ReplicationType;
-        /// <summary>
-        /// Whether to require SSL credentials to establish a connection to the Managed Database.
-        /// </summary>
-        public readonly bool SslConnection;
         /// <summary>
         /// The operating status of the Managed Database.
         /// </summary>
@@ -102,6 +98,8 @@ namespace Pulumi.Linode.Outputs
 
             string hostSecondary,
 
+            string hostStandby,
+
             int id,
 
             string instanceUri,
@@ -111,10 +109,6 @@ namespace Pulumi.Linode.Outputs
             Outputs.GetDatabasesDatabasePrivateNetworkResult privateNetwork,
 
             string region,
-
-            string replicationType,
-
-            bool sslConnection,
 
             string status,
 
@@ -131,13 +125,12 @@ namespace Pulumi.Linode.Outputs
             Engine = engine;
             HostPrimary = hostPrimary;
             HostSecondary = hostSecondary;
+            HostStandby = hostStandby;
             Id = id;
             InstanceUri = instanceUri;
             Label = label;
             PrivateNetwork = privateNetwork;
             Region = region;
-            ReplicationType = replicationType;
-            SslConnection = sslConnection;
             Status = status;
             Type = type;
             Updated = updated;

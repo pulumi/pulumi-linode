@@ -104,6 +104,11 @@ func GetSkipInstanceReadyPoll(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "linode:skipInstanceReadyPoll")
 }
 
+// Skip waiting for all Linode instances in an LKE cluster to be deleted.
+func GetSkipLkeClusterDeletePoll(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "linode:skipLkeClusterDeletePoll")
+}
+
 // The token that allows you access to your Linode account
 func GetToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "linode:token")

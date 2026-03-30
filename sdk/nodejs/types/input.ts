@@ -5,29 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface DatabaseMysqlUpdates {
-    /**
-     * The day to perform maintenance.
-     */
-    dayOfWeek: pulumi.Input<string>;
-    /**
-     * The maximum maintenance window time in hours.
-     */
-    duration: pulumi.Input<number>;
-    /**
-     * Whether maintenance occurs on a weekly or monthly basis.
-     */
-    frequency: pulumi.Input<string>;
-    /**
-     * The hour to begin maintenance based in UTC time.
-     */
-    hourOfDay: pulumi.Input<number>;
-    /**
-     * The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-     */
-    weekOfMonth?: pulumi.Input<number>;
-}
-
 export interface DatabaseMysqlV2PendingUpdate {
     /**
      * The time when a mandatory update needs to be applied.
@@ -90,29 +67,6 @@ export interface DatabaseMysqlV2Updates {
      * How frequently maintenance occurs. Currently can only be weekly.
      */
     hourOfDay?: pulumi.Input<number>;
-}
-
-export interface DatabasePostgresqlUpdates {
-    /**
-     * The day to perform maintenance.
-     */
-    dayOfWeek: pulumi.Input<string>;
-    /**
-     * The maximum maintenance window time in hours.
-     */
-    duration: pulumi.Input<number>;
-    /**
-     * Whether maintenance occurs on a weekly or monthly basis.
-     */
-    frequency: pulumi.Input<string>;
-    /**
-     * The hour to begin maintenance based in UTC time.
-     */
-    hourOfDay: pulumi.Input<number>;
-    /**
-     * The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-     */
-    weekOfMonth?: pulumi.Input<number>;
 }
 
 export interface DatabasePostgresqlV2PendingUpdate {
@@ -703,36 +657,6 @@ export interface GetConsumerImageShareGroupTokensTokenArgs {
     validForSharegroupUuid?: pulumi.Input<string>;
 }
 
-export interface GetDatabaseBackupsFilter {
-    /**
-     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-     */
-    matchBy?: string;
-    /**
-     * The name of the field to filter by.
-     */
-    name: string;
-    /**
-     * A list of values for the filter to allow. These values should all be in string form.
-     */
-    values: string[];
-}
-
-export interface GetDatabaseBackupsFilterArgs {
-    /**
-     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * The name of the field to filter by.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * A list of values for the filter to allow. These values should all be in string form.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetDatabaseEnginesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -749,36 +673,6 @@ export interface GetDatabaseEnginesFilter {
 }
 
 export interface GetDatabaseEnginesFilterArgs {
-    /**
-     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-     */
-    matchBy?: pulumi.Input<string>;
-    /**
-     * The name of the field to filter by.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * A list of values for the filter to allow. These values should all be in string form.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface GetDatabaseMysqlBackupsFilter {
-    /**
-     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-     */
-    matchBy?: string;
-    /**
-     * The name of the field to filter by.
-     */
-    name: string;
-    /**
-     * A list of values for the filter to allow. These values should all be in string form.
-     */
-    values: string[];
-}
-
-export interface GetDatabaseMysqlBackupsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
@@ -4173,20 +4067,42 @@ export interface VpcIpv6 {
     range?: pulumi.Input<string>;
 }
 
+export interface VpcSubnetDatabase {
+    /**
+     * ID of a managed database assigned to the VPC Subnet.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * IPv4 range assigned to the database.
+     */
+    ipv4Range: pulumi.Input<string>;
+    /**
+     * A list of IPv6 ranges assigned to the database.
+     */
+    ipv6Ranges: pulumi.Input<pulumi.Input<inputs.VpcSubnetDatabaseIpv6Range>[]>;
+}
+
+export interface VpcSubnetDatabaseIpv6Range {
+    /**
+     * An IPv6 address range in CIDR notation.
+     */
+    range: pulumi.Input<string>;
+}
+
 export interface VpcSubnetIpv6 {
     /**
      * The IPv6 range assigned to this subnet.
      */
     allocatedRange?: pulumi.Input<string>;
     /**
-     * An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
+     * An IPv6 address range in CIDR notation.
      */
     range?: pulumi.Input<string>;
 }
 
 export interface VpcSubnetLinode {
     /**
-     * ID of the interface.
+     * ID of a managed database assigned to the VPC Subnet.
      */
     id: pulumi.Input<number>;
     /**
@@ -4205,7 +4121,7 @@ export interface VpcSubnetLinodeInterface {
      */
     configId: pulumi.Input<number>;
     /**
-     * ID of the interface.
+     * ID of a managed database assigned to the VPC Subnet.
      */
     id: pulumi.Input<number>;
 }

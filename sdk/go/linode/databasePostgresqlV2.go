@@ -405,7 +405,11 @@ type DatabasePostgresqlV2 struct {
 	// The primary host for the Managed Database.
 	HostPrimary pulumi.StringOutput `pulumi:"hostPrimary"`
 	// The secondary/private host for the managed database.
+	//
+	// Deprecated: Use hostStandby instead.
 	HostSecondary pulumi.StringOutput `pulumi:"hostSecondary"`
+	// The standby host for the Managed Database.
+	HostStandby pulumi.StringOutput `pulumi:"hostStandby"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// A mapping between IP addresses and strings designating them as primary or failover.
@@ -612,7 +616,11 @@ type databasePostgresqlV2State struct {
 	// The primary host for the Managed Database.
 	HostPrimary *string `pulumi:"hostPrimary"`
 	// The secondary/private host for the managed database.
+	//
+	// Deprecated: Use hostStandby instead.
 	HostSecondary *string `pulumi:"hostSecondary"`
+	// The standby host for the Managed Database.
+	HostStandby *string `pulumi:"hostStandby"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label *string `pulumi:"label"`
 	// A mapping between IP addresses and strings designating them as primary or failover.
@@ -772,7 +780,11 @@ type DatabasePostgresqlV2State struct {
 	// The primary host for the Managed Database.
 	HostPrimary pulumi.StringPtrInput
 	// The secondary/private host for the managed database.
+	//
+	// Deprecated: Use hostStandby instead.
 	HostSecondary pulumi.StringPtrInput
+	// The standby host for the Managed Database.
+	HostStandby pulumi.StringPtrInput
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringPtrInput
 	// A mapping between IP addresses and strings designating them as primary or failover.
@@ -1452,8 +1464,15 @@ func (o DatabasePostgresqlV2Output) HostPrimary() pulumi.StringOutput {
 }
 
 // The secondary/private host for the managed database.
+//
+// Deprecated: Use hostStandby instead.
 func (o DatabasePostgresqlV2Output) HostSecondary() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2) pulumi.StringOutput { return v.HostSecondary }).(pulumi.StringOutput)
+}
+
+// The standby host for the Managed Database.
+func (o DatabasePostgresqlV2Output) HostStandby() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabasePostgresqlV2) pulumi.StringOutput { return v.HostStandby }).(pulumi.StringOutput)
 }
 
 // A unique, user-defined string referring to the Managed Database.

@@ -29,18 +29,10 @@ import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
 import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenPlainArgs;
 import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
 import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensPlainArgs;
-import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
-import com.pulumi.linode.inputs.GetDatabaseBackupsPlainArgs;
 import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
 import com.pulumi.linode.inputs.GetDatabaseEnginesPlainArgs;
-import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
-import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
-import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsPlainArgs;
-import com.pulumi.linode.inputs.GetDatabaseMysqlPlainArgs;
 import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
 import com.pulumi.linode.inputs.GetDatabaseMysqlV2PlainArgs;
-import com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;
-import com.pulumi.linode.inputs.GetDatabasePostgresqlPlainArgs;
 import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
 import com.pulumi.linode.inputs.GetDatabasePostgresqlV2PlainArgs;
 import com.pulumi.linode.inputs.GetDatabasesArgs;
@@ -91,6 +83,8 @@ import com.pulumi.linode.inputs.GetLkeClusterArgs;
 import com.pulumi.linode.inputs.GetLkeClusterPlainArgs;
 import com.pulumi.linode.inputs.GetLkeClustersArgs;
 import com.pulumi.linode.inputs.GetLkeClustersPlainArgs;
+import com.pulumi.linode.inputs.GetLkeNodePoolArgs;
+import com.pulumi.linode.inputs.GetLkeNodePoolPlainArgs;
 import com.pulumi.linode.inputs.GetLkeTypesArgs;
 import com.pulumi.linode.inputs.GetLkeTypesPlainArgs;
 import com.pulumi.linode.inputs.GetLkeVersionArgs;
@@ -193,14 +187,10 @@ import com.pulumi.linode.outputs.GetConsumerImageShareGroupImageSharesResult;
 import com.pulumi.linode.outputs.GetConsumerImageShareGroupResult;
 import com.pulumi.linode.outputs.GetConsumerImageShareGroupTokenResult;
 import com.pulumi.linode.outputs.GetConsumerImageShareGroupTokensResult;
-import com.pulumi.linode.outputs.GetDatabaseBackupsResult;
 import com.pulumi.linode.outputs.GetDatabaseEnginesResult;
-import com.pulumi.linode.outputs.GetDatabaseMysqlBackupsResult;
 import com.pulumi.linode.outputs.GetDatabaseMysqlConfigResult;
-import com.pulumi.linode.outputs.GetDatabaseMysqlResult;
 import com.pulumi.linode.outputs.GetDatabaseMysqlV2Result;
 import com.pulumi.linode.outputs.GetDatabasePostgresqlConfigResult;
-import com.pulumi.linode.outputs.GetDatabasePostgresqlResult;
 import com.pulumi.linode.outputs.GetDatabasePostgresqlV2Result;
 import com.pulumi.linode.outputs.GetDatabasesResult;
 import com.pulumi.linode.outputs.GetDomainRecordResult;
@@ -227,6 +217,7 @@ import com.pulumi.linode.outputs.GetKernelsResult;
 import com.pulumi.linode.outputs.GetLinodeObjectStorageBucketResult;
 import com.pulumi.linode.outputs.GetLkeClusterResult;
 import com.pulumi.linode.outputs.GetLkeClustersResult;
+import com.pulumi.linode.outputs.GetLkeNodePoolResult;
 import com.pulumi.linode.outputs.GetLkeTypesResult;
 import com.pulumi.linode.outputs.GetLkeVersionResult;
 import com.pulumi.linode.outputs.GetLkeVersionsResult;
@@ -4146,401 +4137,6 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getConsumerImageShareGroupTokens:getConsumerImageShareGroupTokens", TypeShape.of(GetConsumerImageShareGroupTokensResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
-     * 
-     * Provides information about Linode Database Backups that match a set of filters.
-     * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .databaseType("mysql")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .databaseType("postgresql")
-     *             .filters(GetDatabaseBackupsFilterArgs.builder()
-     *                 .name("type")
-     *                 .values("auto")
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetDatabaseBackupsResult> getDatabaseBackups(GetDatabaseBackupsArgs args) {
-        return getDatabaseBackups(args, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
-     * 
-     * Provides information about Linode Database Backups that match a set of filters.
-     * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .databaseType("mysql")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .databaseType("postgresql")
-     *             .filters(GetDatabaseBackupsFilterArgs.builder()
-     *                 .name("type")
-     *                 .values("auto")
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetDatabaseBackupsResult> getDatabaseBackupsPlain(GetDatabaseBackupsPlainArgs args) {
-        return getDatabaseBackupsPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
-     * 
-     * Provides information about Linode Database Backups that match a set of filters.
-     * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .databaseType("mysql")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .databaseType("postgresql")
-     *             .filters(GetDatabaseBackupsFilterArgs.builder()
-     *                 .name("type")
-     *                 .values("auto")
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetDatabaseBackupsResult> getDatabaseBackups(GetDatabaseBackupsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("linode:index/getDatabaseBackups:getDatabaseBackups", TypeShape.of(GetDatabaseBackupsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
-     * 
-     * Provides information about Linode Database Backups that match a set of filters.
-     * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .databaseType("mysql")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .databaseType("postgresql")
-     *             .filters(GetDatabaseBackupsFilterArgs.builder()
-     *                 .name("type")
-     *                 .values("auto")
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetDatabaseBackupsResult> getDatabaseBackups(GetDatabaseBackupsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("linode:index/getDatabaseBackups:getDatabaseBackups", TypeShape.of(GetDatabaseBackupsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
-     * 
-     * Provides information about Linode Database Backups that match a set of filters.
-     * For more information, see the Linode APIv4 docs for [MySQL](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups) and [PostgreSQL](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .databaseType("mysql")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auto-backups = LinodeFunctions.getDatabaseBackups(GetDatabaseBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .databaseType("postgresql")
-     *             .filters(GetDatabaseBackupsFilterArgs.builder()
-     *                 .name("type")
-     *                 .values("auto")
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetDatabaseBackupsResult> getDatabaseBackupsPlain(GetDatabaseBackupsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("linode:index/getDatabaseBackups:getDatabaseBackups", TypeShape.of(GetDatabaseBackupsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
      * Provides information about Linode Managed Database engines that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-engines).
      * 
@@ -4619,8 +4215,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import com.pulumi.linode.DatabaseMysql;
-     * import com.pulumi.linode.DatabaseMysqlArgs;
+     * import com.pulumi.linode.DatabaseMysqlV2;
+     * import com.pulumi.linode.DatabaseMysqlV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4642,7 +4238,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
+     *         var myDb = new DatabaseMysqlV2("myDb", DatabaseMysqlV2Args.builder()
      *             .label("mydb")
      *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
@@ -4737,8 +4333,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import com.pulumi.linode.DatabaseMysql;
-     * import com.pulumi.linode.DatabaseMysqlArgs;
+     * import com.pulumi.linode.DatabaseMysqlV2;
+     * import com.pulumi.linode.DatabaseMysqlV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4760,7 +4356,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
+     *         var myDb = new DatabaseMysqlV2("myDb", DatabaseMysqlV2Args.builder()
      *             .label("mydb")
      *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
@@ -4855,8 +4451,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import com.pulumi.linode.DatabaseMysql;
-     * import com.pulumi.linode.DatabaseMysqlArgs;
+     * import com.pulumi.linode.DatabaseMysqlV2;
+     * import com.pulumi.linode.DatabaseMysqlV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4878,7 +4474,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
+     *         var myDb = new DatabaseMysqlV2("myDb", DatabaseMysqlV2Args.builder()
      *             .label("mydb")
      *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
@@ -4973,8 +4569,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import com.pulumi.linode.DatabaseMysql;
-     * import com.pulumi.linode.DatabaseMysqlArgs;
+     * import com.pulumi.linode.DatabaseMysqlV2;
+     * import com.pulumi.linode.DatabaseMysqlV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -4996,7 +4592,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
+     *         var myDb = new DatabaseMysqlV2("myDb", DatabaseMysqlV2Args.builder()
      *             .label("mydb")
      *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
@@ -5091,8 +4687,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import com.pulumi.linode.DatabaseMysql;
-     * import com.pulumi.linode.DatabaseMysqlArgs;
+     * import com.pulumi.linode.DatabaseMysqlV2;
+     * import com.pulumi.linode.DatabaseMysqlV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5114,7 +4710,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
+     *         var myDb = new DatabaseMysqlV2("myDb", DatabaseMysqlV2Args.builder()
      *             .label("mydb")
      *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
@@ -5209,8 +4805,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import com.pulumi.linode.DatabaseMysql;
-     * import com.pulumi.linode.DatabaseMysqlArgs;
+     * import com.pulumi.linode.DatabaseMysqlV2;
+     * import com.pulumi.linode.DatabaseMysqlV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5232,7 +4828,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
+     *         var myDb = new DatabaseMysqlV2("myDb", DatabaseMysqlV2Args.builder()
      *             .label("mydb")
      *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
@@ -5327,8 +4923,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import com.pulumi.linode.DatabaseMysql;
-     * import com.pulumi.linode.DatabaseMysqlArgs;
+     * import com.pulumi.linode.DatabaseMysqlV2;
+     * import com.pulumi.linode.DatabaseMysqlV2Args;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -5350,7 +4946,7 @@ public final class LinodeFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var myDb = new DatabaseMysql("myDb", DatabaseMysqlArgs.builder()
+     *         var myDb = new DatabaseMysqlV2("myDb", DatabaseMysqlV2Args.builder()
      *             .label("mydb")
      *             .engineId(mysql.engines()[0].id())
      *             .region("us-southeast")
@@ -5365,790 +4961,6 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetDatabaseEnginesResult> getDatabaseEnginesPlain(GetDatabaseEnginesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getDatabaseEngines:getDatabaseEngines", TypeShape.of(GetDatabaseEnginesResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode MySQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static Output<GetDatabaseMysqlResult> getDatabaseMysql() {
-        return getDatabaseMysql(GetDatabaseMysqlArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode MySQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static CompletableFuture<GetDatabaseMysqlResult> getDatabaseMysqlPlain() {
-        return getDatabaseMysqlPlain(GetDatabaseMysqlPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode MySQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static Output<GetDatabaseMysqlResult> getDatabaseMysql(GetDatabaseMysqlArgs args) {
-        return getDatabaseMysql(args, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode MySQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static CompletableFuture<GetDatabaseMysqlResult> getDatabaseMysqlPlain(GetDatabaseMysqlPlainArgs args) {
-        return getDatabaseMysqlPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode MySQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static Output<GetDatabaseMysqlResult> getDatabaseMysql(GetDatabaseMysqlArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("linode:index/getDatabaseMysql:getDatabaseMysql", TypeShape.of(GetDatabaseMysqlResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode MySQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static Output<GetDatabaseMysqlResult> getDatabaseMysql(GetDatabaseMysqlArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("linode:index/getDatabaseMysql:getDatabaseMysql", TypeShape.of(GetDatabaseMysqlResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabaseMysqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode MySQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-instances).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabaseMysql(GetDatabaseMysqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static CompletableFuture<GetDatabaseMysqlResult> getDatabaseMysqlPlain(GetDatabaseMysqlPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("linode:index/getDatabaseMysql:getDatabaseMysql", TypeShape.of(GetDatabaseMysqlResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
-     * 
-     * Provides information about Linode MySQL Database Backups that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auto-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .filters(GetDatabaseMysqlBackupsFilterArgs.builder()
-     *                 .name("type")
-     *                 .values("auto")
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs args) {
-        return getDatabaseMysqlBackups(args, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
-     * 
-     * Provides information about Linode MySQL Database Backups that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auto-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .filters(GetDatabaseMysqlBackupsFilterArgs.builder()
-     *                 .name("type")
-     *                 .values("auto")
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackupsPlain(GetDatabaseMysqlBackupsPlainArgs args) {
-        return getDatabaseMysqlBackupsPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
-     * 
-     * Provides information about Linode MySQL Database Backups that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auto-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .filters(GetDatabaseMysqlBackupsFilterArgs.builder()
-     *                 .name("type")
-     *                 .values("auto")
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", TypeShape.of(GetDatabaseMysqlBackupsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
-     * 
-     * Provides information about Linode MySQL Database Backups that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auto-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .filters(GetDatabaseMysqlBackupsFilterArgs.builder()
-     *                 .name("type")
-     *                 .values("auto")
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", TypeShape.of(GetDatabaseMysqlBackupsResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated.
-     * 
-     * Provides information about Linode MySQL Database Backups that match a set of filters.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-mysql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabaseMysqlBackupsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var auto-backups = LinodeFunctions.getDatabaseMysqlBackups(GetDatabaseMysqlBackupsArgs.builder()
-     *             .databaseId(12345)
-     *             .filters(GetDatabaseMysqlBackupsFilterArgs.builder()
-     *                 .name("type")
-     *                 .values("auto")
-     *                 .build())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetDatabaseMysqlBackupsResult> getDatabaseMysqlBackupsPlain(GetDatabaseMysqlBackupsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("linode:index/getDatabaseMysqlBackups:getDatabaseMysqlBackups", TypeShape.of(GetDatabaseMysqlBackupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode MySQL Database&#39;s Configuration Options.
@@ -10266,405 +9078,6 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetDatabaseMysqlV2Result> getDatabaseMysqlV2Plain(GetDatabaseMysqlV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", TypeShape.of(GetDatabaseMysqlV2Result.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode PostgreSQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static Output<GetDatabasePostgresqlResult> getDatabasePostgresql() {
-        return getDatabasePostgresql(GetDatabasePostgresqlArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode PostgreSQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static CompletableFuture<GetDatabasePostgresqlResult> getDatabasePostgresqlPlain() {
-        return getDatabasePostgresqlPlain(GetDatabasePostgresqlPlainArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode PostgreSQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static Output<GetDatabasePostgresqlResult> getDatabasePostgresql(GetDatabasePostgresqlArgs args) {
-        return getDatabasePostgresql(args, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode PostgreSQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static CompletableFuture<GetDatabasePostgresqlResult> getDatabasePostgresqlPlain(GetDatabasePostgresqlPlainArgs args) {
-        return getDatabasePostgresqlPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode PostgreSQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static Output<GetDatabasePostgresqlResult> getDatabasePostgresql(GetDatabasePostgresqlArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("linode:index/getDatabasePostgresql:getDatabasePostgresql", TypeShape.of(GetDatabasePostgresqlResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode PostgreSQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static Output<GetDatabasePostgresqlResult> getDatabasePostgresql(GetDatabasePostgresqlArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("linode:index/getDatabasePostgresql:getDatabasePostgresql", TypeShape.of(GetDatabasePostgresqlResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * &gt; **DEPRECATION NOTICE:** This data source has been deprecated. Please use linode.DatabasePostgresqlV2 for all future implementations.
-     * 
-     * Provides information about a Linode PostgreSQL Database.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-databases-postgre-sql-instance-backups).
-     * 
-     * ## Example Usage
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetDatabasePostgresqlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var my-db = LinodeFunctions.getDatabasePostgresql(GetDatabasePostgresqlArgs.builder()
-     *             .id(12345)
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     * ## updates
-     * 
-     * The following arguments are exported by the `updates` specification block:
-     * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
-     * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
-     * 
-     * * `frequency` - Whether maintenance occurs on a weekly or monthly basis. (`weekly`, `monthly`)
-     * 
-     * * `hourOfDay` - The hour to begin maintenance based in UTC time. (`0`..`23`)
-     * 
-     * * `weekOfMonth` - The week of the month to perform monthly frequency updates. Required for `monthly` frequency updates. (`1`..`4`)
-     * 
-     */
-    public static CompletableFuture<GetDatabasePostgresqlResult> getDatabasePostgresqlPlain(GetDatabasePostgresqlPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("linode:index/getDatabasePostgresql:getDatabasePostgresql", TypeShape.of(GetDatabasePostgresqlResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode PostgreSQL Database&#39;s Configuration Options.
@@ -25474,6 +23887,216 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeClusters:getLkeClusters", TypeShape.of(GetLkeClustersResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides details about a specific LKE Cluster Node Pool.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-node-pool).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
+     *             .id(123)
+     *             .clusterId(321)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLkeNodePoolResult> getLkeNodePool(GetLkeNodePoolArgs args) {
+        return getLkeNodePool(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a specific LKE Cluster Node Pool.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-node-pool).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
+     *             .id(123)
+     *             .clusterId(321)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLkeNodePoolResult> getLkeNodePoolPlain(GetLkeNodePoolPlainArgs args) {
+        return getLkeNodePoolPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a specific LKE Cluster Node Pool.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-node-pool).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
+     *             .id(123)
+     *             .clusterId(321)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLkeNodePoolResult> getLkeNodePool(GetLkeNodePoolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLkeNodePool:getLkeNodePool", TypeShape.of(GetLkeNodePoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a specific LKE Cluster Node Pool.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-node-pool).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
+     *             .id(123)
+     *             .clusterId(321)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetLkeNodePoolResult> getLkeNodePool(GetLkeNodePoolArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getLkeNodePool:getLkeNodePool", TypeShape.of(GetLkeNodePoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a specific LKE Cluster Node Pool.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-node-pool).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeNodePoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
+     *             .id(123)
+     *             .clusterId(321)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetLkeNodePoolResult> getLkeNodePoolPlain(GetLkeNodePoolPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getLkeNodePool:getLkeNodePool", TypeShape.of(GetLkeNodePoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides information about Linode LKE types that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
      * 
@@ -27330,7 +25953,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies).
      * 
      * ## Example Usage
      * 
@@ -27371,7 +25994,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies).
      * 
      * ## Example Usage
      * 
@@ -27412,7 +26035,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies).
      * 
      * ## Example Usage
      * 
@@ -27453,7 +26076,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies).
      * 
      * ## Example Usage
      * 
@@ -27494,7 +26117,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies).
      * 
      * ## Example Usage
      * 
@@ -27535,7 +26158,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies).
      * 
      * ## Example Usage
      * 
@@ -27576,7 +26199,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the Maintenance Policies available to apply to Accounts and Instances.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies). (**Note: v4beta only.**)
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-maintenance-policies).
      * 
      * ## Example Usage
      * 

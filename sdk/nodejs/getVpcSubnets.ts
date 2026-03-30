@@ -71,7 +71,7 @@ export interface GetVpcSubnetsArgs {
 export interface GetVpcSubnetsResult {
     readonly filters?: outputs.GetVpcSubnetsFilter[];
     /**
-     * ID of the interface.
+     * ID of a managed database assigned to the VPC Subnet.
      */
     readonly id: string;
     readonly vpcId: number;

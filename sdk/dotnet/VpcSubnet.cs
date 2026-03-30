@@ -99,6 +99,12 @@ namespace Pulumi.Linode
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
+        /// A list of Managed databases assigned to the VPC Subnet.
+        /// </summary>
+        [Output("databases")]
+        public Output<ImmutableArray<Outputs.VpcSubnetDatabase>> Databases { get; private set; } = null!;
+
+        /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
         /// 
         /// * `Ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
@@ -119,7 +125,7 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Linode that added to this subnet.
+        /// A list of Linodes added to this subnet.
         /// </summary>
         [Output("linodes")]
         public Output<ImmutableArray<Outputs.VpcSubnetLinode>> Linodes { get; private set; } = null!;
@@ -228,6 +234,18 @@ namespace Pulumi.Linode
         [Input("created")]
         public Input<string>? Created { get; set; }
 
+        [Input("databases")]
+        private InputList<Inputs.VpcSubnetDatabaseGetArgs>? _databases;
+
+        /// <summary>
+        /// A list of Managed databases assigned to the VPC Subnet.
+        /// </summary>
+        public InputList<Inputs.VpcSubnetDatabaseGetArgs> Databases
+        {
+            get => _databases ?? (_databases = new InputList<Inputs.VpcSubnetDatabaseGetArgs>());
+            set => _databases = value;
+        }
+
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
         /// 
@@ -258,7 +276,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.VpcSubnetLinodeGetArgs>? _linodes;
 
         /// <summary>
-        /// A list of Linode that added to this subnet.
+        /// A list of Linodes added to this subnet.
         /// </summary>
         public InputList<Inputs.VpcSubnetLinodeGetArgs> Linodes
         {

@@ -81,7 +81,7 @@ class InstanceArgs:
                
                * **NOTE: IP reservation is not currently available to all users.**
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
-        :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
         :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
@@ -419,7 +419,7 @@ class InstanceArgs:
     @pulumi.getter(name="maintenancePolicy")
     def maintenance_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -707,7 +707,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[_builtins.int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] locks: A list of locks applied to this Linode.
-        :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
         :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
@@ -1160,7 +1160,7 @@ class _InstanceState:
     @pulumi.getter(name="maintenancePolicy")
     def maintenance_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -1616,7 +1616,7 @@ class Instance(pulumi.CustomResource):
                
                * **NOTE: IP reservation is not currently available to all users.**
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
-        :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
         :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
@@ -1993,7 +1993,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[_builtins.int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] locks: A list of locks applied to this Linode.
-        :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]] metadatas: Various fields related to the Linode Metadata service.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
         :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
@@ -2294,7 +2294,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="maintenancePolicy")
     def maintenance_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account. (**Note: v4beta only.**)
+        The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         """
         return pulumi.get(self, "maintenance_policy")
 

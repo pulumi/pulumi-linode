@@ -111,7 +111,7 @@ public final class GetInstancesInstance {
      */
     private List<String> locks;
     /**
-     * @return The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+     * @return The maintenance policy of this Linode instance.
      * 
      */
     private String maintenancePolicy;
@@ -284,7 +284,7 @@ public final class GetInstancesInstance {
         return this.locks;
     }
     /**
-     * @return The maintenance policy of this Linode instance. (**Note: v4beta only.**)
+     * @return The maintenance policy of this Linode instance.
      * 
      */
     public String maintenancePolicy() {
