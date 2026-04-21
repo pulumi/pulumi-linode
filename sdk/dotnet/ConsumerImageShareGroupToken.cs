@@ -23,7 +23,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Linode.ConsumerImageShareGroupToken("example", new()
+    ///     var example = new Linode.Index.ConsumerImageShareGroupToken("example", new()
     ///     {
     ///         ValidForSharegroupUuid = "03fbb93e-c27d-4c4a-9180-67f6e0cd74ca",
     ///         Label = "example-token",

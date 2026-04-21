@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ns1LinodeCom = Linode.GetNetworkingIp.Invoke(new()
+        ///     var ns1LinodeCom = Linode.Index.GetNetworkingIp.Invoke(new()
         ///     {
         ///         Address = "162.159.27.72",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ns1LinodeCom = Linode.GetNetworkingIp.Invoke(new()
+        ///     var ns1LinodeCom = Linode.Index.GetNetworkingIp.Invoke(new()
         ///     {
         ///         Address = "162.159.27.72",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ns1LinodeCom = Linode.GetNetworkingIp.Invoke(new()
+        ///     var ns1LinodeCom = Linode.Index.GetNetworkingIp.Invoke(new()
         ///     {
         ///         Address = "162.159.27.72",
         ///     });

@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myQuota = Linode.GetObjectStorageQuota.Invoke(new()
+        ///     var myQuota = Linode.Index.GetObjectStorageQuota.Invoke(new()
         ///     {
         ///         QuotaId = "obj-buckets-br-gru-1.linodeobjects.com",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myQuota = Linode.GetObjectStorageQuota.Invoke(new()
+        ///     var myQuota = Linode.Index.GetObjectStorageQuota.Invoke(new()
         ///     {
         ///         QuotaId = "obj-buckets-br-gru-1.linodeobjects.com",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myQuota = Linode.GetObjectStorageQuota.Invoke(new()
+        ///     var myQuota = Linode.Index.GetObjectStorageQuota.Invoke(new()
         ///     {
         ///         QuotaId = "obj-buckets-br-gru-1.linodeobjects.com",
         ///     });

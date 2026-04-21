@@ -30,14 +30,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupDomainRecord(ctx, &linode.LookupDomainRecordArgs{
+//			_, err := linode.GetDomainRecord(ctx, &linode.LookupDomainRecordArgs{
 //				Id:       pulumi.IntRef(14950401),
 //				DomainId: 3150401,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.LookupDomainRecord(ctx, &linode.LookupDomainRecordArgs{
+//			_, err = linode.GetDomainRecord(ctx, &linode.LookupDomainRecordArgs{
 //				Name:     pulumi.StringRef("www"),
 //				DomainId: 3150401,
 //			}, nil)

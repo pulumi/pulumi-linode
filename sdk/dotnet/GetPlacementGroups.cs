@@ -27,9 +27,9 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetPlacementGroups.Invoke();
+        ///     var all = Linode.Index.GetPlacementGroups.Invoke();
         /// 
-        ///     var filtered = Linode.GetPlacementGroups.Invoke(new()
+        ///     var filtered = Linode.Index.GetPlacementGroups.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -85,9 +85,9 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetPlacementGroups.Invoke();
+        ///     var all = Linode.Index.GetPlacementGroups.Invoke();
         /// 
-        ///     var filtered = Linode.GetPlacementGroups.Invoke(new()
+        ///     var filtered = Linode.Index.GetPlacementGroups.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -143,9 +143,9 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetPlacementGroups.Invoke();
+        ///     var all = Linode.Index.GetPlacementGroups.Invoke();
         /// 
-        ///     var filtered = Linode.GetPlacementGroups.Invoke(new()
+        ///     var filtered = Linode.Index.GetPlacementGroups.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

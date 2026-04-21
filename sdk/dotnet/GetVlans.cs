@@ -29,7 +29,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstance = new Linode.Instance("my_instance", new()
+        ///     var myInstance = new Linode.Index.Instance("my_instance", new()
         ///     {
         ///         Label = "my_instance",
         ///         Image = "linode/ubuntu22.04",
@@ -46,7 +46,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var my_vlans = Linode.GetVlans.Invoke(new()
+        ///     var my_vlans = Linode.Index.GetVlans.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -95,7 +95,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstance = new Linode.Instance("my_instance", new()
+        ///     var myInstance = new Linode.Index.Instance("my_instance", new()
         ///     {
         ///         Label = "my_instance",
         ///         Image = "linode/ubuntu22.04",
@@ -112,7 +112,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var my_vlans = Linode.GetVlans.Invoke(new()
+        ///     var my_vlans = Linode.Index.GetVlans.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -161,7 +161,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstance = new Linode.Instance("my_instance", new()
+        ///     var myInstance = new Linode.Index.Instance("my_instance", new()
         ///     {
         ///         Label = "my_instance",
         ///         Image = "linode/ubuntu22.04",
@@ -178,7 +178,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var my_vlans = Linode.GetVlans.Invoke(new()
+        ///     var my_vlans = Linode.Index.GetVlans.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

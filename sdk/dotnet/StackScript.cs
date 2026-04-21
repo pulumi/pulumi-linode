@@ -26,7 +26,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Linode.StackScript("foo", new()
+    ///     var foo = new Linode.Index.StackScript("foo", new()
     ///     {
     ///         Label = "foo",
     ///         Description = "Installs a Package",
@@ -42,7 +42,7 @@ namespace Pulumi.Linode
     ///         RevNote = "initial version",
     ///     });
     /// 
-    ///     var fooInstance = new Linode.Instance("foo", new()
+    ///     var fooInstance = new Linode.Index.Instance("foo", new()
     ///     {
     ///         Image = "linode/ubuntu22.04",
     ///         Label = "foo",

@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupImage(ctx, &linode.LookupImageArgs{
+//			_, err := linode.GetImage(ctx, &linode.LookupImageArgs{
 //				Id: "linode/debian12",
 //			}, nil)
 //			if err != nil {

@@ -23,7 +23,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_users = Linode.GetUsers.Invoke(new()
+        ///     var filtered_users = Linode.Index.GetUsers.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -76,7 +76,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_users = Linode.GetUsers.Invoke(new()
+        ///     var filtered_users = Linode.Index.GetUsers.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -129,7 +129,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_users = Linode.GetUsers.Invoke(new()
+        ///     var filtered_users = Linode.Index.GetUsers.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

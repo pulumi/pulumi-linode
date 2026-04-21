@@ -29,14 +29,14 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     var my_instance = new Linode.Index.Instance("my-instance", new()
     ///     {
     ///         Label = "my-instance",
     ///         Type = "g6-standard-1",
     ///         Region = "us-southeast",
     ///     });
     /// 
-    ///     var boot = new Linode.InstanceDisk("boot", new()
+    ///     var boot = new Linode.Index.InstanceDisk("boot", new()
     ///     {
     ///         Label = "boot",
     ///         LinodeId = my_instance.Id,
@@ -45,7 +45,7 @@ namespace Pulumi.Linode
     ///         RootPass = "myc00lpass!",
     ///     });
     /// 
-    ///     var my_config = new Linode.InstanceConfig("my-config", new()
+    ///     var my_config = new Linode.Index.InstanceConfig("my-config", new()
     ///     {
     ///         LinodeId = my_instance.Id,
     ///         Label = "my-config",
@@ -71,21 +71,21 @@ namespace Pulumi.Linode
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a VPC and a subnet
-    ///     var foobar = new Linode.Vpc("foobar", new()
+    ///     var foobar = new Linode.Index.Vpc("foobar", new()
     ///     {
     ///         Label = "my-vpc",
     ///         Region = "us-mia",
     ///         Description = "test description",
     ///     });
     /// 
-    ///     var foobarVpcSubnet = new Linode.VpcSubnet("foobar", new()
+    ///     var foobarVpcSubnet = new Linode.Index.VpcSubnet("foobar", new()
     ///     {
     ///         VpcId = foobar.Id,
     ///         Label = "my-subnet",
     ///         Ipv4 = "10.0.4.0/24",
     ///     });
     /// 
-    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     var my_instance = new Linode.Index.Instance("my-instance", new()
     ///     {
     ///         Label = "my-instance",
     ///         Type = "g6-standard-1",
@@ -93,7 +93,7 @@ namespace Pulumi.Linode
     ///     });
     /// 
     ///     // Create a boot disk
-    ///     var boot = new Linode.InstanceDisk("boot", new()
+    ///     var boot = new Linode.Index.InstanceDisk("boot", new()
     ///     {
     ///         Label = "boot",
     ///         LinodeId = my_instance.Id,
@@ -103,7 +103,7 @@ namespace Pulumi.Linode
     ///     });
     /// 
     ///     // Create a swap disk
-    ///     var swap = new Linode.InstanceDisk("swap", new()
+    ///     var swap = new Linode.Index.InstanceDisk("swap", new()
     ///     {
     ///         Label = "swap",
     ///         LinodeId = my_instance.Id,
@@ -111,7 +111,7 @@ namespace Pulumi.Linode
     ///         Filesystem = "swap",
     ///     });
     /// 
-    ///     var my_config = new Linode.InstanceConfig("my-config", new()
+    ///     var my_config = new Linode.Index.InstanceConfig("my-config", new()
     ///     {
     ///         LinodeId = my_instance.Id,
     ///         Label = "my-config",

@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupNetworkingIp(ctx, &linode.LookupNetworkingIpArgs{
+//			_, err := linode.GetNetworkingIp(ctx, &linode.LookupNetworkingIpArgs{
 //				Address: "162.159.27.72",
 //			}, nil)
 //			if err != nil {

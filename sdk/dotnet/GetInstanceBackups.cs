@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_backups = Linode.GetInstanceBackups.Invoke(new()
+        ///     var my_backups = Linode.Index.GetInstanceBackups.Invoke(new()
         ///     {
         ///         LinodeId = 123,
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_backups = Linode.GetInstanceBackups.Invoke(new()
+        ///     var my_backups = Linode.Index.GetInstanceBackups.Invoke(new()
         ///     {
         ///         LinodeId = 123,
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_backups = Linode.GetInstanceBackups.Invoke(new()
+        ///     var my_backups = Linode.Index.GetInstanceBackups.Invoke(new()
         ///     {
         ///         LinodeId = 123,
         ///     });

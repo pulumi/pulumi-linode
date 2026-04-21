@@ -27,12 +27,12 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Linode.GetDomain.Invoke(new()
+        ///     var foo = Linode.Index.GetDomain.Invoke(new()
         ///     {
         ///         Id = 1234567,
         ///     });
         /// 
-        ///     var bar = Linode.GetDomain.Invoke(new()
+        ///     var bar = Linode.Index.GetDomain.Invoke(new()
         ///     {
         ///         Domain = "bar.example.com",
         ///     });
@@ -59,12 +59,12 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Linode.GetDomain.Invoke(new()
+        ///     var foo = Linode.Index.GetDomain.Invoke(new()
         ///     {
         ///         Id = 1234567,
         ///     });
         /// 
-        ///     var bar = Linode.GetDomain.Invoke(new()
+        ///     var bar = Linode.Index.GetDomain.Invoke(new()
         ///     {
         ///         Domain = "bar.example.com",
         ///     });
@@ -91,12 +91,12 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Linode.GetDomain.Invoke(new()
+        ///     var foo = Linode.Index.GetDomain.Invoke(new()
         ///     {
         ///         Id = 1234567,
         ///     });
         /// 
-        ///     var bar = Linode.GetDomain.Invoke(new()
+        ///     var bar = Linode.Index.GetDomain.Invoke(new()
         ///     {
         ///         Domain = "bar.example.com",
         ///     });

@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_bucket = Linode.GetLinodeObjectStorageBucket.Invoke(new()
+        ///     var my_bucket = Linode.Index.GetLinodeObjectStorageBucket.Invoke(new()
         ///     {
         ///         Label = "my-bucket",
         ///         Region = "us-mia",
@@ -55,7 +55,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_bucket = Linode.GetLinodeObjectStorageBucket.Invoke(new()
+        ///     var my_bucket = Linode.Index.GetLinodeObjectStorageBucket.Invoke(new()
         ///     {
         ///         Label = "my-bucket",
         ///         Region = "us-mia",
@@ -83,7 +83,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_bucket = Linode.GetLinodeObjectStorageBucket.Invoke(new()
+        ///     var my_bucket = Linode.Index.GetLinodeObjectStorageBucket.Invoke(new()
         ///     {
         ///         Label = "my-bucket",
         ///         Region = "us-mia",

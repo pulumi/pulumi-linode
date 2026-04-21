@@ -74,7 +74,7 @@ using Linode = Pulumi.Linode;
 return await Deployment.RunAsync(() =>
 {
     // Create a Linode
-    var foobar = new Linode.Instance("foobar");
+    var foobar = new Linode.Index.Instance("foobar");
 
 });
 

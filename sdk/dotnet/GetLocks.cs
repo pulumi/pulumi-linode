@@ -30,7 +30,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstanceLocks = Linode.GetLocks.Invoke(new()
+        ///     var myInstanceLocks = Linode.Index.GetLocks.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -55,7 +55,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetLocks.Invoke();
+        ///     var all = Linode.Index.GetLocks.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -92,7 +92,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstanceLocks = Linode.GetLocks.Invoke(new()
+        ///     var myInstanceLocks = Linode.Index.GetLocks.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -117,7 +117,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetLocks.Invoke();
+        ///     var all = Linode.Index.GetLocks.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -154,7 +154,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstanceLocks = Linode.GetLocks.Invoke(new()
+        ///     var myInstanceLocks = Linode.Index.GetLocks.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -179,7 +179,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetLocks.Invoke();
+        ///     var all = Linode.Index.GetLocks.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

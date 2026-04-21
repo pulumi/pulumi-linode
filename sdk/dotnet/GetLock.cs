@@ -30,7 +30,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myLock = Linode.GetLock.Invoke(new()
+        ///     var myLock = Linode.Index.GetLock.Invoke(new()
         ///     {
         ///         Id = 123456,
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myLock = Linode.GetLock.Invoke(new()
+        ///     var myLock = Linode.Index.GetLock.Invoke(new()
         ///     {
         ///         Id = 123456,
         ///     });
@@ -90,7 +90,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myLock = Linode.GetLock.Invoke(new()
+        ///     var myLock = Linode.Index.GetLock.Invoke(new()
         ///     {
         ///         Id = 123456,
         ///     });

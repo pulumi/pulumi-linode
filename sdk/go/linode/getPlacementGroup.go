@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupPlacementGroup(ctx, &linode.LookupPlacementGroupArgs{
+//			_, err := linode.GetPlacementGroup(ctx, &linode.LookupPlacementGroupArgs{
 //				Id: 12345,
 //			}, nil)
 //			if err != nil {

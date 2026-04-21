@@ -24,7 +24,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.NetworkingIpAssignment("foobar", new()
+    ///     var foobar = new Linode.Index.NetworkingIpAssignment("foobar", new()
     ///     {
     ///         Region = "us-mia",
     ///         Assignments = new[]

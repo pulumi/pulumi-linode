@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myStackscript = Linode.GetStackScript.Invoke(new()
+        ///     var myStackscript = Linode.Index.GetStackScript.Invoke(new()
         ///     {
         ///         Id = "355872",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myStackscript = Linode.GetStackScript.Invoke(new()
+        ///     var myStackscript = Linode.Index.GetStackScript.Invoke(new()
         ///     {
         ///         Id = "355872",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myStackscript = Linode.GetStackScript.Invoke(new()
+        ///     var myStackscript = Linode.Index.GetStackScript.Invoke(new()
         ///     {
         ///         Id = "355872",
         ///     });

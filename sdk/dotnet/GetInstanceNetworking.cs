@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetInstanceNetworking.Invoke(new()
+        ///     var example = Linode.Index.GetInstanceNetworking.Invoke(new()
         ///     {
         ///         LinodeId = 123,
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetInstanceNetworking.Invoke(new()
+        ///     var example = Linode.Index.GetInstanceNetworking.Invoke(new()
         ///     {
         ///         LinodeId = 123,
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetInstanceNetworking.Invoke(new()
+        ///     var example = Linode.Index.GetInstanceNetworking.Invoke(new()
         ///     {
         ///         LinodeId = 123,
         ///     });

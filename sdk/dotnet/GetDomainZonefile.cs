@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myZonefile = Linode.GetDomainZonefile.Invoke(new()
+        ///     var myZonefile = Linode.Index.GetDomainZonefile.Invoke(new()
         ///     {
         ///         DomainId = 3150401,
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myZonefile = Linode.GetDomainZonefile.Invoke(new()
+        ///     var myZonefile = Linode.Index.GetDomainZonefile.Invoke(new()
         ///     {
         ///         DomainId = 3150401,
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myZonefile = Linode.GetDomainZonefile.Invoke(new()
+        ///     var myZonefile = Linode.Index.GetDomainZonefile.Invoke(new()
         ///     {
         ///         DomainId = 3150401,
         ///     });

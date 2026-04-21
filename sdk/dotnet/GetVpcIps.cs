@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_ips = Linode.GetVpcIps.Invoke(new()
+        ///     var filtered_ips = Linode.Index.GetVpcIps.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -59,7 +59,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_vpc_ips = Linode.GetVpcIps.Invoke(new()
+        ///     var specific_vpc_ips = Linode.Index.GetVpcIps.Invoke(new()
         ///     {
         ///         VpcId = 123,
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_vpc_ipv6 = Linode.GetVpcIps.Invoke(new()
+        ///     var all_vpc_ipv6 = Linode.Index.GetVpcIps.Invoke(new()
         ///     {
         ///         Ipv6 = true,
         ///     });
@@ -120,7 +120,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_ips = Linode.GetVpcIps.Invoke(new()
+        ///     var filtered_ips = Linode.Index.GetVpcIps.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -152,7 +152,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_vpc_ips = Linode.GetVpcIps.Invoke(new()
+        ///     var specific_vpc_ips = Linode.Index.GetVpcIps.Invoke(new()
         ///     {
         ///         VpcId = 123,
         ///     });
@@ -174,7 +174,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_vpc_ipv6 = Linode.GetVpcIps.Invoke(new()
+        ///     var all_vpc_ipv6 = Linode.Index.GetVpcIps.Invoke(new()
         ///     {
         ///         Ipv6 = true,
         ///     });
@@ -213,7 +213,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_ips = Linode.GetVpcIps.Invoke(new()
+        ///     var filtered_ips = Linode.Index.GetVpcIps.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -245,7 +245,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_vpc_ips = Linode.GetVpcIps.Invoke(new()
+        ///     var specific_vpc_ips = Linode.Index.GetVpcIps.Invoke(new()
         ///     {
         ///         VpcId = 123,
         ///     });
@@ -267,7 +267,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_vpc_ipv6 = Linode.GetVpcIps.Invoke(new()
+        ///     var all_vpc_ipv6 = Linode.Index.GetVpcIps.Invoke(new()
         ///     {
         ///         Ipv6 = true,
         ///     });

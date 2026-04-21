@@ -27,7 +27,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Linode.Instance("foo", new()
+    ///     var foo = new Linode.Index.Instance("foo", new()
     ///     {
     ///         Image = "linode/alpine3.19",
     ///         Label = "foobar-test",
@@ -35,7 +35,7 @@ namespace Pulumi.Linode
     ///         Region = "us-east",
     ///     });
     /// 
-    ///     var fooInstanceIp = new Linode.InstanceIp("foo", new()
+    ///     var fooInstanceIp = new Linode.Index.InstanceIp("foo", new()
     ///     {
     ///         LinodeId = foo.Id,
     ///         Public = true,

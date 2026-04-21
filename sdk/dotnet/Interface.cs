@@ -32,7 +32,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @public = new Linode.Interface("public", new()
+    ///     var @public = new Linode.Index.Interface("public", new()
     ///     {
     ///         LinodeId = my_instance.Id,
     ///         Public = new Linode.Inputs.InterfacePublicArgs
@@ -76,7 +76,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ipv6Only = new Linode.Interface("ipv6_only", new()
+    ///     var ipv6Only = new Linode.Index.Interface("ipv6_only", new()
     ///     {
     ///         LinodeId = my_instance.Id,
     ///         Public = new Linode.Inputs.InterfacePublicArgs
@@ -113,7 +113,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vpc = new Linode.Interface("vpc", new()
+    ///     var vpc = new Linode.Index.Interface("vpc", new()
     ///     {
     ///         LinodeId = my_instance.Id,
     ///         Vpc = new Linode.Inputs.InterfaceVpcArgs
@@ -154,7 +154,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vpc = new Linode.Interface("vpc", new()
+    ///     var vpc = new Linode.Index.Interface("vpc", new()
     ///     {
     ///         LinodeId = my_instance.Id,
     ///         Vpc = new Linode.Inputs.InterfaceVpcArgs
@@ -196,7 +196,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vlan = new Linode.Interface("vlan", new()
+    ///     var vlan = new Linode.Index.Interface("vlan", new()
     ///     {
     ///         LinodeId = web.Id,
     ///         Vlan = new Linode.Inputs.InterfaceVlanArgs
@@ -219,7 +219,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     var my_instance = new Linode.Index.Instance("my-instance", new()
     ///     {
     ///         Label = "my-instance",
     ///         Region = "us-mia",
@@ -227,7 +227,7 @@ namespace Pulumi.Linode
     ///         InterfaceGeneration = "linode",
     ///     });
     /// 
-    ///     var boot = new Linode.InstanceDisk("boot", new()
+    ///     var boot = new Linode.Index.InstanceDisk("boot", new()
     ///     {
     ///         Label = "boot",
     ///         LinodeId = my_instance.Id,
@@ -236,7 +236,7 @@ namespace Pulumi.Linode
     ///         RootPass = "this-is-NOT-a-safe-password",
     ///     });
     /// 
-    ///     var @public = new Linode.Interface("public", new()
+    ///     var @public = new Linode.Index.Interface("public", new()
     ///     {
     ///         LinodeId = my_instance.Id,
     ///         Public = new Linode.Inputs.InterfacePublicArgs
@@ -265,7 +265,7 @@ namespace Pulumi.Linode
     ///         },
     ///     });
     /// 
-    ///     var my_config = new Linode.InstanceConfig("my-config", new()
+    ///     var my_config = new Linode.Index.InstanceConfig("my-config", new()
     ///     {
     ///         LinodeId = my_instance.Id,
     ///         Label = "my-config",

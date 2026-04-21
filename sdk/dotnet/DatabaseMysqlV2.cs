@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     var foobar = new Linode.Index.DatabaseMysqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "mysql/8",
@@ -43,7 +43,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     var foobar = new Linode.Index.DatabaseMysqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "mysql/8",
@@ -65,7 +65,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     var foobar = new Linode.Index.DatabaseMysqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "mysql/8",
@@ -95,7 +95,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     var foobar = new Linode.Index.DatabaseMysqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "mysql/8",
@@ -141,7 +141,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     var foobar = new Linode.Index.DatabaseMysqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "mysql/8",
@@ -160,7 +160,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     var foobar = new Linode.Index.DatabaseMysqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "mysql/16",

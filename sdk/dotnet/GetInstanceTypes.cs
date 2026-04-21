@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_types = Linode.GetInstanceTypes.Invoke(new()
+        ///     var specific_types = Linode.Index.GetInstanceTypes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_types = Linode.GetInstanceTypes.Invoke();
+        ///     var all_types = Linode.Index.GetInstanceTypes.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -98,7 +98,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_types = Linode.GetInstanceTypes.Invoke(new()
+        ///     var specific_types = Linode.Index.GetInstanceTypes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -127,7 +127,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_types = Linode.GetInstanceTypes.Invoke();
+        ///     var all_types = Linode.Index.GetInstanceTypes.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -171,7 +171,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_types = Linode.GetInstanceTypes.Invoke(new()
+        ///     var specific_types = Linode.Index.GetInstanceTypes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -200,7 +200,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_types = Linode.GetInstanceTypes.Invoke();
+        ///     var all_types = Linode.Index.GetInstanceTypes.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

@@ -26,7 +26,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobaz = new Linode.Instance("foobaz", new()
+    ///     var foobaz = new Linode.Index.Instance("foobaz", new()
     ///     {
     ///         RootPass = "3X4mp13",
     ///         Type = "g6-nanode-1",
@@ -37,7 +37,7 @@ namespace Pulumi.Linode
     ///         },
     ///     });
     /// 
-    ///     var foobar = new Linode.Volume("foobar", new()
+    ///     var foobar = new Linode.Index.Volume("foobar", new()
     ///     {
     ///         Label = "foo-volume",
     ///         Region = foobaz.Region,
@@ -57,13 +57,13 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Linode.Instance("foo", new()
+    ///     var foo = new Linode.Index.Instance("foo", new()
     ///     {
     ///         Region = "us-east",
     ///         Type = "g6-nanode-1",
     ///     });
     /// 
-    ///     var fooInstanceConfig = new Linode.InstanceConfig("foo", new()
+    ///     var fooInstanceConfig = new Linode.Index.InstanceConfig("foo", new()
     ///     {
     ///         LinodeId = foo.Id,
     ///         Label = "boot-existing-volume",
@@ -92,7 +92,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Volume("foobar", new()
+    ///     var foobar = new Linode.Index.Volume("foobar", new()
     ///     {
     ///         Label = "my-cloned-volume",
     ///         SourceVolumeId = 12345,

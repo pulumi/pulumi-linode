@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupLkeNodePool(ctx, &linode.LookupLkeNodePoolArgs{
+//			_, err := linode.GetLkeNodePool(ctx, &linode.LookupLkeNodePoolArgs{
 //				Id:        123,
 //				ClusterId: 321,
 //			}, nil)

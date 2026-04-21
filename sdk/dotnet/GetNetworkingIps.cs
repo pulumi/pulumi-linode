@@ -24,7 +24,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetNetworkingIps.Invoke();
+        ///     var all = Linode.Index.GetNetworkingIps.Invoke();
         /// 
         /// });
         /// ```
@@ -36,7 +36,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = Linode.GetNetworkingIps.Invoke(new()
+        ///     var filtered = Linode.Index.GetNetworkingIps.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -92,7 +92,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetNetworkingIps.Invoke();
+        ///     var all = Linode.Index.GetNetworkingIps.Invoke();
         /// 
         /// });
         /// ```
@@ -104,7 +104,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = Linode.GetNetworkingIps.Invoke(new()
+        ///     var filtered = Linode.Index.GetNetworkingIps.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -160,7 +160,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetNetworkingIps.Invoke();
+        ///     var all = Linode.Index.GetNetworkingIps.Invoke();
         /// 
         /// });
         /// ```
@@ -172,7 +172,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = Linode.GetNetworkingIps.Invoke(new()
+        ///     var filtered = Linode.Index.GetNetworkingIps.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

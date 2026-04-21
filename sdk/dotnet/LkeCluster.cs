@@ -23,7 +23,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     var my_cluster = new Linode.Index.LkeCluster("my-cluster", new()
     ///     {
     ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
@@ -52,7 +52,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Linode.LkeCluster("test", new()
+    ///     var test = new Linode.Index.LkeCluster("test", new()
     ///     {
     ///         Label = "lke-e-cluster",
     ///         Region = "us-lax",
@@ -86,7 +86,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     var my_cluster = new Linode.Index.LkeCluster("my-cluster", new()
     ///     {
     ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
@@ -119,7 +119,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Linode.LkeCluster("test", new()
+    ///     var test = new Linode.Index.LkeCluster("test", new()
     ///     {
     ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
@@ -170,7 +170,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     var my_cluster = new Linode.Index.LkeCluster("my-cluster", new()
     ///     {
     ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
@@ -206,7 +206,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     var my_cluster = new Linode.Index.LkeCluster("my-cluster", new()
     ///     {
     ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
@@ -237,7 +237,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     var my_cluster = new Linode.Index.LkeCluster("my-cluster", new()
     ///     {
     ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
@@ -288,7 +288,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     var my_cluster = new Linode.Index.LkeCluster("my-cluster", new()
     ///     {
     ///         Pools = new[]
     ///         {
@@ -315,7 +315,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     var my_cluster = new Linode.Index.LkeCluster("my-cluster", new()
     ///     {
     ///         Pools = new[]
     ///         {
@@ -346,7 +346,7 @@ namespace Pulumi.Linode
     /// {
     ///     var externalPoolTag = "external";
     /// 
-    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     var my_cluster = new Linode.Index.LkeCluster("my-cluster", new()
     ///     {
     ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
@@ -365,7 +365,7 @@ namespace Pulumi.Linode
     ///         },
     ///     });
     /// 
-    ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
+    ///     var my_pool = new Linode.Index.LkeNodePool("my-pool", new()
     ///     {
     ///         ClusterId = my_cluster.Id,
     ///         Type = "g6-standard-2",
