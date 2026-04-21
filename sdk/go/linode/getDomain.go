@@ -30,13 +30,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupDomain(ctx, &linode.LookupDomainArgs{
+//			_, err := linode.GetDomain(ctx, &linode.LookupDomainArgs{
 //				Id: pulumi.IntRef(1234567),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.LookupDomain(ctx, &linode.LookupDomainArgs{
+//			_, err = linode.GetDomain(ctx, &linode.LookupDomainArgs{
 //				Domain: pulumi.StringRef("bar.example.com"),
 //			}, nil)
 //			if err != nil {

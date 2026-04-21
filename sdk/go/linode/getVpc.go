@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := linode.LookupVpc(ctx, &linode.LookupVpcArgs{
+//			foo, err := linode.GetVpc(ctx, &linode.LookupVpcArgs{
 //				Id: "123",
 //			}, nil)
 //			if err != nil {

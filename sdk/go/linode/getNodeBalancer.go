@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupNodeBalancer(ctx, &linode.LookupNodeBalancerArgs{
+//			_, err := linode.GetNodeBalancer(ctx, &linode.LookupNodeBalancerArgs{
 //				Id: 123,
 //			}, nil)
 //			if err != nil {

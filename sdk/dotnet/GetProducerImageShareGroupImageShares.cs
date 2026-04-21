@@ -27,12 +27,12 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetProducerImageShareGroupImageShares.Invoke(new()
+        ///     var all = Linode.Index.GetProducerImageShareGroupImageShares.Invoke(new()
         ///     {
         ///         SharegroupId = 123,
         ///     });
         /// 
-        ///     var filtered = Linode.GetProducerImageShareGroupImageShares.Invoke(new()
+        ///     var filtered = Linode.Index.GetProducerImageShareGroupImageShares.Invoke(new()
         ///     {
         ///         SharegroupId = 123,
         ///         Filters = new[]
@@ -81,12 +81,12 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetProducerImageShareGroupImageShares.Invoke(new()
+        ///     var all = Linode.Index.GetProducerImageShareGroupImageShares.Invoke(new()
         ///     {
         ///         SharegroupId = 123,
         ///     });
         /// 
-        ///     var filtered = Linode.GetProducerImageShareGroupImageShares.Invoke(new()
+        ///     var filtered = Linode.Index.GetProducerImageShareGroupImageShares.Invoke(new()
         ///     {
         ///         SharegroupId = 123,
         ///         Filters = new[]
@@ -135,12 +135,12 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetProducerImageShareGroupImageShares.Invoke(new()
+        ///     var all = Linode.Index.GetProducerImageShareGroupImageShares.Invoke(new()
         ///     {
         ///         SharegroupId = 123,
         ///     });
         /// 
-        ///     var filtered = Linode.GetProducerImageShareGroupImageShares.Invoke(new()
+        ///     var filtered = Linode.Index.GetProducerImageShareGroupImageShares.Invoke(new()
         ///     {
         ///         SharegroupId = 123,
         ///         Filters = new[]

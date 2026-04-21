@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sg = Linode.GetProducerImageShareGroup.Invoke(new()
+        ///     var sg = Linode.Index.GetProducerImageShareGroup.Invoke(new()
         ///     {
         ///         Id = 12345,
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sg = Linode.GetProducerImageShareGroup.Invoke(new()
+        ///     var sg = Linode.Index.GetProducerImageShareGroup.Invoke(new()
         ///     {
         ///         Id = 12345,
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sg = Linode.GetProducerImageShareGroup.Invoke(new()
+        ///     var sg = Linode.Index.GetProducerImageShareGroup.Invoke(new()
         ///     {
         ///         Id = 12345,
         ///     });

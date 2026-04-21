@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_node = Linode.GetNodeBalancerNode.Invoke(new()
+        ///     var my_node = Linode.Index.GetNodeBalancerNode.Invoke(new()
         ///     {
         ///         Id = 123,
         ///         NodebalancerId = 456,
@@ -52,7 +52,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_node = Linode.GetNodeBalancerNode.Invoke(new()
+        ///     var my_node = Linode.Index.GetNodeBalancerNode.Invoke(new()
         ///     {
         ///         Id = 123,
         ///         NodebalancerId = 456,
@@ -79,7 +79,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_node = Linode.GetNodeBalancerNode.Invoke(new()
+        ///     var my_node = Linode.Index.GetNodeBalancerNode.Invoke(new()
         ///     {
         ///         Id = 123,
         ///         NodebalancerId = 456,

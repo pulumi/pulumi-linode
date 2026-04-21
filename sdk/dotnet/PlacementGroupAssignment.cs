@@ -23,7 +23,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     var my_instance = new Linode.Index.Instance("my-instance", new()
     ///     {
     ///         PlacementGroupExternallyManaged = true,
     ///     });
@@ -41,14 +41,14 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_pg = new Linode.PlacementGroup("my-pg", new()
+    ///     var my_pg = new Linode.Index.PlacementGroup("my-pg", new()
     ///     {
     ///         Label = "my-pg",
     ///         Region = "us-east",
     ///         PlacementGroupType = "anti_affinity:local",
     ///     });
     /// 
-    ///     var my_inst = new Linode.Instance("my-inst", new()
+    ///     var my_inst = new Linode.Index.Instance("my-inst", new()
     ///     {
     ///         Label = "my-inst",
     ///         Region = "us-east",
@@ -56,7 +56,7 @@ namespace Pulumi.Linode
     ///         PlacementGroupExternallyManaged = true,
     ///     });
     /// 
-    ///     var my_assignment = new Linode.PlacementGroupAssignment("my-assignment", new()
+    ///     var my_assignment = new Linode.Index.PlacementGroupAssignment("my-assignment", new()
     ///     {
     ///         PlacementGroupId = my_pg.Id,
     ///         LinodeId = my_inst.Id,

@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetAccountSettings.Invoke();
+        ///     var example = Linode.Index.GetAccountSettings.Invoke();
         /// 
         /// });
         /// ```
@@ -51,7 +51,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetAccountSettings.Invoke();
+        ///     var example = Linode.Index.GetAccountSettings.Invoke();
         /// 
         /// });
         /// ```
@@ -75,7 +75,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.GetAccountSettings.Invoke();
+        ///     var example = Linode.Index.GetAccountSettings.Invoke();
         /// 
         /// });
         /// ```

@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupLock(ctx, &linode.LookupLockArgs{
+//			_, err := linode.GetLock(ctx, &linode.LookupLockArgs{
 //				Id: 123456,
 //			}, nil)
 //			if err != nil {

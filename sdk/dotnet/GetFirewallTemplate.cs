@@ -24,7 +24,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var public_template = Linode.GetFirewallTemplate.Invoke(new()
+        ///     var public_template = Linode.Index.GetFirewallTemplate.Invoke(new()
         ///     {
         ///         Slug = "public",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var public_template = Linode.GetFirewallTemplate.Invoke(new()
+        ///     var public_template = Linode.Index.GetFirewallTemplate.Invoke(new()
         ///     {
         ///         Slug = "public",
         ///     });
@@ -80,7 +80,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var public_template = Linode.GetFirewallTemplate.Invoke(new()
+        ///     var public_template = Linode.Index.GetFirewallTemplate.Invoke(new()
         ///     {
         ///         Slug = "public",
         ///     });

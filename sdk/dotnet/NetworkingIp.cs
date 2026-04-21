@@ -24,7 +24,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testIp = new Linode.NetworkingIp("test_ip", new()
+    ///     var testIp = new Linode.Index.NetworkingIp("test_ip", new()
     ///     {
     ///         Type = "ipv4",
     ///         LinodeId = 12345,

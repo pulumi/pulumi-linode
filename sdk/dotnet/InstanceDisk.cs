@@ -25,14 +25,14 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     var my_instance = new Linode.Index.Instance("my-instance", new()
     ///     {
     ///         Label = "my-instance",
     ///         Type = "g6-standard-1",
     ///         Region = "us-southeast",
     ///     });
     /// 
-    ///     var boot = new Linode.InstanceDisk("boot", new()
+    ///     var boot = new Linode.Index.InstanceDisk("boot", new()
     ///     {
     ///         Label = "boot",
     ///         LinodeId = my_instance.Id,
@@ -50,14 +50,14 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     var my_instance = new Linode.Index.Instance("my-instance", new()
     ///     {
     ///         Label = "my-instance",
     ///         Type = "g6-standard-1",
     ///         Region = "us-southeast",
     ///     });
     /// 
-    ///     var boot = new Linode.InstanceDisk("boot", new()
+    ///     var boot = new Linode.Index.InstanceDisk("boot", new()
     ///     {
     ///         Label = "boot",
     ///         LinodeId = my_instance.Id,

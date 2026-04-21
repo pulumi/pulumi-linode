@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myaccount = new Linode.AccountSettings("myaccount", new()
+    ///     var myaccount = new Linode.Index.AccountSettings("myaccount", new()
     ///     {
     ///         LongviewSubscription = "longview-40",
     ///         BackupsEnabled = true,

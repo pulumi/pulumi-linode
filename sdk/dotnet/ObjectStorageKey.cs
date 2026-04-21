@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Linode.ObjectStorageKey("foo", new()
+    ///     var foo = new Linode.Index.ObjectStorageKey("foo", new()
     ///     {
     ///         Label = "image-access",
     ///     });
@@ -43,7 +43,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.ObjectStorageKey("foobar", new()
+    ///     var foobar = new Linode.Index.ObjectStorageKey("foobar", new()
     ///     {
     ///         Label = "my-key",
     ///         BucketAccesses = new[]
@@ -70,7 +70,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Linode.ObjectStorageKey("foo", new()
+    ///     var foo = new Linode.Index.ObjectStorageKey("foo", new()
     ///     {
     ///         Label = "image-access",
     ///         BucketAccesses = new[]

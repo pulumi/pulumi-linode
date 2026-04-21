@@ -25,14 +25,14 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.NodeBalancer("foobar", new()
+    ///     var foobar = new Linode.Index.NodeBalancer("foobar", new()
     ///     {
     ///         Label = "mynodebalancer",
     ///         Region = "us-east",
     ///         ClientConnThrottle = 20,
     ///     });
     /// 
-    ///     var foofig = new Linode.NodeBalancerConfig("foofig", new()
+    ///     var foofig = new Linode.Index.NodeBalancerConfig("foofig", new()
     ///     {
     ///         NodebalancerId = foobar.Id,
     ///         Port = 8088,

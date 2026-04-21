@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := linode.LookupVpcSubnet(ctx, &linode.LookupVpcSubnetArgs{
+//			foo, err := linode.GetVpcSubnet(ctx, &linode.LookupVpcSubnetArgs{
 //				VpcId: 123,
 //				Id:    "12345",
 //			}, nil)

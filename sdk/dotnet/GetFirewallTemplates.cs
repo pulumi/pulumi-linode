@@ -24,7 +24,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetFirewallTemplates.Invoke();
+        ///     var all = Linode.Index.GetFirewallTemplates.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -43,7 +43,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = Linode.GetFirewallTemplates.Invoke(new()
+        ///     var filtered = Linode.Index.GetFirewallTemplates.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -86,7 +86,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetFirewallTemplates.Invoke();
+        ///     var all = Linode.Index.GetFirewallTemplates.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -105,7 +105,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = Linode.GetFirewallTemplates.Invoke(new()
+        ///     var filtered = Linode.Index.GetFirewallTemplates.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -148,7 +148,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.GetFirewallTemplates.Invoke();
+        ///     var all = Linode.Index.GetFirewallTemplates.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -167,7 +167,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = Linode.GetFirewallTemplates.Invoke(new()
+        ///     var filtered = Linode.Index.GetFirewallTemplates.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

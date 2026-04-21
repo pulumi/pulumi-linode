@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var k8Master = Linode.GetImage.Invoke(new()
+        ///     var k8Master = Linode.Index.GetImage.Invoke(new()
         ///     {
         ///         Id = "linode/debian12",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var k8Master = Linode.GetImage.Invoke(new()
+        ///     var k8Master = Linode.Index.GetImage.Invoke(new()
         ///     {
         ///         Id = "linode/debian12",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var k8Master = Linode.GetImage.Invoke(new()
+        ///     var k8Master = Linode.Index.GetImage.Invoke(new()
         ///     {
         ///         Id = "linode/debian12",
         ///     });

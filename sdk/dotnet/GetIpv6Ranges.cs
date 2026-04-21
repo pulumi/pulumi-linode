@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_ranges = Linode.GetIpv6Ranges.Invoke(new()
+        ///     var filtered_ranges = Linode.Index.GetIpv6Ranges.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -78,7 +78,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_ranges = Linode.GetIpv6Ranges.Invoke(new()
+        ///     var filtered_ranges = Linode.Index.GetIpv6Ranges.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -129,7 +129,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_ranges = Linode.GetIpv6Ranges.Invoke(new()
+        ///     var filtered_ranges = Linode.Index.GetIpv6Ranges.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

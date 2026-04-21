@@ -23,7 +23,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.ObjectStorageBucket("foobar", new()
+    ///     var foobar = new Linode.Index.ObjectStorageBucket("foobar", new()
     ///     {
     ///         Region = "us-mia",
     ///         Label = "mybucket",
@@ -39,12 +39,12 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mykey = new Linode.ObjectStorageKey("mykey", new()
+    ///     var mykey = new Linode.Index.ObjectStorageKey("mykey", new()
     ///     {
     ///         Label = "image-access",
     ///     });
     /// 
-    ///     var mybucket = new Linode.ObjectStorageBucket("mybucket", new()
+    ///     var mybucket = new Linode.Index.ObjectStorageBucket("mybucket", new()
     ///     {
     ///         AccessKey = mykey.AccessKey,
     ///         SecretKey = mykey.SecretKey,

@@ -25,14 +25,14 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @object = new Linode.ObjectStorageObject("object", new()
+    ///     var @object = new Linode.Index.ObjectStorageObject("object", new()
     ///     {
     ///         Bucket = "my-bucket",
     ///         Region = "us-mia",
     ///         Key = "my-object",
     ///         SecretKey = myKey.SecretKey,
     ///         AccessKey = myKey.AccessKey,
-    ///         Source = Std.Pathexpand.Invoke(new()
+    ///         Source = Std.Index.Pathexpand.Invoke(new()
     ///         {
     ///             Input = "~/files/log.txt",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -51,7 +51,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @object = new Linode.ObjectStorageObject("object", new()
+    ///     var @object = new Linode.Index.ObjectStorageObject("object", new()
     ///     {
     ///         Bucket = "my-bucket",
     ///         Region = "us-mia",
@@ -77,12 +77,12 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @object = new Linode.ObjectStorageObject("object", new()
+    ///     var @object = new Linode.Index.ObjectStorageObject("object", new()
     ///     {
     ///         Bucket = "my-bucket",
     ///         Region = "us-mia",
     ///         Key = "my-object",
-    ///         Source = Std.Pathexpand.Invoke(new()
+    ///         Source = Std.Index.Pathexpand.Invoke(new()
     ///         {
     ///             Input = "~/files/log.txt",
     ///         }).Apply(invoke =&gt; invoke.Result),

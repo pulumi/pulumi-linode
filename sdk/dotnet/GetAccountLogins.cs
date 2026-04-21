@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_account_logins = Linode.GetAccountLogins.Invoke(new()
+        ///     var filtered_account_logins = Linode.Index.GetAccountLogins.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -84,7 +84,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_account_logins = Linode.GetAccountLogins.Invoke(new()
+        ///     var filtered_account_logins = Linode.Index.GetAccountLogins.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -141,7 +141,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_account_logins = Linode.GetAccountLogins.Invoke(new()
+        ///     var filtered_account_logins = Linode.Index.GetAccountLogins.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_instances = Linode.GetInstances.Invoke(new()
+        ///     var my_instances = Linode.Index.GetInstances.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -63,7 +63,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_instances = Linode.GetInstances.Invoke();
+        ///     var all_instances = Linode.Index.GetInstances.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -109,7 +109,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_instances = Linode.GetInstances.Invoke(new()
+        ///     var my_instances = Linode.Index.GetInstances.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -147,7 +147,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_instances = Linode.GetInstances.Invoke();
+        ///     var all_instances = Linode.Index.GetInstances.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -193,7 +193,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_instances = Linode.GetInstances.Invoke(new()
+        ///     var my_instances = Linode.Index.GetInstances.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -231,7 +231,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_instances = Linode.GetInstances.Invoke();
+        ///     var all_instances = Linode.Index.GetInstances.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

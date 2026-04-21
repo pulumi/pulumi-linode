@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.NodeBalancer("foobar", new()
+    ///     var foobar = new Linode.Index.NodeBalancer("foobar", new()
     ///     {
     ///         Label = "mynodebalancer",
     ///         Region = "us-east",
@@ -51,7 +51,7 @@ namespace Pulumi.Linode
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // NOTE: VPC-attached NodeBalancers may not currently be available to all users.
-    ///     var foobar = new Linode.NodeBalancer("foobar", new()
+    ///     var foobar = new Linode.Index.NodeBalancer("foobar", new()
     ///     {
     ///         Label = "mynodebalancer",
     ///         Region = "us-mia",

@@ -23,7 +23,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test_empty = new Linode.ProducerImageShareGroup("test-empty", new()
+    ///     var test_empty = new Linode.Index.ProducerImageShareGroup("test-empty", new()
     ///     {
     ///         Label = "my-image-share-group",
     ///         Description = "My description.",
@@ -39,7 +39,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test_images = new Linode.ProducerImageShareGroup("test-images", new()
+    ///     var test_images = new Linode.Index.ProducerImageShareGroup("test-images", new()
     ///     {
     ///         Label = "my-image-share-group",
     ///         Description = "My description.",

@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
+        ///     var vpc_configs = Linode.Index.GetNodebalancerVpcs.Invoke(new()
         ///     {
         ///         NodebalancerId = 12345,
         ///     });
@@ -42,7 +42,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
+        ///     var vpc_configs = Linode.Index.GetNodebalancerVpcs.Invoke(new()
         ///     {
         ///         NodebalancerId = 12345,
         ///         Filters = new[]
@@ -92,7 +92,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
+        ///     var vpc_configs = Linode.Index.GetNodebalancerVpcs.Invoke(new()
         ///     {
         ///         NodebalancerId = 12345,
         ///     });
@@ -107,7 +107,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
+        ///     var vpc_configs = Linode.Index.GetNodebalancerVpcs.Invoke(new()
         ///     {
         ///         NodebalancerId = 12345,
         ///         Filters = new[]
@@ -157,7 +157,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
+        ///     var vpc_configs = Linode.Index.GetNodebalancerVpcs.Invoke(new()
         ///     {
         ///         NodebalancerId = 12345,
         ///     });
@@ -172,7 +172,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
+        ///     var vpc_configs = Linode.Index.GetNodebalancerVpcs.Invoke(new()
         ///     {
         ///         NodebalancerId = 12345,
         ///         Filters = new[]

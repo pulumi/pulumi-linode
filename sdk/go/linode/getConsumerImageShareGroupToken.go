@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.LookupConsumerImageShareGroupToken(ctx, &linode.LookupConsumerImageShareGroupTokenArgs{
+//			_, err := linode.GetConsumerImageShareGroupToken(ctx, &linode.LookupConsumerImageShareGroupTokenArgs{
 //				TokenUuid: "db58ab2e-3021-4b08-9426-8e456f6dd268",
 //			}, nil)
 //			if err != nil {

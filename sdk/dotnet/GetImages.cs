@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_images = Linode.GetImages.Invoke(new()
+        ///     var specific_images = Linode.Index.GetImages.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -62,7 +62,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_images = Linode.GetImages.Invoke();
+        ///     var all_images = Linode.Index.GetImages.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -110,7 +110,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_images = Linode.GetImages.Invoke(new()
+        ///     var specific_images = Linode.Index.GetImages.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -147,7 +147,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_images = Linode.GetImages.Invoke();
+        ///     var all_images = Linode.Index.GetImages.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -195,7 +195,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_images = Linode.GetImages.Invoke(new()
+        ///     var specific_images = Linode.Index.GetImages.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -232,7 +232,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all_images = Linode.GetImages.Invoke();
+        ///     var all_images = Linode.Index.GetImages.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
