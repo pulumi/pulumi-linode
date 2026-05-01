@@ -4,7 +4,7 @@ go 1.25.8
 
 require (
 	github.com/linode/terraform-provider-linode/v3 v3.9.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.127.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.128.0
 	github.com/pulumi/pulumi/sdk/v3 v3.228.0
 )
 
