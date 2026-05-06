@@ -2361,7 +2361,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_bgwriter_delay=1000,
             engine_config_pg_bgwriter_flush_after=512,
             engine_config_pg_bgwriter_lru_maxpages=100,
-            engine_config_pg_bgwriter_lru_multiplier=2,
+            engine_config_pg_bgwriter_lru_multiplier=float(2),
             engine_config_pg_deadlock_timeout=1000,
             engine_config_pg_default_toast_compression="pglz",
             engine_config_pg_idle_in_transaction_session_timeout=60000,
@@ -2395,7 +2395,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_wal_writer_delay=200,
             engine_config_pg_stat_monitor_enable=True,
             engine_config_pglookout_max_failover_replication_time_lag=10000,
-            engine_config_shared_buffers_percentage=25,
+            engine_config_shared_buffers_percentage=float(25),
             engine_config_work_mem=400)
         ```
         ```python
@@ -2608,7 +2608,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_bgwriter_delay=1000,
             engine_config_pg_bgwriter_flush_after=512,
             engine_config_pg_bgwriter_lru_maxpages=100,
-            engine_config_pg_bgwriter_lru_multiplier=2,
+            engine_config_pg_bgwriter_lru_multiplier=float(2),
             engine_config_pg_deadlock_timeout=1000,
             engine_config_pg_default_toast_compression="pglz",
             engine_config_pg_idle_in_transaction_session_timeout=60000,
@@ -2642,7 +2642,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_wal_writer_delay=200,
             engine_config_pg_stat_monitor_enable=True,
             engine_config_pglookout_max_failover_replication_time_lag=10000,
-            engine_config_shared_buffers_percentage=25,
+            engine_config_shared_buffers_percentage=float(25),
             engine_config_work_mem=400)
         ```
         ```python

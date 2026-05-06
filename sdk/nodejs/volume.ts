@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * const foobar = new linode.Volume("foobar", {
  *     label: "foo-volume",
  *     region: foobaz.region,
- *     linodeId: foobaz.id,
+ *     linodeId: foobaz.id.apply(x =>Number(x)),
  * });
  * ```
  *
@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * const fooInstanceConfig = new linode.InstanceConfig("foo", {
- *     linodeId: foo.id,
+ *     linodeId: foo.id.apply(x =>Number(x)),
  *     label: "boot-existing-volume",
  *     kernel: "linode/grub2",
  *     devices: [{

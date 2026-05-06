@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_db_config = Linode.Index.GetDatabasePostgresqlConfig.Invoke();
+        ///     var my_db_config = Linode.GetDatabasePostgresqlConfig.Invoke();
         /// 
         /// });
         /// ```
@@ -815,7 +815,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_db_config = Linode.Index.GetDatabasePostgresqlConfig.Invoke();
+        ///     var my_db_config = Linode.GetDatabasePostgresqlConfig.Invoke();
         /// 
         /// });
         /// ```
@@ -1605,7 +1605,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_db_config = Linode.Index.GetDatabasePostgresqlConfig.Invoke();
+        ///     var my_db_config = Linode.GetDatabasePostgresqlConfig.Invoke();
         /// 
         /// });
         /// ```

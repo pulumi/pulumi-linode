@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_db = Linode.Index.GetDatabasePostgresqlV2.Invoke(new()
+        ///     var my_db = Linode.GetDatabasePostgresqlV2.Invoke(new()
         ///     {
         ///         Id = "12345",
         ///     });
@@ -82,7 +82,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_db = Linode.Index.GetDatabasePostgresqlV2.Invoke(new()
+        ///     var my_db = Linode.GetDatabasePostgresqlV2.Invoke(new()
         ///     {
         ///         Id = "12345",
         ///     });
@@ -139,7 +139,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_db = Linode.Index.GetDatabasePostgresqlV2.Invoke(new()
+        ///     var my_db = Linode.GetDatabasePostgresqlV2.Invoke(new()
         ///     {
         ///         Id = "12345",
         ///     });

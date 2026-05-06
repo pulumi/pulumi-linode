@@ -497,7 +497,7 @@ class Domain(pulumi.CustomResource):
                 "bar",
             ])
         foobar_domain_record = linode.DomainRecord("foobar",
-            domain_id=foobar.id,
+            domain_id=foobar.id.apply(lambda x: int(x)),
             name="www",
             record_type="CNAME",
             target="foobar.example")
@@ -557,7 +557,7 @@ class Domain(pulumi.CustomResource):
                 "bar",
             ])
         foobar_domain_record = linode.DomainRecord("foobar",
-            domain_id=foobar.id,
+            domain_id=foobar.id.apply(lambda x: int(x)),
             name="www",
             record_type="CNAME",
             target="foobar.example")

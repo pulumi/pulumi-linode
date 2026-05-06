@@ -30,14 +30,14 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_inst = new Linode.Index.Instance("my-inst", new()
+    ///     var my_inst = new Linode.Instance("my-inst", new()
     ///     {
     ///         Label = "my-inst",
     ///         Region = "us-east",
     ///         Type = "g6-nanode-1",
     ///     });
     /// 
-    ///     var my_lock = new Linode.Index.Lock("my-lock", new()
+    ///     var my_lock = new Linode.Lock("my-lock", new()
     ///     {
     ///         EntityId = my_inst.Id,
     ///         EntityType = "linode",
@@ -54,14 +54,14 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_inst = new Linode.Index.Instance("my-inst", new()
+    ///     var my_inst = new Linode.Instance("my-inst", new()
     ///     {
     ///         Label = "my-inst",
     ///         Region = "us-east",
     ///         Type = "g6-nanode-1",
     ///     });
     /// 
-    ///     var my_lock = new Linode.Index.Lock("my-lock", new()
+    ///     var my_lock = new Linode.Lock("my-lock", new()
     ///     {
     ///         EntityId = my_inst.Id,
     ///         EntityType = "linode",

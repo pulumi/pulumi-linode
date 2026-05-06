@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *     region: "us-southeast",
  * });
  * const foobarIpv6Range = new linode.Ipv6Range("foobar", {
- *     linodeId: foobar.id,
+ *     linodeId: foobar.id.apply(x =>Number(x)),
  *     prefixLength: 64,
  * });
  * ```

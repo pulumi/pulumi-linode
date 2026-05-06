@@ -272,7 +272,7 @@ class VpcSubnet(pulumi.CustomResource):
             }])
         # NOTE: IPv6 VPCs may not currently be available to all users.
         test = linode.VpcSubnet("test",
-            vpc_id=test_vpc.id,
+            vpc_id=test_vpc.id.apply(lambda x: int(x)),
             label="test-subnet",
             ipv4="10.0.0.0/24",
             ipv6s=[{
@@ -341,7 +341,7 @@ class VpcSubnet(pulumi.CustomResource):
             }])
         # NOTE: IPv6 VPCs may not currently be available to all users.
         test = linode.VpcSubnet("test",
-            vpc_id=test_vpc.id,
+            vpc_id=test_vpc.id.apply(lambda x: int(x)),
             label="test-subnet",
             ipv4="10.0.0.0/24",
             ipv6s=[{

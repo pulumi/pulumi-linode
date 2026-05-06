@@ -64,7 +64,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     outboundPolicy: "ACCEPT",
- *     linodes: [myInstance.id],
+ *     linodes: [myInstance.id.apply(x =>Number(x))],
  * });
  * ```
  *

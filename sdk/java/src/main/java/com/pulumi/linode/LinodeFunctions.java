@@ -286,8 +286,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -328,8 +328,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -370,8 +370,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -412,8 +412,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -454,8 +454,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -496,8 +496,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -538,8 +538,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -579,8 +579,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -634,8 +634,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -689,8 +689,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -744,8 +744,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -799,8 +799,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -854,8 +854,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -909,8 +909,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilitiesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -964,8 +964,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1007,8 +1007,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1050,8 +1050,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1093,8 +1093,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1136,8 +1136,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountAvailabilityArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1179,8 +1179,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1222,8 +1222,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1265,8 +1265,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1308,8 +1308,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1351,8 +1351,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1394,8 +1394,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1454,8 +1454,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1514,8 +1514,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1574,8 +1574,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1634,8 +1634,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1694,8 +1694,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1754,8 +1754,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetAccountLoginsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1813,8 +1813,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1853,8 +1853,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1893,8 +1893,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1933,8 +1933,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1973,8 +1973,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2013,8 +2013,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2053,8 +2053,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2098,8 +2098,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2145,8 +2145,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2192,8 +2192,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2239,8 +2239,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2286,8 +2286,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2331,8 +2331,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2423,8 +2423,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2515,8 +2515,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2607,8 +2607,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2699,8 +2699,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2791,8 +2791,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2883,8 +2883,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetChildAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2973,8 +2973,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3016,8 +3016,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3059,8 +3059,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3102,8 +3102,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3145,8 +3145,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3189,8 +3189,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3248,8 +3248,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3307,8 +3307,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3366,8 +3366,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3425,8 +3425,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupImageSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3483,8 +3483,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3526,8 +3526,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3569,8 +3569,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3612,8 +3612,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3655,8 +3655,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokenArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3698,8 +3698,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3763,8 +3763,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3828,8 +3828,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3893,8 +3893,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3958,8 +3958,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4023,8 +4023,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4088,8 +4088,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetConsumerImageShareGroupTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4151,8 +4151,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4181,8 +4181,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4217,8 +4217,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
      * import com.pulumi.linode.DatabaseMysqlV2;
      * import com.pulumi.linode.DatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4269,8 +4269,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4299,8 +4299,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4335,8 +4335,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
      * import com.pulumi.linode.DatabaseMysqlV2;
      * import com.pulumi.linode.DatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4387,8 +4387,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4417,8 +4417,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4453,8 +4453,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
      * import com.pulumi.linode.DatabaseMysqlV2;
      * import com.pulumi.linode.DatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4505,8 +4505,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4535,8 +4535,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4571,8 +4571,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
      * import com.pulumi.linode.DatabaseMysqlV2;
      * import com.pulumi.linode.DatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4623,8 +4623,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4653,8 +4653,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4689,8 +4689,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
      * import com.pulumi.linode.DatabaseMysqlV2;
      * import com.pulumi.linode.DatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4741,8 +4741,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4771,8 +4771,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4807,8 +4807,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
      * import com.pulumi.linode.DatabaseMysqlV2;
      * import com.pulumi.linode.DatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4859,8 +4859,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4889,8 +4889,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4925,8 +4925,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.GetDatabaseEnginesArgs;
      * import com.pulumi.linode.DatabaseMysqlV2;
      * import com.pulumi.linode.DatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4976,8 +4976,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5512,8 +5512,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6048,8 +6048,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6584,8 +6584,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7120,8 +7120,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7656,8 +7656,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8192,8 +8192,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8729,8 +8729,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8802,8 +8802,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8875,8 +8875,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8948,8 +8948,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9021,8 +9021,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabaseMysqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9093,8 +9093,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9899,8 +9899,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10705,8 +10705,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11511,8 +11511,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12317,8 +12317,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13123,8 +13123,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13929,8 +13929,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14736,8 +14736,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14809,8 +14809,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14882,8 +14882,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14955,8 +14955,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15028,8 +15028,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasePostgresqlV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15101,8 +15101,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15131,8 +15131,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15186,8 +15186,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15216,8 +15216,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15271,8 +15271,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15301,8 +15301,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15356,8 +15356,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15386,8 +15386,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15441,8 +15441,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15471,8 +15471,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15526,8 +15526,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15556,8 +15556,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15611,8 +15611,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15641,8 +15641,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDatabasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15698,8 +15698,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15745,8 +15745,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15792,8 +15792,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15839,8 +15839,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15886,8 +15886,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15933,8 +15933,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15980,8 +15980,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16027,8 +16027,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainRecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16076,8 +16076,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainRecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16125,8 +16125,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainRecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16174,8 +16174,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainRecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16223,8 +16223,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainRecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16272,8 +16272,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainZonefileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16315,8 +16315,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainZonefileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16358,8 +16358,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainZonefileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16401,8 +16401,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainZonefileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16444,8 +16444,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainZonefileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16485,8 +16485,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16558,8 +16558,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16631,8 +16631,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16704,8 +16704,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16777,8 +16777,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16850,8 +16850,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16923,8 +16923,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16996,8 +16996,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17037,8 +17037,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17078,8 +17078,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17119,8 +17119,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17160,8 +17160,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17221,8 +17221,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17262,8 +17262,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17303,8 +17303,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17344,8 +17344,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17385,8 +17385,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17426,8 +17426,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17459,8 +17459,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17508,8 +17508,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17541,8 +17541,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17590,8 +17590,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17623,8 +17623,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17672,8 +17672,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17705,8 +17705,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17754,8 +17754,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17787,8 +17787,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17836,8 +17836,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17869,8 +17869,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17918,8 +17918,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17951,8 +17951,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18001,8 +18001,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18040,8 +18040,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18117,8 +18117,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18156,8 +18156,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18233,8 +18233,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18272,8 +18272,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18349,8 +18349,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18388,8 +18388,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18465,8 +18465,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18504,8 +18504,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18581,8 +18581,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18620,8 +18620,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18697,8 +18697,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18736,8 +18736,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetFirewallsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18815,8 +18815,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18858,8 +18858,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18901,8 +18901,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18944,8 +18944,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18987,8 +18987,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19028,8 +19028,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19067,8 +19067,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19130,8 +19130,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19169,8 +19169,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19232,8 +19232,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19271,8 +19271,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19334,8 +19334,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19373,8 +19373,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19436,8 +19436,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19475,8 +19475,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19538,8 +19538,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19577,8 +19577,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19640,8 +19640,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19679,8 +19679,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19742,8 +19742,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19783,8 +19783,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19824,8 +19824,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19865,8 +19865,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19906,8 +19906,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceBackupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19947,8 +19947,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceNetworkingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19988,8 +19988,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceNetworkingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20029,8 +20029,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceNetworkingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20070,8 +20070,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceNetworkingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20111,8 +20111,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceNetworkingArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20154,8 +20154,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20197,8 +20197,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20240,8 +20240,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20283,8 +20283,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20326,8 +20326,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20367,8 +20367,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20401,8 +20401,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20460,8 +20460,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20494,8 +20494,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20553,8 +20553,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20587,8 +20587,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20646,8 +20646,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20680,8 +20680,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20739,8 +20739,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20773,8 +20773,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20832,8 +20832,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20866,8 +20866,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20925,8 +20925,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20959,8 +20959,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstanceTypesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21018,8 +21018,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21059,8 +21059,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21120,8 +21120,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21161,8 +21161,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21222,8 +21222,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21263,8 +21263,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21324,8 +21324,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21365,8 +21365,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21426,8 +21426,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21467,8 +21467,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21528,8 +21528,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21569,8 +21569,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21630,8 +21630,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21671,8 +21671,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21747,8 +21747,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21788,8 +21788,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21829,8 +21829,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21870,8 +21870,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21911,8 +21911,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21954,8 +21954,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22011,8 +22011,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22068,8 +22068,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22125,8 +22125,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22182,8 +22182,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22239,8 +22239,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22296,8 +22296,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetIpv6RangesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22353,8 +22353,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22396,8 +22396,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22439,8 +22439,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22482,8 +22482,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22525,8 +22525,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22568,8 +22568,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22637,8 +22637,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22706,8 +22706,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22775,8 +22775,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22844,8 +22844,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22913,8 +22913,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22982,8 +22982,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetKernelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23051,8 +23051,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23095,8 +23095,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23139,8 +23139,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23183,8 +23183,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23227,8 +23227,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLinodeObjectStorageBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23269,8 +23269,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23310,8 +23310,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23351,8 +23351,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23392,8 +23392,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23433,8 +23433,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23474,8 +23474,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23535,8 +23535,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23596,8 +23596,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23657,8 +23657,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23718,8 +23718,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23779,8 +23779,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23840,8 +23840,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23901,8 +23901,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23943,8 +23943,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23985,8 +23985,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24027,8 +24027,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24069,8 +24069,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24169,8 +24169,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24205,8 +24205,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24249,8 +24249,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24285,8 +24285,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24329,8 +24329,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24365,8 +24365,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24409,8 +24409,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24445,8 +24445,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24489,8 +24489,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24525,8 +24525,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24569,8 +24569,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24606,8 +24606,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24651,8 +24651,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24688,8 +24688,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24733,8 +24733,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24770,8 +24770,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24815,8 +24815,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24852,8 +24852,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24897,8 +24897,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24934,8 +24934,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24979,8 +24979,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25016,8 +25016,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25061,8 +25061,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25098,8 +25098,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLkeVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25146,8 +25146,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25192,8 +25192,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25238,8 +25238,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25284,8 +25284,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25330,8 +25330,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLockArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25376,8 +25376,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25409,8 +25409,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25461,8 +25461,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25494,8 +25494,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25546,8 +25546,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25579,8 +25579,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25631,8 +25631,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25664,8 +25664,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25716,8 +25716,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25749,8 +25749,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25801,8 +25801,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25834,8 +25834,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25886,8 +25886,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25919,8 +25919,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetLocksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25966,8 +25966,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26007,8 +26007,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26048,8 +26048,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26089,8 +26089,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26130,8 +26130,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26171,8 +26171,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26212,8 +26212,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26332,8 +26332,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26375,8 +26375,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26418,8 +26418,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26461,8 +26461,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26504,8 +26504,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26544,8 +26544,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26573,8 +26573,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26638,8 +26638,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26667,8 +26667,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26732,8 +26732,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26761,8 +26761,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26826,8 +26826,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26855,8 +26855,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26920,8 +26920,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26949,8 +26949,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27014,8 +27014,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27043,8 +27043,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27108,8 +27108,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27137,8 +27137,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNetworkingIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27203,8 +27203,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27244,8 +27244,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27285,8 +27285,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27326,8 +27326,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27367,8 +27367,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27408,8 +27408,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27450,8 +27450,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27492,8 +27492,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27534,8 +27534,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27576,8 +27576,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27618,8 +27618,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerNodeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27661,8 +27661,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerNodeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27704,8 +27704,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerNodeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27747,8 +27747,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerNodeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27790,8 +27790,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodeBalancerNodeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27835,8 +27835,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27909,8 +27909,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27983,8 +27983,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28057,8 +28057,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28131,8 +28131,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28205,8 +28205,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28249,8 +28249,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28293,8 +28293,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28337,8 +28337,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28381,8 +28381,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28425,8 +28425,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28455,8 +28455,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28514,8 +28514,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28544,8 +28544,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28603,8 +28603,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28633,8 +28633,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28692,8 +28692,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28722,8 +28722,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28781,8 +28781,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28811,8 +28811,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28870,8 +28870,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28938,8 +28938,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29006,8 +29006,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29074,8 +29074,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29142,8 +29142,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29210,8 +29210,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29278,8 +29278,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetNodebalancersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29346,8 +29346,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29389,8 +29389,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29432,8 +29432,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29475,8 +29475,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29518,8 +29518,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29559,8 +29559,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29596,8 +29596,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29645,8 +29645,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29682,8 +29682,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29731,8 +29731,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29768,8 +29768,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29817,8 +29817,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29854,8 +29854,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29903,8 +29903,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29940,8 +29940,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29989,8 +29989,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30026,8 +30026,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30075,8 +30075,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30112,8 +30112,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30163,8 +30163,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30206,8 +30206,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30249,8 +30249,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30292,8 +30292,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30335,8 +30335,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30378,8 +30378,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30440,8 +30440,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30502,8 +30502,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30564,8 +30564,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30626,8 +30626,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30688,8 +30688,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30750,8 +30750,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30812,8 +30812,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30855,8 +30855,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30898,8 +30898,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30941,8 +30941,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30984,8 +30984,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31027,8 +31027,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31092,8 +31092,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31157,8 +31157,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31222,8 +31222,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31287,8 +31287,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31352,8 +31352,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31417,8 +31417,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetPlacementGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31482,8 +31482,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31525,8 +31525,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31568,8 +31568,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31611,8 +31611,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31654,8 +31654,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31697,8 +31697,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31756,8 +31756,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31815,8 +31815,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31874,8 +31874,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31933,8 +31933,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupImageSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31992,8 +31992,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32036,8 +32036,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32080,8 +32080,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32124,8 +32124,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32168,8 +32168,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32212,8 +32212,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32273,8 +32273,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32334,8 +32334,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32395,8 +32395,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32456,8 +32456,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupMembersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32517,8 +32517,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32576,8 +32576,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32635,8 +32635,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32694,8 +32694,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32753,8 +32753,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32812,8 +32812,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32871,8 +32871,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32929,8 +32929,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32969,8 +32969,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33009,8 +33009,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33049,8 +33049,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33089,8 +33089,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33129,8 +33129,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33169,8 +33169,8 @@ public final class LinodeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33210,8 +33210,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33253,8 +33253,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33296,8 +33296,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33339,8 +33339,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33382,8 +33382,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33421,8 +33421,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33479,8 +33479,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33537,8 +33537,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33595,8 +33595,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33653,8 +33653,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33711,8 +33711,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33769,8 +33769,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33831,8 +33831,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33874,8 +33874,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33917,8 +33917,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33960,8 +33960,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34003,8 +34003,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34048,8 +34048,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshkeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34109,8 +34109,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshkeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34170,8 +34170,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshkeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34231,8 +34231,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshkeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34292,8 +34292,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshkeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34353,8 +34353,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshkeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34414,8 +34414,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetSshkeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34473,8 +34473,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34516,8 +34516,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34559,8 +34559,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34602,8 +34602,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34645,8 +34645,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34690,8 +34690,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34764,8 +34764,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34838,8 +34838,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34912,8 +34912,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34986,8 +34986,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35060,8 +35060,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35134,8 +35134,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetStackScriptsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35206,8 +35206,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35251,8 +35251,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35296,8 +35296,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35341,8 +35341,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35386,8 +35386,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35427,8 +35427,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35486,8 +35486,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35545,8 +35545,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35604,8 +35604,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35663,8 +35663,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35722,8 +35722,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35781,8 +35781,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35849,8 +35849,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.InstanceInterfaceArgs;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35919,8 +35919,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.InstanceInterfaceArgs;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35989,8 +35989,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.InstanceInterfaceArgs;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36059,8 +36059,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.InstanceInterfaceArgs;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36129,8 +36129,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.InstanceInterfaceArgs;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36199,8 +36199,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.InstanceInterfaceArgs;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36269,8 +36269,8 @@ public final class LinodeFunctions {
      * import com.pulumi.linode.inputs.InstanceInterfaceArgs;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36334,8 +36334,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36377,8 +36377,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36420,8 +36420,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36463,8 +36463,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36506,8 +36506,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36601,8 +36601,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36650,8 +36650,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36699,8 +36699,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36748,8 +36748,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36797,8 +36797,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36846,8 +36846,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36895,8 +36895,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36948,8 +36948,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37004,8 +37004,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37060,8 +37060,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37116,8 +37116,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37172,8 +37172,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37228,8 +37228,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37265,8 +37265,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37299,8 +37299,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37354,8 +37354,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37391,8 +37391,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37425,8 +37425,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37480,8 +37480,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37517,8 +37517,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37551,8 +37551,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37606,8 +37606,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37643,8 +37643,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37677,8 +37677,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37732,8 +37732,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37769,8 +37769,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37803,8 +37803,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37858,8 +37858,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37895,8 +37895,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37929,8 +37929,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37984,8 +37984,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38021,8 +38021,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38055,8 +38055,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcIpsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38110,8 +38110,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38163,8 +38163,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38216,8 +38216,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38269,8 +38269,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38322,8 +38322,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcSubnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38375,8 +38375,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38439,8 +38439,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38503,8 +38503,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38567,8 +38567,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38631,8 +38631,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcSubnetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38695,8 +38695,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38760,8 +38760,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38825,8 +38825,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38890,8 +38890,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -38955,8 +38955,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -39020,8 +39020,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -39085,8 +39085,8 @@ public final class LinodeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.linode.LinodeFunctions;
      * import com.pulumi.linode.inputs.GetVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

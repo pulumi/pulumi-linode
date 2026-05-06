@@ -29,7 +29,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filteredSsh = Linode.Index.GetSshkeys.Invoke(new()
+        ///     var filteredSsh = Linode.GetSshkeys.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -84,7 +84,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filteredSsh = Linode.Index.GetSshkeys.Invoke(new()
+        ///     var filteredSsh = Linode.GetSshkeys.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -139,7 +139,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filteredSsh = Linode.Index.GetSshkeys.Invoke(new()
+        ///     var filteredSsh = Linode.GetSshkeys.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

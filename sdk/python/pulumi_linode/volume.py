@@ -359,7 +359,7 @@ class Volume(pulumi.CustomResource):
         foobar = linode.Volume("foobar",
             label="foo-volume",
             region=foobaz.region,
-            linode_id=foobaz.id)
+            linode_id=foobaz.id.apply(lambda x: int(x)))
         ```
 
         Volumes can also be attached using the Linode Instance config device map.
@@ -372,7 +372,7 @@ class Volume(pulumi.CustomResource):
             region="us-east",
             type="g6-nanode-1")
         foo_instance_config = linode.InstanceConfig("foo",
-            linode_id=foo.id,
+            linode_id=foo.id.apply(lambda x: int(x)),
             label="boot-existing-volume",
             kernel="linode/grub2",
             devices=[{
@@ -441,7 +441,7 @@ class Volume(pulumi.CustomResource):
         foobar = linode.Volume("foobar",
             label="foo-volume",
             region=foobaz.region,
-            linode_id=foobaz.id)
+            linode_id=foobaz.id.apply(lambda x: int(x)))
         ```
 
         Volumes can also be attached using the Linode Instance config device map.
@@ -454,7 +454,7 @@ class Volume(pulumi.CustomResource):
             region="us-east",
             type="g6-nanode-1")
         foo_instance_config = linode.InstanceConfig("foo",
-            linode_id=foo.id,
+            linode_id=foo.id.apply(lambda x: int(x)),
             label="boot-existing-volume",
             kernel="linode/grub2",
             devices=[{

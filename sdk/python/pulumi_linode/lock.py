@@ -191,7 +191,7 @@ class Lock(pulumi.CustomResource):
             region="us-east",
             type="g6-nanode-1")
         my_lock = linode.Lock("my-lock",
-            entity_id=my_inst.id,
+            entity_id=my_inst.id.apply(lambda x: int(x)),
             entity_type="linode",
             lock_type="cannot_delete")
         ```
@@ -204,7 +204,7 @@ class Lock(pulumi.CustomResource):
             region="us-east",
             type="g6-nanode-1")
         my_lock = linode.Lock("my-lock",
-            entity_id=my_inst.id,
+            entity_id=my_inst.id.apply(lambda x: int(x)),
             entity_type="linode",
             lock_type="cannot_delete_with_subresources")
         ```
@@ -252,7 +252,7 @@ class Lock(pulumi.CustomResource):
             region="us-east",
             type="g6-nanode-1")
         my_lock = linode.Lock("my-lock",
-            entity_id=my_inst.id,
+            entity_id=my_inst.id.apply(lambda x: int(x)),
             entity_type="linode",
             lock_type="cannot_delete")
         ```
@@ -265,7 +265,7 @@ class Lock(pulumi.CustomResource):
             region="us-east",
             type="g6-nanode-1")
         my_lock = linode.Lock("my-lock",
-            entity_id=my_inst.id,
+            entity_id=my_inst.id.apply(lambda x: int(x)),
             entity_type="linode",
             lock_type="cannot_delete_with_subresources")
         ```

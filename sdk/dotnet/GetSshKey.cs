@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Linode.Index.GetSshKey.Invoke(new()
+        ///     var foo = Linode.GetSshKey.Invoke(new()
         ///     {
         ///         Label = "foo",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Linode.Index.GetSshKey.Invoke(new()
+        ///     var foo = Linode.GetSshKey.Invoke(new()
         ///     {
         ///         Label = "foo",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Linode.Index.GetSshKey.Invoke(new()
+        ///     var foo = Linode.GetSshKey.Invoke(new()
         ///     {
         ///         Label = "foo",
         ///     });

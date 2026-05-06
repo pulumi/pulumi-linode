@@ -306,7 +306,7 @@ class InstanceIp(pulumi.CustomResource):
             type="g6-nanode-1",
             region="us-east")
         foo_instance_ip = linode.InstanceIp("foo",
-            linode_id=foo.id,
+            linode_id=foo.id.apply(lambda x: int(x)),
             public=True)
         ```
 
@@ -344,7 +344,7 @@ class InstanceIp(pulumi.CustomResource):
             type="g6-nanode-1",
             region="us-east")
         foo_instance_ip = linode.InstanceIp("foo",
-            linode_id=foo.id,
+            linode_id=foo.id.apply(lambda x: int(x)),
             public=True)
         ```
 

@@ -433,7 +433,7 @@ class NodeBalancer(pulumi.CustomResource):
             label="mynodebalancer",
             region="us-mia",
             vpcs=[{
-                "subnet_id": test["id"],
+                "subnet_id": int(test["id"]),
             }])
         ```
 
@@ -497,7 +497,7 @@ class NodeBalancer(pulumi.CustomResource):
             label="mynodebalancer",
             region="us-mia",
             vpcs=[{
-                "subnet_id": test["id"],
+                "subnet_id": int(test["id"]),
             }])
         ```
 

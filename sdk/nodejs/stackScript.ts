@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  *     authorizedKeys: ["..."],
  *     rootPass: "...",
- *     stackscriptId: foo.id,
+ *     stackscriptId: foo.id.apply(x =>Number(x)),
  *     stackscriptData: {
  *         "package": "nginx",
  *     },

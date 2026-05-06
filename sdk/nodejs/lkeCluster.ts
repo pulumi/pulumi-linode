@@ -210,7 +210,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * const my_pool = new linode.LkeNodePool("my-pool", {
- *     clusterId: my_cluster.id,
+ *     clusterId: my_cluster.id.apply(x =>Number(x)),
  *     type: "g6-standard-2",
  *     nodeCount: 3,
  *     tags: [externalPoolTag],

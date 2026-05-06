@@ -532,12 +532,12 @@ class InstanceConfig(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=my_instance.specs[0].disk,
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!")
         my_config = linode.InstanceConfig("my-config",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             label="my-config",
             devices=[{
                 "deviceName": "sda",
@@ -555,7 +555,7 @@ class InstanceConfig(pulumi.CustomResource):
             region="us-mia",
             description="test description")
         foobar_vpc_subnet = linode.VpcSubnet("foobar",
-            vpc_id=foobar.id,
+            vpc_id=foobar.id.apply(lambda x: int(x)),
             label="my-subnet",
             ipv4="10.0.4.0/24")
         my_instance = linode.Instance("my-instance",
@@ -565,18 +565,18 @@ class InstanceConfig(pulumi.CustomResource):
         # Create a boot disk
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
-            size=my_instance.specs.apply(lambda specs: specs[0].disk - 512),
+            linode_id=my_instance.id.apply(lambda x: int(x)),
+            size=my_instance.specs.apply(lambda specs: float(specs[0].disk) - float(512)).apply(lambda x: int(x)),
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!ciuw23asxbviwuc")
         # Create a swap disk
         swap = linode.InstanceDisk("swap",
             label="swap",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=512,
             filesystem="swap")
         my_config = linode.InstanceConfig("my-config",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             label="my-config",
             devices=[
                 {
@@ -602,7 +602,7 @@ class InstanceConfig(pulumi.CustomResource):
                 },
                 {
                     "purpose": "vpc",
-                    "subnet_id": foobar_vpc_subnet.id,
+                    "subnet_id": foobar_vpc_subnet.id.apply(lambda x: int(x)),
                     "ipv4": {
                         "vpc": "10.0.4.250",
                     },
@@ -673,12 +673,12 @@ class InstanceConfig(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=my_instance.specs[0].disk,
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!")
         my_config = linode.InstanceConfig("my-config",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             label="my-config",
             devices=[{
                 "deviceName": "sda",
@@ -696,7 +696,7 @@ class InstanceConfig(pulumi.CustomResource):
             region="us-mia",
             description="test description")
         foobar_vpc_subnet = linode.VpcSubnet("foobar",
-            vpc_id=foobar.id,
+            vpc_id=foobar.id.apply(lambda x: int(x)),
             label="my-subnet",
             ipv4="10.0.4.0/24")
         my_instance = linode.Instance("my-instance",
@@ -706,18 +706,18 @@ class InstanceConfig(pulumi.CustomResource):
         # Create a boot disk
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
-            size=my_instance.specs.apply(lambda specs: specs[0].disk - 512),
+            linode_id=my_instance.id.apply(lambda x: int(x)),
+            size=my_instance.specs.apply(lambda specs: float(specs[0].disk) - float(512)).apply(lambda x: int(x)),
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!ciuw23asxbviwuc")
         # Create a swap disk
         swap = linode.InstanceDisk("swap",
             label="swap",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=512,
             filesystem="swap")
         my_config = linode.InstanceConfig("my-config",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             label="my-config",
             devices=[
                 {
@@ -743,7 +743,7 @@ class InstanceConfig(pulumi.CustomResource):
                 },
                 {
                     "purpose": "vpc",
-                    "subnet_id": foobar_vpc_subnet.id,
+                    "subnet_id": foobar_vpc_subnet.id.apply(lambda x: int(x)),
                     "ipv4": {
                         "vpc": "10.0.4.250",
                     },

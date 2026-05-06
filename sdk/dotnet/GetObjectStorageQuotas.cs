@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var maxBucketsQuotas = Linode.Index.GetObjectStorageQuotas.Invoke(new()
+        ///     var maxBucketsQuotas = Linode.GetObjectStorageQuotas.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -80,7 +80,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var maxBucketsQuotas = Linode.Index.GetObjectStorageQuotas.Invoke(new()
+        ///     var maxBucketsQuotas = Linode.GetObjectStorageQuotas.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -133,7 +133,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var maxBucketsQuotas = Linode.Index.GetObjectStorageQuotas.Invoke(new()
+        ///     var maxBucketsQuotas = Linode.GetObjectStorageQuotas.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

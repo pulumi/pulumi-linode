@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sg = Linode.Index.GetConsumerImageShareGroup.Invoke(new()
+        ///     var sg = Linode.GetConsumerImageShareGroup.Invoke(new()
         ///     {
         ///         TokenUuid = "7548d17e-8db4-4a91-b47c-a8e1203063d9",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sg = Linode.Index.GetConsumerImageShareGroup.Invoke(new()
+        ///     var sg = Linode.GetConsumerImageShareGroup.Invoke(new()
         ///     {
         ///         TokenUuid = "7548d17e-8db4-4a91-b47c-a8e1203063d9",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sg = Linode.Index.GetConsumerImageShareGroup.Invoke(new()
+        ///     var sg = Linode.GetConsumerImageShareGroup.Invoke(new()
         ///     {
         ///         TokenUuid = "7548d17e-8db4-4a91-b47c-a8e1203063d9",
         ///     });

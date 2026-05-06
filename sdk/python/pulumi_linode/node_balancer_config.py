@@ -700,7 +700,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             region="us-east",
             client_conn_throttle=20)
         foofig = linode.NodeBalancerConfig("foofig",
-            nodebalancer_id=foobar.id,
+            nodebalancer_id=foobar.id.apply(lambda x: int(x)),
             port=8088,
             protocol="http",
             check="http",
@@ -768,7 +768,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             region="us-east",
             client_conn_throttle=20)
         foofig = linode.NodeBalancerConfig("foofig",
-            nodebalancer_id=foobar.id,
+            nodebalancer_id=foobar.id.apply(lambda x: int(x)),
             port=8088,
             protocol="http",
             check="http",

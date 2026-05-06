@@ -712,7 +712,7 @@ class LkeCluster(pulumi.CustomResource):
                 "count": 1,
             }])
         my_pool = linode.LkeNodePool("my-pool",
-            cluster_id=my_cluster.id,
+            cluster_id=my_cluster.id.apply(lambda x: int(x)),
             type="g6-standard-2",
             node_count=3,
             tags=[external_pool_tag])
@@ -948,7 +948,7 @@ class LkeCluster(pulumi.CustomResource):
                 "count": 1,
             }])
         my_pool = linode.LkeNodePool("my-pool",
-            cluster_id=my_cluster.id,
+            cluster_id=my_cluster.id.apply(lambda x: int(x)),
             type="g6-standard-2",
             node_count=3,
             tags=[external_pool_tag])

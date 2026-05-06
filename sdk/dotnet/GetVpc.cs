@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Linode.Index.GetVpc.Invoke(new()
+        ///     var foo = Linode.GetVpc.Invoke(new()
         ///     {
         ///         Id = "123",
         ///     });
@@ -70,7 +70,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Linode.Index.GetVpc.Invoke(new()
+        ///     var foo = Linode.GetVpc.Invoke(new()
         ///     {
         ///         Id = "123",
         ///     });
@@ -113,7 +113,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Linode.Index.GetVpc.Invoke(new()
+        ///     var foo = Linode.GetVpc.Invoke(new()
         ///     {
         ///         Id = "123",
         ///     });

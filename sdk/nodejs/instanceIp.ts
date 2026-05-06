@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     region: "us-east",
  * });
  * const fooInstanceIp = new linode.InstanceIp("foo", {
- *     linodeId: foo.id,
+ *     linodeId: foo.id.apply(x =>Number(x)),
  *     "public": true,
  * });
  * ```

@@ -507,7 +507,7 @@ class Firewall(pulumi.CustomResource):
                 },
             ],
             outbound_policy="ACCEPT",
-            linodes=[my_instance.id])
+            linodes=[my_instance.id.apply(lambda x: int(x))])
         ```
 
         ## Import
@@ -599,7 +599,7 @@ class Firewall(pulumi.CustomResource):
                 },
             ],
             outbound_policy="ACCEPT",
-            linodes=[my_instance.id])
+            linodes=[my_instance.id.apply(lambda x: int(x))])
         ```
 
         ## Import

@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  * });
  * // NOTE: IPv6 VPCs may not currently be available to all users.
  * const test = new linode.VpcSubnet("test", {
- *     vpcId: testVpc.id,
+ *     vpcId: testVpc.id.apply(x =>Number(x)),
  *     label: "test-subnet",
  *     ipv4: "10.0.0.0/24",
  *     ipv6s: [{

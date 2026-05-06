@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     clientConnThrottle: 20,
  * });
  * const foofig = new linode.NodeBalancerConfig("foofig", {
- *     nodebalancerId: foobar.id,
+ *     nodebalancerId: foobar.id.apply(x =>Number(x)),
  *     port: 8088,
  *     protocol: "http",
  *     check: "http",

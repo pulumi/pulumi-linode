@@ -116,8 +116,10 @@ import (
 //				Label:    pulumi.String("boot"),
 //				LinodeId: my_instance.ID(),
 //				Size: pulumi.Int(my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (float64, error) {
-//					return float64(specs[0].Disk.ApplyT(func(__convert float64) (float64, error) {
-//						return __convert - 512, nil
+//					return float64(pulumi.All(specs[0].Disk, 512).ApplyT(func(_args []interface{}) (float64, error) {
+//						__convert := _args[0].(float64)
+//						__convert1 := _args[1].(float64)
+//						return __convert - __convert1, nil
 //					}).(pulumi.Float64Output)), nil
 //				}).(pulumi.Float64Output)),
 //				Image:    pulumi.String("linode/ubuntu22.04"),

@@ -23,7 +23,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myInstance = new Linode.Index.Instance("my_instance", new()
+    ///     var myInstance = new Linode.Instance("my_instance", new()
     ///     {
     ///         Label = "my_instance",
     ///         Image = "linode/ubuntu22.04",
@@ -33,7 +33,7 @@ namespace Pulumi.Linode
     ///         SwapSize = 256,
     ///     });
     /// 
-    ///     var myFirewall = new Linode.Index.Firewall("my_firewall", new()
+    ///     var myFirewall = new Linode.Firewall("my_firewall", new()
     ///     {
     ///         Label = "my_firewall",
     ///         Inbounds = new[]

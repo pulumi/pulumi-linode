@@ -426,7 +426,7 @@ class DomainRecord(pulumi.CustomResource):
             domain="foobar.example",
             soa_email="example@foobar.example")
         foobar_domain_record = linode.DomainRecord("foobar",
-            domain_id=foobar.id,
+            domain_id=foobar.id.apply(lambda x: int(x)),
             name="www",
             record_type="CNAME",
             target="foobar.example")
@@ -480,7 +480,7 @@ class DomainRecord(pulumi.CustomResource):
             domain="foobar.example",
             soa_email="example@foobar.example")
         foobar_domain_record = linode.DomainRecord("foobar",
-            domain_id=foobar.id,
+            domain_id=foobar.id.apply(lambda x: int(x)),
             name="www",
             record_type="CNAME",
             target="foobar.example")

@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     region: "eu-central",
  * });
  * // Allocate an IP under the primary node
- * const primary = new linode.InstanceIp("primary", {linodeId: primaryInstance.id});
+ * const primary = new linode.InstanceIp("primary", {linodeId: primaryInstance.id.apply(x =>Number(x))});
  * // Create a secondary node
  * const secondary = new linode.Instance("secondary", {
  *     label: "node-secondary",
@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  * });
  * // Share the IP with the secondary node
  * const share_primary = new linode.InstanceSharedIps("share-primary", {
- *     linodeId: secondary.id,
+ *     linodeId: secondary.id.apply(x =>Number(x)),
  *     addresses: [primary.address],
  * });
  * ```

@@ -199,8 +199,8 @@ class FirewallDevice(pulumi.CustomResource):
             region="us-southeast",
             type="g6-standard-1")
         my_device = linode.FirewallDevice("my_device",
-            firewall_id=my_firewall.id,
-            entity_id=my_instance.id)
+            firewall_id=my_firewall.id.apply(lambda x: int(x)),
+            entity_id=my_instance.id.apply(lambda x: int(x)))
         ```
 
         ## Import
@@ -253,8 +253,8 @@ class FirewallDevice(pulumi.CustomResource):
             region="us-southeast",
             type="g6-standard-1")
         my_device = linode.FirewallDevice("my_device",
-            firewall_id=my_firewall.id,
-            entity_id=my_instance.id)
+            firewall_id=my_firewall.id.apply(lambda x: int(x)),
+            entity_id=my_instance.id.apply(lambda x: int(x)))
         ```
 
         ## Import

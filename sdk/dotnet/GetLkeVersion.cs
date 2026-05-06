@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.Index.GetLkeVersion.Invoke(new()
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
         ///     {
         ///         Id = "1.31",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.Index.GetLkeVersion.Invoke(new()
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
         ///     {
         ///         Id = "1.31",
         ///         Tier = "standard",
@@ -76,7 +76,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.Index.GetLkeVersion.Invoke(new()
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
         ///     {
         ///         Id = "1.31",
         ///     });
@@ -97,7 +97,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.Index.GetLkeVersion.Invoke(new()
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
         ///     {
         ///         Id = "1.31",
         ///         Tier = "standard",
@@ -125,7 +125,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.Index.GetLkeVersion.Invoke(new()
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
         ///     {
         ///         Id = "1.31",
         ///     });
@@ -146,7 +146,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.Index.GetLkeVersion.Invoke(new()
+        ///     var example = Linode.GetLkeVersion.Invoke(new()
         ///     {
         ///         Id = "1.31",
         ///         Tier = "standard",
