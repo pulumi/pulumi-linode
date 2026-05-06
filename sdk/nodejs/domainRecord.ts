@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     soaEmail: "example@foobar.example",
  * });
  * const foobarDomainRecord = new linode.DomainRecord("foobar", {
- *     domainId: foobar.id,
+ *     domainId: foobar.id.apply(x =>Number(x)),
  *     name: "www",
  *     recordType: "CNAME",
  *     target: "foobar.example",

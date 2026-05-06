@@ -159,8 +159,8 @@ class PlacementGroupAssignment(pulumi.CustomResource):
             type="g6-nanode-1",
             placement_group_externally_managed=True)
         my_assignment = linode.PlacementGroupAssignment("my-assignment",
-            placement_group_id=my_pg.id,
-            linode_id=my_inst.id)
+            placement_group_id=my_pg.id.apply(lambda x: int(x)),
+            linode_id=my_inst.id.apply(lambda x: int(x)))
         ```
 
         ## Import
@@ -212,8 +212,8 @@ class PlacementGroupAssignment(pulumi.CustomResource):
             type="g6-nanode-1",
             placement_group_externally_managed=True)
         my_assignment = linode.PlacementGroupAssignment("my-assignment",
-            placement_group_id=my_pg.id,
-            linode_id=my_inst.id)
+            placement_group_id=my_pg.id.apply(lambda x: int(x)),
+            linode_id=my_inst.id.apply(lambda x: int(x)))
         ```
 
         ## Import

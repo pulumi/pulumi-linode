@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * const my_access = new linode.DatabaseAccessControls("my-access", {
- *     databaseId: my_db.id,
+ *     databaseId: my_db.id.apply(x =>Number(x)),
  *     databaseType: "mysql",
  *     allowLists: [my_instance.ipAddress],
  * });

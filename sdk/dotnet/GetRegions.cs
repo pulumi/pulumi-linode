@@ -23,7 +23,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_regions = Linode.Index.GetRegions.Invoke(new()
+        ///     var filtered_regions = Linode.GetRegions.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -78,7 +78,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_regions = Linode.Index.GetRegions.Invoke(new()
+        ///     var filtered_regions = Linode.GetRegions.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -133,7 +133,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_regions = Linode.Index.GetRegions.Invoke(new()
+        ///     var filtered_regions = Linode.GetRegions.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

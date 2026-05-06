@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const foobarDomainRecord = new linode.DomainRecord("foobar", {
- *     domainId: foobar.id,
+ *     domainId: foobar.id.apply(x =>Number(x)),
  *     name: "www",
  *     recordType: "CNAME",
  *     target: "foobar.example",

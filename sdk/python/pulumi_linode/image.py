@@ -698,7 +698,7 @@ class Image(pulumi.CustomResource):
             label="foo-sda-image",
             description="Image taken from foo",
             disk_id=foo.disks[0].id,
-            linode_id=foo.id,
+            linode_id=foo.id.apply(lambda x: int(x)),
             tags=[
                 "image-tag",
                 "test",
@@ -801,7 +801,7 @@ class Image(pulumi.CustomResource):
             label="foo-sda-image",
             description="Image taken from foo",
             disk_id=foo.disks[0].id,
-            linode_id=foo.id,
+            linode_id=foo.id.apply(lambda x: int(x)),
             tags=[
                 "image-tag",
                 "test",

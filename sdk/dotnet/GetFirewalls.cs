@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific = Linode.Index.GetFirewalls.Invoke(new()
+        ///     var specific = Linode.GetFirewalls.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -62,7 +62,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetFirewalls.Invoke();
+        ///     var all = Linode.GetFirewalls.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -124,7 +124,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific = Linode.Index.GetFirewalls.Invoke(new()
+        ///     var specific = Linode.GetFirewalls.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -161,7 +161,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetFirewalls.Invoke();
+        ///     var all = Linode.GetFirewalls.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -223,7 +223,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific = Linode.Index.GetFirewalls.Invoke(new()
+        ///     var specific = Linode.GetFirewalls.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -260,7 +260,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetFirewalls.Invoke();
+        ///     var all = Linode.GetFirewalls.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetDatabaseEngines.Invoke();
+        ///     var all = Linode.GetDatabaseEngines.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -41,7 +41,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql = Linode.Index.GetDatabaseEngines.Invoke(new()
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -70,7 +70,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql = Linode.Index.GetDatabaseEngines.Invoke(new()
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
         ///     {
         ///         Latest = true,
         ///         Filters = new[]
@@ -86,7 +86,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var myDb = new Linode.Index.DatabaseMysqlV2("my_db", new()
+        ///     var myDb = new Linode.DatabaseMysqlV2("my_db", new()
         ///     {
         ///         Label = "mydb",
         ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),
@@ -114,7 +114,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetDatabaseEngines.Invoke();
+        ///     var all = Linode.GetDatabaseEngines.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -130,7 +130,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql = Linode.Index.GetDatabaseEngines.Invoke(new()
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -159,7 +159,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql = Linode.Index.GetDatabaseEngines.Invoke(new()
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
         ///     {
         ///         Latest = true,
         ///         Filters = new[]
@@ -175,7 +175,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var myDb = new Linode.Index.DatabaseMysqlV2("my_db", new()
+        ///     var myDb = new Linode.DatabaseMysqlV2("my_db", new()
         ///     {
         ///         Label = "mydb",
         ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),
@@ -203,7 +203,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetDatabaseEngines.Invoke();
+        ///     var all = Linode.GetDatabaseEngines.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -219,7 +219,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql = Linode.Index.GetDatabaseEngines.Invoke(new()
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -248,7 +248,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql = Linode.Index.GetDatabaseEngines.Invoke(new()
+        ///     var mysql = Linode.GetDatabaseEngines.Invoke(new()
         ///     {
         ///         Latest = true,
         ///         Filters = new[]
@@ -264,7 +264,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var myDb = new Linode.Index.DatabaseMysqlV2("my_db", new()
+        ///     var myDb = new Linode.DatabaseMysqlV2("my_db", new()
         ///     {
         ///         Label = "mydb",
         ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),

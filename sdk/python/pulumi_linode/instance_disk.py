@@ -485,7 +485,7 @@ class InstanceDisk(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=512,
             filesystem="ext4")
         ```
@@ -499,7 +499,7 @@ class InstanceDisk(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=my_instance.specs[0].disk,
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!",
@@ -558,7 +558,7 @@ class InstanceDisk(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=512,
             filesystem="ext4")
         ```
@@ -572,7 +572,7 @@ class InstanceDisk(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=my_instance.specs[0].disk,
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!",

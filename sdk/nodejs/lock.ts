@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * const my_lock = new linode.Lock("my-lock", {
- *     entityId: my_inst.id,
+ *     entityId: my_inst.id.apply(x =>Number(x)),
  *     entityType: "linode",
  *     lockType: "cannot_delete",
  * });
@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * const my_lock = new linode.Lock("my-lock", {
- *     entityId: my_inst.id,
+ *     entityId: my_inst.id.apply(x =>Number(x)),
  *     entityType: "linode",
  *     lockType: "cannot_delete_with_subresources",
  * });

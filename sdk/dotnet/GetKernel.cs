@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var latest = Linode.Index.GetKernel.Invoke(new()
+        ///     var latest = Linode.GetKernel.Invoke(new()
         ///     {
         ///         Id = "linode/latest-64bit",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var latest = Linode.Index.GetKernel.Invoke(new()
+        ///     var latest = Linode.GetKernel.Invoke(new()
         ///     {
         ///         Id = "linode/latest-64bit",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var latest = Linode.Index.GetKernel.Invoke(new()
+        ///     var latest = Linode.GetKernel.Invoke(new()
         ///     {
         ///         Id = "linode/latest-64bit",
         ///     });

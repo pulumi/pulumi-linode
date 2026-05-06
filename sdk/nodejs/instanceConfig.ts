@@ -29,13 +29,13 @@ import * as utilities from "./utilities";
  * });
  * const boot = new linode.InstanceDisk("boot", {
  *     label: "boot",
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: my_instance.specs.apply(specs => specs[0].disk),
  *     image: "linode/ubuntu22.04",
  *     rootPass: "myc00lpass!",
  * });
  * const my_config = new linode.InstanceConfig("my-config", {
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     label: "my-config",
  *     devices: [{
  *         deviceName: "sda",
@@ -55,7 +55,7 @@ import * as utilities from "./utilities";
  *     description: "test description",
  * });
  * const foobarVpcSubnet = new linode.VpcSubnet("foobar", {
- *     vpcId: foobar.id,
+ *     vpcId: foobar.id.apply(x =>Number(x)),
  *     label: "my-subnet",
  *     ipv4: "10.0.4.0/24",
  * });
@@ -67,7 +67,7 @@ import * as utilities from "./utilities";
  * // Create a boot disk
  * const boot = new linode.InstanceDisk("boot", {
  *     label: "boot",
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: my_instance.specs.apply(specs => specs[0].disk - 512),
  *     image: "linode/ubuntu22.04",
  *     rootPass: "myc00lpass!ciuw23asxbviwuc",
@@ -75,12 +75,12 @@ import * as utilities from "./utilities";
  * // Create a swap disk
  * const swap = new linode.InstanceDisk("swap", {
  *     label: "swap",
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: 512,
  *     filesystem: "swap",
  * });
  * const my_config = new linode.InstanceConfig("my-config", {
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     label: "my-config",
  *     devices: [
  *         {
@@ -106,7 +106,7 @@ import * as utilities from "./utilities";
  *         },
  *         {
  *             purpose: "vpc",
- *             subnetId: foobarVpcSubnet.id,
+ *             subnetId: foobarVpcSubnet.id.apply(x =>Number(x)),
  *             ipv4: {
  *                 vpc: "10.0.4.250",
  *             },

@@ -89,7 +89,7 @@ import * as utilities from "./utilities";
  * });
  * const bootDisk = new linode.InstanceDisk("boot_disk", {
  *     label: "boot",
- *     linodeId: web.id,
+ *     linodeId: web.id.apply(x =>Number(x)),
  *     size: 3000,
  *     image: "linode/ubuntu22.04",
  *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
@@ -98,7 +98,7 @@ import * as utilities from "./utilities";
  * });
  * const bootConfig = new linode.InstanceConfig("boot_config", {
  *     label: "boot_config",
- *     linodeId: web.id,
+ *     linodeId: web.id.apply(x =>Number(x)),
  *     devices: [
  *         {
  *             deviceName: "sda",

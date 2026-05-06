@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetDatabases.Invoke();
+        ///     var all = Linode.GetDatabases.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -41,7 +41,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql = Linode.Index.GetDatabases.Invoke(new()
+        ///     var mysql = Linode.GetDatabases.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -90,7 +90,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetDatabases.Invoke();
+        ///     var all = Linode.GetDatabases.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -106,7 +106,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql = Linode.Index.GetDatabases.Invoke(new()
+        ///     var mysql = Linode.GetDatabases.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -155,7 +155,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetDatabases.Invoke();
+        ///     var all = Linode.GetDatabases.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -171,7 +171,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mysql = Linode.Index.GetDatabases.Invoke(new()
+        ///     var mysql = Linode.GetDatabases.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

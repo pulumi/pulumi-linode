@@ -23,7 +23,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_volumes = Linode.Index.GetVolumes.Invoke(new()
+        ///     var filtered_volumes = Linode.GetVolumes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -66,7 +66,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_volumes = Linode.Index.GetVolumes.Invoke(new()
+        ///     var filtered_volumes = Linode.GetVolumes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -109,7 +109,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_volumes = Linode.Index.GetVolumes.Invoke(new()
+        ///     var filtered_volumes = Linode.GetVolumes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

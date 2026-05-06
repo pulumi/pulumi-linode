@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Index.DatabasePostgresqlV2("foobar", new()
+    ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "postgresql/16",
@@ -43,7 +43,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Index.DatabasePostgresqlV2("foobar", new()
+    ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "postgresql/16",
@@ -65,7 +65,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Index.DatabasePostgresqlV2("foobar", new()
+    ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "postgresql/16",
@@ -95,7 +95,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Index.DatabasePostgresqlV2("foobar", new()
+    ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "postgresql/16",
@@ -160,7 +160,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Index.DatabasePostgresqlV2("foobar", new()
+    ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "postgresql/16",
@@ -179,7 +179,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Index.DatabasePostgresqlV2("foobar", new()
+    ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "postgresql/16",

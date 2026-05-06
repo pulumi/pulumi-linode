@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * });
  * const boot = new linode.InstanceDisk("boot", {
  *     label: "boot",
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: 512,
  *     filesystem: "ext4",
  * });
@@ -41,7 +41,7 @@ import * as utilities from "./utilities";
  * });
  * const boot = new linode.InstanceDisk("boot", {
  *     label: "boot",
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: my_instance.specs.apply(specs => specs[0].disk),
  *     image: "linode/ubuntu22.04",
  *     rootPass: "myc00lpass!",

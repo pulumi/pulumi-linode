@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.Index.GetLkeVersions.Invoke();
+        ///     var example = Linode.GetLkeVersions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -50,7 +50,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEnterprise = Linode.Index.GetLkeVersions.Invoke(new()
+        ///     var exampleEnterprise = Linode.GetLkeVersions.Invoke(new()
         ///     {
         ///         Tier = "enterprise",
         ///     });
@@ -82,7 +82,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.Index.GetLkeVersions.Invoke();
+        ///     var example = Linode.GetLkeVersions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -105,7 +105,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEnterprise = Linode.Index.GetLkeVersions.Invoke(new()
+        ///     var exampleEnterprise = Linode.GetLkeVersions.Invoke(new()
         ///     {
         ///         Tier = "enterprise",
         ///     });
@@ -137,7 +137,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Linode.Index.GetLkeVersions.Invoke();
+        ///     var example = Linode.GetLkeVersions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -160,7 +160,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleEnterprise = Linode.Index.GetLkeVersions.Invoke(new()
+        ///     var exampleEnterprise = Linode.GetLkeVersions.Invoke(new()
         ///     {
         ///         Tier = "enterprise",
         ///     });

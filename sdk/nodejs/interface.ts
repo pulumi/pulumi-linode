@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const _public = new linode.Interface("public", {
- *     linodeId: my_instance.id,
+ *     linodeId: Number(my_instance.id),
  *     "public": {
  *         ipv4: {
  *             addresses: [{
@@ -52,7 +52,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const ipv6Only = new linode.Interface("ipv6_only", {
- *     linodeId: my_instance.id,
+ *     linodeId: Number(my_instance.id),
  *     "public": {
  *         ipv4: {
  *             addresses: [],
@@ -75,7 +75,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc = new linode.Interface("vpc", {
- *     linodeId: my_instance.id,
+ *     linodeId: Number(my_instance.id),
  *     vpc: {
  *         subnetId: 240213,
  *         ipv4: {
@@ -99,7 +99,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc = new linode.Interface("vpc", {
- *     linodeId: my_instance.id,
+ *     linodeId: Number(my_instance.id),
  *     vpc: {
  *         subnetId: 12345,
  *         ipv6: {
@@ -124,7 +124,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vlan = new linode.Interface("vlan", {
- *     linodeId: web.id,
+ *     linodeId: Number(web.id),
  *     vlan: {
  *         vlanLabel: "web-vlan",
  *         ipamAddress: "192.168.200.5/24",
@@ -146,13 +146,13 @@ import * as utilities from "./utilities";
  * });
  * const boot = new linode.InstanceDisk("boot", {
  *     label: "boot",
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: my_instance.specs.apply(specs => specs[0].disk),
  *     image: "linode/debian12",
  *     rootPass: "this-is-NOT-a-safe-password",
  * });
  * const _public = new linode.Interface("public", {
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     "public": {
  *         ipv4: {
  *             addresses: [{
@@ -168,7 +168,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * const my_config = new linode.InstanceConfig("my-config", {
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     label: "my-config",
  *     devices: [{
  *         deviceName: "sda",

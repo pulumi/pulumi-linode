@@ -35,8 +35,8 @@ import * as utilities from "./utilities";
  *     placementGroupExternallyManaged: true,
  * });
  * const my_assignment = new linode.PlacementGroupAssignment("my-assignment", {
- *     placementGroupId: my_pg.id,
- *     linodeId: my_inst.id,
+ *     placementGroupId: my_pg.id.apply(x =>Number(x)),
+ *     linodeId: my_inst.id.apply(x =>Number(x)),
  * });
  * ```
  *

@@ -22,11 +22,11 @@ import * as utilities from "./utilities";
  *     assignments: [
  *         {
  *             address: reservedIp1.address,
- *             linodeId: terraform_web1.id,
+ *             linodeId: Number(terraform_web1.id),
  *         },
  *         {
  *             address: reservedIp2.address,
- *             linodeId: terraform_web2.id,
+ *             linodeId: Number(terraform_web2.id),
  *         },
  *     ],
  * });

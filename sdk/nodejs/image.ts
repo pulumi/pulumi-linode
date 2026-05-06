@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     label: "foo-sda-image",
  *     description: "Image taken from foo",
  *     diskId: foo.disks.apply(disks => disks[0].id),
- *     linodeId: foo.id,
+ *     linodeId: foo.id.apply(x =>Number(x)),
  *     tags: [
  *         "image-tag",
  *         "test",

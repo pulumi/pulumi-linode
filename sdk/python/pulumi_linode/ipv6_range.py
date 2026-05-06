@@ -221,7 +221,7 @@ class Ipv6Range(pulumi.CustomResource):
             type="g6-nanode-1",
             region="us-southeast")
         foobar_ipv6_range = linode.Ipv6Range("foobar",
-            linode_id=foobar.id,
+            linode_id=foobar.id.apply(lambda x: int(x)),
             prefix_length=64)
         ```
 
@@ -256,7 +256,7 @@ class Ipv6Range(pulumi.CustomResource):
             type="g6-nanode-1",
             region="us-southeast")
         foobar_ipv6_range = linode.Ipv6Range("foobar",
-            linode_id=foobar.id,
+            linode_id=foobar.id.apply(lambda x: int(x)),
             prefix_length=64)
         ```
 

@@ -158,7 +158,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             region="us-southeast",
             type="g6-nanode-1")
         my_access = linode.DatabaseAccessControls("my-access",
-            database_id=my_db.id,
+            database_id=my_db.id.apply(lambda x: int(x)),
             database_type="mysql",
             allow_lists=[my_instance.ip_address])
         ```
@@ -197,7 +197,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             region="us-southeast",
             type="g6-nanode-1")
         my_access = linode.DatabaseAccessControls("my-access",
-            database_id=my_db.id,
+            database_id=my_db.id.apply(lambda x: int(x)),
             database_type="mysql",
             allow_lists=[my_instance.ip_address])
         ```

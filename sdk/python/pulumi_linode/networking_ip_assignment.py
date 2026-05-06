@@ -124,11 +124,11 @@ class NetworkingIpAssignment(pulumi.CustomResource):
             assignments=[
                 {
                     "address": reserved_ip1["address"],
-                    "linode_id": terraform_web1["id"],
+                    "linode_id": int(terraform_web1["id"]),
                 },
                 {
                     "address": reserved_ip2["address"],
-                    "linode_id": terraform_web2["id"],
+                    "linode_id": int(terraform_web2["id"]),
                 },
             ])
         ```
@@ -165,11 +165,11 @@ class NetworkingIpAssignment(pulumi.CustomResource):
             assignments=[
                 {
                     "address": reserved_ip1["address"],
-                    "linode_id": terraform_web1["id"],
+                    "linode_id": int(terraform_web1["id"]),
                 },
                 {
                     "address": reserved_ip2["address"],
-                    "linode_id": terraform_web2["id"],
+                    "linode_id": int(terraform_web2["id"]),
                 },
             ])
         ```

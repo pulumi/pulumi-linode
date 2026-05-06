@@ -35,8 +35,8 @@ import * as utilities from "./utilities";
  *     type: "g6-standard-1",
  * });
  * const myDevice = new linode.FirewallDevice("my_device", {
- *     firewallId: myFirewall.id,
- *     entityId: myInstance.id,
+ *     firewallId: myFirewall.id.apply(x =>Number(x)),
+ *     entityId: myInstance.id.apply(x =>Number(x)),
  * });
  * ```
  *

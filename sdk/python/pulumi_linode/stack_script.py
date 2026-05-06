@@ -389,7 +389,7 @@ class StackScript(pulumi.CustomResource):
             type="g6-nanode-1",
             authorized_keys=["..."],
             root_pass="...",
-            stackscript_id=foo.id,
+            stackscript_id=foo.id.apply(lambda x: int(x)),
             stackscript_data={
                 "package": "nginx",
             })
@@ -453,7 +453,7 @@ class StackScript(pulumi.CustomResource):
             type="g6-nanode-1",
             authorized_keys=["..."],
             root_pass="...",
-            stackscript_id=foo.id,
+            stackscript_id=foo.id.apply(lambda x: int(x)),
             stackscript_data={
                 "package": "nginx",
             })

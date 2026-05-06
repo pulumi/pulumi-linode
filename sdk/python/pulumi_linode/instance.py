@@ -1535,7 +1535,7 @@ class Instance(pulumi.CustomResource):
             region="us-central")
         boot_disk = linode.InstanceDisk("boot_disk",
             label="boot",
-            linode_id=web.id,
+            linode_id=web.id.apply(lambda x: int(x)),
             size=3000,
             image="linode/ubuntu22.04",
             authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
@@ -1543,7 +1543,7 @@ class Instance(pulumi.CustomResource):
             root_pass="terr4form-test")
         boot_config = linode.InstanceConfig("boot_config",
             label="boot_config",
-            linode_id=web.id,
+            linode_id=web.id.apply(lambda x: int(x)),
             devices=[
                 {
                     "deviceName": "sda",
@@ -1737,7 +1737,7 @@ class Instance(pulumi.CustomResource):
             region="us-central")
         boot_disk = linode.InstanceDisk("boot_disk",
             label="boot",
-            linode_id=web.id,
+            linode_id=web.id.apply(lambda x: int(x)),
             size=3000,
             image="linode/ubuntu22.04",
             authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
@@ -1745,7 +1745,7 @@ class Instance(pulumi.CustomResource):
             root_pass="terr4form-test")
         boot_config = linode.InstanceConfig("boot_config",
             label="boot_config",
-            linode_id=web.id,
+            linode_id=web.id.apply(lambda x: int(x)),
             devices=[
                 {
                     "deviceName": "sda",

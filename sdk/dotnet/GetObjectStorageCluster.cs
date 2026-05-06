@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var primary = Linode.Index.GetObjectStorageCluster.Invoke(new()
+        ///     var primary = Linode.GetObjectStorageCluster.Invoke(new()
         ///     {
         ///         Id = "us-east-1",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var primary = Linode.Index.GetObjectStorageCluster.Invoke(new()
+        ///     var primary = Linode.GetObjectStorageCluster.Invoke(new()
         ///     {
         ///         Id = "us-east-1",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var primary = Linode.Index.GetObjectStorageCluster.Invoke(new()
+        ///     var primary = Linode.GetObjectStorageCluster.Invoke(new()
         ///     {
         ///         Id = "us-east-1",
         ///     });

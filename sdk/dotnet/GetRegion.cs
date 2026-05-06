@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var region = Linode.Index.GetRegion.Invoke(new()
+        ///     var region = Linode.GetRegion.Invoke(new()
         ///     {
         ///         Id = "us-east",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var region = Linode.Index.GetRegion.Invoke(new()
+        ///     var region = Linode.GetRegion.Invoke(new()
         ///     {
         ///         Id = "us-east",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var region = Linode.Index.GetRegion.Invoke(new()
+        ///     var region = Linode.GetRegion.Invoke(new()
         ///     {
         ///         Id = "us-east",
         ///     });
