@@ -23,7 +23,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Linode.Index.FirewallSettings("example", new()
+    ///     var example = new Linode.FirewallSettings("example", new()
     ///     {
     ///         DefaultFirewallIds = new Linode.Inputs.FirewallSettingsDefaultFirewallIdsArgs
     ///         {

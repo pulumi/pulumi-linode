@@ -21,7 +21,7 @@ class FirewallDeviceInitArgs:
     def __init__(__self__, *,
                  entity_id: pulumi.Input[_builtins.int],
                  firewall_id: pulumi.Input[_builtins.int],
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallDevice resource.
 
@@ -60,25 +60,25 @@ class FirewallDeviceInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="entityType")
-    def entity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the entity to attach. (default: `linode`)
         """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
-    def entity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_type", value)
 
 
 @pulumi.input_type
 class _FirewallDeviceState:
     def __init__(__self__, *,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None):
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallDevice resources.
 
@@ -101,62 +101,62 @@ class _FirewallDeviceState:
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the Firewall Device was last created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def entity_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique ID of the entity to attach.
         """
         return pulumi.get(self, "entity_id")
 
     @entity_id.setter
-    def entity_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def entity_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "entity_id", value)
 
     @_builtins.property
     @pulumi.getter(name="entityType")
-    def entity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the entity to attach. (default: `linode`)
         """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
-    def entity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_type", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def firewall_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique ID of the target Firewall.
         """
         return pulumi.get(self, "firewall_id")
 
     @firewall_id.setter
-    def firewall_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def firewall_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the Firewall Device was last updated.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
 
@@ -166,9 +166,9 @@ class FirewallDevice(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a Linode Firewall Device.
@@ -199,8 +199,8 @@ class FirewallDevice(pulumi.CustomResource):
             region="us-southeast",
             type="g6-standard-1")
         my_device = linode.FirewallDevice("my_device",
-            firewall_id=my_firewall.id,
-            entity_id=my_instance.id)
+            firewall_id=my_firewall.id.apply(lambda x: int(x)),
+            entity_id=my_instance.id.apply(lambda x: int(x)))
         ```
 
         ## Import
@@ -253,8 +253,8 @@ class FirewallDevice(pulumi.CustomResource):
             region="us-southeast",
             type="g6-standard-1")
         my_device = linode.FirewallDevice("my_device",
-            firewall_id=my_firewall.id,
-            entity_id=my_instance.id)
+            firewall_id=my_firewall.id.apply(lambda x: int(x)),
+            entity_id=my_instance.id.apply(lambda x: int(x)))
         ```
 
         ## Import
@@ -281,9 +281,9 @@ class FirewallDevice(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,11 +312,11 @@ class FirewallDevice(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            entity_id: Optional[pulumi.Input[_builtins.int]] = None,
-            entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-            firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None) -> 'FirewallDevice':
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_id: pulumi.Input[Optional[_builtins.int]] = None,
+            entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None) -> 'FirewallDevice':
         """
         Get an existing FirewallDevice resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

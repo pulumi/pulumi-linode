@@ -105,8 +105,8 @@ def get_lke_version(id: Optional[_builtins.str] = None,
     return AwaitableGetLkeVersionResult(
         id=pulumi.get(__ret__, 'id'),
         tier=pulumi.get(__ret__, 'tier'))
-def get_lke_version_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                           tier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_lke_version_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                           tier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeVersionResult]:
     """
     Provides details about a specific Kubernetes versions available for deployment to a Kubernetes cluster.

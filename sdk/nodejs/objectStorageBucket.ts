@@ -213,62 +213,62 @@ export interface ObjectStorageBucketState {
      * * configured by `objAccessKey` in the provider configuration;
      * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * The cert used by this Object Storage Bucket.
      */
-    cert?: pulumi.Input<inputs.ObjectStorageBucketCert>;
+    cert?: pulumi.Input<inputs.ObjectStorageBucketCert | undefined>;
     /**
      * The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
      * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
      *
      * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
      */
-    corsEnabled?: pulumi.Input<boolean>;
+    corsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint for the bucket used for s3 connections.
      *
      * @deprecated Use `s3Endpoint` instead
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * The label of the Linode Object Storage Bucket.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * Lifecycle rules to be applied to the bucket.
      */
-    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[] | undefined>;
     /**
      * The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The user's s3 endpoint URL, based on the `endpointType` and `region`.
      */
-    s3Endpoint?: pulumi.Input<string>;
+    s3Endpoint?: pulumi.Input<string | undefined>;
     /**
      * The secret key to authenticate with. If not specified with the resource, its value can be
      * * configured by `objSecretKey` in the provider configuration;
      * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      *
@@ -276,7 +276,7 @@ export interface ObjectStorageBucketState {
      *
      * * `cert` - (Optional) The bucket's TLS/SSL certificate.
      */
-    versioning?: pulumi.Input<boolean>;
+    versioning?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -288,30 +288,30 @@ export interface ObjectStorageBucketArgs {
      * * configured by `objAccessKey` in the provider configuration;
      * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * The cert used by this Object Storage Bucket.
      */
-    cert?: pulumi.Input<inputs.ObjectStorageBucketCert>;
+    cert?: pulumi.Input<inputs.ObjectStorageBucketCert | undefined>;
     /**
      * The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
      * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
      *
      * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
      */
-    corsEnabled?: pulumi.Input<boolean>;
+    corsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The type of `s3Endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * The label of the Linode Object Storage Bucket.
      */
@@ -319,21 +319,21 @@ export interface ObjectStorageBucketArgs {
     /**
      * Lifecycle rules to be applied to the bucket.
      */
-    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[]>;
+    lifecycleRules?: pulumi.Input<pulumi.Input<inputs.ObjectStorageBucketLifecycleRule>[] | undefined>;
     /**
      * The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The user's s3 endpoint URL, based on the `endpointType` and `region`.
      */
-    s3Endpoint?: pulumi.Input<string>;
+    s3Endpoint?: pulumi.Input<string | undefined>;
     /**
      * The secret key to authenticate with. If not specified with the resource, its value can be
      * * configured by `objSecretKey` in the provider configuration;
      * * or, generated implicitly at apply-time if `objUseTempKeys` at provider-level is set.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      *
@@ -341,5 +341,5 @@ export interface ObjectStorageBucketArgs {
      *
      * * `cert` - (Optional) The bucket's TLS/SSL certificate.
      */
-    versioning?: pulumi.Input<boolean>;
+    versioning?: pulumi.Input<boolean | undefined>;
 }

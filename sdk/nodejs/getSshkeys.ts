@@ -130,13 +130,13 @@ export function getSshkeysOutput(args?: GetSshkeysOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getSshkeys.
  */
 export interface GetSshkeysOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetSshkeysFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetSshkeysFilterArgs>[] | undefined>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

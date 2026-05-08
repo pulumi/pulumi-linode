@@ -122,5 +122,5 @@ export function getVpcsOutput(args?: GetVpcsOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getVpcs.
  */
 export interface GetVpcsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetVpcsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetVpcsFilterArgs>[] | undefined>;
 }

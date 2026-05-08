@@ -20,8 +20,8 @@ __all__ = ['Ipv6RangeArgs', 'Ipv6Range']
 class Ipv6RangeArgs:
     def __init__(__self__, *,
                  prefix_length: pulumi.Input[_builtins.int],
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 route_target: Optional[pulumi.Input[_builtins.str]] = None):
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 route_target: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ipv6Range resource.
 
@@ -49,39 +49,39 @@ class Ipv6RangeArgs:
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def linode_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         """
         return pulumi.get(self, "linode_id")
 
     @linode_id.setter
-    def linode_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def linode_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "linode_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTarget")
-    def route_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 SLAAC address to assign this range to.
         """
         return pulumi.get(self, "route_target")
 
     @route_target.setter
-    def route_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_target", value)
 
 
 @pulumi.input_type
 class _Ipv6RangeState:
     def __init__(__self__, *,
-                 is_bgp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 range: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_target: Optional[pulumi.Input[_builtins.str]] = None):
+                 is_bgp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 range: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_target: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ipv6Range resources.
 
@@ -110,86 +110,86 @@ class _Ipv6RangeState:
 
     @_builtins.property
     @pulumi.getter(name="isBgp")
-    def is_bgp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_bgp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this IPv6 range is shared.
         """
         return pulumi.get(self, "is_bgp")
 
     @is_bgp.setter
-    def is_bgp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_bgp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_bgp", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def linode_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
         """
         return pulumi.get(self, "linode_id")
 
     @linode_id.setter
-    def linode_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def linode_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "linode_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def linodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def linodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
         """
         return pulumi.get(self, "linodes")
 
     @linodes.setter
-    def linodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def linodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "linodes", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The prefix length of the IPv6 range.
         """
         return pulumi.get(self, "prefix_length")
 
     @prefix_length.setter
-    def prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 range of addresses in this pool.
         """
         return pulumi.get(self, "range")
 
     @range.setter
-    def range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "range", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region for this range of IPv6 addresses.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTarget")
-    def route_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 SLAAC address to assign this range to.
         """
         return pulumi.get(self, "route_target")
 
     @route_target.setter
-    def route_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_target", value)
 
 
@@ -199,9 +199,9 @@ class Ipv6Range(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 route_target: Optional[pulumi.Input[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 route_target: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Linode IPv6 range.
@@ -221,7 +221,7 @@ class Ipv6Range(pulumi.CustomResource):
             type="g6-nanode-1",
             region="us-southeast")
         foobar_ipv6_range = linode.Ipv6Range("foobar",
-            linode_id=foobar.id,
+            linode_id=foobar.id.apply(lambda x: int(x)),
             prefix_length=64)
         ```
 
@@ -256,7 +256,7 @@ class Ipv6Range(pulumi.CustomResource):
             type="g6-nanode-1",
             region="us-southeast")
         foobar_ipv6_range = linode.Ipv6Range("foobar",
-            linode_id=foobar.id,
+            linode_id=foobar.id.apply(lambda x: int(x)),
             prefix_length=64)
         ```
 
@@ -276,9 +276,9 @@ class Ipv6Range(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 route_target: Optional[pulumi.Input[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 route_target: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -307,13 +307,13 @@ class Ipv6Range(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            is_bgp: Optional[pulumi.Input[_builtins.bool]] = None,
-            linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-            linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-            range: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            route_target: Optional[pulumi.Input[_builtins.str]] = None) -> 'Ipv6Range':
+            is_bgp: pulumi.Input[Optional[_builtins.bool]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            range: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            route_target: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ipv6Range':
         """
         Get an existing Ipv6Range resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -258,8 +258,8 @@ def get_lke_node_pool(cluster_id: Optional[_builtins.int] = None,
         taints=pulumi.get(__ret__, 'taints'),
         type=pulumi.get(__ret__, 'type'),
         update_strategy=pulumi.get(__ret__, 'update_strategy'))
-def get_lke_node_pool_output(cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
-                             id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_lke_node_pool_output(cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
+                             id: pulumi.Input[Optional[_builtins.int]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeNodePoolResult]:
     """
     Provides details about a specific LKE Cluster Node Pool.

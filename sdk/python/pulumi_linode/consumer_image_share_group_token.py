@@ -20,7 +20,7 @@ __all__ = ['ConsumerImageShareGroupTokenArgs', 'ConsumerImageShareGroupToken']
 class ConsumerImageShareGroupTokenArgs:
     def __init__(__self__, *,
                  valid_for_sharegroup_uuid: pulumi.Input[_builtins.str],
-                 label: Optional[pulumi.Input[_builtins.str]] = None):
+                 label: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConsumerImageShareGroupToken resource.
 
@@ -45,30 +45,30 @@ class ConsumerImageShareGroupTokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A label for the token.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
 
 @pulumi.input_type
 class _ConsumerImageShareGroupTokenState:
     def __init__(__self__, *,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiry: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharegroup_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharegroup_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid_for_sharegroup_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiry: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharegroup_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharegroup_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid_for_sharegroup_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConsumerImageShareGroupToken resources.
 
@@ -106,122 +106,122 @@ class _ConsumerImageShareGroupTokenState:
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the token was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the token will expire.
         """
         return pulumi.get(self, "expiry")
 
     @expiry.setter
-    def expiry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiry", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A label for the token.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter(name="sharegroupLabel")
-    def sharegroup_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sharegroup_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The label of the Image Share Group that the token is for.
         """
         return pulumi.get(self, "sharegroup_label")
 
     @sharegroup_label.setter
-    def sharegroup_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sharegroup_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sharegroup_label", value)
 
     @_builtins.property
     @pulumi.getter(name="sharegroupUuid")
-    def sharegroup_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sharegroup_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the Image Share Group that the token is for.
         """
         return pulumi.get(self, "sharegroup_uuid")
 
     @sharegroup_uuid.setter
-    def sharegroup_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sharegroup_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sharegroup_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the token.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The one-time-use token to be provided to the Image Share Group Producer.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenUuid")
-    def token_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the token.
         """
         return pulumi.get(self, "token_uuid")
 
     @token_uuid.setter
-    def token_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the token was last updated.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
     @_builtins.property
     @pulumi.getter(name="validForSharegroupUuid")
-    def valid_for_sharegroup_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid_for_sharegroup_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the Image Share Group for which to create a token.
         """
         return pulumi.get(self, "valid_for_sharegroup_uuid")
 
     @valid_for_sharegroup_uuid.setter
-    def valid_for_sharegroup_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid_for_sharegroup_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid_for_sharegroup_uuid", value)
 
 
@@ -231,8 +231,8 @@ class ConsumerImageShareGroupToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid_for_sharegroup_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid_for_sharegroup_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a token for an Image Share Group.
@@ -292,8 +292,8 @@ class ConsumerImageShareGroupToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid_for_sharegroup_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid_for_sharegroup_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -327,16 +327,16 @@ class ConsumerImageShareGroupToken(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            expiry: Optional[pulumi.Input[_builtins.str]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            sharegroup_label: Optional[pulumi.Input[_builtins.str]] = None,
-            sharegroup_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            token: Optional[pulumi.Input[_builtins.str]] = None,
-            token_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None,
-            valid_for_sharegroup_uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConsumerImageShareGroupToken':
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            expiry: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            sharegroup_label: pulumi.Input[Optional[_builtins.str]] = None,
+            sharegroup_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            token_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            valid_for_sharegroup_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConsumerImageShareGroupToken':
         """
         Get an existing ConsumerImageShareGroupToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

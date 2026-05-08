@@ -190,7 +190,7 @@ def get_producer_image_share_group(id: Optional[_builtins.int] = None,
         members_count=pulumi.get(__ret__, 'members_count'),
         updated=pulumi.get(__ret__, 'updated'),
         uuid=pulumi.get(__ret__, 'uuid'))
-def get_producer_image_share_group_output(id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_producer_image_share_group_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProducerImageShareGroupResult]:
     """
     `ProducerImageShareGroup` provides details about an Image Share Group.

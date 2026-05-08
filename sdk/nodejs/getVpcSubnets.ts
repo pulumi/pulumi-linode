@@ -127,7 +127,7 @@ export function getVpcSubnetsOutput(args: GetVpcSubnetsOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getVpcSubnets.
  */
 export interface GetVpcSubnetsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetVpcSubnetsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetVpcSubnetsFilterArgs>[] | undefined>;
     /**
      * The id of the parent VPC for the list of VPCs.
      *

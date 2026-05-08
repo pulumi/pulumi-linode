@@ -103,5 +103,5 @@ export function getIpv6RangesOutput(args?: GetIpv6RangesOutputArgs, opts?: pulum
  * A collection of arguments for invoking getIpv6Ranges.
  */
 export interface GetIpv6RangesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetIpv6RangesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetIpv6RangesFilterArgs>[] | undefined>;
 }

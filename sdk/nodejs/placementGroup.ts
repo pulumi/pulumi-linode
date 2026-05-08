@@ -133,27 +133,27 @@ export interface PlacementGroupState {
     /**
      * Whether this Linode is currently compliant with the group's placement group type.
      */
-    isCompliant?: pulumi.Input<boolean>;
+    isCompliant?: pulumi.Input<boolean | undefined>;
     /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * A set of Linodes currently assigned to this Placement Group.
      */
-    members?: pulumi.Input<pulumi.Input<inputs.PlacementGroupMember>[]>;
+    members?: pulumi.Input<pulumi.Input<inputs.PlacementGroupMember>[] | undefined>;
     /**
      * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      */
-    placementGroupPolicy?: pulumi.Input<string>;
+    placementGroupPolicy?: pulumi.Input<string | undefined>;
     /**
      * The placement group type to use when placing Linodes in this group.
      */
-    placementGroupType?: pulumi.Input<string>;
+    placementGroupType?: pulumi.Input<string | undefined>;
     /**
      * The region of the Placement Group.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -167,7 +167,7 @@ export interface PlacementGroupArgs {
     /**
      * Whether Linodes must be able to become compliant during assignment. (Default `strict`)
      */
-    placementGroupPolicy?: pulumi.Input<string>;
+    placementGroupPolicy?: pulumi.Input<string | undefined>;
     /**
      * The placement group type to use when placing Linodes in this group.
      */

@@ -132,10 +132,10 @@ export function getConsumerImageShareGroupImageSharesOutput(args: GetConsumerIma
  * A collection of arguments for invoking getConsumerImageShareGroupImageShares.
  */
 export interface GetConsumerImageShareGroupImageSharesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesFilterArgs>[]>;
-    imageShares?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareArgs>[]>;
-    order?: pulumi.Input<string>;
-    orderBy?: pulumi.Input<string>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesFilterArgs>[] | undefined>;
+    imageShares?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareArgs>[] | undefined>;
+    order?: pulumi.Input<string | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
      *

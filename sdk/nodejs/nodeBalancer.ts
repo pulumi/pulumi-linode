@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  *     label: "mynodebalancer",
  *     region: "us-mia",
  *     vpcs: [{
- *         subnetId: test.id,
+ *         subnetId: Number(test.id),
  *     }],
  * });
  * ```
@@ -196,63 +196,63 @@ export interface NodeBalancerState {
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
-    clientConnThrottle?: pulumi.Input<number>;
+    clientConnThrottle?: pulumi.Input<number | undefined>;
     /**
      * Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
      *
      * * **NOTE: This argument may not be generally available.**
      */
-    clientUdpSessThrottle?: pulumi.Input<number>;
+    clientUdpSessThrottle?: pulumi.Input<number | undefined>;
     /**
      * When this firewall was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * ID for the firewall you'd like to use with this NodeBalancer.
      */
-    firewallId?: pulumi.Input<number>;
+    firewallId?: pulumi.Input<number | undefined>;
     /**
      * A list of Firewalls assigned to this NodeBalancer.
      */
-    firewalls?: pulumi.Input<pulumi.Input<inputs.NodeBalancerFirewall>[]>;
+    firewalls?: pulumi.Input<pulumi.Input<inputs.NodeBalancerFirewall>[] | undefined>;
     /**
      * This NodeBalancer's hostname, ending with .nodebalancer.linode.com
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * A list of IPv4 addresses or networks. Must be in IP/mask format.
      */
-    ipv4?: pulumi.Input<string>;
+    ipv4?: pulumi.Input<string | undefined>;
     /**
      * A list of IPv6 addresses or networks. Must be in IP/mask format.
      */
-    ipv6?: pulumi.Input<string>;
+    ipv6?: pulumi.Input<string | undefined>;
     /**
      * The label of the Linode NodeBalancer
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      *
      * - - -
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Information about the amount of transfer this NodeBalancer has had so far this month.
      */
-    transfers?: pulumi.Input<pulumi.Input<inputs.NodeBalancerTransfer>[]>;
+    transfers?: pulumi.Input<pulumi.Input<inputs.NodeBalancerTransfer>[] | undefined>;
     /**
      * When this firewall was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
     /**
      * A list of VPCs to be assigned to this NodeBalancer.
      */
-    vpcs?: pulumi.Input<pulumi.Input<inputs.NodeBalancerVpc>[]>;
+    vpcs?: pulumi.Input<pulumi.Input<inputs.NodeBalancerVpc>[] | undefined>;
 }
 
 /**
@@ -262,33 +262,33 @@ export interface NodeBalancerArgs {
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
-    clientConnThrottle?: pulumi.Input<number>;
+    clientConnThrottle?: pulumi.Input<number | undefined>;
     /**
      * Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
      *
      * * **NOTE: This argument may not be generally available.**
      */
-    clientUdpSessThrottle?: pulumi.Input<number>;
+    clientUdpSessThrottle?: pulumi.Input<number | undefined>;
     /**
      * ID for the firewall you'd like to use with this NodeBalancer.
      */
-    firewallId?: pulumi.Input<number>;
+    firewallId?: pulumi.Input<number | undefined>;
     /**
      * The label of the Linode NodeBalancer
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      *
      * - - -
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of VPCs to be assigned to this NodeBalancer.
      */
-    vpcs?: pulumi.Input<pulumi.Input<inputs.NodeBalancerVpc>[]>;
+    vpcs?: pulumi.Input<pulumi.Input<inputs.NodeBalancerVpc>[] | undefined>;
 }

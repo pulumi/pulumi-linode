@@ -190,9 +190,9 @@ def get_node_balancer_node(config_id: Optional[_builtins.int] = None,
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         vpc_config_id=pulumi.get(__ret__, 'vpc_config_id'),
         weight=pulumi.get(__ret__, 'weight'))
-def get_node_balancer_node_output(config_id: Optional[pulumi.Input[_builtins.int]] = None,
-                                  id: Optional[pulumi.Input[_builtins.int]] = None,
-                                  nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_node_balancer_node_output(config_id: pulumi.Input[Optional[_builtins.int]] = None,
+                                  id: pulumi.Input[Optional[_builtins.int]] = None,
+                                  nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeBalancerNodeResult]:
     """
     Provides details about a Linode NodeBalancer node.

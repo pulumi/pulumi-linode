@@ -49,7 +49,7 @@ export function getNbTypesOutput(args?: GetNbTypesOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getNbTypes.
  */
 export interface GetNbTypesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetNbTypesFilterArgs>[]>;
-    order?: pulumi.Input<string>;
-    orderBy?: pulumi.Input<string>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetNbTypesFilterArgs>[] | undefined>;
+    order?: pulumi.Input<string | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

@@ -107,5 +107,5 @@ export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getRegions.
  */
 export interface GetRegionsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetRegionsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetRegionsFilterArgs>[] | undefined>;
 }

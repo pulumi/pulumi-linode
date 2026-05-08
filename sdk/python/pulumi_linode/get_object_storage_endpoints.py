@@ -140,9 +140,9 @@ def get_object_storage_endpoints(filters: Optional[Sequence[Union['GetObjectStor
         id=pulumi.get(__ret__, 'id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_object_storage_endpoints_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetObjectStorageEndpointsFilterArgs', 'GetObjectStorageEndpointsFilterArgsDict']]]]] = None,
-                                        order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_object_storage_endpoints_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetObjectStorageEndpointsFilterArgs', 'GetObjectStorageEndpointsFilterArgsDict']]]]] = None,
+                                        order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageEndpointsResult]:
     """
     Provides information about Linode Object Storage endpoints available to the user.

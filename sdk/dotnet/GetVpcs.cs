@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_vpcs = Linode.Index.GetVpcs.Invoke(new()
+        ///     var filtered_vpcs = Linode.GetVpcs.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -86,7 +86,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_vpcs = Linode.Index.GetVpcs.Invoke(new()
+        ///     var filtered_vpcs = Linode.GetVpcs.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -145,7 +145,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_vpcs = Linode.Index.GetVpcs.Invoke(new()
+        ///     var filtered_vpcs = Linode.GetVpcs.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

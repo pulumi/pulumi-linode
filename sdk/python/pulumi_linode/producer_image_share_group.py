@@ -22,8 +22,8 @@ __all__ = ['ProducerImageShareGroupArgs', 'ProducerImageShareGroup']
 class ProducerImageShareGroupArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]] = None):
         """
         The set of arguments for constructing a ProducerImageShareGroup resource.
 
@@ -53,7 +53,7 @@ class ProducerImageShareGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Image Share Group
 
@@ -62,35 +62,35 @@ class ProducerImageShareGroupArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]]:
+    def images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]]:
         """
         The images to be shared using this Image Share Group.
         """
         return pulumi.get(self, "images")
 
     @images.setter
-    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]]):
+    def images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]]):
         pulumi.set(self, "images", value)
 
 
 @pulumi.input_type
 class _ProducerImageShareGroupState:
     def __init__(__self__, *,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiry: Optional[pulumi.Input[_builtins.str]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]] = None,
-                 images_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 is_suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 members_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiry: pulumi.Input[Optional[_builtins.str]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]] = None,
+                 images_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 members_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProducerImageShareGroup resources.
 
@@ -130,19 +130,19 @@ class _ProducerImageShareGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the Image Share Group was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Image Share Group
 
@@ -151,103 +151,103 @@ class _ProducerImageShareGroupState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the Image Share Group will expire.
         """
         return pulumi.get(self, "expiry")
 
     @expiry.setter
-    def expiry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiry", value)
 
     @_builtins.property
     @pulumi.getter
-    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]]:
+    def images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]]:
         """
         The images to be shared using this Image Share Group.
         """
         return pulumi.get(self, "images")
 
     @images.setter
-    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]]):
+    def images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]]]):
         pulumi.set(self, "images", value)
 
     @_builtins.property
     @pulumi.getter(name="imagesCount")
-    def images_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def images_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of images in the Image Share Group.
         """
         return pulumi.get(self, "images_count")
 
     @images_count.setter
-    def images_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def images_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "images_count", value)
 
     @_builtins.property
     @pulumi.getter(name="isSuspended")
-    def is_suspended(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_suspended(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Image Share Group is suspended.
         """
         return pulumi.get(self, "is_suspended")
 
     @is_suspended.setter
-    def is_suspended(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_suspended(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_suspended", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The label of the Image Share Group.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter(name="membersCount")
-    def members_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def members_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of members in the Image Share Group.
         """
         return pulumi.get(self, "members_count")
 
     @members_count.setter
-    def members_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def members_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "members_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time the Image Share Group was last updated.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the Image Share Group.
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
@@ -257,9 +257,9 @@ class ProducerImageShareGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages an Image Share Group.
@@ -348,9 +348,9 @@ class ProducerImageShareGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -382,16 +382,16 @@ class ProducerImageShareGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            expiry: Optional[pulumi.Input[_builtins.str]] = None,
-            images: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]]] = None,
-            images_count: Optional[pulumi.Input[_builtins.int]] = None,
-            is_suspended: Optional[pulumi.Input[_builtins.bool]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            members_count: Optional[pulumi.Input[_builtins.int]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None,
-            uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProducerImageShareGroup':
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expiry: pulumi.Input[Optional[_builtins.str]] = None,
+            images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]]] = None,
+            images_count: pulumi.Input[Optional[_builtins.int]] = None,
+            is_suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            members_count: pulumi.Input[Optional[_builtins.int]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProducerImageShareGroup':
         """
         Get an existing ProducerImageShareGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

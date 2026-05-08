@@ -145,13 +145,13 @@ export function getObjectStorageEndpointsOutput(args?: GetObjectStorageEndpoints
  * A collection of arguments for invoking getObjectStorageEndpoints.
  */
 export interface GetObjectStorageEndpointsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetObjectStorageEndpointsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetObjectStorageEndpointsFilterArgs>[] | undefined>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

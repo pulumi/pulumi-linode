@@ -58,8 +58,8 @@ class InstanceSharedIpsArgs:
 @pulumi.input_type
 class _InstanceSharedIpsState:
     def __init__(__self__, *,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering InstanceSharedIps resources.
 
@@ -73,26 +73,26 @@ class _InstanceSharedIpsState:
 
     @_builtins.property
     @pulumi.getter
-    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of IPs to share with the Linode.
         """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def linode_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Linode to share the IPs to.
         """
         return pulumi.get(self, "linode_id")
 
     @linode_id.setter
-    def linode_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def linode_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "linode_id", value)
 
 
@@ -102,8 +102,8 @@ class InstanceSharedIps(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages IPs shared to a Linode instance.
@@ -127,7 +127,7 @@ class InstanceSharedIps(pulumi.CustomResource):
             type="g6-nanode-1",
             region="eu-central")
         # Allocate an IP under the primary node
-        primary = linode.InstanceIp("primary", linode_id=primary_instance.id)
+        primary = linode.InstanceIp("primary", linode_id=primary_instance.id.apply(lambda x: int(x)))
         # Create a secondary node
         secondary = linode.Instance("secondary",
             label="node-secondary",
@@ -135,7 +135,7 @@ class InstanceSharedIps(pulumi.CustomResource):
             region="eu-central")
         # Share the IP with the secondary node
         share_primary = linode.InstanceSharedIps("share-primary",
-            linode_id=secondary.id,
+            linode_id=secondary.id.apply(lambda x: int(x)),
             addresses=[primary.address])
         ```
 
@@ -173,7 +173,7 @@ class InstanceSharedIps(pulumi.CustomResource):
             type="g6-nanode-1",
             region="eu-central")
         # Allocate an IP under the primary node
-        primary = linode.InstanceIp("primary", linode_id=primary_instance.id)
+        primary = linode.InstanceIp("primary", linode_id=primary_instance.id.apply(lambda x: int(x)))
         # Create a secondary node
         secondary = linode.Instance("secondary",
             label="node-secondary",
@@ -181,7 +181,7 @@ class InstanceSharedIps(pulumi.CustomResource):
             region="eu-central")
         # Share the IP with the secondary node
         share_primary = linode.InstanceSharedIps("share-primary",
-            linode_id=secondary.id,
+            linode_id=secondary.id.apply(lambda x: int(x)),
             addresses=[primary.address])
         ```
 
@@ -201,8 +201,8 @@ class InstanceSharedIps(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -228,8 +228,8 @@ class InstanceSharedIps(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            linode_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'InstanceSharedIps':
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'InstanceSharedIps':
         """
         Get an existing InstanceSharedIps resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

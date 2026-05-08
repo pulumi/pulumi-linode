@@ -171,9 +171,9 @@ def get_linode_object_storage_bucket(cluster: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         s3_endpoint=pulumi.get(__ret__, 's3_endpoint'),
         size=pulumi.get(__ret__, 'size'))
-def get_linode_object_storage_bucket_output(cluster: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            label: Optional[pulumi.Input[_builtins.str]] = None,
-                                            region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_linode_object_storage_bucket_output(cluster: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            label: pulumi.Input[Optional[_builtins.str]] = None,
+                                            region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLinodeObjectStorageBucketResult]:
     """
     Provides information about a Linode Object Storage Bucket

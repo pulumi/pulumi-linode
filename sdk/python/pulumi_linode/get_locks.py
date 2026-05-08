@@ -145,9 +145,9 @@ def get_locks(filters: Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFi
         locks=pulumi.get(__ret__, 'locks'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_locks_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFilterArgsDict']]]]] = None,
-                     order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_locks_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFilterArgsDict']]]]] = None,
+                     order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLocksResult]:
     """
     > **Early Access:** Lock functionality is in early access and may not be available to all users.

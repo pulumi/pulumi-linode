@@ -171,5 +171,5 @@ export function getChildAccountsOutput(args?: GetChildAccountsOutputArgs, opts?:
  * A collection of arguments for invoking getChildAccounts.
  */
 export interface GetChildAccountsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetChildAccountsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetChildAccountsFilterArgs>[] | undefined>;
 }

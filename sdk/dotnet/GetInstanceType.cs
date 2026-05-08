@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = Linode.Index.GetInstanceType.Invoke(new()
+        ///     var @default = Linode.GetInstanceType.Invoke(new()
         ///     {
         ///         Id = "g6-standard-2",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = Linode.Index.GetInstanceType.Invoke(new()
+        ///     var @default = Linode.GetInstanceType.Invoke(new()
         ///     {
         ///         Id = "g6-standard-2",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = Linode.Index.GetInstanceType.Invoke(new()
+        ///     var @default = Linode.GetInstanceType.Invoke(new()
         ///     {
         ///         Id = "g6-standard-2",
         ///     });

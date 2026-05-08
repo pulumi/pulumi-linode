@@ -125,5 +125,5 @@ export interface GetInstanceTypeOutputArgs {
     /**
      * The Linode Type's label is for display purposes only
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
 }

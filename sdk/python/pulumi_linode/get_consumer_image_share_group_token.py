@@ -190,7 +190,7 @@ def get_consumer_image_share_group_token(token_uuid: Optional[_builtins.str] = N
         token_uuid=pulumi.get(__ret__, 'token_uuid'),
         updated=pulumi.get(__ret__, 'updated'),
         valid_for_sharegroup_uuid=pulumi.get(__ret__, 'valid_for_sharegroup_uuid'))
-def get_consumer_image_share_group_token_output(token_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_consumer_image_share_group_token_output(token_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConsumerImageShareGroupTokenResult]:
     """
     `ConsumerImageShareGroupToken` provides details about a Token for an Image Share Group.

@@ -23,17 +23,17 @@ class InstanceConfigInitArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[_builtins.str],
                  linode_id: pulumi.Input[_builtins.int],
-                 booted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 device: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]] = None,
-                 devices: Optional[pulumi.Input['InstanceConfigDevicesArgs']] = None,
-                 helpers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]] = None,
-                 kernel: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 root_device: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 virt_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 booted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 device: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]] = None,
+                 devices: pulumi.Input[Optional['InstanceConfigDevicesArgs']] = None,
+                 helpers: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]] = None,
+                 kernel: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 root_device: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 virt_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceConfig resource.
 
@@ -115,19 +115,19 @@ class InstanceConfigInitArgs:
 
     @_builtins.property
     @pulumi.getter
-    def booted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def booted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
         """
         return pulumi.get(self, "booted")
 
     @booted.setter
-    def booted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def booted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "booted", value)
 
     @_builtins.property
     @pulumi.getter
-    def comments(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comments(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional field for arbitrary User comments on this Config.
 
@@ -140,135 +140,135 @@ class InstanceConfigInitArgs:
         return pulumi.get(self, "comments")
 
     @comments.setter
-    def comments(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comments(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comments", value)
 
     @_builtins.property
     @pulumi.getter
-    def device(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]]:
+    def device(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]]:
         """
         Blocks for device disks in a Linode's configuration profile.
         """
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]]):
+    def device(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]]):
         pulumi.set(self, "device", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Devices attribute is deprecated in favor of `device`.""")
-    def devices(self) -> Optional[pulumi.Input['InstanceConfigDevicesArgs']]:
+    def devices(self) -> pulumi.Input[Optional['InstanceConfigDevicesArgs']]:
         """
         A dictionary of device disks to use as a device map in a Linode's configuration profile.
         """
         return pulumi.get(self, "devices")
 
     @devices.setter
-    def devices(self, value: Optional[pulumi.Input['InstanceConfigDevicesArgs']]):
+    def devices(self, value: pulumi.Input[Optional['InstanceConfigDevicesArgs']]):
         pulumi.set(self, "devices", value)
 
     @_builtins.property
     @pulumi.getter
-    def helpers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]]:
+    def helpers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]]:
         """
         Helpers enabled when booting to this Linode Config.
         """
         return pulumi.get(self, "helpers")
 
     @helpers.setter
-    def helpers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]]):
+    def helpers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]]):
         pulumi.set(self, "helpers", value)
 
     @_builtins.property
     @pulumi.getter
-    def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]:
+    def interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]:
         """
         An array of Network Interfaces to add to this Linode's Configuration Profile.
         """
         return pulumi.get(self, "interfaces")
 
     @interfaces.setter
-    def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]):
+    def interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]):
         pulumi.set(self, "interfaces", value)
 
     @_builtins.property
     @pulumi.getter
-    def kernel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kernel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Kernel ID to boot a Linode with. Default is `linode/latest-64bit`. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
         """
         return pulumi.get(self, "kernel")
 
     @kernel.setter
-    def kernel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kernel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kernel", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The memory limit of the Config. Defaults to the total ram of the Linode.
         """
         return pulumi.get(self, "memory_limit")
 
     @memory_limit.setter
-    def memory_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDevice")
-    def root_device(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_device(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root device to boot. (default `/dev/sda`)
         """
         return pulumi.get(self, "root_device")
 
     @root_device.setter
-    def root_device(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_device(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_device", value)
 
     @_builtins.property
     @pulumi.getter(name="runLevel")
-    def run_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
         """
         return pulumi.get(self, "run_level")
 
     @run_level.setter
-    def run_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_level", value)
 
     @_builtins.property
     @pulumi.getter(name="virtMode")
-    def virt_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virt_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the virtualization mode. (`paravirt`, `fullvirt`)
         """
         return pulumi.get(self, "virt_mode")
 
     @virt_mode.setter
-    def virt_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virt_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virt_mode", value)
 
 
 @pulumi.input_type
 class _InstanceConfigState:
     def __init__(__self__, *,
-                 booted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 device: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]] = None,
-                 devices: Optional[pulumi.Input['InstanceConfigDevicesArgs']] = None,
-                 helpers: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]] = None,
-                 kernel: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 root_device: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 virt_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 booted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 device: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]] = None,
+                 devices: pulumi.Input[Optional['InstanceConfigDevicesArgs']] = None,
+                 helpers: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]] = None,
+                 kernel: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 root_device: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 virt_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceConfig resources.
 
@@ -326,19 +326,19 @@ class _InstanceConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def booted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def booted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
         """
         return pulumi.get(self, "booted")
 
     @booted.setter
-    def booted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def booted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "booted", value)
 
     @_builtins.property
     @pulumi.getter
-    def comments(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comments(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional field for arbitrary User comments on this Config.
 
@@ -351,73 +351,73 @@ class _InstanceConfigState:
         return pulumi.get(self, "comments")
 
     @comments.setter
-    def comments(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comments(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comments", value)
 
     @_builtins.property
     @pulumi.getter
-    def device(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]]:
+    def device(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]]:
         """
         Blocks for device disks in a Linode's configuration profile.
         """
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]]):
+    def device(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]]]):
         pulumi.set(self, "device", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Devices attribute is deprecated in favor of `device`.""")
-    def devices(self) -> Optional[pulumi.Input['InstanceConfigDevicesArgs']]:
+    def devices(self) -> pulumi.Input[Optional['InstanceConfigDevicesArgs']]:
         """
         A dictionary of device disks to use as a device map in a Linode's configuration profile.
         """
         return pulumi.get(self, "devices")
 
     @devices.setter
-    def devices(self, value: Optional[pulumi.Input['InstanceConfigDevicesArgs']]):
+    def devices(self, value: pulumi.Input[Optional['InstanceConfigDevicesArgs']]):
         pulumi.set(self, "devices", value)
 
     @_builtins.property
     @pulumi.getter
-    def helpers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]]:
+    def helpers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]]:
         """
         Helpers enabled when booting to this Linode Config.
         """
         return pulumi.get(self, "helpers")
 
     @helpers.setter
-    def helpers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]]):
+    def helpers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigHelperArgs']]]]):
         pulumi.set(self, "helpers", value)
 
     @_builtins.property
     @pulumi.getter
-    def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]:
+    def interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]:
         """
         An array of Network Interfaces to add to this Linode's Configuration Profile.
         """
         return pulumi.get(self, "interfaces")
 
     @interfaces.setter
-    def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]):
+    def interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]):
         pulumi.set(self, "interfaces", value)
 
     @_builtins.property
     @pulumi.getter
-    def kernel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kernel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Kernel ID to boot a Linode with. Default is `linode/latest-64bit`. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
         """
         return pulumi.get(self, "kernel")
 
     @kernel.setter
-    def kernel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kernel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kernel", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Config’s label for display purposes only.
 
@@ -426,67 +426,67 @@ class _InstanceConfigState:
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def linode_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Linode to create this configuration profile under.
         """
         return pulumi.get(self, "linode_id")
 
     @linode_id.setter
-    def linode_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def linode_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "linode_id", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryLimit")
-    def memory_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The memory limit of the Config. Defaults to the total ram of the Linode.
         """
         return pulumi.get(self, "memory_limit")
 
     @memory_limit.setter
-    def memory_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDevice")
-    def root_device(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_device(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root device to boot. (default `/dev/sda`)
         """
         return pulumi.get(self, "root_device")
 
     @root_device.setter
-    def root_device(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_device(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_device", value)
 
     @_builtins.property
     @pulumi.getter(name="runLevel")
-    def run_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
         """
         return pulumi.get(self, "run_level")
 
     @run_level.setter
-    def run_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_level", value)
 
     @_builtins.property
     @pulumi.getter(name="virtMode")
-    def virt_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virt_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls the virtualization mode. (`paravirt`, `fullvirt`)
         """
         return pulumi.get(self, "virt_mode")
 
     @virt_mode.setter
-    def virt_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virt_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virt_mode", value)
 
 
@@ -496,19 +496,19 @@ class InstanceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 booted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 device: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]]] = None,
-                 devices: Optional[pulumi.Input[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']]] = None,
-                 helpers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict']]]]] = None,
-                 kernel: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 root_device: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 virt_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 booted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 device: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]]] = None,
+                 devices: pulumi.Input[Optional[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']]] = None,
+                 helpers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict']]]]] = None,
+                 kernel: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 root_device: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 virt_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Linode Instance Config resource. This can be used to create, modify, and delete Linode Instance Configs.
@@ -532,12 +532,12 @@ class InstanceConfig(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=my_instance.specs[0].disk,
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!")
         my_config = linode.InstanceConfig("my-config",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             label="my-config",
             devices=[{
                 "deviceName": "sda",
@@ -555,7 +555,7 @@ class InstanceConfig(pulumi.CustomResource):
             region="us-mia",
             description="test description")
         foobar_vpc_subnet = linode.VpcSubnet("foobar",
-            vpc_id=foobar.id,
+            vpc_id=foobar.id.apply(lambda x: int(x)),
             label="my-subnet",
             ipv4="10.0.4.0/24")
         my_instance = linode.Instance("my-instance",
@@ -565,18 +565,18 @@ class InstanceConfig(pulumi.CustomResource):
         # Create a boot disk
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
-            size=my_instance.specs.apply(lambda specs: specs[0].disk - 512),
+            linode_id=my_instance.id.apply(lambda x: int(x)),
+            size=my_instance.specs.apply(lambda specs: float(specs[0].disk) - float(512)).apply(lambda x: int(x)),
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!ciuw23asxbviwuc")
         # Create a swap disk
         swap = linode.InstanceDisk("swap",
             label="swap",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=512,
             filesystem="swap")
         my_config = linode.InstanceConfig("my-config",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             label="my-config",
             devices=[
                 {
@@ -602,7 +602,7 @@ class InstanceConfig(pulumi.CustomResource):
                 },
                 {
                     "purpose": "vpc",
-                    "subnet_id": foobar_vpc_subnet.id,
+                    "subnet_id": foobar_vpc_subnet.id.apply(lambda x: int(x)),
                     "ipv4": {
                         "vpc": "10.0.4.250",
                     },
@@ -673,12 +673,12 @@ class InstanceConfig(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=my_instance.specs[0].disk,
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!")
         my_config = linode.InstanceConfig("my-config",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             label="my-config",
             devices=[{
                 "deviceName": "sda",
@@ -696,7 +696,7 @@ class InstanceConfig(pulumi.CustomResource):
             region="us-mia",
             description="test description")
         foobar_vpc_subnet = linode.VpcSubnet("foobar",
-            vpc_id=foobar.id,
+            vpc_id=foobar.id.apply(lambda x: int(x)),
             label="my-subnet",
             ipv4="10.0.4.0/24")
         my_instance = linode.Instance("my-instance",
@@ -706,18 +706,18 @@ class InstanceConfig(pulumi.CustomResource):
         # Create a boot disk
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
-            size=my_instance.specs.apply(lambda specs: specs[0].disk - 512),
+            linode_id=my_instance.id.apply(lambda x: int(x)),
+            size=my_instance.specs.apply(lambda specs: float(specs[0].disk) - float(512)).apply(lambda x: int(x)),
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!ciuw23asxbviwuc")
         # Create a swap disk
         swap = linode.InstanceDisk("swap",
             label="swap",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=512,
             filesystem="swap")
         my_config = linode.InstanceConfig("my-config",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             label="my-config",
             devices=[
                 {
@@ -743,7 +743,7 @@ class InstanceConfig(pulumi.CustomResource):
                 },
                 {
                     "purpose": "vpc",
-                    "subnet_id": foobar_vpc_subnet.id,
+                    "subnet_id": foobar_vpc_subnet.id.apply(lambda x: int(x)),
                     "ipv4": {
                         "vpc": "10.0.4.250",
                     },
@@ -777,19 +777,19 @@ class InstanceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 booted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 device: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]]] = None,
-                 devices: Optional[pulumi.Input[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']]] = None,
-                 helpers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict']]]]] = None,
-                 kernel: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 root_device: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 virt_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 booted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 device: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]]] = None,
+                 devices: pulumi.Input[Optional[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']]] = None,
+                 helpers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict']]]]] = None,
+                 kernel: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 root_device: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 virt_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -826,19 +826,19 @@ class InstanceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            booted: Optional[pulumi.Input[_builtins.bool]] = None,
-            comments: Optional[pulumi.Input[_builtins.str]] = None,
-            device: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]]] = None,
-            devices: Optional[pulumi.Input[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']]] = None,
-            helpers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]]] = None,
-            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict']]]]] = None,
-            kernel: Optional[pulumi.Input[_builtins.str]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-            memory_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            root_device: Optional[pulumi.Input[_builtins.str]] = None,
-            run_level: Optional[pulumi.Input[_builtins.str]] = None,
-            virt_mode: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceConfig':
+            booted: pulumi.Input[Optional[_builtins.bool]] = None,
+            comments: pulumi.Input[Optional[_builtins.str]] = None,
+            device: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]]] = None,
+            devices: pulumi.Input[Optional[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']]] = None,
+            helpers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]]] = None,
+            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict']]]]] = None,
+            kernel: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            root_device: pulumi.Input[Optional[_builtins.str]] = None,
+            run_level: pulumi.Input[Optional[_builtins.str]] = None,
+            virt_mode: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceConfig':
         """
         Get an existing InstanceConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

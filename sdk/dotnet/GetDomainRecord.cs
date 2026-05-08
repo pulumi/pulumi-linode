@@ -27,13 +27,13 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myRecord = Linode.Index.GetDomainRecord.Invoke(new()
+        ///     var myRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
         ///         Id = 14950401,
         ///         DomainId = 3150401,
         ///     });
         /// 
-        ///     var myWwwRecord = Linode.Index.GetDomainRecord.Invoke(new()
+        ///     var myWwwRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
         ///         Name = "www",
         ///         DomainId = 3150401,
@@ -61,13 +61,13 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myRecord = Linode.Index.GetDomainRecord.Invoke(new()
+        ///     var myRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
         ///         Id = 14950401,
         ///         DomainId = 3150401,
         ///     });
         /// 
-        ///     var myWwwRecord = Linode.Index.GetDomainRecord.Invoke(new()
+        ///     var myWwwRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
         ///         Name = "www",
         ///         DomainId = 3150401,
@@ -95,13 +95,13 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myRecord = Linode.Index.GetDomainRecord.Invoke(new()
+        ///     var myRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
         ///         Id = 14950401,
         ///         DomainId = 3150401,
         ///     });
         /// 
-        ///     var myWwwRecord = Linode.Index.GetDomainRecord.Invoke(new()
+        ///     var myWwwRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
         ///         Name = "www",
         ///         DomainId = 3150401,

@@ -66,13 +66,13 @@ export function getNetworkTransferPricesOutput(args?: GetNetworkTransferPricesOu
  * A collection of arguments for invoking getNetworkTransferPrices.
  */
 export interface GetNetworkTransferPricesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetNetworkTransferPricesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetNetworkTransferPricesFilterArgs>[] | undefined>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

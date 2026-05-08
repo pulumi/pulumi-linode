@@ -164,7 +164,7 @@ def get_consumer_image_share_group(token_uuid: Optional[_builtins.str] = None,
         token_uuid=pulumi.get(__ret__, 'token_uuid'),
         updated=pulumi.get(__ret__, 'updated'),
         uuid=pulumi.get(__ret__, 'uuid'))
-def get_consumer_image_share_group_output(token_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_consumer_image_share_group_output(token_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConsumerImageShareGroupResult]:
     """
     `get_consumer_image_share_group` provides details about an Image Share Group that the user's token has been accepted into.

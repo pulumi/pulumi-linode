@@ -151,18 +151,18 @@ export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOutpu
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
-    databaseGrants?: pulumi.Input<pulumi.Input<inputs.GetUserDatabaseGrantArgs>[]>;
-    domainGrants?: pulumi.Input<pulumi.Input<inputs.GetUserDomainGrantArgs>[]>;
-    firewallGrants?: pulumi.Input<pulumi.Input<inputs.GetUserFirewallGrantArgs>[]>;
-    imageGrants?: pulumi.Input<pulumi.Input<inputs.GetUserImageGrantArgs>[]>;
-    linodeGrants?: pulumi.Input<pulumi.Input<inputs.GetUserLinodeGrantArgs>[]>;
-    longviewGrants?: pulumi.Input<pulumi.Input<inputs.GetUserLongviewGrantArgs>[]>;
-    nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.GetUserNodebalancerGrantArgs>[]>;
-    stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.GetUserStackscriptGrantArgs>[]>;
+    databaseGrants?: pulumi.Input<pulumi.Input<inputs.GetUserDatabaseGrantArgs>[] | undefined>;
+    domainGrants?: pulumi.Input<pulumi.Input<inputs.GetUserDomainGrantArgs>[] | undefined>;
+    firewallGrants?: pulumi.Input<pulumi.Input<inputs.GetUserFirewallGrantArgs>[] | undefined>;
+    imageGrants?: pulumi.Input<pulumi.Input<inputs.GetUserImageGrantArgs>[] | undefined>;
+    linodeGrants?: pulumi.Input<pulumi.Input<inputs.GetUserLinodeGrantArgs>[] | undefined>;
+    longviewGrants?: pulumi.Input<pulumi.Input<inputs.GetUserLongviewGrantArgs>[] | undefined>;
+    nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.GetUserNodebalancerGrantArgs>[] | undefined>;
+    stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.GetUserStackscriptGrantArgs>[] | undefined>;
     /**
      * The unique username of this User.
      */
     username: pulumi.Input<string>;
-    volumeGrants?: pulumi.Input<pulumi.Input<inputs.GetUserVolumeGrantArgs>[]>;
-    vpcGrants?: pulumi.Input<pulumi.Input<inputs.GetUserVpcGrantArgs>[]>;
+    volumeGrants?: pulumi.Input<pulumi.Input<inputs.GetUserVolumeGrantArgs>[] | undefined>;
+    vpcGrants?: pulumi.Input<pulumi.Input<inputs.GetUserVpcGrantArgs>[] | undefined>;
 }

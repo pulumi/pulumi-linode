@@ -22,11 +22,11 @@ import * as utilities from "./utilities";
  *     assignments: [
  *         {
  *             address: reservedIp1.address,
- *             linodeId: terraform_web1.id,
+ *             linodeId: Number(terraform_web1.id),
  *         },
  *         {
  *             address: reservedIp2.address,
- *             linodeId: terraform_web2.id,
+ *             linodeId: Number(terraform_web2.id),
  *         },
  *     ],
  * });
@@ -108,11 +108,11 @@ export interface NetworkingIpAssignmentState {
     /**
      * A list of IP/Linode assignments to apply.
      */
-    assignments?: pulumi.Input<pulumi.Input<inputs.NetworkingIpAssignmentAssignment>[]>;
+    assignments?: pulumi.Input<pulumi.Input<inputs.NetworkingIpAssignmentAssignment>[] | undefined>;
     /**
      * The region where the IP addresses will be assigned.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -122,7 +122,7 @@ export interface NetworkingIpAssignmentArgs {
     /**
      * A list of IP/Linode assignments to apply.
      */
-    assignments?: pulumi.Input<pulumi.Input<inputs.NetworkingIpAssignmentAssignment>[]>;
+    assignments?: pulumi.Input<pulumi.Input<inputs.NetworkingIpAssignmentAssignment>[] | undefined>;
     /**
      * The region where the IP addresses will be assigned.
      */

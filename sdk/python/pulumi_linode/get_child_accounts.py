@@ -140,7 +140,7 @@ def get_child_accounts(filters: Optional[Sequence[Union['GetChildAccountsFilterA
         child_accounts=pulumi.get(__ret__, 'child_accounts'),
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'))
-def get_child_accounts_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetChildAccountsFilterArgs', 'GetChildAccountsFilterArgsDict']]]]] = None,
+def get_child_accounts_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetChildAccountsFilterArgs', 'GetChildAccountsFilterArgsDict']]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetChildAccountsResult]:
     """
     Provides information about Linode Child Accounts that match a set of filters.

@@ -19,27 +19,27 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 api_ca_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_internal_cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 event_poll_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 lke_event_poll_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 lke_node_ready_poll_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_retry_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_retry_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 obj_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 obj_bucket_force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 obj_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 obj_use_temp_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_implicit_reboots: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_instance_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_instance_ready_poll: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_lke_cluster_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 ua_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_internal_cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 event_poll_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 lke_event_poll_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 lke_node_ready_poll_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_retry_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_retry_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 obj_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 obj_bucket_force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 obj_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 obj_use_temp_keys: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_implicit_reboots: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_instance_delete_poll: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_instance_ready_poll: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_lke_cluster_delete_poll: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 ua_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -116,254 +116,254 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiCaPath")
-    def api_ca_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_ca_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to a Linode API CA file to trust.
         """
         return pulumi.get(self, "api_ca_path")
 
     @api_ca_path.setter
-    def api_ca_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_ca_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_ca_path", value)
 
     @_builtins.property
     @pulumi.getter(name="apiVersion")
-    def api_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of Linode API.
         """
         return pulumi.get(self, "api_version")
 
     @api_version.setter
-    def api_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_version", value)
 
     @_builtins.property
     @pulumi.getter(name="configPath")
-    def config_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the Linode config file to use. (default `~/.config/linode`)
         """
         return pulumi.get(self, "config_path")
 
     @config_path.setter
-    def config_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_path", value)
 
     @_builtins.property
     @pulumi.getter(name="configProfile")
-    def config_profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Linode config profile to use. (default `default`)
         """
         return pulumi.get(self, "config_profile")
 
     @config_profile.setter
-    def config_profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_profile", value)
 
     @_builtins.property
     @pulumi.getter(name="disableInternalCache")
-    def disable_internal_cache(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_internal_cache(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable the internal caching system that backs certain Linode API requests.
         """
         return pulumi.get(self, "disable_internal_cache")
 
     @disable_internal_cache.setter
-    def disable_internal_cache(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_internal_cache(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_internal_cache", value)
 
     @_builtins.property
     @pulumi.getter(name="eventPollMs")
-    def event_poll_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def event_poll_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rate in milliseconds to poll for events.
         """
         return pulumi.get(self, "event_poll_ms")
 
     @event_poll_ms.setter
-    def event_poll_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def event_poll_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "event_poll_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="lkeEventPollMs")
-    def lke_event_poll_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lke_event_poll_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rate in milliseconds to poll for LKE events.
         """
         return pulumi.get(self, "lke_event_poll_ms")
 
     @lke_event_poll_ms.setter
-    def lke_event_poll_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lke_event_poll_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lke_event_poll_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="lkeNodeReadyPollMs")
-    def lke_node_ready_poll_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lke_node_ready_poll_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rate in milliseconds to poll for an LKE node to be ready.
         """
         return pulumi.get(self, "lke_node_ready_poll_ms")
 
     @lke_node_ready_poll_ms.setter
-    def lke_node_ready_poll_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lke_node_ready_poll_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lke_node_ready_poll_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetryDelayMs")
-    def max_retry_delay_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_retry_delay_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum delay in milliseconds before retrying a request.
         """
         return pulumi.get(self, "max_retry_delay_ms")
 
     @max_retry_delay_ms.setter
-    def max_retry_delay_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_retry_delay_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_retry_delay_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="minRetryDelayMs")
-    def min_retry_delay_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_retry_delay_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum delay in milliseconds before retrying a request.
         """
         return pulumi.get(self, "min_retry_delay_ms")
 
     @min_retry_delay_ms.setter
-    def min_retry_delay_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_retry_delay_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_retry_delay_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="objAccessKey")
-    def obj_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def obj_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access key to be used in ObjectStorageBucket and linode_object_storage_object.
         """
         return pulumi.get(self, "obj_access_key")
 
     @obj_access_key.setter
-    def obj_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def obj_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "obj_access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="objBucketForceDelete")
-    def obj_bucket_force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def obj_bucket_force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, when deleting a ObjectStorageBucket any objects and versions will be force deleted.
         """
         return pulumi.get(self, "obj_bucket_force_delete")
 
     @obj_bucket_force_delete.setter
-    def obj_bucket_force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def obj_bucket_force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "obj_bucket_force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="objSecretKey")
-    def obj_secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def obj_secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret key to be used in ObjectStorageBucket and linode_object_storage_object.
         """
         return pulumi.get(self, "obj_secret_key")
 
     @obj_secret_key.setter
-    def obj_secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def obj_secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "obj_secret_key", value)
 
     @_builtins.property
     @pulumi.getter(name="objUseTempKeys")
-    def obj_use_temp_keys(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def obj_use_temp_keys(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, temporary object keys will be created implicitly at apply-time for the ObjectStorageObject and linode_object_sorage_bucket resource.
         """
         return pulumi.get(self, "obj_use_temp_keys")
 
     @obj_use_temp_keys.setter
-    def obj_use_temp_keys(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def obj_use_temp_keys(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "obj_use_temp_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="skipImplicitReboots")
-    def skip_implicit_reboots(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_implicit_reboots(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, Linode Instances will not be rebooted on config and interface changes.
         """
         return pulumi.get(self, "skip_implicit_reboots")
 
     @skip_implicit_reboots.setter
-    def skip_implicit_reboots(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_implicit_reboots(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_implicit_reboots", value)
 
     @_builtins.property
     @pulumi.getter(name="skipInstanceDeletePoll")
-    def skip_instance_delete_poll(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_instance_delete_poll(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip waiting for a Instance resource to finish deleting.
         """
         return pulumi.get(self, "skip_instance_delete_poll")
 
     @skip_instance_delete_poll.setter
-    def skip_instance_delete_poll(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_instance_delete_poll(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_instance_delete_poll", value)
 
     @_builtins.property
     @pulumi.getter(name="skipInstanceReadyPoll")
-    def skip_instance_ready_poll(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_instance_ready_poll(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip waiting for a Instance resource to be running.
         """
         return pulumi.get(self, "skip_instance_ready_poll")
 
     @skip_instance_ready_poll.setter
-    def skip_instance_ready_poll(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_instance_ready_poll(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_instance_ready_poll", value)
 
     @_builtins.property
     @pulumi.getter(name="skipLkeClusterDeletePoll")
-    def skip_lke_cluster_delete_poll(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_lke_cluster_delete_poll(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip waiting for all Linode instances in an LKE cluster to be deleted.
         """
         return pulumi.get(self, "skip_lke_cluster_delete_poll")
 
     @skip_lke_cluster_delete_poll.setter
-    def skip_lke_cluster_delete_poll(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_lke_cluster_delete_poll(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_lke_cluster_delete_poll", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The token that allows you access to your Linode account
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="uaPrefix")
-    def ua_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ua_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An HTTP User-Agent Prefix to prepend in API requests.
         """
         return pulumi.get(self, "ua_prefix")
 
     @ua_prefix.setter
-    def ua_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ua_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ua_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP(S) API address of the Linode API to use.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -373,27 +373,27 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_ca_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_internal_cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 event_poll_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 lke_event_poll_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 lke_node_ready_poll_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_retry_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_retry_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 obj_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 obj_bucket_force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 obj_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 obj_use_temp_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_implicit_reboots: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_instance_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_instance_ready_poll: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_lke_cluster_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 ua_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_internal_cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 event_poll_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 lke_event_poll_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 lke_node_ready_poll_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_retry_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_retry_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 obj_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 obj_bucket_force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 obj_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 obj_use_temp_keys: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_implicit_reboots: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_instance_delete_poll: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_instance_ready_poll: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_lke_cluster_delete_poll: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 ua_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the linode package. By default, resources use package-wide configuration
@@ -454,27 +454,27 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_ca_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_internal_cache: Optional[pulumi.Input[_builtins.bool]] = None,
-                 event_poll_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 lke_event_poll_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 lke_node_ready_poll_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_retry_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_retry_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 obj_access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 obj_bucket_force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 obj_secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 obj_use_temp_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_implicit_reboots: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_instance_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_instance_ready_poll: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_lke_cluster_delete_poll: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 ua_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_internal_cache: pulumi.Input[Optional[_builtins.bool]] = None,
+                 event_poll_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 lke_event_poll_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 lke_node_ready_poll_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_retry_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_retry_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 obj_access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 obj_bucket_force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 obj_secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 obj_use_temp_keys: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_implicit_reboots: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_instance_delete_poll: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_instance_ready_poll: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_lke_cluster_delete_poll: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 ua_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

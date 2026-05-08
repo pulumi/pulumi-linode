@@ -35,8 +35,8 @@ import * as utilities from "./utilities";
  *     placementGroupExternallyManaged: true,
  * });
  * const my_assignment = new linode.PlacementGroupAssignment("my-assignment", {
- *     placementGroupId: my_pg.id,
- *     linodeId: my_inst.id,
+ *     placementGroupId: my_pg.id.apply(x =>Number(x)),
+ *     linodeId: my_inst.id.apply(x =>Number(x)),
  * });
  * ```
  *
@@ -123,22 +123,22 @@ export class PlacementGroupAssignment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PlacementGroupAssignment resources.
  */
 export interface PlacementGroupAssignmentState {
-    compliantOnly?: pulumi.Input<boolean>;
+    compliantOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The unique ID of the Linode to assign.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * The unique ID of the target Placement Group.
      */
-    placementGroupId?: pulumi.Input<number>;
+    placementGroupId?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a PlacementGroupAssignment resource.
  */
 export interface PlacementGroupAssignmentArgs {
-    compliantOnly?: pulumi.Input<boolean>;
+    compliantOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The unique ID of the Linode to assign.
      */

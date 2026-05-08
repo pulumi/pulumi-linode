@@ -138,7 +138,7 @@ def get_account_login(id: Optional[_builtins.int] = None,
         restricted=pulumi.get(__ret__, 'restricted'),
         status=pulumi.get(__ret__, 'status'),
         username=pulumi.get(__ret__, 'username'))
-def get_account_login_output(id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_account_login_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountLoginResult]:
     """
     Provides details about a specific Linode account login.

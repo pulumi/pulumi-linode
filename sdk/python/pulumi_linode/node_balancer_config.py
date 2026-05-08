@@ -22,22 +22,22 @@ __all__ = ['NodeBalancerConfigArgs', 'NodeBalancerConfig']
 class NodeBalancerConfigArgs:
     def __init__(__self__, *,
                  nodebalancer_id: pulumi.Input[_builtins.int],
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 check: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 check_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 check_passive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 cipher_suite: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 stickiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 udp_check_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 check: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 check_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 check_passive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 cipher_suite: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 stickiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 udp_check_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a NodeBalancerConfig resource.
 
@@ -113,187 +113,187 @@ class NodeBalancerConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def check(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         """
         return pulumi.get(self, "check")
 
     @check.setter
-    def check(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check", value)
 
     @_builtins.property
     @pulumi.getter(name="checkAttempts")
-    def check_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def check_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How many times to attempt a check before considering a backend to be down. (1-30)
         """
         return pulumi.get(self, "check_attempts")
 
     @check_attempts.setter
-    def check_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def check_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "check_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="checkBody")
-    def check_body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
         """
         return pulumi.get(self, "check_body")
 
     @check_body.setter
-    def check_body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_body", value)
 
     @_builtins.property
     @pulumi.getter(name="checkInterval")
-    def check_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def check_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often, in seconds, to check that backends are up and serving requests.
         """
         return pulumi.get(self, "check_interval")
 
     @check_interval.setter
-    def check_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def check_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "check_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="checkPassive")
-    def check_passive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def check_passive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         """
         return pulumi.get(self, "check_passive")
 
     @check_passive.setter
-    def check_passive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def check_passive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_passive", value)
 
     @_builtins.property
     @pulumi.getter(name="checkPath")
-    def check_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
         """
         return pulumi.get(self, "check_path")
 
     @check_path.setter
-    def check_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_path", value)
 
     @_builtins.property
     @pulumi.getter(name="checkTimeout")
-    def check_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def check_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         """
         return pulumi.get(self, "check_timeout")
 
     @check_timeout.setter
-    def check_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def check_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "check_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="cipherSuite")
-    def cipher_suite(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cipher_suite(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
         """
         return pulumi.get(self, "cipher_suite")
 
     @cipher_suite.setter
-    def cipher_suite(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cipher_suite(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cipher_suite", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocol")
-    def proxy_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         """
         return pulumi.get(self, "proxy_protocol")
 
     @proxy_protocol.setter
-    def proxy_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCert")
-    def ssl_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         """
         return pulumi.get(self, "ssl_cert")
 
     @ssl_cert.setter
-    def ssl_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="sslKey")
-    def ssl_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         """
         return pulumi.get(self, "ssl_key")
 
     @ssl_key.setter
-    def ssl_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def stickiness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stickiness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
         return pulumi.get(self, "stickiness")
 
     @stickiness.setter
-    def stickiness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stickiness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stickiness", value)
 
     @_builtins.property
     @pulumi.getter(name="udpCheckPort")
-    def udp_check_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def udp_check_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
 
@@ -302,34 +302,34 @@ class NodeBalancerConfigArgs:
         return pulumi.get(self, "udp_check_port")
 
     @udp_check_port.setter
-    def udp_check_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def udp_check_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "udp_check_port", value)
 
 
 @pulumi.input_type
 class _NodeBalancerConfigState:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 check: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 check_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 check_passive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 cipher_suite: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]]] = None,
-                 nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_commonname: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 stickiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 udp_check_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 udp_session_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 check: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 check_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 check_passive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 cipher_suite: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]]] = None,
+                 nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_commonname: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 stickiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 udp_check_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 udp_session_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering NodeBalancerConfig resources.
 
@@ -404,127 +404,127 @@ class _NodeBalancerConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def check(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of check to perform against backends to ensure they are serving requests. This is used to determine if backends are up or down. If none no check is performed. connection requires only a connection to the backend to succeed. http and http_body rely on the backend serving HTTP, and that the response returned matches what is expected. (`none`, `connection`, `http`, `http_body`)
         """
         return pulumi.get(self, "check")
 
     @check.setter
-    def check(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check", value)
 
     @_builtins.property
     @pulumi.getter(name="checkAttempts")
-    def check_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def check_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How many times to attempt a check before considering a backend to be down. (1-30)
         """
         return pulumi.get(self, "check_attempts")
 
     @check_attempts.setter
-    def check_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def check_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "check_attempts", value)
 
     @_builtins.property
     @pulumi.getter(name="checkBody")
-    def check_body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This value must be present in the response body of the check in order for it to pass. If this value is not present in the response body of a check request, the backend is considered to be down
         """
         return pulumi.get(self, "check_body")
 
     @check_body.setter
-    def check_body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_body", value)
 
     @_builtins.property
     @pulumi.getter(name="checkInterval")
-    def check_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def check_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often, in seconds, to check that backends are up and serving requests.
         """
         return pulumi.get(self, "check_interval")
 
     @check_interval.setter
-    def check_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def check_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "check_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="checkPassive")
-    def check_passive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def check_passive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, any response from this backend with a 5xx status code will be enough for it to be considered unhealthy and taken out of rotation.
         """
         return pulumi.get(self, "check_passive")
 
     @check_passive.setter
-    def check_passive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def check_passive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "check_passive", value)
 
     @_builtins.property
     @pulumi.getter(name="checkPath")
-    def check_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
         """
         return pulumi.get(self, "check_path")
 
     @check_path.setter
-    def check_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_path", value)
 
     @_builtins.property
     @pulumi.getter(name="checkTimeout")
-    def check_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def check_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         """
         return pulumi.get(self, "check_timeout")
 
     @check_timeout.setter
-    def check_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def check_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "check_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="cipherSuite")
-    def cipher_suite(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cipher_suite(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
         """
         return pulumi.get(self, "cipher_suite")
 
     @cipher_suite.setter
-    def cipher_suite(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cipher_suite(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cipher_suite", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeStatuses")
-    def node_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]]]:
+    def node_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]]]:
         """
         A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
         """
         return pulumi.get(self, "node_statuses")
 
     @node_statuses.setter
-    def node_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]]]):
+    def node_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeBalancerConfigNodeStatusArgs']]]]):
         pulumi.set(self, "node_statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="nodebalancerId")
-    def nodebalancer_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nodebalancer_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the NodeBalancer to access.
 
@@ -533,108 +533,108 @@ class _NodeBalancerConfigState:
         return pulumi.get(self, "nodebalancer_id")
 
     @nodebalancer_id.setter
-    def nodebalancer_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nodebalancer_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nodebalancer_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The TCP port this Config is for. These values must be unique across configs on a single NodeBalancer (you can't have two configs for port 80, for example). While some ports imply some protocols, no enforcement is done and you may configure your NodeBalancer however is useful to you. For example, while port 443 is generally used for HTTPS, you do not need SSL configured to have a NodeBalancer listening on port 443. (Defaults to 80)
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol this port is configured to serve. If this is set to https you must include an ssl_cert and an ssl_key. (`http`, `https`, `tcp`) (Defaults to `http`)
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocol")
-    def proxy_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of ProxyProtocol to use for the underlying NodeBalancer. This requires protocol to be `tcp`. (`none`, `v1`, `v2`) (Defaults to `none`)
         """
         return pulumi.get(self, "proxy_protocol")
 
     @proxy_protocol.setter
-    def proxy_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCert")
-    def ssl_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate this port is serving. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         """
         return pulumi.get(self, "ssl_cert")
 
     @ssl_cert.setter
-    def ssl_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCommonname")
-    def ssl_commonname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_commonname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The read-only common name automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         """
         return pulumi.get(self, "ssl_commonname")
 
     @ssl_commonname.setter
-    def ssl_commonname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_commonname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_commonname", value)
 
     @_builtins.property
     @pulumi.getter(name="sslFingerprint")
-    def ssl_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The read-only fingerprint automatically derived from the SSL certificate assigned to this NodeBalancerConfig. Please refer to this field to verify that the appropriate certificate is assigned to your NodeBalancerConfig.
         """
         return pulumi.get(self, "ssl_fingerprint")
 
     @ssl_fingerprint.setter
-    def ssl_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="sslKey")
-    def ssl_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `<REDACTED>`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
         """
         return pulumi.get(self, "ssl_key")
 
     @ssl_key.setter
-    def ssl_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def stickiness(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stickiness(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
         """
         return pulumi.get(self, "stickiness")
 
     @stickiness.setter
-    def stickiness(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stickiness(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stickiness", value)
 
     @_builtins.property
     @pulumi.getter(name="udpCheckPort")
-    def udp_check_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def udp_check_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
 
@@ -643,19 +643,19 @@ class _NodeBalancerConfigState:
         return pulumi.get(self, "udp_check_port")
 
     @udp_check_port.setter
-    def udp_check_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def udp_check_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "udp_check_port", value)
 
     @_builtins.property
     @pulumi.getter(name="udpSessionTimeout")
-    def udp_session_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def udp_session_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The read-only idle time in seconds after which a session that hasn’t received packets is destroyed.
         """
         return pulumi.get(self, "udp_session_timeout")
 
     @udp_session_timeout.setter
-    def udp_session_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def udp_session_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "udp_session_timeout", value)
 
 
@@ -665,23 +665,23 @@ class NodeBalancerConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 check: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 check_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 check_passive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 cipher_suite: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 stickiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 udp_check_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 check: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 check_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 check_passive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 cipher_suite: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 stickiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 udp_check_port: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Linode NodeBalancer Config resource.  This can be used to create, modify, and delete Linodes NodeBalancer Configs.
@@ -700,7 +700,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             region="us-east",
             client_conn_throttle=20)
         foofig = linode.NodeBalancerConfig("foofig",
-            nodebalancer_id=foobar.id,
+            nodebalancer_id=foobar.id.apply(lambda x: int(x)),
             port=8088,
             protocol="http",
             check="http",
@@ -768,7 +768,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             region="us-east",
             client_conn_throttle=20)
         foofig = linode.NodeBalancerConfig("foofig",
-            nodebalancer_id=foobar.id,
+            nodebalancer_id=foobar.id.apply(lambda x: int(x)),
             port=8088,
             protocol="http",
             check="http",
@@ -804,23 +804,23 @@ class NodeBalancerConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 check: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 check_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 check_passive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 check_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 cipher_suite: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 stickiness: Optional[pulumi.Input[_builtins.str]] = None,
-                 udp_check_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 check: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 check_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 check_passive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 check_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 cipher_suite: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 stickiness: pulumi.Input[Optional[_builtins.str]] = None,
+                 udp_check_port: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -865,27 +865,27 @@ class NodeBalancerConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            check: Optional[pulumi.Input[_builtins.str]] = None,
-            check_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-            check_body: Optional[pulumi.Input[_builtins.str]] = None,
-            check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            check_passive: Optional[pulumi.Input[_builtins.bool]] = None,
-            check_path: Optional[pulumi.Input[_builtins.str]] = None,
-            check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            cipher_suite: Optional[pulumi.Input[_builtins.str]] = None,
-            node_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerConfigNodeStatusArgs', 'NodeBalancerConfigNodeStatusArgsDict']]]]] = None,
-            nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_commonname: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_key: Optional[pulumi.Input[_builtins.str]] = None,
-            stickiness: Optional[pulumi.Input[_builtins.str]] = None,
-            udp_check_port: Optional[pulumi.Input[_builtins.int]] = None,
-            udp_session_timeout: Optional[pulumi.Input[_builtins.int]] = None) -> 'NodeBalancerConfig':
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            check: pulumi.Input[Optional[_builtins.str]] = None,
+            check_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+            check_body: pulumi.Input[Optional[_builtins.str]] = None,
+            check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            check_passive: pulumi.Input[Optional[_builtins.bool]] = None,
+            check_path: pulumi.Input[Optional[_builtins.str]] = None,
+            check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            cipher_suite: pulumi.Input[Optional[_builtins.str]] = None,
+            node_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerConfigNodeStatusArgs', 'NodeBalancerConfigNodeStatusArgsDict']]]]] = None,
+            nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_commonname: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_key: pulumi.Input[Optional[_builtins.str]] = None,
+            stickiness: pulumi.Input[Optional[_builtins.str]] = None,
+            udp_check_port: pulumi.Input[Optional[_builtins.int]] = None,
+            udp_session_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'NodeBalancerConfig':
         """
         Get an existing NodeBalancerConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

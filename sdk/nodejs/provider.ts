@@ -118,87 +118,87 @@ export interface ProviderArgs {
     /**
      * The path to a Linode API CA file to trust.
      */
-    apiCaPath?: pulumi.Input<string>;
+    apiCaPath?: pulumi.Input<string | undefined>;
     /**
      * The version of Linode API.
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * The path to the Linode config file to use. (default `~/.config/linode`)
      */
-    configPath?: pulumi.Input<string>;
+    configPath?: pulumi.Input<string | undefined>;
     /**
      * The Linode config profile to use. (default `default`)
      */
-    configProfile?: pulumi.Input<string>;
+    configProfile?: pulumi.Input<string | undefined>;
     /**
      * Disable the internal caching system that backs certain Linode API requests.
      */
-    disableInternalCache?: pulumi.Input<boolean>;
+    disableInternalCache?: pulumi.Input<boolean | undefined>;
     /**
      * The rate in milliseconds to poll for events.
      */
-    eventPollMs?: pulumi.Input<number>;
+    eventPollMs?: pulumi.Input<number | undefined>;
     /**
      * The rate in milliseconds to poll for LKE events.
      */
-    lkeEventPollMs?: pulumi.Input<number>;
+    lkeEventPollMs?: pulumi.Input<number | undefined>;
     /**
      * The rate in milliseconds to poll for an LKE node to be ready.
      */
-    lkeNodeReadyPollMs?: pulumi.Input<number>;
+    lkeNodeReadyPollMs?: pulumi.Input<number | undefined>;
     /**
      * Maximum delay in milliseconds before retrying a request.
      */
-    maxRetryDelayMs?: pulumi.Input<number>;
+    maxRetryDelayMs?: pulumi.Input<number | undefined>;
     /**
      * Minimum delay in milliseconds before retrying a request.
      */
-    minRetryDelayMs?: pulumi.Input<number>;
+    minRetryDelayMs?: pulumi.Input<number | undefined>;
     /**
      * The access key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      */
-    objAccessKey?: pulumi.Input<string>;
+    objAccessKey?: pulumi.Input<string | undefined>;
     /**
      * If true, when deleting a linode.ObjectStorageBucket any objects and versions will be force deleted.
      */
-    objBucketForceDelete?: pulumi.Input<boolean>;
+    objBucketForceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The secret key to be used in linode.ObjectStorageBucket and linode_object_storage_object.
      */
-    objSecretKey?: pulumi.Input<string>;
+    objSecretKey?: pulumi.Input<string | undefined>;
     /**
      * If true, temporary object keys will be created implicitly at apply-time for the linode.ObjectStorageObject and linodeObjectSorageBucket resource.
      */
-    objUseTempKeys?: pulumi.Input<boolean>;
+    objUseTempKeys?: pulumi.Input<boolean | undefined>;
     /**
      * If true, Linode Instances will not be rebooted on config and interface changes.
      */
-    skipImplicitReboots?: pulumi.Input<boolean>;
+    skipImplicitReboots?: pulumi.Input<boolean | undefined>;
     /**
      * Skip waiting for a linode.Instance resource to finish deleting.
      */
-    skipInstanceDeletePoll?: pulumi.Input<boolean>;
+    skipInstanceDeletePoll?: pulumi.Input<boolean | undefined>;
     /**
      * Skip waiting for a linode.Instance resource to be running.
      */
-    skipInstanceReadyPoll?: pulumi.Input<boolean>;
+    skipInstanceReadyPoll?: pulumi.Input<boolean | undefined>;
     /**
      * Skip waiting for all Linode instances in an LKE cluster to be deleted.
      */
-    skipLkeClusterDeletePoll?: pulumi.Input<boolean>;
+    skipLkeClusterDeletePoll?: pulumi.Input<boolean | undefined>;
     /**
      * The token that allows you access to your Linode account
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * An HTTP User-Agent Prefix to prepend in API requests.
      */
-    uaPrefix?: pulumi.Input<string>;
+    uaPrefix?: pulumi.Input<string | undefined>;
     /**
      * The HTTP(S) API address of the Linode API to use.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

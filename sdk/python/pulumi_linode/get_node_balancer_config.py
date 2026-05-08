@@ -314,8 +314,8 @@ def get_node_balancer_config(id: Optional[_builtins.int] = None,
         stickiness=pulumi.get(__ret__, 'stickiness'),
         udp_check_port=pulumi.get(__ret__, 'udp_check_port'),
         udp_session_timeout=pulumi.get(__ret__, 'udp_session_timeout'))
-def get_node_balancer_config_output(id: Optional[pulumi.Input[_builtins.int]] = None,
-                                    nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_node_balancer_config_output(id: pulumi.Input[Optional[_builtins.int]] = None,
+                                    nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeBalancerConfigResult]:
     """
     Provides details about a Linode NodeBalancer Config.

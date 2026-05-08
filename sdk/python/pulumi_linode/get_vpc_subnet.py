@@ -188,8 +188,8 @@ def get_vpc_subnet(id: Optional[_builtins.str] = None,
         linodes=pulumi.get(__ret__, 'linodes'),
         updated=pulumi.get(__ret__, 'updated'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_vpc_subnet_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                          vpc_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_vpc_subnet_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                          vpc_id: pulumi.Input[Optional[_builtins.int]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcSubnetResult]:
     """
     Provides information about a Linode VPC subnet.

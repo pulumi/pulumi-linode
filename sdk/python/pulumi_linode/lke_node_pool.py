@@ -23,15 +23,15 @@ class LkeNodePoolArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.int],
                  type: pulumi.Input[_builtins.str],
-                 autoscaler: Optional[pulumi.Input['LkeNodePoolAutoscalerArgs']] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 autoscaler: pulumi.Input[Optional['LkeNodePoolAutoscalerArgs']] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LkeNodePool resource.
 
@@ -97,100 +97,100 @@ class LkeNodePoolArgs:
 
     @_builtins.property
     @pulumi.getter
-    def autoscaler(self) -> Optional[pulumi.Input['LkeNodePoolAutoscalerArgs']]:
+    def autoscaler(self) -> pulumi.Input[Optional['LkeNodePoolAutoscalerArgs']]:
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
-    def autoscaler(self, value: Optional[pulumi.Input['LkeNodePoolAutoscalerArgs']]):
+    def autoscaler(self, value: pulumi.Input[Optional['LkeNodePoolAutoscalerArgs']]):
         pulumi.set(self, "autoscaler", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def firewall_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
         """
         return pulumi.get(self, "firewall_id")
 
     @firewall_id.setter
-    def firewall_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def firewall_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sVersion")
-    def k8s_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def k8s_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         """
         return pulumi.get(self, "k8s_version")
 
     @k8s_version.setter
-    def k8s_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def k8s_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "k8s_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A label for the Node Pool. If not provided, it defaults to empty string.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]]:
         """
         Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
     @_builtins.property
     @pulumi.getter(name="updateStrategy")
-    def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
 
@@ -201,26 +201,26 @@ class LkeNodePoolArgs:
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
-    def update_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_strategy", value)
 
 
 @pulumi.input_type
 class _LkeNodePoolState:
     def __init__(__self__, *,
-                 autoscaler: Optional[pulumi.Input['LkeNodePoolAutoscalerArgs']] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 autoscaler: pulumi.Input[Optional['LkeNodePoolAutoscalerArgs']] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LkeNodePool resources.
 
@@ -270,148 +270,148 @@ class _LkeNodePoolState:
 
     @_builtins.property
     @pulumi.getter
-    def autoscaler(self) -> Optional[pulumi.Input['LkeNodePoolAutoscalerArgs']]:
+    def autoscaler(self) -> pulumi.Input[Optional['LkeNodePoolAutoscalerArgs']]:
         return pulumi.get(self, "autoscaler")
 
     @autoscaler.setter
-    def autoscaler(self, value: Optional[pulumi.Input['LkeNodePoolAutoscalerArgs']]):
+    def autoscaler(self, value: pulumi.Input[Optional['LkeNodePoolAutoscalerArgs']]):
         pulumi.set(self, "autoscaler", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ID of the LKE Cluster where to create the current Node Pool.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk encryption policy for nodes in this pool.
         """
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
-    def disk_encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_encryption(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def firewall_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
         """
         return pulumi.get(self, "firewall_id")
 
     @firewall_id.setter
-    def firewall_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def firewall_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sVersion")
-    def k8s_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def k8s_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         """
         return pulumi.get(self, "k8s_version")
 
     @k8s_version.setter
-    def k8s_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def k8s_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "k8s_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A label for the Node Pool. If not provided, it defaults to empty string.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]]]:
         """
         A list of nodes in the node pool.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]]:
+    def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]]:
         """
         Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
         """
         return pulumi.get(self, "taints")
 
     @taints.setter
-    def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]]):
+    def taints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]]):
         pulumi.set(self, "taints", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateStrategy")
-    def update_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
 
@@ -422,7 +422,7 @@ class _LkeNodePoolState:
         return pulumi.get(self, "update_strategy")
 
     @update_strategy.setter
-    def update_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_strategy", value)
 
 
@@ -432,17 +432,17 @@ class LkeNodePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 autoscaler: pulumi.Input[Optional[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages an LKE Node Pool.
@@ -515,7 +515,7 @@ class LkeNodePool(pulumi.CustomResource):
                 "count": 1,
             }])
         my_pool = linode.LkeNodePool("my-pool",
-            cluster_id=my_cluster.id,
+            cluster_id=my_cluster.id.apply(lambda x: int(x)),
             type="g6-standard-2",
             node_count=3,
             tags=[external_pool_tag])
@@ -624,7 +624,7 @@ class LkeNodePool(pulumi.CustomResource):
                 "count": 1,
             }])
         my_pool = linode.LkeNodePool("my-pool",
-            cluster_id=my_cluster.id,
+            cluster_id=my_cluster.id.apply(lambda x: int(x)),
             type="g6-standard-2",
             node_count=3,
             tags=[external_pool_tag])
@@ -654,17 +654,17 @@ class LkeNodePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict']]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 autoscaler: pulumi.Input[Optional[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict']]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -701,19 +701,19 @@ class LkeNodePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            autoscaler: Optional[pulumi.Input[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
-            disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-            firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-            k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict']]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict']]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            update_strategy: Optional[pulumi.Input[_builtins.str]] = None) -> 'LkeNodePool':
+            autoscaler: pulumi.Input[Optional[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict']]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
+            disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+            k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_strategy: pulumi.Input[Optional[_builtins.str]] = None) -> 'LkeNodePool':
         """
         Get an existing LkeNodePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

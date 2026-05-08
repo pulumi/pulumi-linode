@@ -24,15 +24,15 @@ class LkeClusterArgs:
                  k8s_version: pulumi.Input[_builtins.str],
                  label: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 apl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
-                 external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 pools: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 control_plane: pulumi.Input[Optional['LkeClusterControlPlaneArgs']] = None,
+                 external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pools: pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a LkeCluster resource.
 
@@ -117,132 +117,132 @@ class LkeClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="aplEnabled")
-    def apl_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def apl_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables the App Platform Layer
         """
         return pulumi.get(self, "apl_enabled")
 
     @apl_enabled.setter
-    def apl_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def apl_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "apl_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlane")
-    def control_plane(self) -> Optional[pulumi.Input['LkeClusterControlPlaneArgs']]:
+    def control_plane(self) -> pulumi.Input[Optional['LkeClusterControlPlaneArgs']]:
         """
         Defines settings for the Kubernetes Control Plane.
         """
         return pulumi.get(self, "control_plane")
 
     @control_plane.setter
-    def control_plane(self, value: Optional[pulumi.Input['LkeClusterControlPlaneArgs']]):
+    def control_plane(self, value: pulumi.Input[Optional['LkeClusterControlPlaneArgs']]):
         pulumi.set(self, "control_plane", value)
 
     @_builtins.property
     @pulumi.getter(name="externalPoolTags")
-    def external_pool_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def external_pool_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         """
         return pulumi.get(self, "external_pool_tags")
 
     @external_pool_tags.setter
-    def external_pool_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def external_pool_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "external_pool_tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]:
+    def pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]:
         """
         Additional nested attributes:
         """
         return pulumi.get(self, "pools")
 
     @pools.setter
-    def pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]):
+    def pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]):
         pulumi.set(self, "pools", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
-    def stack_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The networking stack type of the Kubernetes cluster.
         """
         return pulumi.get(self, "stack_type")
 
     @stack_type.setter
-    def stack_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_type", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the VPC to use for the Kubernetes cluster.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vpc_id", value)
 
 
 @pulumi.input_type
 class _LkeClusterState:
     def __init__(__self__, *,
-                 api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 apl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 control_plane: Optional[pulumi.Input['LkeClusterControlPlaneArgs']] = None,
-                 dashboard_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubeconfig: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 pools: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 api_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 control_plane: pulumi.Input[Optional['LkeClusterControlPlaneArgs']] = None,
+                 dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 pools: pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering LkeCluster resources.
 
@@ -302,115 +302,115 @@ class _LkeClusterState:
 
     @_builtins.property
     @pulumi.getter(name="apiEndpoints")
-    def api_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def api_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The endpoints for the Kubernetes API server.
         """
         return pulumi.get(self, "api_endpoints")
 
     @api_endpoints.setter
-    def api_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def api_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "api_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="aplEnabled")
-    def apl_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def apl_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables the App Platform Layer
         """
         return pulumi.get(self, "apl_enabled")
 
     @apl_enabled.setter
-    def apl_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def apl_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "apl_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlane")
-    def control_plane(self) -> Optional[pulumi.Input['LkeClusterControlPlaneArgs']]:
+    def control_plane(self) -> pulumi.Input[Optional['LkeClusterControlPlaneArgs']]:
         """
         Defines settings for the Kubernetes Control Plane.
         """
         return pulumi.get(self, "control_plane")
 
     @control_plane.setter
-    def control_plane(self, value: Optional[pulumi.Input['LkeClusterControlPlaneArgs']]):
+    def control_plane(self, value: pulumi.Input[Optional['LkeClusterControlPlaneArgs']]):
         pulumi.set(self, "control_plane", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardUrl")
-    def dashboard_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         """
         return pulumi.get(self, "dashboard_url")
 
     @dashboard_url.setter
-    def dashboard_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_url", value)
 
     @_builtins.property
     @pulumi.getter(name="externalPoolTags")
-    def external_pool_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def external_pool_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         """
         return pulumi.get(self, "external_pool_tags")
 
     @external_pool_tags.setter
-    def external_pool_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def external_pool_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "external_pool_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sVersion")
-    def k8s_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def k8s_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         """
         return pulumi.get(self, "k8s_version")
 
     @k8s_version.setter
-    def k8s_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def k8s_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "k8s_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def kubeconfig(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubeconfig(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base64 encoded kubeconfig for the Kubernetes cluster.
         """
         return pulumi.get(self, "kubeconfig")
 
     @kubeconfig.setter
-    def kubeconfig(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubeconfig(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubeconfig", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This Kubernetes cluster's unique label.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]:
+    def pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]:
         """
         Additional nested attributes:
         """
         return pulumi.get(self, "pools")
 
     @pools.setter
-    def pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]):
+    def pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]):
         pulumi.set(self, "pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This Kubernetes cluster's location.
 
@@ -421,79 +421,79 @@ class _LkeClusterState:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="stackType")
-    def stack_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The networking stack type of the Kubernetes cluster.
         """
         return pulumi.get(self, "stack_type")
 
     @stack_type.setter
-    def stack_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the node. (`ready`, `not_ready`)
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def subnet_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
-    def subnet_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def subnet_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "tier")
 
     @tier.setter
-    def tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tier", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the VPC to use for the Kubernetes cluster.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -503,18 +503,18 @@ class LkeCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 control_plane: Optional[pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
-                 external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 control_plane: pulumi.Input[Optional[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
+                 external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages an LKE cluster.
@@ -712,7 +712,7 @@ class LkeCluster(pulumi.CustomResource):
                 "count": 1,
             }])
         my_pool = linode.LkeNodePool("my-pool",
-            cluster_id=my_cluster.id,
+            cluster_id=my_cluster.id.apply(lambda x: int(x)),
             type="g6-standard-2",
             node_count=3,
             tags=[external_pool_tag])
@@ -948,7 +948,7 @@ class LkeCluster(pulumi.CustomResource):
                 "count": 1,
             }])
         my_pool = linode.LkeNodePool("my-pool",
-            cluster_id=my_cluster.id,
+            cluster_id=my_cluster.id.apply(lambda x: int(x)),
             type="g6-standard-2",
             node_count=3,
             tags=[external_pool_tag])
@@ -978,18 +978,18 @@ class LkeCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 control_plane: Optional[pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
-                 external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 control_plane: pulumi.Input[Optional[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
+                 external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1033,22 +1033,22 @@ class LkeCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            apl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            control_plane: Optional[pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
-            dashboard_url: Optional[pulumi.Input[_builtins.str]] = None,
-            external_pool_tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            k8s_version: Optional[pulumi.Input[_builtins.str]] = None,
-            kubeconfig: Optional[pulumi.Input[_builtins.str]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            stack_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet_id: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tier: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'LkeCluster':
+            api_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            control_plane: pulumi.Input[Optional[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
+            dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
+            external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
+            kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'LkeCluster':
         """
         Get an existing LkeCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

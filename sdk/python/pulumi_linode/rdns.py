@@ -23,8 +23,8 @@ class RdnsArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[_builtins.str],
                  rdns: pulumi.Input[_builtins.str],
-                 timeouts: Optional[pulumi.Input['RdnsTimeoutsArgs']] = None,
-                 wait_for_available: Optional[pulumi.Input[_builtins.bool]] = None):
+                 timeouts: pulumi.Input[Optional['RdnsTimeoutsArgs']] = None,
+                 wait_for_available: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Rdns resource.
 
@@ -65,33 +65,33 @@ class RdnsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['RdnsTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['RdnsTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['RdnsTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['RdnsTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForAvailable")
-    def wait_for_available(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_available(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the RDNS assignment will be retried within the operation timeout period.
         """
         return pulumi.get(self, "wait_for_available")
 
     @wait_for_available.setter
-    def wait_for_available(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_available(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_available", value)
 
 
 @pulumi.input_type
 class _RdnsState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdns: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['RdnsTimeoutsArgs']] = None,
-                 wait_for_available: Optional[pulumi.Input[_builtins.bool]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdns: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['RdnsTimeoutsArgs']] = None,
+                 wait_for_available: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Rdns resources.
 
@@ -110,47 +110,47 @@ class _RdnsState:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def rdns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the RDNS address.
         """
         return pulumi.get(self, "rdns")
 
     @rdns.setter
-    def rdns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdns", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['RdnsTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['RdnsTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['RdnsTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['RdnsTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForAvailable")
-    def wait_for_available(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_available(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the RDNS assignment will be retried within the operation timeout period.
         """
         return pulumi.get(self, "wait_for_available")
 
     @wait_for_available.setter
-    def wait_for_available(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_available(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_available", value)
 
 
@@ -160,10 +160,10 @@ class Rdns(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdns: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict']]] = None,
-                 wait_for_available: Optional[pulumi.Input[_builtins.bool]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdns: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict']]] = None,
+                 wait_for_available: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Linode RDNS resource.  This can be used to create and modify RDNS records.
@@ -262,10 +262,10 @@ class Rdns(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 rdns: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict']]] = None,
-                 wait_for_available: Optional[pulumi.Input[_builtins.bool]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 rdns: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict']]] = None,
+                 wait_for_available: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -293,10 +293,10 @@ class Rdns(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            rdns: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict']]] = None,
-            wait_for_available: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Rdns':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            rdns: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict']]] = None,
+            wait_for_available: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Rdns':
         """
         Get an existing Rdns resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

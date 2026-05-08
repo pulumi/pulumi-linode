@@ -178,7 +178,7 @@ def get_object_storage_quota(quota_id: Optional[_builtins.str] = None,
         quota_usage=pulumi.get(__ret__, 'quota_usage'),
         resource_metric=pulumi.get(__ret__, 'resource_metric'),
         s3_endpoint=pulumi.get(__ret__, 's3_endpoint'))
-def get_object_storage_quota_output(quota_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_object_storage_quota_output(quota_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageQuotaResult]:
     """
     Provides details about Object Storage quota information on your account.

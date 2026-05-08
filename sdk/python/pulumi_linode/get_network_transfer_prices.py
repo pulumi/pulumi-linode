@@ -112,9 +112,9 @@ def get_network_transfer_prices(filters: Optional[Sequence[Union['GetNetworkTran
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         types=pulumi.get(__ret__, 'types'))
-def get_network_transfer_prices_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNetworkTransferPricesFilterArgs', 'GetNetworkTransferPricesFilterArgsDict']]]]] = None,
-                                       order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_network_transfer_prices_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNetworkTransferPricesFilterArgs', 'GetNetworkTransferPricesFilterArgsDict']]]]] = None,
+                                       order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkTransferPricesResult]:
     """
     Provides information about Linode Network Transfer Prices that match a set of filters.

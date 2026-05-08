@@ -22,17 +22,17 @@ __all__ = ['ImageArgs', 'Image']
 class ImageArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[_builtins.str],
-                 cloud_init: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['ImageTimeoutsArgs']] = None,
-                 wait_for_replications: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cloud_init: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['ImageTimeoutsArgs']] = None,
+                 wait_for_replications: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Image resource.
 
@@ -92,67 +92,67 @@ class ImageArgs:
 
     @_builtins.property
     @pulumi.getter(name="cloudInit")
-    def cloud_init(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cloud_init(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this image supports cloud-init.
         """
         return pulumi.get(self, "cloud_init")
 
     @cloud_init.setter
-    def cloud_init(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cloud_init(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cloud_init", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A detailed description of this Image.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Linode Disk that this Image will be created from.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fileHash")
-    def file_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MD5 hash of the file to be uploaded. This is used to trigger file updates.
         """
         return pulumi.get(self, "file_hash")
 
     @file_hash.setter
-    def file_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_hash", value)
 
     @_builtins.property
     @pulumi.getter(name="filePath")
-    def file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the image file to be uploaded.
         """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
-    def file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def linode_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Linode that this Image will be created from.
 
@@ -163,57 +163,57 @@ class ImageArgs:
         return pulumi.get(self, "linode_id")
 
     @linode_id.setter
-    def linode_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def linode_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "linode_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaRegions")
-    def replica_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def replica_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         """
         return pulumi.get(self, "replica_regions")
 
     @replica_regions.setter
-    def replica_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def replica_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "replica_regions", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of customized tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ImageTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ImageTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ImageTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ImageTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForReplications")
-    def wait_for_replications(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_replications(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to wait for all image replications become `available`. Default to false.
 
@@ -222,39 +222,39 @@ class ImageArgs:
         return pulumi.get(self, "wait_for_replications")
 
     @wait_for_replications.setter
-    def wait_for_replications(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_replications(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_replications", value)
 
 
 @pulumi.input_type
 class _ImageState:
     def __init__(__self__, *,
-                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cloud_init: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 deprecated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiry: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_sharing: Optional[pulumi.Input['ImageImageSharingArgs']] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 replications: Optional[pulumi.Input[Sequence[pulumi.Input['ImageReplicationArgs']]]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['ImageTimeoutsArgs']] = None,
-                 total_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vendor: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_replications: Optional[pulumi.Input[_builtins.bool]] = None):
+                 capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cloud_init: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiry: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_sharing: pulumi.Input[Optional['ImageImageSharingArgs']] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 replications: pulumi.Input[Optional[Sequence[pulumi.Input['ImageReplicationArgs']]]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['ImageTimeoutsArgs']] = None,
+                 total_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vendor: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_replications: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Image resources.
 
@@ -345,175 +345,175 @@ class _ImageState:
 
     @_builtins.property
     @pulumi.getter
-    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def capabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The capabilities of this Image.
         """
         return pulumi.get(self, "capabilities")
 
     @capabilities.setter
-    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def capabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "capabilities", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudInit")
-    def cloud_init(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cloud_init(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this image supports cloud-init.
         """
         return pulumi.get(self, "cloud_init")
 
     @cloud_init.setter
-    def cloud_init(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cloud_init(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cloud_init", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When this Image was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the User who created this Image.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def deprecated(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deprecated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not this Image is deprecated. Will only be True for deprecated public Images.
         """
         return pulumi.get(self, "deprecated")
 
     @deprecated.setter
-    def deprecated(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deprecated(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deprecated", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A detailed description of this Image.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Linode Disk that this Image will be created from.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         """
         return pulumi.get(self, "expiry")
 
     @expiry.setter
-    def expiry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiry", value)
 
     @_builtins.property
     @pulumi.getter(name="fileHash")
-    def file_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MD5 hash of the file to be uploaded. This is used to trigger file updates.
         """
         return pulumi.get(self, "file_hash")
 
     @file_hash.setter
-    def file_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_hash", value)
 
     @_builtins.property
     @pulumi.getter(name="filePath")
-    def file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the image file to be uploaded.
         """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
-    def file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="imageSharing")
-    def image_sharing(self) -> Optional[pulumi.Input['ImageImageSharingArgs']]:
+    def image_sharing(self) -> pulumi.Input[Optional['ImageImageSharingArgs']]:
         """
         Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
         """
         return pulumi.get(self, "image_sharing")
 
     @image_sharing.setter
-    def image_sharing(self, value: Optional[pulumi.Input['ImageImageSharingArgs']]):
+    def image_sharing(self, value: pulumi.Input[Optional['ImageImageSharingArgs']]):
         pulumi.set(self, "image_sharing", value)
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the Image is public.
         """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
-    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter(name="isShared")
-    def is_shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
         """
         return pulumi.get(self, "is_shared")
 
     @is_shared.setter
-    def is_shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_shared", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A short description of the Image. Labels cannot contain special characters.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def linode_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Linode that this Image will be created from.
 
@@ -524,129 +524,129 @@ class _ImageState:
         return pulumi.get(self, "linode_id")
 
     @linode_id.setter
-    def linode_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def linode_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "linode_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaRegions")
-    def replica_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def replica_regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
         """
         return pulumi.get(self, "replica_regions")
 
     @replica_regions.setter
-    def replica_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def replica_regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "replica_regions", value)
 
     @_builtins.property
     @pulumi.getter
-    def replications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageReplicationArgs']]]]:
+    def replications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageReplicationArgs']]]]:
         """
         A list of image replications region and corresponding status.
         """
         return pulumi.get(self, "replications")
 
     @replications.setter
-    def replications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageReplicationArgs']]]]):
+    def replications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageReplicationArgs']]]]):
         pulumi.set(self, "replications", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum size this Image needs to deploy. Size is in MB.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of an image replica.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of customized tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ImageTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ImageTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ImageTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ImageTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="totalSize")
-    def total_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The total size of the image in all available regions.
         """
         return pulumi.get(self, "total_size")
 
     @total_size.setter
-    def total_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def vendor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vendor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The upstream distribution vendor. Nil for private Images.
         """
         return pulumi.get(self, "vendor")
 
     @vendor.setter
-    def vendor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vendor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vendor", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForReplications")
-    def wait_for_replications(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_replications(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to wait for all image replications become `available`. Default to false.
 
@@ -655,7 +655,7 @@ class _ImageState:
         return pulumi.get(self, "wait_for_replications")
 
     @wait_for_replications.setter
-    def wait_for_replications(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_replications(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_replications", value)
 
 
@@ -665,18 +665,18 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_init: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
-                 wait_for_replications: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cloud_init: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
+                 wait_for_replications: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Linode Image resource.  This can be used to create, modify, and delete Linodes Images.  Linode Images are snapshots of a Linode Instance Disk which can then be used to provision more Linode Instances.  Images can be used across regions.
@@ -698,7 +698,7 @@ class Image(pulumi.CustomResource):
             label="foo-sda-image",
             description="Image taken from foo",
             disk_id=foo.disks[0].id,
-            linode_id=foo.id,
+            linode_id=foo.id.apply(lambda x: int(x)),
             tags=[
                 "image-tag",
                 "test",
@@ -801,7 +801,7 @@ class Image(pulumi.CustomResource):
             label="foo-sda-image",
             description="Image taken from foo",
             disk_id=foo.disks[0].id,
-            linode_id=foo.id,
+            linode_id=foo.id.apply(lambda x: int(x)),
             tags=[
                 "image-tag",
                 "test",
@@ -873,18 +873,18 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_init: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
-                 wait_for_replications: Optional[pulumi.Input[_builtins.bool]] = None,
+                 cloud_init: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
+                 wait_for_replications: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -932,32 +932,32 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cloud_init: Optional[pulumi.Input[_builtins.bool]] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            deprecated: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_id: Optional[pulumi.Input[_builtins.int]] = None,
-            expiry: Optional[pulumi.Input[_builtins.str]] = None,
-            file_hash: Optional[pulumi.Input[_builtins.str]] = None,
-            file_path: Optional[pulumi.Input[_builtins.str]] = None,
-            image_sharing: Optional[pulumi.Input[Union['ImageImageSharingArgs', 'ImageImageSharingArgsDict']]] = None,
-            is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_shared: Optional[pulumi.Input[_builtins.bool]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            replica_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            replications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageReplicationArgs', 'ImageReplicationArgsDict']]]]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
-            total_size: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            vendor: Optional[pulumi.Input[_builtins.str]] = None,
-            wait_for_replications: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Image':
+            capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cloud_init: pulumi.Input[Optional[_builtins.bool]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+            expiry: pulumi.Input[Optional[_builtins.str]] = None,
+            file_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            image_sharing: pulumi.Input[Optional[Union['ImageImageSharingArgs', 'ImageImageSharingArgsDict']]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            replications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageReplicationArgs', 'ImageReplicationArgsDict']]]]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
+            total_size: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vendor: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for_replications: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

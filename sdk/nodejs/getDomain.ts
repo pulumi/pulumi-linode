@@ -144,9 +144,9 @@ export interface GetDomainOutputArgs {
     /**
      * The unique domain name of the Domain record to query.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The unique numeric ID of the Domain record to query.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
 }

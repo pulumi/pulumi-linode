@@ -828,7 +828,7 @@ def get_database_mysql_v2(id: Optional[_builtins.str] = None,
         updated=pulumi.get(__ret__, 'updated'),
         updates=pulumi.get(__ret__, 'updates'),
         version=pulumi.get(__ret__, 'version'))
-def get_database_mysql_v2_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_database_mysql_v2_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseMysqlV2Result]:
     """
     Provides information about a Linode MySQL Database.

@@ -29,9 +29,9 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetChildAccounts.Invoke();
+        ///     var all = Linode.GetChildAccounts.Invoke();
         /// 
-        ///     var filtered = Linode.Index.GetChildAccounts.Invoke(new()
+        ///     var filtered = Linode.GetChildAccounts.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -121,9 +121,9 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetChildAccounts.Invoke();
+        ///     var all = Linode.GetChildAccounts.Invoke();
         /// 
-        ///     var filtered = Linode.Index.GetChildAccounts.Invoke(new()
+        ///     var filtered = Linode.GetChildAccounts.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -213,9 +213,9 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Linode.Index.GetChildAccounts.Invoke();
+        ///     var all = Linode.GetChildAccounts.Invoke();
         /// 
-        ///     var filtered = Linode.Index.GetChildAccounts.Invoke(new()
+        ///     var filtered = Linode.GetChildAccounts.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

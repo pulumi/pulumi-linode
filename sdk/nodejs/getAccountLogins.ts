@@ -114,5 +114,5 @@ export function getAccountLoginsOutput(args?: GetAccountLoginsOutputArgs, opts?:
  * A collection of arguments for invoking getAccountLogins.
  */
 export interface GetAccountLoginsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetAccountLoginsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetAccountLoginsFilterArgs>[] | undefined>;
 }

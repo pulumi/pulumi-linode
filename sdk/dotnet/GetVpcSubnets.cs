@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_subnets = Linode.Index.GetVpcSubnets.Invoke(new()
+        ///     var filtered_subnets = Linode.GetVpcSubnets.Invoke(new()
         ///     {
         ///         VpcId = 123,
         ///         Filters = new[]
@@ -85,7 +85,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_subnets = Linode.Index.GetVpcSubnets.Invoke(new()
+        ///     var filtered_subnets = Linode.GetVpcSubnets.Invoke(new()
         ///     {
         ///         VpcId = 123,
         ///         Filters = new[]
@@ -143,7 +143,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered_subnets = Linode.Index.GetVpcSubnets.Invoke(new()
+        ///     var filtered_subnets = Linode.GetVpcSubnets.Invoke(new()
         ///     {
         ///         VpcId = 123,
         ///         Filters = new[]

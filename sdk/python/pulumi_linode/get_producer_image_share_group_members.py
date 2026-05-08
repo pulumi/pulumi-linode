@@ -148,11 +148,11 @@ def get_producer_image_share_group_members(filters: Optional[Sequence[Union['Get
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         sharegroup_id=pulumi.get(__ret__, 'sharegroup_id'))
-def get_producer_image_share_group_members_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetProducerImageShareGroupMembersFilterArgs', 'GetProducerImageShareGroupMembersFilterArgsDict']]]]] = None,
-                                                  members: Optional[pulumi.Input[Optional[Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict']]]]] = None,
-                                                  order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                  order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                  sharegroup_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_producer_image_share_group_members_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupMembersFilterArgs', 'GetProducerImageShareGroupMembersFilterArgsDict']]]]] = None,
+                                                  members: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict']]]]] = None,
+                                                  order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                  order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                  sharegroup_id: pulumi.Input[Optional[_builtins.int]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProducerImageShareGroupMembersResult]:
     """
     Provides information about a list of Members of an Image Share Group that match a set of filters.

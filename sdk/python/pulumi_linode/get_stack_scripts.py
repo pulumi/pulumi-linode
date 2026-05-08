@@ -170,10 +170,10 @@ def get_stack_scripts(filters: Optional[Sequence[Union['GetStackScriptsFilterArg
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         stackscripts=pulumi.get(__ret__, 'stackscripts'))
-def get_stack_scripts_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetStackScriptsFilterArgs', 'GetStackScriptsFilterArgsDict']]]]] = None,
-                             latest: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                             order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_stack_scripts_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetStackScriptsFilterArgs', 'GetStackScriptsFilterArgsDict']]]]] = None,
+                             latest: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                             order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStackScriptsResult]:
     """
     Provides information about Linode StackScripts that match a set of filters.

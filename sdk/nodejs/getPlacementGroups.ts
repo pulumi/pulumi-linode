@@ -131,7 +131,7 @@ export function getPlacementGroupsOutput(args?: GetPlacementGroupsOutputArgs, op
  * A collection of arguments for invoking getPlacementGroups.
  */
 export interface GetPlacementGroupsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsFilterArgs>[]>;
-    order?: pulumi.Input<string>;
-    orderBy?: pulumi.Input<string>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetPlacementGroupsFilterArgs>[] | undefined>;
+    order?: pulumi.Input<string | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

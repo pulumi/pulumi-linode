@@ -93,7 +93,7 @@ export interface GetSshKeyOutputArgs {
     /**
      * The ID of the SSH Key
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The label of the SSH Key to select.
      */

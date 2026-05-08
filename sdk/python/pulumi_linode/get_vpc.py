@@ -165,7 +165,7 @@ def get_vpc(id: Optional[_builtins.str] = None,
         label=pulumi.get(__ret__, 'label'),
         region=pulumi.get(__ret__, 'region'),
         updated=pulumi.get(__ret__, 'updated'))
-def get_vpc_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_vpc_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcResult]:
     """
     Provides information about a Linode VPC.

@@ -169,7 +169,7 @@ def get_region(id: Optional[_builtins.str] = None,
         resolvers=pulumi.get(__ret__, 'resolvers'),
         site_type=pulumi.get(__ret__, 'site_type'),
         status=pulumi.get(__ret__, 'status'))
-def get_region_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_region_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionResult]:
     """
     `get_region` provides details about a specific Linode region. See all regions [here](https://api.linode.com/v4/regions).

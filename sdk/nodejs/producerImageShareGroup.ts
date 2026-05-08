@@ -158,45 +158,45 @@ export interface ProducerImageShareGroupState {
     /**
      * The date and time the Image Share Group was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * The description of the Image Share Group
      *
      * * `images` - (Optional) A list of Images to include in the Image Share Group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The date and time the Image Share Group will expire.
      */
-    expiry?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string | undefined>;
     /**
      * The images to be shared using this Image Share Group.
      */
-    images?: pulumi.Input<pulumi.Input<inputs.ProducerImageShareGroupImage>[]>;
+    images?: pulumi.Input<pulumi.Input<inputs.ProducerImageShareGroupImage>[] | undefined>;
     /**
      * The number of images in the Image Share Group.
      */
-    imagesCount?: pulumi.Input<number>;
+    imagesCount?: pulumi.Input<number | undefined>;
     /**
      * Whether the Image Share Group is suspended.
      */
-    isSuspended?: pulumi.Input<boolean>;
+    isSuspended?: pulumi.Input<boolean | undefined>;
     /**
      * The label of the Image Share Group.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The number of members in the Image Share Group.
      */
-    membersCount?: pulumi.Input<number>;
+    membersCount?: pulumi.Input<number | undefined>;
     /**
      * The date and time the Image Share Group was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the Image Share Group.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,11 +208,11 @@ export interface ProducerImageShareGroupArgs {
      *
      * * `images` - (Optional) A list of Images to include in the Image Share Group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The images to be shared using this Image Share Group.
      */
-    images?: pulumi.Input<pulumi.Input<inputs.ProducerImageShareGroupImage>[]>;
+    images?: pulumi.Input<pulumi.Input<inputs.ProducerImageShareGroupImage>[] | undefined>;
     /**
      * The label of the Image Share Group.
      */

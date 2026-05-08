@@ -243,7 +243,7 @@ def get_stack_script(id: Optional[_builtins.str] = None,
         user_defined_fields=pulumi.get(__ret__, 'user_defined_fields'),
         user_gravatar_id=pulumi.get(__ret__, 'user_gravatar_id'),
         username=pulumi.get(__ret__, 'username'))
-def get_stack_script_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_stack_script_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStackScriptResult]:
     """
     Provides details about a specific Linode StackScript.

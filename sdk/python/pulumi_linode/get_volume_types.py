@@ -112,9 +112,9 @@ def get_volume_types(filters: Optional[Sequence[Union['GetVolumeTypesFilterArgs'
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         types=pulumi.get(__ret__, 'types'))
-def get_volume_types_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVolumeTypesFilterArgs', 'GetVolumeTypesFilterArgsDict']]]]] = None,
-                            order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_volume_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVolumeTypesFilterArgs', 'GetVolumeTypesFilterArgsDict']]]]] = None,
+                            order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeTypesResult]:
     """
     Provides information about Linode Volume types that match a set of filters.

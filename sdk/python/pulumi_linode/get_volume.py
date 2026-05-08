@@ -206,7 +206,7 @@ def get_volume(id: Optional[_builtins.int] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         updated=pulumi.get(__ret__, 'updated'))
-def get_volume_output(id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_volume_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeResult]:
     """
     Provides information about a Linode Volume.

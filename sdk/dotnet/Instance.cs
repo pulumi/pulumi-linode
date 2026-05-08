@@ -27,7 +27,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var web = new Linode.Index.Instance("web", new()
+    ///     var web = new Linode.Instance("web", new()
     ///     {
     ///         Label = "simple_instance",
     ///         Image = "linode/ubuntu22.04",
@@ -61,7 +61,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var web = new Linode.Index.Instance("web", new()
+    ///     var web = new Linode.Instance("web", new()
     ///     {
     ///         Label = "simple_instance",
     ///         Image = "linode/ubuntu22.04",
@@ -111,9 +111,9 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = Linode.Index.GetProfile.Invoke();
+    ///     var me = Linode.GetProfile.Invoke();
     /// 
-    ///     var web = new Linode.Index.Instance("web", new()
+    ///     var web = new Linode.Instance("web", new()
     ///     {
     ///         Label = "complex_instance",
     ///         Tags = new[]
@@ -125,14 +125,14 @@ namespace Pulumi.Linode
     ///         PrivateIp = true,
     ///     });
     /// 
-    ///     var webVolume = new Linode.Index.Volume("web_volume", new()
+    ///     var webVolume = new Linode.Volume("web_volume", new()
     ///     {
     ///         Label = "web_volume",
     ///         Size = 20,
     ///         Region = "us-central",
     ///     });
     /// 
-    ///     var bootDisk = new Linode.Index.InstanceDisk("boot_disk", new()
+    ///     var bootDisk = new Linode.InstanceDisk("boot_disk", new()
     ///     {
     ///         Label = "boot",
     ///         LinodeId = web.Id,
@@ -149,7 +149,7 @@ namespace Pulumi.Linode
     ///         RootPass = "terr4form-test",
     ///     });
     /// 
-    ///     var bootConfig = new Linode.Index.InstanceConfig("boot_config", new()
+    ///     var bootConfig = new Linode.InstanceConfig("boot_config", new()
     ///     {
     ///         Label = "boot_config",
     ///         LinodeId = web.Id,
@@ -187,7 +187,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_instance = new Linode.Index.Instance("my-instance", new()
+    ///     var my_instance = new Linode.Instance("my-instance", new()
     ///     {
     ///         Label = "my-instance",
     ///         Region = "us-mia",

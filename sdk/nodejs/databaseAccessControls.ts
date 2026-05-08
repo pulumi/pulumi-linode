@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * const my_access = new linode.DatabaseAccessControls("my-access", {
- *     databaseId: my_db.id,
+ *     databaseId: my_db.id.apply(x =>Number(x)),
  *     databaseType: "mysql",
  *     allowLists: [my_instance.ipAddress],
  * });
@@ -117,15 +117,15 @@ export interface DatabaseAccessControlsState {
     /**
      * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
      */
-    allowLists?: pulumi.Input<pulumi.Input<string>[]>;
+    allowLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique ID of the target database.
      */
-    databaseId?: pulumi.Input<number>;
+    databaseId?: pulumi.Input<number | undefined>;
     /**
      * The unique type of the target database. (`mysql`, `postgresql`)
      */
-    databaseType?: pulumi.Input<string>;
+    databaseType?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -66,13 +66,13 @@ export function getVolumeTypesOutput(args?: GetVolumeTypesOutputArgs, opts?: pul
  * A collection of arguments for invoking getVolumeTypes.
  */
 export interface GetVolumeTypesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetVolumeTypesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetVolumeTypesFilterArgs>[] | undefined>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

@@ -141,7 +141,7 @@ def get_lock(id: Optional[_builtins.int] = None,
         entity_url=pulumi.get(__ret__, 'entity_url'),
         id=pulumi.get(__ret__, 'id'),
         lock_type=pulumi.get(__ret__, 'lock_type'))
-def get_lock_output(id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_lock_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLockResult]:
     """
     > **Early Access:** Lock functionality is in early access and may not be available to all users.

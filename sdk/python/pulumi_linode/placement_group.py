@@ -24,7 +24,7 @@ class PlacementGroupArgs:
                  label: pulumi.Input[_builtins.str],
                  placement_group_type: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 placement_group_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 placement_group_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PlacementGroup resource.
 
@@ -77,26 +77,26 @@ class PlacementGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="placementGroupPolicy")
-    def placement_group_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def placement_group_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether Linodes must be able to become compliant during assignment. (Default `strict`)
         """
         return pulumi.get(self, "placement_group_policy")
 
     @placement_group_policy.setter
-    def placement_group_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def placement_group_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "placement_group_policy", value)
 
 
 @pulumi.input_type
 class _PlacementGroupState:
     def __init__(__self__, *,
-                 is_compliant: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input['PlacementGroupMemberArgs']]]] = None,
-                 placement_group_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 is_compliant: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 members: pulumi.Input[Optional[Sequence[pulumi.Input['PlacementGroupMemberArgs']]]] = None,
+                 placement_group_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PlacementGroup resources.
 
@@ -122,74 +122,74 @@ class _PlacementGroupState:
 
     @_builtins.property
     @pulumi.getter(name="isCompliant")
-    def is_compliant(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_compliant(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this Linode is currently compliant with the group's placement group type.
         """
         return pulumi.get(self, "is_compliant")
 
     @is_compliant.setter
-    def is_compliant(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_compliant(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_compliant", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PlacementGroupMemberArgs']]]]:
+    def members(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PlacementGroupMemberArgs']]]]:
         """
         A set of Linodes currently assigned to this Placement Group.
         """
         return pulumi.get(self, "members")
 
     @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PlacementGroupMemberArgs']]]]):
+    def members(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PlacementGroupMemberArgs']]]]):
         pulumi.set(self, "members", value)
 
     @_builtins.property
     @pulumi.getter(name="placementGroupPolicy")
-    def placement_group_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def placement_group_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether Linodes must be able to become compliant during assignment. (Default `strict`)
         """
         return pulumi.get(self, "placement_group_policy")
 
     @placement_group_policy.setter
-    def placement_group_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def placement_group_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "placement_group_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="placementGroupType")
-    def placement_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def placement_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The placement group type to use when placing Linodes in this group.
         """
         return pulumi.get(self, "placement_group_type")
 
     @placement_group_type.setter
-    def placement_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def placement_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "placement_group_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Placement Group.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -199,10 +199,10 @@ class PlacementGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_group_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_group_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Linode Placement Group.
@@ -282,10 +282,10 @@ class PlacementGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_group_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 placement_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_group_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 placement_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -317,12 +317,12 @@ class PlacementGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            is_compliant: Optional[pulumi.Input[_builtins.bool]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            members: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PlacementGroupMemberArgs', 'PlacementGroupMemberArgsDict']]]]] = None,
-            placement_group_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            placement_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'PlacementGroup':
+            is_compliant: pulumi.Input[Optional[_builtins.bool]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PlacementGroupMemberArgs', 'PlacementGroupMemberArgsDict']]]]] = None,
+            placement_group_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            placement_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'PlacementGroup':
         """
         Get an existing PlacementGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

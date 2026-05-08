@@ -174,9 +174,9 @@ def get_firewalls(filters: Optional[Sequence[Union['GetFirewallsFilterArgs', 'Ge
         id=pulumi.get(__ret__, 'id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_firewalls_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallsFilterArgs', 'GetFirewallsFilterArgsDict']]]]] = None,
-                         order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_firewalls_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetFirewallsFilterArgs', 'GetFirewallsFilterArgsDict']]]]] = None,
+                         order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallsResult]:
     """
     Provides information about Linode Cloud Firewalls that match a set of filters.

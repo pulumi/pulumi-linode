@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_firewall = Linode.Index.GetFirewall.Invoke(new()
+        ///     var my_firewall = Linode.GetFirewall.Invoke(new()
         ///     {
         ///         Id = 123,
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_firewall = Linode.Index.GetFirewall.Invoke(new()
+        ///     var my_firewall = Linode.GetFirewall.Invoke(new()
         ///     {
         ///         Id = 123,
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_firewall = Linode.Index.GetFirewall.Invoke(new()
+        ///     var my_firewall = Linode.GetFirewall.Invoke(new()
         ///     {
         ///         Id = 123,
         ///     });

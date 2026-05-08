@@ -249,8 +249,8 @@ def get_domain(domain: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         ttl_sec=pulumi.get(__ret__, 'ttl_sec'),
         type=pulumi.get(__ret__, 'type'))
-def get_domain_output(domain: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_domain_output(domain: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainResult]:
     """
     Provides information about a Linode domain.

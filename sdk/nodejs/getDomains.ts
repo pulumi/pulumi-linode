@@ -152,13 +152,13 @@ export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getDomains.
  */
 export interface GetDomainsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetDomainsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetDomainsFilterArgs>[] | undefined>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

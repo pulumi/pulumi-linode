@@ -22,9 +22,9 @@ __all__ = ['InstanceIpArgs', 'InstanceIp']
 class InstanceIpArgs:
     def __init__(__self__, *,
                  linode_id: pulumi.Input[_builtins.int],
-                 apply_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rdns: Optional[pulumi.Input[_builtins.str]] = None):
+                 apply_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rdns: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceIp resource.
 
@@ -55,55 +55,55 @@ class InstanceIpArgs:
 
     @_builtins.property
     @pulumi.getter(name="applyImmediately")
-    def apply_immediately(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def apply_immediately(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the instance will be rebooted to update network interfaces.
         """
         return pulumi.get(self, "apply_immediately")
 
     @apply_immediately.setter
-    def apply_immediately(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def apply_immediately(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "apply_immediately", value)
 
     @_builtins.property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the IPv4 address is public or private. Defaults to true.
         """
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public", value)
 
     @_builtins.property
     @pulumi.getter
-    def rdns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reverse DNS assigned to this address.
         """
         return pulumi.get(self, "rdns")
 
     @rdns.setter
-    def rdns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdns", value)
 
 
 @pulumi.input_type
 class _InstanceIpState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 apply_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.int]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rdns: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_nat11s: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 apply_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.int]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rdns: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_nat11s: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]]] = None):
         """
         Input properties used for looking up and filtering InstanceIp resources.
 
@@ -144,134 +144,134 @@ class _InstanceIpState:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resulting IPv4 address.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter(name="applyImmediately")
-    def apply_immediately(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def apply_immediately(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the instance will be rebooted to update network interfaces.
         """
         return pulumi.get(self, "apply_immediately")
 
     @apply_immediately.setter
-    def apply_immediately(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def apply_immediately(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "apply_immediately", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default gateway for this address
         """
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def linode_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Linode to allocate an IPv4 address for.
         """
         return pulumi.get(self, "linode_id")
 
     @linode_id.setter
-    def linode_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def linode_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "linode_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of bits set in the subnet mask.
         """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the IPv4 address is public or private. Defaults to true.
         """
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public", value)
 
     @_builtins.property
     @pulumi.getter
-    def rdns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reverse DNS assigned to this address.
         """
         return pulumi.get(self, "rdns")
 
     @rdns.setter
-    def rdns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdns", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region this IP resides in.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetMask")
-    def subnet_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mask that separates host bits from network bits for this address.
         """
         return pulumi.get(self, "subnet_mask")
 
     @subnet_mask.setter
-    def subnet_mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_mask", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcNat11s")
-    def vpc_nat11s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]]]:
+    def vpc_nat11s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]]]:
         """
         Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
         """
         return pulumi.get(self, "vpc_nat11s")
 
     @vpc_nat11s.setter
-    def vpc_nat11s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]]]):
+    def vpc_nat11s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]]]):
         pulumi.set(self, "vpc_nat11s", value)
 
 
@@ -281,10 +281,10 @@ class InstanceIp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apply_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rdns: Optional[pulumi.Input[_builtins.str]] = None,
+                 apply_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rdns: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Linode instance IP.
@@ -306,7 +306,7 @@ class InstanceIp(pulumi.CustomResource):
             type="g6-nanode-1",
             region="us-east")
         foo_instance_ip = linode.InstanceIp("foo",
-            linode_id=foo.id,
+            linode_id=foo.id.apply(lambda x: int(x)),
             public=True)
         ```
 
@@ -344,7 +344,7 @@ class InstanceIp(pulumi.CustomResource):
             type="g6-nanode-1",
             region="us-east")
         foo_instance_ip = linode.InstanceIp("foo",
-            linode_id=foo.id,
+            linode_id=foo.id.apply(lambda x: int(x)),
             public=True)
         ```
 
@@ -364,10 +364,10 @@ class InstanceIp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apply_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rdns: Optional[pulumi.Input[_builtins.str]] = None,
+                 apply_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rdns: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -400,17 +400,17 @@ class InstanceIp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            apply_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-            gateway: Optional[pulumi.Input[_builtins.str]] = None,
-            linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-            prefix: Optional[pulumi.Input[_builtins.int]] = None,
-            public: Optional[pulumi.Input[_builtins.bool]] = None,
-            rdns: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            subnet_mask: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_nat11s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpVpcNat11Args', 'InstanceIpVpcNat11ArgsDict']]]]] = None) -> 'InstanceIp':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            apply_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            prefix: pulumi.Input[Optional[_builtins.int]] = None,
+            public: pulumi.Input[Optional[_builtins.bool]] = None,
+            rdns: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_nat11s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceIpVpcNat11Args', 'InstanceIpVpcNat11ArgsDict']]]]] = None) -> 'InstanceIp':
         """
         Get an existing InstanceIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

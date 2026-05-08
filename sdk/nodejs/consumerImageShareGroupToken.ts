@@ -142,43 +142,43 @@ export interface ConsumerImageShareGroupTokenState {
     /**
      * When the token was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * When the token will expire.
      */
-    expiry?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string | undefined>;
     /**
      * A label for the token.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The label of the Image Share Group that the token is for.
      */
-    sharegroupLabel?: pulumi.Input<string>;
+    sharegroupLabel?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the Image Share Group that the token is for.
      */
-    sharegroupUuid?: pulumi.Input<string>;
+    sharegroupUuid?: pulumi.Input<string | undefined>;
     /**
      * The status of the token.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The one-time-use token to be provided to the Image Share Group Producer.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the token.
      */
-    tokenUuid?: pulumi.Input<string>;
+    tokenUuid?: pulumi.Input<string | undefined>;
     /**
      * When the token was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the Image Share Group for which to create a token.
      */
-    validForSharegroupUuid?: pulumi.Input<string>;
+    validForSharegroupUuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -188,7 +188,7 @@ export interface ConsumerImageShareGroupTokenArgs {
     /**
      * A label for the token.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the Image Share Group for which to create a token.
      */

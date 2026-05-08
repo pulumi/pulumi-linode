@@ -163,10 +163,10 @@ def get_nodebalancer_vpcs(filters: Optional[Sequence[Union['GetNodebalancerVpcsF
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         vpc_configs=pulumi.get(__ret__, 'vpc_configs'))
-def get_nodebalancer_vpcs_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNodebalancerVpcsFilterArgs', 'GetNodebalancerVpcsFilterArgsDict']]]]] = None,
-                                 nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
-                                 order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_nodebalancer_vpcs_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNodebalancerVpcsFilterArgs', 'GetNodebalancerVpcsFilterArgsDict']]]]] = None,
+                                 nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
+                                 order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodebalancerVpcsResult]:
     """
     > **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.

@@ -165,7 +165,7 @@ def get_placement_group(id: Optional[_builtins.int] = None,
         placement_group_policy=pulumi.get(__ret__, 'placement_group_policy'),
         placement_group_type=pulumi.get(__ret__, 'placement_group_type'),
         region=pulumi.get(__ret__, 'region'))
-def get_placement_group_output(id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_placement_group_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPlacementGroupResult]:
     """
     `PlacementGroup` provides details about a Linode placement group.
