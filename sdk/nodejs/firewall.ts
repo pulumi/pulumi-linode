@@ -64,7 +64,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     outboundPolicy: "ACCEPT",
- *     linodes: [myInstance.id],
+ *     linodes: [myInstance.id.apply(x =>Number(x))],
  * });
  * ```
  *
@@ -230,63 +230,63 @@ export interface FirewallState {
     /**
      * When this firewall was created
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * The devices associated with this firewall.
      */
-    devices?: pulumi.Input<pulumi.Input<inputs.FirewallDevice>[]>;
+    devices?: pulumi.Input<pulumi.Input<inputs.FirewallDevice>[] | undefined>;
     /**
      * If `true`, the Firewall's rules are not enforced (defaults to `false`).
      *
      * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      *
      * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
      */
-    inboundPolicy?: pulumi.Input<string>;
+    inboundPolicy?: pulumi.Input<string | undefined>;
     /**
      * A firewall rule that specifies what inbound network traffic is allowed.
      */
-    inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
+    inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[] | undefined>;
     /**
      * A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
      */
-    interfaces?: pulumi.Input<pulumi.Input<number>[]>;
+    interfaces?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * This Firewall's unique label.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * A list of IDs of Linodes this Firewall should govern network traffic for.
      */
-    linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    linodes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * A list of IDs of NodeBalancers this Firewall should govern network traffic for.
      */
-    nodebalancers?: pulumi.Input<pulumi.Input<number>[]>;
+    nodebalancers?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */
-    outboundPolicy?: pulumi.Input<string>;
+    outboundPolicy?: pulumi.Input<string | undefined>;
     /**
      * A firewall rule that specifies what outbound network traffic is allowed.
      */
-    outbounds?: pulumi.Input<pulumi.Input<inputs.FirewallOutbound>[]>;
+    outbounds?: pulumi.Input<pulumi.Input<inputs.FirewallOutbound>[] | undefined>;
     /**
      * The status of the Firewall.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When this firewall was last updated
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -298,7 +298,7 @@ export interface FirewallArgs {
      *
      * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      *
@@ -308,11 +308,11 @@ export interface FirewallArgs {
     /**
      * A firewall rule that specifies what inbound network traffic is allowed.
      */
-    inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[]>;
+    inbounds?: pulumi.Input<pulumi.Input<inputs.FirewallInbound>[] | undefined>;
     /**
      * A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
      */
-    interfaces?: pulumi.Input<pulumi.Input<number>[]>;
+    interfaces?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * This Firewall's unique label.
      */
@@ -320,11 +320,11 @@ export interface FirewallArgs {
     /**
      * A list of IDs of Linodes this Firewall should govern network traffic for.
      */
-    linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    linodes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * A list of IDs of NodeBalancers this Firewall should govern network traffic for.
      */
-    nodebalancers?: pulumi.Input<pulumi.Input<number>[]>;
+    nodebalancers?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
      */
@@ -332,9 +332,9 @@ export interface FirewallArgs {
     /**
      * A firewall rule that specifies what outbound network traffic is allowed.
      */
-    outbounds?: pulumi.Input<pulumi.Input<inputs.FirewallOutbound>[]>;
+    outbounds?: pulumi.Input<pulumi.Input<inputs.FirewallOutbound>[] | undefined>;
     /**
      * A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -22,11 +22,11 @@ __all__ = ['InterfaceArgs', 'Interface']
 class InterfaceArgs:
     def __init__(__self__, *,
                  linode_id: pulumi.Input[_builtins.int],
-                 default_route: Optional[pulumi.Input['InterfaceDefaultRouteArgs']] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 public: Optional[pulumi.Input['InterfacePublicArgs']] = None,
-                 vlan: Optional[pulumi.Input['InterfaceVlanArgs']] = None,
-                 vpc: Optional[pulumi.Input['InterfaceVpcArgs']] = None):
+                 default_route: pulumi.Input[Optional['InterfaceDefaultRouteArgs']] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 public: pulumi.Input[Optional['InterfacePublicArgs']] = None,
+                 vlan: pulumi.Input[Optional['InterfaceVlanArgs']] = None,
+                 vpc: pulumi.Input[Optional['InterfaceVpcArgs']] = None):
         """
         The set of arguments for constructing a Interface resource.
 
@@ -63,74 +63,74 @@ class InterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultRoute")
-    def default_route(self) -> Optional[pulumi.Input['InterfaceDefaultRouteArgs']]:
+    def default_route(self) -> pulumi.Input[Optional['InterfaceDefaultRouteArgs']]:
         """
         Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
         """
         return pulumi.get(self, "default_route")
 
     @default_route.setter
-    def default_route(self, value: Optional[pulumi.Input['InterfaceDefaultRouteArgs']]):
+    def default_route(self, value: pulumi.Input[Optional['InterfaceDefaultRouteArgs']]):
         pulumi.set(self, "default_route", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def firewall_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
         """
         return pulumi.get(self, "firewall_id")
 
     @firewall_id.setter
-    def firewall_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def firewall_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input['InterfacePublicArgs']]:
+    def public(self) -> pulumi.Input[Optional['InterfacePublicArgs']]:
         """
         Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
         """
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input['InterfacePublicArgs']]):
+    def public(self, value: pulumi.Input[Optional['InterfacePublicArgs']]):
         pulumi.set(self, "public", value)
 
     @_builtins.property
     @pulumi.getter
-    def vlan(self) -> Optional[pulumi.Input['InterfaceVlanArgs']]:
+    def vlan(self) -> pulumi.Input[Optional['InterfaceVlanArgs']]:
         """
         Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
         """
         return pulumi.get(self, "vlan")
 
     @vlan.setter
-    def vlan(self, value: Optional[pulumi.Input['InterfaceVlanArgs']]):
+    def vlan(self, value: pulumi.Input[Optional['InterfaceVlanArgs']]):
         pulumi.set(self, "vlan", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpc(self) -> Optional[pulumi.Input['InterfaceVpcArgs']]:
+    def vpc(self) -> pulumi.Input[Optional['InterfaceVpcArgs']]:
         """
         Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
         """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
-    def vpc(self, value: Optional[pulumi.Input['InterfaceVpcArgs']]):
+    def vpc(self, value: pulumi.Input[Optional['InterfaceVpcArgs']]):
         pulumi.set(self, "vpc", value)
 
 
 @pulumi.input_type
 class _InterfaceState:
     def __init__(__self__, *,
-                 default_route: Optional[pulumi.Input['InterfaceDefaultRouteArgs']] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 public: Optional[pulumi.Input['InterfacePublicArgs']] = None,
-                 vlan: Optional[pulumi.Input['InterfaceVlanArgs']] = None,
-                 vpc: Optional[pulumi.Input['InterfaceVpcArgs']] = None):
+                 default_route: pulumi.Input[Optional['InterfaceDefaultRouteArgs']] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 public: pulumi.Input[Optional['InterfacePublicArgs']] = None,
+                 vlan: pulumi.Input[Optional['InterfaceVlanArgs']] = None,
+                 vpc: pulumi.Input[Optional['InterfaceVpcArgs']] = None):
         """
         Input properties used for looking up and filtering Interface resources.
 
@@ -156,74 +156,74 @@ class _InterfaceState:
 
     @_builtins.property
     @pulumi.getter(name="defaultRoute")
-    def default_route(self) -> Optional[pulumi.Input['InterfaceDefaultRouteArgs']]:
+    def default_route(self) -> pulumi.Input[Optional['InterfaceDefaultRouteArgs']]:
         """
         Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
         """
         return pulumi.get(self, "default_route")
 
     @default_route.setter
-    def default_route(self, value: Optional[pulumi.Input['InterfaceDefaultRouteArgs']]):
+    def default_route(self, value: pulumi.Input[Optional['InterfaceDefaultRouteArgs']]):
         pulumi.set(self, "default_route", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallId")
-    def firewall_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def firewall_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
         """
         return pulumi.get(self, "firewall_id")
 
     @firewall_id.setter
-    def firewall_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def firewall_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def linode_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Linode to assign this interface to.
         """
         return pulumi.get(self, "linode_id")
 
     @linode_id.setter
-    def linode_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def linode_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "linode_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input['InterfacePublicArgs']]:
+    def public(self) -> pulumi.Input[Optional['InterfacePublicArgs']]:
         """
         Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
         """
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input['InterfacePublicArgs']]):
+    def public(self, value: pulumi.Input[Optional['InterfacePublicArgs']]):
         pulumi.set(self, "public", value)
 
     @_builtins.property
     @pulumi.getter
-    def vlan(self) -> Optional[pulumi.Input['InterfaceVlanArgs']]:
+    def vlan(self) -> pulumi.Input[Optional['InterfaceVlanArgs']]:
         """
         Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
         """
         return pulumi.get(self, "vlan")
 
     @vlan.setter
-    def vlan(self, value: Optional[pulumi.Input['InterfaceVlanArgs']]):
+    def vlan(self, value: pulumi.Input[Optional['InterfaceVlanArgs']]):
         pulumi.set(self, "vlan", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpc(self) -> Optional[pulumi.Input['InterfaceVpcArgs']]:
+    def vpc(self) -> pulumi.Input[Optional['InterfaceVpcArgs']]:
         """
         Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
         """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
-    def vpc(self, value: Optional[pulumi.Input['InterfaceVpcArgs']]):
+    def vpc(self, value: pulumi.Input[Optional['InterfaceVpcArgs']]):
         pulumi.set(self, "vpc", value)
 
 
@@ -233,12 +233,12 @@ class Interface(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_route: Optional[pulumi.Input[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict']]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 public: Optional[pulumi.Input[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']]] = None,
-                 vlan: Optional[pulumi.Input[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']]] = None,
-                 vpc: Optional[pulumi.Input[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']]] = None,
+                 default_route: pulumi.Input[Optional[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict']]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 public: pulumi.Input[Optional[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']]] = None,
+                 vlan: pulumi.Input[Optional[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']]] = None,
+                 vpc: pulumi.Input[Optional[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Linode Interface resource that can be used to create, modify, and delete network interfaces for Linode instances. Interfaces allow you to configure public, VLAN, and VPC networking for your Linode instances.
@@ -260,7 +260,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         public = linode.Interface("public",
-            linode_id=my_instance["id"],
+            linode_id=int(my_instance["id"]),
             public={
                 "ipv4": {
                     "addresses": [{
@@ -285,7 +285,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         ipv6_only = linode.Interface("ipv6_only",
-            linode_id=my_instance["id"],
+            linode_id=int(my_instance["id"]),
             public={
                 "ipv4": {
                     "addresses": [],
@@ -307,7 +307,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vpc = linode.Interface("vpc",
-            linode_id=my_instance["id"],
+            linode_id=int(my_instance["id"]),
             vpc={
                 "subnet_id": 240213,
                 "ipv4": {
@@ -330,7 +330,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vpc = linode.Interface("vpc",
-            linode_id=my_instance["id"],
+            linode_id=int(my_instance["id"]),
             vpc={
                 "subnet_id": 12345,
                 "ipv6": {
@@ -354,7 +354,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vlan = linode.Interface("vlan",
-            linode_id=web["id"],
+            linode_id=int(web["id"]),
             vlan={
                 "vlan_label": "web-vlan",
                 "ipam_address": "192.168.200.5/24",
@@ -374,12 +374,12 @@ class Interface(pulumi.CustomResource):
             interface_generation="linode")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=my_instance.specs[0].disk,
             image="linode/debian12",
             root_pass="this-is-NOT-a-safe-password")
         public = linode.Interface("public",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             public={
                 "ipv4": {
                     "addresses": [{
@@ -394,7 +394,7 @@ class Interface(pulumi.CustomResource):
                 },
             })
         my_config = linode.InstanceConfig("my-config",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             label="my-config",
             devices=[{
                 "deviceName": "sda",
@@ -456,7 +456,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         public = linode.Interface("public",
-            linode_id=my_instance["id"],
+            linode_id=int(my_instance["id"]),
             public={
                 "ipv4": {
                     "addresses": [{
@@ -481,7 +481,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         ipv6_only = linode.Interface("ipv6_only",
-            linode_id=my_instance["id"],
+            linode_id=int(my_instance["id"]),
             public={
                 "ipv4": {
                     "addresses": [],
@@ -503,7 +503,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vpc = linode.Interface("vpc",
-            linode_id=my_instance["id"],
+            linode_id=int(my_instance["id"]),
             vpc={
                 "subnet_id": 240213,
                 "ipv4": {
@@ -526,7 +526,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vpc = linode.Interface("vpc",
-            linode_id=my_instance["id"],
+            linode_id=int(my_instance["id"]),
             vpc={
                 "subnet_id": 12345,
                 "ipv6": {
@@ -550,7 +550,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vlan = linode.Interface("vlan",
-            linode_id=web["id"],
+            linode_id=int(web["id"]),
             vlan={
                 "vlan_label": "web-vlan",
                 "ipam_address": "192.168.200.5/24",
@@ -570,12 +570,12 @@ class Interface(pulumi.CustomResource):
             interface_generation="linode")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=my_instance.specs[0].disk,
             image="linode/debian12",
             root_pass="this-is-NOT-a-safe-password")
         public = linode.Interface("public",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             public={
                 "ipv4": {
                     "addresses": [{
@@ -590,7 +590,7 @@ class Interface(pulumi.CustomResource):
                 },
             })
         my_config = linode.InstanceConfig("my-config",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             label="my-config",
             devices=[{
                 "deviceName": "sda",
@@ -632,12 +632,12 @@ class Interface(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_route: Optional[pulumi.Input[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict']]] = None,
-                 firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 public: Optional[pulumi.Input[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']]] = None,
-                 vlan: Optional[pulumi.Input[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']]] = None,
-                 vpc: Optional[pulumi.Input[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']]] = None,
+                 default_route: pulumi.Input[Optional[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict']]] = None,
+                 firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 public: pulumi.Input[Optional[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']]] = None,
+                 vlan: pulumi.Input[Optional[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']]] = None,
+                 vpc: pulumi.Input[Optional[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -665,12 +665,12 @@ class Interface(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_route: Optional[pulumi.Input[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict']]] = None,
-            firewall_id: Optional[pulumi.Input[_builtins.int]] = None,
-            linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-            public: Optional[pulumi.Input[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']]] = None,
-            vlan: Optional[pulumi.Input[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']]] = None,
-            vpc: Optional[pulumi.Input[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']]] = None) -> 'Interface':
+            default_route: pulumi.Input[Optional[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict']]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            public: pulumi.Input[Optional[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']]] = None,
+            vlan: pulumi.Input[Optional[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']]] = None,
+            vpc: pulumi.Input[Optional[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']]] = None) -> 'Interface':
         """
         Get an existing Interface resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

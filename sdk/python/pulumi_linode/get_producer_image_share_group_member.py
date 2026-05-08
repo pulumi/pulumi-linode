@@ -165,8 +165,8 @@ def get_producer_image_share_group_member(sharegroup_id: Optional[_builtins.int]
         status=pulumi.get(__ret__, 'status'),
         token_uuid=pulumi.get(__ret__, 'token_uuid'),
         updated=pulumi.get(__ret__, 'updated'))
-def get_producer_image_share_group_member_output(sharegroup_id: Optional[pulumi.Input[_builtins.int]] = None,
-                                                 token_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_producer_image_share_group_member_output(sharegroup_id: pulumi.Input[Optional[_builtins.int]] = None,
+                                                 token_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProducerImageShareGroupMemberResult]:
     """
     `ProducerImageShareGroupMember` provides details about a Member of an Image Share Group.

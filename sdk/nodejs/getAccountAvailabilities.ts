@@ -107,5 +107,5 @@ export function getAccountAvailabilitiesOutput(args?: GetAccountAvailabilitiesOu
  * A collection of arguments for invoking getAccountAvailabilities.
  */
 export interface GetAccountAvailabilitiesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetAccountAvailabilitiesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetAccountAvailabilitiesFilterArgs>[] | undefined>;
 }

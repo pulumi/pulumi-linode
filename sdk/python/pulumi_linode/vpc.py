@@ -23,8 +23,8 @@ class VpcArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv6Args']]]] = None):
         """
         The set of arguments for constructing a Vpc resource.
 
@@ -68,7 +68,7 @@ class VpcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-defined description of this VPC.
 
@@ -77,31 +77,31 @@ class VpcArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]]:
+    def ipv6s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv6Args']]]]:
         """
         The IPv6 configuration of this VPC.
         """
         return pulumi.get(self, "ipv6s")
 
     @ipv6s.setter
-    def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]]):
+    def ipv6s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv6Args']]]]):
         pulumi.set(self, "ipv6s", value)
 
 
 @pulumi.input_type
 class _VpcState:
     def __init__(__self__, *,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None):
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv6Args']]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vpc resources.
 
@@ -129,19 +129,19 @@ class _VpcState:
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the VPC was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-defined description of this VPC.
 
@@ -150,55 +150,55 @@ class _VpcState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]]:
+    def ipv6s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv6Args']]]]:
         """
         The IPv6 configuration of this VPC.
         """
         return pulumi.get(self, "ipv6s")
 
     @ipv6s.setter
-    def ipv6s(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]]]):
+    def ipv6s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv6Args']]]]):
         pulumi.set(self, "ipv6s", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the VPC.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the VPC was last updated.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
 
@@ -208,10 +208,10 @@ class Vpc(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Linode VPC.
@@ -335,10 +335,10 @@ class Vpc(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -368,12 +368,12 @@ class Vpc(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6s: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None) -> 'Vpc':
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None) -> 'Vpc':
         """
         Get an existing Vpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

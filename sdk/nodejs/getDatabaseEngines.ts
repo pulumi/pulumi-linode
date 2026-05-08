@@ -155,19 +155,19 @@ export function getDatabaseEnginesOutput(args?: GetDatabaseEnginesOutputArgs, op
  * A collection of arguments for invoking getDatabaseEngines.
  */
 export interface GetDatabaseEnginesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetDatabaseEnginesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetDatabaseEnginesFilterArgs>[] | undefined>;
     /**
      * If true, only the latest engine version will be returned.
      *
      * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
      */
-    latest?: pulumi.Input<boolean>;
+    latest?: pulumi.Input<boolean | undefined>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * The attribute to order the results by. (`version`)
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

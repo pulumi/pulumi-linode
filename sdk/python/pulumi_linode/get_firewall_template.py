@@ -137,7 +137,7 @@ def get_firewall_template(slug: Optional[_builtins.str] = None,
         outbound_policy=pulumi.get(__ret__, 'outbound_policy'),
         outbounds=pulumi.get(__ret__, 'outbounds'),
         slug=pulumi.get(__ret__, 'slug'))
-def get_firewall_template_output(slug: Optional[pulumi.Input[_builtins.str]] = None,
+def get_firewall_template_output(slug: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallTemplateResult]:
     """
     Provides information about a Linode Firewall Template.

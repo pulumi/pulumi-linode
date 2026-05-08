@@ -137,35 +137,35 @@ export interface ProducerImageShareGroupMemberState {
     /**
      * When the member was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * When the member will expire.
      */
-    expiry?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string | undefined>;
     /**
      * A label for the member.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Image Share Group to which the member will be added.
      */
-    sharegroupId?: pulumi.Input<number>;
+    sharegroupId?: pulumi.Input<number | undefined>;
     /**
      * The status of the member.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The token of the prospective member.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The UUID of member's token.
      */
-    tokenUuid?: pulumi.Input<string>;
+    tokenUuid?: pulumi.Input<string | undefined>;
     /**
      * When the member was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
 }
 
 /**

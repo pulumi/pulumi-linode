@@ -429,5 +429,5 @@ export interface GetDatabasePostgresqlV2OutputArgs {
      * The ID of the PostgreSQL database.
      */
     id: pulumi.Input<string>;
-    updates?: pulumi.Input<inputs.GetDatabasePostgresqlV2UpdatesArgs>;
+    updates?: pulumi.Input<inputs.GetDatabasePostgresqlV2UpdatesArgs | undefined>;
 }

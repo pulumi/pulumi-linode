@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * const foobar = new linode.Volume("foobar", {
  *     label: "foo-volume",
  *     region: foobaz.region,
- *     linodeId: foobaz.id,
+ *     linodeId: foobaz.id.apply(x =>Number(x)),
  * });
  * ```
  *
@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * const fooInstanceConfig = new linode.InstanceConfig("foo", {
- *     linodeId: foo.id,
+ *     linodeId: foo.id.apply(x =>Number(x)),
  *     label: "boot-existing-volume",
  *     kernel: "linode/grub2",
  *     devices: [{
@@ -193,42 +193,42 @@ export interface VolumeState {
     /**
      * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      */
-    encryption?: pulumi.Input<string>;
+    encryption?: pulumi.Input<string | undefined>;
     /**
      * The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
      */
-    filesystemPath?: pulumi.Input<string>;
+    filesystemPath?: pulumi.Input<string | undefined>;
     /**
      * The label of the Linode Volume
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The ID of a Linode Instance where the Volume should be attached.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
      *
      * - - -
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Size of the Volume in GB.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
      */
-    sourceVolumeId?: pulumi.Input<number>;
+    sourceVolumeId?: pulumi.Input<number | undefined>;
     /**
      * The status of the Linode Volume. (`creating`, `active`, `resizing`, `contactSupport`)
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.VolumeTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.VolumeTimeouts | undefined>;
 }
 
 /**
@@ -238,7 +238,7 @@ export interface VolumeArgs {
     /**
      * Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
      */
-    encryption?: pulumi.Input<string>;
+    encryption?: pulumi.Input<string | undefined>;
     /**
      * The label of the Linode Volume
      */
@@ -246,24 +246,24 @@ export interface VolumeArgs {
     /**
      * The ID of a Linode Instance where the Volume should be attached.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
      *
      * - - -
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Size of the Volume in GB.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
      */
-    sourceVolumeId?: pulumi.Input<number>;
+    sourceVolumeId?: pulumi.Input<number | undefined>;
     /**
      * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.VolumeTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.VolumeTimeouts | undefined>;
 }

@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     region: "us-east",
  * });
  * const fooInstanceIp = new linode.InstanceIp("foo", {
- *     linodeId: foo.id,
+ *     linodeId: foo.id.apply(x =>Number(x)),
  *     "public": true,
  * });
  * ```
@@ -158,47 +158,47 @@ export interface InstanceIpState {
     /**
      * The resulting IPv4 address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * If true, the instance will be rebooted to update network interfaces.
      */
-    applyImmediately?: pulumi.Input<boolean>;
+    applyImmediately?: pulumi.Input<boolean | undefined>;
     /**
      * The default gateway for this address
      */
-    gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Linode to allocate an IPv4 address for.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * The number of bits set in the subnet mask.
      */
-    prefix?: pulumi.Input<number>;
+    prefix?: pulumi.Input<number | undefined>;
     /**
      * Whether the IPv4 address is public or private. Defaults to true.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * The reverse DNS assigned to this address.
      */
-    rdns?: pulumi.Input<string>;
+    rdns?: pulumi.Input<string | undefined>;
     /**
      * The region this IP resides in.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The mask that separates host bits from network bits for this address.
      */
-    subnetMask?: pulumi.Input<string>;
+    subnetMask?: pulumi.Input<string | undefined>;
     /**
      * The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
      */
-    vpcNat11s?: pulumi.Input<pulumi.Input<inputs.InstanceIpVpcNat11>[]>;
+    vpcNat11s?: pulumi.Input<pulumi.Input<inputs.InstanceIpVpcNat11>[] | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface InstanceIpArgs {
     /**
      * If true, the instance will be rebooted to update network interfaces.
      */
-    applyImmediately?: pulumi.Input<boolean>;
+    applyImmediately?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Linode to allocate an IPv4 address for.
      */
@@ -216,9 +216,9 @@ export interface InstanceIpArgs {
     /**
      * Whether the IPv4 address is public or private. Defaults to true.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * The reverse DNS assigned to this address.
      */
-    rdns?: pulumi.Input<string>;
+    rdns?: pulumi.Input<string | undefined>;
 }

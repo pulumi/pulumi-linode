@@ -28,19 +28,19 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Linode.Index.SshKey("foo", new()
+    ///     var foo = new Linode.SshKey("foo", new()
     ///     {
     ///         Label = "foo",
-    ///         SshKeyName = Std.Index.File.Invoke(new()
+    ///         SshKeyName = Std.File.Invoke(new()
     ///         {
     ///             Input = "~/.ssh/id_rsa.pub",
-    ///         }).Apply(invoke =&gt; Std.Index.Chomp.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Chomp.Invoke(new()
     ///         {
     ///             Input = invoke.Result,
     ///         })).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
-    ///     var fooInstance = new Linode.Index.Instance("foo", new()
+    ///     var fooInstance = new Linode.Instance("foo", new()
     ///     {
     ///         Image = "linode/ubuntu22.04",
     ///         Label = "foo",

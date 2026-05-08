@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Linode.Index.GetObjectStorageEndpoints.Invoke(new()
+        ///     var test = Linode.GetObjectStorageEndpoints.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -57,7 +57,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Linode.Index.GetObjectStorageEndpoints.Invoke();
+        ///     var test = Linode.GetObjectStorageEndpoints.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -91,7 +91,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Linode.Index.GetObjectStorageEndpoints.Invoke(new()
+        ///     var test = Linode.GetObjectStorageEndpoints.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -123,7 +123,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Linode.Index.GetObjectStorageEndpoints.Invoke();
+        ///     var test = Linode.GetObjectStorageEndpoints.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -157,7 +157,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Linode.Index.GetObjectStorageEndpoints.Invoke(new()
+        ///     var test = Linode.GetObjectStorageEndpoints.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -189,7 +189,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var test = Linode.Index.GetObjectStorageEndpoints.Invoke();
+        ///     var test = Linode.GetObjectStorageEndpoints.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

@@ -134,8 +134,8 @@ export function getConsumerImageShareGroupTokensOutput(args?: GetConsumerImageSh
  * A collection of arguments for invoking getConsumerImageShareGroupTokens.
  */
 export interface GetConsumerImageShareGroupTokensOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupTokensFilterArgs>[]>;
-    order?: pulumi.Input<string>;
-    orderBy?: pulumi.Input<string>;
-    tokens?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupTokensTokenArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupTokensFilterArgs>[] | undefined>;
+    order?: pulumi.Input<string | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
+    tokens?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupTokensTokenArgs>[] | undefined>;
 }

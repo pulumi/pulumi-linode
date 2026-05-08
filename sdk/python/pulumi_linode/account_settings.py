@@ -19,11 +19,11 @@ __all__ = ['AccountSettingsArgs', 'AccountSettings']
 @pulumi.input_type
 class AccountSettingsArgs:
     def __init__(__self__, *,
-                 backups_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 interfaces_for_new_linodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 longview_subscription: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_helper: Optional[pulumi.Input[_builtins.bool]] = None):
+                 backups_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 interfaces_for_new_linodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 longview_subscription: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_helper: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AccountSettings resource.
 
@@ -46,75 +46,75 @@ class AccountSettingsArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupsEnabled")
-    def backups_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def backups_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
         """
         return pulumi.get(self, "backups_enabled")
 
     @backups_enabled.setter
-    def backups_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def backups_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "backups_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="interfacesForNewLinodes")
-    def interfaces_for_new_linodes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interfaces_for_new_linodes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of interfaces for new Linode instances. Available values are `"legacy_config_only"`, `"legacy_config_default_but_linode_allowed"`, `"linode_default_but_legacy_config_allowed"`, and `"linode_only"`.
         """
         return pulumi.get(self, "interfaces_for_new_linodes")
 
     @interfaces_for_new_linodes.setter
-    def interfaces_for_new_linodes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interfaces_for_new_linodes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interfaces_for_new_linodes", value)
 
     @_builtins.property
     @pulumi.getter(name="longviewSubscription")
-    def longview_subscription(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def longview_subscription(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
         """
         return pulumi.get(self, "longview_subscription")
 
     @longview_subscription.setter
-    def longview_subscription(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def longview_subscription(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "longview_subscription", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
         """
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="networkHelper")
-    def network_helper(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def network_helper(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables network helper across all users by default for new Linodes and Linode Configs.
         """
         return pulumi.get(self, "network_helper")
 
     @network_helper.setter
-    def network_helper(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def network_helper(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "network_helper", value)
 
 
 @pulumi.input_type
 class _AccountSettingsState:
     def __init__(__self__, *,
-                 backups_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 interfaces_for_new_linodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 longview_subscription: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_helper: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_storage: Optional[pulumi.Input[_builtins.str]] = None):
+                 backups_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 interfaces_for_new_linodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 longview_subscription: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_helper: pulumi.Input[Optional[_builtins.bool]] = None,
+                 object_storage: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountSettings resources.
 
@@ -143,86 +143,86 @@ class _AccountSettingsState:
 
     @_builtins.property
     @pulumi.getter(name="backupsEnabled")
-    def backups_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def backups_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
         """
         return pulumi.get(self, "backups_enabled")
 
     @backups_enabled.setter
-    def backups_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def backups_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "backups_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="interfacesForNewLinodes")
-    def interfaces_for_new_linodes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interfaces_for_new_linodes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of interfaces for new Linode instances. Available values are `"legacy_config_only"`, `"legacy_config_default_but_linode_allowed"`, `"linode_default_but_legacy_config_allowed"`, and `"linode_only"`.
         """
         return pulumi.get(self, "interfaces_for_new_linodes")
 
     @interfaces_for_new_linodes.setter
-    def interfaces_for_new_linodes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interfaces_for_new_linodes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interfaces_for_new_linodes", value)
 
     @_builtins.property
     @pulumi.getter(name="longviewSubscription")
-    def longview_subscription(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def longview_subscription(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
         """
         return pulumi.get(self, "longview_subscription")
 
     @longview_subscription.setter
-    def longview_subscription(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def longview_subscription(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "longview_subscription", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
         """
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables monitoring for connectivity, response, and total request time.
         """
         return pulumi.get(self, "managed")
 
     @managed.setter
-    def managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "managed", value)
 
     @_builtins.property
     @pulumi.getter(name="networkHelper")
-    def network_helper(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def network_helper(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables network helper across all users by default for new Linodes and Linode Configs.
         """
         return pulumi.get(self, "network_helper")
 
     @network_helper.setter
-    def network_helper(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def network_helper(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "network_helper", value)
 
     @_builtins.property
     @pulumi.getter(name="objectStorage")
-    def object_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string describing the status of this account's Object Storage service enrollment.
         """
         return pulumi.get(self, "object_storage")
 
     @object_storage.setter
-    def object_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_storage", value)
 
 
@@ -232,11 +232,11 @@ class AccountSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 interfaces_for_new_linodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 longview_subscription: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_helper: Optional[pulumi.Input[_builtins.bool]] = None,
+                 backups_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 interfaces_for_new_linodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 longview_subscription: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_helper: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages the settings of a Linode account.
@@ -315,11 +315,11 @@ class AccountSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 interfaces_for_new_linodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 longview_subscription: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_helper: Optional[pulumi.Input[_builtins.bool]] = None,
+                 backups_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 interfaces_for_new_linodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 longview_subscription: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_helper: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -346,13 +346,13 @@ class AccountSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backups_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            interfaces_for_new_linodes: Optional[pulumi.Input[_builtins.str]] = None,
-            longview_subscription: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            managed: Optional[pulumi.Input[_builtins.bool]] = None,
-            network_helper: Optional[pulumi.Input[_builtins.bool]] = None,
-            object_storage: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountSettings':
+            backups_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            interfaces_for_new_linodes: pulumi.Input[Optional[_builtins.str]] = None,
+            longview_subscription: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            network_helper: pulumi.Input[Optional[_builtins.bool]] = None,
+            object_storage: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountSettings':
         """
         Get an existing AccountSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

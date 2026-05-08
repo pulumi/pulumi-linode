@@ -135,10 +135,10 @@ def get_producer_image_share_groups(filters: Optional[Sequence[Union['GetProduce
         image_share_groups=pulumi.get(__ret__, 'image_share_groups'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_producer_image_share_groups_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetProducerImageShareGroupsFilterArgs', 'GetProducerImageShareGroupsFilterArgsDict']]]]] = None,
-                                           image_share_groups: Optional[pulumi.Input[Optional[Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict']]]]] = None,
-                                           order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                           order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_producer_image_share_groups_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupsFilterArgs', 'GetProducerImageShareGroupsFilterArgsDict']]]]] = None,
+                                           image_share_groups: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict']]]]] = None,
+                                           order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                           order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProducerImageShareGroupsResult]:
     """
     Provides information about a list of Image Share Groups that match a set of filters.

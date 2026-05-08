@@ -162,10 +162,10 @@ def get_database_engines(filters: Optional[Sequence[Union['GetDatabaseEnginesFil
         latest=pulumi.get(__ret__, 'latest'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_database_engines_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict']]]]] = None,
-                                latest: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_database_engines_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict']]]]] = None,
+                                latest: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseEnginesResult]:
     """
     Provides information about Linode Managed Database engines that match a set of filters.

@@ -153,9 +153,9 @@ def get_domains(filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDom
         id=pulumi.get(__ret__, 'id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]]]] = None,
-                       order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_domains_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]]]] = None,
+                       order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
     Provides information about Linode Domains that match a set of filters.

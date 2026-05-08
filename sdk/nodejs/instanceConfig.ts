@@ -29,13 +29,13 @@ import * as utilities from "./utilities";
  * });
  * const boot = new linode.InstanceDisk("boot", {
  *     label: "boot",
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: my_instance.specs.apply(specs => specs[0].disk),
  *     image: "linode/ubuntu22.04",
  *     rootPass: "myc00lpass!",
  * });
  * const my_config = new linode.InstanceConfig("my-config", {
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     label: "my-config",
  *     devices: [{
  *         deviceName: "sda",
@@ -55,7 +55,7 @@ import * as utilities from "./utilities";
  *     description: "test description",
  * });
  * const foobarVpcSubnet = new linode.VpcSubnet("foobar", {
- *     vpcId: foobar.id,
+ *     vpcId: foobar.id.apply(x =>Number(x)),
  *     label: "my-subnet",
  *     ipv4: "10.0.4.0/24",
  * });
@@ -67,7 +67,7 @@ import * as utilities from "./utilities";
  * // Create a boot disk
  * const boot = new linode.InstanceDisk("boot", {
  *     label: "boot",
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: my_instance.specs.apply(specs => specs[0].disk - 512),
  *     image: "linode/ubuntu22.04",
  *     rootPass: "myc00lpass!ciuw23asxbviwuc",
@@ -75,12 +75,12 @@ import * as utilities from "./utilities";
  * // Create a swap disk
  * const swap = new linode.InstanceDisk("swap", {
  *     label: "swap",
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: 512,
  *     filesystem: "swap",
  * });
  * const my_config = new linode.InstanceConfig("my-config", {
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     label: "my-config",
  *     devices: [
  *         {
@@ -106,7 +106,7 @@ import * as utilities from "./utilities";
  *         },
  *         {
  *             purpose: "vpc",
- *             subnetId: foobarVpcSubnet.id,
+ *             subnetId: foobarVpcSubnet.id.apply(x =>Number(x)),
  *             ipv4: {
  *                 vpc: "10.0.4.250",
  *             },
@@ -276,7 +276,7 @@ export interface InstanceConfigState {
     /**
      * If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
      */
-    booted?: pulumi.Input<boolean>;
+    booted?: pulumi.Input<boolean | undefined>;
     /**
      * Optional field for arbitrary User comments on this Config.
      *
@@ -286,55 +286,55 @@ export interface InstanceConfigState {
      *
      * * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
      */
-    comments?: pulumi.Input<string>;
+    comments?: pulumi.Input<string | undefined>;
     /**
      * Blocks for device disks in a Linode's configuration profile.
      */
-    device?: pulumi.Input<pulumi.Input<inputs.InstanceConfigDevice>[]>;
+    device?: pulumi.Input<pulumi.Input<inputs.InstanceConfigDevice>[] | undefined>;
     /**
      * A dictionary of device disks to use as a device map in a Linode's configuration profile.
      *
      * @deprecated Devices attribute is deprecated in favor of `device`.
      */
-    devices?: pulumi.Input<inputs.InstanceConfigDevices>;
+    devices?: pulumi.Input<inputs.InstanceConfigDevices | undefined>;
     /**
      * Helpers enabled when booting to this Linode Config.
      */
-    helpers?: pulumi.Input<pulumi.Input<inputs.InstanceConfigHelper>[]>;
+    helpers?: pulumi.Input<pulumi.Input<inputs.InstanceConfigHelper>[] | undefined>;
     /**
      * An array of Network Interfaces to add to this Linode's Configuration Profile.
      */
-    interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterface>[]>;
+    interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterface>[] | undefined>;
     /**
      * A Kernel ID to boot a Linode with. Default is `linode/latest-64bit`. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
      */
-    kernel?: pulumi.Input<string>;
+    kernel?: pulumi.Input<string | undefined>;
     /**
      * The Config’s label for display purposes only.
      *
      * - - -
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Linode to create this configuration profile under.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * The memory limit of the Config. Defaults to the total ram of the Linode.
      */
-    memoryLimit?: pulumi.Input<number>;
+    memoryLimit?: pulumi.Input<number | undefined>;
     /**
      * The root device to boot. (default `/dev/sda`)
      */
-    rootDevice?: pulumi.Input<string>;
+    rootDevice?: pulumi.Input<string | undefined>;
     /**
      * Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
      */
-    runLevel?: pulumi.Input<string>;
+    runLevel?: pulumi.Input<string | undefined>;
     /**
      * Controls the virtualization mode. (`paravirt`, `fullvirt`)
      */
-    virtMode?: pulumi.Input<string>;
+    virtMode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -344,7 +344,7 @@ export interface InstanceConfigArgs {
     /**
      * If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
      */
-    booted?: pulumi.Input<boolean>;
+    booted?: pulumi.Input<boolean | undefined>;
     /**
      * Optional field for arbitrary User comments on this Config.
      *
@@ -354,29 +354,29 @@ export interface InstanceConfigArgs {
      *
      * * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
      */
-    comments?: pulumi.Input<string>;
+    comments?: pulumi.Input<string | undefined>;
     /**
      * Blocks for device disks in a Linode's configuration profile.
      */
-    device?: pulumi.Input<pulumi.Input<inputs.InstanceConfigDevice>[]>;
+    device?: pulumi.Input<pulumi.Input<inputs.InstanceConfigDevice>[] | undefined>;
     /**
      * A dictionary of device disks to use as a device map in a Linode's configuration profile.
      *
      * @deprecated Devices attribute is deprecated in favor of `device`.
      */
-    devices?: pulumi.Input<inputs.InstanceConfigDevices>;
+    devices?: pulumi.Input<inputs.InstanceConfigDevices | undefined>;
     /**
      * Helpers enabled when booting to this Linode Config.
      */
-    helpers?: pulumi.Input<pulumi.Input<inputs.InstanceConfigHelper>[]>;
+    helpers?: pulumi.Input<pulumi.Input<inputs.InstanceConfigHelper>[] | undefined>;
     /**
      * An array of Network Interfaces to add to this Linode's Configuration Profile.
      */
-    interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterface>[]>;
+    interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterface>[] | undefined>;
     /**
      * A Kernel ID to boot a Linode with. Default is `linode/latest-64bit`. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
      */
-    kernel?: pulumi.Input<string>;
+    kernel?: pulumi.Input<string | undefined>;
     /**
      * The Config’s label for display purposes only.
      *
@@ -390,17 +390,17 @@ export interface InstanceConfigArgs {
     /**
      * The memory limit of the Config. Defaults to the total ram of the Linode.
      */
-    memoryLimit?: pulumi.Input<number>;
+    memoryLimit?: pulumi.Input<number | undefined>;
     /**
      * The root device to boot. (default `/dev/sda`)
      */
-    rootDevice?: pulumi.Input<string>;
+    rootDevice?: pulumi.Input<string | undefined>;
     /**
      * Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
      */
-    runLevel?: pulumi.Input<string>;
+    runLevel?: pulumi.Input<string | undefined>;
     /**
      * Controls the virtualization mode. (`paravirt`, `fullvirt`)
      */
-    virtMode?: pulumi.Input<string>;
+    virtMode?: pulumi.Input<string | undefined>;
 }

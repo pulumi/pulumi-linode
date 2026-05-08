@@ -235,35 +235,35 @@ export interface UserState {
     /**
      * The domains the user has permissions access to.
      */
-    domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[]>;
+    domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[] | undefined>;
     /**
      * The email address of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The firewalls the user has permissions access to.
      */
-    firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[]>;
+    firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[] | undefined>;
     /**
      * A structure containing the Account-level grants a User has.
      */
-    globalGrants?: pulumi.Input<inputs.UserGlobalGrants>;
+    globalGrants?: pulumi.Input<inputs.UserGlobalGrants | undefined>;
     /**
      * The images the user has permissions access to.
      */
-    imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[]>;
+    imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[] | undefined>;
     /**
      * The Linodes the user has permissions access to.
      */
-    linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[]>;
+    linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[] | undefined>;
     /**
      * The longview the user has permissions access to.
      */
-    longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[]>;
+    longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[] | undefined>;
     /**
      * The NodeBalancers the user has permissions access to.
      */
-    nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
+    nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[] | undefined>;
     /**
      * If true, this user will only have explicit permissions granted.
      *
@@ -271,35 +271,35 @@ export interface UserState {
      *
      * The following arguments are sets of entity grants:
      */
-    restricted?: pulumi.Input<boolean>;
+    restricted?: pulumi.Input<boolean | undefined>;
     /**
      * A list of the User's SSH keys.
      */
-    sshKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    sshKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The StackScripts the user has permissions access to.
      */
-    stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[]>;
+    stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[] | undefined>;
     /**
      * Whether the user has two-factor-authentication enabled.
      */
-    tfaEnabled?: pulumi.Input<boolean>;
+    tfaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The type of this user.
      */
-    userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string | undefined>;
     /**
      * The username of the user.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * The volumes the user has permissions access to.
      */
-    volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[]>;
+    volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[] | undefined>;
     /**
      * The Virtual Private Clouds (VPCs) the user has permissions access to.
      */
-    vpcGrants?: pulumi.Input<pulumi.Input<inputs.UserVpcGrant>[]>;
+    vpcGrants?: pulumi.Input<pulumi.Input<inputs.UserVpcGrant>[] | undefined>;
 }
 
 /**
@@ -309,7 +309,7 @@ export interface UserArgs {
     /**
      * The domains the user has permissions access to.
      */
-    domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[]>;
+    domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[] | undefined>;
     /**
      * The email address of the user.
      */
@@ -317,27 +317,27 @@ export interface UserArgs {
     /**
      * The firewalls the user has permissions access to.
      */
-    firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[]>;
+    firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[] | undefined>;
     /**
      * A structure containing the Account-level grants a User has.
      */
-    globalGrants?: pulumi.Input<inputs.UserGlobalGrants>;
+    globalGrants?: pulumi.Input<inputs.UserGlobalGrants | undefined>;
     /**
      * The images the user has permissions access to.
      */
-    imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[]>;
+    imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[] | undefined>;
     /**
      * The Linodes the user has permissions access to.
      */
-    linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[]>;
+    linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[] | undefined>;
     /**
      * The longview the user has permissions access to.
      */
-    longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[]>;
+    longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[] | undefined>;
     /**
      * The NodeBalancers the user has permissions access to.
      */
-    nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[]>;
+    nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[] | undefined>;
     /**
      * If true, this user will only have explicit permissions granted.
      *
@@ -345,11 +345,11 @@ export interface UserArgs {
      *
      * The following arguments are sets of entity grants:
      */
-    restricted?: pulumi.Input<boolean>;
+    restricted?: pulumi.Input<boolean | undefined>;
     /**
      * The StackScripts the user has permissions access to.
      */
-    stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[]>;
+    stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[] | undefined>;
     /**
      * The username of the user.
      */
@@ -357,9 +357,9 @@ export interface UserArgs {
     /**
      * The volumes the user has permissions access to.
      */
-    volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[]>;
+    volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[] | undefined>;
     /**
      * The Virtual Private Clouds (VPCs) the user has permissions access to.
      */
-    vpcGrants?: pulumi.Input<pulumi.Input<inputs.UserVpcGrant>[]>;
+    vpcGrants?: pulumi.Input<pulumi.Input<inputs.UserVpcGrant>[] | undefined>;
 }

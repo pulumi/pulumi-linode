@@ -148,9 +148,9 @@ export interface GetDomainRecordOutputArgs {
     /**
      * The unique ID of the Domain Record.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The name of the Record.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

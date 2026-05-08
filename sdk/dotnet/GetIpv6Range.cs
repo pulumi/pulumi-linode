@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var range_info = Linode.Index.GetIpv6Range.Invoke(new()
+        ///     var range_info = Linode.GetIpv6Range.Invoke(new()
         ///     {
         ///         Range = "2001:0db8::",
         ///     });
@@ -50,7 +50,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var range_info = Linode.Index.GetIpv6Range.Invoke(new()
+        ///     var range_info = Linode.GetIpv6Range.Invoke(new()
         ///     {
         ///         Range = "2001:0db8::",
         ///     });
@@ -75,7 +75,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var range_info = Linode.Index.GetIpv6Range.Invoke(new()
+        ///     var range_info = Linode.GetIpv6Range.Invoke(new()
         ///     {
         ///         Range = "2001:0db8::",
         ///     });

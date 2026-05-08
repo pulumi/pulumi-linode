@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  * });
  * // NOTE: IPv6 VPCs may not currently be available to all users.
  * const test = new linode.VpcSubnet("test", {
- *     vpcId: testVpc.id,
+ *     vpcId: testVpc.id.apply(x =>Number(x)),
  *     label: "test-subnet",
  *     ipv4: "10.0.0.0/24",
  *     ipv6s: [{
@@ -175,37 +175,37 @@ export interface VpcSubnetState {
     /**
      * The date and time when the VPC was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * A list of Managed databases assigned to the VPC Subnet.
      */
-    databases?: pulumi.Input<pulumi.Input<inputs.VpcSubnetDatabase>[]>;
+    databases?: pulumi.Input<pulumi.Input<inputs.VpcSubnetDatabase>[] | undefined>;
     /**
      * The IPv4 range of this subnet in CIDR format.
      *
      * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      */
-    ipv4?: pulumi.Input<string>;
+    ipv4?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 ranges of this subnet.
      */
-    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcSubnetIpv6>[]>;
+    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcSubnetIpv6>[] | undefined>;
     /**
      * The label of the VPC. Only contains ASCII letters, digits and dashes.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * A list of Linodes added to this subnet.
      */
-    linodes?: pulumi.Input<pulumi.Input<inputs.VpcSubnetLinode>[]>;
+    linodes?: pulumi.Input<pulumi.Input<inputs.VpcSubnetLinode>[] | undefined>;
     /**
      * The date and time when the VPC was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
     /**
      * The id of the parent VPC for this VPC subnet.
      */
-    vpcId?: pulumi.Input<number>;
+    vpcId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -217,11 +217,11 @@ export interface VpcSubnetArgs {
      *
      * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      */
-    ipv4?: pulumi.Input<string>;
+    ipv4?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 ranges of this subnet.
      */
-    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcSubnetIpv6>[]>;
+    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcSubnetIpv6>[] | undefined>;
     /**
      * The label of the VPC. Only contains ASCII letters, digits and dashes.
      */

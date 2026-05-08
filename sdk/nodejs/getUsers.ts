@@ -124,13 +124,13 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOu
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetUsersFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetUsersFilterArgs>[] | undefined>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

@@ -111,7 +111,7 @@ def get_object_storage_quotas(filters: Optional[Sequence[Union['GetObjectStorage
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         quotas=pulumi.get(__ret__, 'quotas'))
-def get_object_storage_quotas_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetObjectStorageQuotasFilterArgs', 'GetObjectStorageQuotasFilterArgsDict']]]]] = None,
+def get_object_storage_quotas_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetObjectStorageQuotasFilterArgs', 'GetObjectStorageQuotasFilterArgsDict']]]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageQuotasResult]:
     """
     Provides details about a list of Object Storage quotas information on your account.

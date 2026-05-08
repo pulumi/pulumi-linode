@@ -113,5 +113,5 @@ export function getObjectStorageQuotasOutput(args?: GetObjectStorageQuotasOutput
  * A collection of arguments for invoking getObjectStorageQuotas.
  */
 export interface GetObjectStorageQuotasOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetObjectStorageQuotasFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetObjectStorageQuotasFilterArgs>[] | undefined>;
 }

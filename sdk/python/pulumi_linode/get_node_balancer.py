@@ -235,7 +235,7 @@ def get_node_balancer(id: Optional[_builtins.int] = None,
         transfers=pulumi.get(__ret__, 'transfers'),
         updated=pulumi.get(__ret__, 'updated'),
         vpcs=pulumi.get(__ret__, 'vpcs'))
-def get_node_balancer_output(id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_node_balancer_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeBalancerResult]:
     """
     Provides details about a Linode NodeBalancer.

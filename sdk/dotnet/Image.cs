@@ -24,7 +24,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Linode.Index.Instance("foo", new()
+    ///     var foo = new Linode.Instance("foo", new()
     ///     {
     ///         Type = "g6-nanode-1",
     ///         Region = "us-central",
@@ -32,7 +32,7 @@ namespace Pulumi.Linode
     ///         RootPass = "insecure-p4ssw0rd!!",
     ///     });
     /// 
-    ///     var bar = new Linode.Index.Image("bar", new()
+    ///     var bar = new Linode.Image("bar", new()
     ///     {
     ///         Label = "foo-sda-image",
     ///         Description = "Image taken from foo",
@@ -45,7 +45,7 @@ namespace Pulumi.Linode
     ///         },
     ///     });
     /// 
-    ///     var barBased = new Linode.Index.Instance("bar_based", new()
+    ///     var barBased = new Linode.Instance("bar_based", new()
     ///     {
     ///         Type = foo.Type,
     ///         Region = "eu-west",
@@ -63,7 +63,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Index.Image("foobar", new()
+    ///     var foobar = new Linode.Image("foobar", new()
     ///     {
     ///         Label = "foobar-image",
     ///         Description = "An image uploaded from Terraform!",
@@ -74,7 +74,7 @@ namespace Pulumi.Linode
     ///             "test",
     ///         },
     ///         FilePath = "path/to/image.img.gz",
-    ///         FileHash = Std.Index.Filemd5.Invoke(new()
+    ///         FileHash = Std.Filemd5.Invoke(new()
     ///         {
     ///             Input = "path/to/image.img.gz",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -91,7 +91,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Index.Image("foobar", new()
+    ///     var foobar = new Linode.Image("foobar", new()
     ///     {
     ///         Label = "foobar-image",
     ///         Description = "An image uploaded from Terraform!",
@@ -102,7 +102,7 @@ namespace Pulumi.Linode
     ///             "test",
     ///         },
     ///         FilePath = "path/to/image.img.gz",
-    ///         FileHash = Std.Index.Filemd5.Invoke(new()
+    ///         FileHash = Std.Filemd5.Invoke(new()
     ///         {
     ///             Input = "path/to/image.img.gz",
     ///         }).Apply(invoke =&gt; invoke.Result),

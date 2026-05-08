@@ -150,7 +150,7 @@ export function getNodebalancerVpcsOutput(args: GetNodebalancerVpcsOutputArgs, o
  * A collection of arguments for invoking getNodebalancerVpcs.
  */
 export interface GetNodebalancerVpcsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetNodebalancerVpcsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetNodebalancerVpcsFilterArgs>[] | undefined>;
     /**
      * The ID of the NodeBalancer to list VPC configurations for.
      *
@@ -160,9 +160,9 @@ export interface GetNodebalancerVpcsOutputArgs {
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

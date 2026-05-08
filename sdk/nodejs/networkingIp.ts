@@ -155,47 +155,47 @@ export interface NetworkingIpState {
     /**
      * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The default gateway for this address.
      */
-    gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * The number of bits set in the subnet mask.
      */
-    prefix?: pulumi.Input<number>;
+    prefix?: pulumi.Input<number | undefined>;
     /**
      * Whether the IP address is public. Defaults to true.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
      */
-    rdns?: pulumi.Input<string>;
+    rdns?: pulumi.Input<string | undefined>;
     /**
      * The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Whether the IPv4 address should be reserved.
      */
-    reserved?: pulumi.Input<boolean>;
+    reserved?: pulumi.Input<boolean | undefined>;
     /**
      * The mask that separates host bits from network bits for this address.
      */
-    subnetMask?: pulumi.Input<string>;
+    subnetMask?: pulumi.Input<string | undefined>;
     /**
      * The type of IP address. (ipv4, ipv6, etc.)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
      */
-    vpcNat11?: pulumi.Input<inputs.NetworkingIpVpcNat11>;
+    vpcNat11?: pulumi.Input<inputs.NetworkingIpVpcNat11 | undefined>;
 }
 
 /**
@@ -205,21 +205,21 @@ export interface NetworkingIpArgs {
     /**
      * The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * Whether the IP address is public. Defaults to true.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * The region for the reserved IPv4 address. Required when reserved is true and linodeId is not set.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Whether the IPv4 address should be reserved.
      */
-    reserved?: pulumi.Input<boolean>;
+    reserved?: pulumi.Input<boolean | undefined>;
     /**
      * The type of IP address. (ipv4, ipv6, etc.)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

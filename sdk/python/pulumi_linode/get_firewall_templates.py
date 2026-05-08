@@ -108,7 +108,7 @@ def get_firewall_templates(filters: Optional[Sequence[Union['GetFirewallTemplate
         filters=pulumi.get(__ret__, 'filters'),
         firewall_templates=pulumi.get(__ret__, 'firewall_templates'),
         id=pulumi.get(__ret__, 'id'))
-def get_firewall_templates_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallTemplatesFilterArgs', 'GetFirewallTemplatesFilterArgsDict']]]]] = None,
+def get_firewall_templates_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetFirewallTemplatesFilterArgs', 'GetFirewallTemplatesFilterArgsDict']]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallTemplatesResult]:
     """
     Provides information about all Linode Firewall Templates.

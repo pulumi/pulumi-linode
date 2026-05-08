@@ -24,14 +24,14 @@ class InstanceDiskInitArgs:
                  label: pulumi.Input[_builtins.str],
                  linode_id: pulumi.Input[_builtins.int],
                  size: pulumi.Input[_builtins.int],
-                 authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filesystem: Optional[pulumi.Input[_builtins.str]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 stackscript_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeouts: Optional[pulumi.Input['InstanceDiskTimeoutsArgs']] = None):
+                 authorized_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filesystem: pulumi.Input[Optional[_builtins.str]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 stackscript_data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 stackscript_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeouts: pulumi.Input[Optional['InstanceDiskTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a InstanceDisk resource.
 
@@ -108,116 +108,116 @@ class InstanceDiskInitArgs:
 
     @_builtins.property
     @pulumi.getter(name="authorizedKeys")
-    def authorized_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         """
         return pulumi.get(self, "authorized_keys")
 
     @authorized_keys.setter
-    def authorized_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedUsers")
-    def authorized_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         """
         return pulumi.get(self, "authorized_users")
 
     @authorized_users.setter
-    def authorized_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_users", value)
 
     @_builtins.property
     @pulumi.getter
-    def filesystem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filesystem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         """
         return pulumi.get(self, "filesystem")
 
     @filesystem.setter
-    def filesystem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filesystem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filesystem", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An Image ID to deploy the Linode Disk from.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="rootPass")
-    def root_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_pass(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         """
         return pulumi.get(self, "root_pass")
 
     @root_pass.setter
-    def root_pass(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_pass(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_pass", value)
 
     @_builtins.property
     @pulumi.getter(name="stackscriptData")
-    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def stackscript_data(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_data")
 
     @stackscript_data.setter
-    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def stackscript_data(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "stackscript_data", value)
 
     @_builtins.property
     @pulumi.getter(name="stackscriptId")
-    def stackscript_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stackscript_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_id")
 
     @stackscript_id.setter
-    def stackscript_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stackscript_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stackscript_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['InstanceDiskTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['InstanceDiskTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['InstanceDiskTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['InstanceDiskTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _InstanceDiskState:
     def __init__(__self__, *,
-                 authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 filesystem: Optional[pulumi.Input[_builtins.str]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 root_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 stackscript_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['InstanceDiskTimeoutsArgs']] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None):
+                 authorized_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+                 filesystem: pulumi.Input[Optional[_builtins.str]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 root_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 stackscript_data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 stackscript_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['InstanceDiskTimeoutsArgs']] = None,
+                 updated: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceDisk resources.
 
@@ -271,115 +271,115 @@ class _InstanceDiskState:
 
     @_builtins.property
     @pulumi.getter(name="authorizedKeys")
-    def authorized_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
         """
         return pulumi.get(self, "authorized_keys")
 
     @authorized_keys.setter
-    def authorized_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedUsers")
-    def authorized_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def authorized_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
         """
         return pulumi.get(self, "authorized_users")
 
     @authorized_users.setter
-    def authorized_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def authorized_users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "authorized_users", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When this disk was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
         """
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
-    def disk_encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_encryption(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter
-    def filesystem(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filesystem(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         """
         return pulumi.get(self, "filesystem")
 
     @filesystem.setter
-    def filesystem(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filesystem(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filesystem", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An Image ID to deploy the Linode Disk from.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Disk's label for display purposes only.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def linode_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Linode to create this Disk under.
         """
         return pulumi.get(self, "linode_id")
 
     @linode_id.setter
-    def linode_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def linode_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "linode_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rootPass")
-    def root_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_pass(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
         """
         return pulumi.get(self, "root_pass")
 
     @root_pass.setter
-    def root_pass(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_pass(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_pass", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
 
@@ -388,64 +388,64 @@ class _InstanceDiskState:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="stackscriptData")
-    def stackscript_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def stackscript_data(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_data")
 
     @stackscript_data.setter
-    def stackscript_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def stackscript_data(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "stackscript_data", value)
 
     @_builtins.property
     @pulumi.getter(name="stackscriptId")
-    def stackscript_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stackscript_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         """
         return pulumi.get(self, "stackscript_id")
 
     @stackscript_id.setter
-    def stackscript_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stackscript_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stackscript_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A brief description of this Disk's current state.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['InstanceDiskTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['InstanceDiskTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['InstanceDiskTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['InstanceDiskTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When this disk was last updated.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
 
@@ -455,17 +455,17 @@ class InstanceDisk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filesystem: Optional[pulumi.Input[_builtins.str]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 root_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 stackscript_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeouts: Optional[pulumi.Input[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
+                 authorized_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filesystem: pulumi.Input[Optional[_builtins.str]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 root_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 stackscript_data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 stackscript_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeouts: pulumi.Input[Optional[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Linode Instance Disk resource. This can be used to create, modify, and delete Linode Instance Disks.
@@ -485,7 +485,7 @@ class InstanceDisk(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=512,
             filesystem="ext4")
         ```
@@ -499,7 +499,7 @@ class InstanceDisk(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=my_instance.specs[0].disk,
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!",
@@ -558,7 +558,7 @@ class InstanceDisk(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=512,
             filesystem="ext4")
         ```
@@ -572,7 +572,7 @@ class InstanceDisk(pulumi.CustomResource):
             region="us-southeast")
         boot = linode.InstanceDisk("boot",
             label="boot",
-            linode_id=my_instance.id,
+            linode_id=my_instance.id.apply(lambda x: int(x)),
             size=my_instance.specs[0].disk,
             image="linode/ubuntu22.04",
             root_pass="myc00lpass!",
@@ -607,17 +607,17 @@ class InstanceDisk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 filesystem: Optional[pulumi.Input[_builtins.str]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 root_pass: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 stackscript_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeouts: Optional[pulumi.Input[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
+                 authorized_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authorized_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 filesystem: pulumi.Input[Optional[_builtins.str]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 root_pass: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 stackscript_data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 stackscript_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeouts: pulumi.Input[Optional[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -660,21 +660,21 @@ class InstanceDisk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorized_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            authorized_users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-            filesystem: Optional[pulumi.Input[_builtins.str]] = None,
-            image: Optional[pulumi.Input[_builtins.str]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-            root_pass: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            stackscript_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            stackscript_id: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceDisk':
+            authorized_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authorized_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            filesystem: pulumi.Input[Optional[_builtins.str]] = None,
+            image: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            root_pass: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            stackscript_data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            stackscript_id: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceDisk':
         """
         Get an existing InstanceDisk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

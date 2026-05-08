@@ -22,8 +22,8 @@ __all__ = ['ObjectStorageKeyArgs', 'ObjectStorageKey']
 class ObjectStorageKeyArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[_builtins.str],
-                 bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 bucket_accesses: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ObjectStorageKey resource.
 
@@ -53,19 +53,19 @@ class ObjectStorageKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="bucketAccesses")
-    def bucket_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]]:
+    def bucket_accesses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]]:
         """
         Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         """
         return pulumi.get(self, "bucket_accesses")
 
     @bucket_accesses.setter
-    def bucket_accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]]):
+    def bucket_accesses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]]):
         pulumi.set(self, "bucket_accesses", value)
 
     @_builtins.property
     @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of regions where the key will grant access to create buckets.
 
@@ -74,20 +74,20 @@ class ObjectStorageKeyArgs:
         return pulumi.get(self, "regions")
 
     @regions.setter
-    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "regions", value)
 
 
 @pulumi.input_type
 class _ObjectStorageKeyState:
     def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 limited: Optional[pulumi.Input[_builtins.bool]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 regions_details: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyRegionsDetailArgs']]]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_accesses: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 limited: pulumi.Input[Optional[_builtins.bool]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 regions_details: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageKeyRegionsDetailArgs']]]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObjectStorageKey resources.
 
@@ -118,55 +118,55 @@ class _ObjectStorageKeyState:
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This keypair's access key. This is not secret.
         """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketAccesses")
-    def bucket_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]]:
+    def bucket_accesses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]]:
         """
         Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         """
         return pulumi.get(self, "bucket_accesses")
 
     @bucket_accesses.setter
-    def bucket_accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]]):
+    def bucket_accesses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]]]):
         pulumi.set(self, "bucket_accesses", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The label given to this key. For display purposes only.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def limited(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def limited(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not this key is a limited access key.
         """
         return pulumi.get(self, "limited")
 
     @limited.setter
-    def limited(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def limited(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "limited", value)
 
     @_builtins.property
     @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of regions where the key will grant access to create buckets.
 
@@ -175,31 +175,31 @@ class _ObjectStorageKeyState:
         return pulumi.get(self, "regions")
 
     @regions.setter
-    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "regions", value)
 
     @_builtins.property
     @pulumi.getter(name="regionsDetails")
-    def regions_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyRegionsDetailArgs']]]]:
+    def regions_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageKeyRegionsDetailArgs']]]]:
         """
         A set of objects containing the detailed info of the regions where this key can access.
         """
         return pulumi.get(self, "regions_details")
 
     @regions_details.setter
-    def regions_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyRegionsDetailArgs']]]]):
+    def regions_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageKeyRegionsDetailArgs']]]]):
         pulumi.set(self, "regions_details", value)
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This keypair's secret key.
         """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_key", value)
 
 
@@ -209,9 +209,9 @@ class ObjectStorageKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bucket_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Linode Object Storage Key resource. This can be used to create, modify, and delete Linodes Object Storage Keys.
@@ -348,9 +348,9 @@ class ObjectStorageKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bucket_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -381,13 +381,13 @@ class ObjectStorageKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_key: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            limited: Optional[pulumi.Input[_builtins.bool]] = None,
-            regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            regions_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyRegionsDetailArgs', 'ObjectStorageKeyRegionsDetailArgsDict']]]]] = None,
-            secret_key: Optional[pulumi.Input[_builtins.str]] = None) -> 'ObjectStorageKey':
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict']]]]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            limited: pulumi.Input[Optional[_builtins.bool]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            regions_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageKeyRegionsDetailArgs', 'ObjectStorageKeyRegionsDetailArgsDict']]]]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None) -> 'ObjectStorageKey':
         """
         Get an existing ObjectStorageKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

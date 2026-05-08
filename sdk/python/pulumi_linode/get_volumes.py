@@ -129,9 +129,9 @@ def get_volumes(filters: Optional[Sequence[Union['GetVolumesFilterArgs', 'GetVol
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         volumes=pulumi.get(__ret__, 'volumes'))
-def get_volumes_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVolumesFilterArgs', 'GetVolumesFilterArgsDict']]]]] = None,
-                       order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_volumes_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVolumesFilterArgs', 'GetVolumesFilterArgsDict']]]]] = None,
+                       order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumesResult]:
     """
     Provides information about Linode volumes that match a set of filters.

@@ -35,8 +35,8 @@ import * as utilities from "./utilities";
  *     type: "g6-standard-1",
  * });
  * const myDevice = new linode.FirewallDevice("my_device", {
- *     firewallId: myFirewall.id,
- *     entityId: myInstance.id,
+ *     firewallId: myFirewall.id.apply(x =>Number(x)),
+ *     entityId: myInstance.id.apply(x =>Number(x)),
  * });
  * ```
  *
@@ -141,23 +141,23 @@ export interface FirewallDeviceState {
     /**
      * When the Firewall Device was last created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the entity to attach.
      */
-    entityId?: pulumi.Input<number>;
+    entityId?: pulumi.Input<number | undefined>;
     /**
      * The type of the entity to attach. (default: `linode`)
      */
-    entityType?: pulumi.Input<string>;
+    entityType?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the target Firewall.
      */
-    firewallId?: pulumi.Input<number>;
+    firewallId?: pulumi.Input<number | undefined>;
     /**
      * When the Firewall Device was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -171,7 +171,7 @@ export interface FirewallDeviceArgs {
     /**
      * The type of the entity to attach. (default: `linode`)
      */
-    entityType?: pulumi.Input<string>;
+    entityType?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the target Firewall.
      */

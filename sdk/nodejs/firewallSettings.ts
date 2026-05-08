@@ -91,7 +91,7 @@ export interface FirewallSettingsState {
     /**
      * A map of default firewall IDs for various interfaces.
      */
-    defaultFirewallIds?: pulumi.Input<inputs.FirewallSettingsDefaultFirewallIds>;
+    defaultFirewallIds?: pulumi.Input<inputs.FirewallSettingsDefaultFirewallIds | undefined>;
 }
 
 /**
@@ -101,5 +101,5 @@ export interface FirewallSettingsArgs {
     /**
      * A map of default firewall IDs for various interfaces.
      */
-    defaultFirewallIds?: pulumi.Input<inputs.FirewallSettingsDefaultFirewallIds>;
+    defaultFirewallIds?: pulumi.Input<inputs.FirewallSettingsDefaultFirewallIds | undefined>;
 }

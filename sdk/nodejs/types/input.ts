@@ -9,22 +9,22 @@ export interface DatabaseMysqlV2PendingUpdate {
     /**
      * The time when a mandatory update needs to be applied.
      */
-    deadline?: pulumi.Input<string>;
+    deadline?: pulumi.Input<string | undefined>;
     /**
      * A description of the update.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The date and time a maintenance update will be applied.
      */
-    plannedFor?: pulumi.Input<string>;
+    plannedFor?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseMysqlV2PrivateNetwork {
     /**
      * Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
      */
-    publicAccess?: pulumi.Input<boolean>;
+    publicAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VPC subnet to restrict access to this database using.
      */
@@ -39,56 +39,56 @@ export interface DatabaseMysqlV2Timeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseMysqlV2Updates {
     /**
      * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      */
-    dayOfWeek?: pulumi.Input<number>;
+    dayOfWeek?: pulumi.Input<number | undefined>;
     /**
      * The maximum maintenance window time in hours.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * How frequently maintenance occurs. Currently can only be weekly.
      */
-    frequency?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string | undefined>;
     /**
      * How frequently maintenance occurs. Currently can only be weekly.
      */
-    hourOfDay?: pulumi.Input<number>;
+    hourOfDay?: pulumi.Input<number | undefined>;
 }
 
 export interface DatabasePostgresqlV2PendingUpdate {
     /**
      * The time when a mandatory update needs to be applied.
      */
-    deadline?: pulumi.Input<string>;
+    deadline?: pulumi.Input<string | undefined>;
     /**
      * A description of the update.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The date and time a maintenance update will be applied.
      */
-    plannedFor?: pulumi.Input<string>;
+    plannedFor?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabasePostgresqlV2PrivateNetwork {
     /**
      * Set to `true` to allow clients outside of the VPC to connect to the database using a public IP address.
      */
-    publicAccess?: pulumi.Input<boolean>;
+    publicAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VPC subnet to restrict access to this database using.
      */
@@ -103,34 +103,34 @@ export interface DatabasePostgresqlV2Timeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabasePostgresqlV2Updates {
     /**
      * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      */
-    dayOfWeek?: pulumi.Input<number>;
+    dayOfWeek?: pulumi.Input<number | undefined>;
     /**
      * The maximum maintenance window time in hours.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * How frequently maintenance occurs. Currently can only be weekly.
      */
-    frequency?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string | undefined>;
     /**
      * How frequently maintenance occurs. Currently can only be weekly.
      */
-    hourOfDay?: pulumi.Input<number>;
+    hourOfDay?: pulumi.Input<number | undefined>;
 }
 
 export interface FirewallDevice {
@@ -164,15 +164,15 @@ export interface FirewallInbound {
     /**
      * Used to describe this rule. For display purposes only.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
      */
-    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
      */
-    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Used to identify this rule. For display purposes only.
      */
@@ -180,7 +180,7 @@ export interface FirewallInbound {
     /**
      * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
      */
-    ports?: pulumi.Input<string>;
+    ports?: pulumi.Input<string | undefined>;
     /**
      * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      */
@@ -195,15 +195,15 @@ export interface FirewallOutbound {
     /**
      * Used to describe this rule. For display purposes only.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
      */
-    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of IPv6 addresses or networks this rule applies to.
      */
-    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This Firewall's unique label.
      */
@@ -211,7 +211,7 @@ export interface FirewallOutbound {
     /**
      * A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
      */
-    ports?: pulumi.Input<string>;
+    ports?: pulumi.Input<string | undefined>;
     /**
      * The network protocol this rule controls.
      */
@@ -222,19 +222,19 @@ export interface FirewallSettingsDefaultFirewallIds {
     /**
      * The Linode's default firewall.
      */
-    linode?: pulumi.Input<number>;
+    linode?: pulumi.Input<number | undefined>;
     /**
      * The NodeBalancer's default firewall.
      */
-    nodebalancer?: pulumi.Input<number>;
+    nodebalancer?: pulumi.Input<number | undefined>;
     /**
      * The public interface's default firewall.
      */
-    publicInterface?: pulumi.Input<number>;
+    publicInterface?: pulumi.Input<number | undefined>;
     /**
      * The VPC interface's default firewall.
      */
-    vpcInterface?: pulumi.Input<number>;
+    vpcInterface?: pulumi.Input<number | undefined>;
 }
 
 export interface GetAccountAvailabilitiesFilter {
@@ -256,7 +256,7 @@ export interface GetAccountAvailabilitiesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -286,7 +286,7 @@ export interface GetAccountLoginsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -316,7 +316,7 @@ export interface GetChildAccountsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -346,7 +346,7 @@ export interface GetConsumerImageShareGroupImageSharesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -416,55 +416,55 @@ export interface GetConsumerImageShareGroupImageSharesImageShareArgs {
     /**
      * The capabilities of the Image represented by the Image Share.
      */
-    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When this Image Share was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Whether this Image is deprecated.
      */
-    deprecated?: pulumi.Input<boolean>;
+    deprecated?: pulumi.Input<boolean | undefined>;
     /**
      * A description of the Image Share.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The unique ID assigned to this Image Share.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Details about image sharing, including who the image is shared with and by.
      */
-    imageSharing?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs>;
+    imageSharing?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs | undefined>;
     /**
      * True if the Image is public.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * The label of the Image Share.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The minimum size this Image needs to deploy. Size is in MB. example: 2500
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The current status of this image. (`creating`, `pendingUpload`, `available`)
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A list of customized tags.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The total size of the image in all available regions.
      */
-    totalSize?: pulumi.Input<number>;
+    totalSize?: pulumi.Input<number | undefined>;
     /**
      * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConsumerImageShareGroupImageSharesImageShareImageSharing {
@@ -482,11 +482,11 @@ export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs
     /**
      * Details about who the image is shared by.
      */
-    sharedBy?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs>;
+    sharedBy?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs | undefined>;
     /**
      * Details about who the image is shared with.
      */
-    sharedWith?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs>;
+    sharedWith?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs | undefined>;
 }
 
 export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy {
@@ -512,19 +512,19 @@ export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingShar
     /**
      * The sharegroupId from the im_ImageShare row.
      */
-    sharegroupId?: pulumi.Input<number>;
+    sharegroupId?: pulumi.Input<number | undefined>;
     /**
      * The label from the associated im_ImageShareGroup row.
      */
-    sharegroupLabel?: pulumi.Input<string>;
+    sharegroupLabel?: pulumi.Input<string | undefined>;
     /**
      * The sharegroupUuid from the im_ImageShare row.
      */
-    sharegroupUuid?: pulumi.Input<string>;
+    sharegroupUuid?: pulumi.Input<string | undefined>;
     /**
      * The image id of the base image (will only be shown to producers, will be null for consumers).
      */
-    sourceImageId?: pulumi.Input<string>;
+    sourceImageId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith {
@@ -542,11 +542,11 @@ export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingShar
     /**
      * The number of sharegroups the private image is present in.
      */
-    sharegroupCount?: pulumi.Input<number>;
+    sharegroupCount?: pulumi.Input<number | undefined>;
     /**
      * The GET api url to view the sharegroups in which the image is shared.
      */
-    sharegroupListUrl?: pulumi.Input<string>;
+    sharegroupListUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface GetConsumerImageShareGroupTokensFilter {
@@ -568,7 +568,7 @@ export interface GetConsumerImageShareGroupTokensFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -622,27 +622,27 @@ export interface GetConsumerImageShareGroupTokensTokenArgs {
     /**
      * When the token was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * When the token will expire.
      */
-    expiry?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string | undefined>;
     /**
      * A label for the token.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The label of the Image Share Group that the token is for.
      */
-    sharegroupLabel?: pulumi.Input<string>;
+    sharegroupLabel?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the Image Share Group that the token is for.
      */
-    sharegroupUuid?: pulumi.Input<string>;
+    sharegroupUuid?: pulumi.Input<string | undefined>;
     /**
      * The status of the token.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the token.
      */
@@ -650,11 +650,11 @@ export interface GetConsumerImageShareGroupTokensTokenArgs {
     /**
      * When the token was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the Image Share Group for which to create a token.
      */
-    validForSharegroupUuid?: pulumi.Input<string>;
+    validForSharegroupUuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDatabaseEnginesFilter {
@@ -676,7 +676,7 @@ export interface GetDatabaseEnginesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by.
      */
@@ -710,19 +710,19 @@ export interface GetDatabasePostgresqlV2UpdatesArgs {
     /**
      * The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      */
-    dayOfWeek?: pulumi.Input<number>;
+    dayOfWeek?: pulumi.Input<number | undefined>;
     /**
      * The maximum maintenance window time in hours.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * How frequently maintenance occurs. Currently can only be weekly.
      */
-    frequency?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string | undefined>;
     /**
      * How frequently maintenance occurs. Currently can only be weekly.
      */
-    hourOfDay?: pulumi.Input<number>;
+    hourOfDay?: pulumi.Input<number | undefined>;
 }
 
 export interface GetDatabasesFilter {
@@ -744,7 +744,7 @@ export interface GetDatabasesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by.
      */
@@ -774,7 +774,7 @@ export interface GetDomainsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -804,7 +804,7 @@ export interface GetFirewallTemplatesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -834,7 +834,7 @@ export interface GetFirewallsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -864,7 +864,7 @@ export interface GetImagesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -894,7 +894,7 @@ export interface GetInstanceTypesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -924,7 +924,7 @@ export interface GetInstancesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a list of filterable fields.
      */
@@ -954,7 +954,7 @@ export interface GetIpv6RangesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -984,7 +984,7 @@ export interface GetKernelsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1014,7 +1014,7 @@ export interface GetLkeClustersFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1044,7 +1044,7 @@ export interface GetLkeTypesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1074,7 +1074,7 @@ export interface GetLocksFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1104,7 +1104,7 @@ export interface GetMaintenancePoliciesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1134,7 +1134,7 @@ export interface GetNbTypesFilterArgs {
     /**
      * The type of comparison to use for this filter.
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the attribute to filter on.
      */
@@ -1164,7 +1164,7 @@ export interface GetNetworkTransferPricesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1194,7 +1194,7 @@ export interface GetNetworkingIpsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1224,7 +1224,7 @@ export interface GetNodebalancerConfigsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1254,7 +1254,7 @@ export interface GetNodebalancerVpcsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1284,7 +1284,7 @@ export interface GetNodebalancersFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1314,7 +1314,7 @@ export interface GetObjectStorageEndpointsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1344,7 +1344,7 @@ export interface GetObjectStorageQuotasFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1374,7 +1374,7 @@ export interface GetPlacementGroupsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1404,7 +1404,7 @@ export interface GetProducerImageShareGroupImageSharesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1474,55 +1474,55 @@ export interface GetProducerImageShareGroupImageSharesImageShareArgs {
     /**
      * The capabilities of the Image represented by the Image Share.
      */
-    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When this Image Share was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Whether this Image is deprecated.
      */
-    deprecated?: pulumi.Input<boolean>;
+    deprecated?: pulumi.Input<boolean | undefined>;
     /**
      * A description of the Image Share.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The unique ID assigned to this Image Share.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Details about image sharing, including who the image is shared with and by.
      */
-    imageSharing?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingArgs>;
+    imageSharing?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingArgs | undefined>;
     /**
      * True if the Image is public.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * The label of the Image Share.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The minimum size this Image needs to deploy. Size is in MB. example: 2500
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The current status of this image. (`creating`, `pendingUpload`, `available`)
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A list of customized tags.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The total size of the image in all available regions.
      */
-    totalSize?: pulumi.Input<number>;
+    totalSize?: pulumi.Input<number | undefined>;
     /**
      * How the Image was created. Manual Images can be created at any time. "Automatic" Images are created automatically from a deleted Linode. (`manual`, `automatic`)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface GetProducerImageShareGroupImageSharesImageShareImageSharing {
@@ -1540,11 +1540,11 @@ export interface GetProducerImageShareGroupImageSharesImageShareImageSharingArgs
     /**
      * Details about who the image is shared by.
      */
-    sharedBy?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs>;
+    sharedBy?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs | undefined>;
     /**
      * Details about who the image is shared with.
      */
-    sharedWith?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs>;
+    sharedWith?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs | undefined>;
 }
 
 export interface GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy {
@@ -1574,19 +1574,19 @@ export interface GetProducerImageShareGroupImageSharesImageShareImageSharingShar
      *
      * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
      */
-    sharegroupId?: pulumi.Input<number>;
+    sharegroupId?: pulumi.Input<number | undefined>;
     /**
      * The label from the associated im_ImageShareGroup row.
      */
-    sharegroupLabel?: pulumi.Input<string>;
+    sharegroupLabel?: pulumi.Input<string | undefined>;
     /**
      * The sharegroupUuid from the im_ImageShare row.
      */
-    sharegroupUuid?: pulumi.Input<string>;
+    sharegroupUuid?: pulumi.Input<string | undefined>;
     /**
      * The image id of the base image (will only be shown to producers, will be null for consumers).
      */
-    sourceImageId?: pulumi.Input<string>;
+    sourceImageId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith {
@@ -1604,11 +1604,11 @@ export interface GetProducerImageShareGroupImageSharesImageShareImageSharingShar
     /**
      * The number of sharegroups the private image is present in.
      */
-    sharegroupCount?: pulumi.Input<number>;
+    sharegroupCount?: pulumi.Input<number | undefined>;
     /**
      * The GET api url to view the sharegroups in which the image is shared.
      */
-    sharegroupListUrl?: pulumi.Input<string>;
+    sharegroupListUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface GetProducerImageShareGroupMembersFilter {
@@ -1630,7 +1630,7 @@ export interface GetProducerImageShareGroupMembersFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1676,15 +1676,15 @@ export interface GetProducerImageShareGroupMembersMemberArgs {
     /**
      * When the member was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * When the member will expire.
      */
-    expiry?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string | undefined>;
     /**
      * The label of the member.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Image Share Group for which to list members.
      */
@@ -1692,7 +1692,7 @@ export interface GetProducerImageShareGroupMembersMemberArgs {
     /**
      * The status of the member.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The UUID of member's token.
      */
@@ -1700,7 +1700,7 @@ export interface GetProducerImageShareGroupMembersMemberArgs {
     /**
      * When the member was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
 }
 
 export interface GetProducerImageShareGroupsFilter {
@@ -1722,7 +1722,7 @@ export interface GetProducerImageShareGroupsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1780,15 +1780,15 @@ export interface GetProducerImageShareGroupsImageShareGroupArgs {
     /**
      * The date and time the Image Share Group was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * The description of the Image Share Group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The date and time the Image Share Group will expire.
      */
-    expiry?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Image Share Group.
      */
@@ -1796,27 +1796,27 @@ export interface GetProducerImageShareGroupsImageShareGroupArgs {
     /**
      * The number of images in the Image Share Group.
      */
-    imagesCount?: pulumi.Input<number>;
+    imagesCount?: pulumi.Input<number | undefined>;
     /**
      * Whether the Image Share Group is suspended.
      */
-    isSuspended?: pulumi.Input<boolean>;
+    isSuspended?: pulumi.Input<boolean | undefined>;
     /**
      * The label of the Image Share Group.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The number of members in the Image Share Group.
      */
-    membersCount?: pulumi.Input<number>;
+    membersCount?: pulumi.Input<number | undefined>;
     /**
      * The date and time the Image Share Group was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the Image Share Group.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 export interface GetRegionsFilter {
@@ -1838,7 +1838,7 @@ export interface GetRegionsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1868,7 +1868,7 @@ export interface GetSshkeysFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -1898,7 +1898,7 @@ export interface GetStackScriptsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -2228,7 +2228,7 @@ export interface GetUsersFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -2258,7 +2258,7 @@ export interface GetVlansFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -2288,7 +2288,7 @@ export interface GetVolumeTypesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -2318,7 +2318,7 @@ export interface GetVolumesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -2348,7 +2348,7 @@ export interface GetVpcIpsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -2378,7 +2378,7 @@ export interface GetVpcSubnetsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -2408,7 +2408,7 @@ export interface GetVpcsFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
-    matchBy?: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
      */
@@ -2423,41 +2423,41 @@ export interface ImageImageSharing {
     /**
      * Details about who the image is shared by.
      */
-    sharedBy?: pulumi.Input<inputs.ImageImageSharingSharedBy>;
+    sharedBy?: pulumi.Input<inputs.ImageImageSharingSharedBy | undefined>;
     /**
      * Details about who the image is shared with.
      */
-    sharedWith?: pulumi.Input<inputs.ImageImageSharingSharedWith>;
+    sharedWith?: pulumi.Input<inputs.ImageImageSharingSharedWith | undefined>;
 }
 
 export interface ImageImageSharingSharedBy {
     /**
      * The sharegroupId from the im_ImageShare row.
      */
-    sharegroupId?: pulumi.Input<number>;
+    sharegroupId?: pulumi.Input<number | undefined>;
     /**
      * The label from the associated im_ImageShareGroup row.
      */
-    sharegroupLabel?: pulumi.Input<string>;
+    sharegroupLabel?: pulumi.Input<string | undefined>;
     /**
      * The sharegroupUuid from the im_ImageShare row.
      */
-    sharegroupUuid?: pulumi.Input<string>;
+    sharegroupUuid?: pulumi.Input<string | undefined>;
     /**
      * The image id of the base image (will only be shown to producers, will be null for consumers).
      */
-    sourceImageId?: pulumi.Input<string>;
+    sourceImageId?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageImageSharingSharedWith {
     /**
      * The number of sharegroups the private image is present in.
      */
-    sharegroupCount?: pulumi.Input<number>;
+    sharegroupCount?: pulumi.Input<number | undefined>;
     /**
      * The GET api url to view the sharegroups in which the image is shared.
      */
-    sharegroupListUrl?: pulumi.Input<string>;
+    sharegroupListUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageReplication {
@@ -2475,80 +2475,80 @@ export interface ImageTimeouts {
     /**
      * Used when creating the instance image (until the instance is available)
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceAlerts {
     /**
      * The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
      */
-    io?: pulumi.Input<number>;
+    io?: pulumi.Input<number | undefined>;
     /**
      * The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
      */
-    networkIn?: pulumi.Input<number>;
+    networkIn?: pulumi.Input<number | undefined>;
     /**
      * The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
      */
-    networkOut?: pulumi.Input<number>;
+    networkOut?: pulumi.Input<number | undefined>;
     /**
      * The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
      */
-    transferQuota?: pulumi.Input<number>;
+    transferQuota?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceBackup {
     /**
      * Whether this Backup is available for restoration.
      */
-    available?: pulumi.Input<boolean>;
+    available?: pulumi.Input<boolean | undefined>;
     /**
      * If this Linode has the Backup service enabled.
      */
-    enabled?: pulumi.Input<boolean>;
-    schedules?: pulumi.Input<pulumi.Input<inputs.InstanceBackupSchedule>[]>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    schedules?: pulumi.Input<pulumi.Input<inputs.InstanceBackupSchedule>[] | undefined>;
 }
 
 export interface InstanceBackupSchedule {
     /**
      * The day of the week that your Linode's weekly Backup is taken. If not set manually, a day will be chosen for you. Backups are taken every day, but backups taken on this day are preferred when selecting backups to retain for a longer period.  If not set manually, then when backups are initially enabled, this may come back as "Scheduling" until the day is automatically selected.
      */
-    day?: pulumi.Input<string>;
+    day?: pulumi.Input<string | undefined>;
     /**
      * The window ('W0'-'W22') in which your backups will be taken, in UTC. A backups window is a two-hour span of time in which the backup may occur. For example, 'W10' indicates that your backups should be taken between 10:00 and 12:00. If you do not choose a backup window, one will be selected for you automatically.  If not set manually, when backups are initially enabled this may come back as Scheduling until the window is automatically selected.
      */
-    window?: pulumi.Input<string>;
+    window?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceConfig {
     /**
      * Optional field for arbitrary User comments on this Config.
      */
-    comments?: pulumi.Input<string>;
+    comments?: pulumi.Input<string | undefined>;
     /**
      * Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
      */
-    devices?: pulumi.Input<inputs.InstanceConfigDevices>;
+    devices?: pulumi.Input<inputs.InstanceConfigDevices | undefined>;
     /**
      * Helpers enabled when booting to this Linode Config.
      */
-    helpers?: pulumi.Input<inputs.InstanceConfigHelpers>;
+    helpers?: pulumi.Input<inputs.InstanceConfigHelpers | undefined>;
     /**
      * The ID of the Placement Group.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * An array of Network Interfaces for this Linode’s Configuration Profile.
      */
-    interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterface>[]>;
+    interfaces?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterface>[] | undefined>;
     /**
      * A Kernel ID to boot a Linode with. Default is based on image choice. (examples: linode/latest-64bit, linode/grub2, linode/direct-disk)
      */
-    kernel?: pulumi.Input<string>;
+    kernel?: pulumi.Input<string | undefined>;
     /**
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
@@ -2556,19 +2556,19 @@ export interface InstanceConfig {
     /**
      * Defaults to the total RAM of the Linode
      */
-    memoryLimit?: pulumi.Input<number>;
+    memoryLimit?: pulumi.Input<number | undefined>;
     /**
      * The root device to boot. The corresponding disk must be attached.
      */
-    rootDevice?: pulumi.Input<string>;
+    rootDevice?: pulumi.Input<string | undefined>;
     /**
      * Defines the state of your Linode after booting. Defaults to default.
      */
-    runLevel?: pulumi.Input<string>;
+    runLevel?: pulumi.Input<string | undefined>;
     /**
      * Controls the virtualization mode. Defaults to paravirt.
      */
-    virtMode?: pulumi.Input<string>;
+    virtMode?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceConfigDevice {
@@ -2579,211 +2579,211 @@ export interface InstanceConfigDevice {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number | undefined>;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
-    volumeId?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceConfigDevices {
     /**
      * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
      */
-    sda?: pulumi.Input<inputs.InstanceConfigDevicesSda>;
+    sda?: pulumi.Input<inputs.InstanceConfigDevicesSda | undefined>;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdb?: pulumi.Input<inputs.InstanceConfigDevicesSdb>;
+    sdb?: pulumi.Input<inputs.InstanceConfigDevicesSdb | undefined>;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdc?: pulumi.Input<inputs.InstanceConfigDevicesSdc>;
+    sdc?: pulumi.Input<inputs.InstanceConfigDevicesSdc | undefined>;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdd?: pulumi.Input<inputs.InstanceConfigDevicesSdd>;
+    sdd?: pulumi.Input<inputs.InstanceConfigDevicesSdd | undefined>;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sde?: pulumi.Input<inputs.InstanceConfigDevicesSde>;
+    sde?: pulumi.Input<inputs.InstanceConfigDevicesSde | undefined>;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdf?: pulumi.Input<inputs.InstanceConfigDevicesSdf>;
+    sdf?: pulumi.Input<inputs.InstanceConfigDevicesSdf | undefined>;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdg?: pulumi.Input<inputs.InstanceConfigDevicesSdg>;
+    sdg?: pulumi.Input<inputs.InstanceConfigDevicesSdg | undefined>;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
-    sdh?: pulumi.Input<inputs.InstanceConfigDevicesSdh>;
+    sdh?: pulumi.Input<inputs.InstanceConfigDevicesSdh | undefined>;
 }
 
 export interface InstanceConfigDevicesSda {
     /**
      * The Disk ID to map to this `device` slot
      */
-    diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number | undefined>;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceConfigDevicesSdb {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number | undefined>;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
-    volumeId?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceConfigDevicesSdc {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number | undefined>;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
-    volumeId?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceConfigDevicesSdd {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number | undefined>;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
-    volumeId?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceConfigDevicesSde {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number | undefined>;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
-    volumeId?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceConfigDevicesSdf {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number | undefined>;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
-    volumeId?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceConfigDevicesSdg {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number | undefined>;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
-    volumeId?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceConfigDevicesSdh {
     /**
      * The Disk ID to map to this disk slot
      */
-    diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number | undefined>;
     /**
      * The Block Storage volume ID to map to this disk slot
      */
-    volumeId?: pulumi.Input<number>;
+    volumeId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceConfigHelper {
     /**
      * Populates the /dev directory early during boot without udev. (default `true`)
      */
-    devtmpfsAutomount?: pulumi.Input<boolean>;
+    devtmpfsAutomount?: pulumi.Input<boolean | undefined>;
     /**
      * Helps maintain correct inittab/upstart console device. (default `true`)
      */
-    distro?: pulumi.Input<boolean>;
+    distro?: pulumi.Input<boolean | undefined>;
     /**
      * Creates a modules dependency file for the Kernel you run. (default `true`)
      */
-    modulesDep?: pulumi.Input<boolean>;
+    modulesDep?: pulumi.Input<boolean | undefined>;
     /**
      * Automatically configures static networking. (default `true`)
      */
-    network?: pulumi.Input<boolean>;
+    network?: pulumi.Input<boolean | undefined>;
     /**
      * Disables updatedb cron job to avoid disk thrashing. (default `true`)
      */
-    updatedbDisabled?: pulumi.Input<boolean>;
+    updatedbDisabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface InstanceConfigHelpers {
     /**
      * Populates the /dev directory early during boot without udev. Defaults to false.
      */
-    devtmpfsAutomount?: pulumi.Input<boolean>;
+    devtmpfsAutomount?: pulumi.Input<boolean | undefined>;
     /**
      * Controls the behavior of the Linode Config's Distribution Helper setting.
      */
-    distro?: pulumi.Input<boolean>;
+    distro?: pulumi.Input<boolean | undefined>;
     /**
      * Creates a modules dependency file for the Kernel you run.
      */
-    modulesDep?: pulumi.Input<boolean>;
+    modulesDep?: pulumi.Input<boolean | undefined>;
     /**
      * Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
      */
-    network?: pulumi.Input<boolean>;
+    network?: pulumi.Input<boolean | undefined>;
     /**
      * Disables updatedb cron job to avoid disk thrashing.
      */
-    updatedbDisabled?: pulumi.Input<boolean>;
+    updatedbDisabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface InstanceConfigInterface {
     /**
      * Whether this interface is currently booted and active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the interface.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
      */
-    ipamAddress?: pulumi.Input<string>;
+    ipamAddress?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
      */
-    ipv4?: pulumi.Input<inputs.InstanceConfigInterfaceIpv4>;
+    ipv4?: pulumi.Input<inputs.InstanceConfigInterfaceIpv4 | undefined>;
     /**
      * The IPv6 configuration of the VPC interface. This attribute is only allowed for VPC interfaces.
      */
-    ipv6?: pulumi.Input<inputs.InstanceConfigInterfaceIpv6>;
+    ipv6?: pulumi.Input<inputs.InstanceConfigInterfaceIpv6 | undefined>;
     /**
      * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      *
@@ -2791,7 +2791,7 @@ export interface InstanceConfigInterface {
      *
      * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      */
-    primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean | undefined>;
     /**
      * The type of interface. (`public`, `vlan`, `vpc`)
      */
@@ -2799,22 +2799,22 @@ export interface InstanceConfigInterface {
     /**
      * The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
      */
-    subnetId?: pulumi.Input<number>;
+    subnetId?: pulumi.Input<number | undefined>;
     /**
      * The ID of VPC which this interface is attached to.
      */
-    vpcId?: pulumi.Input<number>;
+    vpcId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceConfigInterfaceIpv4 {
     /**
      * The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
      */
-    nat11?: pulumi.Input<string>;
+    nat11?: pulumi.Input<string | undefined>;
     /**
      * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
      */
-    vpc?: pulumi.Input<string>;
+    vpc?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceConfigInterfaceIpv6 {
@@ -2825,64 +2825,64 @@ export interface InstanceConfigInterfaceIpv6 {
      *
      * * `range` - (Optional) An array of IPv6 ranges to use for this interface.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
      */
-    ranges?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterfaceIpv6Range>[]>;
+    ranges?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterfaceIpv6Range>[] | undefined>;
     /**
      * An array of SLAAC prefixes to use for this interface.
      */
-    slaacs?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterfaceIpv6Slaac>[]>;
+    slaacs?: pulumi.Input<pulumi.Input<inputs.InstanceConfigInterfaceIpv6Slaac>[] | undefined>;
 }
 
 export interface InstanceConfigInterfaceIpv6Range {
     /**
      * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
      */
-    assignedRange?: pulumi.Input<string>;
+    assignedRange?: pulumi.Input<string | undefined>;
     /**
      * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceConfigInterfaceIpv6Slaac {
     /**
      * The SLAAC address chosen for this interface.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
      */
-    assignedRange?: pulumi.Input<string>;
+    assignedRange?: pulumi.Input<string | undefined>;
     /**
      * A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceDisk {
     /**
      * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
      */
-    authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
      */
-    authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Disk filesystem can be one of: raw, swap, ext3, ext4, initrd (max 32mb)
      */
-    filesystem?: pulumi.Input<string>;
+    filesystem?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Placement Group.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/.
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
@@ -2890,11 +2890,11 @@ export interface InstanceDisk {
     /**
      * If true, this Disk is read-only.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The password that will be initialially assigned to the 'root' user account.
      */
-    rootPass?: pulumi.Input<string>;
+    rootPass?: pulumi.Input<string | undefined>;
     /**
      * The size of the Disk in MB.
      */
@@ -2902,59 +2902,59 @@ export interface InstanceDisk {
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
      */
-    stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
      */
-    stackscriptId?: pulumi.Input<number>;
+    stackscriptId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceDiskTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceInterface {
     /**
      * Whether this interface is currently booted and active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Placement Group.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
      */
-    ipamAddress?: pulumi.Input<string>;
+    ipamAddress?: pulumi.Input<string | undefined>;
     /**
      * A set of reserved IPv4 addresses to assign to this Linode on creation.
      *
      * * **NOTE: IP reservation is not currently available to all users.**
      */
-    ipv4?: pulumi.Input<inputs.InstanceInterfaceIpv4>;
+    ipv4?: pulumi.Input<inputs.InstanceInterfaceIpv4 | undefined>;
     /**
      * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
      */
-    ipv6?: pulumi.Input<inputs.InstanceInterfaceIpv6>;
+    ipv6?: pulumi.Input<inputs.InstanceInterfaceIpv6 | undefined>;
     /**
      * The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      *
@@ -2962,7 +2962,7 @@ export interface InstanceInterface {
      *
      * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      */
-    primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean | undefined>;
     /**
      * The type of interface. (`public`, `vlan`, `vpc`)
      */
@@ -2970,22 +2970,22 @@ export interface InstanceInterface {
     /**
      * The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
      */
-    subnetId?: pulumi.Input<number>;
+    subnetId?: pulumi.Input<number | undefined>;
     /**
      * The ID of VPC which this interface is attached to.
      */
-    vpcId?: pulumi.Input<number>;
+    vpcId?: pulumi.Input<number | undefined>;
 }
 
 export interface InstanceInterfaceIpv4 {
     /**
      * The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
      */
-    nat11?: pulumi.Input<string>;
+    nat11?: pulumi.Input<string | undefined>;
     /**
      * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
      */
-    vpc?: pulumi.Input<string>;
+    vpc?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceInterfaceIpv6 {
@@ -2996,41 +2996,41 @@ export interface InstanceInterfaceIpv6 {
      *
      * * `range` - (Optional) An array of IPv6 ranges to use for this interface.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
      */
-    ranges?: pulumi.Input<pulumi.Input<inputs.InstanceInterfaceIpv6Range>[]>;
+    ranges?: pulumi.Input<pulumi.Input<inputs.InstanceInterfaceIpv6Range>[] | undefined>;
     /**
      * An array of SLAAC prefixes to use for this interface.
      */
-    slaacs?: pulumi.Input<pulumi.Input<inputs.InstanceInterfaceIpv6Slaac>[]>;
+    slaacs?: pulumi.Input<pulumi.Input<inputs.InstanceInterfaceIpv6Slaac>[] | undefined>;
 }
 
 export interface InstanceInterfaceIpv6Range {
     /**
      * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
      */
-    assignedRange?: pulumi.Input<string>;
+    assignedRange?: pulumi.Input<string | undefined>;
     /**
      * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceInterfaceIpv6Slaac {
     /**
      * The SLAAC address chosen for this interface.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
      */
-    assignedRange?: pulumi.Input<string>;
+    assignedRange?: pulumi.Input<string | undefined>;
     /**
      * A SLAAC prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceIpVpcNat11 {
@@ -3046,11 +3046,11 @@ export interface InstanceMetadata {
     /**
      * The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
 }
 
 export interface InstancePlacementGroup {
-    compliantOnly?: pulumi.Input<boolean>;
+    compliantOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Placement Group.
      */
@@ -3058,142 +3058,142 @@ export interface InstancePlacementGroup {
     /**
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * Whether the Placement Group enforces strict compliance.
      */
-    placementGroupPolicy?: pulumi.Input<string>;
+    placementGroupPolicy?: pulumi.Input<string | undefined>;
     /**
      * The placement group type enforced by the Placement Group.
      */
-    placementGroupType?: pulumi.Input<string>;
+    placementGroupType?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceSpec {
     /**
      * The number of VPUs this Linode has access to.
      */
-    acceleratedDevices?: pulumi.Input<number>;
+    acceleratedDevices?: pulumi.Input<number | undefined>;
     /**
      * The amount of storage space, in GB. this Linode has access to. A typical Linode will divide this space between a primary disk with an image deployed to it, and a swap disk, usually 512 MB. This is the default configuration created when deploying a Linode with an image through POST /linode/instances.
      */
-    disk?: pulumi.Input<number>;
+    disk?: pulumi.Input<number | undefined>;
     /**
      * The number of GPUs this Linode has access to.
      */
-    gpus?: pulumi.Input<number>;
+    gpus?: pulumi.Input<number | undefined>;
     /**
      * The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
      */
-    memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number | undefined>;
     /**
      * The amount of network transfer this Linode is allotted each month.
      */
-    transfer?: pulumi.Input<number>;
+    transfer?: pulumi.Input<number | undefined>;
     /**
      * The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
      */
-    vcpus?: pulumi.Input<number>;
+    vcpus?: pulumi.Input<number | undefined>;
 }
 
 export interface InterfaceDefaultRoute {
     /**
      * If set to true, the interface is used for the IPv4 default route.
      */
-    ipv4?: pulumi.Input<boolean>;
+    ipv4?: pulumi.Input<boolean | undefined>;
     /**
      * If set to true, the interface is used for the IPv6 default route.
      */
-    ipv6?: pulumi.Input<boolean>;
+    ipv6?: pulumi.Input<boolean | undefined>;
 }
 
 export interface InterfacePublic {
     /**
      * IPv4 addresses for this interface.
      */
-    ipv4?: pulumi.Input<inputs.InterfacePublicIpv4>;
+    ipv4?: pulumi.Input<inputs.InterfacePublicIpv4 | undefined>;
     /**
      * IPv6 addresses for this interface.
      */
-    ipv6?: pulumi.Input<inputs.InterfacePublicIpv6>;
+    ipv6?: pulumi.Input<inputs.InterfacePublicIpv6 | undefined>;
 }
 
 export interface InterfacePublicIpv4 {
     /**
      * IPv4 addresses configured for this Linode interface. Each object in this list supports:
      */
-    addresses?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv4Address>[]>;
+    addresses?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv4Address>[] | undefined>;
     /**
      * (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
      */
-    assignedAddresses?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv4AssignedAddress>[]>;
+    assignedAddresses?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv4AssignedAddress>[] | undefined>;
     /**
      * (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
      */
-    shareds?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv4Shared>[]>;
+    shareds?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv4Shared>[] | undefined>;
 }
 
 export interface InterfacePublicIpv4Address {
     /**
      * The IPv4 address. Defaults to "auto" for automatic assignment.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Whether this address is the primary address for the interface.
      */
-    primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean | undefined>;
 }
 
 export interface InterfacePublicIpv4AssignedAddress {
     /**
      * The assigned IPv4 address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * Whether this address is the primary address for the interface.
      */
-    primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean | undefined>;
 }
 
 export interface InterfacePublicIpv4Shared {
     /**
      * The assigned IPv4 address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Linode to assign this interface to.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
 }
 
 export interface InterfacePublicIpv6 {
     /**
      * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
      */
-    assignedRanges?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6AssignedRange>[]>;
+    assignedRanges?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6AssignedRange>[] | undefined>;
     /**
      * Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
      */
-    ranges?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6Range>[]>;
+    ranges?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6Range>[] | undefined>;
     /**
      * (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
      */
-    shareds?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6Shared>[]>;
+    shareds?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6Shared>[] | undefined>;
     /**
      * (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
      */
-    slaacs?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6Slaac>[]>;
+    slaacs?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6Slaac>[] | undefined>;
 }
 
 export interface InterfacePublicIpv6AssignedRange {
     /**
      * The IPv6 network range in CIDR notation.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
     /**
      * The public IPv6 address that the range is routed to.
      */
-    routeTarget?: pulumi.Input<string>;
+    routeTarget?: pulumi.Input<string | undefined>;
 }
 
 export interface InterfacePublicIpv6Range {
@@ -3207,29 +3207,29 @@ export interface InterfacePublicIpv6Shared {
     /**
      * The IPv6 network range in CIDR notation.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
     /**
      * The public IPv6 address that the range is routed to.
      */
-    routeTarget?: pulumi.Input<string>;
+    routeTarget?: pulumi.Input<string | undefined>;
 }
 
 export interface InterfacePublicIpv6Slaac {
     /**
      * The assigned IPv4 address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The subnet prefix length.
      */
-    prefix?: pulumi.Input<number>;
+    prefix?: pulumi.Input<number | undefined>;
 }
 
 export interface InterfaceVlan {
     /**
      * The VLAN interface's private IPv4 address in CIDR notation.
      */
-    ipamAddress?: pulumi.Input<string>;
+    ipamAddress?: pulumi.Input<string | undefined>;
     /**
      * The VLAN's unique label. Must be between 1 and 64 characters.
      */
@@ -3240,11 +3240,11 @@ export interface InterfaceVpc {
     /**
      * IPv4 configuration for the VPC interface.
      */
-    ipv4?: pulumi.Input<inputs.InterfaceVpcIpv4>;
+    ipv4?: pulumi.Input<inputs.InterfaceVpcIpv4 | undefined>;
     /**
      * IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
      */
-    ipv6?: pulumi.Input<inputs.InterfaceVpcIpv6>;
+    ipv6?: pulumi.Input<inputs.InterfaceVpcIpv6 | undefined>;
     /**
      * The VPC subnet identifier for this interface.
      */
@@ -3255,56 +3255,56 @@ export interface InterfaceVpcIpv4 {
     /**
      * Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
      */
-    addresses?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv4Address>[]>;
+    addresses?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv4Address>[] | undefined>;
     /**
      * (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
      */
-    assignedAddresses?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv4AssignedAddress>[]>;
+    assignedAddresses?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv4AssignedAddress>[] | undefined>;
     /**
      * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
      */
-    assignedRanges?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv4AssignedRange>[]>;
+    assignedRanges?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv4AssignedRange>[] | undefined>;
     /**
      * IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
      */
-    ranges?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv4Range>[]>;
+    ranges?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv4Range>[] | undefined>;
 }
 
 export interface InterfaceVpcIpv4Address {
     /**
      * The IPv4 address. Defaults to "auto" for automatic assignment.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
      */
-    nat11Address?: pulumi.Input<string>;
+    nat11Address?: pulumi.Input<string | undefined>;
     /**
      * Whether this address is the primary address for the interface.
      */
-    primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean | undefined>;
 }
 
 export interface InterfaceVpcIpv4AssignedAddress {
     /**
      * The assigned IPv4 address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The assigned 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
      */
-    nat11Address?: pulumi.Input<string>;
+    nat11Address?: pulumi.Input<string | undefined>;
     /**
      * Whether this address is the primary address for the interface.
      */
-    primary?: pulumi.Input<boolean>;
+    primary?: pulumi.Input<boolean | undefined>;
 }
 
 export interface InterfaceVpcIpv4AssignedRange {
     /**
      * The IPv6 network range in CIDR notation.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
 }
 
 export interface InterfaceVpcIpv4Range {
@@ -3318,143 +3318,143 @@ export interface InterfaceVpcIpv6 {
     /**
      * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
      */
-    assignedRanges?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv6AssignedRange>[]>;
+    assignedRanges?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv6AssignedRange>[] | undefined>;
     /**
      * Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
      */
-    assignedSlaacs?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv6AssignedSlaac>[]>;
+    assignedSlaacs?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv6AssignedSlaac>[] | undefined>;
     /**
      * Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Defines additional IPv6 network ranges.
      */
-    ranges?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv6Range>[]>;
+    ranges?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv6Range>[] | undefined>;
     /**
      * Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
      */
-    slaacs?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv6Slaac>[]>;
+    slaacs?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv6Slaac>[] | undefined>;
 }
 
 export interface InterfaceVpcIpv6AssignedRange {
     /**
      * The IPv6 network range in CIDR notation.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
 }
 
 export interface InterfaceVpcIpv6AssignedSlaac {
     /**
      * The assigned IPv4 address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 network range in CIDR notation.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
 }
 
 export interface InterfaceVpcIpv6Range {
     /**
      * The IPv6 network range in CIDR notation.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
 }
 
 export interface InterfaceVpcIpv6Slaac {
     /**
      * The IPv6 network range in CIDR notation.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
 }
 
 export interface LkeClusterControlPlane {
     /**
      * Defines the ACL configuration for an LKE cluster's control plane.
      */
-    acl?: pulumi.Input<inputs.LkeClusterControlPlaneAcl>;
+    acl?: pulumi.Input<inputs.LkeClusterControlPlaneAcl | undefined>;
     /**
      * Enables audit logs on the cluster's control plane.
      *
      * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
      */
-    auditLogsEnabled?: pulumi.Input<boolean>;
+    auditLogsEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
      */
-    highAvailability?: pulumi.Input<boolean>;
+    highAvailability?: pulumi.Input<boolean | undefined>;
 }
 
 export interface LkeClusterControlPlaneAcl {
     /**
      * A list of ip addresses to allow.
      */
-    addresses?: pulumi.Input<pulumi.Input<inputs.LkeClusterControlPlaneAclAddress>[]>;
+    addresses?: pulumi.Input<pulumi.Input<inputs.LkeClusterControlPlaneAclAddress>[] | undefined>;
     /**
      * Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
      *
      * * `addresses` - (Optional) A list of ip addresses to allow.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface LkeClusterControlPlaneAclAddress {
     /**
      * A set of individual ipv4 addresses or CIDRs to ALLOW.
      */
-    ipv4s?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of individual ipv6 addresses or CIDRs to ALLOW.
      */
-    ipv6s?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface LkeClusterPool {
     /**
      * When specified, the number of nodes autoscales within the defined minimum and maximum values.
      */
-    autoscaler?: pulumi.Input<inputs.LkeClusterPoolAutoscaler>;
+    autoscaler?: pulumi.Input<inputs.LkeClusterPoolAutoscaler | undefined>;
     /**
      * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      */
-    count?: pulumi.Input<number>;
+    count?: pulumi.Input<number | undefined>;
     /**
      * The disk encryption policy for nodes in this pool.
      */
-    diskEncryption?: pulumi.Input<string>;
+    diskEncryption?: pulumi.Input<string | undefined>;
     /**
      * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
      */
-    firewallId?: pulumi.Input<number>;
+    firewallId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the node.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
-    k8sVersion?: pulumi.Input<string>;
+    k8sVersion?: pulumi.Input<string | undefined>;
     /**
      * A label for the Node Pool. If not provided, it defaults to empty string.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The nodes in the node pool.
      */
-    nodes?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolNode>[]>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolNode>[] | undefined>;
     /**
      * A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolTaint>[] | undefined>;
     /**
      * A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
@@ -3462,7 +3462,7 @@ export interface LkeClusterPool {
     /**
      * The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
-    updateStrategy?: pulumi.Input<string>;
+    updateStrategy?: pulumi.Input<string | undefined>;
 }
 
 export interface LkeClusterPoolAutoscaler {
@@ -3480,15 +3480,15 @@ export interface LkeClusterPoolNode {
     /**
      * The ID of the node.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The ID of the underlying Linode instance.
      */
-    instanceId?: pulumi.Input<number>;
+    instanceId?: pulumi.Input<number | undefined>;
     /**
      * The status of the node. (`ready`, `notReady`)
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 export interface LkeClusterPoolTaint {
@@ -3512,11 +3512,11 @@ export interface LkeNodePoolAutoscaler {
     /**
      * The maximum number of nodes to autoscale to.
      */
-    max?: pulumi.Input<number>;
+    max?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of nodes to autoscale to.
      */
-    min?: pulumi.Input<number>;
+    min?: pulumi.Input<number | undefined>;
 }
 
 export interface LkeNodePoolNode {
@@ -3698,12 +3698,12 @@ export interface NodeBalancerVpc {
     /**
      * (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
      */
-    ipv4Range?: pulumi.Input<string>;
+    ipv4Range?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * (Optional, Write-Only) Enables the use of a larger ipv4Range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
      */
-    ipv4RangeAutoAssign?: pulumi.Input<boolean>;
+    ipv4RangeAutoAssign?: pulumi.Input<boolean | undefined>;
     /**
      * (Required) The ID of a subnet to assign to this NodeBalancer.
      */
@@ -3729,7 +3729,7 @@ export interface ObjectStorageBucketLifecycleRule {
      *
      * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
      */
-    abortIncompleteMultipartUploadDays?: pulumi.Input<number>;
+    abortIncompleteMultipartUploadDays?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether the lifecycle rule is active.
      */
@@ -3737,34 +3737,34 @@ export interface ObjectStorageBucketLifecycleRule {
     /**
      * Specifies a period in the object's expire.
      */
-    expiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleRuleExpiration>;
+    expiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleRuleExpiration | undefined>;
     /**
      * The unique identifier for the rule.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Specifies when non-current object versions expire.
      */
-    noncurrentVersionExpiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration>;
+    noncurrentVersionExpiration?: pulumi.Input<inputs.ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration | undefined>;
     /**
      * The object key prefix identifying one or more objects to which the rule applies.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
 }
 
 export interface ObjectStorageBucketLifecycleRuleExpiration {
     /**
      * Specifies the date after which you want the corresponding action to take effect.
      */
-    date?: pulumi.Input<string>;
+    date?: pulumi.Input<string | undefined>;
     /**
      * Specifies the number of days after object creation when the specific rule action takes effect.
      */
-    days?: pulumi.Input<number>;
+    days?: pulumi.Input<number | undefined>;
     /**
      * On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
      */
-    expiredObjectDeleteMarker?: pulumi.Input<boolean>;
+    expiredObjectDeleteMarker?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
@@ -3784,7 +3784,7 @@ export interface ObjectStorageKeyBucketAccess {
      *
      * @deprecated The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
      */
-    cluster?: pulumi.Input<string>;
+    cluster?: pulumi.Input<string | undefined>;
     /**
      * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      */
@@ -3792,7 +3792,7 @@ export interface ObjectStorageKeyBucketAccess {
     /**
      * The region where the bucket resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface ObjectStorageKeyRegionsDetail {
@@ -3827,7 +3827,7 @@ export interface ProducerImageShareGroupImage {
      *
      * * `images` - (Optional) A list of Images to include in the Image Share Group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (Required) The ID of the Image to share. This must be in the format `private/<image_id>`.
      */
@@ -3835,18 +3835,18 @@ export interface ProducerImageShareGroupImage {
     /**
      * The label of the Image Share Group.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
 }
 
 export interface RdnsTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface ReservedIpAssignmentVpcNat11 {
@@ -3908,55 +3908,55 @@ export interface UserGlobalGrants {
     /**
      * The level of access this User has to Account-level actions, like billing information. A restricted User will never be able to manage users.
      */
-    accountAccess?: pulumi.Input<string>;
+    accountAccess?: pulumi.Input<string | undefined>;
     /**
      * If true, this User may add Databases.
      */
-    addDatabases?: pulumi.Input<boolean>;
+    addDatabases?: pulumi.Input<boolean | undefined>;
     /**
      * If true, this User may add Domains.
      */
-    addDomains?: pulumi.Input<boolean>;
+    addDomains?: pulumi.Input<boolean | undefined>;
     /**
      * If true, this User may add Firewalls.
      */
-    addFirewalls?: pulumi.Input<boolean>;
+    addFirewalls?: pulumi.Input<boolean | undefined>;
     /**
      * If true, this User may add Images.
      */
-    addImages?: pulumi.Input<boolean>;
+    addImages?: pulumi.Input<boolean | undefined>;
     /**
      * If true, this User may create Linodes.
      */
-    addLinodes?: pulumi.Input<boolean>;
+    addLinodes?: pulumi.Input<boolean | undefined>;
     /**
      * If true, this User may create Longview clients and view the current plan.
      */
-    addLongview?: pulumi.Input<boolean>;
+    addLongview?: pulumi.Input<boolean | undefined>;
     /**
      * If true, this User may add NodeBalancers.
      */
-    addNodebalancers?: pulumi.Input<boolean>;
+    addNodebalancers?: pulumi.Input<boolean | undefined>;
     /**
      * If true, this User may add StackScripts.
      */
-    addStackscripts?: pulumi.Input<boolean>;
+    addStackscripts?: pulumi.Input<boolean | undefined>;
     /**
      * If true, this User may add Volumes.
      */
-    addVolumes?: pulumi.Input<boolean>;
+    addVolumes?: pulumi.Input<boolean | undefined>;
     /**
      * If true, this User may add Virtual Private Clouds (VPCs).
      */
-    addVpcs?: pulumi.Input<boolean>;
+    addVpcs?: pulumi.Input<boolean | undefined>;
     /**
      * If true, this User may cancel the entire Account.
      */
-    cancelAccount?: pulumi.Input<boolean>;
+    cancelAccount?: pulumi.Input<boolean | undefined>;
     /**
      * If true, this User may manage the Account’s Longview subscription.
      */
-    longviewSubscription?: pulumi.Input<boolean>;
+    longviewSubscription?: pulumi.Input<boolean | undefined>;
 }
 
 export interface UserImageGrant {
@@ -4040,31 +4040,31 @@ export interface VolumeTimeouts {
     /**
      * Used when creating the volume (until the volume is reaches the initial `active` state)
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * Used when deleting the volume
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * Used when updating the volume when necessary during update - e.g. when resizing the volume
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface VpcIpv6 {
     /**
      * The IPv6 range assigned to this VPC.
      */
-    allocatedRange?: pulumi.Input<string>;
+    allocatedRange?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The labeled IPv6 Inventory that the VPC Prefix should be allocated from.
      */
-    allocationClass?: pulumi.Input<string>;
+    allocationClass?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 range assigned to this VPC.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
 }
 
 export interface VpcSubnetDatabase {
@@ -4093,11 +4093,11 @@ export interface VpcSubnetIpv6 {
     /**
      * The IPv6 range assigned to this subnet.
      */
-    allocatedRange?: pulumi.Input<string>;
+    allocatedRange?: pulumi.Input<string | undefined>;
     /**
      * An IPv6 address range in CIDR notation.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
 }
 
 export interface VpcSubnetLinode {

@@ -169,12 +169,12 @@ export function getVpcIpsOutput(args?: GetVpcIpsOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getVpcIps.
  */
 export interface GetVpcIpsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetVpcIpsFilterArgs>[]>;
-    ipv6?: pulumi.Input<boolean>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetVpcIpsFilterArgs>[] | undefined>;
+    ipv6?: pulumi.Input<boolean | undefined>;
     /**
      * The id of the parent VPC for the list of VPC IPs.
      *
      * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
      */
-    vpcId?: pulumi.Input<number>;
+    vpcId?: pulumi.Input<number | undefined>;
 }

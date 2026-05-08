@@ -126,8 +126,8 @@ def get_nodebalancer_vpc(id: Optional[_builtins.int] = None,
         nodebalancer_id=pulumi.get(__ret__, 'nodebalancer_id'),
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_nodebalancer_vpc_output(id: Optional[pulumi.Input[_builtins.int]] = None,
-                                nodebalancer_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_nodebalancer_vpc_output(id: pulumi.Input[Optional[_builtins.int]] = None,
+                                nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodebalancerVpcResult]:
     """
     > **Limited Availability** VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.

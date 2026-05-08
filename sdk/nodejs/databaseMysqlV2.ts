@@ -590,147 +590,147 @@ export interface DatabaseMysqlV2State {
     /**
      * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
      */
-    allowLists?: pulumi.Input<pulumi.Input<string>[]>;
+    allowLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The base64-encoded SSL CA certificate for the Managed Database.
      */
-    caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string | undefined>;
     /**
      * The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
      */
-    clusterSize?: pulumi.Input<number>;
+    clusterSize?: pulumi.Input<number | undefined>;
     /**
      * When this Managed Database was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Whether the Managed Databases is encrypted.
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * The Managed Database engine. (e.g. `mysql`)
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
      */
-    engineConfigBinlogRetentionPeriod?: pulumi.Input<number>;
+    engineConfigBinlogRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
      */
-    engineConfigMysqlConnectTimeout?: pulumi.Input<number>;
+    engineConfigMysqlConnectTimeout?: pulumi.Input<number | undefined>;
     /**
      * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
      */
-    engineConfigMysqlDefaultTimeZone?: pulumi.Input<string>;
+    engineConfigMysqlDefaultTimeZone?: pulumi.Input<string | undefined>;
     /**
      * The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
      */
-    engineConfigMysqlGroupConcatMaxLen?: pulumi.Input<number>;
+    engineConfigMysqlGroupConcatMaxLen?: pulumi.Input<number | undefined>;
     /**
      * The time, in seconds, before cached statistics expire.
      */
-    engineConfigMysqlInformationSchemaStatsExpiry?: pulumi.Input<number>;
+    engineConfigMysqlInformationSchemaStatsExpiry?: pulumi.Input<number | undefined>;
     /**
      * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
      */
-    engineConfigMysqlInnodbChangeBufferMaxSize?: pulumi.Input<number>;
+    engineConfigMysqlInnodbChangeBufferMaxSize?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
      */
-    engineConfigMysqlInnodbFlushNeighbors?: pulumi.Input<number>;
+    engineConfigMysqlInnodbFlushNeighbors?: pulumi.Input<number | undefined>;
     /**
      * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
      */
-    engineConfigMysqlInnodbFtMinTokenSize?: pulumi.Input<number>;
+    engineConfigMysqlInnodbFtMinTokenSize?: pulumi.Input<number | undefined>;
     /**
      * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
      */
-    engineConfigMysqlInnodbFtServerStopwordTable?: pulumi.Input<string>;
+    engineConfigMysqlInnodbFtServerStopwordTable?: pulumi.Input<string | undefined>;
     /**
      * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
      */
-    engineConfigMysqlInnodbLockWaitTimeout?: pulumi.Input<number>;
+    engineConfigMysqlInnodbLockWaitTimeout?: pulumi.Input<number | undefined>;
     /**
      * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
      */
-    engineConfigMysqlInnodbLogBufferSize?: pulumi.Input<number>;
+    engineConfigMysqlInnodbLogBufferSize?: pulumi.Input<number | undefined>;
     /**
      * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      */
-    engineConfigMysqlInnodbOnlineAlterLogMaxSize?: pulumi.Input<number>;
+    engineConfigMysqlInnodbOnlineAlterLogMaxSize?: pulumi.Input<number | undefined>;
     /**
      * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
      */
-    engineConfigMysqlInnodbReadIoThreads?: pulumi.Input<number>;
+    engineConfigMysqlInnodbReadIoThreads?: pulumi.Input<number | undefined>;
     /**
      * When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
      */
-    engineConfigMysqlInnodbRollbackOnTimeout?: pulumi.Input<boolean>;
+    engineConfigMysqlInnodbRollbackOnTimeout?: pulumi.Input<boolean | undefined>;
     /**
      * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
      */
-    engineConfigMysqlInnodbThreadConcurrency?: pulumi.Input<number>;
+    engineConfigMysqlInnodbThreadConcurrency?: pulumi.Input<number | undefined>;
     /**
      * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
      */
-    engineConfigMysqlInnodbWriteIoThreads?: pulumi.Input<number>;
+    engineConfigMysqlInnodbWriteIoThreads?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds the server waits for activity on an interactive connection before closing it.
      */
-    engineConfigMysqlInteractiveTimeout?: pulumi.Input<number>;
+    engineConfigMysqlInteractiveTimeout?: pulumi.Input<number | undefined>;
     /**
      * The storage engine for in-memory internal temporary tables.
      */
-    engineConfigMysqlInternalTmpMemStorageEngine?: pulumi.Input<string>;
+    engineConfigMysqlInternalTmpMemStorageEngine?: pulumi.Input<string | undefined>;
     /**
      * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      */
-    engineConfigMysqlMaxAllowedPacket?: pulumi.Input<number>;
+    engineConfigMysqlMaxAllowedPacket?: pulumi.Input<number | undefined>;
     /**
      * Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
      */
-    engineConfigMysqlMaxHeapTableSize?: pulumi.Input<number>;
+    engineConfigMysqlMaxHeapTableSize?: pulumi.Input<number | undefined>;
     /**
      * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
      */
-    engineConfigMysqlNetBufferLength?: pulumi.Input<number>;
+    engineConfigMysqlNetBufferLength?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds to wait for more data from a connection before aborting the read.
      */
-    engineConfigMysqlNetReadTimeout?: pulumi.Input<number>;
+    engineConfigMysqlNetReadTimeout?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds to wait for a block to be written to a connection before aborting the write.
      */
-    engineConfigMysqlNetWriteTimeout?: pulumi.Input<number>;
+    engineConfigMysqlNetWriteTimeout?: pulumi.Input<number | undefined>;
     /**
      * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
      */
-    engineConfigMysqlSortBufferSize?: pulumi.Input<number>;
+    engineConfigMysqlSortBufferSize?: pulumi.Input<number | undefined>;
     /**
      * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
      */
-    engineConfigMysqlSqlMode?: pulumi.Input<string>;
+    engineConfigMysqlSqlMode?: pulumi.Input<string | undefined>;
     /**
      * Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
      */
-    engineConfigMysqlSqlRequirePrimaryKey?: pulumi.Input<boolean>;
+    engineConfigMysqlSqlRequirePrimaryKey?: pulumi.Input<boolean | undefined>;
     /**
      * Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
      */
-    engineConfigMysqlTmpTableSize?: pulumi.Input<number>;
+    engineConfigMysqlTmpTableSize?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds the server waits for activity on a noninteractive connection before closing it.
      */
-    engineConfigMysqlWaitTimeout?: pulumi.Input<number>;
+    engineConfigMysqlWaitTimeout?: pulumi.Input<number | undefined>;
     /**
      * The Managed Database engine in engine/version format. (e.g. `mysql`)
      */
-    engineId?: pulumi.Input<string>;
+    engineId?: pulumi.Input<string | undefined>;
     /**
      * The database timestamp from which it was restored.
      */
-    forkRestoreTime?: pulumi.Input<string>;
+    forkRestoreTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the database that was forked from.
      *
@@ -738,92 +738,92 @@ export interface DatabaseMysqlV2State {
      *
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
-    forkSource?: pulumi.Input<number>;
+    forkSource?: pulumi.Input<number | undefined>;
     /**
      * The primary host for the Managed Database.
      */
-    hostPrimary?: pulumi.Input<string>;
+    hostPrimary?: pulumi.Input<string | undefined>;
     /**
      * The secondary/private host for the managed database.
      *
      * @deprecated Use hostStandby instead.
      */
-    hostSecondary?: pulumi.Input<string>;
+    hostSecondary?: pulumi.Input<string | undefined>;
     /**
      * The standby host for the Managed Database.
      */
-    hostStandby?: pulumi.Input<string>;
+    hostStandby?: pulumi.Input<string | undefined>;
     /**
      * A unique, user-defined string referring to the Managed Database.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * A mapping between IP addresses and strings designating them as primary or failover.
      */
-    members?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    members?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The oldest time to which a database can be restored.
      */
-    oldestRestoreTime?: pulumi.Input<string>;
+    oldestRestoreTime?: pulumi.Input<string | undefined>;
     /**
      * A set of pending updates.
      */
-    pendingUpdates?: pulumi.Input<pulumi.Input<inputs.DatabaseMysqlV2PendingUpdate>[]>;
+    pendingUpdates?: pulumi.Input<pulumi.Input<inputs.DatabaseMysqlV2PendingUpdate>[] | undefined>;
     /**
      * The back-end platform for relational databases used by the service.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * The access port for this Managed Database.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
      */
-    privateNetwork?: pulumi.Input<inputs.DatabaseMysqlV2PrivateNetwork>;
+    privateNetwork?: pulumi.Input<inputs.DatabaseMysqlV2PrivateNetwork | undefined>;
     /**
      * The region to use for the Managed Database.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The randomly-generated root password for the Managed Database instance.
      */
-    rootPassword?: pulumi.Input<string>;
+    rootPassword?: pulumi.Input<string | undefined>;
     /**
      * The root username for the Managed Database instance.
      */
-    rootUsername?: pulumi.Input<string>;
+    rootUsername?: pulumi.Input<string | undefined>;
     /**
      * Whether to require SSL credentials to establish a connection to the Managed Database.
      */
-    sslConnection?: pulumi.Input<boolean>;
+    sslConnection?: pulumi.Input<boolean | undefined>;
     /**
      * The operating status of the Managed Database.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Whether this Managed Database should be suspended.
      */
-    suspended?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.DatabaseMysqlV2Timeouts>;
+    suspended?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.DatabaseMysqlV2Timeouts | undefined>;
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
      *
      * - - -
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * When this Managed Database was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for automated patch update maintenance for the Managed Database.
      */
-    updates?: pulumi.Input<inputs.DatabaseMysqlV2Updates>;
+    updates?: pulumi.Input<inputs.DatabaseMysqlV2Updates | undefined>;
     /**
      * The Managed Database engine version. (e.g. `13.2`)
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -833,123 +833,123 @@ export interface DatabaseMysqlV2Args {
     /**
      * A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `linode.DatabaseAccessControls` to manage your allow list separately.
      */
-    allowLists?: pulumi.Input<pulumi.Input<string>[]>;
+    allowLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
      */
-    clusterSize?: pulumi.Input<number>;
+    clusterSize?: pulumi.Input<number | undefined>;
     /**
      * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
      */
-    engineConfigBinlogRetentionPeriod?: pulumi.Input<number>;
+    engineConfigBinlogRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
      */
-    engineConfigMysqlConnectTimeout?: pulumi.Input<number>;
+    engineConfigMysqlConnectTimeout?: pulumi.Input<number | undefined>;
     /**
      * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
      */
-    engineConfigMysqlDefaultTimeZone?: pulumi.Input<string>;
+    engineConfigMysqlDefaultTimeZone?: pulumi.Input<string | undefined>;
     /**
      * The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
      */
-    engineConfigMysqlGroupConcatMaxLen?: pulumi.Input<number>;
+    engineConfigMysqlGroupConcatMaxLen?: pulumi.Input<number | undefined>;
     /**
      * The time, in seconds, before cached statistics expire.
      */
-    engineConfigMysqlInformationSchemaStatsExpiry?: pulumi.Input<number>;
+    engineConfigMysqlInformationSchemaStatsExpiry?: pulumi.Input<number | undefined>;
     /**
      * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
      */
-    engineConfigMysqlInnodbChangeBufferMaxSize?: pulumi.Input<number>;
+    engineConfigMysqlInnodbChangeBufferMaxSize?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
      */
-    engineConfigMysqlInnodbFlushNeighbors?: pulumi.Input<number>;
+    engineConfigMysqlInnodbFlushNeighbors?: pulumi.Input<number | undefined>;
     /**
      * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
      */
-    engineConfigMysqlInnodbFtMinTokenSize?: pulumi.Input<number>;
+    engineConfigMysqlInnodbFtMinTokenSize?: pulumi.Input<number | undefined>;
     /**
      * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. This field is nullable.
      */
-    engineConfigMysqlInnodbFtServerStopwordTable?: pulumi.Input<string>;
+    engineConfigMysqlInnodbFtServerStopwordTable?: pulumi.Input<string | undefined>;
     /**
      * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
      */
-    engineConfigMysqlInnodbLockWaitTimeout?: pulumi.Input<number>;
+    engineConfigMysqlInnodbLockWaitTimeout?: pulumi.Input<number | undefined>;
     /**
      * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
      */
-    engineConfigMysqlInnodbLogBufferSize?: pulumi.Input<number>;
+    engineConfigMysqlInnodbLogBufferSize?: pulumi.Input<number | undefined>;
     /**
      * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      */
-    engineConfigMysqlInnodbOnlineAlterLogMaxSize?: pulumi.Input<number>;
+    engineConfigMysqlInnodbOnlineAlterLogMaxSize?: pulumi.Input<number | undefined>;
     /**
      * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
      */
-    engineConfigMysqlInnodbReadIoThreads?: pulumi.Input<number>;
+    engineConfigMysqlInnodbReadIoThreads?: pulumi.Input<number | undefined>;
     /**
      * When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
      */
-    engineConfigMysqlInnodbRollbackOnTimeout?: pulumi.Input<boolean>;
+    engineConfigMysqlInnodbRollbackOnTimeout?: pulumi.Input<boolean | undefined>;
     /**
      * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
      */
-    engineConfigMysqlInnodbThreadConcurrency?: pulumi.Input<number>;
+    engineConfigMysqlInnodbThreadConcurrency?: pulumi.Input<number | undefined>;
     /**
      * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
      */
-    engineConfigMysqlInnodbWriteIoThreads?: pulumi.Input<number>;
+    engineConfigMysqlInnodbWriteIoThreads?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds the server waits for activity on an interactive connection before closing it.
      */
-    engineConfigMysqlInteractiveTimeout?: pulumi.Input<number>;
+    engineConfigMysqlInteractiveTimeout?: pulumi.Input<number | undefined>;
     /**
      * The storage engine for in-memory internal temporary tables.
      */
-    engineConfigMysqlInternalTmpMemStorageEngine?: pulumi.Input<string>;
+    engineConfigMysqlInternalTmpMemStorageEngine?: pulumi.Input<string | undefined>;
     /**
      * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      */
-    engineConfigMysqlMaxAllowedPacket?: pulumi.Input<number>;
+    engineConfigMysqlMaxAllowedPacket?: pulumi.Input<number | undefined>;
     /**
      * Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
      */
-    engineConfigMysqlMaxHeapTableSize?: pulumi.Input<number>;
+    engineConfigMysqlMaxHeapTableSize?: pulumi.Input<number | undefined>;
     /**
      * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
      */
-    engineConfigMysqlNetBufferLength?: pulumi.Input<number>;
+    engineConfigMysqlNetBufferLength?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds to wait for more data from a connection before aborting the read.
      */
-    engineConfigMysqlNetReadTimeout?: pulumi.Input<number>;
+    engineConfigMysqlNetReadTimeout?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds to wait for a block to be written to a connection before aborting the write.
      */
-    engineConfigMysqlNetWriteTimeout?: pulumi.Input<number>;
+    engineConfigMysqlNetWriteTimeout?: pulumi.Input<number | undefined>;
     /**
      * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
      */
-    engineConfigMysqlSortBufferSize?: pulumi.Input<number>;
+    engineConfigMysqlSortBufferSize?: pulumi.Input<number | undefined>;
     /**
      * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. (default `ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES`)
      */
-    engineConfigMysqlSqlMode?: pulumi.Input<string>;
+    engineConfigMysqlSqlMode?: pulumi.Input<string | undefined>;
     /**
      * Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. (default `true`)
      */
-    engineConfigMysqlSqlRequirePrimaryKey?: pulumi.Input<boolean>;
+    engineConfigMysqlSqlRequirePrimaryKey?: pulumi.Input<boolean | undefined>;
     /**
      * Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
      */
-    engineConfigMysqlTmpTableSize?: pulumi.Input<number>;
+    engineConfigMysqlTmpTableSize?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds the server waits for activity on a noninteractive connection before closing it.
      */
-    engineConfigMysqlWaitTimeout?: pulumi.Input<number>;
+    engineConfigMysqlWaitTimeout?: pulumi.Input<number | undefined>;
     /**
      * The Managed Database engine in engine/version format. (e.g. `mysql`)
      */
@@ -957,7 +957,7 @@ export interface DatabaseMysqlV2Args {
     /**
      * The database timestamp from which it was restored.
      */
-    forkRestoreTime?: pulumi.Input<string>;
+    forkRestoreTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the database that was forked from.
      *
@@ -965,7 +965,7 @@ export interface DatabaseMysqlV2Args {
      *
      * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
      */
-    forkSource?: pulumi.Input<number>;
+    forkSource?: pulumi.Input<number | undefined>;
     /**
      * A unique, user-defined string referring to the Managed Database.
      */
@@ -973,7 +973,7 @@ export interface DatabaseMysqlV2Args {
     /**
      * Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
      */
-    privateNetwork?: pulumi.Input<inputs.DatabaseMysqlV2PrivateNetwork>;
+    privateNetwork?: pulumi.Input<inputs.DatabaseMysqlV2PrivateNetwork | undefined>;
     /**
      * The region to use for the Managed Database.
      */
@@ -981,8 +981,8 @@ export interface DatabaseMysqlV2Args {
     /**
      * Whether this Managed Database should be suspended.
      */
-    suspended?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.DatabaseMysqlV2Timeouts>;
+    suspended?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.DatabaseMysqlV2Timeouts | undefined>;
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
      *
@@ -992,5 +992,5 @@ export interface DatabaseMysqlV2Args {
     /**
      * Configuration settings for automated patch update maintenance for the Managed Database.
      */
-    updates?: pulumi.Input<inputs.DatabaseMysqlV2Updates>;
+    updates?: pulumi.Input<inputs.DatabaseMysqlV2Updates | undefined>;
 }

@@ -149,9 +149,9 @@ def get_nodebalancers(filters: Optional[Sequence[Union['GetNodebalancersFilterAr
         nodebalancers=pulumi.get(__ret__, 'nodebalancers'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_nodebalancers_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNodebalancersFilterArgs', 'GetNodebalancersFilterArgsDict']]]]] = None,
-                             order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_nodebalancers_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNodebalancersFilterArgs', 'GetNodebalancersFilterArgsDict']]]]] = None,
+                             order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodebalancersResult]:
     """
     Provides information about Linode NodeBalancers that match a set of filters.

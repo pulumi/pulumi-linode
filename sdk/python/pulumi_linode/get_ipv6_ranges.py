@@ -106,7 +106,7 @@ def get_ipv6_ranges(filters: Optional[Sequence[Union['GetIpv6RangesFilterArgs', 
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         ranges=pulumi.get(__ret__, 'ranges'))
-def get_ipv6_ranges_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetIpv6RangesFilterArgs', 'GetIpv6RangesFilterArgsDict']]]]] = None,
+def get_ipv6_ranges_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetIpv6RangesFilterArgs', 'GetIpv6RangesFilterArgsDict']]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpv6RangesResult]:
     """
     Provides information about Linode IPv6 ranges that match a set of filters.

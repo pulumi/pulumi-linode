@@ -289,7 +289,7 @@ def get_image(id: Optional[_builtins.str] = None,
         total_size=pulumi.get(__ret__, 'total_size'),
         type=pulumi.get(__ret__, 'type'),
         vendor=pulumi.get(__ret__, 'vendor'))
-def get_image_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_image_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
     Provides information about a Linode image

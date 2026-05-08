@@ -296,7 +296,7 @@ def get_lke_cluster(id: Optional[_builtins.int] = None,
         tier=pulumi.get(__ret__, 'tier'),
         updated=pulumi.get(__ret__, 'updated'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_lke_cluster_output(id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_lke_cluster_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeClusterResult]:
     """
     Provides details about an LKE Cluster.

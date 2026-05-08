@@ -125,7 +125,7 @@ def get_object_storage_cluster(id: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         static_site_domain=pulumi.get(__ret__, 'static_site_domain'),
         status=pulumi.get(__ret__, 'status'))
-def get_object_storage_cluster_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_object_storage_cluster_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageClusterResult]:
     """
     Provides information about a Linode Object Storage Cluster

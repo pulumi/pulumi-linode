@@ -115,7 +115,7 @@ def get_instance_backups(linode_id: Optional[_builtins.int] = None,
         id=pulumi.get(__ret__, 'id'),
         in_progresses=pulumi.get(__ret__, 'in_progresses'),
         linode_id=pulumi.get(__ret__, 'linode_id'))
-def get_instance_backups_output(linode_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_instance_backups_output(linode_id: pulumi.Input[Optional[_builtins.int]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceBackupsResult]:
     """
     Provides details about the backups of an Instance.

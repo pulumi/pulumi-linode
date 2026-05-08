@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  *     authorizedKeys: ["..."],
  *     rootPass: "...",
- *     stackscriptId: foo.id,
+ *     stackscriptId: foo.id.apply(x =>Number(x)),
  *     stackscriptData: {
  *         "package": "nginx",
  *     },
@@ -203,57 +203,57 @@ export interface StackScriptState {
     /**
      * The date this StackScript was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Count of currently active, deployed Linodes created from this StackScript.
      */
-    deploymentsActive?: pulumi.Input<number>;
+    deploymentsActive?: pulumi.Input<number | undefined>;
     /**
      * The total number of times this StackScript has been deployed.
      */
-    deploymentsTotal?: pulumi.Input<number>;
+    deploymentsTotal?: pulumi.Input<number | undefined>;
     /**
      * A description for the StackScript.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
      *
      * - - -
      */
-    images?: pulumi.Input<pulumi.Input<string>[]>;
+    images?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * The StackScript's label is for display purposes only.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * This field allows you to add notes for the set of revisions made to this StackScript.
      */
-    revNote?: pulumi.Input<string>;
+    revNote?: pulumi.Input<string | undefined>;
     /**
      * The script to execute when provisioning a new Linode with this StackScript.
      */
-    script?: pulumi.Input<string>;
+    script?: pulumi.Input<string | undefined>;
     /**
      * The date this StackScript was updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
     /**
      * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
      */
-    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.StackScriptUserDefinedField>[]>;
+    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.StackScriptUserDefinedField>[] | undefined>;
     /**
      * The Gravatar ID for the User who created the StackScript.
      */
-    userGravatarId?: pulumi.Input<string>;
+    userGravatarId?: pulumi.Input<string | undefined>;
     /**
      * The User who created the StackScript.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -273,7 +273,7 @@ export interface StackScriptArgs {
     /**
      * This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `isPublic` forces the creation of a new StackScript*
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * The StackScript's label is for display purposes only.
      */
@@ -281,7 +281,7 @@ export interface StackScriptArgs {
     /**
      * This field allows you to add notes for the set of revisions made to this StackScript.
      */
-    revNote?: pulumi.Input<string>;
+    revNote?: pulumi.Input<string | undefined>;
     /**
      * The script to execute when provisioning a new Linode with this StackScript.
      */

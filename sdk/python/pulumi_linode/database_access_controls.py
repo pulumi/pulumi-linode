@@ -73,9 +73,9 @@ class DatabaseAccessControlsArgs:
 @pulumi.input_type
 class _DatabaseAccessControlsState:
     def __init__(__self__, *,
-                 allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 database_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 database_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseAccessControls resources.
 
@@ -92,38 +92,38 @@ class _DatabaseAccessControlsState:
 
     @_builtins.property
     @pulumi.getter(name="allowLists")
-    def allow_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allow_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
         """
         return pulumi.get(self, "allow_lists")
 
     @allow_lists.setter
-    def allow_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allow_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allow_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseId")
-    def database_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def database_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique ID of the target database.
         """
         return pulumi.get(self, "database_id")
 
     @database_id.setter
-    def database_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def database_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "database_id", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseType")
-    def database_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique type of the target database. (`mysql`, `postgresql`)
         """
         return pulumi.get(self, "database_type")
 
     @database_type.setter
-    def database_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_type", value)
 
 
@@ -133,9 +133,9 @@ class DatabaseAccessControls(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 database_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 database_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages the access control for a Linode Database. Only one `DatabaseAccessControls` resource should be defined per-database.
@@ -158,7 +158,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             region="us-southeast",
             type="g6-nanode-1")
         my_access = linode.DatabaseAccessControls("my-access",
-            database_id=my_db.id,
+            database_id=my_db.id.apply(lambda x: int(x)),
             database_type="mysql",
             allow_lists=[my_instance.ip_address])
         ```
@@ -197,7 +197,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             region="us-southeast",
             type="g6-nanode-1")
         my_access = linode.DatabaseAccessControls("my-access",
-            database_id=my_db.id,
+            database_id=my_db.id.apply(lambda x: int(x)),
             database_type="mysql",
             allow_lists=[my_instance.ip_address])
         ```
@@ -218,9 +218,9 @@ class DatabaseAccessControls(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 database_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 database_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 database_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -249,9 +249,9 @@ class DatabaseAccessControls(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            database_id: Optional[pulumi.Input[_builtins.int]] = None,
-            database_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseAccessControls':
+            allow_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            database_id: pulumi.Input[Optional[_builtins.int]] = None,
+            database_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseAccessControls':
         """
         Get an existing DatabaseAccessControls resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

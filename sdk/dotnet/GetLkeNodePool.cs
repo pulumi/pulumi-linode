@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_node_pool = Linode.Index.GetLkeNodePool.Invoke(new()
+        ///     var my_node_pool = Linode.GetLkeNodePool.Invoke(new()
         ///     {
         ///         Id = 123,
         ///         ClusterId = 321,
@@ -51,7 +51,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_node_pool = Linode.Index.GetLkeNodePool.Invoke(new()
+        ///     var my_node_pool = Linode.GetLkeNodePool.Invoke(new()
         ///     {
         ///         Id = 123,
         ///         ClusterId = 321,
@@ -77,7 +77,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_node_pool = Linode.Index.GetLkeNodePool.Invoke(new()
+        ///     var my_node_pool = Linode.GetLkeNodePool.Invoke(new()
         ///     {
         ///         Id = 123,
         ///         ClusterId = 321,

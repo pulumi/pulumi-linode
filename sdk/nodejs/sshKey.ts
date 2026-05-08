@@ -126,15 +126,15 @@ export interface SshKeyState {
     /**
      * The date this SSH Key was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * A label for the SSH Key.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
      */
-    sshKey?: pulumi.Input<string>;
+    sshKey?: pulumi.Input<string | undefined>;
 }
 
 /**

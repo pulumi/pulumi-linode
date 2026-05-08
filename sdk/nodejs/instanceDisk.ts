@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * });
  * const boot = new linode.InstanceDisk("boot", {
  *     label: "boot",
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: 512,
  *     filesystem: "ext4",
  * });
@@ -41,7 +41,7 @@ import * as utilities from "./utilities";
  * });
  * const boot = new linode.InstanceDisk("boot", {
  *     label: "boot",
- *     linodeId: my_instance.id,
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: my_instance.specs.apply(specs => specs[0].disk),
  *     image: "linode/ubuntu22.04",
  *     rootPass: "myc00lpass!",
@@ -218,62 +218,62 @@ export interface InstanceDiskState {
     /**
      * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
      */
-    authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
      */
-    authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When this disk was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
      */
-    diskEncryption?: pulumi.Input<string>;
+    diskEncryption?: pulumi.Input<string | undefined>;
     /**
      * The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
      */
-    filesystem?: pulumi.Input<string>;
+    filesystem?: pulumi.Input<string | undefined>;
     /**
      * An Image ID to deploy the Linode Disk from.
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * The Disk's label for display purposes only.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Linode to create this Disk under.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
      */
-    rootPass?: pulumi.Input<string>;
+    rootPass?: pulumi.Input<string | undefined>;
     /**
      * The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
      *
      * - - -
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      */
-    stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      */
-    stackscriptId?: pulumi.Input<number>;
+    stackscriptId?: pulumi.Input<number | undefined>;
     /**
      * A brief description of this Disk's current state.
      */
-    status?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.InstanceDiskTimeouts>;
+    status?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.InstanceDiskTimeouts | undefined>;
     /**
      * When this disk was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -283,19 +283,19 @@ export interface InstanceDiskArgs {
     /**
      * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
      */
-    authorizedKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
      */
-    authorizedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
      */
-    filesystem?: pulumi.Input<string>;
+    filesystem?: pulumi.Input<string | undefined>;
     /**
      * An Image ID to deploy the Linode Disk from.
      */
-    image?: pulumi.Input<string>;
+    image?: pulumi.Input<string | undefined>;
     /**
      * The Disk's label for display purposes only.
      */
@@ -307,7 +307,7 @@ export interface InstanceDiskArgs {
     /**
      * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
      */
-    rootPass?: pulumi.Input<string>;
+    rootPass?: pulumi.Input<string | undefined>;
     /**
      * The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
      *
@@ -317,10 +317,10 @@ export interface InstanceDiskArgs {
     /**
      * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscriptId` is given. (Requires `image`)
      */
-    stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
      */
-    stackscriptId?: pulumi.Input<number>;
-    timeouts?: pulumi.Input<inputs.InstanceDiskTimeouts>;
+    stackscriptId?: pulumi.Input<number | undefined>;
+    timeouts?: pulumi.Input<inputs.InstanceDiskTimeouts | undefined>;
 }

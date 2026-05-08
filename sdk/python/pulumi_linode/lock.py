@@ -73,11 +73,11 @@ class LockArgs:
 @pulumi.input_type
 class _LockState:
     def __init__(__self__, *,
-                 entity_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 entity_label: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 lock_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 entity_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 entity_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 lock_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Lock resources.
 
@@ -100,62 +100,62 @@ class _LockState:
 
     @_builtins.property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def entity_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the entity to lock.
         """
         return pulumi.get(self, "entity_id")
 
     @entity_id.setter
-    def entity_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def entity_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "entity_id", value)
 
     @_builtins.property
     @pulumi.getter(name="entityLabel")
-    def entity_label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The label of the locked entity.
         """
         return pulumi.get(self, "entity_label")
 
     @entity_label.setter
-    def entity_label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_label", value)
 
     @_builtins.property
     @pulumi.getter(name="entityType")
-    def entity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
         """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
-    def entity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_type", value)
 
     @_builtins.property
     @pulumi.getter(name="entityUrl")
-    def entity_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the locked entity.
         """
         return pulumi.get(self, "entity_url")
 
     @entity_url.setter
-    def entity_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_url", value)
 
     @_builtins.property
     @pulumi.getter(name="lockType")
-    def lock_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lock_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
         """
         return pulumi.get(self, "lock_type")
 
     @lock_type.setter
-    def lock_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lock_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lock_type", value)
 
 
@@ -165,9 +165,9 @@ class Lock(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 lock_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 lock_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Early Access** Locks are in Early Access and may not be available to all users.
@@ -191,7 +191,7 @@ class Lock(pulumi.CustomResource):
             region="us-east",
             type="g6-nanode-1")
         my_lock = linode.Lock("my-lock",
-            entity_id=my_inst.id,
+            entity_id=my_inst.id.apply(lambda x: int(x)),
             entity_type="linode",
             lock_type="cannot_delete")
         ```
@@ -204,7 +204,7 @@ class Lock(pulumi.CustomResource):
             region="us-east",
             type="g6-nanode-1")
         my_lock = linode.Lock("my-lock",
-            entity_id=my_inst.id,
+            entity_id=my_inst.id.apply(lambda x: int(x)),
             entity_type="linode",
             lock_type="cannot_delete_with_subresources")
         ```
@@ -252,7 +252,7 @@ class Lock(pulumi.CustomResource):
             region="us-east",
             type="g6-nanode-1")
         my_lock = linode.Lock("my-lock",
-            entity_id=my_inst.id,
+            entity_id=my_inst.id.apply(lambda x: int(x)),
             entity_type="linode",
             lock_type="cannot_delete")
         ```
@@ -265,7 +265,7 @@ class Lock(pulumi.CustomResource):
             region="us-east",
             type="g6-nanode-1")
         my_lock = linode.Lock("my-lock",
-            entity_id=my_inst.id,
+            entity_id=my_inst.id.apply(lambda x: int(x)),
             entity_type="linode",
             lock_type="cannot_delete_with_subresources")
         ```
@@ -294,9 +294,9 @@ class Lock(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 lock_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 lock_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -327,11 +327,11 @@ class Lock(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            entity_id: Optional[pulumi.Input[_builtins.int]] = None,
-            entity_label: Optional[pulumi.Input[_builtins.str]] = None,
-            entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-            entity_url: Optional[pulumi.Input[_builtins.str]] = None,
-            lock_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Lock':
+            entity_id: pulumi.Input[Optional[_builtins.int]] = None,
+            entity_label: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_url: pulumi.Input[Optional[_builtins.str]] = None,
+            lock_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Lock':
         """
         Get an existing Lock resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

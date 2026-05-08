@@ -82,7 +82,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * const my_pool = new linode.LkeNodePool("my-pool", {
- *     clusterId: my_cluster.id,
+ *     clusterId: my_cluster.id.apply(x =>Number(x)),
  *     type: "g6-standard-2",
  *     nodeCount: 3,
  *     tags: [externalPoolTag],
@@ -236,51 +236,51 @@ export class LkeNodePool extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LkeNodePool resources.
  */
 export interface LkeNodePoolState {
-    autoscaler?: pulumi.Input<inputs.LkeNodePoolAutoscaler>;
+    autoscaler?: pulumi.Input<inputs.LkeNodePoolAutoscaler | undefined>;
     /**
      * ID of the LKE Cluster where to create the current Node Pool.
      */
-    clusterId?: pulumi.Input<number>;
+    clusterId?: pulumi.Input<number | undefined>;
     /**
      * The disk encryption policy for nodes in this pool.
      */
-    diskEncryption?: pulumi.Input<string>;
+    diskEncryption?: pulumi.Input<string | undefined>;
     /**
      * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
      */
-    firewallId?: pulumi.Input<number>;
+    firewallId?: pulumi.Input<number | undefined>;
     /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
-    k8sVersion?: pulumi.Input<string>;
+    k8sVersion?: pulumi.Input<string | undefined>;
     /**
      * A label for the Node Pool. If not provided, it defaults to empty string.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * A list of nodes in the node pool.
      */
-    nodes?: pulumi.Input<pulumi.Input<inputs.LkeNodePoolNode>[]>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.LkeNodePoolNode>[] | undefined>;
     /**
      * An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.LkeNodePoolTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.LkeNodePoolTaint>[] | undefined>;
     /**
      * A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
      *
@@ -288,14 +288,14 @@ export interface LkeNodePoolState {
      *
      * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
-    updateStrategy?: pulumi.Input<string>;
+    updateStrategy?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a LkeNodePool resource.
  */
 export interface LkeNodePoolArgs {
-    autoscaler?: pulumi.Input<inputs.LkeNodePoolAutoscaler>;
+    autoscaler?: pulumi.Input<inputs.LkeNodePoolAutoscaler | undefined>;
     /**
      * ID of the LKE Cluster where to create the current Node Pool.
      */
@@ -303,31 +303,31 @@ export interface LkeNodePoolArgs {
     /**
      * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
      */
-    firewallId?: pulumi.Input<number>;
+    firewallId?: pulumi.Input<number | undefined>;
     /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
-    k8sVersion?: pulumi.Input<string>;
+    k8sVersion?: pulumi.Input<string | undefined>;
     /**
      * A label for the Node Pool. If not provided, it defaults to empty string.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.LkeNodePoolTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.LkeNodePoolTaint>[] | undefined>;
     /**
      * A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
      */
@@ -339,5 +339,5 @@ export interface LkeNodePoolArgs {
      *
      * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
-    updateStrategy?: pulumi.Input<string>;
+    updateStrategy?: pulumi.Input<string | undefined>;
 }

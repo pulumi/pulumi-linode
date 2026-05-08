@@ -119,5 +119,5 @@ export interface GetLkeVersionsOutputArgs {
     /**
      * The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
 }

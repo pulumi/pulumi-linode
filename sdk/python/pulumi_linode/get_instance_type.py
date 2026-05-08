@@ -214,8 +214,8 @@ def get_instance_type(id: Optional[_builtins.str] = None,
         region_prices=pulumi.get(__ret__, 'region_prices'),
         transfer=pulumi.get(__ret__, 'transfer'),
         vcpus=pulumi.get(__ret__, 'vcpus'))
-def get_instance_type_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                             label: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_type_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                             label: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypeResult]:
     """
     Provides information about a Linode instance type

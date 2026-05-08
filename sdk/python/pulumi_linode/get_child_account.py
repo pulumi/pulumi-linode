@@ -269,7 +269,7 @@ def get_child_account(euuid: Optional[_builtins.str] = None,
         phone=pulumi.get(__ret__, 'phone'),
         state=pulumi.get(__ret__, 'state'),
         zip=pulumi.get(__ret__, 'zip'))
-def get_child_account_output(euuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_child_account_output(euuid: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetChildAccountResult]:
     """
     Provides information about a Linode Child Account.

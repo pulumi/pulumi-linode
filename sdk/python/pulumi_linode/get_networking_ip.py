@@ -230,7 +230,7 @@ def get_networking_ip(address: Optional[_builtins.str] = None,
         subnet_mask=pulumi.get(__ret__, 'subnet_mask'),
         type=pulumi.get(__ret__, 'type'),
         vpc_nat11=pulumi.get(__ret__, 'vpc_nat11'))
-def get_networking_ip_output(address: Optional[pulumi.Input[_builtins.str]] = None,
+def get_networking_ip_output(address: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkingIpResult]:
     """
     Provides information about a Linode Networking IP Address

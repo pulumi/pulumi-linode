@@ -126,16 +126,16 @@ export interface RdnsState {
     /**
      * The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The name of the RDNS address.
      */
-    rdns?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.RdnsTimeouts>;
+    rdns?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.RdnsTimeouts | undefined>;
     /**
      * If true, the RDNS assignment will be retried within the operation timeout period.
      */
-    waitForAvailable?: pulumi.Input<boolean>;
+    waitForAvailable?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -150,9 +150,9 @@ export interface RdnsArgs {
      * The name of the RDNS address.
      */
     rdns: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.RdnsTimeouts>;
+    timeouts?: pulumi.Input<inputs.RdnsTimeouts | undefined>;
     /**
      * If true, the RDNS assignment will be retried within the operation timeout period.
      */
-    waitForAvailable?: pulumi.Input<boolean>;
+    waitForAvailable?: pulumi.Input<boolean | undefined>;
 }

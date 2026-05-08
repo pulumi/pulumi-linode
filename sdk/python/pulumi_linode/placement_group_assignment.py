@@ -21,7 +21,7 @@ class PlacementGroupAssignmentArgs:
     def __init__(__self__, *,
                  linode_id: pulumi.Input[_builtins.int],
                  placement_group_id: pulumi.Input[_builtins.int],
-                 compliant_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 compliant_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PlacementGroupAssignment resource.
 
@@ -59,20 +59,20 @@ class PlacementGroupAssignmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="compliantOnly")
-    def compliant_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def compliant_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "compliant_only")
 
     @compliant_only.setter
-    def compliant_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def compliant_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compliant_only", value)
 
 
 @pulumi.input_type
 class _PlacementGroupAssignmentState:
     def __init__(__self__, *,
-                 compliant_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 placement_group_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 compliant_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 placement_group_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering PlacementGroupAssignment resources.
 
@@ -88,35 +88,35 @@ class _PlacementGroupAssignmentState:
 
     @_builtins.property
     @pulumi.getter(name="compliantOnly")
-    def compliant_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def compliant_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "compliant_only")
 
     @compliant_only.setter
-    def compliant_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def compliant_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compliant_only", value)
 
     @_builtins.property
     @pulumi.getter(name="linodeId")
-    def linode_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def linode_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique ID of the Linode to assign.
         """
         return pulumi.get(self, "linode_id")
 
     @linode_id.setter
-    def linode_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def linode_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "linode_id", value)
 
     @_builtins.property
     @pulumi.getter(name="placementGroupId")
-    def placement_group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def placement_group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique ID of the target Placement Group.
         """
         return pulumi.get(self, "placement_group_id")
 
     @placement_group_id.setter
-    def placement_group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def placement_group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "placement_group_id", value)
 
 
@@ -126,9 +126,9 @@ class PlacementGroupAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compliant_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 placement_group_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 compliant_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 placement_group_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a single assignment between a Linode and a Placement Group.
@@ -159,8 +159,8 @@ class PlacementGroupAssignment(pulumi.CustomResource):
             type="g6-nanode-1",
             placement_group_externally_managed=True)
         my_assignment = linode.PlacementGroupAssignment("my-assignment",
-            placement_group_id=my_pg.id,
-            linode_id=my_inst.id)
+            placement_group_id=my_pg.id.apply(lambda x: int(x)),
+            linode_id=my_inst.id.apply(lambda x: int(x)))
         ```
 
         ## Import
@@ -212,8 +212,8 @@ class PlacementGroupAssignment(pulumi.CustomResource):
             type="g6-nanode-1",
             placement_group_externally_managed=True)
         my_assignment = linode.PlacementGroupAssignment("my-assignment",
-            placement_group_id=my_pg.id,
-            linode_id=my_inst.id)
+            placement_group_id=my_pg.id.apply(lambda x: int(x)),
+            linode_id=my_inst.id.apply(lambda x: int(x)))
         ```
 
         ## Import
@@ -240,9 +240,9 @@ class PlacementGroupAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compliant_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 placement_group_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 compliant_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 placement_group_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -269,9 +269,9 @@ class PlacementGroupAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compliant_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            linode_id: Optional[pulumi.Input[_builtins.int]] = None,
-            placement_group_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'PlacementGroupAssignment':
+            compliant_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            placement_group_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'PlacementGroupAssignment':
         """
         Get an existing PlacementGroupAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

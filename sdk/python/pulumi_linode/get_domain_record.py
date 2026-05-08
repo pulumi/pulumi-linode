@@ -228,9 +228,9 @@ def get_domain_record(domain_id: Optional[_builtins.int] = None,
         ttl_sec=pulumi.get(__ret__, 'ttl_sec'),
         type=pulumi.get(__ret__, 'type'),
         weight=pulumi.get(__ret__, 'weight'))
-def get_domain_record_output(domain_id: Optional[pulumi.Input[_builtins.int]] = None,
-                             id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_domain_record_output(domain_id: pulumi.Input[Optional[_builtins.int]] = None,
+                             id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainRecordResult]:
     """
     Provides information about a Linode Domain Record.

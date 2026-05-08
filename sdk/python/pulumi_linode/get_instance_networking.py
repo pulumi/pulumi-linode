@@ -105,7 +105,7 @@ def get_instance_networking(linode_id: Optional[_builtins.int] = None,
         ipv4s=pulumi.get(__ret__, 'ipv4s'),
         ipv6s=pulumi.get(__ret__, 'ipv6s'),
         linode_id=pulumi.get(__ret__, 'linode_id'))
-def get_instance_networking_output(linode_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_instance_networking_output(linode_id: pulumi.Input[Optional[_builtins.int]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceNetworkingResult]:
     """
     Provides details about the networking configuration of an Instance.

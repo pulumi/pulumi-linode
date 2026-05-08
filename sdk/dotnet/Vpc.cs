@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Linode.Index.Vpc("test", new()
+    ///     var test = new Linode.Vpc("test", new()
     ///     {
     ///         Label = "test-vpc",
     ///         Region = "us-iad",
@@ -46,7 +46,7 @@ namespace Pulumi.Linode
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // NOTE: IPv6 VPCs may not currently be available to all users.
-    ///     var test = new Linode.Index.Vpc("test", new()
+    ///     var test = new Linode.Vpc("test", new()
     ///     {
     ///         Label = "test-vpc",
     ///         Region = "us-iad",

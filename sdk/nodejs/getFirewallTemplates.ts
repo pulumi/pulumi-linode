@@ -107,5 +107,5 @@ export function getFirewallTemplatesOutput(args?: GetFirewallTemplatesOutputArgs
  * A collection of arguments for invoking getFirewallTemplates.
  */
 export interface GetFirewallTemplatesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetFirewallTemplatesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetFirewallTemplatesFilterArgs>[] | undefined>;
 }

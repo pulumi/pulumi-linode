@@ -69,5 +69,5 @@ export function getMaintenancePoliciesOutput(args?: GetMaintenancePoliciesOutput
  * A collection of arguments for invoking getMaintenancePolicies.
  */
 export interface GetMaintenancePoliciesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetMaintenancePoliciesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetMaintenancePoliciesFilterArgs>[] | undefined>;
 }

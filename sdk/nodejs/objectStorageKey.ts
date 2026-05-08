@@ -166,33 +166,33 @@ export interface ObjectStorageKeyState {
     /**
      * This keypair's access key. This is not secret.
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
      */
-    bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[]>;
+    bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[] | undefined>;
     /**
      * The label given to this key. For display purposes only.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * Whether or not this key is a limited access key.
      */
-    limited?: pulumi.Input<boolean>;
+    limited?: pulumi.Input<boolean | undefined>;
     /**
      * A set of regions where the key will grant access to create buckets.
      *
      * - - -
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A set of objects containing the detailed info of the regions where this key can access.
      */
-    regionsDetails?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyRegionsDetail>[]>;
+    regionsDetails?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyRegionsDetail>[] | undefined>;
     /**
      * This keypair's secret key.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,7 +202,7 @@ export interface ObjectStorageKeyArgs {
     /**
      * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
      */
-    bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[]>;
+    bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[] | undefined>;
     /**
      * The label given to this key. For display purposes only.
      */
@@ -212,5 +212,5 @@ export interface ObjectStorageKeyArgs {
      *
      * - - -
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

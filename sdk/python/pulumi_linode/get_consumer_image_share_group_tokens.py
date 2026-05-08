@@ -138,10 +138,10 @@ def get_consumer_image_share_group_tokens(filters: Optional[Sequence[Union['GetC
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         tokens=pulumi.get(__ret__, 'tokens'))
-def get_consumer_image_share_group_tokens_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetConsumerImageShareGroupTokensFilterArgs', 'GetConsumerImageShareGroupTokensFilterArgsDict']]]]] = None,
-                                                 order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 tokens: Optional[pulumi.Input[Optional[Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict']]]]] = None,
+def get_consumer_image_share_group_tokens_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetConsumerImageShareGroupTokensFilterArgs', 'GetConsumerImageShareGroupTokensFilterArgsDict']]]]] = None,
+                                                 order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 tokens: pulumi.Input[Optional[Optional[Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict']]]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConsumerImageShareGroupTokensResult]:
     """
     Provides information about a list of Image Share Group Tokens that match a set of filters.

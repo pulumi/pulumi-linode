@@ -25,8 +25,8 @@ class StackScriptArgs:
                  images: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  label: pulumi.Input[_builtins.str],
                  script: pulumi.Input[_builtins.str],
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rev_note: Optional[pulumi.Input[_builtins.str]] = None):
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rev_note: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StackScript resource.
 
@@ -100,45 +100,45 @@ class StackScriptArgs:
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
-    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter(name="revNote")
-    def rev_note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rev_note(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field allows you to add notes for the set of revisions made to this StackScript.
         """
         return pulumi.get(self, "rev_note")
 
     @rev_note.setter
-    def rev_note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rev_note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rev_note", value)
 
 
 @pulumi.input_type
 class _StackScriptState:
     def __init__(__self__, *,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployments_active: Optional[pulumi.Input[_builtins.int]] = None,
-                 deployments_total: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 rev_note: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]]] = None,
-                 user_gravatar_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployments_active: pulumi.Input[Optional[_builtins.int]] = None,
+                 deployments_total: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 rev_note: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]]] = None,
+                 user_gravatar_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StackScript resources.
 
@@ -187,55 +187,55 @@ class _StackScriptState:
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date this StackScript was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentsActive")
-    def deployments_active(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deployments_active(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Count of currently active, deployed Linodes created from this StackScript.
         """
         return pulumi.get(self, "deployments_active")
 
     @deployments_active.setter
-    def deployments_active(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deployments_active(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deployments_active", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentsTotal")
-    def deployments_total(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deployments_total(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The total number of times this StackScript has been deployed.
         """
         return pulumi.get(self, "deployments_total")
 
     @deployments_total.setter
-    def deployments_total(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deployments_total(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deployments_total", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A description for the StackScript.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
 
@@ -244,103 +244,103 @@ class _StackScriptState:
         return pulumi.get(self, "images")
 
     @images.setter
-    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "images", value)
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
-    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This determines whether other users can use your StackScript. Once a StackScript is made public, it cannot be made private. *Changing `is_public` forces the creation of a new StackScript*
         """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
-    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The StackScript's label is for display purposes only.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter(name="revNote")
-    def rev_note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rev_note(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This field allows you to add notes for the set of revisions made to this StackScript.
         """
         return pulumi.get(self, "rev_note")
 
     @rev_note.setter
-    def rev_note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rev_note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rev_note", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The script to execute when provisioning a new Linode with this StackScript.
         """
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date this StackScript was updated.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefinedFields")
-    def user_defined_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]]]:
+    def user_defined_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]]]:
         """
         This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
         """
         return pulumi.get(self, "user_defined_fields")
 
     @user_defined_fields.setter
-    def user_defined_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]]]):
+    def user_defined_fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]]]):
         pulumi.set(self, "user_defined_fields", value)
 
     @_builtins.property
     @pulumi.getter(name="userGravatarId")
-    def user_gravatar_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_gravatar_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Gravatar ID for the User who created the StackScript.
         """
         return pulumi.get(self, "user_gravatar_id")
 
     @user_gravatar_id.setter
-    def user_gravatar_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_gravatar_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_gravatar_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The User who created the StackScript.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -350,12 +350,12 @@ class StackScript(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 rev_note: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 rev_note: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Linode StackScript resource.  This can be used to create, modify, and delete Linode StackScripts.  StackScripts are private or public managed scripts which run within an instance during startup.  StackScripts can include variables whose values are specified when the Instance is created.
@@ -389,7 +389,7 @@ class StackScript(pulumi.CustomResource):
             type="g6-nanode-1",
             authorized_keys=["..."],
             root_pass="...",
-            stackscript_id=foo.id,
+            stackscript_id=foo.id.apply(lambda x: int(x)),
             stackscript_data={
                 "package": "nginx",
             })
@@ -453,7 +453,7 @@ class StackScript(pulumi.CustomResource):
             type="g6-nanode-1",
             authorized_keys=["..."],
             root_pass="...",
-            stackscript_id=foo.id,
+            stackscript_id=foo.id.apply(lambda x: int(x)),
             stackscript_data={
                 "package": "nginx",
             })
@@ -483,12 +483,12 @@ class StackScript(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 rev_note: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 rev_note: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -529,19 +529,19 @@ class StackScript(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            deployments_active: Optional[pulumi.Input[_builtins.int]] = None,
-            deployments_total: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            rev_note: Optional[pulumi.Input[_builtins.str]] = None,
-            script: Optional[pulumi.Input[_builtins.str]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None,
-            user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackScriptUserDefinedFieldArgs', 'StackScriptUserDefinedFieldArgsDict']]]]] = None,
-            user_gravatar_id: Optional[pulumi.Input[_builtins.str]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'StackScript':
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            deployments_active: pulumi.Input[Optional[_builtins.int]] = None,
+            deployments_total: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            rev_note: pulumi.Input[Optional[_builtins.str]] = None,
+            script: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackScriptUserDefinedFieldArgs', 'StackScriptUserDefinedFieldArgsDict']]]]] = None,
+            user_gravatar_id: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'StackScript':
         """
         Get an existing StackScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -24,13 +24,13 @@ class FirewallArgs:
                  inbound_policy: pulumi.Input[_builtins.str],
                  label: pulumi.Input[_builtins.str],
                  outbound_policy: pulumi.Input[_builtins.str],
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inbounds: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 outbounds: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Firewall resource.
 
@@ -107,7 +107,7 @@ class FirewallArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, the Firewall's rules are not enforced (defaults to `false`).
 
@@ -116,99 +116,99 @@ class FirewallArgs:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def inbounds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]]:
+    def inbounds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundArgs']]]]:
         """
         A firewall rule that specifies what inbound network traffic is allowed.
         """
         return pulumi.get(self, "inbounds")
 
     @inbounds.setter
-    def inbounds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]]):
+    def inbounds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundArgs']]]]):
         pulumi.set(self, "inbounds", value)
 
     @_builtins.property
     @pulumi.getter
-    def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
         """
         return pulumi.get(self, "interfaces")
 
     @interfaces.setter
-    def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "interfaces", value)
 
     @_builtins.property
     @pulumi.getter
-    def linodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def linodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of IDs of Linodes this Firewall should govern network traffic for.
         """
         return pulumi.get(self, "linodes")
 
     @linodes.setter
-    def linodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def linodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "linodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodebalancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def nodebalancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         """
         return pulumi.get(self, "nodebalancers")
 
     @nodebalancers.setter
-    def nodebalancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def nodebalancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "nodebalancers", value)
 
     @_builtins.property
     @pulumi.getter
-    def outbounds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]]:
+    def outbounds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundArgs']]]]:
         """
         A firewall rule that specifies what outbound network traffic is allowed.
         """
         return pulumi.get(self, "outbounds")
 
     @outbounds.setter
-    def outbounds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]]):
+    def outbounds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundArgs']]]]):
         pulumi.set(self, "outbounds", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _FirewallState:
     def __init__(__self__, *,
-                 created: Optional[pulumi.Input[_builtins.str]] = None,
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeviceArgs']]]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 outbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 updated: Optional[pulumi.Input[_builtins.str]] = None):
+                 created: pulumi.Input[Optional[_builtins.str]] = None,
+                 devices: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallDeviceArgs']]]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 inbounds: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundArgs']]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 outbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 outbounds: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
 
@@ -262,31 +262,31 @@ class _FirewallState:
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When this firewall was created
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeviceArgs']]]]:
+    def devices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallDeviceArgs']]]]:
         """
         The devices associated with this firewall.
         """
         return pulumi.get(self, "devices")
 
     @devices.setter
-    def devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeviceArgs']]]]):
+    def devices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallDeviceArgs']]]]):
         pulumi.set(self, "devices", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, the Firewall's rules are not enforced (defaults to `false`).
 
@@ -295,12 +295,12 @@ class _FirewallState:
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="inboundPolicy")
-    def inbound_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inbound_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 
@@ -309,127 +309,127 @@ class _FirewallState:
         return pulumi.get(self, "inbound_policy")
 
     @inbound_policy.setter
-    def inbound_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inbound_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inbound_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def inbounds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]]:
+    def inbounds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundArgs']]]]:
         """
         A firewall rule that specifies what inbound network traffic is allowed.
         """
         return pulumi.get(self, "inbounds")
 
     @inbounds.setter
-    def inbounds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundArgs']]]]):
+    def inbounds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundArgs']]]]):
         pulumi.set(self, "inbounds", value)
 
     @_builtins.property
     @pulumi.getter
-    def interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
         """
         return pulumi.get(self, "interfaces")
 
     @interfaces.setter
-    def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "interfaces", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This Firewall's unique label.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter
-    def linodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def linodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of IDs of Linodes this Firewall should govern network traffic for.
         """
         return pulumi.get(self, "linodes")
 
     @linodes.setter
-    def linodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def linodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "linodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodebalancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def nodebalancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         """
         return pulumi.get(self, "nodebalancers")
 
     @nodebalancers.setter
-    def nodebalancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def nodebalancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "nodebalancers", value)
 
     @_builtins.property
     @pulumi.getter(name="outboundPolicy")
-    def outbound_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def outbound_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
         """
         return pulumi.get(self, "outbound_policy")
 
     @outbound_policy.setter
-    def outbound_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def outbound_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "outbound_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def outbounds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]]:
+    def outbounds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundArgs']]]]:
         """
         A firewall rule that specifies what outbound network traffic is allowed.
         """
         return pulumi.get(self, "outbounds")
 
     @outbounds.setter
-    def outbounds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundArgs']]]]):
+    def outbounds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundArgs']]]]):
         pulumi.set(self, "outbounds", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Firewall.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When this firewall was last updated
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
 
@@ -439,16 +439,16 @@ class Firewall(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 outbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 inbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 outbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 outbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Manages a Linode Firewall.
@@ -507,7 +507,7 @@ class Firewall(pulumi.CustomResource):
                 },
             ],
             outbound_policy="ACCEPT",
-            linodes=[my_instance.id])
+            linodes=[my_instance.id.apply(lambda x: int(x))])
         ```
 
         ## Import
@@ -599,7 +599,7 @@ class Firewall(pulumi.CustomResource):
                 },
             ],
             outbound_policy="ACCEPT",
-            linodes=[my_instance.id])
+            linodes=[my_instance.id.apply(lambda x: int(x))])
         ```
 
         ## Import
@@ -626,16 +626,16 @@ class Firewall(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
-                 interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 outbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 inbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 outbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 outbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -675,20 +675,20 @@ class Firewall(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created: Optional[pulumi.Input[_builtins.str]] = None,
-            devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallDeviceArgs', 'FirewallDeviceArgsDict']]]]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            inbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            inbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
-            interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            linodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            nodebalancers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            outbound_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            outbounds: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            updated: Optional[pulumi.Input[_builtins.str]] = None) -> 'Firewall':
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallDeviceArgs', 'FirewallDeviceArgsDict']]]]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            inbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            inbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
+            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            outbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            outbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None) -> 'Firewall':
         """
         Get an existing Firewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

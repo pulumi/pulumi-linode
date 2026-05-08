@@ -29,7 +29,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_stackscripts = Linode.Index.GetStackScripts.Invoke(new()
+        ///     var specific_stackscripts = Linode.GetStackScripts.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -100,7 +100,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_stackscripts = Linode.Index.GetStackScripts.Invoke(new()
+        ///     var specific_stackscripts = Linode.GetStackScripts.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -171,7 +171,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific_stackscripts = Linode.Index.GetStackScripts.Invoke(new()
+        ///     var specific_stackscripts = Linode.GetStackScripts.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

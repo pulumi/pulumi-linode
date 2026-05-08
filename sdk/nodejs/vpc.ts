@@ -154,29 +154,29 @@ export interface VpcState {
     /**
      * The date and time when the VPC was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * The user-defined description of this VPC.
      *
      * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 configuration of this VPC.
      */
-    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcIpv6>[]>;
+    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcIpv6>[] | undefined>;
     /**
      * The label of the VPC. This field can only contain ASCII letters, digits and dashes.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The region of the VPC.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the VPC was last updated.
      */
-    updated?: pulumi.Input<string>;
+    updated?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -188,11 +188,11 @@ export interface VpcArgs {
      *
      * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 configuration of this VPC.
      */
-    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcIpv6>[]>;
+    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcIpv6>[] | undefined>;
     /**
      * The label of the VPC. This field can only contain ASCII letters, digits and dashes.
      */

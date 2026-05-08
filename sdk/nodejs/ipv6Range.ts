@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *     region: "us-southeast",
  * });
  * const foobarIpv6Range = new linode.Ipv6Range("foobar", {
- *     linodeId: foobar.id,
+ *     linodeId: foobar.id.apply(x =>Number(x)),
  *     prefixLength: 64,
  * });
  * ```
@@ -130,31 +130,31 @@ export interface Ipv6RangeState {
     /**
      * Whether this IPv6 range is shared.
      */
-    isBgp?: pulumi.Input<boolean>;
+    isBgp?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * A list of Linodes targeted by this IPv6 range. Includes Linodes with IP sharing.
      */
-    linodes?: pulumi.Input<pulumi.Input<number>[]>;
+    linodes?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The prefix length of the IPv6 range.
      */
-    prefixLength?: pulumi.Input<number>;
+    prefixLength?: pulumi.Input<number | undefined>;
     /**
      * The IPv6 range of addresses in this pool.
      */
-    range?: pulumi.Input<string>;
+    range?: pulumi.Input<string | undefined>;
     /**
      * The region for this range of IPv6 addresses.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 SLAAC address to assign this range to.
      */
-    routeTarget?: pulumi.Input<string>;
+    routeTarget?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -164,7 +164,7 @@ export interface Ipv6RangeArgs {
     /**
      * The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * The prefix length of the IPv6 range.
      */
@@ -172,5 +172,5 @@ export interface Ipv6RangeArgs {
     /**
      * The IPv6 SLAAC address to assign this range to.
      */
-    routeTarget?: pulumi.Input<string>;
+    routeTarget?: pulumi.Input<string | undefined>;
 }

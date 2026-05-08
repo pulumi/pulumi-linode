@@ -25,7 +25,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific = Linode.Index.GetDomains.Invoke(new()
+        ///     var specific = Linode.GetDomains.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -92,7 +92,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific = Linode.Index.GetDomains.Invoke(new()
+        ///     var specific = Linode.GetDomains.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -159,7 +159,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var specific = Linode.Index.GetDomains.Invoke(new()
+        ///     var specific = Linode.GetDomains.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

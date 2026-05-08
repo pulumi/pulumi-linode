@@ -165,19 +165,19 @@ export function getStackScriptsOutput(args?: GetStackScriptsOutputArgs, opts?: p
  * A collection of arguments for invoking getStackScripts.
  */
 export interface GetStackScriptsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetStackScriptsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetStackScriptsFilterArgs>[] | undefined>;
     /**
      * If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
      *
      * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
      */
-    latest?: pulumi.Input<boolean>;
+    latest?: pulumi.Input<boolean | undefined>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

@@ -210,7 +210,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * const my_pool = new linode.LkeNodePool("my-pool", {
- *     clusterId: my_cluster.id,
+ *     clusterId: my_cluster.id.apply(x =>Number(x)),
  *     type: "g6-standard-2",
  *     nodeCount: 3,
  *     tags: [externalPoolTag],
@@ -393,39 +393,39 @@ export interface LkeClusterState {
     /**
      * The endpoints for the Kubernetes API server.
      */
-    apiEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+    apiEndpoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enables the App Platform Layer
      */
-    aplEnabled?: pulumi.Input<boolean>;
+    aplEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Defines settings for the Kubernetes Control Plane.
      */
-    controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
+    controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane | undefined>;
     /**
      * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
      */
-    dashboardUrl?: pulumi.Input<string>;
+    dashboardUrl?: pulumi.Input<string | undefined>;
     /**
      * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      */
-    externalPoolTags?: pulumi.Input<pulumi.Input<string>[]>;
+    externalPoolTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */
-    k8sVersion?: pulumi.Input<string>;
+    k8sVersion?: pulumi.Input<string | undefined>;
     /**
      * The base64 encoded kubeconfig for the Kubernetes cluster.
      */
-    kubeconfig?: pulumi.Input<string>;
+    kubeconfig?: pulumi.Input<string | undefined>;
     /**
      * This Kubernetes cluster's unique label.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * Additional nested attributes:
      */
-    pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[]>;
+    pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[] | undefined>;
     /**
      * This Kubernetes cluster's location.
      *
@@ -433,31 +433,31 @@ export interface LkeClusterState {
      *
      * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The networking stack type of the Kubernetes cluster.
      */
-    stackType?: pulumi.Input<string>;
+    stackType?: pulumi.Input<string | undefined>;
     /**
      * The status of the node. (`ready`, `notReady`)
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
-    subnetId?: pulumi.Input<number>;
+    subnetId?: pulumi.Input<number | undefined>;
     /**
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC to use for the Kubernetes cluster.
      */
-    vpcId?: pulumi.Input<number>;
+    vpcId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -467,15 +467,15 @@ export interface LkeClusterArgs {
     /**
      * Enables the App Platform Layer
      */
-    aplEnabled?: pulumi.Input<boolean>;
+    aplEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Defines settings for the Kubernetes Control Plane.
      */
-    controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane>;
+    controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane | undefined>;
     /**
      * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      */
-    externalPoolTags?: pulumi.Input<pulumi.Input<string>[]>;
+    externalPoolTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
      */
@@ -487,7 +487,7 @@ export interface LkeClusterArgs {
     /**
      * Additional nested attributes:
      */
-    pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[]>;
+    pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[] | undefined>;
     /**
      * This Kubernetes cluster's location.
      *
@@ -499,21 +499,21 @@ export interface LkeClusterArgs {
     /**
      * The networking stack type of the Kubernetes cluster.
      */
-    stackType?: pulumi.Input<string>;
+    stackType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
-    subnetId?: pulumi.Input<number>;
+    subnetId?: pulumi.Input<number | undefined>;
     /**
      * An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
-    tier?: pulumi.Input<string>;
+    tier?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC to use for the Kubernetes cluster.
      */
-    vpcId?: pulumi.Input<number>;
+    vpcId?: pulumi.Input<number | undefined>;
 }

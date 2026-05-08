@@ -23,7 +23,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new Linode.Index.PlacementGroup("test", new()
+    ///     var test = new Linode.PlacementGroup("test", new()
     ///     {
     ///         Label = "my-placement-group",
     ///         Region = "us-mia",

@@ -248,7 +248,7 @@ def get_firewall(id: Optional[_builtins.int] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         updated=pulumi.get(__ret__, 'updated'))
-def get_firewall_output(id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_firewall_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallResult]:
     """
     Provides details about a Linode Firewall.

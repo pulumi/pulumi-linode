@@ -168,13 +168,13 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetInstancesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetInstancesFilterArgs>[] | undefined>;
     /**
      * The order in which results should be returned. (`asc`, `desc`; default `asc`)
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
     /**
      * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

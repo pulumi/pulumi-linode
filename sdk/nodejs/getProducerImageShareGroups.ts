@@ -125,8 +125,8 @@ export function getProducerImageShareGroupsOutput(args?: GetProducerImageShareGr
  * A collection of arguments for invoking getProducerImageShareGroups.
  */
 export interface GetProducerImageShareGroupsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetProducerImageShareGroupsFilterArgs>[]>;
-    imageShareGroups?: pulumi.Input<pulumi.Input<inputs.GetProducerImageShareGroupsImageShareGroupArgs>[]>;
-    order?: pulumi.Input<string>;
-    orderBy?: pulumi.Input<string>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetProducerImageShareGroupsFilterArgs>[] | undefined>;
+    imageShareGroups?: pulumi.Input<pulumi.Input<inputs.GetProducerImageShareGroupsImageShareGroupArgs>[] | undefined>;
+    order?: pulumi.Input<string | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
 }

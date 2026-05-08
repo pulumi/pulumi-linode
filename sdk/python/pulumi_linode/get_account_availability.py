@@ -115,7 +115,7 @@ def get_account_availability(region: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         region=pulumi.get(__ret__, 'region'),
         unavailables=pulumi.get(__ret__, 'unavailables'))
-def get_account_availability_output(region: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_availability_output(region: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountAvailabilityResult]:
     """
     Provides details about service availability in a region to an account specifically.

@@ -22,17 +22,17 @@ __all__ = ['ObjectStorageBucketArgs', 'ObjectStorageBucket']
 class ObjectStorageBucketArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[_builtins.str],
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input['ObjectStorageBucketCertArgs']] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning: Optional[pulumi.Input[_builtins.bool]] = None):
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional['ObjectStorageBucketCertArgs']] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ObjectStorageBucket resource.
 
@@ -99,7 +99,7 @@ class ObjectStorageBucketArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access key to authenticate with. If not specified with the resource, its value can be
         * configured by `obj_access_key` in the provider configuration;
@@ -108,37 +108,37 @@ class ObjectStorageBucketArgs:
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> Optional[pulumi.Input['ObjectStorageBucketCertArgs']]:
+    def cert(self) -> pulumi.Input[Optional['ObjectStorageBucketCertArgs']]:
         """
         The cert used by this Object Storage Bucket.
         """
         return pulumi.get(self, "cert")
 
     @cert.setter
-    def cert(self, value: Optional[pulumi.Input['ObjectStorageBucketCertArgs']]):
+    def cert(self, value: pulumi.Input[Optional['ObjectStorageBucketCertArgs']]):
         pulumi.set(self, "cert", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
         For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
@@ -146,72 +146,72 @@ class ObjectStorageBucketArgs:
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="corsEnabled")
-    def cors_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cors_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         """
         return pulumi.get(self, "cors_enabled")
 
     @cors_enabled.setter
-    def cors_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cors_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cors_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]:
+    def lifecycle_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]:
         """
         Lifecycle rules to be applied to the bucket.
         """
         return pulumi.get(self, "lifecycle_rules")
 
     @lifecycle_rules.setter
-    def lifecycle_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]):
+    def lifecycle_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]):
         pulumi.set(self, "lifecycle_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="s3Endpoint")
-    def s3_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def s3_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         """
         return pulumi.get(self, "s3_endpoint")
 
     @s3_endpoint.setter
-    def s3_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def s3_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "s3_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret key to authenticate with. If not specified with the resource, its value can be
         * configured by `obj_secret_key` in the provider configuration;
@@ -220,12 +220,12 @@ class ObjectStorageBucketArgs:
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def versioning(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
 
@@ -236,27 +236,27 @@ class ObjectStorageBucketArgs:
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def versioning(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "versioning", value)
 
 
 @pulumi.input_type
 class _ObjectStorageBucketState:
     def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input['ObjectStorageBucketCertArgs']] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning: Optional[pulumi.Input[_builtins.bool]] = None):
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional['ObjectStorageBucketCertArgs']] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ObjectStorageBucket resources.
 
@@ -321,7 +321,7 @@ class _ObjectStorageBucketState:
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access key to authenticate with. If not specified with the resource, its value can be
         * configured by `obj_access_key` in the provider configuration;
@@ -330,37 +330,37 @@ class _ObjectStorageBucketState:
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> Optional[pulumi.Input['ObjectStorageBucketCertArgs']]:
+    def cert(self) -> pulumi.Input[Optional['ObjectStorageBucketCertArgs']]:
         """
         The cert used by this Object Storage Bucket.
         """
         return pulumi.get(self, "cert")
 
     @cert.setter
-    def cert(self, value: Optional[pulumi.Input['ObjectStorageBucketCertArgs']]):
+    def cert(self, value: pulumi.Input[Optional['ObjectStorageBucketCertArgs']]):
         pulumi.set(self, "cert", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
-    def cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
         For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
@@ -368,109 +368,109 @@ class _ObjectStorageBucketState:
         return pulumi.get(self, "cluster")
 
     @cluster.setter
-    def cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="corsEnabled")
-    def cors_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cors_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         """
         return pulumi.get(self, "cors_enabled")
 
     @cors_enabled.setter
-    def cors_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cors_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cors_enabled", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Use `s3_endpoint` instead""")
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint for the bucket used for s3 connections.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The label of the Linode Object Storage Bucket.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]:
+    def lifecycle_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]:
         """
         Lifecycle rules to be applied to the bucket.
         """
         return pulumi.get(self, "lifecycle_rules")
 
     @lifecycle_rules.setter
-    def lifecycle_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]):
+    def lifecycle_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]]):
         pulumi.set(self, "lifecycle_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="s3Endpoint")
-    def s3_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def s3_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         """
         return pulumi.get(self, "s3_endpoint")
 
     @s3_endpoint.setter
-    def s3_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def s3_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "s3_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret key to authenticate with. If not specified with the resource, its value can be
         * configured by `obj_secret_key` in the provider configuration;
@@ -479,12 +479,12 @@ class _ObjectStorageBucketState:
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def versioning(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
 
@@ -495,7 +495,7 @@ class _ObjectStorageBucketState:
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def versioning(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "versioning", value)
 
 
@@ -505,18 +505,18 @@ class ObjectStorageBucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning: Optional[pulumi.Input[_builtins.bool]] = None,
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Linode Object Storage Bucket resource. This can be used to create, modify, and delete Linodes Object Storage Buckets.
@@ -653,18 +653,18 @@ class ObjectStorageBucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
-                 cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 versioning: Optional[pulumi.Input[_builtins.bool]] = None,
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
+                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 versioning: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -702,20 +702,20 @@ class ObjectStorageBucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_key: Optional[pulumi.Input[_builtins.str]] = None,
-            acl: Optional[pulumi.Input[_builtins.str]] = None,
-            cert: Optional[pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
-            cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            cors_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-            hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            s3_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-            versioning: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ObjectStorageBucket':
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
+            cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+            versioning: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ObjectStorageBucket':
         """
         Get an existing ObjectStorageBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

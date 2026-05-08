@@ -115,8 +115,8 @@ def get_ssh_key(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
         ssh_key=pulumi.get(__ret__, 'ssh_key'))
-def get_ssh_key_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       label: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ssh_key_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       label: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshKeyResult]:
     """
     `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.

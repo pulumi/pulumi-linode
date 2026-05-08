@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     label: "foo-sda-image",
  *     description: "Image taken from foo",
  *     diskId: foo.disks.apply(disks => disks[0].id),
- *     linodeId: foo.id,
+ *     linodeId: foo.id.apply(x =>Number(x)),
  *     tags: [
  *         "image-tag",
  *         "test",
@@ -310,59 +310,59 @@ export interface ImageState {
     /**
      * The capabilities of this Image.
      */
-    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether this image supports cloud-init.
      */
-    cloudInit?: pulumi.Input<boolean>;
+    cloudInit?: pulumi.Input<boolean | undefined>;
     /**
      * When this Image was created.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * The name of the User who created this Image.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Whether or not this Image is deprecated. Will only be True for deprecated public Images.
      */
-    deprecated?: pulumi.Input<boolean>;
+    deprecated?: pulumi.Input<boolean | undefined>;
     /**
      * A detailed description of this Image.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Linode Disk that this Image will be created from.
      */
-    diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number | undefined>;
     /**
      * Only Images created automatically (from a deleted Linode; type=automatic) will expire.
      */
-    expiry?: pulumi.Input<string>;
+    expiry?: pulumi.Input<string | undefined>;
     /**
      * The MD5 hash of the file to be uploaded. This is used to trigger file updates.
      */
-    fileHash?: pulumi.Input<string>;
+    fileHash?: pulumi.Input<string | undefined>;
     /**
      * The path of the image file to be uploaded.
      */
-    filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
     /**
      * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
      */
-    imageSharing?: pulumi.Input<inputs.ImageImageSharing>;
+    imageSharing?: pulumi.Input<inputs.ImageImageSharing | undefined>;
     /**
      * True if the Image is public.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
      */
-    isShared?: pulumi.Input<boolean>;
+    isShared?: pulumi.Input<boolean | undefined>;
     /**
      * A short description of the Image. Labels cannot contain special characters.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Linode that this Image will be created from.
      *
@@ -370,50 +370,50 @@ export interface ImageState {
      *
      * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
      */
-    replicaRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    replicaRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of image replications region and corresponding status.
      */
-    replications?: pulumi.Input<pulumi.Input<inputs.ImageReplication>[]>;
+    replications?: pulumi.Input<pulumi.Input<inputs.ImageReplication>[] | undefined>;
     /**
      * The minimum size this Image needs to deploy. Size is in MB.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The status of an image replica.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A list of customized tags.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.ImageTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.ImageTimeouts | undefined>;
     /**
      * The total size of the image in all available regions.
      */
-    totalSize?: pulumi.Input<number>;
+    totalSize?: pulumi.Input<number | undefined>;
     /**
      * How the Image was created. 'Manual' Images can be created at any time. 'Automatic' images are created automatically from a deleted Linode.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The upstream distribution vendor. Nil for private Images.
      */
-    vendor?: pulumi.Input<string>;
+    vendor?: pulumi.Input<string | undefined>;
     /**
      * Whether to wait for all image replications become `available`. Default to false.
      *
      * - - -
      */
-    waitForReplications?: pulumi.Input<boolean>;
+    waitForReplications?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -423,23 +423,23 @@ export interface ImageArgs {
     /**
      * Whether this image supports cloud-init.
      */
-    cloudInit?: pulumi.Input<boolean>;
+    cloudInit?: pulumi.Input<boolean | undefined>;
     /**
      * A detailed description of this Image.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Linode Disk that this Image will be created from.
      */
-    diskId?: pulumi.Input<number>;
+    diskId?: pulumi.Input<number | undefined>;
     /**
      * The MD5 hash of the file to be uploaded. This is used to trigger file updates.
      */
-    fileHash?: pulumi.Input<string>;
+    fileHash?: pulumi.Input<string | undefined>;
     /**
      * The path of the image file to be uploaded.
      */
-    filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
     /**
      * A short description of the Image. Labels cannot contain special characters.
      */
@@ -451,24 +451,24 @@ export interface ImageArgs {
      *
      * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
      */
-    replicaRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    replicaRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of customized tags.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.ImageTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.ImageTimeouts | undefined>;
     /**
      * Whether to wait for all image replications become `available`. Default to false.
      *
      * - - -
      */
-    waitForReplications?: pulumi.Input<boolean>;
+    waitForReplications?: pulumi.Input<boolean | undefined>;
 }

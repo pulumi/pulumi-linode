@@ -23,7 +23,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var john = new Linode.Index.User("john", new()
+    ///     var john = new Linode.User("john", new()
     ///     {
     ///         Username = "john123",
     ///         Email = "john@acme.io",
@@ -39,7 +39,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooser = new Linode.Index.User("fooser", new()
+    ///     var fooser = new Linode.User("fooser", new()
     ///     {
     ///         Username = "cooluser123",
     ///         Email = "cool@acme.io",

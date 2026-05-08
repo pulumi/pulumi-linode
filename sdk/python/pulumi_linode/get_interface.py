@@ -111,8 +111,8 @@ def get_interface(id: Optional[_builtins.str] = None,
         public=pulumi.get(__ret__, 'public'),
         vlan=pulumi.get(__ret__, 'vlan'),
         vpc=pulumi.get(__ret__, 'vpc'))
-def get_interface_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                         linode_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_interface_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                         linode_id: pulumi.Input[Optional[_builtins.int]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInterfaceResult]:
     """
     Use this data source to access information about an existing resource.

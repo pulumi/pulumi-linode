@@ -152,11 +152,11 @@ def get_consumer_image_share_group_image_shares(filters: Optional[Sequence[Union
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         token_uuid=pulumi.get(__ret__, 'token_uuid'))
-def get_consumer_image_share_group_image_shares_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetConsumerImageShareGroupImageSharesFilterArgs', 'GetConsumerImageShareGroupImageSharesFilterArgsDict']]]]] = None,
-                                                       image_shares: Optional[pulumi.Input[Optional[Sequence[Union['GetConsumerImageShareGroupImageSharesImageShareArgs', 'GetConsumerImageShareGroupImageSharesImageShareArgsDict']]]]] = None,
-                                                       order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       token_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_consumer_image_share_group_image_shares_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetConsumerImageShareGroupImageSharesFilterArgs', 'GetConsumerImageShareGroupImageSharesFilterArgsDict']]]]] = None,
+                                                       image_shares: pulumi.Input[Optional[Optional[Sequence[Union['GetConsumerImageShareGroupImageSharesImageShareArgs', 'GetConsumerImageShareGroupImageSharesImageShareArgsDict']]]]] = None,
+                                                       order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       token_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConsumerImageShareGroupImageSharesResult]:
     """
     Provides information about a list of Images that match a set of filters that have been

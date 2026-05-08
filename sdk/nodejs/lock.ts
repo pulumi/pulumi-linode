@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * const my_lock = new linode.Lock("my-lock", {
- *     entityId: my_inst.id,
+ *     entityId: my_inst.id.apply(x =>Number(x)),
  *     entityType: "linode",
  *     lockType: "cannot_delete",
  * });
@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  *     type: "g6-nanode-1",
  * });
  * const my_lock = new linode.Lock("my-lock", {
- *     entityId: my_inst.id,
+ *     entityId: my_inst.id.apply(x =>Number(x)),
  *     entityType: "linode",
  *     lockType: "cannot_delete_with_subresources",
  * });
@@ -152,23 +152,23 @@ export interface LockState {
     /**
      * The ID of the entity to lock.
      */
-    entityId?: pulumi.Input<number>;
+    entityId?: pulumi.Input<number | undefined>;
     /**
      * The label of the locked entity.
      */
-    entityLabel?: pulumi.Input<string>;
+    entityLabel?: pulumi.Input<string | undefined>;
     /**
      * The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
      */
-    entityType?: pulumi.Input<string>;
+    entityType?: pulumi.Input<string | undefined>;
     /**
      * The URL of the locked entity.
      */
-    entityUrl?: pulumi.Input<string>;
+    entityUrl?: pulumi.Input<string | undefined>;
     /**
      * The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
      */
-    lockType?: pulumi.Input<string>;
+    lockType?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -23,7 +23,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_instance = new Linode.Index.Instance("my-instance", new()
+    ///     var my_instance = new Linode.Instance("my-instance", new()
     ///     {
     ///         Label = "myinstance",
     ///         Region = "us-southeast",
@@ -31,7 +31,7 @@ namespace Pulumi.Linode
     ///         Image = "linode/alpine3.19",
     ///     });
     /// 
-    ///     var my_db = new Linode.Index.DatabaseMysqlV2("my-db", new()
+    ///     var my_db = new Linode.DatabaseMysqlV2("my-db", new()
     ///     {
     ///         Label = "mydatabase",
     ///         EngineId = "mysql/8.0.30",
@@ -39,7 +39,7 @@ namespace Pulumi.Linode
     ///         Type = "g6-nanode-1",
     ///     });
     /// 
-    ///     var my_access = new Linode.Index.DatabaseAccessControls("my-access", new()
+    ///     var my_access = new Linode.DatabaseAccessControls("my-access", new()
     ///     {
     ///         DatabaseId = my_db.Id,
     ///         DatabaseType = "mysql",

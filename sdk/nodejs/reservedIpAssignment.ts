@@ -141,51 +141,51 @@ export interface ReservedIpAssignmentState {
     /**
      * The resulting IPv4 address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
      */
-    applyImmediately?: pulumi.Input<boolean>;
+    applyImmediately?: pulumi.Input<boolean | undefined>;
     /**
      * The default gateway for this address
      */
-    gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Linode to allocate an IPv4 address for.
      */
-    linodeId?: pulumi.Input<number>;
+    linodeId?: pulumi.Input<number | undefined>;
     /**
      * The number of bits set in the subnet mask.
      */
-    prefix?: pulumi.Input<number>;
+    prefix?: pulumi.Input<number | undefined>;
     /**
      * Whether the IPv4 address is public or private.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * The reverse DNS assigned to this address.
      */
-    rdns?: pulumi.Input<string>;
+    rdns?: pulumi.Input<string | undefined>;
     /**
      * The region this IP resides in.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The reservation status of the IP address
      */
-    reserved?: pulumi.Input<boolean>;
+    reserved?: pulumi.Input<boolean | undefined>;
     /**
      * The mask that separates host bits from network bits for this address.
      */
-    subnetMask?: pulumi.Input<string>;
+    subnetMask?: pulumi.Input<string | undefined>;
     /**
      * The type of IP address.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
      */
-    vpcNat11s?: pulumi.Input<pulumi.Input<inputs.ReservedIpAssignmentVpcNat11>[]>;
+    vpcNat11s?: pulumi.Input<pulumi.Input<inputs.ReservedIpAssignmentVpcNat11>[] | undefined>;
 }
 
 /**
@@ -199,7 +199,7 @@ export interface ReservedIpAssignmentArgs {
     /**
      * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
      */
-    applyImmediately?: pulumi.Input<boolean>;
+    applyImmediately?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Linode to allocate an IPv4 address for.
      */
@@ -207,9 +207,9 @@ export interface ReservedIpAssignmentArgs {
     /**
      * Whether the IPv4 address is public or private.
      */
-    public?: pulumi.Input<boolean>;
+    public?: pulumi.Input<boolean | undefined>;
     /**
      * The reverse DNS assigned to this address.
      */
-    rdns?: pulumi.Input<string>;
+    rdns?: pulumi.Input<string | undefined>;
 }

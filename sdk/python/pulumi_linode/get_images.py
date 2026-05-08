@@ -175,10 +175,10 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
         latest=pulumi.get(__ret__, 'latest'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
-                      latest: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                      order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_images_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
+                      latest: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                      order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImagesResult]:
     """
     Provides information about Linode images that match a set of filters.
