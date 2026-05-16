@@ -1,3 +1,0 @@
-name: linode
-description: A Pulumi resource provider for linode.
-language: java
