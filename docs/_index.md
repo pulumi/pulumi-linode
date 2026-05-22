@@ -22,7 +22,7 @@ The provider needs to be configured with the proper credentials before it can be
 
 Use the navigation to the left to read about the available functions.
 ## Example Usage
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -158,6 +158,22 @@ public class App {
         var foobar = new Instance("foobar");
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    linode = {
+      source = "pulumi/linode"
+    }
+  }
+}
+
+# Create a Linode
+resource "linode_instance" "foobar" {
 }
 ```
 
