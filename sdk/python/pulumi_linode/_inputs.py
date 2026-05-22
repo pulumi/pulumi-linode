@@ -1453,11 +1453,11 @@ class FirewallSettingsDefaultFirewallIdsArgs:
 
 
 class ImageImageSharingArgsDict(TypedDict):
-    shared_by: NotRequired[pulumi.Input[Optional['ImageImageSharingSharedByArgs']]]
+    shared_by: NotRequired[pulumi.Input[Optional['ImageImageSharingSharedByArgsDict']]]
     """
     Details about who the image is shared by.
     """
-    shared_with: NotRequired[pulumi.Input[Optional['ImageImageSharingSharedWithArgs']]]
+    shared_with: NotRequired[pulumi.Input[Optional['ImageImageSharingSharedWithArgsDict']]]
     """
     Details about who the image is shared with.
     """
@@ -1833,7 +1833,7 @@ class InstanceBackupArgsDict(TypedDict):
     """
     If this Linode has the Backup service enabled.
     """
-    schedules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBackupScheduleArgs']]]]]
+    schedules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBackupScheduleArgsDict']]]]]
 
 @pulumi.input_type
 class InstanceBackupArgs:
@@ -1944,11 +1944,11 @@ class InstanceConfigArgsDict(TypedDict):
     """
     Optional field for arbitrary User comments on this Config.
     """
-    devices: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesArgs']]]
+    devices: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesArgsDict']]]
     """
     Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
     """
-    helpers: NotRequired[pulumi.Input[Optional['InstanceConfigHelpersArgs']]]
+    helpers: NotRequired[pulumi.Input[Optional['InstanceConfigHelpersArgsDict']]]
     """
     Helpers enabled when booting to this Linode Config.
     """
@@ -1956,7 +1956,7 @@ class InstanceConfigArgsDict(TypedDict):
     """
     The ID of the Placement Group.
     """
-    interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]]]]
+    interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceArgsDict']]]]]
     """
     An array of Network Interfaces for this Linode’s Configuration Profile.
     """
@@ -2232,35 +2232,35 @@ class InstanceConfigDeviceArgs:
 
 
 class InstanceConfigDevicesArgsDict(TypedDict):
-    sda: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdaArgs']]]
+    sda: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdaArgsDict']]]
     """
     ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
     """
-    sdb: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbArgs']]]
+    sdb: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbArgsDict']]]
     """
     Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
     """
-    sdc: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdcArgs']]]
+    sdc: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdcArgsDict']]]
     """
     Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
     """
-    sdd: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSddArgs']]]
+    sdd: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSddArgsDict']]]
     """
     Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
     """
-    sde: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdeArgs']]]
+    sde: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdeArgsDict']]]
     """
     Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
     """
-    sdf: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdfArgs']]]
+    sdf: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdfArgsDict']]]
     """
     Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
     """
-    sdg: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdgArgs']]]
+    sdg: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdgArgsDict']]]
     """
     Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
     """
-    sdh: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdhArgs']]]
+    sdh: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdhArgsDict']]]
     """
     Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
     """
@@ -3031,11 +3031,11 @@ class InstanceConfigInterfaceArgsDict(TypedDict):
     """
     This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
     """
-    ipv4: NotRequired[pulumi.Input[Optional['InstanceConfigInterfaceIpv4Args']]]
+    ipv4: NotRequired[pulumi.Input[Optional['InstanceConfigInterfaceIpv4ArgsDict']]]
     """
     The IPv4 configuration of the VPC interface.This attribute is only allowed for VPC interfaces.
     """
-    ipv6: NotRequired[pulumi.Input[Optional['InstanceConfigInterfaceIpv6Args']]]
+    ipv6: NotRequired[pulumi.Input[Optional['InstanceConfigInterfaceIpv6ArgsDict']]]
     """
     The IPv6 configuration of the VPC interface. This attribute is only allowed for VPC interfaces.
     """
@@ -3308,11 +3308,11 @@ class InstanceConfigInterfaceIpv6ArgsDict(TypedDict):
 
     * `range` - (Optional) An array of IPv6 ranges to use for this interface.
     """
-    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceIpv6RangeArgs']]]]]
+    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceIpv6RangeArgsDict']]]]]
     """
     A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
     """
-    slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceIpv6SlaacArgs']]]]]
+    slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceIpv6SlaacArgsDict']]]]]
     """
     An array of SLAAC prefixes to use for this interface.
     """
@@ -3815,13 +3815,13 @@ class InstanceInterfaceArgsDict(TypedDict):
     """
     This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
     """
-    ipv4: NotRequired[pulumi.Input[Optional['InstanceInterfaceIpv4Args']]]
+    ipv4: NotRequired[pulumi.Input[Optional['InstanceInterfaceIpv4ArgsDict']]]
     """
     A set of reserved IPv4 addresses to assign to this Linode on creation.
 
     * **NOTE: IP reservation is not currently available to all users.**
     """
-    ipv6: NotRequired[pulumi.Input[Optional['InstanceInterfaceIpv6Args']]]
+    ipv6: NotRequired[pulumi.Input[Optional['InstanceInterfaceIpv6ArgsDict']]]
     """
     This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
     """
@@ -4098,11 +4098,11 @@ class InstanceInterfaceIpv6ArgsDict(TypedDict):
 
     * `range` - (Optional) An array of IPv6 ranges to use for this interface.
     """
-    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceInterfaceIpv6RangeArgs']]]]]
+    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceInterfaceIpv6RangeArgsDict']]]]]
     """
     A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
     """
-    slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceInterfaceIpv6SlaacArgs']]]]]
+    slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceInterfaceIpv6SlaacArgsDict']]]]]
     """
     An array of SLAAC prefixes to use for this interface.
     """
@@ -4649,11 +4649,11 @@ class InterfaceDefaultRouteArgs:
 
 
 class InterfacePublicArgsDict(TypedDict):
-    ipv4: NotRequired[pulumi.Input[Optional['InterfacePublicIpv4Args']]]
+    ipv4: NotRequired[pulumi.Input[Optional['InterfacePublicIpv4ArgsDict']]]
     """
     IPv4 addresses for this interface.
     """
-    ipv6: NotRequired[pulumi.Input[Optional['InterfacePublicIpv6Args']]]
+    ipv6: NotRequired[pulumi.Input[Optional['InterfacePublicIpv6ArgsDict']]]
     """
     IPv6 addresses for this interface.
     """
@@ -4698,15 +4698,15 @@ class InterfacePublicArgs:
 
 
 class InterfacePublicIpv4ArgsDict(TypedDict):
-    addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv4AddressArgs']]]]]
+    addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv4AddressArgsDict']]]]]
     """
     IPv4 addresses configured for this Linode interface. Each object in this list supports:
     """
-    assigned_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgs']]]]]
+    assigned_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgsDict']]]]]
     """
     (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
     """
-    shareds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgs']]]]]
+    shareds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgsDict']]]]]
     """
     (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
     """
@@ -4914,19 +4914,19 @@ class InterfacePublicIpv4SharedArgs:
 
 
 class InterfacePublicIpv6ArgsDict(TypedDict):
-    assigned_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgs']]]]]
+    assigned_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgsDict']]]]]
     """
     Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
     """
-    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6RangeArgs']]]]]
+    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6RangeArgsDict']]]]]
     """
     Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
     """
-    shareds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgs']]]]]
+    shareds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgsDict']]]]]
     """
     (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
     """
-    slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgs']]]]]
+    slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgsDict']]]]]
     """
     (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
     """
@@ -5230,11 +5230,11 @@ class InterfaceVpcArgsDict(TypedDict):
     """
     The VPC subnet identifier for this interface.
     """
-    ipv4: NotRequired[pulumi.Input[Optional['InterfaceVpcIpv4Args']]]
+    ipv4: NotRequired[pulumi.Input[Optional['InterfaceVpcIpv4ArgsDict']]]
     """
     IPv4 configuration for the VPC interface.
     """
-    ipv6: NotRequired[pulumi.Input[Optional['InterfaceVpcIpv6Args']]]
+    ipv6: NotRequired[pulumi.Input[Optional['InterfaceVpcIpv6ArgsDict']]]
     """
     IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
     """
@@ -5294,19 +5294,19 @@ class InterfaceVpcArgs:
 
 
 class InterfaceVpcIpv4ArgsDict(TypedDict):
-    addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4AddressArgs']]]]]
+    addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4AddressArgsDict']]]]]
     """
     Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
     """
-    assigned_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgs']]]]]
+    assigned_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgsDict']]]]]
     """
     (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
     """
-    assigned_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgs']]]]]
+    assigned_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgsDict']]]]]
     """
     Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
     """
-    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgs']]]]]
+    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgsDict']]]]]
     """
     IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
     """
@@ -5578,11 +5578,11 @@ class InterfaceVpcIpv4RangeArgs:
 
 
 class InterfaceVpcIpv6ArgsDict(TypedDict):
-    assigned_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgs']]]]]
+    assigned_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgsDict']]]]]
     """
     Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
     """
-    assigned_slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgs']]]]]
+    assigned_slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgsDict']]]]]
     """
     Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
     """
@@ -5590,11 +5590,11 @@ class InterfaceVpcIpv6ArgsDict(TypedDict):
     """
     Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
     """
-    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6RangeArgs']]]]]
+    ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6RangeArgsDict']]]]]
     """
     Defines additional IPv6 network ranges.
     """
-    slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6SlaacArgs']]]]]
+    slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6SlaacArgsDict']]]]]
     """
     Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
     """
@@ -5823,7 +5823,7 @@ class InterfaceVpcIpv6SlaacArgs:
 
 
 class LkeClusterControlPlaneArgsDict(TypedDict):
-    acl: NotRequired[pulumi.Input[Optional['LkeClusterControlPlaneAclArgs']]]
+    acl: NotRequired[pulumi.Input[Optional['LkeClusterControlPlaneAclArgsDict']]]
     """
     Defines the ACL configuration for an LKE cluster's control plane.
     """
@@ -5898,7 +5898,7 @@ class LkeClusterControlPlaneArgs:
 
 
 class LkeClusterControlPlaneAclArgsDict(TypedDict):
-    addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterControlPlaneAclAddressArgs']]]]]
+    addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterControlPlaneAclAddressArgsDict']]]]]
     """
     A list of ip addresses to allow.
     """
@@ -6006,7 +6006,7 @@ class LkeClusterPoolArgsDict(TypedDict):
     """
     A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
     """
-    autoscaler: NotRequired[pulumi.Input[Optional['LkeClusterPoolAutoscalerArgs']]]
+    autoscaler: NotRequired[pulumi.Input[Optional['LkeClusterPoolAutoscalerArgsDict']]]
     """
     When specified, the number of nodes autoscales within the defined minimum and maximum values.
     """
@@ -6038,7 +6038,7 @@ class LkeClusterPoolArgsDict(TypedDict):
     """
     A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
     """
-    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]]]]
+    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolNodeArgsDict']]]]]
     """
     The nodes in the node pool.
     """
@@ -6046,7 +6046,7 @@ class LkeClusterPoolArgsDict(TypedDict):
     """
     A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolTaintArgsDict']]]]]
     """
     Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
     """
@@ -7450,7 +7450,7 @@ class ObjectStorageBucketLifecycleRuleArgsDict(TypedDict):
 
     * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
     """
-    expiration: NotRequired[pulumi.Input[Optional['ObjectStorageBucketLifecycleRuleExpirationArgs']]]
+    expiration: NotRequired[pulumi.Input[Optional['ObjectStorageBucketLifecycleRuleExpirationArgsDict']]]
     """
     Specifies a period in the object's expire.
     """
@@ -7458,7 +7458,7 @@ class ObjectStorageBucketLifecycleRuleArgsDict(TypedDict):
     """
     The unique identifier for the rule.
     """
-    noncurrent_version_expiration: NotRequired[pulumi.Input[Optional['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs']]]
+    noncurrent_version_expiration: NotRequired[pulumi.Input[Optional['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]]
     """
     Specifies when non-current object versions expire.
     """
