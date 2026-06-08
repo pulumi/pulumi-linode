@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *             .linodeId(foo.id())
  *             .label("boot-existing-volume")
  *             .kernel("linode/grub2")
- *             .devices(InstanceConfigDevicesArgs.builder()
+ *             .devices(com.pulumi.linode.inputs.InstanceConfigDevicesArgs.builder()
  *                 .deviceName("sda")
  *                 .volumeId(12345)
  *                 .build())

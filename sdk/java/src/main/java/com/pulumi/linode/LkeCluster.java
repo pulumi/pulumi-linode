@@ -156,6 +156,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.linode.LkeClusterArgs;
  * import com.pulumi.linode.inputs.LkeClusterControlPlaneArgs;
  * import com.pulumi.linode.inputs.LkeClusterControlPlaneAclArgs;
+ * import com.pulumi.linode.inputs.LkeClusterControlPlaneAclAddressArgs;
  * import com.pulumi.linode.inputs.LkeClusterPoolArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

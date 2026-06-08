@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *         var my_config = new InstanceConfig("my-config", InstanceConfigArgs.builder()
  *             .linodeId(my_instance.id())
  *             .label("my-config")
- *             .devices(InstanceConfigDevicesArgs.builder()
+ *             .devices(com.pulumi.linode.inputs.InstanceConfigDevicesArgs.builder()
  *                 .deviceName("sda")
  *                 .diskId(boot.id())
  *                 .build())
@@ -160,11 +160,11 @@ import javax.annotation.Nullable;
  *             .linodeId(my_instance.id())
  *             .label("my-config")
  *             .devices(            
- *                 InstanceConfigDevicesArgs.builder()
+ *                 com.pulumi.linode.inputs.InstanceConfigDevicesArgs.builder()
  *                     .deviceName("sda")
  *                     .diskId(boot.id())
  *                     .build(),
- *                 InstanceConfigDevicesArgs.builder()
+ *                 com.pulumi.linode.inputs.InstanceConfigDevicesArgs.builder()
  *                     .deviceName("sdb")
  *                     .diskId(swap.id())
  *                     .build())
