@@ -44,7 +44,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.linode.InterfaceArgs;
  * import com.pulumi.linode.inputs.InterfacePublicArgs;
  * import com.pulumi.linode.inputs.InterfacePublicIpv4Args;
+ * import com.pulumi.linode.inputs.InterfacePublicIpv4AddressArgs;
  * import com.pulumi.linode.inputs.InterfacePublicIpv6Args;
+ * import com.pulumi.linode.inputs.InterfacePublicIpv6RangeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -96,6 +98,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.linode.inputs.InterfacePublicArgs;
  * import com.pulumi.linode.inputs.InterfacePublicIpv4Args;
  * import com.pulumi.linode.inputs.InterfacePublicIpv6Args;
+ * import com.pulumi.linode.inputs.InterfacePublicIpv6RangeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -143,6 +146,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.linode.InterfaceArgs;
  * import com.pulumi.linode.inputs.InterfaceVpcArgs;
  * import com.pulumi.linode.inputs.InterfaceVpcIpv4Args;
+ * import com.pulumi.linode.inputs.InterfaceVpcIpv4AddressArgs;
+ * import com.pulumi.linode.inputs.InterfaceVpcIpv4RangeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -191,6 +196,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.linode.InterfaceArgs;
  * import com.pulumi.linode.inputs.InterfaceVpcArgs;
  * import com.pulumi.linode.inputs.InterfaceVpcIpv6Args;
+ * import com.pulumi.linode.inputs.InterfaceVpcIpv6SlaacArgs;
+ * import com.pulumi.linode.inputs.InterfaceVpcIpv6RangeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -282,7 +289,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.linode.InterfaceArgs;
  * import com.pulumi.linode.inputs.InterfacePublicArgs;
  * import com.pulumi.linode.inputs.InterfacePublicIpv4Args;
+ * import com.pulumi.linode.inputs.InterfacePublicIpv4AddressArgs;
  * import com.pulumi.linode.inputs.InterfacePublicIpv6Args;
+ * import com.pulumi.linode.inputs.InterfacePublicIpv6RangeArgs;
  * import com.pulumi.linode.InstanceConfig;
  * import com.pulumi.linode.InstanceConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -334,7 +343,7 @@ import javax.annotation.Nullable;
  *         var my_config = new InstanceConfig("my-config", InstanceConfigArgs.builder()
  *             .linodeId(my_instance.id())
  *             .label("my-config")
- *             .devices(InstanceConfigDevicesArgs.builder()
+ *             .devices(com.pulumi.linode.inputs.InstanceConfigDevicesArgs.builder()
  *                 .deviceName("sda")
  *                 .diskId(boot.id())
  *                 .build())

@@ -194,11 +194,11 @@ import javax.annotation.Nullable;
  *             .label("boot_config")
  *             .linodeId(web.id())
  *             .devices(            
- *                 InstanceConfigDevicesArgs.builder()
+ *                 com.pulumi.linode.inputs.InstanceConfigDevicesArgs.builder()
  *                     .deviceName("sda")
  *                     .diskId(bootDisk.id())
  *                     .build(),
- *                 InstanceConfigDevicesArgs.builder()
+ *                 com.pulumi.linode.inputs.InstanceConfigDevicesArgs.builder()
  *                     .deviceName("sdb")
  *                     .volumeId(webVolume.id())
  *                     .build())
