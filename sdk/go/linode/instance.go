@@ -158,7 +158,7 @@ import (
 //					pulumi.String("ssh-rsa AAAA...Gw== user@example.local"),
 //				},
 //				AuthorizedUsers: pulumi.StringArray{
-//					pulumi.String(pulumi.String(me.Username)),
+//					pulumi.String(me.Username),
 //				},
 //				RootPass: pulumi.String("terr4form-test"),
 //			})
