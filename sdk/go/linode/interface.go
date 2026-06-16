@@ -253,7 +253,7 @@ import (
 //				Label:    pulumi.String("boot"),
 //				LinodeId: my_instance.ID(),
 //				Size: pulumi.Int(my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (*int, error) {
-//					return &specs[0].Disk, nil
+//					return specs[0].Disk, nil
 //				}).(pulumi.IntPtrOutput)),
 //				Image:    pulumi.String("linode/debian12"),
 //				RootPass: pulumi.String("this-is-NOT-a-safe-password"),

@@ -43,7 +43,7 @@ import (
 //				Label:       pulumi.String("foo-sda-image"),
 //				Description: pulumi.String("Image taken from foo"),
 //				DiskId: pulumi.Int(foo.Disks.ApplyT(func(disks []linode.InstanceDiskType) (*int, error) {
-//					return &disks[0].Id, nil
+//					return disks[0].Id, nil
 //				}).(pulumi.IntPtrOutput)),
 //				LinodeId: foo.ID(),
 //				Tags: pulumi.StringArray{

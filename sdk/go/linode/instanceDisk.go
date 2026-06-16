@@ -77,7 +77,7 @@ import (
 //				Label:    pulumi.String("boot"),
 //				LinodeId: my_instance.ID(),
 //				Size: pulumi.Int(my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (*int, error) {
-//					return &specs[0].Disk, nil
+//					return specs[0].Disk, nil
 //				}).(pulumi.IntPtrOutput)),
 //				Image:    pulumi.String("linode/ubuntu22.04"),
 //				RootPass: pulumi.String("myc00lpass!"),

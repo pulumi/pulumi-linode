@@ -2918,6 +2918,58 @@
         }
     },
     "auto-settings": {},
+    "default-resource-schema-fixups": {
+        "resources": {
+            "linode_account_settings": {},
+            "linode_consumer_image_share_group_token": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "linode_database_mysql_v2": {},
+            "linode_database_postgresql_v2": {},
+            "linode_firewall": {},
+            "linode_firewall_device": {},
+            "linode_firewall_settings": {},
+            "linode_image": {},
+            "linode_instance_disk": {},
+            "linode_instance_ip": {},
+            "linode_instance_shared_ips": {},
+            "linode_interface": {},
+            "linode_ipv6_range": {},
+            "linode_lke_node_pool": {},
+            "linode_lock": {},
+            "linode_networking_ip": {},
+            "linode_networking_ip_assignment": {},
+            "linode_nodebalancer": {},
+            "linode_nodebalancer_config": {},
+            "linode_nodebalancer_node": {},
+            "linode_object_storage_key": {},
+            "linode_object_storage_object": {},
+            "linode_placement_group": {},
+            "linode_placement_group_assignment": {},
+            "linode_producer_image_share_group": {
+                "fields": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "linode_producer_image_share_group_member": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "linode_rdns": {},
+            "linode_reserved_ip_assignment": {},
+            "linode_sshkey": {},
+            "linode_stackscript": {},
+            "linode_token": {},
+            "linode_volume": {},
+            "linode_vpc": {},
+            "linode_vpc_subnet": {}
+        }
+    },
     "mux": {
         "resources": {
             "linode:index/accountSettings:AccountSettings": 1,
