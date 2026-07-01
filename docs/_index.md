@@ -11,7 +11,7 @@ The Linode provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/linode`](https://www.npmjs.com/package/@pulumi/linode)
 * Python: [`pulumi-linode`](https://pypi.org/project/pulumi-linode/)
-* Go: [`github.com/pulumi/pulumi-linode/sdk/v5/go/linode`](https://github.com/pulumi/pulumi-linode)
+* Go: [`github.com/pulumi/pulumi-linode/sdk/v6/go/linode`](https://github.com/pulumi/pulumi-linode)
 * .NET: [`Pulumi.Linode`](https://www.nuget.org/packages/Pulumi.Linode)
 * Java: [`com.pulumi/linode`](https://central.sonatype.com/artifact/com.pulumi/linode)
 
@@ -93,7 +93,7 @@ runtime: go
 package main
 
 import (
-	"github.com/pulumi/pulumi-linode/sdk/v5/go/linode"
+	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
