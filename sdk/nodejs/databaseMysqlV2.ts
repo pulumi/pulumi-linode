@@ -416,7 +416,7 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
      *
-     * - - -
+     * ***
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -809,7 +809,7 @@ export interface DatabaseMysqlV2State {
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
      *
-     * - - -
+     * ***
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -986,7 +986,7 @@ export interface DatabaseMysqlV2Args {
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
      *
-     * - - -
+     * ***
      */
     type: pulumi.Input<string>;
     /**

@@ -44,7 +44,7 @@ class ImageArgs:
         :param pulumi.Input[_builtins.str] file_path: The path of the image file to be uploaded.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode that this Image will be created from.
                
-               - - -
+               ***
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         :param pulumi.Input[_builtins.str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
@@ -52,7 +52,7 @@ class ImageArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of customized tags.
         :param pulumi.Input[_builtins.bool] wait_for_replications: Whether to wait for all image replications become `available`. Default to false.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "label", label)
         if cloud_init is not None:
@@ -156,7 +156,7 @@ class ImageArgs:
         """
         The ID of the Linode that this Image will be created from.
 
-        - - -
+        ***
 
         > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         """
@@ -217,7 +217,7 @@ class ImageArgs:
         """
         Whether to wait for all image replications become `available`. Default to false.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "wait_for_replications")
 
@@ -274,7 +274,7 @@ class _ImageState:
         :param pulumi.Input[_builtins.str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode that this Image will be created from.
                
-               - - -
+               ***
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         :param pulumi.Input[_builtins.str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
@@ -288,7 +288,7 @@ class _ImageState:
         :param pulumi.Input[_builtins.str] vendor: The upstream distribution vendor. Nil for private Images.
         :param pulumi.Input[_builtins.bool] wait_for_replications: Whether to wait for all image replications become `available`. Default to false.
                
-               - - -
+               ***
         """
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
@@ -517,7 +517,7 @@ class _ImageState:
         """
         The ID of the Linode that this Image will be created from.
 
-        - - -
+        ***
 
         > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         """
@@ -650,7 +650,7 @@ class _ImageState:
         """
         Whether to wait for all image replications become `available`. Default to false.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "wait_for_replications")
 
@@ -765,7 +765,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode that this Image will be created from.
                
-               - - -
+               ***
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         :param pulumi.Input[_builtins.str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
@@ -773,7 +773,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of customized tags.
         :param pulumi.Input[_builtins.bool] wait_for_replications: Whether to wait for all image replications become `available`. Default to false.
                
-               - - -
+               ***
         """
         ...
     @overload
@@ -981,7 +981,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] label: A short description of the Image. Labels cannot contain special characters.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode that this Image will be created from.
                
-               - - -
+               ***
                
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         :param pulumi.Input[_builtins.str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
@@ -995,7 +995,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] vendor: The upstream distribution vendor. Nil for private Images.
         :param pulumi.Input[_builtins.bool] wait_for_replications: Whether to wait for all image replications become `available`. Default to false.
                
-               - - -
+               ***
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1147,7 +1147,7 @@ class Image(pulumi.CustomResource):
         """
         The ID of the Linode that this Image will be created from.
 
-        - - -
+        ***
 
         > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         """
@@ -1236,7 +1236,7 @@ class Image(pulumi.CustomResource):
         """
         Whether to wait for all image replications become `available`. Default to false.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "wait_for_replications")
 

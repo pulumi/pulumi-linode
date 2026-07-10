@@ -116,7 +116,7 @@ export class NodeBalancerConfig extends pulumi.CustomResource {
     /**
      * The ID of the NodeBalancer to access.
      *
-     * - - -
+     * ***
      */
     declare public readonly nodebalancerId: pulumi.Output<number>;
     /**
@@ -277,7 +277,7 @@ export interface NodeBalancerConfigState {
     /**
      * The ID of the NodeBalancer to access.
      *
-     * - - -
+     * ***
      */
     nodebalancerId?: pulumi.Input<number | undefined>;
     /**
@@ -367,7 +367,7 @@ export interface NodeBalancerConfigArgs {
     /**
      * The ID of the NodeBalancer to access.
      *
-     * - - -
+     * ***
      */
     nodebalancerId: pulumi.Input<number>;
     /**

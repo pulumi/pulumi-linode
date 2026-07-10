@@ -379,7 +379,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
      *
-     * - - -
+     * ***
      */
     declare public readonly type: pulumi.Output<string | undefined>;
     /**
@@ -710,7 +710,7 @@ export interface InstanceState {
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
      *
-     * - - -
+     * ***
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -880,7 +880,7 @@ export interface InstanceArgs {
     /**
      * The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
      *
-     * - - -
+     * ***
      */
     type?: pulumi.Input<string | undefined>;
     /**

@@ -39,7 +39,7 @@ class InstanceConfigInitArgs:
 
         :param pulumi.Input[_builtins.str] label: The Config’s label for display purposes only.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to create this configuration profile under.
         :param pulumi.Input[_builtins.bool] booted: If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
         :param pulumi.Input[_builtins.str] comments: Optional field for arbitrary User comments on this Config.
@@ -93,7 +93,7 @@ class InstanceConfigInitArgs:
         """
         The Config’s label for display purposes only.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "label")
 
@@ -287,7 +287,7 @@ class _InstanceConfigState:
         :param pulumi.Input[_builtins.str] kernel: A Kernel ID to boot a Linode with. Default is `linode/latest-64bit`. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
         :param pulumi.Input[_builtins.str] label: The Config’s label for display purposes only.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to create this configuration profile under.
         :param pulumi.Input[_builtins.int] memory_limit: The memory limit of the Config. Defaults to the total ram of the Linode.
         :param pulumi.Input[_builtins.str] root_device: The root device to boot. (default `/dev/sda`)
@@ -421,7 +421,7 @@ class _InstanceConfigState:
         """
         The Config’s label for display purposes only.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "label")
 
@@ -638,7 +638,7 @@ class InstanceConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kernel: A Kernel ID to boot a Linode with. Default is `linode/latest-64bit`. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
         :param pulumi.Input[_builtins.str] label: The Config’s label for display purposes only.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to create this configuration profile under.
         :param pulumi.Input[_builtins.int] memory_limit: The memory limit of the Config. Defaults to the total ram of the Linode.
         :param pulumi.Input[_builtins.str] root_device: The root device to boot. (default `/dev/sda`)
@@ -861,7 +861,7 @@ class InstanceConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kernel: A Kernel ID to boot a Linode with. Default is `linode/latest-64bit`. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
         :param pulumi.Input[_builtins.str] label: The Config’s label for display purposes only.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to create this configuration profile under.
         :param pulumi.Input[_builtins.int] memory_limit: The memory limit of the Config. Defaults to the total ram of the Linode.
         :param pulumi.Input[_builtins.str] root_device: The root device to boot. (default `/dev/sda`)
@@ -956,7 +956,7 @@ class InstanceConfig(pulumi.CustomResource):
         """
         The Config’s label for display purposes only.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "label")
 
