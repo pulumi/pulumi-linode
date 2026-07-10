@@ -88,7 +88,7 @@ class DatabasePostgresqlV2Args:
         :param pulumi.Input[_builtins.str] region: The region to use for the Managed Database.
         :param pulumi.Input[_builtins.str] type: The Linode Instance type used for the nodes of the Managed Database.
                
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[_builtins.int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
         :param pulumi.Input[_builtins.float] engine_config_pg_autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
@@ -305,7 +305,7 @@ class DatabasePostgresqlV2Args:
         """
         The Linode Instance type used for the nodes of the Managed Database.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "type")
 
@@ -1136,7 +1136,7 @@ class _DatabasePostgresqlV2State:
         :param pulumi.Input[_builtins.bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input[_builtins.str] type: The Linode Instance type used for the nodes of the Managed Database.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] updated: When this Managed Database was last updated.
         :param pulumi.Input['DatabasePostgresqlV2UpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[_builtins.str] version: The Managed Database engine version. (e.g. `13.2`)
@@ -2183,7 +2183,7 @@ class _DatabasePostgresqlV2State:
         """
         The Linode Instance type used for the nodes of the Managed Database.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "type")
 
@@ -2532,7 +2532,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input[_builtins.str] type: The Linode Instance type used for the nodes of the Managed Database.
                
-               - - -
+               ***
         :param pulumi.Input[Union['DatabasePostgresqlV2UpdatesArgs', 'DatabasePostgresqlV2UpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
         ...
@@ -3057,7 +3057,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input[_builtins.str] type: The Linode Instance type used for the nodes of the Managed Database.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] updated: When this Managed Database was last updated.
         :param pulumi.Input[Union['DatabasePostgresqlV2UpdatesArgs', 'DatabasePostgresqlV2UpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[_builtins.str] version: The Managed Database engine version. (e.g. `13.2`)
@@ -3737,7 +3737,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         """
         The Linode Instance type used for the nodes of the Managed Database.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "type")
 

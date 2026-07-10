@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-linode"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing linode cloud resources."
+                description = $/A Pulumi package for creating and managing linode cloud resources./$
 
                 url = "https://github.com/pulumi/pulumi-linode"
 

@@ -511,7 +511,7 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
      *
-     * - - -
+     * ***
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -1018,7 +1018,7 @@ export interface DatabasePostgresqlV2State {
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
      *
-     * - - -
+     * ***
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -1271,7 +1271,7 @@ export interface DatabasePostgresqlV2Args {
     /**
      * The Linode Instance type used for the nodes of the Managed Database.
      *
-     * - - -
+     * ***
      */
     type: pulumi.Input<string>;
     /**

@@ -31,7 +31,7 @@ class ObjectStorageKeyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyBucketAccessArgs']]] bucket_accesses: Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A set of regions where the key will grant access to create buckets.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "label", label)
         if bucket_accesses is not None:
@@ -69,7 +69,7 @@ class ObjectStorageKeyArgs:
         """
         A set of regions where the key will grant access to create buckets.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "regions")
 
@@ -97,7 +97,7 @@ class _ObjectStorageKeyState:
         :param pulumi.Input[_builtins.bool] limited: Whether or not this key is a limited access key.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A set of regions where the key will grant access to create buckets.
                
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageKeyRegionsDetailArgs']]] regions_details: A set of objects containing the detailed info of the regions where this key can access.
         :param pulumi.Input[_builtins.str] secret_key: This keypair's secret key.
         """
@@ -170,7 +170,7 @@ class _ObjectStorageKeyState:
         """
         A set of regions where the key will grant access to create buckets.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "regions")
 
@@ -272,7 +272,7 @@ class ObjectStorageKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] label: The label given to this key. For display purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A set of regions where the key will grant access to create buckets.
                
-               - - -
+               ***
         """
         ...
     @overload
@@ -401,7 +401,7 @@ class ObjectStorageKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] limited: Whether or not this key is a limited access key.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A set of regions where the key will grant access to create buckets.
                
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageKeyRegionsDetailArgs', 'ObjectStorageKeyRegionsDetailArgsDict']]]] regions_details: A set of objects containing the detailed info of the regions where this key can access.
         :param pulumi.Input[_builtins.str] secret_key: This keypair's secret key.
         """
@@ -456,7 +456,7 @@ class ObjectStorageKey(pulumi.CustomResource):
         """
         A set of regions where the key will grant access to create buckets.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "regions")
 

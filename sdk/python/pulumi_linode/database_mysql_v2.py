@@ -69,7 +69,7 @@ class DatabaseMysqlV2Args:
         :param pulumi.Input[_builtins.str] region: The region to use for the Managed Database.
         :param pulumi.Input[_builtins.str] type: The Linode Instance type used for the nodes of the Managed Database.
                
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_lists: A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
         :param pulumi.Input[_builtins.int] cluster_size: The number of Linode Instance nodes deployed to the Managed Database. (default `1`)
         :param pulumi.Input[_builtins.int] engine_config_binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
@@ -229,7 +229,7 @@ class DatabaseMysqlV2Args:
         """
         The Linode Instance type used for the nodes of the Managed Database.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "type")
 
@@ -794,7 +794,7 @@ class _DatabaseMysqlV2State:
         :param pulumi.Input[_builtins.bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input[_builtins.str] type: The Linode Instance type used for the nodes of the Managed Database.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] updated: When this Managed Database was last updated.
         :param pulumi.Input['DatabaseMysqlV2UpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[_builtins.str] version: The Managed Database engine version. (e.g. `13.2`)
@@ -1575,7 +1575,7 @@ class _DatabaseMysqlV2State:
         """
         The Linode Instance type used for the nodes of the Managed Database.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "type")
 
@@ -1867,7 +1867,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input[_builtins.str] type: The Linode Instance type used for the nodes of the Managed Database.
                
-               - - -
+               ***
         :param pulumi.Input[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
         ...
@@ -2297,7 +2297,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input[_builtins.str] type: The Linode Instance type used for the nodes of the Managed Database.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] updated: When this Managed Database was last updated.
         :param pulumi.Input[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[_builtins.str] version: The Managed Database engine version. (e.g. `13.2`)
@@ -2806,7 +2806,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         """
         The Linode Instance type used for the nodes of the Managed Database.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "type")
 

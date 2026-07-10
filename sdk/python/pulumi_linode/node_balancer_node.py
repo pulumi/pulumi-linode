@@ -31,7 +31,7 @@ class NodeBalancerNodeArgs:
 
         :param pulumi.Input[_builtins.str] address: The private IP Address where this backend can be reached. This must be a private IP address.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.int] config_id: The ID of the NodeBalancerConfig to access.
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[_builtins.int] nodebalancer_id: The ID of the NodeBalancer to access.
@@ -56,7 +56,7 @@ class NodeBalancerNodeArgs:
         """
         The private IP Address where this backend can be reached. This must be a private IP address.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "address")
 
@@ -154,7 +154,7 @@ class _NodeBalancerNodeState:
 
         :param pulumi.Input[_builtins.str] address: The private IP Address where this backend can be reached. This must be a private IP address.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.int] config_id: The ID of the NodeBalancerConfig to access.
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[_builtins.str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
@@ -189,7 +189,7 @@ class _NodeBalancerNodeState:
         """
         The private IP Address where this backend can be reached. This must be a private IP address.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "address")
 
@@ -325,7 +325,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The private IP Address where this backend can be reached. This must be a private IP address.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.int] config_id: The ID of the NodeBalancerConfig to access.
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[_builtins.str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
@@ -428,7 +428,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The private IP Address where this backend can be reached. This must be a private IP address.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.int] config_id: The ID of the NodeBalancerConfig to access.
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer Node. This is for display purposes only.
         :param pulumi.Input[_builtins.str] mode: The mode this NodeBalancer should use when sending traffic to this backend. If set to `accept` this backend is accepting traffic. If set to `reject` this backend will not receive traffic. If set to `drain` this backend will not receive new traffic, but connections already pinned to it will continue to be routed to it. (`accept`, `reject`, `drain`, `backup`)
@@ -459,7 +459,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         """
         The private IP Address where this backend can be reached. This must be a private IP address.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "address")
 

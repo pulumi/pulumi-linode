@@ -192,7 +192,7 @@ export class InstanceConfig extends pulumi.CustomResource {
     /**
      * The Config’s label for display purposes only.
      *
-     * - - -
+     * ***
      */
     declare public readonly label: pulumi.Output<string>;
     /**
@@ -312,7 +312,7 @@ export interface InstanceConfigState {
     /**
      * The Config’s label for display purposes only.
      *
-     * - - -
+     * ***
      */
     label?: pulumi.Input<string | undefined>;
     /**
@@ -380,7 +380,7 @@ export interface InstanceConfigArgs {
     /**
      * The Config’s label for display purposes only.
      *
-     * - - -
+     * ***
      */
     label: pulumi.Input<string>;
     /**

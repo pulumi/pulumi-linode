@@ -178,7 +178,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * The ID of the Linode that this Image will be created from.
      *
-     * - - -
+     * ***
      *
      * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
      */
@@ -223,7 +223,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * Whether to wait for all image replications become `available`. Default to false.
      *
-     * - - -
+     * ***
      */
     declare public readonly waitForReplications: pulumi.Output<boolean>;
 
@@ -366,7 +366,7 @@ export interface ImageState {
     /**
      * The ID of the Linode that this Image will be created from.
      *
-     * - - -
+     * ***
      *
      * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
      */
@@ -411,7 +411,7 @@ export interface ImageState {
     /**
      * Whether to wait for all image replications become `available`. Default to false.
      *
-     * - - -
+     * ***
      */
     waitForReplications?: pulumi.Input<boolean | undefined>;
 }
@@ -447,7 +447,7 @@ export interface ImageArgs {
     /**
      * The ID of the Linode that this Image will be created from.
      *
-     * - - -
+     * ***
      *
      * > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
      */
@@ -468,7 +468,7 @@ export interface ImageArgs {
     /**
      * Whether to wait for all image replications become `available`. Default to false.
      *
-     * - - -
+     * ***
      */
     waitForReplications?: pulumi.Input<boolean | undefined>;
 }

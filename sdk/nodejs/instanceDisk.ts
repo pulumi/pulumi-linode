@@ -128,7 +128,7 @@ export class InstanceDisk extends pulumi.CustomResource {
     /**
      * The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
      *
-     * - - -
+     * ***
      */
     declare public readonly size: pulumi.Output<number>;
     /**
@@ -254,7 +254,7 @@ export interface InstanceDiskState {
     /**
      * The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
      *
-     * - - -
+     * ***
      */
     size?: pulumi.Input<number | undefined>;
     /**
@@ -311,7 +311,7 @@ export interface InstanceDiskArgs {
     /**
      * The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
      *
-     * - - -
+     * ***
      */
     size: pulumi.Input<number>;
     /**
