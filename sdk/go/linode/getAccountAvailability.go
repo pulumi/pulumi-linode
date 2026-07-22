@@ -61,8 +61,6 @@ type GetAccountAvailabilityArgs struct {
 type GetAccountAvailabilityResult struct {
 	// A set of services which are available to the account in a region.
 	Availables []string `pulumi:"availables"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The region ID.
 	Region string `pulumi:"region"`
 	// A set of services which are unavailable to the account in a region.
@@ -106,11 +104,6 @@ func (o GetAccountAvailabilityResultOutput) ToGetAccountAvailabilityResultOutput
 // A set of services which are available to the account in a region.
 func (o GetAccountAvailabilityResultOutput) Availables() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccountAvailabilityResult) []string { return v.Availables }).(pulumi.StringArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAccountAvailabilityResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountAvailabilityResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The region ID.

@@ -27,26 +27,15 @@ class GetFirewallSettingsResult:
     """
     A collection of values returned by getFirewallSettings.
     """
-    def __init__(__self__, default_firewall_ids=None, id=None):
+    def __init__(__self__, default_firewall_ids=None):
         if default_firewall_ids and not isinstance(default_firewall_ids, dict):
             raise TypeError("Expected argument 'default_firewall_ids' to be a dict")
         pulumi.set(__self__, "default_firewall_ids", default_firewall_ids)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter(name="defaultFirewallIds")
     def default_firewall_ids(self) -> 'outputs.GetFirewallSettingsDefaultFirewallIdsResult':
         return pulumi.get(self, "default_firewall_ids")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
 
 class AwaitableGetFirewallSettingsResult(GetFirewallSettingsResult):
@@ -55,8 +44,7 @@ class AwaitableGetFirewallSettingsResult(GetFirewallSettingsResult):
         if False:
             yield self
         return GetFirewallSettingsResult(
-            default_firewall_ids=self.default_firewall_ids,
-            id=self.id)
+            default_firewall_ids=self.default_firewall_ids)
 
 
 def get_firewall_settings(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallSettingsResult:
@@ -68,8 +56,7 @@ def get_firewall_settings(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     __ret__ = pulumi.runtime.invoke('linode:index/getFirewallSettings:getFirewallSettings', __args__, opts=opts, typ=GetFirewallSettingsResult).value
 
     return AwaitableGetFirewallSettingsResult(
-        default_firewall_ids=pulumi.get(__ret__, 'default_firewall_ids'),
-        id=pulumi.get(__ret__, 'id'))
+        default_firewall_ids=pulumi.get(__ret__, 'default_firewall_ids'))
 def get_firewall_settings_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallSettingsResult]:
     """
     Use this data source to access information about an existing resource.
@@ -78,5 +65,4 @@ def get_firewall_settings_output(opts: Optional[Union[pulumi.InvokeOptions, pulu
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getFirewallSettings:getFirewallSettings', __args__, opts=opts, typ=GetFirewallSettingsResult)
     return __ret__.apply(lambda __response__: GetFirewallSettingsResult(
-        default_firewall_ids=pulumi.get(__response__, 'default_firewall_ids'),
-        id=pulumi.get(__response__, 'id')))
+        default_firewall_ids=pulumi.get(__response__, 'default_firewall_ids')))

@@ -22,11 +22,6 @@ public final class GetProducerImageShareGroupMemberResult {
      */
     private String expiry;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The label of the member.
      * 
      */
@@ -58,13 +53,6 @@ public final class GetProducerImageShareGroupMemberResult {
      */
     public String expiry() {
         return this.expiry;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The label of the member.
@@ -105,7 +93,6 @@ public final class GetProducerImageShareGroupMemberResult {
     public static final class Builder {
         private String created;
         private String expiry;
-        private String id;
         private String label;
         private Integer sharegroupId;
         private String status;
@@ -116,7 +103,6 @@ public final class GetProducerImageShareGroupMemberResult {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
     	      this.expiry = defaults.expiry;
-    	      this.id = defaults.id;
     	      this.label = defaults.label;
     	      this.sharegroupId = defaults.sharegroupId;
     	      this.status = defaults.status;
@@ -138,14 +124,6 @@ public final class GetProducerImageShareGroupMemberResult {
               throw new MissingRequiredPropertyException("GetProducerImageShareGroupMemberResult", "expiry");
             }
             this.expiry = expiry;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetProducerImageShareGroupMemberResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -192,7 +170,6 @@ public final class GetProducerImageShareGroupMemberResult {
             final var _resultValue = new GetProducerImageShareGroupMemberResult();
             _resultValue.created = created;
             _resultValue.expiry = expiry;
-            _resultValue.id = id;
             _resultValue.label = label;
             _resultValue.sharegroupId = sharegroupId;
             _resultValue.status = status;

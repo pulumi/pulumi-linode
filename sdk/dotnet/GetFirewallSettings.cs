@@ -26,19 +26,11 @@ namespace Pulumi.Linode
     public sealed class GetFirewallSettingsResult
     {
         public readonly Outputs.GetFirewallSettingsDefaultFirewallIdsResult DefaultFirewallIds;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
-        private GetFirewallSettingsResult(
-            Outputs.GetFirewallSettingsDefaultFirewallIdsResult defaultFirewallIds,
-
-            string id)
+        private GetFirewallSettingsResult(Outputs.GetFirewallSettingsDefaultFirewallIdsResult defaultFirewallIds)
         {
             DefaultFirewallIds = defaultFirewallIds;
-            Id = id;
         }
     }
 }

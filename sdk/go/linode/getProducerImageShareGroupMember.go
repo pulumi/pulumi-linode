@@ -66,8 +66,6 @@ type LookupProducerImageShareGroupMemberResult struct {
 	Created string `pulumi:"created"`
 	// When the member will expire.
 	Expiry string `pulumi:"expiry"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The label of the member.
 	Label        string `pulumi:"label"`
 	SharegroupId int    `pulumi:"sharegroupId"`
@@ -122,11 +120,6 @@ func (o LookupProducerImageShareGroupMemberResultOutput) Created() pulumi.String
 // When the member will expire.
 func (o LookupProducerImageShareGroupMemberResultOutput) Expiry() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProducerImageShareGroupMemberResult) string { return v.Expiry }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupProducerImageShareGroupMemberResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProducerImageShareGroupMemberResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The label of the member.

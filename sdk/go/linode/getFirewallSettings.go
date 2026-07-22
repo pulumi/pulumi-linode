@@ -24,8 +24,6 @@ func LookupFirewallSettings(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*
 // A collection of values returned by getFirewallSettings.
 type LookupFirewallSettingsResult struct {
 	DefaultFirewallIds GetFirewallSettingsDefaultFirewallIds `pulumi:"defaultFirewallIds"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func LookupFirewallSettingsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupFirewallSettingsResultOutput {
@@ -54,11 +52,6 @@ func (o LookupFirewallSettingsResultOutput) DefaultFirewallIds() GetFirewallSett
 	return o.ApplyT(func(v LookupFirewallSettingsResult) GetFirewallSettingsDefaultFirewallIds {
 		return v.DefaultFirewallIds
 	}).(GetFirewallSettingsDefaultFirewallIdsOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupFirewallSettingsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFirewallSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

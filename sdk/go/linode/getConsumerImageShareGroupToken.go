@@ -63,8 +63,6 @@ type LookupConsumerImageShareGroupTokenResult struct {
 	Created string `pulumi:"created"`
 	// When the token will expire.
 	Expiry string `pulumi:"expiry"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// A label for the token.
 	Label string `pulumi:"label"`
 	// The label of the Image Share Group that the token is for.
@@ -122,11 +120,6 @@ func (o LookupConsumerImageShareGroupTokenResultOutput) Created() pulumi.StringO
 // When the token will expire.
 func (o LookupConsumerImageShareGroupTokenResultOutput) Expiry() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConsumerImageShareGroupTokenResult) string { return v.Expiry }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupConsumerImageShareGroupTokenResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConsumerImageShareGroupTokenResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A label for the token.

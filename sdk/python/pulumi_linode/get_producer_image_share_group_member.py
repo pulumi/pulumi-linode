@@ -26,16 +26,13 @@ class GetProducerImageShareGroupMemberResult:
     """
     A collection of values returned by getProducerImageShareGroupMember.
     """
-    def __init__(__self__, created=None, expiry=None, id=None, label=None, sharegroup_id=None, status=None, token_uuid=None, updated=None):
+    def __init__(__self__, created=None, expiry=None, label=None, sharegroup_id=None, status=None, token_uuid=None, updated=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
         if expiry and not isinstance(expiry, str):
             raise TypeError("Expected argument 'expiry' to be a str")
         pulumi.set(__self__, "expiry", expiry)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
@@ -67,14 +64,6 @@ class GetProducerImageShareGroupMemberResult:
         When the member will expire.
         """
         return pulumi.get(self, "expiry")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -119,7 +108,6 @@ class AwaitableGetProducerImageShareGroupMemberResult(GetProducerImageShareGroup
         return GetProducerImageShareGroupMemberResult(
             created=self.created,
             expiry=self.expiry,
-            id=self.id,
             label=self.label,
             sharegroup_id=self.sharegroup_id,
             status=self.status,
@@ -159,7 +147,6 @@ def get_producer_image_share_group_member(sharegroup_id: Optional[_builtins.int]
     return AwaitableGetProducerImageShareGroupMemberResult(
         created=pulumi.get(__ret__, 'created'),
         expiry=pulumi.get(__ret__, 'expiry'),
-        id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
         sharegroup_id=pulumi.get(__ret__, 'sharegroup_id'),
         status=pulumi.get(__ret__, 'status'),
@@ -196,7 +183,6 @@ def get_producer_image_share_group_member_output(sharegroup_id: pulumi.Input[Opt
     return __ret__.apply(lambda __response__: GetProducerImageShareGroupMemberResult(
         created=pulumi.get(__response__, 'created'),
         expiry=pulumi.get(__response__, 'expiry'),
-        id=pulumi.get(__response__, 'id'),
         label=pulumi.get(__response__, 'label'),
         sharegroup_id=pulumi.get(__response__, 'sharegroup_id'),
         status=pulumi.get(__response__, 'status'),

@@ -17,10 +17,6 @@ export function getFirewallSettings(opts?: pulumi.InvokeOptions): Promise<GetFir
  */
 export interface GetFirewallSettingsResult {
     readonly defaultFirewallIds: outputs.GetFirewallSettingsDefaultFirewallIds;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 export function getFirewallSettingsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFirewallSettingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

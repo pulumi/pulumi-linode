@@ -26,13 +26,10 @@ class GetAccountAvailabilityResult:
     """
     A collection of values returned by getAccountAvailability.
     """
-    def __init__(__self__, availables=None, id=None, region=None, unavailables=None):
+    def __init__(__self__, availables=None, region=None, unavailables=None):
         if availables and not isinstance(availables, list):
             raise TypeError("Expected argument 'availables' to be a list")
         pulumi.set(__self__, "availables", availables)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -47,14 +44,6 @@ class GetAccountAvailabilityResult:
         A set of services which are available to the account in a region.
         """
         return pulumi.get(self, "availables")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -80,7 +69,6 @@ class AwaitableGetAccountAvailabilityResult(GetAccountAvailabilityResult):
             yield self
         return GetAccountAvailabilityResult(
             availables=self.availables,
-            id=self.id,
             region=self.region,
             unavailables=self.unavailables)
 
@@ -112,7 +100,6 @@ def get_account_availability(region: Optional[_builtins.str] = None,
 
     return AwaitableGetAccountAvailabilityResult(
         availables=pulumi.get(__ret__, 'availables'),
-        id=pulumi.get(__ret__, 'id'),
         region=pulumi.get(__ret__, 'region'),
         unavailables=pulumi.get(__ret__, 'unavailables'))
 def get_account_availability_output(region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -141,6 +128,5 @@ def get_account_availability_output(region: pulumi.Input[Optional[_builtins.str]
     __ret__ = pulumi.runtime.invoke_output('linode:index/getAccountAvailability:getAccountAvailability', __args__, opts=opts, typ=GetAccountAvailabilityResult)
     return __ret__.apply(lambda __response__: GetAccountAvailabilityResult(
         availables=pulumi.get(__response__, 'availables'),
-        id=pulumi.get(__response__, 'id'),
         region=pulumi.get(__response__, 'region'),
         unavailables=pulumi.get(__response__, 'unavailables')))
