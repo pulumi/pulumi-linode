@@ -22542,10 +22542,6 @@
                         },
                         "type": "array"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "region": {
                         "description": "The region ID.\n",
                         "type": "string"
@@ -22561,8 +22557,7 @@
                 "required": [
                     "availables",
                     "region",
-                    "unavailables",
-                    "id"
+                    "unavailables"
                 ],
                 "type": "object"
             }
@@ -23014,10 +23009,6 @@
                         "description": "When the token will expire.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "label": {
                         "description": "A label for the token.\n",
                         "type": "string"
@@ -23055,8 +23046,7 @@
                     "status",
                     "tokenUuid",
                     "updated",
-                    "validForSharegroupUuid",
-                    "id"
+                    "validForSharegroupUuid"
                 ],
                 "type": "object"
             }
@@ -24456,15 +24446,10 @@
                 "properties": {
                     "defaultFirewallIds": {
                         "$ref": "#/types/linode:index/getFirewallSettingsDefaultFirewallIds:getFirewallSettingsDefaultFirewallIds"
-                    },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
                     }
                 },
                 "required": [
-                    "defaultFirewallIds",
-                    "id"
+                    "defaultFirewallIds"
                 ],
                 "type": "object"
             }
@@ -27332,10 +27317,6 @@
                         "description": "When the member will expire.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "label": {
                         "description": "The label of the member.\n",
                         "type": "string"
@@ -27362,8 +27343,7 @@
                     "sharegroupId",
                     "status",
                     "tokenUuid",
-                    "updated",
-                    "id"
+                    "updated"
                 ],
                 "type": "object"
             }
