@@ -150,10 +150,6 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Expiry;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The label of the member.
         /// </summary>
         public readonly string Label;
@@ -174,8 +170,6 @@ namespace Pulumi.Linode
 
             string expiry,
 
-            string id,
-
             string label,
 
             int sharegroupId,
@@ -188,7 +182,6 @@ namespace Pulumi.Linode
         {
             Created = created;
             Expiry = expiry;
-            Id = id;
             Label = label;
             SharegroupId = sharegroupId;
             Status = status;

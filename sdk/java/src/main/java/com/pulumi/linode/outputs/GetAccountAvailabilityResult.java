@@ -17,11 +17,6 @@ public final class GetAccountAvailabilityResult {
      */
     private List<String> availables;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The region ID.
      * 
      */
@@ -39,13 +34,6 @@ public final class GetAccountAvailabilityResult {
      */
     public List<String> availables() {
         return this.availables;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The region ID.
@@ -72,14 +60,12 @@ public final class GetAccountAvailabilityResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> availables;
-        private String id;
         private String region;
         private List<String> unavailables;
         public Builder() {}
         public Builder(GetAccountAvailabilityResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availables = defaults.availables;
-    	      this.id = defaults.id;
     	      this.region = defaults.region;
     	      this.unavailables = defaults.unavailables;
         }
@@ -94,14 +80,6 @@ public final class GetAccountAvailabilityResult {
         }
         public Builder availables(String... availables) {
             return availables(List.of(availables));
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountAvailabilityResult", "id");
-            }
-            this.id = id;
-            return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
@@ -125,7 +103,6 @@ public final class GetAccountAvailabilityResult {
         public GetAccountAvailabilityResult build() {
             final var _resultValue = new GetAccountAvailabilityResult();
             _resultValue.availables = availables;
-            _resultValue.id = id;
             _resultValue.region = region;
             _resultValue.unavailables = unavailables;
             return _resultValue;

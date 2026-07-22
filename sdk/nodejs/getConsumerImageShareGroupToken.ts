@@ -51,10 +51,6 @@ export interface GetConsumerImageShareGroupTokenResult {
      */
     readonly expiry: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * A label for the token.
      */
     readonly label: string;

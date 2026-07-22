@@ -135,10 +135,6 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Expiry;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// A label for the token.
         /// </summary>
         public readonly string Label;
@@ -170,8 +166,6 @@ namespace Pulumi.Linode
 
             string expiry,
 
-            string id,
-
             string label,
 
             string sharegroupLabel,
@@ -188,7 +182,6 @@ namespace Pulumi.Linode
         {
             Created = created;
             Expiry = expiry;
-            Id = id;
             Label = label;
             SharegroupLabel = sharegroupLabel;
             SharegroupUuid = sharegroupUuid;

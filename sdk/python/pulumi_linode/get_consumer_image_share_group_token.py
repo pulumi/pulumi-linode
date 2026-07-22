@@ -26,16 +26,13 @@ class GetConsumerImageShareGroupTokenResult:
     """
     A collection of values returned by getConsumerImageShareGroupToken.
     """
-    def __init__(__self__, created=None, expiry=None, id=None, label=None, sharegroup_label=None, sharegroup_uuid=None, status=None, token_uuid=None, updated=None, valid_for_sharegroup_uuid=None):
+    def __init__(__self__, created=None, expiry=None, label=None, sharegroup_label=None, sharegroup_uuid=None, status=None, token_uuid=None, updated=None, valid_for_sharegroup_uuid=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
         if expiry and not isinstance(expiry, str):
             raise TypeError("Expected argument 'expiry' to be a str")
         pulumi.set(__self__, "expiry", expiry)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
@@ -73,14 +70,6 @@ class GetConsumerImageShareGroupTokenResult:
         When the token will expire.
         """
         return pulumi.get(self, "expiry")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -144,7 +133,6 @@ class AwaitableGetConsumerImageShareGroupTokenResult(GetConsumerImageShareGroupT
         return GetConsumerImageShareGroupTokenResult(
             created=self.created,
             expiry=self.expiry,
-            id=self.id,
             label=self.label,
             sharegroup_label=self.sharegroup_label,
             sharegroup_uuid=self.sharegroup_uuid,
@@ -182,7 +170,6 @@ def get_consumer_image_share_group_token(token_uuid: Optional[_builtins.str] = N
     return AwaitableGetConsumerImageShareGroupTokenResult(
         created=pulumi.get(__ret__, 'created'),
         expiry=pulumi.get(__ret__, 'expiry'),
-        id=pulumi.get(__ret__, 'id'),
         label=pulumi.get(__ret__, 'label'),
         sharegroup_label=pulumi.get(__ret__, 'sharegroup_label'),
         sharegroup_uuid=pulumi.get(__ret__, 'sharegroup_uuid'),
@@ -217,7 +204,6 @@ def get_consumer_image_share_group_token_output(token_uuid: pulumi.Input[Optiona
     return __ret__.apply(lambda __response__: GetConsumerImageShareGroupTokenResult(
         created=pulumi.get(__response__, 'created'),
         expiry=pulumi.get(__response__, 'expiry'),
-        id=pulumi.get(__response__, 'id'),
         label=pulumi.get(__response__, 'label'),
         sharegroup_label=pulumi.get(__response__, 'sharegroup_label'),
         sharegroup_uuid=pulumi.get(__response__, 'sharegroup_uuid'),

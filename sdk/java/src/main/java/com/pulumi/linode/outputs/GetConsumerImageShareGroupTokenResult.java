@@ -21,11 +21,6 @@ public final class GetConsumerImageShareGroupTokenResult {
      */
     private String expiry;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return A label for the token.
      * 
      */
@@ -71,13 +66,6 @@ public final class GetConsumerImageShareGroupTokenResult {
      */
     public String expiry() {
         return this.expiry;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return A label for the token.
@@ -136,7 +124,6 @@ public final class GetConsumerImageShareGroupTokenResult {
     public static final class Builder {
         private String created;
         private String expiry;
-        private String id;
         private String label;
         private String sharegroupLabel;
         private String sharegroupUuid;
@@ -149,7 +136,6 @@ public final class GetConsumerImageShareGroupTokenResult {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
     	      this.expiry = defaults.expiry;
-    	      this.id = defaults.id;
     	      this.label = defaults.label;
     	      this.sharegroupLabel = defaults.sharegroupLabel;
     	      this.sharegroupUuid = defaults.sharegroupUuid;
@@ -173,14 +159,6 @@ public final class GetConsumerImageShareGroupTokenResult {
               throw new MissingRequiredPropertyException("GetConsumerImageShareGroupTokenResult", "expiry");
             }
             this.expiry = expiry;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetConsumerImageShareGroupTokenResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -243,7 +221,6 @@ public final class GetConsumerImageShareGroupTokenResult {
             final var _resultValue = new GetConsumerImageShareGroupTokenResult();
             _resultValue.created = created;
             _resultValue.expiry = expiry;
-            _resultValue.id = id;
             _resultValue.label = label;
             _resultValue.sharegroupLabel = sharegroupLabel;
             _resultValue.sharegroupUuid = sharegroupUuid;

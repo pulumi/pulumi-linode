@@ -6,28 +6,15 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetFirewallSettingsDefaultFirewallIds;
-import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetFirewallSettingsResult {
     private GetFirewallSettingsDefaultFirewallIds defaultFirewallIds;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
 
     private GetFirewallSettingsResult() {}
     public GetFirewallSettingsDefaultFirewallIds defaultFirewallIds() {
         return this.defaultFirewallIds;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
 
     public static Builder builder() {
@@ -40,12 +27,10 @@ public final class GetFirewallSettingsResult {
     @CustomType.Builder
     public static final class Builder {
         private GetFirewallSettingsDefaultFirewallIds defaultFirewallIds;
-        private String id;
         public Builder() {}
         public Builder(GetFirewallSettingsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultFirewallIds = defaults.defaultFirewallIds;
-    	      this.id = defaults.id;
         }
 
         @CustomType.Setter
@@ -56,18 +41,9 @@ public final class GetFirewallSettingsResult {
             this.defaultFirewallIds = defaultFirewallIds;
             return this;
         }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetFirewallSettingsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         public GetFirewallSettingsResult build() {
             final var _resultValue = new GetFirewallSettingsResult();
             _resultValue.defaultFirewallIds = defaultFirewallIds;
-            _resultValue.id = id;
             return _resultValue;
         }
     }

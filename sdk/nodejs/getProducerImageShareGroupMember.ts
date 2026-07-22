@@ -57,10 +57,6 @@ export interface GetProducerImageShareGroupMemberResult {
      */
     readonly expiry: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The label of the member.
      */
     readonly label: string;

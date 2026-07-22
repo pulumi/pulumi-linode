@@ -131,10 +131,6 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly ImmutableArray<string> Availables;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The region ID.
         /// </summary>
         public readonly string Region;
@@ -147,14 +143,11 @@ namespace Pulumi.Linode
         private GetAccountAvailabilityResult(
             ImmutableArray<string> availables,
 
-            string id,
-
             string region,
 
             ImmutableArray<string> unavailables)
         {
             Availables = availables;
-            Id = id;
             Region = region;
             Unavailables = unavailables;
         }
