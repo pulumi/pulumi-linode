@@ -22,6 +22,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -97,7 +99,7 @@ import (
 //				},
 //				OutboundPolicy: pulumi.String("ACCEPT"),
 //				Linodes: pulumi.IntArray{
-//					myInstance.ID(),
+//					myInstance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				},
 //			})
 //			if err != nil {

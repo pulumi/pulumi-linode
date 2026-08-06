@@ -24,6 +24,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -40,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewDomainRecord(ctx, "foobar", &linode.DomainRecordArgs{
-//				DomainId:   foobar.ID(),
+//				DomainId:   foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Name:       pulumi.String("www"),
 //				RecordType: pulumi.String("CNAME"),
 //				Target:     pulumi.String("foobar.example"),

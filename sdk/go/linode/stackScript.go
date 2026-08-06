@@ -25,6 +25,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -54,7 +56,7 @@ import (
 //					pulumi.String("..."),
 //				},
 //				RootPass:      pulumi.String("..."),
-//				StackscriptId: foo.ID(),
+//				StackscriptId: foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				StackscriptData: pulumi.StringMap{
 //					"package": pulumi.String("nginx"),
 //				},

@@ -135,6 +135,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -147,7 +149,7 @@ import (
 //				Label:      pulumi.String("my-cluster"),
 //				K8sVersion: pulumi.String("1.32"),
 //				Region:     pulumi.String("us-mia"),
-//				Labels: map[string]interface{}{
+//				Labels: map[string]string{
 //					"key": "value",
 //				},
 //				ExternalPoolTags: pulumi.StringArray{
@@ -164,7 +166,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewLkeNodePool(ctx, "my-pool", &linode.LkeNodePoolArgs{
-//				ClusterId: my_cluster.ID(),
+//				ClusterId: my_cluster.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Type:      pulumi.String("g6-standard-2"),
 //				NodeCount: pulumi.Int(3),
 //				Tags: pulumi.StringArray{

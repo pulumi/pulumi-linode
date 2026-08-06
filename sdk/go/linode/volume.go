@@ -25,6 +25,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -46,7 +48,7 @@ import (
 //			_, err = linode.NewVolume(ctx, "foobar", &linode.VolumeArgs{
 //				Label:    pulumi.String("foo-volume"),
 //				Region:   foobaz.Region,
-//				LinodeId: foobaz.ID(),
+//				LinodeId: foobaz.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -64,6 +66,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -79,7 +83,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewInstanceConfig(ctx, "foo", &linode.InstanceConfigArgs{
-//				LinodeId: foo.ID(),
+//				LinodeId: foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Label:    pulumi.String("boot-existing-volume"),
 //				Kernel:   pulumi.String("linode/grub2"),
 //				Devices: linode.InstanceConfigDevicesArgs{

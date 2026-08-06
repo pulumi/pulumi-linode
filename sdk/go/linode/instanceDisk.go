@@ -24,6 +24,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -41,7 +43,7 @@ import (
 //			}
 //			_, err = linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
 //				Label:      pulumi.String("boot"),
-//				LinodeId:   my_instance.ID(),
+//				LinodeId:   my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Size:       pulumi.Int(512),
 //				Filesystem: pulumi.String("ext4"),
 //			})
@@ -57,6 +59,8 @@ import (
 // package main
 //
 // import (
+//
+//	"strconv"
 //
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -75,10 +79,10 @@ import (
 //			}
 //			_, err = linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
 //				Label:    pulumi.String("boot"),
-//				LinodeId: my_instance.ID(),
-//				Size: pulumi.Int(my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (*int, error) {
+//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				Size: my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (*int, error) {
 //					return specs[0].Disk, nil
-//				}).(pulumi.IntPtrOutput)),
+//				}).(pulumi.IntPtrOutput),
 //				Image:    pulumi.String("linode/ubuntu22.04"),
 //				RootPass: pulumi.String("myc00lpass!"),
 //				AuthorizedKeys: pulumi.StringArray{

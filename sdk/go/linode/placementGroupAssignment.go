@@ -48,6 +48,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -73,8 +75,8 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewPlacementGroupAssignment(ctx, "my-assignment", &linode.PlacementGroupAssignmentArgs{
-//				PlacementGroupId: my_pg.ID(),
-//				LinodeId:         my_inst.ID(),
+//				PlacementGroupId: my_pg.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId:         my_inst.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err
