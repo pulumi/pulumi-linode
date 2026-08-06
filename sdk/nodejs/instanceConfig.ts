@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  * const boot = new linode.InstanceDisk("boot", {
  *     label: "boot",
  *     linodeId: my_instance.id.apply(x =>Number(x)),
- *     size: my_instance.specs.apply(specs => specs[0].disk),
+ *     size: my_instance.specs[0].disk,
  *     image: "linode/ubuntu22.04",
  *     rootPass: "myc00lpass!",
  * });

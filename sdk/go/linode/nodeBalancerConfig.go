@@ -24,6 +24,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -40,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewNodeBalancerConfig(ctx, "foofig", &linode.NodeBalancerConfigArgs{
-//				NodebalancerId: foobar.ID(),
+//				NodebalancerId: foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Port:           pulumi.Int(8088),
 //				Protocol:       pulumi.String("http"),
 //				Check:          pulumi.String("http"),

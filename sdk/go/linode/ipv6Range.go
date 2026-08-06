@@ -24,6 +24,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -41,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewIpv6Range(ctx, "foobar", &linode.Ipv6RangeArgs{
-//				LinodeId:     foobar.ID(),
+//				LinodeId:     foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				PrefixLength: pulumi.Int(64),
 //			})
 //			if err != nil {

@@ -377,6 +377,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -403,7 +405,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewLkeNodePool(ctx, "my-pool", &linode.LkeNodePoolArgs{
-//				ClusterId: my_cluster.ID(),
+//				ClusterId: my_cluster.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Type:      pulumi.String("g6-standard-2"),
 //				NodeCount: pulumi.Int(3),
 //				Tags: pulumi.StringArray{

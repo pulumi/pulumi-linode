@@ -35,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			invokeChomp, err := std.Chomp(ctx, &std.ChompArgs{
-//				Input: std.File(ctx, &std.FileArgs{
+//				Input: std.File(ctx, std.FileArgs{
 //					Input: "~/.ssh/id_rsa.pub",
 //				}, nil).Result,
 //			}, nil)

@@ -28,6 +28,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -46,7 +48,7 @@ import (
 //			}
 //			// Allocate an IP under the primary node
 //			primary, err := linode.NewInstanceIp(ctx, "primary", &linode.InstanceIpArgs{
-//				LinodeId: primaryInstance.ID(),
+//				LinodeId: primaryInstance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -62,7 +64,7 @@ import (
 //			}
 //			// Share the IP with the secondary node
 //			_, err = linode.NewInstanceSharedIps(ctx, "share-primary", &linode.InstanceSharedIpsArgs{
-//				LinodeId: secondary.ID(),
+//				LinodeId: secondary.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Addresses: pulumi.StringArray{
 //					primary.Address,
 //				},

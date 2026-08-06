@@ -29,6 +29,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -45,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewLock(ctx, "my-lock", &linode.LockArgs{
-//				EntityId:   my_inst.ID(),
+//				EntityId:   my_inst.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				EntityType: pulumi.String("linode"),
 //				LockType:   pulumi.String("cannot_delete"),
 //			})
@@ -62,6 +64,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -78,7 +82,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewLock(ctx, "my-lock", &linode.LockArgs{
-//				EntityId:   my_inst.ID(),
+//				EntityId:   my_inst.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				EntityType: pulumi.String("linode"),
 //				LockType:   pulumi.String("cannot_delete_with_subresources"),
 //			})

@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * const bar = new linode.Image("bar", {
  *     label: "foo-sda-image",
  *     description: "Image taken from foo",
- *     diskId: foo.disks.apply(disks => disks[0].id),
+ *     diskId: foo.disks[0].id,
  *     linodeId: foo.id.apply(x =>Number(x)),
  *     tags: [
  *         "image-tag",

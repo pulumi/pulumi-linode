@@ -47,6 +47,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -68,7 +70,7 @@ import (
 //			}
 //			// NOTE: IPv6 VPCs may not currently be available to all users.
 //			_, err = linode.NewVpcSubnet(ctx, "test", &linode.VpcSubnetArgs{
-//				VpcId: testVpc.ID(),
+//				VpcId: testVpc.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Label: pulumi.String("test-subnet"),
 //				Ipv4:  pulumi.String("10.0.0.0/24"),
 //				Ipv6s: linode.VpcSubnetIpv6Array{

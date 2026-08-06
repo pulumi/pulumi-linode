@@ -22,6 +22,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -48,7 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewDatabaseAccessControls(ctx, "my-access", &linode.DatabaseAccessControlsArgs{
-//				DatabaseId:   my_db.ID(),
+//				DatabaseId:   my_db.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				DatabaseType: pulumi.String("mysql"),
 //				AllowLists: pulumi.StringArray{
 //					my_instance.IpAddress,

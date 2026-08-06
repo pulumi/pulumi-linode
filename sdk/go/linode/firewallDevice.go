@@ -24,6 +24,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -62,8 +64,8 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewFirewallDevice(ctx, "my_device", &linode.FirewallDeviceArgs{
-//				FirewallId: myFirewall.ID(),
-//				EntityId:   myInstance.ID(),
+//				FirewallId: myFirewall.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				EntityId:   myInstance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err

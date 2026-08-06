@@ -23,6 +23,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -42,10 +44,10 @@ import (
 //			bar, err := linode.NewImage(ctx, "bar", &linode.ImageArgs{
 //				Label:       pulumi.String("foo-sda-image"),
 //				Description: pulumi.String("Image taken from foo"),
-//				DiskId: pulumi.Int(foo.Disks.ApplyT(func(disks []linode.InstanceDiskType) (*int, error) {
+//				DiskId: foo.Disks.ApplyT(func(disks []linode.InstanceDiskType) (*int, error) {
 //					return disks[0].Id, nil
-//				}).(pulumi.IntPtrOutput)),
-//				LinodeId: foo.ID(),
+//				}).(pulumi.IntPtrOutput),
+//				LinodeId: foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("image-tag"),
 //					pulumi.String("test"),
@@ -57,7 +59,7 @@ import (
 //			_, err = linode.NewInstance(ctx, "bar_based", &linode.InstanceArgs{
 //				Type:   foo.Type,
 //				Region: pulumi.String("eu-west"),
-//				Image:  bar.ID(),
+//				Image:  bar.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

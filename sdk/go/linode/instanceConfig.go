@@ -28,6 +28,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -45,10 +47,10 @@ import (
 //			}
 //			boot, err := linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
 //				Label:    pulumi.String("boot"),
-//				LinodeId: my_instance.ID(),
-//				Size: pulumi.Int(my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (*int, error) {
+//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				Size: my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (*int, error) {
 //					return specs[0].Disk, nil
-//				}).(pulumi.IntPtrOutput)),
+//				}).(pulumi.IntPtrOutput),
 //				Image:    pulumi.String("linode/ubuntu22.04"),
 //				RootPass: pulumi.String("myc00lpass!"),
 //			})
@@ -56,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewInstanceConfig(ctx, "my-config", &linode.InstanceConfigArgs{
-//				LinodeId: my_instance.ID(),
+//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Label:    pulumi.String("my-config"),
 //				Devices: linode.InstanceConfigDevicesArgs{
 //					map[string]interface{}{
@@ -79,6 +81,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -96,7 +100,7 @@ import (
 //				return err
 //			}
 //			foobarVpcSubnet, err := linode.NewVpcSubnet(ctx, "foobar", &linode.VpcSubnetArgs{
-//				VpcId: foobar.ID(),
+//				VpcId: foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Label: pulumi.String("my-subnet"),
 //				Ipv4:  pulumi.String("10.0.4.0/24"),
 //			})
@@ -114,7 +118,7 @@ import (
 //			// Create a boot disk
 //			boot, err := linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
 //				Label:    pulumi.String("boot"),
-//				LinodeId: my_instance.ID(),
+//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Size: pulumi.Int(my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (float64, error) {
 //					return float64(pulumi.All(specs[0].Disk, 512).ApplyT(func(_args []interface{}) (float64, error) {
 //						__convert := _args[0].(float64)
@@ -131,7 +135,7 @@ import (
 //			// Create a swap disk
 //			swap, err := linode.NewInstanceDisk(ctx, "swap", &linode.InstanceDiskArgs{
 //				Label:      pulumi.String("swap"),
-//				LinodeId:   my_instance.ID(),
+//				LinodeId:   my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Size:       pulumi.Int(512),
 //				Filesystem: pulumi.String("swap"),
 //			})
@@ -139,7 +143,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewInstanceConfig(ctx, "my-config", &linode.InstanceConfigArgs{
-//				LinodeId: my_instance.ID(),
+//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Label:    pulumi.String("my-config"),
 //				Devices: linode.InstanceConfigDevicesArgs{
 //					map[string]interface{}{
@@ -167,7 +171,7 @@ import (
 //					},
 //					&linode.InstanceConfigInterfaceArgs{
 //						Purpose:  pulumi.String("vpc"),
-//						SubnetId: foobarVpcSubnet.ID(),
+//						SubnetId: foobarVpcSubnet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //						Ipv4: &linode.InstanceConfigInterfaceIpv4Args{
 //							Vpc: pulumi.String("10.0.4.250"),
 //						},
