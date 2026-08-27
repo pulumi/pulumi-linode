@@ -141,12 +141,8 @@ type GetDatabaseEnginesResult struct {
 }
 
 func GetDatabaseEnginesOutput(ctx *pulumi.Context, args GetDatabaseEnginesOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseEnginesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDatabaseEnginesResultOutput, error) {
-			args := v.(GetDatabaseEnginesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getDatabaseEngines:getDatabaseEngines", args, GetDatabaseEnginesResultOutput{}, options).(GetDatabaseEnginesResultOutput), nil
-		}).(GetDatabaseEnginesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getDatabaseEngines:getDatabaseEngines", args, GetDatabaseEnginesResultOutput{}, options).(GetDatabaseEnginesResultOutput)
 }
 
 // A collection of arguments for invoking getDatabaseEngines.

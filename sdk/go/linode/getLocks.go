@@ -109,12 +109,8 @@ type GetLocksResult struct {
 }
 
 func GetLocksOutput(ctx *pulumi.Context, args GetLocksOutputArgs, opts ...pulumi.InvokeOption) GetLocksResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLocksResultOutput, error) {
-			args := v.(GetLocksArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getLocks:getLocks", args, GetLocksResultOutput{}, options).(GetLocksResultOutput), nil
-		}).(GetLocksResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getLocks:getLocks", args, GetLocksResultOutput{}, options).(GetLocksResultOutput)
 }
 
 // A collection of arguments for invoking getLocks.

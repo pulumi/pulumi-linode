@@ -553,10 +553,8 @@ type GetDatabaseMysqlConfigResult struct {
 }
 
 func GetDatabaseMysqlConfigOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetDatabaseMysqlConfigResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetDatabaseMysqlConfigResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("linode:index/getDatabaseMysqlConfig:getDatabaseMysqlConfig", nil, GetDatabaseMysqlConfigResultOutput{}, options).(GetDatabaseMysqlConfigResultOutput), nil
-	}).(GetDatabaseMysqlConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getDatabaseMysqlConfig:getDatabaseMysqlConfig", nil, GetDatabaseMysqlConfigResultOutput{}, options).(GetDatabaseMysqlConfigResultOutput)
 }
 
 // A collection of values returned by getDatabaseMysqlConfig.

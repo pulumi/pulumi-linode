@@ -85,12 +85,8 @@ type GetInstanceTypeResult struct {
 }
 
 func GetInstanceTypeOutput(ctx *pulumi.Context, args GetInstanceTypeOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInstanceTypeResultOutput, error) {
-			args := v.(GetInstanceTypeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getInstanceType:getInstanceType", args, GetInstanceTypeResultOutput{}, options).(GetInstanceTypeResultOutput), nil
-		}).(GetInstanceTypeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getInstanceType:getInstanceType", args, GetInstanceTypeResultOutput{}, options).(GetInstanceTypeResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceType.

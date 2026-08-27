@@ -112,12 +112,8 @@ type GetStackScriptsResult struct {
 }
 
 func GetStackScriptsOutput(ctx *pulumi.Context, args GetStackScriptsOutputArgs, opts ...pulumi.InvokeOption) GetStackScriptsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetStackScriptsResultOutput, error) {
-			args := v.(GetStackScriptsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getStackScripts:getStackScripts", args, GetStackScriptsResultOutput{}, options).(GetStackScriptsResultOutput), nil
-		}).(GetStackScriptsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getStackScripts:getStackScripts", args, GetStackScriptsResultOutput{}, options).(GetStackScriptsResultOutput)
 }
 
 // A collection of arguments for invoking getStackScripts.

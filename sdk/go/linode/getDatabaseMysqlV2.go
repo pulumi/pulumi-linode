@@ -203,12 +203,8 @@ type LookupDatabaseMysqlV2Result struct {
 }
 
 func LookupDatabaseMysqlV2Output(ctx *pulumi.Context, args LookupDatabaseMysqlV2OutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseMysqlV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabaseMysqlV2ResultOutput, error) {
-			args := v.(LookupDatabaseMysqlV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", args, LookupDatabaseMysqlV2ResultOutput{}, options).(LookupDatabaseMysqlV2ResultOutput), nil
-		}).(LookupDatabaseMysqlV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getDatabaseMysqlV2:getDatabaseMysqlV2", args, LookupDatabaseMysqlV2ResultOutput{}, options).(LookupDatabaseMysqlV2ResultOutput)
 }
 
 // A collection of arguments for invoking getDatabaseMysqlV2.

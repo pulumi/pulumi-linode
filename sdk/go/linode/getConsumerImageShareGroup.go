@@ -77,12 +77,8 @@ type GetConsumerImageShareGroupResult struct {
 }
 
 func GetConsumerImageShareGroupOutput(ctx *pulumi.Context, args GetConsumerImageShareGroupOutputArgs, opts ...pulumi.InvokeOption) GetConsumerImageShareGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetConsumerImageShareGroupResultOutput, error) {
-			args := v.(GetConsumerImageShareGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getConsumerImageShareGroup:getConsumerImageShareGroup", args, GetConsumerImageShareGroupResultOutput{}, options).(GetConsumerImageShareGroupResultOutput), nil
-		}).(GetConsumerImageShareGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getConsumerImageShareGroup:getConsumerImageShareGroup", args, GetConsumerImageShareGroupResultOutput{}, options).(GetConsumerImageShareGroupResultOutput)
 }
 
 // A collection of arguments for invoking getConsumerImageShareGroup.

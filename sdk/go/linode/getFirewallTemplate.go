@@ -71,12 +71,8 @@ type GetFirewallTemplateResult struct {
 }
 
 func GetFirewallTemplateOutput(ctx *pulumi.Context, args GetFirewallTemplateOutputArgs, opts ...pulumi.InvokeOption) GetFirewallTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFirewallTemplateResultOutput, error) {
-			args := v.(GetFirewallTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getFirewallTemplate:getFirewallTemplate", args, GetFirewallTemplateResultOutput{}, options).(GetFirewallTemplateResultOutput), nil
-		}).(GetFirewallTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getFirewallTemplate:getFirewallTemplate", args, GetFirewallTemplateResultOutput{}, options).(GetFirewallTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getFirewallTemplate.

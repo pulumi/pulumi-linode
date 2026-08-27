@@ -43,12 +43,8 @@ type GetVolumeTypesResult struct {
 }
 
 func GetVolumeTypesOutput(ctx *pulumi.Context, args GetVolumeTypesOutputArgs, opts ...pulumi.InvokeOption) GetVolumeTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVolumeTypesResultOutput, error) {
-			args := v.(GetVolumeTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getVolumeTypes:getVolumeTypes", args, GetVolumeTypesResultOutput{}, options).(GetVolumeTypesResultOutput), nil
-		}).(GetVolumeTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getVolumeTypes:getVolumeTypes", args, GetVolumeTypesResultOutput{}, options).(GetVolumeTypesResultOutput)
 }
 
 // A collection of arguments for invoking getVolumeTypes.

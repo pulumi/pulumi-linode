@@ -92,12 +92,8 @@ type LookupLkeNodePoolResult struct {
 }
 
 func LookupLkeNodePoolOutput(ctx *pulumi.Context, args LookupLkeNodePoolOutputArgs, opts ...pulumi.InvokeOption) LookupLkeNodePoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLkeNodePoolResultOutput, error) {
-			args := v.(LookupLkeNodePoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getLkeNodePool:getLkeNodePool", args, LookupLkeNodePoolResultOutput{}, options).(LookupLkeNodePoolResultOutput), nil
-		}).(LookupLkeNodePoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getLkeNodePool:getLkeNodePool", args, LookupLkeNodePoolResultOutput{}, options).(LookupLkeNodePoolResultOutput)
 }
 
 // A collection of arguments for invoking getLkeNodePool.

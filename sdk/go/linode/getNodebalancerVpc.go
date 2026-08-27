@@ -73,12 +73,8 @@ type GetNodebalancerVpcResult struct {
 }
 
 func GetNodebalancerVpcOutput(ctx *pulumi.Context, args GetNodebalancerVpcOutputArgs, opts ...pulumi.InvokeOption) GetNodebalancerVpcResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNodebalancerVpcResultOutput, error) {
-			args := v.(GetNodebalancerVpcArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getNodebalancerVpc:getNodebalancerVpc", args, GetNodebalancerVpcResultOutput{}, options).(GetNodebalancerVpcResultOutput), nil
-		}).(GetNodebalancerVpcResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getNodebalancerVpc:getNodebalancerVpc", args, GetNodebalancerVpcResultOutput{}, options).(GetNodebalancerVpcResultOutput)
 }
 
 // A collection of arguments for invoking getNodebalancerVpc.

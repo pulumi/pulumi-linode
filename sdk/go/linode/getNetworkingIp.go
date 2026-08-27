@@ -87,12 +87,8 @@ type LookupNetworkingIpResult struct {
 }
 
 func LookupNetworkingIpOutput(ctx *pulumi.Context, args LookupNetworkingIpOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkingIpResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkingIpResultOutput, error) {
-			args := v.(LookupNetworkingIpArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getNetworkingIp:getNetworkingIp", args, LookupNetworkingIpResultOutput{}, options).(LookupNetworkingIpResultOutput), nil
-		}).(LookupNetworkingIpResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getNetworkingIp:getNetworkingIp", args, LookupNetworkingIpResultOutput{}, options).(LookupNetworkingIpResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkingIp.

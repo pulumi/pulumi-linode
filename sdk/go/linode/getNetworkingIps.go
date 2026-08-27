@@ -117,12 +117,8 @@ type GetNetworkingIpsResult struct {
 }
 
 func GetNetworkingIpsOutput(ctx *pulumi.Context, args GetNetworkingIpsOutputArgs, opts ...pulumi.InvokeOption) GetNetworkingIpsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNetworkingIpsResultOutput, error) {
-			args := v.(GetNetworkingIpsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getNetworkingIps:getNetworkingIps", args, GetNetworkingIpsResultOutput{}, options).(GetNetworkingIpsResultOutput), nil
-		}).(GetNetworkingIpsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getNetworkingIps:getNetworkingIps", args, GetNetworkingIpsResultOutput{}, options).(GetNetworkingIpsResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkingIps.

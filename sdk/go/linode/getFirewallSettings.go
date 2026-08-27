@@ -27,10 +27,8 @@ type LookupFirewallSettingsResult struct {
 }
 
 func LookupFirewallSettingsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupFirewallSettingsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupFirewallSettingsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("linode:index/getFirewallSettings:getFirewallSettings", nil, LookupFirewallSettingsResultOutput{}, options).(LookupFirewallSettingsResultOutput), nil
-	}).(LookupFirewallSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getFirewallSettings:getFirewallSettings", nil, LookupFirewallSettingsResultOutput{}, options).(LookupFirewallSettingsResultOutput)
 }
 
 // A collection of values returned by getFirewallSettings.

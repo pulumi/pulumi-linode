@@ -109,12 +109,8 @@ type GetObjectStorageEndpointsResult struct {
 }
 
 func GetObjectStorageEndpointsOutput(ctx *pulumi.Context, args GetObjectStorageEndpointsOutputArgs, opts ...pulumi.InvokeOption) GetObjectStorageEndpointsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetObjectStorageEndpointsResultOutput, error) {
-			args := v.(GetObjectStorageEndpointsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", args, GetObjectStorageEndpointsResultOutput{}, options).(GetObjectStorageEndpointsResultOutput), nil
-		}).(GetObjectStorageEndpointsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", args, GetObjectStorageEndpointsResultOutput{}, options).(GetObjectStorageEndpointsResultOutput)
 }
 
 // A collection of arguments for invoking getObjectStorageEndpoints.

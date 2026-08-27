@@ -78,12 +78,8 @@ type GetAccountAvailabilitiesResult struct {
 }
 
 func GetAccountAvailabilitiesOutput(ctx *pulumi.Context, args GetAccountAvailabilitiesOutputArgs, opts ...pulumi.InvokeOption) GetAccountAvailabilitiesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountAvailabilitiesResultOutput, error) {
-			args := v.(GetAccountAvailabilitiesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getAccountAvailabilities:getAccountAvailabilities", args, GetAccountAvailabilitiesResultOutput{}, options).(GetAccountAvailabilitiesResultOutput), nil
-		}).(GetAccountAvailabilitiesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getAccountAvailabilities:getAccountAvailabilities", args, GetAccountAvailabilitiesResultOutput{}, options).(GetAccountAvailabilitiesResultOutput)
 }
 
 // A collection of arguments for invoking getAccountAvailabilities.
