@@ -102,12 +102,8 @@ type GetKernelsResult struct {
 }
 
 func GetKernelsOutput(ctx *pulumi.Context, args GetKernelsOutputArgs, opts ...pulumi.InvokeOption) GetKernelsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKernelsResultOutput, error) {
-			args := v.(GetKernelsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getKernels:getKernels", args, GetKernelsResultOutput{}, options).(GetKernelsResultOutput), nil
-		}).(GetKernelsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getKernels:getKernels", args, GetKernelsResultOutput{}, options).(GetKernelsResultOutput)
 }
 
 // A collection of arguments for invoking getKernels.

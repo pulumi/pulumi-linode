@@ -98,12 +98,8 @@ type GetLkeVersionsResult struct {
 }
 
 func GetLkeVersionsOutput(ctx *pulumi.Context, args GetLkeVersionsOutputArgs, opts ...pulumi.InvokeOption) GetLkeVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLkeVersionsResultOutput, error) {
-			args := v.(GetLkeVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getLkeVersions:getLkeVersions", args, GetLkeVersionsResultOutput{}, options).(GetLkeVersionsResultOutput), nil
-		}).(GetLkeVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getLkeVersions:getLkeVersions", args, GetLkeVersionsResultOutput{}, options).(GetLkeVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getLkeVersions.

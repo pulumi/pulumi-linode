@@ -85,12 +85,8 @@ type LookupNodeBalancerResult struct {
 }
 
 func LookupNodeBalancerOutput(ctx *pulumi.Context, args LookupNodeBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupNodeBalancerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNodeBalancerResultOutput, error) {
-			args := v.(LookupNodeBalancerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getNodeBalancer:getNodeBalancer", args, LookupNodeBalancerResultOutput{}, options).(LookupNodeBalancerResultOutput), nil
-		}).(LookupNodeBalancerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getNodeBalancer:getNodeBalancer", args, LookupNodeBalancerResultOutput{}, options).(LookupNodeBalancerResultOutput)
 }
 
 // A collection of arguments for invoking getNodeBalancer.

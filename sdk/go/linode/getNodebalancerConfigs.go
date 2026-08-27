@@ -112,12 +112,8 @@ type GetNodebalancerConfigsResult struct {
 }
 
 func GetNodebalancerConfigsOutput(ctx *pulumi.Context, args GetNodebalancerConfigsOutputArgs, opts ...pulumi.InvokeOption) GetNodebalancerConfigsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetNodebalancerConfigsResultOutput, error) {
-			args := v.(GetNodebalancerConfigsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", args, GetNodebalancerConfigsResultOutput{}, options).(GetNodebalancerConfigsResultOutput), nil
-		}).(GetNodebalancerConfigsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getNodebalancerConfigs:getNodebalancerConfigs", args, GetNodebalancerConfigsResultOutput{}, options).(GetNodebalancerConfigsResultOutput)
 }
 
 // A collection of arguments for invoking getNodebalancerConfigs.

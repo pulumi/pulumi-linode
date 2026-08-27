@@ -87,12 +87,8 @@ type GetObjectStorageQuotasResult struct {
 }
 
 func GetObjectStorageQuotasOutput(ctx *pulumi.Context, args GetObjectStorageQuotasOutputArgs, opts ...pulumi.InvokeOption) GetObjectStorageQuotasResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetObjectStorageQuotasResultOutput, error) {
-			args := v.(GetObjectStorageQuotasArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", args, GetObjectStorageQuotasResultOutput{}, options).(GetObjectStorageQuotasResultOutput), nil
-		}).(GetObjectStorageQuotasResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", args, GetObjectStorageQuotasResultOutput{}, options).(GetObjectStorageQuotasResultOutput)
 }
 
 // A collection of arguments for invoking getObjectStorageQuotas.

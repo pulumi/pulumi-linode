@@ -61,12 +61,8 @@ type GetMaintenancePoliciesResult struct {
 }
 
 func GetMaintenancePoliciesOutput(ctx *pulumi.Context, args GetMaintenancePoliciesOutputArgs, opts ...pulumi.InvokeOption) GetMaintenancePoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMaintenancePoliciesResultOutput, error) {
-			args := v.(GetMaintenancePoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getMaintenancePolicies:getMaintenancePolicies", args, GetMaintenancePoliciesResultOutput{}, options).(GetMaintenancePoliciesResultOutput), nil
-		}).(GetMaintenancePoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getMaintenancePolicies:getMaintenancePolicies", args, GetMaintenancePoliciesResultOutput{}, options).(GetMaintenancePoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getMaintenancePolicies.

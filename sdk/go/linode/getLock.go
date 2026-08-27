@@ -76,12 +76,8 @@ type LookupLockResult struct {
 }
 
 func LookupLockOutput(ctx *pulumi.Context, args LookupLockOutputArgs, opts ...pulumi.InvokeOption) LookupLockResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLockResultOutput, error) {
-			args := v.(LookupLockArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getLock:getLock", args, LookupLockResultOutput{}, options).(LookupLockResultOutput), nil
-		}).(LookupLockResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getLock:getLock", args, LookupLockResultOutput{}, options).(LookupLockResultOutput)
 }
 
 // A collection of arguments for invoking getLock.

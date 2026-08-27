@@ -69,10 +69,8 @@ type LookupAccountSettingsResult struct {
 }
 
 func LookupAccountSettingsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupAccountSettingsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupAccountSettingsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("linode:index/getAccountSettings:getAccountSettings", nil, LookupAccountSettingsResultOutput{}, options).(LookupAccountSettingsResultOutput), nil
-	}).(LookupAccountSettingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getAccountSettings:getAccountSettings", nil, LookupAccountSettingsResultOutput{}, options).(LookupAccountSettingsResultOutput)
 }
 
 // A collection of values returned by getAccountSettings.

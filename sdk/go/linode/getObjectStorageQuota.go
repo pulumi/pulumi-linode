@@ -79,12 +79,8 @@ type GetObjectStorageQuotaResult struct {
 }
 
 func GetObjectStorageQuotaOutput(ctx *pulumi.Context, args GetObjectStorageQuotaOutputArgs, opts ...pulumi.InvokeOption) GetObjectStorageQuotaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetObjectStorageQuotaResultOutput, error) {
-			args := v.(GetObjectStorageQuotaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getObjectStorageQuota:getObjectStorageQuota", args, GetObjectStorageQuotaResultOutput{}, options).(GetObjectStorageQuotaResultOutput), nil
-		}).(GetObjectStorageQuotaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getObjectStorageQuota:getObjectStorageQuota", args, GetObjectStorageQuotaResultOutput{}, options).(GetObjectStorageQuotaResultOutput)
 }
 
 // A collection of arguments for invoking getObjectStorageQuota.

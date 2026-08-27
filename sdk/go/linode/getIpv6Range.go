@@ -69,12 +69,8 @@ type LookupIpv6RangeResult struct {
 }
 
 func LookupIpv6RangeOutput(ctx *pulumi.Context, args LookupIpv6RangeOutputArgs, opts ...pulumi.InvokeOption) LookupIpv6RangeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIpv6RangeResultOutput, error) {
-			args := v.(LookupIpv6RangeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getIpv6Range:getIpv6Range", args, LookupIpv6RangeResultOutput{}, options).(LookupIpv6RangeResultOutput), nil
-		}).(LookupIpv6RangeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getIpv6Range:getIpv6Range", args, LookupIpv6RangeResultOutput{}, options).(LookupIpv6RangeResultOutput)
 }
 
 // A collection of arguments for invoking getIpv6Range.

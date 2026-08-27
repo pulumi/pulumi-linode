@@ -38,12 +38,8 @@ type LookupInterfaceResult struct {
 }
 
 func LookupInterfaceOutput(ctx *pulumi.Context, args LookupInterfaceOutputArgs, opts ...pulumi.InvokeOption) LookupInterfaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInterfaceResultOutput, error) {
-			args := v.(LookupInterfaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getInterface:getInterface", args, LookupInterfaceResultOutput{}, options).(LookupInterfaceResultOutput), nil
-		}).(LookupInterfaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getInterface:getInterface", args, LookupInterfaceResultOutput{}, options).(LookupInterfaceResultOutput)
 }
 
 // A collection of arguments for invoking getInterface.

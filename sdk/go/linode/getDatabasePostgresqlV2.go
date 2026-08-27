@@ -242,12 +242,8 @@ type LookupDatabasePostgresqlV2Result struct {
 }
 
 func LookupDatabasePostgresqlV2Output(ctx *pulumi.Context, args LookupDatabasePostgresqlV2OutputArgs, opts ...pulumi.InvokeOption) LookupDatabasePostgresqlV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDatabasePostgresqlV2ResultOutput, error) {
-			args := v.(LookupDatabasePostgresqlV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", args, LookupDatabasePostgresqlV2ResultOutput{}, options).(LookupDatabasePostgresqlV2ResultOutput), nil
-		}).(LookupDatabasePostgresqlV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getDatabasePostgresqlV2:getDatabasePostgresqlV2", args, LookupDatabasePostgresqlV2ResultOutput{}, options).(LookupDatabasePostgresqlV2ResultOutput)
 }
 
 // A collection of arguments for invoking getDatabasePostgresqlV2.
